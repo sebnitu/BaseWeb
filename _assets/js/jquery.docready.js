@@ -1,35 +1,28 @@
 /*
 *************************************************
-
-SEBASTIAN NITU
 jQuery Document & Image Ready Scripts
-
-Created by Sebastian Nitu
-http://www.sebnitu.com
-
+-
+BaseWeb by Sebastian Nitu
+Author: http://www.sebnitu.com
+Repository: https://github.com/sebnitu/BaseWeb
 *************************************************
 */
-
 /*-------------------------------------------
 	When Document is Ready
 ---------------------------------------------*/
-
 $(document).ready(function() {
 
 
 
 });
-
 /*-------------------------------------------
 	After Images are Loaded
 ---------------------------------------------*/
-
 $(window).load(function() {
 
 
 
 });
-
 /*-------------------------------------------
 	Fin
 ---------------------------------------------*/

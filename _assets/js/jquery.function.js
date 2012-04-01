@@ -1,19 +1,15 @@
 /*
 *************************************************
-
-SEBASTIAN NITU
 jQuery Functions
-
-Created by Sebastian Nitu
-http://www.sebnitu.com
-
+-
+BaseWeb by Sebastian Nitu
+Author: http://www.sebnitu.com
+Repository: https://github.com/sebnitu/BaseWeb
 *************************************************
 */
-
 /*-------------------------------------------
 	Utility Functions
 ---------------------------------------------*/
-
 
 
 /*-------------------------------------------
