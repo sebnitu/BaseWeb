@@ -10,7 +10,10 @@
 ============================================================= */
 $(document).ready(function() {
 
-
+	/**
+	 * Mobile Orientation and Scale Fix
+	 */
+	mobileOrientationScale();
 
 });
 /* ==========================================================
