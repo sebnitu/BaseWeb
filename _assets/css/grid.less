@@ -7,11 +7,14 @@
  * The grid system is forked from 960 Grid System(1) and modified
  * to create fluid layout support and a responsive structure for the
  * desktop, tablet and mobile. CSS clear class by Nathan Smith(2) and
- * clearfix class by Thierry Koblentz(3).
+ * clearfix class by Thierry Koblentz(3). I'm using a method in LESS
+ * to output the column styles that is used in Bootstrap by Twitter(4)
+ * as well as the show/hide utility classes for devices.
  *
  * 1) http://960.gs/
  * 2) http://sonspring.com/journal/clearing-floats
  * 3) http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified
+ * 4) http://twitter.github.com/bootstrap/
  * ========================================================== */
 
 // ==========================================================
@@ -227,28 +230,71 @@
 #gridSystem > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
 
 /* ==========================================================
+	Show & Hide utilities
+============================================================= */
+
+/* Things to show */
+.visible-phone     { display: none; }
+.visible-tablet    { display: none; }
+.visible-desktop   { display: block; }
+
+/* Things to hide */
+.hidden-phone      { display: block; }
+.hidden-tablet     { display: block; }
+.hidden-desktop    { display: none; }
+
+/* ==========================================================
 	Responsive
 ============================================================= */
 /* Larger than 1200 (desktop - large browsers) */
 @media (min-width: 1200px) {
-	/* Base 744px grid */
+	/* Grid: Base 744px grid */
 	#gridSystem > .base(70px, 30px);
 }
 
 /* Smaller than 960 (browsers - landscape tablets) */
 @media only screen and (max-width: 960px) {
-	/* Base 744px grid */
+	/* Grid: Base 744px grid */
 	#gridSystem > .base(42px, 20px);
 }
 
 /* Smaller than 768 (tablet - landscape mobile) */
-@media only screen and (max-width: 768px) {
-	/* Mobile */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	/* Grid: Mobile Fluid 100% columns */
 	#gridSystem > .mobile();
+	
+	/**
+	 * Show & Hide utilities
+	 */
+	/* Show */
+	.visible-tablet     { display: block; }
+	/* Hide */
+	.hidden-tablet      { display: none; }
+	/* Hide everything else */
+	.hidden-phone    { display: block; }
+	.visible-phone   { display: none; }
+	.hidden-desktop    { display: block; }
+	.visible-desktop   { display: none; }
 }
 
 /* Smaller than 450 (mobile) */
-@media only screen and (max-width: 479px) {}
+@media only screen and (max-width: 767px) {
+	/* Grid: Mobile Fluid 100% columns */
+	#gridSystem > .mobile();
+	
+	/**
+	 * Show & Hide utilities
+	 */
+	/* Show */
+	.visible-phone    { display: block; }
+	/* Hide */
+	.hidden-phone     { display: none; }
+	/* Hide everything else */
+	.hidden-tablet    { display: block; }
+	.visible-tablet   { display: none; }
+	.hidden-desktop    { display: block; }
+	.visible-desktop   { display: none; }
+}
 
 /* ==========================================================
 	End of Grid System

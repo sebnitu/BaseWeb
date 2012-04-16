@@ -11,6 +11,7 @@
 	<!-- Stylesheets and less -->
 	<link rel="stylesheet/less" type="text/css" media="all" href="_assets/css/main.less">
 	<script src="_assets/js/less.js"></script>
+	<script>// localStorage.clear()</script>
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -51,8 +52,10 @@
 	/**
 	 * Demo Content
 	 */
-	.baseWeb-demo .container {
+	.baseWeb-demo {
 		background: #fff;
+	}
+	.baseWeb-demo .container {
 		padding-bottom: 20px;
 	}
 	.baseWeb-demo header {
@@ -74,6 +77,18 @@
 		padding: 10px 0; 
 		margin: 0 0 20px 0;
 	}
+	
+	.baseWeb-demo-utility p {
+		background: rgba(0,0,0, 0.1);
+		border: 1px solid rgba(0,0,0, 0.15);
+		text-align: center;
+		float: left;
+		height: 18px;
+		width: 15%;
+		padding: 10px 20px;
+		margin: 10px 10px 20px 0;
+	}
+	
 	</style>
 </head>
 <body>
@@ -84,7 +99,29 @@
 </header>
 
 <section class="baseWeb-demo">
-
+	
+	<div class="container baseWeb-demo-utility">
+	
+		<header class="grid-12">
+			<h1 class="lined"><span>Utility Classes</span></h1>
+		</header>
+		
+		<h2 class="grid-12">Visible On</h2>
+		<div class="grid-12 clearfix">
+			<p><span class="visible-phone">phone</span></p>
+			<p><span class="visible-tablet">tablet</span></p>
+			<p><span class="visible-desktop">desktop</span></p>
+		</div>
+		
+		<h2 class="grid-12">Hidden On</h2>
+		<div class="grid-12 clearfix">
+			<p><span class="hidden-phone">phone</span></p>
+			<p><span class="hidden-tablet">tablet</span></p>
+			<p><span class="hidden-desktop">desktop</span></p>
+		</div>
+		
+	</div><!-- .container -->
+	
 	<div class="container baseWeb-demo-grid">
 		
 		<header class="grid-12">
@@ -121,7 +158,6 @@
 		<div class="grid-3"><p>3</p></div>
 		<span class="clear"></span>
 		
-		<!--
 		<div class="grid-1 suffix-11"><p>1</p></div>
 		<span class="clear"></span>
 		<div class="grid-1 prefix-1 suffix-10"><p>1</p></div>
@@ -146,7 +182,6 @@
 		<span class="clear"></span>
 		<div class="grid-1 prefix-11"><p>1</p></div>
 		<span class="clear"></span>
-		-->
 		
 		<div class="grid-3"><p>3</p></div>
 		<div class="grid-3"><p>3</p></div>
@@ -159,7 +194,6 @@
 		
 	</div><!-- .container -->
 	
-	<!--
 	<div class="container">
 	
 		<header class="grid-12">
@@ -189,7 +223,7 @@
 			<p><strong>Vivamus sagittis lacus vel augue laoreet</strong> rutrum faucibus dolor auctor. Duis mollis, est <em>non commodo luctus, nisi erat porttitor ligula</em>, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
 		</div>
 		
-	</div> .container -->
+	</div><!-- .container -->
 	
 </section><!-- .baseWeb-demo -->
 
