@@ -5,32 +5,26 @@
  * Copyright 2012 Sebastian Nitu.
  * ========================================================== */
 
-// ==========================================================
-//	Import Stylesheets
-// ==========================================================
-// LESS variables and mixins
-@import 'variables.less';
-@import 'mixins.less';
-
-// Resets and fonts and grids, oh my!
-@import 'reset.less';
-@import 'fonts.less';
-@import 'grid.less';
-
 /* ==========================================================
 	Typography
 ============================================================= */
 body {
-	font-family: 'Helvetica Neue', 'HelveticaNeue', helvetica, arial, sans-serif;
-	font-size: 12px; line-height: 18px; 
-	color: #303030;
+	font-family: @fontFamily;
+	font-size: @fontSize;
+	line-height: @lineHeight;
+	color: #606060;
 }
+p {
+	margin: 10px 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
+	color: #101010;
 	margin: 10px 0;
 }
 h1 {
-	font-size: 22px; line-height: 28px;
+	font-size: 24px; line-height: 30px;
 }
 h2 {
 	font-size: 20px; line-height: 26px;
@@ -47,26 +41,53 @@ h5 {
 h6 {
 	font-size: 12px; line-height: 18px;
 }
-p {
-	margin: 10px 0;
-}
+
 ul, ol {
-	margin: 10px 0;
+	margin: 10px 0 10px 25px;
 }
 ul {}
 ol {}
 
-/**
- * Unique Typography Styles
- */
-.lined {
-	background: url(../img/layout/trans/black-10.png) repeat-x center center;
+nav ul {
+	margin: 0;
 }
-.lined span {
-	background: #fff;
-	display: inline-block;
-	padding: 0 10px;
+
+a {
+	color: #128f9a;
+	text-decoration: none;
 }
+a:hover {
+	color: #7cb684;
+}
+
+small {
+	font-size: 80%;
+	color: #909090;
+}
+
+table th {
+	font-weight: bold;
+}
+
+/* Bordered Tables */
+table.bordered {
+	background: rgba(255,255,255, 0.4);
+	border: 1px solid rgba(0,0,0, 0.1);
+	border-collapse: separate;
+	margin: 10px 0;
+	.border-radius(5px);
+}
+table.bordered td, table.bordered th {
+	padding: 10px;
+	border-top: 1px solid rgba(0,0,0, 0.1);
+	border-left: 1px solid rgba(0,0,0, 0.1);
+}
+table.bordered tr:first-child td, table.bordered tr:first-child th { border-top: 0 none; }
+table.bordered tr td:first-child, table.bordered tr th:first-child { border-left: 0 none; }
+table.bordered tr:first-child td:first-child, table.bordered tr:first-child th:first-child { .border-radius-top-left(); }
+table.bordered tr:first-child td:last-child, table.bordered tr:first-child th:last-child { .border-radius-top-right(); }
+table.bordered tr:last-child td:first-child, table.bordered tr:last-child th:first-child { .border-radius-bottom-left(); }
+table.bordered tr:last-child td:last-child, table.bordered tr:last-child th:last-child { .border-radius-bottom-right(); }
 
 /* ==========================================================
 	Forms
@@ -84,6 +105,11 @@ ol {}
 
 
 /* ==========================================================
+	Navigation
+============================================================= */
+
+
+/* ==========================================================
 	Main
 ============================================================= */
 
@@ -92,21 +118,6 @@ ol {}
 	Footer
 ============================================================= */
 
-
-/* ==========================================================
-	Responsive
-============================================================= */
-/* Larger than 1200 (desktop - large browsers) */
-@media (min-width: 1200px) {}
-
-/* Smaller than 960 (browsers - landscape tablets) */
-@media only screen and (max-width: 960px) {}
-
-/* Smaller than 768 (tablet - landscape mobile) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {}
-
-/* Smaller than 450 (mobile) */
-@media only screen and (max-width: 767px) {}
 
 /* ==========================================================
 	End of Main Styles

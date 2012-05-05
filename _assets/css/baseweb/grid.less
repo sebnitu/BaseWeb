@@ -49,7 +49,6 @@
 /* ==========================================================
 	Base Grid System
 ============================================================= */
-
 #gridSystem {
 	
 	.base(@gridColumnWidth, @gridGutterWidth) {
@@ -208,7 +207,7 @@
 			width: 100%; padding: 0; margin: 0;
 		}
 		[class*="grid-"], .fluid [class*="grid-"] {
-			width: 92%; margin: 0 4%;
+			width: 89%; margin: 0 6%;
 		}
 		[class*="prefix-"], .fluid [class*="prefix-"] {
 			padding-left: 0;
@@ -228,70 +227,6 @@
 #gridSystem > .base(@gridColumnWidth, @gridGutterWidth);
 /* Fluid */
 #gridSystem > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
-
-/* ==========================================================
-	Show & Hide utilities
-============================================================= */
-
-/* Things to show */
-.visible-phone     { display: none; }
-.visible-tablet    { display: none; }
-.visible-desktop   { display: block; }
-
-/* Things to hide */
-.hidden-phone      { display: block; }
-.hidden-tablet     { display: block; }
-.hidden-desktop    { display: none; }
-
-/* ==========================================================
-	Responsive
-============================================================= */
-/* Larger than 1200 (desktop - large browsers) */
-@media (min-width: 1200px) {
-	/* Grid: Base 744px grid */
-	#gridSystem > .base(70px, 30px);
-}
-
-/* Smaller than 960 (browsers - landscape tablets) */
-@media only screen and (max-width: 960px) {}
-
-/* Smaller than 768 (tablet - landscape mobile) */
-@media only screen and (min-width: 768px) and (max-width: 959px) {
-	/* Grid: Base 744px grid */
-	#gridSystem > .base(42px, 20px);
-	
-	/**
-	 * Show & Hide utilities
-	 */
-	/* Show */
-	.visible-tablet     { display: block; }
-	/* Hide */
-	.hidden-tablet      { display: none; }
-	/* Hide everything else */
-	.hidden-phone    { display: block; }
-	.visible-phone   { display: none; }
-	.hidden-desktop    { display: block; }
-	.visible-desktop   { display: none; }
-}
-
-/* Smaller than 450 (mobile) */
-@media only screen and (max-width: 767px) {
-	/* Grid: Mobile Fluid 100% columns */
-	#gridSystem > .mobile();
-	
-	/**
-	 * Show & Hide utilities
-	 */
-	/* Show */
-	.visible-phone    { display: block; }
-	/* Hide */
-	.hidden-phone     { display: none; }
-	/* Hide everything else */
-	.hidden-tablet    { display: block; }
-	.visible-tablet   { display: none; }
-	.hidden-desktop    { display: block; }
-	.visible-desktop   { display: none; }
-}
 
 /* ==========================================================
 	End of Grid System

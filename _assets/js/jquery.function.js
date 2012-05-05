@@ -25,6 +25,69 @@ function mobileOrientationScale() {
 	}
 }
 
+/**
+ * Desktop, Tablet, Phone classes
+ */
+function responsiveClasses() {
+	var viewWidth = $(window).width();
+	if (viewWidth >= 960) {
+		$('body')
+			.addClass('baseweb-desktop')
+			.removeClass('baseweb-tablet')
+			.removeClass('baseweb-mobile')
+			.removeClass('baseweb-smaller-mobile');
+	} else if ( (viewWidth < 960) && (viewWidth >= 768) ) {
+		$('body')
+			.addClass('baseweb-tablet')
+			.removeClass('baseweb-desktop')
+			.removeClass('baseweb-mobile')
+			.removeClass('baseweb-smaller-mobile');
+	} else if ( (viewWidth < 767) && (viewWidth >= 480) ) {
+		$('body')
+			.addClass('baseweb-mobile')
+			.removeClass('baseweb-tablet')
+			.removeClass('baseweb-desktop')
+			.removeClass('baseweb-smaller-mobile');
+	} else if (viewWidth < 480) {
+		$('body')
+			.addClass('baseweb-mobile')
+			.addClass('baseweb-smaller-mobile')
+			.removeClass('baseweb-tablet')
+			.removeClass('baseweb-desktop');
+	}
+}
+
+/**
+ * Equal Heights Function
+ * Script by Rob Glazebrook: http://www.cssnewbie.com/equal-height-columns-with-jquery/
+ */
+function equalHeight(group) {
+	var tallest = 0;
+	group.css({ 'height' : 'auto' }).each(function() {
+		var thisHeight = $(this).height();
+		if(thisHeight > tallest) {
+			tallest = thisHeight;
+		}
+	});
+	group.height(tallest);
+}
+
+/**
+ * Call function on browser resize
+ */
+function resizeTrigger(callback, delay) {
+	// Delay before function is called
+	delay = delay || 100;	
+	// Call function on resize
+	var resizeTimer;
+	$(window).resize(function() {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(function() {
+			callback();
+		}, delay);
+	});
+}
+
 /* ==========================================================
 	End of jQuery Functions
 ============================================================= */
