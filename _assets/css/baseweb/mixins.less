@@ -80,13 +80,27 @@
 
 // Gradient
 #gradient {
-	.vertical(@startColor: #555, @endColor: #333) {
-		background-image: linear-gradient(bottom, @startColor 100%, @endColor 0%);
-		background-image: -o-linear-gradient(bottom, @startColor 100%, @endColor 0%);
-		background-image: -moz-linear-gradient(bottom, @startColor 100%, @endColor 0%);
-		background-image: -webkit-linear-gradient(bottom, @startColor 100%, @endColor 0%);
-		background-image: -ms-linear-gradient(bottom, @startColor 100%, @endColor 0%);
-		background-image: -webkit-gradient(linear,left bottom,left top,color-stop(1, @startColor),color-stop(0, @endColor));
+	.horizontal(@startColor: #ffffff, @endColor: #000000) {
+		background-color: @endColor;
+		background-image: -moz-linear-gradient(left, @startColor, @endColor);
+		background-image: -ms-linear-gradient(left, @startColor, @endColor);
+		background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@startColor), to(@endColor));
+		background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+		background-image: -o-linear-gradient(left, @startColor, @endColor);
+		background-image: linear-gradient(left, @startColor, @endColor);
+		background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor));
+	}
+	.vertical(@startColor: #ffffff, @endColor: #000000) {
+		background-color: @endColor;
+		background-image: -moz-linear-gradient(top, @startColor, @endColor);
+		background-image: -ms-linear-gradient(top, @startColor, @endColor);
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), to(@endColor));
+		background-image: -webkit-linear-gradient(top, @startColor, @endColor);
+		background-image: -o-linear-gradient(top, @startColor, @endColor);
+		background-image: linear-gradient(top, @startColor, @endColor);
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor));
 	}
 }
 
