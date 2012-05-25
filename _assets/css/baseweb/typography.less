@@ -1,0 +1,321 @@
+/* ==========================================================
+ * BaseWeb - Typography Styles
+ * https://github.com/sebnitu/BaseWeb
+ * ==========================================================
+ * Copyright 2012 Sebastian Nitu.
+ * ========================================================== */
+
+/* ==========================================================
+	Base Styles
+============================================================= */
+body {
+	font-family: @sansFontFamily;
+	font-size: @fontSize;
+	line-height: @lineHeight;
+	color: @color;
+	text-shadow: 0 0 0 #000; /* Anti-aliasing hack */
+}
+
+/**
+ * Headers
+ */
+h1, h2, h3, h4, h5, h6 {
+	font-family: @serifFontFamily;
+	font-weight: bold;
+	color: @colorHeader;
+	margin: 15px 0;
+}
+h1 {
+	font-size: 52px; line-height: 60px;
+	margin: 0 0 30px 0;
+}
+h2 {
+	font-family: @sansFontFamily;
+	font-size: 26px; line-height: 34px;
+	font-weight: 300;
+}
+h3 {
+	font-family: @sansFontFamily;
+	font-size: 22px; line-height: 30px;
+	font-weight: 300;
+}
+h4 {
+	font-family: @sansFontFamily;
+	font-size: 18px; line-height: 26px;
+	font-weight: bold;
+}
+h5 {
+	font-family: @sansFontFamily;
+	font-size: 16px; line-height: 24px;
+	font-weight: bold;
+	.uppercase(2px);
+}
+h6 {
+	font-family: @sansFontFamily;
+	font-size: @fontSize; line-height: @lineHeight;
+	font-weight: bold;
+	.uppercase(2px);
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: @colorLinkHeader;
+	border: 0 none;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+	color: @colorLinkHeaderHover;
+}
+
+/**
+ * Basic Elements
+ */
+p {
+	margin: 15px 0;
+}
+
+a {
+	color: @colorLink;
+	text-decoration: none;
+	border-bottom: 1px solid @borderColor;
+	.transition();
+}
+a:hover {
+	color: @colorLinkHover;
+	border-color: @colorLink;
+}
+
+strong {
+	font-weight: bold;
+}
+em {
+	font-style: italic;
+}
+small {
+	font-style: normal;
+	font-size: 80%;
+	color: @colorLight;
+}
+
+blockquote {
+	font-style: italic;
+	padding: 0 0 0 20px;
+	margin: 15px 0;
+	border-left: 1px solid @borderColor;
+}
+blockquote small {
+	margin: 15px 0;
+	display: block;
+	font-size: 100%;
+	&:before {
+		content: '\2014 \00A0';
+	}
+}
+
+hr {
+	height: 0; background: none;
+	display: block; clear: both;
+	margin: 15px 0; padding: 0;
+	border: 0 none;
+	border-bottom: 1px solid @borderColor;
+}
+hr.dotted {
+	border-bottom: 1px dotted @borderColor;
+}
+hr.dashed {
+	border-bottom: 1px dashed @borderColor;
+}
+hr.double {
+	border-bottom: 3px double @borderColor;
+}
+
+/**
+ * Code
+ */
+code, pre {
+	background: rgba(0,0,0, 0.06);
+	border: 1px solid @borderColor;
+	font-family: @monoFontFamily;
+	font-size: 95%;
+	.border-radius(3px);
+}
+code {
+	padding: 0 8px; margin: 0 5px;
+	display: inline-block;
+}
+pre {
+	margin: 15px 0; padding: 10px 15px;
+	overflow: auto;
+	line-height: 18px;
+}
+pre code {
+	background: none;
+	border: 0 none;
+	padding: 0; margin: 0;
+	display: inline-block;
+}
+
+/**
+ * Specific Content Types
+ */
+.timestamp {
+	font-size: 80%;
+	color: @colorLight;
+	.uppercase();
+}
+
+/**
+ * Lists
+ */
+ul, ol {
+	margin: 15px 0 15px 25px;
+}
+
+ul, ul ul ul {
+	list-style: disc;
+}
+ul ul, ul ul ul ul {
+	list-style: circle;
+}
+
+ol, ol ol ol ol {
+	list-style: decimal;
+}
+ol ol {
+	list-style: lower-alpha;
+}
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ul li, ol li {
+	margin: 10px 0;
+}
+
+dl {
+	margin: 15px 0;
+}
+dl dt {
+	margin: 10px 0 0;
+	font-weight: bold;
+}
+dl dd {
+	margin: 0 0 5px 20px;
+}
+
+nav ul {
+	margin: 0;
+}
+
+/**
+ * Images
+ */
+img {
+	display: block; 
+	margin: 15px 0;
+	max-width: 100%;
+	height: auto;
+}
+img.align-center, .img-wrap.center {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.full {
+	display: block;
+}
+img.align-left, .img-wrap.left {
+	float: left; margin: 0 20px 15px 0;
+}
+img.align-right, .img-wrap.right {
+	float: right; margin: 0 0 15px 20px;
+}
+
+.img-wrap {
+	display: block;
+	margin: 0 0 15px 0;
+}
+.img-wrap img {
+	float: none;
+	display: block;
+	margin: 0;
+}
+.caption {
+	display: block;
+	clear: both;
+	background: rgba(0,0,0, 0.06);
+	border: 1px solid @borderColor;
+	border-top: 0 none;
+	padding: 8px 15px 5px;
+	.border-radius-bottom(3px);
+	font-style: italic;
+	font-size: 80%;
+	text-align: center;
+}
+
+/* ==========================================================
+	Tables
+============================================================= */
+table {
+	width: 100%; max-width: 100%;
+	background: transparent;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 15px 0;
+}
+table td, table th {}
+table th {
+	color: @colorDark;
+	text-align: left;
+	font-weight: bold;
+	font-size: 80%;
+	.uppercase();
+}
+
+/* Zebra Stripes */
+table.zebra tbody tr:nth-child(odd) td, table.zebra tbody tr:nth-child(odd) th {
+	background: rgba(0,0,0, 0.02);
+}
+
+/* Rowed Tables */
+table.rowed {
+	border-collapse: separate;
+}
+table.rowed td, table.rowed th {
+	padding: 6px 10px;
+	border-top: 1px solid @borderColor;
+}
+table.rowed thead tr th { border-bottom: 1px solid @borderColor; }
+table.rowed tr:first-child td, table.rowed tr:first-child th { border-top: 0 none; }
+
+/* Bordered Tables */
+table.bordered {
+	background: rgba(0,0,0, 0.02);
+	border: 1px solid @borderColor;
+	border-collapse: separate;
+	.border-radius();
+}
+table.bordered td, table.bordered th {
+	padding: 6px 10px;
+	border-top: 1px solid @borderColor;
+	border-left: 1px solid @borderColor;
+}
+table.bordered thead tr th { border-bottom: 1px solid @borderColor; }
+table.bordered tr:first-child td, table.bordered tr:first-child th { border-top: 0 none; }
+table.bordered tr td:first-child, table.bordered tr th:first-child { border-left: 0 none; }
+table.bordered tbody tr:last-child td:first-child, table.bordered tbody tr:last-child th:first-child { .border-radius-bottom-left(); }
+table.bordered tbody tr:last-child td:last-child, table.bordered tbody tr:last-child th:last-child { .border-radius-bottom-right(); }
+
+table.bordered.no-thead tr:first-child td:first-child, table.bordered.no-thead tr:first-child th:first-child { .border-radius-top-left(); }
+table.bordered.no-thead tr:first-child td:last-child, table.bordered.no-thead tr:first-child th:last-child { .border-radius-top-right(); }
+
+/* Hover Highlight */
+table.hover thead tr th:hover, table.hover tbody tr:hover {
+	background: rgba(0,0,0, 0.04);
+	color: @colorLinkHover;
+}
+table.hover tbody tr:hover td {
+	background: transparent;
+}
+
+/* ==========================================================
+	End of Typography Styles
+============================================================= */
