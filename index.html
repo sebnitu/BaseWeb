@@ -9,8 +9,13 @@
 	<meta name="description" content="">
 	
 	<!-- Stylesheets and less -->
-	<link rel="stylesheet/less" type="text/css" media="all" href="_assets/css/baseweb/bootstrap.less">
+	<link rel="stylesheet/less" type="text/css" media="all" href="_assets/css/less/bootstrap.less">
 	<script src="_assets/js/less.js"></script>
+	<script>
+		less.env = "development";
+		// less.watch();
+		localStorage.clear();
+	</script>
 	
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -21,7 +26,7 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="_assets/img/layout/apple-touch-icon-72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="_assets/img/layout/apple-touch-icon-114.png">
 	
-	<style>
+	<style>/*
 	body {
 		background: #303030;
 	}
@@ -58,7 +63,7 @@
 
 	/**
 	 * Demo Content
-	 */
+	 *//*
 	.baseWeb-demo {
 		background: #fff;
 	}
@@ -75,7 +80,7 @@
 
 	/**
 	 * Specific Styles
-	 */
+	 *//*
 	.baseWeb-demo-grid p {
 		background: rgba(0,0,0, 0.1);
 		border: 1px solid rgba(0,0,0, 0.15);
@@ -93,7 +98,7 @@
 		width: 15%;
 		padding: 10px 20px;
 		margin: 10px 10px 20px 0;
-	}
+	}*/
 	</style>
 	
 </head>
@@ -103,7 +108,7 @@
 	<div class="container">
 		
 		<div class="logo grid-12">
-			<h1>BaseWeb</h1>
+			<h1><a href="#">BaseWeb</a></h1>
 			<h2>a front-end bootstrap framework</h2>
 		</div>
 	
@@ -111,6 +116,645 @@
 </header><!-- .header -->
 
 <section class="baseWeb-demo">
+	
+	<div class="container">
+	
+		<section class="main grid-12">
+			
+			<article class="post">
+				
+				<p class="timestamp">17 February 2012</p>
+				<h1>How a responsive menu should respond</h1>
+				<h2>Paragraphs and Blockquotes</h2>
+				<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in. Ut vulputate dictum justo, a fringilla orci ullamcorper sit amet. <a href="#">Fusce ac mauris sem</a>, eget congue erat. Ut eros nulla, sagittis et laoreet id, mollis sed nulla. In nulla odio, fermentum eleifend dictum quis, hendrerit quis massa. Donec eu sapien non velit aliquam pellentesque. Fusce hendrerit velit nulla.</p>
+				
+				<blockquote>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in. Ut vulputate dictum justo, a fringilla orci ullamcorper sit amet. Fusce ac mauris sem, eget congue erat. Ut eros nulla, sagittis et laoreet id, mollis sed nulla. In nulla odio, fermentum eleifend dictum quis, hendrerit quis massa. Donec eu sapien non velit aliquam pellentesque. Fusce hendrerit velit nulla.</p>
+					<small>Sebastian Nitu</small>
+				</blockquote>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in. Ut vulputate dictum justo, a fringilla orci ullamcorper sit amet. Fusce ac mauris sem, eget congue erat. Ut eros nulla, sagittis et laoreet id, mollis sed nulla. In nulla odio, fermentum eleifend dictum quis, hendrerit quis massa. Donec eu sapien non velit aliquam pellentesque. Fusce hendrerit velit nulla.</p>
+				
+				<h2>Code</h2>
+				<h3>Inline Code</h3>
+				<p>Lorem ipsum dolor sit amet <code>remotes/origin/0.1.0-build-refactor</code> Ut vulputate dictum justo, a fringilla orci ullamcorper sit amet. Fusce ac mauris sem, eget congue erat. Ut eros nulla, sagittis et laoreet id, mollis sed nulla. In nulla odio, fermentum eleifend dictum quis, hendrerit quis massa. <code>~$ git add .</code> Ut eros nulla, sagittis et laoreet id, mollis sed nulla.</p>
+				
+				<h3>Block Code</h3>
+<pre><code>Note: checking out 'remotes/origin/0.1.0-build-refactor'.
+
+You are in 'detached HEAD' state. You can look around, make 
+experimental changes and commit them, and you can discard any 
+commits you make in this state without impacting any branches 
+by performing another checkout.
+
+If you want to create a new branch to retain commits you create, 
+you may do so (now or later) by using -b with the checkout command 
+again. Example:
+
+git checkout -b new_branch_name
+
+HEAD is now at 2559099... rebuild doc from readme update</code></pre>
+	
+<pre><code>Note: checking out 'remotes/origin/0.1.0-build-refactor'.
+
+You are in 'detached HEAD' state. You can look around, make experimental changes and commit them, and you can discard any commits you make in this state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may do so (now or later) by using -b with the checkout command again. Example:
+
+git checkout -b new_branch_name
+
+HEAD is now at 2559099... rebuild doc from readme update</code></pre>
+	
+				<h4>Google's Code Prettify Enabled</h4>
+<pre class="prettyprint linenums"><code>/**
+ * Equal Heights Function
+ */
+function equalHeight(group) {
+  var tallest = 0;
+  group.css({ 'height' : 'auto' }).each(function() {
+    var thisHeight = $(this).height();
+    if(thisHeight &gt; tallest) {
+      tallest = thisHeight;
+    }
+  });
+  group.height(tallest);
+}</code></pre>
+
+<pre class="prettyprint"><code>/**
+ * Equal Heights Function
+ */
+function equalHeight(group) {
+  var tallest = 0;
+  group.css({ 'height' : 'auto' }).each(function() {
+    var thisHeight = $(this).height();
+    if(thisHeight &gt; tallest) {
+      tallest = thisHeight;
+    }
+  });
+  group.height(tallest);
+}</code></pre>
+	
+				<h2>Lists</h2>
+				<h3>Unordered Lists</h3>
+				<ul>
+					<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula magna et libero.
+						<ul>
+							<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula.
+								<ul>
+									<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula.</li> 
+									<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+								</ul>
+							</li> 
+							<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+						</ul>
+					</li> 
+					<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+					<li>Quisque sed lectus quis nisi consectetur dignissim. Phasellus at magna at metus varius semper. Morbi dignissim mauris eget tortor viverra in egestas diam lacinia. Nullam lacinia tellus et lorem posuere tincidunt. Sed non sagittis est. Proin molestie tempor tortor a vehicula. Integer in tincidunt ipsum.</li>
+				</ul>
+				
+				<h3>Ordered Lists</h3>
+				<ol>
+					<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula magna et libero.
+						<ol>
+							<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula magna et libero.
+								<ol>
+									<li>Morbi vitae orci risus. Nulla sed erat id purus pulvinar ultricies nec ut magna. Sed porttitor, eros vitae malesuada consequat, lectus nulla mollis tellus, eu rhoncus ligula magna et libero.</li> 
+									<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+									<li>Quisque sed lectus quis nisi consectetur dignissim. Phasellus at magna at metus varius semper. Morbi dignissim mauris eget tortor viverra in egestas diam lacinia. Nullam lacinia tellus et lorem posuere tincidunt. Sed non sagittis est. Proin molestie tempor tortor a vehicula. Integer in tincidunt ipsum.</li>
+								</ol>
+							</li> 
+							<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+							<li>Quisque sed lectus quis nisi consectetur dignissim. Phasellus at magna at metus varius semper. Morbi dignissim mauris eget tortor viverra in egestas diam lacinia. Nullam lacinia tellus et lorem posuere tincidunt. Sed non sagittis est. Proin molestie tempor tortor a vehicula. Integer in tincidunt ipsum.</li>
+						</ol>
+					</li> 
+					<li>Nunc elementum ultricies diam, et semper nulla scelerisque id. Curabitur quis libero purus, vitae ultricies risus. Maecenas at mollis nisi.</li>
+					<li>Quisque sed lectus quis nisi consectetur dignissim. Phasellus at magna at metus varius semper. Morbi dignissim mauris eget tortor viverra in egestas diam lacinia. Nullam lacinia tellus et lorem posuere tincidunt. Sed non sagittis est. Proin molestie tempor tortor a vehicula. Integer in tincidunt ipsum.</li>
+				</ol>
+				
+				<h3>Definition Lists</h3>
+				<dl>
+					<dt>Religion (noun)</dt>
+					<dd>the belief in and worship of a superhuman controlling power, esp. a personal God or gods.</dd>
+					<dt>Atheism (noun)</dt>
+					<dd>the theory or belief that God does not exist.</dd>
+					<dt>Deism (noun)</dt>
+					<dd>belief in the existence of a supreme being, specifically of a creator who does not intervene in the universe.</dd>
+				</dl>
+				
+				<h2>Image Styles</h2>
+				
+				<div class="img-wrap center"><img class="align-center full" src="_assets/img/content/sample-image.jpg" width="610" height="408" alt=""><span class="caption">This image is of space. Deal with it bro.</span></div>
+				
+				<p><div class="img-wrap right"><img class="align-right" src="_assets/img/content/sample-image-right.jpg" width="290" height="218" alt=""><span class="caption">This image is of space. Deal with it bro.</span></div>Nunc id risus quam, sit amet malesuada risus. Etiam mauris tellus, varius ac cursus sit amet, gravida at odio. Vivamus feugiat ultricies purus at malesuada. Praesent tincidunt massa non orci bibendum cursus. Aenean feugiat, erat iaculis cursus faucibus, odio velit feugiat turpis, at eleifend ligula orci ac leo. Phasellus vel porta leo. Fusce non eros sodales lorem tincidunt pretium. Donec quis lorem at felis sagittis sagittis. Praesent lectus velit, interdum in aliquet sed, sagittis ut massa. Integer elit eros, facilisis sagittis consectetur sit amet, tincidunt nec turpis. Nunc nunc ipsum, vestibulum at molestie at, accumsan et nibh. Nam consectetur orci dictum turpis luctus at facilisis urna venenatis. Mauris laoreet egestas accumsan. Etiam porttitor, orci vitae molestie luctus, ante ipsum luctus dolor, in dapibus neque orci in tellus.</p>
+				
+				<p><div class="img-wrap left"><img class="align-left" src="_assets/img/content/sample-image-left.jpg" width="290" height="218" alt=""><span class="caption">This image is of space. Deal with it bro.</span></div>Nunc id risus quam, sit amet malesuada risus. Etiam mauris tellus, varius ac cursus sit amet, gravida at odio. Vivamus feugiat ultricies purus at malesuada. Praesent tincidunt massa non orci bibendum cursus. Aenean feugiat, erat iaculis cursus faucibus, odio velit feugiat turpis, at eleifend ligula orci ac leo. Phasellus vel porta leo. Fusce non eros sodales lorem tincidunt pretium. Donec quis lorem at felis sagittis sagittis. Praesent lectus velit, interdum in aliquet sed, sagittis ut massa. Integer elit eros, facilisis sagittis consectetur sit amet, tincidunt nec turpis. Nunc nunc ipsum, vestibulum at molestie at, accumsan et nibh. Nam consectetur orci dictum turpis luctus at facilisis urna venenatis. Mauris laoreet egestas accumsan. Etiam porttitor, orci vitae molestie luctus, ante ipsum luctus dolor, in dapibus neque orci in tellus.</p>
+				
+				<h2>Header Styles and Horizontal Rules</h2>
+				
+				<hr>
+				
+				<h1>Header Styles (h1)</h1>
+				<h2>Header Styles (h2)</h2>
+				<h3>Header Styles (h3)</h3>
+				<h4>Header Styles (h4)</h4>
+				<h5>Header Styles (h5)</h5>
+				<h6>Header Styles (h6)</h6>
+				
+				<hr>
+				<hr class="dotted">
+				<hr class="dashed">
+				<hr class="double">
+				
+				<h2>Default Tables</h2>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h2>Table Styles</h2>
+				<h3>Rowed</h3>
+				
+				<table class="rowed">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Rowed Zebra</h3>
+				
+				<table class="rowed zebra">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Bordered</h3>
+				
+				<table class="bordered">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Bordered Zebra</h3>
+				
+				<table class="bordered zebra">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h2>Tables with hover effects</h2>
+				<h3>Rowed Hover</h3>
+				
+				<table class="rowed hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Rowed Zebra Hover</h3>
+				
+				<table class="rowed zebra hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Bordered Hover</h3>
+				
+				<table class="bordered hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h3>Bordered Zebra Hover</h3>
+				
+				<table class="bordered zebra hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Username</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Sebastian</td>
+							<td>Nitu</td>
+							<td><a href="#">@sebnitu</a></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Emilia</td>
+							<td>Nitu</td>
+							<td><a href="#">@emnitu</a></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Lea</td>
+							<td>Nitu</td>
+							<td><a href="#">@leanitu</a></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Ava</td>
+							<td>Nitu</td>
+							<td><a href="#">@avanitu</a></td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Daniel</td>
+							<td>Nitu</td>
+							<td><a href="#">@danielnitu</a></td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Oana</td>
+							<td>Nitu</td>
+							<td><a href="#">@oananitu</a></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<h2>Buttons and Icons</h2>
+	
+				<div class="icons-demo">
+					<i class="icon-map"></i>
+					<i class="icon-compass"></i>
+					<i class="icon-direction"></i>
+					<i class="icon-scope"></i>
+					<i class="icon-share"></i>
+					<i class="icon-heart"></i>
+					<i class="icon-star"></i>
+					<i class="icon-thumbs-up"></i>
+					<i class="icon-dialog"></i>
+					<i class="icon-maps"></i>
+				</div>
+				
+			</article><!-- .post -->
+			
+			<footer class="post-footer">
+				<dl>
+					<dt>Previous <span>:</span></dt> 
+					<dd><a href="#">Building some better things with LESS</a></dd>
+					<dt>Next <span>:</span></dt>
+					<dd><a href="#">How a responsive menu should respond</a></dd>
+				</dl>
+			</footer>
+			
+		</section><!-- .main -->
+		
+	</div><!-- .container -->
 	
 	<div class="container baseWeb-demo-utility">
 	
@@ -160,15 +804,6 @@
 		<div class="grid-6"><p>6</p></div>
 		<div class="grid-6"><p>6</p></div>
 		<span class="clear"></span>
-		<div class="grid-4"><p>4</p></div>
-		<div class="grid-4"><p>4</p></div>
-		<div class="grid-4"><p>4</p></div>
-		<span class="clear"></span>
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-3"><p>3</p></div>
-		<span class="clear"></span>
 		
 		<div class="grid-1 suffix-11"><p>1</p></div>
 		<span class="clear"></span>
@@ -195,57 +830,25 @@
 		<div class="grid-1 prefix-11"><p>1</p></div>
 		<span class="clear"></span>
 		
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-1"><p>1</p></div>
-		<div class="grid-5"><p>5</p></div>
-		<div class="grid-1"><p>1</p></div>
-		<div class="grid-5"><p>5</p></div>
-		<div class="grid-3"><p>3</p></div>
-		<div class="grid-3"><p>3</p></div>
-		
-	</div><!-- .container -->
-	
-	<div class="container">
-	
-		<header class="grid-12">
-			<h1 class="lined"><span>Typography</span></h1>
-		</header>
-		
-		<div class="grid-4">
-			<h1>h1. Heading One</h1>
-			<h2>h2. Heading Two</h2>
-			<h3>h3. Heading Three</h3>
-			<h4>h4. Heading Four</h4>
-			<h5>h5. Heading Five</h5>
-			<h6>h6. Heading Six</h6>
-		</div>
-		
-		<div class="grid-4">
-			<h2>Example Body Text</h2>
-			<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-			<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-		</div>
-		
-		<div class="grid-4">
-			<h2>Emphasis</h2>
-			<p>Default styles for strong and emphasize elements.</p>
-
-			<p><strong>Vivamus sagittis lacus vel augue laoreet</strong> rutrum faucibus dolor auctor. Duis mollis, est <em>non commodo luctus, nisi erat porttitor ligula</em>, eget lacinia odio sem nec elit. Donec sed odio dui.</p>
-		</div>
-		
 	</div><!-- .container -->
 	
 </section><!-- .baseWeb-demo -->
 
 <footer class="footer">
-	<p>BaseWeb is built and maintained by Sebastian Nitu.<br>&copy; Copyright 2012, Sebastian Nitu. All rights reserved.</p>
+	<div class="container">
+		<div class="grid-12">
+			<p>BaseWeb is built and maintained by Sebastian Nitu.<br>&copy; Copyright 2012, Sebastian Nitu. All rights reserved.</p>
+		</div>
+	</div><!-- .container -->
 </footer>
 
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="_assets/js/jquery.min.js"%3E%3C/script%3E'))</script>
+
+<!-- Google's Code Prettify -->
+<script src="_assets/js/prettify.js"></script>
+<script>prettyPrint();</script>
 
 <!-- jQuery functions, document ready & window load -->
 <script src="_assets/js/jquery.function.js"></script>

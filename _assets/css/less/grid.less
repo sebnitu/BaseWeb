@@ -1,34 +1,33 @@
-/* ==========================================================
- * BaseWeb - Grid System
- * https://github.com/sebnitu/BaseWeb
- * ==========================================================
- * Copyright 2012 Sebastian Nitu.
- *
- * The grid system is forked from 960 Grid System(1) and modified
- * to create fluid layout support and a responsive structure for the
- * desktop, tablet and mobile. CSS clear class by Nathan Smith(2) and
- * clearfix class by Thierry Koblentz(3). I'm using a method in LESS
- * to output the column styles that is used in Bootstrap by Twitter(4)
- * as well as the show/hide utility classes for devices.
- *
- * 1) http://960.gs/
- * 2) http://sonspring.com/journal/clearing-floats
- * 3) http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified
- * 4) http://twitter.github.com/bootstrap/
- * ========================================================== */
-
-// ==========================================================
+//===========================================================
+// BaseWeb - Font Includes via @font-face
+// https://github.com/sebnitu/BaseWeb
+//===========================================================
+// Notes & Credits:
+// The grid system is forked from 960 Grid System(1) and modified
+// to create fluid layout support and a responsive structure for the
+// desktop, tablet and mobile. CSS clear class by Nathan Smith(2) and
+// clearfix class by Thierry Koblentz(3). I'm using a method in LESS
+// to output the column styles that is used in Bootstrap by Twitter(4).
+//
+// 1) http://960.gs/
+// 2) http://sonspring.com/journal/clearing-floats
+// 3) http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified
+// 4) http://twitter.github.com/bootstrap/
+//===========================================================
 // Hard Variables (should not be changed)
-// ==========================================================
+//===========================================================
+
 // Container width
 @gridWidth: (@gridColumnWidth * @gridColumns) + (@gridGutterWidth * @gridColumns);
+
 // Left and right margin value
-@margin: @gridGutterWidth / 2;
+@gridMargin: @gridGutterWidth / 2;
 @fluidMargin: @fluidGridGutterWidth / 2;
 
-/* ==========================================================
-	Clearing Elements
-============================================================= */
+//===========================================================
+// Clearing Elements
+//===========================================================
+
 .clear {
 	clear: both; display: block;
 	overflow: hidden; visibility: hidden;
@@ -37,7 +36,7 @@
 .clearfix {
 	*zoom: 1;
 	&:before, &:after {
-		content: '\0020'; display: block;
+		content: "\0020"; display: block;
 		overflow: hidden; visibility: hidden;
 		width: 0; height: 0;
 	}
@@ -46,15 +45,15 @@
 	}
 }
 
-/* ==========================================================
-	Base Grid System
-============================================================= */
+//===========================================================
+// Base Grid System
+//===========================================================
+
 #gridSystem {
 	
 	.base(@gridColumnWidth, @gridGutterWidth) {
 		
 		// Global grid styles
-		// ==========================================================		
 		.container {
 			position: relative;
 			margin-left: auto; margin-right: auto;
@@ -63,7 +62,7 @@
 		}
 		[class*="grid-"] {
 			display: inline; float: left; position: relative;
-			margin-left: @margin; margin-right: @margin;
+			margin-left: @gridMargin; margin-right: @gridMargin;
 		}
 		[class*="push-"], [class*="pull-"] {
 			position: relative;
@@ -73,7 +72,6 @@
 		.omega { margin-right: 0 !important; }
 		
 		// grid-X
-		// ==========================================================
 		.grid-X (@index) when (@index > 0) {
 			(~".grid-@{index}") { .grid-(@index); }
 			.grid-X(@index - 1);
@@ -85,7 +83,6 @@
 		}
 		
 		// move-X builds prefix, suffix, push and pull rules
-		// ==========================================================
 		.prefix-X (@index) when (@index > 0) {
 			(~".prefix-@{index}") { .prefix-(@index); }
 			.prefix-X(@index - 1);
@@ -121,19 +118,17 @@
 		}
 		
 		// Generate grid-X, prefix-X, suffix-X, push-X and pull-X
-		// ==========================================================
 		.grid-X (@gridColumns);
 		.prefix-X (@gridColumns);
 		.suffix-X (@gridColumns);
 		.push-X (@gridColumns);
 		.pull-X (@gridColumns);
 	
-	}// End .base
+	} // End .base
 	
 	.fluid(@fluidGridColumnWidth, @fluidGridGutterWidth) {
 		
 		// Fluid grid overrides
-		// ==========================================================
 		.container.fluid {
 			width: 92%; margin-left: 4%; margin-right: 4%;
 		}
@@ -142,7 +137,6 @@
 		}
 		
 		// Fluid grid-X
-		// ==========================================================
 		.grid-X (@index) when (@index > 0) {
 			(~".grid-@{index}") { .grid-(@index); }
 			.grid-X(@index - 1);
@@ -154,7 +148,6 @@
 		}
 		
 		// move-X builds prefix, suffix, push and pull rules
-		// ==========================================================
 		.prefix-X (@index) when (@index > 0) {
 			(~".prefix-@{index}") { .prefix-(@index); }
 			.prefix-X(@index - 1);
@@ -190,7 +183,6 @@
 		}
 		
 		// Generate grid-X, prefix-X, suffix-X, push-X and pull-X
-		// ==========================================================
 		.fluid {
 			.grid-X (@gridColumns);
 			.prefix-X (@gridColumns);
@@ -199,7 +191,7 @@
 			.pull-X (@gridColumns);
 		}
 		
-	}// End .fluid
+	} // End .fluid
 	
 	.mobile() {
 		
@@ -219,15 +211,17 @@
 			left: 0;
 		}
 		
-	}// End .mobile
+	} // End .mobile
 	
-}// End #gridSystem
+} // End #gridSystem
 
-/* Base 960px grid */
+//===========================================================
+// Grid Calls
+//===========================================================
+
 #gridSystem > .base(@gridColumnWidth, @gridGutterWidth);
-/* Fluid */
 #gridSystem > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
 
-/* ==========================================================
-	End of Grid System
-============================================================= */
+//===========================================================
+// End of Grid System
+//===========================================================

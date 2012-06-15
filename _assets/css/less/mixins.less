@@ -1,13 +1,10 @@
-// ==========================================================
+//===========================================================
 // BaseWeb - Minxins
 // https://github.com/sebnitu/BaseWeb
-// ==========================================================
-// Copyright 2012 Sebastian Nitu.
-// ==========================================================
-
-// ==========================================================
+//===========================================================
 // Typography
-// ==========================================================
+//===========================================================
+
 .uppercase(@letterSpacing: 1px) {
 	text-transform: uppercase;
 	letter-spacing: @letterSpacing;
@@ -21,15 +18,16 @@
 	letter-spacing: 0;
 }
 
-// ==========================================================
-// CSS3 Properties
-// ==========================================================
+//===========================================================
 // Border Radius
+//===========================================================
+
 .border-radius(@radius: 6px) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	border-radius: @radius;
 }
+
 // Top
 .border-radius-top(@radius: 6px) {
 	-webkit-border-top-left-radius: @radius;
@@ -49,6 +47,7 @@
 	-moz-border-radius-topright: @radius;
 	border-top-right-radius: @radius;
 }
+
 // Bottom
 .border-radius-bottom(@radius: 6px) {
 	-webkit-border-bottom-right-radius: @radius;
@@ -68,6 +67,7 @@
 	-moz-border-radius-bottomright: @radius;
 	border-bottom-right-radius: @radius;
 }
+
 // Left & Right
 .border-radius-left(@radius: 6px) {
 	-webkit-border-top-left-radius: @radius;
@@ -86,14 +86,20 @@
 	border-bottom-right-radius: @radius;
 }
 
+//===========================================================
 // Box Shadow
-.box-shadow(@shadow: 0 1px 3px rgba(0,0,0,.25)) {
+//===========================================================
+
+.box-shadow(@shadow: 0 1px 3px rgba(0,0,0, 0.25)) {
 	-webkit-box-shadow: @shadow;
 	-moz-box-shadow: @shadow;
 	box-shadow: @shadow;
 }
 
+//===========================================================
 // Transition
+//===========================================================
+
 .transition(@property: all, @duration: 0.25s, @function: ease-in-out) {
 	-webkit-transition: @arguments;
 	-moz-transition: @arguments;
@@ -102,7 +108,10 @@
 	transition: @arguments;
 }
 
+//===========================================================
 // Rotate
+//===========================================================
+
 .rotate(@deg: 0) {
 	-moz-transform: rotate(@deg);
 	-webkit-transform: rotate(@deg);
@@ -111,7 +120,10 @@
 	transform: rotate(@deg);
 }
 
+//===========================================================
 // Gradient
+//===========================================================
+
 #gradient {
 	.horizontal(@startColor: #ffffff, @endColor: #000000) {
 		background-color: @endColor;
@@ -122,7 +134,7 @@
 		background-image: -o-linear-gradient(left, @startColor, @endColor);
 		background-image: linear-gradient(left, @startColor, @endColor);
 		background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor));
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor));
 	}
 	.vertical(@startColor: #ffffff, @endColor: #000000) {
 		background-color: @endColor;
@@ -136,11 +148,12 @@
 		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor));
 	}
 }
+
 // Reset filters for IE
 .reset-filter() {
 	filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
 }
 
-// ==========================================================
+//===========================================================
 // End of Minxins
-// ==========================================================
+//===========================================================
