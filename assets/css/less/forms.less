@@ -1,0 +1,149 @@
+//============================================================
+// BaseWeb - Forms Theme
+// https://github.com/sebnitu/BaseWeb
+//============================================================
+// Structure
+//============================================================
+
+form {
+	background: #f7f7f7;
+	border: 1px solid #e0e0e0;
+	margin: 15px 0;
+	padding: 20px;
+	.border-radius();
+	
+	fieldset {
+		margin: 0;
+		padding: 0;
+		
+		legend {
+			margin: 0;
+			padding: 0;
+			font-size: 16px;
+			font-weight: bold;
+			color: @colorDark;
+		}
+	}
+	
+}
+
+//============================================================
+// Form Elements
+//============================================================
+
+label {
+	display: inline-block;
+	margin: 0 0 5px;
+	padding: 0;
+	
+	&[for] {
+		cursor: pointer;
+	}
+}
+
+// Global form element typography
+//=========================================
+input, select, textarea, button {
+	font-family: @sansFontFamily;
+	font-size: @baseFontSize;
+	
+	// Focus
+	&:focus {
+		outline: none;
+	}
+}
+
+// Base inputs with types and textareas
+//=========================================
+input, textarea {
+	background: #fff;
+	border: 1px solid #ccc;
+	width: 220px;
+	margin: 0 0 15px;
+	padding: 6px;
+	height: 18px;
+	line-height: 18px;
+	color: @color;
+	.border-radius(3px);
+	.box-shadow( 0 1px 2px rgba(0,0,0, 0.05) inset );
+	
+	// Text
+	&[type="text"], &[type="password"], textarea {
+		&:focus {
+			border-color: @linkColor;
+			.box-shadow(0 0 8px rgba(13,119,204, 0.3));
+		}
+	}
+	
+	// Submit Buttons
+	&[type="submit"], &[type="button"] {
+		height: auto;
+		width: auto;
+		cursor: pointer;
+	}
+	
+	// Checkboxes & Radios
+	&[type="checkbox"], &[type="radio"] {
+		width: auto;
+		height: auto;
+		line-height: normal;
+		cursor: pointer;
+		margin: 3px;
+		padding: 0;
+		.border-radius(0);
+		.box-shadow(none);
+	}
+	
+	// Input Widths
+	&.span1 { width: 100px; }
+	&.span2 { width: 200px; }
+	&.span3 { width: 300px; }
+}
+
+// Textarea
+textarea {
+	line-height: 35px;
+	background: transparent url(~"@{dirImages}textarea-bg.png") repeat 0 0;
+	width: 530px;
+	max-width: 530px;
+	height: 230px;
+	overflow: auto;
+	font-size: 16px;
+	padding: 7px 8px 0;
+	border: 0 none;
+	.box-shadow(none);
+}
+
+// Buttons
+//=========================================
+button {
+	cursor: pointer;
+}
+
+// Select
+//=========================================
+select {
+	font-size: 12px;
+	padding: 4px;
+	border: 1px solid #bbb;
+	width: 200px;
+	height: 28px;
+	line-height: 28px;
+}
+
+// Checkboxes & Radios
+//=========================================
+.checkbox, .radio {
+	min-height: 18px;
+	line-height: 18px;
+	padding-left: 18px;
+	
+	input[type="checkbox"], input[type="radio"] {
+		float: left; 
+		margin-left: -18px;
+	}
+}
+
+//============================================================
+// End of Form Styles
+//============================================================

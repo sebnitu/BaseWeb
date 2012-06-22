@@ -1,0 +1,221 @@
+//============================================================
+// BaseWeb - Variable
+// https://github.com/sebnitu/BaseWeb
+//============================================================
+// Color Pallets
+//============================================================
+// Gray Scale
+//========================================
+@gs0:				#000; // Black
+@gs1:				#111;
+@gs2:				#222; // Gray Darker
+@gs3:				#333;
+@gs4:				#444; // Gray Dark
+@gs5:				#555;
+@gs6:				#666; // Gray
+@gs7:				#777;
+@gs8:				#888;
+@gs9:				#999; // Gray Light
+@gsA:				#aaa;
+@gsB:				#bbb; // Gray Lighter
+@gsC:				#ccc;
+@gsD:				#ddd;
+@gsE:				#eee;
+@gsF:				#fff; // White
+
+// Readability variables
+//====================
+@black: 			@gs0;
+@grayDarker:		@gs2;
+@grayDark:			@gs4;
+@gray:				@gs6;
+@grayLight:			@gs9;
+@grayLighter:		@gsB;
+@white:				@gsF;
+
+// RGB
+//========================================
+@rgbRed:			#ff0000;
+@rgbGreen:			#00ff00;
+@rgbBlue:			#0000ff;
+
+// Shorthand
+//====================
+@Rgb:				@rgbRed;
+@rGb:				@rgbGreen;
+@rgB:				@rgbBlue;
+
+// CMYK
+//========================================
+@cmykCyan:			#00aeef;
+@cmykMagenta:		#ec008c;
+@cmykYellow:		#fff200;
+@cmykKey:			#231f20;
+
+// Shorthand
+//====================
+@Cmyk:				@cmykCyan;
+@cMyk:				@cmykMagenta;
+@cmYk:				@cmykYellow;
+@cmyK:				@cmykKey;
+
+//============================================================
+// Base Colors
+//============================================================
+#baseColors {
+
+	// Primary
+	//========================================
+	.primary {
+		@red:				#be0000;
+		@yellow:			#d6d81b;
+		@blue:				#0868df;
+	}
+	
+	// Secondary
+	//========================================
+	// If theme is set to .base, secondary
+	// colors will be generated automatically
+	// based on your primary colors.
+	.secondary {
+		@orange:			#df8607;
+		@green:				#17a80c;
+		@violet:			#910bc2;
+	}
+	
+	// Light & Dark Degrees
+	//========================================
+	.degrees {
+		@lightDeg: 			5%;
+		@lighterDeg: 		10%;
+		@darkDeg: 			5%;
+		@darkerDeg: 		10%;
+	}
+}
+
+//============================================================
+// Enable Theme
+//============================================================
+// Core themes include:
+// .base : Built off base primary colors
+// .default : Built off base primary & secondary colors
+
+#colorTheme > .default;
+
+//============================================================
+// Typography
+//============================================================
+// Families
+//========================================
+@sansFontFamily:	"Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+@serifFontFamily:	georgia, "Times New Roman", times, serif;
+@monoFontFamily:	Menlo, Monaco, Consolas, "Courier New", monospace;
+@iconFontFamily:	"Entypo";
+
+// Directories
+//========================================
+@dirImages:			"../../img/layout/";
+@dirFonts:			"../../fonts/";
+
+// Metrics
+//========================================
+@baseFontSize:		14px;
+@baseLineHeight:	@baseFontSize + 6;
+@baseFontFamily:	@sansFontFamily;
+
+//============================================================
+// Icons
+//============================================================
+// Enable the icons package you want to use.
+// Core includes .font-based and .image-based
+// If you want to use both an Icon Font and 
+// Icon Sprites, make to to namespace the call.
+
+.baseweb-font-icons {
+	#icons > .font-based;
+}
+
+.baseweb-image-icons {
+	#icons > .image-based;
+}
+
+//============================================================
+// Text Colors
+//============================================================
+// Base
+//========================================
+@color:             @gray;
+@colorLight:        lighten(@color, 25%);
+@colorDark:         darken(@color, 25%);
+@colorHeader:       @colorDark;
+
+// Links
+//========================================
+@linkColor:         @blue;
+@linkColorHover:    @orange;
+
+// Header Links
+//========================================
+@linkHeader:        @linkColor;
+@linkHeaderHover:   @linkColorHover;
+
+//============================================================
+// Structure
+//============================================================
+// Base
+//========================================
+@bgBody:            @white;
+@bgLight:			#f9f9f9;
+@borderColor:       #e0e0e0;
+
+// Tables
+//========================================
+@tableBg:           @white;
+@tableBgZebra:      @bgLight;
+@tableBorder:       @borderColor;
+@tableBgHover:      fadeout(@yellow, 95%);
+
+// Code
+//========================================
+@codeBg:            @bgLight;
+@codeBorder:        @borderColor;
+
+// Buttons
+//========================================
+// Padding
+//====================
+@btnPadTB:			6px;
+@btnPadLR:			14px;
+
+// CSS3 Defaults
+//========================================
+@letterSpacing:			1px;
+@borderRadius:			4px;
+@boxShadow:				0 1px 3px rgba(0,0,0, 0.25);
+
+@transitionProperty:	all;
+@transitionDuration:	0.25s;
+@transitionFunction:	ease-in-out;
+
+@rotateDegree:			0;
+
+@startColor:			#fff;
+@endColor:				#000;
+
+//============================================================
+// Grid
+//============================================================
+// Static grid
+//========================================
+@gridColumns:           12;
+@gridColumnWidth:       60px;
+@gridGutterWidth:       20px;
+
+// Fluid grid
+//========================================
+@fluidGridColumnWidth:  6.333%;
+@fluidGridGutterWidth:  2%;
+
+//============================================================
+// End of Variable
+//============================================================

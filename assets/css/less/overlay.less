@@ -1,0 +1,152 @@
+//============================================================
+// BaseWeb - Overlay Theme
+// https://github.com/sebnitu/BaseWeb
+//============================================================
+// Fancybox specific styles are from Jānis Skarnelis of FancyApps(1).
+// All credit goes to him and his awesome fancybox script. Additional
+// styles added for a modular look on alax overlays. To get the 
+// original unchanged fancybox styles, download it from FancyApps(1).
+//
+// 1) http://fancyapps.com/fancybox/
+//============================================================
+// Structure
+//============================================================
+
+.overlay {
+	background: #fff;
+	width: 400px;
+	.border-radius(5px);
+	.box-shadow(0 1px 5px rgba(0,0,0, 0.25));
+}
+
+//============================================================
+// FancyBox Defaults - fancyBox v2.0.6 fancyapps.com
+// fancyapps.com/fancybox/#license
+//============================================================
+
+.fancybox-tmp iframe, .fancybox-tmp object {
+	vertical-align: top;
+	padding: 0; margin: 0;
+}
+.fancybox-wrap {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 8020;
+}
+.fancybox-skin {
+	position: relative;
+	padding: 0; margin: 0;
+}
+.fancybox-opened { z-index: 8030; }
+.fancybox-outer, .fancybox-inner {
+	padding: 0; margin: 0;
+	position: relative;
+	outline: none;
+}
+.fancybox-inner { overflow: hidden; }
+.fancybox-type-iframe .fancybox-inner { -webkit-overflow-scrolling: touch; }
+.fancybox-error { margin: 0; padding: 10px; }
+.fancybox-image, .fancybox-iframe {
+	display: block;
+	width: 100%; height: 100%;
+	border: 0; padding: 0; margin: 0;
+	vertical-align: top;
+}
+.fancybox-image {
+	max-width: 100%; max-height: 100%;
+}
+
+.fancybox-tmp {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	padding: 0;
+	overflow: visible;
+	visibility: hidden;
+}
+
+// Overlay helper
+#fancybox-overlay {
+	position: absolute;
+	top: 0; left: 0;
+	overflow: hidden;
+	display: none; z-index: 8010;
+	background: #000;
+}
+#fancybox-overlay.overlay-fixed {
+	position: fixed; bottom: 0; right: 0;
+}
+
+// Title helper
+.fancybox-title {
+	visibility: hidden;
+	position: relative;
+	text-shadow: none;
+	z-index: 8050;
+}
+.fancybox-opened .fancybox-title {
+	visibility: visible;
+}
+.fancybox-title-float-wrap {
+	position: absolute;
+	bottom: 0; right: 50%;
+	margin-bottom: -35px;
+	z-index: 8030;
+	text-align: center;
+}
+.fancybox-title-float-wrap .child {
+	display: inline-block;
+	margin-right: -100%;
+	padding: 2px 20px;
+	background: transparent;
+	background: rgba(0, 0, 0, 0.8);
+	text-shadow: 0 1px 2px #222;
+	color: #FFF;
+	font-weight: bold;
+	line-height: 24px;
+	white-space: nowrap;
+	.border-radius(15px);
+}
+.fancybox-title-outside-wrap {
+	position: relative;
+	margin-top: 10px;
+	color: #fff;
+}
+.fancybox-title-inside-wrap { margin-top: 10px; }
+.fancybox-title-over-wrap {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	color: #fff;
+	padding: 10px;
+	background: #000;
+	background: rgba(0,0,0, 0.8);
+}
+
+// Loading
+#fancybox-loading {
+	position: fixed; top: 50%; left: 50%;
+	margin-top: -22px; margin-left: -22px;
+	background-position: 0 -108px; opacity: 0.8; 
+	cursor: pointer; z-index: 8020;
+}
+#fancybox-loading div {
+	width: 44px; height: 44px;
+	background: #000 url("../img/layout/ajax-loader.gif") center center no-repeat;
+	.border-radius(5px);
+}
+
+// Buttons
+.fancybox-close {
+	background: url("../img/layout/btn-close.png") no-repeat center top;
+	position: absolute; top: 18px; right: 18px;
+	width: 22px; height: 22px;
+	cursor: pointer; z-index: 8040;
+}
+.fancybox-close:hover {
+	background-position: center bottom;
+}
+
+//============================================================
+// End of Overlay Theme
+//============================================================
