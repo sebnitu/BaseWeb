@@ -6,54 +6,110 @@
 //===========================================================
 
 body {
-	background: @bgBody;
+	background: @bgBody url("../img/layout/bg-texture-footer.gif") repeat center top;
+	
+	.header {
+		background: #101010;
+	}
+	.main {
+		background: #f8f8f4 url("../img/layout/bg-texture-light.gif") repeat center center;
+		
+		.banner {
+			/* background: url("../img/content/banner-image.jpg") no-repeat center -100px; */
+		}
+		.companies {
+			background: #eeece7 url("../img/layout/shadow-right-bottom.png") no-repeat right top;
+		}
+	}
+	.footer {
+		background:  url("../img/layout/shadow-left-bottom.png") no-repeat left top;
+	}
 }
 
 //===========================================================
 // Header
 //===========================================================
 
-
-
-//===========================================================
-// Navigation
-//===========================================================
-
-
-
-//===========================================================
-// Main
-//===========================================================
-
-// Base
-//========================================
-hr {
-	margin: 40px 0;
-}
-
-// Icons
-//========================================
-.buttons-demo {
-	ul {
-		.clearfix();
-		list-style: none;
+.header {
+	// Logo
+	//========================================
+	h1 {
+		float: left;
+		width: 214px; height: 50px;
 		margin: 0;
-		
-		li {
-			.clearfix();
+		padding: 20px 0;
+	
+		a {
+			background: url("../img/layout/logo-avelient.png") no-repeat 0 0;
+			display: block;
+			width: 214px; height: 50px;
+			text-indent: -999999px;
 			
-			&.col {
+			&:hover {
+				background-position: 0 -50px
+			}
+		}
+	}
+	
+	// Navigation
+	//========================================
+	nav {
+		float: right;
+		
+		ul {
+			.clearfix();
+			padding: 20px 0;
+			margin: 0;
+			
+			li {
 				float: left;
-				width: 25%;
 				margin: 0;
 				
-				li {
-					padding: 0;
-					margin: 0 0 10px 0;
+				a {
+					display: block;
+					border: 0 none;
+					padding: 15px 25px;
+					font-size: 14px;
+					line-height: 20px;
+					color: #f5f5f3;
+					text-shadow: 0 1px 1px @black;
 					
+					&:hover {
+						color: lighten(@linkColorHover, 20%);
+					}
+					.icon-nav-chat {
+						top: -1px;
+					}
+					.icon-nav-inbox {
+						top: -2px;
+					}
+				}
+				&.emphasize {
+					margin-right: 1px;
+				
 					a {
-						[class^="icon-"], [class*=" icon-"], .icon {
-							text-shadow: 0 1px 0 rgba(0,0,0, .6);
+						margin: 5px 0;
+						padding: 10px 25px;
+						#gradient > .vertical(#343434, #282828);
+						
+						&:hover {
+							background: #282828;
+						}
+						i {
+							margin: 0 4px 0 -10px;
+						}
+					}
+					
+					&.first {
+						margin-left: 20px;
+						a {
+							.border-radius-left(3px);
+						}
+					}
+					&.last {
+						margin-right: 0;
+						a {
+							.border-radius-right(3px);
 						}
 					}
 				}
@@ -62,218 +118,574 @@ hr {
 	}
 }
 
-// Icons
+// Navigation Dropdown
 //========================================
-.icon-namespace {
-
-	.baseweb-font-icons-demo {
-		.clearfix();
+.header nav ul li {
+	position: relative;
+	
+	ul {
+		background: transparent;
+		display: none;
+		position: absolute;
+		top: 50px;
+		left: 50%;
+		width: 200px;
+		padding: 0;
+		margin: 0 0 0 -100px;
+		z-index: 10;
+		list-style: none;
+		border: 1px solid rgba(0,0,0, 0.3);
+		.box-shadow(0 1px 8px rgba(0,0,0, 0.25));
+		.border-radius(4px);
 		
-		[class^="icon-"], [class*=" icon-"], div {
-			color: @grayLight;
-			border: 1px solid rgba(0,0,0, 0.15);
-			.border-radius();
-			display: block;
-			float: left;
-			padding: 0 10px 5px;
-			margin: 0 15px 15px 0;
-			font-size: 62px;
-			line-height: 62px;
+		li {
+			background: @white url("../img/layout/bg-texture-light.gif") repeat center center;
+			float: none;
+			border-top: 1px solid #e0e0e0;
+			border-color: rgba(0,0,0, 0.1);
+			&:first-child {
+				.border-radius-top(4px);
+				border: 0 none;
+				&:after {
+					background: @white url("../img/layout/bg-texture-light.gif") repeat center center;
+					content: "\0020";
+					position: absolute;
+					top: -6px;
+					left: 50%;
+					width: 12px;
+					height: 12px;
+					margin: 0 0 0 -6px;
+					.rotate(45deg);
+				}
+			}
+			&:last-child {
+				.border-radius-bottom(4px);
+			}
 			
-			&:hover {
-				color: @Cmyk;
-				border-color: rgba(0,0,0, 0.25);
-				.box-shadow(~"0 1px 3px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 1) inset");
+			a {
+				padding: 8px 15px;
+				color: #101010;
+				text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
+				
+				&:hover {
+					color: @linkColorHover;
+				}
 			}
 		}
+	}
+	// Dropdown Trigger
+	//====================
+	&:hover > ul {
+		display: block;
+	}
+}
+
+//===========================================================
+// Main
+//===========================================================
+
+.main {
+	.content {
+		padding: 20px 0;
+	}
+}
+
+// Lined
+//========================================
+.lined {
+	background: url("../img/layout/lined-double.png") repeat-x center center;
+	display: block;
+	
+	span {
+		padding: 0 10px 0 0;
+	}
+	
+	&.centered {
+		text-align: center;
 		
-		div {
-			padding: 0;
+		span {
+			padding: 0 10px;
+		}
+	}
+}
+.main .lined span {
+	background: #f8f8f4 url("../img/layout/bg-texture-light.gif") repeat center center;
+}
+.companies .lined span {
+	background: #eeece7;
+}
+
+// Social Block
+//========================================
+.social-icons {
+	list-style: none;
+	margin: 0;
+	display: table;
+	
+	li {
+		display: table-cell;
+		
+		a {
+			border: 0 none;
 		
 			i {
 				display: block;
-				text-align: center;
-				padding: 0 10px;
-				font-size: 62px;
-				line-height: 62px;
+				text-indent: 0;
+				margin: 0 0 0 5px;
 			}
-			span, pre {
-				background: none;
-				display: block;
-				text-align: center;
-				border: 0 none;
-				border-top: 1px solid rgba(0,0,0, 0.1);
-				padding: 5px 10px;
-				margin: 0;
-				font-family: @monoFontFamily;
-				font-size: 13px;
-				line-height: 21px;
-				.border-radius(0);
+		}
+	}
+}
+
+//===========================================================
+// Main - Home
+//===========================================================
+
+.home {
+	
+	// Banner
+	//========================================
+	.banner {
+		position: relative;
+		overflow: hidden;
+		padding: 10px 0;
+		color: @white;
+		text-shadow: 0 1px 3px rgba(0,0,0, 0.50);
+		
+		img {
+			position: absolute;
+			top: -100px;
+			left: 0;
+			margin: 0 auto;
+			width: 100%;
+			min-width: 1360px;
+			height: auto;
+			z-index: 1;
+		}
+		
+		.content {
+			position: relative;
+			z-index: 2;
+			
+			h1 {
+				color: @white;
+				font-size: 56px;
+				line-height: 66px;
+				font-weight: 300;
+				margin: 10px 0 30px 0;
+			}
+			p {
+				font-size: 21px;
+				line-height: 31px;
+				font-weight: 300;
+				margin: 0 0 60px 0;
+			}
+		}
+		.call-to-action {
+			z-index: 2;
+		}
+	}
+	
+	// Services
+	//========================================
+	.services {
+		background: none;
+		margin: 15px 0 30px;
+		list-style: none;
+		font-size: 18px;
+		line-height: 40px;
+		border: 1px solid rgba(0,0,0, 0.12);
+		.box-shadow(0 1px 5px rgba(0,0,0, 0.06));
+		.border-radius(0);
+		
+		tr {
+			
+			td {
+				width: 33.33333%;
+				padding: 0;
+				border-color: rgba(0,0,0, 0.12);
+				
+				a {
+					#gradient > .vertical(rgba(255,255,255, 0.75), rgba(255,255,255, 0));
+					.reset-filter();
+					display: block;
+					padding: 10px 20px;
+					border: 0 none;
+					
+					i {
+						margin-right: 5px;
+					}
+				}
 			}
 		}
 	}
 	
-	.baseweb-image-icons-demo {
-		.clearfix();
-		
-		.span3 {
+	// Newsletter
+	//========================================
+	.newsletter {
+		clear: both;
+
+		.inline-group {
 			float: left;
-			width: 25%;
+			margin: 0 30px 0 0;
 			
-			ul {
-				list-style: none;
+			input {
+				margin-right: 5px;
+			}
+		}
+		.social-icons {
+			
+		}
+	}
+	
+	// Blog Listing
+	//========================================
+	.blog-posts {
+		margin: 15px 0;
+		list-style: none;
+		
+		li {
+			margin: 0 0 15px 0;
+			padding: 0 0 15px 0;
+			border-bottom: 1px solid #e0e0e0;
+			&:last-child {
+				margin: 0;
+				padding: 0;
+				border: 0 none;
+			}
+			
+			h3, p {
+				margin: 5px 0;
+			}
+			h3 {
+				font-size: 16px;
+				line-height: 20px;
+			}
+			p {
+				font-size: 13px;
+				line-height: 18px;
+			}
+		}
+	}
+}
+
+//===========================================================
+// Main - Page
+//===========================================================
+
+.page {
+	
+	// Heading
+	//========================================
+	.heading {
+		position: relative;
+		overflow: hidden;
+		padding: 10px 0;
+		color: @white;
+		text-shadow: 0 1px 3px rgba(0,0,0, 0.50);
+		
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0 auto;
+			width: 100%;
+			min-width: 1360px;
+			height: auto;
+			z-index: 1;
+		}
+		.container {
+			
+		}
+		h1 {
+			position: relative;
+			z-index: 2;
+			color: @white;
+			font-size: 56px;
+			line-height: 66px;
+			font-weight: 300;
+			margin: 10px 0 10px 0;
+		}
+	}
+	
+	// Testimonials
+	//========================================
+	.testimonial-widget {
+		blockquote {
+			padding: 0;
+			border: 0 none;
+			font-family: "JournalRegular", times, serif;
+			font-size: 26px;
+			line-height: 28px;
+			color: @linkColorHover;
+			font-style: normal;
+			
+			small {
+				font-family: @sansFontFamily;
+				font-size: @baseFontSize;
+				line-height: @baseLineHeight;
+			}
+		}
+	}
+	
+	// Page - Who
+	//========================================
+	&.page-who {
+		.profile {
+			margin: 15px 0 30px;
+			.clearfix();
+			
+			img {
+				float: left;
+				margin: 5px 15px 15px 0;
+			}
+			h3, p {
+				padding-left: 125px;
+			}
+			h3 {
+				font-size: 18px;
+				line-height: 26px;
+				margin: 0;
+			}
+			p {
 				margin: 0;
 				
-				li {
+				em {
+					display: block;
+					margin-bottom: 10px;
+					color: @colorLight;
+					font-style: normal;
+				}
+			}
+		}
+	}
+	
+	// Page - Clients
+	//========================================
+	&.page-clients {
+		.projects {
+			.project {
+				clear: both;
+				border-bottom: 1px solid rgba(0,0,0, 0.1);
+				margin-bottom: 30px;
+				padding-bottom: 30px;
+				.clearfix();
+				
+				&:last-child {
+					border: 0 none;
+					margin-bottom: 0;
+					padding-bottom: 0;
+				}
+				
+				h3 {
+					.permalink {
+						display: none;
+					}
 					
+					&:hover {
+						.permalink {
+							display: inline-block;
+						}
+					}
+				}
+				
+				h4 {
+					color: @colorLight;
+					font-size: 16px;
+					.uppercase(2px);
+				}
+				
+				.project-services {
+					list-style: none;
+					margin: 15px 0;
+					
+					li {
+						margin: 0 5px 0 0;
+						display: inline;
+					}
+				}
+			}
+		}
+	}
+	
+	// Page - Services
+	//========================================
+	&.page-services {
+		.service {
+			a {
+				display: block;
+				border: 0 none;
+				.clearfix();
+				
+				i {
+					float: left;
+				}
+				h2, p {
+					padding: 0 0 0 75px;
+				}
+				h2 {
+					margin-bottom: 5px;
+				}
+				p {
+					margin-top: 0;
+					color: @color;
 				}
 			}
 		}
 	}
 }
 
-// Pallets
-//========================================
-.color-palletes {
-	list-style: none;
-	margin: 0;
-	.clearfix();
+//===========================================================
+// Main - Companies
+//===========================================================
 
-	[class*="c"] {
-		position: relative;
-		background: @white;
-		width: 40px;
-		height: 40px;
-		margin: 0 10px 10px 0;
-		float: left;
-		.border-radius();
+.companies {
+	padding: 20px 0;
+	
+	h3, ul {
+		margin: 10px 0;
+	}
+	h3 {
+		margin-bottom: 20px;
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: bold;
+		color: #707070;
+		text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
+		.uppercase(1px);
+	}
+	ul {
+		display: table;
+		list-style: none;
+		width: 100%;
 		
-		&:after {
-			content: "\0020";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			border: 1px solid rgba(0,0,0, 0.15);
-			.border-radius();
+		li {
+			display: table-cell;
+			text-align: center;
+			
+			a {
+				border: 0 none;
+			}
+			img {
+				display: inline-block;
+				margin: 0;
+			}
 		}
 	}
-	
-	&.rgb {
-		.c1 { background: @Rgb; }
-		.c2 { background: @rGb; }
-		.c3 { background: @rgB; }
-	}
-	
-	&.cmyk {
-		.c1 { background: @Cmyk; }
-		.c2 { background: @cmYk; }
-		.c3 { background: @cMyk; }
-		.c4 { background: @cmyK; }
-	}
-	
-	&.gray-scale {
-		.c1  { background: @gs0; }
-		.c2  { background: @gs1; }
-		.c3  { background: @gs2; }
-		.c4  { background: @gs3; }
-		.c5  { background: @gs4; }
-		.c6  { background: @gs5; }
-		.c7  { background: @gs6; }
-		.c8  { background: @gs7; }
-		.c9  { background: @gs8; }
-		.c10 { background: @gs9; }
-		.c11 { background: @gsA; }
-		.c12 { background: @gsB; }
-		.c13 { background: @gsC; }
-		.c14 { background: @gsD; }
-		.c15 { background: @gsE; }
-		.c16 { background: @gsF; }
-	}
-	
-	&.short-code-gray-scale {
-		.c1  { background: @black; }
-		.c2  { background: @grayDarker; }
-		.c3  { background: @grayDark; }
-		.c4  { background: @gray; }
-		.c5  { background: @grayLight; }
-		.c6  { background: @grayLighter; }
-		.c7  { background: @white; }
-	}
-	
-	&.theme {
-		.c1  { background: @redLighter; }
-		.c2  { background: @redLight; }
-		.c3  { background: @red; }
-		.c4  { background: @redDark; }
-		.c5  { background: @redDarker; }
+}
 
-		.c6  { background: @redOrangeLighter; }
-		.c7  { background: @redOrangeLight; }
-		.c8  { background: @redOrange; }
-		.c9  { background: @redOrangeDark; }
-		.c10 { background: @redOrangeDarker; }
+.companies-full {
+	ul {
+		display: table;
+		list-style: none;
+		width: 100%;
+		margin: 10px 0;
 		
-		.c11 { background: @orangeLighter; }
-		.c12 { background: @orangeLight; }
-		.c13 { background: @orange; }
-		.c14 { background: @orangeDark; }
-		.c15 { background: @orangeDarker; }
+		li {
+			display: table-cell;
+			text-align: center;
+			
+			a {
+				border: 0 none;
+			}
+			img {
+				display: inline-block;
+				margin: 0;
+			}
+		}
+	}
+}
+
+//===========================================================
+// Main - Call to Action
+//===========================================================
+
+.call-to-action {
+	position: relative;
+	clear: both;
+	padding: 0;
+	margin: 30px 0;
+	color: @white;
+	text-shadow: 0 1px 2px rgba(0,0,0, 0.4);
+	#gradient > .vertical(#e08841, #d26831);
+	.box-shadow(~"0 2px 8px rgba(0,0,0, 0.25)");
+	.inner-action {
+		background: url("../img/layout/call-to-action-bg.jpg") no-repeat center center;
+		.clearfix();
+	}
+	h2, p {
+		padding: 0;
+		margin: 10px 0;
 		
-		.c16 { background: @yellowOrangeLighter; clear: both; }
-		.c17 { background: @yellowOrangeLight; }
-		.c18 { background: @yellowOrange; }
-		.c19 { background: @yellowOrangeDark; }
-		.c20 { background: @yellowOrangeDarker; }
+	}
+	h2 {
+		color: @white;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 28px;
+		.uppercase();
+	}
+	p {
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: normal;
+	}
+	
+	.action-content, .action-controls {
 		
-		.c21 { background: @yellowLighter; }
-		.c22 { background: @yellowLight; }
-		.c23 { background: @yellow; }
-		.c24 { background: @yellowDark; }
-		.c25 { background: @yellowDarker; }
-		
-		.c26 { background: @yellowGreenLighter; }
-		.c27 { background: @yellowGreenLight; }
-		.c28 { background: @yellowGreen; }
-		.c29 { background: @yellowGreenDark; }
-		.c30 { background: @yellowGreenDarker; }
-		
-		.c31 { background: @greenLighter; clear: both; }
-		.c32 { background: @greenLight; }
-		.c33 { background: @green; }
-		.c34 { background: @greenDark; }
-		.c35 { background: @greenDarker; }
-		
-		.c36 { background: @blueGreenLighter; }
-		.c37 { background: @blueGreenLight; }
-		.c38 { background: @blueGreen; }
-		.c39 { background: @blueGreenDark; }
-		.c40 { background: @blueGreenDarker; }
-		
-		.c41 { background: @blueLighter; }
-		.c42 { background: @blueLight; }
-		.c43 { background: @blue; }
-		.c44 { background: @blueDark; }
-		.c45 { background: @blueDarker; }
-		
-		.c46 { background: @blueVioletLighter; clear: both; }
-		.c47 { background: @blueVioletLight; }
-		.c48 { background: @blueViolet; }
-		.c49 { background: @blueVioletDark; }
-		.c50 { background: @blueVioletDarker; }
-		
-		.c51 { background: @violetLighter; }
-		.c52 { background: @violetLight; }
-		.c53 { background: @violet; }
-		.c54 { background: @violetDark; }
-		.c55 { background: @violetDarker; }
-		
-		.c56 { background: @redVioletLighter; }
-		.c57 { background: @redVioletLight; }
-		.c58 { background: @redViolet; }
-		.c59 { background: @redVioletDark; }
-		.c60 { background: @redVioletDarker; }
+		.inner {
+			padding: 15px 20px;
+		}
+	}
+	.action-content {
+		a {
+			color: @white;
+			border-color: rgba(255,255,255, 0.2);
+			
+			&:hover {
+				border-color: rgba(255,255,255, 0.4);
+			}
+		}
+	}
+	.action-controls {
+		p {
+			position: relative;
+			margin-top: 28px;
+		}
+		.btn, .delimit, .phone {
+			display: inline-block;
+		}
+		.btn {
+			#gradient > .vertical(rgba(255,255,255, 0.1), rgba(255,255,255, 0));
+			.reset-filter();
+			background-color: rgba(255,255,255, 0.1);
+			border: 1px solid rgba(255,255,255, 0.25);
+			padding: 6px 20px;
+			color: @white;
+			font-size: 16px; 
+			line-height: 28px;
+			font-weight: 600;
+			text-shadow: 0 1px 2px rgba(0,0,0, 0.4);
+			.uppercase();
+			.box-shadow(~"0 1px 4px rgba(0,0,0, 0.25)");
+			
+			&:hover {
+				border-color: rgba(255,255,255, 0.4);
+			}
+		}
+		.delimit {
+			color: #f7cdaa;
+			margin: 0 15px;
+			border-top: 1px solid rgba(255,255,255, 0.30);
+			border-bottom: 1px solid rgba(255,255,255, 0.30);
+		}
+		.phone {
+			position: relative;
+			font-size: 32px;
+			font-weight: 100;
+			line-height: 32px;
+			top: 6px;
+		}
 	}
 }
 
@@ -281,7 +693,159 @@ hr {
 // Footer
 //===========================================================
 
-
+.footer {
+	padding: 30px 0 20px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #808080;
+	
+	.inner {
+		border-right: 1px solid rgba(0,0,0, 0.1);
+		padding: 10px 0;
+	}
+	.widget-twitter-feed {
+		.inner {
+			border: 0 none;
+		}
+	}
+	
+	// Logo
+	//========================================
+	.logo {
+		.clearfix();
+		margin: 0;
+		margin: 0 0 30px 0;
+	
+		a {
+			background: url("../img/layout/logo-avelient.png") no-repeat 0 -100px;
+			display: block;
+			width: 214px; height: 50px;
+			text-indent: -999999px;
+			
+			&:hover {
+				background-position: 0 -150px
+			}
+		}
+	}
+	.btn-group {
+		float: left;
+		border-top: 1px solid rgba(0,0,0, 0.25);
+		border-left: 1px solid rgba(0,0,0, 0.25);
+		.box-shadow(0 1px 3px rgba(0,0,0, 0.06));
+	
+		.btn {
+			float: left;
+			background: none;
+			#gradient > .vertical(rgba(255,255,255, 0.2), rgba(0,0,0, 0.05));
+			border: 0 none;
+			border-right: 1px solid rgba(0,0,0, 0.25);
+			border-bottom: 1px solid rgba(0,0,0, 0.25);
+			padding: 5px 15px;
+			color: @color;
+			font-weight: normal;
+			.border-radius(0);
+			.box-shadow(none);
+			.transition(none);
+			
+			&:hover {
+				color: @linkColorHover;
+				background: rgba(255,255,255, 0.1);
+				.box-shadow(none);
+			}
+			&.only-icon {
+				padding: 5px;
+				i {
+					margin: 0;
+				}
+			}
+		}
+	}
+	
+	// Content
+	//========================================
+	h3 {
+		font-size: 16px;
+		line-height: 22px;
+		font-weight: bold;
+		color: #707070;
+		text-shadow: 0 1px 0 rgba(255,255,255, 0.5);
+		margin-top: 0;
+		.uppercase(1px);
+	}
+	a {
+		border-color: rgba(0,0,0, 0.1);
+		color: #808080;
+		
+		&:hover {
+			border-color: @linkColorHover;
+			color: @linkColorHover;
+		}
+	}
+	ul {
+		list-style: none;
+		margin: 0;
+	}
+	
+	// Copyright
+	//========================================
+	.copyright {
+		background: url("../img/layout/lined-double.png") repeat-x center top;
+		padding: 20px 0 0;
+		.clearfix();
+		
+		p {
+			float: left;
+		}
+		ul {
+			float: right;
+			margin: 5px 0;
+		}
+	}
+	
+	// Twitter Feed
+	//========================================
+	.twitter-feed {
+		ul {
+			position: relative;
+			background: #fff;
+			padding: 1px 20px;
+			margin: 15px 0;
+			.box-shadow(0 1px 4px rgba(0,0,0, 0.15));
+			
+			&:before {
+				position: absolute;
+				top: -39px;
+				right: 15px;
+				content: "\0020";
+				background: url("../img/layout/avelient-sprites.png") no-repeat 0 -160px;
+				width: 58px;
+				height: 39px;
+			}
+			&:hover {
+				&:before {
+					background-position: -58px -160px;
+				}
+			}
+			li {
+				.meta {
+					font-size: 11px;
+					font-weight: bold;
+					.uppercase();
+				}
+			}
+		}
+		nav {
+			margin: 15px 0;
+			
+			.nav-group-prev-next {
+				float: right;
+				a {
+					border: 0 none;
+				}
+			}
+		}
+	}
+}
 
 //===========================================================
 // End of Main Styles

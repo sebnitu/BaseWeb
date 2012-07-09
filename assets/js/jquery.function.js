@@ -10,6 +10,34 @@
 ============================================================= */
 
 /**
+ * FancyBox AJAX Call
+ */
+function ajax_fancybox(selector) {
+	
+	selector.each(function() {
+		$(this).fancybox({
+		
+			// Default Options
+			type: 'ajax',
+			padding: 0,
+			fitToView: false,
+			
+			// This enables fancybox to work on content
+			// that is loaded by fancybox
+			afterShow: function() {
+				selector.fancybox({
+					type: 'ajax',
+					padding: 0,
+					fitToView: false,
+				});
+			}
+			
+		});
+	});
+
+}
+
+/**
  * Orientation and scale fix for iPhone & iPad
  * Script by Jeremy Keith: http://adactio.com/journal/4470/
  */
@@ -70,6 +98,57 @@ function equalHeight(group) {
 		}
 	});
 	group.height(tallest);
+}
+
+/**
+ * Image Scale
+ */
+function imgScale() {
+	
+	var imageBox = $('.banner'),
+		image = imageBox.find('img').css({ 'width' : 'auto', 'height' : 'auto' }),
+		imageBoxWidth = imageBox.width(),
+		imageBoxHeight = imageBox.height(),
+		imageWidth = image.width(),
+		imageHeight = image.height();
+	
+	var heightDif = imageWidth - imageBoxWidth;
+	var widthDif = imageHeight - imageBoxHeight;
+	
+	if ( widthDif >= heightDif ) {
+		newImageHeight = imageBoxWidth * imageHeight / imageWidth;
+		newImageWidth = imageBoxWidth;
+	} else {
+		newImageWidth = imageBoxHeight * imageWidth / imageHeight;
+		newImageHeight = imageBoxHeight;
+	}
+	
+	var imageLeft = -centerElement(newImageWidth, imageBoxWidth),
+		imageTop = -centerElement(newImageHeight, imageBoxHeight);
+	
+	// , 'left' : imageLeft, 'top' : imageTop
+	image.css({ 'width' : newImageWidth, 'height' : newImageHeight });
+	imageBox.animate({ 'opacity' : 1 }, 500);
+	
+}
+
+/**
+ * Image Center
+ */
+function centerBannerImage() {
+	var banner = $(".banner, .heading"),
+		bannerImage = $(".banner img, .heading img");
+	
+	bannerImage.css({
+		left : ( -centerElement(bannerImage.width(), banner.width()) )
+	});
+}
+
+/**
+ * Center Element by Emilia Nitu
+ */
+function centerElement(a, b) {
+	return (a - b) / 2;
 }
 
 /**
