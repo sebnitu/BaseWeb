@@ -1,0 +1,313 @@
+//===========================================================
+// BaseWeb - Documentation Styles
+// https://github.com/sebnitu/BaseWeb
+//===========================================================
+// Structure
+//===========================================================
+
+body {
+	background: @bgBody;
+}
+
+//===========================================================
+// Main
+//===========================================================
+// Grid
+//========================================
+.demo-grid {
+	.demo {
+		background: none;
+		.border-radius(0);
+		.box-shadow(none);
+		
+		.inner {
+			padding: 0;
+			
+			p {
+				font-family: @monoFontFamily;
+				font-size: 85%;
+				background: #fff;
+				border: 1px solid @gsD;
+				.border-radius();
+				text-align: center;
+				margin: 0 0 20px 0;
+				padding: 10px 10px;
+			}
+		}
+	}
+}
+
+// Utilities
+//========================================
+.demo-utility {
+	span {
+		font-family: @monoFontFamily;
+		font-size: 85%;
+		background: #fff;
+		border: 1px solid @gsD;
+		.border-radius();
+		text-align: center;
+		margin: 0 0 20px 0;
+		padding: 10px 10px;
+	}
+}
+
+// Buttons
+//========================================
+.demo-buttons {
+	ul {
+		.clearfix();
+		list-style: none;
+		margin: 15px 0;
+		
+		li {
+			.clearfix();
+			
+			&.col {
+				float: left;
+				width: 50%;
+				margin: 0;
+				
+				li {
+					padding: 0;
+					margin: 0 0 10px 0;
+					
+					a {
+						[class^="icon-"], [class*=" icon-"], .icon {
+							text-shadow: 0 1px 0 rgba(0,0,0, .6);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Pallets
+//========================================
+.demo-colors {
+	.color-palletes {
+		list-style: none;
+		margin: 5px 0 5px 0;
+		.clearfix();
+	
+		[class*="c"] {
+			position: relative;
+			background: @white;
+			width: 30px;
+			height: 30px;
+			margin: 0 5px 5px 0;
+			float: left;
+			.border-radius(15px);
+			
+			&:after {
+				content: "\0020";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				border: 1px solid rgba(0,0,0, 0.15);
+				.border-radius(15px);
+			}
+		}
+		
+		&.rgb {
+			.c1 { background: @Rgb; }
+			.c2 { background: @rGb; }
+			.c3 { background: @rgB; }
+		}
+		
+		&.cmyk {
+			.c1 { background: @Cmyk; }
+			.c2 { background: @cmYk; }
+			.c3 { background: @cMyk; }
+			.c4 { background: @cmyK; }
+		}
+		
+		&.gray-scale {
+			.c1  { background: @gs0; }
+			.c2  { background: @gs1; }
+			.c3  { background: @gs2; }
+			.c4  { background: @gs3; }
+			.c5  { background: @gs4; }
+			.c6  { background: @gs5; }
+			.c7  { background: @gs6; }
+			.c8  { background: @gs7; }
+			.c9  { background: @gs8; }
+			.c10 { background: @gs9; }
+			.c11 { background: @gsA; }
+			.c12 { background: @gsB; }
+			.c13 { background: @gsC; }
+			.c14 { background: @gsD; }
+			.c15 { background: @gsE; }
+			.c16 { background: @gsF; }
+		}
+		
+		&.short-code-gray-scale {
+			.c1  { background: @black; }
+			.c2  { background: @grayDarker; }
+			.c3  { background: @grayDark; }
+			.c4  { background: @gray; }
+			.c5  { background: @grayLight; }
+			.c6  { background: @grayLighter; }
+			.c7  { background: @white; }
+		}
+		
+		&.theme {
+			.c1  { background: @redLighter; }
+			.c2  { background: @redLight; }
+			.c3  { background: @red; }
+			.c4  { background: @redDark; }
+			.c5  { background: @redDarker; }
+	
+			.c6  { background: @redOrangeLighter; }
+			.c7  { background: @redOrangeLight; }
+			.c8  { background: @redOrange; }
+			.c9  { background: @redOrangeDark; }
+			.c10 { background: @redOrangeDarker; }
+			
+			.c11 { background: @orangeLighter; }
+			.c12 { background: @orangeLight; }
+			.c13 { background: @orange; }
+			.c14 { background: @orangeDark; }
+			.c15 { background: @orangeDarker; }
+			
+			.c16 { background: @yellowOrangeLighter; clear: both; }
+			.c17 { background: @yellowOrangeLight; }
+			.c18 { background: @yellowOrange; }
+			.c19 { background: @yellowOrangeDark; }
+			.c20 { background: @yellowOrangeDarker; }
+			
+			.c21 { background: @yellowLighter; }
+			.c22 { background: @yellowLight; }
+			.c23 { background: @yellow; }
+			.c24 { background: @yellowDark; }
+			.c25 { background: @yellowDarker; }
+			
+			.c26 { background: @yellowGreenLighter; }
+			.c27 { background: @yellowGreenLight; }
+			.c28 { background: @yellowGreen; }
+			.c29 { background: @yellowGreenDark; }
+			.c30 { background: @yellowGreenDarker; }
+			
+			.c31 { background: @greenLighter; clear: both; }
+			.c32 { background: @greenLight; }
+			.c33 { background: @green; }
+			.c34 { background: @greenDark; }
+			.c35 { background: @greenDarker; }
+			
+			.c36 { background: @blueGreenLighter; }
+			.c37 { background: @blueGreenLight; }
+			.c38 { background: @blueGreen; }
+			.c39 { background: @blueGreenDark; }
+			.c40 { background: @blueGreenDarker; }
+			
+			.c41 { background: @blueLighter; }
+			.c42 { background: @blueLight; }
+			.c43 { background: @blue; }
+			.c44 { background: @blueDark; }
+			.c45 { background: @blueDarker; }
+			
+			.c46 { background: @blueVioletLighter; clear: both; }
+			.c47 { background: @blueVioletLight; }
+			.c48 { background: @blueViolet; }
+			.c49 { background: @blueVioletDark; }
+			.c50 { background: @blueVioletDarker; }
+			
+			.c51 { background: @violetLighter; }
+			.c52 { background: @violetLight; }
+			.c53 { background: @violet; }
+			.c54 { background: @violetDark; }
+			.c55 { background: @violetDarker; }
+			
+			.c56 { background: @redVioletLighter; }
+			.c57 { background: @redVioletLight; }
+			.c58 { background: @redViolet; }
+			.c59 { background: @redVioletDark; }
+			.c60 { background: @redVioletDarker; }
+		}
+	}
+}
+
+// Icons
+//========================================
+.baseweb-font-icons {
+	#icons > .font-entypo;
+}
+
+.baseweb-image-icons {
+	#icons > .sprite-glyphicons-halflings;
+}
+
+.demo-icons {
+
+	.baseweb-font-icons-demo {
+		.clearfix();
+		
+		[class^="icon-"], [class*=" icon-"], div {
+			color: @grayLight;
+			border: 1px solid rgba(0,0,0, 0.15);
+			.border-radius();
+			display: block;
+			float: left;
+			padding: 0 10px 5px;
+			margin: 0 15px 15px 0;
+			font-size: 62px;
+			line-height: 62px;
+			
+			&:hover {
+				color: @Cmyk;
+				border-color: rgba(0,0,0, 0.25);
+				.box-shadow(~"0 1px 3px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 1) inset");
+			}
+		}
+		
+		div {
+			padding: 0;
+		
+			i {
+				display: block;
+				text-align: center;
+				padding: 0 10px;
+				font-size: 62px;
+				line-height: 62px;
+			}
+			span, pre {
+				background: none;
+				display: block;
+				text-align: center;
+				border: 0 none;
+				border-top: 1px solid rgba(0,0,0, 0.1);
+				padding: 5px 10px;
+				margin: 0;
+				font-family: @monoFontFamily;
+				font-size: 13px;
+				line-height: 21px;
+				.border-radius(0);
+			}
+		}
+	}
+	
+	.baseweb-image-icons-demo {
+		.clearfix();
+		
+		.span3 {
+			float: left;
+			width: 25%;
+			
+			ul {
+				list-style: none;
+				margin: 0;
+				
+				li {
+					
+				}
+			}
+		}
+	}
+}
+
+//===========================================================
+// End of Main Styles
+//===========================================================
