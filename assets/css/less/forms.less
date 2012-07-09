@@ -4,7 +4,8 @@
 //============================================================
 // Structure
 //============================================================
-
+// Base
+//=========================================
 form {
 	background: #f7f7f7;
 	border: 1px solid #e0e0e0;
@@ -25,6 +26,105 @@ form {
 		}
 	}
 	
+	&.naked {
+		background: none;
+		border: 0 none;
+		padding: 0;
+		.border-radius(0);
+	}
+	
+	.group {
+		.clearfix();
+	}
+}
+
+// Horizontal Form
+//=========================================
+.horizontal-form {
+	.group {
+		padding: 15px 25px 0;
+		border-top: 1px solid rgba(0,0,0, 0.1);
+		
+		&:first-child {
+			border-top: 0 none;
+		}
+		
+		.group-key, .group-value {
+			float: left;
+		}
+		.group-key {
+			width: 160px;
+			
+			label {
+				color: @colorHeader;
+				font-weight: bold;
+				display: block;
+				padding: 6px 0;
+				margin: 0 0 15px 0;
+			}
+		}
+		.group-value {
+			width: 390px;
+			.clearfix();
+			
+			input {
+				width: 360px;
+			}
+		}
+		
+		// Group - Description
+		//=========================================
+		&.description-group {
+			p {
+				margin: 0 0 15px 0;
+			}
+		}
+		
+		// Group - Inline
+		//=========================================
+		&.inline-group {
+			.group-key, .group-value {
+				float: none;
+				display: inline-block;
+			}
+			.group-key {
+				width: auto;
+				label {
+					margin-right: 30px;
+				}
+			}
+			.group-value {
+				width: auto;
+				margin: 0 0 15px 0;
+				
+				.checkbox, .radio {
+					.checkbox_radio_styles();
+				}
+			}
+		}
+		
+		// Group - Vertical
+		//=========================================
+		&.vertical-group {
+			.group-key, .group-value {
+				float: none;
+			}
+			.group-key {
+				width: auto;
+				label {
+					margin-bottom: 5px;
+				}
+			}
+			.group-value {
+				width: auto;
+				margin: 0 0 15px 0;
+				
+				.checkbox, .radio {
+					.checkbox_radio_styles();
+				}
+			}
+		}
+	}
 }
 
 //============================================================
@@ -133,15 +233,22 @@ select {
 
 // Checkboxes & Radios
 //=========================================
-.checkbox, .radio {
+.checkbox_radio_styles() {
+	display: inline-block;
+	float: none;
 	min-height: 18px;
 	line-height: 18px;
 	padding-left: 18px;
+	margin: 0 15px 10px 0;
 	
 	input[type="checkbox"], input[type="radio"] {
 		float: left; 
 		margin-left: -18px;
+		width: auto;
 	}
+}
+.checkbox, .radio {
+	.checkbox_radio_styles();
 }
 
 //============================================================

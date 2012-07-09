@@ -5,7 +5,7 @@
 // Button Mixins
 //============================================================
 
-.btn-color(@colorStart: @bgLight, @colorEnd: darken(@bgLight, 6%)) {
+.btn-color(@colorStart: #eeeeee, @colorEnd: #dadada) {
 	background-color: mix(@colorStart, @colorEnd, 50);
 	border: 1px solid darken(@colorEnd, 10%);
 	.btn-text-color(@colorEnd);
@@ -21,6 +21,12 @@
 		.btn-text-color(@colorEnd);
 		.btn-border-color(@colorEnd);
 	}
+	
+	// Disabled
+	//====================
+	&.disabled {
+		.btn-disabled(mix(@colorStart, @colorEnd, 50));
+	}
 }
 
 // Text Color Mixin
@@ -35,7 +41,7 @@
 }
 // Manual Text Colors
 //====================
-.btn-text-color-dark(@color: @grayDark) {
+.btn-text-color-dark(@color: #505050) {
 	color: @color;
 	text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
 	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.75) inset");
@@ -72,6 +78,20 @@
 	}
 }
 
+// Disabled Mixin
+//========================================
+.btn-disabled(@bgColor) {
+	opacity: 0.60;
+	cursor: default;
+	background: @bgColor;
+	border-color: darken(@bgColor, 15%);
+	.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
+	&:hover {
+		border-color: darken(@bgColor, 15%);
+		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
+	}
+}
+
 //===========================================================
 // Base Buttons
 //===========================================================
@@ -80,6 +100,9 @@
 .btn {
 	position: relative;
 	display: block-inline;
+	font-size: 13px;
+	font-weight: 600;
+	text-align: center;
 	margin: 0;
 	padding: @btnPadTB @btnPadLR;
 	white-space: nowrap;
@@ -137,6 +160,21 @@
 		.btn-color(@blueVioletLight, @blueVioletDark);
 	}
 	
+	// Faint
+	//====================
+	&.btn-faint {
+		color: lighten(@color, 10%) !important;
+		.btn-color(#f4f4f2, #efefed);
+		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.75), 0 1px 0 rgba(255,255,255, 0.25) inset");
+		
+		// Hover
+		//====================
+		&:hover {
+			color: lighten(@color, 10%) !important;
+			.box-shadow(~"0 1px 0 rgba(255,255,255, 0.75), 0 1px 3px rgba(0,0,0, 0.1) inset");
+		}
+	}
+	
 	// Miscellaneous Colors
 	//====================
 	&.btn-black, &.btn-inverse {
@@ -178,6 +216,13 @@
 		padding: (@btnPadTB - 4) (@btnPadLR - 8);
 		font-size: @baseFontSize - 2;
 		line-height: @baseLineHeight - 4;
+	}
+	
+	// Full width btn
+	//====================
+	&.btn-full {
+		display: block;
+		padding: (@btnPadTB + 6) (@btnPadLR + 6);
 	}
 }
 
