@@ -10,6 +10,7 @@ body {
 	font-size: @baseFontSize;
 	line-height: @baseLineHeight;
 	color: @color;
+	text-shadow: 0 0 0 #000; // Anti-aliasing hack
 }
 
 //============================================================
@@ -31,15 +32,16 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+// Type sized based on a two (basic and double) Fibonacci sequences interlaced
+// http://en.wikipedia.org/wiki/Fibonacci_number
+// Line-heights are calculated by font-size + 8
 h1 {
 	font-size: 42px; 
 	line-height: 50px;
 }
 h2 {
-	font-size: 22px;
-	line-height: 30px;
-	color: @linkColorHover;
-	font-weight: 300;
+	font-size: 34px; 
+	line-height: 42px;
 }
 h3 {
 	font-size: 26px; 
@@ -58,12 +60,6 @@ h6 {
 	line-height: 21px;
 }
 
-.intro {
-	font-size: 20px;
-	line-height: 32px;
-	color: #606060;
-}
-
 //============================================================
 // Base Elements
 //============================================================
@@ -73,6 +69,7 @@ a {
 	color: @linkColor;
 	text-decoration: none;
 	border-bottom: 1px solid @borderColor;
+	.transition();
 	&:hover {
 		color: @linkColorHover;
 		border-color: @linkColorHover;

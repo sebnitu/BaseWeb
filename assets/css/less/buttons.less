@@ -2,95 +2,6 @@
 // BaseWeb - Button Theme
 // https://github.com/sebnitu/BaseWeb
 //============================================================
-// Button Mixins
-//============================================================
-
-.btn-color(@colorStart: #eeeeee, @colorEnd: #dadada) {
-	background-color: mix(@colorStart, @colorEnd, 50);
-	border: 1px solid darken(@colorEnd, 10%);
-	.btn-text-color(@colorEnd);
-	.btn-border-color(@colorEnd);
-	#gradient > .vertical( @colorStart, @colorEnd );
-	.reset-filter(); // Turn gradeints off in IE because it doesn't clip them for rounded corners
-		
-	// Hover
-	//====================
-	&:hover {
-		background-color: @colorEnd;
-		background-position: 0 -20px;
-		.btn-text-color(@colorEnd);
-		.btn-border-color(@colorEnd);
-	}
-	
-	// Disabled
-	//====================
-	&.disabled {
-		.btn-disabled(mix(@colorStart, @colorEnd, 50));
-	}
-}
-
-// Text Color Mixin
-//========================================
-// Sets the text color and text shadow
-// depending on how dark the background is
-.btn-text-color (@bgColor) when (lightness(@bgColor) >= 50%) {
-	.btn-text-color-dark();
-}
-.btn-text-color (@bgColor) when (lightness(@bgColor) < 50%) {
-	.btn-text-color-light();
-}
-// Manual Text Colors
-//====================
-.btn-text-color-dark(@color: #505050) {
-	color: @color;
-	text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
-	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.75) inset");
-	&:hover {
-		color: @color;
-		text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
-		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
-	}
-}
-.btn-text-color-light(@color: @white) {
-	color: @color;
-	text-shadow: 0 1px 0 rgba(0,0,0, 0.6);
-	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.25) inset");
-	&:hover {
-		color: @color;
-		text-shadow: 0 1px 0 rgba(0,0,0, 0.6);
-		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.15) inset");
-	}
-}
-
-// Border Color Mixin
-//========================================
-// Sets the border color depending on how dark the background is
-.btn-border-color (@borderColor) when (lightness(@borderColor) >= 50%) {
-	border-color: darken(@borderColor, 15%);
-	&:hover {
-		border-color: darken(@borderColor, 25%);
-	}
-}
-.btn-border-color (@borderColor) when (lightness(@borderColor) < 50%) {
-	border-color: darken(@borderColor, 5%);
-	&:hover {
-		border-color: darken(@borderColor, 10%);
-	}
-}
-
-// Disabled Mixin
-//========================================
-.btn-disabled(@bgColor) {
-	opacity: 0.60;
-	cursor: default;
-	background: @bgColor;
-	border-color: darken(@bgColor, 15%);
-	.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
-	&:hover {
-		border-color: darken(@bgColor, 15%);
-		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
-	}
-}
 
 //===========================================================
 // Base Buttons
@@ -98,10 +9,10 @@
 // Colors Delegation
 //========================================
 .btn {
-	position: relative;
-	display: block-inline;
 	font-size: 13px;
-	font-weight: 600;
+	line-height: 18px;
+	position: relative;
+	display: inline-block;
 	text-align: center;
 	margin: 0;
 	padding: @btnPadTB @btnPadLR;
@@ -160,29 +71,11 @@
 		.btn-color(@blueVioletLight, @blueVioletDark);
 	}
 	
-	// Faint
-	//====================
-	&.btn-faint {
-		color: lighten(@color, 10%) !important;
-		.btn-color(#f4f4f2, #efefed);
-		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.75), 0 1px 0 rgba(255,255,255, 0.25) inset");
-		
-		// Hover
-		//====================
-		&:hover {
-			color: lighten(@color, 10%) !important;
-			.box-shadow(~"0 1px 0 rgba(255,255,255, 0.75), 0 1px 3px rgba(0,0,0, 0.1) inset");
-		}
-	}
-	
 	// Miscellaneous Colors
 	//====================
 	&.btn-black, &.btn-inverse {
 		.btn-color(@gray, @grayDarker);
 	}
-	
-	// @btnPadTB:			6px;
-	// @btnPadLR:			14px;
 	
 	// Button Sizes
 	//========================================
@@ -217,12 +110,96 @@
 		font-size: @baseFontSize - 2;
 		line-height: @baseLineHeight - 4;
 	}
-	
-	// Full width btn
+}
+
+//============================================================
+// Button Mixins
+//============================================================
+
+.btn-color(@colorStart: @bgLight, @colorEnd: darken(@bgLight, 6%)) {
+	background-color: mix(@colorStart, @colorEnd, 50);
+	border: 1px solid darken(@colorEnd, 10%);
+	.btn-text-color(@colorEnd);
+	.btn-border-color(@colorEnd);
+	#gradient > .vertical( @colorStart, @colorEnd );
+	.reset-filter(); // Turn gradeints off in IE because it doesn't clip them for rounded corners
+		
+	// Hover
 	//====================
-	&.btn-full {
-		display: block;
-		padding: (@btnPadTB + 6) (@btnPadLR + 6);
+	&:hover {
+		background-color: @colorEnd;
+		background-position: 0 -20px;
+		.btn-text-color(@colorEnd);
+		.btn-border-color(@colorEnd);
+	}
+	
+	// Disabled
+	//====================
+	&.disabled {
+		.btn-disabled(mix(@colorStart, @colorEnd, 50));
+	}
+}
+
+// Text Color Mixin
+//========================================
+// Sets the text color and text shadow
+// depending on how dark the background is
+.btn-text-color (@bgColor) when (lightness(@bgColor) >= 50%) {
+	.btn-text-color-dark();
+}
+.btn-text-color (@bgColor) when (lightness(@bgColor) < 50%) {
+	.btn-text-color-light();
+}
+// Manual Text Colors
+//====================
+.btn-text-color-dark(@color: @grayDark) {
+	color: @color;
+	text-shadow: 0 1px 1px rgba(255,255,255, 0.75);
+	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.75) inset");
+	&:hover {
+		color: @color;
+		text-shadow: 0 1px 1px rgba(255,255,255, 0.75);
+		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
+	}
+}
+.btn-text-color-light(@color: @white) {
+	color: @color;
+	text-shadow: 0 1px 1px rgba(0,0,0, 0.6);
+	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.25) inset");
+	&:hover {
+		color: @color;
+		text-shadow: 0 1px 1px rgba(0,0,0, 0.6);
+		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.15) inset");
+	}
+}
+
+// Border Color Mixin
+//========================================
+// Sets the border color depending on how dark the background is
+.btn-border-color (@borderColor) when (lightness(@borderColor) >= 50%) {
+	border-color: darken(@borderColor, 15%);
+	&:hover {
+		border-color: darken(@borderColor, 25%);
+	}
+}
+.btn-border-color (@borderColor) when (lightness(@borderColor) < 50%) {
+	border-color: darken(@borderColor, 5%);
+	&:hover {
+		border-color: darken(@borderColor, 10%);
+	}
+}
+
+// Disabled Mixin
+//========================================
+.btn-disabled(@bgColor) {
+	opacity: 0.60;
+	cursor: default;
+	background: @bgColor;
+	border-color: darken(@bgColor, 15%);
+	.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
+	&:hover {
+		border-color: darken(@bgColor, 15%);
+		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
 	}
 }
 
