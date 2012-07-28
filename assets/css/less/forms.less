@@ -4,35 +4,382 @@
 //============================================================
 // Structure
 //============================================================
-
-form {
-	background: #f7f7f7;
-	border: 1px solid #e0e0e0;
-	margin: 15px 0;
-	padding: 20px;
-	.border-radius();
+// Preset Form Structures
+//=========================================
+#formStructure {
 	
-	fieldset {
-		margin: 0;
-		padding: 0;
-		
-		legend {
-			margin: 0;
-			padding: 0;
-			font-size: 16px;
-			font-weight: bold;
-			color: @colorDark;
+	// Form Structure Template
+	//=========================================
+	.StructureTemplate() {
+		.group {
+			.group-key, .group-value {}
+			.group-key {}
+			.group-value {}
 		}
-	}
+		.group-action {
+			.group-value {}
+		}
+	} // End .StructureTemplate()
 	
+	// Base Styles
+	//=========================================
+	.base() {
+		.group {
+			display: block;
+			margin: 15px 0;
+			.clearfix();
+			
+			.group-key, .group-value {
+				display: block;
+				
+				p {
+					font-size: 0.9em;
+					line-height: 1.4em;
+					margin: 5px 0;
+					color: @colorLight;
+				}
+			}
+			.group-key {
+				label {
+					font-weight: bold;
+					color: @colorDark;
+				}
+			}
+			.group-value {}
+		}
+		.group-action {
+			position: relative;
+			overflow: hidden;
+			background: #f7f7f7;
+			border-top: 1px solid #e0e0e0;
+			
+			.group-value {
+				position: relative;
+				padding: 10px 15px;
+			}
+			.group-value * {
+				z-index: 2;
+			}
+			.group-value:before {
+				content: "\0020";
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				left: -10px;
+				right: -10px;
+				bottom: -10px;
+				display: block;
+				.box-shadow( inset 0 1px 10px rgba(0,0,0, 0.06) );
+			}
+		}
+	} // End .base()
+	
+	// Wrapped Styles
+	//=========================================
+	.wrapped() {
+		background: #f7f7f7;
+		border: 1px solid #e0e0e0;
+		padding: 15px;
+		margin: 15px 0;
+		.border-radius();
+		
+		.group {
+			padding: 10px 15px 5px;
+			margin: 0 -15px;
+			border-top: 1px solid #e0e0e0;
+		
+			.group-key, .group-value {}
+			.group-key {}
+			.group-value {}
+			
+			&:first-child {
+				margin-top: -15px;
+				border-top: 0 none;
+			}
+			&:last-child {
+				margin-bottom: -15px;
+			}
+		}
+		.group-action {
+			background: #eaeaea;
+			border-color: #cecece;
+			padding: 0;
+			margin: 0 -15px -15px;
+			.border-radius-bottom();
+			
+			.group-value {
+				margin: 0;
+				padding: 10px 15px;
+			}
+		}
+	} // End .wrapped()
+	
+	// Inline Form
+	//=========================================
+	.inline() {
+		
+		// Structure
+		//====================
+		.group {
+			display: inline-block;
+			margin: 0 15px 0 0;
+			
+			.group-key, .group-value {
+				display: inline-block;
+				p {
+					line-height: 18px;
+				}
+			}
+			.group-key {
+				float: none;
+				width: auto;
+			}
+			.group-value {
+				margin-left: 0;
+			}
+		}
+		.group-action {
+			background: none;
+			border: 0 none;
+			overflow: visible;
+			margin: 0;
+			
+			.group-value {
+				padding: 0;
+				margin: 0;
+			}
+			.group-value:before {
+				content: "";
+				display: none;
+			}
+		}
+		&.wrapped {
+			padding: 15px;
+			
+			.group {
+				padding: 0;
+				margin: 0 15px 0 0;
+				border: 0 none;
+				
+				&:first-child {
+					margin-top: 0;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+			.group-action {
+				background: none;
+				border: 0 none;
+				overflow: visible;
+				margin: 0;
+				
+				.group-value {
+					padding: 0;
+					margin: 0;
+				}
+				.group-value:before {
+					content: "";
+					display: none;
+				}
+			}
+		}
+		
+		// Inline Elements
+		//====================
+		#inlineElements();
+		
+	} // End .inline()
+	
+	// Vertical Form
+	//=========================================
+	.vertical() {
+		.group {
+			.group-key, .group-value {
+
+			}
+			.group-key {
+				float: none;
+				width: auto;
+			}
+			.group-value {
+				margin-left: 0;
+			}
+		}
+		.group-action {
+			.group-value {
+				margin-left: 0;
+				padding-left: 15px;
+			}
+		}
+		&.wrapped {
+			
+			.group {
+				.group-key, .group-value {}
+				.group-key {}
+				.group-value {}
+			}
+			.group-action {
+				.group-value {
+					padding-left: 15px;
+				}
+			}
+			
+		}
+		
+		// Vertical Elements
+		//====================
+		#verticalElements();
+		
+	} // End .vertical()
+	
+	// Horizontal Form
+	//=========================================
+	.horizontal() {
+		.group {
+			.group-key, .group-value {
+				
+			}
+			.group-key {
+				float: left;
+				width: 140px;
+			}
+			.group-value {
+				margin-left: 160px;
+			}
+		}
+		.group-action {
+			.group-value {
+				margin-left: 0;
+				padding-left: 160px;
+			}
+		}
+		&.wrapped {
+			padding: 0;
+			.border-radius();
+			
+			.group {
+				margin: 0;
+				padding: 10px 0 5px;
+				
+				.group-key {
+					margin-left: 15px;
+				}
+				.group-value {
+					margin-right: 15px;
+					margin-left: 180px;
+				}
+				&:first-child {
+					margin-top: 0;
+					border-top: 0 none;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+			.group-action {
+				background-color: #eaeaea;
+				border-color: #cecece;
+				margin-bottom: 0;
+				padding: 0;
+			}
+			.group-action .group-value {
+				margin: 0;
+				padding-left: 180px;
+			}
+		}
+		
+		// Horizontal Elements
+		//====================
+		#horizontalElements();
+		
+	} // End .horizontal()
+	
+	// Responsive Form Styles
+	//=========================================
+	.responsive() {
+		form.horizontal, form.horizontal.wrapped {
+			.group {
+				.group-key, .group-value {
+	
+				}
+				.group-key {
+					float: none;
+					width: auto;
+				}
+				.group-value {
+					margin-left: 0;
+				}
+			}
+			.group-action {
+				.group-value {
+					margin-left: 0;
+					padding-left: 15px;
+				}
+			}
+		}
+		form.horizontal.wrapped {
+			.group {
+				.group-key, .group-value {}
+				.group-key {}
+				.group-value {
+					margin-left: 15px;
+				}
+			}
+			.group-action {
+				.group-value {
+					padding-left: 15px;
+				}
+			}
+		}
+		
+		// Responsive Elements
+		//====================
+		#responsiveElements();
+		
+	} // End .responsive()
+	
+} // End #formStructure
+
+// Structure Assignment
+//=========================================
+form, fieldset {
+	// Base Form Styles
+	//====================
+	#formStructure > .base();
+	
+	// Class Namespacing
+	//====================
+	&.wrapped {
+		#formStructure > .wrapped();
+	}
+	&.vertical {
+		#formStructure > .vertical();
+	}
+	&.horizontal {
+		#formStructure > .horizontal();
+	}
+	&.inline {
+		#formStructure > .inline();
+	}
 }
 
 //============================================================
 // Form Elements
 //============================================================
 
+form {
+	margin: 15px 0;
+}
+legend {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 15px;
+	color: @colorDark;
+}
+
 label {
-	display: inline-block;
+	display: block;
 	margin: 0 0 5px;
 	padding: 0;
 	
@@ -44,36 +391,26 @@ label {
 // Global form element typography
 //=========================================
 input, select, textarea, button {
-	font-family: @sansFontFamily;
+	font-family: @baseFontFamily;
 	font-size: @baseFontSize;
-	
-	// Focus
-	&:focus {
-		outline: none;
-	}
 }
 
 // Base inputs with types and textareas
 //=========================================
-input, textarea {
+input, textarea, select[multiple="multiple"] {
 	background: #fff;
 	border: 1px solid #ccc;
-	width: 220px;
-	margin: 0 0 15px;
 	padding: 6px;
+	margin: 0 0 10px;
+	display: block;
+	width: 220px;
+	max-width: 95%;
 	height: 18px;
 	line-height: 18px;
 	color: @color;
+	.transition();
 	.border-radius(3px);
 	.box-shadow( 0 1px 2px rgba(0,0,0, 0.05) inset );
-	
-	// Text
-	&[type="text"], &[type="password"], textarea {
-		&:focus {
-			border-color: @linkColor;
-			.box-shadow(0 0 8px rgba(13,119,204, 0.3));
-		}
-	}
 	
 	// Submit Buttons
 	&[type="submit"], &[type="button"] {
@@ -88,30 +425,62 @@ input, textarea {
 		height: auto;
 		line-height: normal;
 		cursor: pointer;
-		margin: 3px;
 		padding: 0;
+		margin: 3px;
 		.border-radius(0);
 		.box-shadow(none);
 	}
 	
-	// Input Widths
-	&.span1 { width: 100px; }
-	&.span2 { width: 200px; }
-	&.span3 { width: 300px; }
+	// Files
+	&[type="file"] {
+		background: none;
+		height: auto;
+		width: auto;
+		padding: 0;
+		border: 0 none;
+		.box-shadow( none );
+	}
+	
+	// Multiple select
+	&[multiple="multiple"] {
+		height: auto;
+		overflow: auto;
+	}
+	
+	// Input Sizes
+	//====================
+	&.input-fluid, &.textarea-fluid {
+		width: 95%;
+	}
+	&.input-huge, &.textarea-huge {
+		width: 340px;
+	}
+	&.input-large, &.textarea-large {
+		width: 280px;
+	}
+	&.input-default, &.textarea-default {
+		width: 220px;
+	}
+	&.input-small, &.textarea-small {
+		width: 160px;
+	}
+	&.input-tiny, &.textarea-tiny {
+		width: 100px;
+	}
+	&.input-mini, &.textarea-mini {
+		width: 40px;
+	}
+	&.input-huge, &.textarea-huge,
+	&.input-large, &.textarea-large,
+	&.input-default, &.textarea-default,
+	&.input-small, &.textarea-small,
+	&.input-tiny, &.textarea-tiny,
+	&.input-mini, &.textarea-mini {
+		max-width: 95%;
+	}
 }
-
-// Textarea
 textarea {
-	line-height: 35px;
-	background: transparent url(~"@{dirImages}textarea-bg.png") repeat 0 0;
-	width: 530px;
-	max-width: 530px;
-	height: 230px;
-	overflow: auto;
-	font-size: 16px;
-	padding: 7px 8px 0;
-	border: 0 none;
-	.box-shadow(none);
+	height: auto;
 }
 
 // Buttons
@@ -124,11 +493,46 @@ button {
 //=========================================
 select {
 	font-size: 12px;
-	padding: 4px;
 	border: 1px solid #bbb;
+	display: block;
 	width: 200px;
+	max-width: 95%;
 	height: 28px;
+	margin: 0 0 10px;
+	padding: 4px;
 	line-height: 28px;
+	
+	// Select Sizes
+	//====================
+	&.select-fluid {
+		width: 95%;
+	}
+	&.select-huge {
+		width: 354px;
+	}
+	&.select-large {
+		width: 294px;
+	}
+	&.select-default {
+		width: 234px;
+	}
+	&.select-small {
+		width: 174px;
+	}
+	&.select-tiny {
+		width: 114px;
+	}
+	&.select-mini {
+		width: 54px;
+	}
+	&.select-huge,
+	&.select-large,
+	&.select-default,
+	&.select-small,
+	&.select-tiny,
+	&.select-mini {
+		max-width: 95%;
+	}
 }
 
 // Checkboxes & Radios
@@ -136,12 +540,208 @@ select {
 .checkbox, .radio {
 	min-height: 18px;
 	line-height: 18px;
-	padding-left: 18px;
+	padding: 0 0 0 18px;
+	margin: 0 0 10px;
 	
 	input[type="checkbox"], input[type="radio"] {
 		float: left; 
 		margin-left: -18px;
 	}
+}
+.group-checkbox .checkbox, .group-radio .radio {
+	margin-top: -8px;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+// Inline
+//====================
+.group-value.inline .checkbox,
+.group-value.inline .radio,
+.checkbox.inline,
+.radio.inline {
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+}
+
+// Focus
+//=========================================
+input[type="text"], input[type="password"], input[type="submit"], button, textarea, select {
+	&:focus {
+		outline: none;
+		border-color: @blue;
+		.box-shadow( 0 0 8px rgba(13,119,204, 0.3) );
+	}
+}
+
+// Form States
+//=========================================
+form .group.warning {
+	label, p, input, textarea, select[multiple="multiple"] {
+		color: @orange;
+	}
+	input, textarea, select[multiple="multiple"] {
+		border-color: @orange;
+		
+		&:focus {
+			outline: none;
+			border-color: @orange;
+			.box-shadow( 0 0 8px rgba(223,134,7, 0.3) );
+		}
+	}
+}
+form .group.error {
+	label, p, input, textarea, select[multiple="multiple"] {
+		color: @red;
+	}
+	input, textarea, select[multiple="multiple"] {
+		border-color: @red;
+		
+		&:focus {
+			outline: none;
+			border-color: @red;
+			.box-shadow( 0 0 8px rgba(190,0,0, 0.3) );
+		}
+	}
+}
+form .group.success {
+	label, p, input, textarea, select[multiple="multiple"] {
+		color: @green;
+	}
+	input, textarea, select[multiple="multiple"] {
+		border-color: @green;
+		
+		&:focus {
+			outline: none;
+			border-color: @green;
+			.box-shadow( 0 0 8px rgba(23,168,100, 0.3) );
+		}
+	}
+}
+
+// Inline Elements
+//=========================================
+#inlineElements() {
+	label {
+		display: inline-block;
+		vertical-align: middle;
+		margin-top: -5px;
+		margin-bottom: 0;
+	}
+	input, textarea, select[multiple="multiple"] {
+		display: inline-block;
+		margin-bottom: 0;
+	}
+	.checkbox, .radio {
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: 0;
+		margin-bottom: 0;
+		
+		input[type="checkbox"], input[type="radio"] {
+			float: left; 
+			margin-left: 0;
+			margin-right: 5px;
+		}
+	}
+	select {
+		margin-bottom: 0;
+	}
+	p {
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0;
+		margin-top: -5px;
+	}
+	button, input[type="submit"], .btn {
+		position: relative;
+		top: -1px;
+	}
+}
+
+// Responsive Elements
+//=========================================
+#responsiveElements() {
+	textarea,
+	textarea.textarea-huge,
+	textarea.textarea-large,
+	textarea.textarea-default,
+	textarea.textarea-small,
+	textarea.textarea-tiny,
+	textarea.textarea-mini {
+		width: 95%;
+		max-width: 95%;
+		min-width: 95%;
+	}
+	
+	.group-value.inline .checkbox,
+	.group-value.inline .radio,
+	.checkbox.inline, .radio.inline {
+		margin-bottom: 0;
+	}
+	&.wrapped {
+		.group-key, .group-value {}
+		.group-value.inline .checkbox,
+		.group-value.inline .radio,
+		.checkbox.inline, .radio.inline {
+			margin-bottom: 12px;
+		}
+	}
+}
+
+// Horizontal Elements
+//=========================================
+#horizontalElements() {
+	
+	.group {
+		.group-key {
+			label {
+				padding-top: 6px;
+			}
+		}
+		.group-value {
+			.checkbox, .radio {
+				padding-top: 6px;
+			}
+		}
+	}
+	
+}
+
+// Vertical Elements
+//=========================================
+#verticalElements() {
+	
+	.group {
+		.group-key {
+			label {
+				padding-top: 6px;
+			}
+		}
+		.group-value {
+			.checkbox, .radio {
+				padding-top: 6px;
+			}
+		}
+	}
+	
+	.group-value.inline .checkbox,
+	.group-value.inline .radio,
+	.checkbox.inline, .radio.inline {
+		margin-bottom: 0;
+	}
+	&.wrapped {
+		.group-key, .group-value {}
+		.group-value.inline .checkbox,
+		.group-value.inline .radio,
+		.checkbox.inline, .radio.inline {
+			margin-bottom: 12px;
+		}
+	}
+	
 }
 
 //============================================================

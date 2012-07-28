@@ -150,7 +150,7 @@
 		
 	// Hover
 	//====================
-	&:hover {
+	&:hover, &:focus {
 		background-color: @colorEnd;
 		background-position: 0 -20px;
 		.btn-text-color(@colorEnd);
@@ -180,7 +180,7 @@
 	color: @color;
 	text-shadow: 0 1px 1px rgba(255,255,255, 0.75);
 	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.75) inset");
-	&:hover {
+	&:hover, &:focus {
 		color: @color;
 		text-shadow: 0 1px 1px rgba(255,255,255, 0.75);
 		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
@@ -190,7 +190,7 @@
 	color: @color;
 	text-shadow: 0 1px 1px rgba(0,0,0, 0.6);
 	.box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.25) inset");
-	&:hover {
+	&:hover, &:focus {
 		color: @color;
 		text-shadow: 0 1px 1px rgba(0,0,0, 0.6);
 		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.15) inset");
@@ -202,13 +202,13 @@
 // Sets the border color depending on how dark the background is
 .btn-border-color (@borderColor) when (lightness(@borderColor) >= 50%) {
 	border-color: darken(@borderColor, 15%);
-	&:hover {
+	&:hover, &:focus {
 		border-color: darken(@borderColor, 25%);
 	}
 }
 .btn-border-color (@borderColor) when (lightness(@borderColor) < 50%) {
 	border-color: darken(@borderColor, 5%);
-	&:hover {
+	&:hover, &:focus {
 		border-color: darken(@borderColor, 10%);
 	}
 }
@@ -221,7 +221,7 @@
 	background: @bgColor;
 	border-color: darken(@bgColor, 15%);
 	.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
-	&:hover {
+	&:hover, &:focus {
 		border-color: darken(@bgColor, 15%);
 		.box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
 	}

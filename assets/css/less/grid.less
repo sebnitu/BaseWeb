@@ -124,7 +124,7 @@
 		.push-X (@gridColumns);
 		.pull-X (@gridColumns);
 	
-	} // End .base
+	} // End .base()
 	
 	.fluid(@fluidGridColumnWidth, @fluidGridGutterWidth) {
 		
@@ -191,7 +191,7 @@
 			.pull-X (@gridColumns);
 		}
 		
-	} // End .fluid
+	} // End .fluid()
 	
 	.mobile() {
 		
@@ -211,16 +211,62 @@
 			left: 0;
 		}
 		
-	} // End .mobile
+		// Children Column ( Alpha ~ First, Omega ~ Last )
+		.alpha, .omega {
+			width: 100%;
+			margin-left: 0 !important; 
+			margin-right: 0 !important
+		}
+		
+	} // End .mobile()
 	
 } // End #gridSystem
 
 //============================================================
-// Grid Calls
+// Span Grid System
 //============================================================
 
+#spanSystem {
+	
+	.base() {
+		[class*="span-"] {
+			display: inline;
+			float: left;
+			position: relative;
+		}
+		.span-wrap {
+			float: none;
+			display: block;
+			width: 100%;
+			.clearfix();
+		}
+		
+		.span-half {
+			width: 48%;
+			margin-left: 4%;
+		}
+		.span-half:first-child {
+			margin-left: 0;
+		}
+	}
+	
+	.mobile() {
+		
+	}
+	
+}
+
+//============================================================
+// Grid System Calls
+//============================================================
+// Default Grid System
+//========================================
 #gridSystem > .base(@gridColumnWidth, @gridGutterWidth);
 #gridSystem > .fluid(@fluidGridColumnWidth, @fluidGridGutterWidth);
+
+// Span System
+//========================================
+#spanSystem > .base();
 
 //============================================================
 // End of Grid System
