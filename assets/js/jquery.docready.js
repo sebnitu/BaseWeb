@@ -6,30 +6,30 @@
  * ========================================================== */
 
 /* ==========================================================
-	When Document is Ready
+    When Document is Ready
 ============================================================= */
 $(document).ready(function() {
-	
-	/**
-	 * Mobile Orientation and Scale Fix
-	 */
-	mobileOrientationScale();
+    
+    /**
+     * Mobile Orientation and Scale Fix
+     */
+    mobileOrientationScale();
 
-	/**
-	 * Desktop, Tablet, Phone classes
-	 */
-	responsiveClasses();
-	resizeTrigger(responsiveClasses);
-	
+    /**
+     * Desktop, Tablet, Phone classes
+     */
+    responsiveClasses();
+    resizeTrigger(responsiveClasses);
+    
 });
 /* ==========================================================
-	When Images are Loaded
+    When Images are Loaded
 ============================================================= */
 $(window).load(function() {
-	
-	
-	
+    
+    
+    
 });
 /* ==========================================================
-	End of Document & Image Ready Scripts
+    End of Document & Image Ready Scripts
 ============================================================= */

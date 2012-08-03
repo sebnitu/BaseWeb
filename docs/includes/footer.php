@@ -1,12 +1,12 @@
-	</div><!-- .container -->
+    </div><!-- .container -->
 </section><!-- .baseWeb-demo -->
 
 <footer class="footer">
-	<div class="container">
-		<div class="grid-12">
-			<p>BaseWeb is built and maintained by Sebastian Nitu.<br>&copy; Copyright 2012, Sebastian Nitu. All rights reserved.</p>
-		</div>
-	</div><!-- .container -->
+    <div class="container">
+        <div class="grid-12">
+            <p>BaseWeb is built and maintained by Sebastian Nitu.<br>&copy; Copyright 2012, Sebastian Nitu. All rights reserved.</p>
+        </div>
+    </div><!-- .container -->
 </footer>
 
 <!-- jQuery -->
