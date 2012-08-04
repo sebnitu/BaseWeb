@@ -2,14 +2,83 @@
 // BaseWeb - Overlay Theme
 // https://github.com/sebnitu/BaseWeb
 //============================================================
-// Structure
+// Base Overlay Styles
 //============================================================
 
 .overlay {
     background: #fff;
-    width: 400px;
-    .border-radius(5px);
+    .border-radius();
     .box-shadow(0 1px 5px rgba(0,0,0, 0.25));
+    
+    // General Overlay Containers
+    //========================================
+    .overlay-header, .overlay-content, .overlay-footer {
+        position: relative;
+        padding: 15px 20px;
+    }
+    
+    // Overlay Header
+    //========================================
+    .overlay-header {
+        border-bottom: 1px solid @borderColor;
+        .border-radius-top();
+        
+        h2 {
+            font-size: 18px;
+            line-height: 26px;
+            margin: 0;
+        }
+        
+        // Close Button
+        //====================
+        .close {
+            background: url(~"@{dirImages}overlay-close.png") no-repeat center top;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 22px;
+            height: 22px;
+            margin: 2px;
+            text-indent: -99999px;
+            border: 0 none;
+            .transition(none);
+            
+            &:hover {
+                background-position: center bottom;
+            }
+        }
+    }
+    
+    // Overlay Content
+    //========================================
+    .overlay-content {
+        overflow: auto;
+        padding: 5px 20px;
+    }
+    
+    // Overlay Footer
+    //========================================
+    .overlay-footer {
+        background: @bgLight;
+        border-top: 1px solid @borderColor;
+        overflow: hidden;
+        .border-radius-bottom();
+        
+        * {
+            z-index: 2;
+        }
+        &:before {
+            content: "\0020";
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            display: block;
+            .box-shadow( inset 0 1px 10px rgba(0,0,0, 0.06) );
+        }
+    }
 }
 
 //============================================================
