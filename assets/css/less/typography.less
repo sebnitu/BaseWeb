@@ -8,6 +8,7 @@
 body {
     font-family: @baseFontFamily;
     font-size: @baseFontSize;
+    font-weight: @baseFontWeight;
     line-height: @baseLineHeight;
     color: @color;
 }
@@ -17,9 +18,11 @@ body {
 //============================================================
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: @headingsFontFamily;
     color: @colorHeader;
     font-weight: bold;
-    margin: 15px 0;
+    line-height: 1.6em;
+    margin: 1em 0;
     // Header links
     a {
         color: @linkHeader;
@@ -33,37 +36,31 @@ h1, h2, h3, h4, h5, h6 {
 
 // Type sized based on a two (basic and double) Fibonacci sequences interlaced
 // http://en.wikipedia.org/wiki/Fibonacci_number
-// Line-heights are calculated by font-size + 8
+// Line-heights are calculated by font-size + 6 or 1.6em
 h1 {
     font-size: 42px; 
-    line-height: 50px;
 }
 h2 {
     font-size: 34px; 
-    line-height: 42px;
 }
 h3 {
     font-size: 26px; 
-    line-height: 34px;
 }
 h4 {
     font-size: 21px; 
-    line-height: 29px;
 }
 h5 {
     font-size: 16px; 
-    line-height: 24px;
 }
 h6 {
     font-size: 13px;
-    line-height: 21px;
 }
 
 //============================================================
 // Base Elements
 //============================================================
 
-p { margin: 15px 0; }
+p { margin: 1em 0; }
 a {
     color: @linkColor;
     text-decoration: none;
@@ -84,13 +81,14 @@ small {
 }
 
 // Block Quotes
+//========================================
 blockquote {
     font-style: italic;
     padding: 0 0 0 20px;
-    margin: 15px 0;
+    margin: 1em 0;
     border-left: 1px solid @borderColor;
     small {
-        margin: 15px 0;
+        margin: 1em 0;
         display: block;
         font-size: 100%;
         &:before {
@@ -100,11 +98,12 @@ blockquote {
 }
 
 // Horizontal Rules
+//========================================
 hr {
     background: none;
     height: 0; width: 100%;
     display: block; clear: both;
-    margin: 15px 0; padding: 0;
+    margin: 1em 0; padding: 0;
     border: 0 none;
     border-bottom: 1px solid @borderColor;
     &.dotted {
@@ -119,24 +118,24 @@ hr {
 }
 
 // Code
+//========================================
 code, pre {
     background: @codeBg;
-    border: 1px solid @codeBorder;
     font-family: @monoFontFamily;
-    font-size: 85%;
-    .border-radius(3px);
+    font-size: 0.75em;
 }
 code {
     padding: 0 5px; 
     margin: 0 2px;
     display: inline-block;
     white-space: nowrap;
-    line-height: 16px;
+    line-height: inherit;
 }
 pre {
-    margin: 15px 0; padding: 10px 15px;
+    margin: 1.5em 0; padding: 1em 1.5em;
     overflow: auto;
-    line-height: 18px;
+    font-size: 0.75em;
+    line-height: 1.6em;
     code {
         background: none;
         border: 0 none;
@@ -152,14 +151,18 @@ pre {
 //============================================================
 
 ul, ol {
-    margin: 15px 0 15px 25px;
+    margin: 1em 0;
+
+    ul, ol {
+        margin-left: 1.5em;
+    }
 }
 
 ul, ul ul ul {
-    list-style: disc;
+    list-style: square;
 }
 ul ul, ul ul ul ul {
-    list-style: circle;
+    list-style: square;
 }
 
 ol, ol ol ol ol {
@@ -173,17 +176,17 @@ ol ol ol {
 }
 
 ul li, ol li {
-    margin: 10px 0;
+    margin: 1em 0;
 }
 
 dl {
-    margin: 15px 0;
+    margin: 1em 0;
     dt {
         margin: 10px 0 0;
         font-weight: bold;
     }
     dd {
-        margin: 0 0 5px 20px;
+        margin: 0 0 0.33em 1.5em;
     }
 }
 
@@ -193,7 +196,7 @@ dl {
 
 img {
     display: block; 
-    margin: 15px 0;
+    margin: 1em 0;
     max-width: 100%;
     height: auto;
     &.full {
@@ -206,22 +209,22 @@ img.align-center, .img-wrap.center {
     margin-right: auto;
 }
 img.align-left, .img-wrap.left {
-    float: left; margin: 0 20px 15px 0;
+    float: left; margin: 0 1.5em 1em 0;
 }
 img.align-right, .img-wrap.right {
-    float: right; margin: 0 0 15px 20px;
+    float: right; margin: 0 0 1em 1.5em;
 }
 
 .img-wrap {
     display: block;
-    margin: 0 0 15px 0;
+    margin: 0 0 1em 0;
     img {
         float: none;
         display: block;
         margin: 0;
         
         &.full {
-            margin-top: 15px;
+            margin-top: 1em;
         }
     }
 }
@@ -235,14 +238,14 @@ table {
     // Base table styles
     width: 100%; max-width: 100%;
     background: transparent;
-    margin: 15px 0;
+    margin: 1em 0;
     
     // Table head
     th {
         color: @colorDark;
         text-align: left;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 0.8em;
         .uppercase();
     }
     
@@ -315,8 +318,9 @@ table {
 // Miscellaneous Classes
 //============================================================
 
-.timestamp {
-    font-size: 80%;
+.timestamp, .metadata {
+    font-size: 0.75em;
+    line-height: 1.8em;
     color: @colorLight;
     .uppercase();
 }
@@ -325,11 +329,14 @@ table {
     background: @codeBg;
     border: 1px solid @codeBorder;
     border-top: 0 none;
-    padding: 8px 15px 5px;
+    padding: 0.5em 1em 0.33em;
     font-style: italic;
     font-size: 80%;
     text-align: center;
     .border-radius-bottom(3px);
+}
+.accent {
+    color: @linkColor;
 }
 
 //============================================================
