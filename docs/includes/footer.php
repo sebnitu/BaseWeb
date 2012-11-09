@@ -10,7 +10,7 @@
 </footer>
 
 <!-- jQuery -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/jquery.min.js"%3E%3C/script%3E'))</script>
 
 <!-- jQuery functions, document ready & window load -->
