@@ -13,10 +13,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/jquery.min.js"%3E%3C/script%3E'))</script>
 
-<!-- Google's Code Prettify -->
-<script src="assets/js/prettify.js"></script>
-<script>prettyPrint();</script>
-
 <!-- jQuery functions, document ready & window load -->
 <script src="assets/js/jquery.function.js"></script>
 <script src="assets/js/jquery.docready.js"></script>

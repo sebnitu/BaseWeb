@@ -30,12 +30,12 @@
 .hide-text() {
     text-indent: 100%;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidarkDegen;
 }
 .hide-text-legacy() {
     text-indent: -9999px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidarkDegen;
 }
 
 //============================================================
@@ -175,179 +175,6 @@
 // Reset filters for IE
 .reset-filter() {
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
-}
-
-//============================================================
-// Color Themes Builder Mixins
-//============================================================
-
-#colorTheme {
-    // Theme Builder Mixin
-    //========================================
-    // This mixin requires three primary colors:
-    // @r : a red color
-    // @y : a yellow color
-    // @b : a blue color
-    // It also optionally takes three secondary colors:
-    // @o : an orange color
-    // @g : a green color
-    // @v : a violet color
-    // It ouputs 60 color variables based on
-    // the three colors provided.
-    .themeBuilder(@r, @y, @b, @o: mix(@red, @yellow, 50), @g: mix(@yellow, @blue, 50), @v: mix(@blue, @red, 50)) {
-        // Primary
-        @red:       @r;
-        @yellow:    @y;
-        @blue:      @b;
-        // Secondary
-        @orange:    @o;
-        @green:     @g;
-        @violet:    @v;
-        // Tertiary
-        @redViolet:     saturate(mix(@red, @violet, 50), 5%);
-        @redOrange:     saturate(mix(@red, @orange, 50), 5%);
-        @yellowOrange:  saturate(mix(@yellow, @orange, 50), 5%);
-        @yellowGreen:   saturate(mix(@yellow, @green, 50), 5%);
-        @blueGreen:     saturate(mix(@blue, @green, 50), 5%);
-        @blueViolet:    saturate(mix(@blue, @violet, 50), 5%);
-        // Lighten
-        #colorTheme > .themeBuilder-lighten();
-        // Darken
-        #colorTheme > .themeBuilder-darken();
-    }
-    
-    // Light, Lighter, Dark and Darker
-    //========================================
-    // Light & Lighter
-    //====================
-    .themeBuilder-lighten(@lD: @lightDeg, @lrD: @lighterDeg) {
-        // Primary
-        @redLight:              lighten(@red, @lD);
-        @redLighter:            lighten(@red, @lrD);
-        @yellowLight:           lighten(@yellow, @lD);
-        @yellowLighter:         lighten(@yellow, @lrD);
-        @blueLight:             lighten(@blue, @lD);
-        @blueLighter:           lighten(@blue, @lrD);
-        // Secondary
-        @orangeLight:           lighten(@orange, @lD);
-        @orangeLighter:         lighten(@orange, @lrD);
-        @greenLight:            lighten(@green, @lD);
-        @greenLighter:          lighten(@green, @lrD);
-        @violetLight:           lighten(@violet, @lD);
-        @violetLighter:         lighten(@violet, @lrD);
-        // Tertiary
-        @redVioletLight:        lighten(@redViolet, @lD);
-        @redVioletLighter:      lighten(@redViolet, @lrD);
-        @redOrangeLight:        lighten(@redOrange, @lD);
-        @redOrangeLighter:      lighten(@redOrange, @lrD);
-        @yellowOrangeLight:     lighten(@yellowOrange, @lD);
-        @yellowOrangeLighter:   lighten(@yellowOrange, @lrD);
-        @yellowGreenLight:      lighten(@yellowGreen, @lD);
-        @yellowGreenLighter:    lighten(@yellowGreen, @lrD);
-        @blueGreenLight:        lighten(@blueGreen, @lD);
-        @blueGreenLighter:      lighten(@blueGreen, @lrD);
-        @blueVioletLight:       lighten(@blueViolet, @lD);
-        @blueVioletLighter:     lighten(@blueViolet, @lrD);
-    }
-    // Dark & Darker
-    //====================
-    .themeBuilder-darken(@dD: @darkDeg, @drD: @darkerDeg) {
-        // Primary
-        @redDark:               darken(@red, @dD);
-        @redDarker:             darken(@red, @drD);
-        @yellowDark:            darken(@yellow, @dD);
-        @yellowDarker:          darken(@yellow, @drD);
-        @blueDark:              darken(@blue, @dD);
-        @blueDarker:            darken(@blue, @drD);
-        // Secondary
-        @orangeDark:            darken(@orange, @dD);
-        @orangeDarker:          darken(@orange, @drD);
-        @greenDark:             darken(@green, @dD);
-        @greenDarker:           darken(@green, @drD);
-        @violetDark:            darken(@violet, @dD);
-        @violetDarker:          darken(@violet, @drD);
-        // Tertiary
-        @redVioletDark:         darken(@redViolet, @dD);
-        @redVioletDarker:       darken(@redViolet, @drD);
-        @redOrangeDark:         darken(@redOrange, @dD);
-        @redOrangeDarker:       darken(@redOrange, @drD);
-        @yellowOrangeDark:      darken(@yellowOrange, @dD);
-        @yellowOrangeDarker:    darken(@yellowOrange, @drD);
-        @yellowGreenDark:       darken(@yellowGreen, @dD);
-        @yellowGreenDarker:     darken(@yellowGreen, @drD);
-        @blueGreenDark:         darken(@blueGreen, @dD);
-        @blueGreenDarker:       darken(@blueGreen, @drD);
-        @blueVioletDark:        darken(@blueViolet, @dD);
-        @blueVioletDarker:      darken(@blueViolet, @drD);
-    }
-    
-    // Core Theme Methods
-    //========================================
-    // Base
-    //====================
-    // Builds your color theme based off your
-    // base primary colors: red, yellow and blue.
-    .base {
-        #baseColors > .primary;
-        #baseColors > .degrees;
-        #colorTheme > .themeBuilder(@red, @yellow, @blue);
-    }
-    // Default
-    //====================
-    // Builds your color theme based off your
-    // base primary colors: red, yellow and blue
-    // and base secondary colors: orange, green, violet.
-    .default {
-        #baseColors > .primary;
-        #baseColors > .secondary;
-        #baseColors > .degrees;
-        #colorTheme > .themeBuilder(@red, @yellow, @blue, @orange, @green, @violet);
-    }
-}
-
-//============================================================
-// Custom Themes
-//============================================================
-// Pastel
-//========================================
-#colorTheme {
-    .pastel {
-        // Primary
-        @red:               #ed7781;
-        @yellow:            #f3ec71;
-        @blue:              #78d0ef;
-        // Secondary
-        @orange:            #eec187;
-        @green:             #beda8a;
-        @violet:            #a781b8;
-        // Degrees
-        @lightDeg:          5%;
-        @lighterDeg:        10%;
-        @darkDeg:           5%;
-        @darkerDeg:         10%;
-        
-        // Build
-        #colorTheme > .themeBuilder(@red, @yellow, @blue, @orange, @green, @violet);
-    }
-}
-
-// CMYK
-//========================================
-#colorTheme {
-    .cmyk {
-        // Primary
-        @red:               #ec008c;
-        @yellow:            #fff200;
-        @blue:              #00aeef;
-        // Degrees
-        @lightDeg:          5%;
-        @lighterDeg:        10%;
-        @darkDeg:           5%;
-        @darkerDeg:         10%;
-        
-        // Build
-        #colorTheme > .themeBuilder(@red, @yellow, @blue);
-    }
 }
 
 //============================================================
