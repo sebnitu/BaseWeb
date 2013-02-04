@@ -21,7 +21,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: @headingsFontFamily;
     color: @colorHeader;
     font-weight: bold;
-    line-height: 1.6em;
     margin: 15px 0;
     // Header links
     a {
@@ -34,33 +33,36 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-// Type sized based on a two (basic and double) Fibonacci sequences interlaced
-// http://en.wikipedia.org/wiki/Fibonacci_number
-// Line-heights are calculated by font-size + 6 or 1.6em
 h1 {
-    font-size: 42px; 
+    font-size: 42px;
+    line-height: 50px;
 }
 h2 {
-    font-size: 34px; 
+    font-size: 34px;
+    line-height: 42px;
 }
 h3 {
-    font-size: 26px; 
+    font-size: 26px;
+    line-height: 34px;
 }
 h4 {
-    font-size: 21px; 
+    font-size: 22px;
+    line-height: 30px;
 }
 h5 {
-    font-size: 16px; 
+    font-size: 18px;
+    line-height: 26px;
 }
 h6 {
-    font-size: 13px;
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
 }
 
 //============================================================
 // Base Elements
 //============================================================
 
-p { margin: 1em 0; }
+p { margin: 10px 0; }
 a {
     color: @linkColor;
     text-decoration: none;
@@ -85,10 +87,10 @@ small {
 blockquote {
     font-style: italic;
     padding: 0 0 0 20px;
-    margin: 1em 0;
+    margin: 10px 0;
     border-left: 1px solid @borderColor;
     small {
-        margin: 1em 0;
+        margin: 10px 0;
         display: block;
         font-size: 100%;
         &:before {
@@ -103,7 +105,7 @@ hr {
     background: none;
     height: 0; width: 100%;
     display: block; clear: both;
-    margin: 1em 0; padding: 0;
+    margin: 10px 0; padding: 0;
     border: 0 none;
     border-bottom: 1px solid @borderColor;
     &.dotted {
@@ -132,7 +134,7 @@ code {
     line-height: inherit;
 }
 pre {
-    margin: 1.5em 0; padding: 1em 1.5em;
+    margin: 15px 0; padding: 10px 15px;
     overflow: auto;
     font-size: 0.75em;
     line-height: 1.6em;
@@ -151,17 +153,15 @@ pre {
 //============================================================
 
 ul, ol {
-    margin: 1em 0;
-
-    ul, ol {
-        margin-left: 1.5em;
-    }
+    margin: 10px 0 10px 20px;
 }
-
-ul, ul ul ul {
-    list-style: square;
+ul, ul ul ul ul {
+    list-style: disc;
 }
-ul ul, ul ul ul ul {
+ul ul {
+    list-style: circle;
+}
+ul ul ul {
     list-style: square;
 }
 
@@ -176,17 +176,17 @@ ol ol ol {
 }
 
 ul li, ol li {
-    margin: 1em 0;
+    margin: 10px 0;
 }
 
 dl {
-    margin: 1em 0;
+    margin: 10px 0;
     dt {
         margin: 10px 0 0;
         font-weight: bold;
     }
     dd {
-        margin: 0 0 0.33em 1.5em;
+        margin: 0 0 5px 20px;
     }
 }
 
@@ -196,7 +196,7 @@ dl {
 
 img {
     display: block; 
-    margin: 1em 0;
+    margin: 10px 0;
     max-width: 100%;
     height: auto;
     &.full {
@@ -209,22 +209,22 @@ img.align-center, .img-wrap.center {
     margin-right: auto;
 }
 img.align-left, .img-wrap.left {
-    float: left; margin: 0 1.5em 1em 0;
+    float: left; margin: 0 15px 10px 0;
 }
 img.align-right, .img-wrap.right {
-    float: right; margin: 0 0 1em 1.5em;
+    float: right; margin: 0 0 10px 15px;
 }
 
 .img-wrap {
     display: block;
-    margin: 0 0 1em 0;
+    margin: 0 0 10px 0;
     img {
         float: none;
         display: block;
         margin: 0;
         
         &.full {
-            margin-top: 1em;
+            margin-top: 10px;
         }
     }
 }
@@ -238,7 +238,7 @@ table {
     // Base table styles
     width: 100%; max-width: 100%;
     background: transparent;
-    margin: 1em 0;
+    margin: 10px 0;
     
     // Table head
     th {
@@ -326,7 +326,7 @@ table {
     background: @codeBg;
     border: 1px solid @codeBorder;
     border-top: 0 none;
-    padding: 0.5em 1em 0.33em;
+    padding: 5px 10px;
     font-style: italic;
     font-size: 80%;
     text-align: center;
