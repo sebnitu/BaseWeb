@@ -66,6 +66,20 @@
 }
 
 //============================================================
+// Responsive Template
+//============================================================
+
+#responsive {
+    
+    .large() {} // .large()
+    .desktop() {} // .desktop()
+    .tablet() {} // .tablet()
+    .mobile() {} // .mobile()
+    .small() {} // .small()
+    
+} // #responsive
+
+//============================================================
 // Responsive Styles
 //============================================================
 
@@ -75,19 +89,29 @@
 // create your own custom mixins and call them here.
 
 // Larger than 1200 (large desktop)
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+    #responsive > .large();
+}
 
 // Between 960px and 1200px (desktop - large desktop)
-@media only screen and (min-width: 960px) and (max-width: 1200px) {}
+@media only screen and (min-width: 960px) and (max-width: 1200px) {
+    #responsive > .desktop();
+}
 
 // Between 768px and 960px (desktop - tablet)
-@media only screen and (min-width: 768px) and (max-width: 960px) {}
+@media only screen and (min-width: 768px) and (max-width: 960px) {
+    #responsive > .tablet();
+}
 
 // Smaller than 768px (tablet - mobile)
-@media only screen and (max-width: 767px) {}
+@media only screen and (max-width: 767px) {
+    #responsive > .mobile();
+}
 
 // Smaller than 480px (mobile)
-@media only screen and (max-width: 480px) {}
+@media only screen and (max-width: 480px) {
+    #responsive > .small();
+}
 
 //============================================================
 // End of Responsive Styles
