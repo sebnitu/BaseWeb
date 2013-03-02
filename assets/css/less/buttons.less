@@ -126,21 +126,42 @@
 .btn-group {
     position: relative;
     display: inline-block;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
     .clearfix();
-    
-    > .btn {
-        position: relative;
-        float: left;
-        margin-left: -1px;
-        .border-radius(0);
-    }
-    > .btn:first-child {
-        .border-radius-left(4px);
-        margin-left: 0;
-    }
-    > .btn:last-child {
-        .border-radius-right(4px);
-    }
+}
+.btn-group > .btn {
+    position: relative;
+    z-index: 5;
+    border-radius: 0;
+    margin-right: -1px;
+}
+.btn-group > .btn:first-child {
+    .border-radius-left(4px);
+}
+.btn-group > .btn:last-child {
+    .border-radius-right(4px);
+    margin-right: 0;
+}
+.btn-group > .btn:hover {
+    z-index: 10;
+}
+
+// Vertical groups
+//========================================
+.btn-group.vertical > .btn {
+    display: block;
+    border-radius: 0;
+    margin-right: 0;
+    margin-bottom: -1px;
+}
+.btn-group.vertical > .btn:first-child {
+    .border-radius-top(4px);
+}
+.btn-group.vertical > .btn:last-child {
+    .border-radius-bottom(4px);
+    margin-bottom: 0;
 }
 
 //============================================================

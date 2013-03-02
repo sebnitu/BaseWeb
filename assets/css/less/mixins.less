@@ -165,5 +165,53 @@
 }
 
 //============================================================
+// Arrows
+//============================================================
+// Basic arrows/carets
+//========================================
+#arrow {
+    
+    .base() {
+        content: "\0020";
+        display: block;
+        width: 0;
+        height: 0;
+        border: 0 none;
+        border-style: solid;
+    }
+    
+    .up( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: 0 @arrow-width @arrow-width @arrow-width;
+        border-color: transparent;
+        border-bottom-color: @arrow-color;
+    }
+    
+    .right( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width 0 @arrow-width @arrow-width;
+        border-color: transparent;
+        border-left-color: @arrow-color;
+    }
+    
+    .down( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width @arrow-width 0 @arrow-width;
+        border-color: transparent;
+        border-top-color: @arrow-color;
+    }
+    
+    .left( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width @arrow-width @arrow-width 0;
+        border-color: transparent;
+        border-right-color: @arrow-color;
+    }
+    
+}
+
+
+
+//============================================================
 // End of Minxins
 //============================================================
