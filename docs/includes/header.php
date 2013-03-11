@@ -13,13 +13,7 @@
     <meta name="description" content="">
     
     <!-- Stylesheets and less -->
-    <link rel="stylesheet/less" type="text/css" media="all" href="assets/css/less/bootstrap.less">
-    <script src="assets/js/less.js"></script>
-    <script>
-        less.env = "development";
-        less.watch();
-        localStorage.clear();
-    </script>
+    <link rel="stylesheet" type="text/css" media="all" href="assets/css/baseweb.css">
     
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
