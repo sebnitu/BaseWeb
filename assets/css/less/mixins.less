@@ -1,23 +1,40 @@
-//============================================================
-// BaseWeb - Minxins
-// https://github.com/sebnitu/BaseWeb
-//============================================================
-// Typography
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Mixins
+////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Uppercase
+ * Makes text uppercase with optional letter spacing value.
+ */ 
 .uppercase(@letterSpacing: @letterSpacing) {
     text-transform: uppercase;
     letter-spacing: @letterSpacing;
 }
+
+/**
+ * Lowercase
+ * Makes text lowercase with optional letter spacing value
+ * but defaults to zero.
+ */ 
 .lowercase(@letterSpacing: 0) {
     text-transform: lowercase;
     letter-spacing: @letterSpacing;
 }
+/**
+ * Reset case
+ * Resets the text's text-transform property and sets letter
+ * spacing back to zero.
+ */ 
 .resetcase() {
     text-transform: none;
     letter-spacing: 0;
 }
 
+/**
+ * Remove list styles
+ * Removes default list styles of parent element
+ * and subsequent list items.
+ */ 
 .remove-list-styles() {
     list-style: none;
     margin: 0;
@@ -27,27 +44,47 @@
     }
 }
 
+/**
+ * Hide text
+ * Image replacement trick that hides text.
+ */ 
 .hide-text() {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
 }
-.hide-text-legacy() {
-    text-indent: -9999px;
-    white-space: nowrap;
-    overflow: hidden;
+
+/**
+ * Clear Mixins
+ * Allows for clearfixing by adding as mixin or as class.
+ */ 
+.clearfix {
+    *zoom: 1;
+    
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        overflow: hidden;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+    
+    &:after {
+        clear: both;
+    }
 }
 
-//============================================================
-// Border Radius
-//============================================================
-
+/**
+ * Border radius mixins
+ * These allow for more common sence writing of border
+ * radius styles and allow for global defaults.
+ */ 
 .border-radius(@radius: @borderRadius) {
     border-radius: @radius;
 }
-
+////
 // Top
-//========================================
 .border-radius-top(@radius: @borderRadius) {
     border-top-left-radius: @radius;
     border-top-right-radius: @radius;
@@ -58,9 +95,8 @@
 .border-radius-top-right(@radius: @borderRadius) {
     border-top-right-radius: @radius;
 }
-
+////
 // Bottom
-//========================================
 .border-radius-bottom(@radius: @borderRadius) {
     border-bottom-right-radius: @radius;
     border-bottom-left-radius: @radius;
@@ -71,9 +107,8 @@
 .border-radius-bottom-right(@radius: @borderRadius) {
     border-bottom-right-radius: @radius;
 }
-
+////
 // Left
-//========================================
 .border-radius-left(@radius: @borderRadius) {
     border-top-left-radius: @radius;
     border-bottom-left-radius: @radius;
@@ -84,9 +119,8 @@
 .border-radius-left-bottom(@radius: @borderRadius) {
     border-bottom-left-radius: @radius;
 }
-
+////
 // Right
-//========================================
 .border-radius-right(@radius: @borderRadius) {
     border-top-right-radius: @radius;
     border-bottom-right-radius: @radius;
@@ -98,18 +132,18 @@
     border-bottom-right-radius: @radius;
 }
 
-//============================================================
-// Box Shadow
-//============================================================
-
+/**
+ * Box shadow
+ * Allows for the use of global default box shadow property.
+ */ 
 .box-shadow(@shadow: @boxShadow) {
     box-shadow: @shadow;
 }
 
-//============================================================
-// Transition
-//============================================================
-
+/**
+ * Transition
+ * Takes care of browser prefixes and allows for global default.
+ */ 
 .transition(@property: @transitionProperty, @duration: @transitionDuration, @function: @transitionFunction) {
     -webkit-transition: @arguments;
     -moz-transition: @arguments;
@@ -118,10 +152,10 @@
     transition: @arguments;
 }
 
-//============================================================
-// Rotate
-//============================================================
-
+/**
+ * Rotate
+ * Takes care of browser prefixes and allows for global default.
+ */ 
 .rotate(@deg: @rotateDegree) {
     -moz-transform: rotate(@deg);
     -webkit-transform: rotate(@deg);
@@ -130,11 +164,13 @@
     transform: rotate(@deg);
 }
 
-//============================================================
-// Gradient
-//============================================================
-
+/**
+ * Gradients
+ * Allows for the easy application for horizontal or vertical gradients
+ */ 
 #gradient {
+    ////
+    // Horizontal
     .horizontal(@startColor: @startColorDefault, @endColor: @endColor) {
         background-color: @endColor;
         background-image: -moz-linear-gradient(left, @startColor, @endColor);
@@ -146,6 +182,8 @@
         background-repeat: repeat-x;
         filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor));
     }
+    ////
+    // Vertical
     .vertical(@startColor: @startColorDefault, @endColor: @endColor) {
         background-color: @endColor;
         background-image: -moz-linear-gradient(top, @startColor, @endColor);
@@ -157,61 +195,117 @@
         background-repeat: repeat-x;
         filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor));
     }
+    ////
+    // Reset filters for IE
+    .reset-filter() {
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+    }
 }
 
-// Reset filters for IE
-.reset-filter() {
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
-}
-
-//============================================================
-// Arrows
-//============================================================
-// Basic arrows/carets
-//========================================
+/**
+ * Arrows
+ * Uses the "0x0" element with borders trick to draw triangles.
+ */ 
 #arrow {
-    
+    ////
+    // Base arrow properties. This should be condisered a private mixin.
+    // Don't use on it's own.
     .base() {
         content: "\0020";
-        display: block;
+        display: inline-block;
         width: 0;
         height: 0;
         border: 0 none;
         border-style: solid;
+        border-color: transparent;
     }
-    
+    ////
+    // Up arrow
     .up( @arrow-width, @arrow-color ) {
         .base();
         border-width: 0 @arrow-width @arrow-width @arrow-width;
-        border-color: transparent;
         border-bottom-color: @arrow-color;
     }
-    
+    ////
+    // Right arrow
     .right( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width 0 @arrow-width @arrow-width;
-        border-color: transparent;
         border-left-color: @arrow-color;
     }
-    
+    ////
+    // Down arrow
     .down( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width @arrow-width 0 @arrow-width;
-        border-color: transparent;
         border-top-color: @arrow-color;
     }
-    
+    ////
+    // Left arrow
     .left( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width @arrow-width @arrow-width 0;
-        border-color: transparent;
         border-right-color: @arrow-color;
     }
     
+    ////
+    // Up right, right up arrow
+    .up-right( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-top-color: @arrow-color;
+        border-right-color: @arrow-color;
+    }
+    .right-up( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-top-color: @arrow-color;
+        border-right-color: @arrow-color;
+    }
+    
+    ////
+    // Up left, left up arrow
+    .up-left( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-top-color: @arrow-color;
+        border-left-color: @arrow-color;
+    }
+    .left-up( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-top-color: @arrow-color;
+        border-left-color: @arrow-color;
+    }
+    
+    ////
+    // Down right, right down arrow
+    .down-right( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-bottom-color: @arrow-color;
+        border-right-color: @arrow-color;
+    }
+    .right-down( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-bottom-color: @arrow-color;
+        border-right-color: @arrow-color;
+    }
+    
+    ////
+    // Down left, left down arrow
+    .down-left( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-bottom-color: @arrow-color;
+        border-left-color: @arrow-color;
+    }
+    .left-down( @arrow-width, @arrow-color ) {
+        .base();
+        border-width: @arrow-width;
+        border-bottom-color: @arrow-color;
+        border-left-color: @arrow-color;
+    }
+  
 }
-
-
-
-//============================================================
-// End of Minxins
-//============================================================

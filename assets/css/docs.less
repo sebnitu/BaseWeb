@@ -1,0 +1,146 @@
+////////////////////////////////////////////////////////////////////////////////
+// Documentation Styles
+////////////////////////////////////////////////////////////////////////////////
+
+body {
+    background: #f4f4f4;
+    font-family: @monoFontFamily;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Header
+////////////////////////////////////////////////////////////////////////////////
+
+.header {
+    background: @g2;
+    text-align: center;
+}
+.header .row {
+    background: @g2;
+}
+.header .logo {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    font-weight: normal;
+    color: @g9;
+    margin: 0;
+    padding: 20px 0;
+}
+.header .logo a {
+    color: @gE;
+    font-weight: bold;
+}
+.header .logo span {
+    color: @g6;
+    margin: 0 5px;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Main
+////////////////////////////////////////////////////////////////////////////////
+
+.main {
+    background: @white;
+}
+.main .row {
+    background: @white;
+    padding: 20px 0;
+}
+
+////
+// Demo
+.main .demo-header h1 {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    font-weight: bold;
+    margin-bottom: 0;
+    .uppercase(1px);
+}
+.main .demo [class*="col-"] > p {
+    text-align: center;
+    padding: 15px 20px;
+    border: 1px solid rgba(0,0,0, 0.1);
+    .border-radius(4px);
+}
+
+////
+// Adding grid styles semantically
+.test-wrap {
+    background: @white;
+    .row();
+}
+.test-1 {
+    .column(3);
+}
+.test-2 {
+    .column(9);
+}
+.test-3 {
+    .column(6);
+    .prefix(3);
+    .suffix(3);
+}
+
+////
+// Using variables as class names
+@class: test-2;
+
+.test p {
+    background: @red;
+    color: @white;
+    padding: 15px 20px;
+    margin: 10px 0;
+    .border-radius(4px);
+}
+.@{class} p {
+    background: @blue;
+}
+.test-3 p {
+    background: @green;
+}
+
+////
+// Nested
+.main .row.nested {
+    background: transparent;
+}
+.main .row.nested .row {
+    background: transparent;
+    padding: 0;
+}
+.main .row.nested [class*="col-"] {
+    background: rgba(0,0,0, 0.1);
+}
+.main .row.nested p {
+    margin: 0;
+    border: 0 none;
+}
+
+////
+// Fluid Nested
+.main .row-fluid.nested {
+    background: transparent;
+}
+.main .row-fluid.nested .row {
+    background: transparent;
+    padding: 0;
+}
+.main .row-fluid.nested [class*="col-"] {
+    background: rgba(0,0,0, 0.1);
+}
+.main .row-fluid.nested p {
+    margin: 0;
+    border: 0 none;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Footer
+////////////////////////////////////////////////////////////////////////////////
+
+.footer {
+    font-size: @baseFontSize - 2;
+    line-height: @baseLineHeight - 2;
+    text-align: center;
+    color: @gB;
+    padding: 20px 0;
+}

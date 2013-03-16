@@ -1,11 +1,6 @@
-//============================================================
-// BaseWeb - Reset Styles
-// https://github.com/sebnitu/BaseWeb
-//============================================================
-// Notes & Credits:
-// Forked from Eric Meyer's reset styles 
-// http://meyerweb.com
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Reset
+////////////////////////////////////////////////////////////////////////////////
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -21,35 +16,106 @@ figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     background: transparent;
-    margin: 0; padding: 0;
-    border: 0; outline: 0;
-    font-size: 100%; vertical-align: baseline;
+    margin: 0; 
+    padding: 0;
+    border: 0; 
+    outline: 0;
+    font-size: 100%; 
+    vertical-align: baseline;
 }
 
-// Making those HTML elements act like blocks :)
+/**
+ * Make HTML5 elements act like blocks
+ */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-// Nav lists
+/**
+ * Remove default list styles for navigation
+ */
 nav ul, nav ol { 
-    list-style: none; 
-    margin: 0; 
+    .remove-list-styles();
 }
 
-// Base table styles
+/**
+ * Base table styles
+ */
 table { 
-    border-collapse: collapse; 
-    border-spacing: 0; 
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-// This prevents automatic text resizing on mobile devices
+/**
+ * Prevents automatic text resizing on mobile devices
+ */
 html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
 
-//============================================================
-// End of Reset Styles
-//============================================================
+/**
+ * Printing Styles
+ * Source: https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css
+ */
+@media print {
+
+    * {
+        text-shadow: none !important;
+        color: #000 !important; // Black prints faster: h5bp.com/s
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    
+    a, a:visited {
+        text-decoration: underline;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    
+    ////
+    // Don't show links for images, or javascript/internal links
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+    
+    pre, blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    
+    thead {
+        display: table-header-group; // h5bp.com/t
+    }
+    
+    tr, img {
+        page-break-inside: avoid;
+    }
+    
+    img {
+        max-width: 100% !important;
+    }
+    
+    @page {
+        margin: 0.5cm;
+    }
+    
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+}

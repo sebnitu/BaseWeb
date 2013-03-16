@@ -19,25 +19,24 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
-    <link rel="shortcut icon" href="assets/img/layout/favicon.png">
-    <link rel="apple-touch-icon" href="assets/img/layout/apple-touch-icon-57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/layout/apple-touch-icon-72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/layout/apple-touch-icon-114.png">
-    
 </head>
 <body>
 
 <header class="header">
     <div class="container">
         
-        <div class="grid-12">
-            <h1 class="logo">
-                <a href="#"><strong>Base</strong>Web</a>
-            </h1>
-        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="logo">
+                    <a href="#"><strong>Base</strong>Web</a>
+                    <span>&rarr;</span>
+                    a front-end development framework
+                </h1>
+            </div>
+        </div><!-- .row -->
         
     </div><!-- .container -->
 </header><!-- .header -->
 
-<section class="baseWeb-demo">
+<section class="main">
     <div class="container">

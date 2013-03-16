@@ -1,390 +1,183 @@
-//============================================================
-// BaseWeb - Icons Theme
-// https://github.com/sebnitu/BaseWeb
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Icons
+////////////////////////////////////////////////////////////////////////////////
 
-#icons {
+/**
+ * Base icon styles
+ */ 
+i[class^="icon-"], i[class*=" icon-"], i.icon {
+    position: relative;
+    font-family: @iconFontFamily;
+    font-size: 2.2em;
+    font-style: normal;
+    line-height: 0.5em;
+    font-weight: normal;
+    text-transform: none;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased !important;
+}
+a, .btn, h1, h2, h3, h4, h5, h6 {
+    i[class^="icon-"], i[class*=" icon-"], i.icon {
+        margin: -0.05em 0.2em 0 -0.2em;
+        top: -0.05em;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    [iclass^="icon-"], i[class*=" icon-"], i.icon {
+        margin-left: 0;
+    }
+}
 
-    //============================================================
-    // Font Based Icons
-    //============================================================
-    // Entypo Icon Mapping
-    //========================================
-    // Entypo: http://www.entypo.com/
-    
-    .font-entypo {
-    
-        [class^="icon-"], [class*=" icon-"], .icon {
-            position: relative;
-            font-family: @iconFontFamily;
-            font-size: 2.2em;
-            font-style: normal;
-            line-height: 0.5em;
-            font-weight: normal;
-            text-transform: none;
-            display: inline-block;
-            width: auto;
-            height: auto;
-            border: 0 none;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased !important;
-        }
-        a, .btn, h1, h2, h3, h4, h5, h6 {
-            [class^="icon-"], [class*=" icon-"], .icon {
-                margin: -0.05em 0.2em 0 -0.2em;
-                top: -0.05em;
-            }
-        }
-        h1, h2, h3, h4, h5, h6 {
-            [class^="icon-"], [class*=" icon-"], .icon {
-                margin-left: 0;
-            }
-        }
-        
-        // Entypo Icon Mapping
-        //========================================
-        // Numerical
-        //====================
-        .icon-map                   { &:after { content: '1'; } }
-        .icon-compass               { &:after { content: '2'; } }
-        .icon-direction             { &:after { content: '3'; } }
-        .icon-scope                 { &:after { content: '4'; } }
-        .icon-share                 { &:after { content: '5'; } }
-        .icon-heart                 { &:after { content: '6'; } }
-        .icon-star                  { &:after { content: '7'; } }
-        .icon-thumbs-up             { &:after { content: '8'; } }
-        .icon-dialog                { &:after { content: '9'; } }
-        .icon-maps                  { &:after { content: '0'; } }
-        
-        // Alphabetical lowercase
-        //====================
-        .icon-help                  { &:after { content: 'a'; } }
-        .icon-help-circle           { &:after { content: 'b'; } }
-        .icon-warning               { &:after { content: 'c'; } }
-        .icon-reload                { &:after { content: 'd'; } }
-        .icon-reload-ccw            { &:after { content: 'e'; } }
-        .icon-shuffle               { &:after { content: 'f'; } }
-        .icon-back                  { &:after { content: 'g'; } }
-        .icon-retweet               { &:after { content: 'h'; } }
-        .icon-list                  { &:after { content: 'i'; } }
-        .icon-list-add              { &:after { content: 'j'; } }
-        .icon-image-list            { &:after { content: 'k'; } }
-        .icon-document-text         { &:after { content: 'l'; } }
-        .icon-document              { &:after { content: 'm'; } }
-        .icon-document-group, 
-        .icon-documents             { &:after { content: 'n'; } }
-        .icon-document-landscape    { &:after { content: 'o'; } }
-        .icon-images                { &:after { content: 'p'; } }
-        .icon-movie                 { &:after { content: 'q'; } }
-        .icon-songs                 { &:after { content: 'r'; } }
-        .icon-folder                { &:after { content: 's'; } }
-        .icon-archive               { &:after { content: 't'; } }
-        .icon-trash                 { &:after { content: 'u'; } }
-        .icon-upload                { &:after { content: 'v'; } }
-        .icon-download              { &:after { content: 'w'; } }
-        .icon-ssd-download          { &:after { content: 'x'; } }
-        .icon-cloud                 { &:after { content: 'y'; } }
-        .icon-cloud-upload          { &:after { content: 'z'; } }
-        
-        // Alphabetical uppercase
-        //====================
-        .icon-flashlight            { &:after { content: 'A'; } }
-        .icon-trophy                { &:after { content: 'B'; } }
-        .icon-tag                   { &:after { content: 'C'; } }
-        .icon-camera                { &:after { content: 'D'; } }
-        .icon-sleep                 { &:after { content: 'E'; } }
-        .icon-palette               { &:after { content: 'F'; } }
-        .icon-leaf                  { &:after { content: 'G'; } }
-        .icon-music                 { &:after { content: 'H'; } }
-        .icon-shop                  { &:after { content: 'I'; } }
-        .icon-fly                   { &:after { content: 'J'; } }
-        .icon-lifebuoy              { &:after { content: 'K'; } }
-        .icon-circles               { &:after { content: 'L'; } }
-        .icon-eye                   { &:after { content: 'M'; } }
-        .icon-clock                 { &:after { content: 'N'; } }
-        .icon-mic                   { &:after { content: 'O'; } }
-        .icon-calendar              { &:after { content: 'P'; } }
-        .icon-flash                 { &:after { content: 'Q'; } }
-        .icon-hour-glass            { &:after { content: 'R'; } }
-        .icon-rss                   { &:after { content: 'S'; } }
-        .icon-broadcast             { &:after { content: 'T'; } }
-        .icon-lock                  { &:after { content: 'U'; } }
-        .icon-unlock                { &:after { content: 'V'; } }
-        .icon-check                 { &:after { content: 'W'; } }
-        .icon-close                 { &:after { content: 'X'; } }
-        .icon-minus-circle          { &:after { content: 'Y'; } }
-        .icon-plus-circle           { &:after { content: 'Z'; } }
-        
-        // Characters
-        //====================
-        .icon-phone                 { &:after { content: '!'; } }
-        .icon-settings,
-        .icon-cog                   { &:after { content: '@'; } }
-        .icon-mouse                 { &:after { content: '#'; } }
-        .icon-address,
-        .icon-street                { &:after { content: '$'; } }
-        .icon-email                 { &:after { content: '%'; } }
-        .icon-block                 { &:after { content: '^'; } }
-        .icon-write                 { &:after { content: '\0026'; } }
-        .icon-forward               { &:after { content: '*'; } }
-        .icon-reply                 { &:after { content: '('; } }
-        .icon-reply-all             { &:after { content: ')'; } }
-        .icon-users,
-        .icon-user-group            { &:after { content: ','; } }
-        .icon-print                 { &:after { content: '\003C'; } }
-        .icon-vcard                 { &:after { content: '.'; } }
-        .icon-link                  { &:after { content: '\003E'; } }
-        .icon-export                { &:after { content: '/'; } }
-        .icon-flag                  { &:after { content: '?'; } }
-        .icon-quote                 { &:after { content: ';'; } }
-        .icon-comment               { &:after { content: ':'; } }
-        .icon-attach                { &:after { content: '\''; } }
-        .icon-mobile                { &:after { content: '"'; } }
-        .icon-close-circle          { &:after { content: '['; } }
-        .icon-play                  { &:after { content: '{'; } }
-        .icon-plus                  { &:after { content: ']'; } }
-        .icon-record                { &:after { content: '}'; } }
-        .icon-minus                 { &:after { content: '\\'; } }
-        .icon-pause                 { &:after { content: '|'; } }
-        .icon-user-add              { &:after { content: '-'; } }
-        .icon-info                  { &:after { content: '_'; } }
-        .icon-alert                 { &:after { content: '='; } }
-        .icon-user                  { &:after { content: '+'; } }
-        .icon-info-circle           { &:after { content: '`'; } }
-        .icon-stop                  { &:after { content: '~'; } }
-        
-        // Miscellaneous
-        //====================
-        .icon-copyright             { &:after { content: '\00A9'; } }
-        .icon-sweden                { &:after { content: '\00AE'; } }
-        .icon-fast-forward          { &:after { content: '\00C4'; } }
-        .icon-rewind                { &:after { content: '\00C5'; } }
-        .icon-jump-to-start         { &:after { content: '\00C7'; } }
-        .icon-jump-to-end           { &:after { content: '\00C9'; } }
-        .icon-expand                { &:after { content: '\00F1'; } }
-        .icon-minimize              { &:after { content: '\00F6'; } }
-        .icon-arrow-up              { &:after { content: '\00E8'; } }
-        .icon-arrow-left            { &:after { content: '\00E7'; } }
-        .icon-arrow-left-bold       { &:after { content: '\00E5'; } }
-        .icon-arrow-right-bold      { &:after { content: '\00E4'; } }
-        .icon-arrow-down-bold       { &:after { content: '\00E3'; } }
-        .icon-arrow-up-bold         { &:after { content: '\00E2'; } }
-        .icon-sound                 { &:after { content: '\00E1'; } }
-        .icon-mute                  { &:after { content: '\00E0'; } }
-        .icon-search                { &:after { content: '\00F4'; } }
-        .icon-book                  { &:after { content: '\00F3'; } }
-        .icon-popup                 { &:after { content: '\00F2'; } }
-        .icon-bookmark              { &:after { content: '\00F1'; } }
-        .icon-volume                { &:after { content: '\00DC'; } }
-        .icon-home                  { &:after { content: '\00EF'; } }
-        .icon-arrow-right-circle    { &:after { content: '\00EE'; } }
-        .icon-arrow-down-circle     { &:after { content: '\00ED'; } }
-        .icon-arrow-up-circle       { &:after { content: '\00EC'; } }
-        .icon-arrow-left-circle     { &:after { content: '\00EB'; } }
-        .icon-arrow-right           { &:after { content: '\00EA'; } }
-        .icon-arrow-down            { &:after { content: '\00E9'; } }
-        .icon-elipsis               { &:after { content: '\00D6'; } }
+/**
+ * Icon font mapping
+ */ 
+.font-entypo() {
+    ////
+    // Numerical
+    i.icon-map                   { &:after { content: '1'; } }
+    i.icon-compass               { &:after { content: '2'; } }
+    i.icon-direction             { &:after { content: '3'; } }
+    i.icon-scope                 { &:after { content: '4'; } }
+    i.icon-share                 { &:after { content: '5'; } }
+    i.icon-heart                 { &:after { content: '6'; } }
+    i.icon-star                  { &:after { content: '7'; } }
+    i.icon-thumbs-up             { &:after { content: '8'; } }
+    i.icon-dialog                { &:after { content: '9'; } }
+    i.icon-maps                  { &:after { content: '0'; } }
+    ////
+    // Alphabetical lowercase
+    i.icon-help                  { &:after { content: 'a'; } }
+    i.icon-help-circle           { &:after { content: 'b'; } }
+    i.icon-warning               { &:after { content: 'c'; } }
+    i.icon-reload                { &:after { content: 'd'; } }
+    i.icon-reload-ccw            { &:after { content: 'e'; } }
+    i.icon-shuffle               { &:after { content: 'f'; } }
+    i.icon-back                  { &:after { content: 'g'; } }
+    i.icon-retweet               { &:after { content: 'h'; } }
+    i.icon-list                  { &:after { content: 'i'; } }
+    i.icon-list-add              { &:after { content: 'j'; } }
+    i.icon-image-list            { &:after { content: 'k'; } }
+    i.icon-document-text         { &:after { content: 'l'; } }
+    i.icon-document              { &:after { content: 'm'; } }
+    i.icon-document-group, 
+    i.icon-documents             { &:after { content: 'n'; } }
+    i.icon-document-landscape    { &:after { content: 'o'; } }
+    i.icon-images                { &:after { content: 'p'; } }
+    i.icon-movie                 { &:after { content: 'q'; } }
+    i.icon-songs                 { &:after { content: 'r'; } }
+    i.icon-folder                { &:after { content: 's'; } }
+    i.icon-archive               { &:after { content: 't'; } }
+    i.icon-trash                 { &:after { content: 'u'; } }
+    i.icon-upload                { &:after { content: 'v'; } }
+    i.icon-download              { &:after { content: 'w'; } }
+    i.icon-ssd-download          { &:after { content: 'x'; } }
+    i.icon-cloud                 { &:after { content: 'y'; } }
+    i.icon-cloud-upload          { &:after { content: 'z'; } }
+    ////
+    // Alphabetical uppercase
+    i.icon-flashlight            { &:after { content: 'A'; } }
+    i.icon-trophy                { &:after { content: 'B'; } }
+    i.icon-tag                   { &:after { content: 'C'; } }
+    i.icon-camera                { &:after { content: 'D'; } }
+    i.icon-sleep                 { &:after { content: 'E'; } }
+    i.icon-palette               { &:after { content: 'F'; } }
+    i.icon-leaf                  { &:after { content: 'G'; } }
+    i.icon-music                 { &:after { content: 'H'; } }
+    i.icon-shop                  { &:after { content: 'I'; } }
+    i.icon-fly                   { &:after { content: 'J'; } }
+    i.icon-lifebuoy              { &:after { content: 'K'; } }
+    i.icon-circles               { &:after { content: 'L'; } }
+    i.icon-eye                   { &:after { content: 'M'; } }
+    i.icon-clock                 { &:after { content: 'N'; } }
+    i.icon-mic                   { &:after { content: 'O'; } }
+    i.icon-calendar              { &:after { content: 'P'; } }
+    i.icon-flash                 { &:after { content: 'Q'; } }
+    i.icon-hour-glass            { &:after { content: 'R'; } }
+    i.icon-rss                   { &:after { content: 'S'; } }
+    i.icon-broadcast             { &:after { content: 'T'; } }
+    i.icon-lock                  { &:after { content: 'U'; } }
+    i.icon-unlock                { &:after { content: 'V'; } }
+    i.icon-check                 { &:after { content: 'W'; } }
+    i.icon-close                 { &:after { content: 'X'; } }
+    i.icon-minus-circle          { &:after { content: 'Y'; } }
+    i.icon-plus-circle           { &:after { content: 'Z'; } }
+    ////
+    // Characters
+    i.icon-phone                 { &:after { content: '!'; } }
+    i.icon-settings,
+    i.icon-cog                   { &:after { content: '@'; } }
+    i.icon-mouse                 { &:after { content: '#'; } }
+    i.icon-address,
+    i.icon-street                { &:after { content: '$'; } }
+    i.icon-email                 { &:after { content: '%'; } }
+    i.icon-block                 { &:after { content: '^'; } }
+    i.icon-write                 { &:after { content: '\0026'; } }
+    i.icon-forward               { &:after { content: '*'; } }
+    i.icon-reply                 { &:after { content: '('; } }
+    i.icon-reply-all             { &:after { content: ')'; } }
+    i.icon-users,
+    i.icon-user-group            { &:after { content: ','; } }
+    i.icon-print                 { &:after { content: '\003C'; } }
+    i.icon-vcard                 { &:after { content: '.'; } }
+    i.icon-link                  { &:after { content: '\003E'; } }
+    i.icon-export                { &:after { content: '/'; } }
+    i.icon-flag                  { &:after { content: '?'; } }
+    i.icon-quote                 { &:after { content: ';'; } }
+    i.icon-comment               { &:after { content: ':'; } }
+    i.icon-attach                { &:after { content: '\''; } }
+    i.icon-mobile                { &:after { content: '"'; } }
+    i.icon-close-circle          { &:after { content: '['; } }
+    i.icon-play                  { &:after { content: '\{'; } }
+    i.icon-plus                  { &:after { content: ']'; } }
+    i.icon-record                { &:after { content: '\}'; } }
+    i.icon-minus                 { &:after { content: '\\'; } }
+    i.icon-pause                 { &:after { content: '|'; } }
+    i.icon-user-add              { &:after { content: '-'; } }
+    i.icon-info                  { &:after { content: '_'; } }
+    i.icon-alert                 { &:after { content: '='; } }
+    i.icon-user                  { &:after { content: '+'; } }
+    i.icon-info-circle           { &:after { content: '`'; } }
+    i.icon-stop                  { &:after { content: '~'; } }
+    ////
+    // Miscellaneous
+    i.icon-copyright             { &:after { content: '\00A9'; } }
+    i.icon-sweden                { &:after { content: '\00AE'; } }
+    i.icon-fast-forward          { &:after { content: '\00C4'; } }
+    i.icon-rewind                { &:after { content: '\00C5'; } }
+    i.icon-jump-to-start         { &:after { content: '\00C7'; } }
+    i.icon-jump-to-end           { &:after { content: '\00C9'; } }
+    i.icon-expand                { &:after { content: '\00F1'; } }
+    i.icon-minimize              { &:after { content: '\00F6'; } }
+    i.icon-arrow-up              { &:after { content: '\00E8'; } }
+    i.icon-arrow-left            { &:after { content: '\00E7'; } }
+    i.icon-arrow-left-bold       { &:after { content: '\00E5'; } }
+    i.icon-arrow-right-bold      { &:after { content: '\00E4'; } }
+    i.icon-arrow-down-bold       { &:after { content: '\00E3'; } }
+    i.icon-arrow-up-bold         { &:after { content: '\00E2'; } }
+    i.icon-sound                 { &:after { content: '\00E1'; } }
+    i.icon-mute                  { &:after { content: '\00E0'; } }
+    i.icon-search                { &:after { content: '\00F4'; } }
+    i.icon-book                  { &:after { content: '\00F3'; } }
+    i.icon-popup                 { &:after { content: '\00F2'; } }
+    i.icon-bookmark              { &:after { content: '\00F1'; } }
+    i.icon-volume                { &:after { content: '\00DC'; } }
+    i.icon-home                  { &:after { content: '\00EF'; } }
+    i.icon-arrow-right-circle    { &:after { content: '\00EE'; } }
+    i.icon-arrow-down-circle     { &:after { content: '\00ED'; } }
+    i.icon-arrow-up-circle       { &:after { content: '\00EC'; } }
+    i.icon-arrow-left-circle     { &:after { content: '\00EB'; } }
+    i.icon-arrow-right           { &:after { content: '\00EA'; } }
+    i.icon-arrow-down            { &:after { content: '\00E9'; } }
+    i.icon-elipsis               { &:after { content: '\00D6'; } }
 
-    } // End of .font-based
+}
 
-    //============================================================
-    // Sprite Based
-    //============================================================
-    // Glyphicons Halflings
-    //========================================
-    // Glyphicons: http://glyphicons.com/
-    
-    .sprite-glyphicons-halflings {
-    
-        [class^="icon-"], [class*=" icon-"] {
-            position: relative;
-            display: inline-block;
-            width: 14px;
-            height: 14px;
-            line-height: 14px;
-            vertical-align: text-top;
-            background-image: url(~"@{dirImages}glyphicons-halflings.png");
-            background-position: 14px 14px;
-            background-repeat: no-repeat;
-        
-        }
-        .icon-white {
-          background-image: url(~"@{dirImages}glyphicons-halflings-white.png");
-        }
-        a, .btn {
-            [class^="icon-"], [class*=" icon-"] {
-                margin: 0 5px 0 -5px;
-            }
-        }
-        
-        // Glyphicons Icon Mapping
-        //========================================
-        // Sprite Row 1
-        //====================
-        .icon-glass              { background-position: 0      0; }
-        .icon-music              { background-position: -24px  0; }
-        .icon-search             { background-position: -48px  0; }
-        .icon-envelope           { background-position: -72px  0; }
-        .icon-heart              { background-position: -96px  0; }
-        .icon-star               { background-position: -120px 0; }
-        .icon-star-empty         { background-position: -144px 0; }
-        .icon-user               { background-position: -168px 0; }
-        .icon-film               { background-position: -192px 0; }
-        .icon-th-large           { background-position: -216px 0; }
-        .icon-th                 { background-position: -240px 0; }
-        .icon-th-list            { background-position: -264px 0; }
-        .icon-ok                 { background-position: -288px 0; }
-        .icon-remove             { background-position: -312px 0; }
-        .icon-zoom-in            { background-position: -336px 0; }
-        .icon-zoom-out           { background-position: -360px 0; }
-        .icon-off                { background-position: -384px 0; }
-        .icon-signal             { background-position: -408px 0; }
-        .icon-cog                { background-position: -432px 0; }
-        .icon-trash              { background-position: -456px 0; }
-        
-        // Sprite Row 2
-        //====================
-        .icon-home               { background-position: 0      -24px; }
-        .icon-file               { background-position: -24px  -24px; }
-        .icon-time               { background-position: -48px  -24px; }
-        .icon-road               { background-position: -72px  -24px; }
-        .icon-download-alt       { background-position: -96px  -24px; }
-        .icon-download           { background-position: -120px -24px; }
-        .icon-upload             { background-position: -144px -24px; }
-        .icon-inbox              { background-position: -168px -24px; }
-        .icon-play-circle        { background-position: -192px -24px; }
-        .icon-repeat             { background-position: -216px -24px; }
-        .icon-refresh            { background-position: -240px -24px; }
-        .icon-list-alt           { background-position: -264px -24px; }
-        .icon-lock               { background-position: -287px -24px; }
-        .icon-flag               { background-position: -312px -24px; }
-        .icon-headphones         { background-position: -336px -24px; }
-        .icon-volume-off         { background-position: -360px -24px; }
-        .icon-volume-down        { background-position: -384px -24px; }
-        .icon-volume-up          { background-position: -408px -24px; }
-        .icon-qrcode             { background-position: -432px -24px; }
-        .icon-barcode            { background-position: -456px -24px; }
-        
-        // Sprite Row 3
-        //====================
-        .icon-tag                { background-position: 0      -48px; }
-        .icon-tags               { background-position: -25px  -48px; }
-        .icon-book               { background-position: -48px  -48px; }
-        .icon-bookmark           { background-position: -72px  -48px; }
-        .icon-print              { background-position: -96px  -48px; }
-        .icon-camera             { background-position: -120px -48px; }
-        .icon-font               { background-position: -144px -48px; }
-        .icon-bold               { background-position: -167px -48px; }
-        .icon-italic             { background-position: -192px -48px; }
-        .icon-text-height        { background-position: -216px -48px; }
-        .icon-text-width         { background-position: -240px -48px; }
-        .icon-align-left         { background-position: -264px -48px; }
-        .icon-align-center       { background-position: -288px -48px; }
-        .icon-align-right        { background-position: -312px -48px; }
-        .icon-align-justify      { background-position: -336px -48px; }
-        .icon-list               { background-position: -360px -48px; }
-        .icon-indent-left        { background-position: -384px -48px; }
-        .icon-indent-right       { background-position: -408px -48px; }
-        .icon-facetime-video     { background-position: -432px -48px; }
-        .icon-picture            { background-position: -456px -48px; }
-        
-        // Sprite Row 4
-        //====================
-        .icon-pencil             { background-position: 0      -72px; }
-        .icon-map-marker         { background-position: -24px  -72px; }
-        .icon-adjust             { background-position: -48px  -72px; }
-        .icon-tint               { background-position: -72px  -72px; }
-        .icon-edit               { background-position: -96px  -72px; }
-        .icon-share              { background-position: -120px -72px; }
-        .icon-check              { background-position: -144px -72px; }
-        .icon-move               { background-position: -168px -72px; }
-        .icon-step-backward      { background-position: -192px -72px; }
-        .icon-fast-backward      { background-position: -216px -72px; }
-        .icon-backward           { background-position: -240px -72px; }
-        .icon-play               { background-position: -264px -72px; }
-        .icon-pause              { background-position: -288px -72px; }
-        .icon-stop               { background-position: -312px -72px; }
-        .icon-forward            { background-position: -336px -72px; }
-        .icon-fast-forward       { background-position: -360px -72px; }
-        .icon-step-forward       { background-position: -384px -72px; }
-        .icon-eject              { background-position: -408px -72px; }
-        .icon-chevron-left       { background-position: -432px -72px; }
-        .icon-chevron-right      { background-position: -456px -72px; }
-        
-        // Sprite Row 5
-        //====================
-        .icon-plus-sign          { background-position: 0      -96px; }
-        .icon-minus-sign         { background-position: -24px  -96px; }
-        .icon-remove-sign        { background-position: -48px  -96px; }
-        .icon-ok-sign            { background-position: -72px  -96px; }
-        .icon-question-sign      { background-position: -96px  -96px; }
-        .icon-info-sign          { background-position: -120px -96px; }
-        .icon-screenshot         { background-position: -144px -96px; }
-        .icon-remove-circle      { background-position: -168px -96px; }
-        .icon-ok-circle          { background-position: -192px -96px; }
-        .icon-ban-circle         { background-position: -216px -96px; }
-        .icon-arrow-left         { background-position: -240px -96px; }
-        .icon-arrow-right        { background-position: -264px -96px; }
-        .icon-arrow-up           { background-position: -289px -96px; }
-        .icon-arrow-down         { background-position: -312px -96px; }
-        .icon-share-alt          { background-position: -336px -96px; }
-        .icon-resize-full        { background-position: -360px -96px; }
-        .icon-resize-small       { background-position: -384px -96px; }
-        .icon-plus               { background-position: -408px -96px; }
-        .icon-minus              { background-position: -433px -96px; }
-        .icon-asterisk           { background-position: -456px -96px; }
-        
-        // Sprite Row 6
-        //====================
-        .icon-exclamation-sign   { background-position: 0      -120px; }
-        .icon-gift               { background-position: -24px  -120px; }
-        .icon-leaf               { background-position: -48px  -120px; }
-        .icon-fire               { background-position: -72px  -120px; }
-        .icon-eye-open           { background-position: -96px  -120px; }
-        .icon-eye-close          { background-position: -120px -120px; }
-        .icon-warning-sign       { background-position: -144px -120px; }
-        .icon-plane              { background-position: -168px -120px; }
-        .icon-calendar           { background-position: -192px -120px; }
-        .icon-random             { background-position: -216px -120px; }
-        .icon-comment            { background-position: -240px -120px; }
-        .icon-magnet             { background-position: -264px -120px; }
-        .icon-chevron-up         { background-position: -288px -120px; }
-        .icon-chevron-down       { background-position: -313px -119px; }
-        .icon-retweet            { background-position: -336px -120px; }
-        .icon-shopping-cart      { background-position: -360px -120px; }
-        .icon-folder-close       { background-position: -384px -120px; }
-        .icon-folder-open        { background-position: -408px -120px; }
-        .icon-resize-vertical    { background-position: -432px -119px; }
-        .icon-resize-horizontal  { background-position: -456px -118px; }
-        
-        // Sprite Row 7
-        //====================
-        .icon-hdd                { background-position: 0      -144px; }
-        .icon-bullhorn           { background-position: -24px  -144px; }
-        .icon-bell               { background-position: -48px  -144px; }
-        .icon-certificate        { background-position: -72px  -144px; }
-        .icon-thumbs-up          { background-position: -96px  -144px; }
-        .icon-thumbs-down        { background-position: -120px -144px; }
-        .icon-hand-right         { background-position: -144px -144px; }
-        .icon-hand-left          { background-position: -168px -144px; }
-        .icon-hand-up            { background-position: -192px -144px; }
-        .icon-hand-down          { background-position: -216px -144px; }
-        .icon-circle-arrow-right { background-position: -240px -144px; }
-        .icon-circle-arrow-left  { background-position: -264px -144px; }
-        .icon-circle-arrow-up    { background-position: -288px -144px; }
-        .icon-circle-arrow-down  { background-position: -312px -144px; }
-        .icon-globe              { background-position: -336px -144px; }
-        .icon-wrench             { background-position: -360px -144px; }
-        .icon-tasks              { background-position: -384px -144px; }
-        .icon-filter             { background-position: -408px -144px; }
-        .icon-briefcase          { background-position: -432px -144px; }
-        .icon-fullscreen         { background-position: -456px -144px; }
-    
-    } // End of .sprite-glyphicons-halflings
-
-} // End of #icons
-
-//============================================================
-// End of Icons Theme
-//============================================================
+/**
+ * Font icon init
+ */ 
+.font-entypo();

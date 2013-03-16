@@ -1,5 +1,8 @@
-<?php include('docs/includes/header.php'); ?>
+<?php include('docs/inc/header.php'); ?>
 
+<?php include('docs/grid.php'); ?>
+
+<?php /*
 <div class="demo-block demo-typography">
     <?php include('docs/typography.html'); ?>
 </div>
@@ -14,10 +17,6 @@
 
 <div class="demo-block demo-overlay">
     <?php include('docs/overlay.html'); ?>
-</div>
-
-<div class="demo-block demo-grid">
-    <?php include('docs/grid.html'); ?>
 </div>
 
 <div class="demo-block demo-utility">
@@ -35,5 +34,5 @@
 <div class="demo-block demo-icons">
     <?php include('docs/icons.html'); ?>
 </div>
-
-<?php include('docs/includes/footer.php'); ?>
+*/ ?>
+<?php include('docs/inc/footer.php'); ?>
