@@ -20,8 +20,12 @@
 @grid_col_class: col-;
 @grid_prefix_class: prefix-;
 @grid_suffix_class: suffix-;
+////
+// Build selectors
+@col_selector: ~'[class*="@{grid_col_class}"]'; //escaped value interpolation
 
-
+////
+// The Grid Builder
 #grid {
     
     .fixed( 
@@ -102,7 +106,7 @@
         .@{grid_row_class} {
             .row();
         }
-        (~'[class*="@{grid_col_class}"]') {
+        @{col_selector} {
             .column-base();
         }
         
@@ -117,7 +121,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Trigger Grid
+// Trigger Grids
 ////////////////////////////////////////////////////////////////////////////////
 
 #grid > .fixed();

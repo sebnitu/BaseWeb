@@ -2,9 +2,8 @@
 // Colors
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Gray scale
- */ 
+////
+// Gray Scale
 @g0:               #000; // Black
 @g1:               #111;
 @g2:               #222; // Gray Darker
@@ -22,9 +21,8 @@
 @gE:               #eee;
 @gF:               #fff; // White
 
-/**
- * Readable gray scale
- */ 
+////
+// Readable gray scale
 @black:             @g0;
 @grayDarker:        @g2;
 @grayDark:          @g4;
@@ -33,63 +31,58 @@
 @grayLighter:       @gB;
 @white:             @gF;
 
-/**
- * Pure RGB
- */ 
+////
+// RGB
 @rgbRed:            #ff0000;
 @rgbGreen:          #00ff00;
 @rgbBlue:           #0000ff;
 
-/**
- * Pure RGB shorthand
- */ 
+////
+// RGB Shorthand
 @Rgb:               @rgbRed;
 @rGb:               @rgbGreen;
 @rgB:               @rgbBlue;
 
-/**
- * Pure CMYK
- */ 
+////
+// CMYK
 @cmykCyan:          #00aeef;
 @cmykMagenta:       #ec008c;
 @cmykYellow:        #fff200;
 @cmykKey:           #231f20;
 
-/**
- * Pure CMYK shorthand
- */ 
+////
+// CMYK Shorthand
 @Cmyk:              @cmykCyan;
 @cMyk:              @cmykMagenta;
 @cmYk:              @cmykYellow;
 @cmyK:              @cmykKey;
 
-/**
- * Degrees
- * Used in creating colors with the light,
- * lighter and dark, darker variations.
- */ 
+////////////////////////////////////////////////////////////////////////////////
+// Custom Palette
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Degrees
+// Used in creating colors with the light,
+// lighter and dark, darker variations.
 @lightDeg:          5%;
 @lighterDeg:        10%;
 @darkDeg:           5%;
 @darkerDeg:         10%;
 
-/**
- * Primary
- */ 
+////
+// Primary
 @red:               #be0000;
 @yellow:            #d6d81b;
 @blue:              #0868df;
-
-/**
- * Secondary
- */ 
+////
+// Secondary
 @orange:            #df8607;
 @green:             #17a80c;
 @violet:            #910bc2;
-
-/**
- * Tertiary
- */ 
+////
+// Tertiary
+// Created by mixing primary and secondary colors
 @redViolet:         saturate(mix(@red, @violet, 50), 5%);
 @redOrange:         saturate(mix(@red, @orange, 50), 5%);
 @yellowOrange:      saturate(mix(@yellow, @orange, 50), 5%);
@@ -97,9 +90,10 @@
 @blueGreen:         saturate(mix(@blue, @green, 50), 5%);
 @blueViolet:        saturate(mix(@blue, @violet, 50), 5%);
 
-/**
- * Light & lighter
- */
+////////////////////////////////////////////////////////////////////////////////
+// Lighter & Darker Variations
+////////////////////////////////////////////////////////////////////////////////
+
 ////
 // Primary
 @redLight:              lighten(@red, @lightDeg);
@@ -131,9 +125,6 @@
 @blueVioletLight:       lighten(@blueViolet, @lightDeg);
 @blueVioletLighter:     lighten(@blueViolet, @lighterDeg);
 
-/**
- * Dark & darker
- */
 ////
 // Primary
 @redDark:               darken(@red, @darkDeg);

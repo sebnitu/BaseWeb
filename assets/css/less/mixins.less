@@ -2,39 +2,36 @@
 // Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Uppercase
- * Makes text uppercase with optional letter spacing value.
- */ 
+////
+// Uppercase
+// Makes text uppercase with optional letter spacing value.
 .uppercase(@letterSpacing: @letterSpacing) {
     text-transform: uppercase;
     letter-spacing: @letterSpacing;
 }
 
-/**
- * Lowercase
- * Makes text lowercase with optional letter spacing value
- * but defaults to zero.
- */ 
+////
+// Lowercase
+// Makes text lowercase with optional letter spacing value
+// but defaults to zero.
 .lowercase(@letterSpacing: 0) {
     text-transform: lowercase;
     letter-spacing: @letterSpacing;
 }
-/**
- * Reset case
- * Resets the text's text-transform property and sets letter
- * spacing back to zero.
- */ 
+
+////
+// Reset case
+// Resets the text's text-transform property and sets letter
+// spacing back to zero.
 .resetcase() {
     text-transform: none;
     letter-spacing: 0;
 }
 
-/**
- * Remove list styles
- * Removes default list styles of parent element
- * and subsequent list items.
- */ 
+////
+// Remove list styles
+// Removes default list styles of parent element
+// and subsequent list items.
 .remove-list-styles() {
     list-style: none;
     margin: 0;
@@ -44,20 +41,18 @@
     }
 }
 
-/**
- * Hide text
- * Image replacement trick that hides text.
- */ 
+////
+// Hide text
+// Image replacement trick that hides text.
 .hide-text() {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
 }
 
-/**
- * Clear Mixins
- * Allows for clearfixing by adding as mixin or as class.
- */ 
+////
+// Clear Mixins
+// Allows for clearfixing by adding as mixin or as class.
 .clearfix {
     *zoom: 1;
     
@@ -75,11 +70,24 @@
     }
 }
 
-/**
- * Border radius mixins
- * These allow for more common sence writing of border
- * radius styles and allow for global defaults.
- */ 
+////
+// Utility State Mixins
+.is-hidden() {
+    display: none !important;
+}
+.is-visible( @display : @displayVisible ) {
+    display: @display !important;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// CSS3 Helpers
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Border radius mixins
+// These allow for more common sence writing of border
+// radius styles and allow for global defaults.
+////
 .border-radius(@radius: @borderRadius) {
     border-radius: @radius;
 }
@@ -132,18 +140,16 @@
     border-bottom-right-radius: @radius;
 }
 
-/**
- * Box shadow
- * Allows for the use of global default box shadow property.
- */ 
+////
+// Box shadow
+// Allows for the use of global default box shadow property.
 .box-shadow(@shadow: @boxShadow) {
     box-shadow: @shadow;
 }
 
-/**
- * Transition
- * Takes care of browser prefixes and allows for global default.
- */ 
+////
+// Transition
+// Takes care of browser prefixes and allows for global default.
 .transition(@property: @transitionProperty, @duration: @transitionDuration, @function: @transitionFunction) {
     -webkit-transition: @arguments;
     -moz-transition: @arguments;
@@ -152,10 +158,9 @@
     transition: @arguments;
 }
 
-/**
- * Rotate
- * Takes care of browser prefixes and allows for global default.
- */ 
+////
+// Rotate
+// Takes care of browser prefixes and allows for global default.
 .rotate(@deg: @rotateDegree) {
     -moz-transform: rotate(@deg);
     -webkit-transform: rotate(@deg);
@@ -164,10 +169,9 @@
     transform: rotate(@deg);
 }
 
-/**
- * Gradients
- * Allows for the easy application for horizontal or vertical gradients
- */ 
+////
+// Gradients
+// Allows for the easy application for horizontal or vertical gradients
 #gradient {
     ////
     // Horizontal
@@ -202,10 +206,14 @@
     }
 }
 
-/**
- * Arrows
- * Uses the "0x0" element with borders trick to draw triangles.
- */ 
+////////////////////////////////////////////////////////////////////////////////
+// UI Helpers
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Arrows
+// Uses the "0x0" element with borders trick to draw triangles.
+////
 #arrow {
     ////
     // Base arrow properties. This should be condisered a private mixin.

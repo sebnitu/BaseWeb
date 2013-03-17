@@ -3,79 +3,96 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Things to show
-.visible-mobile         { display: none !important; }
-.visible-tablet         { display: none !important; }
-.visible-desktop        { display: block !important; }
+// Templates
+#responsive {
+    .base()    {}
+    .small()   {}
+    .mobile()  {}
+    .tablet()  {}
+    .desktop() {}
+    .large()   {}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Visibility Classes
+////////////////////////////////////////////////////////////////////////////////
+
+#responsive > .base {
+    ////
+    // Things to show
+    .visible-mobile         { .is-hidden();  }
+    .visible-tablet         { .is-hidden();  }
+    .visible-desktop        { .is-visible(); }
+    ////
+    // Things to hide
+    .hidden-mobile          { .is-visible(); }
+    .hidden-tablet          { .is-visible(); }
+    .hidden-desktop         { .is-hidden();  }
+}
 
 ////
-// Things to hide
-.hidden-mobile          { display: block !important; }
-.hidden-tablet          { display: block !important; }
-.hidden-desktop         { display: none !important; }
-
-// Between 768px and 960px (desktop - tablet)
-@media only screen and (min-width: 768px) and (max-width: 960px) {
-    // Show
-    .visible-tablet     { display: block !important; }
-    // Hide
-    .hidden-tablet      { display: none !important; }
-    // Hide everything else
-    .hidden-mobile      { display: block !important; }
-    .visible-mobile     { display: none !important; }
-    .hidden-desktop     { display: block !important; }
-    .visible-desktop    { display: none !important; }
+// Tablet Visibility
+#responsive > .tablet {
+    ////
+    // Things to show
+    .visible-mobile         { .is-hidden();  }
+    .visible-tablet         { .is-visible(); }
+    .visible-desktop        { .is-hidden();  }
+    ////
+    // Things to hide
+    .hidden-mobile          { .is-visible(); }
+    .hidden-tablet          { .is-hidden();  }
+    .hidden-desktop         { .is-visible(); }
 }
 
-// Smaller than 768px (tablet - mobile)
-@media only screen and (max-width: 767px) {
-    // Show
-    .visible-mobile     { display: block !important; }
-    // Hide
-    .hidden-mobile      { display: none !important; }
-    // Hide everything else
-    .hidden-tablet      { display: block !important; }
-    .visible-tablet     { display: none !important; }
-    .hidden-desktop     { display: block !important; }
-    .visible-desktop    { display: none !important; }
+////
+// Mobile Visibility
+#responsive > .mobile {
+    ////
+    // Things to show
+    .visible-mobile         { .is-visible(); }
+    .visible-tablet         { .is-hidden();  }
+    .visible-desktop        { .is-hidden();  }
+    ////
+    // Things to hide
+    .hidden-mobile          { .is-hidden();  }
+    .hidden-tablet          { .is-visible(); }
+    .hidden-desktop         { .is-visible(); }
 }
 
-//============================================================
-// Responsive Template
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Media Queries
+////////////////////////////////////////////////////////////////////////////////
 
-#responsive {
-    .large() {}
-    .desktop() {}
-    .tablet() {}
-    .mobile() {}
-    .small() {}
-}
+////
+// Base styles
+#responsive > .base();
 
-//============================================================
-// Responsive Styles
-//============================================================
-
+////
 // Larger than 1200 (large desktop)
 @media (min-width: 1200px) {
     #responsive > .large();
 }
 
+////
 // Between 960px and 1200px (desktop - large desktop)
 @media only screen and (min-width: 960px) and (max-width: 1200px) {
     #responsive > .desktop();
 }
 
+////
 // Between 768px and 960px (desktop - tablet)
 @media only screen and (min-width: 768px) and (max-width: 960px) {
     #responsive > .tablet();
 }
 
+////
 // Smaller than 768px (tablet - mobile)
 @media only screen and (max-width: 767px) {
     #responsive > .mobile();
 }
 
+////
 // Smaller than 480px (mobile)
 @media only screen and (max-width: 480px) {
     #responsive > .small();

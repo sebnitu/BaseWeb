@@ -1,5 +1,7 @@
 <?php include('docs/inc/header.php'); ?>
 
+<?php include('docs/utility.php'); ?>
+
 <?php include('docs/grid.php'); ?>
 
 <?php /*
@@ -19,10 +21,6 @@
     <?php include('docs/overlay.html'); ?>
 </div>
 
-<div class="demo-block demo-utility">
-    <?php include('docs/utility.html'); ?>
-</div>
-
 <div class="demo-block demo-buttons">
     <?php include('docs/buttons.html'); ?>
 </div>
@@ -35,4 +33,5 @@
     <?php include('docs/icons.html'); ?>
 </div>
 */ ?>
+
 <?php include('docs/inc/footer.php'); ?>

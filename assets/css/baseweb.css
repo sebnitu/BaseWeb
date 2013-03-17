@@ -5,7 +5,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{di
 nav ul,nav ol{list-style:none;margin:0;}nav ul li,nav ol li{margin:0;}
 table{border-collapse:collapse;border-spacing:0;}
 html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
-@media print{*{text-shadow:none !important;color:#000 !important;background:transparent !important;box-shadow:none !important;} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} abbr[title]:after{content:" (" attr(title) ")";} .ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} pre,blockquote{border:1px solid #999;page-break-inside:avoid;} thead{display:table-header-group;} tr,img{page-break-inside:avoid;} img{max-width:100% !important;} @page {margin:0.5cm;}p,h2,h3{orphans:3;widows:3;} h2,h3{page-break-after:avoid;}}
+@media print{*{background:transparent !important;color:#000 !important;text-shadow:none !important;box-shadow:none !important;} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} abbr[title]:after{content:" (" attr(title) ")";} .ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} pre,blockquote{border:1px solid #999;page-break-inside:avoid;} thead{display:table-header-group;} tr,img{page-break-inside:avoid;} img{max-width:100% !important;} @page {margin:0.5cm;}p,h2,h3{orphans:3;widows:3;} h2,h3{page-break-after:avoid;}}
 .container{position:relative;width:940px;margin-left:auto;margin-right:auto;}
 .row{position:relative;margin-left:-20px;clear:both;*zoom:1;}.row:before,.row:after{content:"\0020";display:block;overflow:hidden;visibility:hidden;width:0;height:0;}
 .row:after{clear:both;}
@@ -46,14 +46,31 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
 .suffix-3{padding-right:240px;}
 .suffix-2{padding-right:160px;}
 .suffix-1{padding-right:80px;}
+#responsive>.base .visible-mobile{display:none !important;}
+#responsive>.base .visible-tablet{display:none !important;}
+#responsive>.base .visible-desktop{display:block !important;}
+#responsive>.base .hidden-mobile{display:block !important;}
+#responsive>.base .hidden-tablet{display:block !important;}
+#responsive>.base .hidden-desktop{display:none !important;}
+#responsive>.tablet .visible-mobile{display:none !important;}
+#responsive>.tablet .visible-tablet{display:block !important;}
+#responsive>.tablet .visible-desktop{display:none !important;}
+#responsive>.tablet .hidden-mobile{display:block !important;}
+#responsive>.tablet .hidden-tablet{display:none !important;}
+#responsive>.tablet .hidden-desktop{display:block !important;}
+#responsive>.mobile .visible-mobile{display:block !important;}
+#responsive>.mobile .visible-tablet{display:none !important;}
+#responsive>.mobile .visible-desktop{display:none !important;}
+#responsive>.mobile .hidden-mobile{display:none !important;}
+#responsive>.mobile .hidden-tablet{display:block !important;}
+#responsive>.mobile .hidden-desktop{display:block !important;}
 .visible-mobile{display:none !important;}
 .visible-tablet{display:none !important;}
 .visible-desktop{display:block !important;}
 .hidden-mobile{display:block !important;}
 .hidden-tablet{display:block !important;}
 .hidden-desktop{display:none !important;}
-@media only screen and (min-width:768px) and (max-width:960px){.visible-tablet{display:block !important;} .hidden-tablet{display:none !important;} .hidden-mobile{display:block !important;} .visible-mobile{display:none !important;} .hidden-desktop{display:block !important;} .visible-desktop{display:none !important;}}@media only screen and (max-width:767px){.visible-mobile{display:block !important;} .hidden-mobile{display:none !important;} .hidden-tablet{display:block !important;} .visible-tablet{display:none !important;} .hidden-desktop{display:block !important;} .visible-desktop{display:none !important;}}
-@media (min-width:1200px){}@media only screen and (min-width:960px) and (max-width:1200px){}@media only screen and (min-width:768px) and (max-width:960px){}@media only screen and (max-width:767px){}@media only screen and (max-width:480px){}@font-face{font-family:"Entypo";src:url(../fonts/entypo-webfont.eot);src:url(../fonts/entypo-webfont.eot?#iefix) format("embedded-opentype"),url(../fonts/entypo-webfont.woff) format("woff"),url(../fonts/entypo-webfont.ttf) format("truetype"),url(../fonts/entypo-webfont.svg#EntypoRegular) format("svg");font-weight:normal;font-style:normal;}body{font-family:"Helvetica Neue","HelveticaNeue",helvetica,arial,sans-serif;font-size:14px;font-weight:normal;line-height:22px;color:#666666;}
+@media (min-width:1200px){}@media only screen and (min-width:960px) and (max-width:1200px){}@media only screen and (min-width:768px) and (max-width:960px){.visible-mobile{display:none !important;} .visible-tablet{display:block !important;} .visible-desktop{display:none !important;} .hidden-mobile{display:block !important;} .hidden-tablet{display:none !important;} .hidden-desktop{display:block !important;}}@media only screen and (max-width:767px){.visible-mobile{display:block !important;} .visible-tablet{display:none !important;} .visible-desktop{display:none !important;} .hidden-mobile{display:none !important;} .hidden-tablet{display:block !important;} .hidden-desktop{display:block !important;}}@media only screen and (max-width:480px){}@font-face{font-family:"Entypo";src:url(../fonts/entypo-webfont.eot);src:url(../fonts/entypo-webfont.eot?#iefix) format("embedded-opentype"),url(../fonts/entypo-webfont.woff) format("woff"),url(../fonts/entypo-webfont.ttf) format("truetype"),url(../fonts/entypo-webfont.svg#EntypoRegular) format("svg");font-weight:normal;font-style:normal;}body{font-family:"Helvetica Neue","HelveticaNeue",helvetica,arial,sans-serif;font-size:14px;font-weight:normal;line-height:22px;color:#666666;}
 h1,h2,h3,h4,h5,h6{font-family:inherit;color:#222222;font-weight:bold;margin:15px 0;}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{color:#0868df;border:0 none;}h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover{color:#df8607;}
 h1{font-size:42px;line-height:50px;}
 h2{font-size:34px;line-height:42px;}
@@ -419,7 +436,7 @@ body{background:#f4f4f4;font-family:Menlo,Monaco,Consolas,"Courier New",monospac
 .header{background:#222222;text-align:center;}
 .header .row{background:#222222;}
 .header .logo{font-size:14px;line-height:22px;font-weight:normal;color:#999999;margin:0;padding:20px 0;}
-.header .logo a{color:#eeeeee;font-weight:bold;}
+.header .logo a{color:#eeeeee;}
 .header .logo span{color:#666666;margin:0 5px;}
 .main{background:#ffffff;}
 .main .row{background:#ffffff;padding:20px 0;}
