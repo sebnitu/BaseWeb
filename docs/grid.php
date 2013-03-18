@@ -10,7 +10,7 @@
     
 </div><!-- .demo-intro -->
 
-<div class="demo">
+<div class="demo demo-grid">
 
     <div class="test-wrap">
         <div class="test test-1"><p>Test</p></div>

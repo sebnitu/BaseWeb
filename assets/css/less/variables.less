@@ -29,7 +29,21 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Responsive
+// Media Mode 
+// mobile-first: Starts with mobile styles then uses media queries for other viewports
+// desktop-first: Starts with desktop styles then uses media quereis for other viewports
+// off: Turns off media queries
+@media-mode: mobile-first;
+
+////
+// Media query breakpoints
+@media-small:       480px; // max-width
+@media-mobile:      767px;
+@media-tablet-min:  @media-mobile;
+@media-tablet-max:  @media-desktop-min; // Not used on mobile-first
+@media-desktop-min: 960px;
+@media-desktop-max: @media-large; // Not used on mobile-first
+@media-large:       1200px; // min-width
 
 ////
 // Grid System

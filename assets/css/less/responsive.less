@@ -17,32 +17,23 @@
 // Visibility Classes
 ////////////////////////////////////////////////////////////////////////////////
 
-#responsive > .base {
-    ////
-    // Things to show
-    .visible-mobile         { .is-hidden();  }
-    .visible-tablet         { .is-hidden();  }
-    .visible-desktop        { .is-visible(); }
-    ////
-    // Things to hide
-    .hidden-mobile          { .is-visible(); }
-    .hidden-tablet          { .is-visible(); }
-    .hidden-desktop         { .is-hidden();  }
-}
-
 ////
-// Tablet Visibility
-#responsive > .tablet {
+// Small Visibility
+#responsive > .small {
     ////
     // Things to show
-    .visible-mobile         { .is-hidden();  }
-    .visible-tablet         { .is-visible(); }
-    .visible-desktop        { .is-hidden();  }
+    .visible-small      { .is-visible(); }
+    .visible-mobile     { .is-visible(); }
+    .visible-tablet     { .is-hidden();  }
+    .visible-desktop    { .is-hidden();  }
+    .visible-large      { .is-hidden();  }
     ////
     // Things to hide
-    .hidden-mobile          { .is-visible(); }
-    .hidden-tablet          { .is-hidden();  }
-    .hidden-desktop         { .is-visible(); }
+    .hidden-small       { .is-hidden();  }
+    .hidden-mobile      { .is-hidden();  }
+    .hidden-tablet      { .is-visible(); }
+    .hidden-desktop     { .is-visible(); }
+    .hidden-large       { .is-visible(); }
 }
 
 ////
@@ -50,50 +41,141 @@
 #responsive > .mobile {
     ////
     // Things to show
-    .visible-mobile         { .is-visible(); }
-    .visible-tablet         { .is-hidden();  }
-    .visible-desktop        { .is-hidden();  }
+    .visible-small      { .is-hidden();  }
+    .visible-mobile     { .is-visible(); }
+    .visible-tablet     { .is-hidden();  }
+    .visible-desktop    { .is-hidden();  }
+    .visible-large      { .is-hidden();  }
     ////
     // Things to hide
-    .hidden-mobile          { .is-hidden();  }
-    .hidden-tablet          { .is-visible(); }
-    .hidden-desktop         { .is-visible(); }
+    .hidden-small       { .is-visible(); }
+    .hidden-mobile      { .is-hidden();  }
+    .hidden-tablet      { .is-visible(); }
+    .hidden-desktop     { .is-visible(); }
+    .hidden-large       { .is-visible(); }
 }
+
+////
+// Tablet Visibility
+#responsive > .tablet {
+    ////
+    // Things to show
+    .visible-small      { .is-hidden();  }
+    .visible-mobile     { .is-hidden();  }
+    .visible-tablet     { .is-visible(); }
+    .visible-desktop    { .is-hidden();  }
+    .visible-large      { .is-hidden();  }
+    ////
+    // Things to hide
+    .hidden-small       { .is-visible(); }
+    .hidden-mobile      { .is-visible(); }
+    .hidden-tablet      { .is-hidden();  }
+    .hidden-desktop     { .is-visible(); }
+    .hidden-large       { .is-visible(); }
+}
+////
+// Desktop Visibility
+#responsive > .desktop {
+    ////
+    // Things to show
+    .visible-small      { .is-hidden();  }
+    .visible-mobile     { .is-hidden();  }
+    .visible-tablet     { .is-hidden();  }
+    .visible-desktop    { .is-visible(); }
+    .visible-large      { .is-hidden();  }
+    ////
+    // Things to hide
+    .hidden-small       { .is-visible(); }
+    .hidden-mobile      { .is-visible(); }
+    .hidden-tablet      { .is-visible(); }
+    .hidden-desktop     { .is-hidden();  }
+    .hidden-large       { .is-visible(); }
+}
+////
+// Large Visibility
+#responsive > .large {
+    ////
+    // Things to show
+    .visible-small      { .is-hidden();  }
+    .visible-mobile     { .is-hidden();  }
+    .visible-tablet     { .is-hidden();  }
+    .visible-desktop    { .is-visible(); }
+    .visible-large      { .is-visible(); }
+    ////
+    // Things to hide
+    .hidden-small       { .is-visible(); }
+    .hidden-mobile      { .is-visible(); }
+    .hidden-tablet      { .is-visible(); }
+    .hidden-desktop     { .is-hidden();  }
+    .hidden-large       { .is-hidden();  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Base styles
-#responsive > .base();
-
-////
-// Larger than 1200 (large desktop)
-@media (min-width: 1200px) {
-    #responsive > .large();
+#media-queries() when (@media-mode = mobile-first) {
+    ////
+    // Mobile first
+    #responsive > .mobile;
+    ////
+    // Small: @media-small and below
+    @media screen and (max-width: @media-small ) {
+        #responsive > .small;
+    }
+    ////
+    // Tablet: @media-tablet-min and above
+    @media screen and ( min-width: @media-tablet-min ) {
+        #responsive > .tablet;
+    }
+    ////
+    // Desktop: @media-desktop-min and above
+    @media screen and ( min-width: @media-desktop-min ) {
+        #responsive > .desktop;
+    }
+    ////
+    // Larger: @media-large and above
+    @media screen and ( min-width: @media-large ) {
+        #responsive > .large;
+    }
+}
+#media-queries() when (@media-mode = desktop-first) {
+    ////
+    // Desktop first
+    #responsive > .desktop;
+    ////
+    // Larger: @media-large and above
+    @media screen and ( min-width: @media-large ) {
+        #responsive > .large;
+    }
+    ////
+    // Desktop Between @media-desktop-min and @media-desktop-max
+    @media screen and ( min-width: @media-desktop-min ) and ( max-width: @media-desktop-max ) {
+        #responsive > .desktop;
+    }
+    ////
+    // Tablet: Between @media-tablet-min and @media-tablet-max
+    @media screen and (min-width: @media-tablet-min ) and ( max-width: @media-tablet-max ) {
+        #responsive > .tablet;
+    }
+    ////
+    // Mobile: @media-mobile and below
+    @media screen and (max-width: @media-mobile ) {
+        #responsive > .mobile;
+    }
+    ////
+    // Small: @media-small and below
+    @media screen and (max-width: @media-small ) {
+        #responsive > .small;
+    }
+}
+#media-queries() when (@media-mode = off) {
+    ////
+    // No media queries here
+    #responsive > .base;
 }
 
 ////
-// Between 960px and 1200px (desktop - large desktop)
-@media only screen and (min-width: 960px) and (max-width: 1200px) {
-    #responsive > .desktop();
-}
-
-////
-// Between 768px and 960px (desktop - tablet)
-@media only screen and (min-width: 768px) and (max-width: 960px) {
-    #responsive > .tablet();
-}
-
-////
-// Smaller than 768px (tablet - mobile)
-@media only screen and (max-width: 767px) {
-    #responsive > .mobile();
-}
-
-////
-// Smaller than 480px (mobile)
-@media only screen and (max-width: 480px) {
-    #responsive > .small();
-}
+// Build media queries
+#media-queries();

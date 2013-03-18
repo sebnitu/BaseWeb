@@ -55,81 +55,134 @@ body {
     margin-bottom: 0;
     .uppercase(1px);
 }
-.main .demo [class*="col-"] > p {
-    text-align: center;
-    padding: 15px 20px;
-    border: 1px solid rgba(0,0,0, 0.1);
-    .border-radius(4px);
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Utility Classes Demo
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-utility {
+    
+    h3 {
+        font-size: @baseFontSize;
+        line-height: @baseLineHeight;
+        font-weight: bold;
+        margin: 0;
+    }
+    .row {
+        padding-top: 0;
+    }
+    span {
+        float: left;
+        text-align: center;
+        padding: 15px 20px;
+        margin: 0 10px 0 0;
+        border: 1px solid rgba(0,0,0, 0.1);
+        .border-radius(4px);
+    }
+    
+    .visible-on h3 {
+        color: @blue;
+    }
+    .visible-on span {
+        background: #edf5ff;
+        border-color: #ccdef5;
+        color: @blue;
+    }
+    .hidden-on h3 {
+        color: @red;
+    }
+    .hidden-on span {
+        background: #ffeded;
+        border-color: #f6cfcf;
+        color: @red;
+    }
+    
 }
 
-////
-// Adding grid styles semantically
-.test-wrap {
-    background: @white;
-    .row();
-}
-.test-1 {
-    .column(3);
-}
-.test-2 {
-    .column(9);
-}
-.test-3 {
-    .column(6);
-    .prefix(3);
-    .suffix(3);
-}
+////////////////////////////////////////////////////////////////////////////////
+// Grid System Demo
+////////////////////////////////////////////////////////////////////////////////
 
-////
-// Using variables as class names
-@class: test-2;
+.demo-grid {
+    
+    [class*="col-"] > p {
+        text-align: center;
+        padding: 15px 20px;
+        border: 1px solid rgba(0,0,0, 0.1);
+        .border-radius(4px);
+    }
+    
+    ////
+    // Adding grid styles semantically
+    .test-wrap {
+        background: @white;
+        .row();
+    }
+    .test-1 {
+        .column(3);
+    }
+    .test-2 {
+        .column(9);
+    }
+    .test-3 {
+        .column(6);
+        .prefix(3);
+        .suffix(3);
+    }
+    
+    ////
+    // Using variables as class names
+    @class: test-2;
+    
+    .test p {
+        background: @red;
+        color: @white;
+        padding: 15px 20px;
+        margin: 10px 0;
+        .border-radius(4px);
+    }
+    .@{class} p {
+        background: @blue;
+    }
+    .test-3 p {
+        background: @green;
+    }
+    
+    ////
+    // Nested
+    .row.nested {
+        background: transparent;
+    }
+    .row.nested .row {
+        background: transparent;
+        padding: 0;
+    }
+    .row.nested [class*="col-"] {
+        background: rgba(0,0,0, 0.1);
+    }
+    .row.nested p {
+        margin: 0;
+        border: 0 none;
+    }
+    
+    ////
+    // Fluid Nested
+    .row-fluid.nested {
+        background: transparent;
+    }
+    .row-fluid.nested .row {
+        background: transparent;
+        padding: 0;
+    }
+    .row-fluid.nested [class*="col-"] {
+        background: rgba(0,0,0, 0.1);
+    }
+    .row-fluid.nested p {
+        margin: 0;
+        border: 0 none;
+    }
 
-.test p {
-    background: @red;
-    color: @white;
-    padding: 15px 20px;
-    margin: 10px 0;
-    .border-radius(4px);
-}
-.@{class} p {
-    background: @blue;
-}
-.test-3 p {
-    background: @green;
-}
-
-////
-// Nested
-.main .row.nested {
-    background: transparent;
-}
-.main .row.nested .row {
-    background: transparent;
-    padding: 0;
-}
-.main .row.nested [class*="col-"] {
-    background: rgba(0,0,0, 0.1);
-}
-.main .row.nested p {
-    margin: 0;
-    border: 0 none;
-}
-
-////
-// Fluid Nested
-.main .row-fluid.nested {
-    background: transparent;
-}
-.main .row-fluid.nested .row {
-    background: transparent;
-    padding: 0;
-}
-.main .row-fluid.nested [class*="col-"] {
-    background: rgba(0,0,0, 0.1);
-}
-.main .row-fluid.nested p {
-    margin: 0;
-    border: 0 none;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

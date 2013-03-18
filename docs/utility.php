@@ -10,24 +10,32 @@
     
 </div><!-- .demo-intro -->
 
-<div class="demo">
+<div class="demo demo-utility">
 
-    <div class="demo-utility">
-        
-        <h3>Visible On</h3>
-        <div class="clearfix">
-            <p><span class="visible-mobile">Mobile</span></p>
-            <p><span class="visible-tablet">Tablet</span></p>
-            <p><span class="visible-desktop">Desktop</span></p>
-        </div>
-
-        <h3>Hidden On</h3>
-        <div class="clearfix">
-            <p><span class="hidden-mobile">Mobile</span></p>
-            <p><span class="hidden-tablet">Tablet</span></p>
-            <p><span class="hidden-desktop">Desktop</span></p>
+    <div class="row">
+    
+        <div class="col-6 visible-on">
+            <h3>Visible On</h3>
+            <p class="clearfix">
+                <span class="visible-small">Small</span>
+                <span class="visible-mobile">Mobile</span>
+                <span class="visible-tablet">Tablet</span>
+                <span class="visible-desktop">Desktop</span>
+                <span class="visible-large">Large</span>
+            </p>
         </div>
         
-    </div><!-- .container -->
-
+        <div class="col-6 hidden-on">
+            <h3>Hidden On</h3>
+            <p class="clearfix">
+                <span class="hidden-small">Small</span>
+                <span class="hidden-mobile">Mobile</span>
+                <span class="hidden-tablet">Tablet</span>
+                <span class="hidden-desktop">Desktop</span>
+                <span class="hidden-large">Large</span>
+            </p>
+        </div>
+        
+    </div>
+    
 </div><!-- .demo -->
