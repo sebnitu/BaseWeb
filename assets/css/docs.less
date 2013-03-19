@@ -43,12 +43,17 @@ body {
 }
 .main .row {
     background: @white;
-    padding: 20px 0;
 }
 
 ////
 // Demo
-.main .demo-header h1 {
+.demo-intro {
+    padding: 20px 0 10px;
+}
+.demo {
+    padding: 10px 0 20px;
+}
+.demo-header h1 {
     font-size: @baseFontSize;
     line-height: @baseLineHeight;
     font-weight: bold;
@@ -76,7 +81,7 @@ body {
         float: left;
         text-align: center;
         padding: 15px 20px;
-        margin: 0 10px 0 0;
+        margin: 0 10px 10px 0;
         border: 1px solid rgba(0,0,0, 0.1);
         .border-radius(4px);
     }
@@ -85,16 +90,16 @@ body {
         color: @blue;
     }
     .visible-on span {
-        background: #edf5ff;
-        border-color: #ccdef5;
+        .rgba( @blue, 0.1 );
+        .rgba-border( @blue, 0.2 );
         color: @blue;
     }
     .hidden-on h3 {
         color: @red;
     }
     .hidden-on span {
-        background: #ffeded;
-        border-color: #f6cfcf;
+        .rgba( @red, 0.1 );
+        .rgba-border( @red, 0.2 );
         color: @red;
     }
     
@@ -114,45 +119,10 @@ body {
     }
     
     ////
-    // Adding grid styles semantically
-    .test-wrap {
-        background: @white;
-        .row();
-    }
-    .test-1 {
-        .column(3);
-    }
-    .test-2 {
-        .column(9);
-    }
-    .test-3 {
-        .column(6);
-        .prefix(3);
-        .suffix(3);
-    }
-    
-    ////
-    // Using variables as class names
-    @class: test-2;
-    
-    .test p {
-        background: @red;
-        color: @white;
-        padding: 15px 20px;
-        margin: 10px 0;
-        .border-radius(4px);
-    }
-    .@{class} p {
-        background: @blue;
-    }
-    .test-3 p {
-        background: @green;
-    }
-    
-    ////
     // Nested
     .row.nested {
         background: transparent;
+        margin-bottom: 20px;
     }
     .row.nested .row {
         background: transparent;

@@ -3,125 +3,304 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Base grid settings
+// Columns
 @grid_columns: 12;
-@grid_gutter_width: 20px;
-@grid_container_margin: auto;
 
 ////
-// Define either total width or column width
-@grid_total_width: 960px;
-// @grid_column_width: 60px;
+// Grid Specs
+@grid_row_width: 960px; // 100% for fluid layout
+@grid_gutter_width: 20px; // % for fluid layout
+@grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
+
+////
+// Fluid Variables
+@grid_min_width: @media_mobile;
+@grid_max_width: @media_large;
+
+@grid_row_margin_width: 30px;
+
+////
+// Grid Gutter Property
+// Set to margin or padding
+@grid_gutter_property: margin;
 
 ////
 // Class variables
-@grid_container_class: container;
-@grid_row_class: row;
-@grid_col_class: col-;
-@grid_prefix_class: prefix-;
-@grid_suffix_class: suffix-;
+@class_container: container;
+@class_row: row;
+@class_column: col-;
+@class_prefix: prefix-;
+@class_suffix: suffix-;
+
 ////
 // Build selectors
-@col_selector: ~'[class*="@{grid_col_class}"]'; //escaped value interpolation
+@all_columns: ~'[class*="@{class_column}"]'; //escaped value interpolation
+
+////
+// Grid Mixins
+.build-container() {
+    margin-left: auto;
+    margin-right: auto;
+    
+    .is-fluid() when ( @grid_row_width = 100% ) {
+        @media ( min-width: @grid_min_width ) and ( max-width: @grid_max_width ) {
+            margin-left: @grid_row_margin_width;
+            margin-right: @grid_row_margin_width;
+        }
+        max-width: ( @grid_max_width - ( @grid_row_margin_width * 2 ) );
+    }
+    .is-fluid();
+    
+    .clearfix();
+}
+.build-row() {
+    .gutter-property() when (@grid_gutter_property = margin) {
+        margin-left: ( @grid_gutter_width / 2 );
+        margin-right: ( @grid_gutter_width / 2 );
+    }
+    .gutter-property() when (@grid_gutter_property = padding) {
+        padding-left: ( @grid_gutter_width / 2 );
+        padding-right: ( @grid_gutter_width / 2 );
+    }
+    @media ( max-width: @grid_min_width ) {
+        .gutter-property();
+    }
+    .clearfix();
+}
+.build-col() {
+    display: block;
+    min-height: 1px;
+}
+
+////
+// Base Grid Styles
+.@{class_container} {
+    width: auto;
+    .build-container();
+}
+.@{class_row} {
+    .build-row();
+    
+    .@{class_row} {
+        .gutter-property() when (@grid_gutter_property = margin) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .gutter-property() when (@grid_gutter_property = padding) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .gutter-property();
+    }
+}
+@{all_columns} {
+    .build-col();
+}
+
+////
+// Nested Columns
+.@{class_row} .@{class_row} @{all_columns} {
+    .alpha-omega() when (@grid_gutter_property = margin) {                    
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .alpha-omega() when (@grid_gutter_property = padding) {                    
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+    .alpha-omega();
+    ////
+    // Manual classes
+    &.alpha {
+        .alpha() when (@grid_gutter_property = margin) {                    
+            margin-left: 0;
+        }
+        .alpha() when (@grid_gutter_property = padding) {                    
+            padding-left: 0;
+        }
+        .alpha();
+    }
+    &.omega {
+        .omega() when (@grid_gutter_property = margin) {                    
+            margin-right: 0;
+        }
+        .omega() when (@grid_gutter_property = padding) {                    
+            padding-right: 0;
+        }
+        .omega();
+    }
+}
+
+.nested-fluid-columns( @grid_gutter_width ) {
+    .alpha-omega() when (@grid_gutter_property = margin) {                    
+        &:first-child {
+            margin-right: @grid_gutter_width;
+        }
+        &:last-child {
+            margin-left: @grid_gutter_width;
+        }
+    }
+    .alpha-omega() when (@grid_gutter_property = padding) {                    
+        &:first-child {
+            padding-right: @grid_gutter_width;
+        }
+        &:last-child {
+            padding-left: @grid_gutter_width;
+        }
+    }
+    .alpha-omega();
+    ////
+    // Manual classes
+    &.alpha {
+        .alpha() when (@grid_gutter_property = margin) {                    
+            margin-right: @grid_gutter_width;
+        }
+        .alpha() when (@grid_gutter_property = padding) {                    
+            padding-right: @grid_gutter_width;
+        }
+        .alpha();
+    }
+    &.omega {
+        .omega() when (@grid_gutter_property = margin) {                    
+            margin-left: @grid_gutter_width;
+        }
+        .omega() when (@grid_gutter_property = padding) {                    
+            padding-left: @grid_gutter_width;
+        }
+        .omega();
+    }
+}
 
 ////
 // The Grid Builder
-#grid {
+#grid_system( @grid_row_width, @grid_gutter_width ) {
+        
+    ////
+    // Set column width
+    @grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
     
-    .fixed( 
-        @total_width : @grid_total_width, 
-        @gutter_width : @grid_gutter_width,
-        @container_margin : @grid_container_margin ) {
-        // @column_width : @grid_column_width,
-        
-        ////
-        // Calculate the variable that wasn't provided
-        @column_width: (( @total_width / @grid_columns  ) - @gutter_width );
-        // @total_width: (( @grid_columns * @column_width ) + ( @gutter_width * @grid_columns ));
-        
-        ////
-        // Semantic Grid Mixins
-        .container() {
-            position: relative;
-            width: (@total_width - @gutter_width);
-            margin-left: @container_margin;
-            margin-right: @container_margin;
-        }
-        .row() {
-            position: relative;
-            margin-left: (@gutter_width * -1);
-            clear: both;
-            .clearfix();
-        }
-        .column-base() {
-            display: inline;
-            float: left;
-            position: relative;
-            margin-left: @gutter_width;
-        }
-        .column(@columns) {
-            .column-base();
-            width: (@column_width * @columns) + (@gutter_width * (@columns - 1));
-        }
-        .prefix(@columns) {
-            padding-left: (@column_width * @columns) + (@gutter_width * @columns);
-        }
-        .suffix(@columns) {
-            padding-right: (@column_width * @columns) + (@gutter_width * @columns);
-        }
-        
-        ////
-        // Grid Mixins
-        .col-X (@index) when (@index > 0) {
-            .@{grid_col_class}@{index} { .col-(@index); }
-            .col-X(@index - 1);
-        }
-        .col- (@columns) {
-            width: (@column_width * @columns) + (@gutter_width * (@columns - 1));
-        }
-        ////
-        // Prefix Mixins
-        .pre-X (@index) when (@index > 0) {
-            .@{grid_prefix_class}@{index} { .pre-(@index); }
-            .pre-X(@index - 1);
-        }
-        .pre- (@columns) {
-            padding-left: (@column_width * @columns) + (@gutter_width * @columns);
-        }
-        ////
-        // Suffix Mixins
-        .suf-X (@index) when (@index > 0) {
-            .@{grid_suffix_class}@{index} { .suf-(@index); }
-            .suf-X(@index - 1);
-        }
-        .suf- (@columns) {
-            padding-right: (@column_width * @columns) + (@gutter_width * @columns);
-        }
-        
-        ////
-        // Base Styles
-        .@{grid_container_class} {
-            .container();
-        }
-        .@{grid_row_class} {
-            .row();
-        }
-        @{col_selector} {
-            .column-base();
-        }
-        
-        ////
-        // Build Styles
-        .col-X (@grid_columns);
-        .pre-X (@grid_columns);
-        .suf-X (@grid_columns);
-    
+    ////
+    // Grid Mixins
+    .col-X (@index) when (@index > 0) {
+        .@{class_column}@{index} { .col-(@index); }
+        .col-X(@index - 1);
+    }
+    .col- (@columns) {
+        width: (@grid_column_width * @columns) + (@grid_gutter_width * (@columns - 1));
+    }
+    ////
+    // Prefix Mixins
+    .pre-X (@index) when (@index > 0) {
+        .@{class_prefix}@{index} { .pre-(@index); }
+        .pre-X(@index - 1);
+    }
+    .pre- (@columns) {
+        padding-left: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
+    }
+    ////
+    // Suffix Mixins
+    .suf-X (@index) when (@index > 0) {
+        .@{class_suffix}@{index} { .suf-(@index); }
+        .suf-X(@index - 1);
+    }
+    .suf- (@columns) {
+        padding-right: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
     }
     
+    ////
+    // Base Grid Styles
+    .@{class_container} {
+        .build-container();
+        .is-static() when ( ispixel(@grid_row_width) ) {
+            width: @grid_row_width;
+        }
+        .is-static();
+    }
+    .@{class_row} {
+        .build-row();
+        .is-fluid() when ( ispercentage(@grid_row_width) ) {
+            width: @grid_row_width;
+            .@{class_row} @{all_columns} {
+                // .nested-fluid-columns( @grid_gutter_width );
+            }
+        }
+        .is-fluid();
+    }
+    @{all_columns} {
+        float: left;
+        .build-col();
+        .gutter-property() when (@grid_gutter_property = margin) {
+            margin-left: ( @grid_gutter_width / 2 );
+            margin-right: ( @grid_gutter_width / 2 );
+        }
+        .gutter-property() when (@grid_gutter_property = padding) {
+            padding-left: ( @grid_gutter_width / 2 );
+            padding-right: ( @grid_gutter_width / 2 );
+        }
+        .gutter-property();
+    }
+    
+    ////
+    // Build Styles
+    .col-X (@grid_columns);
+    .pre-X (@grid_columns);
+    .suf-X (@grid_columns);
+    
+    ////
+    // Global Grid Styles
+    .global() {
+        .header { background: @blue !important; }
+    }
+    .global();
+    
+    ////
+    // Static Grid Styles: Pixel Based
+    .static() {
+        .header .row { background: @green !important; }
+    }
+    .is-static() when ( ispixel(@grid_row_width) ) {
+        .static();
+    }
+    .is-static();
+    
+    ////
+    // Fluid Grid Styles: Percentage Based
+    .fluid() {
+        .header .row { background: @red !important; }
+    }
+    .is-fluid() when ( ispercentage(@grid_row_width) ) {
+        .fluid();
+    }
+    .is-fluid();
+        
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Trigger Grids
+// Grid System Assignment
 ////////////////////////////////////////////////////////////////////////////////
 
-#grid > .fixed();
+#responsive {
+    .small() {
+
+    }
+    .mobile() {
+
+    }
+    .tablet() {
+        #grid_system( 100%, 2% );
+    }
+    .desktop() {
+        #grid_system( @grid_row_width, @grid_gutter_width );
+    }
+    .large() {
+
+    }
+}

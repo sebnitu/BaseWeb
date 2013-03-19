@@ -5,175 +5,177 @@
 ////
 // Templates
 #responsive {
-    .base()    {}
-    .small()   {}
-    .mobile()  {}
-    .tablet()  {}
+    .small() {}
+    .mobile() {}
+    .tablet() {}
     .desktop() {}
-    .large()   {}
+    .large() {}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Visibility Classes
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Small Visibility
-#responsive > .small {
-    ////
-    // Things to show
-    .visible-small      { .is-visible(); }
-    .visible-mobile     { .is-visible(); }
-    .visible-tablet     { .is-hidden();  }
-    .visible-desktop    { .is-hidden();  }
-    .visible-large      { .is-hidden();  }
-    ////
-    // Things to hide
-    .hidden-small       { .is-hidden();  }
-    .hidden-mobile      { .is-hidden();  }
-    .hidden-tablet      { .is-visible(); }
-    .hidden-desktop     { .is-visible(); }
-    .hidden-large       { .is-visible(); }
-}
 
-////
-// Mobile Visibility
-#responsive > .mobile {
+#responsive {
+    
     ////
-    // Things to show
-    .visible-small      { .is-hidden();  }
-    .visible-mobile     { .is-visible(); }
-    .visible-tablet     { .is-hidden();  }
-    .visible-desktop    { .is-hidden();  }
-    .visible-large      { .is-hidden();  }
-    ////
-    // Things to hide
-    .hidden-small       { .is-visible(); }
-    .hidden-mobile      { .is-hidden();  }
-    .hidden-tablet      { .is-visible(); }
-    .hidden-desktop     { .is-visible(); }
-    .hidden-large       { .is-visible(); }
-}
+    // Small Visibility
+    .small() {
+        ////
+        // Things to show
+        .visible-small      { .is-visible(); }
+        .visible-mobile     { .is-visible(); }
+        .visible-tablet     { .is-hidden();  }
+        .visible-desktop    { .is-hidden();  }
+        .visible-large      { .is-hidden();  }
+        ////
+        // Things to hide
+        .hidden-small       { .is-hidden();  }
+        .hidden-mobile      { .is-hidden();  }
+        .hidden-tablet      { .is-visible(); }
+        .hidden-desktop     { .is-visible(); }
+        .hidden-large       { .is-visible(); }
+    }
 
-////
-// Tablet Visibility
-#responsive > .tablet {
     ////
-    // Things to show
-    .visible-small      { .is-hidden();  }
-    .visible-mobile     { .is-hidden();  }
-    .visible-tablet     { .is-visible(); }
-    .visible-desktop    { .is-hidden();  }
-    .visible-large      { .is-hidden();  }
+    // Mobile Visibility
+    .mobile() {
+        ////
+        // Things to show
+        .visible-small      { .is-hidden();  }
+        .visible-mobile     { .is-visible(); }
+        .visible-tablet     { .is-hidden();  }
+        .visible-desktop    { .is-hidden();  }
+        .visible-large      { .is-hidden();  }
+        ////
+        // Things to hide
+        .hidden-small       { .is-visible(); }
+        .hidden-mobile      { .is-hidden();  }
+        .hidden-tablet      { .is-visible(); }
+        .hidden-desktop     { .is-visible(); }
+        .hidden-large       { .is-visible(); }
+    }
+    
     ////
-    // Things to hide
-    .hidden-small       { .is-visible(); }
-    .hidden-mobile      { .is-visible(); }
-    .hidden-tablet      { .is-hidden();  }
-    .hidden-desktop     { .is-visible(); }
-    .hidden-large       { .is-visible(); }
+    // Tablet Visibility
+    .tablet() {
+        ////
+        // Things to show
+        .visible-small      { .is-hidden();  }
+        .visible-mobile     { .is-hidden();  }
+        .visible-tablet     { .is-visible(); }
+        .visible-desktop    { .is-hidden();  }
+        .visible-large      { .is-hidden();  }
+        ////
+        // Things to hide
+        .hidden-small       { .is-visible(); }
+        .hidden-mobile      { .is-visible(); }
+        .hidden-tablet      { .is-hidden();  }
+        .hidden-desktop     { .is-visible(); }
+        .hidden-large       { .is-visible(); }
+    }
+    ////
+    // Desktop Visibility
+    .desktop() {
+        ////
+        // Things to show
+        .visible-small      { .is-hidden();  }
+        .visible-mobile     { .is-hidden();  }
+        .visible-tablet     { .is-hidden();  }
+        .visible-desktop    { .is-visible(); }
+        .visible-large      { .is-hidden();  }
+        ////
+        // Things to hide
+        .hidden-small       { .is-visible(); }
+        .hidden-mobile      { .is-visible(); }
+        .hidden-tablet      { .is-visible(); }
+        .hidden-desktop     { .is-hidden();  }
+        .hidden-large       { .is-visible(); }
+    }
+    ////
+    // Large Visibility
+    .large() {
+        ////
+        // Things to show
+        .visible-small      { .is-hidden();  }
+        .visible-mobile     { .is-hidden();  }
+        .visible-tablet     { .is-hidden();  }
+        .visible-desktop    { .is-visible(); }
+        .visible-large      { .is-visible(); }
+        ////
+        // Things to hide
+        .hidden-small       { .is-visible(); }
+        .hidden-mobile      { .is-visible(); }
+        .hidden-tablet      { .is-visible(); }
+        .hidden-desktop     { .is-hidden();  }
+        .hidden-large       { .is-hidden();  }
+    }
 }
-////
-// Desktop Visibility
-#responsive > .desktop {
-    ////
-    // Things to show
-    .visible-small      { .is-hidden();  }
-    .visible-mobile     { .is-hidden();  }
-    .visible-tablet     { .is-hidden();  }
-    .visible-desktop    { .is-visible(); }
-    .visible-large      { .is-hidden();  }
-    ////
-    // Things to hide
-    .hidden-small       { .is-visible(); }
-    .hidden-mobile      { .is-visible(); }
-    .hidden-tablet      { .is-visible(); }
-    .hidden-desktop     { .is-hidden();  }
-    .hidden-large       { .is-visible(); }
-}
-////
-// Large Visibility
-#responsive > .large {
-    ////
-    // Things to show
-    .visible-small      { .is-hidden();  }
-    .visible-mobile     { .is-hidden();  }
-    .visible-tablet     { .is-hidden();  }
-    .visible-desktop    { .is-visible(); }
-    .visible-large      { .is-visible(); }
-    ////
-    // Things to hide
-    .hidden-small       { .is-visible(); }
-    .hidden-mobile      { .is-visible(); }
-    .hidden-tablet      { .is-visible(); }
-    .hidden-desktop     { .is-hidden();  }
-    .hidden-large       { .is-hidden();  }
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
-#media-queries() when (@media-mode = mobile-first) {
+#media-queries() when (@media_mode = mobile-first) {
     ////
     // Mobile first
     #responsive > .mobile;
     ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
+    // Small: @media_small and below
+    @media screen and (max-width: @media_small ) {
         #responsive > .small;
     }
     ////
-    // Tablet: @media-tablet-min and above
-    @media screen and ( min-width: @media-tablet-min ) {
+    // Tablet: @media_tablet_min and above
+    @media screen and ( min-width: @media_tablet_min ) {
         #responsive > .tablet;
     }
     ////
-    // Desktop: @media-desktop-min and above
-    @media screen and ( min-width: @media-desktop-min ) {
+    // Desktop: @media_desktop_min and above
+    @media screen and ( min-width: @media_desktop_min ) {
         #responsive > .desktop;
     }
     ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
+    // Larger: @media_large and above
+    @media screen and ( min-width: @media_large ) {
         #responsive > .large;
     }
 }
-#media-queries() when (@media-mode = desktop-first) {
+#media-queries() when (@media_mode = desktop-first) {
     ////
     // Desktop first
     #responsive > .desktop;
     ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
+    // Larger: @media_large and above
+    @media screen and ( min-width: @media_large ) {
         #responsive > .large;
     }
     ////
-    // Desktop Between @media-desktop-min and @media-desktop-max
-    @media screen and ( min-width: @media-desktop-min ) and ( max-width: @media-desktop-max ) {
+    // Desktop Between @media_desktop_min and @media_desktop_max
+    @media screen and ( min-width: @media_desktop_min ) and ( max-width: @media_desktop_max ) {
         #responsive > .desktop;
     }
     ////
-    // Tablet: Between @media-tablet-min and @media-tablet-max
-    @media screen and (min-width: @media-tablet-min ) and ( max-width: @media-tablet-max ) {
+    // Tablet: Between @media_tablet_min and @media_tablet_max
+    @media screen and (min-width: @media_tablet_min ) and ( max-width: @media_tablet_max ) {
         #responsive > .tablet;
     }
     ////
-    // Mobile: @media-mobile and below
-    @media screen and (max-width: @media-mobile ) {
+    // Mobile: @media_mobile and below
+    @media screen and (max-width: @media_mobile ) {
         #responsive > .mobile;
     }
     ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
+    // Small: @media_small and below
+    @media screen and (max-width: @media_small ) {
         #responsive > .small;
     }
 }
-#media-queries() when (@media-mode = off) {
+#media-queries() when (@media_mode = off) {
     ////
     // No media queries here
-    #responsive > .base;
+    ////
 }
 
 ////

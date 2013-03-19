@@ -211,6 +211,45 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
+// RGBA
+// Converts hex value to RGBA
+// Returns as background-color prop with hex fallback
+.rgba(@hex, @alpha: 1, @fallback : 0) {
+
+    .fallback() when (@fallback = 0) {
+        @fallback: @hex;
+    }
+    .fallback();
+    
+    background-color: @fallback;
+    background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+}
+////
+// Returns as border-color prop with hex fallback
+.rgba-border(@hex, @alpha: 1, @fallback : 0) {
+
+    .fallback() when (@fallback = 0) {
+        @fallback: @hex;
+    }
+    .fallback();
+
+    border-color: @fallback;
+    border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+}
+////
+// Returns as color prop with hex falback
+.rgba-color(@hex, @alpha: 1, @fallback : 0) {
+
+    .fallback() when (@fallback = 0) {
+        @fallback: @hex;
+    }
+    .fallback();
+
+    color: @fallback;
+    color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+}
+
+////
 // Arrows
 // Uses the "0x0" element with borders trick to draw triangles.
 ////
