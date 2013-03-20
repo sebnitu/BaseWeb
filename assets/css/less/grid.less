@@ -8,16 +8,22 @@
 
 ////
 // Grid Specs
-@grid_row_width: 960px; // 100% for fluid layout
-@grid_gutter_width: 20px; // % for fluid layout
-@grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
+@grid_tablet_row_width: 100%;
+@grid_tablet_gutter_width: 2%;
+
+@grid_desktop_row_width: 960px;
+@grid_desktop_gutter_width: 20px;
+
+@grid_large_row_width: 1200px;
+@grid_large_gutter_width: 20px;
+
 
 ////
 // Fluid Variables
 @grid_min_width: @media_mobile;
-@grid_max_width: @media_large;
-
-@grid_row_margin_width: 30px;
+@grid_max_width: 1200px;
+@grid_margin_width: 20px;
+@grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
 
 ////
 // Grid Gutter Property
@@ -32,255 +38,308 @@
 @class_prefix: prefix-;
 @class_suffix: suffix-;
 
+@class_first: alpha;
+@class_last: omega;
+
 ////
 // Build selectors
 @all_columns: ~'[class*="@{class_column}"]'; //escaped value interpolation
 
-////
+
+////////////////////////////////////////////////////////////////////////////////
 // Grid Mixins
-.build-container() {
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Gutters
+.gutters(@g) {
     margin-left: auto;
     margin-right: auto;
-    
-    .is-fluid() when ( @grid_row_width = 100% ) {
-        @media ( min-width: @grid_min_width ) and ( max-width: @grid_max_width ) {
-            margin-left: @grid_row_margin_width;
-            margin-right: @grid_row_margin_width;
-        }
-        max-width: ( @grid_max_width - ( @grid_row_margin_width * 2 ) );
+}
+.gutters(@g) when (@grid_gutter_property = margin) {
+    margin-left: @g;
+    margin-right: @g;
+}
+.gutters(@g) when (@grid_gutter_property = padding) {
+    padding-left: @g;
+    padding-right: @g;
+}
+////
+// Gutters First
+.nested-gutters-first(@g) when (@grid_gutter_property = margin) {                    
+    &:first-child, &.@{class_first} {
+        margin-left: @g;
     }
-    .is-fluid();
-    
+}
+.nested-gutters-first(@g) when (@grid_gutter_property = padding) {                    
+    &:first-child, &.@{class_first} {
+        padding-left: @g;
+    }
+}
+////
+// Gutters Last
+.nested-gutters-last(@g) when (@grid_gutter_property = margin) {                    
+    &:last-child, &.@{class_last} {
+        margin-right: @g;
+    }
+}
+.nested-gutters-last(@g) when (@grid_gutter_property = padding) {                    
+    &:last-child, &.@{class_last} {
+        padding-right: @g;
+    }
+}
+////
+// Gutters First Right
+.nested-gutters-first-right(@g) when (@grid_gutter_property = margin) {                    
+    &:first-child, &.@{class_first} {
+        margin-right: @g;
+    }
+}
+.nested-gutters-first-right(@g) when (@grid_gutter_property = padding) {                    
+    &:first-child, &.@{class_first} {
+        padding-right: @g;
+    }
+}
+////
+// Gutters Last Left
+.nested-gutters-last-left(@g) when (@grid_gutter_property = margin) {                    
+    &:last-child, &.@{class_last} {
+        margin-left: @g;
+    }
+}
+.nested-gutters-last-left(@g) when (@grid_gutter_property = padding) {                    
+    &:last-child, &.@{class_last} {
+        padding-left: @g;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Base Grid Styles
+////////////////////////////////////////////////////////////////////////////////
+
+.@{class_container} {
+    width: auto;
+    .gutters(@grid_margin_width);
     .clearfix();
 }
-.build-row() {
-    .gutter-property() when (@grid_gutter_property = margin) {
-        margin-left: ( @grid_gutter_width / 2 );
-        margin-right: ( @grid_gutter_width / 2 );
-    }
-    .gutter-property() when (@grid_gutter_property = padding) {
-        padding-left: ( @grid_gutter_width / 2 );
-        padding-right: ( @grid_gutter_width / 2 );
-    }
-    @media ( max-width: @grid_min_width ) {
-        .gutter-property();
-    }
+.@{class_row} {
     .clearfix();
 }
-.build-col() {
-    display: block;
+@{all_columns} {
+    // Prevent columns from collapsing when empty
     min-height: 1px;
 }
 
-////
-// Base Grid Styles
-.@{class_container} {
-    width: auto;
-    .build-container();
-}
-.@{class_row} {
-    .build-row();
-    
-    .@{class_row} {
-        .gutter-property() when (@grid_gutter_property = margin) {
-            margin-left: 0;
-            margin-right: 0;
-        }
-        .gutter-property() when (@grid_gutter_property = padding) {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        .gutter-property();
-    }
-}
-@{all_columns} {
-    .build-col();
-}
-
-////
-// Nested Columns
-.@{class_row} .@{class_row} @{all_columns} {
-    .alpha-omega() when (@grid_gutter_property = margin) {                    
-        &:first-child {
-            margin-left: 0;
-        }
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-    .alpha-omega() when (@grid_gutter_property = padding) {                    
-        &:first-child {
-            padding-left: 0;
-        }
-        &:last-child {
-            padding-right: 0;
-        }
-    }
-    .alpha-omega();
-    ////
-    // Manual classes
-    &.alpha {
-        .alpha() when (@grid_gutter_property = margin) {                    
-            margin-left: 0;
-        }
-        .alpha() when (@grid_gutter_property = padding) {                    
-            padding-left: 0;
-        }
-        .alpha();
-    }
-    &.omega {
-        .omega() when (@grid_gutter_property = margin) {                    
-            margin-right: 0;
-        }
-        .omega() when (@grid_gutter_property = padding) {                    
-            padding-right: 0;
-        }
-        .omega();
-    }
-}
-
-.nested-fluid-columns( @grid_gutter_width ) {
-    .alpha-omega() when (@grid_gutter_property = margin) {                    
-        &:first-child {
-            margin-right: @grid_gutter_width;
-        }
-        &:last-child {
-            margin-left: @grid_gutter_width;
-        }
-    }
-    .alpha-omega() when (@grid_gutter_property = padding) {                    
-        &:first-child {
-            padding-right: @grid_gutter_width;
-        }
-        &:last-child {
-            padding-left: @grid_gutter_width;
-        }
-    }
-    .alpha-omega();
-    ////
-    // Manual classes
-    &.alpha {
-        .alpha() when (@grid_gutter_property = margin) {                    
-            margin-right: @grid_gutter_width;
-        }
-        .alpha() when (@grid_gutter_property = padding) {                    
-            padding-right: @grid_gutter_width;
-        }
-        .alpha();
-    }
-    &.omega {
-        .omega() when (@grid_gutter_property = margin) {                    
-            margin-left: @grid_gutter_width;
-        }
-        .omega() when (@grid_gutter_property = padding) {                    
-            padding-left: @grid_gutter_width;
-        }
-        .omega();
-    }
-}
-
-////
+////////////////////////////////////////////////////////////////////////////////
 // The Grid Builder
+////////////////////////////////////////////////////////////////////////////////
+
 #grid_system( @grid_row_width, @grid_gutter_width ) {
+    
+    ////
+    // Global
+    .global() {
         
-    ////
-    // Set column width
-    @grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
-    
-    ////
-    // Grid Mixins
-    .col-X (@index) when (@index > 0) {
-        .@{class_column}@{index} { .col-(@index); }
-        .col-X(@index - 1);
-    }
-    .col- (@columns) {
-        width: (@grid_column_width * @columns) + (@grid_gutter_width * (@columns - 1));
-    }
-    ////
-    // Prefix Mixins
-    .pre-X (@index) when (@index > 0) {
-        .@{class_prefix}@{index} { .pre-(@index); }
-        .pre-X(@index - 1);
-    }
-    .pre- (@columns) {
-        padding-left: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
-    }
-    ////
-    // Suffix Mixins
-    .suf-X (@index) when (@index > 0) {
-        .@{class_suffix}@{index} { .suf-(@index); }
-        .suf-X(@index - 1);
-    }
-    .suf- (@columns) {
-        padding-right: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
-    }
-    
-    ////
-    // Base Grid Styles
-    .@{class_container} {
-        .build-container();
-        .is-static() when ( ispixel(@grid_row_width) ) {
-            width: @grid_row_width;
+        ////
+        // Set column width
+        @grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
+        
+        ////
+        // Column Builder
+        .col-X (@index) when (@index > 0) {
+            .@{class_column}@{index} { .col-(@index); }
+            .col-X(@index - 1);
         }
-        .is-static();
-    }
-    .@{class_row} {
-        .build-row();
-        .is-fluid() when ( ispercentage(@grid_row_width) ) {
+        .col- (@columns) {
+            width: (@grid_column_width * @columns) + (@grid_gutter_width * (@columns - 1));
+        }
+        .col-X (@grid_columns);
+        
+        ////
+        // Prefix Builder
+        .pre-X (@index) when (@index > 0) {
+            .@{class_prefix}@{index} { .pre-(@index); }
+            .pre-X(@index - 1);
+        }
+        .pre- (@columns) {
+            padding-left: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
+        }
+        .pre-X (@grid_columns);
+        
+        ////
+        // Suffix Builder
+        .suf-X (@index) when (@index > 0) {
+            .@{class_suffix}@{index} { .suf-(@index); }
+            .suf-X(@index - 1);
+        }
+        .suf- (@columns) {
+            padding-right: (@grid_column_width * @columns) + (@grid_gutter_width * @columns);
+        }
+        .suf-X (@grid_columns);
+        
+        ////
+        // Base
+        @{all_columns} {
+            float: left;
+            .gutters( ( @grid_gutter_width / 2 ) );
+        }
+        
+        ////
+        // Nested Columns
+        .@{class_row} .@{class_row} @{all_columns} {
+            .nested-gutters-first(0);
+            .nested-gutters-last(0);
+        }
+        
+    } // End of .global();
+    ////
+    // Static
+    .static() {
+    
+        ////
+        // Load global styles
+        .global();
+        
+        ////
+        // Static Styles
+        .@{class_container} {
+            margin-left: auto;
+            margin-right: auto;
             width: @grid_row_width;
-            .@{class_row} @{all_columns} {
-                // .nested-fluid-columns( @grid_gutter_width );
+            max-width: none;
+        }
+        
+        ////
+        // Nested Columns
+        .@{class_row} .@{class_row} @{all_columns} {
+            .nested-gutters-first-right( ( @grid_gutter_width / 2 ) );
+            .nested-gutters-last-left( ( @grid_gutter_width / 2 ) );
+        }
+        
+    } // End of .static();
+    ////
+    // Fluid
+    .fluid() {
+    
+        ////
+        // Load global styles
+        .global();
+        
+        ////
+        // Fluid Styles
+        .@{class_container} {
+            .gutters(@grid_margin_width);
+            width: auto;
+            max-width: @grid_max_width;
+            @media (min-width: @grid_margin_switch) {
+                margin-left: auto;
+                margin-right: auto;
             }
         }
-        .is-fluid();
-    }
-    @{all_columns} {
-        float: left;
-        .build-col();
-        .gutter-property() when (@grid_gutter_property = margin) {
-            margin-left: ( @grid_gutter_width / 2 );
-            margin-right: ( @grid_gutter_width / 2 );
+        
+        ////
+        // Nested Columns
+        .@{class_row} .@{class_row} @{all_columns} {
+            .nested-gutters-first-right( @grid_gutter_width );
+            .nested-gutters-last-left( @grid_gutter_width );
         }
-        .gutter-property() when (@grid_gutter_property = padding) {
-            padding-left: ( @grid_gutter_width / 2 );
-            padding-right: ( @grid_gutter_width / 2 );
-        }
-        .gutter-property();
-    }
+        
+    } // End of .fluid();
     
     ////
-    // Build Styles
-    .col-X (@grid_columns);
-    .pre-X (@grid_columns);
-    .suf-X (@grid_columns);
-    
-    ////
-    // Global Grid Styles
-    .global() {
-        .header { background: @blue !important; }
-    }
-    .global();
-    
-    ////
-    // Static Grid Styles: Pixel Based
-    .static() {
-        .header .row { background: @green !important; }
-    }
-    .is-static() when ( ispixel(@grid_row_width) ) {
+    // Guarded Mixins
+    .build() when ( ispixel(@grid_row_width) ) {
         .static();
     }
-    .is-static();
-    
-    ////
-    // Fluid Grid Styles: Percentage Based
-    .fluid() {
-        .header .row { background: @red !important; }
-    }
-    .is-fluid() when ( ispercentage(@grid_row_width) ) {
+    .build() when ( ispercentage(@grid_row_width) ) {
         .fluid();
     }
-    .is-fluid();
-        
+    ////
+    // Build Styles
+    .build();
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Semantic Grid System
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Semantic Container
+.container() {
+    width: auto;
+    .gutters(@grid_margin_width);
+    .clearfix();
+}
+
+////
+// Semantic Row
+.row( @columns : @grid_columns ) {
+    .clearfix();
+}
+
+////
+// Semantic Column
+.make-column( @col, @total_width, @gutter_width ) {
+    // Get column width
+    @column_width: (( @total_width / @columns  ) - @gutter_width );
+    // Styles
+    float: left;
+    width: (@column_width * @col) + (@gutter_width * (@col - 1));
+    .gutters( ( @gutter_width / 2 ) );
+}
+.column( @x, @columns : @grid_columns ) {
+    min-height: 1px;
+    
+    @media screen and ( min-width: @media_tablet_min ) {
+        .make-column( @x, @grid_tablet_row_width, @grid_tablet_gutter_width );
+    }
+    @media screen and ( min-width: @media_desktop_min ) {
+        .make-column( @x, @grid_desktop_row_width, @grid_desktop_gutter_width );
+    }
+    @media screen and ( min-width: @media_large ) {
+        .make-column( @x, @grid_large_row_width, @grid_large_gutter_width );
+    }
+}
+
+////
+// Semantic Prefix
+.make-prefix( @col, @total_width, @gutter_width ) {
+    // Get column width
+    @column_width: (( @total_width / @columns  ) - @gutter_width );
+    // Styles
+    padding-left: (@column_width * @col) + (@gutter_width * @col);
+}
+.prefix( @offset : 1, @columns : @grid_columns ) {
+    @media screen and ( min-width: @media_tablet_min ) {
+        .make-prefix( @offset, @grid_tablet_row_width, @grid_tablet_gutter_width );
+    }
+    @media screen and ( min-width: @media_desktop_min ) {
+        .make-prefix( @offset, @grid_desktop_row_width, @grid_desktop_gutter_width );
+    }
+    @media screen and ( min-width: @media_large ) {
+        .make-prefix( @offset, @grid_large_row_width, @grid_large_gutter_width );
+    }
+}
+
+////
+// Semantic Suffix
+.make-suffix( @col, @total_width, @gutter_width ) {
+    // Get column width
+    @column_width: (( @total_width / @columns  ) - @gutter_width );
+    // Styles
+    padding-right: (@column_width * @col) + (@gutter_width * @col);
+}
+.suffix( @offset : 1, @columns : @grid_columns ) {
+    @media screen and ( min-width: @media_tablet_min ) {
+        .make-suffix( @offset, @grid_tablet_row_width, @grid_tablet_gutter_width );
+    }
+    @media screen and ( min-width: @media_desktop_min ) {
+        .make-suffix( @offset, @grid_desktop_row_width, @grid_desktop_gutter_width );
+    }
+    @media screen and ( min-width: @media_large ) {
+        .make-suffix( @offset, @grid_large_row_width, @grid_large_gutter_width );
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -288,6 +347,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #responsive {
+    .base() {
+        #grid_system( @grid_desktop_row_width, @grid_desktop_gutter_width );
+    }
     .small() {
 
     }
@@ -295,12 +357,12 @@
 
     }
     .tablet() {
-        #grid_system( 100%, 2% );
+        #grid_system( @grid_tablet_row_width, @grid_tablet_gutter_width );
     }
     .desktop() {
-        #grid_system( @grid_row_width, @grid_gutter_width );
+        #grid_system( @grid_desktop_row_width, @grid_desktop_gutter_width );
     }
     .large() {
-
+        #grid_system( @grid_large_row_width, @grid_large_gutter_width );
     }
 }

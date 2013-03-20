@@ -12,7 +12,10 @@
 
 <div class="demo demo-grid">
     
-    <div class="row nested">
+    <?php /*
+    <div class="row nested nested-static">
+        
+        <div class="col-12"><h3>Nested Static</h3></div>
         
         <div class="col-8">
             <p>.col-8</p>
@@ -76,6 +79,88 @@
         </div>
         
     </div><!-- .row -->
+    */ ?>
+    
+    <?php /*
+    <div class="row nested nested-fluid">
+        
+        <div class="col-12"><h3>Nested Fluid</h3></div>
+        
+        <div class="col-8">
+            <p>.col-8</p>
+            
+            <div class="row">
+                <div class="col-4">
+                    <p>.</p>
+                    
+                    <div class="row">
+                        <div class="col-8">
+                            <p>.</p>
+                        </div>
+                        <div class="col-4">
+                            <p>.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-4">
+                    <p>.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <p>.</p>
+                        </div>
+                        <div class="col-6">
+                            <p>.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-4">
+                    <p>.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="col-4">
+            <p>.col-4</p>
+            
+            <div class="row">
+                <div class="col-6">
+                    <p>.</p>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <p>.</p>
+                        </div>
+                        <div class="col-6">
+                            <p>.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-6">
+                    <p>.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div><!-- .row -->
+    */ ?>
+    
+    <div class="semantic">
+        <div class="test-1">
+            <p>Test</p>
+        </div>
+        <div class="test-2">
+            <p>Test</p>
+        </div>
+        <div class="test-3">
+            <p>Test</p>
+        </div>
+    </div>
     
     <div class="row">
         <div class="col-12"><p>.col-12</p></div>
@@ -111,19 +196,10 @@
         <div class="col-6"><p>.col-6</p></div>
     </div><!-- .row -->
     
-    <?php /*
-    <div class="col-1 suffix-11"><p>1</p></div>
-    <div class="col-1 prefix-1 suffix-10"><p>1</p></div>
-    <div class="col-1 prefix-2 suffix-9"><p>1</p></div>
-    <div class="col-1 prefix-3 suffix-8"><p>1</p></div>
-    <div class="col-1 prefix-4 suffix-7"><p>1</p></div>
-    <div class="col-1 prefix-5 suffix-6"><p>1</p></div>
-    <div class="col-1 prefix-6 suffix-5"><p>1</p></div>
-    <div class="col-1 prefix-7 suffix-4"><p>1</p></div>
-    <div class="col-1 prefix-8 suffix-3"><p>1</p></div>
-    <div class="col-1 prefix-9 suffix-2"><p>1</p></div>
-    <div class="col-1 prefix-10 suffix-1"><p>1</p></div>
-    <div class="col-1 prefix-11"><p>1</p></div>
-    */ ?>
+    <div class="row">
+        <div class="col-4 prefix-2 suffix-6"><p>.col-4 .prefix-2 .suffix-6</p></div>
+        <div class="col-4 prefix-6 suffix-2"><p>.col-4 .prefix-6 .suffix-2</p></div>
+
+    </div><!-- .row -->
     
 </div><!-- .demo -->

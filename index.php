@@ -1,8 +1,8 @@
 <?php include('docs/inc/header.php'); ?>
 
-<?php include('docs/utility.php'); ?>
-
 <?php include('docs/grid.php'); ?>
+
+<?php include('docs/utility.php'); ?>
 
 <?php /*
 <div class="demo-block demo-typography">

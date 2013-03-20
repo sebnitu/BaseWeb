@@ -28,7 +28,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="logo">
-                    <a href="#"><strong>Base</strong>Web</a>
+                    <a href="#">BaseWeb</a>
                     <span>&rarr;</span>
                     a front-end development framework
                 </h1>

@@ -53,14 +53,19 @@ body {
 .demo {
     padding: 10px 0 20px;
 }
-.demo-header h1 {
+.main h1 {
     font-size: @baseFontSize;
     line-height: @baseLineHeight;
     font-weight: bold;
     margin-bottom: 0;
     .uppercase(1px);
 }
-
+.main h3 {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    font-weight: bold;
+    margin: 0;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Utility Classes Demo
@@ -68,12 +73,7 @@ body {
 
 .demo-utility {
     
-    h3 {
-        font-size: @baseFontSize;
-        line-height: @baseLineHeight;
-        font-weight: bold;
-        margin: 0;
-    }
+    
     .row {
         padding-top: 0;
     }
@@ -111,7 +111,7 @@ body {
 
 .demo-grid {
     
-    [class*="col-"] > p {
+    [class*="col-"] > p, [class*="test-"] > p {
         text-align: center;
         padding: 15px 20px;
         border: 1px solid rgba(0,0,0, 0.1);
@@ -135,6 +135,10 @@ body {
         margin: 0;
         border: 0 none;
     }
+    .row.nested .col-12 {
+        background: transparent;
+        margin-bottom: 10px;
+    }
     
     ////
     // Fluid Nested
@@ -151,6 +155,34 @@ body {
     .row-fluid.nested p {
         margin: 0;
         border: 0 none;
+    }
+    
+    ////
+    // Semantic Grid System
+    .semantic {
+        .row();
+        color: @white;
+    }
+    .semantic .test-1 {
+        .column( 3 );
+    }
+    .semantic .test-2 {
+        .column( 9 );
+    }
+    .semantic .test-3 {
+        .column( 3 );
+        .prefix( 3 );
+        .suffix( 6 );
+    }
+    
+    .semantic .test-1 p {
+        background: @red;
+    }
+    .semantic .test-2 p {
+        background: @green;
+    }
+    .semantic .test-3 p {
+        background: @blue;
     }
 
 }
