@@ -7,23 +7,26 @@
 @grid_columns: 12;
 
 ////
-// Grid Specs
-@grid_tablet_row_width: 100%;
-@grid_tablet_gutter_width: 2%;
+// Grids
+@grid_tablet_row_width: 720px; // 720px
+@grid_tablet_gutter_width: 20px; // 20px
 
-@grid_desktop_row_width: 960px;
-@grid_desktop_gutter_width: 20px;
+@grid_desktop_row_width: 960px; // 960px
+@grid_desktop_gutter_width: 20px; // 20px
 
-@grid_large_row_width: 1200px;
-@grid_large_gutter_width: 20px;
+@grid_large_row_width: 1200px; // 1200px
+@grid_large_gutter_width: 20px; // 20px
 
+////
+// Base Grid - Used when media queries are disabled
+@grid_row_width: @grid_desktop_row_width;
+@grid_gutter_width: @grid_desktop_gutter_width;
 
 ////
 // Fluid Variables
 @grid_min_width: @media_mobile;
 @grid_max_width: 1200px;
 @grid_margin_width: 20px;
-@grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
 
 ////
 // Grid Gutter Property
@@ -45,6 +48,10 @@
 // Build selectors
 @all_columns: ~'[class*="@{class_column}"]'; //escaped value interpolation
 
+////
+// Utility Variables - Should never be changed
+@grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
+@grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
 
 ////////////////////////////////////////////////////////////////////////////////
 // Grid Mixins
@@ -283,22 +290,23 @@
 .make-column( @col, @total_width, @gutter_width ) {
     // Get column width
     @column_width: (( @total_width / @columns  ) - @gutter_width );
+    
     // Styles
     float: left;
     width: (@column_width * @col) + (@gutter_width * (@col - 1));
     .gutters( ( @gutter_width / 2 ) );
 }
-.column( @x, @columns : @grid_columns ) {
+.column( @col, @columns : @grid_columns ) {
     min-height: 1px;
     
     @media screen and ( min-width: @media_tablet_min ) {
-        .make-column( @x, @grid_tablet_row_width, @grid_tablet_gutter_width );
+        .make-column( @col, @grid_tablet_row_width, @grid_tablet_gutter_width );
     }
     @media screen and ( min-width: @media_desktop_min ) {
-        .make-column( @x, @grid_desktop_row_width, @grid_desktop_gutter_width );
+        .make-column( @col, @grid_desktop_row_width, @grid_desktop_gutter_width );
     }
     @media screen and ( min-width: @media_large ) {
-        .make-column( @x, @grid_large_row_width, @grid_large_gutter_width );
+        .make-column( @col, @grid_large_row_width, @grid_large_gutter_width );
     }
 }
 
@@ -340,6 +348,30 @@
     @media screen and ( min-width: @media_large ) {
         .make-suffix( @offset, @grid_large_row_width, @grid_large_gutter_width );
     }
+}
+
+////
+// Alpha
+.alpha() {
+    .remove-gutter(0) when (@grid_gutter_property = margin) {                    
+        margin-left: 0 !important;
+    }
+    .remove-gutter(0) when (@grid_gutter_property = padding) {                    
+        padding-left: 0 !important;
+    }
+    .remove-gutter(0);
+}
+
+////
+// Omega
+.omega() {
+    .remove-gutter(0) when (@grid_gutter_property = margin) {                    
+        margin-right: 0 !important;
+    }
+    .remove-gutter(0) when (@grid_gutter_property = padding) {                    
+        padding-right: 0 !important;
+    }
+    .remove-gutter(0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -24,6 +24,23 @@
         </div>
     </div>
     
+    <div class="nested-semantic">
+        <div class="test-1">
+            <p>.column(4);</p>
+        </div>
+        <div class="test-2">
+            <p>.column(8);</p>
+            <div class="test-3">
+                <div class="test-4">
+                    <p>.column(4, 8);</p>
+                </div>
+                <div class="test-5">
+                    <p>.column(4, 8);</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col-12"><p>.col-12</p></div>
     </div><!-- .row -->
@@ -64,7 +81,7 @@
 
     </div><!-- .row -->
     
-        <div class="row nested nested-static hidden-tablet">
+        <div class="row nested nested-static">
                 
         <div class="col-8">
             <p>.col-8</p>
@@ -129,6 +146,7 @@
         
     </div><!-- .row -->
     
+    <?php /*
     <div class="row nested nested-fluid visible-tablet">
                 
         <div class="col-8">
@@ -193,6 +211,6 @@
         </div>
         
     </div><!-- .row -->
-
+    */ ?>
     
 </div><!-- .demo -->

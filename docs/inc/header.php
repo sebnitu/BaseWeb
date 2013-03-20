@@ -22,6 +22,8 @@
 </head>
 <body>
 
+<div id="console"></div>
+
 <header class="header">
     <div class="container">
         

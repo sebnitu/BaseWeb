@@ -356,3 +356,78 @@
     }
   
 }
+
+////
+// Console
+// Let's you output a LESS variable in the browser.
+// Requires that "<div id="console"></div>" be somewhere in the DOM
+// 
+// @value: The variable whos value that you want to output
+// @position: Where you want the console to appear: left, right, bottom-left, bottom-right.
+////
+.console(@value, @position : right) {
+    
+    .position() when ( @position = left ) {
+        #console {
+            top: 0;
+            left: 0;
+        }
+        #console:after {
+            .border-radius-bottom-right();
+        }
+    }
+    .position() when ( @position = right ) {
+        #console {
+            top: 0;
+            right: 0;
+        }
+        #console:before {
+            .border-radius-bottom-left();
+        }
+    }
+    .position() when ( @position = bottom-left ) {
+        #console {
+            bottom: 0;
+            left: 0;
+        }
+        #console:after {
+            .border-radius-top-right();
+        }
+    }
+    .position() when ( @position = bottom-right ) {
+        #console {
+            bottom: 0;
+            right: 0;
+        }
+        #console:before {
+            .border-radius-top-left();
+        }
+    }
+    .position();
+    
+    #console {
+        position: fixed;
+        z-index: 100;
+        font-family: @monoFontFamily;
+        font-size: 12px;
+        line-height: 20px;
+        
+        &:before, &:after {
+            display: block;
+            padding: 5px 15px;
+            float: left;
+        }
+        
+        &:before {
+            content: "Console:";
+            background: @blue;
+            color: @gE;
+        }
+        
+        &:after {
+            content: "@{value}";
+            background: @gE;
+            color: @colorDark;
+        }
+    }
+}

@@ -50,6 +50,9 @@ body {
 .demo-intro {
     padding: 20px 0 10px;
 }
+.demo-header {
+    position: relative;
+}
 .demo {
     padding: 10px 0 20px;
 }
@@ -80,10 +83,14 @@ body {
     span {
         float: left;
         text-align: center;
-        padding: 15px 20px;
+        padding: 5px 15px;
         margin: 0 10px 10px 0;
         border: 1px solid rgba(0,0,0, 0.1);
-        .border-radius(4px);
+        .border-radius(20px);
+        
+        &:last-child {
+            margin-right: 0;
+        }
     }
     
     .visible-on h3 {
@@ -117,7 +124,7 @@ body {
         border: 1px solid;
         .rgba-border( #000, 0.15, #ccc );
         .border-radius(4px);
-        box-shadow: 0 1px 3px rgba(0,0,0, 0.04);
+        box-shadow: 0 1px 3px rgba(0,0,0, 0.05);
     }
     
     ////
@@ -132,16 +139,12 @@ body {
     }
     .row.nested [class*="col-"] {
         .rgba( #000, 0.1, #efefef );
-        box-shadow: 0 1px 3px rgba(0,0,0, 0.08) inset;
+        box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
     }
     .row.nested p {
         margin: 0;
         border: 0 none;
         box-shadow: none;
-    }
-    .row.nested .col-12 {
-        background: transparent;
-        margin-bottom: 10px;
     }
     
     ////
@@ -188,7 +191,48 @@ body {
     .semantic .test-3 p {
         background: @blue;
     }
-
+    
+    ////
+    // Semantic Nested Grid
+    .nested-semantic {
+        background: transparent;
+        margin: 20px 0;
+    }
+    .nested-semantic [class*="test-"] {
+        .rgba( #000, 0.1, #efefef );
+        box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
+    }
+    .nested-semantic .test-3 {
+        background: none;
+        box-shadow: none;
+    }
+    .nested-semantic p {
+        margin: 0;
+        border: 0 none;
+        box-shadow: none;
+    }
+    
+    .nested-semantic {
+        .row();
+    }
+    .nested-semantic .test-1 {
+        .column(4);
+    }
+    .nested-semantic .test-2 {
+        .column(8);
+    }
+    .nested-semantic .test-3 {
+        .row();
+    }
+    .nested-semantic .test-4 {
+        .column(4);
+        .alpha();
+    }
+    .nested-semantic .test-5 {
+        .column(4);
+        .omega();
+    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////
