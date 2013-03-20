@@ -114,26 +114,30 @@ body {
     [class*="col-"] > p, [class*="test-"] > p {
         text-align: center;
         padding: 15px 20px;
-        border: 1px solid rgba(0,0,0, 0.1);
+        border: 1px solid;
+        .rgba-border( #000, 0.15, #ccc );
         .border-radius(4px);
+        box-shadow: 0 1px 3px rgba(0,0,0, 0.04);
     }
     
     ////
     // Nested
     .row.nested {
         background: transparent;
-        margin-bottom: 20px;
+        margin: 20px 0;
     }
     .row.nested .row {
         background: transparent;
         padding: 0;
     }
     .row.nested [class*="col-"] {
-        background: rgba(0,0,0, 0.1);
+        .rgba( #000, 0.1, #efefef );
+        box-shadow: 0 1px 3px rgba(0,0,0, 0.08) inset;
     }
     .row.nested p {
         margin: 0;
         border: 0 none;
+        box-shadow: none;
     }
     .row.nested .col-12 {
         background: transparent;
@@ -150,7 +154,7 @@ body {
         padding: 0;
     }
     .row-fluid.nested [class*="col-"] {
-        background: rgba(0,0,0, 0.1);
+        .rgba( #000, 0.1, #efefef );
     }
     .row-fluid.nested p {
         margin: 0;
