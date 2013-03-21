@@ -115,6 +115,31 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Grid System Assignment
+////////////////////////////////////////////////////////////////////////////////
+
+#responsive {
+    .base() {
+        #grid_system( @grid_row_width, @grid_gutter_width );
+    }
+    .small() {
+        // Does not use a grid system
+    }
+    .mobile() {
+        // Does not use a grid system
+    }
+    .tablet() {
+        #grid_system( @grid_tablet_row_width, @grid_tablet_gutter_width );
+    }
+    .desktop() {
+        #grid_system( @grid_desktop_row_width, @grid_desktop_gutter_width );
+    }
+    .large() {
+        #grid_system( @grid_large_row_width, @grid_large_gutter_width );
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -144,9 +169,6 @@
     }
 }
 #media-queries() when (@media_mode = desktop-first) {
-    ////
-    // Desktop first
-    #responsive > .desktop;
     ////
     // Larger: @media_large and above
     @media screen and ( min-width: @media_large ) {

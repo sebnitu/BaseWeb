@@ -86,7 +86,7 @@
         <div class="col-8">
             <p>.col-8</p>
             
-            <div class="row">
+            <div class="row row-8">
                 <div class="col-3">
                     <p>.col-3</p>
                     
@@ -145,72 +145,5 @@
         </div>
         
     </div><!-- .row -->
-    
-    <?php /*
-    <div class="row nested nested-fluid visible-tablet">
-                
-        <div class="col-8">
-            <p>.col-8</p>
-            
-            <div class="row">
-                <div class="col-4">
-                    <p>.</p>
-                    
-                    <div class="row">
-                        <div class="col-8">
-                            <p>.</p>
-                        </div>
-                        <div class="col-4">
-                            <p>.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-4">
-                    <p>.</p>
-                    
-                    <div class="row">
-                        <div class="col-6">
-                            <p>.</p>
-                        </div>
-                        <div class="col-6">
-                            <p>.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-4">
-                    <p>.</p>
-                </div>
-            </div>
-            
-        </div>
-        
-        <div class="col-4">
-            <p>.col-4</p>
-            
-            <div class="row">
-                <div class="col-6">
-                    <p>.</p>
-                    
-                    <div class="row">
-                        <div class="col-6">
-                            <p>.</p>
-                        </div>
-                        <div class="col-6">
-                            <p>.</p>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-6">
-                    <p>.</p>
-                </div>
-            </div>
-            
-        </div>
-        
-    </div><!-- .row -->
-    */ ?>
     
 </div><!-- .demo -->

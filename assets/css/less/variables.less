@@ -58,7 +58,56 @@
 
 ////
 // Grid System
+////
+// Columns
+@grid_columns: 12;
 
+////
+// Grids
+@grid_tablet_row_width: 100%; // 720px
+@grid_tablet_gutter_width: 2%; // 20px
+
+@grid_desktop_row_width: 960px; // 960px
+@grid_desktop_gutter_width: 20px; // 20px
+
+@grid_large_row_width: 1200px; // 1200px
+@grid_large_gutter_width: 20px; // 20px
+
+////
+// Base Grid - Used when media queries are disabled
+@grid_row_width: @grid_desktop_row_width;
+@grid_gutter_width: @grid_desktop_gutter_width;
+
+////
+// Fluid Variables
+@grid_min_width: @media_mobile;
+@grid_max_width: 1200px;
+@grid_margin_width: 20px;
+
+////
+// Grid Gutter Property
+// Set to margin or padding
+@grid_gutter_property: margin;
+
+////
+// Class variables
+@class_container: container;
+@class_row: row;
+@class_column: col-;
+@class_prefix: prefix-;
+@class_suffix: suffix-;
+
+@class_first: alpha;
+@class_last: omega;
+
+////
+// Build selectors
+@all_columns: ~'[class*="@{class_column}"]'; //escaped value interpolation
+
+////
+// Utility Variables - Should never be changed
+@grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
+@grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
 
 ////
 // Scaffolding
