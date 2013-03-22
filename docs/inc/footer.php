@@ -2,13 +2,7 @@
 </section><!-- .main -->
 
 <footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <p>BaseWeb is built and maintained by Sebastian Nitu. Fork this project on GitHub.</p>
-            </div>
-        </div><!-- .row -->
-    </div><!-- .container -->
+    <p><a href="https://github.com/sebnitu/BaseWeb">BaseWeb</a> is built and maintained by <a href="http://sebnitu.com">Sebastian Nitu</a>. <a href="https://github.com/sebnitu/BaseWeb">Fork this project on GitHub</a>.</p>
 </footer><!-- .footer -->
 
 <!-- jQuery -->

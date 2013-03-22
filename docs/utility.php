@@ -1,21 +1,15 @@
 <div class="demo-intro">
-
-    <div class="row">
-    
-        <header class="demo-header col-12">
-            <h1>Utility Classes</h1>
-        </header><!-- .demo-header -->
-    
-    </div><!-- .row -->
-    
+    <header class="demo-header">
+        <h1>Utility Classes</h1>
+    </header><!-- .demo-header -->
 </div><!-- .demo-intro -->
 
-<div class="demo demo-utility">
+<div class="demo">
 
     <div class="row">
     
         <div class="col-6 visible-on">
-            <h3>Visible On</h3>
+            <p>Visible On</p>
             <p class="clearfix">
                 <span class="visible-small">Small</span>
                 <span class="visible-mobile">Mobile</span>
@@ -26,7 +20,7 @@
         </div>
         
         <div class="col-6 hidden-on">
-            <h3>Hidden On</h3>
+            <p>Hidden On</p>
             <p class="clearfix">
                 <span class="hidden-small">Small</span>
                 <span class="hidden-mobile">Mobile</span>

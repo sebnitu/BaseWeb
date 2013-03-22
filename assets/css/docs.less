@@ -2,72 +2,428 @@
 // Documentation Styles
 ////////////////////////////////////////////////////////////////////////////////
 
-body {
+.docs {
     background: #f4f4f4;
-    font-family: @monoFontFamily;
+}
+.docs .header {
+    position: relative;
+    z-index: 10;
+    background: @g2;
+    box-shadow: 0 1px 6px rgba(0,0,0, 0.1);
+}
+.docs .banner {
+    position: relative;
+    z-index: 5;
+    background: @blue;
+    #gradient > .vertical( @blueDarker, @blueLight );
+}
+.docs .main {
+    position: relative;
+    z-index: 15;
+    background: @white;
+    box-shadow: 0 -2px 12px rgba(0,0,0, 0.15);
+}
+.docs .footer {
+    position: relative;
+    z-index: 10;
+    padding: 20px 0;
+}
+
+////
+// Responsive Styles
+#responsive {
+    
+    .desktop() {
+        
+        .docs .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+        .docs .banner {
+            position: fixed;
+            width: 100%;
+            top: 62px;
+        }
+        .docs .main {
+            margin-top: ( 62px + 340px );
+            margin-bottom: 82px;
+        }
+        .docs .footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        
+    }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Header
 ////////////////////////////////////////////////////////////////////////////////
 
-.header {
-    background: @g2;
-    text-align: center;
-}
-.header .row {
-    background: @g2;
-}
-.header .logo {
-    font-size: @baseFontSize;
-    line-height: @baseLineHeight;
-    font-weight: normal;
-    color: @g9;
-    margin: 0;
-    padding: 20px 0;
-}
-.header .logo a {
-    color: @gE;
-}
-.header .logo span {
-    color: @g6;
-    margin: 0 5px;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Main
-////////////////////////////////////////////////////////////////////////////////
-
-.main {
-    background: @white;
-}
-.main .row {
-    background: @white;
+.docs {
+    .header {
+        text-align: center;
+        padding: 15px 0;
+    }
+    .header .logo {
+        padding: 5px 0;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: @baseFontSize;
+        line-height: @baseLineHeight;
+        font-weight: normal;
+        color: @g9;
+    }
+    .header .logo a {
+        color: @gE;
+    }
+    .header .logo span {
+        color: @g6;
+        margin: 0 5px;
+    }
+    
+    .header .fork {
+        .rgba( @white, 0.1, @g3 );
+        color: @g9;
+        border: 0 none;
+        text-align: center;
+        display: block;
+        padding: 15px 20px;
+        .border-radius();
+        
+        &:hover {
+            .rgba( @white, 0.15, @g3 );
+            color: @gE;
+        }
+    }
 }
 
 ////
-// Demo
-.demo-intro {
-    padding: 20px 0 10px;
+// Responsive Styles
+#responsive {
+    
+    .tablet() {
+        .docs {
+            
+            .header .logo {
+                float: left;
+                margin-bottom: 0;
+            }
+            
+            .header .fork {
+                float: right;
+                padding: 5px 20px;
+            }
+        }
+    }
+
 }
-.demo-header {
-    position: relative;
+
+////////////////////////////////////////////////////////////////////////////////
+// Banner
+////////////////////////////////////////////////////////////////////////////////
+
+.docs {
+    
+    .banner {
+        text-align: center;
+    }
+    .banner header {
+        .container();
+        padding: 60px 0;
+    }
+    .banner header h1 {
+        .column(10);
+        .prefix(1);
+        .suffix(1);
+        font-weight: 100;
+        letter-spacing: 1px;
+        color: @white;
+        margin-bottom: 40px;
+        text-shadow: 0 1px 3px rgba(0,0,0, 0.5);
+    }
+    .banner header p {
+        margin: 15px 0;
+    }
+    .banner header p a {
+        position: relative;
+        font-size: 16px;
+        line-height: 30px;
+        background: @white;
+        display: inline-block;
+        border: 0 none;
+        padding: 10px 30px;
+        color: @blue;
+        box-shadow: 0 1px 6px rgba(0,0,0, 0.2);
+        .border-radius(25px);
+        
+        &:after {
+            #arrow > .down( 8px, @white );
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -8px;
+        }
+        &:hover {
+            top: 5px;
+            color: @blue;
+        }
+    }
+    
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Features Menu
+////////////////////////////////////////////////////////////////////////////////
+
+.docs {
+    .features-nav {
+        padding: 20px 0 10px;
+    }
+    .features-nav ul {
+        .row();
+    }
+    .features-nav ul li {
+        .column(3);
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .features-nav ul li a {
+        display: block;
+        border: 0 none;
+        padding: 10px 20px;
+        .rgba( #000, 0.05, #efefef );
+        .border-radius();
+    }
+    .features-nav ul li a:hover {
+        color: @colorDark;
+        .rgba( #000, 0.1, #efefef );
+        box-shadow: 0 1px 3px rgba(0,0,0, 0.15) inset;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Demos
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-wrap {
+    .clearfix();
+}
+.demo-intro {
+    .row();
+    margin: 10px 0 0;
+}
+.demo-intro header {
+    .column(12);
+    border-top: 1px solid;
+    .rgba-border( #000, 0.1, #efefef );
+}
+.demo-intro header h1 {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    margin: 10px 0;
 }
 .demo {
-    padding: 10px 0 20px;
+    .clearfix();
+    padding: 0 0 30px 0;
 }
-.main h1 {
-    font-size: @baseFontSize;
-    line-height: @baseLineHeight;
-    font-weight: bold;
-    margin-bottom: 0;
-    .uppercase(1px);
+
+////////////////////////////////////////////////////////////////////////////////
+// Colors Demo
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-colors {
+    .row();
+    
+    .color-palletes {
+        .column(12);
+        .remove-list-styles();
+        .clearfix();
+        margin-bottom: 30px;
+        
+        [class*="c"] {
+            position: relative;
+            background: @white;
+            width: 10%;
+            height: 50px;
+            padding-bottom: 30px;
+            margin-bottom: 10px;
+            float: left;
+            
+            &:after {
+                font-family: @monoFontFamily;
+                font-size: 12px;
+                line-height: 20px;
+                content: "";
+                display: block;
+                text-align: center;
+                padding: 5px 10px;
+                margin: 50px 0 0 0;
+                #gradient > .horizontal( #efefef, #e0e0e0 );
+            }
+            &:before {
+                #arrow > .down( 4px, #000 );
+                position: absolute;
+                top: 50px;
+                left: 50%;
+                margin-left: -4px;
+            }
+        }
+        
+        .swatch( @color ) {
+            background: @color;
+            &:after {
+                content: "@{color}";
+            }
+            &:before {
+                #arrow > .down( 4px, @color );
+            }
+        }
+        
+        &.rgb {
+            .c1 { .swatch( @Rgb ); }
+            .c2 { .swatch( @rGb ); }
+            .c3 { .swatch( @rgB ); }
+        }
+        
+        &.cmyk {
+            .c1 { .swatch( @Cmyk ); }
+            .c2 { .swatch( @cmYk ); }
+            .c3 { .swatch( @cMyk ); }
+            .c4 { .swatch( @cmyK ); }
+        }
+        
+        &.gray-scale {
+            .c1  { .swatch( @g0 ); }
+            .c2  { .swatch( @g1 ); }
+            .c3  { .swatch( @g2 ); }
+            .c4  { .swatch( @g3 ); }
+            .c5  { .swatch( @g4 ); }
+            .c6  { .swatch( @g5 ); }
+            .c7  { .swatch( @g6 ); }
+            .c8  { .swatch( @g7 ); }
+            .c9  { .swatch( @g8 ); }
+            .c10 { .swatch( @g9 ); }
+            .c11 { .swatch( @gA ); }
+            .c12 { .swatch( @gB ); }
+            .c13 { .swatch( @gC ); }
+            .c14 { .swatch( @gD ); }
+            .c15 { .swatch( @gE ); }
+            .c16 { .swatch( @gF ); }
+        }
+        
+        &.short-code-gray-scale {
+            .c1  { .swatch( @black ); }
+            .c2  { .swatch( @grayDarker ); }
+            .c3  { .swatch( @grayDark ); }
+            .c4  { .swatch( @gray ); }
+            .c5  { .swatch( @grayLight ); }
+            .c6  { .swatch( @grayLighter ); }
+            .c7  { .swatch( @white ); }
+        }
+        
+        &.theme {
+            .c1  { .swatch( @redLighter ); }
+            .c2  { .swatch( @redLight ); }
+            .c3  { .swatch( @red ); }
+            .c4  { .swatch( @redDark ); }
+            .c5  { .swatch( @redDarker ); }
+        
+            .c6  { .swatch( @redOrangeLighter ); }
+            .c7  { .swatch( @redOrangeLight ); }
+            .c8  { .swatch( @redOrange ); }
+            .c9  { .swatch( @redOrangeDark ); }
+            .c10 { .swatch( @redOrangeDarker ); }
+            
+            .c11 { .swatch( @orangeLighter ); }
+            .c12 { .swatch( @orangeLight ); }
+            .c13 { .swatch( @orange ); }
+            .c14 { .swatch( @orangeDark ); }
+            .c15 { .swatch( @orangeDarker ); }
+            
+            .c16 { .swatch( @yellowOrangeLighter ); }
+            .c17 { .swatch( @yellowOrangeLight ); }
+            .c18 { .swatch( @yellowOrange ); }
+            .c19 { .swatch( @yellowOrangeDark ); }
+            .c20 { .swatch( @yellowOrangeDarker ); }
+            
+            .c21 { .swatch( @yellowLighter ); }
+            .c22 { .swatch( @yellowLight ); }
+            .c23 { .swatch( @yellow ); }
+            .c24 { .swatch( @yellowDark ); }
+            .c25 { .swatch( @yellowDarker ); }
+            
+            .c26 { .swatch( @yellowGreenLighter ); }
+            .c27 { .swatch( @yellowGreenLight ); }
+            .c28 { .swatch( @yellowGreen ); }
+            .c29 { .swatch( @yellowGreenDark ); }
+            .c30 { .swatch( @yellowGreenDarker ); }
+            
+            .c31 { .swatch( @greenLighter ); }
+            .c32 { .swatch( @greenLight ); }
+            .c33 { .swatch( @green ); }
+            .c34 { .swatch( @greenDark ); }
+            .c35 { .swatch( @greenDarker ); }
+            
+            .c36 { .swatch( @blueGreenLighter ); }
+            .c37 { .swatch( @blueGreenLight ); }
+            .c38 { .swatch( @blueGreen ); }
+            .c39 { .swatch( @blueGreenDark ); }
+            .c40 { .swatch( @blueGreenDarker ); }
+            
+            .c41 { .swatch( @blueLighter ); }
+            .c42 { .swatch( @blueLight ); }
+            .c43 { .swatch( @blue ); }
+            .c44 { .swatch( @blueDark ); }
+            .c45 { .swatch( @blueDarker ); }
+            
+            .c46 { .swatch( @blueVioletLighter ); }
+            .c47 { .swatch( @blueVioletLight ); }
+            .c48 { .swatch( @blueViolet ); }
+            .c49 { .swatch( @blueVioletDark ); }
+            .c50 { .swatch( @blueVioletDarker ); }
+            
+            .c51 { .swatch( @violetLighter ); }
+            .c52 { .swatch( @violetLight ); }
+            .c53 { .swatch( @violet ); }
+            .c54 { .swatch( @violetDark ); }
+            .c55 { .swatch( @violetDarker ); }
+            
+            .c56 { .swatch( @redVioletLighter ); }
+            .c57 { .swatch( @redVioletLight ); }
+            .c58 { .swatch( @redViolet ); }
+            .c59 { .swatch( @redVioletDark ); }
+            .c60 { .swatch( @redVioletDarker ); }
+        }
+    }
 }
-.main h3 {
-    font-size: @baseFontSize;
-    line-height: @baseLineHeight;
-    font-weight: bold;
-    margin: 0;
+
+////////////////////////////////////////////////////////////////////////////////
+// Typography Demo
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-typography {
+    .row();
+    
+    .demo-description {
+        .column(4);
+        border-top: 1px solid;
+        .rgba-border( #000, 0.1, #efefef );
+        
+        h2 {
+            font-size: @baseFontSize;
+            line-height: @baseLineHeight;
+        }
+    }
+    .demo-block {
+        .column(8);
+        border-top: 1px solid;
+        .rgba-border( #000, 0.1, #efefef );
+    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -76,10 +432,6 @@ body {
 
 .demo-utility {
     
-    
-    .row {
-        padding-top: 0;
-    }
     span {
         float: left;
         text-align: center;
@@ -93,7 +445,7 @@ body {
         }
     }
     
-    .visible-on h3 {
+    .visible-on p {
         color: @blue;
     }
     .visible-on span {
@@ -101,7 +453,7 @@ body {
         .rgba-border( @blue, 0.2 );
         color: @blue;
     }
-    .hidden-on h3 {
+    .hidden-on p {
         color: @red;
     }
     .hidden-on span {
@@ -119,49 +471,14 @@ body {
 .demo-grid {
     
     [class*="col-"] > p, [class*="test-"] > p {
+        font-family: @monoFontFamily;
+        font-size: 12px;
         text-align: center;
         padding: 15px 20px;
         border: 1px solid;
         .rgba-border( #000, 0.15, #ccc );
         .border-radius(4px);
         box-shadow: 0 1px 3px rgba(0,0,0, 0.05);
-    }
-    
-    ////
-    // Nested
-    .row.nested {
-        background: transparent;
-        margin: 20px 0;
-    }
-    .row.nested .row {
-        background: transparent;
-        padding: 0;
-    }
-    .row.nested [class*="col-"] {
-        .rgba( #000, 0.1, #efefef );
-        box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
-    }
-    .row.nested p {
-        margin: 0;
-        border: 0 none;
-        box-shadow: none;
-    }
-    
-    ////
-    // Fluid Nested
-    .row-fluid.nested {
-        background: transparent;
-    }
-    .row-fluid.nested .row {
-        background: transparent;
-        padding: 0;
-    }
-    .row-fluid.nested [class*="col-"] {
-        .rgba( #000, 0.1, #efefef );
-    }
-    .row-fluid.nested p {
-        margin: 0;
-        border: 0 none;
     }
     
     ////
@@ -181,24 +498,21 @@ body {
         .prefix( 3 );
         .suffix( 6 );
     }
-    
-    .semantic .test-1 p {
-        background: @red;
-    }
-    .semantic .test-2 p {
-        background: @green;
-    }
-    .semantic .test-3 p {
-        background: @blue;
-    }
+    .semantic .test-1 p { background: @red; }
+    .semantic .test-2 p { background: @green; }
+    .semantic .test-3 p { background: @blue; }
     
     ////
-    // Semantic Nested Grid
-    .nested-semantic {
+    // Nested
+    .row.nested, .nested-semantic {
         background: transparent;
         margin: 20px 0;
     }
-    .nested-semantic [class*="test-"] {
+    .row.nested .row {
+        background: transparent;
+        padding: 0;
+    }
+    .row.nested [class*="col-"], .nested-semantic [class*="test-"] {
         .rgba( #000, 0.1, #efefef );
         box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
     }
@@ -206,12 +520,14 @@ body {
         background: none;
         box-shadow: none;
     }
-    .nested-semantic p {
+    .row.nested p, .nested-semantic p {
         margin: 0;
         border: 0 none;
         box-shadow: none;
     }
     
+    ////
+    // Semantic Nested Grid
     .nested-semantic {
         .row();
     }
@@ -233,32 +549,43 @@ body {
         .omega();
     }
     
-}
-
-.nested-static {
-    
-    .col-8 .col-3 {
-        .column(3, 8);
-        
-        .col-1 {
-            .column(1, 3);
-            .alpha();
-        }
-        .col-2 {
-            .column(2, 3);
-            .omega();
-        }
-    }
-    .col-8 .col-2 {
-        .column(2, 8);
-    }
-    
-    .col-4 .col-2 {
-        .column(2, 4);
-        
-        .col-1 {
-            .column(1, 2);
+    ////
+    // Nested static grid fix
+    .nested-static {
+        .col-8 .col-3 {
+            .column(3, 8);
             
+            .col-1 {
+                .column(1, 3);
+                .alpha();
+            }
+            .col-2 {
+                .column(2, 3);
+                .omega();
+            }
+            &:first-child {
+                .alpha();
+            }
+        }
+        .col-8 .col-2 {
+            .column(2, 8);
+            &:last-child {
+                .omega();
+            }
+        }
+        .col-4 .col-2 {
+            .column(2, 4);
+            
+            .col-1 {
+                .column(1, 2);
+                
+                &:first-child {
+                    .alpha();
+                }
+                &:last-child {
+                    .omega();
+                }
+            }
             &:first-child {
                 .alpha();
             }
@@ -267,17 +594,26 @@ body {
             }
         }
     }
-    
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Footer
 ////////////////////////////////////////////////////////////////////////////////
 
-.footer {
-    font-size: @baseFontSize - 2;
-    line-height: @baseLineHeight - 2;
-    text-align: center;
-    color: @gB;
-    padding: 20px 0;
+.docs { 
+    .footer {
+        text-align: center;
+        color: @gA;
+    }
+    .footer p {
+        .container();
+    }
+    .footer p a {
+        color: @gA;
+        
+        &:hover {
+            color: @linkColorHover;
+        }
+    }
 }

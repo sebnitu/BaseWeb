@@ -1,22 +1,9 @@
-//============================================================
-// BaseWeb - Default Typography Theme
-// https://github.com/sebnitu/BaseWeb
-//============================================================
-// Base
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Typography
+////////////////////////////////////////////////////////////////////////////////
 
-body {
-    font-family: @baseFontFamily;
-    font-size: @baseFontSize;
-    font-weight: @baseFontWeight;
-    line-height: @baseLineHeight;
-    color: @color;
-}
-
-//============================================================
+////
 // Headers
-//============================================================
-
 h1, h2, h3, h4, h5, h6 {
     font-family: @headingsFontFamily;
     color: @colorHeader;
@@ -58,11 +45,13 @@ h6 {
     line-height: @baseLineHeight;
 }
 
-//============================================================
+////
 // Base Elements
-//============================================================
-
 p { margin: 10px 0; }
+p.intro {
+    font-size: (@baseFontSize + 4);
+    line-height: (@baseLineHeight + 4);
+}
 a {
     color: @linkColor;
     text-decoration: none;
@@ -82,8 +71,10 @@ small {
     color: @colorLight;
 }
 
-// Block Quotes
-//========================================
+////////////////////////////////////////////////////////////////////////////////
+// Blockquotes
+////////////////////////////////////////////////////////////////////////////////
+
 blockquote {
     font-style: italic;
     padding: 0 0 0 20px;
@@ -99,8 +90,10 @@ blockquote {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
 // Horizontal Rules
-//========================================
+////////////////////////////////////////////////////////////////////////////////
+
 hr {
     background: none;
     height: 0; width: 100%;
@@ -119,8 +112,10 @@ hr {
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
 // Code
-//========================================
+////////////////////////////////////////////////////////////////////////////////
+
 code, pre {
     background: @codeBg;
     font-family: @monoFontFamily;
@@ -148,9 +143,9 @@ pre {
     }
 }
 
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
 // Lists
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
 
 ul, ol {
     margin: 10px 0 10px 20px;
@@ -190,9 +185,9 @@ dl {
     }
 }
 
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
 // Images
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
 
 img {
     display: block; 
@@ -229,94 +224,9 @@ img.align-right, .img-wrap.right {
     }
 }
 
-//============================================================
-// Tables
-//============================================================
-
-table {
-
-    // Base table styles
-    width: 100%; max-width: 100%;
-    background: transparent;
-    margin: 10px 0;
-    
-    // Table head
-    th {
-        color: @colorDark;
-        text-align: left;
-        font-weight: bold;
-        font-size: 0.8em;
-        .uppercase();
-    }
-    
-    // Rowed Tables
-    &.rowed {
-        border-collapse: separate;
-        td, th {
-            padding: 6px 10px;
-            border-top: 1px solid @tableBorder;
-        }
-        th { border-bottom: 1px solid @tableBorder; }
-        tr:first-child td, tr:first-child th { 
-            border-top: 0 none; 
-        }
-    }
-    
-    // Zebra Stripes
-    &.zebra {
-        tbody tr:nth-child(odd) td, 
-        tbody tr:nth-child(odd) th {
-            background: @tableBgZebra;
-        }
-    }
-    
-    // Bordered Tables
-    &.bordered {
-        background: @tableBg;
-        border: 1px solid @tableBorder;
-        border-collapse: separate;
-        .border-radius();
-    
-        td, th {
-            padding: 6px 10px;
-            border-top: 1px solid @tableBorder;
-            border-left: 1px solid @tableBorder;
-        }
-        thead tr th { border-bottom: 1px solid @tableBorder; }
-        tr:first-child td, tr:first-child th { border-top: 0 none; }
-        tr td:first-child, tr th:first-child { border-left: 0 none; }
-        
-        tbody tr:last-child td:first-child, 
-        tbody tr:last-child th:first-child { .border-radius-bottom-left(); }
-        
-        tbody tr:last-child td:last-child, 
-        tbody tr:last-child th:last-child { .border-radius-bottom-right(); }
-        
-        thead tr:first-child th:first-child, 
-        &.no-thead tr:first-child td:first-child, 
-        &.no-thead tr:first-child th:first-child { .border-radius-top-left(); }
-        
-        thead tr:first-child th:last-child, 
-        &.no-thead tr:first-child td:last-child, 
-        &.no-thead tr:first-child th:last-child { .border-radius-top-right(); }
-    }
-    
-    // Hover Highlight
-    &.hover {
-        thead tr th:hover, 
-        tbody tr:hover {
-            background: @tableBgHover;
-            color: @linkColorHover;
-        }
-        tbody tr:hover td {
-            background: transparent;
-        }
-    }
-}
-
-//============================================================
-// Miscellaneous Classes
-//============================================================
+////////////////////////////////////////////////////////////////////////////////
+// Miscellaneous
+////////////////////////////////////////////////////////////////////////////////
 
 .timestamp, .metadata {
     color: @colorLight;
@@ -332,7 +242,3 @@ table {
     text-align: center;
     .border-radius-bottom(3px);
 }
-
-//============================================================
-// End of Default Typography Styles
-//============================================================

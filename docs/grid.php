@@ -1,23 +1,17 @@
 <div class="demo-intro">
-
-    <div class="row">
-    
-        <header class="demo-header col-12">
-            <h1>Grid System</h1>
-        </header><!-- .demo-header -->
-    
-    </div><!-- .row -->
-    
+    <header class="demo-header">
+        <h1>Grid System</h1>
+    </header><!-- .demo-header -->
 </div><!-- .demo-intro -->
 
-<div class="demo demo-grid">
+<div class="demo">
     
     <div class="semantic">
         <div class="test-1">
             <p>.column(3);</p>
         </div>
         <div class="test-2">
-            <p>.column(3);</p>
+            <p>.column(9);</p>
         </div>
         <div class="test-3">
             <p>.column(3); .prefix(3); .suffix(6);</p>
