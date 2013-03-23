@@ -16,13 +16,11 @@
             <input class="btn" type="button" value="Input">
             <input class="btn" type="submit" value="Submit">
         </p>
-        <p>
-            <div class="btn-group">
-                <a class="btn" href="#">Button</a>
-                <a class="btn" href="#">Button</a>
-                <a class="btn" href="#">Button</a>
-            </div>
-        </p>
+        <div class="btn-group">
+            <a class="btn" href="#">Button</a>
+            <a class="btn" href="#">Button</a>
+            <a class="btn" href="#">Button</a>
+        </div>
     </div>
     
     <div class="demo-description">

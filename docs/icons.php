@@ -10,258 +10,263 @@
         <h2>Class Based</h2>
     </div>
     <div class="demo-block">
-        <div><i class="icon-map"></i> <span>icon-map</span></div>
-        <div><i class="icon-compass"></i> <span>icon-compass</span></div>
-        <div><i class="icon-direction"></i> <span>icon-direction</span></div>
-        <div><i class="icon-scope"></i> <span>icon-scope</span></div>
-        <div><i class="icon-share"></i> <span>icon-share</span></div>
-        <div><i class="icon-heart"></i> <span>icon-heart</span></div>
-        <div><i class="icon-star"></i> <span>icon-star</span></div>
-        <div><i class="icon-thumbs-up"></i> <span>icon-thumbs-up</span></div>
-        <div><i class="icon-dialog"></i> <span>icon-dialog</span></div>
-        <div><i class="icon-maps"></i> <span>icon-maps</span></div>
-        <div><i class="icon-help"></i> <span>icon-help</span></div>
-        <div><i class="icon-help-circle"></i> <span>icon-help-circle</span></div>
-        <div><i class="icon-warning"></i> <span>icon-warning</span></div>
-        <div><i class="icon-reload"></i> <span>icon-reload</span></div>
-        <div><i class="icon-reload-ccw"></i> <span>icon-reload-ccw</span></div>
-        <div><i class="icon-shuffle"></i> <span>icon-shuffle</span></div>
-        <div><i class="icon-back"></i> <span>icon-back</span></div>
-        <div><i class="icon-retweet"></i> <span>icon-retweet</span></div>
-        <div><i class="icon-list"></i> <span>icon-list</span></div>
-        <div><i class="icon-list-add"></i> <span>icon-list-add</span></div>
-        <div><i class="icon-image-list"></i> <span>icon-image-list</span></div>
-        <div><i class="icon-document-text"></i> <span>icon-document-text</span></div>
-        <div><i class="icon-document"></i> <span>icon-document</span></div>
-        <div><i class="icon-document-group"></i> <span>icon-document-group</span></div>
-        <div><i class="icon-document-landscape"></i> <span>icon-document-landscape</span></div>
-        <div><i class="icon-images"></i> <span>icon-images</span></div>
-        <div><i class="icon-movie"></i> <span>icon-movie</span></div>
-        <div><i class="icon-songs"></i> <span>icon-songs</span></div>
-        <div><i class="icon-folder"></i> <span>icon-folder</span></div>
-        <div><i class="icon-archive"></i> <span>icon-archive</span></div>
-        <div><i class="icon-trash"></i> <span>icon-trash</span></div>
-        <div><i class="icon-upload"></i> <span>icon-upload</span></div>
-        <div><i class="icon-download"></i> <span>icon-download</span></div>
-        <div><i class="icon-ssd-download"></i> <span>icon-ssd-download</span></div>
-        <div><i class="icon-cloud"></i> <span>icon-cloud</span></div>
-        <div><i class="icon-cloud-upload"></i> <span>icon-cloud-upload</span></div>
-        <div><i class="icon-flashlight"></i> <span>icon-flashlight</span></div>
-        <div><i class="icon-trophy"></i> <span>icon-trophy</span></div>
-        <div><i class="icon-tag"></i> <span>icon-tag</span></div>
-        <div><i class="icon-camera"></i> <span>icon-camera</span></div>
-        <div><i class="icon-sleep"></i> <span>icon-sleep</span></div>
-        <div><i class="icon-palette"></i> <span>icon-palette</span></div>
-        <div><i class="icon-leaf"></i> <span>icon-leaf</span></div>
-        <div><i class="icon-music"></i> <span>icon-music</span></div>
-        <div><i class="icon-shop"></i> <span>icon-shop</span></div>
-        <div><i class="icon-fly"></i> <span>icon-fly</span></div>
-        <div><i class="icon-lifebuoy"></i> <span>icon-lifebuoy</span></div>
-        <div><i class="icon-circles"></i> <span>icon-circles</span></div>
-        <div><i class="icon-eye"></i> <span>icon-eye</span></div>
-        <div><i class="icon-clock"></i> <span>icon-clock</span></div>
-        <div><i class="icon-mic"></i> <span>icon-mic</span></div>
-        <div><i class="icon-calendar"></i> <span>icon-calendar</span></div>
-        <div><i class="icon-flash"></i> <span>icon-flash</span></div>
-        <div><i class="icon-hour-glass"></i> <span>icon-hour-glass</span></div>
-        <div><i class="icon-rss"></i> <span>icon-rss</span></div>
-        <div><i class="icon-broadcast"></i> <span>icon-broadcast</span></div>
-        <div><i class="icon-lock"></i> <span>icon-lock</span></div>
-        <div><i class="icon-unlock"></i> <span>icon-unlock</span></div>
-        <div><i class="icon-check"></i> <span>icon-check</span></div>
-        <div><i class="icon-close"></i> <span>icon-close</span></div>
-        <div><i class="icon-minus-circle"></i> <span>icon-minus-circle</span></div>
-        <div><i class="icon-plus-circle"></i> <span>icon-plus-circle</span></div>
-        <div><i class="icon-phone"></i> <span>icon-phone</span></div>
-        <div><i class="icon-settings"></i> <span>icon-settings</span></div>
-        <div><i class="icon-mouse"></i> <span>icon-mouse</span></div>
-        <div><i class="icon-address"></i> <span>icon-address</span></div>
-        <div><i class="icon-email"></i> <span>icon-email</span></div>
-        <div><i class="icon-block"></i> <span>icon-block</span></div>
-        <div><i class="icon-write"></i> <span>icon-write</span></div>
-        <div><i class="icon-forward"></i> <span>icon-forward</span></div>
-        <div><i class="icon-reply"></i> <span>icon-reply</span></div>
-        <div><i class="icon-reply-all"></i> <span>icon-reply-all</span></div>
-        <div><i class="icon-users"></i> <span>icon-users</span></div>
-        <div><i class="icon-print"></i> <span>icon-print</span></div>
-        <div><i class="icon-vcard"></i> <span>icon-vcard</span></div>
-        <div><i class="icon-link"></i> <span>icon-link</span></div>
-        <div><i class="icon-export"></i> <span>icon-export</span></div>
-        <div><i class="icon-flag"></i> <span>icon-flag</span></div>
-        <div><i class="icon-quote"></i> <span>icon-quote</span></div>
-        <div><i class="icon-comment"></i> <span>icon-comment</span></div>
-        <div><i class="icon-attach"></i> <span>icon-attach</span></div>
-        <div><i class="icon-mobile"></i> <span>icon-mobile</span></div>
-        <div><i class="icon-close-circle"></i> <span>icon-close-circle</span></div>
-        <div><i class="icon-play"></i> <span>icon-play</span></div>
-        <div><i class="icon-plus"></i> <span>icon-plus</span></div>
-        <div><i class="icon-record"></i> <span>icon-record</span></div>
-        <div><i class="icon-minus"></i> <span>icon-minus</span></div>
-        <div><i class="icon-pause"></i> <span>icon-pause</span></div>
-        <div><i class="icon-user-add"></i> <span>icon-user-add</span></div>
-        <div><i class="icon-info"></i> <span>icon-info</span></div>
-        <div><i class="icon-alert"></i> <span>icon-alert</span></div>
-        <div><i class="icon-user"></i> <span>icon-user</span></div>
-        <div><i class="icon-info-circle"></i> <span>icon-info-circle</span></div>
-        <div><i class="icon-stop"></i> <span>icon-stop</span></div>
-        <div><i class="icon-copyright"></i> <span>icon-copyright</span></div>
-        <div><i class="icon-sweden"></i> <span>icon-sweden</span></div>
-        <div><i class="icon-fast-forward"></i> <span>icon-fast-forward</span></div>
-        <div><i class="icon-rewind"></i> <span>icon-rewind</span></div>
-        <div><i class="icon-jump-to-start"></i> <span>icon-jump-to-start</span></div>
-        <div><i class="icon-jump-to-end"></i> <span>icon-jump-to-end</span></div>
-        <div><i class="icon-expand"></i> <span>icon-expand</span></div>
-        <div><i class="icon-minimize"></i> <span>icon-minimize</span></div>
-        <div><i class="icon-arrow-up"></i> <span>icon-arrow-up</span></div>
-        <div><i class="icon-arrow-left"></i> <span>icon-arrow-left</span></div>
-        <div><i class="icon-arrow-left-bold"></i> <span>icon-arrow-left-bold</span></div>
-        <div><i class="icon-arrow-right-bold"></i> <span>icon-arrow-right-bold</span></div>
-        <div><i class="icon-arrow-down-bold"></i> <span>icon-arrow-down-bold</span></div>
-        <div><i class="icon-arrow-up-bold"></i> <span>icon-arrow-up-bold</span></div>
-        <div><i class="icon-sound"></i> <span>icon-sound</span></div>
-        <div><i class="icon-mute"></i> <span>icon-mute</span></div>
-        <div><i class="icon-search"></i> <span>icon-search</span></div>
-        <div><i class="icon-book"></i> <span>icon-book</span></div>
-        <div><i class="icon-popup"></i> <span>icon-popup</span></div>
-        <div><i class="icon-bookmark"></i> <span>icon-bookmark</span></div>
-        <div><i class="icon-volume"></i> <span>icon-volume</span></div>
-        <div><i class="icon-home"></i> <span>icon-home</span></div>
-        <div><i class="icon-arrow-right-circle"></i> <span>icon-arrow-right-circle</span></div>
-        <div><i class="icon-arrow-down-circle"></i> <span>icon-arrow-down-circle</span></div>
-        <div><i class="icon-arrow-up-circle"></i> <span>icon-arrow-up-circle</span></div>
-        <div><i class="icon-arrow-left-circle"></i> <span>icon-arrow-left-circle</span></div>
-        <div><i class="icon-arrow-right"></i> <span>icon-arrow-right</span></div>
-        <div><i class="icon-arrow-down"></i> <span>icon-arrow-down</span></div>
-        <div><i class="icon-elipsis"></i> <span>icon-elipsis</span></div>
+        
+        <div class="tile-wrap">
+            <div class="tile" title="icon-map"><i class="icon-map"></i><span>icon-map</span></div>
+            <div class="tile" title="icon-compass"><i class="icon-compass"></i><span>icon-compass</span></div>
+            <div class="tile" title="icon-direction"><i class="icon-direction"></i><span>icon-direction</span></div>
+            <div class="tile" title="icon-scope"><i class="icon-scope"></i><span>icon-scope</span></div>
+            <div class="tile" title="icon-share"><i class="icon-share"></i><span>icon-share</span></div>
+            <div class="tile" title="icon-heart"><i class="icon-heart"></i><span>icon-heart</span></div>
+            <div class="tile" title="icon-star"><i class="icon-star"></i><span>icon-star</span></div>
+            <div class="tile" title="icon-thumbs-up"><i class="icon-thumbs-up"></i><span>icon-thumbs-up</span></div>
+            <div class="tile" title="icon-dialog"><i class="icon-dialog"></i><span>icon-dialog</span></div>
+            <div class="tile" title="icon-maps"><i class="icon-maps"></i><span>icon-maps</span></div>
+            <div class="tile" title="icon-help"><i class="icon-help"></i><span>icon-help</span></div>
+            <div class="tile" title="icon-help-circle"><i class="icon-help-circle"></i><span>icon-help-circle</span></div>
+            <div class="tile" title="icon-warning"><i class="icon-warning"></i><span>icon-warning</span></div>
+            <div class="tile" title="icon-reload"><i class="icon-reload"></i><span>icon-reload</span></div>
+            <div class="tile" title="icon-reload-ccw"><i class="icon-reload-ccw"></i><span>icon-reload-ccw</span></div>
+            <div class="tile" title="icon-shuffle"><i class="icon-shuffle"></i><span>icon-shuffle</span></div>
+            <div class="tile" title="icon-back"><i class="icon-back"></i><span>icon-back</span></div>
+            <div class="tile" title="icon-retweet"><i class="icon-retweet"></i><span>icon-retweet</span></div>
+            <div class="tile" title="icon-list"><i class="icon-list"></i><span>icon-list</span></div>
+            <div class="tile" title="icon-list-add"><i class="icon-list-add"></i><span>icon-list-add</span></div>
+            <div class="tile" title="icon-image-list"><i class="icon-image-list"></i><span>icon-image-list</span></div>
+            <div class="tile" title="icon-document-text"><i class="icon-document-text"></i><span>icon-document-text</span></div>
+            <div class="tile" title="icon-document"><i class="icon-document"></i><span>icon-document</span></div>
+            <div class="tile" title="icon-document-group"><i class="icon-document-group"></i><span>icon-document-group</span></div>
+            <div class="tile" title="icon-document-landscape"><i class="icon-document-landscape"></i><span>icon-document-landscape</span></div>
+            <div class="tile" title="icon-images"><i class="icon-images"></i><span>icon-images</span></div>
+            <div class="tile" title="icon-movie"><i class="icon-movie"></i><span>icon-movie</span></div>
+            <div class="tile" title="icon-songs"><i class="icon-songs"></i><span>icon-songs</span></div>
+            <div class="tile" title="icon-folder"><i class="icon-folder"></i><span>icon-folder</span></div>
+            <div class="tile" title="icon-archive"><i class="icon-archive"></i><span>icon-archive</span></div>
+            <div class="tile" title="icon-trash"><i class="icon-trash"></i><span>icon-trash</span></div>
+            <div class="tile" title="icon-upload"><i class="icon-upload"></i><span>icon-upload</span></div>
+            <div class="tile" title="icon-download"><i class="icon-download"></i><span>icon-download</span></div>
+            <div class="tile" title="icon-ssd-download"><i class="icon-ssd-download"></i><span>icon-ssd-download</span></div>
+            <div class="tile" title="icon-cloud"><i class="icon-cloud"></i><span>icon-cloud</span></div>
+            <div class="tile" title="icon-cloud-upload"><i class="icon-cloud-upload"></i><span>icon-cloud-upload</span></div>
+            <div class="tile" title="icon-flashlight"><i class="icon-flashlight"></i><span>icon-flashlight</span></div>
+            <div class="tile" title="icon-trophy"><i class="icon-trophy"></i><span>icon-trophy</span></div>
+            <div class="tile" title="icon-tag"><i class="icon-tag"></i><span>icon-tag</span></div>
+            <div class="tile" title="icon-camera"><i class="icon-camera"></i><span>icon-camera</span></div>
+            <div class="tile" title="icon-sleep"><i class="icon-sleep"></i><span>icon-sleep</span></div>
+            <div class="tile" title="icon-palette"><i class="icon-palette"></i><span>icon-palette</span></div>
+            <div class="tile" title="icon-leaf"><i class="icon-leaf"></i><span>icon-leaf</span></div>
+            <div class="tile" title="icon-music"><i class="icon-music"></i><span>icon-music</span></div>
+            <div class="tile" title="icon-shop"><i class="icon-shop"></i><span>icon-shop</span></div>
+            <div class="tile" title="icon-fly"><i class="icon-fly"></i><span>icon-fly</span></div>
+            <div class="tile" title="icon-lifebuoy"><i class="icon-lifebuoy"></i><span>icon-lifebuoy</span></div>
+            <div class="tile" title="icon-circles"><i class="icon-circles"></i><span>icon-circles</span></div>
+            <div class="tile" title="icon-eye"><i class="icon-eye"></i><span>icon-eye</span></div>
+            <div class="tile" title="icon-clock"><i class="icon-clock"></i><span>icon-clock</span></div>
+            <div class="tile" title="icon-mic"><i class="icon-mic"></i><span>icon-mic</span></div>
+            <div class="tile" title="icon-calendar"><i class="icon-calendar"></i><span>icon-calendar</span></div>
+            <div class="tile" title="icon-flash"><i class="icon-flash"></i><span>icon-flash</span></div>
+            <div class="tile" title="icon-hour-glass"><i class="icon-hour-glass"></i><span>icon-hour-glass</span></div>
+            <div class="tile" title="icon-rss"><i class="icon-rss"></i><span>icon-rss</span></div>
+            <div class="tile" title="icon-broadcast"><i class="icon-broadcast"></i><span>icon-broadcast</span></div>
+            <div class="tile" title="icon-lock"><i class="icon-lock"></i><span>icon-lock</span></div>
+            <div class="tile" title="icon-unlock"><i class="icon-unlock"></i><span>icon-unlock</span></div>
+            <div class="tile" title="icon-check"><i class="icon-check"></i><span>icon-check</span></div>
+            <div class="tile" title="icon-close"><i class="icon-close"></i><span>icon-close</span></div>
+            <div class="tile" title="icon-minus-circle"><i class="icon-minus-circle"></i><span>icon-minus-circle</span></div>
+            <div class="tile" title="icon-plus-circle"><i class="icon-plus-circle"></i><span>icon-plus-circle</span></div>
+            <div class="tile" title="icon-phone"><i class="icon-phone"></i><span>icon-phone</span></div>
+            <div class="tile" title="icon-settings"><i class="icon-settings"></i><span>icon-settings</span></div>
+            <div class="tile" title="icon-mouse"><i class="icon-mouse"></i><span>icon-mouse</span></div>
+            <div class="tile" title="icon-address"><i class="icon-address"></i><span>icon-address</span></div>
+            <div class="tile" title="icon-email"><i class="icon-email"></i><span>icon-email</span></div>
+            <div class="tile" title="icon-block"><i class="icon-block"></i><span>icon-block</span></div>
+            <div class="tile" title="icon-write"><i class="icon-write"></i><span>icon-write</span></div>
+            <div class="tile" title="icon-forward"><i class="icon-forward"></i><span>icon-forward</span></div>
+            <div class="tile" title="icon-reply"><i class="icon-reply"></i><span>icon-reply</span></div>
+            <div class="tile" title="icon-reply-all"><i class="icon-reply-all"></i><span>icon-reply-all</span></div>
+            <div class="tile" title="icon-users"><i class="icon-users"></i><span>icon-users</span></div>
+            <div class="tile" title="icon-print"><i class="icon-print"></i><span>icon-print</span></div>
+            <div class="tile" title="icon-vcard"><i class="icon-vcard"></i><span>icon-vcard</span></div>
+            <div class="tile" title="icon-link"><i class="icon-link"></i><span>icon-link</span></div>
+            <div class="tile" title="icon-export"><i class="icon-export"></i><span>icon-export</span></div>
+            <div class="tile" title="icon-flag"><i class="icon-flag"></i><span>icon-flag</span></div>
+            <div class="tile" title="icon-quote"><i class="icon-quote"></i><span>icon-quote</span></div>
+            <div class="tile" title="icon-comment"><i class="icon-comment"></i><span>icon-comment</span></div>
+            <div class="tile" title="icon-attach"><i class="icon-attach"></i><span>icon-attach</span></div>
+            <div class="tile" title="icon-mobile"><i class="icon-mobile"></i><span>icon-mobile</span></div>
+            <div class="tile" title="icon-close-circle"><i class="icon-close-circle"></i><span>icon-close-circle</span></div>
+            <div class="tile" title="icon-play"><i class="icon-play"></i><span>icon-play</span></div>
+            <div class="tile" title="icon-plus"><i class="icon-plus"></i><span>icon-plus</span></div>
+            <div class="tile" title="icon-record"><i class="icon-record"></i><span>icon-record</span></div>
+            <div class="tile" title="icon-minus"><i class="icon-minus"></i><span>icon-minus</span></div>
+            <div class="tile" title="icon-pause"><i class="icon-pause"></i><span>icon-pause</span></div>
+            <div class="tile" title="icon-user-add"><i class="icon-user-add"></i><span>icon-user-add</span></div>
+            <div class="tile" title="icon-info"><i class="icon-info"></i><span>icon-info</span></div>
+            <div class="tile" title="icon-alert"><i class="icon-alert"></i><span>icon-alert</span></div>
+            <div class="tile" title="icon-user"><i class="icon-user"></i><span>icon-user</span></div>
+            <div class="tile" title="icon-info-circle"><i class="icon-info-circle"></i><span>icon-info-circle</span></div>
+            <div class="tile" title="icon-stop"><i class="icon-stop"></i><span>icon-stop</span></div>
+            <div class="tile" title="icon-copyright"><i class="icon-copyright"></i><span>icon-copyright</span></div>
+            <div class="tile" title="icon-sweden"><i class="icon-sweden"></i><span>icon-sweden</span></div>
+            <div class="tile" title="icon-fast-forward"><i class="icon-fast-forward"></i><span>icon-fast-forward</span></div>
+            <div class="tile" title="icon-rewind"><i class="icon-rewind"></i><span>icon-rewind</span></div>
+            <div class="tile" title="icon-jump-to-start"><i class="icon-jump-to-start"></i><span>icon-jump-to-start</span></div>
+            <div class="tile" title="icon-jump-to-end"><i class="icon-jump-to-end"></i><span>icon-jump-to-end</span></div>
+            <div class="tile" title="icon-expand"><i class="icon-expand"></i><span>icon-expand</span></div>
+            <div class="tile" title="icon-minimize"><i class="icon-minimize"></i><span>icon-minimize</span></div>
+            <div class="tile" title="icon-arrow-up"><i class="icon-arrow-up"></i><span>icon-arrow-up</span></div>
+            <div class="tile" title="icon-arrow-left"><i class="icon-arrow-left"></i><span>icon-arrow-left</span></div>
+            <div class="tile" title="icon-arrow-left-bold"><i class="icon-arrow-left-bold"></i><span>icon-arrow-left-bold</span></div>
+            <div class="tile" title="icon-arrow-right-bold"><i class="icon-arrow-right-bold"></i><span>icon-arrow-right-bold</span></div>
+            <div class="tile" title="icon-arrow-down-bold"><i class="icon-arrow-down-bold"></i><span>icon-arrow-down-bold</span></div>
+            <div class="tile" title="icon-arrow-up-bold"><i class="icon-arrow-up-bold"></i><span>icon-arrow-up-bold</span></div>
+            <div class="tile" title="icon-sound"><i class="icon-sound"></i><span>icon-sound</span></div>
+            <div class="tile" title="icon-mute"><i class="icon-mute"></i><span>icon-mute</span></div>
+            <div class="tile" title="icon-search"><i class="icon-search"></i><span>icon-search</span></div>
+            <div class="tile" title="icon-book"><i class="icon-book"></i><span>icon-book</span></div>
+            <div class="tile" title="icon-popup"><i class="icon-popup"></i><span>icon-popup</span></div>
+            <div class="tile" title="icon-bookmark"><i class="icon-bookmark"></i><span>icon-bookmark</span></div>
+            <div class="tile" title="icon-volume"><i class="icon-volume"></i><span>icon-volume</span></div>
+            <div class="tile" title="icon-home"><i class="icon-home"></i><span>icon-home</span></div>
+            <div class="tile" title="icon-arrow-right-circle"><i class="icon-arrow-right-circle"></i><span>icon-arrow-right-circle</span></div>
+            <div class="tile" title="icon-arrow-down-circle"><i class="icon-arrow-down-circle"></i><span>icon-arrow-down-circle</span></div>
+            <div class="tile" title="icon-arrow-up-circle"><i class="icon-arrow-up-circle"></i><span>icon-arrow-up-circle</span></div>
+            <div class="tile" title="icon-arrow-left-circle"><i class="icon-arrow-left-circle"></i><span>icon-arrow-left-circle</span></div>
+            <div class="tile" title="icon-arrow-right"><i class="icon-arrow-right"></i><span>icon-arrow-right</span></div>
+            <div class="tile" title="icon-arrow-down"><i class="icon-arrow-down"></i><span>icon-arrow-down</span></div>
+            <div class="tile" title="icon-elipsis"><i class="icon-elipsis"></i><span>icon-elipsis</span></div>
+        </div>
     </div>
     
     <div class="demo-description">
         <h2>Character Based</h2>
     </div>
-    <div class="demo-block">    
-        <div><i class="icon">1</i> <span>1</span></div>
-        <div><i class="icon">2</i> <span>2</span></div>
-        <div><i class="icon">3</i> <span>3</span></div>
-        <div><i class="icon">4</i> <span>4</span></div>
-        <div><i class="icon">5</i> <span>5</span></div>
-        <div><i class="icon">6</i> <span>6</span></div>
-        <div><i class="icon">7</i> <span>7</span></div>
-        <div><i class="icon">8</i> <span>8</span></div>
-        <div><i class="icon">9</i> <span>9</span></div>
-        <div><i class="icon">0</i> <span>0</span></div>
-        <div><i class="icon">a</i> <span>a</span></div>
-        <div><i class="icon">b</i> <span>b</span></div>
-        <div><i class="icon">c</i> <span>c</span></div>
-        <div><i class="icon">d</i> <span>d</span></div>
-        <div><i class="icon">e</i> <span>e</span></div>
-        <div><i class="icon">f</i> <span>f</span></div>
-        <div><i class="icon">g</i> <span>g</span></div>
-        <div><i class="icon">h</i> <span>h</span></div>
-        <div><i class="icon">i</i> <span>i</span></div>
-        <div><i class="icon">j</i> <span>j</span></div>
-        <div><i class="icon">k</i> <span>k</span></div>
-        <div><i class="icon">l</i> <span>l</span></div>
-        <div><i class="icon">m</i> <span>m</span></div>
-        <div><i class="icon">n</i> <span>n</span></div>
-        <div><i class="icon">o</i> <span>o</span></div>
-        <div><i class="icon">p</i> <span>p</span></div>
-        <div><i class="icon">q</i> <span>q</span></div>
-        <div><i class="icon">r</i> <span>r</span></div>
-        <div><i class="icon">s</i> <span>s</span></div>
-        <div><i class="icon">t</i> <span>t</span></div>
-        <div><i class="icon">u</i> <span>u</span></div>
-        <div><i class="icon">v</i> <span>v</span></div>
-        <div><i class="icon">w</i> <span>w</span></div>
-        <div><i class="icon">x</i> <span>x</span></div>
-        <div><i class="icon">y</i> <span>y</span></div>
-        <div><i class="icon">z</i> <span>z</span></div>
-        <div><i class="icon">A</i> <span>A</span></div>
-        <div><i class="icon">B</i> <span>B</span></div>
-        <div><i class="icon">C</i> <span>C</span></div>
-        <div><i class="icon">D</i> <span>D</span></div>
-        <div><i class="icon">E</i> <span>E</span></div>
-        <div><i class="icon">F</i> <span>F</span></div>
-        <div><i class="icon">G</i> <span>G</span></div>
-        <div><i class="icon">H</i> <span>H</span></div>
-        <div><i class="icon">I</i> <span>I</span></div>
-        <div><i class="icon">J</i> <span>J</span></div>
-        <div><i class="icon">K</i> <span>K</span></div>
-        <div><i class="icon">L</i> <span>L</span></div>
-        <div><i class="icon">M</i> <span>M</span></div>
-        <div><i class="icon">N</i> <span>N</span></div>
-        <div><i class="icon">O</i> <span>O</span></div>
-        <div><i class="icon">P</i> <span>P</span></div>
-        <div><i class="icon">Q</i> <span>Q</span></div>
-        <div><i class="icon">R</i> <span>R</span></div>
-        <div><i class="icon">S</i> <span>S</span></div>
-        <div><i class="icon">T</i> <span>T</span></div>
-        <div><i class="icon">U</i> <span>U</span></div>
-        <div><i class="icon">V</i> <span>V</span></div>
-        <div><i class="icon">W</i> <span>W</span></div>
-        <div><i class="icon">X</i> <span>X</span></div>
-        <div><i class="icon">Y</i> <span>Y</span></div>
-        <div><i class="icon">Z</i> <span>Z</span></div>
-        <div><i class="icon">!</i> <span>!</span></div>
-        <div><i class="icon">@</i> <span>@</span></div>
-        <div><i class="icon">#</i> <span>#</span></div>
-        <div><i class="icon">$</i> <span>$</span></div>
-        <div><i class="icon">%</i> <span>%</span></div>
-        <div><i class="icon">^</i> <span>^</span></div>
-        <div><i class="icon">&amp;</i> <span>&amp;</span></div>
-        <div><i class="icon">*</i> <span>*</span></div>
-        <div><i class="icon">(</i> <span>(</span></div>
-        <div><i class="icon">)</i> <span>)</span></div>
-        <div><i class="icon">,</i> <span>,</span></div>
-        <div><i class="icon">&lt;</i> <span>&lt;</span></div>
-        <div><i class="icon">.</i> <span>.</span></div>
-        <div><i class="icon">&gt;</i> <span>&gt;</span></div>
-        <div><i class="icon">/</i> <span>/</span></div>
-        <div><i class="icon">?</i> <span>?</span></div>
-        <div><i class="icon">;</i> <span>;</span></div>
-        <div><i class="icon">:</i> <span>:</span></div>
-        <div><i class="icon">'</i> <span>'</span></div>
-        <div><i class="icon">"</i> <span>"</span></div>
-        <div><i class="icon">[</i> <span>[</span></div>
-        <div><i class="icon">{</i> <span>{</span></div>
-        <div><i class="icon">]</i> <span>]</span></div>
-        <div><i class="icon">}</i> <span>}</span></div>
-        <div><i class="icon">\</i> <span>\</span></div>
-        <div><i class="icon">|</i> <span>|</span></div>
-        <div><i class="icon">-</i> <span>-</span></div>
-        <div><i class="icon">_</i> <span>_</span></div>
-        <div><i class="icon">=</i> <span>=</span></div>
-        <div><i class="icon">+</i> <span>+</span></div>
-        <div><i class="icon">`</i> <span>`</span></div>
-        <div><i class="icon">~</i> <span>~</span></div>
-        <div><i class="icon">&copy;</i> <span><pre>&amp;copy;</pre></span></div>
-        <div><i class="icon">&reg;</i> <span><pre>&amp;reg;</pre></span></div>
-        <div><i class="icon">&Auml;</i> <span><pre>&amp;Auml;</pre></span></div>
-        <div><i class="icon">&Aring;</i> <span><pre>&amp;Aring;</pre></span></div>
-        <div><i class="icon">&Ccedil;</i> <span><pre>&amp;Ccedil;</pre></span></div>
-        <div><i class="icon">&Eacute;</i> <span><pre>&amp;Eacute;</pre></span></div>
-        <div><i class="icon">&Ntilde;</i> <span><pre>&amp;Ntilde;</pre></span></div>
-        <div><i class="icon">&Ouml;</i> <span><pre>&amp;Ouml;</pre></span></div>
-        <div><i class="icon">&egrave;</i> <span><pre>&amp;egrave;</pre></span></div>
-        <div><i class="icon">&ccedil;</i> <span><pre>&amp;ccedil;</pre></span></div>
-        <div><i class="icon">&aring;</i> <span><pre>&amp;aring;</pre></span></div>
-        <div><i class="icon">&auml;</i> <span><pre>&amp;auml;</pre></span></div>
-        <div><i class="icon">&atilde;</i> <span><pre>&amp;atilde;</pre></span></div>
-        <div><i class="icon">&acirc;</i> <span><pre>&amp;acirc;</pre></span></div>
-        <div><i class="icon">&aacute;</i> <span><pre>&amp;aacute;</pre></span></div>
-        <div><i class="icon">&agrave;</i> <span><pre>&amp;agrave;</pre></span></div>
-        <div><i class="icon">&ocirc;</i> <span><pre>&amp;ocirc;</pre></span></div>
-        <div><i class="icon">&oacute;</i> <span><pre>&amp;oacute;</pre></span></div>
-        <div><i class="icon">&ograve;</i> <span><pre>&amp;ograve;</pre></span></div>
-        <div><i class="icon">&ntilde;</i> <span><pre>&amp;ntilde;</pre></span></div>
-        <div><i class="icon">&Uuml;</i> <span><pre>&amp;Uuml;</pre></span></div>
-        <div><i class="icon">&iuml;</i> <span><pre>&amp;iuml;</pre></span></div>
-        <div><i class="icon">&icirc;</i> <span><pre>&amp;icirc;</pre></span></div>
-        <div><i class="icon">&iacute;</i> <span><pre>&amp;iacute;</pre></span></div>
-        <div><i class="icon">&igrave;</i> <span><pre>&amp;igrave;</pre></span></div>
-        <div><i class="icon">&euml;</i> <span><pre>&amp;euml;</pre></span></div>
-        <div><i class="icon">&ecirc;</i> <span><pre>&amp;ecirc;</pre></span></div>
-        <div><i class="icon">&eacute;</i> <span><pre>&amp;eacute;</pre></span></div>
-        <div><i class="icon">&ouml;</i> <span><pre>&amp;ouml;</pre></span></div>
+    <div class="demo-block">
+        <div class="tile-wrap">
+            <div class="tile" title="1"><i class="icon">1</i><span>1</span></div>
+            <div class="tile" title="2"><i class="icon">2</i><span>2</span></div>
+            <div class="tile" title="3"><i class="icon">3</i><span>3</span></div>
+            <div class="tile" title="4"><i class="icon">4</i><span>4</span></div>
+            <div class="tile" title="5"><i class="icon">5</i><span>5</span></div>
+            <div class="tile" title="6"><i class="icon">6</i><span>6</span></div>
+            <div class="tile" title="7"><i class="icon">7</i><span>7</span></div>
+            <div class="tile" title="8"><i class="icon">8</i><span>8</span></div>
+            <div class="tile" title="9"><i class="icon">9</i><span>9</span></div>
+            <div class="tile" title="0"><i class="icon">0</i><span>0</span></div>
+            <div class="tile" title="a"><i class="icon">a</i><span>a</span></div>
+            <div class="tile" title="b"><i class="icon">b</i><span>b</span></div>
+            <div class="tile" title="c"><i class="icon">c</i><span>c</span></div>
+            <div class="tile" title="d"><i class="icon">d</i><span>d</span></div>
+            <div class="tile" title="e"><i class="icon">e</i><span>e</span></div>
+            <div class="tile" title="f"><i class="icon">f</i><span>f</span></div>
+            <div class="tile" title="g"><i class="icon">g</i><span>g</span></div>
+            <div class="tile" title="h"><i class="icon">h</i><span>h</span></div>
+            <div class="tile" title="i"><i class="icon">i</i><span>i</span></div>
+            <div class="tile" title="j"><i class="icon">j</i><span>j</span></div>
+            <div class="tile" title="k"><i class="icon">k</i><span>k</span></div>
+            <div class="tile" title="l"><i class="icon">l</i><span>l</span></div>
+            <div class="tile" title="m"><i class="icon">m</i><span>m</span></div>
+            <div class="tile" title="n"><i class="icon">n</i><span>n</span></div>
+            <div class="tile" title="o"><i class="icon">o</i><span>o</span></div>
+            <div class="tile" title="p"><i class="icon">p</i><span>p</span></div>
+            <div class="tile" title="q"><i class="icon">q</i><span>q</span></div>
+            <div class="tile" title="r"><i class="icon">r</i><span>r</span></div>
+            <div class="tile" title="s"><i class="icon">s</i><span>s</span></div>
+            <div class="tile" title="t"><i class="icon">t</i><span>t</span></div>
+            <div class="tile" title="u"><i class="icon">u</i><span>u</span></div>
+            <div class="tile" title="v"><i class="icon">v</i><span>v</span></div>
+            <div class="tile" title="w"><i class="icon">w</i><span>w</span></div>
+            <div class="tile" title="x"><i class="icon">x</i><span>x</span></div>
+            <div class="tile" title="y"><i class="icon">y</i><span>y</span></div>
+            <div class="tile" title="z"><i class="icon">z</i><span>z</span></div>
+            <div class="tile" title="A"><i class="icon">A</i><span>A</span></div>
+            <div class="tile" title="B"><i class="icon">B</i><span>B</span></div>
+            <div class="tile" title="C"><i class="icon">C</i><span>C</span></div>
+            <div class="tile" title="D"><i class="icon">D</i><span>D</span></div>
+            <div class="tile" title="E"><i class="icon">E</i><span>E</span></div>
+            <div class="tile" title="F"><i class="icon">F</i><span>F</span></div>
+            <div class="tile" title="G"><i class="icon">G</i><span>G</span></div>
+            <div class="tile" title="H"><i class="icon">H</i><span>H</span></div>
+            <div class="tile" title="I"><i class="icon">I</i><span>I</span></div>
+            <div class="tile" title="J"><i class="icon">J</i><span>J</span></div>
+            <div class="tile" title="K"><i class="icon">K</i><span>K</span></div>
+            <div class="tile" title="L"><i class="icon">L</i><span>L</span></div>
+            <div class="tile" title="M"><i class="icon">M</i><span>M</span></div>
+            <div class="tile" title="N"><i class="icon">N</i><span>N</span></div>
+            <div class="tile" title="O"><i class="icon">O</i><span>O</span></div>
+            <div class="tile" title="P"><i class="icon">P</i><span>P</span></div>
+            <div class="tile" title="Q"><i class="icon">Q</i><span>Q</span></div>
+            <div class="tile" title="R"><i class="icon">R</i><span>R</span></div>
+            <div class="tile" title="S"><i class="icon">S</i><span>S</span></div>
+            <div class="tile" title="T"><i class="icon">T</i><span>T</span></div>
+            <div class="tile" title="U"><i class="icon">U</i><span>U</span></div>
+            <div class="tile" title="V"><i class="icon">V</i><span>V</span></div>
+            <div class="tile" title="W"><i class="icon">W</i><span>W</span></div>
+            <div class="tile" title="X"><i class="icon">X</i><span>X</span></div>
+            <div class="tile" title="Y"><i class="icon">Y</i><span>Y</span></div>
+            <div class="tile" title="Z"><i class="icon">Z</i><span>Z</span></div>
+            <div class="tile" title="!"><i class="icon">!</i><span>!</span></div>
+            <div class="tile" title="@"><i class="icon">@</i><span>@</span></div>
+            <div class="tile" title="#"><i class="icon">#</i><span>#</span></div>
+            <div class="tile" title="$"><i class="icon">$</i><span>$</span></div>
+            <div class="tile" title="%"><i class="icon">%</i><span>%</span></div>
+            <div class="tile" title="^"><i class="icon">^</i><span>^</span></div>
+            <div class="tile" title="&amp;"><i class="icon">&amp;</i><span>&amp;</span></div>
+            <div class="tile" title="*"><i class="icon">*</i><span>*</span></div>
+            <div class="tile" title="("><i class="icon">(</i><span>(</span></div>
+            <div class="tile" title=")"><i class="icon">)</i><span>)</span></div>
+            <div class="tile" title=","><i class="icon">,</i><span>,</span></div>
+            <div class="tile" title="&lt;"><i class="icon">&lt;</i><span>&lt;</span></div>
+            <div class="tile" title="."><i class="icon">.</i><span>.</span></div>
+            <div class="tile" title="&gt;"><i class="icon">&gt;</i><span>&gt;</span></div>
+            <div class="tile" title="/"><i class="icon">/</i><span>/</span></div>
+            <div class="tile" title="?"><i class="icon">?</i><span>?</span></div>
+            <div class="tile" title=";"><i class="icon">;</i><span>;</span></div>
+            <div class="tile" title=":"><i class="icon">:</i><span>:</span></div>
+            <div class="tile" title="'"><i class="icon">'</i><span>'</span></div>
+            <div class="tile" title="""><i class="icon">"</i><span>"</span></div>
+            <div class="tile" title="["><i class="icon">[</i><span>[</span></div>
+            <div class="tile" title="{"><i class="icon">{</i><span>{</span></div>
+            <div class="tile" title="]"><i class="icon">]</i><span>]</span></div>
+            <div class="tile" title="}"><i class="icon">}</i><span>}</span></div>
+            <div class="tile" title="\"><i class="icon">\</i><span>\</span></div>
+            <div class="tile" title="|"><i class="icon">|</i><span>|</span></div>
+            <div class="tile" title="-"><i class="icon">-</i><span>-</span></div>
+            <div class="tile" title="_"><i class="icon">_</i><span>_</span></div>
+            <div class="tile" title="="><i class="icon">=</i><span>=</span></div>
+            <div class="tile" title="+"><i class="icon">+</i><span>+</span></div>
+            <div class="tile" title="`"><i class="icon">`</i><span>`</span></div>
+            <div class="tile" title="~"><i class="icon">~</i><span>~</span></div>
+            <div class="tile" title="&amp;copy;"><i class="icon">&copy;</i><span>&amp;copy;</span></div>
+            <div class="tile" title="&amp;reg;"><i class="icon">&reg;</i><span>&amp;reg;</span></div>
+            <div class="tile" title="&amp;Auml;"><i class="icon">&Auml;</i><span>&amp;Auml;</span></div>
+            <div class="tile" title="&amp;Aring;"><i class="icon">&Aring;</i><span>&amp;Aring;</span></div>
+            <div class="tile" title="&amp;Ccedil;"><i class="icon">&Ccedil;</i><span>&amp;Ccedil;</span></div>
+            <div class="tile" title="&amp;Eacute;"><i class="icon">&Eacute;</i><span>&amp;Eacute;</span></div>
+            <div class="tile" title="&amp;Ntilde;"><i class="icon">&Ntilde;</i><span>&amp;Ntilde;</span></div>
+            <div class="tile" title="&amp;Ouml;"><i class="icon">&Ouml;</i><span>&amp;Ouml;</span></div>
+            <div class="tile" title="&amp;egrave;"><i class="icon">&egrave;</i><span>&amp;egrave;</span></div>
+            <div class="tile" title="&amp;ccedil;"><i class="icon">&ccedil;</i><span>&amp;ccedil;</span></div>
+            <div class="tile" title="&amp;aring;"><i class="icon">&aring;</i><span>&amp;aring;</span></div>
+            <div class="tile" title="&amp;auml;"><i class="icon">&auml;</i><span>&amp;auml;</span></div>
+            <div class="tile" title="&amp;atilde;"><i class="icon">&atilde;</i><span>&amp;atilde;</span></div>
+            <div class="tile" title="&amp;acirc;"><i class="icon">&acirc;</i><span>&amp;acirc;</span></div>
+            <div class="tile" title="&amp;aacute;"><i class="icon">&aacute;</i><span>&amp;aacute;</span></div>
+            <div class="tile" title="&amp;agrave;"><i class="icon">&agrave;</i><span>&amp;agrave;</span></div>
+            <div class="tile" title="&amp;ocirc;"><i class="icon">&ocirc;</i><span>&amp;ocirc;</span></div>
+            <div class="tile" title="&amp;oacute;"><i class="icon">&oacute;</i><span>&amp;oacute;</span></div>
+            <div class="tile" title="&amp;ograve;"><i class="icon">&ograve;</i><span>&amp;ograve;</span></div>
+            <div class="tile" title="&amp;ntilde;"><i class="icon">&ntilde;</i><span>&amp;ntilde;</span></div>
+            <div class="tile" title="&amp;Uuml;"><i class="icon">&Uuml;</i><span>&amp;Uuml;</span></div>
+            <div class="tile" title="&amp;iuml;"><i class="icon">&iuml;</i><span>&amp;iuml;</span></div>
+            <div class="tile" title="&amp;icirc;"><i class="icon">&icirc;</i><span>&amp;icirc;</span></div>
+            <div class="tile" title="&amp;iacute;"><i class="icon">&iacute;</i><span>&amp;iacute;</span></div>
+            <div class="tile" title="&amp;igrave;"><i class="icon">&igrave;</i><span>&amp;igrave;</span></div>
+            <div class="tile" title="&amp;euml;"><i class="icon">&euml;</i><span>&amp;euml;</span></div>
+            <div class="tile" title="&amp;ecirc;"><i class="icon">&ecirc;</i><span>&amp;ecirc;</span></div>
+            <div class="tile" title="&amp;eacute;"><i class="icon">&eacute;</i><span>&amp;eacute;</span></div>
+            <div class="tile" title="&amp;ouml;"><i class="icon">&ouml;</i><span>&amp;ouml;</span></div>
+        </div>
     </div>
 
 </div><!-- .demo -->
