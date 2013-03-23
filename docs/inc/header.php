@@ -28,15 +28,12 @@
     <div class="container">
         
         <div class="col-12">
-        
             <h1 class="logo">
                 <a href="https://github.com/sebnitu/BaseWeb">BaseWeb</a>
                 <span>&rarr;</span>
                 a front-end development framework
             </h1>
-            
             <a href="https://github.com/sebnitu/BaseWeb" class="fork">Fork me on GitHub!</a>
-        
         </div>
         
     </div>
@@ -57,20 +54,23 @@
     <nav id="features" class="features-nav">
         <ul>
             <li><a href="#colors">Color Palette</a></li>
-            <li><a href="#">Mixins</a></li>
-            <li><a href="#">Variables</a></li>
-            
-            <li><a href="#">Resets</a></li>
+
             <li><a href="#grid-system">Grid System</a></li>
             <li><a href="#utility-classes">Utility Classes</a></li>
-            <li><a href="#">Responsive</a></li>
             
             <li><a href="#typography">Typography</a></li>
-            <li><a href="#">Tables</a></li>
+            <li><a href="#tables">Tables</a></li>
+            <li><a href="#forms">Forms</a></li>
+            
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#icons">Icons</a></li>
+            <li><a href="#modals">Modals</a></li>
+            
+            <?php /* Upcoming Demos
+            <li><a href="#">Variables</a></li>
+            <li><a href="#">Mixins</a></li>
+            <li><a href="#">Responsive</a></li>
             <li><a href="#">Code</a></li>
-            <li><a href="#">Forms</a></li>
-            <li><a href="#">Buttons</a></li>
-            <li><a href="#">Icons</a></li>
-            <li><a href="#">Modals</a></li>
+            */ ?>
         </ul>
     </nav>

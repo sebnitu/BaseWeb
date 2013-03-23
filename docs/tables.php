@@ -1,15 +1,15 @@
-<div class="grid-4 demo-intro">
-    <div class="inner">
-        <h2>Tables</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in.</p>
-    </div><!-- .inner -->
-</div><!-- .grid-4 -->
+<div class="demo-intro">
+    <header class="demo-header">
+        <h1>Tables</h1>
+    </header><!-- .demo-header -->
+</div><!-- .demo-intro -->
 
-<div class="grid-8 demo">
-    <div class="inner">
-        
-        <h2>Default Tables</h2>
-        
+<div class="demo">
+
+    <div class="demo-description">
+        <h2>Default</h2>
+    </div>
+    <div class="demo-block">
         <table>
             <thead>
                 <tr>
@@ -58,10 +58,12 @@
                 </tr>
             </tbody>
         </table>
-        
-        <h2>Table Styles</h2>
-        <h3>Rowed</h3>
-        
+    </div>
+    
+    <div class="demo-description">
+        <h2>Rowed</h2>
+    </div>
+    <div class="demo-block">
         <table class="rowed">
             <thead>
                 <tr>
@@ -110,9 +112,12 @@
                 </tr>
             </tbody>
         </table>
-        
-        <h3>Rowed Zebra</h3>
-        
+    </div>
+    
+    <div class="demo-description">
+        <h2>Rowed Zebra</h2>
+    </div>
+    <div class="demo-block">
         <table class="rowed zebra">
             <thead>
                 <tr>
@@ -161,214 +166,12 @@
                 </tr>
             </tbody>
         </table>
-        
-        <h3>Bordered</h3>
-        
-        <table class="bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Daniel</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@danielnitu</a></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Oana</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@oananitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h3>Bordered Zebra</h3>
-        
-        <table class="bordered zebra">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Daniel</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@danielnitu</a></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Oana</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@oananitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h2>Tables with hover effects</h2>
-        <h3>Rowed Hover</h3>
-        
-        <table class="rowed hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Daniel</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@danielnitu</a></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Oana</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@oananitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h3>Rowed Zebra Hover</h3>
-        
-        <table class="rowed zebra hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Daniel</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@danielnitu</a></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Oana</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@oananitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h3>Bordered Hover</h3>
-        
+    </div>
+    
+    <div class="demo-description">
+        <h2>Bordered w/ Hover</h2>
+    </div>
+    <div class="demo-block">
         <table class="bordered hover">
             <thead>
                 <tr>
@@ -417,9 +220,13 @@
                 </tr>
             </tbody>
         </table>
-        
-        <h3>Bordered Zebra Hover</h3>
-        
+    </div>
+    
+    
+    <div class="demo-description">
+        <h2>Bordered Zebra w/ Hover</h2>
+    </div>
+    <div class="demo-block">        
         <table class="bordered zebra hover">
             <thead>
                 <tr>
@@ -468,6 +275,6 @@
                 </tr>
             </tbody>
         </table>
-
-    </div><!-- .inner -->
-</div><!-- .grid-8 -->
+    </div>
+        
+</div><!-- .demo -->

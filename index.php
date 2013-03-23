@@ -4,10 +4,6 @@
     <?php include('docs/colors.php'); ?>
 </div>
 
-<div id="typography" class="demo-wrap demo-typography">
-    <?php include('docs/typography.php'); ?>
-</div>
-
 <div id="grid-system" class="demo-wrap demo-grid">
     <?php include('docs/grid.php'); ?>
 </div>
@@ -16,26 +12,28 @@
     <?php include('docs/utility.php'); ?>
 </div>
 
-<?php /*
-<div class="demo-block demo-tables">
-    <?php include('docs/tables.html'); ?>
+<div id="typography" class="demo-wrap demo-typography">
+    <?php include('docs/typography.php'); ?>
 </div>
 
-<div class="demo-block demo-forms">
-    <?php include('docs/forms.html'); ?>
+<div id="tables" class="demo-wrap demo-tables">
+    <?php include('docs/tables.php'); ?>
 </div>
 
-<div class="demo-block demo-overlay">
-    <?php include('docs/overlay.html'); ?>
+<div id="forms" class="demo-wrap demo-forms">
+    <?php include('docs/forms.php'); ?>
 </div>
 
-<div class="demo-block demo-buttons">
-    <?php include('docs/buttons.html'); ?>
+<div id="buttons" class="demo-wrap demo-buttons">
+    <?php include('docs/buttons.php'); ?>
 </div>
 
-<div class="demo-block demo-icons">
-    <?php include('docs/icons.html'); ?>
+<div id="icons" class="demo-wrap demo-icons">
+    <?php include('docs/icons.php'); ?>
 </div>
-*/ ?>
+
+<div id="modals" class="demo-wrap demo-modals">
+    <?php include('docs/modals.php'); ?>
+</div>
 
 <?php include('docs/inc/footer.php'); ?>

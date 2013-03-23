@@ -1,28 +1,30 @@
-<div class="grid-4 demo-intro">
-    <h2>Overlays</h2>
-</div><!-- .grid-4 -->
+<div class="demo-intro">
+    <header class="demo-header">
+        <h1>Modals</h1>
+    </header><!-- .demo-header -->
+</div><!-- .demo-intro -->
 
-
-<div class="grid-8 demo">
-    <div class="outer-overlay-demo">
+<div class="demo">
     
+    <div class="demo-description">
+        <h2>Default</h2>
+    </div>
+    <div class="demo-block">
+        
         <div id="overlay-identifier" class="overlay">
-            
             <div class="overlay-header">
                 <a href="#" class="close">Close</a>
                 <h2>Overlay Header</h2>
             </div><!-- .overlay-header -->
-            
             <div class="overlay-content">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in.</p>
             </div><!-- .overlay-content -->
-            
             <div class="overlay-footer">
-                <a href="#" class="btn btn-primary">Submit</a>
-                <a href="#" class="btn btn-faint">Cancel</a>
+                <a href="#" class="btn btn-primary">Sounds Good</a>
+                <a href="#" class="btn btn-faint">Nevermind</a>
             </div><!-- .overlay-footer -->
-                
         </div><!-- .overlay -->
         
     </div>
-</div><!-- .grid-8 -->
+        
+</div><!-- .demo -->
