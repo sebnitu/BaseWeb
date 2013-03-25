@@ -11,27 +11,38 @@
 @serifFontFamily:   georgia, "Times New Roman", times, serif;
 @monoFontFamily:    Menlo, Monaco, Consolas, "Courier New", monospace;
 @iconFontFamily:    "Entypo";
+
 ////
-// Font families assignments
-@baseFontFamily:        @sansFontFamily;
-@altFontFamily:         @serifFontFamily;
-@headingsFontFamily:    inherit;
+// Settings
+@lineHeightIncrement: 8;
+
 ////
-// Metrics
+// Base Styles
+@baseFontFamily:    @sansFontFamily;
 @baseFontSize:      14px;
-@baseLineHeight:    @baseFontSize + 8;
+@baseLineHeight:    (@baseFontSize + @lineHeightIncrement); // 22
 @baseFontWeight:    normal;
+@baseMargin:        (@baseLineHeight / 2);
+
+////
+// Header Styles
+@headerFontFamily:  inherit;
+@headerFontWeight:  bold;
+
+////
+// Alternative Styles
+@altFontFamily:     @serifFontFamily;
+@altFontWeight:     inherit;
 
 ////
 // Text Color Assignment
-@color:             @gray;
+@color:             @grayDark;
 @colorLight:        @grayLighter;
 @colorDark:         @grayDarker;
-@colorHeader:       @colorDark;
-////
+@colorHeader:       @color;
 // Links Color Assignment
 @linkColor:         @blue;
-@linkColorHover:    @orange;
+@linkColorHover:    @redOrangeLight;
 @linkHeader:        @linkColor;
 @linkHeaderHover:   @linkColorHover;
 
@@ -109,21 +120,31 @@
 @grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
 @grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
 
-////
-// Scaffolding
-@bgBody:            @white;
-@bgLight:           #f9f9f9;
-@borderColor:       #e0e0e0;
-
 ////////////////////////////////////////////////////////////////////////////////
 // Mixin Defaults
 ////////////////////////////////////////////////////////////////////////////////
 
-@letterSpacing:         1px;
+////
+// Scaffolding
+@bgBody:                @white;
+@bgLight:               #f4f4f4;
+@bgDark:                @grayDark;
+
+////
+// Border Colors
+@borderColor:           #e0e0e0;
+@horizontalRule:        @borderColor;
+
+////
+// Colors
+@color_rgb:             @black;
+@color_alpha:           0.5;
+@color_default:         @color;
+
+////
+// CSS3
 @borderRadius:          4px;
 @boxShadow:             0 1px 3px rgba(0,0,0, 0.25);
-
-@displayVisible:        block;
 
 @transitionProperty:    all;
 @transitionDuration:    0.25s;
@@ -131,24 +152,31 @@
 
 @rotateDegree:          0;
 
-@startColor:            #fff;
-@endColor:              #000;
+@gradientStartColor:  @blueLight;
+@gradientEndColor:    @blueDarker;
+
+////
+// Miscellaneous
+@letterSpacing:         1px;
+@displayVisible:        block;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Componenets
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Tables
-@tableBg:           @white;
-@tableBgZebra:      @bgLight;
-@tableBorder:       @borderColor;
-@tableBgHover:      #f4f4f4;
-
-////
 // Code
 @codeBg:            @bgLight;
-@codeBorder:        @borderColor;
+@codeColor:         @redVioletLighter;
+@codeSize:          0.85; // @baseFontSize * @codeSize
+@codeMaxHeight:     400px;
+
+////
+// Tables
+@tableBg:           transparent;
+@tableBgZebra:      @bgLight;
+@tableBorder:       @borderColor;
+@tableBgHover:      @yellowLighter;
 
 ////
 // Buttons

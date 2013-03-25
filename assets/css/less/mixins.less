@@ -1,6 +1,66 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Mixins
+// Utility
 ////////////////////////////////////////////////////////////////////////////////
+
+////
+// Hide text
+// Image replacement trick that hides text.
+.hide-text() {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+////
+// Clear Mixins
+// Allows for clearfixing by adding as mixin or as class.
+.clearfix {
+    *zoom: 1;
+    
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        overflow: hidden;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+    
+    &:after {
+        clear: both;
+    }
+}
+
+////
+// Utility State Mixins
+.is-hidden() {
+    display: none !important;
+}
+.is-visible( @display : @displayVisible ) {
+    display: @display !important;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Typography
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Font Sequence
+// Sets font-size and line-height based on a multiplier
+.font-sequence( @multiplier ) {
+    // Calculate the size
+    @size: round((@baseFontSize * @multiplier));
+    // Set properties
+    font-size: @size;
+    line-height: (@size + @lineHeightIncrement);
+}
+
+////
+// Mono Font Settings
+.mono-font( @size : @codeSize ) {
+    font-family: @monoFontFamily;
+    .font-sequence( @size );
+}
 
 ////
 // Uppercase
@@ -41,43 +101,34 @@
     }
 }
 
-////
-// Hide text
-// Image replacement trick that hides text.
-.hide-text() {
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
+////////////////////////////////////////////////////////////////////////////////
+// Image Mixins
+////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Clear Mixins
-// Allows for clearfixing by adding as mixin or as class.
-.clearfix {
-    *zoom: 1;
-    
-    &:before, &:after {
-        content: "\0020";
-        display: block;
-        overflow: hidden;
-        visibility: hidden;
-        width: 0;
-        height: 0;
-    }
-    
-    &:after {
-        clear: both;
-    }
+// Rounded
+.rounded() {
+    .border-radius();
+}
+// Circle
+.circle() {
+    .border-radius(50%);
+}
+// Polaroid
+.polaroid {
+    background: @white;
+    background-clip: padding-box;
+    padding: 5px;
+    border: 1px solid;
+    .rgba-border( @black, 0.2, #ccc );
+    .box-shadow( 0 1px 5px rgba(0,0,0, 0.1) );
 }
 
-////
-// Utility State Mixins
-.is-hidden() {
-    display: none !important;
-}
-.is-visible( @display : @displayVisible ) {
-    display: @display !important;
-}
+////////////////////////////////////////////////////////////////////////////////
+// Table Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // CSS3 Helpers
@@ -172,10 +223,11 @@
 ////
 // Gradients
 // Allows for the easy application for horizontal or vertical gradients
+////
 #gradient {
     ////
     // Horizontal
-    .horizontal(@startColor: @startColorDefault, @endColor: @endColor) {
+    .horizontal(@startColor: @gradientStartColor, @endColor: @gradientEndColor) {
         background-color: @endColor;
         background-image: -moz-linear-gradient(left, @startColor, @endColor);
         background-image: -ms-linear-gradient(left, @startColor, @endColor);
@@ -188,7 +240,7 @@
     }
     ////
     // Vertical
-    .vertical(@startColor: @startColorDefault, @endColor: @endColor) {
+    .vertical(@startColor: @gradientStartColor, @endColor: @gradientEndColor) {
         background-color: @endColor;
         background-image: -moz-linear-gradient(top, @startColor, @endColor);
         background-image: -ms-linear-gradient(top, @startColor, @endColor);
@@ -224,6 +276,11 @@
     background-color: @fallback;
     background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
 }
+// Converts a default color into RGBA with fallback
+.rgba-default( @default : @bgLight, @base : @black ) {
+    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
+    .rgba( @base, @alpha, @default );
+}
 ////
 // Returns as border-color prop with hex fallback
 .rgba-border(@hex, @alpha: 1, @fallback : 0) {
@@ -236,6 +293,11 @@
     border-color: @fallback;
     border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
 }
+// Converts a default color into RGBA with fallback
+.rgba-border-default( @default : @borderColor, @base : @black ) {
+    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
+    .rgba-border( @base, @alpha, @default );
+}
 ////
 // Returns as color prop with hex falback
 .rgba-color(@hex, @alpha: 1, @fallback : 0) {
@@ -247,6 +309,11 @@
 
     color: @fallback;
     color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+}
+// Converts a default color into RGBA with fallback
+.rgba-color-default( @default : @color, @base : @black ) {
+    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
+    .rgba-color( @base, @alpha, @default );
 }
 
 ////
@@ -408,9 +475,7 @@
     #console {
         position: fixed;
         z-index: 100;
-        font-family: @monoFontFamily;
-        font-size: 12px;
-        line-height: 20px;
+        .mono-font();
         
         &:before, &:after {
             display: block;

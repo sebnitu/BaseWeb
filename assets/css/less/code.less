@@ -1,0 +1,34 @@
+////////////////////////////////////////////////////////////////////////////////
+// Code
+////////////////////////////////////////////////////////////////////////////////
+
+code, pre {
+    .rgba-default( @codeBg );
+    .mono-font();
+}
+code {
+    padding: 0 (@baseMargin / 2); 
+    margin: 0 2px;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: inherit;
+    color: @codeColor;
+}
+pre {
+    margin: @baseMargin 0;
+    padding: @baseMargin (@baseMargin + (@baseMargin / 2));
+    overflow: auto;
+    
+    code {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: 0 none;
+        display: inline-block;
+        white-space: pre;
+        font-size: 100%;
+    }
+    &.limit-height {
+        max-height: @codeMaxHeight;
+    }
+}

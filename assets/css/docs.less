@@ -3,12 +3,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .docs {
-    background: #f4f4f4;
+    background: @bgLight;
 }
 .docs .header {
     position: relative;
     z-index: 10;
-    background: @g2;
+    background: @grayDarker;
     box-shadow: 0 1px 6px rgba(0,0,0, 0.1);
 }
 .docs .banner {
@@ -46,7 +46,7 @@
             top: 62px;
         }
         .docs .main {
-            margin-top: ( 62px + 340px );
+            margin-top: ( 62px + 336px );
             margin-bottom: 82px;
         }
         .docs .footer {
@@ -242,6 +242,7 @@
 .demo {
     .demo-description {
         .column(3);
+        clear: both;
         border-top: 1px solid;
         .rgba-border( #000, 0.1, #efefef );
         
@@ -278,10 +279,8 @@
             margin-top: -1px;
             margin-bottom: 11px;
             float: left;
-            font-family: @monoFontFamily;
-            font-size: 11px;
-            line-height: 20px;
             text-align: center;
+            .mono-font( 0.75 );
             .transition();
             
             p {
@@ -289,7 +288,7 @@
                 white-space: nowrap;
             	overflow: hidden;
             	text-overflow: ellipsis;
-                padding: 5px 10px;
+                padding: 6px 10px;
                 margin: 50px 0 0 0;
                 #gradient > .horizontal( #efefef, #e0e0e0 );
             }
@@ -457,8 +456,7 @@
 .demo-grid {
     
     [class*="col-"] > p, [class*="test-"] > p {
-        font-family: @monoFontFamily;
-        font-size: 12px;
+        .mono-font();
         text-align: center;
         padding: 15px 20px;
         border: 1px solid;
@@ -596,8 +594,7 @@
     }
     
     .demo-block span {
-        font-family: @monoFontFamily;
-        font-size: 12px;
+        .mono-font();
         float: left;
         text-align: center;
         padding: 5px 15px;
@@ -625,6 +622,49 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Typography Demo
 ////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Code Demo
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// Images Demo
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-images {
+    
+    ////
+    // Image Styles
+    .demo-image-styles p {
+        
+    }
+    .demo-image-styles ul {
+        .remove-list-styles();
+        margin-left: -@baseMargin;
+    }
+    .demo-image-styles ul li {
+        margin: 0 0 @baseMargin @baseMargin;
+        display: inline-block;
+        text-align: center;
+    }
+    .demo-image-styles ul li img {
+        display: block;
+        margin: 0 0 @baseMargin 0;
+        vertical-align: top;
+    }
+    
+    ////
+    // Image Alignment
+    .demo-image-alignment table tr td:first-child {
+        width: 40%;
+        vertical-align: top;
+    }
+    .demo-image-alignment table tr td img {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Tables Demo
@@ -700,14 +740,12 @@
         white-space: nowrap;
     	overflow: hidden;
     	text-overflow: ellipsis;
-    	font-family: @monoFontFamily;
-    	font-size: 12px;
-    	line-height: 20px;
         margin-top: -1px;
         padding: 5px 10px;
         border-left: 1px solid;
         border-right: 1px solid;
         border-bottom: 1px solid;
+    	.mono-font();
         .rgba-border( @black, 0.12, @gE );
     	.rgba( @black, 0.1, @gE );
         .border-radius-bottom();

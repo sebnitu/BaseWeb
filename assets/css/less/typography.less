@@ -5,15 +5,15 @@
 ////
 // Headers
 h1, h2, h3, h4, h5, h6 {
-    font-family: @headingsFontFamily;
+    margin: @baseMargin 0;
+    font-family: @headerFontFamily;
+    font-weight: @headerFontWeight;
+    line-height: @baseLineHeight;
     color: @colorHeader;
-    font-weight: bold;
-    margin: 15px 0;
-    // Header links
+
     a {
         color: @linkHeader;
         border: 0 none;
-        // Header link hovers
         &:hover {
             color: @linkHeaderHover;
         }
@@ -21,46 +21,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 42px;
-    line-height: 50px;
+    .font-sequence( 3 );    // 42/50
 }
 h2 {
-    font-size: 34px;
-    line-height: 42px;
+    .font-sequence( 2.5 );  // 35/43
 }
 h3 {
-    font-size: 26px;
-    line-height: 34px;
+    .font-sequence( 2 );    // 28/36
 }
 h4 {
-    font-size: 22px;
-    line-height: 30px;
+    .font-sequence( 1.5 );  // 21/29
 }
 h5 {
-    font-size: 18px;
-    line-height: 26px;
+    .font-sequence( 1.25 ); // 18/26
 }
 h6 {
-    font-size: @baseFontSize;
-    line-height: @baseLineHeight;
+    .font-sequence( 1 );    // 14/22
 }
 
 ////
 // Base Elements
-p { margin: 10px 0; }
-p.intro {
-    margin: 15px 0;
-    font-size: (@baseFontSize + 4);
-    line-height: (@baseLineHeight + 4);
-}
-a {
-    color: @linkColor;
-    text-decoration: none;
-    border-bottom: 1px solid @borderColor;
-    .transition();
-    &:hover {
-        color: @linkColorHover;
-        border-color: @linkColorHover;
+p { 
+    margin: @baseMargin 0;
+
+    &.intro {
+        .font-sequence( 1.5 ); // Same styles as an h4 except with normal weight
     }
 }
 
@@ -68,8 +53,49 @@ strong { font-weight: bold; }
 em { font-style: italic; }
 small {
     font-style: normal;
-    font-size: 80%;
+    font-weight: normal;
+    font-size: 0.9em;
     color: @colorLight;
+}
+cite {
+    font-style: normal;
+}
+
+////
+// Utility Classes
+.delete {
+    position: relative;
+    display: inline-block;
+    &:after {
+        content: "\0020";
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: 0;
+        .rgba(@red, 0.6);
+    }
+}
+.underline {
+    text-decoration: underline;
+}
+.highlight {
+    .rgba( @yellowLighter, 0.6 );
+}
+
+////
+// Links
+a {
+    color: @linkColor;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    .rgba-border-default();
+    .transition();
+    &:hover {
+        color: @linkColorHover;
+        .rgba-border( @black, 0.2, darken(@borderColor, 10%) );
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -77,70 +103,39 @@ small {
 ////////////////////////////////////////////////////////////////////////////////
 
 blockquote {
-    font-style: italic;
-    padding: 0 0 0 20px;
-    margin: 10px 0;
-    border-left: 1px solid @borderColor;
+    margin: @baseMargin 0;
+    padding: (@baseMargin / 2) (@baseMargin + (@baseMargin / 2));
+    border-left: 5px solid;
+    .rgba-border-default();
+    .rgba-default();
+    
     small {
-        margin: 10px 0;
+        position: relative;
+        margin: @baseMargin 0;
         display: block;
         font-size: 100%;
+        color: darken( @colorLight, 5% );
         &:before {
-            content: "\2014 \00A0";
+            #arrow > .right( 5px, rgba(0,0,0, 0.12) );
+            position: absolute;
+            left: -(@baseMargin + (@baseMargin / 2));
+            top: 50%;
+            margin-top: -5px;
         }
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Horizontal Rules
-////////////////////////////////////////////////////////////////////////////////
-
-hr {
-    background: none;
-    height: 0; width: 100%;
-    display: block; clear: both;
-    margin: 10px 0; padding: 0;
-    border: 0 none;
-    border-bottom: 1px solid @borderColor;
-    &.dotted {
-        border-bottom: 1px dotted @borderColor;
-    }
-    &.dashed {
-        border-bottom: 1px dashed @borderColor;
-    }
-    &.double {
-        border-bottom: 3px double @borderColor;
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Code
-////////////////////////////////////////////////////////////////////////////////
-
-code, pre {
-    background: @codeBg;
-    font-family: @monoFontFamily;
-    font-size: 0.75em;
-}
-code {
-    padding: 0 5px; 
-    margin: 0 2px;
-    display: inline-block;
-    white-space: nowrap;
-    line-height: inherit;
-}
-pre {
-    margin: 15px 0; padding: 10px 15px;
-    overflow: auto;
-    font-size: 0.75em;
-    line-height: 1.6em;
-    code {
-        background: none;
-        border: 0 none;
-        padding: 0; margin: 0;
-        display: inline-block;
-        white-space: pre;
-        font-size: 100%;
+////
+// Align Right
+blockquote.align-right {
+    text-align: right;
+    border-left: 0 none;
+    border-right: 5px solid;
+    .rgba-border-default();
+    
+    small:before {
+        #arrow > .left( 5px, rgba(0,0,0, 0.12) );
+        left: auto;
+        right: -(@baseMargin + (@baseMargin / 2));
     }
 }
 
@@ -149,7 +144,7 @@ pre {
 ////////////////////////////////////////////////////////////////////////////////
 
 ul, ol {
-    margin: 15px 0 15px 20px;
+    margin: @baseMargin 0 @baseMargin (@baseMargin + (@baseMargin / 2));
 }
 ul, ul ul ul ul {
     list-style: disc;
@@ -172,74 +167,46 @@ ol ol ol {
 }
 
 ul li, ol li {
-    margin: 10px 0;
+    margin: @baseMargin 0;
 }
 
 dl {
-    margin: 10px 0;
+    margin: @baseMargin 0;
     dt {
-        margin: 10px 0 0;
+        margin: @baseMargin 0 0;
         font-weight: bold;
     }
     dd {
-        margin: 0 0 5px 20px;
+        margin: 0 0 @baseMargin (@baseMargin + (@baseMargin / 2));
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Images
+// Horizontal Rules
 ////////////////////////////////////////////////////////////////////////////////
 
-img {
+hr {
+    margin: (@baseMargin * 2) 0;
+    padding: 0;
+    background: none;
+    height: 0; 
+    width: 100%;
     display: block; 
-    margin: 10px 0;
-    max-width: 100%;
-    height: auto;
-    &.full {
-        display: block;
+    clear: both;
+    border: 0 none;
+    border-bottom: 1px solid;
+    .rgba-border-default( @horizontalRule );
+    
+    &.dotted {
+        border-bottom: 1px dotted;
+        .rgba-border-default( @horizontalRule );
     }
-}
-img.align-center, .img-wrap.center {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-}
-img.align-left, .img-wrap.left {
-    float: left; margin: 0 15px 10px 0;
-}
-img.align-right, .img-wrap.right {
-    float: right; margin: 0 0 10px 15px;
-}
-
-.img-wrap {
-    display: block;
-    margin: 0 0 10px 0;
-    img {
-        float: none;
-        display: block;
-        margin: 0;
-        
-        &.full {
-            margin-top: 10px;
-        }
+    &.dashed {
+        border-bottom: 1px dashed;
+        .rgba-border-default( @horizontalRule );
     }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Miscellaneous
-////////////////////////////////////////////////////////////////////////////////
-
-.timestamp, .metadata {
-    color: @colorLight;
-}
-.caption {
-    display: block; clear: both;
-    background: @codeBg;
-    border: 1px solid @codeBorder;
-    border-top: 0 none;
-    padding: 5px 10px;
-    font-style: italic;
-    font-size: 80%;
-    text-align: center;
-    .border-radius-bottom(3px);
+    &.double {
+        border-bottom: 3px double;
+        .rgba-border-default( @horizontalRule );
+    }
 }

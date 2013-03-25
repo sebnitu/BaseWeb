@@ -22,6 +22,7 @@
 </head>
 <body class="docs">
 
+<div id="top"></div>
 <div id="console"></div>
 
 <header class="header">
@@ -59,7 +60,9 @@
             <li><a href="#utility-classes">Utility Classes</a></li>
             
             <li><a href="#typography">Typography</a></li>
+            <li><a href="#code">Code</a></li>
             <li><a href="#tables">Tables</a></li>
+            <li><a href="#images">Images</a></li>
             <li><a href="#forms">Forms</a></li>
             
             <li><a href="#buttons">Buttons</a></li>

@@ -16,6 +16,14 @@
     <?php include('docs/typography.php'); ?>
 </div>
 
+<div id="code" class="demo-wrap demo-code">
+    <?php include('docs/code.php'); ?>
+</div>
+
+<div id="images" class="demo-wrap demo-images">
+    <?php include('docs/images.php'); ?>
+</div>
+
 <div id="tables" class="demo-wrap demo-tables">
     <?php include('docs/tables.php'); ?>
 </div>

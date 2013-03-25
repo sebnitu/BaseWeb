@@ -22,8 +22,88 @@
         <h2>Paragraphs</h2>
     </div>
     <div class="demo-block">
-        <p class="intro">Intro paragraphy: sed egestas, ante et <a href="#">some link here</a>, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus.</p>
-        <p><strong>This is a strong element for bold emphasis</strong> <a href="#">some link here</a> suspendisse mauris. <em>This is an em element for italic emphasis</em> fusce accumsan mollis eros. Pellentesque ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. <strong>This is a strong element for bold emphasis</strong> ut scelerisque hendrerit tellus. Integer sagittis. Vivamus a <a href="#">some link here</a> mauris eget arcu gravida tristique. Nunc iaculis mi in ante&mdash;<em>this is an em element for italic emphasis</em>.</p>
+        <p>This is a sampel paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed est in tortor consequat sollicitudin non sed orci. Quisque imperdiet dignissim lacus, eget aliquet neque posuere at. Maecenas commodo cursus nisl, vel laoreet ante molestie sed. Morbi mollis magna ut neque eleifend ultricies. Etiam urna lacus, euismod ac varius sed, dignissim quis mi. Suspendisse sed justo dui. Morbi sit amet justo et tellus ultrices facilisis. Aliquam erat volutpat. Aliquam dictum vehicula sodales.</p>
+        
+        <p>Optionally, you can add the <code>.intro</code> class for the first paragraphs of an article to make them stand out:</p>
+        
+        <p class="intro">Maecenas commodo cursus nisl, vel laoreet ante molestie sed. Morbi mollis magna ut neque eleifend ultricies. Etiam urna lacus, euismod ac varius sed, dignissim quis mi.</p>
+        
+        <p>lastly, there are the emphasis elements and utility classes you can use throughout:</p>
+        
+        <table class="bordered">
+            <thead>
+                <tr>
+                    <th>Element/Class</th>
+                    <th>Description</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;strong&gt;</code></td>
+                    <td>Adds strong importance and makes the next bold.</td>
+                    <td><strong>Example</strong></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;em&gt;</code></td>
+                    <td>Adds stress emphasis and makes the next italics.</td>
+                    <td><em>Example</em></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;small&gt;</code></td>
+                    <td>Is intended for side comments and is represented in smaller and lighter text.</td>
+                    <td><small>Example</small></td>
+                </tr>
+                <tr>
+                    <td><code>.underline</code></td>
+                    <td>Underlines text.</td>
+                    <td><span class="underline">Example</span></td>
+                </tr>
+                <tr>
+                    <td><code>.delete</code></td>
+                    <td>Is a way to illustrate deleted text.</td>
+                    <td><span class="delete">Example</span></td>
+                </tr>
+                <tr>
+                    <td><code>.highlight</code></td>
+                    <td>Used for highlighting text.</td>
+                    <td><span class="highlight">Example</span></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    
+    <div class="demo-description">
+        <h2>Blockquote</h2>
+    </div>
+    <div class="demo-block">
+        <blockquote>
+            <p>Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante—this is an em element for italic emphasis.</p>
+            <small>Sebastian Nitu in <cite title="Title of Source">Title of Source</cite></small>
+        </blockquote>
+        
+        <p>You can also use the <code>.align-right</code> class to get a right aligned block quote style.</p>
+        
+        <blockquote class="align-right">
+            <p>Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante—this is an em element for italic emphasis.</p>
+            <small>Sebastian Nitu in <cite title="Title of Source">Title of Source</cite></small>
+        </blockquote>
+    </div>
+
+    <div class="demo-description">
+        <h2>Horizontal Rules</h2>
+    </div>
+    <div class="demo-block">
+        <p>Horizontal rules are elements that are written like this: <code>&lt;hr&gt;</code> and can be used in markup to breakup sections. Optionally, you can provide classes on the element to change the styles.</p>
+        <p><strong>Default:</strong> <code>&lt;hr&gt;</code></p>
+        <hr>
+        <p><strong>Dotted:</strong> <code>&lt;hr class="dotted"&gt;</code></p>
+        <hr class="dotted">
+        <p><strong>Dashed:</strong> <code>&lt;hr class="dashed"&gt;</code></p>
+        <hr class="dashed">
+        <p><strong>Double:</strong> <code>&lt;hr class="double"&gt;</code></p>
+        <hr class="double">
     </div>
 
 </div><!-- .demo -->
