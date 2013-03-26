@@ -27,11 +27,11 @@
 <div id="tables" class="demo-wrap demo-tables">
     <?php include('docs/tables.php'); ?>
 </div>
-<?php /*
+
 <div id="forms" class="demo-wrap demo-forms">
     <?php include('docs/forms.php'); ?>
 </div>
-*/ ?>
+
 <div id="buttons" class="demo-wrap demo-buttons">
     <?php include('docs/buttons.php'); ?>
 </div>

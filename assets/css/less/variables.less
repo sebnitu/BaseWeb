@@ -14,15 +14,17 @@
 
 ////
 // Settings
-@lineHeightIncrement: 8;
+@lineHeightIncrement: 8; // Is added to @baseFontSize to determine line height
 
 ////
 // Base Styles
 @baseFontFamily:    @sansFontFamily;
 @baseFontSize:      14px;
-@baseLineHeight:    (@baseFontSize + @lineHeightIncrement); // 22
 @baseFontWeight:    normal;
-@baseMargin:        (@baseLineHeight / 2);
+// Spacing
+@baseLineHeight:    (@baseFontSize + @lineHeightIncrement); // 22
+@baseMargin:        (@baseLineHeight / 2); // 11
+@basePadding:       (@baseLineHeight / 2); // 11
 
 ////
 // Header Styles
@@ -47,99 +49,8 @@
 @linkHeaderHover:   @linkColorHover;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Structure
-////////////////////////////////////////////////////////////////////////////////
-
-////
-// Media Mode 
-// mobile-first: Starts with mobile styles then uses media queries for other viewports
-// desktop-first: Starts with desktop styles then uses media quereis for other viewports
-// off: Turns off media queries
-@media_mode: mobile-first;
-
-////
-// Media query breakpoints
-@media_small:       480px; // max-width
-@media_mobile:      760px;
-@media_tablet_min:  @media_mobile;
-@media_tablet_max:  @media_desktop_min; // Not used on mobile-first
-@media_desktop_min: 990px;
-@media_desktop_max: @media_large; // Not used on mobile-first
-@media_large:       1380px; // min-width
-
-////
-// Grid System
-////
-// Columns
-@grid_columns: 12;
-
-////
-// Grids
-@grid_tablet_row_width: 100%; // 720px
-@grid_tablet_gutter_width: 2%; // 20px
-
-@grid_desktop_row_width: 960px; // 960px
-@grid_desktop_gutter_width: 20px; // 20px
-
-@grid_large_row_width: 1200px; // 1200px
-@grid_large_gutter_width: 20px; // 20px
-
-////
-// Base Grid - Used when media queries are disabled
-@grid_row_width: @grid_desktop_row_width;
-@grid_gutter_width: @grid_desktop_gutter_width;
-
-////
-// Fluid Variables
-@grid_min_width: @media_mobile;
-@grid_max_width: 1200px;
-@grid_margin_width: 20px;
-
-////
-// Grid Gutter Property
-// Set to margin or padding
-@grid_gutter_property: margin;
-
-////
-// Class variables
-@class_container: container;
-@class_row: row;
-@class_column: col-;
-@class_prefix: prefix-;
-@class_suffix: suffix-;
-
-@class_first: alpha;
-@class_last: omega;
-
-////
-// Build selectors
-@all_columns: ~'[class*="@{class_column}"]'; //escaped value interpolation
-
-////
-// Utility Variables - Should never be changed
-@grid_column_width: (( @grid_row_width / @grid_columns  ) - @grid_gutter_width );
-@grid_margin_switch: (@grid_max_width + (@grid_margin_width * 2));
-
-////////////////////////////////////////////////////////////////////////////////
 // Mixin Defaults
 ////////////////////////////////////////////////////////////////////////////////
-
-////
-// Scaffolding
-@bgBody:                @white;
-@bgLight:               #f4f4f4;
-@bgDark:                @grayDark;
-
-////
-// Border Colors
-@borderColor:           #e0e0e0;
-@horizontalRule:        @borderColor;
-
-////
-// Colors
-@color_rgb:             @black;
-@color_alpha:           0.5;
-@color_default:         @color;
 
 ////
 // CSS3
@@ -152,8 +63,8 @@
 
 @rotateDegree:          0;
 
-@gradientStartColor:  @blueLight;
-@gradientEndColor:    @blueDarker;
+@gradientStartColor:    @blueLight;
+@gradientEndColor:      @blueDarker;
 
 ////
 // Miscellaneous
@@ -165,23 +76,70 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
+// Base Component Settings
+////
+// Background
+@baseBg: #f4f4f4;
+@baseBgAlpha: 0.04;
+@baseBgBase: @black;
+// Border
+@baseBorder: #e0e0e0;
+@baseBorderAlpha: 0.1;
+@baseBorderBase: @black;
+
+////
 // Code
-@codeBg:            @bgLight;
-@codeColor:         @redVioletLighter;
-@codeSize:          0.85; // @baseFontSize * @codeSize
-@codeMaxHeight:     400px;
+////
+// Background
+@codeBg: @baseBg;
+@codeBgAlpha: @baseBgAlpha;
+@codeBgBase: @baseBgBase;
+// Border
+@codeBorder: @baseBorder;
+@codeBorderAlpha: @baseBorderAlpha;
+@codeBorderBase: @baseBorderBase;
+// Settings
+@codeInlineColor: @redVioletLighter;
+@codeSize: 0.85; // @baseFontSize * @codeSize
+@codeMaxHeight: 400px;
 
 ////
 // Tables
-@tableBg:           transparent;
-@tableBgZebra:      @bgLight;
-@tableBorder:       @borderColor;
-@tableBgHover:      @yellowLighter;
+////
+// Background
+@tableBg: @white;
+@tableBgAlpha: 0;
+@tableBgBase: @white;
+// Background Zebra
+@tableBgZebra: @baseBg;
+@tableBgZebraAlpha: @baseBgAlpha;
+@tableBgZebraBase: @baseBgBase;
+// Background Hover
+@tableBgHover: @yellowLighter;
+@tableBgHoverAlpha: 0.2;
+@tableBgHoverBase: @yellowLighter;
+// Border
+@tableBorder: @baseBorder;
+@tableBorderAlpha: @baseBorderAlpha;
+@tableBorderBase: @baseBorderBase;
+
+////
+// Forms
+////
+// Background
+@formBg: @baseBg;
+@formBgAlpha: @baseBgAlpha;
+@formBgBase: @baseBgBase;
+// Border
+@formBorder: @baseBorder;
+@formBorderAlpha: @baseBorderAlpha;
+@formBorderBase: @baseBorderBase;
+// Settings
 
 ////
 // Buttons
-@btnPadTB:          6px;
-@btnPadLR:          14px;
+@btnPadTB: 6px;
+@btnPadLR: 14px;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Miscellaneous
@@ -189,9 +147,78 @@
 
 ////
 // Directories
-@dirImages:             "../img/layout/";
-@dirFonts:              "../fonts/";
+@dirImages: "../img/layout/";
+@dirFonts: "../fonts/";
 
 ////////////////////////////////////////////////////////////////////////////////
-// Custom
+// Structure
 ////////////////////////////////////////////////////////////////////////////////
+
+////
+// Media Mode 
+// mobile-first: Starts with mobile styles then uses media queries for other viewports
+// desktop-first: Starts with desktop styles then uses media quereis for other viewports
+// off: Turns off media queries
+@media-mode: mobile-first;
+
+////
+// Media query breakpoints
+@media-small:       480px; // max-width
+@media-mobile:      760px;
+@media-tablet-min:  @media-mobile;
+@media-tablet-max:  @media-desktop-min; // Not used on mobile-first
+@media-desktop-min: 990px;
+@media-desktop-max: @media-large; // Not used on mobile-first
+@media-large:       1380px; // min-width
+
+////
+// Grid System
+////
+// Columns
+@grid-columns: 12;
+
+////
+// Grids
+@grid-tablet-row-width: 100%; // 720px
+@grid-tablet-gutter-width: 2%; // 20px
+
+@grid-desktop-row-width: 960px; // 960px
+@grid-desktop-gutter-width: 20px; // 20px
+
+@grid-large-row-width: 1200px; // 1200px
+@grid-large-gutter-width: 20px; // 20px
+
+////
+// Base Grid - Used when media queries are disabled
+@grid-row-width: @grid-desktop-row-width;
+@grid-gutter-width: @grid-desktop-gutter-width;
+
+////
+// Fluid Variables
+@grid-max-width: 1200px;
+@grid-margin-width: 20px;
+
+////
+// Grid Gutter Property
+// Set to margin or padding
+@grid-gutter-property: margin;
+
+////
+// Class variables
+@class-container: container;
+@class-row: row;
+@class-column: col-;
+@class-prefix: prefix-;
+@class-suffix: suffix-;
+
+@class-first: alpha;
+@class-last: omega;
+
+////
+// Build selectors
+@all-columns: ~'[class*="@{class-column}"]'; //escaped value interpolation
+
+////
+// Utility Variables - Should never be changed
+@grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
+@grid-margin-switch: (@grid-max-width + (@grid-margin-width * 2));

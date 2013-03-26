@@ -74,14 +74,14 @@ cite {
         top: 50%;
         left: 0;
         margin-top: 0;
-        .rgba(@red, 0.6);
+        .background-color(@red, 0.6);
     }
 }
 .underline {
     text-decoration: underline;
 }
 .highlight {
-    .rgba( @yellowLighter, 0.6 );
+    .background-color(@yellowLighter, 0.6);
 }
 
 ////
@@ -90,11 +90,11 @@ a {
     color: @linkColor;
     text-decoration: none;
     border-bottom: 1px solid;
-    .rgba-border-default();
+    .border-color-default();
     .transition();
     &:hover {
         color: @linkColorHover;
-        .rgba-border( @black, 0.2, darken(@borderColor, 10%) );
+        .border-color( @baseBorderBase, (@baseBorderAlpha * 2), darken(@baseBorder, 10%) );
     }
 }
 
@@ -106,8 +106,8 @@ blockquote {
     margin: @baseMargin 0;
     padding: (@baseMargin / 2) (@baseMargin + (@baseMargin / 2));
     border-left: 5px solid;
-    .rgba-border-default();
-    .rgba-default();
+    .border-color-default();
+    .background-color-default();
     
     small {
         position: relative;
@@ -116,7 +116,7 @@ blockquote {
         font-size: 100%;
         color: darken( @colorLight, 5% );
         &:before {
-            #arrow > .right( 5px, rgba(0,0,0, 0.12) );
+            #arrow > .right( 5px, rgba(0,0,0, 0.10) );
             position: absolute;
             left: -(@baseMargin + (@baseMargin / 2));
             top: 50%;
@@ -130,10 +130,10 @@ blockquote.align-right {
     text-align: right;
     border-left: 0 none;
     border-right: 5px solid;
-    .rgba-border-default();
+    .border-color-default();
     
     small:before {
-        #arrow > .left( 5px, rgba(0,0,0, 0.12) );
+        #arrow > .left( 5px, rgba(0,0,0, 0.10) );
         left: auto;
         right: -(@baseMargin + (@baseMargin / 2));
     }
@@ -195,18 +195,18 @@ hr {
     clear: both;
     border: 0 none;
     border-bottom: 1px solid;
-    .rgba-border-default( @horizontalRule );
+    .border-color-default();
     
     &.dotted {
         border-bottom: 1px dotted;
-        .rgba-border-default( @horizontalRule );
+        .border-color-default();
     }
     &.dashed {
         border-bottom: 1px dashed;
-        .rgba-border-default( @horizontalRule );
+        .border-color-default();
     }
     &.double {
         border-bottom: 3px double;
-        .rgba-border-default( @horizontalRule );
+        .border-color-default();
     }
 }

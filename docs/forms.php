@@ -7,6 +7,128 @@
 <div class="demo">
     
     <div class="demo-description">
+        <h2>Input Types</h2>
+    </div>
+    <div class="demo-block">
+        <form class="wrapped vertical">
+        
+            <label>
+                Text
+                <input type="text">
+            </label>
+            
+            <label>
+                Search
+                <input type="search">
+            </label>
+            
+            <label>
+                Email
+                <input type="email">
+            </label>
+            
+            <label>
+                URL
+                <input type="url">
+            </label>
+            
+            <label>
+                Telephone
+                <input type="tel">
+            </label>
+            
+            <label>
+                Number
+                <input type="number">
+            </label>
+            
+            <hr>
+            
+            <label>
+                Time
+                <input type="time">
+            </label>
+            
+            <label>
+                Week
+                <input type="week">
+            </label>
+            
+            <label>
+                Month
+                <input type="month">
+            </label>
+            
+            <label>
+                Date
+                <input type="date">
+            </label>
+            
+            <label>
+                Date Time
+                <input type="datetime">
+            </label>
+            
+            <label>
+                Date Time Local
+                <input type="datetime-local">
+            </label>
+            
+            <hr>
+            
+            <label>
+                Radio
+                <input type="radio">
+            </label>
+            
+            <label>
+                Checkbox
+                <input type="checkbox">
+            </label>
+            
+            <hr>
+            
+            <label>
+                Range
+                <input type="range">
+            </label>
+            
+            <label>
+                Color
+                <input type="color">
+            </label>
+                        
+            <label>
+                Image
+                <input type="file">
+            </label>
+            
+            <hr>
+            
+            <label>
+                image
+                <input type="image">
+            </label>
+            
+            <label>
+                reset
+                <input type="reset">
+            </label>
+            
+            <label>
+                button
+                <input type="button" value="Button">
+            </label>
+            
+            <label>
+                submit
+                <input type="submit">
+            </label>
+            
+        </form>
+    </div>
+    
+    <div class="demo-description">
         <h2>Wrapped Vertical</h2>
     </div>
     <div class="demo-block">

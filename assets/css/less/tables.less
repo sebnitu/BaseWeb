@@ -10,11 +10,15 @@ table {
     overflow: auto;
     
     th {
-        color: @colorDark;
+        color: @colorHeader;
         text-align: left;
         font-weight: bold;
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Table Mixins
+////////////////////////////////////////////////////////////////////////////////
 
 ////
 // Rowed
@@ -22,15 +26,11 @@ table {
     border-collapse: separate;
     td, th {
         padding: (@baseMargin / 2) @baseMargin;
-        border-top: 1px solid;
-        .rgba-border-default( @tableBorder );
-    }
-    th {
         border-bottom: 1px solid;
-        .rgba-border-default( @tableBorder );
+        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
     }
-    tr:first-child td, tr:first-child th { 
-        border-top: 0 none; 
+    tr:last-child td { 
+        border-bottom: 0 none; 
     }
 }
 ////
@@ -40,27 +40,14 @@ table {
     td, th {
         padding: (@baseMargin / 2) @baseMargin;
         border-left: 1px solid;
-        .rgba-border-default( @tableBorder );
+        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
     }
     th {
-        border-bottom: 1px solid;
-        .rgba-border-default( @tableBorder );
+        border-left: 1px solid;
+        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
     }
     tr td:first-child, tr th:first-child { 
         border-left: 0 none;
-    }
-}
-////
-// Zebra
-.table-zebra() {
-    td, th {
-        padding: (@baseMargin / 2) @baseMargin;
-    }
-    th {
-        .rgba-default( @tableBgZebra );
-    }
-    tr:nth-child(even) td {
-        .rgba-default( @tableBgZebra );
     }
 }
 ////
@@ -69,20 +56,16 @@ table {
     background: @tableBg;
     border-collapse: separate;
     border: 1px solid;
-    .rgba-border-default( @tableBorder );
+    .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
     .border-radius();
 
     td, th {
         padding: (@baseMargin / 2) @baseMargin;
-        border-top: 1px solid;
-        border-left: 1px solid;
-        .rgba-border-default( @tableBorder );
-    }
-    thead tr th {
         border-bottom: 1px solid;
-        .rgba-border-default( @tableBorder );
+        border-left: 1px solid;
+        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
     }
-    tr:first-child td, tr:first-child th { border-top: 0 none; }
+    tr:last-child td { border-bottom: 0 none; }
     tr td:first-child, tr th:first-child { border-left: 0 none; }
     
     tbody tr:last-child td:first-child, 
@@ -113,20 +96,33 @@ table {
         padding: (@baseMargin / 4) (@baseMargin / 2);
     }
 }
+
+////
+// Zebra
+.table-zebra() {
+    th {
+        .background-color( @tableBgZebraBase, @tableBgZebraAlpha, @tableBgZebra );
+    }
+    tr:nth-child(even) td {
+        .background-color( @tableBgZebraBase, @tableBgZebraAlpha, @tableBgZebra );
+    }
+}
 ////
 // Hover
 .table-hover() {
     thead tr th:hover, 
     tbody tr:hover {
-        .rgba( @tableBgHover, 0.15 );
+        .background-color( @tableBgHoverBase, @tableBgHoverAlpha, @tableBgHover );
     }
     tbody tr:hover td {
         background: transparent;
     }
 }
 
-////
-// Table Styles Assignment
+////////////////////////////////////////////////////////////////////////////////
+// Table Class Assignment
+////////////////////////////////////////////////////////////////////////////////
+
 table.rowed     { .table-rowed();     }
 table.columned  { .table-column();    }
 table.zebra     { .table-zebra();     }

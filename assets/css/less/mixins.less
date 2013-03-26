@@ -120,15 +120,9 @@
     background-clip: padding-box;
     padding: 5px;
     border: 1px solid;
-    .rgba-border( @black, 0.2, #ccc );
+    .border-color(@black, 0.2, #ccc);
     .box-shadow( 0 1px 5px rgba(0,0,0, 0.1) );
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Table Mixins
-////////////////////////////////////////////////////////////////////////////////
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // CSS3 Helpers
@@ -263,57 +257,74 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// RGBA
-// Converts hex value to RGBA
-// Returns as background-color prop with hex fallback
-.rgba(@hex, @alpha: 1, @fallback : 0) {
+// Background, Border and Text Color
+// Returns a background-color based on alpha channel
+.background-color(@hex, @alpha : 1, @fallback : 0) {
 
     .fallback() when (@fallback = 0) {
         @fallback: @hex;
     }
     .fallback();
     
-    background-color: @fallback;
-    background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+    .background() when (@alpha = 1) {
+        background-color: @hex;
+    }
+    .background() when (@alpha = 0) {
+        background-color: transparent;
+    }
+    .background() when (@alpha < 1), (@alpha > 0) {
+        background-color: @fallback;
+        background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+    }
+    .background();
 }
-// Converts a default color into RGBA with fallback
-.rgba-default( @default : @bgLight, @base : @black ) {
-    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
-    .rgba( @base, @alpha, @default );
+.background-color-default() {
+    .background-color( @baseBgBase, @baseBgAlpha, @baseBg );
 }
 ////
-// Returns as border-color prop with hex fallback
-.rgba-border(@hex, @alpha: 1, @fallback : 0) {
+// Returns a border-color based on alpha channel
+.border-color(@hex, @alpha : 1, @fallback : 0) {
 
     .fallback() when (@fallback = 0) {
         @fallback: @hex;
     }
     .fallback();
-
-    border-color: @fallback;
-    border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+    
+    .border() when (@alpha = 1) {
+        border-color: @hex;
+    }
+    .border() when (@alpha = 0) {
+        border-color: transparent;
+    }
+    .border() when (@alpha < 1), (@alpha > 0) {
+        border-color: @fallback;
+        border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+    }
+    .border();
 }
-// Converts a default color into RGBA with fallback
-.rgba-border-default( @default : @borderColor, @base : @black ) {
-    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
-    .rgba-border( @base, @alpha, @default );
+.border-color-default() {
+    .border-color( @baseBorderBase, @baseBorderAlpha, @baseBorder );
 }
 ////
-// Returns as color prop with hex falback
-.rgba-color(@hex, @alpha: 1, @fallback : 0) {
+// Returns a color based on alpha channel
+.color(@hex, @alpha : 1, @fallback : 0) {
 
     .fallback() when (@fallback = 0) {
         @fallback: @hex;
     }
     .fallback();
-
-    color: @fallback;
-    color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-}
-// Converts a default color into RGBA with fallback
-.rgba-color-default( @default : @color, @base : @black ) {
-    @alpha: unit(round( (1 - (lightness( @default ) / 100)), 2));
-    .rgba-color( @base, @alpha, @default );
+    
+    .color() when (@alpha = 1) {
+        color: @hex;
+    }
+    .color() when (@alpha = 0) {
+        color: transparent;
+    }
+    .color() when (@alpha < 1), (@alpha > 0) {
+        color: @fallback;
+        color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+    }
+    .color();
 }
 
 ////

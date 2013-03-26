@@ -7,52 +7,36 @@
 <div class="demo">
 
     <div class="demo-description">
-        <h2>Default</h2>
-    </div>
-    <div class="demo-block">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <h2>Table Options</h2>
+        <form id="table-classes">
+        
+            <select name="class">
+                <option value="">Default</option>
+                <option value="padded">Padded</option>
+                <option value="rowed">Rowed</option>
+                <option value="columned">Columned</option>
+                <option value="bordered" selected="selected">Bordered</option>
+            </select>
+            
+            <label class="checkbox">
+                <input type="checkbox" name="auxilary-classes" value="zebra" class="checkbox" checked="checked">
+                Zebra
+            </label>
+            
+            <label class="checkbox">
+                <input type="checkbox" name="auxilary-classes" value="hover" class="checkbox" checked="checked">
+                Hover
+            </label>
+            
+            <label class="checkbox">
+                <input type="checkbox" name="auxilary-classes" value="condensed" class="checkbox">
+                Condensed
+            </label>
 
-    <div class="demo-description">
-        <h2>Padded</h2>
+        </form>
     </div>
-    <div class="demo-block">
-        <table class="padded">
+    <div class="demo-block demo-table">
+        <table id="table-demo" class="bordered zebra hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -89,258 +73,5 @@
             </tbody>
         </table>
     </div>
-    
-    <div class="demo-description">
-        <h2>Rowed</h2>
-    </div>
-    <div class="demo-block">
-        <table class="rowed">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="demo-description">
-        <h2>Columned</h2>
-    </div>
-    <div class="demo-block">
-        <table class="columned">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="demo-description">
-        <h2>Rowed Zebra</h2>
-    </div>
-    <div class="demo-block">
-        <table class="rowed zebra">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="demo-description">
-        <h2>Bordered w/ Hover</h2>
-    </div>
-    <div class="demo-block">
-        <table class="bordered hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    
-    <div class="demo-description">
-        <h2>Bordered Zebra w/ Hover</h2>
-    </div>
-    <div class="demo-block">        
-        <table class="bordered zebra hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="demo-description">
-        <h2>Condensed</h2>
-    </div>
-    <div class="demo-block">        
-        <table class="bordered condensed">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Sebastian</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@sebnitu</a></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Emilia</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@emnitu</a></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Lea</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@leanitu</a></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Ava</td>
-                    <td>Nitu</td>
-                    <td><a href="#">@avanitu</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
+        
 </div><!-- .demo -->

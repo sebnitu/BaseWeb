@@ -13,5 +13,27 @@
 <script src="assets/js/jquery.function.js"></script>
 <script src="assets/js/jquery.docready.js"></script>
 
+<script>
+$(document).ready(function() {
+    
+    ////
+    // Select Form
+    $('#table-classes').change( function() {
+        
+        var i,
+            form_data = $(this).serializeArray(),
+            table = $('#table-demo');
+        
+        table.removeClass();
+        
+        for (i = 0; i < form_data.length; ++i) {
+            table.addClass(form_data[i]['value']);
+        }
+        
+    });
+    
+});
+</script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .docs {
-    background: @bgLight;
+    background: @baseBg;
 }
 .docs .header {
     position: relative;
@@ -86,7 +86,7 @@
     }
     
     .header .fork {
-        .rgba( @white, 0.1, @g3 );
+        .background-color( @white, 0.1, @g3 );
         color: @g9;
         border: 0 none;
         text-align: center;
@@ -95,7 +95,7 @@
         .border-radius();
         
         &:hover {
-            .rgba( @white, 0.15, @g3 );
+            .background-color( @white, 0.15, @g3 );
             color: @gE;
         }
     }
@@ -195,13 +195,12 @@
         display: block;
         border: 0 none;
         padding: 10px 20px;
-        .rgba( #000, 0.05, #efefef );
+        .background-color-default();
         .border-radius();
     }
-    .nav ul li a:hover {
-        color: @colorDark;
-        .rgba( #000, 0.1, #efefef );
-        box-shadow: 0 1px 3px rgba(0,0,0, 0.15) inset;
+    .features-nav ul li a:hover {
+        .background-color( @baseBgBase, 0.08, @baseBg );
+        box-shadow: 0 1px 4px rgba(0,0,0, 0.15) inset;
     }
 }
 
@@ -219,7 +218,7 @@
 .demo-intro header {
     .column(12);
     border-top: 1px solid;
-    .rgba-border( #000, 0.1, #efefef );
+    .border-color-default();
 }
 .demo-intro header h1 {
     font-size: @baseFontSize;
@@ -244,7 +243,7 @@
         .column(3);
         clear: both;
         border-top: 1px solid;
-        .rgba-border( #000, 0.1, #efefef );
+        .border-color-default();
         
         h2 {
             font-size: @baseFontSize;
@@ -255,7 +254,7 @@
     .demo-block {
         .column(9);
         border-top: 1px solid;
-        .rgba-border( #000, 0.1, #efefef );
+        .border-color-default();
     }
 }
 
@@ -304,7 +303,7 @@
                 content: "";
                 display: block;
                 padding: 15px 0 0;
-                .rgba-color( @white, 0.6 );
+                .color( @white, 0.6 );
             }
             &:after {
                 #arrow > .down( 4px, #000 );
@@ -460,7 +459,7 @@
         text-align: center;
         padding: 15px 20px;
         border: 1px solid;
-        .rgba-border( #000, 0.12, #ccc );
+        .border-color-default();
         .border-radius(4px);
         box-shadow: 0 1px 3px rgba(0,0,0, 0.02);
         background-clip: padding-box;
@@ -498,7 +497,7 @@
         padding: 0;
     }
     .row.nested [class*="col-"], .nested-semantic [class*="test-"] {
-        .rgba( #000, 0.1, #efefef );
+        .background-color-default();
         box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
     }
     .nested-semantic .test-3 {
@@ -607,13 +606,13 @@
         }
     }
     .visible-on span {
-        .rgba( @blue, 0.1 );
-        .rgba-border( @blue, 0.2 );
+        .background-color( @blue, 0.1 );
+        .border-color( @blue, 0.1 );
         color: @blue;
     }
     .hidden-on span {
-        .rgba( @red, 0.1 );
-        .rgba-border( @red, 0.2 );
+        .background-color( @red, 0.1 );
+        .border-color( @red, 0.1 );
         color: @red;
     }
     
@@ -669,6 +668,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Tables Demo
 ////////////////////////////////////////////////////////////////////////////////
+
+.demo-tables {
+    
+    .demo-description form {
+        label.checkbox {
+            margin: 0 0 5px 0;
+        }
+    }
+    
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Forms Demo
@@ -728,7 +737,7 @@
         margin-top: 10px;
         background: @white;
         border: 1px solid;
-        .rgba-border( #000, 0.12, #ccc );
+        .border-color-default();
         .border-radius-top();
         box-shadow: 0 1px 3px rgba(0,0,0, 0.02);
         background-clip: padding-box;
@@ -746,8 +755,8 @@
         border-right: 1px solid;
         border-bottom: 1px solid;
     	.mono-font();
-        .rgba-border( @black, 0.12, @gE );
-    	.rgba( @black, 0.1, @gE );
+        .background-color-default();
+        .border-color-default();
         .border-radius-bottom();
     }
     .tile-wrap .tile span pre {
@@ -761,7 +770,7 @@
     .tile-wrap .tile:hover i {
         color: @Cmyk;
         box-shadow: 0 1px 3px rgba(0,0,0, 0.1);
-        .rgba-border( @black, 0.2, @gC );
+        .border-color-default();
     }
     .tile-wrap .tile:hover span {
         color: @white;
@@ -787,7 +796,7 @@
 .demo-modals {
     
     .modal-wrap {
-        .rgba( #000, 0.5 );
+        .background-color( @black, 0.5 );
         margin-top: -1px;
         padding: 20px;
     }
