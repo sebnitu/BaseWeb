@@ -2,12 +2,41 @@
 // Base Form Styles
 ////////////////////////////////////////////////////////////////////////////////
 
+////
+// Forms
+////
+// Background
+@bg-form: @bg;
+@bg-form-alpha: @bg-alpha;
+@bg-form-base: @bg-base;
+// Border
+@border-form: @border;
+@border-form-alpha: @border-alpha;
+@border-form-base: @border-base;
+// Settings
+
+////
+// Input
+////
+// Background
+@bg-input: @white;
+@bg-input-alpha: 1;
+@bg-input-base: @white;
+// Border
+@border-input: @gB;
+@border-input-alpha: 0.25;
+@border-input-base: @black;
+// Padding
+@input-padding-top-bottom: (@padding / 2);
+@input-padding-left-right: (@padding / 2);
+@input-padding: @input-padding-top-bottom @input-padding-left-right;
+
 form {
-    margin: @baseMargin 0;
+    margin: @margin 0;
 }
 
 label {
-    margin: (@baseMargin / 2) 0;
+    margin: (@margin / 2) 0;
     padding: 0;
     display: block;
 }
@@ -29,14 +58,44 @@ input[type="month"],
 input[type="date"],
 input[type="datetime"],
 input[type="datetime-local"],
-// choice
-input[type="radio"],
-input[type="checkbox"],
 // Other
 input[type="range"],
-input[type="color"],
-input[type="file"],
+input[type="color"] {
+    // Type
+    font-family: @font-family;
+    line-height: 20px;
+    font-size: 14px;
+    color: @color;
+    
+    // Structure
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 4px 6px;
+    margin: 0;
+    
+    // Border & Background
+    border: 1px solid;
+    .border-color( @border-input-base, @border-input-alpha, @border-input );
+    background: none;
+    .background-color( @bg-input-base, @bg-input-alpha, @bg-input );
+    .border-radius();
+    .box-shadow( 0 1px 3px rgba(0,0,0, 0.05) inset );
+    .transition( ~"border linear 0.2s, box-shadow linear 0.2s" );
+    
+    &:focus {
+        outline: none;
+        .border-color( @blue-lighter, 0.6 );
+        .box-shadow( ~"0 1px 3px rgba(0,0,0, 0.05) inset, 0 0 8px rgba(35,130,247, 0.4)" );
+    }
+}
+// choice
+input[type="radio"],
+input[type="checkbox"] {
+    
+}
 // Buttons
+input[type="file"],
 input[type="image"],
 input[type="reset"],
 input[type="button"],

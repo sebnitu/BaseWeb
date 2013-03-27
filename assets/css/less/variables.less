@@ -6,70 +6,42 @@
 // Typohraphy
 ////
 // Font families
-@sansFontFamily:    "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
-@slabFontFamily:    @sansFontFamily;
-@serifFontFamily:   georgia, "Times New Roman", times, serif;
-@monoFontFamily:    Menlo, Monaco, Consolas, "Courier New", monospace;
-@iconFontFamily:    "Entypo";
-
-////
-// Settings
-@lineHeightIncrement: 8; // Is added to @baseFontSize to determine line height
+@font-family-sans: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+@font-family-slab: @font-family-sans;
+@font-family-serif: georgia, "Times New Roman", times, serif;
+@font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-icon: "Entypo";
 
 ////
 // Base Styles
-@baseFontFamily:    @sansFontFamily;
-@baseFontSize:      14px;
-@baseFontWeight:    normal;
+@font-family: @font-family-sans;
+@font-size: 14px;
+@font-weight: normal;
 // Spacing
-@baseLineHeight:    (@baseFontSize + @lineHeightIncrement); // 22
-@baseMargin:        (@baseLineHeight / 2); // 11
-@basePadding:       (@baseLineHeight / 2); // 11
+@line-height-inc: 8;
+@line-height: (@font-size + @line-height-inc); // 22
 
 ////
 // Header Styles
-@headerFontFamily:  inherit;
-@headerFontWeight:  bold;
+@font-family-header: inherit;
+@font-weight-header: bold;
 
 ////
 // Alternative Styles
-@altFontFamily:     @serifFontFamily;
-@altFontWeight:     inherit;
+@font-family-alt: @font-family-serif;
+@font-weight-alt: inherit;
 
 ////
 // Text Color Assignment
-@color:             @grayDark;
-@colorLight:        @grayLighter;
-@colorDark:         @grayDarker;
-@colorHeader:       @color;
+@color: @gray-dark;
+@color-light: @gray-lighter;
+@color-dark: @gray-darker;
+@color-header: @color;
 // Links Color Assignment
-@linkColor:         @blue;
-@linkColorHover:    @redOrangeLight;
-@linkHeader:        @linkColor;
-@linkHeaderHover:   @linkColorHover;
-
-////////////////////////////////////////////////////////////////////////////////
-// Mixin Defaults
-////////////////////////////////////////////////////////////////////////////////
-
-////
-// CSS3
-@borderRadius:          4px;
-@boxShadow:             0 1px 3px rgba(0,0,0, 0.25);
-
-@transitionProperty:    all;
-@transitionDuration:    0.25s;
-@transitionFunction:    ease-in-out;
-
-@rotateDegree:          0;
-
-@gradientStartColor:    @blueLight;
-@gradientEndColor:      @blueDarker;
-
-////
-// Miscellaneous
-@letterSpacing:         1px;
-@displayVisible:        block;
+@color-link: @blue;
+@color-link-hover: @red-orange-light;
+@color-link-header: @color-link;
+@color-link-header-hover: @color-link-hover;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Componenets
@@ -79,67 +51,82 @@
 // Base Component Settings
 ////
 // Background
-@baseBg: #f4f4f4;
-@baseBgAlpha: 0.04;
-@baseBgBase: @black;
+@bg: #f4f4f4;
+@bg-alpha: 0.04;
+@bg-base: @black;
 // Border
-@baseBorder: #e0e0e0;
-@baseBorderAlpha: 0.1;
-@baseBorderBase: @black;
+@border: #e0e0e0;
+@border-alpha: 0.1;
+@border-base: @black;
+// Spacing
+@margin: (@line-height / 2); // 11
+@padding: (@line-height / 2); // 11
 
 ////
 // Code
 ////
 // Background
-@codeBg: @baseBg;
-@codeBgAlpha: @baseBgAlpha;
-@codeBgBase: @baseBgBase;
+@bg-code: @bg;
+@bg-code-alpha: @bg-alpha;
+@bg-code-base: @bg-base;
 // Border
-@codeBorder: @baseBorder;
-@codeBorderAlpha: @baseBorderAlpha;
-@codeBorderBase: @baseBorderBase;
+@border-code: @border;
+@border-code-alpha: @border-alpha;
+@border-code-base: @border-base;
 // Settings
-@codeInlineColor: @redVioletLighter;
-@codeSize: 0.85; // @baseFontSize * @codeSize
-@codeMaxHeight: 400px;
+@color-code: @color;
+@color-code-inline: @red-violet-lighter;
+@font-size-code: 0.85; // @font-size * 0.85
+@code-max-height: 400px;
 
 ////
 // Tables
 ////
 // Background
-@tableBg: @white;
-@tableBgAlpha: 0;
-@tableBgBase: @white;
+@bg-table: @white;
+@bg-table-alpha: 0;
+@bg-table-base: @white;
 // Background Zebra
-@tableBgZebra: @baseBg;
-@tableBgZebraAlpha: @baseBgAlpha;
-@tableBgZebraBase: @baseBgBase;
+@bg-table-zebra: @bg;
+@bg-table-zebra-alpha: @bg-alpha;
+@bg-table-zebra-base: @bg-base;
 // Background Hover
-@tableBgHover: @yellowLighter;
-@tableBgHoverAlpha: 0.2;
-@tableBgHoverBase: @yellowLighter;
+@bg-table-hover: @yellow-lighter;
+@bg-table-hover-alpha: 0.2;
+@bg-table-hover-base: @yellow-lighter;
 // Border
-@tableBorder: @baseBorder;
-@tableBorderAlpha: @baseBorderAlpha;
-@tableBorderBase: @baseBorderBase;
-
-////
-// Forms
-////
-// Background
-@formBg: @baseBg;
-@formBgAlpha: @baseBgAlpha;
-@formBgBase: @baseBgBase;
-// Border
-@formBorder: @baseBorder;
-@formBorderAlpha: @baseBorderAlpha;
-@formBorderBase: @baseBorderBase;
-// Settings
+@border-table: @border;
+@border-table-alpha: @border-alpha;
+@border-table-base: @border-base;
 
 ////
 // Buttons
-@btnPadTB: 6px;
-@btnPadLR: 14px;
+@button-padding-top-bottom: (@padding / 2);
+@button-padding-left-right: @padding;
+@button-padding: @button-padding-top-bottom @button-padding-left-right;
+
+////////////////////////////////////////////////////////////////////////////////
+// Mixin Defaults
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// CSS3
+@border-radius: 4px;
+@box-shadow: 0 1px 3px rgba(0,0,0, 0.25);
+
+@transition: all ease-in-out 0.25s;
+@transition-delay: ease-in-out;
+@transition-duration: 0.25s;
+
+@rotate-degree: 0;
+
+@gradient-start-color: @blue-light;
+@gradient-end-color: @blue-darker;
+
+////
+// Miscellaneous
+@letter-spacing: 1px;
+@display-visible: block;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Miscellaneous
@@ -147,8 +134,8 @@
 
 ////
 // Directories
-@dirImages: "../img/layout/";
-@dirFonts: "../fonts/";
+@dir-images: "../img/layout/";
+@dir-fonts: "../fonts/";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Structure

@@ -5,17 +5,17 @@
 ////
 // Headers
 h1, h2, h3, h4, h5, h6 {
-    margin: @baseMargin 0;
-    font-family: @headerFontFamily;
-    font-weight: @headerFontWeight;
-    line-height: @baseLineHeight;
-    color: @colorHeader;
+    margin: @margin 0;
+    font-family: @font-family-header;
+    font-weight: @font-weight-header;
+    line-height: @line-height;
+    color: @color-header;
 
     a {
-        color: @linkHeader;
+        color: @color-link-header;
         border: 0 none;
         &:hover {
-            color: @linkHeaderHover;
+            color: @color-link-header-hover;
         }
     }
 }
@@ -42,7 +42,7 @@ h6 {
 ////
 // Base Elements
 p { 
-    margin: @baseMargin 0;
+    margin: @margin 0;
 
     &.intro {
         .font-sequence( 1.5 ); // Same styles as an h4 except with normal weight
@@ -55,7 +55,7 @@ small {
     font-style: normal;
     font-weight: normal;
     font-size: 0.9em;
-    color: @colorLight;
+    color: @color-light;
 }
 cite {
     font-style: normal;
@@ -81,20 +81,20 @@ cite {
     text-decoration: underline;
 }
 .highlight {
-    .background-color(@yellowLighter, 0.6);
+    .background-color(@yellow-lighter, 0.6);
 }
 
 ////
 // Links
 a {
-    color: @linkColor;
+    color: @color-link;
     text-decoration: none;
     border-bottom: 1px solid;
     .border-color-default();
     .transition();
     &:hover {
-        color: @linkColorHover;
-        .border-color( @baseBorderBase, (@baseBorderAlpha * 2), darken(@baseBorder, 10%) );
+        color: @color-link-hover;
+        .border-color( @border-base, (@border-alpha * 2), darken(@border, 10%) );
     }
 }
 
@@ -103,22 +103,22 @@ a {
 ////////////////////////////////////////////////////////////////////////////////
 
 blockquote {
-    margin: @baseMargin 0;
-    padding: (@baseMargin / 2) (@baseMargin + (@baseMargin / 2));
+    margin: @margin 0;
+    padding: (@padding / 2) (@padding + (@padding / 2));
     border-left: 5px solid;
     .border-color-default();
     .background-color-default();
     
     small {
         position: relative;
-        margin: @baseMargin 0;
+        margin: @margin 0;
         display: block;
         font-size: 100%;
-        color: darken( @colorLight, 5% );
+        color: darken( @color-light, 5% );
         &:before {
             #arrow > .right( 5px, rgba(0,0,0, 0.10) );
             position: absolute;
-            left: -(@baseMargin + (@baseMargin / 2));
+            left: -(@margin + (@margin / 2));
             top: 50%;
             margin-top: -5px;
         }
@@ -135,7 +135,7 @@ blockquote.align-right {
     small:before {
         #arrow > .left( 5px, rgba(0,0,0, 0.10) );
         left: auto;
-        right: -(@baseMargin + (@baseMargin / 2));
+        right: -(@margin + (@margin / 2));
     }
 }
 
@@ -144,7 +144,7 @@ blockquote.align-right {
 ////////////////////////////////////////////////////////////////////////////////
 
 ul, ol {
-    margin: @baseMargin 0 @baseMargin (@baseMargin + (@baseMargin / 2));
+    margin: @margin 0 @margin (@margin + (@margin / 2));
 }
 ul, ul ul ul ul {
     list-style: disc;
@@ -167,17 +167,17 @@ ol ol ol {
 }
 
 ul li, ol li {
-    margin: @baseMargin 0;
+    margin: @margin 0;
 }
 
 dl {
-    margin: @baseMargin 0;
+    margin: @margin 0;
     dt {
-        margin: @baseMargin 0 0;
+        margin: @margin 0 0;
         font-weight: bold;
     }
     dd {
-        margin: 0 0 @baseMargin (@baseMargin + (@baseMargin / 2));
+        margin: 0 0 @margin (@margin + (@margin / 2));
     }
 }
 
@@ -186,7 +186,7 @@ dl {
 ////////////////////////////////////////////////////////////////////////////////
 
 hr {
-    margin: (@baseMargin * 2) 0;
+    margin: (@margin * 2) 0;
     padding: 0;
     background: none;
     height: 0; 

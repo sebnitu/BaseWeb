@@ -99,7 +99,7 @@
             </label>
                         
             <label>
-                Image
+                File
                 <input type="file">
             </label>
             

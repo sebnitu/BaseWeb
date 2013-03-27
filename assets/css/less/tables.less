@@ -6,11 +6,11 @@ table {
     width: 100%; 
     max-width: 100%;
     background: transparent;
-    margin: @baseMargin 0;
+    margin: @margin 0;
     overflow: auto;
     
     th {
-        color: @colorHeader;
+        color: @color-header;
         text-align: left;
         font-weight: bold;
     }
@@ -25,9 +25,9 @@ table {
 .table-rowed() {
     border-collapse: separate;
     td, th {
-        padding: (@baseMargin / 2) @baseMargin;
+        padding: (@padding / 2) @padding;
         border-bottom: 1px solid;
-        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
+        .border-color( @border-table-base, @border-table-alpha, @border-table );
     }
     tr:last-child td { 
         border-bottom: 0 none; 
@@ -38,13 +38,13 @@ table {
 .table-column() {
     border-collapse: separate;
     td, th {
-        padding: (@baseMargin / 2) @baseMargin;
+        padding: (@padding / 2) @padding;
         border-left: 1px solid;
-        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
+        .border-color( @border-table-base, @border-table-alpha, @border-table );
     }
     th {
         border-left: 1px solid;
-        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
+        .border-color( @border-table-base, @border-table-alpha, @border-table );
     }
     tr td:first-child, tr th:first-child { 
         border-left: 0 none;
@@ -53,17 +53,17 @@ table {
 ////
 // Bordered
 .table-bordered() {
-    background: @tableBg;
     border-collapse: separate;
     border: 1px solid;
-    .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
+    .border-color( @border-table-base, @border-table-alpha, @border-table );
+    .background-color( @bg-table-base, @bg-table-alpha, @bg-table );
     .border-radius();
 
     td, th {
-        padding: (@baseMargin / 2) @baseMargin;
+        padding: (@padding / 2) @padding;
         border-bottom: 1px solid;
         border-left: 1px solid;
-        .border-color( @tableBorderBase, @tableBorderAlpha, @tableBorder );
+        .border-color( @border-table-base, @border-table-alpha, @border-table );
     }
     tr:last-child td { border-bottom: 0 none; }
     tr td:first-child, tr th:first-child { border-left: 0 none; }
@@ -86,14 +86,14 @@ table {
 // Padded
 .table-padded() {
     td, th {
-        padding: (@baseMargin / 2) @baseMargin;
+        padding: (@padding / 2) @padding;
     }
 }
 ////
 // Condensed
 .table-condensed() {
     td, th {
-        padding: (@baseMargin / 4) (@baseMargin / 2);
+        padding: (@padding / 4) (@padding / 2);
     }
 }
 
@@ -101,10 +101,10 @@ table {
 // Zebra
 .table-zebra() {
     th {
-        .background-color( @tableBgZebraBase, @tableBgZebraAlpha, @tableBgZebra );
+        .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
     }
     tr:nth-child(even) td {
-        .background-color( @tableBgZebraBase, @tableBgZebraAlpha, @tableBgZebra );
+        .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
     }
 }
 ////
@@ -112,7 +112,7 @@ table {
 .table-hover() {
     thead tr th:hover, 
     tbody tr:hover {
-        .background-color( @tableBgHoverBase, @tableBgHoverAlpha, @tableBgHover );
+        .background-color( @bg-table-hover-base, @bg-table-hover-alpha, @bg-table-hover );
     }
     tbody tr:hover td {
         background: transparent;

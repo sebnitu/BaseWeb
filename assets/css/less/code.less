@@ -3,21 +3,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 code, pre {
-    .background-color( @codeBgBase, @codeBgAlpha, @codeBg );
+    .background-color( @bg-code-base, @bg-code-alpha, @bg-code );
     .mono-font();
 }
 code {
-    padding: 0 (@baseMargin / 2); 
+    padding: 0 (@margin / 2); 
     margin: 0 2px;
     display: inline-block;
     white-space: nowrap;
     line-height: inherit;
-    color: @codeInlineColor;
+    color: @color-code-inline;
 }
 pre {
-    margin: @baseMargin 0;
-    padding: @baseMargin (@baseMargin + (@baseMargin / 2));
+    margin: @margin 0;
+    padding: @margin (@margin + (@margin / 2));
     overflow: auto;
+    color: @color-code;
     
     code {
         margin: 0;
@@ -27,8 +28,9 @@ pre {
         display: inline-block;
         white-space: pre;
         font-size: 100%;
+        color: inherit;
     }
     &.limit-height {
-        max-height: @codeMaxHeight;
+        max-height: @code-max-height;
     }
 }

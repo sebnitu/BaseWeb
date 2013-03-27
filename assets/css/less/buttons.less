@@ -7,14 +7,14 @@
 // Colors Delegation
 //========================================
 .btn {
-    font-family: @baseFontFamily;
+    font-family: @font-family;
     font-size: 13px;
     line-height: 18px;
     position: relative;
     display: inline-block;
     text-align: center;
     margin: 0;
-    padding: @btnPadTB @btnPadLR;
+    padding: @button-padding;
     white-space: nowrap;
     -webkit-font-smoothing: subpixel-antialiased;
     .border-radius(4px);
@@ -29,51 +29,51 @@
     // Primary Colors
     //====================
     &.btn-red {
-        .btn-color(@redLight, @redDark);
+        .btn-color(@red-light, @red-dark);
     }
     &.btn-yellow {
-        .btn-color(@yellowDark, @yellowDarker);
+        .btn-color(@yellow-dark, @yellow-darker);
     }
     &.btn-blue, &.btn-primary {
-        .btn-color(@blueLighter, @blueDark);
+        .btn-color(@blue-lighter, @blue-dark);
     }
     // Secondary Colors
     //====================
     &.btn-orange, &.btn-warning {
-        .btn-color(@orangeLight, @orangeDark);
+        .btn-color(@orange-light, @orange-dark);
     }
     &.btn-green {
-        .btn-color(@greenLight, @greenDark);
+        .btn-color(@green-light, @green-dark);
     }
     &.btn-violet {
-        .btn-color(@violetLight, @violetDark);
+        .btn-color(@violet-light, @violet-dark);
     }
     
     // Tertiary Colors
     //====================
     &.btn-redViolet, &.btn-red-violet {
-        .btn-color(@redVioletLight, @redVioletDark);
+        .btn-color(@red-violet-light, @red-violet-dark);
     }
     &.btn-redOrange, &.btn-red-orange, &.btn-danger {
-        .btn-color(@redOrangeLight, @redOrangeDark);
+        .btn-color(@red-orange-light, @red-orange-dark);
     }
     &.btn-yellowOrange, &.btn-yellow-orange {
-        .btn-color(@yellowOrange, @yellowOrangeDarker);
+        .btn-color(@yellow-orange, @yellow-orange-darker);
     }
     &.btn-yellowGreen, &.btn-yellow-green, &.btn-success {
-        .btn-color(@yellowGreen, @yellowGreenDarker);
+        .btn-color(@yellow-green, @yellow-green-darker);
     }
     &.btn-blueGreen, &.btn-blue-green {
-        .btn-color(@blueGreenLight, @blueGreenDark);
+        .btn-color(@blue-green-light, @blue-green-dark);
     }
     &.btn-blueViolet, &.btn-blue-violet {
-        .btn-color(@blueVioletLight, @blueVioletDark);
+        .btn-color(@blue-violet-light, @blue-violet-dark);
     }
     
     // Miscellaneous Colors
     //====================
     &.btn-black, &.btn-inverse {
-        .btn-color(@gray, @grayDarker);
+        .btn-color(@gray, @gray-darker);
     }
     
     // Button Sizes
@@ -90,33 +90,33 @@
     // Large
     //====================
     &.btn-huge {
-        padding: (@btnPadTB + 12) (@btnPadLR + 20);
-        font-size: @baseFontSize + 6;
-        line-height: @baseLineHeight + 8;
+        padding: (@button-padding-top-bottom + 12) (@button-padding-left-right + 20);
+        font-size: @font-size + 6;
+        line-height: @line-height + 8;
     }
     
     // Secondary Colors
     //====================
     &.btn-large {
-        padding: (@btnPadTB + 6) (@btnPadLR + 6);
-        font-size: @baseFontSize + 4;
-        line-height: @baseLineHeight + 6;
+        padding: (@button-padding-top-bottom + 6) (@button-padding-left-right + 6);
+        font-size: @font-size + 4;
+        line-height: @line-height + 6;
     }
     
     // Secondary Colors
     //====================
     &.btn-small {
-        padding: (@btnPadTB - 2) (@btnPadLR - 4);
-        font-size: @baseFontSize - 2;
-        line-height: @baseLineHeight - 3;
+        padding: (@button-padding-top-bottom - 2) (@button-padding-left-right - 4);
+        font-size: @font-size - 2;
+        line-height: @line-height - 3;
     }
     
     // Secondary Colors
     //====================
     &.btn-tiny {
-        padding: (@btnPadTB - 4) (@btnPadLR - 8);
-        font-size: @baseFontSize - 4;
-        line-height: @baseLineHeight - 4;
+        padding: (@button-padding-top-bottom - 4) (@button-padding-left-right - 8);
+        font-size: @font-size - 4;
+        line-height: @line-height - 4;
     }
 }
 
@@ -169,27 +169,27 @@
 // Button Mixins
 //============================================================
 
-.btn-color(@colorStart: #f4f4f4, @colorEnd: darken(#f4f4f4, 6%)) {
-    background-color: mix(@colorStart, @colorEnd, 50);
-    border: 1px solid darken(@colorEnd, 10%);
-    .btn-text-color(@colorEnd);
-    .btn-border-color(@colorEnd);
-    #gradient > .vertical( @colorStart, @colorEnd );
+.btn-color(@color-start: #f4f4f4, @color-end: darken(#f4f4f4, 6%)) {
+    background-color: mix(@color-start, @color-end, 50);
+    border: 1px solid darken(@color-end, 10%);
+    .btn-text-color(@color-end);
+    .btn-border-color(@color-end);
+    #gradient > .vertical( @color-start, @color-end );
     #gradient > .reset-filter(); // Turn gradeints off in IE because it doesn't clip them for rounded corners
         
     // Hover
     //====================
     &:hover, &:focus {
-        background-color: @colorEnd;
+        background-color: @color-end;
         background-position: 0 -20px;
-        .btn-text-color(@colorEnd);
-        .btn-border-color(@colorEnd);
+        .btn-text-color(@color-end);
+        .btn-border-color(@color-end);
     }
     
     // Disabled
     //====================
     &.disabled {
-        .btn-disabled(mix(@colorStart, @colorEnd, 50));
+        .btn-disabled(mix(@color-start, @color-end, 50));
     }
 }
 
@@ -197,15 +197,15 @@
 //========================================
 // Sets the text color and text shadow
 // depending on how dark the background is
-.btn-text-color (@bgColor) when (lightness(@bgColor) >= 50%) {
+.btn-text-color (@bg-color) when (lightness(@bg-color) >= 50%) {
     .btn-text-color-dark();
 }
-.btn-text-color (@bgColor) when (lightness(@bgColor) < 50%) {
+.btn-text-color (@bg-color) when (lightness(@bg-color) < 50%) {
     .btn-text-color-light();
 }
 // Manual Text Colors
 //====================
-.btn-text-color-dark(@color: @grayDark) {
+.btn-text-color-dark(@color: @gray-dark) {
     color: @color;
     text-shadow: 0 1px 1px rgba(255,255,255, 0.75);
     .box-shadow(~"0 1px 3px rgba(0,0,0, 0.02), 0 1px 0 rgba(255,255,255, 0.75) inset");
@@ -229,29 +229,29 @@
 // Border Color Mixin
 //========================================
 // Sets the border color depending on how dark the background is
-.btn-border-color (@borderColor) when (lightness(@borderColor) >= 50%) {
-    border-color: darken(@borderColor, 15%);
+.btn-border-color (@border-color) when (lightness(@border-color) >= 50%) {
+    border-color: darken(@border-color, 15%);
     &:hover, &:focus {
-        border-color: darken(@borderColor, 25%);
+        border-color: darken(@border-color, 25%);
     }
 }
-.btn-border-color (@borderColor) when (lightness(@borderColor) < 50%) {
-    border-color: darken(@borderColor, 5%);
+.btn-border-color (@border-color) when (lightness(@border-color) < 50%) {
+    border-color: darken(@border-color, 5%);
     &:hover, &:focus {
-        border-color: darken(@borderColor, 10%);
+        border-color: darken(@border-color, 10%);
     }
 }
 
 // Disabled Mixin
 //========================================
-.btn-disabled(@bgColor) {
+.btn-disabled(@bg-color) {
     opacity: 0.60;
     cursor: default;
-    background: @bgColor;
-    border-color: darken(@bgColor, 15%);
+    background: @bg-color;
+    border-color: darken(@bg-color, 15%);
     .box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
     &:hover, &:focus {
-        border-color: darken(@bgColor, 15%);
+        border-color: darken(@bg-color, 15%);
         .box-shadow(~"0 1px 0 rgba(255,255,255, 0.25), 0 1px 3px rgba(0,0,0, 0.1) inset");
     }
 }
