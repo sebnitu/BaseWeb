@@ -77,13 +77,13 @@
             <hr>
             
             <label>
-                Radio
                 <input type="radio">
+                Radio
             </label>
             
             <label>
-                Checkbox
                 <input type="checkbox">
+                Checkbox
             </label>
             
             <hr>
