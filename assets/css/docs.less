@@ -279,7 +279,7 @@
             margin-bottom: 11px;
             float: left;
             text-align: center;
-            .mono-font( 0.75 );
+            .mono-font( 11px );
             .transition();
             
             p {
@@ -470,7 +470,7 @@
     .semantic {
         .row();
         color: @white;
-    }
+    }/*
     .semantic .test-1 {
         .column( 3 );
     }
@@ -481,7 +481,8 @@
         .column( 3 );
         .prefix( 3 );
         .suffix( 6 );
-    }
+    }*/
+    
     .semantic .test-1 p { background: @red; }
     .semantic .test-2 p { background: @green; }
     .semantic .test-3 p { background: @blue; }
@@ -579,6 +580,50 @@
         }
     }
 
+}
+
+#responsive {
+    .tablet() {
+        
+        .demo-grid .semantic .test-1 {
+            .column-manual( 3, tablet );
+        }
+        .demo-grid .semantic .test-2 {
+            .column-manual( 9, tablet );
+        }
+        .demo-grid .semantic .test-3 {
+            .column-manual( 8, tablet );
+            .prefix-manual( 2, tablet );
+            .suffix-manual( 2, tablet );
+        }
+        
+    }
+    .desktop() {
+        .demo-grid .semantic .test-1 {
+            .column-manual( 6, desktop );
+        }
+        .demo-grid .semantic .test-2 {
+            .column-manual( 6, desktop );
+        }
+        .demo-grid .semantic .test-3 {
+            .column-manual( 10, desktop );
+            .prefix-manual( 1, desktop );
+            .suffix-manual( 1, desktop );
+        }
+    }
+    .large() {
+        .demo-grid .semantic .test-1 {
+            .column-manual( 9, large );
+        }
+        .demo-grid .semantic .test-2 {
+            .column-manual( 3, large );
+        }
+        .demo-grid .semantic .test-3 {
+            .column-manual( 6, large );
+            .prefix-manual( 3, large );
+            .suffix-manual( 3, large );
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

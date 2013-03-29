@@ -66,102 +66,6 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class Based Grid System
-////////////////////////////////////////////////////////////////////////////////
-
-#grid_system( @grid-row-width, @grid-gutter-width ) {
-    
-    ////
-    // Global
-    .global() {
-        ////
-        // Set column width
-        @grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
-        ////
-        // Column Builder
-        .col-X (@index) when (@index > 0) {
-            .@{class-column}@{index} { .col-(@index); }
-            .col-X(@index - 1);
-        }
-        .col- (@columns) {
-            width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
-        }
-        .col-X (@grid-columns);
-        ////
-        // Prefix Builder
-        .pre-X (@index) when (@index > 0) {
-            .@{class-prefix}@{index} { .pre-(@index); }
-            .pre-X(@index - 1);
-        }
-        .pre- (@columns) {
-            padding-left: (@grid-column-width * @columns) + (@grid-gutter-width * @columns);
-        }
-        .pre-X (@grid-columns);
-        ////
-        // Suffix Builder
-        .suf-X (@index) when (@index > 0) {
-            .@{class-suffix}@{index} { .suf-(@index); }
-            .suf-X(@index - 1);
-        }
-        .suf- (@columns) {
-            padding-right: (@grid-column-width * @columns) + (@grid-gutter-width * @columns);
-        }
-        .suf-X (@grid-columns);
-        ////
-        // Base
-        @{all-columns} {
-            float: left;
-            .gutters( ( @grid-gutter-width / 2 ) );
-        }
-        ////
-        // Nested Columns
-        .@{class-row} .@{class-row} @{all-columns} {
-            .nested-gutters-first(0);
-            .nested-gutters-last(0);
-        }
-        
-    } // End of .global();
-    ////
-    // Static
-    .static() {
-        ////
-        // Load global styles
-        .global();
-        ////
-        // Nested Columns
-        .@{class-row} .@{class-row} @{all-columns} {
-            .nested-gutters-first-right( ( @grid-gutter-width / 2 ) );
-            .nested-gutters-last-left( ( @grid-gutter-width / 2 ) );
-        }
-    } // End of .static();
-    ////
-    // Fluid
-    .fluid() {
-        ////
-        // Load global styles
-        .global();
-        ////
-        // Nested Columns
-        .@{class-row} .@{class-row} @{all-columns} {
-            .nested-gutters-first-right( @grid-gutter-width );
-            .nested-gutters-last-left( @grid-gutter-width );
-        }
-    } // End of .fluid();
-    ////
-    // Guarded Mixins
-    .build() when ( ispixel(@grid-row-width) ) {
-        .static();
-    }
-    .build() when ( ispercentage(@grid-row-width) ) {
-        .fluid();
-    }
-    ////
-    // Build Styles
-    .build();
-    
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Semantic Grid System
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -209,7 +113,6 @@
         .make-container(@grid-row-width);
     }
     .media-mode();
-    
 }
 
 ////
@@ -255,6 +158,23 @@
     }
     .media-mode();
 }
+.column-manual( @col, @template : @grid-row-width, @gutter : @grid-gutter-width, @columns : @grid-columns ) {
+    position: relative;
+    min-height: 1px;
+    .template() when (isnumber(@template)) {
+        .make-column( @col, @template, @gutter );
+    }
+    .template() when (@template = tablet) {
+        .make-column( @col, @grid-tablet-row-width, @grid-tablet-gutter-width );
+    }
+    .template() when (@template = desktop) {
+        .make-column( @col, @grid-desktop-row-width, @grid-desktop-gutter-width );
+    }
+    .template() when (@template = large) {
+        .make-column( @col, @grid-large-row-width, @grid-large-gutter-width );
+    }
+    .template();
+}
 
 ////
 // Semantic Prefix
@@ -281,6 +201,21 @@
     }
     .media-mode();
 }
+.prefix-manual( @offset : 1, @template : @grid-row-width, @gutter : @grid-gutter-width, @columns : @grid-columns ) {
+    .template() when (isnumber(@template)) {
+        .make-prefix( @offset, @template, @gutter );
+    }
+    .template() when (@template = tablet) {
+        .make-prefix( @offset, @grid-tablet-row-width, @grid-tablet-gutter-width );
+    }
+    .template() when (@template = desktop) {
+        .make-prefix( @offset, @grid-desktop-row-width, @grid-desktop-gutter-width );
+    }
+    .template() when (@template = large) {
+        .make-prefix( @offset, @grid-large-row-width, @grid-large-gutter-width );
+    }
+    .template();
+}
 
 ////
 // Semantic Suffix
@@ -306,6 +241,21 @@
         .make-suffix( @offset, @grid-row-width, @grid-gutter-width );
     }
     .media-mode();
+}
+.suffix-manual( @offset : 1, @template : @grid-row-width, @gutter : @grid-gutter-width, @columns : @grid-columns ) {
+    .template() when (isnumber(@template)) {
+        .make-suffix( @offset, @template, @gutter );
+    }
+    .template() when (@template = tablet) {
+        .make-suffix( @offset, @grid-tablet-row-width, @grid-tablet-gutter-width );
+    }
+    .template() when (@template = desktop) {
+        .make-suffix( @offset, @grid-desktop-row-width, @grid-desktop-gutter-width );
+    }
+    .template() when (@template = large) {
+        .make-suffix( @offset, @grid-large-row-width, @grid-large-gutter-width );
+    }
+    .template();
 }
 
 ////
@@ -411,4 +361,100 @@
 @{all-columns} {
     position: relative;
     min-height: 1px;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Class Based Grid System
+////////////////////////////////////////////////////////////////////////////////
+
+#grid_system( @grid-row-width, @grid-gutter-width ) {
+    
+    ////
+    // Global
+    .global() {
+        ////
+        // Set column width
+        @grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
+        ////
+        // Column Builder
+        .col-X (@index) when (@index > 0) {
+            .@{class-column}@{index} { .col-(@index); }
+            .col-X(@index - 1);
+        }
+        .col- (@columns) {
+            width: (@grid-column-width * @columns) + (@grid-gutter-width * (@columns - 1));
+        }
+        .col-X (@grid-columns);
+        ////
+        // Prefix Builder
+        .pre-X (@index) when (@index > 0) {
+            .@{class-prefix}@{index} { .pre-(@index); }
+            .pre-X(@index - 1);
+        }
+        .pre- (@columns) {
+            padding-left: (@grid-column-width * @columns) + (@grid-gutter-width * @columns);
+        }
+        .pre-X (@grid-columns);
+        ////
+        // Suffix Builder
+        .suf-X (@index) when (@index > 0) {
+            .@{class-suffix}@{index} { .suf-(@index); }
+            .suf-X(@index - 1);
+        }
+        .suf- (@columns) {
+            padding-right: (@grid-column-width * @columns) + (@grid-gutter-width * @columns);
+        }
+        .suf-X (@grid-columns);
+        ////
+        // Base
+        @{all-columns} {
+            float: left;
+            .gutters( ( @grid-gutter-width / 2 ) );
+        }
+        ////
+        // Nested Columns
+        .@{class-row} .@{class-row} @{all-columns} {
+            .nested-gutters-first(0);
+            .nested-gutters-last(0);
+        }
+        
+    } // End of .global();
+    ////
+    // Static
+    .static() {
+        ////
+        // Load global styles
+        .global();
+        ////
+        // Nested Columns
+        .@{class-row} .@{class-row} @{all-columns} {
+            .nested-gutters-first-right( ( @grid-gutter-width / 2 ) );
+            .nested-gutters-last-left( ( @grid-gutter-width / 2 ) );
+        }
+    } // End of .static();
+    ////
+    // Fluid
+    .fluid() {
+        ////
+        // Load global styles
+        .global();
+        ////
+        // Nested Columns
+        .@{class-row} .@{class-row} @{all-columns} {
+            .nested-gutters-first-right( @grid-gutter-width );
+            .nested-gutters-last-left( @grid-gutter-width );
+        }
+    } // End of .fluid();
+    ////
+    // Guarded Mixins
+    .build() when ( ispixel(@grid-row-width) ) {
+        .static();
+    }
+    .build() when ( ispercentage(@grid-row-width) ) {
+        .fluid();
+    }
+    ////
+    // Build Styles
+    .build();
+    
 }

@@ -45,14 +45,58 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Font Sequence
-// Sets font-size and line-height based on a multiplier
-.font-sequence( @multiplier ) {
+// Turns a pixel value into ems based on it's context
+.em( @px, @context: @font-size ) {
+    // Calculate the EM value
+    @size: round((@px / @context), 2);
+    // Set properties
+    font-size: unit( ( @size ), em);
+    line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+}
+////
+// Converts an EM to pixels based on it's context
+.px( @value, @context: @font-size ) {
     // Calculate the size
-    @size: round((@font-size * @multiplier));
+    @size: unit( (round((@value * @context), 2) ), px);
+    // But, if the value was already in pixels, just set it as the size.
+    .check-value() when ( ispixel(@value) ) {
+        @size: @value;
+    }
+    .check-value();
     // Set properties
     font-size: @size;
-    line-height: (@size + @line-height-inc);
+    line-height: unit( round( (@size + @line-height-inc), 2), px);
+}
+
+////
+// Body Fonts
+// Sets the base typography for the body element
+.base-type( @value : @font-size, @unit : 16 ) {
+    font-family: @font-family;
+    font-weight: @font-weight;
+    color: @color;
+    
+    .build() when (@font-unit = em) {
+        .em( @value, @unit );
+    }
+    .build() when (@font-unit = px) {
+        font-size: @font-size;
+        line-height: @line-height;
+    }
+    .build();
+}
+
+////
+// Font Sequence
+// Sets font-size and line-height based on a multiplier
+.font-sequence( @value, @unit : @font-unit ) {
+    .build() when (@font-unit = em) {
+        .em( @value );
+    }
+    .build() when (@font-unit = px) {
+        .px( @value );
+    }
+    .build();
 }
 
 ////

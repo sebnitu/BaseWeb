@@ -1,25 +1,42 @@
-//============================================================
-// BaseWeb - Button Theme
-// https://github.com/sebnitu/BaseWeb
-//============================================================
-// Base Buttons
-//============================================================
-// Colors Delegation
-//========================================
-.btn {
+////////////////////////////////////////////////////////////////////////////////
+// Buttons
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Buttons
+////
+// Type
+@font-size-button: 13px;
+@line-height-button: 20px;
+// Spacing
+@button-padding-top-bottom: (@padding / 2);
+@button-padding-left-right: @padding;
+@button-padding: @button-padding-top-bottom @button-padding-left-right;
+
+////
+// Button Mixins
+////
+.base-btn() {
     font-family: @font-family;
-    font-size: 13px;
-    line-height: 18px;
+    font-size: @font-size-button;
+    line-height: @line-height-button;
+    text-align: center;
     position: relative;
     display: inline-block;
-    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
     margin: 0;
     padding: @button-padding;
-    white-space: nowrap;
     -webkit-font-smoothing: subpixel-antialiased;
-    .border-radius(4px);
+    .border-radius();
     .transition();
-    
+}
+
+.btn {
+    .base-btn();
+}
+
+.btn {
     // Button Colors
     //========================================
     // Default Button Color
