@@ -99,7 +99,7 @@ input[type="color"] {
     // Structure
     box-sizing: @input-box-size;
     width: @true-input-width;
-    height: @true-input-height;
+    // height: @true-input-height;
     display: inline-block;
     vertical-align: middle;
     padding: @input-padding;
@@ -116,21 +116,19 @@ input[type="color"] {
     
     &:focus {
         outline: none;
-        .border-color( @blue-lighter, 0.6 );
+        .border-color( @blue-lighter, 0.8 );
         .box-shadow( ~"0 1px 3px rgba(0,0,0, 0.05) inset, 0 0 8px rgba(35,130,247, 0.4)" );
     }
 }
 
 ////
 // Reset Input Widths
-input[type="time"],
-input[type="week"],
-input[type="month"],
-input[type="date"],
-input[type="datetime-local"],
-input[type="range"],
-input[type="color"] {
+input[type="range"] {
     width: auto;
+}
+input[type="color"] {
+    width: 50px;
+    height: 30px;
 }
 
 // choice

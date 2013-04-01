@@ -145,6 +145,28 @@
     }
 }
 
+////
+// Inline Lists
+// Turns list items inline
+.inline-list( @margin : @margin, @side : right  ) {
+    
+    li {
+        display: inline-block;
+        
+        .side() when ( @side = right ) {
+            margin-right: @margin;
+        }
+        .side() when ( @side = left ) {
+            margin-left: @margin;
+        }
+        .side() when ( @side = both ) {
+            margin-left: (@margin / 2);
+            margin-right: (@margin / 2);
+        }
+        .side();
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Image Mixins
 ////////////////////////////////////////////////////////////////////////////////

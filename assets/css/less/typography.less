@@ -149,6 +149,13 @@ blockquote.align-right {
 
 ul, ol {
     margin: @margin 0 @margin (@margin + (@margin / 2));
+    
+    &.remove-list-styles {
+        .remove-list-styles();
+    }
+    &.inline-list {
+        .inline-list( @margin, both );
+    }
 }
 ul, ul ul ul ul {
     list-style: disc;
@@ -214,3 +221,9 @@ hr {
         .border-color-default();
     }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Utility Classes
+////////////////////////////////////////////////////////////////////////////////
+
+.uppercase { .uppercase(); }

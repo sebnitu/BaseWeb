@@ -17,9 +17,9 @@
             <input class="btn" type="submit" value="Submit">
         </p>
         <div class="btn-group">
-            <a class="btn" href="#">Button</a>
-            <a class="btn" href="#">Button</a>
-            <a class="btn" href="#">Button</a>
+            <button class="btn" href="#">Button</button>
+            <button class="btn" href="#">Button</button>
+            <button class="btn" href="#">Button</button>
         </div>
     </div>
     
@@ -27,21 +27,29 @@
         <h2>Color Variations</h2>
     </div>
     <div class="demo-block">
-    
+        
         <p>
-            <button type="submit" class="btn">Default Button</button>
-            <button type="submit" class="btn btn-violet">Violet Button</button>
-            <button type="submit" class="btn btn-redViolet">Red Violet Button</button>
-            <button type="submit" class="btn btn-red">Red Button</button>
-            <button type="submit" class="btn btn-redOrange">Red Orange Button</button>
-            <button type="submit" class="btn btn-orange">Orange Button</button>
-            <button type="submit" class="btn btn-yellowOrange">Yellow Orange Button</button>
-            <button type="submit" class="btn btn-yellow">Yellow Button</button>
-            <button type="submit" class="btn btn-yellowGreen">Yellow Green Button</button>
-            <button type="submit" class="btn btn-green">Green Button</button>
-            <button type="submit" class="btn btn-blueGreen">Blue Green Button</button>
-            <button type="submit" class="btn btn-blue">Blue Button</button>
-            <button type="submit" class="btn btn-blueViolet">Blue Violet Button</button>
+            <span class="color-1"></span>
+            <span class="color-2"></span>
+            <span class="color-3"></span>
+            <span class="color-4"></span>
+        </p>
+        
+        <p>
+            <button tabindex="1" type="submit" class="btn">Default Button</button>
+            <button tabindex="1" type="submit" class="btn-black">Black Button</button>
+            <button tabindex="1" type="submit" class="btn-blue">Blue Button</button>
+            <button tabindex="1" type="submit" class="btn-blue-green">Blue Green Button</button>
+            <button tabindex="1" type="submit" class="btn-green">Green Button</button>
+            <button tabindex="1" type="submit" class="btn-yellow-green">Yellow Green Button</button>
+            <button tabindex="1" type="submit" class="btn-yellow">Yellow Button</button>
+            <button tabindex="1" type="submit" class="btn-yellow-orange">Yellow Orange Button</button>
+            <button tabindex="1" type="submit" class="btn-orange">Orange Button</button>
+            <button tabindex="1" type="submit" class="btn-red-orange">Red Orange Button</button>
+            <button tabindex="1" type="submit" class="btn-red">Red Button</button>
+            <button tabindex="1" type="submit" class="btn-red-violet">Red Violet Button</button>
+            <button tabindex="1" type="submit" class="btn-violet">Violet Button</button>
+            <button tabindex="1" type="submit" class="btn-blue-violet">Blue Violet Button</button>
         </p>
         
     </div>
@@ -51,11 +59,13 @@
     </div>
     <div class="demo-block">
         <p>
-            <button type="submit" class="btn btn-primary">Primary Button</button>
-            <button type="submit" class="btn btn-success">Success Button</button>
-            <button type="submit" class="btn btn-warning">Warning Button</button>
-            <button type="submit" class="btn btn-danger">Danger Button</button>
-            <button type="submit" class="btn btn-inverse">Inverse Button</button>
+            <button type="submit" class="btn">Default Button</button>
+            <button type="submit" class="btn-primary">Primary Button</button>
+            <button type="submit" class="btn-secondary">Secondary Button</button>
+            <button type="submit" class="btn-success">Success Button</button>
+            <button type="submit" class="btn-warning">Warning Button</button>
+            <button type="submit" class="btn-danger">Danger Button</button>
+            <button type="submit" class="btn-faint">Faint Button</button>
         </p>
     </div>
         
@@ -65,20 +75,20 @@
     <div class="demo-block">
     
         <p>
-            <button type="submit" class="btn btn-huge btn-success">Huge Button</button>
-            <button type="submit" class="btn btn-large btn-success">Large Button</button>
-            <button type="submit" class="btn btn-success">Default Button</button>
-            <button type="submit" class="btn btn-small btn-success">Small Button</button>
-            <button type="submit" class="btn btn-tiny btn-success">Tiny Button</button>
+            <button type="submit" class="btn-huge btn-success">Huge Button</button>
+            <button type="submit" class="btn-large btn-success">Large Button</button>
+            <button type="submit" class="btn-success">Default Button</button>
+            <button type="submit" class="btn-small btn-success">Small Button</button>
+            <button type="submit" class="btn-tiny btn-success">Tiny Button</button>
         </p>
         
         <p>
-            <a class="btn btn-primary disabled" href="">Link</a>
+            <a class="btn-primary disabled" href="">Link</a>
             <button class="btn disabled" type="submit" disabled>Button</button>
         </p>
         
         <p>
-            <input class="btn btn-primary disabled" type="button" value="Input" disabled="disabled">
+            <input class="btn-primary disabled" type="button" value="Input" disabled="disabled">
             <input class="btn disabled" type="submit" value="Submit" disabled="disabled">
         </p>
 

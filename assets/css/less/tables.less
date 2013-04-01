@@ -99,14 +99,27 @@ table {
 
 ////
 // Zebra
-.table-zebra() {
-    th {
-        .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+.table-stripes( @direction : horizontal ) {
+
+    .direction() when ( @direction = horizontal ) {
+        th {
+            .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+        }
+        tr:nth-child(even) td {
+            .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+        }
     }
-    tr:nth-child(even) td {
-        .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+    .direction() when ( @direction = vertical ) {
+        th:nth-child(odd) {
+            .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+        }
+        tr td:nth-child(odd) {
+            .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+        }
     }
+    .direction();
 }
+
 ////
 // Hover
 .table-hover() {
@@ -123,10 +136,12 @@ table {
 // Table Class Assignment
 ////////////////////////////////////////////////////////////////////////////////
 
-table.rowed     { .table-rowed();     }
-table.columned  { .table-column();    }
-table.zebra     { .table-zebra();     }
-table.bordered  { .table-bordered();  }
-table.padded    { .table-padded();    }
-table.condensed { .table-condensed(); }
-table.hover     { .table-hover();     }
+table.rowed              { .table-rowed();             }
+table.columned           { .table-column();            }
+table.stripes            { .table-stripes();           }
+table.stripes-horizontal { .table-stripes(horizontal); }
+table.stripes-vertical   { .table-stripes(vertical);   }
+table.bordered           { .table-bordered();          }
+table.padded             { .table-padded();            }
+table.condensed          { .table-condensed();         }
+table.hover              { .table-hover();             }

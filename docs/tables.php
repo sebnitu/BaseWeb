@@ -18,10 +18,11 @@
                 <option value="bordered" selected="selected">Bordered</option>
             </select>
             
-            <label class="checkbox">
-                <input type="checkbox" name="auxilary-classes" value="zebra" class="checkbox" checked="checked">
-                Zebra
-            </label>
+            <select name="class">
+                <option value="">Default</option>
+                <option value="stripes" selected="selected">Horizontal Stripes</option>
+                <option value="stripes-vertical">Vertical Stripes</option>
+            </select>
             
             <label class="checkbox">
                 <input type="checkbox" name="auxilary-classes" value="hover" class="checkbox" checked="checked">
@@ -36,7 +37,8 @@
         </form>
     </div>
     <div class="demo-block demo-table">
-        <table id="table-demo" class="bordered zebra hover">
+        <p>Current table classes: <code id="table-classes-output">class="bordered stripes hover"</code></p>
+        <table id="table-demo" class="bordered stripes hover">
             <thead>
                 <tr>
                     <th>ID</th>

@@ -22,13 +22,19 @@ $(document).ready(function() {
         
         var i,
             form_data = $(this).serializeArray(),
-            table = $('#table-demo');
+            table = $('#table-demo'),
+            output = $('#table-classes-output'),
+            classes = '';
         
         table.removeClass();
         
         for (i = 0; i < form_data.length; ++i) {
             table.addClass(form_data[i]['value']);
         }
+        
+        classes = table.attr('class');
+        
+        output.text('class="' + classes + '"');
         
     });
     
