@@ -138,6 +138,7 @@
         </div>
     </div>
     
+    <?php /*
     <div class="demo-description">
         <h2>Character Based</h2>
     </div>
@@ -268,5 +269,6 @@
             <div class="tile" title="&amp;ouml;"><i class="icon">&ouml;</i><span>&amp;ouml;</span></div>
         </div>
     </div>
-
+    */ ?>
+        
 </div><!-- .demo -->

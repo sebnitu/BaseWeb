@@ -36,8 +36,16 @@
     <?php include('docs/buttons.php'); ?>
 </div>
 
-<div id="icons" class="demo-wrap demo-icons">
-    <?php include('docs/icons.php'); ?>
+<div id="icons" class="demo-wrap demo-icons icons-entypo">
+    <?php include('docs/icons-entypo.php'); ?>
+</div>
+
+<div id="icons" class="demo-wrap demo-icons icons-glyphicons">
+    <?php include('docs/icons-glyphicons.php'); ?>
+</div>
+
+<div id="icons" class="demo-wrap demo-icons icons-glyphicons-halflings">
+    <?php include('docs/icons-glyphicons-halflings.php'); ?>
 </div>
 
 <div id="modals" class="demo-wrap demo-modals">
