@@ -176,7 +176,7 @@
             </div>
             <div class="group group-action">
                 <div class="group-value">
-                    <button type="submit" class="btn btn-success">Sign in</button>
+                    <button type="submit" class="btn-success">Sign in</button>
                     <button type="submit" class="btn">Reset Password</button>
                 </div>
             </div>

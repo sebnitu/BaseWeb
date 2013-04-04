@@ -156,7 +156,7 @@
         display: inline-block;
         border: 0 none;
         padding: 10px 30px;
-        color: @blue;
+        color: @blue-violet-darker;
         box-shadow: 0 1px 6px rgba(0,0,0, 0.2);
         .border-radius(25px);
         
@@ -284,11 +284,9 @@
             
             p {
                 position: relative;
-                white-space: nowrap;
-            	overflow: hidden;
-            	text-overflow: ellipsis;
                 padding: 6px 10px;
                 margin: 50px 0 0 0;
+                .truncate-text();
                 #gradient > .horizontal( #efefef, #e0e0e0 );
             }
             
@@ -734,11 +732,14 @@
 
 .demo-buttons {
     
-    p button, p .btn {
+    p button, p .btn, {
         margin: 5px 5px 5px 0;
     }
+    p .disabled {
+        margin: 5px 0 5px 5px;
+    }
     .btn-group {
-        margin: 0 0 15px 0;
+        margin: 0 @margin @margin 0;
     }
     
 }
@@ -816,15 +817,12 @@
     .tile-wrap .tile span {
         position: relative;
         z-index: 5;
-        display: block;
-        white-space: nowrap;
-    	overflow: hidden;
-    	text-overflow: ellipsis;
         margin-top: -1px;
         padding: 5px 10px;
         border-left: 1px solid;
         border-right: 1px solid;
         border-bottom: 1px solid;
+        .truncate-text();
     	.mono-font();
         .background-color-default();
         .border-color-default();

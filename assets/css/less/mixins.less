@@ -33,10 +33,10 @@
 
 ////
 // Utility State Mixins
-.is-hidden() {
+.make-hidden() {
     display: none !important;
 }
-.is-visible( @display : @display-visible ) {
+.make-visible( @display : @display-visible ) {
     display: @display !important;
 }
 
@@ -90,11 +90,12 @@
 // Font Sequence
 // Sets font-size and line-height based on a multiplier
 .font-sequence( @value, @unit : @font-unit ) {
-    .build() when (@font-unit = em) {
+    .build() when (@unit = em) {
         .em( @value );
     }
-    .build() when (@font-unit = px) {
-        .px( @value );
+    .build() when (@unit = px) {
+        font-size: @value;
+        //.px( @value );
     }
     .build();
 }
@@ -130,6 +131,20 @@
 .resetcase() {
     text-transform: none;
     letter-spacing: 0;
+}
+
+////
+// Truncate Text
+// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+.truncate-text( @display : block ) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    // Display Setting
+    .display() when ( @display = inline-block ), ( @display = block ) {
+        display: @display;
+    }
+    .display();
 }
 
 ////

@@ -22,8 +22,8 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in.</p>
                 </div><!-- .overlay-content -->
                 <div class="overlay-footer">
-                    <a href="#" class="btn btn-primary">Sounds Good</a>
-                    <a href="#" class="btn btn-faint">Nevermind</a>
+                    <a href="#" class="btn-primary">Sounds Good</a>
+                    <a href="#" class="btn-faint">Nevermind</a>
                 </div><!-- .overlay-footer -->
             </div><!-- .overlay -->
         

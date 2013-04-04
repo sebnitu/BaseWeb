@@ -16,7 +16,23 @@
             <input class="btn" type="button" value="Input">
             <input class="btn" type="submit" value="Submit">
         </p>
+    </div>
+    
+    <div class="demo-description">
+        <h2>Button Groups</h2>
+    </div>
+    <div class="demo-block">
+        <p>Default button group with <code>.btn-group</code> class.</p>
+    
         <div class="btn-group">
+            <button class="btn" href="#">Button</button>
+            <button class="btn" href="#">Button</button>
+            <button class="btn" href="#">Button</button>
+        </div>
+
+        <p>Button group with <code>.vertical</code> class</p>
+
+        <div class="btn-group vertical">
             <button class="btn" href="#">Button</button>
             <button class="btn" href="#">Button</button>
             <button class="btn" href="#">Button</button>
@@ -75,6 +91,7 @@
     <div class="demo-block">
     
         <p>
+            Button size variations:<br>
             <button type="submit" class="btn-huge btn-success">Huge Button</button>
             <button type="submit" class="btn-large btn-success">Large Button</button>
             <button type="submit" class="btn-success">Default Button</button>
@@ -83,13 +100,17 @@
         </p>
         
         <p>
+            Disabled <code>.disabled</code>:
             <a class="btn-primary disabled" href="">Link</a>
             <button class="btn disabled" type="submit" disabled>Button</button>
+            <input class="btn-primary disabled" type="button" value="Input" disabled="disabled">
+            <input class="btn disabled" type="submit" value="Submit" disabled="disabled">
         </p>
         
         <p>
-            <input class="btn-primary disabled" type="button" value="Input" disabled="disabled">
-            <input class="btn disabled" type="submit" value="Submit" disabled="disabled">
+            Buttons with anchor styles <code>.btn-link</code>:
+            <button class="btn-link" type="submit" disabled>Button</button>
+            <a href="#">Anchor</a>
         </p>
 
     </div>

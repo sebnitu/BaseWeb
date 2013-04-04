@@ -44,14 +44,19 @@
 
 ////
 // Hard variables: Should not be changed!
+.input-schematics() when (@input-box-size = content-area) {
+    @true-input-width: (@input-width - ((@input-padding-left-right * 2) + (@border-input-size * 2)) );
+    @true-input-height: @input-height;
+}
+.input-schematics() when (@input-box-size = border-box) {
+    @true-input-width: @input-width;
+    @true-input-height: (@input-height + ((@input-padding-top-bottom * 2) + (@border-input-size * 2)) );
+}
+.input-schematics();
+
 ////
-// Use these two variables if box-size is set to content area
-// @true-input-width: (@input-width - ((@input-padding-left-right * 2) + (@border-input-size * 2)) );
-// @true-input-height: @input-height;
-////
-// Use these two variables if box-size is set to border area
-@true-input-width: @input-width;
-@true-input-height: (@input-height + ((@input-padding-top-bottom * 2) + (@border-input-size * 2)) );
+// Labels
+@line-height-label: @true-input-height;
 
 ////
 // Form Mixins
@@ -60,11 +65,17 @@
 form {
     margin: @margin 0;
 }
-
+fieldset {
+    
+}
+legend {
+    
+}
 label {
+    line-height: @line-height-label;
     margin: (@margin / 2) 0;
     padding: 0;
-    display: block;
+    display: inline-block;
 }
 
 ////
@@ -101,7 +112,7 @@ input[type="color"] {
     width: @true-input-width;
     // height: @true-input-height;
     display: inline-block;
-    vertical-align: middle;
+    // vertical-align: middle;
     padding: @input-padding;
     margin: 0;
     // Border & Background
@@ -122,6 +133,20 @@ input[type="color"] {
 }
 
 ////
+// Remove webkit's search styles
+// 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    box-sizing: @input-box-size;
+}
+// Remove inner padding and search cancel button in Safari 5 and Chrome
+// on OS X.
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+////
 // Reset Input Widths
 input[type="range"] {
     width: auto;
@@ -131,10 +156,14 @@ input[type="color"] {
     height: 30px;
 }
 
+////
 // choice
+// 1. Address box sizing set to `content-box` in IE 8/9.
+// 2. Remove excess padding in IE 8/9.
 input[type="radio"],
 input[type="checkbox"] {
-    
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
 }
 // Buttons
 input[type="file"],
@@ -145,36 +174,38 @@ input[type="submit"] {
 
 }
 
-#responsive {
-    
-    .small() {
-        
-        textarea,
-        input[type="text"],
-        input[type="search"],
-        input[type="password"],
-        // Special text
-        input[type="email"],
-        input[type="url"],
-        // Numeric
-        input[type="tel"],
-        input[type="number"],
-        // Time & date
-        input[type="time"],
-        input[type="week"],
-        input[type="month"],
-        input[type="date"],
-        input[type="datetime"],
-        input[type="datetime-local"],
-        // Other
-        input[type="range"],
-        input[type="color"] {
-            width: 100%;
-        }
-        
-    }
-    
+////
+// Responsive Styles : Small
+#responsive { .small() {
+
+label {
+    display: block;
 }
+
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="password"],
+// Special text
+input[type="email"],
+input[type="url"],
+// Numeric
+input[type="tel"],
+input[type="number"],
+// Time & date
+input[type="time"],
+input[type="week"],
+input[type="month"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+// Other
+input[type="range"],
+input[type="color"] {
+    width: 100%;
+}
+        
+} } // End of Responsive Styles : Small
 
 ////////////////////////////////////////////////////////////////////////////////
 // Structures Forms
