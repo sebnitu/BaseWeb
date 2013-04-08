@@ -348,6 +348,30 @@
     .media-mode();
 }
 
+////
+// Alpha & Omega
+.alpha-omega() {
+    .media-mode() when (@media-mode = mobile-first), (@media-mode = desktop-first) {
+        @media screen and ( min-width: @media-tablet-min ) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        @media screen and ( min-width: @media-desktop-min ) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        @media screen and ( min-width: @media-large ) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+    .media-mode() when (@media-mode = off) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .media-mode();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Base Grid Styles
 ////////////////////////////////////////////////////////////////////////////////

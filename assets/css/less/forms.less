@@ -3,20 +3,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Form Variables
+// Forms
 ////
+// Structure
+@key-column-width: 160px;
+@key-column-gutter: 20px;
 // Background
 @bg-form: @bg;
 @bg-form-alpha: @bg-alpha;
 @bg-form-base: @bg-base;
 // Border
-@border-form: @border;
-@border-form-alpha: @border-alpha;
-@border-form-base: @border-base;
-// Settings
+@border-form: #d8d8d8;
+@border-form-alpha: 0.15;
+@border-form-base: @black;
 
 ////
-// Input
+// Inputs
 ////
 // Fonts
 @font-family-form: @font-family;
@@ -28,14 +30,14 @@
 @bg-input-alpha: 1;
 @bg-input-base: @white;
 // Border
-@border-input: @gB;
+@border-input: #bfbfbf;
 @border-input-alpha: 0.25;
 @border-input-base: @black;
 @border-input-size: 1px;
 @border-input-style: solid;
 // Padding
-@input-padding-top-bottom: 4px;
-@input-padding-left-right: 6px;
+@input-padding-top-bottom: 5px;
+@input-padding-left-right: 5px;
 @input-padding: @input-padding-top-bottom @input-padding-left-right;
 // Size
 @input-width: 220px;
@@ -56,30 +58,46 @@
 
 ////
 // Labels
+// Used for horizontal forms to align labels with input fields
 @line-height-label: @true-input-height;
 
-////
-// Form Mixins
-////
+////////////////////////////////////////////////////////////////////////////////
+// Base Form Elements
+////////////////////////////////////////////////////////////////////////////////
 
 form {
     margin: @margin 0;
 }
 fieldset {
-    
+    margin: @margin 0;
 }
 legend {
     
 }
+
+////
+// Label
 label {
-    line-height: @line-height-label;
-    margin: (@margin / 2) 0;
+    margin: round((@margin / 2)) 0;
     padding: 0;
     display: inline-block;
 }
+// Inline Choice Labels
+label.checkbox, label.radio {
+    margin-right: round((@margin / 2));
+    &:last-child {
+        margin-right: 0;
+    }
+}
 
 ////
-// Base Input Styles
+// Select
+select {
+    margin: round((@margin / 2)) 0;
+}
+
+////
+// Input Styles
 ////
 // Text
 textarea,
@@ -110,25 +128,26 @@ input[type="color"] {
     // Structure
     box-sizing: @input-box-size;
     width: @true-input-width;
-    // height: @true-input-height;
+    height: @true-input-height;
+    max-width: 100%;
     display: inline-block;
     // vertical-align: middle;
     padding: @input-padding;
-    margin: 0;
+    margin: round((@margin / 2)) 0;
     // Border & Background
     border: @border-input-size @border-input-style;
     .border-color( @border-input-base, @border-input-alpha, @border-input );
     background: none;
     .background-color( @bg-input-base, @bg-input-alpha, @bg-input );
     // Styles
-    .border-radius();
+    // .border-radius();
     .box-shadow( 0 1px 3px rgba(0,0,0, 0.05) inset );
     .transition( ~"border linear 0.2s, box-shadow linear 0.2s" );
     
     &:focus {
         outline: none;
         .border-color( @blue-lighter, 0.8 );
-        .box-shadow( ~"0 1px 3px rgba(0,0,0, 0.05) inset, 0 0 8px rgba(35,130,247, 0.4)" );
+        .box-shadow( ~"0 1px 3px rgba(0,0,0, 0.05) inset, 0 1px 3px rgba(35,130,247, 0.1)" );
     }
 }
 
@@ -152,8 +171,9 @@ input[type="range"] {
     width: auto;
 }
 input[type="color"] {
-    width: 50px;
+    width: 30px;
     height: 30px;
+    padding: 2px 4px;
 }
 
 ////
@@ -162,66 +182,262 @@ input[type="color"] {
 // 2. Remove excess padding in IE 8/9.
 input[type="radio"],
 input[type="checkbox"] {
+    position: relative;
     box-sizing: border-box; /* 1 */
     padding: 0; /* 2 */
+    top: -1px;
 }
 // Buttons
 input[type="file"],
 input[type="image"],
 input[type="reset"],
 input[type="button"],
-input[type="submit"] {
-
-}
+input[type="submit"] {}
 
 ////
 // Responsive Styles : Small
 #responsive { .small() {
 
-label {
-    display: block;
-}
-
-textarea,
-input[type="text"],
-input[type="search"],
-input[type="password"],
-// Special text
-input[type="email"],
-input[type="url"],
-// Numeric
-input[type="tel"],
-input[type="number"],
-// Time & date
-input[type="time"],
-input[type="week"],
-input[type="month"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-// Other
-input[type="range"],
-input[type="color"] {
-    width: 100%;
-}
+    
         
-} } // End of Responsive Styles : Small
+} } // End of Responsive Styles : small
 
 ////////////////////////////////////////////////////////////////////////////////
-// Structures Forms
+// Form Layout
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
 // Base
+////
+// Group
 form .group {
     .clearfix();
+    margin: @margin 0;
 }
+// Key
 form .group .group-key {
     
 }
+form .group .group-key label {
+    font-weight: bold;
+    display: block;
+}
+// Value
 form .group .group-value {
     
 }
+
+////
+// Key Alignment
+////
+// Left
+.key-align-left {
+    .group .group-key {
+        text-align: left;
+    }
+}
+////
+// Right
+.key-align-right {
+    .group .group-key {
+        text-align: right;
+    }
+}
+
+////
+// Value Alignment
+////
+// Left
+.value-align-left {
+    .group .group-value {
+        text-align: left;
+    }
+}
+////
+// Right
+.value-align-right {
+    .group .group-value {
+        text-align: right;
+    }
+}
+
+////
+// Horizontal Forms
+// Where group-key and group-value are side by side
+.make-form-horizontal( @key-column-width : @key-column-width, @key-column-gutter : @key-column-gutter ) {
+    // Group
+    .group {
+        display: block;
+    }
+    // Key
+    .group .group-key {
+        float: left;
+        width: ( @key-column-width - @key-column-gutter );
+    }
+    .group .group-key label {
+        line-height: @line-height-label;
+    }
+    // Value
+    .group .group-value {
+        padding-left: @key-column-width;
+    }
+}
+
+////
+// Vertical Forms
+// Where group-key and group-value are stacked
+.make-form-vertical() {
+    // Group
+    .group {
+        display: block;
+    }
+    // Key
+    .group .group-key {
+        float: none;
+        width: auto;
+    }
+    .group .group-key label {
+        line-height: inherit;
+    }
+    // Value
+    .group .group-value {
+        padding-left: 0;
+    }
+}
+
+////
+// Inline Forms
+// Sets groups to be inline along with group-key and group-value
+.make-form-inline {
+    // Group
+    .group {
+        display: inline-block;
+    }
+    // Key
+    .group .group-key {
+        float: none;
+        width: auto;
+    }
+    .group .group-key label {
+        line-height: inherit;
+    }
+    // Value
+    .group .group-value {
+        padding-left: 0;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// layout Class Assignment
+////////////////////////////////////////////////////////////////////////////////
+
+form.vertical, fieldset.vertical     { .make-form-vertical(); }
+form.horizontal, fieldset.horizontal { .make-form-vertical(); }
+form.inline, fieldset.inline         { .make-form-inline();   }
+
+////
+// Responsive Styles : Tablet
+#responsive { .tablet() {
+
+    form.horizontal, fieldset.horizontal { .make-form-horizontal(); }
+        
+} } // End of Responsive Styles : Tablet
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Styles
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Bordered
+// Give the form a border and seperates groups with more borders!
+.make-form-bordered() {
+    border: 1px solid;
+    .border-radius();
+    .border-color( @border-form-base, @border-form-alpha, @border-form );
+    
+    // Group
+    .group {
+        padding: (15px - round((@margin / 2))) 15px;
+        margin: 0;
+        border-top: 1px solid;
+        .border-color( @border-form-base, @border-form-alpha, @border-form );
+        
+        &:first-child {
+            border-top: 0 none;
+        }
+    }
+    // Key
+    .group .group-key {
+
+    }
+    // Value
+    .group .group-value {
+
+    }
+}
+
+////
+// Filled
+// Description
+.make-form-filled() {
+    // Group
+    .group {
+        padding: (15px - round((@margin / 2))) 15px;
+        margin: round((@margin / 2)) 0;
+        .border-radius();
+        .background-color( @bg-form-base, @bg-form-alpha, @bg-form );
+    }
+    // Key
+    .group .group-key {
+        
+    }
+    // Value
+    .group .group-value {
+        
+    }
+}
+
+// .background-color( @bg-form-base, @bg-form-alpha, @bg-form );
+// .border-color( @border-form-base, @border-form-alpha, @border-form );
+
+////////////////////////////////////////////////////////////////////////////////
+// Style Class Assignment
+////////////////////////////////////////////////////////////////////////////////
+
+form.bordered, fieldset.bordered     { .make-form-bordered(); }
+form.filled, fieldset.filled         { .make-form-filled();   }
+
+////////////////////////////////////////////////////////////////////////////////
+// Custom Form Groups
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Form Header
+.form-header {
+
+}
+.form-header h2 {
+    .font-sequence(18px);
+    font-weight: normal;
+    color: @color-link-hover;
+}
+
+////
+// Action Group
+.group-action {
+    
+}
+.group button, .group input[type="submit"] {
+    margin: round((@margin / 2)) @margin round((@margin / 2)) 0;
+    
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Archive
+////////////////////////////////////////////////////////////////////////////////
 
 /*
 //============================================================

@@ -55,14 +55,19 @@
                     <td><small>Example</small></td>
                 </tr>
                 <tr>
-                    <td><code>.underline</code></td>
-                    <td>Underlines text.</td>
-                    <td><span class="underline">Example</span></td>
+                    <td><code>&lt;del&gt;</code></td>
+                    <td>Is a way to illustrate deleted text.</td>
+                    <td><del>Example</del></td>
                 </tr>
                 <tr>
                     <td><code>.delete</code></td>
-                    <td>Is a way to illustrate deleted text.</td>
+                    <td>Similar to the <code>&lt;del&gt;</code> element, this class give a more stylized delete cross through.</td>
                     <td><span class="delete">Example</span></td>
+                </tr>
+                <tr>
+                    <td><code>.underline</code></td>
+                    <td>Underlines text.</td>
+                    <td><span class="underline">Example</span></td>
                 </tr>
                 <tr>
                     <td><code>.highlight</code></td>

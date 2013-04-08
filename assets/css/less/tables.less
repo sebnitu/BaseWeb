@@ -22,7 +22,7 @@ table {
 
 ////
 // Rowed
-.table-rowed() {
+.make-table-rowed() {
     border-collapse: separate;
     td, th {
         padding: (@padding / 2) @padding;
@@ -35,7 +35,7 @@ table {
 }
 ////
 // Columned
-.table-column() {
+.make-table-column() {
     border-collapse: separate;
     td, th {
         padding: (@padding / 2) @padding;
@@ -52,7 +52,7 @@ table {
 }
 ////
 // Bordered
-.table-bordered() {
+.make-table-bordered() {
     border-collapse: separate;
     border: 1px solid;
     .border-color( @border-table-base, @border-table-alpha, @border-table );
@@ -84,14 +84,14 @@ table {
 }
 ////
 // Padded
-.table-padded() {
+.make-table-padded() {
     td, th {
         padding: (@padding / 2) @padding;
     }
 }
 ////
 // Condensed
-.table-condensed() {
+.make-table-condensed() {
     td, th {
         padding: (@padding / 4) (@padding / 2);
     }
@@ -99,7 +99,7 @@ table {
 
 ////
 // Zebra
-.table-stripes( @direction : horizontal ) {
+.make-table-stripes( @direction : horizontal ) {
 
     .direction() when ( @direction = horizontal ) {
         th {
@@ -122,7 +122,7 @@ table {
 
 ////
 // Hover
-.table-hover() {
+.make-table-hover() {
     thead tr th:hover, 
     tbody tr:hover {
         .background-color( @bg-table-hover-base, @bg-table-hover-alpha, @bg-table-hover );
@@ -136,12 +136,12 @@ table {
 // Table Class Assignment
 ////////////////////////////////////////////////////////////////////////////////
 
-table.rowed              { .table-rowed();             }
-table.columned           { .table-column();            }
-table.stripes            { .table-stripes();           }
-table.stripes-horizontal { .table-stripes(horizontal); }
-table.stripes-vertical   { .table-stripes(vertical);   }
-table.bordered           { .table-bordered();          }
-table.padded             { .table-padded();            }
-table.condensed          { .table-condensed();         }
-table.hover              { .table-hover();             }
+table.rowed              { .make-table-rowed();             }
+table.columned           { .make-table-column();            }
+table.stripes            { .make-table-stripes();           }
+table.stripes-horizontal { .make-table-stripes(horizontal); }
+table.stripes-vertical   { .make-table-stripes(vertical);   }
+table.bordered           { .make-table-bordered();          }
+table.padded             { .make-table-padded();            }
+table.condensed          { .make-table-condensed();         }
+table.hover              { .make-table-hover();             }

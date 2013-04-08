@@ -7,32 +7,51 @@
 <div class="demo">
 
     <div class="demo-description">
-        <h2>Table Options</h2>
-        <form id="table-classes">
-        
-            <select name="class">
-                <option value="">Default</option>
-                <option value="padded">Padded</option>
-                <option value="rowed">Rowed</option>
-                <option value="columned">Columned</option>
-                <option value="bordered" selected="selected">Bordered</option>
-            </select>
+        <form id="table-classes" class="classes-toggle-widget">
             
-            <select name="class">
-                <option value="">Default</option>
-                <option value="stripes" selected="selected">Horizontal Stripes</option>
-                <option value="stripes-vertical">Vertical Stripes</option>
-            </select>
+            <div class="group">
+                <div class="group-key">
+                    <label>Table Styles</label>
+                </div>
+                <div class="group-value">
+                    <select name="style-class">
+                        <option value="">Default</option>
+                        <option value="padded">Padded</option>
+                        <option value="rowed">Rowed</option>
+                        <option value="columned">Columned</option>
+                        <option value="bordered" selected="selected">Bordered</option>
+                    </select>
+                </div>
+            </div>
             
-            <label class="checkbox">
-                <input type="checkbox" name="auxilary-classes" value="hover" class="checkbox" checked="checked">
-                Hover
-            </label>
+            <div class="group">
+                <div class="group-key">
+                    <label>Stripe Class</label>
+                </div>
+                <div class="group-value">
+                    <select name="stripe-class">
+                        <option value="">Default</option>
+                        <option value="stripes" selected="selected">Horizontal Stripes</option>
+                        <option value="stripes-vertical">Vertical Stripes</option>
+                    </select>
+                </div>
+            </div>
             
-            <label class="checkbox">
-                <input type="checkbox" name="auxilary-classes" value="condensed" class="checkbox">
-                Condensed
-            </label>
+            <div class="group">
+                <div class="group-key">
+                    <label>Auxiliary Classes</label>
+                </div>
+                <div class="group-value">
+                    <label class="checkbox">
+                        <input type="checkbox" name="auxiliary-classes" value="hover" class="checkbox" checked="checked">
+                        Hover
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" name="auxiliary-classes" value="condensed" class="checkbox">
+                        Condensed
+                    </label>
+                </div>
+            </div>
 
         </form>
     </div>

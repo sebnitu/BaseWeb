@@ -3,20 +3,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Buttons
-////
-// Type
-@font-size-button: 13px;
-// Default Styles
-@button-default-color-start: #fefefe;
-@button-default-color-end: #f5f5f5;
-@button-default-styles: 'default'; // default, pill or square
-// Spacing
-@button-padding-top-bottom: (@padding / 2);
-@button-padding-left-right: @padding;
-@button-padding: @button-padding-top-bottom @button-padding-left-right;
-
-////
 // Button Mixins
 ////
 // Base buttons styles
@@ -58,7 +44,7 @@
     #gradient > .vertical( @start-color, @end-color );
     background-repeat: repeat-x;
     // Shadow
-    .box-shadow(~"0 1px 2px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 0.15) inset");
+    .box-shadow(~"0 1px 2px rgba(0,0,0, 0.05), 0 1px 0 rgba(255,255,255, 0.15) inset");
 }
 ////
 // Hover
@@ -74,6 +60,8 @@
     .text-color();
     background-position: 0 -30px;
     .border-color( @black, 0.4, darken(@end-color, 10%) );
+    // Shadow
+    .box-shadow(~"0 1px 2px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 0.05) inset");
 }
 ////
 // Active
@@ -81,7 +69,7 @@
     background-color: darken(@end-color, 2%);
     background-image: none;
     .border-color( @black, 0.4, darken(@end-color, 10%) );
-    .box-shadow(~"0 0 0 rgba(0,0,0, 0), 0 1px 3px rgba(0,0,0, 0.25) inset");
+    .box-shadow(~"0 0 0 rgba(0,0,0, 0), 0 1px 3px rgba(0,0,0, 0.2) inset");
 }
 ////
 // Focus
