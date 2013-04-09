@@ -45,8 +45,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
+// EM
 // Turns a pixel value into ems based on it's context
-.em( @px, @context: @font-size ) {
+.em( @px, @context : @font-size ) {
     // Calculate the EM value
     @size: round((@px / @context), 2);
     // Set properties
@@ -54,6 +55,17 @@
     line-height: unit( round( ((@size + 0.6) / @size), 2), em);
 }
 ////
+// REM
+// Turns a pixel value into rems based on root element's font size
+.rem( @px ) {
+    // Calculate the EM value
+    @size: round((@px / @font-size), 2);
+    // Set properties
+    font-size: unit( ( @size ), rem);
+    line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+}
+////
+// PX
 // Converts an EM to pixels based on it's context
 .px( @value, @context: @font-size ) {
     // Calculate the size
@@ -69,13 +81,10 @@
 }
 
 ////
-// Body Fonts
-// Sets the base typography for the body element
-.base-type( @value : @font-size, @unit : 16 ) {
-    font-family: @font-family;
-    font-weight: @font-weight;
-    color: @color;
-    
+// Root Font Size
+// Sets the root font size for the html element
+// This is important when using REM in your document
+.root-font-size( @value : @font-size, @unit : 16 ) {
     .build() when (@font-unit = em) {
         .em( @value, @unit );
     }
@@ -95,7 +104,6 @@
     }
     .build() when (@unit = px) {
         font-size: @value;
-        //.px( @value );
     }
     .build();
 }
