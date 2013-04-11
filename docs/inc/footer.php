@@ -9,6 +9,9 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
 
+<!-- BaseWeb jQuery Plugins -->
+<script src="assets/js/baseweb.mobileMenu.js"></script>
+
 <!-- jQuery functions, document ready & window load -->
 <script src="assets/js/jquery.function.js"></script>
 <script src="assets/js/jquery.docready.js"></script>
@@ -60,6 +63,22 @@ $(document).ready(function() {
         output.text('class="' + classes + '"');
         
     });
+    
+    ////
+    // Forms
+    ////
+    // Focus Detection
+    // Checks if anything inside of a form has focus
+    // and adds the focus class to parent .group
+    $('form *').focus(function() {
+        $(this).parents('.group').addClass('focus');  
+    }).blur(function(){
+        $(this).parents('.group').removeClass('focus');  
+    });
+    
+    ////
+    // Mobile Menu
+    $('.mobile-menu').mobileMenu();
     
 });
 </script>

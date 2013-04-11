@@ -13,19 +13,23 @@
         
         <div class="modal-wrap">
         
-            <div id="overlay-identifier" class="overlay">
-                <div class="overlay-header">
+            <div id="modal-identifier" class="modal">
+            
+                <header class="modal-header">
                     <button type="button" class="close">&times;</button>
-                    <h2>Overlay Header</h2>
-                </div><!-- .overlay-header -->
-                <div class="overlay-content">
+                    <h2>Modal Header</h2>
+                </header><!-- .modal-header -->
+                
+                <div class="modal-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pulvinar nibh at magna elementum faucibus. Aenean elementum imperdiet risus, eu semper massa dictum in.</p>
-                </div><!-- .overlay-content -->
-                <div class="overlay-footer">
+                </div><!-- .modal-body -->
+                
+                <footer class="modal-footer">
                     <a href="#" class="btn-primary">Sounds Good</a>
                     <a href="#" class="btn-faint">Nevermind</a>
-                </div><!-- .overlay-footer -->
-            </div><!-- .overlay -->
+                </footer><!-- .modal-footer -->
+                
+            </div><!-- .modal -->
         
         </div>
         

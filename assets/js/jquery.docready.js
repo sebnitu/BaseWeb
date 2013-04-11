@@ -17,18 +17,6 @@ $(document).ready(function() {
     responsiveClasses();
     resizeTrigger(responsiveClasses);
     
-    ////
-    // Forms
-    ////
-    // Focus Detection
-    // Checks if anything inside of a form has focus
-    // and adds the focus class to parent .group
-    $('form *').focus(function() {
-        $(this).parents('.group').addClass('focus');  
-    }).blur(function(){
-        $(this).parents('.group').removeClass('focus');  
-    });
-    
 });
 /* ==========================================================
     When Images are Loaded

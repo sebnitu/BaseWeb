@@ -1,0 +1,99 @@
+////////////////////////////////////////////////////////////////////////////////
+// Mobile Menu
+////////////////////////////////////////////////////////////////////////////////
+
+.mobile-menu {
+    .fonticons-entypo();
+}
+.mobile-menu .mobile-menu-vert,
+.mobile-menu .mobile-menu-hori {
+    display: none;
+}
+.mobile-menu.mm-vert-active .mobile-menu-vert {
+    display: block;
+}
+.mobile-menu.mm-hori-active .mobile-menu-hori {
+    display: block;
+}
+
+////
+// Global Menu Styles
+.mobile-menu ul {
+    .remove-list-styles();
+    .font-sequence(16px);
+}
+.mobile-menu ul li {
+    border-top: 1px solid rgba(255,255,255, 0.25);
+}
+.mobile-menu ul li a {
+    display: block;
+    color: @white;
+    border: 0 none;
+    padding: 10px 15px;
+    &:hover {
+        background: rgba(0,0,0, 0.05);
+    }
+}
+.mobile-menu ul li span {
+    float: right;
+    // border-left: 1px solid rgba(255,255,255, 0.25);
+    text-align: center;
+    cursor: pointer;
+    .transition();
+    &:hover {
+        background: rgba(0,0,0, 0.05);
+    }
+}
+
+////
+// Vertical Mobile Menu
+.mobile-menu-vert {
+    background: @blue;
+}
+// Header
+.mobile-menu-vert .mm-header {
+    text-align: center;
+}
+.mobile-menu-vert .mm-header h3 {
+    color: @white;
+    margin: 0;
+    padding: 10px 15px;
+    .font-sequence(16px);
+}
+.mobile-menu-vert .mm-header button {
+    .btn-color-reset();
+    .transition();
+    &:hover {
+        background: rgba(0,0,0, 0.05);
+    }
+}
+.mobile-menu-vert .mm-header button i {
+    color: @white;
+    width: 44px;
+    height: 44px;
+    line-height: 34px;
+    font-size: 44px;
+}
+.mobile-menu-vert .mm-header .cancel,
+.mobile-menu-vert .mm-header .previous {
+    float: left;
+    border-right: 1px solid rgba(255,255,255, 0.25);
+}
+.mobile-menu-vert .mm-header .search {
+    float: right;
+    border-left: 1px solid rgba(255,255,255, 0.25);
+}
+// Body
+.mobile-menu-vert .mm-body .mm-panel {
+    display: none;
+}
+.mobile-menu-vert .mm-body .mm-panel-active {
+    display: block;
+}
+.mobile-menu-vert .mm-body .mm-panel i {
+    color: @white;
+    width: 44px;
+    height: 44px;
+    line-height: 34px;
+    font-size: 44px;
+}

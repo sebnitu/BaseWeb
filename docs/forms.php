@@ -30,8 +30,8 @@
                 <div class="group-value">
                     <select name="style-class">
                         <option value="">None</option>
-                        <option value="bordered">Bordered</option>
-                        <option value="filled" selected="selected">Filled</option>
+                        <option value="bordered" selected="selected">Bordered</option>
+                        <option value="filled">Filled</option>
                     </select>
                 </div>
             </div>
@@ -97,41 +97,46 @@
     <div class="demo-block">
         <p>Current table classes: <code id="form-classes-output">class="horizontal filled"</code></p>
         
-        <header class="form-header">
-            <h2>Login Form</h2>
-        </header>
+        <div class="login-form-wrap">
         
-        <form id="form-demo" class="horizontal filled">
-            <div class="group">
-                <div class="group-key">
-                    <label for="username">Username</label>
+            <header class="form-header">
+                <h2>Login Form</h2>
+            </header>
+            
+            <form id="form-demo" class="horizontal bordered">
+                <div class="group">
+                    <div class="group-key">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="group-value">
+                        <input type="text" class="" id="username" name="username" placeholder="Username">
+                    </div>
                 </div>
-                <div class="group-value">
-                    <input type="text" class="" id="username" name="username" placeholder="Username">
+                <div class="group">
+                    <div class="group-key">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="group-value">
+                        <input type="password" class="" id="password" name="password" placeholder="Password">
+                    </div>
                 </div>
-            </div>
-            <div class="group">
-                <div class="group-key">
-                    <label for="password">Password</label>
+                <div class="group">
+                    <div class="group-value">
+                        <label class="checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
                 </div>
-                <div class="group-value">
-                    <input type="password" class="" id="password" name="password" placeholder="Password">
+                <div class="group group-action">
+                    <div class="group-value">
+                        <button class="btn-success">Sign in</button>
+                        <button class="btn">Reset Password</button>
+                    </div>
                 </div>
-            </div>
-            <div class="group">
-                <div class="group-value">
-                    <label class="checkbox">
-                        <input type="checkbox"> Remember me
-                    </label>
-                </div>
-            </div>
-            <div class="group group-action">
-                <div class="group-value">
-                    <button class="btn-success">Sign in</button>
-                    <button class="btn">Reset Password</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        
+        </div>
+        
     </div>
     
     <?php /*
