@@ -4,7 +4,7 @@
 
 (function($) {
 
-$.fn.mobilemenu = function(options) {
+$.fn.mobilemenu = function (options) {
     
     ////
     // Extend our default options with those provided.
