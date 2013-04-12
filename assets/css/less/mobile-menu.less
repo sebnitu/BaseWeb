@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Mobile Menu
+// Menu View Toggle
 ////////////////////////////////////////////////////////////////////////////////
 
 .mobile-menu {
@@ -16,8 +16,16 @@
     display: block;
 }
 
-////
-// Global Menu Styles
+////////////////////////////////////////////////////////////////////////////////
+// Global Menu
+////////////////////////////////////////////////////////////////////////////////
+
+.mobile-menu {
+    background: @blue;
+    margin: @margin 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
 .mobile-menu ul {
     .remove-list-styles();
     .font-sequence(16px);
@@ -30,13 +38,13 @@
     color: @white;
     border: 0 none;
     padding: 10px 15px;
+    white-space: nowrap;
     &:hover {
         background: rgba(0,0,0, 0.05);
     }
 }
 .mobile-menu ul li span {
     float: right;
-    // border-left: 1px solid rgba(255,255,255, 0.25);
     text-align: center;
     cursor: pointer;
     .transition();
@@ -46,10 +54,51 @@
 }
 
 ////
-// Vertical Mobile Menu
-.mobile-menu-vert {
+// Buttons
+.mobile-menu button {
+    .btn-color-reset();
+    .transition();
+    display: block;
     background: @blue;
+    &:hover {
+        background: rgba(0,0,0, 0.05);
+    }
 }
+.mobile-menu button i {
+    color: @white;
+    width: 44px;
+    height: 44px;
+    line-height: 34px;
+    font-size: 44px;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Horizontal Menu
+////////////////////////////////////////////////////////////////////////////////
+
+.mobile-menu-hori {}
+
+.mobile-menu-hori > ul {
+    display: table;
+}
+.mobile-menu-hori > ul > li {
+    display: table-cell;
+    vertical-align: top;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255, 0.25);
+}
+.mobile-menu-hori > ul > li ul {
+    display: none;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Vertical Menu
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Vertical Mobile Menu
+.mobile-menu-vert {}
+////
 // Header
 .mobile-menu-vert .mm-header {
     text-align: center;
@@ -57,32 +106,33 @@
 .mobile-menu-vert .mm-header h3 {
     color: @white;
     margin: 0;
-    padding: 10px 15px;
     .font-sequence(16px);
-}
-.mobile-menu-vert .mm-header button {
-    .btn-color-reset();
-    .transition();
-    &:hover {
+    
+    a, span {
+        color: @white;
+        padding: 10px 15px;
+        display: block;
+    }
+    a:hover {
         background: rgba(0,0,0, 0.05);
     }
 }
-.mobile-menu-vert .mm-header button i {
-    color: @white;
-    width: 44px;
-    height: 44px;
-    line-height: 34px;
-    font-size: 44px;
-}
-.mobile-menu-vert .mm-header .cancel,
-.mobile-menu-vert .mm-header .previous {
+.mobile-menu-vert .mm-header .hori-view,
+.mobile-menu-vert .mm-header .prev {
     float: left;
     border-right: 1px solid rgba(255,255,255, 0.25);
+    display: none;
 }
+.mobile-menu-vert.mm-state-root .mm-header .hori-view { display: block; }
+.mobile-menu-vert.mm-state-sub .mm-header .prev { display: block; }
+
+////
+// Search
 .mobile-menu-vert .mm-header .search {
     float: right;
     border-left: 1px solid rgba(255,255,255, 0.25);
 }
+////
 // Body
 .mobile-menu-vert .mm-body .mm-panel {
     display: none;
