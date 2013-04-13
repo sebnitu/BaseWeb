@@ -10,7 +10,7 @@
         <h2>Example</h2>
     </div>
     
-    <div class="demo-block">
+    <div class="demo-block mobile-menu-demo">
     
         <ul id="nav">
             <li><a href="#">Home</a></li>
@@ -20,7 +20,16 @@
                     <li><a href="#">Another Menu Item</a></li>
                     <li><a href="#">Plus This One</a></li>
                     <li><a href="#">That's Four Now</a></li>
-                    <li><a href="#">Shall We Continue?</a></li>
+                    <li>
+                        <a href="#">Shall We Continue?</a>
+                        <ul>
+                            <li><a href="#">Another Menu Item</a></li>
+                            <li><a href="#">Plus This One</a></li>
+                            <li><a href="#">That's Four Now</a></li>
+                            <li><a href="#">Shall We Continue?</a></li>
+                            <li><a href="#">Ok, Last One</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#">Ok, Last One</a></li>
                 </ul>
             </li>
@@ -93,10 +102,6 @@
             </div><!-- .mm-panel -->
         </div><!-- .mm-body -->
         */ ?>
-        
-        <div id="mobile-menu-test">
-                
-        </div>
         
     </div>
     

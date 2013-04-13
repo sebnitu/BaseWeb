@@ -78,7 +78,7 @@ $(document).ready(function() {
     
     ////
     // Mobile Menu
-    $('#nav').mobilemenu();
+    $('.mobile-menu-demo').mobilemenu();
     
 });
 </script>
