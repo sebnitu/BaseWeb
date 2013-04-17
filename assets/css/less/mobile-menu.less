@@ -2,9 +2,7 @@
 // Menu View Toggle
 ////////////////////////////////////////////////////////////////////////////////
 
-.mobile-menu {
-    .fonticons-entypo();
-}
+.mobile-menu {}
 .mobile-menu .mobile-menu-vert,
 .mobile-menu .mobile-menu-hori {
     display: none;
@@ -21,32 +19,23 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .mobile-menu {
-    background: @blue;
-    margin: @margin 0;
+    background: @menu-bg;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 .mobile-menu ul {
     .remove-list-styles();
-    .font-sequence(16px);
-    
-    ul {
-        font-size: 1em;
-    }
 }
 .mobile-menu ul li {
     position: relative;
-    border-top: 1px solid rgba(255,255,255, 0.25);
 }
 .mobile-menu ul li a {
+    color: @menu-color;
     display: block;
-    color: @white;
     border: 0 none;
-    padding: 10px 15px;
-    white-space: nowrap;
-    &:hover {
-        background: rgba(0,0,0, 0.05);
-    }
+    padding: @menu-padding;
+    .font-sequence( @menu-font-size, @menu-line-height);
+    .truncate-text();
 }
 .mobile-menu ul li span {
     position: absolute;
@@ -56,44 +45,63 @@
     text-align: center;
     cursor: pointer;
     .transition();
-    &:hover {
-        background: rgba(0,0,0, 0.05);
-    }
+    .truncate-text();
 }
 
 ////
-// Buttons
-.mobile-menu button {
-    .btn-color-reset();
-    .transition();
-    display: block;
-    background: @blue;
-    &:hover {
-        background: rgba(0,0,0, 0.05);
-    }
+// Menu Icons
+.mobile-menu .mm-icon-wrap {
+    width: @menu-icon-width;
 }
-.mobile-menu button i {
-    color: @white;
-    width: 44px;
-    height: 44px;
-    line-height: 34px;
-    font-size: 44px;
+.mobile-menu .mm-icon {
+    background-image: @menu-icon-sprite;
+    background-repeat: no-repeat;
+    padding: 0;
+    width: @menu-icon-width;
+    height: @menu-icon-height;
+    border: 0 none;
+    .hide-text();
+    
+    &.vert-view {
+        background-position: center (((@menu-icon-sprite-tile) * (@menu-icon-vert - 1)) + (@menu-icon-sprite-pos-top));
+    }
+    &.search {
+        background-position: center -(((@menu-icon-sprite-tile) * (@menu-icon-search - 1)) - (@menu-icon-sprite-pos-top));
+    }
+    &.home {
+        background-position: center -(((@menu-icon-sprite-tile) * (@menu-icon-home - 1)) - (@menu-icon-sprite-pos-top));
+    }
+    &.hori-view {
+        background-position: center -(((@menu-icon-sprite-tile) * (@menu-icon-hori - 1)) - (@menu-icon-sprite-pos-top));
+    }
+    &.prev {
+        background-position: center -(((@menu-icon-sprite-tile) * (@menu-icon-prev - 1)) - (@menu-icon-sprite-pos-top));
+    }
+    &.next {
+        background-position: center -(((@menu-icon-sprite-tile) * (@menu-icon-next - 1)) - (@menu-icon-sprite-pos-top));
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Horizontal Menu
 ////////////////////////////////////////////////////////////////////////////////
 
-.mobile-menu-hori {}
-
+.mobile-menu-hori {
+    
+}
 .mobile-menu-hori > ul {
+    width: 100%;
     display: table;
 }
 .mobile-menu-hori > ul > li {
     display: table-cell;
     vertical-align: top;
     text-align: center;
-    border-right: 1px solid rgba(255,255,255, 0.25);
+    border-right: @menu-border;
+    
+    &:last-child {
+        border-right: 0 none;
+    }
 }
 .mobile-menu-hori > ul > li ul {
     display: none;
@@ -109,49 +117,65 @@
 ////
 // Header
 .mobile-menu-vert .mm-header {
+    position: relative;
     text-align: center;
 }
 .mobile-menu-vert .mm-header h3 {
-    color: @white;
+    color: @menu-color;
     margin: 0;
-    .font-sequence(16px);
+    .font-sequence( @menu-font-size, @menu-line-height );
+    .truncate-text();
     
     a, span {
-        color: @white;
-        padding: 10px 15px;
+        color: @menu-color;
+        padding: @menu-padding;
+        margin: 0 @menu-icon-width;
         display: block;
-    }
-    a:hover {
-        background: rgba(0,0,0, 0.05);
+        .truncate-text();
     }
 }
-.mobile-menu-vert .mm-header .hori-view,
-.mobile-menu-vert .mm-header .prev {
-    float: left;
-    border-right: 1px solid rgba(255,255,255, 0.25);
+.mobile-menu-vert .mm-header .mm-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: @menu-border;
     display: none;
 }
 .mobile-menu-vert.mm-state-root .mm-header .hori-view { display: block; }
 .mobile-menu-vert.mm-state-sub .mm-header .prev { display: block; }
-
-////
 // Search
 .mobile-menu-vert .mm-header .search {
-    float: right;
-    border-left: 1px solid rgba(255,255,255, 0.25);
+    display: block;
+    left: auto;
+    right: 0;
+    border-right: 0 none;
+    border-left: @menu-border;
 }
 ////
 // Body
+.mobile-menu-vert .mm-body ul li {
+    border-top: @menu-border;
+}
+.mobile-menu-vert .mm-body ul li.mm-icon-wrap {
+    width: auto;   
+}
+.mobile-menu-vert .mm-body ul li.mm-icon-wrap .mm-icon {
+    background-image: none;
+    width: auto;
+    height: auto;
+    text-indent: inherit;
+    padding: @menu-padding;
+}
+.mobile-menu-vert .mm-body ul li .mm-icon.next {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+////
+// Panel View Toggle
 .mobile-menu-vert .mm-body .mm-panel {
     display: none;
 }
 .mobile-menu-vert .mm-body .mm-panel-active {
     display: block;
-}
-.mobile-menu-vert .mm-body .mm-panel i {
-    color: @white;
-    width: 44px;
-    height: 44px;
-    line-height: 34px;
-    font-size: 44px;
 }

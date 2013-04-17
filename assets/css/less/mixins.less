@@ -47,63 +47,93 @@
 ////
 // EM
 // Turns a pixel value into ems based on it's context
-.em( @px, @context : @font-size ) {
+.em( @px, @lh : auto, @context : @font-size ) {
     // Calculate the EM value
     @size: round((@px / @context), 2);
     // Set properties
-    font-size: unit( ( @size ), em);
-    line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+    font-size: unit( @size, em);
+    .line-height() when (@lh = auto) {
+        line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+    }
+    .line-height() when (isnumber(@lh)) and (@lh > 0) {
+        line-height: unit( round( (@lh / (@size * @context)), 2), em);
+    }
+    .line-height();
 }
 ////
 // REM
 // Turns a pixel value into rems based on root element's font size
-.rem( @px ) {
+.rem( @px, @lh : auto ) {
     // Calculate the EM value
     @size: round((@px / @font-size), 2);
     // Set properties
     font-size: unit( ( @size ), rem);
-    line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+    .line-height() when (@lh = auto) {
+        line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+    }
+    .line-height() when (isnumber(@lh)) and (@lh > 0) {
+        line-height: unit( round( (@lh / (@size * @context)), 2), em);
+    }
+    .line-height();
 }
 ////
 // PX
 // Converts an EM to pixels based on it's context
-.px( @value, @context: @font-size ) {
+.px( @em, @lh : auto, @context: @font-size ) {
     // Calculate the size
-    @size: unit( (round((@value * @context), 2) ), px);
+    @size: unit( (round((@em * @context), 2) ), px);
     // But, if the value was already in pixels, just set it as the size.
-    .check-value() when ( ispixel(@value) ) {
-        @size: @value;
+    .check-value() when ( ispixel(@em) ) {
+        @size: @em;
     }
     .check-value();
     // Set properties
     font-size: @size;
-    line-height: unit( round( (@size + @line-height-inc), 2), px);
+    .line-height() when (@lh = auto) {
+        line-height: unit( round( (@size + @line-height-inc), 2), px);
+    }
+    .line-height() when (isnumber(@lh)) and (@lh > 0) {
+        line-height: unit( @lh, px);
+    }
+    .line-height();
 }
 
 ////
 // Root Font Size
 // Sets the root font size for the html element
 // This is important when using REM in your document
-.root-font-size( @value : @font-size, @unit : 16 ) {
+.root-font-size( @font-size : @font-size, @line-height : auto, @unit : 16 ) {
     .build() when (@font-unit = em) {
-        .em( @value, @unit );
+        .em( @font-size, @line-height, @unit );
     }
-    .build() when (@font-unit = px) {
+    .build() when (@unit = px) {
         font-size: @font-size;
-        line-height: @line-height;
+        .line-height() when (@line-height = auto) {
+            line-height: (@font-size + @line-height-inc);
+        }
+        .line-height() when (isnumber(@line-height)) and (@line-height > 0) {
+            line-height: @line-height;
+        }
+        .line-height();
     }
     .build();
 }
-
 ////
 // Font Sequence
 // Sets font-size and line-height based on a multiplier
-.font-sequence( @value, @unit : @font-unit ) {
+.font-sequence( @font-size, @line-height : auto, @unit : @font-unit ) {
     .build() when (@unit = em) {
-        .em( @value );
+        .em( @font-size, @line-height );
     }
     .build() when (@unit = px) {
-        font-size: @value;
+        font-size: @font-size;
+        .line-height() when (@line-height = auto) {
+            line-height: (@font-size + @line-height-inc);
+        }
+        .line-height() when (isnumber(@line-height)) and (@line-height > 0) {
+            line-height: @line-height;
+        }
+        .line-height();
     }
     .build();
 }

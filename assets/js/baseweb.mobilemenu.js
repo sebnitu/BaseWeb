@@ -17,7 +17,9 @@
             // Save our object
             var $this = $(this);
             
-            if (!$this.is('ul')) { $this = $this.find('> ul'); }
+            if (!$this.is('ul')) { $this = $this.find('ul:first'); }
+            
+            console.log($this);
             
             ////
             // Build element specific options
@@ -53,7 +55,7 @@
                 var p = $(this).wrap('<div class="mm-panel" data-index="' + index + '" />').parent();
                 if ( index > 1 ) {
                     var parent_id = p.parents('.mm-panel').attr('data-index');
-                    p.before('<span data-target="' + index + '" class="next"><i class="icon-arrow-right"></i>');
+                    p.before('<a data-target="' + index + '" class="mm-icon next">Sub Menu</a>');
                     p.attr('data-parent', parent_id);
                 } else {
                     p.addClass('mm-panel-active');
@@ -64,7 +66,10 @@
                         
             ////
             // Build menu header
-            mm_header.append('<button class="prev"><i class="icon-arrow-left"></i></button><button class="hori-view"><i class="icon-close"></i></button><button class="search"><i class="icon-search"></i></button><h3><span>Menu</span></h3>');
+            mm_header.append('<h3><span>Menu</span></h3>')
+                     .append('<a class="mm-icon prev">Previous</a>')
+                     .append('<a class="mm-icon hori-view">Horizontal View</a>')
+                     .append('<a class="mm-icon search">Search</a>');
             
             var menu_title = menu.find('.mm-header h3');
             
@@ -78,16 +83,16 @@
             var menu_title_current_text = '';
             var menu_title_current_link = '';
             
-            menu_hori.find('> ul').prepend('<li><button class="vert-view"><i class="icon-list"></i></button></li>');
+            menu_hori.find('> ul').prepend('<li class="mm-icon-wrap mm-icon-wrap-vert-view"><a class="mm-icon vert-view">Vertical View</a></li>');
             
             // Buttons
             var btn_toggle_vert = menu.find('.mobile-menu-vert .hori-view');
             var btn_toggle_hori = menu.find('.mobile-menu-hori .vert-view');
-            var btn_next = menu.find('.mm-body .next');
             var btn_prev = menu.find('.mm-header .prev');
+            var btn_next = menu.find('.mm-body .next');
             
             // Init Classes
-            menu.addClass('mm-vert-active');
+            menu.addClass('mm-hori-active');
             menu_vert.addClass('mm-state-root mm-state-index-' + menu_current);
             
             ////
@@ -150,56 +155,3 @@
     };
     
 })(jQuery);
-
-/*
-
-<div class="mobile-menu">
-            
-<div class="mobile-menu-hori">
-    <ul>
-        <li><a href="#">Home</a></li>
-        ...
-    </ul>
-</div><!-- .mobile-menu-hori -->
-
-<div class="mobile-menu-vert">
-    
-    <div class="mm-header">
-        <button class="prev"><i class="icon-arrow-left"></i></button>
-        <button class="hori-view"><i class="icon-close"></i></button>
-        <button class="search"><i class="icon-search"></i></button>
-        <h3><span>Menu</span></h3>
-    </div>
-    
-    <div class="mm-body">
-        <div data-index="1" class="mm-panel mm-panel-active">
-            <ul>
-                <li><a href="#">Item</a></li>
-                ...
-            </ul>
-        </div><!-- .mm-panel -->
-        <div data-index="2" class="mm-panel">
-            <ul>
-                <li><a href="#">Item</a></li>
-                ...
-            </ul>
-        </div><!-- .mm-panel -->
-        <div data-index="3" class="mm-panel">
-            <ul>
-                <li><a href="#">Item</a></li>
-                ...
-            </ul>
-        </div><!-- .mm-panel -->
-        <div data-index="4" class="mm-panel">
-            <ul>
-                <li><a href="#">Item</a></li>
-                ...
-            </ul>
-        </div><!-- .mm-panel -->
-    </div><!-- .mm-body -->
-    
-</div><!-- .mobile-menu-vert -->
-
-</div><!-- .mobile-menu -->
-
-*/
