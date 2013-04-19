@@ -68,6 +68,8 @@
             <li><a href="#buttons">Buttons</a></li>
             <li><a href="#icons">Icons</a></li>
             <li><a href="#modals">Modals</a></li>
+            <li><a href="#dropdowns">Dropdowns</a></li>
+            <li><a href="#mobile-menu">Mobile Menu</a></li>
             
             <?php /* Upcoming Demos
             <li><a href="#">Variables</a></li>

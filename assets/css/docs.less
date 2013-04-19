@@ -716,15 +716,20 @@
 // Forms Demo
 ////////////////////////////////////////////////////////////////////////////////
 
-.demo-forms {
-    
-    .login-form-wrap {
-        .column(6);
-        .suffix(3);
-        .alpha-omega();
-    }
+////
+// Responsive Styles : Desktop
+#responsive { .desktop() {
 
-}
+    .demo-forms {
+        
+        .login-form-wrap {
+            .column-manual( 7, desktop );
+            margin: 0;
+        }
+    
+    }
+        
+} } // End of Responsive Styles : Desktop
 
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons Demo
@@ -738,7 +743,7 @@
     p .disabled {
         margin: 5px 0 5px 5px;
     }
-    .btn-group {
+    .btn-group, .btn-group-vertical {
         margin: 0 @margin @margin 0;
     }
     
@@ -892,6 +897,24 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
+
+////////////////////////////////////////////////////////////////////////////////
+// Dropdowns
+////////////////////////////////////////////////////////////////////////////////
+
+.demo-dropdowns {
+    .dropdown-wrapper {
+        padding: 40px;
+        .clearfix();
+        .border-radius();
+        .box-shadow(~"0 1px 6px rgba(0,0,0, 0.15) inset");
+        #gradient > .radial( @blue-lighter, @blue-darker );
+    }
+    .dropdown-wrapper > .dropdown {
+        position: static;
+        display: block;
+    }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Widgets

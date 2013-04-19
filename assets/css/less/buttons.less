@@ -157,6 +157,10 @@
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Button Class Assignment
+////////////////////////////////////////////////////////////////////////////////
+
 ////
 // Color Mixins & Class Assignment
 .btn {
@@ -222,10 +226,6 @@
     .font-sequence( (@font-size-button - 2) );
     padding: ( @button-padding-top-bottom / 3 ) ( @button-padding-left-right / 1.5 );
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Class Assignment
-////////////////////////////////////////////////////////////////////////////////
 
 ////
 // Semantic Classes
@@ -293,39 +293,44 @@
     white-space: nowrap;
     vertical-align: middle;
     .clearfix();
-}
-.btn-group > .btn {
-    font-size: @font-size-button;
-    position: relative;
-    z-index: 5;
-    border-radius: 0;
-    margin-right: -1px;
-}
-.btn-group > .btn:first-child {
-    .border-radius-left(4px);
-}
-.btn-group > .btn:last-child {
-    .border-radius-right(4px);
-    margin-right: 0;
-}
-.btn-group > .btn:hover,
-.btn-group > .btn:active,
-.btn-group > .btn:focus {
-    z-index: 10;
+
+    > .btn {
+        font-size: @font-size-button;
+        position: relative;
+        z-index: 5;
+        border-radius: 0;
+        margin-right: -1px;
+    }
+    > .btn:first-child {
+        .border-radius-left(4px);
+    }
+    > .btn:last-child {
+        .border-radius-right(4px);
+        margin-right: 0;
+    }
+    > .btn:hover,
+    > .btn:active,
+    > .btn:focus {
+        z-index: 10;
+    }
 }
 
 ////
 // Vertical groups
-.btn-group.vertical > .btn {
-    display: block;
-    border-radius: 0;
-    margin-right: 0;
-    margin-bottom: -1px;
-}
-.btn-group.vertical > .btn:first-child {
-    .border-radius-top(4px);
-}
-.btn-group.vertical > .btn:last-child {
-    .border-radius-bottom(4px);
-    margin-bottom: 0;
+.btn-group-vertical {
+    .btn-group();
+    
+    > .btn {
+        display: block;
+        border-radius: 0;
+        margin-right: 0;
+        margin-bottom: -1px;
+    }
+    > .btn:first-child {
+        .border-radius-top(4px);
+    }
+    > .btn:last-child {
+        .border-radius-bottom(4px);
+        margin-bottom: 0;
+    }
 }

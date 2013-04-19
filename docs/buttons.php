@@ -30,9 +30,9 @@
             <button class="btn" href="#">Button</button>
         </div>
 
-        <p>Button group with <code>.vertical</code> class</p>
+        <p>Button group with <code>.btn-group-vertical</code> class</p>
 
-        <div class="btn-group vertical">
+        <div class="btn-group-vertical">
             <button class="btn" href="#">Button</button>
             <button class="btn" href="#">Button</button>
             <button class="btn" href="#">Button</button>

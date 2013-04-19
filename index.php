@@ -1,5 +1,9 @@
 <?php include('docs/inc/header.php'); ?>
 
+<div id="dropdowns" class="demo-wrap demo-dropdowns">
+    <?php include('docs/dropdowns.php'); ?>
+</div>
+
 <div id="mobile-menu" class="demo-wrap demo-mobile-menu">
     <?php include('docs/mobile-menu.php'); ?>
 </div>
