@@ -10,7 +10,9 @@
 <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
 
 <!-- BaseWeb jQuery Plugins -->
-<script src="assets/js/baseweb.mobilemenu.js"></script>
+<script src="assets/js/baseweb.mobilemenus.js"></script>
+<script src="assets/js/baseweb.modals.js"></script>
+<script src="assets/js/baseweb.toggles.js"></script>
 
 <!-- jQuery functions, document ready & window load -->
 <script src="assets/js/jquery.function.js"></script>

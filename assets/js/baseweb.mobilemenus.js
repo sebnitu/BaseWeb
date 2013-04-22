@@ -18,9 +18,7 @@
             var $this = $(this);
             
             if (!$this.is('ul')) { $this = $this.find('ul:first'); }
-            
-            console.log($this);
-            
+                        
             ////
             // Build element specific options
             // This lets me access options with this syntax: o.optionName

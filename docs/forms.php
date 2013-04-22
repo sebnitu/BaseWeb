@@ -139,6 +139,21 @@
         
     </div>
     
+    <div class="demo-description">
+        <h2>Toggle Switch</h2>
+    </div>
+    <div class="demo-block">
+        
+        <div class="toggle active">
+            <div class="toggle-handle"></div>
+        </div>
+        
+        <div class="toggle">
+            <div class="toggle-handle"></div>
+        </div>
+        
+    </div>
+    
     <?php /*
     
     <div class="demo-description">
