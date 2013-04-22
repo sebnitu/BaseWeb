@@ -18,7 +18,7 @@
 @font-size: 14px;
 @font-weight: normal;
 @font-unit: em; // Either `em` or `px` for font outputs
-// Spacing
+// Line Height
 @line-height-inc: 8;
 @line-height: (@font-size + @line-height-inc); // 22
 
@@ -44,114 +44,22 @@
 @color-link-header: @color-link;
 @color-link-header-hover: @color-link-hover;
 
-////////////////////////////////////////////////////////////////////////////////
-// Core Elements
-////////////////////////////////////////////////////////////////////////////////
-
 ////
-// Base Element Settings
-////
-// Background
+// Backgrounds
 @bg: #f4f4f4;
 @bg-alpha: 0.04;
 @bg-base: @black;
-// Border
+
+////
+// Borders
 @border: #e0e0e0;
 @border-alpha: 0.1;
 @border-base: @black;
+
+////
 // Spacing
 @margin: (@line-height / 2); // 11
 @padding: (@line-height / 2); // 11
-
-////
-// Code
-////
-// Background
-@bg-code: @bg;
-@bg-code-alpha: @bg-alpha;
-@bg-code-base: @bg-base;
-// Settings
-@color-code: @color;
-@color-code-inline: @cMyk;
-@font-size-code: 12px; // @font-size * 0.85
-@code-max-height: 400px;
-
-////
-// Tables
-////
-// Background
-@bg-table: @white;
-@bg-table-alpha: 0;
-@bg-table-base: @white;
-// Background Zebra
-@bg-table-zebra: @bg;
-@bg-table-zebra-alpha: @bg-alpha;
-@bg-table-zebra-base: @bg-base;
-// Background Hover
-@bg-table-hover: @yellow-lighter;
-@bg-table-hover-alpha: 0.25;
-@bg-table-hover-base: @cmYk;
-// Border
-@border-table: #d0d0d0;
-@border-table-alpha: 0.15;
-@border-table-base: @black;
-
-////
-// Buttons
-////
-// Type
-@font-size-button: 13px;
-// Default Styles
-@button-default-color-start: #fefefe;
-@button-default-color-end: #f5f5f5;
-@button-default-styles: 'default'; // default, pill or square
-// Spacing
-@button-padding-top-bottom: round((@padding / 2));
-@button-padding-left-right: @padding;
-@button-padding: @button-padding-top-bottom @button-padding-left-right;
-
-////////////////////////////////////////////////////////////////////////////////
-// Componenets
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////////////////////////////////////////////
-// JavaScript Componenets
-////////////////////////////////////////////////////////////////////////////////
-
-////////////////////////////////////////
-// Mobile Menu
-////////////////////////////////////////
-////
-// Structure
-@menu-bg: @bg;
-@menu-border: 1px solid rgba(0,0,0, 0.1);
-////
-// Typography
-@menu-color: @color;
-@menu-font-size: 16px;
-@menu-line-height: 30px;
-////
-// Spacing
-@menu-padding-top-bottom: 10px;
-@menu-padding-left-right: 20px;
-@menu-padding: @menu-padding-top-bottom @menu-padding-left-right;
-////
-// Icons
-@menu-icon-sprite: url(~"@{dir-images}mobilemenu-sprite-black.svg");
-@menu-icon-sprite-tile: 50px;
-// Order
-@menu-icon-vert:   1;
-@menu-icon-search: 2;
-@menu-icon-home:   3;
-@menu-icon-hori:   4;
-@menu-icon-prev:   5;
-@menu-icon-next:   6;
-////
-// Hard Variables
-@menu-icon-width: (@menu-line-height + (@menu-padding-top-bottom * 2));
-@menu-icon-height: @menu-icon-width;
-@menu-icon-sprite-pos-left: ((@menu-icon-width - @menu-icon-sprite-tile) / 2);
-@menu-icon-sprite-pos-top: ((@menu-icon-height - @menu-icon-sprite-tile) / 2);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Mixin Defaults
@@ -168,11 +76,11 @@
 
 @rotate-degree: 0;
 
-@gradient-start-color:  @blue-light;
+@gradient-start-color: @blue-light;
 @gradient-center-color: @blue;
-@gradient-end-color:    @blue-darker;
-@gradient-deg:          45deg;
-@gradient-color-stop:   50%;
+@gradient-end-color: @blue-darker;
+@gradient-deg: 45deg;
+@gradient-color-stop: 50%;
 
 ////
 // Miscellaneous
@@ -189,7 +97,7 @@
 @dir-fonts: "../fonts/";
 
 ////////////////////////////////////////////////////////////////////////////////
-// Structure
+// Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
@@ -201,65 +109,10 @@
 
 ////
 // Media query breakpoints
-@media-small:       480px; // max-width
-@media-mobile:      760px;
-@media-tablet-min:  @media-mobile;
-@media-tablet-max:  @media-desktop-min; // Not used on mobile-first
+@media-small: 480px; // max-width
+@media-mobile: 760px;
+@media-tablet-min: @media-mobile;
+@media-tablet-max: @media-desktop-min; // Not used on mobile-first
 @media-desktop-min: 990px;
 @media-desktop-max: @media-large; // Not used on mobile-first
-@media-large:       1380px; // min-width
-
-////
-// Grid System
-////
-// Columns
-@grid-columns: 12;
-
-////
-// Grids
-@grid-row-width: 100%; // 720px
-@grid-gutter-width: 2%; // 20px
-
-@grid-tablet-row-width: 100%; // 720px
-@grid-tablet-gutter-width: 2%; // 20px
-
-@grid-desktop-row-width: 960px; // 960px
-@grid-desktop-gutter-width: 20px; // 20px
-
-@grid-large-row-width: 1200px; // 1200px
-@grid-large-gutter-width: 20px; // 20px
-
-////
-// Base Grid - Used when media queries are disabled
-@grid-row-width: @grid-desktop-row-width;
-@grid-gutter-width: @grid-desktop-gutter-width;
-
-////
-// Fluid Variables
-@grid-max-width: 1200px;
-@grid-margin-width: 20px;
-
-////
-// Grid Gutter Property
-// Set to margin or padding
-@grid-gutter-property: margin;
-
-////
-// Class variables
-@class-container: container;
-@class-row: row;
-@class-column: col-;
-@class-prefix: prefix-;
-@class-suffix: suffix-;
-
-@class-first: alpha;
-@class-last: omega;
-
-////
-// Build selectors
-@all-columns: ~'[class*="@{class-column}"]'; //escaped value interpolation
-
-////
-// Utility Variables - Should never be changed
-@grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
-@grid-margin-switch: (@grid-max-width + (@grid-margin-width * 2));
+@media-large: 1380px; // min-width

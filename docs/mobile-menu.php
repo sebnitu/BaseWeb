@@ -13,9 +13,7 @@
     <div class="demo-block mobile-menu-demo">
         
         <p>JavaScript: <code>$('#nav').mobilemenu();</code></p>
-        
-        <hr>
-        
+                
         <ul id="nav">
             <li><a href="#">Home</a></li>
             <li>

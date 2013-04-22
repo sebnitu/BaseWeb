@@ -1,13 +1,5 @@
 <?php include('docs/inc/header.php'); ?>
 
-<div id="dropdowns" class="demo-wrap demo-dropdowns">
-    <?php include('docs/dropdowns.php'); ?>
-</div>
-
-<div id="mobile-menu" class="demo-wrap demo-mobile-menu">
-    <?php include('docs/mobile-menu.php'); ?>
-</div>
-
 <div id="colors" class="demo-wrap demo-colors">
     <?php include('docs/colors.php'); ?>
 </div>
@@ -45,13 +37,18 @@
 </div>
 
 <?php /*
+<div id="icons" class="demo-wrap demo-icons icons">
+    <?php include('docs/icons.php'); ?>
+</div>
+*/ ?>
 <div id="icons" class="demo-wrap demo-icons icons-entypo">
     <?php include('docs/icons-entypo.php'); ?>
 </div>
-*/ ?>
+<?php /*
 <div id="icons" class="demo-wrap demo-icons icons-glyphicons">
     <?php include('docs/icons-glyphicons.php'); ?>
 </div>
+*/ ?>
 <?php /*
 <div id="icons" class="demo-wrap demo-icons icons-glyphicons-halflings">
     <?php include('docs/icons-glyphicons-halflings.php'); ?>
@@ -60,6 +57,14 @@
 
 <div id="modals" class="demo-wrap demo-modals">
     <?php include('docs/modals.php'); ?>
+</div>
+
+<div id="dropdowns" class="demo-wrap demo-dropdowns">
+    <?php include('docs/dropdowns.php'); ?>
+</div>
+
+<div id="mobile-menu" class="demo-wrap demo-mobile-menu">
+    <?php include('docs/mobile-menu.php'); ?>
 </div>
 
 <?php include('docs/inc/footer.php'); ?>

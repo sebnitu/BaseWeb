@@ -9,8 +9,9 @@
     <div class="demo-description">
         <h2>Default</h2>
     </div>
+    
     <div class="demo-block">
-        
+                        
         <div class="modal-wrap">
         
             <div id="modal-identifier" class="modal">

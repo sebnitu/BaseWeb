@@ -1,4 +1,61 @@
 ////////////////////////////////////////////////////////////////////////////////
+// Grid Variables
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Columns
+@grid-columns: 12;
+
+////
+// Grids
+@grid-row-width: 100%; // 720px
+@grid-gutter-width: 2%; // 20px
+
+@grid-tablet-row-width: 100%; // 720px
+@grid-tablet-gutter-width: 2%; // 20px
+
+@grid-desktop-row-width: 960px; // 960px
+@grid-desktop-gutter-width: 20px; // 20px
+
+@grid-large-row-width: 1200px; // 1200px
+@grid-large-gutter-width: 20px; // 20px
+
+////
+// Base Grid - Used when media queries are disabled
+@grid-row-width: @grid-desktop-row-width;
+@grid-gutter-width: @grid-desktop-gutter-width;
+
+////
+// Fluid Variables
+@grid-max-width: 1200px;
+@grid-margin-width: 20px;
+
+////
+// Grid Gutter Property
+// Set to margin or padding
+@grid-gutter-property: margin;
+
+////
+// Class variables
+@class-container: container;
+@class-row: row;
+@class-column: col-;
+@class-prefix: prefix-;
+@class-suffix: suffix-;
+
+@class-first: alpha;
+@class-last: omega;
+
+////
+// Build selectors
+@all-columns: ~'[class*="@{class-column}"]'; //escaped value interpolation
+
+////
+// Utility Variables - Should never be changed
+@grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
+@grid-margin-switch: (@grid-max-width + (@grid-margin-width * 2));
+
+////////////////////////////////////////////////////////////////////////////////
 // Grid Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
