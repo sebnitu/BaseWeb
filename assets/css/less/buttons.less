@@ -338,12 +338,19 @@
 ////
 // Vertical groups
 .btn-group-vertical {
-    .btn-group();
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+    .clearfix();
     
     > .btn {
         display: block;
+        font-size: @font-size-button;
+        position: relative;
+        z-index: 5;
         border-radius: 0;
-        margin-right: 0;
         margin-bottom: -1px;
     }
     > .btn:first-child {
@@ -352,5 +359,10 @@
     > .btn:last-child {
         .border-radius-bottom(4px);
         margin-bottom: 0;
+    }
+    > .btn:hover,
+    > .btn:active,
+    > .btn:focus {
+        z-index: 10;
     }
 }
