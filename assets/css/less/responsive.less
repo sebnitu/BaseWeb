@@ -143,64 +143,23 @@
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
-#media-queries() when (@media-mode = mobile-first) {
-    ////
-    // Mobile first
-    #responsive > .mobile;
-    ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
-        #responsive > .small;
-    }
-    ////
-    // Tablet: @media-tablet-min and above
-    @media screen and ( min-width: @media-tablet-min ) {
-        #responsive > .tablet;
-    }
-    ////
-    // Desktop: @media-desktop-min and above
-    @media screen and ( min-width: @media-desktop-min ) {
-        #responsive > .desktop;
-    }
-    ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
-        #responsive > .large;
-    }
-}
-#media-queries() when (@media-mode = desktop-first) {
-    ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
-        #responsive > .large;
-    }
-    ////
-    // Desktop Between @media-desktop-min and @media-desktop-max
-    @media screen and ( min-width: @media-desktop-min ) and ( max-width: @media-desktop-max ) {
-        #responsive > .desktop;
-    }
-    ////
-    // Tablet: Between @media-tablet-min and @media-tablet-max
-    @media screen and (min-width: @media-tablet-min ) and ( max-width: @media-tablet-max ) {
-        #responsive > .tablet;
-    }
-    ////
-    // Mobile: @media-mobile and below
-    @media screen and (max-width: @media-mobile ) {
-        #responsive > .mobile;
-    }
-    ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
-        #responsive > .small;
-    }
-}
-#media-queries() when (@media-mode = off) {
-    ////
-    // No media queries here
-    #responsive > .base;
-}
-
 ////
-// Build media queries
-#media-queries();
+// Small: @media-small and below
+@media screen and (max-width: @media-small ) {
+    #responsive > .small;
+}
+////
+// Tablet: @media-tablet-min and above
+@media screen and ( min-width: @media-tablet ) {
+    #responsive > .tablet;
+}
+////
+// Desktop: @media-desktop-min and above
+@media screen and ( min-width: @media-desktop ) {
+    #responsive > .desktop;
+}
+////
+// Larger: @media-large and above
+@media screen and ( min-width: @media-large ) {
+    #responsive > .large;
+}
