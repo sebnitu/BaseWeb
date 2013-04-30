@@ -131,13 +131,10 @@ blockquote {
         margin: @margin 0;
         display: block;
         font-size: 100%;
-        color: darken( @color-light, 5% );
+        color: lighten( @color, 40% );
         &:before {
-            #arrow > .right( 5px, rgba(0,0,0, 0.10) );
-            position: absolute;
-            left: -(@margin + (@margin / 2));
-            top: 50%;
-            margin-top: -5px;
+            content: "\2014";
+            margin-right: 5px;
         }
     }
 }
@@ -148,12 +145,6 @@ blockquote.align-right {
     border-left: 0 none;
     border-right: 5px solid;
     .border-color-default();
-    
-    small:before {
-        #arrow > .left( 5px, rgba(0,0,0, 0.10) );
-        left: auto;
-        right: -(@margin + (@margin / 2));
-    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

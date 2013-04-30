@@ -847,8 +847,6 @@
     
     .modal-wrap {
         .background-color( @black, 0.5 );
-        margin-top: -1px;
-        padding: 20px;
     }
     
 }
@@ -860,11 +858,6 @@
             padding: 40px;
             margin: @margin 0;
             .border-radius();
-        }
-    }
-    .desktop() {
-        .demo-modals .modal-wrap {
-            padding: 40px;
         }
     }
     
@@ -885,18 +878,29 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 .demo-dropdowns {
+
     .dropdown-wrapper {
-        padding: 40px;
-        margin: @margin 0;
+        .background-color( @black, 0.5 );
         .clearfix();
-        .border-radius();
-        .box-shadow(~"0 1px 6px rgba(0,0,0, 0.15) inset");
-        #gradient > .radial( @blue-lighter, @blue-darker );
     }
+    
     .dropdown-wrapper > .dropdown {
         position: static;
         display: block;
     }
+    
+}
+
+#responsive {
+    
+    .tablet() {
+        .dropdown-wrapper {
+            padding: 40px;
+            margin: @margin 0;
+            .border-radius();
+        }
+    }
+    
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -109,10 +109,16 @@
 
 ////
 // Media query breakpoints
-@media-small: 480px; // max-width
+@media-small:       480px; // max-width
 
-@media-tablet: 760px; // min-width
+@media-mobile:      760px;
 
-@media-desktop: 990px; // min-width
+@media-tablet:      @media-mobile;
+@media-tablet-min:  @media-mobile;
+@media-tablet-max:  @media-desktop-min; // Not used on mobile-first
 
-@media-large: 1380px; // min-width
+@media-desktop:     990px;
+@media-desktop-min: @media-desktop;
+@media-desktop-max: @media-large; // Not used on mobile-first
+
+@media-large:       1380px; // min-width
