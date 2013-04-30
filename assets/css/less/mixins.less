@@ -458,7 +458,7 @@
 ////
 // Background, Border and Text Color
 // Returns a background-color based on alpha channel
-.background-color(@hex, @alpha : 1, @fallback : 0) {
+.background-color(@hex : @bg-base, @alpha : @bg-alpha, @fallback : @bg) {
 
     .fallback() when (@fallback = 0) {
         @fallback: @hex;
@@ -477,12 +477,9 @@
     }
     .background();
 }
-.background-color-default() {
-    .background-color( @bg-base, @bg-alpha, @bg );
-}
 ////
 // Returns a border-color based on alpha channel
-.border-color(@hex, @alpha : 1, @fallback : 0) {
+.border-color(@hex : @border-base, @alpha : @border-alpha, @fallback : @border) {
 
     .fallback() when (@fallback = 0) {
         @fallback: @hex;
@@ -500,9 +497,6 @@
         border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
     }
     .border();
-}
-.border-color-default() {
-    .border-color( @border-base, @border-alpha, @border );
 }
 ////
 // Returns a color based on alpha channel

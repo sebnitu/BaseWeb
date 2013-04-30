@@ -27,8 +27,11 @@
 
 ////
 // Class variables
+// @grid-classes: toggles the output of grid classes
+// Set to `true` to enable, `false` to diasble
 @grid-classes: true;
-
+////
+// Grid class names
 @class-container: container;
 @class-row: row;
 @class-column: col-;
@@ -39,13 +42,12 @@
 @class-last: omega;
 
 ////
-// Build selectors
-@all-columns: ~'[class*="@{class-column}"]'; //escaped value interpolation
-
-////
-// Hard Variables - Should never be changed
+// Hard Variables: Should not be changed
 @grid-column-width: (( @grid-row-width / @grid-columns  ) - @grid-gutter-width );
 @grid-margin-switch: (@grid-max-width + (@grid-margin-width * 2));
+////
+// Build selectors
+@all-columns: ~'[class*="@{class-column}"]'; //escaped value interpolation
 
 ////////////////////////////////////////////////////////////////////////////////
 // Semantic Grid System
