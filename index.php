@@ -44,11 +44,11 @@
 <div id="icons" class="demo-wrap demo-icons icons-entypo">
     <?php include('docs/icons-entypo.php'); ?>
 </div>
-<?php /*
+<?php /**/ ?>
 <div id="icons" class="demo-wrap demo-icons icons-glyphicons">
     <?php include('docs/icons-glyphicons.php'); ?>
 </div>
-*/ ?>
+
 <?php /*
 <div id="icons" class="demo-wrap demo-icons icons-glyphicons-halflings">
     <?php include('docs/icons-glyphicons-halflings.php'); ?>
