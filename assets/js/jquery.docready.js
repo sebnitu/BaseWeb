@@ -1,31 +1,28 @@
-/* ==========================================================
- * BaseWeb - jQuery Document & Image Ready Scripts
- * https://github.com/sebnitu/BaseWeb
- * ==========================================================
- * Copyright 2012 Sebastian Nitu.
- * ========================================================== */
+/**
+ * jquery.docready.js
+ * A place to store all your JavaScript you want to run after 
+ * either the document is ready or images are finished loading
+ * ----
+ * @author Sebastian Nitu
+ * @url https://github.com/sebnitu/BaseWeb
+ * @url http://sebnitu.com
+ */
 
-/* ==========================================================
-    When Document is Ready
-============================================================= */
-$(document).ready(function() {
-    
-    // Mobile Orientation and Scale Fix
-    mobileOrientationScale();
+/**
+ * When the document is ready
+ */
+$(document).ready(function () {
 
-    // Desktop, Tablet, Phone classes
-    responsiveClasses();
-    resizeTrigger(responsiveClasses);
-    
+    // Enable BaseWeb JavaScript
+    $(this).baseweb();
+
 });
-/* ==========================================================
-    When Images are Loaded
-============================================================= */
-$(window).load(function() {
-    
-    
-    
+
+/**
+ * When the images are loaded
+ */
+$(window).load(function () {
+
+
+
 });
-/* ==========================================================
-    End of Document & Image Ready Scripts
-============================================================= */

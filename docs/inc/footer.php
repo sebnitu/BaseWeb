@@ -12,8 +12,6 @@
 <!-- BaseWeb jQuery Plugins -->
 <script src="assets/js/baseweb.js"></script>
 <script src="assets/js/baseweb.mobilemenus.js"></script>
-<script src="assets/js/baseweb.modals.js"></script>
-<script src="assets/js/baseweb.toggles.js"></script>
 
 <!-- jQuery functions, document ready & window load -->
 <script src="assets/js/jquery.function.js"></script>

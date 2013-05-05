@@ -1,39 +1,38 @@
-/* ==========================================================
- * BaseWeb - jQuery Plugin Template
- * https://github.com/sebnitu/BaseWeb
- * ==========================================================
- * Copyright 2012 Sebastian Nitu.
- * ========================================================== */
+/**
+ * jquery.plugin.js
+ * A jQuery plugin boilerplate. Search and replace `pluginName` with whatever you want to call the plugin
+ * ----
+ * @author Sebastian Nitu
+ * @url https://github.com/sebnitu/BaseWeb
+ * @url http://sebnitu.com
+ */
 
-/* ==========================================================
-    Plugin Name
-============================================================= */
-(function($) {
-    
-    $.fn.pluginName = function(options) {
-                
+;(function ($) {
+    'use strict';
+
+    $.fn.pluginName = function (options) {
+
         // Extend our default options with those provided.
         var opts = $.extend({}, $.fn.pluginName.defaults, options);
-                
+
         return this.each(function () {
-                        
-        // Save our object
-        var $this = $(this);
-                        
-        // Build element specific options
-        // This lets me access options with this syntax: o.optionName
-        var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
-        
+
+            var
+                // Save our object
+                $this = $(this),
+
+                // Build element specific options
+                // This lets me access options with the syntax: `o.optionName`
+                o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+
+            // Your fancy JavaScript Here
+
         });
 
     };
-    
-    $.fn.pluginName.defaults = {
-        pauseOnHover : true
-    };
-    
-})(jQuery);
 
-/* ==========================================================
-    End of Plugin Name
-============================================================= */
+    $.fn.pluginName.defaults = {
+        key : 'value'
+    };
+
+})(jQuery);
