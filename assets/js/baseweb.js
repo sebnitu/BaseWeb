@@ -116,4 +116,7 @@
         
     };
     
+    // Init BaseWeb JavaScript when document is loaded
+    $(document).ready(function () { $(this).baseweb() });
+    
 }(jQuery));

@@ -13,8 +13,7 @@
  */
 $(document).ready(function () {
 
-    // Enable BaseWeb JavaScript
-    $(this).baseweb();
+
 
 });
 
