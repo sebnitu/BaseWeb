@@ -6,57 +6,19 @@
     background: @bg;
 }
 .docs .header {
-    background: @gray-darker;
-    position: relative;
-    z-index: 10;
-    box-shadow: 0 1px 6px rgba(0,0,0, 0.1);
-}
-.docs .banner {
-    background: @blue;
-    position: relative;
-    z-index: 5;
-    #gradient > .vertical( @blue-violet-darker, @blue-darker );
+    
 }
 .docs .main {
     background: @white;
     position: relative;
     z-index: 15;
     box-shadow: 0 -2px 12px rgba(0,0,0, 0.15);
+    padding: 20px 0;
 }
 .docs .footer {
     position: relative;
     z-index: 10;
     padding: 20px 0;
-}
-
-////
-// Responsive Styles
-#responsive {
-    
-    .desktop() {
-        
-        .docs .header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-        }
-        .docs .banner {
-            position: fixed;
-            width: 100%;
-            top: 62px;
-        }
-        .docs .main {
-            margin-top: ( 62px + 336px );
-            margin-bottom: 82px;
-        }
-        .docs .footer {
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        
-    }
-
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -65,13 +27,18 @@
 
 .docs {
     .header {
+        position: relative;
+        z-index: 10;
+        .clearfix();
+        padding: 15px 30px;
+        background: @gray-darker;
+        box-shadow: 0 1px 6px rgba(0,0,0, 0.1);
         text-align: center;
-        padding: 15px 0;
     }
     .header .logo {
+        float: left;
         padding: 5px 0;
-        margin-top: 0;
-        margin-bottom: 20px;
+        margin: 0;
         font-size: @font-size;
         line-height: @line-height;
         font-weight: normal;
@@ -91,88 +58,15 @@
         border: 0 none;
         text-align: center;
         display: block;
-        padding: 15px 20px;
+        padding: 5px 15px;
         .border-radius();
+        float: right;
         
         &:hover {
             .background-color( @white, 0.15, @g3 );
             color: @gE;
         }
     }
-}
-
-////
-// Responsive Styles
-#responsive {
-    
-    .tablet() {
-        .docs {
-            
-            .header .logo {
-                float: left;
-                margin-bottom: 0;
-            }
-            
-            .header .fork {
-                float: right;
-                padding: 5px 20px;
-            }
-        }
-    }
-
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Banner
-////////////////////////////////////////////////////////////////////////////////
-
-.docs {
-    
-    .banner {
-        text-align: center;
-    }
-    .banner header {
-        .container();
-        padding: 60px 0;
-    }
-    .banner header h1 {
-        .column(10);
-        .prefix(1);
-        .suffix(1);
-        font-weight: 100;
-        letter-spacing: 1px;
-        color: @white;
-        margin-bottom: 40px;
-        text-shadow: 0 1px 3px rgba(0,0,0, 0.5);
-    }
-    .banner header p {
-        margin: 15px 0;
-    }
-    .banner header p a {
-        position: relative;
-        font-size: 16px;
-        line-height: 30px;
-        background: @white;
-        display: inline-block;
-        border: 0 none;
-        padding: 10px 30px;
-        color: @blue-violet-darker;
-        box-shadow: 0 1px 6px rgba(0,0,0, 0.2);
-        .border-radius(25px);
-        
-        &:after {
-            #arrow > .down( 8px, @white );
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -8px;
-        }
-        &:hover {
-            top: 5px;
-            color: @blue;
-        }
-    }
-    
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -184,17 +78,16 @@
         padding: 20px 0 10px;
     }
     .features-nav ul {
-        .row();
+
     }
     .features-nav ul li {
-        .column(3);
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin: 5px;
+        float: left;
     }
     .features-nav ul li a {
         display: block;
         border: 0 none;
-        padding: 10px 20px;
+        padding: 5px 15px;
         .background-color();
         .border-radius();
     }
@@ -205,65 +98,10 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Demos
-////////////////////////////////////////////////////////////////////////////////
-
-.demo-wrap {
-    .clearfix();
-}
-.demo-intro {
-    .row();
-    margin: 10px 0 0;
-}
-.demo-intro header {
-    .column(12);
-    border-top: 1px solid;
-    .border-color();
-}
-.demo-intro header h1 {
-    font-size: @font-size;
-    line-height: @line-height;
-}
-.demo-intro header h1 span {
-    font-weight: normal;
-    color: @color-light;
-}
-.demo-intro header h1 span a {
-    color: @color-light;
-    &:hover {
-        color: @color-link-hover;
-    }
-}
-.demo {
-    .clearfix();
-    padding: 0 0 30px 0;
-}
-.demo {
-    .demo-description {
-        .column(3);
-        clear: both;
-        border-top: 1px solid;
-        .border-color();
-        
-        h2 {
-            font-size: @font-size;
-            line-height: @line-height;
-            font-weight: normal;
-        }
-    }
-    .demo-block {
-        .column(9);
-        border-top: 1px solid;
-        .border-color();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Colors Demo
 ////////////////////////////////////////////////////////////////////////////////
 
 .demo-colors {
-    .row();
     
     .color-palletes {
         .remove-list-styles();
@@ -457,160 +295,13 @@
         text-align: center;
         padding: 15px 20px;
         border: 1px solid;
-        .border-color();
+        .background-color(@black, 0.05);
+        .border-color(@black, 0.1);
         .border-radius();
         box-shadow: 0 1px 3px rgba(0,0,0, 0.02);
         background-clip: padding-box;
     }
-    
-    ////
-    // Semantic Grid System
-    .semantic {
-        .row();
-        color: @white;
-    }
-    .semantic .test-1 p { background: @red; }
-    .semantic .test-2 p { background: @green; }
-    .semantic .test-3 p { background: @blue; }
-    
-    ////
-    // Nested
-    .row.nested, .nested-semantic {
-        background: transparent;
-        margin: 20px 0;
-    }
-    .row.nested .row {
-        background: transparent;
-        padding: 0;
-    }
-    .row.nested [class*="col-"], .nested-semantic [class*="test-"] {
-        .background-color();
-        .border-radius();
-        box-shadow: 0 1px 4px rgba(0,0,0, 0.1) inset;
-    }
-    .nested-semantic .test-3 {
-        background: none;
-        box-shadow: none;
-    }
-    .row.nested p, .nested-semantic p {
-        margin: 0;
-        border: 0 none;
-        box-shadow: none;
-    }
-    
-    ////
-    // Semantic Nested Grid
-    .nested-semantic {
-        .row();
-    }
-    .nested-semantic .test-1 {
-        .column(4);
-    }
-    .nested-semantic .test-2 {
-        .column(8);
-    }
-    .nested-semantic .test-3 {
-        .row();
-    }
-    .nested-semantic .test-4 {
-        .column(4, 8);
-        .alpha();
-    }
-    .nested-semantic .test-5 {
-        .column(4, 8);
-        .omega();
-    }
-    
-    ////
-    // Nested static grid fix
-    .nested-static {
-        .col-8 .col-3 {
-            .column(3, 8);
-            
-            .col-1 {
-                .column(1, 3);
-                .alpha();
-            }
-            .col-2 {
-                .column(2, 3);
-                .omega();
-            }
-            &:first-child {
-                .alpha();
-            }
-        }
-        .col-8 .col-2 {
-            .column(2, 8);
-            &:last-child {
-                .omega();
-            }
-        }
-        .col-4 .col-2 {
-            .column(2, 4);
-            
-            .col-1 {
-                .column(1, 2);
-                
-                &:first-child {
-                    .alpha();
-                }
-                &:last-child {
-                    .omega();
-                }
-            }
-            &:first-child {
-                .alpha();
-            }
-            &:last-child {
-                .omega();
-            }
-        }
-    }
 
-}
-
-#responsive {
-    .tablet() {
-        
-        .demo-grid .semantic .test-1 {
-            .column-manual( 3, tablet );
-        }
-        .demo-grid .semantic .test-2 {
-            .column-manual( 9, tablet );
-        }
-        .demo-grid .semantic .test-3 {
-            .column-manual( 8, tablet );
-            .prefix-manual( 2, tablet );
-            .suffix-manual( 2, tablet );
-        }
-        
-    }
-    .desktop() {
-        .demo-grid .semantic .test-1 {
-            .column-manual( 6, desktop );
-        }
-        .demo-grid .semantic .test-2 {
-            .column-manual( 6, desktop );
-        }
-        .demo-grid .semantic .test-3 {
-            .column-manual( 10, desktop );
-            .prefix-manual( 1, desktop );
-            .suffix-manual( 1, desktop );
-        }
-    }
-    .large() {
-        .demo-grid .semantic .test-1 {
-            .column-manual( 9, large );
-        }
-        .demo-grid .semantic .test-2 {
-            .column-manual( 3, large );
-        }
-        .demo-grid .semantic .test-3 {
-            .column-manual( 6, large );
-            .prefix-manual( 3, large );
-            .suffix-manual( 3, large );
-        }
-    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -929,9 +620,6 @@
     .footer {
         text-align: center;
         color: @gA;
-    }
-    .footer p {
-        .container();
     }
     .footer p a {
         color: @gA;

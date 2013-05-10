@@ -5,7 +5,6 @@
 ////
 // Templates
 #responsive {
-    .base() {}
     .small() {}
     .mobile() {}
     .tablet() {}
@@ -114,110 +113,29 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Grid System Assignment
-////////////////////////////////////////////////////////////////////////////////
-
-#responsive {
-    .base() {
-        .toggle-grid-classes() when (@grid-classes = true) {
-            #grid_system( @grid-row-width, @grid-gutter-width );
-        }
-        .toggle-grid-classes();
-    }
-    .small() {
-        // Does not use a grid system
-    }
-    .mobile() {
-        // Does not use a grid system
-    }
-    .tablet() {
-        .toggle-grid-classes() when (@grid-classes = true) {
-            #grid_system( @grid-tablet-row-width, @grid-tablet-gutter-width );
-        }
-        .toggle-grid-classes();
-    }
-    .desktop() {
-        .toggle-grid-classes() when (@grid-classes = true) {
-            #grid_system( @grid-desktop-row-width, @grid-desktop-gutter-width );
-        }
-        .toggle-grid-classes();
-    }
-    .large() {
-        .toggle-grid-classes() when (@grid-classes = true) {
-            #grid_system( @grid-large-row-width, @grid-large-gutter-width );
-        }
-        .toggle-grid-classes();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
 ////
-// Mobile first media queries
-#media-queries() when (@media-mode = mobile-first) {
-    ////
-    // Mobile first
-    #responsive > .mobile;
-    ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
-        #responsive > .small;
-    }
-    ////
-    // Tablet: @media-tablet-min and above
-    @media screen and ( min-width: @media-tablet-min ) {
-        #responsive > .tablet;
-    }
-    ////
-    // Desktop: @media-desktop-min and above
-    @media screen and ( min-width: @media-desktop-min ) {
-        #responsive > .desktop;
-    }
-    ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
-        #responsive > .large;
-    }
+// Mobile first
+#responsive > .mobile;
+////
+// Small: @media-small and below
+@media screen and (max-width: @media-small ) {
+    #responsive > .small;
 }
 ////
-// Desktop first media queries
-#media-queries() when (@media-mode = desktop-first) {
-    ////
-    // Larger: @media-large and above
-    @media screen and ( min-width: @media-large ) {
-        #responsive > .large;
-    }
-    ////
-    // Desktop Between @media-desktop-min and @media-desktop-max
-    @media screen and ( min-width: @media-desktop-min ) and ( max-width: @media-desktop-max ) {
-        #responsive > .desktop;
-    }
-    ////
-    // Tablet: Between @media-tablet-min and @media-tablet-max
-    @media screen and (min-width: @media-tablet-min ) and ( max-width: @media-tablet-max ) {
-        #responsive > .tablet;
-    }
-    ////
-    // Mobile: @media-mobile and below
-    @media screen and (max-width: @media-mobile ) {
-        #responsive > .mobile;
-    }
-    ////
-    // Small: @media-small and below
-    @media screen and (max-width: @media-small ) {
-        #responsive > .small;
-    }
+// Tablet: @media-tablet-min and above
+@media screen and ( min-width: @media-tablet-min ) {
+    #responsive > .tablet;
 }
 ////
-// Turn off Media Queries
-#media-queries() when (@media-mode = off) {
-    ////
-    // No media queries here
-    #responsive > .base;
+// Desktop: @media-desktop-min and above
+@media screen and ( min-width: @media-desktop-min ) {
+    #responsive > .desktop;
 }
-
 ////
-// Build media queries
-#media-queries();
+// Larger: @media-large and above
+@media screen and ( min-width: @media-large ) {
+    #responsive > .large;
+}
