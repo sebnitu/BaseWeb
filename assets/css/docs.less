@@ -303,34 +303,51 @@
         background-clip: padding-box;
     }
     
-    .row {
+    .row, .test-row {
         margin: 10px 0;
     }
     
-    /**
-     * Semantic Grid Styles
-     */
-    .test-row {
-        .make-row();
-        margin: 10px 0;
+    .test-container {
+        .make-container( 100% );
     }
-    .test-col-1 {
-        .make-column(1);
-    }
-    .test-col-2 {
-        .make-column(2);
-    }
-    .test-col-3 {
-        .make-column(3);
-    }
-    .test-col-4 {
-        .make-column(4);
-    }
-    .test-col-6 {
-        .make-column(6);
-    }
-     
+
 }
+
+#responsive { .tablet {
+    
+    .demo-grid {
+        
+        /**
+         * Semantic Grid Styles
+         */
+        .test-container {
+            .make-container( 100%, 20px, 1240px );
+        }
+        .test-row {
+            .make-row();
+        }
+        .test-col-1 {
+            .make-column(1, 100%, 2%);
+        }
+        .test-col-2 {
+            .make-column(2, 100%, 2%);
+        }
+        .test-col-3 {
+            .make-column(3, 100%, 2%);
+        }
+        .test-col-4 {
+            .make-column(4, 100%, 2%);
+        }
+        .test-col-6 {
+            .make-column(6, 100%, 2%);
+        }
+        .test-col-12 {
+            .make-column(12, 100%, 2%);
+        }
+        
+    }
+    
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Utility Classes Demo

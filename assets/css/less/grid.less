@@ -5,15 +5,15 @@
 /**
  * Global grid settings
  */
-@grid-total-width: 100%;
-@grid-gutter-width: 2%;
+@grid-total-width: 960px;
+@grid-gutter-width: 20px;
 @grid-columns: 12;
 
 /**
  * Fluid grid settings
  */
-@container-max-width: 1200px;
 @container-margin: 20px;
+@container-max-width: 1200px;
 
 /**
  * Grid class names
@@ -34,38 +34,36 @@
  */
 .make-container( 
     @-total-width : @grid-total-width, 
-    @-max-width : @container-max-width,
-    @-margin : @container-margin
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
 ) {
 
-    max-width: @container-max-width;
+    width: @-total-width;
+    max-width: @-max-width;
     margin-left: auto;
     margin-right: auto;
+    padding-left: @-margin;
+    padding-right: @-margin;
+
+}
+/* When is fluid */
+.make-container( 
+    @-total-width : @grid-total-width, 
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
+) when ( ispercentage(@-total-width) ) {
+    
     .box-sizing( border-box );
 
 }
-
+/* When is fixed */
 .make-container( 
-    @-total-width : @grid-total-width,
-    @-max-width : @container-max-width,
-    @-margin : @container-margin
-) when ( ispercentage(@-total-width) ) {
-    
-    width: 100%;
-    padding-left: @container-margin;
-    padding-right: @container-margin;
-
-}
-
-.make-container( 
-    @-total-width : @grid-total-width,
-    @-max-width : @container-max-width,
-    @-margin : @container-margin
+    @-total-width : @grid-total-width, 
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
 ) when ( ispixel(@-total-width) ) {
     
-    width: @-total-width;
-    padding-left: 0;
-    padding-right: 0;
+    .box-sizing( content-box );
 
 }
 
@@ -124,7 +122,9 @@
 .build-grid-system( 
     @-total-width : @grid-total-width, 
     @-gutter-width : @grid-gutter-width,
-    @-columns : @grid-columns
+    @-columns : @grid-columns,
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
 ) {
     
     .@{class-container} {
@@ -158,19 +158,31 @@
     .build-X (@-columns);
     
 }
-
+/* When is fluid */
 .build-grid-system( 
     @-total-width : @grid-total-width, 
     @-gutter-width : @grid-gutter-width,
-    @-columns : @grid-columns
+    @-columns : @grid-columns,
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
+) when ( ispercentage(@-total-width) ) {
+    
+    .@{class-container} {
+        .box-sizing( border-box );
+    }
+    
+}
+/* When is fixed */
+.build-grid-system( 
+    @-total-width : @grid-total-width, 
+    @-gutter-width : @grid-gutter-width,
+    @-columns : @grid-columns,
+    @-margin : @container-margin,
+    @-max-width : @container-max-width
 ) when ( ispixel(@-total-width) ) {
     
-    /**
-     * Remove container padding if it's a fixed width grid
-     */
     .@{class-container} {
-        padding-left: 0;
-        padding-right: 0;
+        .box-sizing( content-box );
     }
     
 }
@@ -187,13 +199,13 @@
         
     }
     .tablet() {
-        .build-grid-system();
-        // .build-grid-system( 100%, 2% );
+        // .build-grid-system();
+        .build-grid-system( 100%, 2% );
     }
     .desktop() {
-        // .build-grid-system();
+        .build-grid-system();
     }
     .large() {
-        // .build-grid-system( 1200px, 30px );
+        .build-grid-system( 1200px, 30px );
     }
 }

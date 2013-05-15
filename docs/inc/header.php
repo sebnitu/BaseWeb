@@ -37,4 +37,3 @@
 </header><!-- .header -->
 
 <section class="main">
-    <div class="container">
