@@ -12,7 +12,7 @@
 /**
  * Fluid grid settings
  */
-@container-margin: 20px;
+@container-padding: 20px;
 @container-max-width: 1200px;
 
 /**
@@ -34,7 +34,7 @@
  */
 .make-container( 
     @-total-width : @grid-total-width, 
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) {
 
@@ -42,14 +42,14 @@
     max-width: @-max-width;
     margin-left: auto;
     margin-right: auto;
-    padding-left: @-margin;
-    padding-right: @-margin;
+    padding-left: @-container-padding;
+    padding-right: @-container-padding;
 
 }
 /* When is fluid */
 .make-container( 
     @-total-width : @grid-total-width, 
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) when ( ispercentage(@-total-width) ) {
     
@@ -59,7 +59,7 @@
 /* When is fixed */
 .make-container( 
     @-total-width : @grid-total-width, 
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) when ( ispixel(@-total-width) ) {
     
@@ -123,7 +123,7 @@
     @-total-width : @grid-total-width, 
     @-gutter-width : @grid-gutter-width,
     @-columns : @grid-columns,
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) {
     
@@ -163,7 +163,7 @@
     @-total-width : @grid-total-width, 
     @-gutter-width : @grid-gutter-width,
     @-columns : @grid-columns,
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) when ( ispercentage(@-total-width) ) {
     
@@ -177,7 +177,7 @@
     @-total-width : @grid-total-width, 
     @-gutter-width : @grid-gutter-width,
     @-columns : @grid-columns,
-    @-margin : @container-margin,
+    @-container-padding : @container-padding,
     @-max-width : @container-max-width
 ) when ( ispixel(@-total-width) ) {
     

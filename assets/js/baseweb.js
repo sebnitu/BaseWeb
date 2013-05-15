@@ -1,7 +1,7 @@
 /**
  * baseweb.js
  * The base JavaScript for the BaseWeb framework
- * ----
+ * 
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
  * @url http://sebnitu.com

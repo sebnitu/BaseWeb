@@ -1,8 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////
-// BaseWeb's Mobile Menu Plugin
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * baseweb.mobilemenus.js
+ * Mobile menu jQuery plugin
+ * 
+ * @author Sebastian Nitu
+ * @url https://github.com/sebnitu/BaseWeb
+ * @url http://sebnitu.com
+ */
 
-(function($) {
+;(function ($) {
+    'use strict';
 
     $.fn.mobilemenu = function (options) {
         
@@ -152,4 +158,4 @@
     
     };
     
-})(jQuery);
+}(jQuery));
