@@ -2,18 +2,20 @@
 // Utility
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Hide text
-// Image replacement trick that hides text.
+/**
+ * Hide text
+ * Image replacement trick that hides text.
+ */
 .hide-text() {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
 }
 
-////
-// Clear Mixins
-// Allows for clearfixing by adding as mixin or as class.
+/**
+ * Clear Mixins
+ * Allows for clearfixing by adding as mixin or as class.
+ */
 .clearfix {
     *zoom: 1;
     
@@ -31,11 +33,20 @@
     }
 }
 
-////
-// Utility State Mixins
+/**
+ * Makes Hidden
+ * Makes an element hidden with display none !important
+ */
 .make-hidden() {
     display: none !important;
 }
+
+/**
+ * Makes Visible
+ * Makes an element visible with custom display value
+ *
+ * @param : Visibility value to use e.g. block, inline-block, table-cell
+ */
 .make-visible( @display : @display-visible ) {
     display: @display !important;
 }
@@ -44,136 +55,119 @@
 // Typography
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// EM
-// Turns a pixel value into ems based on it's context
-.em( @px, @lh : auto, @context : @font-size ) {
-    // Calculate the EM value
-    @size: round((@px / @context), 2);
-    // Set properties
-    font-size: unit( @size, em);
-    .line-height() when (@lh = auto) {
-        line-height: unit( round( ((@size + 0.6) / @size), 2), em);
+/**
+ * Font Sequence
+ * Sets font-size and line-height based on a multiplier
+ * 
+ * @param : Font size in pixels
+ * @param : Line height in pixels or set to auto for automatic calculation based on font-size and line-height-inc
+ * @param : Unit to use for sizing e.g. px, em
+ * @param : The context that sizes should be set. Default is base font size
+ */
+.font-sequence( 
+    @-font-size : @font-size,
+    @-line-height : auto,
+    @-font-unit : @font-unit,
+    @-context : @font-size
+) when (@-font-unit = px) {
+    
+    font-size: @-font-size;
+    
+    .line-height() when (@-line-height = auto) {
+        line-height: unit( (@-font-size + @line-height-inc), px);
     }
-    .line-height() when (isnumber(@lh)) and (@lh > 0) {
-        line-height: unit( round( (@lh / (@size * @context)), 2), em);
-    }
-    .line-height();
-}
-////
-// REM
-// Turns a pixel value into rems based on root element's font size
-.rem( @px, @lh : auto ) {
-    // Calculate the EM value
-    @size: round((@px / @font-size), 2);
-    // Set properties
-    font-size: unit( ( @size ), rem);
-    .line-height() when (@lh = auto) {
-        line-height: unit( round( ((@size + 0.6) / @size), 2), em);
-    }
-    .line-height() when (isnumber(@lh)) and (@lh > 0) {
-        line-height: unit( round( (@lh / (@size * @context)), 2), em);
+    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+        line-height: @-line-height;
     }
     .line-height();
 }
-////
-// PX
-// Converts an EM to pixels based on it's context
-.px( @em, @lh : auto, @context: @font-size ) {
-    // Calculate the size
-    @size: unit( (round((@em * @context), 2) ), px);
-    // But, if the value was already in pixels, just set it as the size.
-    .check-value() when ( ispixel(@em) ) {
-        @size: @em;
+.font-sequence( 
+    @-font-size : @font-size,
+    @-line-height : auto,
+    @-font-unit : @font-unit,
+    @-context : @font-size
+) when (@-font-unit = em) {
+
+    @-size: round((@-font-size / @-context), 2);
+    
+    font-size: unit( @-size, em);
+    
+    .line-height() when (@-line-height = auto) {
+        line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
     }
-    .check-value();
-    // Set properties
-    font-size: @size;
-    .line-height() when (@lh = auto) {
-        line-height: unit( round( (@size + @line-height-inc), 2), px);
+    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+        line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
     }
-    .line-height() when (isnumber(@lh)) and (@lh > 0) {
-        line-height: unit( @lh, px);
+    .line-height();
+}
+.font-sequence( 
+    @-font-size : @font-size,
+    @-line-height : auto,
+    @-font-unit : @font-unit,
+    @-context : @font-size
+) when (@-font-unit = rem) {
+    
+    @-size: round((@-font-size / @-context), 2);
+    
+    font-size: unit( @-size, rem);
+    
+    .line-height() when (@-line-height = auto) {
+        line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
+    }
+    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+        line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
     }
     .line-height();
 }
 
-////
-// Root Font Size
-// Sets the root font size for the html element
-// This is important when using REM in your document
-.root-font-size( @font-size : @font-size, @line-height : auto, @unit : 16 ) {
-    .build() when (@font-unit = em) {
-        .em( @font-size, @line-height, @unit );
-    }
-    .build() when (@unit = px) {
-        font-size: @font-size;
-        .line-height() when (@line-height = auto) {
-            line-height: (@font-size + @line-height-inc);
-        }
-        .line-height() when (isnumber(@line-height)) and (@line-height > 0) {
-            line-height: @line-height;
-        }
-        .line-height();
-    }
-    .build();
-}
-////
-// Font Sequence
-// Sets font-size and line-height based on a multiplier
-.font-sequence( @font-size, @line-height : auto, @unit : @font-unit ) {
-    .build() when (@unit = em) {
-        .em( @font-size, @line-height );
-    }
-    .build() when (@unit = px) {
-        font-size: @font-size;
-        .line-height() when (@line-height = auto) {
-            line-height: (@font-size + @line-height-inc);
-        }
-        .line-height() when (isnumber(@line-height)) and (@line-height > 0) {
-            line-height: @line-height;
-        }
-        .line-height();
-    }
-    .build();
-}
-
-////
-// Mono Font Settings
+/**
+ * Mono Font
+ * Adds mono font styles to an element along with font sizing and line-height.
+ *
+ * @param : Font size used with font-sequence()
+ */
 .mono-font( @size : @font-size-code ) {
     font-family: @font-family-mono;
     .font-sequence( @size );
 }
 
-////
-// Uppercase
-// Makes text uppercase with optional letter spacing value.
+/**
+ * Uppercase
+ * Makes text uppercase with optional letter spacing value.
+ *
+ * @param : Letter spacing
+ */
 .uppercase(@letter-spacing: @letter-spacing) {
     text-transform: uppercase;
     letter-spacing: @letter-spacing;
 }
 
-////
-// Lowercase
-// Makes text lowercase with optional letter spacing value
-// but defaults to zero.
+/**
+ * Lowercase
+ * Makes text lowercase with optional letter spacing value.
+ *
+ * @param : Letter spacing
+ */
 .lowercase(@letter-spacing: 0) {
     text-transform: lowercase;
     letter-spacing: @letter-spacing;
 }
 
-////
-// Reset case
-// Resets the text's text-transform property and sets letter
-// spacing back to zero.
+/**
+ * Reset Case
+ * Resets the text's text-transform property and sets letter spacing back to zero.
+ */
 .resetcase() {
     text-transform: none;
     letter-spacing: 0;
 }
 
-////
-// Truncate Text
-// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+/**
+ * Truncate Text
+ * Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+ *
+ * @param : Display property e.g. block, inline-block
+ */
 .truncate-text( @display : block ) {
     overflow: hidden;
     white-space: nowrap;
@@ -185,10 +179,14 @@
     .display();
 }
 
-////
-// Remove list styles
-// Removes default list styles of parent element
-// and subsequent list items.
+////////////////////////////////////////////////////////////////////////////////
+// List Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Remove List Styles
+ * Removes default list styles and margins from a list element and it's children
+ */
 .remove-list-styles() {
     list-style: none;
     margin: 0;
@@ -198,23 +196,49 @@
     }
 }
 
-////
-// Inline Lists
-// Turns list items inline
-.inline-list( @margin : @margin, @side : right  ) {
+/**
+ * Inline Lists
+ * Converts a list into an inline list with inline elements.
+ *
+ * @param : Gutter type e.g. margin, padding
+ * @param : Gutter spacing between list items e.g. 10px, 20px
+ * @param : Side that margines should appear e.g. right, left, both
+ */
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) {
+    margin: 0;
     
     li {
         display: inline-block;
-        
-        .side() when ( @side = right ) {
-            margin-right: @margin;
+    }
+}
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = margin ) {
+    
+    li {
+        .side() when ( @-side = right ) {
+            margin-right: @-margin;
         }
-        .side() when ( @side = left ) {
-            margin-left: @margin;
+        .side() when ( @-side = left ) {
+            margin-left: @-margin;
         }
-        .side() when ( @side = both ) {
-            margin-left: (@margin / 2);
-            margin-right: (@margin / 2);
+        .side() when ( @-side = both ) {
+            margin-left: (@-margin / 2);
+            margin-right: (@-margin / 2);
+        }
+        .side();
+    }
+}
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = padding ) {
+    
+    li {
+        .side() when ( @-side = right ) {
+            padding-right: @-margin;
+        }
+        .side() when ( @-side = left ) {
+            padding-left: @-margin;
+        }
+        .side() when ( @-side = both ) {
+            padding-left: (@-margin / 2);
+            padding-right: (@-margin / 2);
         }
         .side();
     }
@@ -224,16 +248,26 @@
 // Image Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Rounded
+/**
+ * Rounded
+ * Rounded corner styles for images
+ */
 .rounded() {
     .border-radius();
 }
-// Circle
+
+/**
+ * Circle
+ * Makes an image a circle
+ */
 .circle() {
     .border-radius(50%);
 }
-// Polaroid
+
+/**
+ * Polaroid
+ * Makes images have the polaroid styles
+ */
 .polaroid {
     background: @white;
     background-clip: padding-box;
@@ -247,16 +281,19 @@
 // CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Border radius mixins
-// These allow for more common sence writing of border
-// radius styles and allow for global defaults.
-////
+/**
+ * Border Radius Mixins
+ * Set border-radius with global defaults.
+ *
+ * @param : Size of border radius
+ */
 .border-radius(@radius: @border-radius) {
     border-radius: @radius;
 }
-////
-// Top
+
+/**
+ * Top
+ */
 .border-radius-top(@radius: @border-radius) {
     border-top-left-radius: @radius;
     border-top-right-radius: @radius;
@@ -267,8 +304,10 @@
 .border-radius-top-right(@radius: @border-radius) {
     border-top-right-radius: @radius;
 }
-////
-// Bottom
+
+/**
+ * Bottom
+ */
 .border-radius-bottom(@radius: @border-radius) {
     border-bottom-right-radius: @radius;
     border-bottom-left-radius: @radius;
@@ -279,8 +318,10 @@
 .border-radius-bottom-right(@radius: @border-radius) {
     border-bottom-right-radius: @radius;
 }
-////
-// Left
+
+/**
+ * Left
+ */
 .border-radius-left(@radius: @border-radius) {
     border-top-left-radius: @radius;
     border-bottom-left-radius: @radius;
@@ -291,8 +332,10 @@
 .border-radius-left-bottom(@radius: @border-radius) {
     border-bottom-left-radius: @radius;
 }
-////
-// Right
+
+/**
+ * Right
+ */
 .border-radius-right(@radius: @border-radius) {
     border-top-right-radius: @radius;
     border-bottom-right-radius: @radius;
@@ -304,53 +347,111 @@
     border-bottom-right-radius: @radius;
 }
 
-////
-// Box sizing
+/**
+ * Box Sizing
+ * Adds the box-sizing property with browser prefixes and global default
+ *
+ * @param : The box model you want to use e.g. border-box, content-box
+ */
 .box-sizing(@boxmodel) {
     -webkit-box-sizing: @boxmodel;
        -moz-box-sizing: @boxmodel;
             box-sizing: @boxmodel;
 }
 
-////
-// Box shadow
-// Allows for the use of global default box shadow property.
+/**
+ * Box Shadows
+ * Create box shadow using global default
+ *
+ * @param : Box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread, color
+ */
 .box-shadow(@shadow: @box-shadow) {
     box-shadow: @shadow;
 }
-////
-// RGBA Box Shadows
-// An attempted to make using RGBA in box shadows easier.
+
+/**
+ * RGBA for Box Shadows
+ * Make using RGBA in box shadows easier.
+ *
+ * @param : Box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread
+ * @param : Hex color that will be converted to RGB
+ * @param : Alpha channel that will be used in the RGBA
+ */
 .rgba-box-shadow( @details, @color, @alpha ) {
     box-shadow: @details rgba( red(@color), green(@color), blue(@color), @alpha);
 }
 
-////
-// Transition
-// Takes care of browser prefixes and allows for global default.
-// Transitions
-.transition( @transition: @transition ) {
-    -webkit-transition: @transition;
-       -moz-transition: @transition;
-         -o-transition: @transition;
-            transition: @transition;
-}
-.transition-delay( @transition-delay : @transition-delay ) {
-    -webkit-transition-delay: @transition-delay;
-       -moz-transition-delay: @transition-delay;
-         -o-transition-delay: @transition-delay;
-            transition-delay: @transition-delay;
-}
-.transition-duration( @transition-duration : @transition-duration ) {
-    -webkit-transition-duration: @transition-duration;
-       -moz-transition-duration: @transition-duration;
-         -o-transition-duration: @transition-duration;
-            transition-duration: @transition-duration;
+/**
+ * Transition
+ * Create transition with browser prefixes and global default
+ *
+ * @param : Transition shorthand order property, duration, timing-function, delay
+ */
+.transition( @-transition: @transition ) {
+    -webkit-transition: @-transition;
+       -moz-transition: @-transition;
+         -o-transition: @-transition;
+            transition: @-transition;
 }
 
-////
-// Rotate
-// Takes care of browser prefixes and allows for global default.
+/**
+ * Transition Property
+ * Set transition-property with browser prefixes and global default
+ *
+ * @param : The property to target for transition e.g. all, color, background, etc
+ */
+.transition-property( @-transition-property : @transition-property ) {
+    -webkit-transition-property: @-transition-property;
+       -moz-transition-property: @-transition-property;
+         -o-transition-property: @-transition-property;
+            transition-property: @-transition-property;
+}
+
+/**
+ * Transition Duration
+ * Set transition-duration with browser prefixes and global default
+ *
+ * @param : Seconds duration for transition e.g. 0.25s
+ */
+.transition-duration( @-transition-duration : @transition-duration ) {
+    -webkit-transition-duration: @-transition-duration;
+       -moz-transition-duration: @-transition-duration;
+         -o-transition-duration: @-transition-duration;
+            transition-duration: @-transition-duration;
+}
+
+/**
+ * Transition Timing Function
+ * Set transition-timing-function with browser prefixes and global default
+ *
+ * @param : Timing function for transition e.g. ease, linear, ease-in, ease-out, ease-in-out
+ */
+.transition-timing-function( @-transition-timing-function : @transition-timing-function ) {
+    -webkit-transition-timing-function: @-transition-timing-function;
+       -moz-transition-timing-function: @-transition-timing-function;
+         -o-transition-timing-function: @-transition-timing-function;
+            transition-timing-function: @-transition-timing-function;
+}
+
+/**
+ * Transition Delay
+ * Set transition-delay with browser prefixes and global default
+ *
+ * @param : Seconds delay before transition e.g. 0.25s
+ */
+.transition-delay( @-transition-delay : @transition-delay ) {
+    -webkit-transition-delay: @-transition-delay;
+       -moz-transition-delay: @-transition-delay;
+         -o-transition-delay: @-transition-delay;
+            transition-delay: @-transition-delay;
+}
+
+/**
+ * Rotate
+ * Create rotate transform with browser prefixes and global default
+ *
+ * @param : Degree of rotation
+ */
 .rotate(@deg: @rotate-degree) {
     -webkit-transform: rotate(@deg);
        -moz-transform: rotate(@deg);
@@ -359,13 +460,19 @@
             transform: rotate(@deg);
 }
 
-////
-// Gradients
-// Allows for the easy application for horizontal or vertical gradients
-////
+/**
+ * Gradients
+ * For greating gradient backgrounds easily
+ */
 #gradient {
-    ////
-    // Horizontal
+
+    /**
+     * Horizontal
+     * 
+     * @syntex : #gradient > .horizontal(@a, @b);
+     * @param : Start color
+     * @param : End color
+     */
     .horizontal(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
         background-color: @end-color;
         background-image: -moz-linear-gradient(left, @start-color, @end-color);
@@ -377,8 +484,14 @@
         background-repeat: repeat-x;
         filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@start-color,@end-color));
     }
-    ////
-    // Vertical
+
+    /**
+     * Vertical
+     * 
+     * @syntex : #gradient > .vertical(@a, @b);
+     * @param : Start color
+     * @param : End color
+     */
     .vertical(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
         background-color: @end-color;
         background-image: -moz-linear-gradient(top, @start-color, @end-color);
@@ -390,18 +503,32 @@
         background-repeat: repeat-x;
         filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start-color,@end-color));
     }
-    ////
-    // Directional
+
+    /**
+     * Directional
+     * 
+     * @syntex : #gradient > .directional(@a, @b, @c);
+     * @param : Start color
+     * @param : End color
+     * @param : Degree value for gradient angle
+     */
     .directional(@start-color: @gradient-start-color, @end-color: @gradient-end-color, @deg: @gradient-deg) {
         background-color: @end-color;
         background-repeat: repeat-x;
-        background-image: -moz-linear-gradient(@deg, @start-color, @end-color); // FF 3.6+
-        background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1+, Chrome 10+
-        background-image: -o-linear-gradient(@deg, @start-color, @end-color); // Opera 11.10
-        background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10
+        background-image: -moz-linear-gradient(@deg, @start-color, @end-color);
+        background-image: -webkit-linear-gradient(@deg, @start-color, @end-color);
+        background-image: -o-linear-gradient(@deg, @start-color, @end-color);
+        background-image: linear-gradient(@deg, @start-color, @end-color);
     }
-    ////
-    // Horizontal with Three Colors
+
+    /**
+     * Horizontal with Three Colors
+     * 
+     * @syntex : #gradient > .horizontal-three-colors(@a, @b, @c);
+     * @param : Start color
+     * @param : Center color
+     * @param : End color
+     */
     .horizontal-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
         background-color: mix(@center-color, @end-color, 80%);
         background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
@@ -410,10 +537,17 @@
         background-image: -o-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
         background-image: linear-gradient(to right, @start-color, @center-color @color-stop, @end-color);
         background-repeat: no-repeat;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
     }
-    ////
-    // Vertical with Three Colors
+
+    /**
+     * Vertical with Three Colors
+     * 
+     * @syntex : #gradient > .vertical-three-colors(@a, @b, @c);
+     * @param : Start color
+     * @param : Center color
+     * @param : End color
+     */
     .vertical-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
         background-color: mix(@center-color, @end-color, 80%);
         background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
@@ -422,10 +556,16 @@
         background-image: -o-linear-gradient(@start-color, @center-color @color-stop, @end-color);
         background-image: linear-gradient(@start-color, @center-color @color-stop, @end-color);
         background-repeat: no-repeat;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
     }
-    ////
-    // Radial
+
+    /**
+     * Radial
+     * 
+     * @syntex : #gradient > .radial(@a, @b);
+     * @param : Center color of radial
+     * @param : Outer color of radial
+     */
     .radial(@inner-color: @gradient-start-color, @outer-color: @gradient-end-color) {
         background-color: @outer-color;
         background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
@@ -434,8 +574,14 @@
         background-image: -o-radial-gradient(circle, @inner-color, @outer-color);
         background-repeat: no-repeat;
     }
-    ////
-    // Striped
+
+    /**
+     * Striped
+     * 
+     * @syntex : #gradient > .striped(@a, @b);
+     * @param : Start color
+     * @param : Degree value for gradient angle
+     */
     .striped(@color: @gradient-start-color, @angle: @gradient-deg) {
         background-color: @color;
         background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
@@ -444,8 +590,12 @@
         background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
         background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
     }
-    ////
-    // Reset filters for IE
+
+    /**
+     * Reset filters for IE
+     * 
+     * @syntex : #gradient > .reset-filter();
+     */
     .reset-filter() {
         filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
     }
@@ -455,9 +605,15 @@
 // UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Background, Border and Text Color
-// Returns a background-color based on alpha channel
+/**
+ * Color
+ * Creates RGBA background-color styles based on a hex value, alpha channel and hex fallback
+ *
+ * @param : Hex value that will be converted to RGB
+ * @param : Alpha channel that will be used in RGBA
+ * @param : Hax value that will be used as a fallback for browers that don't support RGBA
+ * @return : background-color
+ */
 .background-color(@hex : @bg-base, @alpha : @bg-alpha, @fallback : @bg) {
 
     .fallback() when (@fallback = 0) {
@@ -477,8 +633,16 @@
     }
     .background();
 }
-////
-// Returns a border-color based on alpha channel
+
+/**
+ * Color
+ * Creates RGBA border-color styles based on a hex value, alpha channel and hex fallback
+ *
+ * @param : Hex value that will be converted to RGB
+ * @param : Alpha channel that will be used in RGBA
+ * @param : Hax value that will be used as a fallback for browers that don't support RGBA
+ * @return : border-color
+ */
 .border-color(@hex : @border-base, @alpha : @border-alpha, @fallback : @border) {
 
     .fallback() when (@fallback = 0) {
@@ -498,8 +662,16 @@
     }
     .border();
 }
-////
-// Returns a color based on alpha channel
+
+/**
+ * Color
+ * Creates RGBA color styles based on a hex value, alpha channel and hex fallback
+ *
+ * @param : Hex value that will be converted to RGB
+ * @param : Alpha channel that will be used in RGBA
+ * @param : Hax value that will be used as a fallback for browers that don't support RGBA
+ * @return : color
+ */
 .color(@hex, @alpha : 1, @fallback : 0) {
 
     .fallback() when (@fallback = 0) {
@@ -520,14 +692,20 @@
     .color();
 }
 
-////
-// Arrows
-// Uses the "0x0" element with borders trick to draw triangles.
-////
+/**
+ * Arrows
+ * Uses the "0x0" element with borders trick to draw arrows.
+ *
+ * @syntax: #arrow > .arrow-direction(@a, @b);
+ * @param: Border width that determines size of arrow
+ * @param: Border color that determines color of arrow
+ */
 #arrow {
-    ////
-    // Base arrow properties. This should be condisered a private mixin.
-    // Don't use on it's own.
+
+    /**
+     * Base arrow properties. This should be condisered a private mixin.
+     * Don't use on it's own.
+     */
     .base() {
         content: "\0020";
         display: inline-block;
@@ -537,37 +715,46 @@
         border-style: solid;
         border-color: transparent;
     }
-    ////
-    // Up arrow
+
+    /**
+     * Up arrow
+     */
     .up( @arrow-width, @arrow-color ) {
         .base();
         border-width: 0 @arrow-width @arrow-width @arrow-width;
         border-bottom-color: @arrow-color;
     }
-    ////
-    // Right arrow
+
+    /**
+     * Right arrow
+     */
     .right( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width 0 @arrow-width @arrow-width;
         border-left-color: @arrow-color;
     }
-    ////
-    // Down arrow
+
+    /**
+     * Down arrow
+     */
     .down( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width @arrow-width 0 @arrow-width;
         border-top-color: @arrow-color;
     }
-    ////
-    // Left arrow
+
+    /**
+     * Left arrow
+     */
     .left( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width @arrow-width @arrow-width 0;
         border-right-color: @arrow-color;
     }
-    
-    ////
-    // Up right, right up arrow
+
+    /**
+     * Up right, right up arrow
+     */
     .up-right( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width;
@@ -580,9 +767,10 @@
         border-top-color: @arrow-color;
         border-right-color: @arrow-color;
     }
-    
-    ////
-    // Up left, left up arrow
+
+    /**
+     * Up left, left up arrow
+     */
     .up-left( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width;
@@ -595,9 +783,10 @@
         border-top-color: @arrow-color;
         border-left-color: @arrow-color;
     }
-    
-    ////
-    // Down right, right down arrow
+
+    /**
+     * Down right, right down arrow
+     */
     .down-right( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width;
@@ -610,9 +799,10 @@
         border-bottom-color: @arrow-color;
         border-right-color: @arrow-color;
     }
-    
-    ////
-    // Down left, left down arrow
+
+    /**
+     * Down left, left down arrow
+     */
     .down-left( @arrow-width, @arrow-color ) {
         .base();
         border-width: @arrow-width;
@@ -628,16 +818,19 @@
   
 }
 
-////
-// Console
-// Let's you output a LESS variable in the browser.
-// Requires that "<div id="console"></div>" be somewhere in the DOM
-// 
-// @value: The variable whos value that you want to output
-// @position: Where you want the console to appear: left, right, bottom-left, bottom-right.
-////
+/**
+ * Console
+ * Let's you output a LESS variable in the browser.
+ * Requires that `<div id="console"></div>` be somewhere in the DOM
+ * 
+ * @param : LESS Variable that will be output in the browser
+ * @param : Position of console output - left, right, bottom-left, bottom-right
+ */
 .console(@value, @position : right) {
-    
+
+    /**
+     * Position conditionals
+     */
     .position() when ( @position = left ) {
         #console {
             top: 0;
@@ -675,7 +868,10 @@
         }
     }
     .position();
-    
+
+    /**
+     * Base console styles
+     */
     #console {
         position: fixed;
         z-index: 100;

@@ -2,26 +2,30 @@
 // Table Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Background
+/**
+ * Backgrounds
+ */
 @bg-table: @white;
 @bg-table-alpha: 0;
 @bg-table-base: @white;
 
-////
-// Background Zebra
+/**
+ * Background Zebra
+ */
 @bg-table-zebra: @bg;
 @bg-table-zebra-alpha: @bg-alpha;
 @bg-table-zebra-base: @bg-base;
 
-////
-// Background Hover
+/**
+ * Background Hover
+ */
 @bg-table-hover: @yellow-lighter;
 @bg-table-hover-alpha: 0.25;
 @bg-table-hover-base: @cmYk;
 
-////
-// Border
+/**
+ * Border
+ */
 @border-table: #d0d0d0;
 @border-table-alpha: 0.15;
 @border-table-base: @black;
@@ -48,8 +52,9 @@ table {
 // Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Rowed
+/**
+ * Rowed
+ */
 .make-table-rowed() {
     border-collapse: separate;
     td, th {
@@ -61,8 +66,10 @@ table {
         border-bottom: 0 none; 
     }
 }
-////
-// Columned
+
+/**
+ * Columned
+ */
 .make-table-column() {
     border-collapse: separate;
     td, th {
@@ -78,8 +85,10 @@ table {
         border-left: 0 none;
     }
 }
-////
-// Bordered
+
+/**
+ * Bordered
+ */
 .make-table-bordered() {
     border-collapse: separate;
     border: 1px solid;
@@ -110,23 +119,28 @@ table {
     &.no-thead tr:first-child td:last-child, 
     &.no-thead tr:first-child th:last-child { .border-radius-top-right(); }
 }
-////
-// Padded
+
+/**
+ * Padded
+ */
 .make-table-padded() {
     td, th {
         padding: (@padding / 2) @padding;
     }
 }
-////
-// Condensed
+
+/**
+ * Condensed
+ */
 .make-table-condensed() {
     td, th {
         padding: (@padding / 4) (@padding / 2);
     }
 }
 
-////
-// Zebra
+/**
+ * Zebra
+ */
 .make-table-stripes( @direction : horizontal ) {
 
     .direction() when ( @direction = horizontal ) {
@@ -148,8 +162,9 @@ table {
     .direction();
 }
 
-////
-// Hover
+/**
+ * Hover
+ */
 .make-table-hover() {
     thead tr th:hover, 
     tbody tr:hover {

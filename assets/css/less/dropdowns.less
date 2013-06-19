@@ -37,14 +37,18 @@
         text-align: left;
     }
     
-    ////
-    // Hover & Focus
+    /**
+     * Hover & Focus
+     */
     li > a:hover,
     li > a:focus,
     li:hover > a { 
         .background-color(@black, 0.05, @bg);
     }
-    // Active
+    
+    /**
+     * Active
+     */
     li.active > a,
     li.active > a:hover,
     li.active > a:focus {
@@ -52,7 +56,10 @@
         text-shadow: 0 -1px 0 rgba(0,0,0, 0.25);
         .background-color(@color-link, 0.95, @color-link);
     }
-    // Disabled
+    
+    /**
+     * Disabled
+     */
     li.disabled > a,
     li.disabled > a:hover,
     li.disabled > a:focus {
@@ -60,8 +67,10 @@
         background: none;
         cursor: default;
     }
-    ////
-    // Parent
+    
+    /**
+     * Parent
+     */
     li.dropdown-parent > a {
         padding-right: 30px;
     }
@@ -75,22 +84,27 @@
     li.dropdown-parent.active:after {
         #arrow > .right(4px, rgba(255,255,255, 0.75));
     }
-    // Seperator
+    
+    /**
+     * Seperator
+     */
     li.seperator {
         height: 1px;
         margin: 5px -5px;
         .background-color(@border-base, @border-alpha, @border);
     }
     
-    ////
-    // Sub Menus
+    /**
+     * Sub Menus
+     */
     ul {
         .dropdown-wrapper();
         margin: -6px 0 0 0;
     }
     
-    ////
-    // Sub Menu Toggle
+    /**
+     * Sub Menu Toggle
+     */
     li:hover > ul {
         display: block;
     }

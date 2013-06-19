@@ -1,51 +1,50 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Base Form Styles
+// Base Form Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Forms
-////
-// Structure
+/**
+ * Structure
+ */
 @key-column-width: 160px;
 @key-column-gutter: 20px;
-// Background
+
 @bg-form: @bg;
 @bg-form-alpha: @bg-alpha;
 @bg-form-base: @bg-base;
-// Border
+
 @border-form: #d8d8d8;
 @border-form-alpha: 0.15;
 @border-form-base: @black;
 
-////
-// Inputs
-////
-// Fonts
+/**
+ * Input
+ */
 @font-family-form: @font-family;
 @font-size-form: 14px;
 @line-height-form: 20px;
 @color-form: @color;
-// Background
+
 @bg-input: @white;
 @bg-input-alpha: 1;
 @bg-input-base: @white;
-// Border
+
 @border-input: #bfbfbf;
 @border-input-alpha: 0.25;
 @border-input-base: @black;
 @border-input-size: 1px;
 @border-input-style: solid;
-// Padding
+
 @input-padding-top-bottom: round((@padding / 2));
 @input-padding-left-right: round((@padding / 2));
 @input-padding: @input-padding-top-bottom @input-padding-left-right;
-// Size
+
 @input-width: 220px;
 @input-height: @line-height-form;
 @input-box-size: border-box;
 
-////
-// Hard variables: Should not be changed!
+/**
+ * Hard variables: Should not be changed!
+ */
 .input-schematics() when (@input-box-size = content-area) {
     @true-input-width: (@input-width - ((@input-padding-left-right * 2) + (@border-input-size * 2)) );
     @true-input-height: @input-height;
@@ -56,9 +55,10 @@
 }
 .input-schematics();
 
-////
-// Labels
-// Used for horizontal forms to align labels with input fields
+/**
+ * Labels
+ * Used for horizontal forms to align labels with input fields
+ */
 @line-height-label: @true-input-height;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,14 +75,18 @@ legend {
     
 }
 
-////
-// Label
+/**
+ * Label
+ */
 label {
     margin: round((@margin / 2)) 0;
     padding: 0;
     display: inline-block;
 }
-// Inline Choice Labels
+
+/**
+ * Inline Choice Labels
+ */
 label.checkbox, label.radio {
     margin-right: round((@margin / 2));
     &:last-child {
@@ -90,62 +94,53 @@ label.checkbox, label.radio {
     }
 }
 
-////
-// Select
+/**
+ * Select
+ */
 select {
     margin: round((@margin / 2)) 0;
 }
 
-////
-// Buttons
+/**
+ * Buttons
+ */
 button {
     cursor: pointer;
 }
 
-////
-// Input Styles
-////
-// Text
+/**
+ * Input Styles
+ */
 textarea,
 input[type="text"],
 input[type="search"],
 input[type="password"],
-// Special text
 input[type="email"],
 input[type="url"],
-// Numeric
 input[type="tel"],
 input[type="number"],
-// Time & date
 input[type="time"],
 input[type="week"],
 input[type="month"],
 input[type="date"],
 input[type="datetime"],
 input[type="datetime-local"],
-// Other
 input[type="range"],
 input[type="color"] {
-    // Type
     font-family: @font-family-form;
     .font-sequence(@font-size-form);
     color: @color-form;
-    // Structure
     box-sizing: @input-box-size;
     width: @true-input-width;
     height: @true-input-height;
     max-width: 100%;
     display: inline-block;
-    // vertical-align: middle;
     padding: @input-padding;
     margin: round((@margin / 2)) 0;
-    // Border & Background
     border: @border-input-size @border-input-style;
     .border-color( @border-input-base, @border-input-alpha, @border-input );
     background: none;
     .background-color( @bg-input-base, @bg-input-alpha, @bg-input );
-    // Styles
-    // .border-radius();
     .box-shadow( 0 1px 3px rgba(0,0,0, 0.05) inset );
     .transition( ~"border linear 0.2s, box-shadow linear 0.2s" );
     
@@ -156,22 +151,26 @@ input[type="color"] {
     }
 }
 
-////
-// Remove webkit's search styles
-// 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+/**
+ * Remove webkit's search styles
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ */
 input[type="search"] {
     -webkit-appearance: textfield; /* 1 */
     box-sizing: @input-box-size;
 }
-// Remove inner padding and search cancel button in Safari 5 and Chrome
-// on OS X.
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome on OS X.
+ */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 
-////
-// Reset Input Widths
+/**
+ * Reset Input Widths
+ */
 input[type="range"] {
     width: auto;
 }
@@ -181,10 +180,11 @@ input[type="color"] {
     padding: 2px 4px;
 }
 
-////
-// choice
-// 1. Address box sizing set to `content-box` in IE 8/9.
-// 2. Remove excess padding in IE 8/9.
+/**
+ * choice
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
 input[type="radio"],
 input[type="checkbox"] {
     position: relative;
@@ -192,34 +192,37 @@ input[type="checkbox"] {
     padding: 0; /* 2 */
     top: -1px;
 }
-// Buttons
+
+/**
+ * Buttons
+ */
 input[type="file"],
 input[type="image"],
 input[type="reset"],
 input[type="button"],
 input[type="submit"] {}
 
-////
-// Responsive Styles : Small
+/**
+ * Responsive
+ */
 #responsive { .small() {
 
     
         
-} } // End of Responsive Styles : small
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Form Layout
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Base
-////
-// Group
+/**
+ * Group Structure
+ */
 form .group {
     .clearfix();
     margin: @margin 0;
 }
-// Key
+
 form .group .group-key {
     
 }
@@ -227,48 +230,45 @@ form .group .group-key label {
     font-weight: bold;
     display: block;
 }
-// Value
+
 form .group .group-value {
     
 }
 
-////
-// Key Alignment
-////
-// Left
+/**
+ * Key Alignment
+ */
 .key-align-left {
     .group .group-key {
         text-align: left;
     }
 }
-////
-// Right
+
 .key-align-right {
     .group .group-key {
         text-align: right;
     }
 }
 
-////
-// Value Alignment
-////
-// Left
+/**
+ * Value Alignment
+ */
 .value-align-left {
     .group .group-value {
         text-align: left;
     }
 }
-////
-// Right
+
 .value-align-right {
     .group .group-value {
         text-align: right;
     }
 }
 
-////
-// Horizontal Forms
-// Where group-key and group-value are side by side
+/**
+ * Horizontal Forms
+ * Where group-key and group-value are side by side
+ */
 .make-form-horizontal( @key-column-width : @key-column-width, @key-column-gutter : @key-column-gutter ) {
     // Group
     .group {
@@ -288,9 +288,10 @@ form .group .group-value {
     }
 }
 
-////
-// Vertical Forms
-// Where group-key and group-value are stacked
+/**
+ * Vertical Forms
+ * Where group-key and group-value are stacked
+ */
 .make-form-vertical() {
     // Group
     .group {
@@ -310,9 +311,10 @@ form .group .group-value {
     }
 }
 
-////
-// Inline Forms
-// Sets groups to be inline along with group-key and group-value
+/**
+ * Inline Forms
+ * Sets groups to be inline along with group-key and group-value
+ */
 .make-form-inline {
     // Group
     .group {
@@ -340,21 +342,23 @@ form.vertical, fieldset.vertical     { .make-form-vertical(); }
 form.horizontal, fieldset.horizontal { .make-form-vertical(); }
 form.inline, fieldset.inline         { .make-form-inline();   }
 
-////
-// Responsive Styles : Tablet
+/**
+ * Responsive
+ */
 #responsive { .tablet() {
 
     form.horizontal, fieldset.horizontal { .make-form-horizontal(); }
         
-} } // End of Responsive Styles : Tablet
+} }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Form Styles
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Bordered
-// Give the form a border and seperates groups with more borders!
+/**
+ * Bordered
+ * Give the form a border and seperates groups with more borders!
+ */
 .make-form-bordered() {
     border: 1px solid;
     .border-radius();
@@ -381,9 +385,10 @@ form.inline, fieldset.inline         { .make-form-inline();   }
     }
 }
 
-////
-// Filled
-// Description
+/**
+ * Filled
+ * Give the form a some filling
+ */
 .make-form-filled() {
     // Group
     .group {
@@ -402,9 +407,6 @@ form.inline, fieldset.inline         { .make-form-inline();   }
     }
 }
 
-// .background-color( @bg-form-base, @bg-form-alpha, @bg-form );
-// .border-color( @border-form-base, @border-form-alpha, @border-form );
-
 ////////////////////////////////////////////////////////////////////////////////
 // Style Class Assignment
 ////////////////////////////////////////////////////////////////////////////////
@@ -416,8 +418,9 @@ form.filled, fieldset.filled         { .make-form-filled();   }
 // Custom Form Groups
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Form Header
+/**
+ * Form Header
+ */
 .form-header {
 
 }
@@ -427,8 +430,9 @@ form.filled, fieldset.filled         { .make-form-filled();   }
     color: @color-link-hover;
 }
 
-////
-// Action Group
+/**
+ * Action Group
+ */
 .group-action {
     
 }
@@ -439,813 +443,3 @@ form.filled, fieldset.filled         { .make-form-filled();   }
         margin-right: 0;
     }
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Archive
-////////////////////////////////////////////////////////////////////////////////
-
-/*
-//============================================================
-// BaseWeb - Forms Theme
-// https://github.com/sebnitu/BaseWeb
-//============================================================
-// Structure
-//============================================================
-// Preset Form Structures
-//=========================================
-#formStructure {
-    
-    // Form Structure Template
-    //=========================================
-    .StructureTemplate() {
-        .group {
-            .group-key, .group-value {}
-            .group-key {}
-            .group-value {}
-        }
-        .group-action {
-            .group-value {}
-        }
-    } // End .StructureTemplate()
-    
-    // Base Styles
-    //=========================================
-    .base() {
-        .group {
-            display: block;
-            margin: @baseMargin 0;
-            .clearfix();
-            
-            .group-key, .group-value {
-                display: block;
-                
-                p {
-                    font-size: 0.9em;
-                    line-height: 1.4em;
-                    margin: 5px 0;
-                    color: @colorLight;
-                }
-            }
-            .group-key {
-                label {
-                    font-weight: bold;
-                    color: @colorDark;
-                }
-            }
-            .group-value {}
-            
-            &.group-inline {
-                
-                .group-key, .group-value {
-                    display: inline-block;
-                    p {
-                        line-height: 18px;
-                    }
-                }
-                .group-key {
-                    float: none;
-                    width: auto;
-                    margin: 0 30px 0 0;
-                }
-                .group-value {
-                    margin-left: 0;
-                }
-                // Inline Elements
-                //====================
-                #inlineElements();
-            }
-        }
-        .group-action {
-            position: relative;
-            overflow: hidden;
-            background: #f4f4f4;
-            border-top: 1px solid #e0e0e0;
-            
-            .group-value {
-                position: relative;
-                padding: 10px 15px;
-            }
-            .group-value * {
-                z-index: 2;
-            }
-            .group-value:before {
-                content: "\0020";
-                position: absolute;
-                z-index: 1;
-                top: 0;
-                left: -10px;
-                right: -10px;
-                bottom: -10px;
-                display: block;
-                .box-shadow( inset 0 1px 10px rgba(0,0,0, 0.06) );
-            }
-        }
-    } // End .base()
-    
-    // Wrapped Styles
-    //=========================================
-    .wrapped() {
-        background: #f4f4f4;
-        border: 1px solid #e0e0e0;
-        padding: 15px;
-        margin: 15px 0;
-        .border-radius();
-        
-        .group {
-            padding: 10px 15px 5px;
-            margin: 0 -15px;
-            border-top: 1px solid #e0e0e0;
-        
-            .group-key, .group-value {}
-            .group-key {}
-            .group-value {}
-            
-            &:first-child {
-                margin-top: -15px;
-                border-top: 0 none;
-            }
-            &:last-child {
-                margin-bottom: -15px;
-            }
-        }
-        .group-action {
-            background: #eaeaea;
-            border-color: #cecece;
-            padding: 0;
-            margin: 0 -15px -15px;
-            .border-radius-bottom();
-            
-            .group-value {
-                margin: 0;
-                padding: 10px 15px;
-            }
-        }
-    } // End .wrapped()
-    
-    // Inline Form
-    //=========================================
-    .inline() {
-        
-        // Structure
-        //====================
-        .group {
-            display: inline-block;
-            margin: 0 15px 0 0;
-            
-            .group-key, .group-value {
-                display: inline-block;
-                p {
-                    line-height: 18px;
-                }
-            }
-            .group-key {
-                float: none;
-                width: auto;
-            }
-            .group-value {
-                margin-left: 0;
-            }
-        }
-        .group-action {
-            background: none;
-            border: 0 none;
-            overflow: visible;
-            margin: 0;
-            
-            .group-value {
-                padding: 0;
-                margin: 0;
-            }
-            .group-value:before {
-                content: "";
-                display: none;
-            }
-        }
-        &.wrapped {
-            padding: 15px;
-            
-            .group {
-                padding: 0;
-                margin: 0 15px 0 0;
-                border: 0 none;
-                
-                &:first-child {
-                    margin-top: 0;
-                }
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-            .group-action {
-                background: none;
-                border: 0 none;
-                overflow: visible;
-                margin: 0;
-                
-                .group-value {
-                    padding: 0;
-                    margin: 0;
-                }
-                .group-value:before {
-                    content: "";
-                    display: none;
-                }
-            }
-        }
-        
-        // Inline Elements
-        //====================
-        #inlineElements();
-        
-    } // End .inline()
-    
-    // Vertical Form
-    //=========================================
-    .vertical() {
-        .group {
-            .group-key, .group-value {
-
-            }
-            .group-key {
-                float: none;
-                width: auto;
-            }
-            .group-value {
-                margin-left: 0;
-            }
-        }
-        .group-action {
-            .group-value {
-                margin-left: 0;
-                padding-left: 15px;
-            }
-        }
-        &.wrapped {
-            
-            .group {
-                .group-key, .group-value {}
-                .group-key {}
-                .group-value {}
-            }
-            .group-action {
-                .group-value {
-                    padding-left: 15px;
-                }
-            }
-            
-        }
-        
-        // Vertical Elements
-        //====================
-        #verticalElements();
-        
-    } // End .vertical()
-    
-    // Horizontal Form
-    //=========================================
-    .horizontal() {
-        .group {
-            .group-key, .group-value {
-                
-            }
-            .group-key {
-                float: left;
-                width: 140px;
-            }
-            .group-value {
-                margin-left: 160px;
-            }
-        }
-        .group-action {
-            .group-value {
-                margin-left: 0;
-                padding-left: 160px;
-            }
-        }
-        &.wrapped {
-            padding: 0;
-            .border-radius();
-            
-            .group {
-                margin: 0;
-                padding: 10px 0 5px;
-                
-                .group-key {
-                    margin-left: 15px;
-                }
-                .group-value {
-                    margin-right: 15px;
-                    margin-left: 180px;
-                }
-                &:first-child {
-                    margin-top: 0;
-                    border-top: 0 none;
-                }
-                &:last-child {
-                    margin-bottom: 0;
-                }
-            }
-            .group-action {
-                background-color: #eaeaea;
-                border-color: #cecece;
-                margin-bottom: 0;
-                padding: 0;
-            }
-            .group-action .group-value {
-                margin: 0;
-                padding-left: 180px;
-            }
-        }
-        
-        // Horizontal Elements
-        //====================
-        #horizontalElements();
-        
-    } // End .horizontal()
-    
-    // Responsive Form Styles
-    //=========================================
-    .responsive() {
-        form.horizontal, form.horizontal.wrapped {
-            .group {
-                .group-key, .group-value {
-    
-                }
-                .group-key {
-                    float: none;
-                    width: auto;
-                }
-                .group-value {
-                    margin-left: 0;
-                }
-            }
-            .group-action {
-                .group-value {
-                    margin-left: 0;
-                    padding-left: 15px;
-                }
-            }
-        }
-        form.horizontal.wrapped {
-            .group {
-                .group-key, .group-value {}
-                .group-key {}
-                .group-value {
-                    margin-left: 15px;
-                }
-            }
-            .group-action {
-                .group-value {
-                    padding-left: 15px;
-                }
-            }
-        }
-        
-        // Responsive Elements
-        //====================
-        #responsiveElements();
-        
-    } // End .responsive()
-    
-} // End #formStructure
-
-// Structure Assignment
-//=========================================
-form, fieldset {
-    // Base Form Styles
-    //====================
-    #formStructure > .base();
-    
-    // Class Namespacing
-    //====================
-    &.wrapped {
-        #formStructure > .wrapped();
-    }
-    &.vertical {
-        #formStructure > .vertical();
-    }
-    &.horizontal {
-        #formStructure > .horizontal();
-    }
-    &.inline {
-        #formStructure > .inline();
-    }
-}
-
-//============================================================
-// Form Elements
-//============================================================
-
-form {
-    margin: @baseMargin 0;
-}
-legend {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0 0 15px;
-    color: @colorDark;
-}
-
-label {
-    display: block;
-    margin: 0 0 5px;
-    padding: 0;
-    
-    &[for] {
-        cursor: pointer;
-    }
-}
-
-// Global form element typography
-//=========================================
-input, select, textarea, button {
-    font-family: @baseFontFamily;
-    font-size: @baseFontSize;
-}
-
-// Base inputs with types and textareas
-//=========================================
-input, textarea, select[multiple="multiple"] {
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 6px;
-    margin: 0 0 10px;
-    display: block;
-    width: 220px;
-    max-width: 95%;
-    height: 18px;
-    line-height: 18px;
-    color: @color;
-    .transition();
-    .border-radius(3px);
-    .box-shadow( 0 1px 2px rgba(0,0,0, 0.05) inset );
-    
-    // Submit Buttons
-    &[type="submit"], &[type="button"] {
-        height: auto;
-        width: auto;
-        cursor: pointer;
-    }
-    
-    // Checkboxes & Radios
-    &[type="checkbox"], &[type="radio"] {
-        width: auto;
-        height: auto;
-        line-height: normal;
-        cursor: pointer;
-        padding: 0;
-        margin: 3px;
-        .border-radius(0);
-        .box-shadow(none);
-    }
-    
-    // Files
-    &[type="file"] {
-        background: none;
-        height: auto;
-        width: auto;
-        padding: 0;
-        border: 0 none;
-        .box-shadow( none );
-    }
-    
-    // Multiple select
-    &[multiple="multiple"] {
-        height: auto;
-        overflow: auto;
-    }
-    
-    // Input Sizes
-    //====================
-    &.input-fluid, &.textarea-fluid {
-        width: 95%;
-    }
-    &.input-huge, &.textarea-huge {
-        width: 340px;
-    }
-    &.input-large, &.textarea-large {
-        width: 280px;
-    }
-    &.input-default, &.textarea-default {
-        width: 220px;
-    }
-    &.input-small, &.textarea-small {
-        width: 160px;
-    }
-    &.input-tiny, &.textarea-tiny {
-        width: 100px;
-    }
-    &.input-mini, &.textarea-mini {
-        width: 40px;
-    }
-    &.input-huge, &.textarea-huge,
-    &.input-large, &.textarea-large,
-    &.input-default, &.textarea-default,
-    &.input-small, &.textarea-small,
-    &.input-tiny, &.textarea-tiny,
-    &.input-mini, &.textarea-mini {
-        max-width: 95%;
-    }
-}
-textarea {
-    height: auto;
-}
-
-// Buttons
-//=========================================
-button {
-    cursor: pointer;
-}
-// Remove unwanted button padding in FF
-// http://www.aheadcreative.com/removing-unwanted-button-padding-in-firefox/
-//====================
-button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
-
-// Select
-//=========================================
-select {
-    font-size: 12px;
-    border: 1px solid #bbb;
-    display: block;
-    width: 200px;
-    max-width: 95%;
-    height: 28px;
-    margin: 0 0 10px;
-    padding: 4px;
-    line-height: 28px;
-    
-    // Select Sizes
-    //====================
-    &.select-fluid {
-        width: 95%;
-    }
-    &.select-huge {
-        width: 354px;
-    }
-    &.select-large {
-        width: 294px;
-    }
-    &.select-default {
-        width: 234px;
-    }
-    &.select-small {
-        width: 174px;
-    }
-    &.select-tiny {
-        width: 114px;
-    }
-    &.select-mini {
-        width: 54px;
-    }
-    &.select-huge,
-    &.select-large,
-    &.select-default,
-    &.select-small,
-    &.select-tiny,
-    &.select-mini {
-        max-width: 95%;
-    }
-}
-
-// Checkboxes & Radios
-//=========================================
-.checkbox, .radio {
-    min-height: 22px;
-    line-height: 22px;
-    padding: 0 0 0 18px;
-    margin: 0 0 10px;
-    
-    input[type="checkbox"], input[type="radio"] {
-        float: left; 
-        margin-left: -18px;
-        margin-top: 5px;
-    }
-}
-.group-checkbox .checkbox, .group-radio .radio {
-    margin-top: -8px;
-    
-    &:first-child {
-        margin-top: 0;
-    }
-}
-
-// Inline
-//====================
-.group-value.inline .checkbox,
-.group-value.inline .radio,
-.checkbox.inline,
-.radio.inline {
-    float: left;
-    margin-right: 15px;
-    margin-bottom: 12px;
-}
-
-// Focus
-//=========================================
-input[type="text"], input[type="password"], input[type="submit"], button, textarea, select {
-    &:focus {
-        outline: none;
-        border-color: @blue;
-        .box-shadow( 0 0 8px rgba(13,119,204, 0.3) );
-    }
-}
-
-// Placeholder Text
-//=========================================
-::-webkit-input-placeholder {
-    color: @colorLight;
-}
-:-moz-placeholder {
-    color: @colorLight;
-}
-
-// Form States
-//=========================================
-form .group.warning {
-    label, p, input, textarea, select[multiple="multiple"] {
-        color: @orange;
-    }
-    input, textarea, select[multiple="multiple"] {
-        border-color: @orange;
-        
-        &:focus {
-            outline: none;
-            border-color: @orange;
-            .box-shadow( 0 0 8px rgba(223,134,7, 0.3) );
-        }
-    }
-}
-form .group.error {
-    label, p, input, textarea, select[multiple="multiple"] {
-        color: @red;
-    }
-    input, textarea, select[multiple="multiple"] {
-        border-color: @red;
-        
-        &:focus {
-            outline: none;
-            border-color: @red;
-            .box-shadow( 0 0 8px rgba(190,0,0, 0.3) );
-        }
-    }
-}
-form .group.success {
-    label, p, input, textarea, select[multiple="multiple"] {
-        color: @green;
-    }
-    input, textarea, select[multiple="multiple"] {
-        border-color: @green;
-        
-        &:focus {
-            outline: none;
-            border-color: @green;
-            .box-shadow( 0 0 8px rgba(23,168,100, 0.3) );
-        }
-    }
-}
-
-// Inline Elements
-//=========================================
-#inlineElements() {
-    label {
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: -5px;
-        margin-bottom: 0;
-    }
-    input, textarea, select[multiple="multiple"] {
-        display: inline-block;
-        margin-bottom: 0;
-    }
-    .checkbox, .radio {
-        display: inline-block;
-        vertical-align: middle;
-        padding-left: 0;
-        margin-bottom: 0;
-        margin-right: 15px;
-        
-        input[type="checkbox"], input[type="radio"] {
-            float: left; 
-            margin-left: 0;
-            margin-right: 5px;
-        }
-    }
-    select {
-        margin-bottom: 0;
-    }
-    p {
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0;
-        margin-top: -5px;
-    }
-    button, input[type="submit"], .btn {
-        position: relative;
-        top: -1px;
-    }
-    
-    label {
-        margin-top: 0;
-    }
-    label select {
-        display: inline-block;
-    }
-    label.checkbox {
-        margin: 0 0 0 15px;
-    }
-    label.checkbox input[type="checkbox"] {
-        display: inline-block;
-        float: none;
-        margin: 0;
-    }
-}
-
-// Responsive Elements
-//=========================================
-#responsiveElements() {
-    textarea,
-    textarea.textarea-huge,
-    textarea.textarea-large,
-    textarea.textarea-default,
-    textarea.textarea-small,
-    textarea.textarea-tiny,
-    textarea.textarea-mini {
-        width: 95%;
-        max-width: 95%;
-        min-width: 95%;
-    }
-    
-    .group-value.inline .checkbox,
-    .group-value.inline .radio,
-    .checkbox.inline, .radio.inline {
-        margin-bottom: 0;
-    }
-    &.wrapped {
-        .group-key, .group-value {}
-        .group-value.inline .checkbox,
-        .group-value.inline .radio,
-        .checkbox.inline, .radio.inline {
-            margin-bottom: 12px;
-        }
-    }
-}
-
-// Horizontal Elements
-//=========================================
-#horizontalElements() {
-    
-    .group {
-        .group-key {
-            label {
-                padding-top: 6px;
-            }
-        }
-        .group-value {
-            .checkbox, .radio {
-                padding-top: 6px;
-            }
-        }
-    }
-    
-}
-
-// Vertical Elements
-//=========================================
-#verticalElements() {
-    
-    .group {
-        .group-key {
-            label {
-                padding-top: 6px;
-            }
-        }
-        .group-value {
-            .checkbox, .radio {
-                padding-top: 6px;
-            }
-        }
-    }
-    
-    .group-value.inline .checkbox,
-    .group-value.inline .radio,
-    .checkbox.inline, .radio.inline {
-        margin-bottom: 0;
-    }
-    &.wrapped {
-        .group-key, .group-value {}
-        .group-value.inline .checkbox,
-        .group-value.inline .radio,
-        .checkbox.inline, .radio.inline {
-            margin-bottom: 12px;
-        }
-    }
-    
-}
-
-//============================================================
-// End of Form Styles
-//============================================================
-*/

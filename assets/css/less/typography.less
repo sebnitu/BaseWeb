@@ -2,17 +2,19 @@
 // Typography
 ////////////////////////////////////////////////////////////////////////////////
 
-html {
-    .root-font-size();
+html {    
+    .font-sequence( @font-size, @line-height, @font-unit, 16px );
 }
+
 body {
     font-family: @font-family;
     font-weight: @font-weight;
     color: @color;
 }
 
-////
-// Headers
+/**
+ * Headers
+ */
 h1, h2, h3, h4, h5, h6 {
     margin: @margin 0;
     font-family: @font-family-header;
@@ -48,8 +50,9 @@ h6 {
     .font-sequence( 14px );
 }
 
-////
-// Base Elements
+/**
+ * Base Elements
+ */
 p { 
     margin: @margin 0;
 
@@ -73,8 +76,9 @@ cite {
     font-style: normal;
 }
 
-////
-// Utility Classes
+/**
+ * Utility Classes
+ */
 .delete {
     position: relative;
     display: inline-block;
@@ -97,8 +101,9 @@ cite {
     .background-color(@yellow-lighter, 0.6);
 }
 
-////
-// Links/Anchors
+/**
+ * Links
+ */
 .anchor() {
     color: @color-link;
     text-decoration: none;
@@ -138,8 +143,10 @@ blockquote {
         }
     }
 }
-////
-// Align Right
+
+/**
+ * Align Right
+ */
 blockquote.align-right {
     text-align: right;
     border-left: 0 none;

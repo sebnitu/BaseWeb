@@ -2,25 +2,34 @@
 // Modal Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Backgrounds
+/**
+ * Backgrounds
+ */
 @bg-modal: @white;
 @bg-modal-header: transparent;
 @bg-modal-body: transparent;
 @bg-modal-footer: @bg;
-////
-// Borders
+
+/**
+ * Borders
+ */
 @border-modal: @border;
-////
-// Spacing
+
+/**
+ * Spacing
+ */
 @modal-padding-top-bottom: 15px;
 @modal-padding-left-right: 20px;
 @modal-padding: @modal-padding-top-bottom @modal-padding-left-right;
-////
-// Typography
+
+/**
+ * Typography
+ */
 @modal-font-size-header: 18px;
-////
-// Details
+
+/**
+ * Details
+ */
 @modal-border-radius: @border-radius;
 @modal-box-shadow: 0 1px 5px rgba(0,0,0, 0.5);
 
@@ -28,8 +37,9 @@
 // Base Modal Styles
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Structure
+/**
+ * Structure
+ */
 .modal {
     background-color: @bg-modal;
     .border-radius(@modal-border-radius);
@@ -40,23 +50,33 @@
     padding: @modal-padding;
 }
 
-////
-// Modal Header
+/**
+ * Modal Header
+ */
 .modal-header {
     background-color: @bg-modal-header;
     border-bottom: 1px solid @border-modal;
     .border-radius-top(@modal-border-radius);
-    // Headers
+
+    /**
+     * Headers
+     */
     h1, h2, h3, h4, h5, h6 {
         .font-sequence(@modal-font-size-header);
         margin: 0;
     }
-    // Intro Text
+
+    /**
+     * Intro Text
+     */
     p {
         color: @color-light;
         margin: 0;
     }
-    // Close Button
+
+    /**
+     * Close Button
+     */
     .close {
         position: absolute;
         top: 10px;
@@ -82,16 +102,18 @@
     }
 }
 
-////
-// Modal Body
+/**
+ * Modal Body
+ */
 .modal-body {
     background-color: @bg-modal-body;
     overflow: auto;
     padding: (@modal-padding-top-bottom - ( @margin / 2 ) ) @modal-padding-left-right;
 }
 
-////
-// Modal Footer
+/**
+ * Modal Footer
+ */
 .modal-footer {
     background-color: @bg-modal-footer;
     border-top: 1px solid @border-modal;

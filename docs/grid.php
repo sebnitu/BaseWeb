@@ -1,4 +1,5 @@
 <div class="container">
+
     <div class="row">
         <div class="col col-1"><p>.</p></div>
         <div class="col col-1"><p>.</p></div>

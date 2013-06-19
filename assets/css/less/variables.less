@@ -1,78 +1,91 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Core Variables
+// Typography
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Typohraphy
-////
-// Font families
+/**
+ * Font Families
+ */
 @font-family-sans: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
 @font-family-slab: @font-family-sans;
 @font-family-serif: georgia, "Times New Roman", times, serif;
 @font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-icon: "Glyphicons";
 
-////
-// Base Styles
+/**
+ * Base Styles
+ */
 @font-family: @font-family-sans;
 @font-size: 14px;
 @font-weight: normal;
-@font-unit: em; // Either `em` or `px` for font outputs
-// Line Height
-@line-height-inc: 8;
-@line-height: (@font-size + @line-height-inc); // 22
+@font-unit: px; // Either `em` or `px` for font outputs
 
-////
-// Header Styles
+@line-height-inc: 8px;
+@line-height: unit( (@font-size + @line-height-inc), px ); // 22px
+
+/**
+ * Header Styles
+ */
 @font-family-header: inherit;
 @font-weight-header: bold;
 
-////
-// Alternative Styles
+/**
+ * Alternative Styles
+ */
 @font-family-alt: @font-family-serif;
 @font-weight-alt: inherit;
 
-////
-// Text Color Assignment
+/**
+ * Text Color Assignment
+ */
 @color: @gray-dark;
 @color-light: @gray-lighter;
 @color-dark: @gray-darker;
 @color-header: @color;
-// Links Color Assignment
+
 @color-link: @blue;
 @color-link-hover: @red;
 @color-link-header: @color-link;
 @color-link-header-hover: @color-link-hover;
 
-////
-// Backgrounds
+////////////////////////////////////////////////////////////////////////////////
+// Scaffolding
+////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Backgrounds
+ */
 @bg: #f4f4f4;
 @bg-alpha: 0.04;
 @bg-base: @black;
 
-////
-// Borders
+/**
+ * Borders
+ */
 @border: #e0e0e0;
 @border-alpha: 0.1;
 @border-base: @black;
 
-////
-// Spacing
-@margin: (@line-height / 2); // 11
-@padding: (@line-height / 2); // 11
+/**
+ * Spacing
+ */
+@margin: (@line-height / 2);  // 11px
+@padding: (@line-height / 2); // 11px
 
 ////////////////////////////////////////////////////////////////////////////////
 // Mixin Defaults
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// CSS3
+/**
+ * CSS3
+ */
 @border-radius: 4px;
 @box-shadow: 0 1px 3px rgba(0,0,0, 0.25);
 
-@transition: all linear 0.25s;
-@transition-delay: ease-in-out;
+@transition: all 0.25s linear; // property, duration, timing-function, delay
+@transition-property: all;
 @transition-duration: 0.25s;
+@transition-timing-function: ease-in-out;
+@transition-delay: 0.25s;
 
 @rotate-degree: 0;
 
@@ -82,8 +95,9 @@
 @gradient-deg: 45deg;
 @gradient-color-stop: 50%;
 
-////
-// Miscellaneous
+/**
+ * Miscellaneous
+ */
 @letter-spacing: 1px;
 @display-visible: block;
 
@@ -91,8 +105,9 @@
 // Miscellaneous
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Directories
+/**
+ * Directories
+ */
 @dir-images: "../img/layout/";
 @dir-fonts: "../fonts/";
 
@@ -100,8 +115,9 @@
 // Media Queries
 ////////////////////////////////////////////////////////////////////////////////
 
-////
-// Media query breakpoints
+/**
+ * Media query breakpoints
+ */
 @media-small:       480px; // max-width
 
 @media-mobile:      760px;
