@@ -1,5 +1,5 @@
 #BaseWeb
-A front-end CSS framework written in LESS.
+A fresh front-end development framework.
 
 I'm currently working on the full documentation and overall this project is still changing a lot while I play around with things and figure out how I work best using this framework.
 
