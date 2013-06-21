@@ -1,4 +1,6 @@
+var colorize = require('./jakelib/colorize');
+
 desc('This is the default task.');
 task('default', function (params) {
-    console.log('This is the default task.');
+    console.log( colorize('This is the default task.', 'green') );
 });
