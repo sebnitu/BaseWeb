@@ -4,26 +4,27 @@ var less = require('less');
 var extend = require('./extend');
 var colorize = require('./colorize');
 
-function lessc(input, output, options) {
+var defaultOptions = {
+    depends: false,
+    compress: false,
+    yuicompress: false,
+    max_line_len: -1,
+    optimization: 1,
+    silent: false,
+    verbose: false,
+    lint: false,
+    paths: [],
+    color: true,
+    strictImports: false,
+    rootpath: '',
+    relativeUrls: false,
+    ieCompat: true,
+    strictMath: false,
+    strictUnits: false
+};
 
-    var defaultOptions = {
-        depends: false,
-        compress: false,
-        yuicompress: false,
-        max_line_len: -1,
-        optimization: 1,
-        silent: false,
-        verbose: false,
-        lint: false,
-        paths: [],
-        color: true,
-        strictImports: false,
-        rootpath: '',
-        relativeUrls: false,
-        ieCompat: true,
-        strictMath: false,
-        strictUnits: false
-    };
+desc('Compile and minify a LESS file');
+task('lessc', {async: true}, function(input, output, options) {
     
     var options = extend(defaultOptions, options);
     
@@ -51,7 +52,8 @@ function lessc(input, output, options) {
 
                 fs.writeFile(output, css, 'utf8', function(err) {
                     if (err) throw new Error(colorize(err, 'red'));
-                    console.log(colorize('lessc: wrote ' + output, 'green'));
+                    console.log(colorize('√ lessc: wrote ' + output, 'green'));
+                    complete();
                 });
 
             } catch (err) {
@@ -61,6 +63,5 @@ function lessc(input, output, options) {
         });
 
     });
-}
 
-module.exports = lessc;
+});

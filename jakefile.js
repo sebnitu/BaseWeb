@@ -1,37 +1,39 @@
 var fs = require('fs');
-var sys = require('util');
-var path = require('path');
-
-var less = require('less');
 var watch = require('node-watch');
 
-var lessc = require('./jakelib/lessc');
 var colorize = require('./jakelib/colorize');
 var notice = require('./jakelib/notice');
 
-namespace('compile', function() {
+namespace('build', function() {
     
-    desc('Compile LESS files');
-    task('less', {async: true}, function() {
-        
-        var input = 'assets/less/baseweb.less'
+    desc('Compiles and minifies BaseWeb');
+    task('baseweb', {async: true}, function() {
+        var lessp = ['./assets/less/']
+        ,   input = 'assets/less/baseweb.less'
         ,   output = 'assets/css/baseweb.css'
         ,   outputMin = 'assets/css/baseweb.min.css'
-        ,   lessp = ['./assets/less'];
+        ,   lessTask = jake.Task.lessc;
         
-        lessc(input, output, { paths: lessp });
-        lessc(input, outputMin, { paths: lessp, compress : true });
+        // Reenables task so we can call it more than once
+        lessTask.reenable(true);
+        
+        // Compile baseweb.css
+        lessTask.invoke.apply(lessTask, [
+            input
+        ,   output
+        ,   { paths: lessp }
+        ]);
+        // Compile and minify baseweb.min.css
+        lessTask.invoke.apply(lessTask, [
+            input
+        ,   outputMin
+        ,   { paths: lessp, compress : true }
+        ]);
         
     });
     
-});
-
-namespace('build', function() {
-    
-    desc('Build core BaseWeb files');
-    task('baseweb', {async: true}, function() {
-        
-        jake.Task['compile:less'].execute();
+    desc('Build documentation');
+    task('docs', {async: true}, function() {
         
     });
     
