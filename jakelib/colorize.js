@@ -7,7 +7,6 @@ function colorize(str, color) {
         , 'red': '31m'
         , 'yellow': '33m'
         }
-
     return colors[color] ? '\033[' + colors[color] + str + '\033[39m' : str
 }
 
