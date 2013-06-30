@@ -1,36 +1,35 @@
-var fs = require('fs');
-var colorize = require('./colorize');
-
-var lessPaths = ['assets/less/']
-,   docsPath = 'docs/'
-,   templatesPath = docsPath + 'templates/'
-,   layoutsPath = templatesPath + 'layouts/'
-,   pagesPath = templatesPath + 'pages/';
+var getjson = require('./utilities/getjson');
 
 namespace('build', function() {
-    
-    desc('Compiles and minifies BaseWeb');
-    task('baseweb', {async: true}, function() {
-        var input = 'assets/less/baseweb.less'
-        ,   output = ['assets/css/baseweb.css', 'assets/css/baseweb.min.css']
-        ,   lessTask = jake.Task.lessc;
-        lessTask.reenable(true);
-        lessTask.invoke.apply(lessTask, [input, output, {paths: lessPaths}]);
+  
+  desc('Compiles and minifies BaseWeb');
+  task('baseweb', {async: true}, function() {
+    getjson('config.json', function(config) {
+      var input = config.paths.less + 'baseweb.less'
+        , output = [config.paths.css + 'baseweb.css', config.paths.css + 'baseweb.min.css']
+        , lessTask = jake.Task.lessc
+        ;
+      lessTask.reenable(true);
+      lessTask.invoke.apply(lessTask, [input, output, {paths: config.paths.less}]);
     });
-    
-    desc('Compiles and minifies a test less file');
-    task('test', {async: true}, function() {
-        var input = 'assets/less/test.less'
-        ,   output = ['assets/css/test.css', 'assets/css/test.min.css']
-        ,   lessTask = jake.Task.lessc;
-        lessTask.reenable(true);
-        lessTask.invoke.apply(lessTask, [input, output, {paths: lessPaths}]);
+  });
+  /*
+  desc('Compiles and minifies a test less file');
+  task('test', {async: true}, function() {
+    getjson('config.json', function(config) {
+      var input = config.paths.less + 'test.less'
+        , output = [config.paths.css + 'test.css', config.paths.css + 'test.min.css']
+        , lessTask = jake.Task.lessc
+        ;
+      lessTask.reenable(true);
+      lessTask.invoke.apply(lessTask, [input, output, {paths: config.paths.less}]);
     });
-    
-    desc('Build documentation');
-    task('docs', {async: true}, function() {
-        var mustacheTask = jake.Task.mustache;
-        mustacheTask.reenable(true);
-        mustacheTask.invoke.apply(mustacheTask, [{paths: layoutsPath}]);
-    });
+  });
+  */
+  desc('Build documentation');
+  task('docs', {async: true}, function() {
+    var mustacheTask = jake.Task.mustache;
+    mustacheTask.reenable(true);
+    mustacheTask.invoke.apply(mustacheTask);
+  });
 });
