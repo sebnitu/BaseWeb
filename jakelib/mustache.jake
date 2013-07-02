@@ -5,7 +5,10 @@ var getjson = require('./utilities/getjson');
 var asyncForEach = require('./utilities/asyncForEach');
 
 desc('Assembles the documentation templates');
-task('mustache', {async: true}, function() {
+task('mustache', {async: true}, function(input, output) {
+  
+  console.log(input + 'templates/');
+  console.log(output);
   
   getjson(function(json) {
   

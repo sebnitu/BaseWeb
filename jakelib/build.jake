@@ -28,8 +28,25 @@ namespace('build', function() {
 
   desc('Build documentation');
   task('docs', {async: true}, function() {
-    var mustacheTask = jake.Task.mustache;
-    mustacheTask.reenable(true);
-    mustacheTask.invoke.apply(mustacheTask);
+    getjson('config.json', function(config) {
+      var input = config.paths.docs
+        , output = config.paths.docs
+        , mustacheTask = jake.Task.mustache
+        ;
+      mustacheTask.reenable(true);
+      mustacheTask.invoke.apply(mustacheTask, [input, output]);
+    });
+  });
+  
+  desc('Build test suite');
+  task('tests', {async: true}, function() {
+    getjson('config.json', function(config) {
+      var input = config.paths.tests
+        , output = config.paths.tests
+        , mustacheTask = jake.Task.mustache
+        ;
+      mustacheTask.reenable(true);
+      mustacheTask.invoke.apply(mustacheTask, [input, output]);
+    });
   });
 });

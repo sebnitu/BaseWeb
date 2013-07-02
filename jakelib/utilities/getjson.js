@@ -33,17 +33,26 @@ function getJSON(files, callback) {
     // Lets us loop through files asyncronously
     asyncForEach(files, function(file, callback) {
       
-      
-      fs.readFile(file, 'utf8', function(err, data) {
-        if (err) throw new Error(colorize(err, 'red'));
-        if (a != 'undefined') {
-          b = a;
+      // Check if the files exists
+      fs.exists(file, function(exists) {
+        if (exists) {
+        
+          fs.readFile(file, 'utf8', function(err, data) {
+            if (err) throw new Error(colorize(err, 'red'));
+            if (a != 'undefined') {
+              b = a;
+            }
+            a = JSON.parse(data);
+            if (b != 'undefined') {
+              json = extend(a, b);
+            }
+            callback();
+          });
+          
+        } else {
+          console.log(colorize('Sorry, but ' + file + ' does not exist!', 'yellow'));
+          callback();
         }
-        a = JSON.parse(data);
-        if (b != 'undefined') {
-          json = extend(a, b);
-        }
-        callback();
       });
       
     }, function() {
