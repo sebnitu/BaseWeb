@@ -13,7 +13,7 @@ namespace('build', function() {
       lessTask.invoke.apply(lessTask, [input, output, {paths: config.paths.less}]);
     });
   });
-  /*
+
   desc('Compiles and minifies a test less file');
   task('test', {async: true}, function() {
     getjson('config.json', function(config) {
@@ -25,7 +25,7 @@ namespace('build', function() {
       lessTask.invoke.apply(lessTask, [input, output, {paths: config.paths.less}]);
     });
   });
-  */
+
   desc('Build documentation');
   task('docs', {async: true}, function() {
     var mustacheTask = jake.Task.mustache;

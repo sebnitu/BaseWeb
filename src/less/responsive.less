@@ -2,18 +2,16 @@
 // Responsive
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Media Query Templates
- * These are used to add styles to a media query without having to directly call it.
- *
- * @Syntax : #responsive { .desktop() { ... your specific desktop styles here ... } }
- */
+// Media Query Templates
+// These are used to add styles to a media query without having to directly call it.
+// 
+// @Syntax #responsive { .desktop() { ... your specific desktop styles here ... } }
 #responsive {
-    .small() {}
-    .mobile() {}
-    .tablet() {}
-    .desktop() {}
-    .large() {}
+  .small()   {}
+  .mobile()  {}
+  .tablet()  {}
+  .desktop() {}
+  .large()   {}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,131 +19,116 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #responsive {
-    
-    /**
-     * Small Visibility
-     */
-    .small() {
-    
-        .visible-small      { .make-visible(); }
-        .visible-mobile     { .make-visible(); }
-        .visible-tablet     { .make-hidden();  }
-        .visible-desktop    { .make-hidden();  }
-        .visible-large      { .make-hidden();  }
+  
+  // Small Visibility
+  .small() {
+    .visible-small    { .make-visible(); }
+    .visible-mobile   { .make-visible(); }
+    .visible-tablet   { .make-hidden();  }
+    .visible-desktop  { .make-hidden();  }
+    .visible-large    { .make-hidden();  }
+    .hidden-small     { .make-hidden();  }
+    .hidden-mobile    { .make-hidden();  }
+    .hidden-tablet    { .make-visible(); }
+    .hidden-desktop   { .make-visible(); }
+    .hidden-large     { .make-visible(); }
+  }
 
-        .hidden-small       { .make-hidden();  }
-        .hidden-mobile      { .make-hidden();  }
-        .hidden-tablet      { .make-visible(); }
-        .hidden-desktop     { .make-visible(); }
-        .hidden-large       { .make-visible(); }
-    }
-
-    /**
-     * Mobile Visibility
-     */
-    .mobile() {
-
-        .visible-small      { .make-hidden();  }
-        .visible-mobile     { .make-visible(); }
-        .visible-tablet     { .make-hidden();  }
-        .visible-desktop    { .make-hidden();  }
-        .visible-large      { .make-hidden();  }
-        
-        .hidden-small       { .make-visible(); }
-        .hidden-mobile      { .make-hidden();  }
-        .hidden-tablet      { .make-visible(); }
-        .hidden-desktop     { .make-visible(); }
-        .hidden-large       { .make-visible(); }
-    }
-    
-    /**
-     * Tablet Visibility
-     */
-    .tablet() {
-    
-        .visible-small      { .make-hidden();  }
-        .visible-mobile     { .make-hidden();  }
-        .visible-tablet     { .make-visible(); }
-        .visible-desktop    { .make-hidden();  }
-        .visible-large      { .make-hidden();  }
-        
-        .hidden-small       { .make-visible(); }
-        .hidden-mobile      { .make-visible(); }
-        .hidden-tablet      { .make-hidden();  }
-        .hidden-desktop     { .make-visible(); }
-        .hidden-large       { .make-visible(); }
-    }
-    
-    /**
-     * Desktop Visibility
-     */
-    .desktop() {
-
-        .visible-small      { .make-hidden();  }
-        .visible-mobile     { .make-hidden();  }
-        .visible-tablet     { .make-hidden();  }
-        .visible-desktop    { .make-visible(); }
-        .visible-large      { .make-hidden();  }
-        
-        .hidden-small       { .make-visible(); }
-        .hidden-mobile      { .make-visible(); }
-        .hidden-tablet      { .make-visible(); }
-        .hidden-desktop     { .make-hidden();  }
-        .hidden-large       { .make-visible(); }
-    }
-    
-    /**
-     * Large Visibility
-     */
-    .large() {
-
-        .visible-small      { .make-hidden();  }
-        .visible-mobile     { .make-hidden();  }
-        .visible-tablet     { .make-hidden();  }
-        .visible-desktop    { .make-visible(); }
-        .visible-large      { .make-visible(); }
-
-        .hidden-small       { .make-visible(); }
-        .hidden-mobile      { .make-visible(); }
-        .hidden-tablet      { .make-visible(); }
-        .hidden-desktop     { .make-hidden();  }
-        .hidden-large       { .make-hidden();  }
-    }
+  // Mobile Visibility
+  .mobile() {
+    .visible-small    { .make-hidden();  }
+    .visible-mobile   { .make-visible(); }
+    .visible-tablet   { .make-hidden();  }
+    .visible-desktop  { .make-hidden();  }
+    .visible-large    { .make-hidden();  }
+    .hidden-small     { .make-visible(); }
+    .hidden-mobile    { .make-hidden();  }
+    .hidden-tablet    { .make-visible(); }
+    .hidden-desktop   { .make-visible(); }
+    .hidden-large     { .make-visible(); }
+  }
+  
+  // Tablet Visibility
+  .tablet() {
+    .visible-small    { .make-hidden();  }
+    .visible-mobile   { .make-hidden();  }
+    .visible-tablet   { .make-visible(); }
+    .visible-desktop  { .make-hidden();  }
+    .visible-large    { .make-hidden();  }
+    .hidden-small     { .make-visible(); }
+    .hidden-mobile    { .make-visible(); }
+    .hidden-tablet    { .make-hidden();  }
+    .hidden-desktop   { .make-visible(); }
+    .hidden-large     { .make-visible(); }
+  }
+  
+  // Desktop Visibility
+  .desktop() {
+    .visible-small    { .make-hidden();  }
+    .visible-mobile   { .make-hidden();  }
+    .visible-tablet   { .make-hidden();  }
+    .visible-desktop  { .make-visible(); }
+    .visible-large    { .make-hidden();  }
+    .hidden-small     { .make-visible(); }
+    .hidden-mobile    { .make-visible(); }
+    .hidden-tablet    { .make-visible(); }
+    .hidden-desktop   { .make-hidden();  }
+    .hidden-large     { .make-visible(); }
+  }
+  
+  // Large Visibility
+  .large() {
+    .visible-small    { .make-hidden();  }
+    .visible-mobile   { .make-hidden();  }
+    .visible-tablet   { .make-hidden();  }
+    .visible-desktop  { .make-visible(); }
+    .visible-large    { .make-visible(); }
+    .hidden-small     { .make-visible(); }
+    .hidden-mobile    { .make-visible(); }
+    .hidden-tablet    { .make-visible(); }
+    .hidden-desktop   { .make-hidden();  }
+    .hidden-large     { .make-hidden();  }
+  }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Media Queries
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Media Queries
+==============================================================================*/
 
 /**
  * Mobile First
+ * The output of #responsive > .mobile();
  */
 #responsive > .mobile();
 
 /**
- * Small: @media-small and below
+ * Small
+ * The output of #responsive > .small();
  */
-@media screen and (max-width: @media-small ) {
-    #responsive > .small();
+@media screen and (max-width: @bp-small ) {
+  #responsive > .small();
 }
 
 /**
- * Tablet: @media-tablet-min and above
+ * Tablet
+ * The output of #responsive > .tablet();
  */
-@media screen and ( min-width: @media-tablet-min ) {
-    #responsive > .tablet();
+@media screen and ( min-width: @bp-tablet ) {
+  #responsive > .tablet();
 }
 
 /**
- * Desktop: @media-desktop-min and above
+ * Desktop
+ * The output of #responsive > .desktop();
  */
-@media screen and ( min-width: @media-desktop-min ) {
-    #responsive > .desktop();
+@media screen and ( min-width: @bp-desktop ) {
+  #responsive > .desktop();
 }
 
 /**
- * Larger: @media-large and above
+ * Large
+ * The output of #responsive > .large();
  */
-@media screen and ( min-width: @media-large ) {
-    #responsive > .large();
+@media screen and ( min-width: @bp-large ) {
+  #responsive > .large();
 }

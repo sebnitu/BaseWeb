@@ -1,411 +1,396 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Buttons Variables
+// Button Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Typography
- */
+// Typography
 @font-size-button: 13px;
+@line-height-button: 20px;
 
-/**
- * Default Styles
- */
-@button-default-color-start: #fefefe;
-@button-default-color-end: #f5f5f5;
-@button-default-styles: 'default'; // default, pill or square
-
-/**
- * Spacing
- */
+// Padding
 @button-padding-top-bottom: round((@padding / 2));
 @button-padding-left-right: @padding;
 @button-padding: @button-padding-top-bottom @button-padding-left-right;
 
+// Default Styles
+@button-default-styles: 'rounded'; // rounded, pill or square
+
 ////////////////////////////////////////////////////////////////////////////////
-// Buttons Mixins
+// Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Base buttons styles
- */
 .base-btn() {
-    font-family: @font-family;
-    .font-sequence( @font-size-button );
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    margin: 0;
-    cursor: pointer;
-    -webkit-font-smoothing: subpixel-antialiased;
-    .transition(~"border-color linear 0.2s, background-position linear 0.2s");
-    .btn-style(@button-default-styles);
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: @button-padding;
+  .font-sequence( @font-size-button, @line-height-button );
+  font-family: @font-family;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-font-smoothing: subpixel-antialiased;
+  .transition(~"border-color linear 0.2s, background-position linear 0.2s");
+  .btn-style(@button-default-styles);
 }
 
-/**
- * Button Color Mixin
- */
+////////////////////////////////////////
+// Button Colors
+////////////////////////////////////////
+
 .btn-color-init( @start-color, @end-color ) {
-    // Add base button styles so we don't need two classes
-    .base-btn();
-    // Text Color
-    .text-color() when (lightness(@end-color) >= 70%) {
-        color: @color;
-        text-shadow: 0 1px 0 rgba(255,255,255, 0.25);
-    }
-    .text-color() when (lightness(@end-color) < 70%) {
-        color: @white;
-        text-shadow: 0 1px 0 rgba(0,0,0, 0.4);
-    }
-    .text-color();
-    // Border
-    border: 1px solid;
-    .border-color( @black, 0.25, #ccc );
-    // Background
-    #gradient > .vertical( @start-color, @end-color );
-    background-repeat: repeat-x;
-    // Shadow
-    .box-shadow(~"0 1px 2px rgba(0,0,0, 0.05), 0 1px 0 rgba(255,255,255, 0.15) inset");
+  .text-color() when (lightness(@end-color) >= 70%) {
+    color: @gray-darker;
+    text-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+  }
+  .text-color() when (lightness(@end-color) < 70%) {
+    color: @white;
+    text-shadow: 0 1px 0 rgba(0,0,0, 0.4);
+  }
+  .text-color();
+  #gradient > .vertical( @start-color, @end-color );
+  background-repeat: repeat-x;
+  border: 1px solid;
+  .border-color( @black, 0.25, #ccc );
+  .box-shadow(~"0 1px 2px rgba(0,0,0, 0.05), 0 1px 0 rgba(255,255,255, 0.15) inset");
 }
 
-/**
- * Hover
- */
+// Hover
 .btn-color-hover( @start-color, @end-color ) {
-    .text-color() when (lightness(@end-color) >= 70%) {
-        color: @color;
-        text-shadow: 0 1px 0 rgba(255,255,255, 0.25);
-    }
-    .text-color() when (lightness(@end-color) < 70%) {
-        color: @white;
-        text-shadow: 0 1px 0 rgba(0,0,0, 0.4);
-    }
-    .text-color();
-    background-position: 0 -30px;
-    .border-color( @black, 0.4, darken(@end-color, 10%) );
-    // Shadow
-    .box-shadow(~"0 1px 2px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 0.05) inset");
+  .text-color() when (lightness(@end-color) >= 70%) {
+    color: @gray-darker;
+    text-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+  }
+  .text-color() when (lightness(@end-color) < 70%) {
+    color: @white;
+    text-shadow: 0 1px 0 rgba(0,0,0, 0.4);
+  }
+  .text-color();
+  background-position: 0 -30px;
+  .border-color( @black, 0.4, darken(@end-color, 10%) );
+  .box-shadow(~"0 1px 2px rgba(0,0,0, 0.1), 0 1px 0 rgba(255,255,255, 0.05) inset");
 }
 
-/**
- * Active
- */
+// Active
 .btn-color-active( @start-color, @end-color ) {
-    background-color: darken(@end-color, 2%);
-    background-image: none;
-    .border-color( @black, 0.4, darken(@end-color, 10%) );
-    .box-shadow(~"0 0 0 rgba(0,0,0, 0), 0 1px 3px rgba(0,0,0, 0.2) inset");
+  background-color: darken(@end-color, 2%);
+  background-image: none;
+  .border-color( @black, 0.4, darken(@end-color, 10%) );
+  .box-shadow(~"0 0 0 rgba(0,0,0, 0), 0 1px 3px rgba(0,0,0, 0.2) inset");
 }
 
-/**
- * Focus
- */
+// Focus
 .btn-color-focus( @start-color, @end-color ) {
-    outline: 4px solid rgba(255,242,0, 0.90);
-    background-position: 0 -30px;
-    .border-color( @black, 0.4, darken(@end-color, 10%) );
-    .box-shadow(~"0 0 8px rgba(35,130,247, 0.4), 0 1px 0 rgba(255,255,255, 0.15) inset");
+  outline: 4px solid rgba(255,242,0, 0.90);
+  background-position: 0 -30px;
+  .border-color( @black, 0.4, darken(@end-color, 10%) );
+  .box-shadow(~"0 0 8px rgba(35,130,247, 0.4), 0 1px 0 rgba(255,255,255, 0.15) inset");
 }
 
-/**
- * Compiled Button Styles With States
- */
+// Compiled Button Styles With States
 .btn-color( @start-color, @end-color ) {
-    .btn-color-init( @start-color, @end-color );
-    // Hover
-    &:hover {
-        .btn-color-hover( @start-color, @end-color );
-    }
-    // Active
-    &:active {
-        .btn-color-active( @start-color, @end-color );
-    }
-    // Focus
-    &:focus {
-        .btn-color-focus( @start-color, @end-color );
-    }
+  .btn-color-init( @start-color, @end-color );
+
+  &:hover {
+    .btn-color-hover( @start-color, @end-color );
+  }
+
+  &:active {
+    .btn-color-active( @start-color, @end-color );
+  }
+
+  &:focus {
+    .btn-color-focus( @start-color, @end-color );
+  }
 }
 
-/**
- * Resets button styles
- */
+// Resets button colors & box-model
 .btn-color-reset() {
-    background: none;
-    box-shadow: none;
-    text-shadow: none;
-    border: 0 none;
-    padding: 0;
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  text-shadow: none;
+  background: none;
+  border: 0 none;
+  box-shadow: none;
+  .border-radius(0);
+}
+
+////////////////////////////////////////
+// Button Sizing
+////////////////////////////////////////
+
+.btn-size-huge() {
+  .font-sequence( (@font-size-button + 2) );
+  padding: ( @button-padding-top-bottom * 3 ) ( @button-padding-left-right * 4 );
+}
+.btn-size-large() {
+  .font-sequence( (@font-size-button + 1) );
+  padding: ( @button-padding-top-bottom * 2 ) ( @button-padding-left-right * 2 );
+}
+.btn-size-small() {
+  .font-sequence( (@font-size-button - 1) );
+  padding: ( @button-padding-top-bottom / 2 ) ( @button-padding-left-right / 1.5 );
+}
+.btn-size-tiny() {
+  .font-sequence( (@font-size-button - 2) );
+  padding: ( @button-padding-top-bottom / 3 ) ( @button-padding-left-right / 1.5 );
+}
+
+////////////////////////////////////////
+// Button Utility
+////////////////////////////////////////
+
+// Button Styles
+.btn-style( @style : 'rounded' ) {
+  .build() when ( @style = 'rounded' ) {
+    .border-radius();
+  }
+  .build() when ( @style = 'pill' ) {
+    .border-radius( 300px );
+    padding-left: (@button-padding-left-right * 1.75);
+    padding-right: (@button-padding-left-right * 1.75);
+  }
+  .build() when ( @style = 'square' ) {
     .border-radius(0);
+  }
+  .build();
 }
 
-/**
- * Button Styles
- */
-.btn-style( @style : 'default' ) {
-    .build() when ( @style = 'default' ) {
-        .border-radius();
-        padding: @button-padding;
-    }
-    .build() when ( @style = 'pill' ) {
-        .border-radius( 300px );
-        padding-left: (@button-padding-left-right * 1.5);
-        padding-right: (@button-padding-left-right * 1.5);
-    }
-    .build() when ( @style = 'square' ) {
-        .border-radius(0);
-        padding: @button-padding;
-    }
-    .build();
+// Faint for subtle buttons
+.btn-faint() {
+  .btn-color( rgba(255,255,255, 0.2), rgba(255,255,255, 0.2) );
+  .color( @black, 0.5, lighten(@color, 30%) );
+  .border-color( @black, 0.2, #ccc );
+  .box-shadow(~"0 1px 0 rgba(255,255,255, 0.75)");
+  .transition(~"border-color linear 0.2s, background-position linear 0.2s, color linear 0.2s");
 }
 
-/**
- * Button Structure Mixins
- */
+// Disabled
+.btn-disabled() {
+  background-image: none;
+  cursor: not-allowed;
+  .box-shadow(none);
+  .border-color( @black, 0.25);
+  opacity: 0.6;
+}
+
+//  Link Styles
+.btn-link() {
+  display: inline;
+  .btn-color-reset();
+  font-family: @font-family;
+  .font-sequence( @font-size );
+  line-height: 1.20em; // Buttons don't behave inline very well :(
+  .anchor();
+  cursor: pointer;
+}
+
+////////////////////////////////////////
+// Button Structure
+////////////////////////////////////////
+
+// BLock
 .btn-block() {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding-top: (@button-padding-top-bottom * 2.5);
-    padding-bottom: (@button-padding-top-bottom * 2.5);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: (@button-padding-top-bottom * 2.5);
+  padding-bottom: (@button-padding-top-bottom * 2.5);
 }
 
-/**
- * Inline
- */
+// Inline
 .btn-inline() {
-    display: inline-block;
-    width: auto;
-    box-sizing: content-box;
-    padding-top: @button-padding-top-bottom;
-    padding-bottom: @button-padding-top-bottom;
+  display: inline-block;
+  width: auto;
+  box-sizing: content-box;
+  padding-top: @button-padding-top-bottom;
+  padding-bottom: @button-padding-top-bottom;
 }
 
-/**
- * Small Mobile
- */
+// Small Mobile
+// Converts to block button on small mobiles
 .btn-mobile-small-block() {
-    .btn-block();
-    @media screen and (min-width: @media-small ) {
-        .btn-inline();
-    }
+  .btn-block();
+  @media screen and (min-width: @bp-small ) {
+    .btn-inline();
+  }
 }
 
-/**
- * Mobile
- */
+// Mobile
+// Converts to block button on mobiles
 .btn-mobile-block() {
-    .btn-block();
-    @media screen and ( min-width: @media-tablet-min ) {
-        .btn-inline();
-    }
+  .btn-block();
+  @media screen and ( min-width: @bp-tablet ) {
+    .btn-inline();
+  }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Button Class Assignment
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Buttons
+==============================================================================*/
 
 /**
  * Color Mixins & Class Assignment
  */
 .btn {
-    .btn-color( @button-default-color-start, @button-default-color-end );
+  .base-btn();
+}
+
+/**
+ * Gray Scale Buttons
+ */
+.btn-white {
+  .btn-color( @gF, @gE );
+}
+.btn-light-grey {
+  .btn-color( @gE, @gC );
+}
+.btn-grey {
+  .btn-color( @gB, @g9 );
+}
+.btn-dark-grey {
+  .btn-color( @g8, @g6 );
 }
 .btn-black {
-    .btn-color( @g6, @g5 );
+  .btn-color( @g5, @g3 );
 }
 
 /**
  * Solid Colors
  */
 .btn-blue {
-    .btn-color( @blue-light, @blue-dark );
+  .btn-color( @blue-light, @blue-dark );
 }
 .btn-green {
-    .btn-color( @green-light, @green-dark );
+  .btn-color( @green-light, @green-dark );
 }
 .btn-yellow {
-    .btn-color( @yellow-light, @yellow-dark );
+  .btn-color( @yellow-light, @yellow-dark );
 }
 .btn-orange {
-    .btn-color( @orange-light, @orange-dark );
+  .btn-color( @orange-light, @orange-dark );
 }
 .btn-red {
-    .btn-color( @red-light, @red-dark );
+  .btn-color( @red-light, @red-dark );
 }
 .btn-violet {
-    .btn-color( @violet-light, @violet-dark );
+  .btn-color( @violet-light, @violet-dark );
 }
 
 /**
  * Mix Colors
  */
 .btn-blue-green {
-    .btn-color( mix(@blue-light, @green-light), mix(@blue-dark, @green-dark) );
+  .btn-color( mix(@blue-light, @green-light), mix(@blue-dark, @green-dark) );
 }
 .btn-yellow-green {
-    .btn-color( mix(@green-light, @yellow-light), mix(@green-dark, @yellow-dark) );
+  .btn-color( mix(@green-light, @yellow-light), mix(@green-dark, @yellow-dark) );
 }
 .btn-yellow-orange {
-    .btn-color( mix(@yellow-light, @orange-light), mix(@yellow-dark, @orange-dark) );
+  .btn-color( mix(@yellow-light, @orange-light), mix(@yellow-dark, @orange-dark) );
 }
 .btn-red-orange {
-    .btn-color( mix(@orange-light, @red-light), mix(@orange-dark, @red-dark) );
+  .btn-color( mix(@orange-light, @red-light), mix(@orange-dark, @red-dark) );
 }
 .btn-red-violet {
-    .btn-color( mix(@red-light, @violet-light), mix(@red-dark, @violet-dark) );
+  .btn-color( mix(@red-light, @violet-light), mix(@red-dark, @violet-dark) );
 }
 .btn-blue-violet {
-    .btn-color( mix(@violet-light, @blue-light), mix(@violet-dark, @blue-dark) );
-}
-
-/**
- * Button Size Mixins
- */
-.btn-size-huge() {
-    .font-sequence( (@font-size-button + 2) );
-    padding: ( @button-padding-top-bottom * 3 ) ( @button-padding-left-right * 4 );
-}
-.btn-size-large() {
-    .font-sequence( (@font-size-button + 1) );
-    padding: ( @button-padding-top-bottom * 2 ) ( @button-padding-left-right * 2 );
-}
-.btn-size-small() {
-    .font-sequence( (@font-size-button - 1) );
-    padding: ( @button-padding-top-bottom / 2 ) ( @button-padding-left-right / 1.5 );
-}
-.btn-size-tiny() {
-    .font-sequence( (@font-size-button - 2) );
-    padding: ( @button-padding-top-bottom / 3 ) ( @button-padding-left-right / 1.5 );
+  .btn-color( mix(@violet-light, @blue-light), mix(@violet-dark, @blue-dark) );
 }
 
 /**
  * Semantic Classes
  */
 .btn-primary {
-    .btn-blue();
+  .btn-blue();
 }
 .btn-secondary {
-    .btn-black();
+  .btn-black();
 }
 .btn-success {
-    .btn-yellow-green();
+  .btn-yellow-green();
 }
 .btn-warning {
-    .btn-yellow-orange();
+  .btn-yellow-orange();
 }
 .btn-danger {
-    .btn-red();
+  .btn-red();
 }
-
-/**
- * Utility Classes
- * Faint for subtle buttons
- */
-.btn-faint {
-    .btn-color( rgba(255,255,255, 0.2), rgba(255,255,255, 0.2) );
-    .color( @black, 0.5, lighten(@color, 30%) );
-    .border-color( @black, 0.2, #ccc );
-    .box-shadow(~"0 1px 0 rgba(255,255,255, 0.75)");
-    .transition(~"border-color linear 0.2s, background-position linear 0.2s, color linear 0.2s");
-}
-
-/**
- * Disabled
- */
-.disabled, .disabled:hover, .disabled:active, .disabled:focus {
-    background-image: none;
-    cursor: not-allowed;
-    .box-shadow(none);
-    .border-color( @black, 0.25);
-    opacity: 0.6;
-}
-
-/**
- * Link Styles
- */
-.btn-link {
-    .btn-color-reset();
-    font-family: @font-family;
-    .font-sequence( @font-size );
-    line-height: 1.20em; // Buttons don't behave inline very well :(
-    .anchor();
-    cursor: pointer;
-    display: inline;
+.btn-default {
+  .btn-white();
 }
 
 /**
  * Size Class Assignment
  */
-.btn-huge  { .btn-size-huge();  }
-.btn-large { .btn-size-large(); }
-.btn-small { .btn-size-small(); }
-.btn-tiny  { .btn-size-tiny();  }
+.btn-huge  {
+  .btn-size-huge();
+}
+.btn-large {
+  .btn-size-large();
+}
+.btn-small {
+  .btn-size-small();
+}
+.btn-tiny  {
+  .btn-size-tiny();
+}
 
-////////////////////////////////////////////////////////////////////////////////
-// Button Groups
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Button Utilities
+==============================================================================*/
 
-.btn-group {
-    position: relative;
-    display: inline-block;
-    font-size: 0;
-    white-space: nowrap;
-    vertical-align: middle;
-    .clearfix();
-
-    > .btn {
-        font-size: @font-size-button;
-        position: relative;
-        z-index: 5;
-        border-radius: 0;
-        margin-right: -1px;
-    }
-    > .btn:first-child {
-        .border-radius-left(4px);
-    }
-    > .btn:last-child {
-        .border-radius-right(4px);
-        margin-right: 0;
-    }
-    > .btn:hover,
-    > .btn:active,
-    > .btn:focus {
-        z-index: 10;
-    }
+/** 
+ * Faint
+ */
+.btn-faint {
+  .btn-faint();
 }
 
 /**
- * Vertical groups
+ * Disabled
  */
-.btn-group-vertical {
-    position: relative;
-    display: inline-block;
-    font-size: 0;
-    white-space: nowrap;
-    vertical-align: middle;
-    .clearfix();
-    
-    > .btn {
-        display: block;
-        font-size: @font-size-button;
-        position: relative;
-        z-index: 5;
-        border-radius: 0;
-        margin-bottom: -1px;
-    }
-    > .btn:first-child {
-        .border-radius-top(4px);
-    }
-    > .btn:last-child {
-        .border-radius-bottom(4px);
-        margin-bottom: 0;
-    }
-    > .btn:hover,
-    > .btn:active,
-    > .btn:focus {
-        z-index: 10;
-    }
+.disabled,
+.disabled:hover,
+.disabled:active,
+.disabled:focus {
+  .btn-disabled();
+}
+
+/**
+ * Anchor
+ */
+.btn-link,
+.btn-anchor {
+  .btn-link();
+}
+
+/**
+ * Button Style
+ */
+.btn-rounded {
+  .btn-style('rounded');
+}
+.btn-pill {
+  .btn-style('pill');
+}
+.btn-square {
+  .btn-style('square');
+}
+
+/**
+ * Button Structure
+ */
+.btn-block {
+  .btn-block();
+}
+.btn-inline {
+  .btn-inline();
+}
+.btn-mobile-small-block {
+  .btn-mobile-small-block();
+}
+.btn-mobile-block {
+  .btn-mobile-block();
 }

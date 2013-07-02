@@ -1,42 +1,51 @@
-////////////////////////////////////////////////////////////////////////////////
-// Icons
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Icons
+==============================================================================*/
 
 /**
  * Base icon styles
  */
-i {
-    font-family: @font-family-icon;
-    font-size: 2.2em;
-    line-height: 0.5em;
-    vertical-align: middle;
-    font-style: normal;
-    font-weight: normal;
-    text-transform: none;
-    -webkit-font-smoothing: antialiased !important;
-    position: relative;
-    display: inline-block;
-    width: auto;
-    height: auto;
-    border: 0 none;
-    margin: 0;
-    padding: 0;
+.icon {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-family: @font-family-icon;
+  font-size: 2.2em;
+  line-height: 0.5em;
+  vertical-align: middle;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased !important;
+  border: 0 none;  
 }
-a, .btn, h1, h2, h3, h4, h5, h6 {
-    i {
-        margin: -0.05em 0.2em 0 -0.2em;
-        top: -0.05em;
-    }
+a, h1, h2, h3, h4, h5, h6 {
+  .icon {
+    margin: -0.05em 0.2em 0 0;
+    top: -0.05em;
+  }
 }
-h1, h2, h3, h4, h5, h6 {
-    i {
-        margin-left: 0;
-    }
+.btn {
+  .icon {
+    margin: -0.05em 0.2em 0 -0.2em;
+    top: -0.05em;
+  }
 }
 
-/**
- * Load Font-Icon Libraries
- */
-// .fonticons-entypo();
+// Icon Library Directions
+// Uncomment the icon library you'd like to use in baseweb.less and include the mixin call here.
+// 
+// @warning including multiple icon libraries at a time without namespacings may cause conflicts.
+// 
+// @note although glyphicon LESS styles are included in BaseWeb, you need to purchase a license
+//   for using the icons yourself.
+//
+// @note for more details on how to install and use icon libraries, please refer to the docuentation.
+// 
+// Inlcuded icon library mixins:
+.fonticons-entypo();
 // .fonticons-glyphicons();
 // .fonticons-glyphicons-halflings();

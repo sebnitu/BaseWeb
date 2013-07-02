@@ -2,897 +2,1110 @@
 // Utility
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Hide text
- * Image replacement trick that hides text.
- */
+// Hide text
+// Image replacement trick that hides text.
 .hide-text() {
-    text-indent: 100%;
-    white-space: nowrap;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Clear Mixins
+// Allows for clearfixing by adding as mixin or as class.
+.clearfix() {
+   //zoom: 1;
+  
+  &:before, &:after {
+    content: "\0020";
+    display: block;
     overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  
+  &:after {
+    clear: both;
+  }
 }
 
-/**
- * Clear Mixins
- * Allows for clearfixing by adding as mixin or as class.
- */
-.clearfix {
-    *zoom: 1;
-    
-    &:before, &:after {
-        content: "\0020";
-        display: block;
-        overflow: hidden;
-        visibility: hidden;
-        width: 0;
-        height: 0;
-    }
-    
-    &:after {
-        clear: both;
-    }
-}
-
-/**
- * Makes Hidden
- * Makes an element hidden with display none !important
- */
+// Makes Hidden
+// Makes an element hidden with display none !important
 .make-hidden() {
-    display: none !important;
+  display: none !important;
 }
 
-/**
- * Makes Visible
- * Makes an element visible with custom display value
- *
- * @param : Visibility value to use e.g. block, inline-block, table-cell
- */
+// Makes Visible
+// Makes an element visible with custom display value
+//
+// @param visibility value to use e.g. block, inline-block, table-cell
 .make-visible( @display : @display-visible ) {
-    display: @display !important;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Typography
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Font Sequence
- * Sets font-size and line-height based on a multiplier
- * 
- * @param : Font size in pixels
- * @param : Line height in pixels or set to auto for automatic calculation based on font-size and line-height-inc
- * @param : Unit to use for sizing e.g. px, em
- * @param : The context that sizes should be set. Default is base font size
- */
-.font-sequence( 
-    @-font-size : @font-size,
-    @-line-height : auto,
-    @-font-unit : @font-unit,
-    @-context : @font-size
-) when (@-font-unit = px) {
-    
-    font-size: @-font-size;
-    
-    .line-height() when (@-line-height = auto) {
-        line-height: unit( (@-font-size + @line-height-inc), px);
-    }
-    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-        line-height: @-line-height;
-    }
-    .line-height();
-}
-.font-sequence( 
-    @-font-size : @font-size,
-    @-line-height : auto,
-    @-font-unit : @font-unit,
-    @-context : @font-size
-) when (@-font-unit = em) {
-
-    @-size: round((@-font-size / @-context), 2);
-    
-    font-size: unit( @-size, em);
-    
-    .line-height() when (@-line-height = auto) {
-        line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
-    }
-    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-        line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
-    }
-    .line-height();
-}
-.font-sequence( 
-    @-font-size : @font-size,
-    @-line-height : auto,
-    @-font-unit : @font-unit,
-    @-context : @font-size
-) when (@-font-unit = rem) {
-    
-    @-size: round((@-font-size / @-context), 2);
-    
-    font-size: unit( @-size, rem);
-    
-    .line-height() when (@-line-height = auto) {
-        line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
-    }
-    .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-        line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
-    }
-    .line-height();
-}
-
-/**
- * Mono Font
- * Adds mono font styles to an element along with font sizing and line-height.
- *
- * @param : Font size used with font-sequence()
- */
-.mono-font( @size : @font-size-code ) {
-    font-family: @font-family-mono;
-    .font-sequence( @size );
-}
-
-/**
- * Uppercase
- * Makes text uppercase with optional letter spacing value.
- *
- * @param : Letter spacing
- */
-.uppercase(@letter-spacing: @letter-spacing) {
-    text-transform: uppercase;
-    letter-spacing: @letter-spacing;
-}
-
-/**
- * Lowercase
- * Makes text lowercase with optional letter spacing value.
- *
- * @param : Letter spacing
- */
-.lowercase(@letter-spacing: 0) {
-    text-transform: lowercase;
-    letter-spacing: @letter-spacing;
-}
-
-/**
- * Reset Case
- * Resets the text's text-transform property and sets letter spacing back to zero.
- */
-.resetcase() {
-    text-transform: none;
-    letter-spacing: 0;
-}
-
-/**
- * Truncate Text
- * Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
- *
- * @param : Display property e.g. block, inline-block
- */
-.truncate-text( @display : block ) {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    // Display Setting
-    .display() when ( @display = inline-block ), ( @display = block ) {
-        display: @display;
-    }
-    .display();
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// List Mixins
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Remove List Styles
- * Removes default list styles and margins from a list element and it's children
- */
-.remove-list-styles() {
-    list-style: none;
-    margin: 0;
-    
-    li {
-        margin: 0;
-    }
-}
-
-/**
- * Inline Lists
- * Converts a list into an inline list with inline elements.
- *
- * @param : Gutter type e.g. margin, padding
- * @param : Gutter spacing between list items e.g. 10px, 20px
- * @param : Side that margines should appear e.g. right, left, both
- */
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) {
-    margin: 0;
-    
-    li {
-        display: inline-block;
-    }
-}
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = margin ) {
-    
-    li {
-        .side() when ( @-side = right ) {
-            margin-right: @-margin;
-        }
-        .side() when ( @-side = left ) {
-            margin-left: @-margin;
-        }
-        .side() when ( @-side = both ) {
-            margin-left: (@-margin / 2);
-            margin-right: (@-margin / 2);
-        }
-        .side();
-    }
-}
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = padding ) {
-    
-    li {
-        .side() when ( @-side = right ) {
-            padding-right: @-margin;
-        }
-        .side() when ( @-side = left ) {
-            padding-left: @-margin;
-        }
-        .side() when ( @-side = both ) {
-            padding-left: (@-margin / 2);
-            padding-right: (@-margin / 2);
-        }
-        .side();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Image Mixins
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Rounded
- * Rounded corner styles for images
- */
-.rounded() {
-    .border-radius();
-}
-
-/**
- * Circle
- * Makes an image a circle
- */
-.circle() {
-    .border-radius(50%);
-}
-
-/**
- * Polaroid
- * Makes images have the polaroid styles
- */
-.polaroid {
-    background: @white;
-    background-clip: padding-box;
-    padding: 5px;
-    border: 1px solid;
-    .border-color(@black, 0.2, #ccc);
-    .box-shadow( 0 1px 5px rgba(0,0,0, 0.1) );
+  display: @display !important;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Border Radius Mixins
- * Set border-radius with global defaults.
- *
- * @param : Size of border radius
- */
+// Border Radius Mixins
+// Set border-radius with global defaults.
+//
+// @param size of border radius
 .border-radius(@radius: @border-radius) {
-    border-radius: @radius;
+  border-radius: @radius;
 }
-
-/**
- * Top
- */
+// Top
 .border-radius-top(@radius: @border-radius) {
-    border-top-left-radius: @radius;
-    border-top-right-radius: @radius;
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
 }
 .border-radius-top-left(@radius: @border-radius) {
-    border-top-left-radius: @radius;
+  border-top-left-radius: @radius;
 }
 .border-radius-top-right(@radius: @border-radius) {
-    border-top-right-radius: @radius;
+  border-top-right-radius: @radius;
 }
-
-/**
- * Bottom
- */
+// Bottom
 .border-radius-bottom(@radius: @border-radius) {
-    border-bottom-right-radius: @radius;
-    border-bottom-left-radius: @radius;
+  border-bottom-right-radius: @radius;
+  border-bottom-left-radius: @radius;
 }
 .border-radius-bottom-left(@radius: @border-radius) {
-    border-bottom-left-radius: @radius;
+  border-bottom-left-radius: @radius;
 }
 .border-radius-bottom-right(@radius: @border-radius) {
-    border-bottom-right-radius: @radius;
+  border-bottom-right-radius: @radius;
 }
-
-/**
- * Left
- */
+// Left
 .border-radius-left(@radius: @border-radius) {
-    border-top-left-radius: @radius;
-    border-bottom-left-radius: @radius;
+  border-top-left-radius: @radius;
+  border-bottom-left-radius: @radius;
 }
 .border-radius-left-top(@radius: @border-radius) {
-    border-top-left-radius: @radius;
+  border-top-left-radius: @radius;
 }
 .border-radius-left-bottom(@radius: @border-radius) {
-    border-bottom-left-radius: @radius;
+  border-bottom-left-radius: @radius;
 }
-
-/**
- * Right
- */
+// Right
 .border-radius-right(@radius: @border-radius) {
-    border-top-right-radius: @radius;
-    border-bottom-right-radius: @radius;
+  border-top-right-radius: @radius;
+  border-bottom-right-radius: @radius;
 }
 .border-radius-right-top(@radius: @border-radius) {
-    border-top-right-radius: @radius;
+  border-top-right-radius: @radius;
 }
 .border-radius-right-bottom(@radius: @border-radius) {
-    border-bottom-right-radius: @radius;
+  border-bottom-right-radius: @radius;
 }
 
-/**
- * Box Sizing
- * Adds the box-sizing property with browser prefixes and global default
- *
- * @param : The box model you want to use e.g. border-box, content-box
- */
+// Box Sizing
+// Adds the box-sizing property with browser prefixes and global default
+//
+// @param the box model you want to use e.g. border-box, content-box
 .box-sizing(@boxmodel) {
-    -webkit-box-sizing: @boxmodel;
-       -moz-box-sizing: @boxmodel;
-            box-sizing: @boxmodel;
+  -moz-box-sizing: @boxmodel;
+  box-sizing: @boxmodel;
 }
 
-/**
- * Box Shadows
- * Create box shadow using global default
- *
- * @param : Box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread, color
- */
+// Box Shadows
+// Create box shadow using global default
+//
+// @param box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread, color
 .box-shadow(@shadow: @box-shadow) {
-    box-shadow: @shadow;
+  box-shadow: @shadow;
 }
 
-/**
- * RGBA for Box Shadows
- * Make using RGBA in box shadows easier.
- *
- * @param : Box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread
- * @param : Hex color that will be converted to RGB
- * @param : Alpha channel that will be used in the RGBA
- */
+// RGBA for Box Shadows
+// Make using RGBA in box shadows easier.
+//
+// @param box shadow settings without the color property e.g. inset, horizontal offset, vertical offset, blur distance, blur spread
+// @param hex color that will be converted to RGB
+// @param alpha channel that will be used in the RGBA
 .rgba-box-shadow( @details, @color, @alpha ) {
-    box-shadow: @details rgba( red(@color), green(@color), blue(@color), @alpha);
+  box-shadow: @details rgba( red(@color), green(@color), blue(@color), @alpha);
 }
 
-/**
- * Transition
- * Create transition with browser prefixes and global default
- *
- * @param : Transition shorthand order property, duration, timing-function, delay
- */
+// Transition
+// Create transition with browser prefixes and global default
+//
+// @param transition shorthand order property, duration, timing-function, delay
 .transition( @-transition: @transition ) {
-    -webkit-transition: @-transition;
-       -moz-transition: @-transition;
-         -o-transition: @-transition;
-            transition: @-transition;
+  -webkit-transition: @-transition;
+  -moz-transition: @-transition;
+  -o-transition: @-transition;
+  transition: @-transition;
 }
 
-/**
- * Transition Property
- * Set transition-property with browser prefixes and global default
- *
- * @param : The property to target for transition e.g. all, color, background, etc
- */
+// Transition Property
+// Set transition-property with browser prefixes and global default
+//
+// @param the property to target for transition e.g. all, color, background, etc
 .transition-property( @-transition-property : @transition-property ) {
-    -webkit-transition-property: @-transition-property;
-       -moz-transition-property: @-transition-property;
-         -o-transition-property: @-transition-property;
-            transition-property: @-transition-property;
+  -webkit-transition-property: @-transition-property;
+  -moz-transition-property: @-transition-property;
+  -o-transition-property: @-transition-property;
+  transition-property: @-transition-property;
 }
 
-/**
- * Transition Duration
- * Set transition-duration with browser prefixes and global default
- *
- * @param : Seconds duration for transition e.g. 0.25s
- */
+// Transition Duration
+// Set transition-duration with browser prefixes and global default
+//
+// @param seconds duration for transition e.g. 0.25s
 .transition-duration( @-transition-duration : @transition-duration ) {
-    -webkit-transition-duration: @-transition-duration;
-       -moz-transition-duration: @-transition-duration;
-         -o-transition-duration: @-transition-duration;
-            transition-duration: @-transition-duration;
+  -webkit-transition-duration: @-transition-duration;
+  -moz-transition-duration: @-transition-duration;
+  -o-transition-duration: @-transition-duration;
+  transition-duration: @-transition-duration;
 }
 
-/**
- * Transition Timing Function
- * Set transition-timing-function with browser prefixes and global default
- *
- * @param : Timing function for transition e.g. ease, linear, ease-in, ease-out, ease-in-out
- */
+// Transition Timing Function
+// Set transition-timing-function with browser prefixes and global default
+//
+// @param timing function for transition e.g. ease, linear, ease-in, ease-out, ease-in-out
 .transition-timing-function( @-transition-timing-function : @transition-timing-function ) {
-    -webkit-transition-timing-function: @-transition-timing-function;
-       -moz-transition-timing-function: @-transition-timing-function;
-         -o-transition-timing-function: @-transition-timing-function;
-            transition-timing-function: @-transition-timing-function;
+  -webkit-transition-timing-function: @-transition-timing-function;
+  -moz-transition-timing-function: @-transition-timing-function;
+  -o-transition-timing-function: @-transition-timing-function;
+  transition-timing-function: @-transition-timing-function;
 }
 
-/**
- * Transition Delay
- * Set transition-delay with browser prefixes and global default
- *
- * @param : Seconds delay before transition e.g. 0.25s
- */
+// Transition Delay
+// Set transition-delay with browser prefixes and global default
+//
+// @param seconds delay before transition e.g. 0.25s
 .transition-delay( @-transition-delay : @transition-delay ) {
-    -webkit-transition-delay: @-transition-delay;
-       -moz-transition-delay: @-transition-delay;
-         -o-transition-delay: @-transition-delay;
-            transition-delay: @-transition-delay;
+  -webkit-transition-delay: @-transition-delay;
+  -moz-transition-delay: @-transition-delay;
+  -o-transition-delay: @-transition-delay;
+  transition-delay: @-transition-delay;
 }
 
-/**
- * Rotate
- * Create rotate transform with browser prefixes and global default
- *
- * @param : Degree of rotation
- */
+// Rotate
+// Create rotate transform with browser prefixes and global default
+//
+// @param degree of rotation
 .rotate(@deg: @rotate-degree) {
-    -webkit-transform: rotate(@deg);
-       -moz-transform: rotate(@deg);
-         -o-transform: rotate(@deg);
-        -ms-transform: rotate(@deg);
-            transform: rotate(@deg);
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  -o-transform: rotate(@deg);
+  -ms-transform: rotate(@deg);
+  transform: rotate(@deg);
 }
 
-/**
- * Gradients
- * For greating gradient backgrounds easily
- */
+// Gradients
+// For greating gradient backgrounds easily
 #gradient {
 
-    /**
-     * Horizontal
-     * 
-     * @syntex : #gradient > .horizontal(@a, @b);
-     * @param : Start color
-     * @param : End color
-     */
-    .horizontal(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
-        background-color: @end-color;
-        background-image: -moz-linear-gradient(left, @start-color, @end-color);
-        background-image: -ms-linear-gradient(left, @start-color, @end-color);
-        background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@start-color), to(@end-color));
-        background-image: -webkit-linear-gradient(left, @start-color, @end-color);
-        background-image: -o-linear-gradient(left, @start-color, @end-color);
-        background-image: linear-gradient(left, @start-color, @end-color);
-        background-repeat: repeat-x;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@start-color,@end-color));
-    }
+  // Horizontal
+  // 
+  // @syntex #gradient > .horizontal(@a, @b);
+  // 
+  // @param start color
+  // @param end color
+  .horizontal(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
+    background-color: @end-color;
+    background-image: -moz-linear-gradient(left, @start-color, @end-color);
+    background-image: -ms-linear-gradient(left, @start-color, @end-color);
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@start-color), to(@end-color));
+    background-image: -webkit-linear-gradient(left, @start-color, @end-color);
+    background-image: -o-linear-gradient(left, @start-color, @end-color);
+    background-image: linear-gradient(left, @start-color, @end-color);
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@start-color,@end-color));
+  }
 
-    /**
-     * Vertical
-     * 
-     * @syntex : #gradient > .vertical(@a, @b);
-     * @param : Start color
-     * @param : End color
-     */
-    .vertical(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
-        background-color: @end-color;
-        background-image: -moz-linear-gradient(top, @start-color, @end-color);
-        background-image: -ms-linear-gradient(top, @start-color, @end-color);
-        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), to(@end-color));
-        background-image: -webkit-linear-gradient(top, @start-color, @end-color);
-        background-image: -o-linear-gradient(top, @start-color, @end-color);
-        background-image: linear-gradient(top, @start-color, @end-color);
-        background-repeat: repeat-x;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start-color,@end-color));
-    }
+  // Vertical
+  // 
+  // @syntex #gradient > .vertical(@a, @b);
+  // 
+  // @param start color
+  // @param end color
+  .vertical(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
+    background-color: @end-color;
+    background-image: -moz-linear-gradient(top, @start-color, @end-color);
+    background-image: -ms-linear-gradient(top, @start-color, @end-color);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), to(@end-color));
+    background-image: -webkit-linear-gradient(top, @start-color, @end-color);
+    background-image: -o-linear-gradient(top, @start-color, @end-color);
+    background-image: linear-gradient(top, @start-color, @end-color);
+    background-repeat: repeat-x;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start-color,@end-color));
+  }
 
-    /**
-     * Directional
-     * 
-     * @syntex : #gradient > .directional(@a, @b, @c);
-     * @param : Start color
-     * @param : End color
-     * @param : Degree value for gradient angle
-     */
-    .directional(@start-color: @gradient-start-color, @end-color: @gradient-end-color, @deg: @gradient-deg) {
-        background-color: @end-color;
-        background-repeat: repeat-x;
-        background-image: -moz-linear-gradient(@deg, @start-color, @end-color);
-        background-image: -webkit-linear-gradient(@deg, @start-color, @end-color);
-        background-image: -o-linear-gradient(@deg, @start-color, @end-color);
-        background-image: linear-gradient(@deg, @start-color, @end-color);
-    }
+  // Directional
+  // 
+  // @syntex #gradient > .directional(@a, @b, @c);
+  // 
+  // @param start color
+  // @param end color
+  // @param degree value for gradient angle
+  .directional(@start-color: @gradient-start-color, @end-color: @gradient-end-color, @deg: @gradient-deg) {
+    background-color: @end-color;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(@deg, @start-color, @end-color);
+    background-image: -webkit-linear-gradient(@deg, @start-color, @end-color);
+    background-image: -o-linear-gradient(@deg, @start-color, @end-color);
+    background-image: linear-gradient(@deg, @start-color, @end-color);
+  }
 
-    /**
-     * Horizontal with Three Colors
-     * 
-     * @syntex : #gradient > .horizontal-three-colors(@a, @b, @c);
-     * @param : Start color
-     * @param : Center color
-     * @param : End color
-     */
-    .horizontal-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
-        background-color: mix(@center-color, @end-color, 80%);
-        background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
-        background-image: -webkit-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-        background-image: -moz-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-        background-image: -o-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-        background-image: linear-gradient(to right, @start-color, @center-color @color-stop, @end-color);
-        background-repeat: no-repeat;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
-    }
+  // Horizontal with Three Colors
+  // 
+  // @syntex #gradient > .horizontal-three-colors(@a, @b, @c);
+  // 
+  // @param start color
+  // @param center color
+  // @param end color
+  .horizontal-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
+    background-color: mix(@center-color, @end-color, 80%);
+    background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
+    background-image: -webkit-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
+    background-image: -moz-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
+    background-image: linear-gradient(to right, @start-color, @center-color @color-stop, @end-color);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
+  }
 
-    /**
-     * Vertical with Three Colors
-     * 
-     * @syntex : #gradient > .vertical-three-colors(@a, @b, @c);
-     * @param : Start color
-     * @param : Center color
-     * @param : End color
-     */
-    .vertical-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
-        background-color: mix(@center-color, @end-color, 80%);
-        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
-        background-image: -webkit-linear-gradient(@start-color, @center-color @color-stop, @end-color);
-        background-image: -moz-linear-gradient(top, @start-color, @center-color @color-stop, @end-color);
-        background-image: -o-linear-gradient(@start-color, @center-color @color-stop, @end-color);
-        background-image: linear-gradient(@start-color, @center-color @color-stop, @end-color);
-        background-repeat: no-repeat;
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
-    }
+  // Vertical with Three Colors
+  // 
+  // @syntex #gradient > .vertical-three-colors(@a, @b, @c);
+  // 
+  // @param start color
+  // @param center color
+  // @param end color
+  .vertical-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
+    background-color: mix(@center-color, @end-color, 80%);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
+    background-image: -webkit-linear-gradient(@start-color, @center-color @color-stop, @end-color);
+    background-image: -moz-linear-gradient(top, @start-color, @center-color @color-stop, @end-color);
+    background-image: -o-linear-gradient(@start-color, @center-color @color-stop, @end-color);
+    background-image: linear-gradient(@start-color, @center-color @color-stop, @end-color);
+    background-repeat: no-repeat;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
+  }
 
-    /**
-     * Radial
-     * 
-     * @syntex : #gradient > .radial(@a, @b);
-     * @param : Center color of radial
-     * @param : Outer color of radial
-     */
-    .radial(@inner-color: @gradient-start-color, @outer-color: @gradient-end-color) {
-        background-color: @outer-color;
-        background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
-        background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
-        background-image: -moz-radial-gradient(circle, @inner-color, @outer-color);
-        background-image: -o-radial-gradient(circle, @inner-color, @outer-color);
-        background-repeat: no-repeat;
-    }
+  // Radial
+  // 
+  // @syntex #gradient > .radial(@a, @b);
+  // 
+  // @param center color of radial
+  // @param outer color of radial
+  .radial(@inner-color: @gradient-start-color, @outer-color: @gradient-end-color) {
+    background-color: @outer-color;
+    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
+    background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
+    background-image: -moz-radial-gradient(circle, @inner-color, @outer-color);
+    background-image: -o-radial-gradient(circle, @inner-color, @outer-color);
+    background-repeat: no-repeat;
+  }
 
-    /**
-     * Striped
-     * 
-     * @syntex : #gradient > .striped(@a, @b);
-     * @param : Start color
-     * @param : Degree value for gradient angle
-     */
-    .striped(@color: @gradient-start-color, @angle: @gradient-deg) {
-        background-color: @color;
-        background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-        background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-        background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-        background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-        background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    }
+  // Striped
+  // 
+  // @syntex #gradient > .striped(@a, @b);
+  // 
+  // @param start color
+  // @param degree value for gradient angle
+  .striped(@color: @gradient-start-color, @angle: @gradient-deg) {
+    background-color: @color;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  }
 
-    /**
-     * Reset filters for IE
-     * 
-     * @syntex : #gradient > .reset-filter();
-     */
-    .reset-filter() {
-        filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+  // Reset filters for IE
+  // 
+  // @syntex #gradient > .reset-filter();
+  .reset-filter() {
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Semantic Grid Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make container
+//
+// @param total width of grid
+// @param container padding
+// @param max width, applied to container element
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+  width: @-total-width;
+  max-width: @-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @-container-padding;
+  padding-right: @-container-padding;
+  .clearfix();
+}
+// When is fluid
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+  .box-sizing( border-box );
+}
+// When is fixed
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+  .box-sizing( content-box );
+}
+
+// Make Row
+.make-row() {
+  .clearfix();
+}
+
+// Make Column
+//
+// @param number of columns to occupy
+// @param total width of grid
+// @param gutter width
+// @param total number of columns in grid system
+.make-column( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns x) {
+  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
+  float: left;
+  width: ((@-column-width * @-index) + (@-gutter-width * (@-index - 1)));
+  min-height: 1px;
+  padding-left: @-gutter-width;
+  .box-sizing( content-box );
+  
+  &:first-child {
+    padding-left: 0;
+  }
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Class Based Grid System Mixin
+////////////////////////////////////////////////////////////////////////////////
+
+// Build Grid System
+// Outputs all the classes and styles for the class based grid system
+//
+// @param total width of grid
+// @param gutter width
+// @param total number of columns in grid system
+// @param container padding
+// @param max width, applied to container element
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+  
+  .@{class-container} {
+    width: @-total-width;
+  }
+  
+  .@{class-column} {
+    padding-left: @-gutter-width;
+    .box-sizing( content-box );
+    
+    &:first-child {
+      padding-left: 0;
     }
+  }
+  
+  // Calculate column widths
+  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
+  
+  // Output column classes
+  .build-X (@index) when (@index > 0) {
+    .@{class-column}-@{index} { .build-(@index); }
+    .build-X(@index - 1);
+  }
+  .build-(@columns) {
+    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
+    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
+  }
+  .build-X (@-columns);
+  
+}
+// When is fluid
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+  .@{class-container} {
+    .box-sizing( border-box );
+  }
+}
+// When is fixed
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+  .@{class-container} {
+    .box-sizing( content-box );
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Typography
+////////////////////////////////////////////////////////////////////////////////
+
+// Font Sequence
+// Sets font-size and line-height based on a multiplier
+// 
+// @param font size in pixels
+// @param line height in pixels or set to auto for automatic calculation based on font-size and line-height-inc
+// @param unit to use for sizing e.g. px, em
+// @param the context that sizes should be set. Default is base font size
+.font-sequence( @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = px) {
+  font-size: @-font-size;
+  
+  .line-height() when (@-line-height = auto) {
+    line-height: unit( (@-font-size + @line-height-inc), px);
+  }
+  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+    line-height: @-line-height;
+  }
+  .line-height();
+}
+.font-sequence( @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = em) {
+
+  @-size: round((@-font-size / @-context), 2);
+  
+  font-size: unit( @-size, em);
+  
+  .line-height() when (@-line-height = auto) {
+    line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
+  }
+  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+    line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
+  }
+  .line-height();
+}
+.font-sequence(  @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = rem) {
+
+  @-size: round((@-font-size / @-context), 2);
+  
+  font-size: unit( @-size, rem);
+  
+  .line-height() when (@-line-height = auto) {
+    line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
+  }
+  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
+    line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
+  }
+  .line-height();
+}
+
+// Mono Font
+// Adds mono font styles to an element along with font sizing and line-height.
+//
+// @param font size used with font-sequence()
+.mono-font( @size : @font-size-code ) {
+  font-family: @font-family-mono;
+  .font-sequence( @size );
+}
+
+// Uppercase
+// Makes text uppercase with optional letter spacing value.
+//
+// @param letter spacing
+.uppercase(@letter-spacing: @letter-spacing) {
+  text-transform: uppercase;
+  letter-spacing: @letter-spacing;
+}
+
+// Lowercase
+// Makes text lowercase with optional letter spacing value.
+//
+// @param letter spacing
+.lowercase(@letter-spacing: 0) {
+  text-transform: lowercase;
+  letter-spacing: @letter-spacing;
+}
+
+// Reset Case
+// Resets the text's text-transform property and sets letter spacing back to zero.
+.resetcase() {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+// Truncate Text
+// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+//
+// @param display property e.g. block, inline-block
+.truncate-text( @display : block ) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+  .display() when ( @display = inline-block ), ( @display = block ) {
+    display: @display;
+  }
+  .display();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// List Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Remove List Styles
+// Removes default list styles and margins from a list element and it's children
+.remove-list-styles() {
+  list-style: none;
+  margin: 0;
+  
+  li {
+    margin: 0;
+  }
+}
+
+// Inline Lists
+// Converts a list into an inline list with inline elements.
+//
+// @param gutter type e.g. margin, padding
+// @param gutter spacing between list items e.g. 10px, 20px
+// @param side that margines should appear e.g. right, left, both
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) {
+  margin: 0;
+  
+  li {
+    display: inline-block;
+  }
+}
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = margin ) {
+  
+  li {
+    .side() when ( @-side = right ) {
+      margin-right: @-margin;
+    }
+    .side() when ( @-side = left ) {
+      margin-left: @-margin;
+    }
+    .side() when ( @-side = both ) {
+      margin-left: (@-margin / 2);
+      margin-right: (@-margin / 2);
+    }
+    .side();
+  }
+}
+.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = padding ) {
+  
+  li {
+    .side() when ( @-side = right ) {
+      padding-right: @-margin;
+    }
+    .side() when ( @-side = left ) {
+      padding-left: @-margin;
+    }
+    .side() when ( @-side = both ) {
+      padding-left: (@-margin / 2);
+      padding-right: (@-margin / 2);
+    }
+    .side();
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Image Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Rounded
+// Rounded corner styles for images
+.rounded() {
+  .border-radius();
+}
+
+// Circle
+// Makes an image a circle
+.circle() {
+  .border-radius(50%);
+}
+
+// Polaroid
+// Makes images have the polaroid styles
+.polaroid() {
+  background: @white;
+  background-clip: padding-box;
+  padding: 5px;
+  border: 1px solid;
+  .border-color(@black, 0.2, #ccc);
+  .box-shadow( 0 1px 5px rgba(0,0,0, 0.1) );
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Table Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Rowed
+.make-table-rowed() {
+  border-collapse: separate;
+  td, th {
+    padding: (@padding / 2) @padding;
+    border-bottom: 1px solid;
+    .border-color( @border-table-base, @border-table-alpha, @border-table );
+  }
+  tr:last-child td { 
+    border-bottom: 0 none; 
+  }
+}
+
+// Columned
+.make-table-column() {
+  border-collapse: separate;
+  td, th {
+    padding: (@padding / 2) @padding;
+    border-left: 1px solid;
+    .border-color( @border-table-base, @border-table-alpha, @border-table );
+  }
+  th {
+    border-left: 1px solid;
+    .border-color( @border-table-base, @border-table-alpha, @border-table );
+  }
+  tr td:first-child, tr th:first-child { 
+    border-left: 0 none;
+  }
+}
+
+// Bordered
+.make-table-bordered() {
+  border-collapse: separate;
+  border: 1px solid;
+  .border-color( @border-table-base, @border-table-alpha, @border-table );
+  .background-color( @bg-table-base, @bg-table-alpha, @bg-table );
+  .border-radius();
+
+  td, th {
+    padding: (@padding / 2) @padding;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    .border-color( @border-table-base, @border-table-alpha, @border-table );
+  }
+  tr:last-child td { border-bottom: 0 none; }
+  tr td:first-child, tr th:first-child { border-left: 0 none; }
+  
+  tbody tr:last-child td:first-child, 
+  tbody tr:last-child th:first-child { .border-radius-bottom-left(); }
+  
+  tbody tr:last-child td:last-child, 
+  tbody tr:last-child th:last-child { .border-radius-bottom-right(); }
+  
+  thead tr:first-child th:first-child, 
+  &.no-thead tr:first-child td:first-child, 
+  &.no-thead tr:first-child th:first-child { .border-radius-top-left(); }
+  
+  thead tr:first-child th:last-child, 
+  &.no-thead tr:first-child td:last-child, 
+  &.no-thead tr:first-child th:last-child { .border-radius-top-right(); }
+}
+
+// Padded
+.make-table-padded() {
+  td, th {
+    padding: (@padding / 2) @padding;
+  }
+}
+
+// Condensed
+.make-table-condensed() {
+  td, th {
+    padding: (@padding / 4) (@padding / 2);
+  }
+}
+
+// Zebra
+.make-table-stripes( @direction : horizontal ) {
+
+  .direction() when ( @direction = horizontal ) {
+    th {
+      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+    }
+    tr:nth-child(even) td {
+      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+    }
+  }
+  .direction() when ( @direction = vertical ) {
+    th:nth-child(odd) {
+      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+    }
+    tr td:nth-child(odd) {
+      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
+    }
+  }
+  .direction();
+}
+
+// Hover
+.make-table-hover() {
+  thead tr th:hover, 
+  tbody tr:hover {
+    .background-color( @bg-table-hover-base, @bg-table-hover-alpha, @bg-table-hover );
+  }
+  tbody tr:hover td {
+    background: transparent;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Layout
+////////////////////////////////////////////////////////////////////////////////
+
+// Horizontal Forms
+// Where group-key and group-value are side by side
+.make-form-horizontal( @key-column-width : @key-column-width, @key-column-gutter : @key-column-gutter ) {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: left;
+    width: ( @key-column-width - @key-column-gutter );
+  }
+  .group .group-key label {
+    line-height: @line-height-label;
+  }
+  // Value
+  .group .group-value {
+    padding-left: @key-column-width;
+  }
+}
+
+// Vertical Forms
+// Where group-key and group-value are stacked
+.make-form-vertical() {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+// Inline Forms
+// Sets groups to be inline along with group-key and group-value
+.make-form-inline() {
+  // Group
+  .group {
+    display: inline-block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Style
+////////////////////////////////////////////////////////////////////////////////
+
+// Bordered
+// Give the form a border and seperates groups with more borders!
+.make-form-bordered() {
+  border: 1px solid;
+  .border-radius();
+  .border-color( @border-form-base, @border-form-alpha, @border-form );
+  
+  // Group
+  .group {
+    padding: (15px - round((@margin / 2))) 15px;
+    margin: 0;
+    border-top: 1px solid;
+    .border-color( @border-form-base, @border-form-alpha, @border-form );
+    
+    &:first-child {
+      border-top: 0 none;
+    }
+  }
+  // Key
+  .group .group-key {
+
+  }
+  // Value
+  .group .group-value {
+
+  }
+}
+
+// Filled
+// Give the form a some filling
+.make-form-filled() {
+  // Group
+  .group {
+    padding: (15px - round((@margin / 2))) 15px;
+    margin: round((@margin / 2)) 0;
+    .border-radius();
+    .background-color( @bg-form-base, @bg-form-alpha, @bg-form );
+  }
+  // Key
+  .group .group-key {
+    
+  }
+  // Value
+  .group .group-value {
+    
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Color
- * Creates RGBA background-color styles based on a hex value, alpha channel and hex fallback
- *
- * @param : Hex value that will be converted to RGB
- * @param : Alpha channel that will be used in RGBA
- * @param : Hax value that will be used as a fallback for browers that don't support RGBA
- * @return : background-color
- */
+// Color
+// Creates RGBA background-color styles based on a hex value, alpha channel and hex fallback
+//
+// @param hex value that will be converted to RGB
+// @param alpha channel that will be used in RGBA
+// @param hax value that will be used as a fallback for browers that don't support RGBA
+// 
+// @return background-color
 .background-color(@hex : @bg-base, @alpha : @bg-alpha, @fallback : @bg) {
 
-    .fallback() when (@fallback = 0) {
-        @fallback: @hex;
-    }
-    .fallback();
-    
-    .background() when (@alpha = 1) {
-        background-color: @fallback;
-    }
-    .background() when (@alpha = 0) {
-        background-color: transparent;
-    }
-    .background() when (@alpha < 1) and (@alpha > 0) {
-        background-color: @fallback;
-        background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-    }
-    .background();
+  .fallback() when (@fallback = 0) {
+    @fallback: @hex;
+  }
+  .fallback();
+  
+  .background() when (@alpha = 1) {
+    background-color: @fallback;
+  }
+  .background() when (@alpha = 0) {
+    background-color: transparent;
+  }
+  .background() when (@alpha < 1) and (@alpha > 0) {
+    background-color: @fallback;
+    background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+  }
+  .background();
 }
 
-/**
- * Color
- * Creates RGBA border-color styles based on a hex value, alpha channel and hex fallback
- *
- * @param : Hex value that will be converted to RGB
- * @param : Alpha channel that will be used in RGBA
- * @param : Hax value that will be used as a fallback for browers that don't support RGBA
- * @return : border-color
- */
+// Color
+// Creates RGBA border-color styles based on a hex value, alpha channel and hex fallback
+//
+// @param hex value that will be converted to RGB
+// @param alpha channel that will be used in RGBA
+// @param hax value that will be used as a fallback for browers that don't support RGBA
+// 
+// @return border-color
 .border-color(@hex : @border-base, @alpha : @border-alpha, @fallback : @border) {
 
-    .fallback() when (@fallback = 0) {
-        @fallback: @hex;
-    }
-    .fallback();
-    
-    .border() when (@alpha = 1) {
-        border-color: @fallback;
-    }
-    .border() when (@alpha = 0) {
-        border-color: transparent;
-    }
-    .border() when (@alpha < 1) and (@alpha > 0) {
-        border-color: @fallback;
-        border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-    }
-    .border();
+  .fallback() when (@fallback = 0) {
+    @fallback: @hex;
+  }
+  .fallback();
+  
+  .border() when (@alpha = 1) {
+    border-color: @fallback;
+  }
+  .border() when (@alpha = 0) {
+    border-color: transparent;
+  }
+  .border() when (@alpha < 1) and (@alpha > 0) {
+    border-color: @fallback;
+    border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+  }
+  .border();
 }
 
-/**
- * Color
- * Creates RGBA color styles based on a hex value, alpha channel and hex fallback
- *
- * @param : Hex value that will be converted to RGB
- * @param : Alpha channel that will be used in RGBA
- * @param : Hax value that will be used as a fallback for browers that don't support RGBA
- * @return : color
- */
+// Color
+// Creates RGBA color styles based on a hex value, alpha channel and hex fallback
+//
+// @param hex value that will be converted to RGB
+// @param alpha channel that will be used in RGBA
+// @param hax value that will be used as a fallback for browers that don't support RGBA
+// 
+// @return color
 .color(@hex, @alpha : 1, @fallback : 0) {
 
-    .fallback() when (@fallback = 0) {
-        @fallback: @hex;
-    }
-    .fallback();
-    
-    .color() when (@alpha = 1) {
-        color: @hex;
-    }
-    .color() when (@alpha = 0) {
-        color: transparent;
-    }
-    .color() when (@alpha < 1) and (@alpha > 0) {
-        color: @fallback;
-        color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-    }
-    .color();
+  .fallback() when (@fallback = 0) {
+    @fallback: @hex;
+  }
+  .fallback();
+  
+  .color() when (@alpha = 1) {
+    color: @hex;
+  }
+  .color() when (@alpha = 0) {
+    color: transparent;
+  }
+  .color() when (@alpha < 1) and (@alpha > 0) {
+    color: @fallback;
+    color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
+  }
+  .color();
 }
 
-/**
- * Arrows
- * Uses the "0x0" element with borders trick to draw arrows.
- *
- * @syntax: #arrow > .arrow-direction(@a, @b);
- * @param: Border width that determines size of arrow
- * @param: Border color that determines color of arrow
- */
+// Arrows
+// Uses the "0x0" element with borders trick to draw arrows.
+//
+// @syntax #arrow > .arrow-direction( @a, @b );
+// 
+// @param border width that determines size of arrow
+// @param border color that determines color of arrow
 #arrow {
 
-    /**
-     * Base arrow properties. This should be condisered a private mixin.
-     * Don't use on it's own.
-     */
-    .base() {
-        content: "\0020";
-        display: inline-block;
-        width: 0;
-        height: 0;
-        border: 0 none;
-        border-style: solid;
-        border-color: transparent;
-    }
-
-    /**
-     * Up arrow
-     */
-    .up( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: 0 @arrow-width @arrow-width @arrow-width;
-        border-bottom-color: @arrow-color;
-    }
-
-    /**
-     * Right arrow
-     */
-    .right( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width 0 @arrow-width @arrow-width;
-        border-left-color: @arrow-color;
-    }
-
-    /**
-     * Down arrow
-     */
-    .down( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width @arrow-width 0 @arrow-width;
-        border-top-color: @arrow-color;
-    }
-
-    /**
-     * Left arrow
-     */
-    .left( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width @arrow-width @arrow-width 0;
-        border-right-color: @arrow-color;
-    }
-
-    /**
-     * Up right, right up arrow
-     */
-    .up-right( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-top-color: @arrow-color;
-        border-right-color: @arrow-color;
-    }
-    .right-up( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-top-color: @arrow-color;
-        border-right-color: @arrow-color;
-    }
-
-    /**
-     * Up left, left up arrow
-     */
-    .up-left( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-top-color: @arrow-color;
-        border-left-color: @arrow-color;
-    }
-    .left-up( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-top-color: @arrow-color;
-        border-left-color: @arrow-color;
-    }
-
-    /**
-     * Down right, right down arrow
-     */
-    .down-right( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-bottom-color: @arrow-color;
-        border-right-color: @arrow-color;
-    }
-    .right-down( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-bottom-color: @arrow-color;
-        border-right-color: @arrow-color;
-    }
-
-    /**
-     * Down left, left down arrow
-     */
-    .down-left( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-bottom-color: @arrow-color;
-        border-left-color: @arrow-color;
-    }
-    .left-down( @arrow-width, @arrow-color ) {
-        .base();
-        border-width: @arrow-width;
-        border-bottom-color: @arrow-color;
-        border-left-color: @arrow-color;
-    }
+  // Base arrow properties. This should be condisered a private mixin.
+  // Don't use on it's own.
+  .base() {
+    content: "\0020";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0 none;
+    border-style: solid;
+    border-color: transparent;
+  }
+  // Up arrow
+  .up( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: 0 @arrow-width @arrow-width @arrow-width;
+    border-bottom-color: @arrow-color;
+  }
+  // Right arrow
+  .right( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width 0 @arrow-width @arrow-width;
+    border-left-color: @arrow-color;
+  }
+  // Down arrow
+  .down( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width @arrow-width 0 @arrow-width;
+    border-top-color: @arrow-color;
+  }
+  // Left arrow
+  .left( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width @arrow-width @arrow-width 0;
+    border-right-color: @arrow-color;
+  }
+  // Up right, right up arrow
+  .up-right( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-top-color: @arrow-color;
+    border-right-color: @arrow-color;
+  }
+  .right-up( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-top-color: @arrow-color;
+    border-right-color: @arrow-color;
+  }
+  // Up left, left up arrow
+  .up-left( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-top-color: @arrow-color;
+    border-left-color: @arrow-color;
+  }
+  .left-up( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-top-color: @arrow-color;
+    border-left-color: @arrow-color;
+  }
+  // Down right, right down arrow
+  .down-right( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-bottom-color: @arrow-color;
+    border-right-color: @arrow-color;
+  }
+  .right-down( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-bottom-color: @arrow-color;
+    border-right-color: @arrow-color;
+  }
+  // Down left, left down arrow
+  .down-left( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-bottom-color: @arrow-color;
+    border-left-color: @arrow-color;
+  }
+  .left-down( @arrow-width, @arrow-color ) {
+    .base();
+    border-width: @arrow-width;
+    border-bottom-color: @arrow-color;
+    border-left-color: @arrow-color;
+  }
   
 }
 
-/**
- * Console
- * Let's you output a LESS variable in the browser.
- * Requires that `<div id="console"></div>` be somewhere in the DOM
- * 
- * @param : LESS Variable that will be output in the browser
- * @param : Position of console output - left, right, bottom-left, bottom-right
- */
+// Console
+// Let's you output a LESS variable in the browser.
+// Requires that `<div id="console"></div>` be somewhere in the DOM
+// 
+// @param LESS Variable that will be output in the browser
+// @param position of console output - left, right, bottom-left, bottom-right
 .console(@value, @position : right) {
 
-    /**
-     * Position conditionals
-     */
-    .position() when ( @position = left ) {
-        #console {
-            top: 0;
-            left: 0;
-        }
-        #console:after {
-            .border-radius-bottom-right();
-        }
-    }
-    .position() when ( @position = right ) {
-        #console {
-            top: 0;
-            right: 0;
-        }
-        #console:before {
-            .border-radius-bottom-left();
-        }
-    }
-    .position() when ( @position = bottom-left ) {
-        #console {
-            bottom: 0;
-            left: 0;
-        }
-        #console:after {
-            .border-radius-top-right();
-        }
-    }
-    .position() when ( @position = bottom-right ) {
-        #console {
-            bottom: 0;
-            right: 0;
-        }
-        #console:before {
-            .border-radius-top-left();
-        }
-    }
-    .position();
-
-    /**
-     * Base console styles
-     */
+  // Position conditionals
+  .position() when ( @position = left ) {
     #console {
-        position: fixed;
-        z-index: 100;
-        .mono-font();
-        
-        &:before, &:after {
-            display: block;
-            padding: 5px 15px;
-            float: left;
-        }
-        
-        &:before {
-            content: "Console:";
-            background: @blue;
-            color: @gE;
-        }
-        
-        &:after {
-            content: "@{value}";
-            background: @gE;
-            color: @color-dark;
-        }
+      top: 0;
+      left: 0;
     }
+    #console:after {
+      .border-radius-bottom-right();
+    }
+  }
+  .position() when ( @position = right ) {
+    #console {
+      top: 0;
+      right: 0;
+    }
+    #console:before {
+      .border-radius-bottom-left();
+    }
+  }
+  .position() when ( @position = bottom-left ) {
+    #console {
+      bottom: 0;
+      left: 0;
+    }
+    #console:after {
+      .border-radius-top-right();
+    }
+  }
+  .position() when ( @position = bottom-right ) {
+    #console {
+      bottom: 0;
+      right: 0;
+    }
+    #console:before {
+      .border-radius-top-left();
+    }
+  }
+  .position();
+
+  // Base console styles
+  #console {
+    position: fixed;
+    z-index: 100;
+    .mono-font();
+    
+    &:before, &:after {
+      display: block;
+      padding: 5px 15px;
+      float: left;
+    }
+    
+    &:before {
+      content: "Console:";
+      background: @blue;
+      color: @gE;
+    }
+    
+    &:after {
+      content: "@{value}";
+      background: @gE;
+      color: @color-dark;
+    }
+  }
 }

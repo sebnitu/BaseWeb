@@ -11,7 +11,7 @@ task('watch', {async: true}, function() {
     watch(config.watch.less, function(filename) {
       console.log(colorize(filename + ' was changed:', 'cyan'));
       jake.Task['build:baseweb'].execute();
-      jake.Task['build:test'].execute();
+      // jake.Task['build:test'].execute();
     });
     watch(config.watch.docs, function(filename) {
       console.log(colorize(filename + ' was changed:', 'cyan'));

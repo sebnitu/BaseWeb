@@ -1,6 +1,6 @@
-////////////////////////////////////////////////////////////////////////////////
-// Reset
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Reset
+==============================================================================*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -15,13 +15,13 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    background: transparent;
-    margin: 0; 
-    padding: 0;
-    border: 0; 
-    outline: 0;
-    font-size: 100%; 
-    vertical-align: baseline;
+  margin: 0; 
+  padding: 0;
+  outline: 0;
+  font-size: 100%; 
+  vertical-align: baseline;
+  background: transparent;
+  border: 0; 
 }
 
 /**
@@ -29,96 +29,103 @@ time, mark, audio, video {
  */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-    display: block;
+  display: block;
 }
 
 /**
  * Remove default list styles for navigation
  */
 nav ul, nav ol { 
-    .remove-list-styles();
+  .remove-list-styles();
 }
 
 /**
  * Base table styles
  */
 table { 
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /**
  * Prevents automatic text resizing on mobile devices
  */
 html {
-    font-size: 100%;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Print
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Clearfix Class
+ */
+.clearfix {
+  .clearfix();
+}
+
+/*==============================================================================
+  Print
+==============================================================================*/
 
 /**
  * Source: https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css
  */
 @media print {
 
-    * {
-        background: transparent !important;
-        color: #000 !important; // Black prints faster: h5bp.com/s
-        text-shadow: none !important;
-        box-shadow: none !important;
-    }
-    
-    a, a:visited {
-        text-decoration: underline;
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-    
-    /**
-     * Don't show links for images, or javascript/internal links
-     */
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-    
-    pre, blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-    
-    thead {
-        display: table-header-group; // h5bp.com/t
-    }
-    
-    tr, img {
-        page-break-inside: avoid;
-    }
-    
-    img {
-        max-width: 100% !important;
-    }
-    
-    @page {
-        margin: 0.5cm;
-    }
-    
-    p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-    }
-    
-    h2, h3 {
-        page-break-after: avoid;
-    }
+  * {
+    background: transparent !important;
+    color: #000 !important; // Black prints faster: h5bp.com/s
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  
+  /**
+   * Don't show links for images, or javascript/internal links
+   */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  
+  thead {
+    display: table-header-group; // h5bp.com/t
+  }
+  
+  tr, img {
+    page-break-inside: avoid;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  @page {
+    margin: 0.5cm;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
 
 }

@@ -1,55 +1,36 @@
-////////////////////////////////////////////////////////////////////////////////
-// Code Variables
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Backgrounds
- */
-@bg-code: @bg;
-@bg-code-alpha: @bg-alpha;
-@bg-code-base: @bg-base;
-
-/**
- * Settings
- */
-@color-code: @color;
-@color-code-inline: @cMyk;
-@font-size-code: 12px; // @font-size * 0.85
-@code-max-height: 400px;
-
-////////////////////////////////////////////////////////////////////////////////
-// Code
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Code
+==============================================================================*/
 
 code, pre {
-    .background-color( @bg-code-base, @bg-code-alpha, @bg-code );
-    .mono-font();
+  .background-color( @bg-code-base, @bg-code-alpha, @bg-code );
+  .mono-font();
 }
 code {
-    padding: 0 (@margin / 2); 
-    margin: 0 2px;
-    display: inline-block;
-    white-space: nowrap;
-    line-height: inherit;
-    color: @color-code-inline;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 (@margin / 2); 
+  white-space: nowrap;
+  line-height: inherit;
+  color: @color-code-inline;
 }
 pre {
-    margin: @margin 0;
-    padding: @margin (@margin + (@margin / 2));
-    overflow: auto;
-    color: @color-code;
-    
-    code {
-        margin: 0;
-        padding: 0;
-        background: none;
-        border: 0 none;
-        display: inline-block;
-        white-space: pre;
-        font-size: 100%;
-        color: inherit;
-    }
-    &.limit-height {
-        max-height: @code-max-height;
-    }
+  margin: @margin 0;
+  padding: @margin (@margin + (@margin / 2));
+  overflow: auto;
+  color: @color-code;
+  
+  code {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    font-size: 100%;
+    color: inherit;
+    background: none;
+    border: 0 none;
+  }
+  &.limit-height {
+    max-height: @code-max-height;
+  }
 }

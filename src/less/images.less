@@ -1,88 +1,97 @@
-////////////////////////////////////////////////////////////////////////////////
-// Images
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Images
+==============================================================================*/
 
 img {
-    margin: @margin 0;
-    display: block; 
-    max-width: 100%;
-    height: auto;
-    &.full {
-        display: block;
-    }
-    
-    /**
-     * Stylistic Classes
-     */
-    &.rounded  { .rounded();  }
-    &.circle   { .circle();   }
-    &.polaroid { .polaroid(); }
-}
-.image-wrap {
-    margin: @margin 0;
-    position: relative;
+  margin: @margin 0;
+  display: block; 
+  max-width: 100%;
+  height: auto;
+  &.full {
     display: block;
-    img {
-        position: relative;
-        z-index: 5;
-        margin: 0;
-        float: none;
-        display: block;
-        
-        &.full {
-            margin-top: @margin;
-        }
-        &.rounded {
-            .border-radius-bottom(0);
-        }
-    }
-
-    /**
-     * Caption
-     */
-    .caption {
-        position: relative;
-        z-index: 10;
-        margin: -1px 0 0 0;
-        padding: (@padding / 2) @padding;
-        display: block; 
-        clear: both;
-        font-size: 0.9em;
-        text-align: center;
-        border: 1px solid;
-        .background-color();
-        .border-color();
-        .border-radius-bottom(3px);
-    }
+  }
+  
+  &.rounded  { 
+    .rounded();
+  }
+  &.circle   { 
+    .circle();
+  }
+  &.polaroid { 
+    .polaroid();
+  }
 }
 
 /**
- * Center
+ * Image Wrap
  */
-img.align-center {
+.image-wrap {
+  position: relative;
+  display: block;
+  margin: @margin 0;
+  
+  img {
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    float: none;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    
+    &.full {
+      margin-top: @margin;
+    }
+    &.rounded {
+      .border-radius-bottom(0);
+    }
+  }
+
+  .caption {
+    position: relative;
+    z-index: 10;
+    display: block; 
+    margin: -1px 0 0 0;
+    padding: (@padding / 2) @padding;
+    clear: both;
+    font-size: 0.9em;
+    text-align: center;
+    border: 1px solid;
+    .background-color();
+    .border-color();
+    .border-radius-bottom(3px);
+  }
+}
+
+/**
+ * Image Alignment
+ */
+// Center
+img.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .image-wrap.center {
-    text-align: center;
+  text-align: center;
 }
-p img.align-center { margin-top: 0; }
+p img.align-center {
+  margin-top: 0;
+}
 
-/**
- * Left
- */
+// Left
 img.align-left, .image-wrap.align-left {
-    margin: @margin (@margin + (@margin / 2)) @margin 0;
-    float: left; 
+  margin: @margin (@margin + (@margin / 2)) @margin 0;
+  float: left; 
 }
-p img.align-left { margin-top: 0; }
+p img.align-left {
+  margin-top: 0;
+  
+}
 
-/**
- * Right
- */
+// Right
 img.align-right, .image-wrap.align-right {
-    margin: @margin 0 @margin (@margin + (@margin / 2));
-    float: right; 
+  margin: @margin 0 @margin (@margin + (@margin / 2));
+  float: right; 
 }
-p img.align-right { margin-top: 0; }
+p img.align-right {
+  margin-top: 0;
+}
