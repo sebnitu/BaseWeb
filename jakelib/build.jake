@@ -14,18 +14,6 @@ namespace('build', function() {
     });
   });
 
-  desc('Compiles and minifies a test less file');
-  task('test', {async: true}, function() {
-    getjson('config.json', function(config) {
-      var input = config.paths.less + 'test.less'
-        , output = [config.paths.css + 'test.css', config.paths.css + 'test.min.css']
-        , lessTask = jake.Task.lessc
-        ;
-      lessTask.reenable(true);
-      lessTask.invoke.apply(lessTask, [input, output, {paths: config.paths.less}]);
-    });
-  });
-
   desc('Build documentation');
   task('docs', {async: true}, function() {
     getjson('config.json', function(config) {

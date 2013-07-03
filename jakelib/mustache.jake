@@ -4,7 +4,7 @@ var colorize = require('./utilities/colorize');
 var getjson = require('./utilities/getjson');
 var asyncForEach = require('./utilities/asyncForEach');
 
-desc('Assembles the documentation templates');
+desc('Assembles the mustache templates');
 task('mustache', {async: true}, function(input, output) {
   
   console.log(input + 'templates/');
