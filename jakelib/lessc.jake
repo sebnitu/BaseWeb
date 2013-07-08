@@ -1,34 +1,15 @@
 var fs = require('fs');
 var less = require('less');
-var colorize = require('./utilities/colorize');
-var extend = require('./utilities/extend');
+var colorize = require('./modules/colorize');
+var extend = require('./modules/extend');
 
-var defaultOptions = 
-  { depends: false
-  , compress: false
-  , yuicompress: false
-  , max_line_len: -1
-  , optimization: 1
-  , silent: false
-  , verbose: false
-  , lint: false
-  , paths: []
-  , color: true
-  , strictImports: false
-  , rootpath: ''
-  , relativeUrls: false
-  , ieCompat: true
-  , strictMath: false
-  , strictUnits: false 
-  };
-
-var parseLESS = function(input, options, callback) {
-  fs.readFile(input, 'utf8', function(err, data) {
+var parseLESS = function(o, callback) {
+  fs.readFile(o.input, 'utf8', function(err, data) {
     if (err) throw new Error(colorize(err, 'red'));
-    var parser = new(less.Parser)(options);
+    var parser = new(less.Parser)(o);
     parser.parse(data, function (err, tree) {
       if (err) {
-        less.writeError(err, options);
+        less.writeError(err, o);
         return;
       } else {
         callback(tree);
@@ -46,18 +27,44 @@ var writeCSS = function(tree, output, settings) {
 };
 
 desc('Parse a LESS file and write CSS to an output');
-task('lessc', {async: true}, function(input, output, options) {
-  var options = extend(defaultOptions, options);
-  parseLESS(input, options, function(tree) {
+task('lessc', {async: true}, function(options) {
+  
+  // Default Options
+  var defaultOptions = 
+    { input: false
+    , output: false
+    , depends: false
+    , compress: false
+    , yuicompress: false
+    , max_line_len: -1
+    , optimization: 1
+    , silent: false
+    , verbose: false
+    , lint: false
+    , paths: []
+    , color: true
+    , strictImports: false
+    , rootpath: ''
+    , relativeUrls: false
+    , ieCompat: true
+    , strictMath: false
+    , strictUnits: false 
+    };
+  
+  // Extend passed options with the defaults
+  var o = extend(defaultOptions, options);
+  
+  // Parse the LESS files
+  parseLESS(o, function(tree) {
     try {
-      if (typeof output === 'string') {
-        writeCSS(tree, output);
+      if (typeof o.output === 'string') {
+        writeCSS(tree, o.output);
       } else {
-        writeCSS(tree, output[0]);
-        writeCSS(tree, output[1], {compress: true});
+        writeCSS(tree, o.output[0]);
+        writeCSS(tree, o.output[1], {compress: true});
       }
     } catch (err) {
-      less.writeError(err, options);
+      less.writeError(err, o);
       return;
     }
   });
