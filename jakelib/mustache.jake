@@ -47,7 +47,8 @@ var writePage = function(data, name, o) {
   // Create the mustache template
   template = mustache.to_html(layout, json, partials);
   
-  console.log(json);
+  // json for testing
+  // console.log(json);
   
   // Write the file and output our message to the console
   fs.writeFileSync(o.root + nameHTML, template, 'utf8');
