@@ -10,7 +10,7 @@ var writePage = function(data, name, o) {
   // Initiate variables
   var nameHTML, layout, json, partials, template, context = {};
   
-  context.nav = o.pages;
+  context.nav = o.nav;
   context.title = name
     .replace(/\.mustache/, '')
     .replace(/\-/, ' ')
@@ -47,7 +47,7 @@ var writePage = function(data, name, o) {
   // Create the mustache template
   template = mustache.to_html(layout, json, partials);
   
-  // json for testing
+  // Output json for testing
   // console.log(json);
   
   // Write the file and output our message to the console
@@ -66,7 +66,7 @@ task('mustache', {async: true}, function(options) {
       , layouts  : 'templates/layouts/'
       , pages    : 'templates/pages/'
       }
-    , pages : []
+    , nav : []
     , defaultLayout : 'default.mustache'
     , customLayouts : {}
     };
@@ -82,25 +82,31 @@ task('mustache', {async: true}, function(options) {
   // Save our pages listing
   var pages = fs.readdirSync(o.path.pages);
   
+  // Build navigation for layout
   pages.forEach(function(name) {
+    
+    if (!name.match(/\.mustache$/)) {
+      return;
+    }
     
     var name_html = name.replace(/mustache$/, 'html');
     var slug = name.replace(/\.mustache/, '');
-    var text = name
-      .replace(/\.mustache/, '')
-      .replace(/\-/, ' ')
-      .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    var key = slug.replace(/\-/, '_');
+    var text = slug.replace(/\-/, ' ').replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
     
     if (text === 'Index') {
       text = 'Home'
     }
-    o.pages.push({ 
+    
+    o.nav.push( { 
       'name_mustache' : name,
       'name_html' : name_html,
-      'url' : o.root + name_html,
+      'url' : '../' + o.root + name_html,
       'text' : text,
-      'class' : 'page page-' + slug,
-      'id' : 'page-' + slug
+      'class' : 'nav-item nav-item-' + slug,
+      'id' : 'nav-item-' + slug
     });
   });
   
