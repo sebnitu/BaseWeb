@@ -40,7 +40,7 @@ task('lessc', {async: true}, function(options) {
     , optimization: 1
     , silent: false
     , verbose: false
-    , lint: false
+    , lint: true
     , paths: []
     , color: true
     , strictImports: false

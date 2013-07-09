@@ -1,3 +1,6 @@
+/**
+ * Asynchronous forEach
+ */
 var asyncForEach = function(array, fn, callback) {
   array = array.slice(0);
   function processOne() {

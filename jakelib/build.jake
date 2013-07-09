@@ -6,12 +6,11 @@ namespace('build', function() {
   task('baseweb', {async: true}, function() {
     getjson('config.json', function(config) {
       var options = { 
-            input : config.paths.less + 'baseweb.less',
-            output : [config.paths.css + 'baseweb.css', config.paths.css + 'baseweb.min.css'],
-            paths : config.paths.less
-          }
-        , lessTask = jake.Task.lessc
-        ;
+        input : config.paths.less + 'baseweb.less',
+        output : [config.paths.css + 'baseweb.css', config.paths.css + 'baseweb.min.css'],
+        paths : config.paths.less
+      };
+      var lessTask = jake.Task.lessc;
       lessTask.reenable(true);
       lessTask.invoke.apply(lessTask, [options]);
     });
@@ -20,9 +19,8 @@ namespace('build', function() {
   desc('Build documentation');
   task('docs', {async: true}, function() {
     getjson('config.json', function(config) {
-      var options = { root: 'docs/' }
-        , mustacheTask = jake.Task.mustache
-        ;
+      var options = { root: 'docs/' };
+      var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);
     });
@@ -31,12 +29,8 @@ namespace('build', function() {
   desc('Build test suite');
   task('tests', {async: true}, function() {
     getjson('config.json', function(config) {
-      var options = { 
-            root : 'tests/',
-            customLayouts : { 'test.mustache' : 'test.mustache' }
-          }
-        , mustacheTask = jake.Task.mustache
-        ;
+      var options = { root : 'tests/' };
+      var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);
     });

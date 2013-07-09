@@ -9,10 +9,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Buttons - BaseWeb</title>
+  <title>{{ title }} / {{ name }}</title>
   
   <!-- Stylesheets and less -->
-  <link rel="stylesheet" type="text/css" media="all" href="/src/css/baseweb.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
   <link rel="stylesheet" type="text/css" media="all" href="assets/css/global-tests.css">
   
   <!--[if lt IE 9]>
@@ -49,6 +49,14 @@
   
   <div class="container middle">
     <div class="page clearfix">
+      
+      <ul>
+      {{ #nav }}
+      
+        <li>{{ title }}</li>
+      
+      {{ /nav }}
+      </ul>
       
       {{ > page }}
     

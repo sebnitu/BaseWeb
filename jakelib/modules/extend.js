@@ -1,3 +1,8 @@
+/**
+ * jQuery's Extend Function
+ * Merge the contents of two or more objects together into the first object
+ * http://api.jquery.com/jQuery.extend/
+ */
 function extend() {
 
   // copy reference to target object
