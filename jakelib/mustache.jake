@@ -78,13 +78,13 @@ var buildMenu = function(pages, dir, current) {
       'name_html' : name_html,
       'url' : '../' + dir + name_html,
       'text' : text,
-      'id' : 'nav-item-' + slug
+      'id' : 'menu-item-' + slug
     };
     
     if ( menu[i].name_mustache === current ) {
-      menu[i].class = 'nav-item nav-item-' + slug + ' nav-item-active';
+      menu[i].class = 'menu-item menu-item-' + slug + ' menu-item-active';
     } else {
-      menu[i].class = 'nav-item nav-item-' + slug;
+      menu[i].class = 'menu-item menu-item-' + slug;
     }
     
   }
