@@ -81,7 +81,7 @@ var buildMenu = function(pages, dir, current) {
       'id' : 'nav-item-' + slug
     };
     
-    if ( menu[i].name_mustache === name ) {
+    if ( menu[i].name_mustache === current ) {
       menu[i].class = 'nav-item nav-item-' + slug + ' nav-item-active';
     } else {
       menu[i].class = 'nav-item nav-item-' + slug;
@@ -89,7 +89,6 @@ var buildMenu = function(pages, dir, current) {
     
   }
   
-    
   return menu;
 }
 
@@ -110,8 +109,8 @@ var writePage = function(data, name, o) {
   
   
   // Set the page title
-  name_html = name.replace(/\.mustache/, '');
-  context.title = name_html
+  context.title = name
+    .replace(/\.mustache/, '')
     .replace(/\-/, ' ')
     .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   
@@ -137,14 +136,17 @@ var writePage = function(data, name, o) {
     // Use the default layout
     layout = fs.readFileSync(o.path.layouts + o.defaultLayout, 'utf8');
   }
+  
   // Get the page variables
   json = extend(getjsonsync('package.json'), context);
+  
   // Set the page data as a partial
   partials = {page : data};
+  
   // Create the mustache template
   template = mustache.to_html(layout, json, partials);
     
   // Write the file and output our message to the console
-  fs.writeFileSync(o.dir + name_html, template, 'utf8');
-  console.log(colorize('√ mustache: wrote ' + o.dir + name_html, 'green'));
+  fs.writeFileSync(o.dir + name.replace(/\.mustache/, '.html'), template, 'utf8');
+  console.log(colorize('√ mustache: wrote ' + o.dir + name.replace(/\.mustache/, '.html'), 'green'));
 }
