@@ -19,7 +19,7 @@ namespace('build', function() {
   desc('Build documentation');
   task('docs', {async: true}, function() {
     getjson('config.json', function(config) {
-      var options = { root: 'docs/' };
+      var options = { dir: 'docs/' };
       var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);
@@ -29,7 +29,7 @@ namespace('build', function() {
   desc('Build test suite');
   task('tests', {async: true}, function() {
     getjson('config.json', function(config) {
-      var options = { root : 'tests/' };
+      var options = { dir : 'tests/' };
       var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);

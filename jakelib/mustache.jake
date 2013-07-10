@@ -3,38 +3,122 @@ var mustache = require('mustache');
 var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
 var getjsonsync = require('./modules/getjsonsync');
-var asyncForEach = require('./modules/asyncForEach');
+
+desc('Assembles the mustache templates');
+task('mustache', {async: false}, function(options) {
+  
+  // Default Options
+  var defaultOptions = 
+    { pages : {}
+    , dir : ''
+    , path:
+      { template : 'templates/'
+      , layouts  : 'templates/layouts/'
+      , pages    : 'templates/pages/'
+      }
+    , defaultLayout : 'default.mustache'
+    , customLayouts : {}
+    };
+      
+  // Extend passed options with the defaults
+  var o = extend(defaultOptions, options);
+
+  // Build the template paths
+  o.path.template = o.dir + o.path.template;
+  o.path.layouts = o.dir + o.path.layouts;
+  o.path.pages = o.dir + o.path.pages;
+  
+  // Save our pages listing
+  o.pages = fs.readdirSync(o.path.pages);
+  
+  // Lets loop through pages asyncronously
+  o.pages.forEach(function(name) {
+    
+    // Check that it's a mustache file, else callback and return
+    if (!name.match(/\.mustache$/)) {
+      callback();
+      return;
+    }
+    
+    // Read the page
+    data = fs.readFileSync(o.path.pages + name, 'utf8');
+    
+    // Write the page
+    writePage(data, name, o);
+    
+  });
+
+});
+
+var buildMenu = function(pages, dir, current) {
+  
+  var menu = [];
+  
+  for( i = 0; i < pages.length; i++ ) {
+    
+    var name = pages[i];
+    
+    if (!name.match(/\.mustache$/)) {
+      return;
+    }
+    
+    var name_html = name.replace(/mustache$/, 'html')
+      , slug = name.replace(/\.mustache/, '')
+      , key = slug.replace(/\-/, '_')
+      , text = slug.replace(/\-/, ' ').replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+    
+    if (text === 'Index') {
+      text = 'Home'
+    }
+    
+    menu[i] = { 
+      'name_mustache' : name,
+      'name_html' : name_html,
+      'url' : '../' + dir + name_html,
+      'text' : text,
+      'id' : 'nav-item-' + slug
+    };
+    
+    if ( menu[i].name_mustache === name ) {
+      menu[i].class = 'nav-item nav-item-' + slug + ' nav-item-active';
+    } else {
+      menu[i].class = 'nav-item nav-item-' + slug;
+    }
+    
+  }
+  
+    
+  return menu;
+}
 
 var writePage = function(data, name, o) {
   
   // Initiate variables
-  var nameHTML, layout, json, partials, template, context = {};
+  var layout
+    , json
+    , partials
+    , template
+    , name_html
+    , context = {}
+    , currentIndex
+    , defaultClasses;
   
-  // Set the current page class  
-  var currentIndex, index = 0;
-  context.nav = o.nav;
-  context.nav.forEach(function(item) {
-    if ( item.name_mustache === name ) {
-      currentIndex = index;
-    }
-    index += 1;
-  });
-  // o.nav[currentIndex].class = o.nav[currentIndex].class + ' nav-item-active';
-  console.log(context.nav[currentIndex]);
+  // Build the page menu
+  context.menu = buildMenu(o.pages, o.dir, name);
+  
   
   // Set the page title
-  context.title = name
-    .replace(/\.mustache/, '')
+  name_html = name.replace(/\.mustache/, '');
+  context.title = name_html
     .replace(/\-/, ' ')
     .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   
   if (context.title == 'Index') {
     context.title = 'Home'
   }
-  
-  // Save the HTML name for the output file
-  nameHTML = name.replace(/mustache$/, 'html');
-    
+      
   // Check if we need to use a custom layout for our page
   if ( o.customLayouts[name] ) {
     // Check if custom layout exists
@@ -43,7 +127,7 @@ var writePage = function(data, name, o) {
       layout = fs.readFileSync(o.path.layouts + o.customLayouts[name], 'utf8');
     } else {
       // Custom layout file wasn't created so throw a warning and use the default instead
-      console.log(colorize('Warning: `' + o.path.layouts + o.customLayouts[name] + '` does not exist. Using `' +  o.path.layouts + o.defaultLayout + '` to build `' + o.root + nameHTML + '`', 'yellow'));
+      console.log(colorize('Warning: `' + o.path.layouts + o.customLayouts[name] + '` does not exist. Using `' +  o.path.layouts + o.defaultLayout + '` to build `' + o.dir + context.menu[currentIndex].name_html + '`', 'yellow'));
       layout = fs.readFileSync(o.path.layouts + o.defaultLayout, 'utf8');
     }
   } else if ( fs.existsSync(o.path.layouts + name) ) {
@@ -59,92 +143,8 @@ var writePage = function(data, name, o) {
   partials = {page : data};
   // Create the mustache template
   template = mustache.to_html(layout, json, partials);
-  
-  // Output json for testing
-  // console.log(json);
-  
+    
   // Write the file and output our message to the console
-  fs.writeFileSync(o.root + nameHTML, template, 'utf8');
-  console.log(colorize('√ mustache: wrote ' + o.root + nameHTML, 'green'));
+  fs.writeFileSync(o.dir + name_html, template, 'utf8');
+  console.log(colorize('√ mustache: wrote ' + o.dir + name_html, 'green'));
 }
-
-desc('Assembles the mustache templates');
-task('mustache', {async: true}, function(options) {
-  
-  // Default Options
-  var defaultOptions = 
-    { root : ''
-    , path:
-      { template : 'templates/'
-      , layouts  : 'templates/layouts/'
-      , pages    : 'templates/pages/'
-      }
-    , nav : []
-    , defaultLayout : 'default.mustache'
-    , customLayouts : {}
-    };
-      
-  // Extend passed options with the defaults
-  var o = extend(defaultOptions, options);
-  
-  // Build the template paths
-  o.path.template = o.root + o.path.template;
-  o.path.layouts = o.root + o.path.layouts;
-  o.path.pages = o.root + o.path.pages;
-  
-  // Save our pages listing
-  var pages = fs.readdirSync(o.path.pages);
-  
-  // Build navigation for layout
-  pages.forEach(function(name) {
-    
-    if (!name.match(/\.mustache$/)) {
-      return;
-    }
-    
-    var name_html = name.replace(/mustache$/, 'html');
-    var slug = name.replace(/\.mustache/, '');
-    var key = slug.replace(/\-/, '_');
-    var text = slug.replace(/\-/, ' ').replace(/\w\S*/g, function(txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-    
-    if (text === 'Index') {
-      text = 'Home'
-    }
-    
-    o.nav.push( { 
-      'name_mustache' : name,
-      'name_html' : name_html,
-      'url' : '../' + o.root + name_html,
-      'text' : text,
-      'class' : 'nav-item nav-item-' + slug,
-      'id' : 'nav-item-' + slug
-    });
-  });
-  
-  // Lets loop through pages asyncronously
-  asyncForEach(pages, function(name, callback) {
-    
-    // Check that it's a mustache file, else callback and return
-    if (!name.match(/\.mustache$/)) {
-      callback();
-      return;
-    }
-    
-    // Read the page
-    fs.readFile(o.path.pages + name, 'utf8', function(err, data) {
-      if (err) throw new Error(colorize(err, 'red'));
-      // Write the page file and then callback
-      writePage(data, name, o);
-      callback();
-    });
-    
-  }, function() {
-    
-    // Called after our loop has finished
-    // console.log(colorize('Templates have been built!', 'cyan'));
-    
-  });    
-
-});

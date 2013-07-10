@@ -3,29 +3,6 @@ var less = require('less');
 var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
 
-var parseLESS = function(o, callback) {
-  fs.readFile(o.input, 'utf8', function(err, data) {
-    if (err) throw new Error(colorize(err, 'red'));
-    var parser = new(less.Parser)(o);
-    parser.parse(data, function (err, tree) {
-      if (err) {
-        less.writeError(err, o);
-        return;
-      } else {
-        callback(tree);
-      }
-    });
-  });
-};
-
-var writeCSS = function(tree, output, settings) {
-  var css = tree.toCSS(settings);
-  fs.writeFile(output, css, 'utf8', function(err) {
-    if (err) throw new Error(colorize(err, 'red'));
-    console.log(colorize('√ lessc: wrote ' + output, 'green'));
-  });
-};
-
 desc('Parse a LESS file and write CSS to an output');
 task('lessc', {async: true}, function(options) {
   
@@ -69,3 +46,26 @@ task('lessc', {async: true}, function(options) {
     }
   });
 });
+
+var parseLESS = function(o, callback) {
+  fs.readFile(o.input, 'utf8', function(err, data) {
+    if (err) throw new Error(colorize(err, 'red'));
+    var parser = new(less.Parser)(o);
+    parser.parse(data, function (err, tree) {
+      if (err) {
+        less.writeError(err, o);
+        return;
+      } else {
+        callback(tree);
+      }
+    });
+  });
+}
+
+var writeCSS = function(tree, output, settings) {
+  var css = tree.toCSS(settings);
+  fs.writeFile(output, css, 'utf8', function(err) {
+    if (err) throw new Error(colorize(err, 'red'));
+    console.log(colorize('√ lessc: wrote ' + output, 'green'));
+  });
+}
