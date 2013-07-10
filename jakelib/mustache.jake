@@ -10,7 +10,19 @@ var writePage = function(data, name, o) {
   // Initiate variables
   var nameHTML, layout, json, partials, template, context = {};
   
+  // Set the current page class  
+  var currentIndex, index = 0;
   context.nav = o.nav;
+  context.nav.forEach(function(item) {
+    if ( item.name_mustache === name ) {
+      currentIndex = index;
+    }
+    index += 1;
+  });
+  // o.nav[currentIndex].class = o.nav[currentIndex].class + ' nav-item-active';
+  console.log(context.nav[currentIndex]);
+  
+  // Set the page title
   context.title = name
     .replace(/\.mustache/, '')
     .replace(/\-/, ' ')
@@ -22,6 +34,7 @@ var writePage = function(data, name, o) {
   
   // Save the HTML name for the output file
   nameHTML = name.replace(/mustache$/, 'html');
+    
   // Check if we need to use a custom layout for our page
   if ( o.customLayouts[name] ) {
     // Check if custom layout exists
