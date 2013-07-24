@@ -1,3 +1,122 @@
+////////////////////////////////////////////////////////////////////////////////
+// Form Layout Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Horizontal Forms
+// Where group-key and group-value are side by side
+.make-form-horizontal( @key-column-width : @key-column-width, @key-column-gutter : @key-column-gutter ) {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: left;
+    width: ( @key-column-width - @key-column-gutter );
+  }
+  .group .group-key label {
+    line-height: @line-height-label;
+  }
+  // Value
+  .group .group-value {
+    padding-left: @key-column-width;
+  }
+}
+
+// Vertical Forms
+// Where group-key and group-value are stacked
+.make-form-vertical() {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+// Inline Forms
+// Sets groups to be inline along with group-key and group-value
+.make-form-inline() {
+  // Group
+  .group {
+    display: inline-block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Style Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Bordered
+// Give the form a border and seperates groups with more borders!
+.make-form-bordered() {
+  border: 1px solid;
+  .border-radius();
+  .border-color( @border-form-base, @border-form-alpha, @border-form );
+  
+  // Group
+  .group {
+    padding: (15px - round((@margin / 2))) 15px;
+    margin: 0;
+    border-top: 1px solid;
+    .border-color( @border-form-base, @border-form-alpha, @border-form );
+    
+    &:first-child {
+      border-top: 0 none;
+    }
+  }
+  // Key
+  .group .group-key {
+
+  }
+  // Value
+  .group .group-value {
+
+  }
+}
+
+// Filled
+// Give the form a some filling
+.make-form-filled() {
+  // Group
+  .group {
+    padding: (15px - round((@margin / 2))) 15px;
+    margin: round((@margin / 2)) 0;
+    .border-radius();
+    .background-color( @bg-form-base, @bg-form-alpha, @bg-form );
+  }
+  // Key
+  .group .group-key {
+    
+  }
+  // Value
+  .group .group-value {
+    
+  }
+}
+
 /*==============================================================================
   Base Form Elements
 ==============================================================================*/

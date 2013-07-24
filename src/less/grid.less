@@ -1,3 +1,111 @@
+////////////////////////////////////////////////////////////////////////////////
+// Semantic Grid Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make container
+//
+// @param total width of grid
+// @param container padding
+// @param max width, applied to container element
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+  width: @-total-width;
+  max-width: @-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: @-container-padding;
+  padding-right: @-container-padding;
+  .clearfix();
+}
+// When is fluid
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+  .box-sizing( border-box );
+}
+// When is fixed
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+  .box-sizing( content-box );
+}
+
+// Make Row
+.make-row() {
+  .clearfix();
+}
+
+// Make Column
+//
+// @param number of columns to occupy
+// @param total width of grid
+// @param gutter width
+// @param total number of columns in grid system
+.make-column( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns x) {
+  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
+  float: left;
+  width: ((@-column-width * @-index) + (@-gutter-width * (@-index - 1)));
+  min-height: 1px;
+  padding-left: @-gutter-width;
+  .box-sizing( content-box );
+  
+  &:first-child {
+    padding-left: 0;
+  }
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Class Based Grid System Mixin
+////////////////////////////////////////////////////////////////////////////////
+
+// Build Grid System
+// Outputs all the classes and styles for the class based grid system
+//
+// @param total width of grid
+// @param gutter width
+// @param total number of columns in grid system
+// @param container padding
+// @param max width, applied to container element
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+  
+  .@{class-container} {
+    width: @-total-width;
+  }
+  
+  .@{class-column} {
+    padding-left: @-gutter-width;
+    .box-sizing( content-box );
+    
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+  
+  // Calculate column widths
+  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
+  
+  // Output column classes
+  .build-X (@index) when (@index > 0) {
+    .@{class-column}-@{index} { .build-(@index); }
+    .build-X(@index - 1);
+  }
+  .build-(@columns) {
+    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
+    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
+  }
+  .build-X (@-columns);
+  
+}
+// When is fluid
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+  .@{class-container} {
+    .box-sizing( border-box );
+  }
+}
+// When is fixed
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+  .@{class-container} {
+    .box-sizing( content-box );
+  }
+}
+
+
 /*==============================================================================
   Base Grid System
 ==============================================================================*/
