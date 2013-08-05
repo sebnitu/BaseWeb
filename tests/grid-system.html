@@ -21,35 +21,122 @@
   
 </head>
 <body>
-  
-  <div class="container top">
-    <header class="header">
-      <p>BaseWeb <span>&ndash; A fresh front-end development framework.</span></p>
-    </header>
-    <nav class="nav">
-      <ul>
-        <li id="menu-item-buttons" class="menu-item menu-item-buttons"><a href="../tests/buttons.html">Buttons</a></li>
-        <li id="menu-item-forms" class="menu-item menu-item-forms"><a href="../tests/forms.html">Forms</a></li>
-        <li id="menu-item-grid-system" class="menu-item menu-item-grid-system menu-item-active"><a href="../tests/grid-system.html">Grid System</a></li>
-        <li id="menu-item-index" class="menu-item menu-item-index"><a href="../tests/index.html">Home</a></li>
-      </ul>
-    </nav>
-  </div>
-  
-  <div class="container middle">
-    <div class="page clearfix">
-      
-      <h1>Grid System</h1>
-      
+
+<nav class="nav">
+  <div class="container">
     
+    <form class="menu">
+      <label>
+        Tests &ndash;
+        <select>
+          <option id="menu-item-index" value="../tests/index.html" >Index</a></option>
+          <option id="menu-item-grid-system" value="../tests/grid-system.html" selected=&quot;selected&quot;>Grid System</a></option>
+          <option id="menu-item-buttons" value="../tests/buttons.html" >Buttons</a></option>
+          <option id="menu-item-forms" value="../tests/forms.html" >Forms</a></option>
+        </select>
+      </label>
+    </form>
+    
+    <div class="title">
+      <p>BaseWeb <span>&ndash; A fresh front-end development framework.</span></p>
     </div>
+    
   </div>
-  
-  <div class="container bottom">
-    <footer class="footer">
-      <p>Copyright &copy; 2013 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</p>
-    </footer>
+</nav>
+
+<header class="header">
+  <div class="container">
+      <h1>Grid System</h1>
   </div>
+</header>
+
+<div class="page">
+  <div class="container">
+      
+
+<div class="row">
+
+  <div class="col col-12"><p>12</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-1"><p>1</p></div>
+  <div class="col col-11"><p>11</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-2"><p>2</p></div>
+  <div class="col col-10"><p>10</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-3"><p>3</p></div>
+  <div class="col col-9"><p>9</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-4"><p>4</p></div>
+  <div class="col col-8"><p>8</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-5"><p>5</p></div>
+  <div class="col col-7"><p>7</p></div>
+
+</div><!-- .row -->
+
+<div class="row">
+
+  <div class="col col-6"><p>6</p></div>
+  <div class="col col-6"><p>6</p></div>
+
+</div><!-- .row -->
+
+<style>
+/**
+ * Page Specific Styles
+ */
+.row {
+  margin: 0 0 10px 0;
+}
+.col {
+  margin: 0 0 5px 0;
+}
+.col p {
+  margin: 0;
+  padding: 15px 20px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+  background: #d3fceb;
+  border-radius: 4px;
+}
   
+</style>    
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script>
+$( '.menu select' ).change(function() {
+  var url = $(this).val();
+  document.location.href = url;
+});
+</script>
+
 </body>
 </html>

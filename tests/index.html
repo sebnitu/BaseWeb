@@ -21,35 +21,51 @@
   
 </head>
 <body>
-  
-  <div class="container top">
-    <header class="header">
+
+<nav class="nav">
+  <div class="container">
+    
+    <form class="menu">
+      <label>
+        Tests &ndash;
+        <select>
+          <option id="menu-item-index" value="../tests/index.html" selected=&quot;selected&quot;>Index</a></option>
+          <option id="menu-item-grid-system" value="../tests/grid-system.html" >Grid System</a></option>
+          <option id="menu-item-buttons" value="../tests/buttons.html" >Buttons</a></option>
+          <option id="menu-item-forms" value="../tests/forms.html" >Forms</a></option>
+        </select>
+      </label>
+    </form>
+    
+    <div class="title">
       <p>BaseWeb <span>&ndash; A fresh front-end development framework.</span></p>
-    </header>
-    <nav class="nav">
-      <ul>
-        <li id="menu-item-buttons" class="menu-item menu-item-buttons"><a href="../tests/buttons.html">Buttons</a></li>
-        <li id="menu-item-forms" class="menu-item menu-item-forms"><a href="../tests/forms.html">Forms</a></li>
-        <li id="menu-item-grid-system" class="menu-item menu-item-grid-system"><a href="../tests/grid-system.html">Grid System</a></li>
-        <li id="menu-item-index" class="menu-item menu-item-index menu-item-active"><a href="../tests/index.html">Home</a></li>
-      </ul>
-    </nav>
+    </div>
+    
   </div>
-  
-  <div class="container middle">
-    <div class="page clearfix">
-      
+</nav>
+
+<header class="header">
+  <div class="container">
       <h1>Home</h1>
+  </div>
+</header>
+
+<div class="page">
+  <div class="container">
       
     
-    </div>
   </div>
-  
-  <div class="container bottom">
-    <footer class="footer">
-      <p>Copyright &copy; 2013 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</p>
-    </footer>
-  </div>
-  
+</div>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script>
+$( '.menu select' ).change(function() {
+  var url = $(this).val();
+  document.location.href = url;
+});
+</script>
+
 </body>
 </html>

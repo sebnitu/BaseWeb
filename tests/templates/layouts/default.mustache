@@ -21,35 +21,51 @@
   
 </head>
 <body>
-  
-  <div class="container top">
-    <header class="header">
+
+<nav class="nav">
+  <div class="container">
+    
+    <form class="menu">
+      <label>
+        Tests &ndash;
+        <select>
+        {{ #menu }}
+          <option id="{{ id }}" value="{{{ url }}}" {{ select }}>{{ text }}</a></option>
+        {{ /menu }}
+        </select>
+      </label>
+    </form>
+    
+    <div class="title">
       <p>{{ name }} <span>&ndash; {{ description }}</span></p>
-    </header>
-    <nav class="nav">
-      <ul>
-      {{ #menu }}
-        <li id="{{ id }}" class="{{ class }}"><a href="{{{ url }}}">{{ text }}</a></li>
-      {{ /menu }}
-      </ul>
-    </nav>
+    </div>
+    
   </div>
-  
-  <div class="container middle">
-    <div class="page clearfix">
-      
+</nav>
+
+<header class="header">
+  <div class="container">
       <h1>{{ title }}</h1>
+  </div>
+</header>
+
+<div class="page">
+  <div class="container">
       
       {{ > page }}
     
-    </div>
   </div>
-  
-  <div class="container bottom">
-    <footer class="footer">
-      <p>Copyright &copy; {{ year }} <a href="{{{ url }}}">{{ author }}</a>. All rights reserved.</p>
-    </footer>
-  </div>
-  
+</div>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script>
+$( '.menu select' ).change(function() {
+  var url = $(this).val();
+  document.location.href = url;
+});
+</script>
+
 </body>
 </html>
