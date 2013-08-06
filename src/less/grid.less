@@ -83,16 +83,39 @@
   // Calculate column widths
   @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
   
-  // Output column classes
+  // Build the column classes
   .build-X (@index) when (@index > 0) {
     .@{class-column}-@{index} { .build-(@index); }
     .build-X(@index - 1);
   }
   .build-(@columns) {
     width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
-    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
   }
   .build-X (@-columns);
+  
+  // Build the prefix classes
+  .build-prefix-X (@index) when (@index > 0) {
+    .@{class-prefix}-@{index} { .build-prefix-(@index); }
+    .build-prefix-X(@index - 1);
+  }
+  .build-prefix-(@columns) {
+    @spacing : ((@-column-width * @columns) + (@-gutter-width * @columns));
+    padding-left: (@spacing + @-gutter-width);
+    &:first-child {
+      padding-left: @spacing;
+    }
+  }
+  .build-prefix-X (@-columns);
+  
+  // Build the prefix classes
+  .build-suffix-X (@index) when (@index > 0) {
+    .@{class-suffix}-@{index} { .build-suffix-(@index); }
+    .build-suffix-X(@index - 1);
+  }
+  .build-suffix-(@columns) {
+    padding-right: ((@-column-width * @columns) + (@-gutter-width * @columns));
+  }
+  .build-suffix-X (@-columns);
   
 }
 // When is fluid
