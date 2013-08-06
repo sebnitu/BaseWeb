@@ -277,6 +277,8 @@ html {
   float: left;
   width: 100%;
   min-height: 1px;
+  padding-left: 0;
+  padding-right: 0;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -2947,8 +2949,40 @@ fieldset.filled .group {
   .container {
     width: 100%;
     max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 20px;
     padding-right: 20px;
+    zoom: 1;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .container:before,
+  .container:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .container:after {
+    clear: both;
+  }
+  .row {
+    zoom: 1;
+  }
+  .row:before,
+  .row:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .row:after {
+    clear: both;
   }
   .col {
     padding-left: 2%;
