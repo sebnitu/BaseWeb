@@ -4,7 +4,10 @@ var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
 var getjsonsync = require('./modules/getjsonsync');
 
-desc('Assembles the mustache templates');
+/**
+ * Jake task for compiling mustache templates
+ */
+desc('Compiles mustache templates');
 task('mustache', {async: false}, function(options) {
   
   // Default Options

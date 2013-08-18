@@ -1,3 +1,3 @@
 jake.addListener('complete', function () {
-    process.exit();
+  process.exit();
 });

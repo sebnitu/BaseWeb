@@ -3,6 +3,9 @@ var less = require('less');
 var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
 
+/**
+ * Jake task for compiling LESS files
+ */
 desc('Parse a LESS file and write CSS to an output');
 task('lessc', {async: true}, function(options) {
   
