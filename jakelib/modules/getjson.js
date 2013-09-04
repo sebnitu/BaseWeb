@@ -1,10 +1,10 @@
 var fs = require('fs');
 var extend = require('./extend');
 var asyncForEach = require('./asyncForEach');
-var colorize = require('./colorize');
+var u = require('./utility');
 
 // When no files are passed, these are parsed by default
-var defaultFiles = [ 'package.json', 'config.json' ];
+var defaultFiles = [ 'package.json' ];
 
 function getJSON(files, callback) {
   
@@ -20,7 +20,7 @@ function getJSON(files, callback) {
   if (typeof files === 'string') {
   
     fs.readFile(files, 'utf8', function(err, data) {
-      if (err) throw new Error(colorize(err, 'red'));
+      if (err) throw new Error(u.colorize(err, 'red'));
       json = JSON.parse(data);
       callback(json);
     });
@@ -38,7 +38,7 @@ function getJSON(files, callback) {
         if (exists) {
         
           fs.readFile(file, 'utf8', function(err, data) {
-            if (err) throw new Error(colorize(err, 'red'));
+            if (err) throw new Error(u.colorize(err, 'red'));
             if (a != 'undefined') {
               b = a;
             }
@@ -50,7 +50,7 @@ function getJSON(files, callback) {
           });
           
         } else {
-          console.log(colorize('Sorry, but ' + file + ' does not exist!', 'yellow'));
+          u.print('Sorry, but ' + file + ' does not exist!', 'yellow');
           callback();
         }
       });

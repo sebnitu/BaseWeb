@@ -1,9 +1,9 @@
 var fs = require('fs');
 var extend = require('./extend');
-var colorize = require('./colorize');
+var u = require('./utility');
 
 // When no files are passed, these are parsed by default
-var defaultFiles = [ 'package.json', 'config.json' ];
+var defaultFiles = [ 'package.json' ];
 
 function getJSONSync(files) {
 	// Let's us pass a file or callback first
@@ -42,7 +42,7 @@ function getJSONSync(files) {
         }
         
       } else {
-        console.log(colorize('Sorry, but ' + file + ' does not exist!', 'yellow'));
+        u.print('Sorry, but ' + file + ' does not exist!', 'yellow');
       }
       
     });

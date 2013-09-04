@@ -17,6 +17,21 @@ namespace('build', function() {
     });
   });
   
+  // Build JS
+  desc('Compiles and minifies JavaScript');
+  task('js', {async: true}, function() {
+    getjson('package.json', function(config) {
+      var options = { 
+        input : config.paths.js + 'baseweb.js',
+        output : config.paths.js + 'baseweb.min.js',
+        paths : config.paths.js
+      };
+      var uglifyjsTask = jake.Task.uglifyjs;
+      uglifyjsTask.reenable(true);
+      uglifyjsTask.invoke.apply(uglifyjsTask, [options]);
+    });
+  });
+  
   // Build docs
   desc('Build documentation');
   task('docs', {async: true}, function() {

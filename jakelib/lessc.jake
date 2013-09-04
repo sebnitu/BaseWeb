@@ -1,7 +1,7 @@
 var fs = require('fs');
 var less = require('less');
-var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
+var u = require('./modules/utility');
 
 /**
  * Jake task for compiling LESS files
@@ -52,7 +52,7 @@ task('lessc', {async: true}, function(options) {
 
 var parseLESS = function(o, callback) {
   fs.readFile(o.input, 'utf8', function(err, data) {
-    if (err) throw new Error(colorize(err, 'red'));
+    if (err) throw new Error(u.colorize(err, 'red'));
     var parser = new(less.Parser)(o);
     parser.parse(data, function (err, tree) {
       if (err) {
@@ -68,7 +68,7 @@ var parseLESS = function(o, callback) {
 var writeCSS = function(tree, output, settings) {
   var css = tree.toCSS(settings);
   fs.writeFile(output, css, 'utf8', function(err) {
-    if (err) throw new Error(colorize(err, 'red'));
-    console.log(colorize('√ lessc: wrote ' + output, 'green'));
+    if (err) throw new Error(u.colorize(err, 'red'));
+    u.print('√ lessc: wrote ' + output, 'green');
   });
 }

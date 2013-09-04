@@ -1,8 +1,8 @@
 var fs = require('fs');
 var mustache = require('mustache');
-var colorize = require('./modules/colorize');
 var extend = require('./modules/extend');
 var getjsonsync = require('./modules/getjsonsync');
+var u = require('./modules/utility');
 
 /**
  * Jake task for compiling mustache templates
@@ -157,7 +157,7 @@ var writePage = function(data, name, o) {
       layout = fs.readFileSync(o.path.layouts + o.customLayouts[name], 'utf8');
     } else {
       // Custom layout file wasn't created so throw a warning and use the default instead
-      console.log(colorize('Warning: `' + o.path.layouts + o.customLayouts[name] + '` does not exist. Using `' +  o.path.layouts + o.defaultLayout + '` to build `' + o.dir + context.menu[currentIndex].name_html + '`', 'yellow'));
+      u.print('Warning: `' + o.path.layouts + o.customLayouts[name] + '` does not exist. Using `' +  o.path.layouts + o.defaultLayout + '` to build `' + o.dir + context.menu[currentIndex].name_html + '`', 'yellow');
       layout = fs.readFileSync(o.path.layouts + o.defaultLayout, 'utf8');
     }
   } else if ( fs.existsSync(o.path.layouts + name) ) {
@@ -179,5 +179,5 @@ var writePage = function(data, name, o) {
     
   // Write the file and output our message to the console
   fs.writeFileSync(o.dir + name.replace(/\.mustache/, '.html'), template, 'utf8');
-  console.log(colorize('√ mustache: wrote ' + o.dir + name.replace(/\.mustache/, '.html'), 'green'));
+  u.print('√ mustache: wrote ' + o.dir + name.replace(/\.mustache/, '.html'), 'green');
 }
