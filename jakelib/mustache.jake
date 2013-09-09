@@ -32,14 +32,19 @@ task('mustache', {async: false}, function(options) {
   o.path.pages = o.dir + o.path.pages;
   
   // Save our pages listing
-  o.pages = fs.readdirSync(o.path.pages);
-  
+  var pages = fs.readdirSync(o.path.pages);
+  o.pages = [];
+  for( i = 0; i < pages.length; i++ ) {
+    if (pages[i].match(/\.mustache$/)) {
+      o.pages.push(pages[i]);
+    }
+  }
+    
   // Lets loop through pages asyncronously
   o.pages.forEach(function(name) {
     
-    // Check that it's a mustache file, else callback and return
+    // Check that it's a mustache file, else return
     if (!name.match(/\.mustache$/)) {
-      callback();
       return;
     }
     
@@ -73,10 +78,6 @@ var buildMenu = function(o, current) {
       page_options = data.substr( index_1 + (search_start.length) , index_2  - (search_start.length));
       page_options = JSON.parse(page_options);
     }
-        
-    if (!name.match(/\.mustache$/)) {
-      return;
-    }
     
     var name_html = name.replace(/mustache$/, 'html')
       , slug = name.replace(/\.mustache/, '')
@@ -103,7 +104,7 @@ var buildMenu = function(o, current) {
     } else {
       menu[i].select = '';
     }
-    
+        
   }
   
   function compare( a, b ) {
@@ -120,7 +121,7 @@ var buildMenu = function(o, current) {
   }
   
   menu.sort(compare);
-    
+  
   return menu;
 }
 

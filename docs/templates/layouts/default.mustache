@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]><html class="ie9 ie8 ie7 ie6" lang="en"><![endif]-->
+<!--[if IE 7]><html class="ie9 ie8 ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie9 ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>{{ name }} / {{ description }}</title>
-  <meta name="description" content="">
+  <title>{{ title }} &ndash; {{ name }} &ndash; {{ description }}</title>
   
   <!-- Stylesheets and less -->
   <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="assets/css/global-docs.css">
   
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,34 +22,52 @@
 </head>
 <body>
 
-<div class="wrapper">
+<div id="console"></div>
 
-  <header class="header">
-    <div class="container">
+<nav class="nav">
+  <div class="container">
+    
+    <form class="menu">
+      <label>
+        Docs &ndash;
+        <select>
+        {{ #menu }}
+          <option id="{{ id }}" value="{{{ url }}}" {{ select }}>{{ text }}</a></option>
+        {{ /menu }}
+        </select>
+      </label>
+    </form>
+    
+    <div class="title">
+      <p>{{ name }} <span>&ndash; {{ description }}</span></p>
+    </div>
+    
+  </div>
+</nav>
+
+<header class="header">
+  <div class="container">
+    <h1>{{ title }}</h1>
+  </div>
+</header>
+
+<div class="page">
+  <div class="container">
       
-      <h1><a href="{{ repository.url }}">{{ name }}</a></h1>
-      <p>{{ description }} <br> by {{ author }}</p>
-      
-    </div><!-- .container -->
-  </header><!-- .header -->
-
-  {{ > page }}
-
-  <footer class="footer">
-    <div class="container">
-      
-    </div><!-- .container -->
-  </footer><!-- .footer -->
-
-</div><!-- .wrapper -->
+    {{ > page }}
+    
+  </div>
+</div>
 
 <!-- jQuery -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-
-<!-- jQuery functions, document ready & window load -->
-<script src="../src/js/jquery.function.js"></script>
-<script src="../src/js/jquery.docready.js"></script>
+<script>
+$( '.menu select' ).change(function() {
+  var url = $(this).val();
+  document.location.href = url;
+});
+</script>
 
 </body>
 </html>

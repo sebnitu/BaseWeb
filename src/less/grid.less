@@ -46,11 +46,11 @@
 .make-column-base( @-gutter-width ) {
   float: left;
   min-height: 1px;
-  padding-left: @-gutter-width;
+  margin-left: @-gutter-width;
   .box-sizing( content-box );
   
   &:first-child {
-    padding-left: 0;
+    margin-left: 0;
   }
 }
 
@@ -86,9 +86,9 @@
   @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
   
   @spacing : ((@-column-width * @-columns) + (@-gutter-width * @-columns));
-  padding-left: (@spacing + @-gutter-width);
+  margin-left: (@spacing + @-gutter-width);
   &:first-child {
-    padding-left: @spacing;
+    margin-left: @spacing;
   }
 }
 
@@ -99,7 +99,7 @@
 // @param gutter width
 // @param total number of columns in grid system
 .make-suffix( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns ) {
-  padding-right: ((@-column-width * @-columns) + (@-gutter-width * @-columns));
+  margin-right: ((@-column-width * @-columns) + (@-gutter-width * @-columns));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -166,9 +166,9 @@
   }
   .build-prefix-(@columns) {
     @spacing : ((@-column-width * @columns) + (@-gutter-width * @columns));
-    padding-left: (@spacing + @-gutter-width);
+    margin-left: (@spacing + @-gutter-width);
     &:first-child {
-      padding-left: @spacing;
+      margin-left: @spacing;
     }
   }
   .build-prefix-X (@-columns);
@@ -179,7 +179,7 @@
     .build-suffix-X(@index - 1);
   }
   .build-suffix-(@columns) {
-    padding-right: ((@-column-width * @columns) + (@-gutter-width * @columns));
+    margin-right: ((@-column-width * @columns) + (@-gutter-width * @columns));
   }
   .build-suffix-X (@-columns);
   
