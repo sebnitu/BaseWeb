@@ -8,20 +8,25 @@
  * @url http://sebnitu.com
  */
 
-/**
- * When the document is ready
- */
-$(document).ready(function () {
+;(function ($) {
+  'use strict';
+  
+  /**
+   * When the document is ready
+   */
+  $(document).ready(function () {
+  
+  
+  
+  });
+  
+  /**
+   * When the images are loaded
+   */
+  $(window).load(function () {
+  
+  
+  
+  });
 
-
-
-});
-
-/**
- * When the images are loaded
- */
-$(window).load(function () {
-
-
-
-});
+}(jQuery));

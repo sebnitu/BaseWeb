@@ -7,8 +7,9 @@
 // @param total width of grid
 // @param container padding
 // @param max width, applied to container element
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) {
   width: @-total-width;
+  min-width: @-min-width;
   max-width: @-max-width;
   margin-left: auto;
   margin-right: auto;
@@ -17,11 +18,11 @@
   .clearfix();
 }
 // When is fluid
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispercentage(@-total-width) ) {
   .box-sizing( border-box );
 }
 // When is fixed
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispixel(@-total-width) ) {
   .box-sizing( content-box );
 }
 
@@ -132,10 +133,10 @@
 // @param total number of columns in grid system
 // @param container padding
 // @param max width, applied to container element
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) {
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) {
   
   .@{class-container} {
-    .make-container( @-total-width, @-container-padding, @-max-width );
+    .make-container( @-total-width, @-container-padding, @-max-width, @-min-width );
   }
   
   .@{class-row} {
@@ -185,13 +186,13 @@
   
 }
 // When is fluid
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispercentage(@-total-width) ) {
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispercentage(@-total-width) ) {
   .@{class-container} {
     .box-sizing( border-box );
   }
 }
 // When is fixed
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width ) when ( ispixel(@-total-width) ) {
+.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispixel(@-total-width) ) {
   .@{class-container} {
     .box-sizing( content-box );
   }
@@ -201,7 +202,7 @@
   Base Grid System
 ==============================================================================*/
 
-.build-mobile-grid-system();
+.build-mobile-grid-system()
 
 ////////////////////////////////////////////////////////////////////////////////
 // Grid System Assignment

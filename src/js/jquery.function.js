@@ -6,3 +6,10 @@
  * @url https://github.com/sebnitu/BaseWeb
  * @url http://sebnitu.com
  */
+
+;(function ($) {
+  'use strict';
+  
+  
+
+}(jQuery));

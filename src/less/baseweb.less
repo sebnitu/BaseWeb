@@ -9,37 +9,47 @@
  * Copyright (c) 2013 Sebastian Nitu (MIT Licensed)
  */
 
-// Core
-@import 'colors.less';
-@import 'variables.less';
-@import 'mixins.less';
+// CORE
+// Files that store variables and mixins for elements
+@import 'core/colors.less';
+@import 'core/variables.less';
+@import 'core/mixins.less';
 
-// Structure
-@import 'reset.less';
-@import 'grid.less';
-@import 'utility.less';
+// Base utilities and grid system
+@import 'core/print.less';
+@import 'core/reset.less';
+@import 'core/grid.less';
+@import 'core/utility.less';
 
-// Assets
-// @import 'fonts.less';
-@import 'icon-entypo.less';
-@import 'icons.less';
+// ASSETS
+// Loading of fonts, icon fonts and sprites
+// @import 'assets/fonts.less';
+// @import 'assets/icon-entypo.less';
+// @import 'assets/icons.less';
 
-// Core Elements
-@import 'typography.less';
-@import 'tables.less';
-@import 'images.less';
-@import 'code.less';
-@import 'forms.less';
+// ELEMENTS
+// The base styles for HTML elements. These override browser defaults
+@import 'elements/typography.less';
+@import 'elements/lists.less';
+@import 'elements/blockquotes.less';
+@import 'elements/rules.less';
+@import 'elements/tables.less';
+@import 'elements/images.less';
+@import 'elements/code.less';
+@import 'elements/forms.less';
+@import 'elements/buttons.less';
 
-// Components
-@import 'buttons.less';
-@import 'button-groups.less';
-@import 'dropdowns.less';
-@import 'modals.less';
-@import 'notices.less';
+// BLOCKS
+// Groups of elements that serve a specific purpose on a page
+@import 'blocks/button-groups.less';
+@import 'blocks/dropdowns.less';
+@import 'blocks/modals.less';
+@import 'blocks/notices.less';
 
 // Custom
+// Project specific styles
 @import 'custom.less';
 
-// Responsive
-@import 'responsive.less';
+// RESPONSIVE
+// This is a base file, but needs to be loaded last to catch any responsive calls that are made in assets, modules, the custom file or other base files
+@import 'core/responsive.less';

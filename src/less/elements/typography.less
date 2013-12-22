@@ -1,0 +1,125 @@
+/*==============================================================================
+  Typography
+==============================================================================*/
+
+html {
+  .font-sequence( @font-size, @line-height, @font-unit, 16px );
+}
+
+body {
+  font-family: @font-family;
+  font-weight: @font-weight;
+  color: @color;
+}
+
+/**
+ * Headers
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: @margin 0;
+  font-family: @font-family-header;
+  font-weight: @font-weight-header;
+  line-height: @line-height;
+  color: @color-header;
+
+  a {
+    color: @color-link-header;
+    border: 0 none;
+    &:hover {
+      color: @color-link-header-hover;
+    }
+  }
+}
+
+h1 {
+  .font-sequence( 42px );
+}
+h2 {
+  .font-sequence( 35px );
+}
+h3 {
+  .font-sequence( 28px );
+}
+h4 {
+  .font-sequence( 21px );
+}
+h5 {
+  .font-sequence( 18px );
+}
+h6 {
+  .font-sequence( 14px );
+}
+
+/**
+ * Base Elements
+ */
+p { 
+  margin: @margin 0;
+
+  &.intro {
+    .font-sequence( 21px ); // Same styles as an h4 except with normal weight
+  }
+}
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+small {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  color: @color-light;
+}
+del {
+  text-decoration: line-through;
+}
+cite {
+  font-style: normal;
+}
+
+/**
+ * Links
+ */
+.anchor() {
+  color: @color-link;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  .border-color();
+  .transition();
+  &:hover {
+    color: @color-link-hover;
+    cursor: pointer;
+    .border-color( @border-base, (@border-alpha * 2), darken(@border, 10%) );
+  }
+}
+a {
+  .anchor();
+}
+
+/*==============================================================================
+  Modifiers
+==============================================================================*/
+
+.delete {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  &:after {
+    content: "\0020";
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    .background-color(@red, 0.6);
+  }
+}
+.underline {
+  text-decoration: underline;
+}
+.highlight {
+  .background-color(@yellow-lighter, 0.6);
+}
+.uppercase { 
+  .uppercase();
+}
