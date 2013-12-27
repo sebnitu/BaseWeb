@@ -1,0 +1,67 @@
+/*==============================================================================
+  Reset
+==============================================================================*/
+
+html, body {
+  margin: 0; 
+  padding: 0;
+}
+
+/**
+ * Box Sizing
+ */
+* {
+  @include box-sizing(border-box);
+}
+
+/**
+ * Make HTML5 elements act like blocks
+ */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/**
+ * Remove default list styles for navigation
+ */
+nav ul, nav ol { 
+  .remove-list-styles();
+}
+
+/**
+ * Base table styles
+ */
+table { 
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * Prevents automatic text resizing on mobile devices
+ */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/**
+ * Clearfix Class
+ */
+.clearfix {
+  .make-clearfix();
+}
+
+/**
+ * Custom Text Highlight Color
+ */
+::-moz-selection {
+    background: @bg-selection;
+    text-shadow: none;
+}
+
+::selection {
+    background: @bg-selection;
+    text-shadow: none;
+}
