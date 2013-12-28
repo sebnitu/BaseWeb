@@ -2,9 +2,9 @@ var getjson = require('./modules/getjson');
 
 namespace('build', function() {
   
-  // Build BaseWeb
-  desc('Compiles and minifies BaseWeb');
-  task('baseweb', {async: true}, function() {
+  // Build BaseWeb from LESS
+  desc('Compiles and minifies BaseWeb using LESS');
+  task('baseweb-less', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 
         input : config.paths.less + 'baseweb.less',
@@ -14,6 +14,21 @@ namespace('build', function() {
       var lessTask = jake.Task.lessc;
       lessTask.reenable(true);
       lessTask.invoke.apply(lessTask, [options]);
+    });
+  });
+  
+  // Build BaseWeb from SASS
+  desc('Compiles and minifies BaseWeb using SASS');
+  task('baseweb-sass', {async: true}, function() {
+    getjson('package.json', function(config) {
+      var options = { 
+        input : config.paths.scss + '_baseweb.scss',
+        output : [config.paths.css + 'baseweb.css', config.paths.css + 'baseweb.min.css'],
+        paths : config.paths.scss
+      };
+      var sassTask = jake.Task.sass;
+      sassTask.reenable(true);
+      sassTask.invoke.apply(sassTask, [options]);
     });
   });
   

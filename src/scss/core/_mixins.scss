@@ -28,7 +28,7 @@
 
 // Makes Visible
 // Makes an element visible with custom display value
-@mixin make-visible( $display : $display-visible ) {
+@mixin make-visible($display: $display-visible) {
   display: $display !important;
 }
 
@@ -37,7 +37,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Border Radius Mixins
-// Set border-radius with global defaults.
 @mixin border-radius($radius: $border-radius) {
   border-radius: $radius;
 }
@@ -87,20 +86,17 @@
 }
 
 // Box Sizing
-// Adds the box-sizing property with browser prefixes and global default
 @mixin box-sizing($boxmodel) {
   -moz-box-sizing: $boxmodel;
   box-sizing: $boxmodel;
 }
 
 // Box Shadows
-// Create box shadow using global default
 @mixin box-shadow($shadow: $box-shadow) {
   box-shadow: $shadow;
 }
 
 // Transition
-// Create transition with browser prefixes and global default
 @mixin transition( $-transition: $transition ) {
   -webkit-transition: $-transition;
   -moz-transition: $-transition;
@@ -109,7 +105,6 @@
 }
 
 // Transition Property
-// Set transition-property with browser prefixes and global default
 @mixin transition-property( $-transition-property: $transition-property ) {
   -webkit-transition-property: $-transition-property;
   -moz-transition-property: $-transition-property;
@@ -118,7 +113,6 @@
 }
 
 // Transition Duration
-// Set transition-duration with browser prefixes and global default
 @mixin transition-duration( $-transition-duration: $transition-duration ) {
   -webkit-transition-duration: $-transition-duration;
   -moz-transition-duration: $-transition-duration;
@@ -127,7 +121,6 @@
 }
 
 // Transition Timing Function
-// Set transition-timing-function with browser prefixes and global default
 @mixin transition-timing-function( $-transition-timing-function: $transition-timing-function ) {
   -webkit-transition-timing-function: $-transition-timing-function;
   -moz-transition-timing-function: $-transition-timing-function;
@@ -136,7 +129,6 @@
 }
 
 // Transition Delay
-// Set transition-delay with browser prefixes and global default
 @mixin transition-delay( $-transition-delay: $transition-delay ) {
   -webkit-transition-delay: $-transition-delay;
   -moz-transition-delay: $-transition-delay;
@@ -145,7 +137,6 @@
 }
 
 // Rotate
-// Create rotate transform with browser prefixes and global default
 @mixin rotate($deg: $rotate-degree) {
   -webkit-transform: rotate($deg);
   -moz-transform: rotate($deg);
@@ -154,134 +145,80 @@
   transform: rotate($deg);
 }
 
-// Gradients
-// For greating gradient backgrounds easily
-#gradient {
+// Gradients Horizontal
+@mixin gradient-horizontal($start-color: $gradient-start-color, $end-color: $gradient-end-color) {
+  background-color: $end-color;
+  background-image: -moz-linear-gradient(left, $start-color, $end-color);
+  background-image: -ms-linear-gradient(left, $start-color, $end-color);
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($start-color), to($end-color));
+  background-image: -webkit-linear-gradient(left, $start-color, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $end-color);
+  background-image: linear-gradient(left, $start-color, $end-color);
+  background-repeat: repeat-y;
+}
 
-  // Horizontal
-  // 
-  // @syntex #gradient > .horizontal(@a, @b);
-  // 
-  // @param start color
-  // @param end color
-  .horizontal(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
-    background-color: @end-color;
-    background-image: -moz-linear-gradient(left, @start-color, @end-color);
-    background-image: -ms-linear-gradient(left, @start-color, @end-color);
-    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(@start-color), to(@end-color));
-    background-image: -webkit-linear-gradient(left, @start-color, @end-color);
-    background-image: -o-linear-gradient(left, @start-color, @end-color);
-    background-image: linear-gradient(left, @start-color, @end-color);
-    background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@start-color,@end-color));
-  }
+// Gradients Vertical
+@mixin gradient-vertical($start-color: $gradient-start-color, $end-color: $gradient-end-color) {
+  background-color: $end-color;
+  background-image: -moz-linear-gradient(top, $start-color, $end-color);
+  background-image: -ms-linear-gradient(top, $start-color, $end-color);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start-color), to($end-color));
+  background-image: -webkit-linear-gradient(top, $start-color, $end-color);
+  background-image: -o-linear-gradient(top, $start-color, $end-color);
+  background-image: linear-gradient(top, $start-color, $end-color);
+  background-repeat: repeat-x;
+}
 
-  // Vertical
-  // 
-  // @syntex #gradient > .vertical(@a, @b);
-  // 
-  // @param start color
-  // @param end color
-  .vertical(@start-color: @gradient-start-color, @end-color: @gradient-end-color) {
-    background-color: @end-color;
-    background-image: -moz-linear-gradient(top, @start-color, @end-color);
-    background-image: -ms-linear-gradient(top, @start-color, @end-color);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), to(@end-color));
-    background-image: -webkit-linear-gradient(top, @start-color, @end-color);
-    background-image: -o-linear-gradient(top, @start-color, @end-color);
-    background-image: linear-gradient(top, @start-color, @end-color);
-    background-repeat: repeat-x;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@start-color,@end-color));
-  }
+// Gradients Directional
+@mixin gradient-directional($start-color: $gradient-start-color, $end-color: $gradient-end-color, $deg: $gradient-deg) {
+  background-color: $end-color;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient($deg, $start-color, $end-color);
+  background-image: -webkit-linear-gradient($deg, $start-color, $end-color);
+  background-image: -o-linear-gradient($deg, $start-color, $end-color);
+  background-image: linear-gradient($deg, $start-color, $end-color);
+}
 
-  // Directional
-  // 
-  // @syntex #gradient > .directional(@a, @b, @c);
-  // 
-  // @param start color
-  // @param end color
-  // @param degree value for gradient angle
-  .directional(@start-color: @gradient-start-color, @end-color: @gradient-end-color, $deg: @gradient-deg) {
-    background-color: @end-color;
-    background-repeat: repeat-x;
-    background-image: -moz-linear-gradient($deg, @start-color, @end-color);
-    background-image: -webkit-linear-gradient($deg, @start-color, @end-color);
-    background-image: -o-linear-gradient($deg, @start-color, @end-color);
-    background-image: linear-gradient($deg, @start-color, @end-color);
-  }
+// Gradient Horizontal with Three Colors
+@mixin gradient-horizontal-three-colors($start-color: $gradient-start-color, $center-color: $gradient-center-color, $color-stop: $gradient-color-stop, $end-color: $gradient-end-color) {
+  background-color: mix($center-color, $end-color, 80%);
+  background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($start-color), color-stop($color-stop, $center-color), to($end-color));
+  background-image: -webkit-linear-gradient(left, $start-color, $center-color $color-stop, $end-color);
+  background-image: -moz-linear-gradient(left, $start-color, $center-color $color-stop, $end-color);
+  background-image: -o-linear-gradient(left, $start-color, $center-color $color-stop, $end-color);
+  background-image: linear-gradient(to right, $start-color, $center-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+}
 
-  // Horizontal with Three Colors
-  // 
-  // @syntex #gradient > .horizontal-three-colors(@a, @b, @c);
-  // 
-  // @param start color
-  // @param center color
-  // @param end color
-  .horizontal-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
-    background-color: mix(@center-color, @end-color, 80%);
-    background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
-    background-image: -webkit-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-    background-image: -moz-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-    background-image: -o-linear-gradient(left, @start-color, @center-color @color-stop, @end-color);
-    background-image: linear-gradient(to right, @start-color, @center-color @color-stop, @end-color);
-    background-repeat: no-repeat;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
-  }
+// Gradient Vertical with Three Colors
+@mixin gradient-vertical-three-colors($start-color: $gradient-start-color, $center-color: $gradient-center-color, $color-stop: $gradient-color-stop, $end-color: $gradient-end-color) {
+  background-color: mix($center-color, $end-color, 80%);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($start-color), color-stop($color-stop, $center-color), to($end-color));
+  background-image: -webkit-linear-gradient($start-color, $center-color $color-stop, $end-color);
+  background-image: -moz-linear-gradient(top, $start-color, $center-color $color-stop, $end-color);
+  background-image: -o-linear-gradient($start-color, $center-color $color-stop, $end-color);
+  background-image: linear-gradient($start-color, $center-color $color-stop, $end-color);
+  background-repeat: no-repeat;
+}
 
-  // Vertical with Three Colors
-  // 
-  // @syntex #gradient > .vertical-three-colors(@a, @b, @c);
-  // 
-  // @param start color
-  // @param center color
-  // @param end color
-  .vertical-three-colors(@start-color: @gradient-start-color, @center-color: @gradient-center-color, @color-stop: @gradient-color-stop, @end-color: @gradient-end-color) {
-    background-color: mix(@center-color, @end-color, 80%);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @center-color), to(@end-color));
-    background-image: -webkit-linear-gradient(@start-color, @center-color @color-stop, @end-color);
-    background-image: -moz-linear-gradient(top, @start-color, @center-color @color-stop, @end-color);
-    background-image: -o-linear-gradient(@start-color, @center-color @color-stop, @end-color);
-    background-image: linear-gradient(@start-color, @center-color @color-stop, @end-color);
-    background-repeat: no-repeat;
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color)));
-  }
+// Radial Gradients
+@mixin gradient-radial($inner-color: $gradient-start-color, $outer-color: $gradient-end-color) {
+  background-color: $outer-color;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($inner-color), to($outer-color));
+  background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
+  background-image: -moz-radial-gradient(circle, $inner-color, $outer-color);
+  background-image: -o-radial-gradient(circle, $inner-color, $outer-color);
+  background-repeat: no-repeat;
+}
 
-  // Radial
-  // 
-  // @syntex #gradient > .radial(@a, @b);
-  // 
-  // @param center color of radial
-  // @param outer color of radial
-  .radial(@inner-color: @gradient-start-color, @outer-color: @gradient-end-color) {
-    background-color: @outer-color;
-    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
-    background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
-    background-image: -moz-radial-gradient(circle, @inner-color, @outer-color);
-    background-image: -o-radial-gradient(circle, @inner-color, @outer-color);
-    background-repeat: no-repeat;
-  }
-
-  // Striped
-  // 
-  // @syntex #gradient > .striped(@a, @b);
-  // 
-  // @param start color
-  // @param degree value for gradient angle
-  .striped(@color: @gradient-start-color, @angle: @gradient-deg) {
-    background-color: @color;
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-    background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-    background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  }
-
-  // Reset filters for IE
-  // 
-  // @syntex #gradient > .reset-filter();
-  .reset-filter() {
-    filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
-  }
+// Striped Gradients
+@mixin gradient-striped($color: $gradient-start-color, $angle: $gradient-deg) {
+  background-color: $color;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -336,52 +273,39 @@
 }
 
 // Mono Font
-// Adds mono font styles to an element along with font sizing and line-height.
-//
-// @param font size used with font-sequence()
-.mono-font( @size : @font-size-code ) {
-  font-family: @font-family-mono;
-  .font-sequence( @size );
+@mixin mono-font($size: $font-size-code) {
+  font-family: $font-family-mono;
+  @include font-sequence($size);
 }
 
 // Uppercase
-// Makes text uppercase with optional letter spacing value.
-//
-// @param letter spacing
-.uppercase(@letter-spacing: @letter-spacing) {
+@mixin uppercase($letter-spacing: $letter-spacing) {
   text-transform: uppercase;
-  letter-spacing: @letter-spacing;
+  letter-spacing: $letter-spacing;
 }
 
 // Lowercase
-// Makes text lowercase with optional letter spacing value.
-//
-// @param letter spacing
-.lowercase(@letter-spacing: 0) {
+@mixin lowercase($letter-spacing: 0) {
   text-transform: lowercase;
-  letter-spacing: @letter-spacing;
+  letter-spacing: $letter-spacing;
 }
 
 // Reset Case
-// Resets the text's text-transform property and sets letter spacing back to zero.
-.resetcase() {
+@mixin resetcase() {
   text-transform: none;
   letter-spacing: 0;
 }
 
 // Truncate Text
 // Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
-//
-// @param display property e.g. block, inline-block
-.truncate-text( @display : block ) {
+@mixin truncate-text( $display : block ) {
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
   
-  .display() when ( @display = inline-block ), ( @display = block ) {
-    display: @display;
+  @if ($display == inline-block or $display == block) {
+    display: $display;
   }
-  .display();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -390,7 +314,7 @@
 
 // Remove List Styles
 // Removes default list styles and margins from a list element and it's children
-.remove-list-styles() {
+@mixin remove-list-styles {
   list-style: none;
   margin: 0;
   
@@ -541,96 +465,52 @@
 // 
 // @param border width that determines size of arrow
 // @param border color that determines color of arrow
-#arrow {
+@mixin triangle($size, $color, $direction) {
+  content: "\0020";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
 
-  // Base arrow properties. This should be condisered a private mixin.
-  // Don't use on it's own.
-  .base() {
-    content: "\0020";
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: 0 none;
-    border-style: solid;
-    border-color: transparent;
+  @if ($direction == up) {
+    border-width: 0 $size $size $size;
+    border-bottom-color: $color;
   }
-  // Up arrow
-  .up( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: 0 @arrow-width @arrow-width @arrow-width;
-    border-bottom-color: @arrow-color;
+  @if ($direction == right) {
+    border-width: $size 0 $size $size;
+    border-left-color: $color;
   }
-  // Right arrow
-  .right( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width 0 @arrow-width @arrow-width;
-    border-left-color: @arrow-color;
+  @if ($direction == down) {
+    border-width: $size $size 0 $size;
+    border-top-color: $color;
   }
-  // Down arrow
-  .down( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width @arrow-width 0 @arrow-width;
-    border-top-color: @arrow-color;
-  }
-  // Left arrow
-  .left( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width @arrow-width @arrow-width 0;
-    border-right-color: @arrow-color;
-  }
-  // Up right, right up arrow
-  .up-right( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-top-color: @arrow-color;
-    border-right-color: @arrow-color;
-  }
-  .right-up( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-top-color: @arrow-color;
-    border-right-color: @arrow-color;
-  }
-  // Up left, left up arrow
-  .up-left( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-top-color: @arrow-color;
-    border-left-color: @arrow-color;
-  }
-  .left-up( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-top-color: @arrow-color;
-    border-left-color: @arrow-color;
-  }
-  // Down right, right down arrow
-  .down-right( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-bottom-color: @arrow-color;
-    border-right-color: @arrow-color;
-  }
-  .right-down( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-bottom-color: @arrow-color;
-    border-right-color: @arrow-color;
-  }
-  // Down left, left down arrow
-  .down-left( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-bottom-color: @arrow-color;
-    border-left-color: @arrow-color;
-  }
-  .left-down( @arrow-width, @arrow-color ) {
-    .base();
-    border-width: @arrow-width;
-    border-bottom-color: @arrow-color;
-    border-left-color: @arrow-color;
+  @if ($direction == left) {
+    border-width: $size $size $size 0;
+    border-right-color: $color;
   }
   
+  @if ($direction == up-right or $direction == right-up) {
+    border-width: $sizeh;
+    border-top-color: $color;
+    border-right-color: $color;
+  }
+  @if ($direction == up-left or $direction == left-up) {
+    border-width: $sizeh;
+    border-top-color: $color;
+    border-left-color: $color;
+  }
+  @if ($direction == down-right or $direction == right-down) {
+    border-width: $sizeh;
+    border-bottom-color: $color;
+    border-right-color: $color;
+  }
+  @if ($direction == down-left or $direction == left-down) {
+    border-width: $sizeh;
+    border-bottom-color: $color;
+    border-left-color: $color;
+  }
 }
 
 // Console
@@ -701,7 +581,7 @@
     &:after {
       content: "@{value}";
       background: @gE;
-      color: @color-dark;
+      color: $color-dark;
     }
   }
 }
