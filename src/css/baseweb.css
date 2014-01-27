@@ -6,7 +6,7 @@
  * @url https://github.com/sebnitu/BaseWeb
  * @url http://sebnitu.com
  *
- * Copyright (c) 2013 Sebastian Nitu (MIT Licensed)
+ * Copyright (c) 2014 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
   Reset
@@ -16,9 +16,26 @@ html, body {
   padding: 0;
 }
 
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /**
- * Box Sizing
+ * Clearfix Class
  */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /**
  * Make HTML5 elements act like blocks
  */
@@ -30,6 +47,14 @@ footer, header, hgroup, menu, nav, section {
 /**
  * Remove default list styles for navigation
  */
+nav ul, nav ol {
+  list-style: none;
+  margin: 0;
+}
+nav ul li, nav ol li {
+  margin: 0;
+}
+
 /**
  * Base table styles
  */
@@ -38,18 +63,6 @@ table {
   border-spacing: 0;
 }
 
-/**
- * Prevents automatic text resizing on mobile devices
- */
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-/**
- * Clearfix Class
- */
 /**
  * Custom Text Highlight Color
  */

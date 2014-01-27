@@ -7,11 +7,24 @@ html, body {
   padding: 0;
 }
 
+// Prevents automatic text resizing on mobile devices
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Set default box sizing model to border-box
+// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
 /**
- * Box Sizing
+ * Clearfix Class
  */
-* {
-  // @include box-sizing(border-box);
+.clearfix {
+  @include clearfix;
 }
 
 /**
@@ -26,7 +39,7 @@ footer, header, hgroup, menu, nav, section {
  * Remove default list styles for navigation
  */
 nav ul, nav ol { 
-  // @include remove-list-styles;
+  @include remove-list-styles;
 }
 
 /**
@@ -38,30 +51,13 @@ table {
 }
 
 /**
- * Prevents automatic text resizing on mobile devices
- */
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-/**
- * Clearfix Class
- */
-.clearfix {
-  // @include make-clearfix;
-}
-
-/**
  * Custom Text Highlight Color
  */
 ::-moz-selection {
-    background: $bg-selection;
-    text-shadow: none;
+  background: $bg-selection;
+  text-shadow: none;
 }
-
 ::selection {
-    background: $bg-selection;
-    text-shadow: none;
+  background: $bg-selection;
+  text-shadow: none;
 }

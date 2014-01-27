@@ -1,4 +1,5 @@
 var getjson = require('./modules/getjson');
+var imagemin = require('imagemin');
 
 namespace('build', function() {
   
@@ -44,6 +45,23 @@ namespace('build', function() {
       var uglifyjsTask = jake.Task.uglifyjs;
       uglifyjsTask.reenable(true);
       uglifyjsTask.invoke.apply(uglifyjsTask, [options]);
+    });
+  });
+  
+  // Optimize Images
+  desc('Optimize Images');
+  task('img', {async: true}, function() {
+    getjson('package.json', function(config) {
+      var options = { 
+        input : config.paths.img + 'raw/',
+        output : config.paths.img,
+        paths : config.paths.img
+      };
+      
+      imagemin(options.input, options.output, function() {
+        console.log('Images optimized!');
+      });
+      
     });
   });
   

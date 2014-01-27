@@ -225,57 +225,11 @@
 // Typography
 ////////////////////////////////////////////////////////////////////////////////
 
-// Font Sequence
-// Sets font-size and line-height based on a multiplier
-// 
-// @param font size in pixels
-// @param line height in pixels or set to auto for automatic calculation based on font-size and line-height-inc
-// @param unit to use for sizing e.g. px, em
-// @param the context that sizes should be set. Default is base font size
-.font-sequence( @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = px) {
-  font-size: @-font-size;
-  
-  .line-height() when (@-line-height = auto) {
-    line-height: unit( (@-font-size + @line-height-inc), px);
-  }
-  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-    line-height: @-line-height;
-  }
-  .line-height();
-}
-.font-sequence( @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = em) {
-
-  @-size: round((@-font-size / @-context), 2);
-  
-  font-size: unit( @-size, em);
-  
-  .line-height() when (@-line-height = auto) {
-    line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
-  }
-  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-    line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
-  }
-  .line-height();
-}
-.font-sequence(  @-font-size : @font-size, @-line-height : auto, @-font-unit : @font-unit, @-context : @font-size ) when (@-font-unit = rem) {
-
-  @-size: round((@-font-size / @-context), 2);
-  
-  font-size: unit( @-size, rem);
-  
-  .line-height() when (@-line-height = auto) {
-    line-height: unit( round( ((@-size + 0.6) / @-size), 2), em);
-  }
-  .line-height() when (isnumber(@-line-height)) and (@-line-height > 0) {
-    line-height: unit( round( (@-line-height / (@-size * @-context)), 2), em);
-  }
-  .line-height();
-}
-
 // Mono Font
-@mixin mono-font($size: $font-size-code) {
+@mixin mono-font($-font-size: $font-size, $-line-height: $line-height) {
   font-family: $font-family-mono;
-  @include font-sequence($size);
+  font-size: $-font-size;
+  line-height: $-line-height;
 }
 
 // Uppercase
@@ -323,148 +277,12 @@
   }
 }
 
-// Inline Lists
-// Converts a list into an inline list with inline elements.
-//
-// @param gutter type e.g. margin, padding
-// @param gutter spacing between list items e.g. 10px, 20px
-// @param side that margines should appear e.g. right, left, both
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) {
-  margin: 0;
-  list-style: none;
-  
-  li {
-    display: inline-block;
-  }
-}
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = margin ) {
-  
-  li {
-    .side() when ( @-side = right ) {
-      margin-right: @-margin;
-    }
-    .side() when ( @-side = left ) {
-      margin-left: @-margin;
-    }
-    .side() when ( @-side = both ) {
-      margin-left: (@-margin / 2);
-      margin-right: (@-margin / 2);
-    }
-    .side();
-  }
-}
-.inline-list( @-gutter-type : padding, @-margin : 10px, @-side : right  ) when ( @-gutter-type = padding ) {
-  
-  li {
-    .side() when ( @-side = right ) {
-      padding-right: @-margin;
-    }
-    .side() when ( @-side = left ) {
-      padding-left: @-margin;
-    }
-    .side() when ( @-side = both ) {
-      padding-left: (@-margin / 2);
-      padding-right: (@-margin / 2);
-    }
-    .side();
-  }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-// Color
-// Creates RGBA background-color styles based on a hex value, alpha channel and hex fallback
-//
-// @param hex value that will be converted to RGB
-// @param alpha channel that will be used in RGBA
-// @param hax value that will be used as a fallback for browers that don't support RGBA
-// 
-// @return background-color
-.background-color(@hex : @bg-base, @alpha : @bg-alpha, @fallback : @bg) {
-
-  .fallback() when (@fallback = 0) {
-    @fallback: @hex;
-  }
-  .fallback();
-  
-  .background() when (@alpha = 1) {
-    background-color: @fallback;
-  }
-  .background() when (@alpha = 0) {
-    background-color: transparent;
-  }
-  .background() when (@alpha < 1) and (@alpha > 0) {
-    background-color: @fallback;
-    background-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-  }
-  .background();
-}
-
-// Color
-// Creates RGBA border-color styles based on a hex value, alpha channel and hex fallback
-//
-// @param hex value that will be converted to RGB
-// @param alpha channel that will be used in RGBA
-// @param hax value that will be used as a fallback for browers that don't support RGBA
-// 
-// @return border-color
-.border-color(@hex : @border-base, @alpha : @border-alpha, @fallback : @border) {
-
-  .fallback() when (@fallback = 0) {
-    @fallback: @hex;
-  }
-  .fallback();
-  
-  .border() when (@alpha = 1) {
-    border-color: @fallback;
-  }
-  .border() when (@alpha = 0) {
-    border-color: transparent;
-  }
-  .border() when (@alpha < 1) and (@alpha > 0) {
-    border-color: @fallback;
-    border-color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-  }
-  .border();
-}
-
-// Color
-// Creates RGBA color styles based on a hex value, alpha channel and hex fallback
-//
-// @param hex value that will be converted to RGB
-// @param alpha channel that will be used in RGBA
-// @param hax value that will be used as a fallback for browers that don't support RGBA
-// 
-// @return color
-.color(@hex, @alpha : 1, @fallback : 0) {
-
-  .fallback() when (@fallback = 0) {
-    @fallback: @hex;
-  }
-  .fallback();
-  
-  .color() when (@alpha = 1) {
-    color: @hex;
-  }
-  .color() when (@alpha = 0) {
-    color: transparent;
-  }
-  .color() when (@alpha < 1) and (@alpha > 0) {
-    color: @fallback;
-    color: rgba( red(@hex), green(@hex), blue(@hex), @alpha);
-  }
-  .color();
-}
-
 // Arrows
 // Uses the "0x0" element with borders trick to draw arrows.
-//
-// @syntax #arrow > .arrow-direction( @a, @b );
-// 
-// @param border width that determines size of arrow
-// @param border color that determines color of arrow
 @mixin triangle($size, $color, $direction) {
   content: "\0020";
   display: inline-block;
@@ -516,55 +334,25 @@
 // Console
 // Let's you output a LESS variable in the browser.
 // Requires that `<div id="console"></div>` be somewhere in the DOM
-// 
-// @param LESS Variable that will be output in the browser
-// @param position of console output - left, right, bottom-left, bottom-right
-.console(@value, @position : right) {
+@mixin console($value, $position: right, $index: 100) {
 
-  // Position conditionals
-  .position() when ( @position = left ) {
-    #console {
-      top: 0;
-      left: 0;
-    }
-    #console:after {
-      @mixin border-radius-bottom-right();
-    }
-  }
-  .position() when ( @position = right ) {
-    #console {
-      top: 0;
-      right: 0;
-    }
-    #console:before {
-      @mixin border-radius-bottom-left();
-    }
-  }
-  .position() when ( @position = bottom-left ) {
-    #console {
-      bottom: 0;
-      left: 0;
-    }
-    #console:after {
-      @mixin border-radius-top-right();
-    }
-  }
-  .position() when ( @position = bottom-right ) {
-    #console {
-      bottom: 0;
-      right: 0;
-    }
-    #console:before {
-      @mixin border-radius-top-left();
-    }
-  }
-  .position();
-
-  // Base console styles
   #console {
     position: fixed;
-    z-index: 100;
-    .mono-font();
+    @if ($position == left) {
+      top: 0;
+      left: 0;
+    } @else if ($position == right) {
+      top: 0;
+      right: 0;
+    } @else if ($position == bottom-left) {
+      bottom: 0;
+      left: 0;
+    } @else if ($position == bottom-right) {
+      bottom: 0;
+      right: 0;
+    }
+    z-index: $index;
+    @include mono-font;
     
     &:before, &:after {
       display: block;
@@ -574,14 +362,26 @@
     
     &:before {
       content: "Console:";
-      background: @blue;
-      color: @gE;
+      background: $blue;
+      color: $gE;
+      
+      @if ($position == right) {
+        @include border-radius-bottom-left();
+      } @else if ($position == bottom-right) {
+        @include border-radius-top-left();
+      }
     }
     
     &:after {
-      content: "@{value}";
-      background: @gE;
+      content: "#{$value}";
+      background: $gE;
       color: $color-dark;
+        
+      @if ($position == left) {
+        @include border-radius-bottom-right();
+      }  @else if ($position == bottom-left) {
+        @include border-radius-top-right();
+      }
     }
   }
 }
