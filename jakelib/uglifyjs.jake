@@ -34,7 +34,7 @@ task('uglifyjs', {async: true}, function(options) {
         return;
       }
       
-      // Read the page
+      // Save all JS in a single variable
       jsraw += fs.readFileSync(name, 'utf8');
       
     });

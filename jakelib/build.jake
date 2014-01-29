@@ -1,5 +1,4 @@
 var getjson = require('./modules/getjson');
-var imagemin = require('imagemin');
 
 namespace('build', function() {
   
@@ -38,7 +37,11 @@ namespace('build', function() {
   task('js', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 
-        input : config.paths.js + 'baseweb.js',
+        input : [
+          config.paths.js + 'baseweb.js',
+          config.paths.js + 'jquery.function.js',
+          config.paths.js + 'jquery.docready.js',
+        ],
         output : config.paths.js + 'baseweb.min.js',
         paths : config.paths.js
       };
@@ -57,11 +60,9 @@ namespace('build', function() {
         output : config.paths.img,
         paths : config.paths.img
       };
-      
-      imagemin(options.input, options.output, function() {
-        console.log('Images optimized!');
-      });
-      
+      var imageminTask = jake.Task.imagemin;
+      imageminTask.reenable(true);
+      imageminTask.invoke.apply(imageminTask, [options]);
     });
   });
   

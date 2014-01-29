@@ -11,32 +11,35 @@ task('watch', {async: true}, function() {
     u.print_notice('Files are now being watched (ctrl+c to exit)', 'yellow');
     
     // Watch our LESS files
-    watch(config.watch.less, function(filename) {
-      u.print(filename + ' was changed:', 'cyan');
+    watch(config.watch.less, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:baseweb-less'].execute();
     });
     
     // Watch our SCSS files
-    watch(config.watch.scss, function(filename) {
-      u.print(filename + ' was changed:', 'cyan');
+    watch(config.watch.scss, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:baseweb-sass'].execute();
     });
 
     // Watch our JS files
-    watch(config.watch.js, function(filename) {
-      u.print(filename + ' was changed:', 'cyan');
-      jake.Task['build:js'].execute();
+    watch(config.watch.js, function(filepath) {
+      var filename = filepath.replace(config.watch.js[0].substr(2), '');
+      if (filename != 'baseweb.min.js') {
+        u.print(filepath + ' was changed:', 'cyan');
+        jake.Task['build:js'].execute();
+      }
     });
     
     // Watch our doc files
-    watch(config.watch.docs, function(filename) {
-      u.print(filename + ' was changed:', 'cyan');
+    watch(config.watch.docs, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:docs'].execute();
     });
     
     // Watch our test files
-    watch(config.watch.tests, function(filename) {
-      u.print(filename + ' was changed:', 'cyan');
+    watch(config.watch.tests, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:tests'].execute();
     });
   });
