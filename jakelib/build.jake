@@ -87,4 +87,5 @@ namespace('build', function() {
       mustacheTask.invoke.apply(mustacheTask, [options]);
     });
   });
+  
 });
