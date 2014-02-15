@@ -1,106 +1,71 @@
 ////////////////////////////////////////////////////////////////////////////////
+// Grid Functions
+////////////////////////////////////////////////////////////////////////////////
+
+@function column_width( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+  $-column-width: ($-total-width - ($-gutter-width * ($-columns - 1))) / $-columns;
+  @return ($-column-width * $-index) + ($-gutter-width * ($-index - 1));
+}
+
+@function spacing_width( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+  $-column-width : column_width( 1, $-total-width, $-gutter-width, $-columns );
+  @return ($-column-width * $-index) + ($-gutter-width * $-index);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Semantic Grid Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make container
-//
-// @param total width of grid
-// @param container padding
-// @param max width, applied to container element
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) {
-  width: @-total-width;
-  min-width: @-min-width;
-  max-width: @-max-width;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: @-container-padding;
-  padding-right: @-container-padding;
-  .clearfix();
-}
-// When is fluid
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispercentage(@-total-width) ) {
-  .box-sizing( border-box );
-}
-// When is fixed
-.make-container( @-total-width : @grid-total-width, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispixel(@-total-width) ) {
-  .box-sizing( content-box );
+// Make Container
+@mixin make-container( $-total-width : $grid-total-width, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width ) {
+  width: $-total-width;
+  
+  @if ($-min-width != none) {
+    min-width: $-min-width;
+  }
+  @if ($-max-width != none) {
+    max-width: $-max-width;
+  }
+  
+  margin: 0 $-container-margin;
+  padding: 0 $-container-padding;
+  
+  @include clearfix();
+  @include box-sizing( border-box );
 }
 
 // Make Row
-.make-row() {
-  .clearfix();
-}
-
-// Make Column Mobile
-.make-column-mobile() {
-  float: left;
-  width: 100%;
-  min-height: 1px;
-  padding-left: 0;
-  padding-right: 0;
-  .box-sizing( border-box );
-}
-
-// Make Column Base
-//
-// @param gutter width
-.make-column-base( @-gutter-width ) {
-  float: left;
-  min-height: 1px;
-  margin-left: @-gutter-width;
-  .box-sizing( content-box );
-  
-  &:first-child {
-    margin-left: 0;
-  }
-}
-
-// Make Column Span
-//
-// @param number of columns to occupy
-// @param total width of grid
-// @param gutter width
-// @param total number of columns in grid system
-.make-column-span( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns ) {
-  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
-  width: ((@-column-width * @-index) + (@-gutter-width * (@-index - 1)));
+@mixin make-row() {
+  @include clearfix();
 }
 
 // Make Column
-//
-// @param number of columns to occupy
-// @param total width of grid
-// @param gutter width
-// @param total number of columns in grid system
-.make-column( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns ) {
-  .make-column-base( @-gutter-width );
-  .make-column-span( @-index, @-total-width, @-gutter-width, @-columns );
+@mixin make-column( $-gutter-width : $grid-gutter-width ) {
+  @if ($-gutter-width == mobile) {
+    width: 100%;
+    margin: 0;
+  } @else {
+    margin-left: $-gutter-width;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  float: left;
+  min-height: 1px;
+  @include box-sizing( border-box );
 }
 
 // Make Prefix
-//
-// @param number of columns to occupy
-// @param total width of grid
-// @param gutter width
-// @param total number of columns in grid system
-.make-prefix( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns ) {
-  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
-  
-  @spacing : ((@-column-width * @-columns) + (@-gutter-width * @-columns));
-  margin-left: (@spacing + @-gutter-width);
+@mixin give-prefix( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+  margin-left: (spacing_width( $-index, $-total-width, $-gutter-width, $-columns ) + $-gutter-width);
   &:first-child {
-    margin-left: @spacing;
+    margin-left: spacing_width( $-index, $-total-width, $-gutter-width, $-columns );
   }
 }
 
 // Make Suffix
-//
-// @param number of columns to occupy
-// @param total width of grid
-// @param gutter width
-// @param total number of columns in grid system
-.make-suffix( @-index, @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns ) {
-  margin-right: ((@-column-width * @-columns) + (@-gutter-width * @-columns));
+@mixin give-suffix( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+  margin-right: spacing_width( $-index, $-total-width, $-gutter-width, $-columns );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -109,107 +74,74 @@
 
 // Make Mobile Grid System
 // Outputs the styles for a mobile grid system where all columns are stacked
-.build-mobile-grid-system() {
+@mixin build-mobile-grid-system() {
 
-  .@{class-container} {
-    .make-container( 100% );
+  .#{$class-container} {
+    @include make-container( 100% );
   }
   
-  .@{class-row} {
-    .make-row();
+  .#{$class-row} {
+    @include make-row();
   }
   
-  .@{class-column} {
-    .make-column-mobile();
+  .#{$class-column} {
+    @include make-column( mobile );
   }
   
 }
 
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system
-//
-// @param total width of grid
-// @param gutter width
-// @param total number of columns in grid system
-// @param container padding
-// @param max width, applied to container element
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) {
+@mixin build-grid-system( $-total-width : $grid-total-width, $-gutter-width : $grid-gutter-width, $-columns : $grid-columns, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width, $-inc-prefix : $class-prefix, $-inc-suffix : $class-suffix ) {
   
-  .@{class-container} {
-    .make-container( @-total-width, @-container-padding, @-max-width, @-min-width );
+  .#{$class-container} {
+    @include make-container( $-total-width, $-container-margin, $-container-padding, $-max-width, $-min-width );
   }
   
-  .@{class-row} {
-    .make-row();
+  .#{$class-row} {
+    @include make-row();
   }
   
-  .@{class-column} {
-    .make-column-base( @-gutter-width );
+  .#{$class-column} {
+    @include make-column( $-gutter-width );
   }
   
-  // Calculate column widths
-  @-column-width: (( @-total-width - ( @-gutter-width * ( @-columns - 1 ) ) ) / @-columns);
-  
-  // Build the column classes
-  .build-X (@index) when (@index > 0) {
-    .@{class-column}-@{index} { .build-(@index); }
-    .build-X(@index - 1);
-  }
-  .build-(@columns) {
-    width: ((@-column-width * @columns) + (@-gutter-width * (@columns - 1)));
-  }
-  .build-X (@-columns);
-  
-  // Build the prefix classes
-  .build-prefix-X (@index) when (@index > 0) {
-    .@{class-prefix}-@{index} { .build-prefix-(@index); }
-    .build-prefix-X(@index - 1);
-  }
-  .build-prefix-(@columns) {
-    @spacing : ((@-column-width * @columns) + (@-gutter-width * @columns));
-    margin-left: (@spacing + @-gutter-width);
-    &:first-child {
-      margin-left: @spacing;
+  @for $i from 1 through $-columns {
+    .#{$class-column}-#{$i} {
+      @extend .#{$class-column};
+    }
+    .#{$class-column}-#{$i} {
+      width: column_width( $i, $-total-width, $-gutter-width, $-columns );
     }
   }
-  .build-prefix-X (@-columns);
   
-  // Build the prefix classes
-  .build-suffix-X (@index) when (@index > 0) {
-    .@{class-suffix}-@{index} { .build-suffix-(@index); }
-    .build-suffix-X(@index - 1);
+  @if ($-inc-prefix != none) {
+    @for $i from 1 through $-columns {    
+      .#{$class-prefix}-#{$i} {
+        @include give-prefix( $i, $-total-width, $-gutter-width, $-columns );
+      }
+    }
   }
-  .build-suffix-(@columns) {
-    margin-right: ((@-column-width * @columns) + (@-gutter-width * @columns));
-  }
-  .build-suffix-X (@-columns);
   
-}
-// When is fluid
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispercentage(@-total-width) ) {
-  .@{class-container} {
-    .box-sizing( border-box );
-  }
-}
-// When is fixed
-.build-grid-system( @-total-width : @grid-total-width, @-gutter-width : @grid-gutter-width, @-columns : @grid-columns, @-container-padding : @container-padding, @-max-width : @container-max-width, @-min-width : @container-min-width ) when ( ispixel(@-total-width) ) {
-  .@{class-container} {
-    .box-sizing( content-box );
+  @if ($-inc-suffix != none) {
+    @for $i from 1 through $-columns {  
+      .#{$class-suffix}-#{$i} {
+        @include give-suffix( $i, $-total-width, $-gutter-width, $-columns );
+      }
+    }
   }
 }
 
 /*==============================================================================
-  Base Grid System
+  Generate Mobile Grid System
 ==============================================================================*/
 
-.build-mobile-grid-system();
+@include build-mobile-grid-system();
 
-////////////////////////////////////////////////////////////////////////////////
-// Grid System Assignment
-////////////////////////////////////////////////////////////////////////////////
+/*==============================================================================
+  Generate Class Based Grid System
+==============================================================================*/
 
-#responsive {
-  .tablet() {
-    .build-grid-system();
-  }
+@include media-tablet {
+  @include build-grid-system();
 }
