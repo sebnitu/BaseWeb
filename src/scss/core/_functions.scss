@@ -1,3 +1,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////////////////////////////////////
+
+// Converts a PX value to EM
+@function px_to_em( $px, $base : $font-size ) {
+  $em: ($px / $base) * 1em;
+  @return $em;
+}
+
+// Converts an EM value to PX
+@function em_to_px( $em, $base : $font-size ) {
+  $px: ($em * $base) / 1px;
+  @return $px;
+}
