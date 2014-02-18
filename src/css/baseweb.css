@@ -67,12 +67,12 @@ table {
  * Custom Text Highlight Color
  */
 ::-moz-selection {
-  background: #2ab0ea;
+  background: rgba(42, 176, 234, 0.25);
   text-shadow: none;
 }
 
 ::selection {
-  background: #2ab0ea;
+  background: rgba(42, 176, 234, 0.25);
   text-shadow: none;
 }
 
@@ -323,6 +323,268 @@ table {
     margin-right: 102%;
   }
 }
+/*==============================================================================
+  Typography
+==============================================================================*/
+html {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+body {
+  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-weight: normal;
+  color: #333333;
+}
+
+/**
+ * Headers
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: #333333;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #2ab0ea;
+  border: 0 none;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  color: #de5151;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 34px;
+  line-height: 40px;
+}
+
+h3 {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+h5 {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+h6 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/**
+ * Base Elements
+ */
+p {
+  margin: 10px 0;
+}
+p.intro {
+  font-size: 22px;
+  line-height: 28px;
+  color: #2ab0ea;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+small {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  color: #bbbbbb;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+cite {
+  font-style: normal;
+}
+
+/**
+ * Links
+ */
+a,
+.anchor {
+  color: #2ab0ea;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.25s ease-in-out 0;
+  -moz-transition: all 0.25s ease-in-out 0;
+  -o-transition: all 0.25s ease-in-out 0;
+  transition: all 0.25s ease-in-out 0;
+}
+a:hover,
+.anchor:hover {
+  color: #de5151;
+  cursor: pointer;
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/*==============================================================================
+  Modifiers
+==============================================================================*/
+.delete {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.delete:after {
+  content: "\0020";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background-color: rgba(222, 81, 81, 0.6);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.highlight {
+  background: rgba(219, 207, 72, 0.6);
+}
+
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/*==============================================================================
+  Lists
+==============================================================================*/
+ul, ol {
+  margin: 10px 0 10px 20px;
+  padding: 0;
+}
+ul.remove-list-styles, ol.remove-list-styles {
+  list-style: none;
+  margin: 0;
+}
+ul.remove-list-styles li, ol.remove-list-styles li {
+  margin: 0;
+}
+
+ul, ul ul ul ul {
+  list-style: disc;
+}
+
+ul ul {
+  list-style: circle;
+}
+
+ul ul ul {
+  list-style: disc;
+}
+
+ol, ol ol ol ol {
+  list-style: decimal;
+}
+
+ol ol {
+  list-style: lower-alpha;
+}
+
+ol ol ol {
+  list-style: lower-roman;
+}
+
+ul li, ol li {
+  margin: 5px 0;
+}
+
+dl {
+  margin: 10px 0;
+}
+dl dt {
+  margin: 10px 0 0;
+  font-weight: bold;
+}
+dl dd {
+  margin: 0 0 10px 20px;
+}
+
+/*==============================================================================
+  Blockquotes
+==============================================================================*/
+blockquote {
+  margin: 15px 0;
+  padding: 10px 20px;
+  background: rgba(51, 51, 51, 0.05);
+}
+blockquote small {
+  display: block;
+  position: relative;
+  margin: 10px 0;
+  font-size: 100%;
+  color: #bbbbbb;
+}
+blockquote small:before {
+  content: "\2014";
+  margin-right: 5px;
+}
+
+/*==============================================================================
+  Code
+==============================================================================*/
+code, pre {
+  background: rgba(51, 51, 51, 0.05);
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+code {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  line-height: inherit;
+  color: #ec008c;
+}
+
+pre {
+  margin: 10px 0;
+  padding: 20px;
+  overflow: auto;
+  color: #222222;
+}
+pre code {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  font-size: 100%;
+  color: inherit;
+  background: none;
+  border: 0 none;
+}
+pre.max-height {
+  max-height: 400px;
+}
+
 /*==============================================================================
   Custom Styles
 ==============================================================================*/

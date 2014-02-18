@@ -225,6 +225,20 @@
 // Typography
 ////////////////////////////////////////////////////////////////////////////////
 
+// Anchor Styles
+@mixin anchor() {
+  color: $color-link;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
+  @include transition();
+  
+  &:hover {
+    color: $color-link-hover;
+    cursor: pointer;
+    border-color: rgba(0,0,0, 0.5);
+  }
+}
+
 // Mono Font
 @mixin mono-font($-font-size: $font-size, $-line-height: $line-height) {
   font-family: $font-family-mono;
