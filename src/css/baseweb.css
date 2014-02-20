@@ -352,7 +352,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   border: 0 none;
 }
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-  color: #de5151;
+  color: #e69242;
 }
 
 h1 {
@@ -435,9 +435,9 @@ a,
 }
 a:hover,
 .anchor:hover {
-  color: #de5151;
+  color: #e69242;
   cursor: pointer;
-  border-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(230, 146, 66, 0.5);
 }
 
 /*==============================================================================
@@ -455,8 +455,8 @@ a:hover,
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -1px;
-  background-color: rgba(222, 81, 81, 0.6);
+  margin-top: 0;
+  background-color: rgba(255, 0, 0, 0.6);
 }
 
 .underline {
@@ -464,7 +464,7 @@ a:hover,
 }
 
 .highlight {
-  background: rgba(219, 207, 72, 0.6);
+  background: rgba(255, 242, 0, 0.6);
 }
 
 .uppercase {
@@ -539,7 +539,7 @@ blockquote small {
   position: relative;
   margin: 10px 0;
   font-size: 100%;
-  color: #bbbbbb;
+  color: #a6a6a6;
 }
 blockquote small:before {
   content: "\2014";
@@ -583,6 +583,175 @@ pre code {
 }
 pre.max-height {
   max-height: 400px;
+}
+
+/*==============================================================================
+  Tables
+==============================================================================*/
+table {
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  margin: 10px 0;
+  overflow: auto;
+}
+table th {
+  color: #333333;
+  text-align: left;
+  font-weight: bold;
+}
+
+/**
+ * Table Borders
+ */
+table.rowed,
+.table-rowed {
+  border-collapse: separate;
+}
+table.rowed td, table.rowed th,
+.table-rowed td,
+.table-rowed th {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+table.rowed tr:last-child td,
+.table-rowed tr:last-child td {
+  border-bottom: 0 none;
+}
+
+table.columned,
+.table-columned {
+  border-collapse: separate;
+}
+table.columned td, table.columned th,
+.table-columned td,
+.table-columned th {
+  padding: 5px 10px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+table.columned th,
+.table-columned th {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+table.columned tr td:first-child, table.columned tr th:first-child,
+.table-columned tr td:first-child,
+.table-columned tr th:first-child {
+  border-left: 0 none;
+}
+
+table.bordered,
+.table-bordered {
+  border-collapse: separate;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+table.bordered td, table.bordered th,
+.table-bordered td,
+.table-bordered th {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+table.bordered tr:last-child td,
+.table-bordered tr:last-child td {
+  border-bottom: 0 none;
+}
+table.bordered tr td:first-child, table.bordered tr th:first-child,
+.table-bordered tr td:first-child,
+.table-bordered tr th:first-child {
+  border-left: 0 none;
+}
+table.bordered tbody tr:last-child td:first-child,
+table.bordered tbody tr:last-child th:first-child,
+.table-bordered tbody tr:last-child td:first-child,
+.table-bordered tbody tr:last-child th:first-child {
+  border-bottom-left-radius: 4px;
+}
+table.bordered tbody tr:last-child td:last-child,
+table.bordered tbody tr:last-child th:last-child,
+.table-bordered tbody tr:last-child td:last-child,
+.table-bordered tbody tr:last-child th:last-child {
+  border-bottom-right-radius: 4px;
+}
+table.bordered thead tr:first-child th:first-child, table.bordered.no-thead tr:first-child td:first-child, table.bordered.no-thead tr:first-child th:first-child,
+.table-bordered thead tr:first-child th:first-child,
+.table-bordered.no-thead tr:first-child td:first-child,
+.table-bordered.no-thead tr:first-child th:first-child {
+  border-top-left-radius: 4px;
+}
+table.bordered thead tr:first-child th:last-child, table.bordered.no-thead tr:first-child td:last-child, table.bordered.no-thead tr:first-child th:last-child,
+.table-bordered thead tr:first-child th:last-child,
+.table-bordered.no-thead tr:first-child td:last-child,
+.table-bordered.no-thead tr:first-child th:last-child {
+  border-top-right-radius: 4px;
+}
+
+/**
+ * Table Fills
+ */
+table.bg td, table.bg th,
+.table-bg td,
+.table-bg th {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+table.stripes th,
+.table-stripes th {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+table.stripes tr:nth-child(even) td,
+.table-stripes tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+table.stripes-horizontal th,
+.table-stripes-horizontal th {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+table.stripes-horizontal tr:nth-child(even) td,
+.table-stripes-horizontal tr:nth-child(even) td {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+table.stripes-vertical th:nth-child(odd),
+.table-stripes-vertical th:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+table.stripes-vertical tr td:nth-child(odd),
+.table-stripes-vertical tr td:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/**
+ * Table Modifiers
+ */
+table.padded td, table.padded th,
+.table-padded td,
+.table-padded th {
+  padding: 5px 10px;
+}
+
+table.padded-condensed td, table.padded-condensed th,
+.table-padded-condensed td,
+.table-padded-condensed th {
+  padding: 2px 5px;
+}
+
+table.padded-expanded td, table.padded-expanded th,
+.table-padded-expanded td,
+.table-padded-expanded th {
+  padding: 10px 20px;
+}
+
+table.hover thead tr th:hover,
+table.hover tbody tr:hover,
+.table-hover thead tr th:hover,
+.table-hover tbody tr:hover {
+  background-color: rgba(255, 242, 0, 0.4);
+}
+table.hover tbody tr:hover td,
+.table-hover tbody tr:hover td {
+  background: transparent;
 }
 
 /*==============================================================================

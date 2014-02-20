@@ -3,108 +3,114 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Rowed
-.make-table-rowed() {
+@mixin make-table-rowed() {
   border-collapse: separate;
+  
   td, th {
-    padding: (@padding / 2) @padding;
-    border-bottom: 1px solid;
-    .border-color( @border-table-base, @border-table-alpha, @border-table );
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba($black, 0.1);
   }
+  
   tr:last-child td { 
     border-bottom: 0 none; 
   }
 }
 
 // Columned
-.make-table-column() {
+@mixin make-table-column() {
   border-collapse: separate;
+  
   td, th {
-    padding: (@padding / 2) @padding;
-    border-left: 1px solid;
-    .border-color( @border-table-base, @border-table-alpha, @border-table );
+    padding: 5px 10px;
+    border-left: 1px solid rgba($black, 0.1);
   }
+  
   th {
-    border-left: 1px solid;
-    .border-color( @border-table-base, @border-table-alpha, @border-table );
+    border-left: 1px solid rgba($black, 0.1);
   }
+  
   tr td:first-child, tr th:first-child { 
     border-left: 0 none;
   }
 }
 
 // Bordered
-.make-table-bordered() {
+@mixin make-table-bordered() {
   border-collapse: separate;
-  border: 1px solid;
-  .border-color( @border-table-base, @border-table-alpha, @border-table );
-  .background-color( @bg-table-base, @bg-table-alpha, @bg-table );
-  .border-radius();
+  border: 1px solid rgba($black, 0.1);
+  @include border-radius();
 
   td, th {
-    padding: (@padding / 2) @padding;
-    border-bottom: 1px solid;
-    border-left: 1px solid;
-    .border-color( @border-table-base, @border-table-alpha, @border-table );
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba($black, 0.1);
+    border-left: 1px solid rgba($black, 0.1);
   }
+  
   tr:last-child td { border-bottom: 0 none; }
   tr td:first-child, tr th:first-child { border-left: 0 none; }
   
   tbody tr:last-child td:first-child, 
-  tbody tr:last-child th:first-child { .border-radius-bottom-left(); }
+  tbody tr:last-child th:first-child {
+    @include border-radius-bottom-left();
+  }
   
   tbody tr:last-child td:last-child, 
-  tbody tr:last-child th:last-child { .border-radius-bottom-right(); }
+  tbody tr:last-child th:last-child {
+    @include border-radius-bottom-right();
+  }
   
   thead tr:first-child th:first-child, 
   &.no-thead tr:first-child td:first-child, 
-  &.no-thead tr:first-child th:first-child { .border-radius-top-left(); }
+  &.no-thead tr:first-child th:first-child {
+    @include border-radius-top-left();
+  }
   
   thead tr:first-child th:last-child, 
   &.no-thead tr:first-child td:last-child, 
-  &.no-thead tr:first-child th:last-child { .border-radius-top-right(); }
+  &.no-thead tr:first-child th:last-child {
+    @include border-radius-top-right();
+  }
+}
+
+// Background
+@mixin make-table-bg( $color : rgba($black, 0.05) ) {
+  td, th {
+    background: $color;
+  }
+}
+
+// Stripes
+@mixin make-table-stripes( $direction : horizontal ) {
+
+  @if ( $direction == horizontal ) {
+    th {
+      background-color: rgba($black, 0.05);
+    }
+    tr:nth-child(even) td {
+      background-color: rgba($black, 0.05);
+    }
+  } @else if ( $direction == vertical ) {
+    th:nth-child(odd) {
+      background-color: rgba($black, 0.05);
+    }
+    tr td:nth-child(odd) {
+      background-color: rgba($black, 0.05);
+    }
+  }
 }
 
 // Padded
-.make-table-padded() {
+@mixin make-table-padded( $padding : 5px 10px ) {
   td, th {
-    padding: (@padding / 2) @padding;
+    padding: $padding;
   }
-}
-
-// Condensed
-.make-table-condensed() {
-  td, th {
-    padding: (@padding / 4) (@padding / 2);
-  }
-}
-
-// Zebra
-.make-table-stripes( @direction : horizontal ) {
-
-  .direction() when ( @direction = horizontal ) {
-    th {
-      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
-    }
-    tr:nth-child(even) td {
-      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
-    }
-  }
-  .direction() when ( @direction = vertical ) {
-    th:nth-child(odd) {
-      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
-    }
-    tr td:nth-child(odd) {
-      .background-color( @bg-table-zebra-base, @bg-table-zebra-alpha, @bg-table-zebra );
-    }
-  }
-  .direction();
 }
 
 // Hover
-.make-table-hover() {
+@mixin make-table-hover( $color : rgba($cmYk, 0.4) ) {
   thead tr th:hover, 
   tbody tr:hover {
-    .background-color( @bg-table-hover-base, @bg-table-hover-alpha, @bg-table-hover );
+    background-color: $color;
   }
   tbody tr:hover td {
     background: transparent;
@@ -119,51 +125,76 @@ table {
   width: 100%; 
   max-width: 100%;
   background: transparent;
-  margin: @margin 0;
+  margin: 10px 0;
   overflow: auto;
   
   th {
-    color: @color-header;
+    color: $color-header;
     text-align: left;
     font-weight: bold;
   }
 }
 
 /**
- * Table Classes
+ * Table Borders
  */
-table.rowed {
-  .make-table-rowed();
+table.rowed,
+.table-rowed {
+  @include make-table-rowed();
 }
 
-table.columned { 
-  .make-table-column();
+table.columned,
+.table-columned { 
+  @include make-table-column();
 }
 
-table.stripes { 
-  .make-table-stripes();
+table.bordered,
+.table-bordered { 
+  @include make-table-bordered();
 }
 
-table.stripes-horizontal { 
-  .make-table-stripes(horizontal);
+/**
+ * Table Fills
+ */
+table.bg,
+.table-bg {
+  @include make-table-bg();
 }
 
-table.stripes-vertical { 
-  .make-table-stripes(vertical);
+table.stripes,
+.table-stripes { 
+  @include make-table-stripes();
 }
 
-table.bordered { 
-  .make-table-bordered();
+table.stripes-horizontal,
+.table-stripes-horizontal { 
+  @include make-table-stripes(horizontal);
 }
 
-table.padded { 
-  .make-table-padded();
+table.stripes-vertical,
+.table-stripes-vertical { 
+  @include make-table-stripes(vertical);
 }
 
-table.condensed { 
-  .make-table-condensed();
+/**
+ * Table Modifiers
+ */
+table.padded,
+.table-padded { 
+  @include make-table-padded();
 }
 
-table.hover { 
-  .make-table-hover();
+table.padded-condensed,
+.table-padded-condensed { 
+  @include make-table-padded( 2px 5px );
+}
+
+table.padded-expanded,
+.table-padded-expanded { 
+  @include make-table-padded( 10px 20px );
+}
+
+table.hover,
+.table-hover { 
+  @include make-table-hover();
 }
