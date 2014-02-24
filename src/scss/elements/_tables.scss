@@ -11,6 +11,10 @@
     border-bottom: 1px solid rgba($black, 0.1);
   }
   
+  th {
+    border-bottom: 3px solid rgba($black, 0.1);
+  }
+  
   tr:last-child td { 
     border-bottom: 0 none; 
   }
@@ -26,6 +30,7 @@
   }
   
   th {
+    border-bottom: 3px solid rgba($black, 0.1);
     border-left: 1px solid rgba($black, 0.1);
   }
   
@@ -44,6 +49,10 @@
     padding: 5px 10px;
     border-bottom: 1px solid rgba($black, 0.1);
     border-left: 1px solid rgba($black, 0.1);
+  }
+  
+  th {
+    border-bottom: 3px solid rgba($black, 0.1);
   }
   
   tr:last-child td { border-bottom: 0 none; }
@@ -83,17 +92,14 @@
 @mixin make-table-stripes( $direction : horizontal ) {
 
   @if ( $direction == horizontal ) {
-    th {
-      background-color: rgba($black, 0.05);
-    }
-    tr:nth-child(even) td {
+    tr:nth-child(odd) td {
       background-color: rgba($black, 0.05);
     }
   } @else if ( $direction == vertical ) {
-    th:nth-child(odd) {
+    th:nth-child(even) {
       background-color: rgba($black, 0.05);
     }
-    tr td:nth-child(odd) {
+    tr td:nth-child(even) {
       background-color: rgba($black, 0.05);
     }
   }

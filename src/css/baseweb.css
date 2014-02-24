@@ -355,32 +355,38 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   color: #e69242;
 }
 
-h1 {
+h1,
+.h1 {
   font-size: 42px;
   line-height: 48px;
 }
 
-h2 {
+h2,
+.h2 {
   font-size: 34px;
   line-height: 40px;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 28px;
   line-height: 34px;
 }
 
-h4 {
+h4,
+.h4 {
   font-size: 20px;
   line-height: 26px;
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 18px;
   line-height: 24px;
 }
 
-h6 {
+h6,
+.h6 {
   font-size: 14px;
   line-height: 20px;
 }
@@ -397,27 +403,21 @@ p.intro {
   color: #2ab0ea;
 }
 
-strong {
+strong,
+b {
   font-weight: bold;
 }
 
-em {
+em,
+i {
   font-style: italic;
 }
 
 small {
   font-style: normal;
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 0.75em;
   color: #bbbbbb;
-}
-
-del {
-  text-decoration: line-through;
-}
-
-cite {
-  font-style: normal;
 }
 
 /**
@@ -440,27 +440,19 @@ a:hover,
   border-color: rgba(230, 146, 66, 0.5);
 }
 
-/*==============================================================================
-  Modifiers
-==============================================================================*/
-.delete {
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-}
-.delete:after {
-  content: "\0020";
-  width: 100%;
-  height: 2px;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: 0;
-  background-color: rgba(255, 0, 0, 0.6);
-}
-
+/**
+ * Text Modifiers
+ */
 .underline {
   text-decoration: underline;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.overline {
+  text-decoration: overline;
 }
 
 .highlight {
@@ -470,6 +462,45 @@ a:hover,
 .uppercase {
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/*==============================================================================
+  Insert & Delete
+==============================================================================*/
+ins,
+.ins {
+  color: #76a81f;
+  text-decoration: underline;
+}
+
+del,
+.del {
+  color: #d72f2f;
+  text-decoration: line-through;
+}
+
+/**
+ * Edit Blocks
+ */
+.edit-block,
+.ins-block,
+.del-block {
+  display: block;
+  margin-left: -1em;
+  padding-left: 0.5em;
+  border-left: 0.5em solid #bbbbbb;
+}
+
+.ins-block {
+  border-color: #76a81f;
+  color: #333333;
+  text-decoration: none;
+}
+
+.del-block {
+  border-color: #d72f2f;
+  color: #333333;
+  text-decoration: none;
 }
 
 /*==============================================================================
@@ -614,6 +645,10 @@ table.rowed td, table.rowed th,
   padding: 5px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+table.rowed th,
+.table-rowed th {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
 table.rowed tr:last-child td,
 .table-rowed tr:last-child td {
   border-bottom: 0 none;
@@ -631,6 +666,7 @@ table.columned td, table.columned th,
 }
 table.columned th,
 .table-columned th {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 table.columned tr td:first-child, table.columned tr th:first-child,
@@ -651,6 +687,10 @@ table.bordered td, table.bordered th,
   padding: 5px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+table.bordered th,
+.table-bordered th {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
 }
 table.bordered tr:last-child td,
 .table-bordered tr:last-child td {
@@ -695,30 +735,22 @@ table.bg td, table.bg th,
   background: rgba(0, 0, 0, 0.05);
 }
 
-table.stripes th,
-.table-stripes th {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-table.stripes tr:nth-child(even) td,
-.table-stripes tr:nth-child(even) td {
+table.stripes tr:nth-child(odd) td,
+.table-stripes tr:nth-child(odd) td {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-table.stripes-horizontal th,
-.table-stripes-horizontal th {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-table.stripes-horizontal tr:nth-child(even) td,
-.table-stripes-horizontal tr:nth-child(even) td {
+table.stripes-horizontal tr:nth-child(odd) td,
+.table-stripes-horizontal tr:nth-child(odd) td {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-table.stripes-vertical th:nth-child(odd),
-.table-stripes-vertical th:nth-child(odd) {
+table.stripes-vertical th:nth-child(even),
+.table-stripes-vertical th:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.05);
 }
-table.stripes-vertical tr td:nth-child(odd),
-.table-stripes-vertical tr td:nth-child(odd) {
+table.stripes-vertical tr td:nth-child(even),
+.table-stripes-vertical tr td:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -752,6 +784,129 @@ table.hover tbody tr:hover,
 table.hover tbody tr:hover td,
 .table-hover tbody tr:hover td {
   background: transparent;
+}
+
+/*==============================================================================
+  Images
+==============================================================================*/
+img {
+  margin: 10px 0;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img.full,
+.img-full {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.rounded,
+.img-rounded {
+  border-radius: 4px;
+}
+
+img.circle,
+.img-circle {
+  border-radius: 50%;
+}
+
+img.polaroid,
+.img-polaroid {
+  background: white;
+  background-clip: padding-box;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Image Wrap
+ */
+.image-wrap {
+  position: relative;
+  display: inline-block;
+  margin: 10px 0;
+}
+.image-wrap img {
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+  float: none;
+  display: block;
+}
+.image-wrap .caption {
+  position: relative;
+  z-index: 10;
+  display: block;
+  margin: -1px 0 0 0;
+  padding: 5px 10px;
+  clear: both;
+  font-size: 0.75em;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+/**
+ * Image Alignment
+ */
+img.align-center,
+.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p img.align-center {
+  margin-top: 0;
+}
+
+img.align-left,
+.align-left {
+  float: left;
+  margin: 10px 15px 10px 0;
+}
+
+p img.align-left {
+  margin-top: 0;
+}
+
+img.align-right,
+.align-right {
+  float: right;
+  margin: 10px 0 10px 15px;
+}
+
+p img.align-right {
+  margin-top: 0;
+}
+
+/*==============================================================================
+  Horizontal Rules
+==============================================================================*/
+hr {
+  display: block;
+  height: 0;
+  width: 100%;
+  clear: both;
+  margin: 20px 0;
+  padding: 0;
+  background: none;
+  border: 0 none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+hr.dotted {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+}
+hr.dashed {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+hr.double {
+  border-bottom: 3px double rgba(0, 0, 0, 0.1);
 }
 
 /*==============================================================================
