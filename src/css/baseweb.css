@@ -924,31 +924,15 @@ fieldset {
  * Label
  */
 label {
-  margin: 5px 0;
+  margin: 5px 0 0;
   padding: 0;
   display: inline-block;
 }
 
-/**
- * Inline Choice Labels
- */
-label.checkbox, label.radio {
-  margin-right: 5px;
-}
-label.checkbox:last-child, label.radio:last-child {
-  margin-right: 0;
+.group-value label {
+  margin: 5px 0;
 }
 
-/**
- * Select
- */
-select {
-  margin: 5 0;
-}
-
-/**
- * Buttons
- */
 /**
  * Text Input Styles
  */
@@ -1012,7 +996,7 @@ input[type="color"]:focus {
  * Text Area
  */
 textarea {
-  height: 120px;
+  height: 180px;
 }
 
 /**
@@ -1057,13 +1041,27 @@ input[type="checkbox"] {
   top: -1px;
 }
 
+label.checkbox,
+label.radio {
+  display: inline-block;
+  margin-left: 5px;
+}
+label.checkbox:first-child,
+label.radio:first-child {
+  margin-left: 0;
+}
+
+/**
+ * Select
+ */
+select {
+  margin: 5 0;
+}
+
 /**
  * Buttons
  */
-button {
-  cursor: pointer;
-}
-
+button,
 input[type="file"],
 input[type="image"],
 input[type="reset"],
@@ -1075,6 +1073,10 @@ input[type="submit"] {
 /**
  * Help Text
  */
+form p {
+  color: #999999;
+}
+
 /*==============================================================================
   Form Layout
 ==============================================================================*/
@@ -1129,6 +1131,7 @@ form .group .group-key label {
 }
 .form-vertical .group .group-key label {
   line-height: inherit;
+  margin-bottom: 0;
 }
 .form-vertical .group .group-value {
   padding-left: 0;
@@ -1143,6 +1146,7 @@ form .group .group-key label {
 }
 .form-horizontal .group .group-key label {
   line-height: inherit;
+  margin-bottom: 0;
 }
 .form-horizontal .group .group-value {
   padding-left: 0;
@@ -1166,9 +1170,22 @@ form .group .group-key label {
 }
 .form-inline .group .group-key label {
   line-height: inherit;
+  margin-bottom: 0;
 }
 .form-inline .group .group-value {
   padding-left: 0;
+}
+.form-inline.form-background {
+  padding: 0;
+}
+.form-inline.form-background .group {
+  padding: 5px 10px;
+}
+.form-inline.form-background .group:first-child {
+  padding-left: 15px;
+}
+.form-inline.form-background .group:last-child {
+  padding-right: 15px;
 }
 
 @media screen and (min-width: 760px) {
@@ -1181,6 +1198,7 @@ form .group .group-key label {
   }
   .form-horizontal .group .group-key label {
     line-height: 30px;
+    margin-bottom: 5px;
   }
   .form-horizontal .group .group-value {
     padding-left: 140px;
@@ -1189,44 +1207,49 @@ form .group .group-key label {
 /*==============================================================================
   Styles Classes
 ==============================================================================*/
+.form-background {
+  padding: 5px 15px;
+  background: whitesmoke;
+  border-radius: 4px;
+}
+.form-background .group {
+  padding: 0;
+  margin: 0;
+}
+
 .form-bordered {
-  border: 1px solid #d8d8d8;
+  padding: 0;
+  border: 3px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 .form-bordered .group {
   padding: 5px 15px;
   margin: 0;
-  border-top: 1px solid #d8d8d8;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .form-bordered .group:first-child {
   border-top: 0 none;
 }
 
 .form-bordered-wrap {
-  border: 1px solid #d8d8d8;
+  padding: 0;
+  border: 3px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 .form-bordered-wrap .group {
+  padding: 0 15px;
+}
+.form-bordered-wrap.form-background .group {
   padding: 5px 15px;
-  margin: 0;
 }
 
 .form-bordered-sep .group {
   padding: 5px 0;
   margin: 0;
-  border-top: 1px solid #d8d8d8;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .form-bordered-sep .group:first-child {
   border-top: 0 none;
-}
-
-.form-background {
-  background: whitesmoke;
-  border-radius: 4px;
-}
-.form-background .group {
-  padding: 5px 15px;
-  margin: 0;
 }
 
 /*==============================================================================

@@ -8,7 +8,7 @@ $key-column-gutter: 20px !default;
 $key-element-height: 30px !default;
 
 $color-bg-form: #f5f5f5 !default;
-$color-border-form: #d8d8d8 !default;
+$color-border-form: rgba($black, 0.1) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Form Layout Mixins
@@ -28,6 +28,7 @@ $color-border-form: #d8d8d8 !default;
   }
   .group .group-key label {
     line-height: $key-element-height;
+    margin-bottom: 5px;
   }
   // Value
   .group .group-value {
@@ -49,6 +50,7 @@ $color-border-form: #d8d8d8 !default;
   }
   .group .group-key label {
     line-height: inherit;
+    margin-bottom: 0;
   }
   // Value
   .group .group-value {
@@ -79,10 +81,26 @@ $color-border-form: #d8d8d8 !default;
   }
   .group .group-key label {
     line-height: inherit;
+    margin-bottom: 0;
   }
   // Value
   .group .group-value {
     padding-left: 0;
+  }
+  
+  &.form-background {
+    padding: 0;
+    
+    .group {
+      padding: 5px ($-key-column-gutter / 2);
+      
+      &:first-child {
+        padding-left: 15px;
+      }
+      &:last-child {
+        padding-right: 15px;
+      }
+    }
   }
 }
 
@@ -90,10 +108,25 @@ $color-border-form: #d8d8d8 !default;
 // Form Style Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Background
+// Give the form a background
+@mixin make-form-background() {
+  padding: 5px 15px;
+  background: $color-bg-form;
+  @include border-radius();
+
+  // Group
+  .group {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 // Bordered
 // Give the form a border and seperates groups with more borders!
 @mixin make-form-bordered() {
-  border: 1px solid $color-border-form;
+  padding: 0;
+  border: 3px solid $color-border-form;
   @include border-radius();
   
   // Group
@@ -106,33 +139,31 @@ $color-border-form: #d8d8d8 !default;
       border-top: 0 none;
     }
   }
-  // Key
-  .group .group-key {
-
-  }
-  // Value
-  .group .group-value {
-
-  }
 }
 
 // Bordered Wrap
 // Only adds the border to the wrapper element
 @mixin make-form-bordered-wrap() {
-  border: 1px solid $color-border-form;
+  padding: 0;
+  border: 3px solid $color-border-form;
   @include border-radius();
   
   // Group
   .group {
-    padding: 5px 15px;
-    margin: 0;
+    padding: 0 15px;
+  }
+  
+  &.form-background {
+    .group {
+      padding: 5px 15px;
+    }
   }
 }
 
 // Bordered Sep
 // Only adds the seperating borders between groups
 @mixin make-form-bordered-sep() {
-  
+
   // Group
   .group {
     padding: 5px 0;
@@ -145,33 +176,12 @@ $color-border-form: #d8d8d8 !default;
   }
 }
 
-// Background
-// Give the form a background
-@mixin make-form-background() {
-  background: $color-bg-form;
-  @include border-radius();
-
-  // Group
-  .group {
-    padding: 5px 15px;
-    margin: 0;
-  }
-  // Key
-  .group .group-key {
-    
-  }
-  // Value
-  .group .group-value {
-    
-  }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // General Form Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Form Text Input
-// A hook for styling 
+// A hook for styling form text inputs
 @mixin form-text-input {
   
   textarea,
@@ -195,6 +205,21 @@ $color-border-form: #d8d8d8 !default;
   
 }
 
+// Form Buttons
+// A hook for styling form buttons
+@mixin form-buttons {
+  
+  button,
+  input[type="file"],
+  input[type="image"],
+  input[type="reset"],
+  input[type="button"],
+  input[type="submit"] {
+    @content;
+  }
+  
+}
+
 /*==============================================================================
   Base Form Elements
 ==============================================================================*/
@@ -213,33 +238,13 @@ legend {
  * Label
  */
 label {
-  margin: 5px 0;
+  margin: 5px 0 0;
   padding: 0;
   display: inline-block;
 }
-
-/**
- * Inline Choice Labels
- */
-label.checkbox, label.radio {
-  margin-right: 5px;
-  
-  &:last-child {
-    margin-right: 0;
-  }
+.group-value label {
+  margin: 5px 0;
 }
-
-/**
- * Select
- */
-select {
-  margin: 5 0;
-}
-
-/**
- * Buttons
- */
-
 
 /**
  * Text Input Styles
@@ -279,7 +284,7 @@ select {
  * Text Area
  */
 textarea {
-  height: $key-element-height * 4;
+  height: $key-element-height * 6;
 }
 
 /**
@@ -322,24 +327,36 @@ input[type="checkbox"] {
   top: -1px;
 }
 
+label.checkbox,
+label.radio {
+  display: inline-block;
+  margin-left: 5px;
+  
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+/**
+ * Select
+ */
+select {
+  margin: 5 0;
+}
+
 /**
  * Buttons
  */
-button {
-  cursor: pointer;
-}
-input[type="file"],
-input[type="image"],
-input[type="reset"],
-input[type="button"],
-input[type="submit"] {
+@include form-buttons {
   cursor: pointer;
 }
 
 /**
  * Help Text
  */
-
+form p {
+  color: $gray-light;
+}
 
 /*==============================================================================
   Form Layout
@@ -418,6 +435,10 @@ form .group .group-value {
   Styles Classes
 ==============================================================================*/
 
+.form-background {
+  @include make-form-background();
+}
+
 .form-bordered {
   @include make-form-bordered();
 }
@@ -428,10 +449,6 @@ form .group .group-value {
 
 .form-bordered-sep {
   @include make-form-bordered-sep();
-}
-
-.form-background {
-  @include make-form-background();
 }
 
 /*==============================================================================
