@@ -949,12 +949,8 @@ select {
 /**
  * Buttons
  */
-button {
-  cursor: pointer;
-}
-
 /**
- * Input Styles
+ * Text Input Styles
  */
 textarea,
 input[type="text"],
@@ -1013,6 +1009,13 @@ input[type="color"]:focus {
 }
 
 /**
+ * Text Area
+ */
+textarea {
+  height: 120px;
+}
+
+/**
  * Remove webkit's search styles
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  */
@@ -1056,6 +1059,21 @@ input[type="checkbox"] {
 
 /**
  * Buttons
+ */
+button {
+  cursor: pointer;
+}
+
+input[type="file"],
+input[type="image"],
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/**
+ * Help Text
  */
 /*==============================================================================
   Form Layout
@@ -1102,86 +1120,111 @@ form .group .group-key label {
 /*==============================================================================
   Layout Classes
 ==============================================================================*/
-form.vertical .group,
-fieldset.vertical .group {
+.form-vertical .group {
   display: block;
 }
-form.vertical .group .group-key,
-fieldset.vertical .group .group-key {
+.form-vertical .group .group-key {
   float: none;
   width: auto;
 }
-form.vertical .group .group-key label,
-fieldset.vertical .group .group-key label {
+.form-vertical .group .group-key label {
   line-height: inherit;
 }
-form.vertical .group .group-value,
-fieldset.vertical .group .group-value {
+.form-vertical .group .group-value {
   padding-left: 0;
 }
 
-form.horizontal .group,
-fieldset.horizontal .group {
+.form-horizontal .group {
   display: block;
 }
-form.horizontal .group .group-key,
-fieldset.horizontal .group .group-key {
-  float: left;
-  width: 140px;
+.form-horizontal .group .group-key {
+  float: none;
+  width: auto;
 }
-form.horizontal .group .group-key label,
-fieldset.horizontal .group .group-key label {
-  line-height: 30px;
+.form-horizontal .group .group-key label {
+  line-height: inherit;
 }
-form.horizontal .group .group-value,
-fieldset.horizontal .group .group-value {
-  padding-left: 160px;
+.form-horizontal .group .group-value {
+  padding-left: 0;
 }
 
-form.inline .group,
-fieldset.inline .group {
+.form-inline {
+  margin: 0;
+  font-size: 0;
+}
+.form-inline .group {
   display: inline-block;
+  margin-left: 20px;
+  font-size: 14px;
 }
-form.inline .group .group-key,
-fieldset.inline .group .group-key {
+.form-inline .group:first-child {
+  margin-left: 0;
+}
+.form-inline .group .group-key {
   float: none;
   width: auto;
 }
-form.inline .group .group-key label,
-fieldset.inline .group .group-key label {
+.form-inline .group .group-key label {
   line-height: inherit;
 }
-form.inline .group .group-value,
-fieldset.inline .group .group-value {
+.form-inline .group .group-value {
   padding-left: 0;
 }
 
+@media screen and (min-width: 760px) {
+  .form-horizontal .group {
+    display: block;
+  }
+  .form-horizontal .group .group-key {
+    float: left;
+    width: 120px;
+  }
+  .form-horizontal .group .group-key label {
+    line-height: 30px;
+  }
+  .form-horizontal .group .group-value {
+    padding-left: 140px;
+  }
+}
 /*==============================================================================
   Styles Classes
 ==============================================================================*/
-form.bordered,
-fieldset.bordered {
+.form-bordered {
   border: 1px solid #d8d8d8;
   border-radius: 4px;
 }
-form.bordered .group,
-fieldset.bordered .group {
+.form-bordered .group {
   padding: 5px 15px;
   margin: 0;
   border-top: 1px solid #d8d8d8;
 }
-form.bordered .group:first-child,
-fieldset.bordered .group:first-child {
+.form-bordered .group:first-child {
   border-top: 0 none;
 }
 
-form.filled,
-fieldset.filled {
+.form-bordered-wrap {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+}
+.form-bordered-wrap .group {
+  padding: 5px 15px;
+  margin: 0;
+}
+
+.form-bordered-sep .group {
+  padding: 5px 0;
+  margin: 0;
+  border-top: 1px solid #d8d8d8;
+}
+.form-bordered-sep .group:first-child {
+  border-top: 0 none;
+}
+
+.form-background {
   background: whitesmoke;
   border-radius: 4px;
 }
-form.filled .group,
-fieldset.filled .group {
+.form-background .group {
   padding: 5px 15px;
   margin: 0;
 }

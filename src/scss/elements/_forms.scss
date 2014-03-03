@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Structure
-$key-column-width: 160px !default;
+$key-column-width: 140px !default;
 $key-column-gutter: 20px !default;
 $key-element-height: 30px !default;
 
@@ -58,10 +58,19 @@ $color-border-form: #d8d8d8 !default;
 
 // Inline Forms
 // Sets groups to be inline along with group-key and group-value
-@mixin make-form-inline() {
+@mixin make-form-inline( $-key-column-gutter : $key-column-gutter ) {
+  margin: 0;
+  font-size: 0;
+  
   // Group
   .group {
     display: inline-block;
+    margin-left: $-key-column-gutter;
+    font-size: 14px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
   }
   // Key
   .group .group-key {
@@ -107,9 +116,38 @@ $color-border-form: #d8d8d8 !default;
   }
 }
 
-// Filled
-// Give the form a some filling
-@mixin make-form-filled() {
+// Bordered Wrap
+// Only adds the border to the wrapper element
+@mixin make-form-bordered-wrap() {
+  border: 1px solid $color-border-form;
+  @include border-radius();
+  
+  // Group
+  .group {
+    padding: 5px 15px;
+    margin: 0;
+  }
+}
+
+// Bordered Sep
+// Only adds the seperating borders between groups
+@mixin make-form-bordered-sep() {
+  
+  // Group
+  .group {
+    padding: 5px 0;
+    margin: 0;
+    border-top: 1px solid $color-border-form;
+    
+    &:first-child {
+      border-top: 0 none;
+    }
+  }
+}
+
+// Background
+// Give the form a background
+@mixin make-form-background() {
   background: $color-bg-form;
   @include border-radius();
 
@@ -126,6 +164,35 @@ $color-border-form: #d8d8d8 !default;
   .group .group-value {
     
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// General Form Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Form Text Input
+// A hook for styling 
+@mixin form-text-input {
+  
+  textarea,
+  input[type="text"],
+  input[type="search"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="time"],
+  input[type="week"],
+  input[type="month"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="range"],
+  input[type="color"] {
+    @content;
+  }
+  
 }
 
 /*==============================================================================
@@ -172,31 +239,14 @@ select {
 /**
  * Buttons
  */
-button {
-  cursor: pointer;
-}
+
 
 /**
- * Input Styles
+ * Text Input Styles
  */
-textarea,
-input[type="text"],
-input[type="search"],
-input[type="password"],
-input[type="email"],
-input[type="url"],
-input[type="tel"],
-input[type="number"],
-input[type="time"],
-input[type="week"],
-input[type="month"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="range"],
-input[type="color"] {
+@include form-text-input {
 
-  // Structure
+  // Box-model
   display: inline-block;
   box-sizing: border-box;
   width: 100%;
@@ -211,17 +261,25 @@ input[type="color"] {
   line-height: 20px;
   color: $color;
   
-  // Styles
+  // Visual
   border: 1px solid rgba($black, 0.25);
   background: $white;
   @include box-shadow( 0 1px 3px rgba($black, 0.05) inset );
   @include transition( "border linear 0.2s, box-shadow linear 0.2s" );
   
+  // States
   &:focus {
     outline: none;
     border-color: rgba($blue-lighter, 0.8);
     @include box-shadow( "0 1px 3px rgba($black, 0.05) inset, 0 1px 3px rgba($blue-lighter, 0.1)" );
   }
+}
+
+/**
+ * Text Area
+ */
+textarea {
+  height: $key-element-height * 4;
 }
 
 /**
@@ -267,11 +325,21 @@ input[type="checkbox"] {
 /**
  * Buttons
  */
+button {
+  cursor: pointer;
+}
 input[type="file"],
 input[type="image"],
 input[type="reset"],
 input[type="button"],
-input[type="submit"] {}
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/**
+ * Help Text
+ */
+
 
 /*==============================================================================
   Form Layout
@@ -327,26 +395,22 @@ form .group .group-value {
   Layout Classes
 ==============================================================================*/
 
-form.vertical,
-fieldset.vertical {
+.form-vertical {
   @include make-form-vertical();
 }
 
-form.horizontal,
-fieldset.horizontal {
-  @include make-form-horizontal();
+.form-horizontal {
+  @include make-form-vertical();
 }
 
-form.inline,
-fieldset.inline { 
+.form-inline { 
   @include make-form-inline();
 }
 
 // Responsive form layout
-@mixin media-tablet {
-  form.horizontal, 
-  fieldset.horizontal { 
-    @include make-form-horizontal(); 
+@include media-tablet {
+  .form-horizontal { 
+    @include make-form-horizontal();
   }
 }
 
@@ -354,14 +418,20 @@ fieldset.inline {
   Styles Classes
 ==============================================================================*/
 
-form.bordered,
-fieldset.bordered {
+.form-bordered {
   @include make-form-bordered();
 }
 
-form.filled,
-fieldset.filled {
-  @include make-form-filled();
+.form-bordered-wrap {
+  @include make-form-bordered-wrap();
+}
+
+.form-bordered-sep {
+  @include make-form-bordered-sep();
+}
+
+.form-background {
+  @include make-form-background();
 }
 
 /*==============================================================================
