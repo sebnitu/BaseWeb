@@ -1,0 +1,416 @@
+////////////////////////////////////////////////////////////////////////////////
+// Form Layout Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Structure
+$key-column-width: 160px !default;
+$key-column-gutter: 20px !default;
+$key-element-height: 30px !default;
+
+$color-bg-form: #f5f5f5 !default;
+$color-border-form: #d8d8d8 !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Layout Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Horizontal Forms
+// Where group-key and group-value are side by side
+@mixin make-form-horizontal( $-key-column-width : $key-column-width, $-key-column-gutter : $key-column-gutter ) {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: left;
+    width: ( $key-column-width - $key-column-gutter );
+  }
+  .group .group-key label {
+    line-height: $key-element-height;
+  }
+  // Value
+  .group .group-value {
+    padding-left: $key-column-width;
+  }
+}
+
+// Vertical Forms
+// Where group-key and group-value are stacked
+@mixin make-form-vertical() {
+  // Group
+  .group {
+    display: block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+// Inline Forms
+// Sets groups to be inline along with group-key and group-value
+@mixin make-form-inline() {
+  // Group
+  .group {
+    display: inline-block;
+  }
+  // Key
+  .group .group-key {
+    float: none;
+    width: auto;
+  }
+  .group .group-key label {
+    line-height: inherit;
+  }
+  // Value
+  .group .group-value {
+    padding-left: 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Style Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Bordered
+// Give the form a border and seperates groups with more borders!
+@mixin make-form-bordered() {
+  border: 1px solid $color-border-form;
+  @include border-radius();
+  
+  // Group
+  .group {
+    padding: 5px 15px;
+    margin: 0;
+    border-top: 1px solid $color-border-form;
+    
+    &:first-child {
+      border-top: 0 none;
+    }
+  }
+  // Key
+  .group .group-key {
+
+  }
+  // Value
+  .group .group-value {
+
+  }
+}
+
+// Filled
+// Give the form a some filling
+@mixin make-form-filled() {
+  background: $color-bg-form;
+  @include border-radius();
+
+  // Group
+  .group {
+    padding: 5px 15px;
+    margin: 0;
+  }
+  // Key
+  .group .group-key {
+    
+  }
+  // Value
+  .group .group-value {
+    
+  }
+}
+
+/*==============================================================================
+  Base Form Elements
+==============================================================================*/
+
+form {
+  margin: 10px 0;
+}
+fieldset {
+  margin: 10px 0;
+}
+legend {
+  
+}
+
+/**
+ * Label
+ */
+label {
+  margin: 5px 0;
+  padding: 0;
+  display: inline-block;
+}
+
+/**
+ * Inline Choice Labels
+ */
+label.checkbox, label.radio {
+  margin-right: 5px;
+  
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+/**
+ * Select
+ */
+select {
+  margin: 5 0;
+}
+
+/**
+ * Buttons
+ */
+button {
+  cursor: pointer;
+}
+
+/**
+ * Input Styles
+ */
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="time"],
+input[type="week"],
+input[type="month"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="range"],
+input[type="color"] {
+
+  // Structure
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $key-element-height;
+  max-width: 100%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  
+  // Type
+  font-family: $font-family;
+  font-size: 14px;
+  line-height: 20px;
+  color: $color;
+  
+  // Styles
+  border: 1px solid rgba($black, 0.25);
+  background: $white;
+  @include box-shadow( 0 1px 3px rgba($black, 0.05) inset );
+  @include transition( "border linear 0.2s, box-shadow linear 0.2s" );
+  
+  &:focus {
+    outline: none;
+    border-color: rgba($blue-lighter, 0.8);
+    @include box-shadow( "0 1px 3px rgba($black, 0.05) inset, 0 1px 3px rgba($blue-lighter, 0.1)" );
+  }
+}
+
+/**
+ * Remove webkit's search styles
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ */
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  box-sizing: border-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Reset Input Widths
+ */
+input[type="range"] {
+  width: auto;
+}
+input[type="color"] {
+  width: 30px;
+  height: 30px;
+  padding: 2px 4px;
+}
+
+/**
+ * choice
+ */
+input[type="radio"],
+input[type="checkbox"] {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  top: -1px;
+}
+
+/**
+ * Buttons
+ */
+input[type="file"],
+input[type="image"],
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {}
+
+/*==============================================================================
+  Form Layout
+==============================================================================*/
+
+/**
+ * Group Structure
+ */
+form .group {
+  margin: 10px 0;
+  @include clearfix();
+}
+form .group .group-key {
+  
+}
+form .group .group-key label {
+  font-weight: bold;
+  display: block;
+}
+form .group .group-value {
+  
+}
+
+/**
+ * Key Alignment
+ */
+.key-align-left {
+  .group .group-key {
+    text-align: left;
+  }
+}
+.key-align-right {
+  .group .group-key {
+    text-align: right;
+  }
+}
+
+/**
+ * Value Alignment
+ */
+.value-align-left {
+  .group .group-value {
+    text-align: left;
+  }
+}
+.value-align-right {
+  .group .group-value {
+    text-align: right;
+  }
+}
+
+/*==============================================================================
+  Layout Classes
+==============================================================================*/
+
+form.vertical,
+fieldset.vertical {
+  @include make-form-vertical();
+}
+
+form.horizontal,
+fieldset.horizontal {
+  @include make-form-horizontal();
+}
+
+form.inline,
+fieldset.inline { 
+  @include make-form-inline();
+}
+
+// Responsive form layout
+@mixin media-tablet {
+  form.horizontal, 
+  fieldset.horizontal { 
+    @include make-form-horizontal(); 
+  }
+}
+
+/*==============================================================================
+  Styles Classes
+==============================================================================*/
+
+form.bordered,
+fieldset.bordered {
+  @include make-form-bordered();
+}
+
+form.filled,
+fieldset.filled {
+  @include make-form-filled();
+}
+
+/*==============================================================================
+  Custom Form Groups
+==============================================================================*/
+
+/**
+ * Form Header
+ */
+.form-header {
+
+}
+.form-header h2 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: normal;
+  color: $color-link-hover;
+}
+
+/**
+ * Action Group
+ */
+.group-action {
+  
+}
+.group button,
+.group input[type="submit"] {
+  margin: 5px 0 5px 10px;
+  
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+/**
+ * Joined Group
+ */
+.group-joined {
+  font-size: 0;
+}
+.group-joined input,
+.group-joined button {
+  margin: 0;
+}
+.group-joined input:first-child,
+.group-joined button:first-child {
+  @include border-radius-right(0);
+}
+.group-joined input:last-child,
+.group-joined button:last-child {
+  @include border-radius-left(0);
+}

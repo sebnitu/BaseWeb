@@ -451,10 +451,6 @@ a:hover,
   text-decoration: line-through;
 }
 
-.overline {
-  text-decoration: overline;
-}
-
 .highlight {
   background: rgba(255, 242, 0, 0.6);
 }
@@ -467,16 +463,20 @@ a:hover,
 /*==============================================================================
   Insert & Delete
 ==============================================================================*/
+.edit {
+  border-bottom: 2px solid #bbbbbb;
+}
+
 ins,
 .ins {
-  color: #76a81f;
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: 2px solid #76a81f;
 }
 
 del,
 .del {
-  color: #d72f2f;
-  text-decoration: line-through;
+  text-decoration: none;
+  border-bottom: 2px solid #d72f2f;
 }
 
 /**
@@ -486,9 +486,9 @@ del,
 .ins-block,
 .del-block {
   display: block;
-  margin-left: -1em;
-  padding-left: 0.5em;
-  border-left: 0.5em solid #bbbbbb;
+  padding-left: 10px;
+  border-left: 5px solid #bbbbbb;
+  border-bottom: 0 none;
 }
 
 .ins-block {
@@ -563,7 +563,7 @@ dl dd {
 blockquote {
   margin: 15px 0;
   padding: 10px 20px;
-  background: rgba(51, 51, 51, 0.05);
+  background: whitesmoke;
 }
 blockquote small {
   display: block;
@@ -581,7 +581,7 @@ blockquote small:before {
   Code
 ==============================================================================*/
 code, pre {
-  background: rgba(51, 51, 51, 0.05);
+  background: whitesmoke;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 12px;
   line-height: 20px;
@@ -732,26 +732,26 @@ table.bordered thead tr:first-child th:last-child, table.bordered.no-thead tr:fi
 table.bg td, table.bg th,
 .table-bg td,
 .table-bg th {
-  background: rgba(0, 0, 0, 0.05);
+  background: #f9f9f9;
 }
 
 table.stripes tr:nth-child(odd) td,
 .table-stripes tr:nth-child(odd) td {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f9f9f9;
 }
 
 table.stripes-horizontal tr:nth-child(odd) td,
 .table-stripes-horizontal tr:nth-child(odd) td {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f9f9f9;
 }
 
 table.stripes-vertical th:nth-child(even),
 .table-stripes-vertical th:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f9f9f9;
 }
 table.stripes-vertical tr td:nth-child(even),
 .table-stripes-vertical tr td:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f9f9f9;
 }
 
 /**
@@ -819,7 +819,7 @@ img.polaroid,
   background-clip: padding-box;
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /**
@@ -900,13 +900,339 @@ hr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 hr.dotted {
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dotted #cccccc;
 }
 hr.dashed {
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dashed #cccccc;
 }
 hr.double {
   border-bottom: 3px double rgba(0, 0, 0, 0.1);
+}
+
+/*==============================================================================
+  Base Form Elements
+==============================================================================*/
+form {
+  margin: 10px 0;
+}
+
+fieldset {
+  margin: 10px 0;
+}
+
+/**
+ * Label
+ */
+label {
+  margin: 5px 0;
+  padding: 0;
+  display: inline-block;
+}
+
+/**
+ * Inline Choice Labels
+ */
+label.checkbox, label.radio {
+  margin-right: 5px;
+}
+label.checkbox:last-child, label.radio:last-child {
+  margin-right: 0;
+}
+
+/**
+ * Select
+ */
+select {
+  margin: 5 0;
+}
+
+/**
+ * Buttons
+ */
+button {
+  cursor: pointer;
+}
+
+/**
+ * Input Styles
+ */
+textarea,
+input[type="text"],
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="time"],
+input[type="week"],
+input[type="month"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="range"],
+input[type="color"] {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  max-width: 100%;
+  padding: 5px 10px;
+  margin: 5px 0;
+  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset;
+  -webkit-transition: "border linear 0.2s, box-shadow linear 0.2s";
+  -moz-transition: "border linear 0.2s, box-shadow linear 0.2s";
+  -o-transition: "border linear 0.2s, box-shadow linear 0.2s";
+  transition: "border linear 0.2s, box-shadow linear 0.2s";
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="month"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="range"]:focus,
+input[type="color"]:focus {
+  outline: none;
+  border-color: rgba(79, 190, 238, 0.8);
+  box-shadow: "0 1px 3px rgba($black, 0.05) inset, 0 1px 3px rgba($blue-lighter, 0.1)";
+}
+
+/**
+ * Remove webkit's search styles
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  box-sizing: border-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Reset Input Widths
+ */
+input[type="range"] {
+  width: auto;
+}
+
+input[type="color"] {
+  width: 30px;
+  height: 30px;
+  padding: 2px 4px;
+}
+
+/**
+ * choice
+ */
+input[type="radio"],
+input[type="checkbox"] {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  top: -1px;
+}
+
+/**
+ * Buttons
+ */
+/*==============================================================================
+  Form Layout
+==============================================================================*/
+/**
+ * Group Structure
+ */
+form .group {
+  margin: 10px 0;
+}
+form .group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+form .group .group-key label {
+  font-weight: bold;
+  display: block;
+}
+
+/**
+ * Key Alignment
+ */
+.key-align-left .group .group-key {
+  text-align: left;
+}
+
+.key-align-right .group .group-key {
+  text-align: right;
+}
+
+/**
+ * Value Alignment
+ */
+.value-align-left .group .group-value {
+  text-align: left;
+}
+
+.value-align-right .group .group-value {
+  text-align: right;
+}
+
+/*==============================================================================
+  Layout Classes
+==============================================================================*/
+form.vertical .group,
+fieldset.vertical .group {
+  display: block;
+}
+form.vertical .group .group-key,
+fieldset.vertical .group .group-key {
+  float: none;
+  width: auto;
+}
+form.vertical .group .group-key label,
+fieldset.vertical .group .group-key label {
+  line-height: inherit;
+}
+form.vertical .group .group-value,
+fieldset.vertical .group .group-value {
+  padding-left: 0;
+}
+
+form.horizontal .group,
+fieldset.horizontal .group {
+  display: block;
+}
+form.horizontal .group .group-key,
+fieldset.horizontal .group .group-key {
+  float: left;
+  width: 140px;
+}
+form.horizontal .group .group-key label,
+fieldset.horizontal .group .group-key label {
+  line-height: 30px;
+}
+form.horizontal .group .group-value,
+fieldset.horizontal .group .group-value {
+  padding-left: 160px;
+}
+
+form.inline .group,
+fieldset.inline .group {
+  display: inline-block;
+}
+form.inline .group .group-key,
+fieldset.inline .group .group-key {
+  float: none;
+  width: auto;
+}
+form.inline .group .group-key label,
+fieldset.inline .group .group-key label {
+  line-height: inherit;
+}
+form.inline .group .group-value,
+fieldset.inline .group .group-value {
+  padding-left: 0;
+}
+
+/*==============================================================================
+  Styles Classes
+==============================================================================*/
+form.bordered,
+fieldset.bordered {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+}
+form.bordered .group,
+fieldset.bordered .group {
+  padding: 5px 15px;
+  margin: 0;
+  border-top: 1px solid #d8d8d8;
+}
+form.bordered .group:first-child,
+fieldset.bordered .group:first-child {
+  border-top: 0 none;
+}
+
+form.filled,
+fieldset.filled {
+  background: whitesmoke;
+  border-radius: 4px;
+}
+form.filled .group,
+fieldset.filled .group {
+  padding: 5px 15px;
+  margin: 0;
+}
+
+/*==============================================================================
+  Custom Form Groups
+==============================================================================*/
+/**
+ * Form Header
+ */
+.form-header h2 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: normal;
+  color: #e69242;
+}
+
+/**
+ * Action Group
+ */
+.group button,
+.group input[type="submit"] {
+  margin: 5px 0 5px 10px;
+}
+.group button:first-child,
+.group input[type="submit"]:first-child {
+  margin-left: 0;
+}
+
+/**
+ * Joined Group
+ */
+.group-joined {
+  font-size: 0;
+}
+
+.group-joined input,
+.group-joined button {
+  margin: 0;
+}
+
+.group-joined input:first-child,
+.group-joined button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.group-joined input:last-child,
+.group-joined button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /*==============================================================================

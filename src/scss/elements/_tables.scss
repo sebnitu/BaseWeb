@@ -1,4 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////
+// Table Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$color-bg-table: #f9f9f9 !default;
+$color-border-table: rgba($black, 0.1) !default;
+
+////////////////////////////////////////////////////////////////////////////////
 // Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -8,11 +15,11 @@
   
   td, th {
     padding: 5px 10px;
-    border-bottom: 1px solid rgba($black, 0.1);
+    border-bottom: 1px solid $color-border-table;
   }
   
   th {
-    border-bottom: 3px solid rgba($black, 0.1);
+    border-bottom: 3px solid $color-border-table;
   }
   
   tr:last-child td { 
@@ -26,12 +33,12 @@
   
   td, th {
     padding: 5px 10px;
-    border-left: 1px solid rgba($black, 0.1);
+    border-left: 1px solid $color-border-table;
   }
   
   th {
-    border-bottom: 3px solid rgba($black, 0.1);
-    border-left: 1px solid rgba($black, 0.1);
+    border-bottom: 3px solid $color-border-table;
+    border-left: 1px solid $color-border-table;
   }
   
   tr td:first-child, tr th:first-child { 
@@ -42,17 +49,17 @@
 // Bordered
 @mixin make-table-bordered() {
   border-collapse: separate;
-  border: 1px solid rgba($black, 0.1);
+  border: 1px solid $color-border-table;
   @include border-radius();
 
   td, th {
     padding: 5px 10px;
-    border-bottom: 1px solid rgba($black, 0.1);
-    border-left: 1px solid rgba($black, 0.1);
+    border-bottom: 1px solid $color-border-table;
+    border-left: 1px solid $color-border-table;
   }
   
   th {
-    border-bottom: 3px solid rgba($black, 0.1);
+    border-bottom: 3px solid $color-border-table;
   }
   
   tr:last-child td { border-bottom: 0 none; }
@@ -82,7 +89,7 @@
 }
 
 // Background
-@mixin make-table-bg( $color : rgba($black, 0.05) ) {
+@mixin make-table-bg( $color : $color-bg-table ) {
   td, th {
     background: $color;
   }
@@ -93,14 +100,14 @@
 
   @if ( $direction == horizontal ) {
     tr:nth-child(odd) td {
-      background-color: rgba($black, 0.05);
+      background-color: $color-bg-table;
     }
   } @else if ( $direction == vertical ) {
     th:nth-child(even) {
-      background-color: rgba($black, 0.05);
+      background-color: $color-bg-table;
     }
     tr td:nth-child(even) {
-      background-color: rgba($black, 0.05);
+      background-color: $color-bg-table;
     }
   }
 }
