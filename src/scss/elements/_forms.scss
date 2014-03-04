@@ -3,11 +3,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Structure
-$key-column-width: 140px !default;
+$key-column-width: 160px !default;
 $key-column-gutter: 20px !default;
 $key-element-height: 30px !default;
 
-$color-bg-form: #f5f5f5 !default;
+// Style
+$color-bg-form: #f9f9f9 !default;
 $color-border-form: rgba($black, 0.1) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -24,15 +25,15 @@ $color-border-form: rgba($black, 0.1) !default;
   // Key
   .group .group-key {
     float: left;
-    width: ( $key-column-width - $key-column-gutter );
+    width: ( $-key-column-width - $-key-column-gutter );
   }
   .group .group-key label {
-    line-height: $key-element-height;
-    margin-bottom: 5px;
+    margin: (5px + 5px) 0;
+    line-height: $key-element-height - (5px * 2);
   }
   // Value
   .group .group-value {
-    padding-left: $key-column-width;
+    padding-left: $-key-column-width;
   }
 }
 
@@ -49,8 +50,8 @@ $color-border-form: rgba($black, 0.1) !default;
     width: auto;
   }
   .group .group-key label {
-    line-height: inherit;
     margin-bottom: 0;
+    line-height: inherit;
   }
   // Value
   .group .group-value {
@@ -80,8 +81,8 @@ $color-border-form: rgba($black, 0.1) !default;
     width: auto;
   }
   .group .group-key label {
-    line-height: inherit;
     margin-bottom: 0;
+    line-height: inherit;
   }
   // Value
   .group .group-value {
@@ -133,10 +134,10 @@ $color-border-form: rgba($black, 0.1) !default;
   .group {
     padding: 5px 15px;
     margin: 0;
-    border-top: 1px solid $color-border-form;
+    border-bottom: 1px solid $color-border-form;
     
-    &:first-child {
-      border-top: 0 none;
+    &:last-child {
+      border-bottom: 0 none;
     }
   }
 }
@@ -168,11 +169,28 @@ $color-border-form: rgba($black, 0.1) !default;
   .group {
     padding: 5px 0;
     margin: 0;
-    border-top: 1px solid $color-border-form;
+    border-bottom: 1px solid $color-border-form;
     
-    &:first-child {
-      border-top: 0 none;
+    &:last-child {
+      border-bottom: 0 none;
     }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Utility Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+@mixin make-form-hover( $color : #FEFCCB ) {
+  
+  .group:hover {
+    background: $color;
+  }
+  .group:first-child {
+    @include border-radius-top();
+  }
+  .group:last-child {
+    @include border-radius-bottom();
   }
 }
 
@@ -185,6 +203,7 @@ $color-border-form: rgba($black, 0.1) !default;
 @mixin form-text-input {
   
   textarea,
+  select,
   input[type="text"],
   input[type="search"],
   input[type="password"],
@@ -267,8 +286,9 @@ label {
   color: $color;
   
   // Visual
-  border: 1px solid rgba($black, 0.25);
   background: $white;
+  border: 1px solid rgba($black, 0.25);
+  @include border-radius();
   @include box-shadow( 0 1px 3px rgba($black, 0.05) inset );
   @include transition( "border linear 0.2s, box-shadow linear 0.2s" );
   
@@ -284,7 +304,7 @@ label {
  * Text Area
  */
 textarea {
-  height: $key-element-height * 6;
+  height: $key-element-height * 4;
 }
 
 /**
@@ -305,6 +325,13 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /**
+ * File Input
+ */
+input[type="file"] {
+  margin: 10px 0;
+}
+
+/**
  * Reset Input Widths
  */
 input[type="range"] {
@@ -319,21 +346,30 @@ input[type="color"] {
 /**
  * choice
  */
-input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   position: relative;
   box-sizing: border-box;
   padding: 0;
   top: -1px;
 }
+ 
+.checkbox,
+.radio {
+  margin: 10px 0;
+  
+  label {
+    margin: 0;
+  }
+}
 
 label.checkbox,
 label.radio {
   display: inline-block;
-  margin-left: 5px;
+  margin: 10px $key-column-gutter 10px 0;
   
-  &:first-child {
-    margin-left: 0;
+  &:last-child {
+    margin-right: 0;
   }
 }
 
@@ -341,7 +377,11 @@ label.radio {
  * Select
  */
 select {
-  margin: 5 0;
+  margin: 5px 0;
+}
+select[multiple],
+select[size] {
+  height: auto;
 }
 
 /**
@@ -354,8 +394,18 @@ select {
 /**
  * Help Text
  */
-form p {
+form p,
+form .desc {
+  margin: 5px 0;
   color: $gray-light;
+}
+form .error,
+form .error p {
+  color: $red-darker;
+}
+form .success,
+form .success p {
+  color: $green-darker;
 }
 
 /*==============================================================================
@@ -378,6 +428,47 @@ form .group .group-key label {
 }
 form .group .group-value {
   
+}
+
+/**
+ * Group State
+ */
+form .group-active {}
+form .group-error {
+  @include form-text-input {
+    border-color: rgba($red-darker, 0.5);
+  }
+  .group-key label {
+    color: $red-darker;
+  }
+}
+form .group-success {
+  @include form-text-input {
+    border-color: rgba($green-darker, 0.70);
+  }
+  .group-key label {
+    color: $green-darker;
+  }
+}
+
+.form-bordered .group.group-focus {
+  background: #FEFDE5;
+}
+.form-bordered .group.group-error,
+.form-hover .group.group-error:hover {
+  background: #FCEEEE;
+  
+  .group-key label {
+    color: $gray-darker;
+  }
+}
+.form-bordered .group.group-success,
+.form-hover .group.group-success:hover {
+  background: #F3F9E8;
+  
+  .group-key label {
+    color: $gray-darker;
+  }
 }
 
 /**
@@ -449,6 +540,14 @@ form .group .group-value {
 
 .form-bordered-sep {
   @include make-form-bordered-sep();
+}
+
+/*==============================================================================
+  Utility Classes
+==============================================================================*/
+
+.form-hover {
+  @include make-form-hover();
 }
 
 /*==============================================================================

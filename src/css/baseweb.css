@@ -937,6 +937,7 @@ label {
  * Text Input Styles
  */
 textarea,
+select,
 input[type="text"],
 input[type="search"],
 input[type="password"],
@@ -963,8 +964,9 @@ input[type="color"] {
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  border: 1px solid rgba(0, 0, 0, 0.25);
   background: white;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset;
   -webkit-transition: "border linear 0.2s, box-shadow linear 0.2s";
   -moz-transition: "border linear 0.2s, box-shadow linear 0.2s";
@@ -972,6 +974,7 @@ input[type="color"] {
   transition: "border linear 0.2s, box-shadow linear 0.2s";
 }
 textarea:focus,
+select:focus,
 input[type="text"]:focus,
 input[type="search"]:focus,
 input[type="password"]:focus,
@@ -996,7 +999,7 @@ input[type="color"]:focus {
  * Text Area
  */
 textarea {
-  height: 180px;
+  height: 120px;
 }
 
 /**
@@ -1018,6 +1021,13 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /**
+ * File Input
+ */
+input[type="file"] {
+  margin: 10px 0;
+}
+
+/**
  * Reset Input Widths
  */
 input[type="range"] {
@@ -1033,29 +1043,43 @@ input[type="color"] {
 /**
  * choice
  */
-input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   position: relative;
   box-sizing: border-box;
   padding: 0;
   top: -1px;
 }
 
+.checkbox,
+.radio {
+  margin: 10px 0;
+}
+.checkbox label,
+.radio label {
+  margin: 0;
+}
+
 label.checkbox,
 label.radio {
   display: inline-block;
-  margin-left: 5px;
+  margin: 10px 20px 10px 0;
 }
-label.checkbox:first-child,
-label.radio:first-child {
-  margin-left: 0;
+label.checkbox:last-child,
+label.radio:last-child {
+  margin-right: 0;
 }
 
 /**
  * Select
  */
 select {
-  margin: 5 0;
+  margin: 5px 0;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
 }
 
 /**
@@ -1073,8 +1097,20 @@ input[type="submit"] {
 /**
  * Help Text
  */
-form p {
+form p,
+form .desc {
+  margin: 5px 0;
   color: #999999;
+}
+
+form .error,
+form .error p {
+  color: #d72f2f;
+}
+
+form .success,
+form .success p {
+  color: #76a81f;
 }
 
 /*==============================================================================
@@ -1095,6 +1131,77 @@ form .group:after {
 form .group .group-key label {
   font-weight: bold;
   display: block;
+}
+
+/**
+ * Group State
+ */
+form .group-error textarea,
+form .group-error select,
+form .group-error input[type="text"],
+form .group-error input[type="search"],
+form .group-error input[type="password"],
+form .group-error input[type="email"],
+form .group-error input[type="url"],
+form .group-error input[type="tel"],
+form .group-error input[type="number"],
+form .group-error input[type="time"],
+form .group-error input[type="week"],
+form .group-error input[type="month"],
+form .group-error input[type="date"],
+form .group-error input[type="datetime"],
+form .group-error input[type="datetime-local"],
+form .group-error input[type="range"],
+form .group-error input[type="color"] {
+  border-color: rgba(215, 47, 47, 0.5);
+}
+form .group-error .group-key label {
+  color: #d72f2f;
+}
+
+form .group-success textarea,
+form .group-success select,
+form .group-success input[type="text"],
+form .group-success input[type="search"],
+form .group-success input[type="password"],
+form .group-success input[type="email"],
+form .group-success input[type="url"],
+form .group-success input[type="tel"],
+form .group-success input[type="number"],
+form .group-success input[type="time"],
+form .group-success input[type="week"],
+form .group-success input[type="month"],
+form .group-success input[type="date"],
+form .group-success input[type="datetime"],
+form .group-success input[type="datetime-local"],
+form .group-success input[type="range"],
+form .group-success input[type="color"] {
+  border-color: rgba(118, 168, 31, 0.7);
+}
+form .group-success .group-key label {
+  color: #76a81f;
+}
+
+.form-bordered .group.group-focus {
+  background: #FEFDE5;
+}
+
+.form-bordered .group.group-error,
+.form-hover .group.group-error:hover {
+  background: #FCEEEE;
+}
+.form-bordered .group.group-error .group-key label,
+.form-hover .group.group-error:hover .group-key label {
+  color: #222222;
+}
+
+.form-bordered .group.group-success,
+.form-hover .group.group-success:hover {
+  background: #F3F9E8;
+}
+.form-bordered .group.group-success .group-key label,
+.form-hover .group.group-success:hover .group-key label {
+  color: #222222;
 }
 
 /**
@@ -1130,8 +1237,8 @@ form .group .group-key label {
   width: auto;
 }
 .form-vertical .group .group-key label {
-  line-height: inherit;
   margin-bottom: 0;
+  line-height: inherit;
 }
 .form-vertical .group .group-value {
   padding-left: 0;
@@ -1145,8 +1252,8 @@ form .group .group-key label {
   width: auto;
 }
 .form-horizontal .group .group-key label {
-  line-height: inherit;
   margin-bottom: 0;
+  line-height: inherit;
 }
 .form-horizontal .group .group-value {
   padding-left: 0;
@@ -1169,8 +1276,8 @@ form .group .group-key label {
   width: auto;
 }
 .form-inline .group .group-key label {
-  line-height: inherit;
   margin-bottom: 0;
+  line-height: inherit;
 }
 .form-inline .group .group-value {
   padding-left: 0;
@@ -1194,14 +1301,14 @@ form .group .group-key label {
   }
   .form-horizontal .group .group-key {
     float: left;
-    width: 120px;
+    width: 140px;
   }
   .form-horizontal .group .group-key label {
-    line-height: 30px;
-    margin-bottom: 5px;
+    margin: 10px 0;
+    line-height: 20px;
   }
   .form-horizontal .group .group-value {
-    padding-left: 140px;
+    padding-left: 160px;
   }
 }
 /*==============================================================================
@@ -1209,7 +1316,7 @@ form .group .group-key label {
 ==============================================================================*/
 .form-background {
   padding: 5px 15px;
-  background: whitesmoke;
+  background: #f9f9f9;
   border-radius: 4px;
 }
 .form-background .group {
@@ -1225,10 +1332,10 @@ form .group .group-key label {
 .form-bordered .group {
   padding: 5px 15px;
   margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.form-bordered .group:first-child {
-  border-top: 0 none;
+.form-bordered .group:last-child {
+  border-bottom: 0 none;
 }
 
 .form-bordered-wrap {
@@ -1246,10 +1353,25 @@ form .group .group-key label {
 .form-bordered-sep .group {
   padding: 5px 0;
   margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.form-bordered-sep .group:first-child {
-  border-top: 0 none;
+.form-bordered-sep .group:last-child {
+  border-bottom: 0 none;
+}
+
+/*==============================================================================
+  Utility Classes
+==============================================================================*/
+.form-hover .group:hover {
+  background: #fefccb;
+}
+.form-hover .group:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.form-hover .group:last-child {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 /*==============================================================================
