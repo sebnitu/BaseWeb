@@ -13,13 +13,13 @@ task('watch', {async: true}, function() {
     // Watch our LESS files
     watch(config.watch.less, function(filepath) {
       u.print(filepath + ' was changed:', 'cyan');
-      jake.Task['build:baseweb-less'].execute();
+      jake.Task['build:less'].execute();
     });
     
     // Watch our SCSS files
     watch(config.watch.scss, function(filepath) {
       u.print(filepath + ' was changed:', 'cyan');
-      jake.Task['build:baseweb-sass'].execute();
+      jake.Task['build:scss'].execute();
     });
 
     // Watch our JS files
