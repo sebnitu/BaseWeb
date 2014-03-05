@@ -1,4 +1,5 @@
 var fs = require('fs');
+var sass = require('node-sass');
 var extend = require('./modules/extend');
 var u = require('./modules/utility');
 
@@ -13,11 +14,44 @@ task('sass', {async: true}, function(options) {
   
   // Extend passed options with the defaults
   var o = extend(defaultOptions, options);
-  
-  // SASS Commands
+    
+  fs.readFile(o.input, 'utf8', function(err, data) {
+    if (err) throw new Error(u.colorize(err, 'red'));
+    
+    // Render and write expanded file
+    sass.render({
+      data: data,
+      success: function(css){
+        writeCSS(css, o.output[0]);
+      },
+      error: function(error) {
+        u.print(error, 'red');
+      },
+      includePaths: [ o.paths ],
+      outputStyle: 'expanded'
+    });
+    
+    // Render and write compressed file
+    sass.render({
+      data: data,
+      success: function(css){
+        writeCSS(css, o.output[1]);
+      },
+      error: function(error) {
+        u.print(error, 'red');
+      },
+      includePaths: [ o.paths ],
+      outputStyle: 'compressed'
+    });
+    
+  });
+
+  // Raw SASS Commands
   // sass src/scss/_baseweb.scss src/css/baseweb.css --style expanded
   // sass src/scss/_baseweb.scss src/css/baseweb.min.css --style compressed
   // sass --watch src/scss:src/css/baseweb.css
+  
+  /*
   var cmds = [
     'sass src/scss/_baseweb.scss src/css/baseweb.css --style expanded',
     'sass src/scss/_baseweb.scss src/css/baseweb.min.css --style compressed'
@@ -29,5 +63,13 @@ task('sass', {async: true}, function(options) {
     u.print('√ sass: wrote baseweb.min.css', 'green');
     complete();
   });
+  */
   
 });
+
+var writeCSS = function(css, output) {
+  fs.writeFile(output, css, 'utf8', function(err) {
+    if (err) throw new Error(u.colorize(err, 'red'));
+    u.print('√ lessc: wrote ' + output, 'green');
+  });
+}

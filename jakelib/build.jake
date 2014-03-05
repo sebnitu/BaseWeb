@@ -4,7 +4,7 @@ namespace('build', function() {
   
   // Build BaseWeb from LESS
   desc('Compiles and minifies BaseWeb using LESS');
-  task('baseweb-less', {async: true}, function() {
+  task('less', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 
         input : config.paths.less + 'baseweb.less',
@@ -19,7 +19,7 @@ namespace('build', function() {
   
   // Build BaseWeb from SASS
   desc('Compiles and minifies BaseWeb using SASS');
-  task('baseweb-sass', {async: true}, function() {
+  task('scss', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 
         input : config.paths.scss + '_baseweb.scss',
