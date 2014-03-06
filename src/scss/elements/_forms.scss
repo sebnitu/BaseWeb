@@ -3,13 +3,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Structure
-$key-column-width: 160px !default;
-$key-column-gutter: 20px !default;
-$key-element-height: 30px !default;
+$form-column-width: 160px !default;
+$form-column-gutter: 20px !default;
+$form-element-height: 40px !default;
 
-// Style
-$color-bg-form: #f9f9f9 !default;
-$color-border-form: rgba($black, 0.1) !default;
+// Structure Visual
+$form-bg-color: #f9f9f9 !default;
+$form-border-color: rgba($black, 0.1) !default;
+
+// Form Input
+$input-bg-color: #fff !default;
+$input-border-color: rgba($black, 0.15) !default;
+
+$input-bg-color-focus: #fff !default;
+$input-border-color-focus: $blue-lighter !default;
+
+$input-placeholder-color: #c0c0c0 !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Form Layout Mixins
@@ -17,7 +26,7 @@ $color-border-form: rgba($black, 0.1) !default;
 
 // Horizontal Forms
 // Where group-key and group-value are side by side
-@mixin make-form-horizontal( $-key-column-width : $key-column-width, $-key-column-gutter : $key-column-gutter ) {
+@mixin make-form-horizontal( $-form-column-width : $form-column-width, $-form-column-gutter : $form-column-gutter ) {
   // Group
   .group {
     display: block;
@@ -25,15 +34,15 @@ $color-border-form: rgba($black, 0.1) !default;
   // Key
   .group .group-key {
     float: left;
-    width: ( $-key-column-width - $-key-column-gutter );
+    width: ( $-form-column-width - $-form-column-gutter );
   }
   .group .group-key label {
     margin: (5px + 5px) 0;
-    line-height: $key-element-height - (5px * 2);
+    line-height: $form-element-height - (5px * 2);
   }
   // Value
   .group .group-value {
-    padding-left: $-key-column-width;
+    padding-left: $-form-column-width;
   }
 }
 
@@ -61,14 +70,15 @@ $color-border-form: rgba($black, 0.1) !default;
 
 // Inline Forms
 // Sets groups to be inline along with group-key and group-value
-@mixin make-form-inline( $-key-column-gutter : $key-column-gutter ) {
+@mixin make-form-inline( $-form-column-gutter : $form-column-gutter ) {
+  display: inline-block;
   margin: 0;
   font-size: 0;
   
   // Group
   .group {
     display: inline-block;
-    margin-left: $-key-column-gutter;
+    margin-left: $-form-column-gutter;
     font-size: 14px;
     
     &:first-child {
@@ -93,7 +103,7 @@ $color-border-form: rgba($black, 0.1) !default;
     padding: 0;
     
     .group {
-      padding: 5px ($-key-column-gutter / 2);
+      padding: 10px ($-form-column-gutter / 2);
       
       &:first-child {
         padding-left: 15px;
@@ -112,31 +122,39 @@ $color-border-form: rgba($black, 0.1) !default;
 // Background
 // Give the form a background
 @mixin make-form-background() {
-  padding: 5px 15px;
-  background: $color-bg-form;
-  @include border-radius();
 
   // Group
   .group {
-    padding: 0;
+    padding: 5px 15px;
     margin: 0;
+    background: $form-bg-color;
+    
+    &:first-child {
+      @include border-radius-top();
+    }
+    &:last-child {
+      @include border-radius-bottom();
+    }
   }
 }
 
 // Bordered
 // Give the form a border and seperates groups with more borders!
 @mixin make-form-bordered() {
-  padding: 0;
-  border: 3px solid $color-border-form;
+  border: 3px solid $form-border-color;
   @include border-radius();
   
   // Group
   .group {
     padding: 5px 15px;
     margin: 0;
-    border-bottom: 1px solid $color-border-form;
+    border-bottom: 1px solid $form-border-color;
     
+    &:first-child {
+      padding-top: 10px;
+    }
     &:last-child {
+      padding-bottom: 10px;
       border-bottom: 0 none;
     }
   }
@@ -145,18 +163,19 @@ $color-border-form: rgba($black, 0.1) !default;
 // Bordered Wrap
 // Only adds the border to the wrapper element
 @mixin make-form-bordered-wrap() {
-  padding: 0;
-  border: 3px solid $color-border-form;
+  border: 3px solid $form-border-color;
   @include border-radius();
   
   // Group
   .group {
-    padding: 0 15px;
-  }
-  
-  &.form-background {
-    .group {
-      padding: 5px 15px;
+    padding: 5px 15px;
+    margin: 0;
+    
+    &:first-child {
+      padding-top: 10px;
+    }
+    &:last-child {
+      padding-bottom: 10px;
     }
   }
 }
@@ -167,11 +186,15 @@ $color-border-form: rgba($black, 0.1) !default;
 
   // Group
   .group {
-    padding: 5px 0;
+    padding: 5px 15px;
     margin: 0;
-    border-bottom: 1px solid $color-border-form;
+    border-bottom: 1px solid $form-border-color;
     
+    &:first-child {
+      padding-top: 10px;
+    }
     &:last-child {
+      padding-bottom: 10px;
       border-bottom: 0 none;
     }
   }
@@ -181,7 +204,7 @@ $color-border-form: rgba($black, 0.1) !default;
 // Form Utility Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-@mixin make-form-hover( $color : #FEFCCB ) {
+@mixin make-form-hover( $color : rgba($cmYk, 0.3) ) {
   
   .group:hover {
     background: $color;
@@ -239,6 +262,22 @@ $color-border-form: rgba($black, 0.1) !default;
   
 }
 
+// Form Input Placeholder
+@mixin input-placeholder($input-placeholder-color) {
+  ::-webkit-input-placeholder {
+    color: $input-placeholder-color;
+  }
+  :-moz-placeholder {
+    color: $input-placeholder-color;  
+  }
+  ::-moz-placeholder {
+    color: $input-placeholder-color;  
+  }
+  :-ms-input-placeholder {
+    color: $input-placeholder-color;  
+  }
+}
+
 /*==============================================================================
   Base Form Elements
 ==============================================================================*/
@@ -272,12 +311,12 @@ label {
 
   // Box-model
   display: inline-block;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   width: 100%;
-  height: $key-element-height;
+  height: $form-element-height;
   max-width: 100%;
-  padding: 5px 10px;
   margin: 5px 0;
+  padding: 10px;
   
   // Type
   font-family: $font-family;
@@ -286,25 +325,35 @@ label {
   color: $color;
   
   // Visual
-  background: $white;
-  border: 1px solid rgba($black, 0.25);
-  @include border-radius();
-  @include box-shadow( 0 1px 3px rgba($black, 0.05) inset );
-  @include transition( "border linear 0.2s, box-shadow linear 0.2s" );
+  background: $input-bg-color;
+  border: 0 none;
+  @include border-radius(1px);
+  @include box-shadow( 
+    0 0 0 1px $input-border-color,
+    0 0 0 2px transparent
+  );
+  @include transition( 
+    border linear 0.2s,
+    box-shadow linear 0.2s
+  );
   
   // States
   &:focus {
+    background: $input-bg-color-focus;
     outline: none;
-    border-color: rgba($blue-lighter, 0.8);
-    @include box-shadow( "0 1px 3px rgba($black, 0.05) inset, 0 1px 3px rgba($blue-lighter, 0.1)" );
+    @include box-shadow( 
+      0 0 0 1px $input-border-color-focus,
+      0 0 0 2px $input-border-color-focus
+    );
   }
 }
+@include input-placeholder($input-placeholder-color);
 
 /**
  * Text Area
  */
 textarea {
-  height: $key-element-height * 4;
+  height: $form-element-height * 4;
 }
 
 /**
@@ -313,7 +362,7 @@ textarea {
  */
 input[type="search"] {
   -webkit-appearance: textfield; /* 1 */
-  box-sizing: border-box;
+  @include box-sizing(border-box);
 }
 
 /**
@@ -328,7 +377,7 @@ input[type="search"]::-webkit-search-decoration {
  * File Input
  */
 input[type="file"] {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 /**
@@ -349,14 +398,14 @@ input[type="color"] {
 input[type="checkbox"],
 input[type="radio"] {
   position: relative;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   padding: 0;
   top: -1px;
 }
  
 .checkbox,
 .radio {
-  margin: 10px 0;
+  margin: 15px 0;
   
   label {
     margin: 0;
@@ -366,7 +415,7 @@ input[type="radio"] {
 label.checkbox,
 label.radio {
   display: inline-block;
-  margin: 10px $key-column-gutter 10px 0;
+  margin: 15px $form-column-gutter 15px 0;
   
   &:last-child {
     margin-right: 0;
@@ -433,7 +482,6 @@ form .group .group-value {
 /**
  * Group State
  */
-form .group-active {}
 form .group-error {
   @include form-text-input {
     border-color: rgba($red-darker, 0.5);
@@ -451,20 +499,23 @@ form .group-success {
   }
 }
 
-.form-bordered .group.group-focus {
-  background: #FEFDE5;
+.form-bordered .group.group-focus,
+.form-background .group.group-focus {
+  background: rgba($cmYk, 0.1);
 }
 .form-bordered .group.group-error,
+.form-background .group.group-error,
 .form-hover .group.group-error:hover {
-  background: #FCEEEE;
+  background: rgba($red, 0.1);
   
   .group-key label {
     color: $gray-darker;
   }
 }
 .form-bordered .group.group-success,
+.form-background .group.group-success,
 .form-hover .group.group-success:hover {
-  background: #F3F9E8;
+  background: rgba($green, 0.1);
   
   .group-key label {
     color: $gray-darker;
