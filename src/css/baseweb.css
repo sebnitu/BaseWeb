@@ -84,6 +84,17 @@ table {
   content: "";
   display: table;
   clear: both; }
+.row.col-center {
+  text-align: center; }
+  .row.col-center > * {
+    font-size: 0;
+    line-height: 0; }
+  .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+    float: none;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left; }
 
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   width: 100%;
@@ -112,6 +123,17 @@ table {
     content: "";
     display: table;
     clear: both; }
+  .row.col-center {
+    text-align: center; }
+    .row.col-center > * {
+      font-size: 0;
+      line-height: 0; }
+    .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+      float: none;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left; }
   .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     margin-left: 2%;
     float: left;
@@ -413,10 +435,12 @@ blockquote {
   Code
 ==============================================================================*/
 code, pre {
-  background: #f5f5f5;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 12px;
-  line-height: 20px; }
+  line-height: 20px;
+  background: #f5f5f5;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px; }
 
 code {
   display: inline-block;
@@ -1297,6 +1321,87 @@ form .btn {
     .btn-small-block {
       display: block;
       width: 100%; } }
+
+/*==============================================================================
+  Notices
+==============================================================================*/
+.notice {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 50px 10px 15px;
+  color: #303030;
+  background: #f9f9f9;
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px; }
+  .notice:first-child {
+    margin-top: 0; }
+  .notice.no-close {
+    padding-right: 15px; }
+    .notice.no-close .close {
+      display: none; }
+  .notice.info {
+    color: #2991c2;
+    background-color: #d9edf7; }
+    .notice.info h1, .notice.info h2, .notice.info h3, .notice.info h4, .notice.info h5, .notice.info h6, .notice.info p {
+      color: #2991c2; }
+  .notice.success {
+    color: #539138;
+    background-color: #dff0d8; }
+    .notice.success h1, .notice.success h2, .notice.success h3, .notice.success h4, .notice.success h5, .notice.success h6, .notice.success p {
+      color: #539138; }
+  .notice.warning {
+    color: #9c8511;
+    background-color: #fcf8e3; }
+    .notice.warning h1, .notice.warning h2, .notice.warning h3, .notice.warning h4, .notice.warning h5, .notice.warning h6, .notice.warning p {
+      color: #9c8511; }
+  .notice.error {
+    color: #b84c4c;
+    background-color: #f2dede; }
+    .notice.error h1, .notice.error h2, .notice.error h3, .notice.error h4, .notice.error h5, .notice.error h6, .notice.error p {
+      color: #b84c4c; }
+
+/**
+ * Close Button
+ */
+.notice .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  float: right;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-appearance: none; }
+  .notice .close:hover {
+    color: rgba(0, 0, 0, 0.5); }
+  .notice .close:focus {
+    outline: none; }
+
+/**
+ * Notice Typography
+ */
+.notice h1, .notice h2, .notice h3, .notice h4, .notice h5, .notice h6 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 24px; }
+.notice p {
+  margin: 5px 0; }
+.notice ul {
+  margin: 10px 0;
+  padding: 0 0 0 20px; }
+.notice ul li {
+  margin: 5px 0; }
 
 /*==============================================================================
   Custom Styles

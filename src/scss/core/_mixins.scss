@@ -2,14 +2,6 @@
 // Utility
 ////////////////////////////////////////////////////////////////////////////////
 
-// Hide text
-// Image replacement trick that hides text.
-@mixin hide-text {
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 // Clear Mixins
 // Allows for clearfixing by adding as mixin or as class.
 @mixin clearfix {
@@ -30,6 +22,17 @@
 // Makes an element visible with custom display value
 @mixin make-visible($display: $display-visible) {
   display: $display !important;
+}
+
+// Scrollable
+// Makes things scrollable in a sexy way
+@mixin scrollable() {
+  overflow: auto;
+  @include transition(
+    top linear 0.2s,
+    bottom linear 0.2s
+  );
+  -webkit-overflow-scrolling: touch;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -224,6 +227,16 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Typography
 ////////////////////////////////////////////////////////////////////////////////
+
+// Hide text
+// Image replacement trick that hides text.
+@mixin hide-text {
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 // Anchor Styles
 @mixin anchor() {

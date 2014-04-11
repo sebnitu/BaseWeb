@@ -37,6 +37,23 @@
 // Make Row
 @mixin make-row() {
   @include clearfix();
+  
+  // Row Modifiers
+  &.#{$class-column}-center {
+    text-align: center;
+    
+    > * {
+      font-size: 0;
+      line-height: 0;
+    }
+    .#{$class-column} {
+      float: none;
+      display: inline-block;
+      font-size: $font-size;
+      line-height: $line-height;
+      text-align: left;
+    }
+  }
 }
 
 // Make Column
