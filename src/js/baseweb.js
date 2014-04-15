@@ -24,6 +24,9 @@
       BaseWeb.responsiveClasses();
       BaseWeb.resizeTrigger( BaseWeb.responsiveClasses );
       
+      // Component JS
+      BaseWeb.notices();
+      
     },
     
     /**
@@ -102,6 +105,17 @@
         resizeTimer = setTimeout(function() {
           callback();
         }, delay);
+      });
+    },
+    
+    /**
+     * Stuff that's related to notices
+     */
+    notices : function () {
+      $('.notice').each(function () {
+        $(this).find('.close').click(function() {
+          $(this).parents('.notice').fadeOut();
+        });
       });
     }
     
