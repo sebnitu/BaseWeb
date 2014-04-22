@@ -12,40 +12,53 @@ task('uglifyjs', {async: true}, function(options) {
   // Default Options
   var defaultOptions = { 
     input: false,
-    output: false
+    output: false,
+    path: ''
   };
   
   // Extend passed options with the defaults
   var o = extend(defaultOptions, options);
   
-  var jsraw;
   var js;
   
   // Minify and compile JS files
   if (typeof o.input === 'string') {
-    js = uglify.minify( o.input );
+    js = uglify.minify( o.path + o.input );
   } else {
     
     // Lets loop through JS files asyncronously
-    o.input.forEach(function(name) {
-      
-      // Check that it's a mustache file, else return
+    o.input.forEach(function(name, index) {
+                  
+      // Check that it's a JavaScript file, else return
       if (!name.match(/\.js$/)) {
         return;
       }
       
-      // Save all JS in a single variable
-      jsraw += fs.readFileSync(name, 'utf8');
+      // Append the path to our JS files
+      o.input[index] = o.path + o.input[index];
       
     });
     
+    // Minify our JS files
     js = uglify.minify( o.input );
     
   }
+  
+  o.output.forEach(function(name, index) {
     
-  fs.writeFile(o.output, js.code, 'utf8', function(err) {
-    if (err) throw new Error(u.colorize(err, 'red'));
-    u.print('√ lessc: wrote ' + o.output, 'green');
+    // Check that it's a JavaScript file, else return
+    if (!name.match(/\.js$/)) {
+      return;
+    }
+    
+    // Append the path to our JS files
+    o.output[index] = o.path + o.output[index];
+    
+    fs.writeFile(o.output[index], js.code, 'utf8', function(err) {
+      if (err) throw new Error(u.colorize(err, 'red'));
+      u.print('√ lessc: wrote ' + o.output, 'green');
+    });
+    
   });
-    
+  
 });

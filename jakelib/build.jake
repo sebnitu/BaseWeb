@@ -37,13 +37,9 @@ namespace('build', function() {
   task('js', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 
-        input : [
-          config.paths.js + 'baseweb.js',
-          config.paths.js + 'jquery.function.js',
-          config.paths.js + 'jquery.docready.js',
-        ],
-        output : config.paths.js + 'baseweb.min.js',
-        paths : config.paths.js
+        input : config.js.input,
+        output : config.js.output,
+        path : config.paths.js
       };
       var uglifyjsTask = jake.Task.uglifyjs;
       uglifyjsTask.reenable(true);
