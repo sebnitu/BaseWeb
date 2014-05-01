@@ -25,7 +25,8 @@ task('watch', {async: true}, function() {
     // Watch our JS files
     watch(config.watch.js, function(filepath) {
       var filename = filepath.replace(config.watch.js[0].substr(2), '');
-      if (filename != 'baseweb.min.js') {
+      var index = config.js.output.indexOf(filename);
+      if (index >= 0) {
         u.print(filepath + ' was changed:', 'cyan');
         jake.Task['build:js'].execute();
       }
