@@ -5,19 +5,6 @@
 // Structure
 $button-height: 40px !default; // Best if is the same as $form-element-height
 
-// Default Button Colors
-$btn-color: $color-dark !default;
-$btn-bg-color: $white !default;
-$btn-border-color: rgba($black, 0.15) !default;
-
-$btn-color-state: $color-dark !default;
-$btn-bg-color-state: $white !default;
-$btn-border-color-state: $blue-lighter !default;
-
-$btn-color-active: $white !default;
-$btn-bg-color-active: $blue-lighter !default;
-$btn-border-color-active: $blue-lighter !default;
-
 ////////////////////////////////////////////////////////////////////////////////
 // Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
@@ -86,55 +73,49 @@ $btn-border-color-active: $blue-lighter !default;
 // Button Colors
 ////////////////////////////////////////
 
-@mixin btn-color-init( $bg-color, $border-color, $color ) {
+@mixin btn-color-init( $bg-color, $color ) {
   color: $color;
   background: $bg-color;
-  border: 0 none;
-  @include border-radius(1px);
-  @include box-shadow( 
-    0 0 0 1px $border-color,
-    0 0 0 2px transparent
-  );
-  @include transition( 
-    border linear 0.2s,
-    box-shadow linear 0.2s
+  border: 1px solid rgba(0,0,0, 0.15);
+  box-shadow: inset 0 0 0 rgba(0,0,0, 0);
+  @include border-radius();
+  @include transition(
+    background ease 0.25s,
+    border ease 0.25s,
+    box-shadow ease 0.25s
   );
   @content;
 }
 
 // All states (hover, active and focus)
-@mixin btn-color-state( $bg-color, $border-color, $color ) {
+@mixin btn-color-state( $bg-color, $color ) {
   &:hover,
   &:focus,
   &:focus {
     color: $color;
-    background: $bg-color;
-    @include box-shadow( 
-      0 0 0 1px $border-color,
-      0 0 0 2px $border-color
-    );
+    background: darken($bg-color, 3%);
+    border: 1px solid rgba(0,0,0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0,0,0, 0.05);
     @content;
   }
 }
 
 // Active
-@mixin btn-color-active( $bg-color, $border-color, $color ) {
+@mixin btn-color-active( $bg-color, $color ) {
   &:active {
     color: $color;
-    background: darken($bg-color, 5%);
-    @include box-shadow( 
-      0 0 0 1px darken($border-color, 5%),
-      0 0 0 2px darken($border-color, 5%)
-    );
+    background: darken($bg-color, 6%);
+    border: 1px solid rgba(0,0,0, 0.25);
+    box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
     @content;
   }
 }
 
 // Compiled Color Button Styles With States
-@mixin btn-color( $bg-color, $border-color, $color : #fff ) {
-  @include btn-color-init( $bg-color, $border-color, $color );
-  @include btn-color-state( $bg-color, $border-color, $color );
-  @include btn-color-active( $bg-color, $border-color, $color );
+@mixin btn-color( $bg-color, $color : #fff ) {
+  @include btn-color-init( $bg-color, $color );
+  @include btn-color-state( $bg-color, $color );
+  @include btn-color-active( $bg-color, $color );
   @content;
 }
 
@@ -178,14 +159,14 @@ $btn-border-color-active: $blue-lighter !default;
 
 // Faint for subtle buttons
 @mixin make-btn-faint() {
-  @include btn-color-init( $btn-border-color, $btn-border-color, $btn-color-active );
+  @include btn-color( $color-bg, $color-dark );
 }
 
 // Disabled
 @mixin make-btn-disabled() {
   cursor: not-allowed;
   opacity: 0.75;
-  @include btn-color-init( $btn-bg-color, $btn-border-color, $btn-color );
+  @include btn-color-init( $color-bg, $color-dark );
 }
 
 ////////////////////////////////////////
@@ -238,27 +219,25 @@ form .btn { vertical-align: inherit; }
  * Semantic Classes
  */
 .btn-default {
-  @include btn-color-init( $btn-bg-color, $btn-border-color, $btn-color );
-  @include btn-color-state( $btn-bg-color-state, $btn-border-color-state, $btn-color-state );
-  @include btn-color-active( $btn-bg-color-active, $btn-border-color-active, $btn-color-active );
+  @include btn-color( darken($color-bg, 1%), $color-dark );
 }
 .btn-primary {
-  @include btn-color( $blue-light, $blue-dark );
+  @include btn-color( $blue-light );
 }
 .btn-secondary {
-  @include btn-color( $g5, $g3 );
+  @include btn-color( $gray );
 }
 .btn-success {
-  @include btn-color( mix($green-light, $yellow-light), mix($green-dark, $yellow-dark) );
+  @include btn-color( mix($green-light, $yellow-light) );
 }
 .btn-warning {
-  @include btn-color( mix($yellow-light, $orange-light), mix($yellow-dark, $orange-dark) );
+  @include btn-color( mix($yellow-light, $orange-light) );
 }
 .btn-danger {
-  @include btn-color( $red-light, $red-dark );
+  @include btn-color( $red-light );
 }
 .btn-active {
-  @include btn-color( $blue-light, $blue-dark );
+  @include btn-color( $blue-light );
 }
 
 /**

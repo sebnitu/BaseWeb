@@ -5,6 +5,10 @@
 $color-bg-table: #f9f9f9 !default;
 $color-border-table: rgba($black, 0.1) !default;
 
+$table-padding: 10px 15px;
+$table-padding-condensed: 5px 10px;
+$table-padding-expanded: 15px 20px;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,7 +17,7 @@ $color-border-table: rgba($black, 0.1) !default;
 // Adds the outer border to a table
 @mixin make-table-bordered-wrap() {
   border-collapse: separate;
-  border: 3px solid $color-border-table;
+  border: 1px solid $color-border-table;
   @include border-radius();
 }
 
@@ -21,7 +25,7 @@ $color-border-table: rgba($black, 0.1) !default;
 // Addes the inner borders to a table
 @mixin make-table-bordered-sep() {
   td, th {
-    padding: 5px 10px;
+    padding: $table-padding;
     border-bottom: 1px solid $color-border-table;
     border-left: 1px solid $color-border-table;
   }
@@ -68,7 +72,7 @@ $color-border-table: rgba($black, 0.1) !default;
   border-collapse: separate;
   
   td, th {
-    padding: 5px 10px;
+    padding: $table-padding;
     border-bottom: 1px solid $color-border-table;
   }
   
@@ -86,7 +90,7 @@ $color-border-table: rgba($black, 0.1) !default;
   border-collapse: separate;
   
   td, th {
-    padding: 5px 10px;
+    padding: $table-padding;
     border-left: 1px solid $color-border-table;
   }
   
@@ -125,7 +129,7 @@ $color-border-table: rgba($black, 0.1) !default;
 }
 
 // Padded
-@mixin make-table-padded( $padding : 5px 10px ) {
+@mixin make-table-padded( $padding : $table-padding ) {
   td, th {
     padding: $padding;
   }
@@ -202,10 +206,10 @@ table {
   @include make-table-padded();
 }
 .table-padded-condensed { 
-  @include make-table-padded( 2px 5px );
+  @include make-table-padded( $table-padding-condensed );
 }
 .table-padded-expanded { 
-  @include make-table-padded( 10px 20px );
+  @include make-table-padded( $table-padding-expanded );
 }
 .table-hover { 
   @include make-table-hover();

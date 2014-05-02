@@ -1,24 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-// Notice Mixins
-////////////////////////////////////////////////////////////////////////////////
-
-@mixin notice-status($color, $percent) {
-  
-  color: darken($color, $percent);
-  background-color: $color;
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    color: darken($color, $percent);
-  }
-  
-}
-
 /*==============================================================================
   Notices
 ==============================================================================*/
@@ -29,7 +8,7 @@
   padding: 10px 50px 10px 15px;
   color: #303030;
   background: #f9f9f9;
-  border: 3px solid rgba(#000, 0.05);
+  border: 1px solid rgba(#000, 0.1);
   @include border-radius();
   
   &:first-child {
@@ -45,16 +24,16 @@
   }
   
   &.info {
-    @include notice-status(#d9edf7, 45%);
+    background: rgba($blue, 0.1);
   }
   &.success {
-    @include notice-status(#dff0d8, 50%);
+    background: rgba($green, 0.1);
   }
   &.warning {
-    @include notice-status(#fcf8e3, 60%);
+    background: rgba($cmYk, 0.1);
   }
   &.error {
-    @include notice-status(#f2dede, 40%);
+    background: rgba($red, 0.1);
   }
 }
 

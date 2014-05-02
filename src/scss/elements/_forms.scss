@@ -141,7 +141,7 @@ $input-placeholder-color: #c0c0c0 !default;
 // Bordered
 // Give the form a border and seperates groups with more borders!
 @mixin make-form-bordered() {
-  border: 3px solid $form-border-color;
+  border: 1px solid $form-border-color;
   @include border-radius();
   
   // Group
@@ -163,7 +163,7 @@ $input-placeholder-color: #c0c0c0 !default;
 // Bordered Wrap
 // Only adds the border to the wrapper element
 @mixin make-form-bordered-wrap() {
-  border: 3px solid $form-border-color;
+  border: 1px solid $form-border-color;
   @include border-radius();
   
   // Group
@@ -326,25 +326,17 @@ label {
   
   // Visual
   background: $input-bg-color;
-  border: 0 none;
-  @include border-radius(1px);
-  @include box-shadow( 
-    0 0 0 1px $input-border-color,
-    0 0 0 2px transparent
-  );
-  @include transition( 
-    border linear 0.2s,
-    box-shadow linear 0.2s
+  border: 1px solid $input-border-color;
+  @include border-radius();
+  @include transition(
+    border ease 0.25s
   );
   
   // States
   &:focus {
     background: $input-bg-color-focus;
+    border-color: $input-border-color-focus;
     outline: none;
-    @include box-shadow( 
-      0 0 0 1px $input-border-color-focus,
-      0 0 0 2px $input-border-color-focus
-    );
   }
 }
 @include input-placeholder($input-placeholder-color);
