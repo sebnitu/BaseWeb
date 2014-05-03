@@ -5,7 +5,9 @@
 // Structure
 $form-column-width: 160px !default;
 $form-column-gutter: 20px !default;
+
 $form-element-height: 40px !default; // Best if set to the same height as $button-height
+$form-element-height-large: 50px !default;
 
 // Structure Visual
 $form-bg-color: #f9f9f9 !default;
@@ -13,12 +15,16 @@ $form-border-color: rgba($black, 0.1) !default;
 
 // Form Input
 $input-bg-color: #fff !default;
-$input-border-color: rgba($black, 0.15) !default;
+$input-border-size: 1px;
+$input-border-color: rgba($black, 0.2) !default;
 
 $input-bg-color-focus: #fff !default;
 $input-border-color-focus: $blue-lighter !default;
 
 $input-placeholder-color: #c0c0c0 !default;
+
+// Form Colors
+$form-yellow: #fff200; // Used for highlighting and focus
 
 ////////////////////////////////////////////////////////////////////////////////
 // Form Layout Mixins
@@ -204,7 +210,7 @@ $input-placeholder-color: #c0c0c0 !default;
 // Form Utility Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-@mixin make-form-hover( $color : rgba($yellow, 0.3) ) {
+@mixin make-form-hover( $color : rgba($form-yellow, 0.3) ) {
   
   .group:hover {
     background: $color;
@@ -223,10 +229,15 @@ $input-placeholder-color: #c0c0c0 !default;
 
 // Form Text Input
 // A hook for styling form text inputs
-@mixin form-text-input {
+@mixin form-text-input($filter: all) {
   
-  textarea,
-  select,
+  @if ($filter == all) {
+    textarea,
+    select {
+      @content;
+    }
+  }
+  
   input[type="text"],
   input[type="search"],
   input[type="password"],
@@ -307,7 +318,7 @@ label {
 /**
  * Text Input Styles
  */
-@include form-text-input {
+@include form-text-input(all) {
 
   // Box-model
   display: inline-block;
@@ -316,7 +327,7 @@ label {
   height: $form-element-height;
   max-width: 100%;
   margin: 5px 0;
-  padding: 10px;
+  padding: 9px 10px;
   
   // Type
   font-family: $font-family;
@@ -326,6 +337,7 @@ label {
   
   // Visual
   background: $input-bg-color;
+  box-shadow: inset 0 1px 2px rgba($black, 0.05);
   border: 1px solid $input-border-color;
   @include border-radius();
   @include transition(
@@ -336,8 +348,25 @@ label {
   &:focus {
     background: $input-bg-color-focus;
     border-color: $input-border-color-focus;
+    box-shadow: 0 0 8px rgba($input-border-color-focus, 0.25);
     outline: none;
   }
+}
+@include form-text-input(input) {
+  
+  &.input-rounded {
+    padding-left: 20px;
+    padding-right: 20px;
+    @include border-radius( $form-element-height );
+  }
+  
+  &.input-large {
+    height: $form-element-height-large;
+    padding: 13px 20px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
 }
 @include input-placeholder($input-placeholder-color);
 
@@ -477,6 +506,10 @@ form .group .group-value {
 form .group-error {
   @include form-text-input {
     border-color: rgba($red-darker, 0.5);
+    
+    &:focus {
+      box-shadow: 0 0 8px rgba($red-darker, 0.25);
+    }
   }
   .group-key label {
     color: $red-darker;
@@ -485,6 +518,10 @@ form .group-error {
 form .group-success {
   @include form-text-input {
     border-color: rgba($green-darker, 0.70);
+    
+    &:focus {
+      box-shadow: 0 0 8px rgba($green-darker, 0.25);
+    }
   }
   .group-key label {
     color: $green-darker;
@@ -493,7 +530,7 @@ form .group-success {
 
 .form-bordered .group.group-focus,
 .form-background .group.group-focus {
-  background: rgba($yellow, 0.1);
+  background: rgba($form-yellow, 0.1);
 }
 .form-bordered .group.group-error,
 .form-background .group.group-error,

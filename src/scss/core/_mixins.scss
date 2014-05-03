@@ -243,7 +243,10 @@
   color: $color-link;
   text-decoration: none;
   border-bottom: 1px solid rgba(0,0,0, 0.1);
-  @include transition();
+  @include transition(
+    color $transition-timing-function $transition-duration,
+    border-color $transition-timing-function $transition-duration
+  );
   
   &:hover {
     color: $color-link-hover;

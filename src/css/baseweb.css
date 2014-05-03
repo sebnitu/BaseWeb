@@ -259,7 +259,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
   font-weight: bold;
   line-height: 20px;
-  color: #606060; }
+  color: #303030; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: #2ab0ea;
     border: 0 none; }
@@ -268,27 +268,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, .h1 {
   font-size: 42px;
-  line-height: 48px; }
+  line-height: 50px; }
 
 h2, .h2 {
   font-size: 34px;
-  line-height: 40px; }
+  line-height: 42px; }
 
 h3, .h3 {
   font-size: 28px;
-  line-height: 34px; }
+  line-height: 36px; }
 
 h4, .h4 {
   font-size: 20px;
-  line-height: 26px; }
+  line-height: 28px; }
 
 h5, .h5 {
   font-size: 18px;
-  line-height: 24px; }
+  line-height: 26px; }
 
 h6, .h6 {
   font-size: 14px;
-  line-height: 20px; }
+  line-height: 22px; }
 
 /**
  * Base Elements
@@ -318,7 +318,11 @@ small {
 a, .anchor {
   color: #2ab0ea;
   text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: color ease-in-out 0.25s, border-color ease-in-out 0.25s;
+  -moz-transition: color ease-in-out 0.25s, border-color ease-in-out 0.25s;
+  -o-transition: color ease-in-out 0.25s, border-color ease-in-out 0.25s;
+  transition: color ease-in-out 0.25s, border-color ease-in-out 0.25s; }
   a:hover, .anchor:hover {
     color: #e69242;
     cursor: pointer;
@@ -500,7 +504,7 @@ table {
   margin: 10px 0;
   overflow: auto; }
   table th {
-    color: #606060;
+    color: #303030;
     text-align: left;
     font-weight: bold; }
 
@@ -699,13 +703,13 @@ hr {
   padding: 0;
   background: none;
   border: 0 none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   hr.dotted {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.25); }
   hr.dashed {
     border-bottom: 1px dashed rgba(0, 0, 0, 0.25); }
   hr.double {
-    border-bottom: 3px double rgba(0, 0, 0, 0.25); }
+    border-bottom: 3px double rgba(0, 0, 0, 0.1); }
 
 /*==============================================================================
   Base Form Elements
@@ -731,7 +735,7 @@ label {
 /**
  * Text Input Styles
  */
-textarea, select, input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="time"], input[type="week"], input[type="month"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="range"], input[type="color"] {
+textarea, select {
   display: inline-block;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -739,22 +743,61 @@ textarea, select, input[type="text"], input[type="search"], input[type="password
   height: 40px;
   max-width: 100%;
   margin: 5px 0;
-  padding: 10px;
+  padding: 9px 10px;
   font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #606060;
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   -webkit-transition: border ease 0.25s;
   -moz-transition: border ease 0.25s;
   -o-transition: border ease 0.25s;
   transition: border ease 0.25s; }
-  textarea:focus, select:focus, input[type="text"]:focus, input[type="search"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="month"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="range"]:focus, input[type="color"]:focus {
+  textarea:focus, select:focus {
     background: #fff;
     border-color: #58c2ef;
+    box-shadow: 0 0 8px rgba(88, 193, 238, 0.25);
     outline: none; }
+
+input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], input[type="time"], input[type="week"], input[type="month"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="range"], input[type="color"] {
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  max-width: 100%;
+  margin: 5px 0;
+  padding: 9px 10px;
+  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #606060;
+  background: #fff;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  -webkit-transition: border ease 0.25s;
+  -moz-transition: border ease 0.25s;
+  -o-transition: border ease 0.25s;
+  transition: border ease 0.25s; }
+  input[type="text"]:focus, input[type="search"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="tel"]:focus, input[type="number"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="month"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="range"]:focus, input[type="color"]:focus {
+    background: #fff;
+    border-color: #58c2ef;
+    box-shadow: 0 0 8px rgba(88, 193, 238, 0.25);
+    outline: none; }
+
+input[type="text"].input-rounded, input[type="search"].input-rounded, input[type="password"].input-rounded, input[type="email"].input-rounded, input[type="url"].input-rounded, input[type="tel"].input-rounded, input[type="number"].input-rounded, input[type="time"].input-rounded, input[type="week"].input-rounded, input[type="month"].input-rounded, input[type="date"].input-rounded, input[type="datetime"].input-rounded, input[type="datetime-local"].input-rounded, input[type="range"].input-rounded, input[type="color"].input-rounded {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 40px; }
+input[type="text"].input-large, input[type="search"].input-large, input[type="password"].input-large, input[type="email"].input-large, input[type="url"].input-large, input[type="tel"].input-large, input[type="number"].input-large, input[type="time"].input-large, input[type="week"].input-large, input[type="month"].input-large, input[type="date"].input-large, input[type="datetime"].input-large, input[type="datetime-local"].input-large, input[type="range"].input-large, input[type="color"].input-large {
+  height: 50px;
+  padding: 13px 20px;
+  font-size: 16px;
+  line-height: 22px; }
 
 ::-webkit-input-placeholder {
   color: #c0c0c0; }
@@ -878,18 +921,30 @@ form .group .group-key label {
 /**
  * Group State
  */
-form .group-error textarea, form .group-error select, form .group-error input[type="text"], form .group-error input[type="search"], form .group-error input[type="password"], form .group-error input[type="email"], form .group-error input[type="url"], form .group-error input[type="tel"], form .group-error input[type="number"], form .group-error input[type="time"], form .group-error input[type="week"], form .group-error input[type="month"], form .group-error input[type="date"], form .group-error input[type="datetime"], form .group-error input[type="datetime-local"], form .group-error input[type="range"], form .group-error input[type="color"] {
+form .group-error textarea, form .group-error select {
   border-color: rgba(211, 40, 40, 0.5); }
+  form .group-error textarea:focus, form .group-error select:focus {
+    box-shadow: 0 0 8px rgba(211, 40, 40, 0.25); }
+form .group-error input[type="text"], form .group-error input[type="search"], form .group-error input[type="password"], form .group-error input[type="email"], form .group-error input[type="url"], form .group-error input[type="tel"], form .group-error input[type="number"], form .group-error input[type="time"], form .group-error input[type="week"], form .group-error input[type="month"], form .group-error input[type="date"], form .group-error input[type="datetime"], form .group-error input[type="datetime-local"], form .group-error input[type="range"], form .group-error input[type="color"] {
+  border-color: rgba(211, 40, 40, 0.5); }
+  form .group-error input[type="text"]:focus, form .group-error input[type="search"]:focus, form .group-error input[type="password"]:focus, form .group-error input[type="email"]:focus, form .group-error input[type="url"]:focus, form .group-error input[type="tel"]:focus, form .group-error input[type="number"]:focus, form .group-error input[type="time"]:focus, form .group-error input[type="week"]:focus, form .group-error input[type="month"]:focus, form .group-error input[type="date"]:focus, form .group-error input[type="datetime"]:focus, form .group-error input[type="datetime-local"]:focus, form .group-error input[type="range"]:focus, form .group-error input[type="color"]:focus {
+    box-shadow: 0 0 8px rgba(211, 40, 40, 0.25); }
 form .group-error .group-key label {
   color: #d42828; }
 
-form .group-success textarea, form .group-success select, form .group-success input[type="text"], form .group-success input[type="search"], form .group-success input[type="password"], form .group-success input[type="email"], form .group-success input[type="url"], form .group-success input[type="tel"], form .group-success input[type="number"], form .group-success input[type="time"], form .group-success input[type="week"], form .group-success input[type="month"], form .group-success input[type="date"], form .group-success input[type="datetime"], form .group-success input[type="datetime-local"], form .group-success input[type="range"], form .group-success input[type="color"] {
+form .group-success textarea, form .group-success select {
   border-color: rgba(111, 159, 29, 0.7); }
+  form .group-success textarea:focus, form .group-success select:focus {
+    box-shadow: 0 0 8px rgba(111, 159, 29, 0.25); }
+form .group-success input[type="text"], form .group-success input[type="search"], form .group-success input[type="password"], form .group-success input[type="email"], form .group-success input[type="url"], form .group-success input[type="tel"], form .group-success input[type="number"], form .group-success input[type="time"], form .group-success input[type="week"], form .group-success input[type="month"], form .group-success input[type="date"], form .group-success input[type="datetime"], form .group-success input[type="datetime-local"], form .group-success input[type="range"], form .group-success input[type="color"] {
+  border-color: rgba(111, 159, 29, 0.7); }
+  form .group-success input[type="text"]:focus, form .group-success input[type="search"]:focus, form .group-success input[type="password"]:focus, form .group-success input[type="email"]:focus, form .group-success input[type="url"]:focus, form .group-success input[type="tel"]:focus, form .group-success input[type="number"]:focus, form .group-success input[type="time"]:focus, form .group-success input[type="week"]:focus, form .group-success input[type="month"]:focus, form .group-success input[type="date"]:focus, form .group-success input[type="datetime"]:focus, form .group-success input[type="datetime-local"]:focus, form .group-success input[type="range"]:focus, form .group-success input[type="color"]:focus {
+    box-shadow: 0 0 8px rgba(111, 159, 29, 0.25); }
 form .group-success .group-key label {
   color: #70a01d; }
 
 .form-bordered .group.group-focus, .form-background .group.group-focus {
-  background: rgba(209, 195, 41, 0.1); }
+  background: rgba(255, 242, 0, 0.1); }
 
 .form-bordered .group.group-error, .form-background .group.group-error, .form-hover .group.group-error:hover {
   background: rgba(222, 81, 81, 0.1); }
@@ -1035,7 +1090,7 @@ form .group-success .group-key label {
   Utility Classes
 ==============================================================================*/
 .form-hover .group:hover {
-  background: rgba(209, 195, 41, 0.3); }
+  background: rgba(255, 242, 0, 0.3); }
 .form-hover .group:first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px; }
@@ -1121,6 +1176,7 @@ form .btn {
  */
 .btn-default {
   color: #303030;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background: #ececec;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1142,6 +1198,7 @@ form .btn {
 
 .btn-primary {
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background: #41b9ec;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1163,7 +1220,8 @@ form .btn {
 
 .btn-secondary {
   color: #fff;
-  background: #909090;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background: #606060;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
   border-radius: 3px;
@@ -1173,17 +1231,18 @@ form .btn {
   transition: background ease 0.25s, border ease 0.25s, box-shadow ease 0.25s; }
   .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:focus {
     color: #fff;
-    background: #888888;
+    background: #585858;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); }
   .btn-secondary:active {
     color: #fff;
-    background: #818181;
+    background: #515151;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15); }
 
 .btn-success {
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background: #b9d135;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1205,6 +1264,7 @@ form .btn {
 
 .btn-warning {
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background: #e0b349;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1226,6 +1286,7 @@ form .btn {
 
 .btn-danger {
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background: #e26666;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1247,6 +1308,7 @@ form .btn {
 
 .btn-active {
   color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background: #41b9ec;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1306,6 +1368,7 @@ form .btn {
  */
 .btn-faint {
   color: #303030;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background: #efefef;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
@@ -1332,6 +1395,7 @@ form .btn {
   cursor: not-allowed;
   opacity: 0.75;
   color: #303030;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background: #efefef;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
