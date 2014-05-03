@@ -5,6 +5,9 @@
 // Structure
 $button-height: 40px !default; // Best if set to the same height as $form-element-height
 
+// Default Colors
+$btn-color: #efefef !default;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
@@ -166,14 +169,14 @@ $button-height: 40px !default; // Best if set to the same height as $form-elemen
 
 // Faint for subtle buttons
 @mixin make-btn-faint() {
-  @include btn-color( $color-bg, $color-dark );
+  @include btn-color( $btn-color, $color-dark );
 }
 
 // Disabled
 @mixin make-btn-disabled() {
   cursor: not-allowed;
   opacity: 0.75;
-  @include btn-color-init( $color-bg, $color-dark );
+  @include btn-color-init( $btn-color, $color-dark );
 }
 
 ////////////////////////////////////////
@@ -226,7 +229,7 @@ form .btn { vertical-align: inherit; }
  * Semantic Classes
  */
 .btn-default {
-  @include btn-color( darken($color-bg, 1%), $color-dark );
+  @include btn-color( darken($btn-color, 1%), $color-dark );
 }
 .btn-primary {
   @include btn-color( $blue-light );
