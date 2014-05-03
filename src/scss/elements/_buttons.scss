@@ -3,12 +3,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Structure
-$button-height: 40px !default; // Best if is the same as $form-element-height
+$button-height: 40px !default; // Best if set to the same height as $form-element-height
 
 ////////////////////////////////////////////////////////////////////////////////
 // Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+////
+// Base Button Styles Mixin
 @mixin base-btn-init {
   // Position
   position: relative;
@@ -21,7 +23,7 @@ $button-height: 40px !default; // Best if is the same as $form-element-height
   @include box-sizing(border-box);
   height: $button-height;
   margin: 0;
-  padding: 10px 25px;
+  padding: 9px 25px;
   
   // Type
   font-family: $font-family;
@@ -35,6 +37,7 @@ $button-height: 40px !default; // Best if is the same as $form-element-height
   @content;
 }
 
+////
 // Hover
 @mixin base-btn-hover() {
   &:hover {
@@ -43,14 +46,17 @@ $button-height: 40px !default; // Best if is the same as $form-element-height
   }
 }
 
+////
 // Active
 @mixin base-btn-active() {
+  &.btn-active,
   &:active {
     z-index: 15;
     @content;
   }
 }
 
+////
 // Focus
 @mixin base-btn-focus() {
   &:focus {
@@ -60,6 +66,7 @@ $button-height: 40px !default; // Best if is the same as $form-element-height
   }
 }
 
+////
 // Compiled Base Button Styles With States
 @mixin make-base-btn() {
   @include base-btn-init;

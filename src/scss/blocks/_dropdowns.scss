@@ -1,28 +1,70 @@
-/*==============================================================================
-  Dropdowns
-==============================================================================*/
+////////////////////////////////////////////////////////////////////////////////
+// Dropdown Mixins
+////////////////////////////////////////////////////////////////////////////////
 
-.dropdown-wrapper() {
+////
+// Base Dropdown Wrapper Styles Mixin
+@mixin dropdown-wrapper($direction: down) {
+  position: absolute;
+  @include dropdown-position($direction);
+  z-index: 1000;
   display: none;
   float: left;
-  z-index: 1000;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  background: @white;
+  background: $white;
   box-sizing: border-box;
   min-width: 175px;
   padding: 5px 0;
   background-clip: padding-box;
-  border: 1px solid;
-  .border-color(@black, 0.25, transparent);
-  .border-radius();
-  .box-shadow(~"0 1px 5px rgba(0,0,0, 0.2)");
-  .remove-list-styles();
+  border: 1px solid rgba($black, 0.25);
+  @include border-radius();
+  box-shadow: 0 1px 5px rgba(0,0,0, 0.2);
+  @include remove-list-styles();
+  @content;
 }
 
+////
+// Dropdown Position Mixin
+@mixin dropdown-position($direction: down) {
+  @if($direction == up) {
+    bottom: 100%;
+    left: -1px;
+  }
+  @if($direction == down) {
+    top: 100%;
+    left: -1px;
+  }
+  @if($direction == left) {
+    right: 100%;
+    top: -1px;
+  }
+  @if($direction == right) {
+    left: 100%;
+    top: -1px;
+  }
+}
+
+/*==============================================================================
+  Dropdowns
+==============================================================================*/
+
+/**
+ * Dropdown Trigger
+ */
+.dropdown-trigger {
+  position: relative;
+    
+  &:hover {
+    > .dropdown {
+      display: block;
+    }
+  }
+}
+
+/**
+ * Dropdown
+ */
 .dropdown {
-  .dropdown-wrapper();
+  @include dropdown-wrapper();
   
   li {
     position: relative;
@@ -30,67 +72,90 @@
   li a {
     border: 0 none;
     display: block;
-    padding: 4px 18px;
+    padding: 5px 15px;
     white-space: nowrap;
-    color: @color;
+    color: $color;
     text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
     text-align: left;
   }
   
-  // Hover & Focus
+  /**
+   * Dropdown Header
+   */
+  li.dropdown-header {
+    padding: 5px 15px 0 15px;
+    color: $color-light;
+    font-size: ($font-size - 2);
+    text-align: left;
+    cursor: default;
+  }
+  
+  /**
+   * Dropdown Hover & Focus
+   */
   li > a:hover,
   li > a:focus,
   li:hover > a { 
-    .background-color(@black, 0.05, @bg);
+    background-color: rgba($black, 0.05);
   }
   
-  // Active
+  /**
+   * Dropdown Active
+   */
   li.active > a,
   li.active > a:hover,
   li.active > a:focus {
-    color: @white;
+    color: $white;
     text-shadow: 0 -1px 0 rgba(0,0,0, 0.25);
-    .background-color(@color-link, 0.95, @color-link);
+    border-color: rgba($color-link, 0.95);
   }
   
   // Disabled
   li.disabled > a,
   li.disabled > a:hover,
   li.disabled > a:focus {
-    color: @gray-light;
+    color: $color-light;
     background: none;
     cursor: default;
   }
   
-  // Parent
+  /**
+   * Dropdown Parent
+   */
   li.dropdown-parent > a {
     padding-right: 30px;
   }
   li.dropdown-parent:after {
-    #arrow > .right(4px, rgba(0,0,0, 0.25));
+    @include triangle(4px, rgba($black, 0.75), right);
     position: absolute;
     right: 10px;
     top: 50%;
     margin-top: -4px;
   }
   li.dropdown-parent.active:after {
-    #arrow > .right(4px, rgba(255,255,255, 0.75));
+    @include triangle(4px, rgba($white, 0.75), right);
   }
   
-  // Seperator
-  li.seperator {
+  /**
+   * Divider
+   */
+  li.divider {
     height: 1px;
-    margin: 5px -5px;
-    .background-color(@border-base, @border-alpha, @border);
+    margin: 5px 0;
+    background-color: rgba($black, 0.1);
   }
   
-  // Sub Menus
-  ul {
-    .dropdown-wrapper();
-    margin: -6px 0 0 0;
+  /**
+   * Sub Dropdown
+   */
+  ul.dropdown {
+    @include dropdown-wrapper(right);
+    margin: -5px 0 0 0;
   }
   
-  // Sub Menu Toggle
+  /**
+   * Sub Dropdown Toggle
+   */
   li:hover > ul {
     display: block;
   }

@@ -2,14 +2,52 @@
   Button Groups
 ==============================================================================*/
 
-.btn-group {
+%btn-group {
   position: relative;
+  display: inline-block;
+  margin: 5px 0;
   font-size: 0;
-  
-  .btn {
+  vertical-align: middle;
+}
+
+/**
+ * Horizontal Button Groups
+ */
+.btn-group, // The default .btn-group orientation
+.btn-group-horizontal {
+  @extend %btn-group;
+
+ .btn {
+    margin-left: -1px;
+    @include border-radius(0);
     
+    &:first-child {
+      margin-left: 0;
+      @include border-radius-left();
+    }
+    &:last-child {
+      @include border-radius-right();
+    }
   }
-  .btn:hover {
+}
+
+/**
+ * Vertical Button Groups
+ */
+.btn-group-vertical {
+  @extend %btn-group;
+
+  .btn {
+    display: block;
+    margin-top: -1px;
+    @include border-radius(0);
     
+    &:first-child {
+      margin-top: 0;
+      @include border-radius-top();
+    }
+    &:last-child {
+      @include border-radius-bottom();
+    }
   }
 }

@@ -1,0 +1,96 @@
+/*==============================================================================
+  Modals
+==============================================================================*/
+
+/**
+ * Structure
+ */
+.modal {
+  background-color: @bg-modal;
+  .border-radius(@modal-border-radius);
+  .box-shadow(@modal-box-shadow);
+}
+.modal-header, .modal-body, .modal-footer {
+  position: relative;
+  padding: @modal-padding;
+}
+
+/**
+ * Modal Header
+ */
+.modal-header {
+  background-color: @bg-modal-header;
+  border-bottom: 1px solid @border-modal;
+  .border-radius-top(@modal-border-radius);
+
+  // Headers
+  h1, h2, h3, h4, h5, h6 {
+    .font-sequence(@modal-font-size-header);
+    margin: 0;
+  }
+
+  // Intro Text
+  p {
+    color: @color-light;
+    margin: 0;
+  }
+
+  // Close Button
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    text-align: center;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    color: @black;
+    opacity: 0.5;
+    cursor: pointer;
+    .font-sequence(18px);
+    line-height: 30px;
+    .transition();
+  
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+/**
+ * Modal Body
+ */
+.modal-body {
+  background-color: @bg-modal-body;
+  overflow: auto;
+  padding: (@modal-padding-top-bottom - ( @margin / 2 ) ) @modal-padding-left-right;
+}
+
+/**
+ * Modal Footer
+ */
+.modal-footer {
+  background-color: @bg-modal-footer;
+  border-top: 1px solid @border-modal;
+  overflow: hidden;
+  .border-radius-bottom(@modal-border-radius);
+  
+  * {
+    z-index: 2;
+  }
+  &:before {
+    content: "\0020";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    display: block;
+    .box-shadow(inset 0 1px 10px rgba(0,0,0, 0.06));
+  }
+}
