@@ -22,42 +22,17 @@
 </head>
 <body>
 
-<div id="console"></div>
-
 <nav class="nav">
   <div class="container">
     
-    <form class="menu">
-      <label>
-        Docs &ndash;
-        <select>
-        {{ #menu }}
-          <option id="{{ id }}" value="{{{ url }}}" {{ select }}>{{ text }}</a></option>
-        {{ /menu }}
-        </select>
-      </label>
-    </form>
-    
-    <div class="title">
-      <p>{{ name }} <span>&ndash; {{ description }}</span></p>
-    </div>
+    <ul>
+    {{ #menu }}
+      <li id="{{ id }}"><a href="{{ url }}">{{ text }}</a></li>
+    {{ /menu }}
+    </ul>
     
   </div>
 </nav>
-
-<header class="header">
-  <div class="container">
-    <h1>{{ title }}</h1>
-  </div>
-</header>
-
-<div class="page">
-  <div class="container">
-      
-    {{ > page }}
-    
-  </div>
-</div>
 
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
@@ -65,13 +40,6 @@
 
 <!-- JS -->
 <script src="../src/js/baseweb.min.js"></script>
-
-<script>
-$( '.menu select' ).change(function() {
-  var url = $(this).val();
-  document.location.href = url;
-});
-</script>
 
 </body>
 </html>
