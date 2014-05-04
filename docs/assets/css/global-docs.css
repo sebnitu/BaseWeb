@@ -2,7 +2,260 @@
   Structure
 ==============================================================================*/
 
+/**
+ * @blue: #2ab0ea;
+ * @yellow: #fff200;
+ */
 
+body,
+html {
+  height: 100%;
+}
+
+.block-wrapper {
+  position: relative;
+  height: 100%;
+  background: #fff;
+}
+
+/*==============================================================================
+  Blocks
+==============================================================================*/
+
+.block {
+  position: relative;
+}
+.block .inner {
+  position: relative;
+}
+
+/**
+ * Main Content Block
+ */
+.block-main {
+  position: relative;
+  z-index: 5;
+  margin: -50px 0 -50px;
+}
+
+/**
+ * Table Blocks
+ * Used to layout fluid columns
+ */
+.block-table {
+  display: table;
+  width: 100%;
+  min-height: 100%;
+}
+.block-table .block-cell {
+  display: table-cell;
+  vertical-align: top;
+  padding: 50px 0 50px;
+}
+
+/*==============================================================================
+  Header
+==============================================================================*/
+
+.block-header {
+  position: relative;
+  z-index: 10;
+  height: 50px;
+  overflow: hidden;
+  background: #303030;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/**
+ * Logo
+ */
+/* Logo */
+.block-header .nav-primary li.logo a {
+  background: url("../img/svg/logo-baseweb-small.svg") no-repeat 20px center;
+  background-size: 113px 25px;
+  padding: 0;
+  width: 175px;
+  height: 50px;
+  overflow: hidden;
+  text-indent: 100%;
+}
+.block-header .nav-primary li.logo a:hover {
+  background-color: rgba(255,255,255, 0.05);
+}
+
+/**
+ * General Navigation
+ */
+.block-header nav ul li a {
+  border: 0 none;
+}
+
+/**
+ * Primary Navigation
+ */
+.block-header .nav-primary {
+  float: left;
+}
+.block-header .nav-primary li {
+  float: left;
+  border-right: 1px solid rgba(255,255,255, 0.15);
+}
+.block-header .nav-primary li a {
+  display: block;
+  height: 50px;
+  .box-sizing(border-box);
+  padding: 15px 25px;
+  color: #aaa;
+}
+.block-header .nav-primary li a:hover {
+  color: #fff;
+  background-color: rgba(255,255,255, 0.05);
+}
+
+/* Active */
+.block-header .nav-primary li.active a {
+  margin: 0 -1px;
+  background: #fff;
+  color: #303030;
+}
+
+/* Version */
+.block-header .nav-primary li a .version {
+  opacity: 0.5;
+}
+
+/**
+ * Secondary Navigation
+ */
+.block-header .nav-secondary {
+  float: right;
+  padding: 15px;
+}
+.block-header .nav-secondary li {
+  display: inline-block;
+  margin: 0 5px;
+}
+.block-header .nav-secondary li a {
+  color: #707070;
+  border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+.block-header .nav-secondary li.active a,
+.block-header .nav-secondary li a:hover {
+  color: #aaa;
+  border-color: rgba(255,255,255, 0.25);
+}
+
+/*==============================================================================
+  Aside
+==============================================================================*/
+
+.block-aside {
+  width: 175px;
+  font-size: 13px;
+  line-height: 20px;
+  background: #303030;
+}
+
+/**
+ * Aside Navigation
+ */
+.block-aside nav {
+  padding: 50px 0;
+}
+.block-aside nav ul {}
+.block-aside nav ul li {
+  padding: 0;
+  border-left: 5px solid rgba(255,255,255, 0.05);
+}
+.block-aside nav ul li a {
+  display: block;
+  border: 0 none;
+  padding: 5px 15px;
+  color: #aaa;
+}
+.block-aside nav ul li:hover {
+  border-left: 5px solid rgba(255,255,255, 0.15);
+}
+.block-aside nav ul li:hover > a,
+.block-aside nav ul li a:hover {
+  color: #fff;
+  background-color: rgba(255,255,255, 0.05);
+}
+
+/* Active */
+.block-aside nav ul li.active {
+  border-color: #fff200;
+}
+.block-aside nav ul li.active > a {
+  color: #fff200;
+  font-weight: bold;
+}
+
+/* Sub Navigation */
+.block-aside nav ul ul {
+  display: none;
+}
+.block-aside nav ul li.active ul {
+  display: block;
+}
+.block-aside nav ul ul li a:before {
+  content: "– ";
+  color: #707070;
+}
+
+/*==============================================================================
+  Content
+==============================================================================*/
+
+.block-content {}
+.block-content .inner {
+  padding: 50px;
+}
+
+/*==============================================================================
+  Footer
+==============================================================================*/
+
+.block-footer {
+  position: relative;
+  z-index: 10;
+  height: 50px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 20px;
+}
+.block-footer a {
+  color: #aaa;
+}
+.block-footer a:hover {
+  color: #2ab0ea;
+}
+.block-footer nav ul {
+  padding: 15px;
+}
+.block-footer nav ul li {
+  float: left;
+  margin: 0 10px;
+}
+.block-footer .nav-left {
+  float: left;
+}
+.block-footer .nav-right {
+  float: right;
+}
+
+/**
+ * Nav Left
+ */
+.block-footer .nav-left a {
+  color: #707070;
+  border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+.block-footer .nav-left a:hover {
+  color: #aaa;
+  border-color: rgba(255,255,255, 0.25);
+}
 
 /*==============================================================================
   End
