@@ -39,9 +39,9 @@ task('watch', {async: true}, function() {
     });
     
     // Watch our test files
-    watch(config.watch.tests, function(filepath) {
+    watch(config.watch.examples, function(filepath) {
       u.print(filepath + ' was changed:', 'cyan');
-      jake.Task['build:tests'].execute();
+      jake.Task['build:examples'].execute();
     });
   });
   

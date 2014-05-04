@@ -16,8 +16,10 @@ html {
 
 // Set default box sizing model to border-box
 // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-*, *:before, *:after {
-  @include box-sizing(border-box);
+@if ($global-box-sizing != none) {
+  *, *:before, *:after {
+    @include box-sizing($global-box-sizing);
+  }
 }
 
 /**

@@ -17,9 +17,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Container
-@mixin make-container( $-total-width : $grid-total-width, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width ) {
-  width: $-total-width;
+@mixin make-container( $-total-width : $grid-total-width, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width, $-inc-class-container : $class-container ) {
   
+  // Set the widths
+  width: $-total-width;
   @if ($-min-width != none) {
     min-width: $-min-width;
   }
@@ -30,23 +31,34 @@
   margin: 0 $-container-margin;
   padding: 0 $-container-padding;
   
+  // Modifier Classes
+  &.#{$-inc-class-container}-align-left {
+    float: left;
+  }
+  &.#{$-inc-class-container}-align-right {
+    float: right;
+  }
+  &.#{$-inc-class-container}-no-padding {
+    padding: 0;
+  }
+  
   @include clearfix();
   @include box-sizing( border-box );
 }
 
 // Make Row
-@mixin make-row() {
+@mixin make-row($-inc-class-column : $class-column) {
   @include clearfix();
   
   // Row Modifiers
-  &.#{$class-column}-center {
+  &.#{$-inc-class-column}-center {
     text-align: center;
     
     > * {
       font-size: 0;
       line-height: 0;
     }
-    .#{$class-column} {
+    .#{$-inc-class-column} {
       float: none;
       display: inline-block;
       font-size: $font-size;

@@ -29,11 +29,10 @@
       <nav>
       
         <ul class="nav-primary">
-          <li class="logo"><a href="/">BaseWeb</a></li>
-          <li class="active"><a href="/docs/">Getting Started</a></li>
-          <li><a href="/docs/">Documentation</a></li>
-          <li><a href="/docs/">Examples</a></li>
-          <li><a href="/docs/">Download <span class="version">v0.9.0</span></a></li>
+          <li class="logo"><a href="/">{{ name }}</a></li>
+          <li class="active"><a href="/docs/">Documentation</a></li>
+          <li class=""><a href="/examples/">Examples</a></li>
+          <li class=""><a href="{{ repository.url }}">Download <span class="version">v{{ version }}</span></a></li>
         </ul>
         
         <ul class="nav-secondary">
@@ -54,7 +53,7 @@
       
         <nav>
         	<ul>
-        		<li class="active">
+        		<li class="">
         			<a href="#">Getting Started</a>
         			<ul>
           			<li><a href="#">Downloading</a></li>
@@ -64,7 +63,7 @@
           			<li><a href="#">Browser Support</a></li>
         			</ul>
         		</li>
-        		<li>
+        		<li class="">
         			<a href="#">Core Features</a>
         			<ul>
           			<li><a href="#">Color Palette</a></li>
@@ -74,15 +73,21 @@
           			<li><a href="#">Reset</a></li>
         			</ul>
         		</li>
-        		<li>
-        			<a href="#">Grid System</a>
+        		<li class="active">
+        			<a href="grid-system.html">Grid System</a>
         			<ul>
-          			<li><a href="#">Introduction</a></li>
+          			<li>
+          			  <a href="#">Default Grid System</a>
+                  <ul>
+              			<li><a href="#">Prefix and Suffix</a></li>
+              			<li><a href="#">Grid Settings</a></li>
+            			</ul>
+                </li>
           			<li><a href="#">Media Queries</a></li>
           			<li><a href="#">Grid Options</a></li>
         			</ul>
         		</li>
-        		<li>
+        		<li class="">
         			<a href="#">Elements</a>
         			<ul>
           			<li><a href="#">Typography</a></li>
@@ -97,7 +102,7 @@
           			<li><a href="#">Buttons</a></li>
         			</ul>
         		</li>
-        		<li>
+        		<li class="">
         			<a href="#">Blocks</a>
         			<ul>
           			<li><a href="#">Button Groups</a></li>
@@ -108,7 +113,7 @@
           			<li><a href="#">Tooltip</a></li>
         			</ul>
         		</li>
-        		<li>
+        		<li class="">
         			<a href="#">JavaScript</a>
         			<ul>
           			<li><a href="#">Introduction</a></li>
@@ -116,7 +121,7 @@
           			<li><a href="#">Blocks</a></li>
         			</ul>
         		</li>
-        		<li>
+        		<li class="">
           		<a href="#">Customization</a>
           		<ul>
           			<li><a href="#">Settings</a></li>
@@ -133,9 +138,11 @@
     </div>
     
     <div class="block block-cell block-content">
-      <div class="inner">
+      <div class="inner clearfix">
         
-        
+        <div class="container container-align-left container-no-padding">
+          {{ > page }}
+        </div>
         
       </div>
     </div>

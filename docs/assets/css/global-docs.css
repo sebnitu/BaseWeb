@@ -1,11 +1,11 @@
-/*==============================================================================
-  Structure
-==============================================================================*/
-
 /**
  * @blue: #2ab0ea;
  * @yellow: #fff200;
  */
+
+/*==============================================================================
+  Structure
+==============================================================================*/
 
 body,
 html {
@@ -16,6 +16,11 @@ html {
   position: relative;
   height: 100%;
   background: #fff;
+}
+
+.block-header .nav-primary li.logo a,
+.block-aside {
+  width: 200px;
 }
 
 /*==============================================================================
@@ -75,7 +80,6 @@ html {
   background: url("../img/svg/logo-baseweb-small.svg") no-repeat 20px center;
   background-size: 113px 25px;
   padding: 0;
-  width: 175px;
   height: 50px;
   overflow: hidden;
   text-indent: 100%;
@@ -151,7 +155,6 @@ html {
 ==============================================================================*/
 
 .block-aside {
-  width: 175px;
   font-size: 13px;
   line-height: 20px;
   background: #303030;
@@ -166,42 +169,58 @@ html {
 .block-aside nav ul {}
 .block-aside nav ul li {
   padding: 0;
-  border-left: 5px solid rgba(255,255,255, 0.05);
+  border-left: 5px solid transparent;
 }
 .block-aside nav ul li a {
+  position: relative;
   display: block;
   border: 0 none;
+  margin: 0 0 0 5px;
   padding: 5px 15px;
   color: #aaa;
 }
-.block-aside nav ul li:hover {
-  border-left: 5px solid rgba(255,255,255, 0.15);
-}
-.block-aside nav ul li:hover > a,
+
 .block-aside nav ul li a:hover {
   color: #fff;
   background-color: rgba(255,255,255, 0.05);
 }
 
 /* Active */
-.block-aside nav ul li.active {
-  border-color: #fff200;
-}
 .block-aside nav ul li.active > a {
   color: #fff200;
   font-weight: bold;
+}
+.block-aside nav ul li.active > a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 5px;
+  height: 100%;
+  background: #fff200;
 }
 
 /* Sub Navigation */
 .block-aside nav ul ul {
   display: none;
+  margin-left: -5px;
+}
+.block-aside nav ul .active ul li {
+  border-color: transparent;
 }
 .block-aside nav ul li.active ul {
   display: block;
 }
+
+.block-aside nav ul ul li a {
+  color: #707070;
+}
 .block-aside nav ul ul li a:before {
   content: "– ";
   color: #707070;
+}
+.block-aside nav ul ul ul li a:before {
+  content: "– – ";
 }
 
 /*==============================================================================
@@ -210,7 +229,117 @@ html {
 
 .block-content {}
 .block-content .inner {
-  padding: 50px;
+  padding: 15px 50px;
+}
+.block-content .container {
+  max-width: 880px;
+}
+
+/**
+ * Examples
+ */
+.example {
+  margin: 20px 0;
+  border: 1px solid rgba(0,0,0, 0.1);
+  border-radius: 3px;
+}
+.example .example-block {
+  padding: 10px 20px;
+  border-top: 1px solid rgba(0,0,0, 0.1);
+}
+.example .example-block:first-child {
+  border-top: 0 none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.example .example-block:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.example .example-block:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.example .example-desc {
+  background: rgba(42, 176, 234, 0.1);
+}
+.example .example-output {
+  background: #fff;
+}
+.example .example-input {
+  background: rgba(0,0,0, 0.05);
+}
+.example .example-input pre {
+  padding: 0;
+  background: none;
+}
+
+/* Example Markup */
+.example-output .row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.example-output .row:first-child .col {
+  margin-top: 0;
+}
+.example-output .col {
+  margin-top: 5px;
+}
+.example-output .col p {
+  margin: 0;
+  padding: 15px 20px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+  background: #d3fceb;
+  border-radius: 4px;
+}
+
+/**
+ * Colors
+ */
+.swatch {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border: 1px solid rgba(0,0,0, 0.1);
+  border-radius: 3px;
+}
+
+/* Swatch Table */
+.palette-table {
+  
+}
+.palette-table .swatch-desc {
+  background: rgba(0,0,0, 0.05);
+}
+.palette-table .swatch-desc code {
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: #303030;
+}
+.palette-table .swatch-cell {
+  width: 100px;
+  text-align: center;
+}
+
+/* Swatch Wrap */
+.swatch-wrap {
+  margin: 10px 0;
+}
+.swatch-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.swatch-wrap .swatch {
+  float: left;
+  margin: 0 5px 0 0;
 }
 
 /*==============================================================================

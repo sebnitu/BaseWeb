@@ -63,7 +63,7 @@ namespace('build', function() {
   });
   
   // Build docs
-  desc('Build documentation');
+  desc('Build documentation pages');
   task('docs', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { dir: 'docs/' };
@@ -74,10 +74,10 @@ namespace('build', function() {
   });
   
   // Build tests
-  desc('Build test suite');
-  task('tests', {async: true}, function() {
+  desc('Build example pages');
+  task('examples', {async: true}, function() {
     getjson('package.json', function(config) {
-      var options = { dir : 'tests/' };
+      var options = { dir : 'examples/' };
       var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);
