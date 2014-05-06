@@ -48,7 +48,7 @@ namespace('build', function() {
   });
   
   // Optimize Images
-  desc('Optimize Images');
+  desc('Optimize images');
   task('img', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { 

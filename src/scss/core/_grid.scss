@@ -43,7 +43,10 @@
   }
   
   @include clearfix();
-  @include box-sizing( border-box );
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
 }
 
 // Make Row
@@ -68,8 +71,8 @@
   }
 }
 
-// Make Column
-@mixin make-column( $-gutter-width : $grid-gutter-width ) {
+// Make Base Column (Does not include column width)
+@mixin make-base-column( $-gutter-width : $grid-gutter-width ) {
   @if ($-gutter-width == mobile) {
     width: 100%;
     margin: 0;
@@ -81,7 +84,16 @@
   }
   float: left;
   min-height: 1px;
-  @include box-sizing( border-box );
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+}
+
+// Make Column
+@mixin make-column( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+  @include make-base-column;
+  width: column_width( $-index, $-total-width, $-gutter-width, $-columns );
 }
 
 // Make Prefix
@@ -103,18 +115,18 @@
 
 // Make Mobile Grid System
 // Outputs the styles for a mobile grid system where all columns are stacked
-@mixin build-mobile-grid-system() {
+@mixin build-mobile-grid-system( $-class-container : $class-container, $-class-row : $class-row, $-class-column : $class-column ) {
 
-  .#{$class-container} {
+  .#{$-class-container} {
     @include make-container( 100% );
   }
   
-  .#{$class-row} {
+  .#{$-class-row} {
     @include make-row();
   }
   
-  .#{$class-column} {
-    @include make-column( mobile );
+  .#{$-class-column} {
+    @include make-base-column( mobile );
   }
   
 }
@@ -132,7 +144,7 @@
   }
   
   .#{$class-column} {
-    @include make-column( $-gutter-width );
+    @include make-base-column( $-gutter-width );
   }
   
   @for $i from 1 through $-columns {
@@ -159,18 +171,4 @@
       }
     }
   }
-}
-
-/*==============================================================================
-  Generate Mobile Grid System
-==============================================================================*/
-
-@include build-mobile-grid-system();
-
-/*==============================================================================
-  Generate Class Based Grid System
-==============================================================================*/
-
-@include media-tablet {
-  @include build-grid-system();
 }

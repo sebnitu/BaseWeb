@@ -66,192 +66,6 @@ table {
   text-shadow: none; }
 
 /*==============================================================================
-  Generate Mobile Grid System
-==============================================================================*/
-.container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-  .container.container-align-left {
-    float: left; }
-  .container.container-align-right {
-    float: right; }
-  .container.container-no-padding {
-    padding: 0; }
-  .container:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both; }
-.row.col-center {
-  text-align: center; }
-  .row.col-center > * {
-    font-size: 0;
-    line-height: 0; }
-  .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
-    float: none;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: left; }
-
-.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-  width: 100%;
-  margin: 0;
-  float: left;
-  min-height: 1px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-/*==============================================================================
-  Generate Class Based Grid System
-==============================================================================*/
-@media screen and (min-width: 760px) {
-  .container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-    .container.container-align-left {
-      float: left; }
-    .container.container-align-right {
-      float: right; }
-    .container.container-no-padding {
-      padding: 0; }
-    .container:after {
-      content: "";
-      display: table;
-      clear: both; }
-  .row:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .row.col-center {
-    text-align: center; }
-    .row.col-center > * {
-      font-size: 0;
-      line-height: 0; }
-    .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
-      float: none;
-      display: inline-block;
-      font-size: 14px;
-      line-height: 20px;
-      text-align: left; }
-  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-    margin-left: 2%;
-    float: left;
-    min-height: 1px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; }
-    .col:first-child {
-      margin-left: 0; }
-  .col-1 {
-    width: 6.5%; }
-  .col-2 {
-    width: 15%; }
-  .col-3 {
-    width: 23.5%; }
-  .col-4 {
-    width: 32%; }
-  .col-5 {
-    width: 40.5%; }
-  .col-6 {
-    width: 49%; }
-  .col-7 {
-    width: 57.5%; }
-  .col-8 {
-    width: 66%; }
-  .col-9 {
-    width: 74.5%; }
-  .col-10 {
-    width: 83%; }
-  .col-11 {
-    width: 91.5%; }
-  .col-12 {
-    width: 100%; }
-  .prefix-1 {
-    margin-left: 10.5%; }
-    .prefix-1:first-child {
-      margin-left: 8.5%; }
-  .prefix-2 {
-    margin-left: 19%; }
-    .prefix-2:first-child {
-      margin-left: 17%; }
-  .prefix-3 {
-    margin-left: 27.5%; }
-    .prefix-3:first-child {
-      margin-left: 25.5%; }
-  .prefix-4 {
-    margin-left: 36%; }
-    .prefix-4:first-child {
-      margin-left: 34%; }
-  .prefix-5 {
-    margin-left: 44.5%; }
-    .prefix-5:first-child {
-      margin-left: 42.5%; }
-  .prefix-6 {
-    margin-left: 53%; }
-    .prefix-6:first-child {
-      margin-left: 51%; }
-  .prefix-7 {
-    margin-left: 61.5%; }
-    .prefix-7:first-child {
-      margin-left: 59.5%; }
-  .prefix-8 {
-    margin-left: 70%; }
-    .prefix-8:first-child {
-      margin-left: 68%; }
-  .prefix-9 {
-    margin-left: 78.5%; }
-    .prefix-9:first-child {
-      margin-left: 76.5%; }
-  .prefix-10 {
-    margin-left: 87%; }
-    .prefix-10:first-child {
-      margin-left: 85%; }
-  .prefix-11 {
-    margin-left: 95.5%; }
-    .prefix-11:first-child {
-      margin-left: 93.5%; }
-  .prefix-12 {
-    margin-left: 104%; }
-    .prefix-12:first-child {
-      margin-left: 102%; }
-  .suffix-1 {
-    margin-right: 8.5%; }
-  .suffix-2 {
-    margin-right: 17%; }
-  .suffix-3 {
-    margin-right: 25.5%; }
-  .suffix-4 {
-    margin-right: 34%; }
-  .suffix-5 {
-    margin-right: 42.5%; }
-  .suffix-6 {
-    margin-right: 51%; }
-  .suffix-7 {
-    margin-right: 59.5%; }
-  .suffix-8 {
-    margin-right: 68%; }
-  .suffix-9 {
-    margin-right: 76.5%; }
-  .suffix-10 {
-    margin-right: 85%; }
-  .suffix-11 {
-    margin-right: 93.5%; }
-  .suffix-12 {
-    margin-right: 102%; } }
-
-/*==============================================================================
   Typography
 ==============================================================================*/
 html {
@@ -266,16 +80,16 @@ body {
 /**
  * Headers
  */
-h1, h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, .h4, h4, .h4, h5, .h5, h6, .h6 {
   margin: 20px 0 10px;
   font-family: inherit;
   font-weight: bold;
   line-height: 20px;
   color: #303030; }
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  h1 a, .h1 a, h2 a, .h2 a, h3 a, .h4 a, h4 a, .h4 a, h5 a, .h5 a, h6 a, .h6 a {
     color: #2ab0ea;
     border: 0 none; }
-    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+    h1 a:hover, .h1 a:hover, h2 a:hover, .h2 a:hover, h3 a:hover, .h4 a:hover, h4 a:hover, .h4 a:hover, h5 a:hover, .h5 a:hover, h6 a:hover, .h6 a:hover {
       color: #bc6bd3; }
 
 h1, .h1 {
@@ -1694,11 +1508,253 @@ form .btn {
   margin: 5px 0; }
 
 /*==============================================================================
-  Custom Styles
+  Generate Mobile Grid System
 ==============================================================================*/
-#custom {
-  background: #d25993;
-  width: 100%; }
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px; }
+  .container.container-align-left {
+    float: left; }
+  .container.container-align-right {
+    float: right; }
+  .container.container-no-padding {
+    padding: 0; }
+  .container:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both; }
+.row.col-center {
+  text-align: center; }
+  .row.col-center > * {
+    font-size: 0;
+    line-height: 0; }
+  .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+    float: none;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left; }
+
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  width: 100%;
+  margin: 0;
+  float: left;
+  min-height: 1px; }
+
+/*==============================================================================
+  Generate Class Based Grid System
+==============================================================================*/
+@media screen and (min-width: 760px) {
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px; }
+    .container.container-align-left {
+      float: left; }
+    .container.container-align-right {
+      float: right; }
+    .container.container-no-padding {
+      padding: 0; }
+    .container:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row.col-center {
+    text-align: center; }
+    .row.col-center > * {
+      font-size: 0;
+      line-height: 0; }
+    .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+      float: none;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left; }
+  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    margin-left: 2%;
+    float: left;
+    min-height: 1px; }
+    .col:first-child {
+      margin-left: 0; }
+  .col-1 {
+    width: 6.5%; }
+  .col-2 {
+    width: 15%; }
+  .col-3 {
+    width: 23.5%; }
+  .col-4 {
+    width: 32%; }
+  .col-5 {
+    width: 40.5%; }
+  .col-6 {
+    width: 49%; }
+  .col-7 {
+    width: 57.5%; }
+  .col-8 {
+    width: 66%; }
+  .col-9 {
+    width: 74.5%; }
+  .col-10 {
+    width: 83%; }
+  .col-11 {
+    width: 91.5%; }
+  .col-12 {
+    width: 100%; }
+  .prefix-1 {
+    margin-left: 10.5%; }
+    .prefix-1:first-child {
+      margin-left: 8.5%; }
+  .prefix-2 {
+    margin-left: 19%; }
+    .prefix-2:first-child {
+      margin-left: 17%; }
+  .prefix-3 {
+    margin-left: 27.5%; }
+    .prefix-3:first-child {
+      margin-left: 25.5%; }
+  .prefix-4 {
+    margin-left: 36%; }
+    .prefix-4:first-child {
+      margin-left: 34%; }
+  .prefix-5 {
+    margin-left: 44.5%; }
+    .prefix-5:first-child {
+      margin-left: 42.5%; }
+  .prefix-6 {
+    margin-left: 53%; }
+    .prefix-6:first-child {
+      margin-left: 51%; }
+  .prefix-7 {
+    margin-left: 61.5%; }
+    .prefix-7:first-child {
+      margin-left: 59.5%; }
+  .prefix-8 {
+    margin-left: 70%; }
+    .prefix-8:first-child {
+      margin-left: 68%; }
+  .prefix-9 {
+    margin-left: 78.5%; }
+    .prefix-9:first-child {
+      margin-left: 76.5%; }
+  .prefix-10 {
+    margin-left: 87%; }
+    .prefix-10:first-child {
+      margin-left: 85%; }
+  .prefix-11 {
+    margin-left: 95.5%; }
+    .prefix-11:first-child {
+      margin-left: 93.5%; }
+  .prefix-12 {
+    margin-left: 104%; }
+    .prefix-12:first-child {
+      margin-left: 102%; }
+  .suffix-1 {
+    margin-right: 8.5%; }
+  .suffix-2 {
+    margin-right: 17%; }
+  .suffix-3 {
+    margin-right: 25.5%; }
+  .suffix-4 {
+    margin-right: 34%; }
+  .suffix-5 {
+    margin-right: 42.5%; }
+  .suffix-6 {
+    margin-right: 51%; }
+  .suffix-7 {
+    margin-right: 59.5%; }
+  .suffix-8 {
+    margin-right: 68%; }
+  .suffix-9 {
+    margin-right: 76.5%; }
+  .suffix-10 {
+    margin-right: 85%; }
+  .suffix-11 {
+    margin-right: 93.5%; }
+  .suffix-12 {
+    margin-right: 102%; } }
+
+/*==============================================================================
+  @test
+==============================================================================*/
+.aside {
+  margin-left: 2%;
+  float: left;
+  min-height: 1px;
+  width: 49%;
+  margin-left: 19%; }
+  .aside:first-child {
+    margin-left: 0; }
+  .aside:first-child {
+    margin-left: 17%; }
+
+.article {
+  margin-left: 2%;
+  float: left;
+  min-height: 1px;
+  width: 49%;
+  margin-right: 17%; }
+  .article:first-child {
+    margin-left: 0; }
+
+/*==============================================================================
+  Semantic Grid Demo
+==============================================================================*/
+.demo-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px; }
+  .demo-wrapper.container-align-left {
+    float: left; }
+  .demo-wrapper.container-align-right {
+    float: right; }
+  .demo-wrapper.container-no-padding {
+    padding: 0; }
+  .demo-wrapper:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .demo-wrapper .demo-content:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .demo-wrapper .demo-content.col-center {
+    text-align: center; }
+    .demo-wrapper .demo-content.col-center > * {
+      font-size: 0;
+      line-height: 0; }
+    .demo-wrapper .demo-content.col-center .col, .demo-wrapper .demo-content.col-center .col-1, .demo-wrapper .demo-content.col-center .col-2, .demo-wrapper .demo-content.col-center .col-3, .demo-wrapper .demo-content.col-center .col-4, .demo-wrapper .demo-content.col-center .col-5, .demo-wrapper .demo-content.col-center .col-6, .demo-wrapper .demo-content.col-center .col-7, .demo-wrapper .demo-content.col-center .col-8, .demo-wrapper .demo-content.col-center .col-9, .demo-wrapper .demo-content.col-center .col-10, .demo-wrapper .demo-content.col-center .col-11, .demo-wrapper .demo-content.col-center .col-12 {
+      float: none;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: left; }
+  .demo-wrapper .demo-content .demo-aside {
+    margin-left: 2%;
+    float: left;
+    min-height: 1px;
+    width: 32%; }
+    .demo-wrapper .demo-content .demo-aside:first-child {
+      margin-left: 0; }
+  .demo-wrapper .demo-content .demo-article {
+    margin-left: 2%;
+    float: left;
+    min-height: 1px;
+    width: 66%; }
+    .demo-wrapper .demo-content .demo-article:first-child {
+      margin-left: 0; }
 
 /*==============================================================================
   Color Classes

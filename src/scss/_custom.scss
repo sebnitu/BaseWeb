@@ -1,12 +1,51 @@
 // Custom styles go here
 // All variabls and mixins in BaseWeb are available to styles in this document
 /*==============================================================================
-  Custom Styles
+  Generate Mobile Grid System
 ==============================================================================*/
 
-#custom {
-  background: $red-violet;
-  width: $grid-total-width;
+@include build-mobile-grid-system();
+
+/*==============================================================================
+  Generate Class Based Grid System
+==============================================================================*/
+
+@include media-tablet {
+  @include build-grid-system();
+}
+
+/*==============================================================================
+  @test
+==============================================================================*/
+
+.aside {
+  @include make-column(6);
+  @include give-prefix(2);
+}
+
+.article {
+  @include make-column(6);
+  @include give-suffix(2);
+}
+
+/*==============================================================================
+  Semantic Grid Demo
+==============================================================================*/
+
+.demo-wrapper {
+  @include make-container;
+  
+  .demo-content {
+    @include make-row;
+    
+    .demo-aside {
+      @include make-column(4);
+    }
+    
+    .demo-article {
+      @include make-column(8);
+    }
+  }
 }
 
 /*==============================================================================

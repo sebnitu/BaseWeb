@@ -1,10 +1,6 @@
-<h2>The Default Grid System</h2>
+<h2>Grid System</h2>
 
 <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
-
-<div class="warning-block">
-  <p>A row should only contain column spacing sum of the <code>$grid-column</code> variable. By default, this number is <code>12</code>.</p>
-</div>
 
 <div class="example">
   <div class="example-block example-desc">
@@ -33,7 +29,7 @@
     </div>
     
   </div><!-- .example-output -->
-  <div class="example-block example-input">
+  <div class="example-block example-code">
 <pre>&lt;div class=&quot;container&quot;&gt;
 
   &lt;div class=&quot;row&quot;&gt;
@@ -50,10 +46,72 @@
   ...
   
 &lt;/div&gt;</pre>
-  </div><!-- .example-input -->
+  </div><!-- .example-code -->
 </div><!-- .example -->
 
-<h3>Prefix and Suffix</h3>
+<p>The class based grid system is generated using the <code>build-grid-system()</code> mixin. By default, it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in all the variables manually. This comes in handy when you want to change grid parameters for different media breakpoints.</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+@include build-grid-system( 
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns,
+  $container-margin,
+  $container-padding,
+  $container-max-width,
+  $container-min-width,
+  $class-prefix,
+  $class-suffix
+);
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2>Semantic Grids</h2>
+
+<p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your styles.</p>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="demo-wrapper">
+      <div class="demo-content">
+        <div class="demo-aside">
+          <p>@make-column(4);</p>
+        </div>
+        <div class="demo-article">
+          <p>@make-column(8);</p>
+        </div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre>
+.wrapper {
+  @include make-container;
+  
+  .content {
+    @incldue make-row;
+    
+    .aside {
+      @include make-column(4);
+    }
+    
+    .article {
+      @include make-column(8);
+    }
+  }
+}
+
+// CSS Output
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2>Prefix and Suffix</h2>
 
 <p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
 
@@ -71,7 +129,7 @@
     </div>
     
   </div><!-- .example-output -->
-  <div class="example-block example-input">
+  <div class="example-block example-code">
 <pre>&lt;div class=&quot;container&quot;&gt;
 
   &lt;div class=&quot;row&quot;&gt;
@@ -84,12 +142,72 @@
   &lt;/div&gt;
   
 &lt;/div&gt;</pre>
-  </div><!-- .example-input -->
+  </div><!-- .example-code -->
 </div><!-- .example -->
 
-<h3>Grid Settings</h3>
+<p>The semantic grid system equivalent would look something like this:</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+.aside {
+  @include make-column(6);
+  @include give-prefix(2);
+}
+
+.article {
+  @include make-column(6);
+  @include give-suffix(2);
+}
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2>Variables</h2>
 
 <p>There are three categories of variables that define the default grid system: global grid settings, container settings and grid class names. You're free to modify these variables to create the grid that you'll need for your project.</p>
+
+<h3>grid-total-width</h3>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+$grid-total-width
+  type: unit (pixel, percentage)
+  default: 100%
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>Defines the total width of your grid. If set to 100%, it behaves as a fluid grid. Giving it a pixel value makes it a fixed grid. e.g. Setting it to <code>960px</code> will make it behave like the <a href="http://960.gs/" target="_blank">960 grid system</a>.</p>
+
+<h3>grid-gutter-width</h3>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+$grid-gutter-width
+  type: unit (pixel, percentage)
+  default: 2%
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>Defines the space between each column. The value type must be the same as the <code>$grid-total-width</code>. So they both must be either percentages or pixels.</p>
+
+<h3>grid-columns</h3>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+$grid-columns
+  type: number (positive)
+  default: 12
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>The maximum number of columns per row. This value must be an integer greater than zero.</p>
 
 <table class="table-bordered table-valign-baseline">
   <tr>
@@ -173,3 +291,72 @@
     <td>... Descriptions Needed ...</td>
   </tr>
 </table>
+
+<h2>Functions</h2>
+
+<h3>column_width</h3>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+@function column_width(
+    $-index,
+    $-total-width : $grid-total-width,
+    $-gutter-width: $grid-gutter-width,
+    $-columns : $grid-columns
+  ) {
+  $-column-width: ($-total-width - ($-gutter-width * ($-columns - 1))) / $-columns;
+  @return ($-column-width * $-index) + ($-gutter-width * ($-index - 1));
+}
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2>Mixins</h2>
+
+<h3>make-container</h3>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre>
+@mixin make-container(
+    $-total-width : $grid-total-width,
+    $-container-margin : $container-margin,
+    $-container-padding : $container-padding,
+    $-max-width : $container-max-width,
+    $-min-width : $container-min-width,
+    $-inc-class-container : $class-container
+  ) {
+  
+  // Set the widths
+  width: $-total-width;
+  @if ($-min-width != none) {
+    min-width: $-min-width;
+  }
+  @if ($-max-width != none) {
+    max-width: $-max-width;
+  }
+  
+  margin: 0 $-container-margin;
+  padding: 0 $-container-padding;
+  
+  // Modifier Classes
+  &.#{$-inc-class-container}-align-left {
+    float: left;
+  }
+  &.#{$-inc-class-container}-align-right {
+    float: right;
+  }
+  &.#{$-inc-class-container}-no-padding {
+    padding: 0;
+  }
+  
+  @include clearfix();
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+}
+</pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
