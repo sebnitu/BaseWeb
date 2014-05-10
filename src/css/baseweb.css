@@ -198,7 +198,7 @@ del, .del, .danger {
 /**
  * Edit Blocks
  */
-.edit-block, .info-block, .warning-block, .ins-block, .success-block, .del-block, .danger-block {
+.block-edit, .block-info, .block-warning, .block-ins, .block-success, .block-del, .block-danger {
   display: block;
   padding: 5px 20px;
   margin: 10px 0;
@@ -206,21 +206,21 @@ del, .del, .danger {
   border-left: 5px solid #aaa;
   background: rgba(170, 170, 170, 0.1); }
 
-.info-block {
+.block-info {
   border-color: #1495cd;
   background: rgba(42, 176, 234, 0.1); }
 
-.warning-block {
+.block-warning {
   border-color: #d1c329;
   background: rgba(209, 195, 41, 0.15); }
 
-.ins-block, .success-block {
+.block-ins, .block-success {
   border-color: #70a01d;
   background: rgba(142, 203, 37, 0.1);
   color: #606060;
   text-decoration: none; }
 
-.del-block, .danger-block {
+.block-del, .block-danger {
   border-color: #d42828;
   background: rgba(222, 81, 81, 0.1);
   color: #606060;
@@ -319,6 +319,39 @@ pre {
     border: 0 none; }
   pre.max-height {
     max-height: 400px; }
+
+/**
+ * Code Links
+ */
+a.link-code {
+  position: relative;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 5px 0 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  border: 0 none; }
+  a.link-code:before {
+    content: "#";
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    color: #aaa;
+    background: rgba(0, 0, 0, 0.05);
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  a.link-code code {
+    margin: 0;
+    padding: 0;
+    background: none; }
+
+a.link-code:hover {
+  background: #d25993; }
+  a.link-code:hover:before {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.1); }
+  a.link-code:hover code {
+    color: #fff; }
 
 /*==============================================================================
   Tables
@@ -1548,6 +1581,14 @@ form .btn {
   float: left;
   min-height: 1px; }
 
+.prefix {
+  margin-left: 0; }
+  .prefix:first-child {
+    margin-left: 0; }
+
+.suffix {
+  margin-right: 0; }
+
 /*==============================================================================
   Generate Class Based Grid System
 ==============================================================================*/
@@ -1688,26 +1729,6 @@ form .btn {
 /*==============================================================================
   @test
 ==============================================================================*/
-.aside {
-  margin-left: 2%;
-  float: left;
-  min-height: 1px;
-  width: 49%;
-  margin-left: 19%; }
-  .aside:first-child {
-    margin-left: 0; }
-  .aside:first-child {
-    margin-left: 17%; }
-
-.article {
-  margin-left: 2%;
-  float: left;
-  min-height: 1px;
-  width: 49%;
-  margin-right: 17%; }
-  .article:first-child {
-    margin-left: 0; }
-
 /*==============================================================================
   Semantic Grid Demo
 ==============================================================================*/

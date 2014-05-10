@@ -13,7 +13,12 @@
   
   <!-- Stylesheets and less -->
   <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
-  <link rel="stylesheet" type="text/css" media="all" href="assets/css/global-tests.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../docs/assets/css/global-docs.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../docs/assets/css/prism.css">
+  
+  <!-- Typekit -->
+  <script type="text/javascript" src="//use.typekit.net/vre4dcv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,95 +27,101 @@
 </head>
 <body>
 
-<div id="console"></div>
-
-<nav class="nav">
-  <div class="container">
-    
-    <form class="menu">
-      <label>
-        Tests &ndash;
-        <select>
-          <option id="menu-item-index" value="../examples/index.html" >Index</a></option>
-          <option id="menu-item-settings" value="../examples/settings.html" selected=&quot;selected&quot;>Settings</a></option>
-          <option id="menu-item-grid-system" value="../examples/grid-system.html" >Grid System</a></option>
-          <option id="menu-item-elements" value="../examples/elements.html" >Elements</a></option>
-          <option id="menu-item-forms" value="../examples/forms.html" >Forms</a></option>
-          <option id="menu-item-buttons" value="../examples/buttons.html" >Buttons</a></option>
-          <option id="menu-item-blocks" value="../examples/blocks.html" >Blocks</a></option>
-        </select>
-      </label>
-    </form>
-    
-    <div class="title">
-      <p>BaseWeb <span>&ndash; A fresh front-end development framework.</span></p>
-    </div>
-    
-  </div>
-</nav>
-
-<header class="header">
-  <div class="container">
-    <h1>Settings</h1>
-  </div>
-</header>
-
-<div class="page">
-  <div class="container">
+<div class="block-wrapper">
+  
+  <div class="block block-header">
+    <div class="inner">
+      <nav>
       
-
-<div class="row">
-  
-  <div class="col col-2 desc">
-    <h2>Custom Palette</h2>
-    <p>_palette.scss</p>
+        <ul class="nav-primary">
+          <li class="logo"><a href="/">BaseWeb</a></li>
+          <li class=""><a href="/docs/">Documentation</a></li>
+          <li class="active"><a href="/examples/">Examples</a></li>
+          <li class=""><a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
+        </ul>
+        
+        <ul class="nav-secondary">
+          <li><a href="#">Star (24)</a></li>
+          <li><a href="#">Fork (6)</a></li>
+          <li><a href="#">Follow (45)</a></li>
+          <li><a href="#">Tweet (18.6k)</a></li>
+        </ul>
+        
+      </nav>
+    </div>
   </div>
   
-  <div class="col col-10">
+  <div class="block block-main block-table">
     
-    <div class="example">
-      <div class="example-block example-desc">
-        <p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
-      </div><!-- .example-desc -->
-      <div class="example-block example-output">
-        <div class="swatch-wrap">
-          <span class="swatch color-black"></span>
-          <span class="swatch color-gray-darker"></span>
-          <span class="swatch color-gray-dark"></span>
-          <span class="swatch color-gray"></span>
-          <span class="swatch color-gray-light"></span>
-          <span class="swatch color-gray-lighter"></span>
-          <span class="swatch color-white"></span>
-        </div>
-      </div><!-- .example-output -->
-      <div class="example-block example-input">
-<pre>// Gray Scale
+    <div class="block block-cell block-aside">
+      <div class="inner">
+      
+        <nav>
+        	<ul>
+              <li id="menu-item-index" class="menu-item"><a href="../examples/index.html">Index</a></li>
+              <li id="menu-item-settings" class="menu-item active"><a href="../examples/settings.html">Settings</a></li>
+              <li id="menu-item-grid-system" class="menu-item"><a href="../examples/grid-system.html">Grid System</a></li>
+              <li id="menu-item-elements" class="menu-item"><a href="../examples/elements.html">Elements</a></li>
+              <li id="menu-item-forms" class="menu-item"><a href="../examples/forms.html">Forms</a></li>
+              <li id="menu-item-buttons" class="menu-item"><a href="../examples/buttons.html">Buttons</a></li>
+              <li id="menu-item-blocks" class="menu-item"><a href="../examples/blocks.html">Blocks</a></li>
+        	</ul>
+        </nav>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-aside -->
+    
+    <div class="block block-cell block-content">
+      <div class="inner clearfix">
+        
+        <div class="container container-align-left container-no-padding">
+
+<h2>Custom Palette</h2>
+<p>_palette.scss</p>
+    
+<div class="example">
+  <div class="example-block example-desc">
+    <p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-output">
+    <div class="swatch-wrap">
+      <span class="swatch color-black"></span>
+      <span class="swatch color-gray-darker"></span>
+      <span class="swatch color-gray-dark"></span>
+      <span class="swatch color-gray"></span>
+      <span class="swatch color-gray-light"></span>
+      <span class="swatch color-gray-lighter"></span>
+      <span class="swatch color-white"></span>
+    </div>
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Gray Scale
 $black:        #000 !default;
 $gray-darker:  #303030 !default;
 $gray-dark:    #606060 !default;
 $gray:         #909090 !default;
 $gray-light:   #aaa !default;
 $gray-lighter: #efefef !default;
-$white:        #fff !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
+$white:        #fff !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
     
-    <div class="example">
-      <div class="example-block example-desc">
-        <p>The color palette is built using three primary colors and three secondary. You can customize those six colors to create a new palette.</p>
-      </div><!-- .example-desc -->
-      <div class="example-block example-output">
-        <div class="swatch-wrap">
-          <span class="swatch color-red"></span>
-          <span class="swatch color-yellow"></span>
-          <span class="swatch color-blue"></span>
-          <span class="swatch color-orange"></span>
-          <span class="swatch color-green"></span>
-          <span class="swatch color-violet"></span>
-        </div>
-      </div><!-- .example-output -->
-      <div class="example-block example-input">
-<pre>// Primary
+<div class="example">
+  <div class="example-block example-desc">
+    <p>The color palette is built using three primary colors and three secondary. You can customize those six colors to create a new palette.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-output">
+    <div class="swatch-wrap">
+      <span class="swatch color-red"></span>
+      <span class="swatch color-yellow"></span>
+      <span class="swatch color-blue"></span>
+      <span class="swatch color-orange"></span>
+      <span class="swatch color-green"></span>
+      <span class="swatch color-violet"></span>
+    </div>
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Primary
 $red:    #de5151 !default;
 $yellow: #d1c329 !default;
 $blue:   #2ab0ea !default;
@@ -118,49 +129,39 @@ $blue:   #2ab0ea !default;
 // Secondary
 $orange: #e69242 !default;
 $green:  #8ecb25 !default;
-$violet: #bc6bd3 !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
+$violet: #bc6bd3 !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
     
-    <div class="example">
-      <div class="example-block example-desc">
-        <p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
-      </div><!-- .example-desc -->
-      <div class="example-block example-input">
-<pre>$light-deg:   5% !default;
+<div class="example">
+  <div class="example-block example-desc">
+    <p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">$light-deg:   5% !default;
 $lighter-deg: 10% !default;
 $dark-deg:    5% !default;
-$darker-deg:  10% !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
-    
-    <table class="table-bordered palette-table">
-      <tr>
-        <td class="swatch-desc"></td>
-        <td class="swatch-cell swatch-desc"><code>-lighter</code></td>
-        <td class="swatch-cell swatch-desc"><code>-light</code></td>
-        <td class="swatch-cell swatch-desc"></td>
-        <td class="swatch-cell swatch-desc"><code>-dark</code></td>
-        <td class="swatch-cell swatch-desc"><code>-darker</code></td>
-      </tr>
-    </table>
-    
-  </div>
-  
-</div><!-- .row -->
+$darker-deg:  10% !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
 
-<div class="row">
-  
-  <div class="col col-2 desc">
-    <h2>Grid System</h2>
-    <p>_global.scss</p>
-  </div>
-  
-  <div class="col col-10">
-  
-    <div class="example">
-      <div class="example-block example-input">
-<pre>// Global Grid Settings
+<table class="table-bordered palette-table">
+  <tr>
+    <td class="swatch-desc"></td>
+    <td class="swatch-cell swatch-desc"><code>-lighter</code></td>
+    <td class="swatch-cell swatch-desc"><code>-light</code></td>
+    <td class="swatch-cell swatch-desc"></td>
+    <td class="swatch-cell swatch-desc"><code>-dark</code></td>
+    <td class="swatch-cell swatch-desc"><code>-darker</code></td>
+  </tr>
+</table>
+
+<h2>Grid System</h2>
+<p>_global.scss</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Global Grid Settings
 $grid-total-width:  100% !default;
 $grid-gutter-width: 2% !default;
 $grid-columns:      12 !default;
@@ -176,50 +177,30 @@ $class-container: container !default;
 $class-row:       row !default;
 $class-column:    col !default;
 $class-prefix:    prefix !default; // Use `none` to disable output
-$class-suffix:    suffix !default; // Use `none` to disable output</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
-  
-  </div>
-  
-</div><!-- .row -->
+$class-suffix:    suffix !default; // Use `none` to disable output</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
 
-<div class="row">
-  
-  <div class="col col-2 desc">
-    <h2>Media Query</h2>
-    <p>_global.scss</p>
-  </div>
-  
-  <div class="col col-10">
-  
-    <div class="example">
-      <div class="example-block example-input">
-<pre>// Media query breakpoints(bp)
+<h2>Media Query</h2>
+<p>_global.scss</p>
+    
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Media query breakpoints(bp)
 $bp-small:   480px !default;  // max-width
 $bp-mobile:  760px !default;  // max-width
 $bp-tablet:  760px !default;  // min-width
 $bp-desktop: 990px !default;  // min-width
-$bp-large:   1380px !default; // min-width</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
+$bp-large:   1380px !default; // min-width</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
   
-  </div>
-  
-</div><!-- .row -->
-
-<div class="row">
-  
-  <div class="col col-2 desc">
-    <h2>Mixin Defaults</h2>
-    <p>_global.scss</p>
-  </div>
-  
-  <div class="col col-10">
-  
-    <div class="example">
-      <div class="example-block example-input">
-<pre>// CSS3
+<h2>Mixin Defaults</h2>
+<p>_global.scss</p>
+    
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS3
 $border-radius: 3px !default;
 $box-shadow:    0 1px 3px rgba(0,0,0, 0.25) !default;
 $rotate-degree: 0 !default;
@@ -241,26 +222,16 @@ $gradient-color-stop:   50% !default;
 // Miscellaneous
 $letter-spacing: 1px !default;
 $display-visible: block !default;
-$bg-selection: rgba($blue, 0.25) !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
+$bg-selection: rgba($blue, 0.25) !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
   
-  </div>
-  
-</div><!-- .row -->
+<h2>Typography</h2>
+<p>_global.scss</p>
 
-<div class="row">
-  
-  <div class="col col-2 desc">
-    <h2>Typography</h2>
-    <p>_global.scss</p>
-  </div>
-  
-  <div class="col col-10">
-  
-    <div class="example">
-      <div class="example-block example-input">
-<pre>// Font Families
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Font Families
 $font-family-sans:  "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif !default;
 $font-family-slab:  "Rockwell", $font-family-sans !default;
 $font-family-serif: georgia, "Times New Roman", times, serif !default;
@@ -292,35 +263,48 @@ $color-link-hover: $orange !default;
 
 // Header Links
 $color-link-header:       $color-link !default;
-$color-link-header-hover: $color-link-hover !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
-  
-  </div>
-  
-</div><!-- .row -->
+$color-link-header-hover: $color-link-hover !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
 
-<div class="row">
+<h2>Scaffolding</h2>
+<p>_global.scss</p>
   
-  <div class="col col-2 desc">
-    <h2>Scaffolding</h2>
-    <p>_global.scss</p>
-  </div>
-  
-  <div class="col col-10">
-  
-    <div class="example">
-      <div class="example-block example-input">
-<pre>$bg-color:     rgba($black, 0.05) !default;
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bg-color:     rgba($black, 0.05) !default;
 $border-color: rgba($black, 0.1) !default;
-$border-width: 1px !default;</pre>
-      </div><!-- .example-input -->
-    </div><!-- .example -->
+$border-width: 1px !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
+            </div>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-content -->
+    
+  </div><!-- .block-table -->
   
-  </div>
+  <div class="block block-footer">
+    <div class="inner">
+      
+      <nav>
+        <ul class="nav-left">
+          <li><a href="#">
+            Feedback
+            <svg viewBox="0 0 20 20" class="icon icon-feedback">
+              <use xlink:href="#icon-feedback"></use>
+            </svg>
+          </a></li>
+        </ul>
+        <ul class="nav-right">
+          <li><a href="#" target="_blank">Privacy Policy</a></li>
+          <li><a href="#" target="_blank">Terms of Service</a></li>
+        </ul>
+      </nav>
+      
+    </div><!-- .inner -->
+  </div><!-- .block-footer -->
   
-</div><!-- .row -->    
-  </div>
 </div>
 
 <!-- jQuery -->
@@ -329,14 +313,8 @@ $border-width: 1px !default;</pre>
 
 <!-- JS -->
 <script src="../src/js/baseweb.min.js"></script>
-<script src="assets/js/global-tests.js"></script>
-
-<script>
-$( '.menu select' ).change(function() {
-  var url = $(this).val();
-  document.location.href = url;
-});
-</script>
+<script src="../docs/assets/js/docs.js"></script>
+<script src="../docs/assets/js/prism.js"></script>
 
 </body>
 </html>

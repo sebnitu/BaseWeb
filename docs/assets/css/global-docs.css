@@ -2,6 +2,34 @@
  * @blue: #2ab0ea;
  * @yellow: #fff200;
  */
+/*==============================================================================
+  BaseWeb Override
+==============================================================================*/
+
+body {
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+}
+
+h2 {
+  margin: 40px 0 10px;
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 600;
+}
+h2:first-child {
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 400;
+}
+
+hr {
+  width: auto;
+  margin-left: -50px;
+}
 
 /*==============================================================================
   Structure
@@ -175,7 +203,7 @@ html {
   position: relative;
   display: block;
   border: 0 none;
-  margin: 0 0 0 5px;
+  margin: 0 5px;
   padding: 5px 15px;
   color: #aaa;
 }
@@ -229,10 +257,21 @@ html {
 
 .block-content {}
 .block-content .inner {
-  padding: 25px 50px;
+  padding: 50px;
 }
 .block-content .container {
   max-width: 800px;
+}
+
+/**
+ * Variable Block
+ */
+.block-variable,
+.block-function,
+.block-mixin {
+  margin: 0 0 0 -50px;
+  padding: 0 0 0 50px;
+  border-top: 1px solid rgba(0,0,0, 0.1);
 }
 
 /**
@@ -271,6 +310,7 @@ html {
   background: rgba(0,0,0, 0.05);
 }
 .example .example-code pre {
+  margin: 10px 0;
   padding: 0;
   background: none;
 }
@@ -279,6 +319,9 @@ html {
 .example-output .row {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.example-output .row .row {
+  margin-bottom: 0;
 }
 .example-output .row:first-child .col {
   margin-top: 0;

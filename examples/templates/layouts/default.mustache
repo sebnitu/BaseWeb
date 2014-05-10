@@ -13,7 +13,12 @@
   
   <!-- Stylesheets and less -->
   <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
-  <link rel="stylesheet" type="text/css" media="all" href="assets/css/global-tests.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../docs/assets/css/global-docs.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../docs/assets/css/prism.css">
+  
+  <!-- Typekit -->
+  <script type="text/javascript" src="//use.typekit.net/vre4dcv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -22,41 +27,79 @@
 </head>
 <body>
 
-<div id="console"></div>
-
-<nav class="nav">
-  <div class="container">
-    
-    <form class="menu">
-      <label>
-        Tests &ndash;
-        <select>
-        {{ #menu }}
-          <option id="{{ id }}" value="{{{ url }}}" {{ select }}>{{ text }}</a></option>
-        {{ /menu }}
-        </select>
-      </label>
-    </form>
-    
-    <div class="title">
-      <p>{{ name }} <span>&ndash; {{ description }}</span></p>
-    </div>
-    
-  </div>
-</nav>
-
-<header class="header">
-  <div class="container">
-    <h1>{{ title }}</h1>
-  </div>
-</header>
-
-<div class="page">
-  <div class="container">
+<div class="block-wrapper">
+  
+  <div class="block block-header">
+    <div class="inner">
+      <nav>
       
-    {{ > page }}
-    
+        <ul class="nav-primary">
+          <li class="logo"><a href="/">{{ name }}</a></li>
+          <li class=""><a href="/docs/">Documentation</a></li>
+          <li class="active"><a href="/examples/">Examples</a></li>
+          <li class=""><a href="{{ repository.url }}">Download <span class="version">v{{ version }}</span></a></li>
+        </ul>
+        
+        <ul class="nav-secondary">
+          <li><a href="#">Star (24)</a></li>
+          <li><a href="#">Fork (6)</a></li>
+          <li><a href="#">Follow (45)</a></li>
+          <li><a href="#">Tweet (18.6k)</a></li>
+        </ul>
+        
+      </nav>
+    </div>
   </div>
+  
+  <div class="block block-main block-table">
+    
+    <div class="block block-cell block-aside">
+      <div class="inner">
+      
+        <nav>
+        	<ul>
+        	  {{ #menu }}
+              <li id="{{ id }}" class="{{ classes }}"><a href="{{{ url }}}">{{ text }}</a></li>
+            {{ /menu }}
+        	</ul>
+        </nav>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-aside -->
+    
+    <div class="block block-cell block-content">
+      <div class="inner clearfix">
+        
+        <div class="container container-align-left container-no-padding">
+          {{ > page }}
+        </div>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-content -->
+    
+  </div><!-- .block-table -->
+  
+  <div class="block block-footer">
+    <div class="inner">
+      
+      <nav>
+        <ul class="nav-left">
+          <li><a href="#">
+            Feedback
+            <svg viewBox="0 0 20 20" class="icon icon-feedback">
+              <use xlink:href="#icon-feedback"></use>
+            </svg>
+          </a></li>
+        </ul>
+        <ul class="nav-right">
+          <li><a href="#" target="_blank">Privacy Policy</a></li>
+          <li><a href="#" target="_blank">Terms of Service</a></li>
+        </ul>
+      </nav>
+      
+    </div><!-- .inner -->
+  </div><!-- .block-footer -->
+  
 </div>
 
 <!-- jQuery -->
@@ -65,14 +108,8 @@
 
 <!-- JS -->
 <script src="../src/js/baseweb.min.js"></script>
-<script src="assets/js/global-tests.js"></script>
-
-<script>
-$( '.menu select' ).change(function() {
-  var url = $(this).val();
-  document.location.href = url;
-});
-</script>
+<script src="../docs/assets/js/docs.js"></script>
+<script src="../docs/assets/js/prism.js"></script>
 
 </body>
 </html>

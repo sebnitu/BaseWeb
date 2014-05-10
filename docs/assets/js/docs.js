@@ -38,6 +38,21 @@ String.prototype.toTitleCase = function(){
    */
   $(document).ready(function () {
     
+    // Navigation
+    var headings = $('h2');
+    var nav_menu = $('.block-aside .active').append('<ul>').find('ul');
+    
+    var text, href;
+    
+    headings.each(function(index, element) {
+      
+      text = $(this).text();
+      href = $(this).attr('id');
+      
+      nav_menu.append('<li><a href="#' + href + '">' + text + '</a></li>');
+      
+    });
+        
     // Get our palette table
     var palette_table = $('.palette-table');
     
@@ -86,7 +101,7 @@ String.prototype.toTitleCase = function(){
     
     // Append our palette to the table
     palette_table.append(palette);
-    
+        
   });
 
 }(jQuery));

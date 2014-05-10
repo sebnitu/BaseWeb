@@ -2,14 +2,36 @@
 // Grid Functions
 ////////////////////////////////////////////////////////////////////////////////
 
-@function column_width( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
-  $-column-width: ($-total-width - ($-gutter-width * ($-columns - 1))) / $-columns;
-  @return ($-column-width * $-index) + ($-gutter-width * ($-index - 1));
+@function column_width(
+
+    $-index,
+    
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width: $grid-gutter-width,
+    $-grid-columns : $grid-columns
+  
+  ) {
+  
+  $-column-width: ($-grid-total-width - ($-grid-gutter-width * ($-grid-columns - 1))) / $-grid-columns;
+  
+  @return ($-column-width * $-index) + ($-grid-gutter-width * ($-index - 1));
+  
 }
 
-@function spacing_width( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
-  $-column-width : column_width( 1, $-total-width, $-gutter-width, $-columns );
-  @return ($-column-width * $-index) + ($-gutter-width * $-index);
+@function spacing_width(
+    
+    $-index,
+    
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width: $grid-gutter-width,
+    $-grid-columns : $grid-columns
+  
+  ) {
+
+  $-column-width : column_width( 1, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
+  
+  @return ($-column-width * $-index) + ($-grid-gutter-width * $-index);
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -17,28 +39,39 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Container
-@mixin make-container( $-total-width : $grid-total-width, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width, $-inc-class-container : $class-container ) {
+@mixin make-container(
+
+    $-grid-total-width : $grid-total-width,
+    
+    $-container-margin : $container-margin,
+    $-container-padding : $container-padding,
+    $-container-max-width : $container-max-width,
+    $-container-min-width : $container-min-width,
+    
+    $-class-container : $class-container
+  
+  ) {
   
   // Set the widths
-  width: $-total-width;
-  @if ($-min-width != none) {
-    min-width: $-min-width;
+  width: $-grid-total-width;
+  @if ($-container-min-width != none) {
+    min-width: $-container-min-width;
   }
-  @if ($-max-width != none) {
-    max-width: $-max-width;
+  @if ($-container-max-width != none) {
+    max-width: $-container-max-width;
   }
   
   margin: 0 $-container-margin;
   padding: 0 $-container-padding;
   
   // Modifier Classes
-  &.#{$-inc-class-container}-align-left {
+  &.#{$-class-container}-align-left {
     float: left;
   }
-  &.#{$-inc-class-container}-align-right {
+  &.#{$-class-container}-align-right {
     float: right;
   }
-  &.#{$-inc-class-container}-no-padding {
+  &.#{$-class-container}-no-padding {
     padding: 0;
   }
   
@@ -50,18 +83,23 @@
 }
 
 // Make Row
-@mixin make-row($-inc-class-column : $class-column) {
+@mixin make-row(
+
+    $-class-column : $class-column
+    
+  ) {
+  
   @include clearfix();
   
   // Row Modifiers
-  &.#{$-inc-class-column}-center {
+  &.#{$-class-column}-center {
     text-align: center;
     
     > * {
       font-size: 0;
       line-height: 0;
     }
-    .#{$-inc-class-column} {
+    .#{$-class-column} {
       float: none;
       display: inline-block;
       font-size: $font-size;
@@ -72,16 +110,22 @@
 }
 
 // Make Base Column (Does not include column width)
-@mixin make-base-column( $-gutter-width : $grid-gutter-width ) {
-  @if ($-gutter-width == mobile) {
+@mixin make-base-column(
+
+    $-grid-gutter-width : $grid-gutter-width
+  
+  ) {
+  
+  @if ($-grid-gutter-width == mobile) {
     width: 100%;
     margin: 0;
   } @else {
-    margin-left: $-gutter-width;
+    margin-left: $-grid-gutter-width;
     &:first-child {
       margin-left: 0;
     }
   }
+  
   float: left;
   min-height: 1px;
   
@@ -91,22 +135,49 @@
 }
 
 // Make Column
-@mixin make-column( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
+@mixin make-column(
+
+    $-index,
+    
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width: $grid-gutter-width,
+    $-grid-columns : $grid-columns
+    
+  ) {
+  
   @include make-base-column;
-  width: column_width( $-index, $-total-width, $-gutter-width, $-columns );
+  width: column_width( $-index, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
 }
 
 // Make Prefix
-@mixin give-prefix( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
-  margin-left: (spacing_width( $-index, $-total-width, $-gutter-width, $-columns ) + $-gutter-width);
+@mixin give-prefix(
+
+    $-index,
+    
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width: $grid-gutter-width,
+    $-grid-columns : $grid-columns
+
+  ) {
+
+  margin-left: (spacing_width( $-index, $-grid-total-width, $-grid-gutter-width, $-grid-columns ) + $-grid-gutter-width);
   &:first-child {
-    margin-left: spacing_width( $-index, $-total-width, $-gutter-width, $-columns );
+    margin-left: spacing_width( $-index, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
   }
 }
 
 // Make Suffix
-@mixin give-suffix( $-index, $-total-width : $grid-total-width, $-gutter-width: $grid-gutter-width, $-columns : $grid-columns ) {
-  margin-right: spacing_width( $-index, $-total-width, $-gutter-width, $-columns );
+@mixin give-suffix(
+
+    $-index,
+    
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width: $grid-gutter-width,
+    $-grid-columns : $grid-columns
+
+  ) {
+
+  margin-right: spacing_width( $-index, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -115,7 +186,15 @@
 
 // Make Mobile Grid System
 // Outputs the styles for a mobile grid system where all columns are stacked
-@mixin build-mobile-grid-system( $-class-container : $class-container, $-class-row : $class-row, $-class-column : $class-column ) {
+@mixin build-mobile-grid-system(
+
+    $-class-container : $class-container,
+    $-class-row : $class-row,
+    $-class-column : $class-column,
+    $-class-prefix : $class-prefix,
+    $-class-suffix : $class-suffix
+    
+  ) {
 
   .#{$-class-container} {
     @include make-container( 100% );
@@ -129,45 +208,85 @@
     @include make-base-column( mobile );
   }
   
-}
-
-// Build Grid System
-// Outputs all the classes and styles for the class based grid system
-@mixin build-grid-system( $-total-width : $grid-total-width, $-gutter-width : $grid-gutter-width, $-columns : $grid-columns, $-container-margin : $container-margin, $-container-padding : $container-padding, $-max-width : $container-max-width, $-min-width : $container-min-width, $-inc-prefix : $class-prefix, $-inc-suffix : $class-suffix ) {
-  
-  .#{$class-container} {
-    @include make-container( $-total-width, $-container-margin, $-container-padding, $-max-width, $-min-width );
-  }
-  
-  .#{$class-row} {
-    @include make-row();
-  }
-  
-  .#{$class-column} {
-    @include make-base-column( $-gutter-width );
-  }
-  
-  @for $i from 1 through $-columns {
-    .#{$class-column}-#{$i} {
-      @extend .#{$class-column};
-    }
-    .#{$class-column}-#{$i} {
-      width: column_width( $i, $-total-width, $-gutter-width, $-columns );
-    }
-  }
-  
-  @if ($-inc-prefix != none) {
-    @for $i from 1 through $-columns {    
-      .#{$class-prefix}-#{$i} {
-        @include give-prefix( $i, $-total-width, $-gutter-width, $-columns );
+  @if ($-class-prefix != none) {
+    .#{$-class-prefix} {
+      margin-left: 0;
+      &:first-child {
+        margin-left: 0;
       }
     }
   }
   
-  @if ($-inc-suffix != none) {
-    @for $i from 1 through $-columns {  
-      .#{$class-suffix}-#{$i} {
-        @include give-suffix( $i, $-total-width, $-gutter-width, $-columns );
+  @if ($-class-suffix != none) {
+    .#{$-class-suffix} {
+      margin-right: 0;
+    }
+  }
+}
+
+// Build Grid System
+// Outputs all the classes and styles for the class based grid system
+@mixin build-grid-system(
+
+    $-grid-total-width : $grid-total-width,
+    $-grid-gutter-width : $grid-gutter-width,
+    $-grid-columns : $grid-columns,
+    
+    $-container-margin : $container-margin,
+    $-container-padding : $container-padding,
+    $-container-max-width : $container-max-width,
+    $-container-min-width : $container-min-width,
+    
+    $-class-container : $class-container,
+    $-class-row : $class-row,
+    $-class-column : $class-column,
+    $-class-prefix : $class-prefix,
+    $-class-suffix : $class-suffix
+  
+  ) {
+  
+  .#{$-class-container} {
+    @include make-container(
+    
+      $-grid-total-width,
+      
+      $-container-margin,
+      $-container-padding,
+      $-container-max-width,
+      $-container-min-width
+      
+    );
+  }
+  
+  .#{$-class-row} {
+    @include make-row();
+  }
+  
+  .#{$-class-column} {
+    @include make-base-column( $-grid-gutter-width );
+  }
+  
+  @for $i from 1 through $-grid-columns {
+    .#{$-class-column}-#{$i} {
+      @extend .#{$-class-column};
+    }
+    .#{$-class-column}-#{$i} {
+      width: column_width( $i, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
+    }
+  }
+  
+  @if ($-class-prefix != none) {
+    @for $i from 1 through $-grid-columns {    
+      .#{$-class-prefix}-#{$i} {
+        @include give-prefix( $i, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
+      }
+    }
+  }
+  
+  @if ($-class-suffix != none) {
+    @for $i from 1 through $-grid-columns {  
+      .#{$-class-suffix}-#{$i} {
+        @include give-suffix( $i, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
       }
     }
   }

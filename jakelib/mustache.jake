@@ -92,7 +92,9 @@ var buildMenu = function(o, current) {
       'url' : '../' + o.dir + name_html,
       'text' : text,
       'id' : 'menu-item-' + slug,
-      'order' : 0
+      'order' : 0,
+      'classes' : 'menu-item',
+      'select' : ''
     };
     
     if ( page_options.order ) {
@@ -100,9 +102,8 @@ var buildMenu = function(o, current) {
     }
     
     if ( menu[i].name_mustache === current ) {
+      menu[i].classes = menu[i].classes + ' active';
       menu[i].select = 'selected="selected"';
-    } else {
-      menu[i].select = '';
     }
         
   }
