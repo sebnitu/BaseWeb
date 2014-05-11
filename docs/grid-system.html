@@ -102,7 +102,7 @@
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+<pre><code id="code-sample" class="language-markup">&lt;div class=&quot;container&quot;&gt;
 
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
@@ -121,11 +121,14 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
-<p>The class based grid system is generated using the <a href="#build-grid-system" class="link-code"><code>build-grid-system()</code></a> mixin. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
+<p>The class based grid system is generated using the <a href="#build-grid-system" class="code-link"><code>build-grid-system()</code></a> mixin. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
 
-<p>There's also the mobile grid system mixin <a href="#build-mobile-grid-system" class="link-code"><code>build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
+<p>There's also the mobile grid system mixin <a href="#build-mobile-grid-system" class="code-link"><code>build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
 
 <div class="example">
+  <div class="example-block example-desc">
+    <p>In this example, we're using the <a href="#media-queries">media query mixins</a> to set grid systems for different breakpoints.</p>
+  </div><!-- .example-desc -->
   <div class="example-block example-code">
 <pre><code class="language-scss">@include build-mobile-grid-system();
 
@@ -141,7 +144,16 @@
 
 <h2 id="semantic-grid">Semantic Grids</h2>
 
-<p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets.</p>
+<p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets. The <a href="#mixins">mixins</a> section below has details on all of the mixins available for semantic grids:</p>
+
+<ul>
+  <li><a href="#make-container" class="code-link"><code>@mixin make-container()</code></a></li>
+  <li><a href="#make-row" class="code-link"><code>@mixin make-row()</code></a></li>
+  <li><a href="#make-base-column" class="code-link"><code>@mixin make-base-column()</code></a></li>
+  <li><a href="#make-column" class="code-link"><code>@mixin make-column()</code></a></li>
+  <li><a href="#give-prefix" class="code-link"><code>@mixin give-prefix()</code></a></li>
+  <li><a href="#give-suffix" class="code-link"><code>@mixin give-suffix()</code></a></li>
+</ul>
 
 <div class="example">
   <div class="example-block example-output">
@@ -171,6 +183,38 @@
     
     .article {
       @include make-column(8);
+    }
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns are set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
+
+<ul>
+  <li><a href="#column_width" class="code-link"><code>@function column_width()</code></a></li>
+  <li><a href="#spacing_width" class="code-link"><code>@function spacing_width()</code></a></li>
+</ul>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.wrapper {
+  @include make-container;
+  
+  .content {
+    @include make-row;
+    
+    .aside,
+    .article {
+      @include make-base-column;
+    }
+    
+    .aside {
+      width: column_width(4);
+    }
+    .article {
+      width: column_width(6);
+      margin-left: spacing_width(2);
     }
   }
 }</code></pre>
@@ -229,7 +273,7 @@
 
 <h2 id="nested-columns">Nested Columns</h2>
 
-<p>... Descriptions Needed ...</p>
+<p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to manually remove the gutter margin.</p>
 
 <div class="example">
   <div class="example-block example-desc">
@@ -286,43 +330,36 @@
 
 <h2 id="media-queries">Media Queries</h2>
 
-<p>... Descriptions Needed ...</p>
+<p>BaseWeb is built to be mobile first. What this means in terms of media queries is that they are additive starting from mobile. All styles not wrapped in a media query will be applied to mobile. The tablet breakpoint then gets added on top of those styles, then desktop, etc. There are also media queries you can use to apply styles to mobile and horizontal mobile only.</p>
 
 <div class="example">
+  <div class="example-block example-desc">
+    <p>These are the available media query mixins. If you prefer instead to run your queries differently, or to add new queries, you can modify <code>core/_responsive.scss</code>.</p>
+  </div><!-- .example-desc -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// Small
-@mixin media-small {
-  @media screen and (max-width: $bp-small ) {
-    @content;
-  }
+<pre><code class="language-scss">@include media-small {
+  // Default: max-width: $bp-small
+  // Target: Horizontal Mobile
 }
 
-// Mobile
-@mixin media-mobile {
-  @media screen and (max-width: $bp-mobile ) {
-    @content;
-  }
+@include media-mobile {
+  // Default: max-width: $bp-mobile
+  // Target: Mobile
 }
 
-// Tablet
-@mixin media-tablet {
-  @media screen and ( min-width: $bp-tablet ) {
-    @content;
-  }
+@include media-tablet {
+  // Default: min-width: $bp-tablet
+  // Target: Tablet
 }
 
-// Desktop
-@mixin media-desktop {
-  @media screen and ( min-width: $bp-desktop ) {
-    @content;
-  }
+@include media-desktop {
+  // Default: min-width: $bp-desktop
+  // Target: Desktop
 }
 
-// Large
-@mixin media-large {
-  @media screen and ( min-width: $bp-large ) {
-    @content;
-  }
+@include media-large {
+  // Default: min-width: $bp-large
+  // Target: Wide Screen Desktop
 }</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
