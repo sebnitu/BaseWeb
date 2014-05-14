@@ -262,7 +262,7 @@
 
 <div class="example">
   <div class="example-block example-desc">
-    <p>These are the available media query mixins. If you prefer instead to run your queries differently, or to add new queries, you can modify <code>core/_responsive.scss</code>.</p>
+    <p>These are the available media query mixins. If you prefer instead to run your queries differently, or to add new queries, you can modify <code>core/_media.scss</code>.</p>
   </div><!-- .example-desc -->
   <div class="example-block example-code">
 <pre><code class="language-scss">@include media-small {
@@ -292,6 +292,11 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
+<h3>Retina Media Query</h3>
+
+<h2 id="base-reset-styles">Base Reset Styles</h2>
+
+
 <h2 id="variables">Variables</h2>
 
 <article id="grid-total-width" class="block block-variable" data-type="variable">
@@ -308,7 +313,7 @@
 
 <article id="grid-gutter-width" class="block block-variable" data-type="variable">
 <h3>grid-gutter-width</h3>
-<p>Defines the space between each column. The value type must be the same as the <code>$grid-total-width</code>. So they both must be either percentages or pixels.</p>
+<p>Defines the space between each column. The value type must be the same as the <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a>. So they both must be either percentages or pixels.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$grid-gutter-width
@@ -332,7 +337,7 @@
 
 <article id="container-margin" class="block block-variable" data-type="variable">
 <h3>container-margin</h3>
-<p>... Descriptions Needed ...</p>
+<p>The left and right margin that is applied to the container element. If set to <code>auto</code> the container will be centered to the page or parent element.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$container-margin
@@ -344,7 +349,7 @@
 
 <article id="container-padding" class="block block-variable" data-type="variable">
 <h3>container-padding</h3>
-<p>... Descriptions Needed ...</p>
+<p>The left and right padding that is applied to the container element. This is added in addition to the containers total width that is set by <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a>.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$container-padding
@@ -356,11 +361,11 @@
 
 <article id="container-min-width" class="block block-variable" data-type="variable">
 <h3>container-min-width</h3>
-<p>... Descriptions Needed ...</p>
+<p>Minimum width that is applied to the container element. Only applicable when using a percentage based grid.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$container-min-width
-  type: ...
+  type: unit (pixel, none)
   default: none</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -368,11 +373,11 @@
 
 <article id="container-max-width" class="block block-variable" data-type="variable">
 <h3>container-max-width</h3>
-<p>... Descriptions Needed ...</p>
+<p>Maximum width that is applied to the container element. Only applicable when using a percentage based grid.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$container-max-width
-  type: ...
+  type: unit (pixel, none)
   default: 1000px</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -380,7 +385,7 @@
 
 <article id="class-container" class="block block-variable" data-type="variable">
 <h3>class-container</h3>
-<p>... Descriptions Needed ...</p>
+<p>The class name to be used for the container element. The container element is what inherits the total width property and is the wrapping element of rows.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-container
@@ -392,7 +397,7 @@
 
 <article id="class-row" class="block block-variable" data-type="variable">
 <h3>class-row</h3>
-<p>... Descriptions Needed ...</p>
+<p>The class name to be used for the row element. The row element is the wrapping element of columns and clears inner floats.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-row
@@ -404,7 +409,7 @@
 
 <article id="class-column" class="block block-variable" data-type="variable">
 <h3>class-column</h3>
-<p>... Descriptions Needed ...</p>
+<p>The class name to be used for the column element. The column element is used inside of rows and sets the number of columns that are spanned. The column name will be output with a base column class and a column span class: e.g. <code>.col .col-X</code> where <code>col</code> is the defined column class and <code>X</code> is the number of columns to span.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-column
@@ -416,7 +421,7 @@
 
 <article id="class-prefix" class="block block-variable" data-type="variable">
 <h3>class-prefix</h3>
-<p>... Descriptions Needed ...</p>
+<p>The class name to be used for the prefix element. The prefix class is added to columns to pad their left with a specific column span. The classes generated look like <code>.prefix-X</code> where <code>prefix</code> is the class name and <code>X</code> is the number of columns to span.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-prefix
@@ -428,7 +433,7 @@
 
 <article id="class-suffix" class="block block-variable" data-type="variable">
 <h3>class-suffix</h3>
-<p>... Descriptions Needed ...</p>
+<p>The class name to be used for the suffix element. The suffix class is added to columns to pad their right with a specific column span. The classes generated look like <code>.suffix-X</code> where <code>suffix</code> is the class name and <code>X</code> is the number of columns to span.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-suffix
@@ -440,7 +445,7 @@
 
 <article id="bp-small" class="block block-variable" data-type="variable">
 <h3>bp-small</h3>
-<p>... Descriptions Needed ...</p>
+<p>The breakpoint to be used for vertical oriented mobile devices. The media feature is expressed with: <code>max-width</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bp-small
@@ -452,7 +457,7 @@
 
 <article id="bp-mobile" class="block block-variable" data-type="variable">
 <h3>bp-mobile</h3>
-<p>... Descriptions Needed ...</p>
+<p>The breakpoint to be used for all mobile devices and orientations. The media feature is expressed with: <code>max-width</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bp-mobile
@@ -464,7 +469,7 @@
 
 <article id="bp-tablet" class="block block-variable" data-type="variable">
 <h3>bp-tablet</h3>
-<p>... Descriptions Needed ...</p>
+<p>The breakpoint to be used for tablet devices. The media feature is expressed with: <code>min-width</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bp-tablet
@@ -476,7 +481,7 @@
 
 <article id="bp-desktop" class="block block-variable" data-type="variable">
 <h3>bp-desktop</h3>
-<p>... Descriptions Needed ...</p>
+<p>The breakpoint to be used for computer screens. The media feature is expressed with: <code>min-width</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bp-desktop
@@ -488,7 +493,7 @@
 
 <article id="bp-large" class="block block-variable" data-type="variable">
 <h3>bp-large</h3>
-<p>... Descriptions Needed ...</p>
+<p>The breakpoint to be used for large computer screens. The media feature is expressed with: <code>min-width</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bp-large
@@ -717,6 +722,18 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin media-large {
+  @content
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<article id="media-retina" class="block block-mixin" data-type="mixin">
+<h3>media-retina</h3>
+<p>... Descriptions Needed ...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-retina {
   @content
 }</code></pre>
   </div><!-- .example-code -->

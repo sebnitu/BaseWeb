@@ -2,7 +2,7 @@
 // Media Query Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Small
+// Vertical Mobile
 @mixin media-small {
   @media screen and (max-width: $bp-small ) {
     @content;
@@ -33,6 +33,13 @@
 // Large
 @mixin media-large {
   @media screen and ( min-width: $bp-large ) {
+    @content;
+  }
+}
+
+// Retina
+@mixin media-retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     @content;
   }
 }
