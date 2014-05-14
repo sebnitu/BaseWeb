@@ -339,7 +339,7 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@include media-small {
   // Default: max-width: $bp-small
-  // Target: Horizontal Mobile
+  // Target: Vertical Oriented Mobile
 }
 
 @include media-mobile {
@@ -366,8 +366,38 @@
 
 <h3>Retina Media Query</h3>
 
+<p>There's also a media query mixin that can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images for retina screens.</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.logo {
+  background-image: src('logo.png');
+}
+
+@include media-retina {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 <h2 id="base-reset-styles">Base Reset Styles</h2>
 
+<p>BaseWeb comes with a very basic reset styles that do a few things.</p>
+
+<ul>
+  <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
+  <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
+  <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
+  <li>Creates the clearfix class using the <a href="#" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
+  <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
+  <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
+  <li>Sets border collapse and spacing for tables</li>
+  <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
+</ul>
 
 <h2 id="variables">Variables</h2>
 
