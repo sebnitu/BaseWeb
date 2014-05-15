@@ -9,6 +9,8 @@ $table-padding-condensed: 5px 10px;
 $table-padding: 10px 15px;
 $table-padding-expanded: 15px 20px;
 
+$table-alignment: baseline;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +30,19 @@ $table-padding-expanded: 15px 20px;
     padding: $table-padding;
     border-bottom: 1px solid $color-border-table;
     border-left: 1px solid $color-border-table;
+    
+    // Modifiers
+    &[rowspan] {
+      border-right: 1px solid $color-border-table;
+      
+      & + td,
+      & + th {
+        border-left: 0 none;
+      }
+    }
+    &.rowspan-last {
+      border-bottom: 0 none;
+    }
   }
   
   tr:first-child th {
@@ -161,6 +176,10 @@ table {
     color: $color-header;
     text-align: left;
     font-weight: bold;
+  }
+  tr {
+    // Default alignment
+    vertical-align: $table-alignment;
   }
   
   // Modifiers

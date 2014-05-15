@@ -366,6 +366,8 @@ table {
     color: #303030;
     text-align: left;
     font-weight: bold; }
+  table tr {
+    vertical-align: baseline; }
   table.table-valign-baseline tr {
     vertical-align: baseline; }
   table.table-valign-top tr {
@@ -407,6 +409,12 @@ table {
     padding: 10px 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     border-left: 1px solid rgba(0, 0, 0, 0.1); }
+    .table-bordered td[rowspan], .table-bordered th[rowspan] {
+      border-right: 1px solid rgba(0, 0, 0, 0.1); }
+      .table-bordered td[rowspan] + td, .table-bordered td[rowspan] + th, .table-bordered th[rowspan] + td, .table-bordered th[rowspan] + th {
+        border-left: 0 none; }
+    .table-bordered td.rowspan-last, .table-bordered th.rowspan-last {
+      border-bottom: 0 none; }
   .table-bordered tr:first-child th {
     border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
   .table-bordered tr:last-child td {
@@ -431,6 +439,12 @@ table {
   padding: 10px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-left: 1px solid rgba(0, 0, 0, 0.1); }
+  .table-bordered-sep td[rowspan], .table-bordered-sep th[rowspan] {
+    border-right: 1px solid rgba(0, 0, 0, 0.1); }
+    .table-bordered-sep td[rowspan] + td, .table-bordered-sep td[rowspan] + th, .table-bordered-sep th[rowspan] + td, .table-bordered-sep th[rowspan] + th {
+      border-left: 0 none; }
+  .table-bordered-sep td.rowspan-last, .table-bordered-sep th.rowspan-last {
+    border-bottom: 0 none; }
 .table-bordered-sep tr:first-child th {
   border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
 .table-bordered-sep tr:last-child td {
@@ -1548,12 +1562,14 @@ form .btn {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px; }
-  .container.container-align-left {
+  .container.container-float-left {
     float: left; }
-  .container.container-align-right {
+  .container.container-float-right {
     float: right; }
   .container.container-no-padding {
     padding: 0; }
+  .container.container-no-margin {
+    margin: 0; }
   .container:after {
     content: "";
     display: table;
@@ -1563,17 +1579,21 @@ form .btn {
   content: "";
   display: table;
   clear: both; }
-.row.col-center {
+.row.row-center {
   text-align: center; }
-  .row.col-center > * {
+  .row.row-center > * {
     font-size: 0;
     line-height: 0; }
-  .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+  .row.row-center .col, .row.row-center .col-1, .row.row-center .col-2, .row.row-center .col-3, .row.row-center .col-4, .row.row-center .col-5, .row.row-center .col-6, .row.row-center .col-7, .row.row-center .col-8, .row.row-center .col-9, .row.row-center .col-10, .row.row-center .col-11, .row.row-center .col-12 {
     float: none;
     display: inline-block;
     font-size: 14px;
     line-height: 20px;
     text-align: left; }
+    .row.row-center .col:after {
+      content: "";
+      display: table;
+      clear: both; }
 
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   width: 100%;
@@ -1598,12 +1618,14 @@ form .btn {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px; }
-    .container.container-align-left {
+    .container.container-float-left {
       float: left; }
-    .container.container-align-right {
+    .container.container-float-right {
       float: right; }
     .container.container-no-padding {
       padding: 0; }
+    .container.container-no-margin {
+      margin: 0; }
     .container:after {
       content: "";
       display: table;
@@ -1612,17 +1634,21 @@ form .btn {
     content: "";
     display: table;
     clear: both; }
-  .row.col-center {
+  .row.row-center {
     text-align: center; }
-    .row.col-center > * {
+    .row.row-center > * {
       font-size: 0;
       line-height: 0; }
-    .row.col-center .col, .row.col-center .col-1, .row.col-center .col-2, .row.col-center .col-3, .row.col-center .col-4, .row.col-center .col-5, .row.col-center .col-6, .row.col-center .col-7, .row.col-center .col-8, .row.col-center .col-9, .row.col-center .col-10, .row.col-center .col-11, .row.col-center .col-12 {
+    .row.row-center .col, .row.row-center .col-1, .row.row-center .col-2, .row.row-center .col-3, .row.row-center .col-4, .row.row-center .col-5, .row.row-center .col-6, .row.row-center .col-7, .row.row-center .col-8, .row.row-center .col-9, .row.row-center .col-10, .row.row-center .col-11, .row.row-center .col-12 {
       float: none;
       display: inline-block;
       font-size: 14px;
       line-height: 20px;
       text-align: left; }
+      .row.row-center .col:after {
+        content: "";
+        display: table;
+        clear: both; }
   .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     margin-left: 2%;
     float: left;
@@ -1737,12 +1763,14 @@ form .btn {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px; }
-  .demo-wrapper.container-align-left {
+  .demo-wrapper.container-float-left {
     float: left; }
-  .demo-wrapper.container-align-right {
+  .demo-wrapper.container-float-right {
     float: right; }
   .demo-wrapper.container-no-padding {
     padding: 0; }
+  .demo-wrapper.container-no-margin {
+    margin: 0; }
   .demo-wrapper:after {
     content: "";
     display: table;
@@ -1751,17 +1779,21 @@ form .btn {
     content: "";
     display: table;
     clear: both; }
-  .demo-wrapper .demo-content.col-center {
+  .demo-wrapper .demo-content.row-center {
     text-align: center; }
-    .demo-wrapper .demo-content.col-center > * {
+    .demo-wrapper .demo-content.row-center > * {
       font-size: 0;
       line-height: 0; }
-    .demo-wrapper .demo-content.col-center .col, .demo-wrapper .demo-content.col-center .col-1, .demo-wrapper .demo-content.col-center .col-2, .demo-wrapper .demo-content.col-center .col-3, .demo-wrapper .demo-content.col-center .col-4, .demo-wrapper .demo-content.col-center .col-5, .demo-wrapper .demo-content.col-center .col-6, .demo-wrapper .demo-content.col-center .col-7, .demo-wrapper .demo-content.col-center .col-8, .demo-wrapper .demo-content.col-center .col-9, .demo-wrapper .demo-content.col-center .col-10, .demo-wrapper .demo-content.col-center .col-11, .demo-wrapper .demo-content.col-center .col-12 {
+    .demo-wrapper .demo-content.row-center .col, .demo-wrapper .demo-content.row-center .col-1, .demo-wrapper .demo-content.row-center .col-2, .demo-wrapper .demo-content.row-center .col-3, .demo-wrapper .demo-content.row-center .col-4, .demo-wrapper .demo-content.row-center .col-5, .demo-wrapper .demo-content.row-center .col-6, .demo-wrapper .demo-content.row-center .col-7, .demo-wrapper .demo-content.row-center .col-8, .demo-wrapper .demo-content.row-center .col-9, .demo-wrapper .demo-content.row-center .col-10, .demo-wrapper .demo-content.row-center .col-11, .demo-wrapper .demo-content.row-center .col-12 {
       float: none;
       display: inline-block;
       font-size: 14px;
       line-height: 20px;
       text-align: left; }
+      .demo-wrapper .demo-content.row-center .col:after {
+        content: "";
+        display: table;
+        clear: both; }
   .demo-wrapper .demo-content .demo-aside {
     margin-left: 2%;
     float: left;

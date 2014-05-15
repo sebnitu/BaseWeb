@@ -70,6 +70,7 @@
       <div class="inner clearfix">
         
         <div class="container container-align-left container-no-padding">
+
 <h2 id="grid-system">Grid System</h2>
 
 <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
@@ -141,6 +142,52 @@
 }</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h3>Modifier Classes</h3>
+
+<p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
+
+<table class="table-bordered">
+  <tr>
+    <th rowspan="1">Base Element</th>
+    <th>Modifier Class</th>
+    <th>Description</th>
+  </tr>
+  
+  <tr>
+    <td rowspan="4"><code>.container</code></td>
+    <td><code>.container-float-left</code></td>
+    <td>Floats container to the left</td>
+  </tr>
+  <tr>
+    <td><code>.container-float-right</code></td>
+    <td>Floats container to the right</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-padding</code></td>
+    <td>Removes padding from container</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-margin</code></td>
+    <td>Removes margin from container</td>
+  </tr>
+  
+  <tr>
+    <td rowspan="1"><code>.row</code></td>
+    <td><code>.row-center</code></td>
+    <td>Centers columns in the row</td>
+  </tr>
+  
+  <tr>
+    <td rowspan="2" class="rowspan-last"><code>.col</code></td>
+    <td><code>.prefix-X</code></td>
+    <td>Adds column spacing before the element based on <code>X</code></td>
+  </tr>
+  <tr>
+    <td><code>.suffix-X</code></td>
+    <td>Adds column spacing after the element based on <code>X</code></td>
+  </tr>
+</table>
 
 <h2 id="semantic-grid">Semantic Grids</h2>
 
@@ -611,32 +658,122 @@
 
 <article id="column_width" class="block block-function" data-type="function">
 <h3>column_width</h3>
-<p>... Descriptions Needed ...</p>
+<p>A function that returns the width of a column span based on the properties passed in.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@function column_width(
   $index,
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4 id="param-column_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-column_width-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The number of column span you want returned.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
 </article>
 
 <article id="spacing_width" class="block block-function" data-type="function">
 <h3>spacing_width</h3>
-<p>... Descriptions Needed ...</p>
+<p>A function that returns the width of column spacing (similar to how prefix and suffix works) based on the properties passed in.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@function spacing_width(
   $index,
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4 id="param-spacing_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-spacing_width-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The number of column span you want returned.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
 </article>
 
 <hr>
@@ -650,12 +787,10 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-container(
   $grid-total-width,
-  
   $container-margin,
   $container-padding,
   $container-max-width,
   $container-min-width,
-  
   $class-container
 )</code></pre>
   </div><!-- .example-code -->
@@ -668,6 +803,7 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-row(
+  $class-row,
   $class-column
 )</code></pre>
   </div><!-- .example-code -->

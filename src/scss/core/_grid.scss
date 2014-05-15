@@ -65,14 +65,17 @@
   padding: 0 $-container-padding;
   
   // Modifier Classes
-  &.#{$-class-container}-align-left {
+  &.#{$-class-container}-float-left {
     float: left;
   }
-  &.#{$-class-container}-align-right {
+  &.#{$-class-container}-float-right {
     float: right;
   }
   &.#{$-class-container}-no-padding {
     padding: 0;
+  }
+  &.#{$-class-container}-no-margin {
+    margin: 0;
   }
   
   @include clearfix();
@@ -85,14 +88,15 @@
 // Make Row
 @mixin make-row(
 
-    $-class-column : $class-column
+    $-class-row : $class-row,
+    $-class-column: $class-column
     
   ) {
   
   @include clearfix();
   
   // Row Modifiers
-  &.#{$-class-column}-center {
+  &.#{$-class-row}-center {
     text-align: center;
     
     > * {
@@ -102,6 +106,7 @@
     .#{$-class-column} {
       float: none;
       display: inline-block;
+      @include clearfix();
       font-size: $font-size;
       line-height: $line-height;
       text-align: left;
