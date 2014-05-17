@@ -20,7 +20,7 @@ A fresh front-end development framework.
 
 ### Current jake tasks
 
-* `jake build:less` : Compiles and minifies BaseWeb using LESS
+* `jake build:less` : Compiles and minifies BaseWeb using LESS *(soon to be depricated)*
 * `jake build:scss` : Compiles and minifies BaseWeb using SASS
 * `jake build:js` : Compiles and minifies JavaScript
 * `jake build:img` : Optimize Images

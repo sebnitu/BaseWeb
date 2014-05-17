@@ -89,7 +89,7 @@
 @mixin make-row(
 
     $-class-row : $class-row,
-    $-class-column: $class-column
+    $-class-column : $class-column
     
   ) {
   
@@ -117,7 +117,8 @@
 // Make Base Column (Does not include column width)
 @mixin make-base-column(
 
-    $-grid-gutter-width : $grid-gutter-width
+    $-grid-gutter-width : $grid-gutter-width,
+    $-class-column : $class-column
   
   ) {
   
@@ -126,6 +127,7 @@
     margin: 0;
   } @else {
     margin-left: $-grid-gutter-width;
+    &.#{$-class-column}-no-gutter,
     &:first-child {
       margin-left: 0;
     }

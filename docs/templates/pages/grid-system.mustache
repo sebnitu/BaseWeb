@@ -72,7 +72,7 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
-<h3>Modifier Classes</h3>
+<h3 id="grid-system-modifier-classes">Modifier Classes</h3>
 
 <p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
 
@@ -108,13 +108,17 @@
   </tr>
   
   <tr>
-    <td rowspan="2" class="rowspan-last"><code>.col</code></td>
+    <td rowspan="3" class="rowspan-last"><code>.col</code></td>
     <td><code>.prefix-X</code></td>
     <td>Adds column spacing before the element based on <code>X</code></td>
   </tr>
   <tr>
     <td><code>.suffix-X</code></td>
     <td>Adds column spacing after the element based on <code>X</code></td>
+  </tr>
+  <tr>
+    <td><code>.col-no-gutter</code></td>
+    <td>Removes gutter from the column</td>
   </tr>
 </table>
 
@@ -165,7 +169,7 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
-<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns are set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
+<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns and set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
 
 <ul>
   <li><a href="#column_width" class="code-link"><code>@function column_width()</code></a></li>
@@ -231,7 +235,7 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
-<p>The semantic grid system equivalent would look something like this:</p>
+<p>The semantic grid system equivalent would look like this:</p>
 
 <div class="example">
   <div class="example-block example-code">
@@ -249,11 +253,11 @@
 
 <h2 id="nested-columns">Nested Columns</h2>
 
-<p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to manually remove the gutter margin.</p>
+<p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to either manually remove the gutter margin or use the <a href="#grid-system-modifier-classes" class="code-link"><code>.col-no-gutter</code></a> modifier class.</p>
 
 <div class="example">
   <div class="example-block example-desc">
-    <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <code>$grid-columns</code>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent <code>.col</code> element. If you want to mix fixed and fluid grids between breakpoints, it's best to use the <a href="#semantic-grid">semantic grid</a> method.</p>
+    <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent <code>.col</code> element. If you want to mix fixed and fluid grids between breakpoints, it's recommended to use the <a href="#semantic-grid">semantic grid</a> method.</p>
   </div><!-- .example-desc -->
   <div class="example-block example-output">
     
@@ -306,12 +310,11 @@
 
 <h2 id="media-queries">Media Queries</h2>
 
-<p>BaseWeb is built to be mobile first. What this means in terms of media queries is that they are additive starting from mobile. All styles not wrapped in a media query will be applied to mobile. The tablet breakpoint then gets added on top of those styles, then desktop, etc. There are also media queries you can use to apply styles to mobile and horizontal mobile only.</p>
+<p>BaseWeb is built mobile first. What this means in terms of media queries is that each is additive starting from tablet. All styles not wrapped in a media query are applied to mobile directly. The tablet breakpoint is added on top of the base mobile styles, then desktop on top of mobile and tablet, etc.</p>
+
+<p>There are also two supplementary media queries. <code>@mixin media-mobile</code> lets you apply styles to only mobile and <code>@mixin media-small</code> to only vertical oriented mobile.</p>
 
 <div class="example">
-  <div class="example-block example-desc">
-    <p>These are the available media query mixins. If you prefer instead to run your queries differently, or to add new queries, you can modify <code>core/_media.scss</code>.</p>
-  </div><!-- .example-desc -->
   <div class="example-block example-code">
 <pre><code class="language-scss">@include media-small {
   // Default: max-width: $bp-small
@@ -340,9 +343,13 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
+<div class="notice notice-warning notice-no-close">
+  <p>If you prefer to run your queries differently (desktop first, for example), or if you'd like to add new queries, make sure to review the <a href="#">customization documentation</a>. If possible, try and avoid modifying core BaseWeb files directly as that makes updating to newer versions much more difficult.</p>
+</div>
+
 <h3>Retina Media Query</h3>
 
-<p>There's also a media query mixin that can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images for retina screens.</p>
+<p>There's also a media query mixin that can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
 
 <div class="example">
   <div class="example-block example-code">
@@ -360,6 +367,7 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
+{{! This should go somewhere else
 <h2 id="base-reset-styles">Base Reset Styles</h2>
 
 <p>BaseWeb comes with a very basic reset styles that do a few things.</p>
@@ -374,6 +382,7 @@
   <li>Sets border collapse and spacing for tables</li>
   <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
 </ul>
+}}
 
 <h2 id="variables">Variables</h2>
 
@@ -715,12 +724,12 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-container(
-  $grid-total-width,
-  $container-margin,
-  $container-padding,
-  $container-max-width,
-  $container-min-width,
-  $class-container
+  $-grid-total-width,
+  $-container-margin,
+  $-container-padding,
+  $-container-max-width,
+  $-container-min-width,
+  $-class-container
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -732,8 +741,8 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-row(
-  $class-row,
-  $class-column
+  $-class-row,
+  $-class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -745,7 +754,8 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-base-column(
-  $grid-gutter-width
+  $-grid-gutter-width,
+  $-class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -758,9 +768,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-column(
   $index,
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -773,9 +783,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin give-prefix(
   $index,
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -788,9 +798,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin give-suffix(
   $index,
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -802,9 +812,9 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin build-mobile-grid-system(
-  $class-container,
-  $class-row,
-  $class-column
+  $-class-container,
+  $-class-row,
+  $-class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -816,20 +826,20 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin build-grid-system(
-  $grid-total-width,
-  $grid-gutter-width,
-  $grid-columns,
+  $-grid-total-width,
+  $-grid-gutter-width,
+  $-grid-columns,
   
-  $container-margin,
-  $container-padding,
-  $container-max-width,
-  $container-min-width,
+  $-container-margin,
+  $-container-padding,
+  $-container-max-width,
+  $-container-min-width,
   
-  $class-container,
-  $class-row,
-  $class-column,
-  $class-prefix,
-  $class-suffix
+  $-class-container,
+  $-class-row,
+  $-class-column,
+  $-class-prefix,
+  $-class-suffix
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->

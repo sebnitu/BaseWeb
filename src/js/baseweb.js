@@ -113,7 +113,7 @@
      */
     notices : function () {
       $('.notice').each(function () {
-        $(this).find('.close').click(function() {
+        $(this).find('.notice-close').click(function() {
           $(this).parents('.notice').fadeOut();
         });
       });
