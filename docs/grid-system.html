@@ -54,14 +54,18 @@
   <div class="block block-main block-table">
     
     <div class="block block-cell block-aside">
-      <div class="inner">
-      
-        <nav>
-        	<ul>
-              <li id="menu-item-getting-started" class="menu-item menu-item-getting-started"><a href="../docs/index.html">Getting Started</a></li>
-              <li id="menu-item-grid-system" class="menu-item menu-item-grid-system active"><a href="../docs/grid-system.html">Grid System</a></li>
-        	</ul>
-        </nav>
+      <div id="aside-inner" class="aside-inner inner">
+        
+        <div id="aside-item-menu" class="aside-item aside-item-menu">
+          <nav>
+          	<ul>
+                <li id="menu-item-getting-started" class="menu-item menu-item-getting-started"><a href="../docs/index.html">Getting Started</a></li>
+                <li id="menu-item-overview" class="menu-item menu-item-overview"><a href="../docs/overview.html">Overview</a></li>
+                <li id="menu-item-grid-system" class="menu-item menu-item-grid-system active"><a href="../docs/grid-system.html">Grid System</a></li>
+                <li id="menu-item-media-queries" class="menu-item menu-item-media-queries"><a href="../docs/media-queries.html">Media Queries</a></li>
+          	</ul>
+          </nav>
+        </div>
         
       </div><!-- .inner -->
     </div><!-- .block-cell .block-aside -->
@@ -128,7 +132,7 @@
 
 <div class="example">
   <div class="example-block example-desc">
-    <p>In this example, we're using the <a href="#media-queries">media query mixins</a> to set grid systems for different breakpoints.</p>
+    <p>In this example, we're using the <a href="/docs/media-queries.html">media query mixins</a> to set grid systems for different breakpoints.</p>
   </div><!-- .example-desc -->
   <div class="example-block example-code">
 <pre><code class="language-scss">@include build-mobile-grid-system();
@@ -379,86 +383,6 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
-<h2 id="media-queries">Media Queries</h2>
-
-<p>BaseWeb is built mobile first. What this means in terms of media queries is that each is additive starting from tablet. All styles not wrapped in a media query are applied to mobile directly. The tablet breakpoint is added on top of the base mobile styles, then desktop on top of mobile and tablet, etc.</p>
-
-<p>There are also two supplementary media queries. <code>@mixin media-mobile</code> lets you apply styles to only mobile and <code>@mixin media-small</code> to only vertical oriented mobile.</p>
-
-<div class="example">
-  <div class="example-block example-desc">
-    <p>Unlike most mixins, media mixins don't take parameters. Instead, you pass in the styles through brackets like you would with a normal media query.</p>
-  </div><!-- .example-desc -->
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-small {
-  // Default: max-width: $bp-small
-  // Target: Vertical Oriented Mobile
-}
-
-@include media-mobile {
-  // Default: max-width: $bp-mobile
-  // Target: Mobile
-}
-
-@include media-tablet {
-  // Default: min-width: $bp-tablet
-  // Target: Tablet
-}
-
-@include media-desktop {
-  // Default: min-width: $bp-desktop
-  // Target: Desktop
-}
-
-@include media-large {
-  // Default: min-width: $bp-large
-  // Target: Wide Screen Desktop
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<div class="notice notice-warning notice-no-close">
-  <p>If you prefer to run your queries differently (desktop first, for example), or if you'd like to add new queries, make sure to review the <a href="#">customization documentation</a>. If possible, try and avoid modifying core BaseWeb files directly as that makes updating to newer versions much more difficult.</p>
-</div>
-
-<h3>Retina Media Query</h3>
-
-<p>There's also a media query mixin that can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">.logo {
-  background-image: src('logo.png');
-}
-
-@include media-retina {
-  .logo {
-    background-image: src('logo-2x.png');
-    background-size: 100px 50px;
-  }
-}
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<p>Will output:</p>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-css">.logo {
-  background-image: src('logo.png');
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .logo {
-    background-image: src('logo-2x.png');
-    background-size: 100px 50px;
-  }
-}
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
 
 <h2 id="variables">Variables</h2>
 
@@ -605,68 +529,6 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
-
-<article id="bp-small" class="block block-variable" data-type="variable">
-<h3>bp-small</h3>
-<p>The breakpoint to be used for vertical oriented mobile devices. The media feature is expressed with: <code>max-width</code></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$bp-small
-  type: unit (pixel)
-  default: 480px</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<article id="bp-mobile" class="block block-variable" data-type="variable">
-<h3>bp-mobile</h3>
-<p>The breakpoint to be used for all mobile devices and orientations. The media feature is expressed with: <code>max-width</code></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$bp-mobile
-  type: unit (pixel)
-  default: 760px</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<article id="bp-tablet" class="block block-variable" data-type="variable">
-<h3>bp-tablet</h3>
-<p>The breakpoint to be used for tablet devices. The media feature is expressed with: <code>min-width</code></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$bp-tablet
-  type: unit (pixel)
-  default: 760px</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<article id="bp-desktop" class="block block-variable" data-type="variable">
-<h3>bp-desktop</h3>
-<p>The breakpoint to be used for computer screens. The media feature is expressed with: <code>min-width</code></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$bp-desktop
-  type: unit (pixel)
-  default: 990px</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<article id="bp-large" class="block block-variable" data-type="variable">
-<h3>bp-large</h3>
-<p>The breakpoint to be used for large computer screens. The media feature is expressed with: <code>min-width</code></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$bp-large
-  type: unit (pixel)
-  default: 1380px</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<hr>
 
 <h2 id="functions">Functions</h2>
 
@@ -1408,187 +1270,6 @@
 </ul>
 
 </article>
-
-<!-- #mixin #media-small -->
-
-<article id="media-small" class="block block-mixin" data-type="mixin">
-<h3>media-small</h3>
-<p>For applying styles specifically to vertically oriented mobile devices. The <code>@content</code> directive is where your style block will be placed. Default breakpoint variable: <a href="#bp-small" class="code-link"><code>$bp-small</code></a></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-small {
-  @media screen and ( max-width: $bp-small ) {
-    @content;
-  }
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-small {
-  // Your style block goes here
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #media-mobile -->
-
-<article id="media-mobile" class="block block-mixin" data-type="mixin">
-<h3>media-mobile</h3>
-<p>For applying styles specifically to mobile devices. The <code>@content</code> directive is where your style block will be placed. Default breakpoint variable: <a href="#bp-mobile" class="code-link"><code>$bp-mobile</code></a></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-mobile {
-  @media screen and ( max-width: $bp-mobile ) {
-    @content;
-  }
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-mobile {
-  // Your style block goes here
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #media-tablet -->
-
-<article id="media-tablet" class="block block-mixin" data-type="mixin">
-<h3>media-tablet</h3>
-<p>For applying styles to tablet devices and above. The <code>@content</code> directive is where your style block will be placed. Default breakpoint variable: <a href="#bp-tablet" class="code-link"><code>$bp-tablet</code></a></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-tablet {
-  @media screen and ( max-width: $bp-tablet ) {
-    @content;
-  }
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-tablet {
-  // Your style block goes here
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #media-desktop -->
-
-<article id="media-desktop" class="block block-mixin" data-type="mixin">
-<h3>media-desktop</h3>
-<p>For applying styles to desktop screens and above. The <code>@content</code> directive is where your style block will be placed. Default breakpoint variable: <a href="#bp-desktop" class="code-link"><code>$bp-desktop</code></a></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-desktop {
-  @media screen and ( max-width: $bp-desktop ) {
-    @content;
-  }
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-desktop {
-  // Your style block goes here
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #media-large -->
-
-<article id="media-large" class="block block-mixin" data-type="mixin">
-<h3>media-large</h3>
-<p>For applying styles to large desktop screens and above. The <code>@content</code> directive is where your style block will be placed. Default breakpoint variable: <a href="#bp-large" class="code-link"><code>$bp-large</code></a></p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-large {
-  @media screen and ( max-width: $bp-large ) {
-    @content;
-  }
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@include media-large {
-  // Your style block goes here
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #media-retina -->
-
-<article id="media-retina" class="block block-mixin" data-type="mixin">
-<h3>media-retina</h3>
-<p>For applying styles to retina screens or devices. The <code>@content</code> directive is where your style block will be placed.</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin media-retina {
-  @content
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h4>Example Usage</h4>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">.logo {
-  background-image: src('logo.png');
-}
-
-@include media-retina {
-  .logo {
-    background-image: src('logo-2x.png');
-    background-size: 100px 50px;
-  }
-}
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<p>Will output:</p>
-
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-css">.logo {
-  background-image: src('logo.png');
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .logo {
-    background-image: src('logo-2x.png');
-    background-size: 100px 50px;
-  }
-}
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-</article>
         </div>
         
       </div><!-- .inner -->
@@ -1625,7 +1306,8 @@
 
 <!-- JS -->
 <script src="../src/js/baseweb.min.js"></script>
-<script src="../docs/assets/js/docs.js"></script>
+<script src="../docs/assets/js/jquery.sticky-kit.js"></script>
+<script src="../docs/assets/js/jquery.docs.js"></script>
 <script src="../docs/assets/js/prism.js"></script>
 
 </body>

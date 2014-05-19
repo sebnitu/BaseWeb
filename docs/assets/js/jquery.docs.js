@@ -38,22 +38,43 @@ String.prototype.toTitleCase = function(){
    */
   $(document).ready(function () {
     
-    // Navigation
+    /**
+     * Sticky Navigation
+     */
+    $('#aside-inner').stick_in_parent();
+    
+    /**
+     * Navigation
+     * Add our h2's as sub navigation
+     */
     var headings = $('h2');
-    var nav_menu = $('.block-aside .active').append('<ul>').find('ul');
+    var sub_menu = '<ul class="sub-menu">';
     
     var text, href;
     
+    // Loop through the headers
     headings.each(function(index, element) {
-      
+    
+      // Get the values
       text = $(this).text();
       href = $(this).attr('id');
       
-      nav_menu.append('<li><a href="#' + href + '">' + text + '</a></li>');
+      // Append link to navigation
+      sub_menu += '<li><a href="#' + href + '">' + text + '</a></li>';
       
     });
+    
+    // Close the submenu UL
+    sub_menu += '</ul>';
         
-    // Get our palette table
+    // Append submenu to navigation
+    if (headings.length !== 0) {
+      sub_menu = $('.block-aside .active').append(sub_menu).find('.sub-menu').hide().delay(500).slideDown();
+    }
+    
+    /**
+     * Color Palette Tables
+     */
     var palette_table = $('.palette-table');
     
     // Define our swatch template
@@ -87,6 +108,7 @@ String.prototype.toTitleCase = function(){
     
     // Loop through the swatches
     swatches.forEach(function(element, index, array) {
+    
       // Get the values
       title = element.toTitleCase();
       color = element;
@@ -97,6 +119,7 @@ String.prototype.toTitleCase = function(){
       
       // Save our template to the palette
       palette += tmp;
+      
     });
     
     // Append our palette to the table
