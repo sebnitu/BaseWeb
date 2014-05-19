@@ -65,17 +65,19 @@
   padding: 0 $-container-padding;
   
   // Modifier Classes
-  &.#{$-class-container}-float-left {
-    float: left;
-  }
-  &.#{$-class-container}-float-right {
-    float: right;
-  }
-  &.#{$-class-container}-no-padding {
-    padding: 0;
-  }
-  &.#{$-class-container}-no-margin {
-    margin: 0;
+  @if ($-class-container != none) {
+    &.#{$-class-container}-float-left {
+      float: left;
+    }
+    &.#{$-class-container}-float-right {
+      float: right;
+    }
+    &.#{$-class-container}-no-padding {
+      padding: 0;
+    }
+    &.#{$-class-container}-no-margin {
+      margin: 0;
+    }
   }
   
   @include clearfix();
@@ -96,20 +98,22 @@
   @include clearfix();
   
   // Row Modifiers
-  &.#{$-class-row}-center {
-    text-align: center;
-    
-    > * {
-      font-size: 0;
-      line-height: 0;
-    }
-    .#{$-class-column} {
-      float: none;
-      display: inline-block;
-      @include clearfix();
-      font-size: $font-size;
-      line-height: $line-height;
-      text-align: left;
+  @if ($-class-row != none) {
+    &.#{$-class-row}-center {
+      text-align: center;
+      
+      > * {
+        font-size: 0;
+        line-height: 0;
+      }
+      .#{$-class-column} {
+        float: none;
+        display: inline-block;
+        @include clearfix();
+        font-size: $font-size;
+        line-height: $line-height;
+        text-align: left;
+      }
     }
   }
 }
@@ -127,9 +131,15 @@
     margin: 0;
   } @else {
     margin-left: $-grid-gutter-width;
-    &.#{$-class-column}-no-gutter,
-    &:first-child {
-      margin-left: 0;
+    @if ($-class-column != none) {
+      &.#{$-class-column}-no-gutter,
+      &:first-child {
+        margin-left: 0;
+      }
+    } else {
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
   
@@ -148,11 +158,13 @@
     
     $-grid-total-width : $grid-total-width,
     $-grid-gutter-width: $grid-gutter-width,
-    $-grid-columns : $grid-columns
+    $-grid-columns : $grid-columns,
+    
+    $-class-column : $class-column
     
   ) {
   
-  @include make-base-column;
+  @include make-base-column($-grid-gutter-width, $-class-column);
   width: column_width( $-index, $-grid-total-width, $-grid-gutter-width, $-grid-columns );
 }
 

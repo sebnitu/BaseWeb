@@ -1655,6 +1655,8 @@ form .btn {
     min-height: 1px; }
     .col.col-no-gutter, .col:first-child {
       margin-left: 0; }
+    .col else:first-child {
+      margin-left: 0; }
   .col-1 {
     width: 6.5%; }
   .col-2 {
@@ -1755,6 +1757,14 @@ form .btn {
 /*==============================================================================
   @test
 ==============================================================================*/
+.logo {
+  background-image: src('logo.png'); }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px; } }
+
 /*==============================================================================
   Semantic Grid Demo
 ==============================================================================*/
@@ -1801,12 +1811,16 @@ form .btn {
     width: 32%; }
     .demo-wrapper .demo-content .demo-aside.col-no-gutter, .demo-wrapper .demo-content .demo-aside:first-child {
       margin-left: 0; }
+    .demo-wrapper .demo-content .demo-aside else:first-child {
+      margin-left: 0; }
   .demo-wrapper .demo-content .demo-article {
     margin-left: 2%;
     float: left;
     min-height: 1px;
     width: 66%; }
     .demo-wrapper .demo-content .demo-article.col-no-gutter, .demo-wrapper .demo-content .demo-article:first-child {
+      margin-left: 0; }
+    .demo-wrapper .demo-content .demo-article else:first-child {
       margin-left: 0; }
 
 /*==============================================================================

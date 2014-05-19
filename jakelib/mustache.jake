@@ -68,17 +68,20 @@ var buildMenu = function(o, current) {
     
     data = fs.readFileSync(o.path.pages + name, 'utf8');
     
+    // Set the default variables
     var search_start = '{{!'
      ,  search_end = '}}'
      ,  index_1 = data.indexOf(search_start)
      ,  index_2 = data.indexOf(search_end)
      ,  page_options = [];
     
+    // Get the page speficic options
     if( (index_1 != -1) && (index_2 != -1) ) {
       page_options = data.substr( index_1 + (search_start.length) , index_2  - (search_start.length));
       page_options = JSON.parse(page_options);
     }
     
+    // Get a few default menu values from the file name
     var name_html = name.replace(/mustache$/, 'html')
       , slug = name.replace(/\.mustache/, '')
       , key = slug.replace(/\-/, '_')
@@ -86,19 +89,30 @@ var buildMenu = function(o, current) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
     
+    // Set the default menu values
     menu[i] = { 
       'name_mustache' : name,
       'name_html' : name_html,
       'url' : '../' + o.dir + name_html,
       'text' : text,
-      'id' : 'menu-item-' + slug,
       'order' : 0,
-      'classes' : 'menu-item',
+      'slug' : slug,
+      'id' : 'menu-item-' + slug,
+      'classes' : 'menu-item' + ' ' + 'menu-item-' + slug,
       'select' : ''
     };
     
-    if ( page_options.order ) {
-      menu[i].order = page_options.order;
+    // Set the custom page values
+    if ( page_options.menu.text ) {
+      menu[i].text = page_options.menu.text;
+    }
+    if ( page_options.menu.slug ) {
+      menu[i].slug = page_options.menu.slug;
+      menu[i].id = 'menu-item-' + page_options.menu.slug;
+      menu[i].classes = 'menu-item' + ' ' + 'menu-item-' + page_options.menu.slug;
+    }
+    if ( page_options.menu.order ) {
+      menu[i].order = page_options.menu.order;
     }
     
     if ( menu[i].name_mustache === current ) {
@@ -109,7 +123,6 @@ var buildMenu = function(o, current) {
   }
   
   function compare( a, b ) {
-    // console.log('Compare: ' + a.order + ' with ' + b.order);
     if (a.order === 0)
       return 1;
     if (b.order === 0)
