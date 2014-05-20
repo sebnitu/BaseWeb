@@ -1,3 +1,99 @@
+////////////////////////////////////////////////////////////////////////////////
+// Table Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$color-bg-list: #f9f9f9 !default;
+$color-border-list: rgba($black, 0.1) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// Table Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Base Modifier Table Styles
+@mixin make-base-table() {
+  margin: 10px 0;
+}
+
+// Make Wrap
+// Wraps the list with a border and padding
+@mixin make-list-wrap() {
+  
+  @include make-base-table();
+  padding: 10px 15px 10px 35px;
+  border: 1px solid $color-border-list;
+  @include border-radius();
+  
+  li {
+    &:first-child {
+      @include border-radius-top();
+    }
+    &:last-child {
+      @include border-radius-bottom();
+    }
+  }
+  
+}
+
+// Makes Row
+// Turns list items into rows by giving border seperators
+@mixin make-list-rowed() {
+  
+  @include make-base-table();
+  list-style: none;
+  border-bottom: 1px solid $color-border-list;
+  
+  > li {
+    @include clearfix();
+    margin: 0;
+    padding: 10px 0;
+    border-top: 1px solid $color-border-list;
+  }
+}
+
+// Make Bordered
+// Give the list outer and seperator borders
+@mixin make-list-bordered() {
+
+  @include make-base-table();
+  list-style: none;
+  border: 1px solid $color-border-list;
+  @include border-radius();
+  
+  > li {
+    @include clearfix();
+    margin: 0;
+    padding: 10px 15px;
+    border-top: 1px solid $color-border-list;
+    
+    &:first-child {
+      border-top: 0 none;
+      @include border-radius-top();
+    }
+    &:last-child {
+      @include border-radius-bottom();
+    }
+  }
+}
+
+// Give Striped
+// Adds zebra stripes to list items
+@mixin give-list-stripes( $scope : children ) {
+  
+  li {
+    padding: 10px 15px;
+  }
+  
+  @if ($scope == all) {
+    li:nth-child(odd) {
+      background-color: $color-bg-list;
+    }
+  } @else {
+    > li:nth-child(odd) {
+      background-color: $color-bg-list;
+    }
+  }
+}
+
 /*==============================================================================
   Lists
 ==============================================================================*/
@@ -43,4 +139,21 @@ dl {
   dd {
     margin: 0 0 10px 20px;
   }
+}
+
+
+/**
+ * Modifier Classes
+ */
+.list-wrap {
+  @include make-list-wrap();
+}
+.list-rowed {
+  @include make-list-rowed();
+}
+.list-bordered {
+  @include make-list-bordered();
+}
+.list-stripes {
+  @include give-list-stripes();
 }

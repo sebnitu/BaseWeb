@@ -5,3 +5,123 @@
   }
   
 } }}
+
+<h2 id="file-structure">File Structure</h2>
+
+<p>Description of how the file system works in BaseWeb.</p>
+
+<hr>
+
+<h2 id="global-variables">Global Variables</h2>
+
+<p>Description of how the settings system works in BaseWeb.</p>
+
+<article id="variables-color-palette" class="block block-variable" data-type="variable">
+<h3>Color Palette</h3>
+
+<p>Description of how the color system works in BaseWeb.</p>
+
+<div class="example">
+  <div class="example-block example-output">
+    <div class="swatch-wrap">
+      <span class="swatch color-black"></span>
+      <span class="swatch color-gray-darker"></span>
+      <span class="swatch color-gray-dark"></span>
+      <span class="swatch color-gray"></span>
+      <span class="swatch color-gray-light"></span>
+      <span class="swatch color-gray-lighter"></span>
+      <span class="swatch color-white"></span>
+    </div>
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Gray Scale
+$black:        #000000 !default;
+$gray-darker:  #303030 !default;
+$gray-dark:    #606060 !default;
+$gray:         #909090 !default;
+$gray-light:   #aaaaaa !default;
+$gray-lighter: #efefef !default;
+$white:        #ffffff !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
+
+<p>The color palette is built using three primary colors and three secondary. You can customize those six colors to create a new palette.</p>
+
+<div class="example">
+  <div class="example-block example-output">
+    <div class="swatch-wrap">
+      <span class="swatch color-red"></span>
+      <span class="swatch color-yellow"></span>
+      <span class="swatch color-blue"></span>
+      <span class="swatch color-orange"></span>
+      <span class="swatch color-green"></span>
+      <span class="swatch color-violet"></span>
+    </div>
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Primary
+$red:    #de5151 !default;
+$yellow: #d1c329 !default;
+$blue:   #2ab0ea !default;
+
+// Secondary
+$orange: #e69242 !default;
+$green:  #8ecb25 !default;
+$violet: #bc6bd3 !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
+
+<p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$light-deg:   5%  !default;
+$lighter-deg: 10% !default;
+$dark-deg:    5%  !default;
+$darker-deg:  10% !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
+
+<p>Here's all the color variables that are built through the palette system. Hover over the swatches to see the variable the colors are assigned to.</p>
+
+<table class="table-bordered palette-table">
+  <tr>
+    <td class="swatch-desc"></td>
+    <td class="swatch-cell swatch-desc"><code>-lighter</code></td>
+    <td class="swatch-cell swatch-desc"><code>-light</code></td>
+    <td class="swatch-cell swatch-desc"></td>
+    <td class="swatch-cell swatch-desc"><code>-dark</code></td>
+    <td class="swatch-cell swatch-desc"><code>-darker</code></td>
+  </tr>
+</table>
+</article>
+
+<article id="variables-global-settings" class="block block-variable" data-type="variable">
+<h3>Global Settings</h3>
+<p>A quick description on how the global settings work.</p>
+</article>
+
+<hr>
+
+<h2 id="global-functions">Global Functions</h2>
+
+<hr>
+
+<h2 id="global-mixins">Global Mixins</h2>
+
+<hr>
+
+<h2 id="base-reset-styles">Base Reset Styles</h2>
+
+<p>BaseWeb comes with a very basic reset styles that do a few things.</p>
+
+<ul class="list-rowed list-stripes">
+  <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
+  <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
+  <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
+  <li>Creates the clearfix class using the <a href="#" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
+  <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
+  <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
+  <li>Sets border collapse and spacing for tables</li>
+  <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
+</ul>
