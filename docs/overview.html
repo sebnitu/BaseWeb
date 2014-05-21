@@ -78,20 +78,24 @@
         
         <div class="container container-float-left container-no-padding">
 
-<h2 id="file-structure">File Structure</h2>
+<h2 id="how-it-works">How It Works</h2>
 
 <p>Description of how the file system works in BaseWeb.</p>
+
+<h3>File System</h3>
 
 <hr>
 
 <h2 id="global-variables">Global Variables</h2>
 
-<p>Description of how the settings system works in BaseWeb.</p>
-
 <article id="variables-color-palette" class="block block-variable" data-type="variable">
 <h3>Color Palette</h3>
 
-<p>Description of how the color system works in BaseWeb.</p>
+<p>The Color Palette in BaseWeb is defined using the settings file <code>settings/_palette.scss</code>. It contains the global color variables that are used throughout the framework. This allows you to easily change the color themes between elements and blocks as well as keeping them consistent with each other.</p>
+
+<h4>Gray Scale</h4>
+
+<p>The Gray Scale variables are simple ways of keeping your grays maintainable. These are most often used for text colors or default states for blocks, etc.</p>
 
 <div class="example">
   <div class="example-block example-output">
@@ -117,7 +121,9 @@ $white:        #ffffff !default;</code></pre>
   </div><!-- .example-input -->
 </div><!-- .example -->
 
-<p>The color palette is built using three primary colors and three secondary. You can customize those six colors to create a new palette.</p>
+<h4>Base Colors</h4>
+
+<p>The color palette is built using three primary colors and three secondary. These colors are mixed to create their in-between color variations. You can customize those six colors to create a new palette.</p>
 
 <div class="example">
   <div class="example-block example-output">
@@ -143,7 +149,35 @@ $violet: #bc6bd3 !default;</code></pre>
   </div><!-- .example-input -->
 </div><!-- .example -->
 
-<p>Degree variables are used in creating colors with the light, lighter and dark, darker variations.</p>
+<h4>Mixed Colors</h4>
+
+<p>Mixed (or tertiary) colors are created using the combination of primary and secondary colors.</p>
+
+<div class="example">
+  <div class="example-block example-output">
+    <div class="swatch-wrap">
+      <span class="swatch color-red-violet"></span>
+      <span class="swatch color-red-orange"></span>
+      <span class="swatch color-yellow-orange"></span>
+      <span class="swatch color-yellow-green"></span>
+      <span class="swatch color-blue-green"></span>
+      <span class="swatch color-blue-violet"></span>
+    </div>
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Tertiary
+$red-violet:    saturate(mix($red, $violet, 50), 5%) !default;
+$red-orange:    saturate(mix($red, $orange, 50), 5%) !default;
+$yellow-orange: saturate(mix($yellow, $orange, 50), 5%) !default;
+$yellow-green:  saturate(mix($yellow, $green, 50), 5%) !default;
+$blue-green:    saturate(mix($blue, $green, 50), 5%) !default;
+$blue-violet:   saturate(mix($blue, $violet, 50), 5%) !default;</code></pre>
+  </div><!-- .example-input -->
+</div><!-- .example -->
+
+<h4>Modifier Degrees</h4>
+
+<p>Degree variables are used when altering the base colors for different purposes. They are also directly used in creating colors with the <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variations.</p>
 
 <div class="example">
   <div class="example-block example-code">
@@ -154,7 +188,9 @@ $darker-deg:  10% !default;</code></pre>
   </div><!-- .example-input -->
 </div><!-- .example -->
 
-<p>Here's all the color variables that are built through the palette system. Hover over the swatches to see the variable the colors are assigned to.</p>
+<h4>Light &amp; Dark Varients</h4>
+
+<p>Every primary, secondary and tertiary color comes with a <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variation. These are created using the degree modifier. Here's a table of all the possible color variables you can use. Hover over the swatch to get the exact variable name:</p>
 
 <table class="table-bordered palette-table">
   <tr>
@@ -168,30 +204,168 @@ $darker-deg:  10% !default;</code></pre>
 </table>
 </article>
 
-<article id="variables-global-settings" class="block block-variable" data-type="variable">
-<h3>Global Settings</h3>
-<p>A quick description on how the global settings work.</p>
+<article id="class-clearfix" class="block block-variable" data-type="variable">
+<h3>class-clearfix</h3>
+<p>The class name used for creating the clearfix class. If set to <code>none</code>, it will not output a clearfix class.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-clearfix
+  type: class name
+  default: clearfix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
 </article>
 
 <hr>
 
 <h2 id="global-functions">Global Functions</h2>
 
+<!-- #functions #px_to_em -->
+
+<article id="px_to_em" class="block block-function" data-type="function">
+<h3>px_to_em</h3>
+<p>Returns a pixel value to EMs. By default it's uses the base font size but can be passed a custom base.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@function px_to_em(
+  $px,
+  $-base-font-size,
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-column_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-px_to_em-px">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $px
+  type: unit (pixel)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The pixel unit you want converted to EMs.</p>
+</li>
+<li class="param">
+<div class="example" id="param-px_to_em-base">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-base-font-size
+  type: unit (pixel)
+  default: $base-font-size</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference: <a href="#base-font-size" class="code-link"><code>$base-font-size</code></a></span>
+<p>The base font-size that the returned EM value is calculated from.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #functions #em_to_px -->
+
+<article id="em_to_px" class="block block-function" data-type="function">
+<h3>em_to_px</h3>
+<p>Returns an EM value to pixels. By default it's uses the base font size but can be passed a custom base.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@function em_to_px(
+  $em,
+  $-base-font-size,
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-column_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-px_to_em-px">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $em
+  type: unit (pixel)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The EM unit you want converted to pixels.</p>
+</li>
+<li class="param">
+<div class="example" id="param-px_to_em-base">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param $-base-font-size
+  type: unit (pixel)
+  default: $base-font-size</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference: <a href="#base-font-size" class="code-link"><code>$base-font-size</code></a></span>
+<p>The base font-size that the returned pixel value is calculated from.</p>
+</li>
+</ul>
+
+</article>
+
 <hr>
 
 <h2 id="global-mixins">Global Mixins</h2>
+
+<!-- #mixin #clearfix -->
+
+<article id="clearfix" class="block block-mixin" data-type="mixin">
+<h3>clearfix</h3>
+<p>Allows you to apply clearfix styles for an element that contains floats.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin clearfix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.wrapper {
+  @include clearfix;
+  
+  .aside,
+  .content {
+    float: left;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>Will Output:</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wrapper .aside,
+.wrapper .content {
+  float: left;
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<div class="notice notice-info">
+  <p>Acknowledgements for clearfix technique goes to <a href="http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php">Thierry Koblentz</a>.</p>
+</div>
+
+</article>
 
 <hr>
 
 <h2 id="base-reset-styles">Base Reset Styles</h2>
 
-<p>BaseWeb comes with a very basic reset styles that do a few things.</p>
+<p>BaseWeb comes with a very basic reset styles that do a few things such as:</p>
 
 <ul class="list-rowed list-stripes">
   <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
   <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
   <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
-  <li>Creates the clearfix class using the <a href="#" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
+  <li>Creates the clearfix class using the <a href="#class-clearfix" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#clearfix" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
   <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
   <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
   <li>Sets border collapse and spacing for tables</li>
