@@ -32,7 +32,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
 
 // Horizontal Forms
 // Where group-key and group-value are side by side
-@mixin make-form-horizontal( $-form-column-width : $form-column-width, $-form-column-gutter : $form-column-gutter ) {
+@mixin make-form-horizontal( $form-column-width : $form-column-width, $form-column-gutter : $form-column-gutter ) {
   // Group
   .group {
     display: block;
@@ -40,7 +40,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
   // Key
   .group .group-key {
     float: left;
-    width: ( $-form-column-width - $-form-column-gutter );
+    width: ( $form-column-width - $form-column-gutter );
   }
   .group .group-key label {
     margin: (5px + 5px) 0;
@@ -48,7 +48,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
   }
   // Value
   .group .group-value {
-    padding-left: $-form-column-width;
+    padding-left: $form-column-width;
   }
 }
 
@@ -76,7 +76,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
 
 // Inline Forms
 // Sets groups to be inline along with group-key and group-value
-@mixin make-form-inline( $-form-column-gutter : $form-column-gutter ) {
+@mixin make-form-inline( $form-column-gutter : $form-column-gutter ) {
   display: inline-block;
   margin: 0;
   font-size: 0;
@@ -84,7 +84,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
   // Group
   .group {
     display: inline-block;
-    margin-left: $-form-column-gutter;
+    margin-left: $form-column-gutter;
     font-size: 14px;
     
     &:first-child {
@@ -109,7 +109,7 @@ $form-yellow: #fff200; // Used for highlighting and focus
     padding: 0;
     
     .group {
-      padding: 10px ($-form-column-gutter / 2);
+      padding: 10px ($form-column-gutter / 2);
       
       &:first-child {
         padding-left: 15px;

@@ -57,6 +57,10 @@
   </div><!-- .example-code -->
 </div><!-- .example -->
 
+<div class="block-warning">
+  <p>If you're using the <a href="https://github.com/andrew/node-sass">node-sass compiler</a> (as of version 0.8.6), it's possible to only include the <code>.col-X</code> class for columns and drop the base column class <code>.col</code>. But if you're using ruby-sass, you'll have to include both classes for columns. Use the <a href="#" class="code-link"><code>$compiler</code></a> variable to toggle compiler specific settings throughout the framework.</p>
+</div>
+
 <p>The class based grid system is generated using the <a href="#build-grid-system" class="code-link"><code>build-grid-system()</code></a> mixin. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
 
 <p>There's also the mobile grid system mixin <a href="#build-mobile-grid-system" class="code-link"><code>build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
@@ -473,9 +477,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@function column_width(
   $index,
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -495,7 +499,7 @@
 <li class="param">
 <div class="example" id="param-column_width-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: unit (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -506,7 +510,7 @@
 <li class="param">
 <div class="example" id="param-column_width-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: unit (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -517,7 +521,7 @@
 <li class="param">
 <div class="example" id="param-column_width-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -538,9 +542,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@function spacing_width(
   $index,
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -560,7 +564,7 @@
 <li class="param">
 <div class="example" id="param-spacing_width-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: unit (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -571,7 +575,7 @@
 <li class="param">
 <div class="example" id="param-spacing_width-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: unit (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -582,7 +586,7 @@
 <li class="param">
 <div class="example" id="param-spacing_width-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -606,12 +610,12 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-container(
-  $-grid-total-width,
-  $-container-margin,
-  $-container-padding,
-  $-container-max-width,
-  $-container-min-width,
-  $-class-container
+  $grid-total-width,
+  $container-margin,
+  $container-padding,
+  $container-max-width,
+  $container-min-width,
+  $class-container
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -622,7 +626,7 @@
 <li class="param">
 <div class="example" id="param-make-container-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: number (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -633,7 +637,7 @@
 <li class="param">
 <div class="example" id="param-make-container-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-margin
+<pre><code class="language-scss">@param $container-margin
   type: unit (pixel, percentage, auto)
   default: $container-margin</code></pre>
   </div><!-- .example-code -->
@@ -644,7 +648,7 @@
 <li class="param">
 <div class="example" id="param-make-container-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-padding
+<pre><code class="language-scss">@param $container-padding
   type: unit (pixel, percentage, auto)
   default: $container-padding</code></pre>
   </div><!-- .example-code -->
@@ -655,7 +659,7 @@
 <li class="param">
 <div class="example" id="param-make-container-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-max-width
+<pre><code class="language-scss">@param $container-max-width
   type: unit (pixel, none)
   default: $container-max-width</code></pre>
   </div><!-- .example-code -->
@@ -666,7 +670,7 @@
 <li class="param">
 <div class="example" id="param-make-container-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-min-width
+<pre><code class="language-scss">@param $container-min-width
   type: unit (pixel, none)
   default: $container-min-width</code></pre>
   </div><!-- .example-code -->
@@ -677,7 +681,7 @@
 <li class="param">
 <div class="example" id="param-make-container-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-container
+<pre><code class="language-scss">@param $class-container
   type: class name
   default: $class-container</code></pre>
   </div><!-- .example-code -->
@@ -697,8 +701,8 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-row(
-  $-class-row,
-  $-class-column
+  $class-row,
+  $class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -709,7 +713,7 @@
 <li class="param">
 <div class="example" id="param-make-container-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-row
+<pre><code class="language-scss">@param $class-row
   type: class name
   default: $class-row</code></pre>
   </div><!-- .example-code -->
@@ -720,7 +724,7 @@
 <li class="param">
 <div class="example" id="param-make-container-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-column
+<pre><code class="language-scss">@param $class-column
   type: class name
   default: $class-column</code></pre>
   </div><!-- .example-code -->
@@ -740,8 +744,8 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-base-column(
-  $-grid-gutter-width,
-  $-class-column
+  $grid-gutter-width,
+  $class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -752,7 +756,7 @@
 <li class="param">
 <div class="example" id="param-make-base-column-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: number (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -763,7 +767,7 @@
 <li class="param">
 <div class="example" id="param-make-base-column-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-column
+<pre><code class="language-scss">@param $class-column
   type: class name
   default: $class-column</code></pre>
   </div><!-- .example-code -->
@@ -784,10 +788,10 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-column(
   $index,
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns,
-  $-class-column
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns,
+  $class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -807,7 +811,7 @@
 <li class="param">
 <div class="example" id="param-make-column-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: number (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -818,7 +822,7 @@
 <li class="param">
 <div class="example" id="param-make-column-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: number (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -829,7 +833,7 @@
 <li class="param">
 <div class="example" id="param-make-column-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -840,7 +844,7 @@
 <li class="param">
 <div class="example" id="param-make-column-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-column
+<pre><code class="language-scss">@param $class-column
   type: class name
   default: $class-column</code></pre>
   </div><!-- .example-code -->
@@ -861,9 +865,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin give-prefix(
   $index,
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -883,7 +887,7 @@
 <li class="param">
 <div class="example" id="param-give-prefix-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: number (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -894,7 +898,7 @@
 <li class="param">
 <div class="example" id="param-give-prefix-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: number (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -905,7 +909,7 @@
 <li class="param">
 <div class="example" id="param-give-prefix-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -926,9 +930,9 @@
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin give-suffix(
   $index,
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -948,7 +952,7 @@
 <li class="param">
 <div class="example" id="param-give-suffix-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: number (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -959,7 +963,7 @@
 <li class="param">
 <div class="example" id="param-give-suffix-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: number (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -970,7 +974,7 @@
 <li class="param">
 <div class="example" id="param-give-suffix-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -990,9 +994,9 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin build-mobile-grid-system(
-  $-class-container,
-  $-class-row,
-  $-class-column
+  $class-container,
+  $class-row,
+  $class-column
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -1003,7 +1007,7 @@
 <li class="param">
 <div class="example" id="param-build-mobile-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-container
+<pre><code class="language-scss">@param $class-container
   type: class name
   default: $class-container</code></pre>
   </div><!-- .example-code -->
@@ -1014,7 +1018,7 @@
 <li class="param">
 <div class="example" id="param-build-mobile-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-row
+<pre><code class="language-scss">@param $class-row
   type: class name
   default: $class-row</code></pre>
   </div><!-- .example-code -->
@@ -1025,7 +1029,7 @@
 <li class="param">
 <div class="example" id="param-build-mobile-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-column
+<pre><code class="language-scss">@param $class-column
   type: class name
   default: $class-column</code></pre>
   </div><!-- .example-code -->
@@ -1045,20 +1049,20 @@
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin build-grid-system(
-  $-grid-total-width,
-  $-grid-gutter-width,
-  $-grid-columns,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns,
   
-  $-container-margin,
-  $-container-padding,
-  $-container-max-width,
-  $-container-min-width,
+  $container-margin,
+  $container-padding,
+  $container-max-width,
+  $container-min-width,
   
-  $-class-container,
-  $-class-row,
-  $-class-column,
-  $-class-prefix,
-  $-class-suffix
+  $class-container,
+  $class-row,
+  $class-column,
+  $class-prefix,
+  $class-suffix
 )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -1070,7 +1074,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-grid-total-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-total-width
+<pre><code class="language-scss">@param $grid-total-width
   type: number (pixel, percentage)
   default: $grid-total-width</code></pre>
   </div><!-- .example-code -->
@@ -1081,7 +1085,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-grid-gutter-width">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-gutter-width
+<pre><code class="language-scss">@param $grid-gutter-width
   type: number (pixel, percentage)
   default: $grid-gutter-width</code></pre>
   </div><!-- .example-code -->
@@ -1092,7 +1096,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-grid-columns">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-grid-columns
+<pre><code class="language-scss">@param $grid-columns
   type: number (positive)
   default: $grid-columns</code></pre>
   </div><!-- .example-code -->
@@ -1105,7 +1109,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-margin
+<pre><code class="language-scss">@param $container-margin
   type: unit (pixel, percentage, auto)
   default: $container-margin</code></pre>
   </div><!-- .example-code -->
@@ -1116,7 +1120,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-padding
+<pre><code class="language-scss">@param $container-padding
   type: unit (pixel, percentage, auto)
   default: $container-padding</code></pre>
   </div><!-- .example-code -->
@@ -1127,7 +1131,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-max-width
+<pre><code class="language-scss">@param $container-max-width
   type: unit (pixel, none)
   default: $container-max-width</code></pre>
   </div><!-- .example-code -->
@@ -1138,7 +1142,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-container-margin">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-container-min-width
+<pre><code class="language-scss">@param $container-min-width
   type: unit (pixel, none)
   default: $container-min-width</code></pre>
   </div><!-- .example-code -->
@@ -1151,7 +1155,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-container
+<pre><code class="language-scss">@param $class-container
   type: class name
   default: $class-container</code></pre>
   </div><!-- .example-code -->
@@ -1162,7 +1166,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-row
+<pre><code class="language-scss">@param $class-row
   type: class name
   default: $class-row</code></pre>
   </div><!-- .example-code -->
@@ -1173,7 +1177,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-class-container">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-column
+<pre><code class="language-scss">@param $class-column
   type: class name
   default: $class-column</code></pre>
   </div><!-- .example-code -->
@@ -1184,7 +1188,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-class-prefix">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-prefix
+<pre><code class="language-scss">@param $class-prefix
   type: class name
   default: $class-prefix</code></pre>
   </div><!-- .example-code -->
@@ -1195,7 +1199,7 @@
 <li class="param">
 <div class="example" id="param-build-grid-system-class-suffix">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $-class-suffix
+<pre><code class="language-scss">@param $class-suffix
   type: class name
   default: $class-suffix</code></pre>
   </div><!-- .example-code -->

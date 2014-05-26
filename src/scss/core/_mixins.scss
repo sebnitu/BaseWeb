@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Utility
+// @ Utility
 ////////////////////////////////////////////////////////////////////////////////
 
 // Clear Mixins
@@ -9,6 +9,15 @@
     content: "";
     display: table;
     clear: both;
+  }
+}
+
+// Remove Clearfix
+@mixin remove-clearfix {
+  &:after {
+    content: none;
+    display: none;
+    clear: none;
   }
 }
 
@@ -36,7 +45,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// CSS3 Helpers
+// @ CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
 // Border Radius Mixins
@@ -108,35 +117,35 @@
 }
 
 // Transition Property
-@mixin transition-property( $-transition-property: $transition-property ) {
-  -webkit-transition-property: $-transition-property;
-  -moz-transition-property: $-transition-property;
-  -o-transition-property: $-transition-property;
-  transition-property: $-transition-property;
+@mixin transition-property( $transition-property: $transition-property ) {
+  -webkit-transition-property: $transition-property;
+  -moz-transition-property: $transition-property;
+  -o-transition-property: $transition-property;
+  transition-property: $transition-property;
 }
 
 // Transition Duration
-@mixin transition-duration( $-transition-duration: $transition-duration ) {
-  -webkit-transition-duration: $-transition-duration;
-  -moz-transition-duration: $-transition-duration;
-  -o-transition-duration: $-transition-duration;
-  transition-duration: $-transition-duration;
+@mixin transition-duration( $transition-duration: $transition-duration ) {
+  -webkit-transition-duration: $transition-duration;
+  -moz-transition-duration: $transition-duration;
+  -o-transition-duration: $transition-duration;
+  transition-duration: $transition-duration;
 }
 
 // Transition Timing Function
-@mixin transition-timing-function( $-transition-timing-function: $transition-timing-function ) {
-  -webkit-transition-timing-function: $-transition-timing-function;
-  -moz-transition-timing-function: $-transition-timing-function;
-  -o-transition-timing-function: $-transition-timing-function;
-  transition-timing-function: $-transition-timing-function;
+@mixin transition-timing-function( $transition-timing-function: $transition-timing-function ) {
+  -webkit-transition-timing-function: $transition-timing-function;
+  -moz-transition-timing-function: $transition-timing-function;
+  -o-transition-timing-function: $transition-timing-function;
+  transition-timing-function: $transition-timing-function;
 }
 
 // Transition Delay
-@mixin transition-delay( $-transition-delay: $transition-delay ) {
-  -webkit-transition-delay: $-transition-delay;
-  -moz-transition-delay: $-transition-delay;
-  -o-transition-delay: $-transition-delay;
-  transition-delay: $-transition-delay;
+@mixin transition-delay( $transition-delay: $transition-delay ) {
+  -webkit-transition-delay: $transition-delay;
+  -moz-transition-delay: $transition-delay;
+  -o-transition-delay: $transition-delay;
+  transition-delay: $transition-delay;
 }
 
 // Rotate
@@ -225,7 +234,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Typography
+// @ Typography
 ////////////////////////////////////////////////////////////////////////////////
 
 // Hide text
@@ -256,10 +265,10 @@
 }
 
 // Mono Font
-@mixin mono-font($-font-size: $font-size, $-line-height: $line-height) {
+@mixin mono-font($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
   font-family: $font-family-mono;
-  font-size: $-font-size;
-  line-height: $-line-height;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 // Uppercase
@@ -293,7 +302,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Lists
+// @ Lists
 ////////////////////////////////////////////////////////////////////////////////
 
 // Remove List Styles
@@ -308,7 +317,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// UI Helpers
+// @ UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
 // Arrows
@@ -364,25 +373,28 @@
 // Console
 // Let's you output a LESS variable in the browser.
 // Requires that `<div id="console"></div>` be somewhere in the DOM
-@mixin console($value, $position: right, $index: 100) {
+@mixin console($value, $position: 'right', $index: 100) {
 
   #console {
     position: fixed;
-    @if ($position == left) {
+    @if ($position == 'left') or ($position == 'top left') or ($position == 'left top') {
       top: 0;
       left: 0;
-    } @else if ($position == right) {
+    } @else if ($position == 'right') or ($position == 'top right') or ($position == 'right top') {
       top: 0;
       right: 0;
-    } @else if ($position == bottom-left) {
+    } @else if ($position == 'bottom left') or ($position == 'left bottom') {
       bottom: 0;
       left: 0;
-    } @else if ($position == bottom-right) {
+    } @else if ($position == 'bottom right') or ($position == 'right bottom') {
       bottom: 0;
+      right: 0;
+    } @else {
+      top: 0;
       right: 0;
     }
     z-index: $index;
-    @include mono-font;
+    @include mono-font(12px, 20px);
     
     &:before, &:after {
       display: block;
@@ -393,7 +405,7 @@
     &:before {
       content: "Console:";
       background: $blue;
-      color: $gE;
+      color: $gray-lighter;
       
       @if ($position == right) {
         @include border-radius-bottom-left();
@@ -404,7 +416,7 @@
     
     &:after {
       content: "#{$value}";
-      background: $gE;
+      background: $gray-lighter;
       color: $color-dark;
         
       @if ($position == left) {

@@ -1,67 +1,68 @@
-/*==============================================================================
-  Reset
-==============================================================================*/
+////////////////////////////////////////////////////////////////////////////////
+// @ Reset Mixin
+////////////////////////////////////////////////////////////////////////////////
 
-html, body {
-  margin: 0; 
-  padding: 0;
-}
+@mixin build-reset-styles(
+  
+    $global-box-sizing : $global-box-sizing,
+    $class-clearfix : $class-clearfix,
+    $bg-selection : $bg-selection
+  
+  ) {
 
-// Prevents automatic text resizing on mobile devices
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-// Set default box sizing model to border-box
-// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if ($global-box-sizing != none) {
-  *, *:before, *:after {
-    @include box-sizing($global-box-sizing);
+  html, body {
+    margin: 0; 
+    padding: 0;
   }
-}
-
-/**
- * Clearfix Class
- */
-@if ($class-clearfix != none) {
-  .#{$class-clearfix} {
-    @include clearfix;
+  
+  // Prevents automatic text resizing on mobile devices
+  html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
-}
-
-/**
- * Make HTML5 elements act like blocks
- */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-/**
- * Remove default list styles for navigation
- */
-nav ul, nav ol { 
-  @include remove-list-styles;
-}
-
-/**
- * Base table styles
- */
-table { 
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/**
- * Custom Text Highlight Color
- */
-::-moz-selection {
-  background: $bg-selection;
-  text-shadow: none;
-}
-::selection {
-  background: $bg-selection;
-  text-shadow: none;
+  
+  // Set default box sizing model to border-box
+  // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+  @if ($global-box-sizing != none) {
+    *, *:before, *:after {
+      @include box-sizing($global-box-sizing);
+    }
+  }
+  
+  // Clearfix Class
+  @if ($class-clearfix != none) {
+    .#{$class-clearfix} {
+      @include clearfix;
+    }
+  }
+  
+  // Make HTML5 elements act like blocks
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  
+  // Remove default list styles for navigation
+  nav ul, nav ol { 
+    @include remove-list-styles;
+  }
+  
+  // Base table styles
+  table { 
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  // Custom Text Highlight Color
+  ::-moz-selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+  ::selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+  
+  @content;
 }

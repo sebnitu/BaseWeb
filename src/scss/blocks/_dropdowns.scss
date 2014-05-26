@@ -44,7 +44,7 @@
 }
 
 /*==============================================================================
-  Dropdowns
+  @ Dropdowns
 ==============================================================================*/
 
 /**
@@ -78,30 +78,34 @@
     text-shadow: 0 1px 0 rgba(255,255,255, 0.75);
     text-align: left;
   }
+}
   
-  /**
-   * Dropdown Header
-   */
-  li.dropdown-header {
-    padding: 5px 15px 0 15px;
-    color: $color-light;
-    font-size: ($base-font-size - 2);
-    text-align: left;
-    cursor: default;
-  }
+/**
+ * Dropdown Header
+ */
+.dropdown li.dropdown-header {
+  padding: 5px 15px 0 15px;
+  color: $color-light;
+  font-size: ($base-font-size - 2);
+  text-align: left;
+  cursor: default;
+}
   
-  /**
-   * Dropdown Hover & Focus
-   */
+/**
+ * Dropdown Hover & Focus
+ */
+.dropdown {
   li > a:hover,
   li > a:focus,
   li:hover > a { 
     background-color: rgba($black, 0.05);
   }
+}
   
-  /**
-   * Dropdown Active
-   */
+/**
+ * Dropdown Active
+ */
+.dropdown {
   li.active > a,
   li.active > a:hover,
   li.active > a:focus {
@@ -109,8 +113,12 @@
     text-shadow: 0 -1px 0 rgba(0,0,0, 0.25);
     border-color: rgba($color-link, 0.95);
   }
-  
-  // Disabled
+}
+
+/**
+ * Dropdown Disabled
+ */
+.dropdown {
   li.disabled > a,
   li.disabled > a:hover,
   li.disabled > a:focus {
@@ -118,10 +126,12 @@
     background: none;
     cursor: default;
   }
+}
   
-  /**
-   * Dropdown Parent
-   */
+/**
+ * Dropdown Parent
+ */
+.dropdown {
   li.dropdown-parent > a {
     padding-right: 30px;
   }
@@ -135,28 +145,28 @@
   li.dropdown-parent.active:after {
     @include triangle(4px, rgba($white, 0.75), right);
   }
+}
   
-  /**
-   * Divider
-   */
-  li.divider {
-    height: 1px;
-    margin: 5px 0;
-    background-color: rgba($black, 0.1);
-  }
+/**
+ * Divider
+ */
+.dropdown li.divider {
+  height: 1px;
+  margin: 5px 0;
+  background-color: rgba($black, 0.1);
+}
   
-  /**
-   * Sub Dropdown
-   */
-  ul.dropdown {
-    @include dropdown-wrapper(right);
-    margin: -5px 0 0 0;
-  }
-  
-  /**
-   * Sub Dropdown Toggle
-   */
-  li:hover > ul {
-    display: block;
-  }
+/**
+ * Sub Dropdown
+ */
+.dropdown ul.dropdown {
+  @include dropdown-wrapper(right);
+  margin: -5px 0 0 0;
+}
+
+/**
+ * Sub Dropdown Toggle
+ */
+.dropdown li:hover > ul {
+  display: block;
 }

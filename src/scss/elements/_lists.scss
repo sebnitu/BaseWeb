@@ -12,6 +12,16 @@ $color-border-list: rgba($black, 0.1) !default;
 // Base Modifier Table Styles
 @mixin make-base-table() {
   margin: 10px 0;
+  
+  > li {
+    @include clearfix();
+  }
+  
+  &.list-no-clear {
+    > li {
+      @include remove-clearfix();
+    }
+  }
 }
 
 // Make Wrap
@@ -43,7 +53,6 @@ $color-border-list: rgba($black, 0.1) !default;
   border-bottom: 1px solid $color-border-list;
   
   > li {
-    @include clearfix();
     margin: 0;
     padding: 10px 0;
     border-top: 1px solid $color-border-list;
@@ -60,7 +69,6 @@ $color-border-list: rgba($black, 0.1) !default;
   @include border-radius();
   
   > li {
-    @include clearfix();
     margin: 0;
     padding: 10px 15px;
     border-top: 1px solid $color-border-list;

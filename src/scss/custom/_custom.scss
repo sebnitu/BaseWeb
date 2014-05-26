@@ -1,34 +1,54 @@
 // Custom styles go here
 // All variabls and mixins in BaseWeb are available to styles in this document
 /*==============================================================================
-  Generate Mobile Grid System
+  @ Reset Styles
 ==============================================================================*/
 
-@include build-mobile-grid-system();
+@include build-reset-styles;
 
 /*==============================================================================
-  Generate Class Based Grid System
+  @ Mobile Grid System
+==============================================================================*/
+
+@include build-mobile-grid-system;
+
+/*==============================================================================
+  @ Grid System
 ==============================================================================*/
 
 @include media-tablet {
-  @include build-grid-system();
+  @include build-grid-system;
+
+  // @include build-grid-system(100%, 2%, 8);
+  
+  // $args: (grid-columns: 8, grid-total-width: 100%);
+  // @include build-grid-system($args...);
 }
 
 /*==============================================================================
-  @test
+  @ Test
 ==============================================================================*/
 
-.wrapper {
-  @include clearfix;
-  
-  .aside,
-  .content {
-    float: left;
-  }
+@mixin colors($args...) {
+  $text: map-get($args, 'text') or red;
+  $background: map-get($args, 'background') or lime;
+  $border: map-get($args, 'border') or blue;
+  color: $text;
+  background: $background;
+  border-color: $border;
 }
 
+// $value-map: (border red, background blue);
+$value-map: pink, pink, pink;
+
+.test-map {
+  @include colors(pink, pink, pink);
+}
+
+// sass src/scss/_baseweb.scss src/css/baseweb.css
+
 /*==============================================================================
-  Semantic Grid Demo
+  @ Semantic Grid Demo
 ==============================================================================*/
 
 .demo-wrapper {
@@ -48,7 +68,7 @@
 }
 
 /*==============================================================================
-  Color Classes
+  @ Color Classes
 ==============================================================================*/
 
 // Gray Scale
@@ -139,5 +159,5 @@
 .color-blue-violet-darker { background-color: $blue-violet-darker; }
 
 /*==============================================================================
-  End
+  @ End
 ==============================================================================*/
