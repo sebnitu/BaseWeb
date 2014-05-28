@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie9 ie8 ie7 ie6" lang="en"><![endif]-->
+<!--[if IE 7]><html class="ie9 ie8 ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie9 ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>{{ layout.title }} &ndash; {{ layout.desc }}</title>
+  
+  <!-- Stylesheets and less -->
+  <link rel="stylesheet" type="text/css" media="all" href="../{{{ paths.css }}}baseweb.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../{{{ paths.mustache.base }}}assets/css/home.css">
+  
+  <!-- Typekit -->
+  <script type="text/javascript" src="//use.typekit.net/vre4dcv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+</head>
+<body class="page-home">
+
+<div id="console"></div>
+
+<header class="header">
+  
+  <nav class="menu menu-nav">
+    <ul>
+      <li><a href="/docs/">Documentation</a></li>
+      <li class=""><a href="/examples/">Examples</a></li>
+      <li class=""><a href="{{ repository.url }}">Download <span class="version">v{{ version }}</span></a></li>
+    </ul>
+  </nav><!-- .menu-nav -->
+  
+  <nav class="menu menu-social">
+    <ul>
+      <li><a href="#">Star (24)</a></li>
+      <li><a href="#">Fork (6)</a></li>
+      <li><a href="#">Follow (45)</a></li>
+      <li><a href="#">Tweet (18.6k)</a></li>
+    </ul>
+  </nav><!-- .menu-social -->
+  
+  <div class="container">
+    <h1 class="logo"><a href="/">{{ name }}</a></h1>
+    <p class="slogan">{{ description }} <span class="version">v{{ version }}</span></p>
+    <div class="btn-group">
+      <a href="{{ repository.url }}" class="btn btn-primary btn-large">Download BaseWeb</a>
+      <a href="{{ repository.url }}" class="btn btn-primary btn-large">View on Github</a>
+    </div>
+  </div><!-- .container -->
+  
+</header><!-- .header -->
+
+{{ > page }}
+
+<footer class="footer">
+  <div class="container">
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Feedback</a></li>
+        <li><a href="#" target="_blank">Privacy Policy</a></li>
+        <li><a href="#" target="_blank">Terms of Service</a></li>
+      </ul>
+    </nav>
+    
+    <p>&copy; {{ year }} <a href="{{{ url }}}">{{ author }}</a>. All rights reserved.</p>
+  </div><!-- container -->
+</footer>
+
+<!-- jQuery -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="../{{{ paths.js }}}libs/jquery.min.js"%3E%3C/script%3E'))</script>
+
+<!-- JS -->
+<script src="../{{{ paths.js }}}baseweb.min.js"></script>
+<script src="../{{{ paths.mustache.base }}}assets/js/masonry.js"></script>
+<script src="../{{{ paths.mustache.base }}}assets/js/jquery.home.js"></script>
+
+</body>
+</html>

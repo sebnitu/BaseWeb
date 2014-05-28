@@ -11,13 +11,11 @@ body {
 }
 
 h2 {
-  margin: 40px 0 10px;
+  margin: 0;
+  padding: 40px 0 10px;
   font-size: 30px;
   line-height: 38px;
   font-weight: 600;
-}
-h2:first-child {
-  margin-top: 0;
 }
 
 h3 {
@@ -55,7 +53,7 @@ html {
   background: #fff;
 }
 
-.block-header .nav-primary li.logo a,
+.block-header .menu-primary .menu-item-logo a,
 .block-aside {
   width: 200px;
 }
@@ -113,7 +111,7 @@ html {
  * Logo
  */
 /* Logo */
-.block-header .nav-primary li.logo a {
+.block-header .menu-primary .menu-item-logo a {
   background: url("../img/svg/logo-baseweb-small.svg") no-repeat 20px center;
   background-size: 113px 25px;
   padding: 0;
@@ -121,7 +119,7 @@ html {
   overflow: hidden;
   text-indent: 100%;
 }
-.block-header .nav-primary li.logo a:hover {
+.block-header .menu-primary .menu-item-logo a:hover {
   background-color: rgba(255,255,255, 0.05);
 }
 
@@ -135,54 +133,59 @@ html {
 /**
  * Primary Navigation
  */
-.block-header .nav-primary {
+.block-header .menu-primary {
   float: left;
 }
-.block-header .nav-primary li {
+.block-header .menu-primary li {
   float: left;
   border-right: 1px solid rgba(255,255,255, 0.15);
 }
-.block-header .nav-primary li a {
+.block-header .menu-primary li a {
   display: block;
   height: 50px;
-  .box-sizing(border-box);
+  box-sizing: border-box;
   padding: 15px 25px;
   color: #aaa;
+  /* CSS3 Transitions */
+  -webkit-transition: all linear 0.25s;
+  -moz-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
 }
-.block-header .nav-primary li a:hover {
+.block-header .menu-primary li a:hover {
   color: #fff;
   background-color: rgba(255,255,255, 0.05);
 }
 
 /* Active */
-.block-header .nav-primary li.active a {
+.block-header .menu-primary li.active a {
   margin: 0 -1px;
   background: #fff;
   color: #303030;
 }
 
 /* Version */
-.block-header .nav-primary li a .version {
+.block-header .menu-primary li a .version {
   opacity: 0.5;
 }
 
 /**
  * Secondary Navigation
  */
-.block-header .nav-secondary {
+.block-header .menu-secondary {
   float: right;
   padding: 15px;
 }
-.block-header .nav-secondary li {
+.block-header .menu-secondary li {
   display: inline-block;
   margin: 0 5px;
 }
-.block-header .nav-secondary li a {
+.block-header .menu-secondary li a {
   color: #707070;
   border-bottom: 1px solid rgba(255,255,255, 0.1);
 }
-.block-header .nav-secondary li.active a,
-.block-header .nav-secondary li a:hover {
+.block-header .menu-secondary li.active a,
+.block-header .menu-secondary li a:hover {
   color: #aaa;
   border-color: rgba(255,255,255, 0.25);
 }
@@ -228,11 +231,11 @@ html {
 }
 
 /* Active */
-.aside-item-menu nav ul li.active > a {
+.aside-item-menu nav > ul > li.active > a {
   color: #fff200;
   font-weight: bold;
 }
-.aside-item-menu nav ul li.active > a:before {
+.aside-item-menu nav > ul > li.active > a:before {
   content: "";
   position: absolute;
   top: 0;
@@ -264,13 +267,21 @@ html {
   content: "– – ";
 }
 
+/* active */
+.aside-item-menu nav ul ul li.active > a {
+  color: #fff200;
+}
+.aside-item-menu nav ul ul li.active > a:before {
+  color: #fff200;
+}
+
 /*==============================================================================
   Content
 ==============================================================================*/
 
 .block-content {}
 .block-content .inner {
-  padding: 50px;
+  padding: 10px 50px 50px;
 }
 .block-content .container {
   max-width: 800px;
@@ -480,6 +491,7 @@ html {
   overflow: hidden;
   font-size: 13px;
   line-height: 20px;
+  color: #aaa;
 }
 .block-footer a {
   color: #aaa;
@@ -494,21 +506,28 @@ html {
   float: left;
   margin: 0 10px;
 }
-.block-footer .nav-left {
+.block-footer .menu-left {
   float: left;
 }
-.block-footer .nav-right {
+.block-footer .menu-right {
   float: right;
 }
 
 /**
  * Nav Left
  */
-.block-footer .nav-left a {
+.block-footer .menu-left .menu-item-feedback {
+  width: 175px;
+  margin-right: 50px;
+}
+.block-footer .menu-left .menu-item-copyright {
+  margin: 0;
+}
+.block-footer .menu-left .menu-item-feedback a {
   color: #707070;
   border-bottom: 1px solid rgba(255,255,255, 0.1);
 }
-.block-footer .nav-left a:hover {
+.block-footer .menu-left .menu-item-feedback a:hover {
   color: #aaa;
   border-color: rgba(255,255,255, 0.25);
 }

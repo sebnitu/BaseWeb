@@ -32,6 +32,13 @@ task('watch', {async: true}, function() {
       }
     });
     
+    // Watch our templates
+    watch(config.watch.mustache, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
+      jake.Task['build:docs'].execute();
+      jake.Task['build:examples'].execute();
+    });
+    
     // Watch our doc files
     watch(config.watch.docs, function(filepath) {
       u.print(filepath + ' was changed:', 'cyan');
