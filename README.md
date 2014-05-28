@@ -3,6 +3,19 @@ A fresh front-end development framework.
 
 ---
 
+# Upcoming Features
+Some features I have planned to implement in the near future.
+
+### To-Do List
+
+* Automatic SVG compilation. SVGs saved to `img > svg` should get compiled to a single file in `img` called `svg-difs.svg` for use in SVG sprites. Source: [Icon System with SVG Sprites by Chris Coyier](http://css-tricks.com/svg-sprites-use-better-icon-fonts/)
+* Include some custom SVG icons directly in the framework for general web application use. Might be worth starting a new project for this and having SVGs seperate. Still deciding on this.
+* Tie documentation styles directly into BaseWeb so I can use Scss for docs but not have ot modify BaseWeb source directly. Should then include watch and build tasks for this.
+* Create a partials system for including parts or widgets within mustache page and layout templates.
+* Include README.md somehow into the homepage of the docs. Was thinking this could be a dropdown somehow to show. This could be included using the future partials system.
+
+---
+
 # Using Build Scripts
 
 ### Global Installations (One time)
