@@ -11,6 +11,8 @@
   
 } }}
 
+<!-- #how-it-works -->
+
 <span class="icon icon-overview"></span>
 <h2 id="how-it-works">How It Works</h2>
 
@@ -82,7 +84,28 @@
 
 <hr>
 
+<!-- #base-reset-styles -->
+
+<h2 id="base-reset-styles">Base Reset Styles</h2>
+
+<p>BaseWeb comes with a very basic reset styles that do a few things such as:</p>
+
+<ul class="list-rowed list-stripes">
+  <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
+  <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
+  <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
+  <li>Creates the clearfix class using the <a href="#class-clearfix" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#clearfix" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
+  <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
+  <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
+  <li>Sets border collapse and spacing for tables</li>
+  <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
+</ul>
+
+<!-- #variables -->
+
 <h2 id="global-variables">Global Variables</h2>
+
+<!-- #variables #color-palette -->
 
 <article id="variables-color-palette" class="block block-variable" data-type="variable">
 <h3>Color Palette</h3>
@@ -200,7 +223,9 @@ $darker-deg:  10% !default;</code></pre>
 </table>
 </article>
 
-<article id="class-compiler" class="block block-variable" data-type="variable">
+<!-- #variables #compiler -->
+
+<article id="compiler" class="block block-variable" data-type="variable">
 <h3>compiler</h3>
 <p>Set the compiler that you're using. Currently supports <a href="https://www.npmjs.org/package/node-sass">node-sass</a> (which uses <a href="http://libsass.org/">libsass</a>) and <a href="http://sass-lang.com/install">ruby-sass</a>. The reason this exists is because there are some differences between how the two compilers work. This variable allows the framework to make the most out of both.</p>
 <div class="example">
@@ -212,9 +237,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<article id="class-global-box-sizing" class="block block-variable" data-type="variable">
+<!-- #variables #global-box-sizing -->
+
+<article id="global-box-sizing" class="block block-variable" data-type="variable">
 <h3>global-box-sizing</h3>
-<p>Sets the global box-sizing for everything. It's output when using <a href="#" class="code-link"><code>@mixin build-reset-styles</code></a> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
+<p>Sets the global box-sizing for everything. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$global-box-sizing
@@ -228,19 +255,535 @@ $darker-deg:  10% !default;</code></pre>
 </div>
 </article>
 
+<!-- #variables #class-clearfix -->
+
 <article id="class-clearfix" class="block block-variable" data-type="variable">
 <h3>class-clearfix</h3>
-<p>The class name used for creating the clearfix class. It's output when using <a href="#" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a clearfix class.</p>
+<p>The class name used for creating the clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a clearfix class.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-clearfix
-  type: class name
+  type: class-name
   default: clearfix</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
 
+<!-- #variables #class-remove-clearfix -->
+
+<article id="class-remove-clearfix" class="block block-variable" data-type="variable">
+<h3>class-remove-clearfix</h3>
+<p>The class name used for creating the remove-clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a remove-clearfix class.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-remove-clearfix
+  type: class-name
+  default: remove-clearfix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #border-radius -->
+
+<article id="border-radius" class="block block-variable" data-type="variable">
+<h3>border-radius</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$border-radius
+  type: unit (pixel, percent)
+  default: 3px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #box-shadow -->
+
+<article id="box-shadow" class="block block-variable" data-type="variable">
+<h3>box-shadow</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$box-shadow
+  type: box-shadow value (
+    [horizontal offset] 
+    [vertical offset] 
+    [blur radius] 
+    [spread radius] 
+    [color]
+  )
+  default: 0 1px 3px rgba(0,0,0, 0.25)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #box-sizing -->
+
+<article id="box-sizing" class="block block-variable" data-type="variable">
+<h3>box-sizing</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$box-sizing
+  type: box-sizing value (border-box, none)
+  default: border-box</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<!-- #variables #transition-property -->
+
+<article id="transition-property" class="block block-variable" data-type="variable">
+<h3>transition-property</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition-property
+  type: property name
+  default: all</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #transition-duration -->
+
+<article id="transition-duration" class="block block-variable" data-type="variable">
+<h3>transition-duration</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition-duration
+  type: time value (seconds, milliseconds)
+  default: 0.25s</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #transition-timing-function -->
+
+<article id="transition-timing-function" class="block block-variable" data-type="variable">
+<h3>transition-timing-function</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition-timing-function
+  type: predefined keyword values (ease, linear, ease-in, ease-out, ease-in-out, step-start, step-end)
+  default: linear</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #transition-delay -->
+
+<article id="transition-delay" class="block block-variable" data-type="variable">
+<h3>transition-delay</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition-delay
+  type: time value (seconds, milliseconds)
+  default: 0.25s</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #transition -->
+
+<article id="transition" class="block block-variable" data-type="variable">
+<h3>transition</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition
+  type: transition value (
+    [transition-property] 
+    [transition-duration] 
+    [transition-timing-function] 
+    [transition-delay]
+  )
+  default: all 0.25s linear</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #gradient-start -->
+
+<article id="gradient-start" class="block block-variable" data-type="variable">
+<h3>gradient-start</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-start
+  type: color
+  default: $blue-light</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #gradient-middle -->
+
+<article id="gradient-middle" class="block block-variable" data-type="variable">
+<h3>gradient-middle</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-middle
+  type: color
+  default: $blue</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #gradient-end -->
+
+<article id="gradient-end" class="block block-variable" data-type="variable">
+<h3>gradient-end</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-end
+  type: color
+  default: $blue-dark</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #gradient-deg -->
+
+<article id="gradient-deg" class="block block-variable" data-type="variable">
+<h3>gradient-deg</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-deg
+  type: unit (degree)
+  default: 45deg</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #gradient-stop -->
+
+<article id="gradient-stop" class="block block-variable" data-type="variable">
+<h3>gradient-stop</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-stop
+  type: unit (pixel, percentage)
+  default: 50%</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #font-family-sans -->
+
+<article id="font-family-sans" class="block block-variable" data-type="variable">
+<h3>font-family-sans</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$font-family-sans
+  type: font stack
+  default: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #font-family-serif -->
+
+<article id="font-family-serif" class="block block-variable" data-type="variable">
+<h3>font-family-serif</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$font-family-serif
+  type: font stack
+  default: georgia, "Times New Roman", times, serif</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #font-family-mono -->
+
+<article id="font-family-mono" class="block block-variable" data-type="variable">
+<h3>font-family-mono</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$font-family-mono
+  type: font stack
+  default: Menlo, Monaco, Consolas, "Courier New", monospace</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #base-font-family -->
+
+<article id="base-font-family" class="block block-variable" data-type="variable">
+<h3>base-font-family</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$base-font-family
+  type: font stack
+  default: $font-family-sans</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#font-family-sans" class="code-link"><code>$font-family-sans</code></a></span>
+</article>
+
+<!-- #variables #base-font-size -->
+
+<article id="base-font-size" class="block block-variable" data-type="variable">
+<h3>base-font-size</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$base-font-size
+  type: unit (pixel, em, rem)
+  default: 14px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #base-line-height -->
+
+<article id="base-line-height" class="block block-variable" data-type="variable">
+<h3>base-line-height</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$base-line-height
+  type: unit (pixel, em, rem)
+  default: 20px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #base-font-weight -->
+
+<article id="base-font-weight" class="block block-variable" data-type="variable">
+<h3>base-font-weight</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$base-font-weight
+  type: value (keyword, numeric)
+  default: normal</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #font-family-header -->
+
+<article id="font-family-header" class="block block-variable" data-type="variable">
+<h3>font-family-header</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$font-family-header
+  type: font stack
+  default: inherit</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #font-weight-header -->
+
+<article id="font-weight-header" class="block block-variable" data-type="variable">
+<h3>font-weight-header</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$font-weight-header
+  type: value (keyword, numeric)
+  default: bold</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #color -->
+
+<article id="color" class="block block-variable" data-type="variable">
+<h3>color</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color
+  type: color
+  default: $gray-dark</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#gray-dark" class="code-link"><code>$gray-dark</code></a></span>
+</article>
+
+<!-- #variables #color-light -->
+
+<article id="color-light" class="block block-variable" data-type="variable">
+<h3>color-light</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-light
+  type: color
+  default: $gray-light</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#gray-light" class="code-link"><code>$gray-light</code></a></span>
+</article>
+
+<!-- #variables #color-dark -->
+
+<article id="color-dark" class="block block-variable" data-type="variable">
+<h3>color-dark</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-dark
+  type: color
+  default: $gray-darker</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#gray-darker" class="code-link"><code>$gray-darker</code></a></span>
+</article>
+
+<!-- #variables #color-header -->
+
+<article id="color-header" class="block block-variable" data-type="variable">
+<h3>color-header</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-header
+  type: color
+  default: $gray-darker</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#gray-darker" class="code-link"><code>$gray-darker</code></a></span>
+</article>
+
+<!-- #variables #color-link -->
+
+<article id="color-link" class="block block-variable" data-type="variable">
+<h3>color-link</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-link
+  type: color
+  default: $blue</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
+</article>
+
+<!-- #variables #color-link-hover -->
+
+<article id="color-link-hover" class="block block-variable" data-type="variable">
+<h3>color-link-hover</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-link-hover
+  type: color
+  default: $violet</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#violet" class="code-link"><code>$violet</code></a></span>
+</article>
+
+<!-- #variables #color-link-header -->
+
+<article id="color-link-header" class="block block-variable" data-type="variable">
+<h3>color-link-header</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-link-header
+  type: color
+  default: $blue</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
+</article>
+
+<!-- #variables #color-link-header-hover -->
+
+<article id="color-link-header-hover" class="block block-variable" data-type="variable">
+<h3>color-link-header-hover</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$color-link-header-hover
+  type: color
+  default: $violet</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#violet" class="code-link"><code>$violet</code></a></span>
+</article>
+
+<!-- #variables #letter-spacing -->
+
+<article id="letter-spacing" class="block block-variable" data-type="variable">
+<h3>letter-spacing</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$letter-spacing
+  type: unit (pixel)
+  default: 1px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #bg-color -->
+
+<article id="bg-color" class="block block-variable" data-type="variable">
+<h3>bg-color</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bg-color
+  type: color
+  default: rgba($black, 0.025)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
+</article>
+
+<!-- #variables #bg-selection -->
+
+<article id="bg-selection" class="block block-variable" data-type="variable">
+<h3>bg-selection</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bg-selection
+  type: color
+  default: rgba($blue, 0.25)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
+</article>
+
+<!-- #variables #border-color -->
+
+<article id="border-color" class="block block-variable" data-type="variable">
+<h3>border-color</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$border-color
+  type: color
+  default: rgba($black, 0.1)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
+</article>
+
 <hr>
+
+<!-- #functions -->
 
 <h2 id="global-functions">Global Functions</h2>
 
@@ -334,7 +877,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="clearfix" class="block block-mixin" data-type="mixin">
 <h3>clearfix</h3>
-<p>Allows you to apply clearfix styles for an element that contains floats.</p>
+<p>Allows you to apply a clearfix to an element that contains floats.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin clearfix</code></pre>
@@ -378,20 +921,3 @@ $darker-deg:  10% !default;</code></pre>
 </div>
 
 </article>
-
-<hr>
-
-<h2 id="base-reset-styles">Base Reset Styles</h2>
-
-<p>BaseWeb comes with a very basic reset styles that do a few things such as:</p>
-
-<ul class="list-rowed list-stripes">
-  <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
-  <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
-  <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
-  <li>Creates the clearfix class using the <a href="#class-clearfix" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#clearfix" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
-  <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
-  <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
-  <li>Sets border collapse and spacing for tables</li>
-  <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
-</ul>

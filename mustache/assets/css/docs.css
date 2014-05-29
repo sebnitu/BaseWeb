@@ -356,6 +356,13 @@ html {
   padding: 0 0 0 50px;
   border-top: 1px solid rgba(0,0,0, 0.1);
 }
+.block-variable:after,
+.block-function:after,
+.block-mixin:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /**
  * Parameter Lists
@@ -389,9 +396,13 @@ html {
 /* Variable References */
 .var-reference {
   float: right;
-  margin: 0 0 0 20px;
+  margin: -10px 0 20px;
   color: #aaa;
 }
+.param-list .var-reference {
+  margin: 0 0 0 20px;
+}
+
 
 /**
  * Tables

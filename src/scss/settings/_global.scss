@@ -3,33 +3,38 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Which compiler are you using?
-// Options: node-sass, ruby-sass
+// type: node-sass, ruby-sass
 $compiler: node-sass;
 
 // Sets global box sizing property
-// Options: border-box, none
+// type: border-box, none
 $global-box-sizing: border-box !default;
 
-// Class name used in clearfix class
-// Options: class-name, none
+// Class name used in clearfix and remove-clearfix classes
+// type: class-name, none
 $class-clearfix: clearfix;
+$class-remove-clearfix: remove-clearfix;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ Grid
 ////////////////////////////////////////////////////////////////////////////////
 
 // Global Grid Settings
+// type: unit (pixel, percentage)
 $grid-total-width:  100% !default;
 $grid-gutter-width: 2% !default;
 $grid-columns:      12 !default;
 
 // Container Settings
+// type: unit (pixel, percentage, auto)
 $container-margin:    auto !default;
 $container-padding:   20px !default;
+// type: unit (pixel, none)
 $container-min-width: none !default;
 $container-max-width: 1000px !default;
 
 // Grid Class Names
+// type: class-name
 $class-container: container !default;
 $class-row:       row !default;
 $class-column:    col !default;
@@ -41,6 +46,7 @@ $class-suffix:    suffix !default; // Use `none` to disable output
 ////////////////////////////////////////////////////////////////////////////////
 
 // Media query breakpoints(bp)
+// type: unit (pixel)
 $bp-small:   480px !default;  // max-width
 $bp-mobile:  760px !default;  // max-width
 $bp-tablet:  760px !default;  // min-width
@@ -51,73 +57,84 @@ $bp-large:   1380px !default; // min-width
 // @ Mixin Defaults
 ////////////////////////////////////////////////////////////////////////////////
 
-// CSS3
+// type: unit (pixel, percent)
 $border-radius: 3px !default;
-$box-shadow:    0 1px 3px rgba(0,0,0, 0.25) !default;
-$rotate-degree: 0 !default;
+
+// type: box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
+$box-shadow: 0 1px 3px rgba(0,0,0, 0.25) !default;
+
+// type: box-sizing value (border-box, none)
+$box-sizing: border-box !default;
 
 // Transition
-$transition-property:        all !default;
-$transition-duration:        0.25s !default;
-$transition-timing-function: ease-in-out !default;
-$transition-delay:           0 !default;
-$transition: $transition-property $transition-duration $transition-timing-function $transition-delay !default;
+$transition-property: all !default;
+$transition-duration: 0.25s !default;
+$transition-timing-function: linear !default;
+$transition-delay: 0.25s !default;
+$transition: all 0.25s linear !default;
 
 // Gradients
-$gradient-start-color:  $blue-light !default;
-$gradient-center-color: $blue !default;
-$gradient-end-color:    $blue-dark !default;
-$gradient-deg:          45deg !default;
-$gradient-color-stop:   50% !default;
-
-// Miscellaneous
-$box-sizing: border-box !default;
-$display-visible: block !default;
-$letter-spacing: 1px !default;
-$bg-selection: rgba($blue, 0.25) !default;
+// type: color
+$gradient-start: $blue-light !default;
+$gradient-middle: $blue !default;
+$gradient-end: $blue-dark !default;
+// type: unit (degree)
+$gradient-deg: 45deg !default;
+// type: unit (pixel, percentage)
+$gradient-stop: 50% !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ Typography
 ////////////////////////////////////////////////////////////////////////////////
 
 // Font Families
+// type: font-stack
 $font-family-sans:  "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif !default;
-$font-family-slab:  "Rockwell", $font-family-sans !default;
 $font-family-serif: georgia, "Times New Roman", times, serif !default;
 $font-family-mono:  Menlo, Monaco, Consolas, "Courier New", monospace !default;
 
-// Base Styles
+// Base Font Styles
+// type: font-stack
 $base-font-family: $font-family-sans !default;
+// type: unit (pixel, em, rem)
 $base-font-size:   14px !default;
 $base-line-height: 20px !default;
+// type: value (keyword, numeric)
 $base-font-weight: normal !default;
 
 // Header Styles
+// type: font-stack
 $font-family-header: inherit !default;
+// type: value (keyword, numeric)
 $font-weight-header: bold !default;
 
-// Alternative Styles
-$font-family-alt: $font-family-serif !default;
-$font-weight-alt: inherit !default;
-
 // Text Color Assignment
+// type: color
 $color:        $gray-dark !default;
 $color-light:  $gray-light !default;
 $color-dark:   $gray-darker !default;
-$color-header: $color-dark !default;
+$color-header: $gray-darker !default;
 
 // Links
+// type: color
 $color-link:       $blue !default;
 $color-link-hover: $violet !default;
 
 // Header Links
-$color-link-header:       $color-link !default;
-$color-link-header-hover: $color-link-hover !default;
+// type: color
+$color-link-header:       $blue !default;
+$color-link-header-hover: $violet !default;
+
+// Miscellaneous
+// type: unit (pixel)
+$letter-spacing: 1px !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ Scaffolding
 ////////////////////////////////////////////////////////////////////////////////
 
+// Colors
+// type: color
 $bg-color:     rgba($black, 0.025) !default;
+$bg-selection: rgba($blue,  0.25) !default;
 $border-color: rgba($black, 0.1) !default;
-$border-width: 1px !default;
