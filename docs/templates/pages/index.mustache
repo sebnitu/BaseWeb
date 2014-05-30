@@ -540,7 +540,7 @@ $darker-deg:  10% !default;</code></pre>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$base-font-size
-  type: unit (pixel, em, rem)
+  type: unit (pixel)
   default: 14px</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -791,13 +791,14 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="px_to_em" class="block block-function" data-type="function">
 <h3>px_to_em</h3>
-<p>Returns a pixel value to EMs. By default it's uses the base font size but can be passed a custom base.</p>
+<p>Converts a pixel value to EMs. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@function px_to_em(
   $px,
-  $base-font-size,
-)</code></pre>
+  $base,
+)
+// returns: unit (em)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -816,7 +817,7 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-base">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $base-font-size
+<pre><code class="language-scss">@param $base
   type: unit (pixel)
   default: $base-font-size</code></pre>
   </div><!-- .example-code -->
@@ -832,13 +833,14 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="em_to_px" class="block block-function" data-type="function">
 <h3>em_to_px</h3>
-<p>Returns an EM value to pixels. By default it's uses the base font size but can be passed a custom base.</p>
+<p>Converts an EM value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@function em_to_px(
   $em,
-  $base-font-size,
-)</code></pre>
+  $base,
+)
+// returns: unit (pixel)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -849,7 +851,7 @@ $darker-deg:  10% !default;</code></pre>
 <div class="example" id="param-px_to_em-px">
   <div class="example-block example-code">
 <pre><code class="language-scss">@param $em
-  type: unit (pixel)</code></pre>
+  type: unit (em)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 <p>The EM unit you want converted to pixels.</p>
@@ -857,7 +859,7 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-base">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $base-font-size
+<pre><code class="language-scss">@param $base
   type: unit (pixel)
   default: $base-font-size</code></pre>
   </div><!-- .example-code -->
@@ -870,6 +872,8 @@ $darker-deg:  10% !default;</code></pre>
 </article>
 
 <hr>
+
+<!-- #mixins -->
 
 <h2 id="global-mixins">Global Mixins</h2>
 
@@ -920,4 +924,16 @@ $darker-deg:  10% !default;</code></pre>
   <p>Acknowledgements for clearfix technique goes to <a href="http://www.css-101.org/articles/clearfix/latest-new-clearfix-so-far.php">Thierry Koblentz</a>.</p>
 </div>
 
+</article>
+
+<!-- #mixin #remove-clearfix -->
+
+<article id="remove-clearfix" class="block block-mixin" data-type="mixin">
+<h3>remove-clearfix</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin remove-clearfix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
 </article>

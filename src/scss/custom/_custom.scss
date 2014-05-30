@@ -29,23 +29,8 @@
   @ Test
 ==============================================================================*/
 
-@mixin colors($args...) {
-  $text: map-get($args, 'text') or red;
-  $background: map-get($args, 'background') or lime;
-  $border: map-get($args, 'border') or blue;
-  color: $text;
-  background: $background;
-  border-color: $border;
-}
-
-// $value-map: (border red, background blue);
-$value-map: pink, pink, pink;
-
-.test-map {
-  @include colors(pink, pink, pink);
-}
-
-// sass src/scss/_baseweb.scss src/css/baseweb.css
+// @include console(px_to_em(28)); // return 2em
+@include console(em_to_px(2)); // return 28px
 
 /*==============================================================================
   @ Semantic Grid Demo

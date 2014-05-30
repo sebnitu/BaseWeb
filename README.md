@@ -13,6 +13,7 @@ Some features I have planned to implement in the near future.
 * Tie documentation styles directly into BaseWeb so I can use Scss for docs but not have ot modify BaseWeb source directly. Should then include watch and build tasks for this.
 * Create a partials system for including parts or widgets within mustache page and layout templates.
 * Include README.md somehow into the homepage of the docs. Was thinking this could be a dropdown somehow to show. This could be included using the future partials system.
+* Add function and mixin documentation directly in source. The comment syntax should mimic what is done in `_functions.scss` for functions/mixins and `_global.scss` for variables.
 
 ---
 
