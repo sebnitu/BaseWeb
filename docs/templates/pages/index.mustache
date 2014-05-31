@@ -366,7 +366,15 @@ $darker-deg:  10% !default;</code></pre>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition-timing-function
-  type: predefined keyword values (ease, linear, ease-in, ease-out, ease-in-out, step-start, step-end)
+  type: predefined keyword values (
+    linear,
+    ease,
+    ease-in,
+    ease-out,
+    ease-in-out,
+    step-start,
+    step-end
+  )
   default: linear</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -787,6 +795,36 @@ $darker-deg:  10% !default;</code></pre>
 
 <h2 id="global-functions">Global Functions</h2>
 
+<!-- #functions #strip_units -->
+
+<article id="strip_units" class="block block-function" data-type="function">
+<h3>strip_units</h3>
+<p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12. This function is used in <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> and <a href="#em_to_px" class="code-link"><code>@function em_to_px</code></a> to return the proper value.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@function strip_units(
+  $val
+)
+// returns: number</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-column_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-strip_units-val">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $val
+  type: unit (pixel, em, rem)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The unit you want striped to a number value.</p>
+</li>
+</ul>
+
+</article>
+
 <!-- #functions #px_to_em -->
 
 <article id="px_to_em" class="block block-function" data-type="function">
@@ -808,8 +846,8 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-px">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $px
-  type: unit (pixel)</code></pre>
+<pre><code class="language-scss">@param: $px
+  type: unit (pixel, number)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 <p>The pixel unit you want converted to EMs.</p>
@@ -817,8 +855,8 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-base">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $base
-  type: unit (pixel)
+<pre><code class="language-scss">@param: $base
+  type: unit (pixel, number)
   default: $base-font-size</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
@@ -827,13 +865,48 @@ $darker-deg:  10% !default;</code></pre>
 </li>
 </ul>
 
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">h1 {
+  font-size: px_to_em(28px);
+}
+
+.aside {
+  font-size: px_to_em(12px);
+  h2 {
+    font-size: px_to_em(18px, 12px);
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>Will Output:</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">h1 {
+  font-size: 2em;
+}
+
+.aside {
+  font-size: 0.85714em;
+}
+
+.aside h2 {
+  font-size: 1.5em;
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #functions #em_to_px -->
 
 <article id="em_to_px" class="block block-function" data-type="function">
 <h3>em_to_px</h3>
-<p>Converts an EM value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
+<p>Works the same as <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> except it converts an EM value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@function em_to_px(
@@ -850,8 +923,8 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-px">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $em
-  type: unit (em)</code></pre>
+<pre><code class="language-scss">@param: $em
+  type: unit (em, number)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 <p>The EM unit you want converted to pixels.</p>
@@ -859,8 +932,8 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example" id="param-px_to_em-base">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param $base
-  type: unit (pixel)
+<pre><code class="language-scss">@param: $base
+  type: unit (pixel, number)
   default: $base-font-size</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->

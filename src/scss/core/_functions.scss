@@ -2,52 +2,65 @@
 // @ General Functions
 ////////////////////////////////////////////////////////////////////////////////
 
-// Srtips the units from a value. e.g. 12px -> 12
-@function strip-units($val) {
+// Srtips the unit from a value. e.g. 12px -> 12
+// 
+// @param: $val
+//   type: unit (pixel, number)
+//
+// @return: number
+@function strip_units($val) {
   @return ($val / ($val * 0 + 1));
 }
 
 // Converts a PX value to EM
 //
-// @param $px
-//   type: unit (pixel)
+// @param: $px
+//   type: unit (pixel, number)
 // 
-// @param $base-font-size
-//   type: unit (pixel)
+// @param: $base-font-size
+//   type: unit (pixel, number)
 //   default: $base-font-size
 //
-// @return unit (em)
+// @return: unit (em)
 @function px_to_em( $px, $base : $base-font-size ) {
   
   @if unitless($px) {
     $px: 1px * $px;
   }
   
+  @if unitless($base) {
+    $base: 1px * $base;
+  }
+  
   $px: ($px / $base) * 1em;
-  @return strip-units($px) * 1em;
+  @return strip_units($px) * 1em;
 }
 
 // Converts an EM value to PX
 //
-// @param $px
-//   type: unit (em)
+// @param: $px
+//   type: unit (em, number)
 // 
-// @param $base-font-size
-//   type: unit (pixel)
+// @param: $base-font-size
+//   type: unit (pixel, number)
 //   default: $base-font-size
 //
-// @return unit (px)
+// @return: unit (px)
 @function em_to_px( $em, $base : $base-font-size ) {
   
   @if unitless($em) {
     $em: 1em * $em;
   }
   
+  @if unitless($base) {
+    $base: 1px * $base;
+  }
+  
   $em: ($em * $base) / 1px;
-  @return strip-units($em) * 1px;
+  @return strip_units($em) * 1px;
 }
 
-// TO-DO
+// UPCOMING FUNCTIONS
 //
 // PX to Percent
 // Formula: size in pixels / parent size in pixels * 100

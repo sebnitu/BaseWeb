@@ -24,12 +24,12 @@
 // Scrollable
 // Makes things scrollable in a sexy way
 @mixin scrollable() {
-  overflow: auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   @include transition(
     top linear 0.2s,
     bottom linear 0.2s
   );
-  -webkit-overflow-scrolling: touch;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -311,7 +311,7 @@
 // Arrows
 // Uses the "0x0" element with borders trick to draw arrows.
 @mixin triangle($size, $color, $direction) {
-  content: "\0020";
+  content: "";
   display: inline-block;
   width: 0;
   height: 0;
