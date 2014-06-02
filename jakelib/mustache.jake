@@ -20,10 +20,10 @@ task('mustache', {async: false}, function(options) {
     dir : '',
     path: {
       global   : {
-        base     : 'mustache/',
-        template : 'mustache/templates/',
-        layouts  : 'mustache/templates/layouts/',
-        pages    : 'mustache/templates/pages/'
+        base     : 'assets/',
+        template : 'assets/templates/',
+        layouts  : 'assets/templates/layouts/',
+        pages    : 'assets/templates/pages/'
       },
       template : 'templates/',
       layouts  : 'templates/layouts/',

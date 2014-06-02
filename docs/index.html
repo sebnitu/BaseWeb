@@ -13,8 +13,8 @@
   
   <!-- Stylesheets and less -->
   <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
-  <link rel="stylesheet" type="text/css" media="all" href="../mustache/assets/css/docs.css">
-  <link rel="stylesheet" type="text/css" media="all" href="../mustache/assets/css/prism.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../assets/css/docs.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../assets/css/prism.css">
   
   <!-- Typekit -->
   <script type="text/javascript" src="//use.typekit.net/vre4dcv.js"></script>
@@ -39,6 +39,7 @@
           <li class="menu-item menu-item-logo"><a href="/">BaseWeb</a></li>
             <li id="menu-item-documentation" class="menu-item menu-item-documentation active"><a href="/docs/">Documentation</a></li>
             <li id="menu-item-examples" class="menu-item menu-item-examples"><a href="/examples/">Examples</a></li>
+            <li id="menu-item-devlog" class="menu-item menu-item-devlog"><a href="/devlog/">Development Log</a></li>
           <li class="menu-item menu-item-download"><a href="https://github.com/sebnitu/BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
         </ul>
         
@@ -175,7 +176,7 @@
 
 <!-- #variables #color-palette -->
 
-<article id="variables-color-palette" class="block block-variable" data-type="variable">
+<article id="variable-color-palette" class="block block-variable" data-type="variable">
 <h3>Color Palette</h3>
 
 <p>The Color Palette in BaseWeb is defined using the settings file <code>settings/_palette.scss</code>. It contains the global color variables that are used throughout the framework. This allows you to easily change the color themes between elements and blocks as well as keeping them consistent with each other.</p>
@@ -293,7 +294,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #compiler -->
 
-<article id="compiler" class="block block-variable" data-type="variable">
+<article id="variable-compiler" class="block block-variable" data-type="variable">
 <h3>compiler</h3>
 <p>Set the compiler that you're using. Currently supports <a href="https://www.npmjs.org/package/node-sass">node-sass</a> (which uses <a href="http://libsass.org/">libsass</a>) and <a href="http://sass-lang.com/install">ruby-sass</a>. The reason this exists is because there are some differences between how the two compilers work. This variable allows the framework to make the most out of both.</p>
 <div class="example">
@@ -307,7 +308,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #global-box-sizing -->
 
-<article id="global-box-sizing" class="block block-variable" data-type="variable">
+<article id="variable-global-box-sizing" class="block block-variable" data-type="variable">
 <h3>global-box-sizing</h3>
 <p>Sets the global box-sizing for everything. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
 <div class="example">
@@ -325,7 +326,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #class-clearfix -->
 
-<article id="class-clearfix" class="block block-variable" data-type="variable">
+<article id="variable-class-clearfix" class="block block-variable" data-type="variable">
 <h3>class-clearfix</h3>
 <p>The class name used for creating the clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a clearfix class.</p>
 <div class="example">
@@ -339,7 +340,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #class-remove-clearfix -->
 
-<article id="class-remove-clearfix" class="block block-variable" data-type="variable">
+<article id="variable-class-remove-clearfix" class="block block-variable" data-type="variable">
 <h3>class-remove-clearfix</h3>
 <p>The class name used for creating the remove-clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a remove-clearfix class.</p>
 <div class="example">
@@ -353,7 +354,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #border-radius -->
 
-<article id="border-radius" class="block block-variable" data-type="variable">
+<article id="variable-border-radius" class="block block-variable" data-type="variable">
 <h3>border-radius</h3>
 <p>...</p>
 <div class="example">
@@ -367,7 +368,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #box-shadow -->
 
-<article id="box-shadow" class="block block-variable" data-type="variable">
+<article id="variable-box-shadow" class="block block-variable" data-type="variable">
 <h3>box-shadow</h3>
 <p>...</p>
 <div class="example">
@@ -387,7 +388,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #box-sizing -->
 
-<article id="box-sizing" class="block block-variable" data-type="variable">
+<article id="variable-box-sizing" class="block block-variable" data-type="variable">
 <h3>box-sizing</h3>
 <p>...</p>
 <div class="example">
@@ -398,9 +399,28 @@ $darker-deg:  10% !default;</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
+<!-- #variables #transition -->
+
+<article id="variable-transition" class="block block-variable" data-type="variable">
+<h3>transition</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$transition
+  type: transition value (
+    [transition-property] 
+    [transition-duration] 
+    [transition-timing-function] 
+    [transition-delay]
+  )
+  default: all 0.25s linear</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
 <!-- #variables #transition-property -->
 
-<article id="transition-property" class="block block-variable" data-type="variable">
+<article id="variable-transition-property" class="block block-variable" data-type="variable">
 <h3>transition-property</h3>
 <p>...</p>
 <div class="example">
@@ -414,7 +434,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #transition-duration -->
 
-<article id="transition-duration" class="block block-variable" data-type="variable">
+<article id="variable-transition-duration" class="block block-variable" data-type="variable">
 <h3>transition-duration</h3>
 <p>...</p>
 <div class="example">
@@ -428,7 +448,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #transition-timing-function -->
 
-<article id="transition-timing-function" class="block block-variable" data-type="variable">
+<article id="variable-transition-timing-function" class="block block-variable" data-type="variable">
 <h3>transition-timing-function</h3>
 <p>...</p>
 <div class="example">
@@ -450,7 +470,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #transition-delay -->
 
-<article id="transition-delay" class="block block-variable" data-type="variable">
+<article id="variable-transition-delay" class="block block-variable" data-type="variable">
 <h3>transition-delay</h3>
 <p>...</p>
 <div class="example">
@@ -462,28 +482,9 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #transition -->
-
-<article id="transition" class="block block-variable" data-type="variable">
-<h3>transition</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$transition
-  type: transition value (
-    [transition-property] 
-    [transition-duration] 
-    [transition-timing-function] 
-    [transition-delay]
-  )
-  default: all 0.25s linear</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
 <!-- #variables #gradient-start -->
 
-<article id="gradient-start" class="block block-variable" data-type="variable">
+<article id="variable-gradient-start" class="block block-variable" data-type="variable">
 <h3>gradient-start</h3>
 <p>...</p>
 <div class="example">
@@ -497,7 +498,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #gradient-middle -->
 
-<article id="gradient-middle" class="block block-variable" data-type="variable">
+<article id="variable-gradient-middle" class="block block-variable" data-type="variable">
 <h3>gradient-middle</h3>
 <p>...</p>
 <div class="example">
@@ -511,7 +512,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #gradient-end -->
 
-<article id="gradient-end" class="block block-variable" data-type="variable">
+<article id="variable-gradient-end" class="block block-variable" data-type="variable">
 <h3>gradient-end</h3>
 <p>...</p>
 <div class="example">
@@ -525,7 +526,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #gradient-deg -->
 
-<article id="gradient-deg" class="block block-variable" data-type="variable">
+<article id="variable-gradient-deg" class="block block-variable" data-type="variable">
 <h3>gradient-deg</h3>
 <p>...</p>
 <div class="example">
@@ -539,7 +540,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #gradient-stop -->
 
-<article id="gradient-stop" class="block block-variable" data-type="variable">
+<article id="variable-gradient-stop" class="block block-variable" data-type="variable">
 <h3>gradient-stop</h3>
 <p>...</p>
 <div class="example">
@@ -553,7 +554,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #font-family-sans -->
 
-<article id="font-family-sans" class="block block-variable" data-type="variable">
+<article id="variable-font-family-sans" class="block block-variable" data-type="variable">
 <h3>font-family-sans</h3>
 <p>...</p>
 <div class="example">
@@ -567,7 +568,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #font-family-serif -->
 
-<article id="font-family-serif" class="block block-variable" data-type="variable">
+<article id="variable-font-family-serif" class="block block-variable" data-type="variable">
 <h3>font-family-serif</h3>
 <p>...</p>
 <div class="example">
@@ -581,7 +582,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #font-family-mono -->
 
-<article id="font-family-mono" class="block block-variable" data-type="variable">
+<article id="variable-font-family-mono" class="block block-variable" data-type="variable">
 <h3>font-family-mono</h3>
 <p>...</p>
 <div class="example">
@@ -595,7 +596,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #base-font-family -->
 
-<article id="base-font-family" class="block block-variable" data-type="variable">
+<article id="variable-base-font-family" class="block block-variable" data-type="variable">
 <h3>base-font-family</h3>
 <p>...</p>
 <div class="example">
@@ -610,7 +611,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #base-font-size -->
 
-<article id="base-font-size" class="block block-variable" data-type="variable">
+<article id="variable-base-font-size" class="block block-variable" data-type="variable">
 <h3>base-font-size</h3>
 <p>...</p>
 <div class="example">
@@ -624,7 +625,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #base-line-height -->
 
-<article id="base-line-height" class="block block-variable" data-type="variable">
+<article id="variable-base-line-height" class="block block-variable" data-type="variable">
 <h3>base-line-height</h3>
 <p>...</p>
 <div class="example">
@@ -638,7 +639,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #base-font-weight -->
 
-<article id="base-font-weight" class="block block-variable" data-type="variable">
+<article id="variable-base-font-weight" class="block block-variable" data-type="variable">
 <h3>base-font-weight</h3>
 <p>...</p>
 <div class="example">
@@ -652,7 +653,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #font-family-header -->
 
-<article id="font-family-header" class="block block-variable" data-type="variable">
+<article id="variable-font-family-header" class="block block-variable" data-type="variable">
 <h3>font-family-header</h3>
 <p>...</p>
 <div class="example">
@@ -666,7 +667,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #font-weight-header -->
 
-<article id="font-weight-header" class="block block-variable" data-type="variable">
+<article id="variable-font-weight-header" class="block block-variable" data-type="variable">
 <h3>font-weight-header</h3>
 <p>...</p>
 <div class="example">
@@ -680,7 +681,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color -->
 
-<article id="color" class="block block-variable" data-type="variable">
+<article id="variable-color" class="block block-variable" data-type="variable">
 <h3>color</h3>
 <p>...</p>
 <div class="example">
@@ -695,7 +696,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-light -->
 
-<article id="color-light" class="block block-variable" data-type="variable">
+<article id="variable-color-light" class="block block-variable" data-type="variable">
 <h3>color-light</h3>
 <p>...</p>
 <div class="example">
@@ -710,7 +711,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-dark -->
 
-<article id="color-dark" class="block block-variable" data-type="variable">
+<article id="variable-color-dark" class="block block-variable" data-type="variable">
 <h3>color-dark</h3>
 <p>...</p>
 <div class="example">
@@ -725,7 +726,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-header -->
 
-<article id="color-header" class="block block-variable" data-type="variable">
+<article id="variable-color-header" class="block block-variable" data-type="variable">
 <h3>color-header</h3>
 <p>...</p>
 <div class="example">
@@ -740,7 +741,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-link -->
 
-<article id="color-link" class="block block-variable" data-type="variable">
+<article id="variable-color-link" class="block block-variable" data-type="variable">
 <h3>color-link</h3>
 <p>...</p>
 <div class="example">
@@ -755,7 +756,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-link-hover -->
 
-<article id="color-link-hover" class="block block-variable" data-type="variable">
+<article id="variable-color-link-hover" class="block block-variable" data-type="variable">
 <h3>color-link-hover</h3>
 <p>...</p>
 <div class="example">
@@ -770,7 +771,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-link-header -->
 
-<article id="color-link-header" class="block block-variable" data-type="variable">
+<article id="variable-color-link-header" class="block block-variable" data-type="variable">
 <h3>color-link-header</h3>
 <p>...</p>
 <div class="example">
@@ -785,7 +786,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #color-link-header-hover -->
 
-<article id="color-link-header-hover" class="block block-variable" data-type="variable">
+<article id="variable-color-link-header-hover" class="block block-variable" data-type="variable">
 <h3>color-link-header-hover</h3>
 <p>...</p>
 <div class="example">
@@ -800,7 +801,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #letter-spacing -->
 
-<article id="letter-spacing" class="block block-variable" data-type="variable">
+<article id="variable-letter-spacing" class="block block-variable" data-type="variable">
 <h3>letter-spacing</h3>
 <p>...</p>
 <div class="example">
@@ -814,7 +815,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #bg-color -->
 
-<article id="bg-color" class="block block-variable" data-type="variable">
+<article id="variable-bg-color" class="block block-variable" data-type="variable">
 <h3>bg-color</h3>
 <p>...</p>
 <div class="example">
@@ -829,7 +830,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #bg-selection -->
 
-<article id="bg-selection" class="block block-variable" data-type="variable">
+<article id="variable-bg-selection" class="block block-variable" data-type="variable">
 <h3>bg-selection</h3>
 <p>...</p>
 <div class="example">
@@ -844,7 +845,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #variables #border-color -->
 
-<article id="border-color" class="block block-variable" data-type="variable">
+<article id="variable-border-color" class="block block-variable" data-type="variable">
 <h3>border-color</h3>
 <p>...</p>
 <div class="example">
@@ -865,7 +866,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #functions #strip_units -->
 
-<article id="strip_units" class="block block-function" data-type="function">
+<article id="function-strip_units" class="block block-function" data-type="function">
 <h3>strip_units</h3>
 <p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12. This function is used in <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> and <a href="#em_to_px" class="code-link"><code>@function em_to_px</code></a> to return the proper value.</p>
 <div class="example">
@@ -895,7 +896,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #functions #px_to_em -->
 
-<article id="px_to_em" class="block block-function" data-type="function">
+<article id="function-px_to_em" class="block block-function" data-type="function">
 <h3>px_to_em</h3>
 <p>Converts a pixel value to EMs. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
@@ -972,7 +973,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #functions #em_to_px -->
 
-<article id="em_to_px" class="block block-function" data-type="function">
+<article id="function-em_to_px" class="block block-function" data-type="function">
 <h3>em_to_px</h3>
 <p>Works the same as <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> except it converts an EM value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
@@ -1020,7 +1021,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #mixin #clearfix -->
 
-<article id="clearfix" class="block block-mixin" data-type="mixin">
+<article id="mixin-clearfix" class="block block-mixin" data-type="mixin">
 <h3>clearfix</h3>
 <p>Allows you to apply a clearfix to an element that contains floats.</p>
 <div class="example">
@@ -1069,12 +1070,444 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #mixin #remove-clearfix -->
 
-<article id="remove-clearfix" class="block block-mixin" data-type="mixin">
+<article id="mixin-remove-clearfix" class="block block-mixin" data-type="mixin">
 <h3>remove-clearfix</h3>
 <p>...</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin remove-clearfix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #scrollable -->
+
+<article id="mixin-scrollable" class="block block-mixin" data-type="mixin">
+<h3>scrollable</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin scrollable</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #box-sizing -->
+
+<article id="mixin-box-sizing" class="block block-mixin" data-type="mixin">
+<h3>box-sizing</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin box-sizing</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #box-shadow -->
+
+<article id="mixin-box-shadow" class="block block-mixin" data-type="mixin">
+<h3>box-shadow</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin box-shadow</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #rotate -->
+
+<article id="mixin-rotate" class="block block-mixin" data-type="mixin">
+<h3>rotate</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin rotate</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #transition -->
+
+<article id="mixin-transition" class="block block-mixin" data-type="mixin">
+<h3>transition</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin transition</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #transition-property -->
+
+<article id="mixin-transition-property" class="block block-mixin" data-type="mixin">
+<h3>transition-property</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin transition-property</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #transition-duration -->
+
+<article id="mixin-transition-duration" class="block block-mixin" data-type="mixin">
+<h3>transition-duration</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin transition-duration</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #transition-timing-function -->
+
+<article id="mixin-transition-timing-function" class="block block-mixin" data-type="mixin">
+<h3>transition-timing-function</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin transition-timing-function</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #transition-delay -->
+
+<article id="mixin-transition-delay" class="block block-mixin" data-type="mixin">
+<h3>transition-delay</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin transition-delay</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation -->
+
+<article id="mixin-animation" class="block block-mixin" data-type="mixin">
+<h3>animation</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-name -->
+
+<article id="mixin-animation-name" class="block block-mixin" data-type="mixin">
+<h3>animation-name</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-name</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-duration -->
+
+<article id="mixin-animation-duration" class="block block-mixin" data-type="mixin">
+<h3>animation-duration</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-duration</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-timing-function -->
+
+<article id="mixin-animation-timing-function" class="block block-mixin" data-type="mixin">
+<h3>animation-timing-function</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-timing-function</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-delay -->
+
+<article id="mixin-animation-delay" class="block block-mixin" data-type="mixin">
+<h3>animation-delay</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-delay</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-iteration-count -->
+
+<article id="mixin-animation-iteration-count" class="block block-mixin" data-type="mixin">
+<h3>animation-iteration-count</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-iteration-count</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #animation-direction -->
+
+<article id="mixin-animation-direction" class="block block-mixin" data-type="mixin">
+<h3>animation-direction</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-direction</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #border-radius -->
+
+<article id="mixin-border-radius" class="block block-mixin" data-type="mixin">
+<h3>border-radius</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin border-radius</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-horizontal -->
+
+<article id="mixin-gradient-horizontal" class="block block-mixin" data-type="mixin">
+<h3>gradient-horizontal</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-horizontal</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-vertical -->
+
+<article id="mixin-gradient-vertical" class="block block-mixin" data-type="mixin">
+<h3>gradient-vertical</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-vertical</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-directional -->
+
+<article id="mixin-gradient-directional" class="block block-mixin" data-type="mixin">
+<h3>gradient-directional</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-directional</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-horizontal-three-colors -->
+
+<article id="mixin-gradient-horizontal-three-colors" class="block block-mixin" data-type="mixin">
+<h3>gradient-horizontal-three-colors</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-horizontal-three-colors</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-vertical-three-colors -->
+
+<article id="mixin-gradient-vertical-three-colors" class="block block-mixin" data-type="mixin">
+<h3>gradient-vertical-three-colors</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-vertical-three-colors</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-radial -->
+
+<article id="mixin-gradient-radial" class="block block-mixin" data-type="mixin">
+<h3>gradient-radial</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-radial</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-striped -->
+
+<article id="mixin-gradient-striped" class="block block-mixin" data-type="mixin">
+<h3>gradient-striped</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-striped</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #text-hide -->
+
+<article id="mixin-text-hide" class="block block-mixin" data-type="mixin">
+<h3>text-hide</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin text-hide</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #text-truncate -->
+
+<article id="mixin-text-truncate" class="block block-mixin" data-type="mixin">
+<h3>text-truncate</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin text-truncate</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #anchor -->
+
+<article id="mixin-anchor" class="block block-mixin" data-type="mixin">
+<h3>anchor</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin anchor</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #uppercase -->
+
+<article id="mixin-uppercase" class="block block-mixin" data-type="mixin">
+<h3>uppercase</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin uppercase</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #lowercase -->
+
+<article id="mixin-lowercase" class="block block-mixin" data-type="mixin">
+<h3>lowercase</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin lowercase</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #resetcase -->
+
+<article id="mixin-resetcase" class="block block-mixin" data-type="mixin">
+<h3>resetcase</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin resetcase</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #font-sans -->
+
+<article id="mixin-font-sans" class="block block-mixin" data-type="mixin">
+<h3>font-sans</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin font-sans</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #font-serif -->
+
+<article id="mixin-font-serif" class="block block-mixin" data-type="mixin">
+<h3>font-serif</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin font-serif</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #font-mono -->
+
+<article id="mixin-font-mono" class="block block-mixin" data-type="mixin">
+<h3>font-mono</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin font-mono</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #triangle -->
+
+<article id="mixin-triangle" class="block block-mixin" data-type="mixin">
+<h3>triangle</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin triangle</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #console -->
+
+<article id="mixin-console" class="block block-mixin" data-type="mixin">
+<h3>console</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin console</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #build-reset-styles -->
+
+<article id="mixin-build-reset-styles" class="block block-mixin" data-type="mixin">
+<h3>build-reset-styles</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin build-reset-styles</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1110,9 +1543,9 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- JS -->
 <script src="../src/js/baseweb.min.js"></script>
-<script src="../mustache/assets/js/jquery.stickykit.js"></script>
-<script src="../mustache/assets/js/prism.js"></script>
-<script src="../mustache/assets/js/jquery.docs.js"></script>
+<script src="../assets/js/jquery.stickykit.js"></script>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/jquery.docs.js"></script>
 
 </body>
 </html>

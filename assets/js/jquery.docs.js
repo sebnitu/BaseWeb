@@ -60,7 +60,9 @@ String.prototype.toTitleCase = function(){
       href = $(this).attr('id');
       
       // Append link to navigation
-      sub_menu += '<li><a href="#' + href + '">' + text + '</a></li>';
+      if (href) {
+        sub_menu += '<li><a href="#' + href + '">' + text + '</a></li>';
+      }
       
     });
     

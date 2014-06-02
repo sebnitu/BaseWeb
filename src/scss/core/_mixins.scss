@@ -23,7 +23,7 @@
 
 // Scrollable
 // Makes things scrollable in a sexy way
-@mixin scrollable() {
+@mixin scrollable {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   @include transition(
@@ -36,189 +36,218 @@
 // @ CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-// Border Radius Mixins
-@mixin border-radius($radius: $border-radius) {
-  border-radius: $radius;
-}
-// Top
-@mixin border-radius-top($radius: $border-radius) {
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
-}
-@mixin border-radius-top-left($radius: $border-radius) {
-  border-top-left-radius: $radius;
-}
-@mixin border-radius-top-right($radius: $border-radius) {
-  border-top-right-radius: $radius;
-}
-// Bottom
-@mixin border-radius-bottom($radius: $border-radius) {
-  border-bottom-right-radius: $radius;
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-bottom-left($radius: $border-radius) {
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-bottom-right($radius: $border-radius) {
-  border-bottom-right-radius: $radius;
-}
-// Left
-@mixin border-radius-left($radius: $border-radius) {
-  border-top-left-radius: $radius;
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-left-top($radius: $border-radius) {
-  border-top-left-radius: $radius;
-}
-@mixin border-radius-left-bottom($radius: $border-radius) {
-  border-bottom-left-radius: $radius;
-}
-// Right
-@mixin border-radius-right($radius: $border-radius) {
-  border-top-right-radius: $radius;
-  border-bottom-right-radius: $radius;
-}
-@mixin border-radius-right-top($radius: $border-radius) {
-  border-top-right-radius: $radius;
-}
-@mixin border-radius-right-bottom($radius: $border-radius) {
-  border-bottom-right-radius: $radius;
-}
-
 // Box Sizing
-@mixin box-sizing($boxmodel: $box-sizing) {
+@mixin box-sizing( $boxmodel : $box-sizing ) {
   -moz-box-sizing: $boxmodel;
   box-sizing: $boxmodel;
 }
 
 // Box Shadows
-@mixin box-shadow($shadow...) {
+@mixin box-shadow( $shadow... ) {
+  -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
 }
 
-// Transition
-@mixin transition($transition...) {
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
-}
-
-// Transition Property
-@mixin transition-property( $transition-property: $transition-property ) {
-  -webkit-transition-property: $transition-property;
-  -moz-transition-property: $transition-property;
-  -o-transition-property: $transition-property;
-  transition-property: $transition-property;
-}
-
-// Transition Duration
-@mixin transition-duration( $transition-duration: $transition-duration ) {
-  -webkit-transition-duration: $transition-duration;
-  -moz-transition-duration: $transition-duration;
-  -o-transition-duration: $transition-duration;
-  transition-duration: $transition-duration;
-}
-
-// Transition Timing Function
-@mixin transition-timing-function( $transition-timing-function: $transition-timing-function ) {
-  -webkit-transition-timing-function: $transition-timing-function;
-  -moz-transition-timing-function: $transition-timing-function;
-  -o-transition-timing-function: $transition-timing-function;
-  transition-timing-function: $transition-timing-function;
-}
-
-// Transition Delay
-@mixin transition-delay( $transition-delay: $transition-delay ) {
-  -webkit-transition-delay: $transition-delay;
-  -moz-transition-delay: $transition-delay;
-  -o-transition-delay: $transition-delay;
-  transition-delay: $transition-delay;
-}
-
 // Rotate
-@mixin rotate($deg) {
+@mixin rotate( $deg ) {
   -webkit-transform: rotate($deg);
-  -moz-transform: rotate($deg);
-  -o-transform: rotate($deg);
   -ms-transform: rotate($deg);
   transform: rotate($deg);
 }
 
-// Gradients Horizontal
-@mixin gradient-horizontal($gradient-start: $gradient-start, $gradient-end: $gradient-end) {
-  background-color: $gradient-end;
-  background-image: -moz-linear-gradient(left, $gradient-start, $gradient-end);
-  background-image: -ms-linear-gradient(left, $gradient-start, $gradient-end);
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from($gradient-start), to($gradient-end));
-  background-image: -webkit-linear-gradient(left, $gradient-start, $gradient-end);
-  background-image: -o-linear-gradient(left, $gradient-start, $gradient-end);
-  background-image: linear-gradient(left, $gradient-start, $gradient-end);
+// Transitions
+@mixin transition( $transition... ) {
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+@mixin transition-property( $transition-property : $transition-property ) {
+  -webkit-transition-property: $transition-property;
+  transition-property: $transition-property;
+}
+@mixin transition-duration( $transition-duration : $transition-duration ) {
+  -webkit-transition-duration: $transition-duration;
+  transition-duration: $transition-duration;
+}
+@mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
+  -webkit-transition-timing-function: $transition-timing-function;
+  transition-timing-function: $transition-timing-function;
+}
+@mixin transition-delay( $transition-delay : $transition-delay ) {
+  -webkit-transition-delay: $transition-delay;
+  transition-delay: $transition-delay;
+}
+
+// Animations
+@mixin animation( $animation ) {
+  -webkit-animation: $animation;
+  animation: $animation;
+}
+@mixin animation-name( $name ) {
+  -webkit-animation-name: $name;
+  animation-name: $name;
+}
+@mixin animation-duration( $duration ) {
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+@mixin animation-timing-function( $timing-function ) {
+  -webkit-animation-timing-function: $timing-function;
+  animation-timing-function: $timing-function;
+}
+@mixin animation-delay( $delay ) {
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+@mixin animation-iteration-count( $iteration-count ) {
+  -webkit-animation-iteration-count: $iteration-count;
+  animation-iteration-count: $iteration-count;
+}
+@mixin animation-direction( $direction ) {
+  -webkit-animation-direction: $direction;
+  animation-direction: $direction;
+}
+
+// Border Radius
+// Border radius shorthand with defaults
+@mixin border-radius( $radius : $border-radius ) {
+  border-radius: $radius;
+}
+@mixin border-radius-top( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-top-left( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+}
+@mixin border-radius-top-right( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-bottom( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-bottom-left( $radius : $border-radius ) {
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-bottom-right( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
+}
+@mixin border-radius-left( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-left-top( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+}
+@mixin border-radius-left-bottom( $radius : $border-radius ) {
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-right( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+@mixin border-radius-right-top( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-right-bottom( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
+}
+
+// Gradients
+// Horizontal Gradient
+@mixin gradient-horizontal(
+    $gs : $gradient-start,
+    $ge : $gradient-end
+  ) {
+  background-color: $ge;
+  background-image: -webkit-linear-gradient(left, $gs, $ge);
+  background-image: linear-gradient(left, $gs, $ge);
   background-repeat: repeat-y;
 }
 
-// Gradients Vertical
-@mixin gradient-vertical($gradient-start: $gradient-start, $gradient-end: $gradient-end) {
-  background-color: $gradient-end;
-  background-image: -moz-linear-gradient(top, $gradient-start, $gradient-end);
-  background-image: -ms-linear-gradient(top, $gradient-start, $gradient-end);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($gradient-start), to($gradient-end));
-  background-image: -webkit-linear-gradient(top, $gradient-start, $gradient-end);
-  background-image: -o-linear-gradient(top, $gradient-start, $gradient-end);
-  background-image: linear-gradient(top, $gradient-start, $gradient-end);
+// Vertical Gradient
+@mixin gradient-vertical(
+    $gs : $gradient-start,
+    $ge : $gradient-end
+  ) {
+  background-color: $ge;
+  background-image: -webkit-linear-gradient(top, $gs, $ge);
+  background-image: linear-gradient(top, $gs, $ge);
   background-repeat: repeat-x;
 }
 
-// Gradients Directional
-@mixin gradient-directional($gradient-start: $gradient-start, $gradient-end: $gradient-end, $deg: $gradient-deg) {
-  background-color: $gradient-end;
+// Directional Gradient
+@mixin gradient-directional(
+    $gs : $gradient-start,
+    $ge : $gradient-end,
+    $deg : $gradient-deg
+  ) {
+  background-color: $ge;
+  background-image: -webkit-linear-gradient($deg, $gs, $ge);
+  background-image: linear-gradient($deg, $gs, $ge);
   background-repeat: repeat-x;
-  background-image: -moz-linear-gradient($deg, $gradient-start, $gradient-end);
-  background-image: -webkit-linear-gradient($deg, $gradient-start, $gradient-end);
-  background-image: -o-linear-gradient($deg, $gradient-start, $gradient-end);
-  background-image: linear-gradient($deg, $gradient-start, $gradient-end);
 }
 
-// Gradient Horizontal with Three Colors
-@mixin gradient-horizontal-three-colors($gradient-start: $gradient-start, $gradient-middle: $gradient-middle, $color-stop: $gradient-stop, $gradient-end: $gradient-end) {
-  background-color: mix($gradient-middle, $gradient-end, 80%);
-  background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from($gradient-start), color-stop($color-stop, $gradient-middle), to($gradient-end));
-  background-image: -webkit-linear-gradient(left, $gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: -moz-linear-gradient(left, $gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: -o-linear-gradient(left, $gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: linear-gradient(to right, $gradient-start, $gradient-middle $color-stop, $gradient-end);
+// Horizontal Gradient with Three Colors
+@mixin gradient-horizontal-three-colors(
+    $gs : $gradient-start,
+    $gm : $gradient-middle,
+    $stop : $gradient-stop,
+    $ge : $gradient-end
+  ) {
+  background-color: mix($gs, $ge, 50%);
+  background-image: -webkit-linear-gradient(left, $gs, $gm $stop, $ge);
+  background-image: linear-gradient(left, $gs, $gm $stop, $ge);
   background-repeat: no-repeat;
 }
 
-// Gradient Vertical with Three Colors
-@mixin gradient-vertical-three-colors($gradient-start: $gradient-start, $gradient-middle: $gradient-middle, $color-stop: $gradient-stop, $gradient-end: $gradient-end) {
-  background-color: mix($gradient-middle, $gradient-end, 80%);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($gradient-start), color-stop($color-stop, $gradient-middle), to($gradient-end));
-  background-image: -webkit-linear-gradient($gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: -moz-linear-gradient(top, $gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: -o-linear-gradient($gradient-start, $gradient-middle $color-stop, $gradient-end);
-  background-image: linear-gradient($gradient-start, $gradient-middle $color-stop, $gradient-end);
+// Vertical Gradient with Three Colors
+@mixin gradient-vertical-three-colors(
+    $gs : $gradient-start,
+    $gm : $gradient-middle,
+    $stop : $gradient-stop,
+    $ge : $gradient-end
+  ) {
+  background-color: mix($gs, $ge, 50%);
+  background-image: -webkit-linear-gradient(top, $gs, $gm $stop, $ge);
+  background-image: linear-gradient(top, $gs, $gm $stop, $ge);
+  background-repeat: no-repeat;
+}
+
+// Directional Gradient with Three Colors
+@mixin gradient-directional-three-colors(
+    $gs : $gradient-start,
+    $gm : $gradient-middle,
+    $stop : $gradient-stop,
+    $ge : $gradient-end,
+    $deg : $gradient-deg
+  ) {
+  background-color: mix($gs, $ge, 50%);
+  background-image: -webkit-linear-gradient($deg, $gs, $gm $stop, $ge);
+  background-image: linear-gradient($deg, $gs, $gm $stop, $ge);
   background-repeat: no-repeat;
 }
 
 // Radial Gradients
-@mixin gradient-radial($inner-color: $gradient-start, $outer-color: $gradient-end) {
-  background-color: $outer-color;
-  background-image: -webkit-gradient(radial, center center, 0, center center, 460, from($inner-color), to($outer-color));
-  background-image: -webkit-radial-gradient(circle, $inner-color, $outer-color);
-  background-image: -moz-radial-gradient(circle, $inner-color, $outer-color);
-  background-image: -o-radial-gradient(circle, $inner-color, $outer-color);
+@mixin gradient-radial(
+    $inner : $gradient-start,
+    $outer : $gradient-end
+  ) {
+  background-color: $outer;
+  background-image: -webkit-radial-gradient(circle, $inner, $outer);
+  background-image: radial-gradient(circle, $inner, $outer);
   background-repeat: no-repeat;
 }
 
 // Striped Gradients
-@mixin gradient-striped($color: $gradient-start, $angle: $gradient-deg) {
+@mixin gradient-striped(
+    $color : $gradient-start,
+    $shade : $gradient-shade,
+    $deg : $gradient-deg
+  ) {
   background-color: $color;
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, rgba(255,255,255,.15)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255,255,255,.15)), color-stop(.75, rgba(255,255,255,.15)), color-stop(.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
-  background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -webkit-linear-gradient($deg, $shade 25%, transparent 25%, transparent 50%, $shade 50%, $shade 75%, transparent 75%, transparent);
+  background-image: linear-gradient($deg, $shade 25%, transparent 25%, transparent 50%, $shade 50%, $shade 75%, transparent 75%, transparent);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -227,7 +256,7 @@
 
 // Hide text
 // Image replacement trick that hides text.
-@mixin hide-text {
+@mixin text-hide {
   font-size: 0;
   line-height: 0;
   text-indent: 100%;
@@ -235,8 +264,21 @@
   overflow: hidden;
 }
 
+// Truncate Text
+// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+@mixin text-truncate( $display : block ) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  @if ($display == inline-block or $display == block) {
+    display: $display;
+  }
+}
+
 // Anchor Styles
-@mixin anchor() {
+// Builds the base styles for anchor tags
+@mixin anchor {
   color: $color-link;
   text-decoration: none;
   border-bottom: 1px solid rgba($black, 0.1);
@@ -252,56 +294,55 @@
   }
 }
 
-// Mono Font
-@mixin mono-font($base-font-size: $base-font-size, $base-line-height: $base-line-height) {
-  font-family: $font-family-mono;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-}
-
 // Uppercase
-@mixin uppercase($letter-spacing: $letter-spacing) {
+@mixin uppercase( $letter-spacing : $letter-spacing ) {
   text-transform: uppercase;
   letter-spacing: $letter-spacing;
 }
 
 // Lowercase
-@mixin lowercase($letter-spacing: 0) {
+@mixin lowercase( $letter-spacing : 0) {
   text-transform: lowercase;
   letter-spacing: $letter-spacing;
 }
 
 // Reset Case
-@mixin resetcase() {
+@mixin resetcase {
   text-transform: none;
   letter-spacing: 0;
 }
 
-// Truncate Text
-// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
-@mixin truncate-text( $display : block ) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  
-  @if ($display == inline-block or $display == block) {
-    display: $display;
-  }
+// Sans Font
+// Outputs styles for sans-serif font stack
+@mixin font-sans(
+    $base-font-size : $base-font-size,
+    $base-line-height : $base-line-height
+  ) {
+  font-family: $font-family-sans;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// @ Lists
-////////////////////////////////////////////////////////////////////////////////
+// Serif Font
+// Outputs styles for serif font stack
+@mixin font-serif(
+    $base-font-size : $base-font-size,
+    $base-line-height : $base-line-height
+  ) {
+  font-family: $font-family-serif;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
 
-// Remove List Styles
-// Removes default list styles and margins from a list element and it's children
-@mixin remove-list-styles {
-  list-style: none;
-  margin: 0;
-  
-  li {
-    margin: 0;
-  }
+// Mono Font
+// Outputs styles for monospaced font stack
+@mixin font-mono(
+    $base-font-size : $base-font-size,
+    $base-line-height : $base-line-height
+  ) {
+  font-family: $font-family-mono;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -310,7 +351,11 @@
 
 // Arrows
 // Uses the "0x0" element with borders trick to draw arrows.
-@mixin triangle($size, $color, $direction) {
+@mixin triangle(
+    $size,
+    $color,
+    $direction
+  ) {
   content: "";
   display: inline-block;
   width: 0;
@@ -361,7 +406,11 @@
 // Console
 // Let's you output a LESS variable in the browser.
 // Requires that `<div id="console"></div>` be somewhere in the DOM
-@mixin console($value, $position: 'right', $index: 100) {
+@mixin console(
+    $value,
+    $position : 'right',
+    $index : 100
+  ) {
 
   #console {
     position: fixed;

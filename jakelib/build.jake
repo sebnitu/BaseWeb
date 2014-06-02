@@ -73,11 +73,22 @@ namespace('build', function() {
     });
   });
   
-  // Build tests
+  // Build examples
   desc('Build example pages');
   task('examples', {async: true}, function() {
     getjson('package.json', function(config) {
       var options = { dir : 'examples/' };
+      var mustacheTask = jake.Task.mustache;
+      mustacheTask.reenable(true);
+      mustacheTask.invoke.apply(mustacheTask, [options]);
+    });
+  });
+  
+  // Build devlog
+  desc('Build development log pages');
+  task('devlog', {async: true}, function() {
+    getjson('package.json', function(config) {
+      var options = { dir : 'devlog/' };
       var mustacheTask = jake.Task.mustache;
       mustacheTask.reenable(true);
       mustacheTask.invoke.apply(mustacheTask, [options]);

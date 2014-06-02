@@ -22,7 +22,10 @@
 //   default: $base-font-size
 //
 // @return: unit (em)
-@function px_to_em( $px, $base : $base-font-size ) {
+@function px_to_em(
+    $px,
+    $base : $base-font-size
+  ) {
   
   @if unitless($px) {
     $px: 1px * $px;
@@ -46,7 +49,10 @@
 //   default: $base-font-size
 //
 // @return: unit (px)
-@function em_to_px( $em, $base : $base-font-size ) {
+@function em_to_px(
+    $em,
+    $base : $base-font-size
+  ) {
   
   @if unitless($em) {
     $em: 1em * $em;
@@ -59,13 +65,3 @@
   $em: ($em * $base) / 1px;
   @return strip_units($em) * 1px;
 }
-
-// UPCOMING FUNCTIONS
-//
-// PX to Percent
-// Formula: size in pixels / parent size in pixels * 100
-// Example: 12px / 16px * 100 = 75%
-//
-// EM to Percent
-// Formula: size in EMs * 100
-// Example: .75em * 100 = 75%

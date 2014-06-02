@@ -37,6 +37,7 @@ task('watch', {async: true}, function() {
       u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:docs'].execute();
       jake.Task['build:examples'].execute();
+      jake.Task['build:devlog'].execute();
     });
     
     // Watch our doc files
@@ -45,10 +46,16 @@ task('watch', {async: true}, function() {
       jake.Task['build:docs'].execute();
     });
     
-    // Watch our test files
+    // Watch our example files
     watch(config.watch.examples, function(filepath) {
       u.print(filepath + ' was changed:', 'cyan');
       jake.Task['build:examples'].execute();
+    });
+    
+    // Watch our devlog files
+    watch(config.watch.devlog, function(filepath) {
+      u.print(filepath + ' was changed:', 'cyan');
+      jake.Task['build:devlog'].execute();
     });
   });
   

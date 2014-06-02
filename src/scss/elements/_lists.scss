@@ -1,16 +1,28 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Table Variables
+// @ Variables
 ////////////////////////////////////////////////////////////////////////////////
 
 $color-bg-list: #f9f9f9 !default;
 $color-border-list: rgba($black, 0.1) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Table Mixins
+// @ Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Remove List Styles
+// Removes default list styles and margins from a list element and it's children
+@mixin remove-list-styles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li {
+    margin: 0;
+  }
+}
+
 // Base Modifier Table Styles
-@mixin make-base-table() {
+@mixin make-base-list() {
   margin: 10px 0;
   
   > li {
@@ -28,7 +40,7 @@ $color-border-list: rgba($black, 0.1) !default;
 // Wraps the list with a border and padding
 @mixin make-list-wrap() {
   
-  @include make-base-table();
+  @include make-base-list();
   padding: 10px 15px 10px 35px;
   border: 1px solid $color-border-list;
   @include border-radius();
@@ -48,7 +60,7 @@ $color-border-list: rgba($black, 0.1) !default;
 // Turns list items into rows by giving border seperators
 @mixin make-list-rowed() {
   
-  @include make-base-table();
+  @include make-base-list();
   list-style: none;
   border-bottom: 1px solid $color-border-list;
   
@@ -63,7 +75,7 @@ $color-border-list: rgba($black, 0.1) !default;
 // Give the list outer and seperator borders
 @mixin make-list-bordered() {
 
-  @include make-base-table();
+  @include make-base-list();
   list-style: none;
   border: 1px solid $color-border-list;
   @include border-radius();
@@ -103,7 +115,7 @@ $color-border-list: rgba($black, 0.1) !default;
 }
 
 /*==============================================================================
-  Lists
+  @ Lists
 ==============================================================================*/
 
 ul, ol {
