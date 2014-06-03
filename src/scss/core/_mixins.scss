@@ -2,7 +2,37 @@
 // @ Utility
 ////////////////////////////////////////////////////////////////////////////////
 
-// Clear Mixins
+// Size Mixin
+// Shorthand for adding width and height sizing to an element.
+// 
+// @param: $width
+//   type: unit (number, pixel, percentage)
+//
+// @param: $height
+//   type: unit (pixel, percentage, false)
+//   default: false -> $width
+@mixin size( 
+    $width,
+    $height : false
+  ) {
+
+  @if unitless($width) {
+    $width: 1px * $width;
+  }
+  
+  @if ($height != false) {
+    @if unitless($height) {
+      $height: 1px * $height;
+    }
+  } @else {
+    $height: $width;
+  }
+  
+  width: $width;
+  height: $height;
+}
+
+// Clearfix Mixins
 // Allows for clearfixing by adding as mixin or as class.
 @mixin clearfix {
   &:after {
@@ -37,15 +67,70 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Box Sizing
-@mixin box-sizing( $boxmodel : $box-sizing ) {
-  -moz-box-sizing: $boxmodel;
-  box-sizing: $boxmodel;
+//
+// @param: $box-sizing
+//   type: box-sizing value (border-box, none)
+//   default: $box-sizing
+@mixin box-sizing( $box-sizing : $box-sizing ) {
+  -moz-box-sizing: $box-sizing;
+  box-sizing: $box-sizing;
 }
 
 // Box Shadows
+//
+// @param: $shadow
+//   type: box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
 @mixin box-shadow( $shadow... ) {
-  -webkit-box-shadow: $shadow;
   box-shadow: $shadow;
+}
+
+// Border Radius
+// Border radius shorthand with defaults
+// 
+// @param: $radius
+//   type: unit (pixel, percent)
+@mixin border-radius( $radius : $border-radius ) {
+  border-radius: $radius;
+}
+@mixin border-radius-top( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-top-left( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+}
+@mixin border-radius-top-right( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-bottom( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-bottom-left( $radius : $border-radius ) {
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-bottom-right( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
+}
+@mixin border-radius-left( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-left-top( $radius : $border-radius ) {
+  border-top-left-radius: $radius;
+}
+@mixin border-radius-left-bottom( $radius : $border-radius ) {
+  border-bottom-left-radius: $radius;
+}
+@mixin border-radius-right( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+@mixin border-radius-right-top( $radius : $border-radius ) {
+  border-top-right-radius: $radius;
+}
+@mixin border-radius-right-bottom( $radius : $border-radius ) {
+  border-bottom-right-radius: $radius;
 }
 
 // Rotate
@@ -105,52 +190,6 @@
 @mixin animation-direction( $direction ) {
   -webkit-animation-direction: $direction;
   animation-direction: $direction;
-}
-
-// Border Radius
-// Border radius shorthand with defaults
-@mixin border-radius( $radius : $border-radius ) {
-  border-radius: $radius;
-}
-@mixin border-radius-top( $radius : $border-radius ) {
-  border-top-left-radius: $radius;
-  border-top-right-radius: $radius;
-}
-@mixin border-radius-top-left( $radius : $border-radius ) {
-  border-top-left-radius: $radius;
-}
-@mixin border-radius-top-right( $radius : $border-radius ) {
-  border-top-right-radius: $radius;
-}
-@mixin border-radius-bottom( $radius : $border-radius ) {
-  border-bottom-right-radius: $radius;
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-bottom-left( $radius : $border-radius ) {
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-bottom-right( $radius : $border-radius ) {
-  border-bottom-right-radius: $radius;
-}
-@mixin border-radius-left( $radius : $border-radius ) {
-  border-top-left-radius: $radius;
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-left-top( $radius : $border-radius ) {
-  border-top-left-radius: $radius;
-}
-@mixin border-radius-left-bottom( $radius : $border-radius ) {
-  border-bottom-left-radius: $radius;
-}
-@mixin border-radius-right( $radius : $border-radius ) {
-  border-top-right-radius: $radius;
-  border-bottom-right-radius: $radius;
-}
-@mixin border-radius-right-top( $radius : $border-radius ) {
-  border-top-right-radius: $radius;
-}
-@mixin border-radius-right-bottom( $radius : $border-radius ) {
-  border-bottom-right-radius: $radius;
 }
 
 // Gradients

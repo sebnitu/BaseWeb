@@ -174,7 +174,7 @@
 
 <h2 id="global-variables">Global Variables</h2>
 
-<!-- #variables #color-palette -->
+<!-- #variable #color-palette -->
 
 <article id="variable-color-palette" class="block block-variable" data-type="variable">
 <h3>Color Palette</h3>
@@ -292,7 +292,7 @@ $darker-deg:  10% !default;</code></pre>
 </table>
 </article>
 
-<!-- #variables #compiler -->
+<!-- #variable #compiler -->
 
 <article id="variable-compiler" class="block block-variable" data-type="variable">
 <h3>compiler</h3>
@@ -306,11 +306,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #global-box-sizing -->
+<!-- #variable #global-box-sizing -->
 
 <article id="variable-global-box-sizing" class="block block-variable" data-type="variable">
 <h3>global-box-sizing</h3>
-<p>Sets the global box-sizing for everything. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
+<p>Sets the global box-sizing for everything. It's output when using <a href="#mixin-build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$global-box-sizing
@@ -324,11 +324,11 @@ $darker-deg:  10% !default;</code></pre>
 </div>
 </article>
 
-<!-- #variables #class-clearfix -->
+<!-- #variable #class-clearfix -->
 
 <article id="variable-class-clearfix" class="block block-variable" data-type="variable">
 <h3>class-clearfix</h3>
-<p>The class name used for creating the clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a clearfix class.</p>
+<p>The class name used for creating the clearfix class. It's output when using <a href="#mixin-build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a clearfix class.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-clearfix
@@ -338,11 +338,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #class-remove-clearfix -->
+<!-- #variable #class-remove-clearfix -->
 
 <article id="variable-class-remove-clearfix" class="block block-variable" data-type="variable">
 <h3>class-remove-clearfix</h3>
-<p>The class name used for creating the remove-clearfix class. It's output when using <a href="#build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a remove-clearfix class.</p>
+<p>The class name used for creating the remove-clearfix class. It's output when using <a href="#mixin-build-reset-styles" class="code-link"><code>@mixin build-reset-styles</code></a> but if set to <code>none</code>, it will not output a remove-clearfix class.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$class-remove-clearfix
@@ -352,25 +352,24 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #border-radius -->
+<!-- #variable #box-sizing -->
 
-<article id="variable-border-radius" class="block block-variable" data-type="variable">
-<h3>border-radius</h3>
-<p>...</p>
+<article id="variable-box-sizing" class="block block-variable" data-type="variable">
+<h3>box-sizing</h3>
+<p>The box sizing property. It's used as the default in <a href="#mixin-box-sizing" class="code-link"><code>@mixin box-sizing</code></a></p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">$border-radius
-  type: unit (pixel, percent)
-  default: 3px</code></pre>
+<pre><code class="language-scss">$box-sizing
+  type: box-sizing value (border-box, none)
+  default: border-box</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
-</article>
 
-<!-- #variables #box-shadow -->
+<!-- #variable #box-shadow -->
 
 <article id="variable-box-shadow" class="block block-variable" data-type="variable">
 <h3>box-shadow</h3>
-<p>...</p>
+<p>The global box shadow property.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$box-shadow
@@ -386,24 +385,25 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #box-sizing -->
+<!-- #variable #border-radius -->
 
-<article id="variable-box-sizing" class="block block-variable" data-type="variable">
-<h3>box-sizing</h3>
-<p>...</p>
+<article id="variable-border-radius" class="block block-variable" data-type="variable">
+<h3>border-radius</h3>
+<p>The global border radius property. It's used as the default in <a href="#mixin-border-radius" class="code-link"><code>@mixin border-radius</code></a></p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">$box-sizing
-  type: box-sizing value (border-box, none)
-  default: border-box</code></pre>
+<pre><code class="language-scss">$border-radius
+  type: unit (pixel, percent)
+  default: 3px</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+</article>
 
-<!-- #variables #transition -->
+<!-- #variable #transition -->
 
 <article id="variable-transition" class="block block-variable" data-type="variable">
 <h3>transition</h3>
-<p>...</p>
+<p>The global transition property. It's used as the default in <a href="#mixin-transition" class="code-link"><code>@mixin transition</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition
@@ -418,11 +418,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #transition-property -->
+<!-- #variable #transition-property -->
 
 <article id="variable-transition-property" class="block block-variable" data-type="variable">
 <h3>transition-property</h3>
-<p>...</p>
+<p>The global transition property name. It's used as the default in <a href="#mixin-transition-property" class="code-link"><code>@mixin transition-property</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition-property
@@ -432,11 +432,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #transition-duration -->
+<!-- #variable #transition-duration -->
 
 <article id="variable-transition-duration" class="block block-variable" data-type="variable">
 <h3>transition-duration</h3>
-<p>...</p>
+<p>The global transition duration. It's used as the default in <a href="#mixin-transition-duration" class="code-link"><code>@mixin transition-duration</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition-duration
@@ -446,11 +446,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #transition-timing-function -->
+<!-- #variable #transition-timing-function -->
 
 <article id="variable-transition-timing-function" class="block block-variable" data-type="variable">
 <h3>transition-timing-function</h3>
-<p>...</p>
+<p>The global transition timing function. It's used as the default in <a href="#mixin-transition-timing-function" class="code-link"><code>@mixin transition-timing-function</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition-timing-function
@@ -468,11 +468,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #transition-delay -->
+<!-- #variable #transition-delay -->
 
 <article id="variable-transition-delay" class="block block-variable" data-type="variable">
 <h3>transition-delay</h3>
-<p>...</p>
+<p>The global transition delay. It's used as the default in <a href="#mixin-transition-delay" class="code-link"><code>@mixin transition-delay</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$transition-delay
@@ -482,11 +482,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #gradient-start -->
+<!-- #variable #gradient-start -->
 
 <article id="variable-gradient-start" class="block block-variable" data-type="variable">
 <h3>gradient-start</h3>
-<p>...</p>
+<p>The gradient color used as the default starting color for gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$gradient-start
@@ -496,11 +496,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #gradient-middle -->
+<!-- #variable #gradient-middle -->
 
 <article id="variable-gradient-middle" class="block block-variable" data-type="variable">
 <h3>gradient-middle</h3>
-<p>...</p>
+<p>The gradient color used as the default middle color for gradient mixins that use three colors.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$gradient-middle
@@ -510,11 +510,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #gradient-end -->
+<!-- #variable #gradient-end -->
 
 <article id="variable-gradient-end" class="block block-variable" data-type="variable">
 <h3>gradient-end</h3>
-<p>...</p>
+<p>The gradient color used as the default ending color for gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$gradient-end
@@ -524,11 +524,25 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #gradient-deg -->
+<!-- #variable #gradient-shade -->
+
+<article id="variable-gradient-shade" class="block block-variable" data-type="variable">
+<h3>gradient-shade</h3>
+<p>The gradient color used as the default shade color for <a href="#mixin-gradient-striped" class="code-link"><code>@mixin gradient-striped</code></a></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$gradient-end
+  type: color
+  default: $blue-dark</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #gradient-deg -->
 
 <article id="variable-gradient-deg" class="block block-variable" data-type="variable">
 <h3>gradient-deg</h3>
-<p>...</p>
+<p>The gradient degree used as the default value for directional gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$gradient-deg
@@ -538,11 +552,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #gradient-stop -->
+<!-- #variable #gradient-stop -->
 
 <article id="variable-gradient-stop" class="block block-variable" data-type="variable">
 <h3>gradient-stop</h3>
-<p>...</p>
+<p>The default stopping point of a middle color in gradient mixin that use three colors.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$gradient-stop
@@ -552,11 +566,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #font-family-sans -->
+<!-- #variable #font-family-sans -->
 
 <article id="variable-font-family-sans" class="block block-variable" data-type="variable">
 <h3>font-family-sans</h3>
-<p>...</p>
+<p>The sans-serif font family stack. It's also used in the <a href="#mixin-font-sans" class="code-link"><code>@mixin font-sans</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$font-family-sans
@@ -566,11 +580,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #font-family-serif -->
+<!-- #variable #font-family-serif -->
 
 <article id="variable-font-family-serif" class="block block-variable" data-type="variable">
 <h3>font-family-serif</h3>
-<p>...</p>
+<p>The serif font family stack. It's also used in the <a href="#mixin-font-serif" class="code-link"><code>@mixin font-serif</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$font-family-serif
@@ -580,11 +594,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #font-family-mono -->
+<!-- #variable #font-family-mono -->
 
 <article id="variable-font-family-mono" class="block block-variable" data-type="variable">
 <h3>font-family-mono</h3>
-<p>...</p>
+<p>The monospaced font family stack. It's also used in the <a href="#mixin-font-mono" class="code-link"><code>@mixin font-mono</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$font-family-mono
@@ -594,11 +608,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #base-font-family -->
+<!-- #variable #base-font-family -->
 
 <article id="variable-base-font-family" class="block block-variable" data-type="variable">
 <h3>base-font-family</h3>
-<p>...</p>
+<p>The base font stack that gets set in <code>_elements/typography.scss</code> to the <code>&lt;body&gt;</code> element. Also used as the default font stack for form elements set in <code>_elements/forms.scss</code></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$base-font-family
@@ -609,11 +623,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#font-family-sans" class="code-link"><code>$font-family-sans</code></a></span>
 </article>
 
-<!-- #variables #base-font-size -->
+<!-- #variable #base-font-size -->
 
 <article id="variable-base-font-size" class="block block-variable" data-type="variable">
 <h3>base-font-size</h3>
-<p>...</p>
+<p>The base font size that gets set in <code>_elements/typography.scss</code> to the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element. It's also used as a default value for many mixins that require a font size as a parameter.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$base-font-size
@@ -623,11 +637,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #base-line-height -->
+<!-- #variable #base-line-height -->
 
 <article id="variable-base-line-height" class="block block-variable" data-type="variable">
 <h3>base-line-height</h3>
-<p>...</p>
+<p>The base line height that gets set in <code>_elements/typography.scss</code> to the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$base-line-height
@@ -637,11 +651,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #base-font-weight -->
+<!-- #variable #base-font-weight -->
 
 <article id="variable-base-font-weight" class="block block-variable" data-type="variable">
 <h3>base-font-weight</h3>
-<p>...</p>
+<p>The base font weight that gets set in <code>_elements/typography.scss</code> to the <code>&lt;body&gt;</code> element.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$base-font-weight
@@ -651,11 +665,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #font-family-header -->
+<!-- #variable #font-family-header -->
 
 <article id="variable-font-family-header" class="block block-variable" data-type="variable">
 <h3>font-family-header</h3>
-<p>...</p>
+<p>The font stack used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$font-family-header
@@ -665,11 +679,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #font-weight-header -->
+<!-- #variable #font-weight-header -->
 
 <article id="variable-font-weight-header" class="block block-variable" data-type="variable">
 <h3>font-weight-header</h3>
-<p>...</p>
+<p>The font weight used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$font-weight-header
@@ -679,11 +693,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #color -->
+<!-- #variable #color -->
 
 <article id="variable-color" class="block block-variable" data-type="variable">
 <h3>color</h3>
-<p>...</p>
+<p>The base text color.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color
@@ -694,11 +708,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#gray-dark" class="code-link"><code>$gray-dark</code></a></span>
 </article>
 
-<!-- #variables #color-light -->
+<!-- #variable #color-light -->
 
 <article id="variable-color-light" class="block block-variable" data-type="variable">
 <h3>color-light</h3>
-<p>...</p>
+<p>The lighter version of the base text color. It's applied to elements to de-emphasize them.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-light
@@ -709,11 +723,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#gray-light" class="code-link"><code>$gray-light</code></a></span>
 </article>
 
-<!-- #variables #color-dark -->
+<!-- #variable #color-dark -->
 
 <article id="variable-color-dark" class="block block-variable" data-type="variable">
 <h3>color-dark</h3>
-<p>...</p>
+<p>The darker version of the base text color. It's applied to elements to add emphases.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-dark
@@ -724,11 +738,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#gray-darker" class="code-link"><code>$gray-darker</code></a></span>
 </article>
 
-<!-- #variables #color-header -->
+<!-- #variable #color-header -->
 
 <article id="variable-color-header" class="block block-variable" data-type="variable">
 <h3>color-header</h3>
-<p>...</p>
+<p>The default color used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-header
@@ -739,11 +753,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#gray-darker" class="code-link"><code>$gray-darker</code></a></span>
 </article>
 
-<!-- #variables #color-link -->
+<!-- #variable #color-link -->
 
 <article id="variable-color-link" class="block block-variable" data-type="variable">
 <h3>color-link</h3>
-<p>...</p>
+<p>The default color used for links.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-link
@@ -754,11 +768,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
 </article>
 
-<!-- #variables #color-link-hover -->
+<!-- #variable #color-link-hover -->
 
 <article id="variable-color-link-hover" class="block block-variable" data-type="variable">
 <h3>color-link-hover</h3>
-<p>...</p>
+<p>The default color used for the hover state of links.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-link-hover
@@ -769,11 +783,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#violet" class="code-link"><code>$violet</code></a></span>
 </article>
 
-<!-- #variables #color-link-header -->
+<!-- #variable #color-link-header -->
 
 <article id="variable-color-link-header" class="block block-variable" data-type="variable">
 <h3>color-link-header</h3>
-<p>...</p>
+<p>The default color used for header links.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-link-header
@@ -784,11 +798,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
 </article>
 
-<!-- #variables #color-link-header-hover -->
+<!-- #variable #color-link-header-hover -->
 
 <article id="variable-color-link-header-hover" class="block block-variable" data-type="variable">
 <h3>color-link-header-hover</h3>
-<p>...</p>
+<p>The default color used for the hover state of header links.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-link-header-hover
@@ -799,11 +813,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#violet" class="code-link"><code>$violet</code></a></span>
 </article>
 
-<!-- #variables #letter-spacing -->
+<!-- #variable #letter-spacing -->
 
 <article id="variable-letter-spacing" class="block block-variable" data-type="variable">
 <h3>letter-spacing</h3>
-<p>...</p>
+<p>The default letter spacing property. This is primarily used in the <a href="#mixin-uppercase" class="code-link"><code>@mixin uppercase</code></a></p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$letter-spacing
@@ -813,11 +827,11 @@ $darker-deg:  10% !default;</code></pre>
 </div><!-- .example -->
 </article>
 
-<!-- #variables #bg-color -->
+<!-- #variable #bg-color -->
 
 <article id="variable-bg-color" class="block block-variable" data-type="variable">
 <h3>bg-color</h3>
-<p>...</p>
+<p>The scaffolding background color. It's used as the background color for some elements and blocks.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bg-color
@@ -828,26 +842,26 @@ $darker-deg:  10% !default;</code></pre>
 <span class="var-reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
 </article>
 
-<!-- #variables #bg-selection -->
+<!-- #variable #bg-selection -->
 
 <article id="variable-bg-selection" class="block block-variable" data-type="variable">
 <h3>bg-selection</h3>
-<p>...</p>
+<p>The default background color used for text selections.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$bg-selection
   type: color
-  default: rgba($blue, 0.25)</code></pre>
+  default: rgba($green, 0.25)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
-<span class="var-reference">Reference:  <a href="#blue" class="code-link"><code>$blue</code></a></span>
+<span class="var-reference">Reference:  <a href="#green" class="code-link"><code>$green</code></a></span>
 </article>
 
-<!-- #variables #border-color -->
+<!-- #variable #border-color -->
 
 <article id="variable-border-color" class="block block-variable" data-type="variable">
 <h3>border-color</h3>
-<p>...</p>
+<p>The scaffolding border color. It's used as the border color for some elements and blocks.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$border-color
@@ -864,7 +878,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <h2 id="global-functions">Global Functions</h2>
 
-<!-- #functions #strip_units -->
+<!-- #function #strip_units -->
 
 <article id="function-strip_units" class="block block-function" data-type="function">
 <h3>strip_units</h3>
@@ -894,7 +908,7 @@ $darker-deg:  10% !default;</code></pre>
 
 </article>
 
-<!-- #functions #px_to_em -->
+<!-- #function #px_to_em -->
 
 <article id="function-px_to_em" class="block block-function" data-type="function">
 <h3>px_to_em</h3>
@@ -971,7 +985,7 @@ $darker-deg:  10% !default;</code></pre>
 
 </article>
 
-<!-- #functions #em_to_px -->
+<!-- #function #em_to_px -->
 
 <article id="function-em_to_px" class="block block-function" data-type="function">
 <h3>em_to_px</h3>
@@ -1018,6 +1032,76 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #mixins -->
 
 <h2 id="global-mixins">Global Mixins</h2>
+
+<!-- #mixin #size -->
+
+<article id="mixin-size" class="block block-mixin" data-type="mixin">
+<h3>size</h3>
+<p>Shorthand for adding width and height sizing to an element. If you only pass in a width, the height will be set to equal the height and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin size(
+  $width,
+  $height
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $width
+  type: unit (number, pixel, percentage)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>Sets the width value.</p>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $height
+  type: unit (pixel, percentage, false)
+  default: false -> $width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>Sets the height value. If no value is passed or you pass false, it will default to the passed width making the element square.</p>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.box-rectangle {
+  @include size(150px, 250px);
+}
+
+.box-square {
+  @include size(75);
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>Will Output:</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.box-rectangle {
+  width: 150px;
+  height: 250px;
+}
+
+.box-square {
+  width: 75px;
+  height: 75px;
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+</article>
 
 <!-- #mixin #clearfix -->
 
@@ -1072,7 +1156,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-remove-clearfix" class="block block-mixin" data-type="mixin">
 <h3>remove-clearfix</h3>
-<p>...</p>
+<p>Removes the clearfix styles from an element.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin remove-clearfix</code></pre>
@@ -1084,7 +1168,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-scrollable" class="block block-mixin" data-type="mixin">
 <h3>scrollable</h3>
-<p>...</p>
+<p>Adds scrolling styles to an element for momentum scrolling.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin scrollable</code></pre>
@@ -1096,24 +1180,229 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-box-sizing" class="block block-mixin" data-type="mixin">
 <h3>box-sizing</h3>
-<p>...</p>
+<p>Adds box sizing styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin box-sizing</code></pre>
+<pre><code class="language-scss">@mixin box-sizing(
+  $box-sizing
+)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4 id="param-build-grid-system">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-box-sizing-box-sizing">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $box-sizing
+  type: box-sizing value (border-box, none)
+  default: $box-sizing</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="var-reference">Reference: <a href="#variable-box-sizing" class="code-link"><code>$box-sizing</code></a></span>
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #box-shadow -->
 
 <article id="mixin-box-shadow" class="block block-mixin" data-type="mixin">
 <h3>box-shadow</h3>
-<p>...</p>
+<p>Adds box shadow styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin box-shadow</code></pre>
+<pre><code class="language-scss">@mixin box-shadow(
+  $shadow...
+)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $box-shadow
+  type: box-shadow value (
+    [horizontal offset] 
+    [vertical offset] 
+    [blur radius] 
+    [spread radius] 
+    [color]
+  )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-4">
+        <div class="example-box-shadow example-box-shadow-1"></div>
+      </div>
+      <div class="col col-4">
+        <div class="example-box-shadow example-box-shadow-2"></div>
+      </div>
+      <div class="col col-4">
+        <div class="example-box-shadow example-box-shadow-3"></div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-box-shadow-1 {
+  @include box-shadow($box-shadow);
+}
+
+.example-box-shadow-2 {
+  @include box-shadow(inset $box-shadow);
+}
+
+.example-box-shadow-3 {
+  @include box-shadow(
+    $box-shadow,
+    inset 0 1px 0 rgba($white, 0.25)
+  );
+}</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-box-shadow-1 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.example-box-shadow-2 {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.example-box-shadow-3 {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+</article>
+
+<!-- #mixin #border-radius -->
+
+<article id="mixin-border-radius" class="block block-mixin" data-type="mixin">
+<h3>border-radius</h3>
+<p>The border radius mixins are shorthand for creating border radius styles. All variations start with the base <code>border-radius</code> and are appended with specific radius locations (e.g. -top, -top-left, -bottom, -bottom-right).</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin border-radius(
+  $radius
+)</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Mixin Variations
+
+@include border-radius              // all four corners
+
+@include border-radius-top          // top-left & top-right
+@include border-radius-top-left     // top-left
+@include border-radius-top-right    // top-right
+
+@include border-radius-bottom       // bottom-left & bottom-right
+@include border-radius-bottom-left  // bottom-left
+@include border-radius-bottom-right // bottom-right
+
+@include border-radius-left         // left-top & left-bottom
+@include border-radius-left-top     // left-top
+@include border-radius-left-bottom  // left-bottom
+
+@include border-radius-right        // right-top & right-bottom
+@include border-radius-right-top    // right-top
+@include border-radius-right-bottom // right-bottom
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $border-radius
+  type: unit (pixel, percent)
+  default: $border-radius</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-8">
+        <ul class="example-border-radius">
+          <li>List Item</li>
+          <li>List Item</li>
+          <li>List Item</li>
+        </ul>
+      </div>
+      <div class="col col-4">
+        <div class="example-border-circle"></div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-border-radius {
+  @include border-radius(6px);
+}
+
+.example-border-radius li {
+  &:first-child {
+    @include border-radius-top(6px);
+  }
+  
+  &:last-child {
+    @include border-radius-bottom(6px);
+  }
+}
+
+.example-border-circle {
+  @include border-radius(50%);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-border-radius {
+  border-radius: 6px;
+}
+  
+.example-border-radius li:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+  
+.example-border-radius li:last-child {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.example-border-circle {
+  border-radius: 50%;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #rotate -->
@@ -1268,18 +1557,6 @@ $darker-deg:  10% !default;</code></pre>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin animation-direction</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #border-radius -->
-
-<article id="mixin-border-radius" class="block block-mixin" data-type="mixin">
-<h3>border-radius</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin border-radius</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>

@@ -18,29 +18,32 @@
 
 @include media-tablet {
   @include build-grid-system;
-
-  // @include build-grid-system(100%, 2%, 8);
-  
-  // $args: (grid-columns: 8, grid-total-width: 100%);
-  // @include build-grid-system($args...);
 }
 
 /*==============================================================================
   @ Test
 ==============================================================================*/
 
-// @include console(px_to_em(28)); // return 2em
-// @include console(em_to_px(2)); // return 28px
-
-h1 {
-  font-size: px_to_em(28px);
+.example-box-shadow {
+  margin: 10px 0;
+  background-clip: border-box;
+  border: 1px solid rgba($black, 0.25);
+  @include border-radius();
+  @include size(100%, 75px);
 }
-
-.aside {
-  font-size: px_to_em(12px);
-  h2 {
-    font-size: px_to_em(18px, 12px);
-  }
+.example-box-shadow-1 {
+  background-clip: padding-box;
+  @include box-shadow($box-shadow);
+}
+.example-box-shadow-2 {
+  @include box-shadow(inset $box-shadow);
+}
+.example-box-shadow-3 {
+  @include gradient-vertical;
+  @include box-shadow(
+    $box-shadow,
+    inset 0 1px 0 rgba($white, 0.25)
+  );
 }
 
 /*==============================================================================
