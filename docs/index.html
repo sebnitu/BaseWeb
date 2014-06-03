@@ -383,6 +383,7 @@ $darker-deg:  10% !default;</code></pre>
   default: 0 1px 3px rgba(0,0,0, 0.25)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="var-reference">Reference: <a href="#mixin-box-shadow" class="code-link"><code>@mixin box-shadow</code></a></span>
 </article>
 
 <!-- #variable #border-radius -->
@@ -1232,9 +1233,11 @@ $darker-deg:  10% !default;</code></pre>
     [blur radius] 
     [spread radius] 
     [color]
-  )</code></pre>
+  )
+  default: $box-shadow</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="var-reference">Reference: <a href="#variable-box-shadow" class="code-link"><code>$box-shadow</code></a></span>
 </li>
 </ul>
 
@@ -1409,12 +1412,83 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-rotate" class="block block-mixin" data-type="mixin">
 <h3>rotate</h3>
-<p>...</p>
+<p>Adds transform rotate styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin rotate</code></pre>
+<pre><code class="language-scss">@mixin rotate(
+  $deg
+)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $deg
+  type: unit (degree)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The degree that you want the element to rotate.</p>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-4">
+        <div class="example-rotate example-rotate-1"></div>
+      </div>
+      <div class="col col-4">
+        <div class="example-rotate example-rotate-2"></div>
+      </div>
+      <div class="col col-4">
+        <div class="example-rotate example-rotate-3"></div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-rotate-1 {
+  @include rotate(15deg);
+}
+
+.example-rotate-2 {
+  @include rotate(45deg);
+}
+
+.example-rotate-3 {
+  @include rotate(60deg);
+}</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-rotate-1 {
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg);
+}
+
+.example-rotate-2 {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.example-rotate-3 {
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #transition -->

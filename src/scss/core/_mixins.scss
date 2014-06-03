@@ -80,7 +80,13 @@
 //
 // @param: $shadow
 //   type: box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
+//   default: $box-shadow
 @mixin box-shadow( $shadow... ) {
+  
+  @if length($shadow) == 0 {
+    $shadow: $box-shadow;
+  }
+  
   box-shadow: $shadow;
 }
 
@@ -142,6 +148,11 @@
 
 // Transitions
 @mixin transition( $transition... ) {
+  
+  @if length($transition) == 0 {
+    $transition: $transition;
+  }
+  
   -webkit-transition: $transition;
   transition: $transition;
 }
