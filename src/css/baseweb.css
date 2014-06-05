@@ -1625,6 +1625,170 @@ table {
 /*==============================================================================
   @ Test
 ==============================================================================*/
+/* Animation */
+@-webkit-keyframes colorchange {
+  0% {
+    background-color: #e67c7c; }
+
+  25% {
+    background-color: #ddcf50; }
+
+  50% {
+    background-color: #a6dd46; }
+
+  75% {
+    background-color: #58c2ef; }
+
+  100% {
+    background-color: #e67c7c; } }
+
+@keyframes colorchange {
+  0% {
+    background-color: #e67c7c; }
+
+  25% {
+    background-color: #ddcf50; }
+
+  50% {
+    background-color: #a6dd46; }
+
+  75% {
+    background-color: #58c2ef; }
+
+  100% {
+    background-color: #e67c7c; } }
+
+.example-animation {
+  margin: 10px 0;
+  background-color: #e67c7c;
+  width: 100%;
+  height: 80px;
+  border-radius: 3px;
+  -webkit-animation: colorchange 5s linear 1s infinite alternate;
+  animation: colorchange 5s linear 1s infinite alternate; }
+
+/*==============================================================================
+  @ Doc Examples
+==============================================================================*/
+/* Box Shadow */
+.example-box-shadow {
+  margin: 10px 0;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  width: 100%;
+  height: 75px; }
+
+.example-box-shadow-1 {
+  background-clip: padding-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+
+.example-box-shadow-2 {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); }
+
+.example-box-shadow-3 {
+  background-color: #16a6e4;
+  background-image: -webkit-linear-gradient(top, #41b9ec, #16a6e4);
+  background-image: linear-gradient(top, #41b9ec, #16a6e4);
+  background-repeat: repeat-x;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+
+/* Border Radius */
+.example-border-radius {
+  margin: 10px 0;
+  padding: 9px 10px;
+  background: #c8e041;
+  list-style: none;
+  border-radius: 6px; }
+
+.example-border-radius li {
+  margin: 1px 0;
+  padding: 10px 15px;
+  background: #b3cd21;
+  color: #ffffff; }
+
+.example-border-radius li:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px; }
+
+.example-border-radius li:last-child {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px; }
+
+.example-border-circle {
+  margin: 10px auto;
+  background: #e1ac2f;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%; }
+
+/* Tranform Rotate */
+.example-rotate {
+  margin: 40px auto;
+  width: 75px;
+  height: 75px;
+  border-radius: 3px; }
+
+.example-rotate-1 {
+  background: #6f8ce2;
+  -webkit-transform: rotate(15deg);
+  -ms-transform: rotate(15deg);
+  transform: rotate(15deg); }
+
+.example-rotate-2 {
+  background: #bc6bd3;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.example-rotate-3 {
+  background: #d25993;
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg); }
+
+/* Transition */
+.example-transition-wrap {
+  position: relative;
+  height: 100px;
+  margin: 10px 100px 10px 0; }
+
+.example-transition-target {
+  position: absolute;
+  left: 0; }
+
+.example-transition-target-1 {
+  z-index: 5;
+  top: 0;
+  background: #dc4c1c;
+  width: 100px;
+  height: 100px;
+  border-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear; }
+
+.example-transition-trigger:hover .example-transition-target-1 {
+  background: #e7bd5c;
+  left: 100%;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg); }
+
+.example-transition-target-2 {
+  z-index: 10;
+  top: 25px;
+  margin-left: 25px;
+  background: #58c2ef;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-transition: background 1s ease-in-out, left 1s ease-in-out;
+  transition: background 1s ease-in-out, left 1s ease-in-out; }
+
+.example-transition-trigger:hover .example-transition-target-2 {
+  background: #70a01d;
+  left: 100%; }
+
 /*==============================================================================
   @ Semantic Grid Demo
 ==============================================================================*/

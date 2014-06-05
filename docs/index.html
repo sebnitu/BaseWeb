@@ -1237,7 +1237,7 @@ $darker-deg:  10% !default;</code></pre>
 <li class="param">
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@param: $box-shadow
+<pre><code class="language-scss">@param: $shadow...
   type: box-shadow value (
     [horizontal offset] 
     [vertical offset] 
@@ -1505,61 +1505,286 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #mixin #transition -->
 
 <article id="mixin-transition" class="block block-mixin" data-type="mixin">
+
 <h3>transition</h3>
-<p>...</p>
+<p>Adds transition styles with browser prefixes if needed.</p>
+
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition</code></pre>
+<pre><code class="language-scss">@mixin transition(
+  $trans...
+)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $trans...
+  type: transition value (
+    [transition-property] 
+    [transition-duration] 
+    [transition-timing-function] 
+    [transition-delay]
+  )
+  default: $transition</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-transition" class="code-link"><code>$transition</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output example-transition-trigger">
+    
+    <div class="example-transition-wrap">
+      <div class="example-transition-target example-transition-target-1"></div>
+      <div class="example-transition-target example-transition-target-2"></div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-transition-target-1 {
+  // ...
+  @include transition;
+}
+
+.example-transition-target-2 {
+  // ...
+  @include transition(
+    background 1s ease-in-out,
+    left 1s ease-in-out
+  );
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-transition-target-1 {
+  // ...
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.example-transition-target-2 {
+  // ...
+  -webkit-transition: background 1s ease-in-out, left 1s ease-in-out;
+  transition: background 1s ease-in-out, left 1s ease-in-out;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #transition-property -->
 
 <article id="mixin-transition-property" class="block block-mixin" data-type="mixin">
 <h3>transition-property</h3>
-<p>...</p>
+<p>Adds transition property styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin transition-property</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $transition-property
+  type: property name
+  default: $transition-property</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-transition-property" class="code-link"><code>$transition-property</code></a></span>
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #transition-duration -->
 
 <article id="mixin-transition-duration" class="block block-mixin" data-type="mixin">
 <h3>transition-duration</h3>
-<p>...</p>
+<p>Adds transition duration styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin transition-duration</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $transition-duration
+  type: time value (seconds, milliseconds)
+  default: $transition-duration</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-transition-duration" class="code-link"><code>$transition-duration</code></a></span>
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #transition-timing-function -->
 
 <article id="mixin-transition-timing-function" class="block block-mixin" data-type="mixin">
 <h3>transition-timing-function</h3>
-<p>...</p>
+<p>Adds transition timing function styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin transition-timing-function</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $transition-timing-function
+  type: predefined keyword values (
+    linear,
+    ease,
+    ease-in,
+    ease-out,
+    ease-in-out,
+    step-start,
+    step-end
+  )
+  default: $transition-timing-function</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-transition-timing-function" class="code-link"><code>$transition-timing-function</code></a></span>
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #transition-delay -->
 
 <article id="mixin-transition-delay" class="block block-mixin" data-type="mixin">
 <h3>transition-delay</h3>
-<p>...</p>
+<p>Adds transition delay styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin transition-delay</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $transition-delay
+  type: time value (seconds, milliseconds)
+  default: $transition-delay</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-transition-delay" class="code-link"><code>$transition-delay</code></a></span>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #keyframes -->
+
+<article id="mixin-keyframes" class="block block-mixin" data-type="mixin">
+<h3>keyframes</h3>
+<p>Adds keyframe styles with browser prefixes if needed. The <code>@content</code> directive is where your style block will be placed. It's required that you pass in an animation name.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $name
+  type: animation name</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-animation"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+@include keyframes(colorchange) {
+  0%   { background-color: $red-lighter;    }
+  25%  { background-color: $yellow-lighter; }
+  50%  { background-color: $green-lighter;  }
+  75%  { background-color: $blue-lighter;   }
+  100% { background-color: $red-lighter;    }
+}
+
+.example-animation {
+  // ...
+  @include animation-name( colorchange );
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+@-webkit-keyframes colorchange {
+  0% { background-color: #e67c7c; }
+  25% { background-color: #ddcf50; }
+  50% { background-color: #a6dd46; }
+  75% { background-color: #58c2ef; }
+  100% { background-color: #e67c7c; }
+}
+
+@keyframes colorchange {
+  0% { background-color: #e67c7c; }
+  25% { background-color: #ddcf50; }
+  50% { background-color: #a6dd46; }
+  75% { background-color: #58c2ef; }
+  100% { background-color: #e67c7c; }
+}
+
+.example-animation {
+  // ...
+  -webkit-animation-name: colorchange;
+  animation-name: colorchange;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #animation -->

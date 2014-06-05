@@ -140,6 +140,9 @@
 }
 
 // Rotate
+//
+// @param: $deg
+//   type: unit (degree)
 @mixin rotate( $deg ) {
   -webkit-transform: rotate($deg);
   -ms-transform: rotate($deg);
@@ -147,34 +150,77 @@
 }
 
 // Transitions
-@mixin transition( $transition... ) {
+// 
+// @param: $transition
+//   type: transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
+//   default: $transition
+@mixin transition( $trans... ) {
   
-  @if length($transition) == 0 {
-    $transition: $transition;
+  @if length($trans) == 0 {
+    $trans: $transition;
   }
   
-  -webkit-transition: $transition;
-  transition: $transition;
+  -webkit-transition: $trans;
+  transition: $trans;
 }
+
+// Transitions Property
+// 
+// @param: $transition-property
+//   type: property name
+//   default: $transition-property
 @mixin transition-property( $transition-property : $transition-property ) {
   -webkit-transition-property: $transition-property;
   transition-property: $transition-property;
 }
+
+// Transitions Duration
+// 
+// @param: $transition-duration
+//   type: time value (seconds, milliseconds)
+//   default: $transition-duration
 @mixin transition-duration( $transition-duration : $transition-duration ) {
   -webkit-transition-duration: $transition-duration;
   transition-duration: $transition-duration;
 }
+
+// Transitions Timing Function
+// 
+// @param: $transition-timing-function
+//   type: predefined keyword values (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
+//   default: $transition-timing-function
 @mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
   -webkit-transition-timing-function: $transition-timing-function;
   transition-timing-function: $transition-timing-function;
 }
+
+// Transitions Delay
+// 
+// @param: $transition-delay
+//   type: time value (seconds, milliseconds)
+//   default: $transition-delay
 @mixin transition-delay( $transition-delay : $transition-delay ) {
   -webkit-transition-delay: $transition-delay;
   transition-delay: $transition-delay;
 }
 
-// Animations
-@mixin animation( $animation ) {
+// Keyframes
+//
+// @param: $name
+//   type: animation name
+//
+// @param: @content (passed in brackets)
+//   type: style block
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation( $animation... ) {
   -webkit-animation: $animation;
   animation: $animation;
 }
@@ -203,8 +249,15 @@
   animation-direction: $direction;
 }
 
-// Gradients
 // Horizontal Gradient
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
 @mixin gradient-horizontal(
     $gs : $gradient-start,
     $ge : $gradient-end
@@ -216,6 +269,14 @@
 }
 
 // Vertical Gradient
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
 @mixin gradient-vertical(
     $gs : $gradient-start,
     $ge : $gradient-end
@@ -227,6 +288,18 @@
 }
 
 // Directional Gradient
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
+//
+// @param: $deg
+//   type: unit (degree)
+//   default: $gradient-deg
 @mixin gradient-directional(
     $gs : $gradient-start,
     $ge : $gradient-end,
@@ -239,6 +312,22 @@
 }
 
 // Horizontal Gradient with Three Colors
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $gm
+//   type: color
+//   default: $gradient-middle
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
 @mixin gradient-horizontal-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -252,6 +341,22 @@
 }
 
 // Vertical Gradient with Three Colors
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $gm
+//   type: color
+//   default: $gradient-middle
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
 @mixin gradient-vertical-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -265,6 +370,26 @@
 }
 
 // Directional Gradient with Three Colors
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $gm
+//   type: color
+//   default: $gradient-middle
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
+//
+// @param: $deg
+//   type: unit (degree)
+//   default: $gradient-deg
 @mixin gradient-directional-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -279,6 +404,14 @@
 }
 
 // Radial Gradients
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
 @mixin gradient-radial(
     $inner : $gradient-start,
     $outer : $gradient-end
@@ -290,6 +423,18 @@
 }
 
 // Striped Gradients
+//
+// @param: $gs
+//   type: color
+//   default: $gradient-start
+//
+// @param: $ge
+//   type: color
+//   default: $gradient-end
+//
+// @param: $deg
+//   type: unit (degree)
+//   default: $gradient-deg
 @mixin gradient-striped(
     $color : $gradient-start,
     $shade : $gradient-shade,
