@@ -828,10 +828,8 @@ $darker-deg:  10% !default;</code></pre>
 <p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12. This function is used in <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> and <a href="#em_to_px" class="code-link"><code>@function em_to_px</code></a> to return the proper value.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@function strip_units(
-  $val
-)
-// returns: number</code></pre>
+<pre><code class="language-scss">@function strip_units( $val )
+  returns: number</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -858,11 +856,8 @@ $darker-deg:  10% !default;</code></pre>
 <p>Converts a pixel value to EMs. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@function px_to_em(
-  $px,
-  $base,
-)
-// returns: unit (em)</code></pre>
+<pre><code class="language-scss">@function px_to_em( $px, $base )
+  returns: unit (em)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -935,11 +930,8 @@ $darker-deg:  10% !default;</code></pre>
 <p>Works the same as <a href="#px_to_em" class="code-link"><code>@function px_to_em</code></a> except it converts an EM value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@function em_to_px(
-  $em,
-  $base,
-)
-// returns: unit (pixel)</code></pre>
+<pre><code class="language-scss">@function em_to_px( $em, $base )
+  returns: unit (pixel)</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -983,10 +975,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Shorthand for adding width and height sizing to an element. If you only pass in a width, the height will be set to equal the height and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin size(
-  $width,
-  $height
-)</code></pre>
+<pre><code class="language-scss">@mixin size( $width, $height )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1126,9 +1115,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds box sizing styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin box-sizing(
-  $box-sizing
-)</code></pre>
+<pre><code class="language-scss">@mixin box-sizing( $box-sizing )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1156,9 +1143,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds box shadow styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin box-shadow(
-  $shadow...
-)</code></pre>
+<pre><code class="language-scss">@mixin box-shadow( $shadow... )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1243,9 +1228,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>The border radius mixins are shorthand for creating border radius styles. All variations start with the base <code>border-radius</code> and are appended with specific radius locations (e.g. -top, -top-left, -bottom, -bottom-right).</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin border-radius(
-  $radius
-)</code></pre>
+<pre><code class="language-scss">@mixin border-radius( $radius )</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
 <pre><code class="language-scss">// Mixin Variations
@@ -1357,9 +1340,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds transform rotate styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin rotate(
-  $deg
-)</code></pre>
+<pre><code class="language-scss">@mixin rotate( $deg )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1442,9 +1423,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition(
-  $trans...
-)</code></pre>
+<pre><code class="language-scss">@mixin transition( $trans... )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1521,7 +1500,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds transition property styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition-property</code></pre>
+<pre><code class="language-scss">@mixin transition-property( $transition-property )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1549,7 +1528,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds transition duration styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition-duration</code></pre>
+<pre><code class="language-scss">@mixin transition-duration( $transition-duration )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1577,7 +1556,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds transition timing function styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition-timing-function</code></pre>
+<pre><code class="language-scss">@mixin transition-timing-function( $transition-timing-function )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1588,7 +1567,7 @@ $darker-deg:  10% !default;</code></pre>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@param: $transition-timing-function
-  type: predefined keyword values (
+  type: timing function (
     linear,
     ease,
     ease-in,
@@ -1613,7 +1592,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds transition delay styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin transition-delay</code></pre>
+<pre><code class="language-scss">@mixin transition-delay( $transition-delay )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -1641,7 +1620,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Adds keyframe styles with browser prefixes if needed. The <code>@content</code> directive is where your style block will be placed. It's required that you pass in an animation name.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin keyframes($name) {
+<pre><code class="language-scss">@mixin keyframes( $name ) {
   @-webkit-keyframes #{$name} {
     @content;
   }
@@ -1685,7 +1664,7 @@ $darker-deg:  10% !default;</code></pre>
 
 .example-animation {
   // ...
-  @include animation-name( colorchange );
+  @include animation-name(colorchange);
 }
 </code></pre>
   </div><!-- .example-code -->
@@ -1722,118 +1701,366 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-animation" class="block block-mixin" data-type="mixin">
 <h3>animation</h3>
-<p>...</p>
+<p>Adds animation styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation</code></pre>
+<pre><code class="language-scss">@mixin animation( $animation... )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation
+  type: animation value (
+    [animation-name]
+    [animation-duration]
+    [animation-timing-function]
+    [animation-delay]
+    [animation-iteration-count]
+    [animation-direction]
+  )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-name -->
 
 <article id="mixin-animation-name" class="block block-mixin" data-type="mixin">
 <h3>animation-name</h3>
-<p>...</p>
+<p>Adds animation name styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-name</code></pre>
+<pre><code class="language-scss">@mixin animation-name( $animation-name )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-name
+  type: animation name</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-duration -->
 
 <article id="mixin-animation-duration" class="block block-mixin" data-type="mixin">
 <h3>animation-duration</h3>
-<p>...</p>
+<p>Adds animation duration styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-duration</code></pre>
+<pre><code class="language-scss">@mixin animation-duration( $animation-duration )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-duration
+  type: time value (seconds, milliseconds)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-timing-function -->
 
 <article id="mixin-animation-timing-function" class="block block-mixin" data-type="mixin">
 <h3>animation-timing-function</h3>
-<p>...</p>
+<p>Adds animation timing function styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-timing-function</code></pre>
+<pre><code class="language-scss">@mixin animation-timing-function( $animation-timing-function )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-timing-function
+  type: timing function (
+    linear, 
+    ease, 
+    ease-in, 
+    ease-out, 
+    ease-in-out
+  )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-delay -->
 
 <article id="mixin-animation-delay" class="block block-mixin" data-type="mixin">
 <h3>animation-delay</h3>
-<p>...</p>
+<p>Adds animation delay styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-delay</code></pre>
+<pre><code class="language-scss">@mixin animation-delay( $animation-delay )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-delay
+  type: time value (seconds, milliseconds)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-iteration-count -->
 
 <article id="mixin-animation-iteration-count" class="block block-mixin" data-type="mixin">
 <h3>animation-iteration-count</h3>
-<p>...</p>
+<p>Adds animation iteration count styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-iteration-count</code></pre>
+<pre><code class="language-scss">@mixin animation-iteration-count( $animation-iteration-count )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-iteration-count
+  type: unit (number, infinite)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #animation-direction -->
 
 <article id="mixin-animation-direction" class="block block-mixin" data-type="mixin">
 <h3>animation-direction</h3>
-<p>...</p>
+<p>Adds animation direction styles with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin animation-direction</code></pre>
+<pre><code class="language-scss">@mixin animation-direction( $animation-direction )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-direction
+  type: animation direction (
+    normal, 
+    reverse, 
+    alternate, 
+    alternate-reverse
+  )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #animation-play-state -->
+
+<article id="mixin-animation-play-state" class="block block-mixin" data-type="mixin">
+<h3>animation-play-state</h3>
+<p>Adds animation play state styles with browser prefixes if needed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin animation-play-state( $animation-play-state )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $animation-play-state
+  type: play state (running, paused)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #gradient-horizontal -->
 
 <article id="mixin-gradient-horizontal" class="block block-mixin" data-type="mixin">
 <h3>gradient-horizontal</h3>
-<p>...</p>
+<p>Creates a horizontal gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-horizontal</code></pre>
+<pre><code class="language-scss">@mixin gradient-horizontal( $gs, $ge )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-horizontal"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-horizontal {
+  @include gradient-horizontal($blue, $green);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-horizontal {
+  background-color: #8ecb25;
+  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25);
+  background-image: linear-gradient(left, #2ab0ea, #8ecb25);
+  background-repeat: repeat-y;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-vertical -->
 
 <article id="mixin-gradient-vertical" class="block block-mixin" data-type="mixin">
 <h3>gradient-vertical</h3>
-<p>...</p>
+<p>Creates a vertical gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-vertical</code></pre>
+<pre><code class="language-scss">@mixin gradient-vertical( $gs, $ge )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-vertical"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-vertical {
+  @include gradient-vertical($yellow, $orange);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-vertical {
+  background-color: #e69242;
+  background-image: -webkit-linear-gradient(top, #f1c40f, #e69242);
+  background-image: linear-gradient(top, #f1c40f, #e69242);
+  background-repeat: repeat-x;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-directional -->
 
 <article id="mixin-gradient-directional" class="block block-mixin" data-type="mixin">
 <h3>gradient-directional</h3>
-<p>...</p>
+<p>Creates a directional gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-directional</code></pre>
+<pre><code class="language-scss">@mixin gradient-directional( $gs, $ge, $deg )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1842,10 +2069,10 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-gradient-horizontal-three-colors" class="block block-mixin" data-type="mixin">
 <h3>gradient-horizontal-three-colors</h3>
-<p>...</p>
+<p>Creates a three color horizontal color gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-horizontal-three-colors</code></pre>
+<pre><code class="language-scss">@mixin gradient-horizontal-three-colors( $gs, $gm, $stop, $ge )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1854,10 +2081,22 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-gradient-vertical-three-colors" class="block block-mixin" data-type="mixin">
 <h3>gradient-vertical-three-colors</h3>
-<p>...</p>
+<p>Creates a three color vertical color gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-vertical-three-colors</code></pre>
+<pre><code class="language-scss">@mixin gradient-vertical-three-colors( $gs, $gm, $stop, $ge )</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #mixin #gradient-directional-three-colors -->
+
+<article id="mixin-gradient-directional-three-colors" class="block block-mixin" data-type="mixin">
+<h3>gradient-directional-three-colors</h3>
+<p>Creates a three color directional color gradient with browser prefixes if needed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin gradient-directional-three-colors( $gs, $gm, $stop, $ge, $deg )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1866,10 +2105,10 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-gradient-radial" class="block block-mixin" data-type="mixin">
 <h3>gradient-radial</h3>
-<p>...</p>
+<p>Creates a radial gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-radial</code></pre>
+<pre><code class="language-scss">@mixin gradient-radial( $inner, $outer )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1878,10 +2117,10 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-gradient-striped" class="block block-mixin" data-type="mixin">
 <h3>gradient-striped</h3>
-<p>...</p>
+<p>Creates a striped gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-striped</code></pre>
+<pre><code class="language-scss">@mixin gradient-striped( $color, $shade, $deg )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1890,7 +2129,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-text-hide" class="block block-mixin" data-type="mixin">
 <h3>text-hide</h3>
-<p>...</p>
+<p>Image replacement trick that hides text.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin text-hide</code></pre>
@@ -1902,10 +2141,10 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-text-truncate" class="block block-mixin" data-type="mixin">
 <h3>text-truncate</h3>
-<p>...</p>
+<p>Truncates text with an ellipsis. Element applied must be <code>block</code> or <code>inline-block</code></p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin text-truncate</code></pre>
+<pre><code class="language-scss">@mixin text-truncate( $display )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
@@ -1914,7 +2153,7 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-anchor" class="block block-mixin" data-type="mixin">
 <h3>anchor</h3>
-<p>...</p>
+<p>Builds the base styles for anchor tags.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin anchor</code></pre>

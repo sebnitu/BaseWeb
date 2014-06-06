@@ -106,7 +106,7 @@ a, .anchor {
   text-decoration: line-through; }
 
 .highlight {
-  background: rgba(209, 195, 41, 0.6); }
+  background: rgba(241, 196, 15, 0.6); }
 
 .uppercase {
   text-transform: uppercase;
@@ -124,8 +124,8 @@ a, .anchor {
   background: rgba(42, 176, 234, 0.1); }
 
 .warning {
-  border-bottom: 2px solid #d1c329;
-  background: rgba(209, 195, 41, 0.15); }
+  border-bottom: 2px solid #f1c40f;
+  background: rgba(241, 196, 15, 0.15); }
 
 ins, .ins, .success {
   text-decoration: none;
@@ -153,8 +153,8 @@ del, .del, .danger {
   background: rgba(42, 176, 234, 0.1); }
 
 .block-warning {
-  border-color: #d1c329;
-  background: rgba(209, 195, 41, 0.15); }
+  border-color: #f1c40f;
+  background: rgba(241, 196, 15, 0.15); }
 
 .block-ins, .block-success {
   border-color: #70a01d;
@@ -503,7 +503,7 @@ table {
   padding: 15px 20px; }
 
 .table-hover thead tr th:hover, .table-hover tbody tr:hover {
-  background-color: rgba(209, 195, 41, 0.4); }
+  background-color: rgba(241, 196, 15, 0.4); }
 .table-hover tbody tr:hover td {
   background: transparent; }
 
@@ -1134,9 +1134,9 @@ form .btn {
 .btn-success {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: #98ac27;
-  background-image: -webkit-linear-gradient(top, #b9d135, #98ac27);
-  background-image: linear-gradient(top, #b9d135, #98ac27);
+  background-color: #a0a722;
+  background-image: -webkit-linear-gradient(top, #c6d12b, #a0a722);
+  background-image: linear-gradient(top, #c6d12b, #a0a722);
   background-repeat: repeat-x;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -1157,9 +1157,9 @@ form .btn {
 .btn-warning {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: #d29e24;
-  background-image: -webkit-linear-gradient(top, #e0b349, #d29e24);
-  background-image: linear-gradient(top, #e0b349, #d29e24);
+  background-color: #e49f15;
+  background-image: -webkit-linear-gradient(top, #edb43f, #e49f15);
+  background-image: linear-gradient(top, #edb43f, #e49f15);
   background-repeat: repeat-x;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -1625,47 +1625,26 @@ table {
 /*==============================================================================
   @ Test
 ==============================================================================*/
-/* Animation */
-@-webkit-keyframes colorchange {
-  0% {
-    background-color: #e67c7c; }
-
-  25% {
-    background-color: #ddcf50; }
-
-  50% {
-    background-color: #a6dd46; }
-
-  75% {
-    background-color: #58c2ef; }
-
-  100% {
-    background-color: #e67c7c; } }
-
-@keyframes colorchange {
-  0% {
-    background-color: #e67c7c; }
-
-  25% {
-    background-color: #ddcf50; }
-
-  50% {
-    background-color: #a6dd46; }
-
-  75% {
-    background-color: #58c2ef; }
-
-  100% {
-    background-color: #e67c7c; } }
-
-.example-animation {
+/* Horizontal Gradient */
+.example-gradient {
   margin: 10px 0;
-  background-color: #e67c7c;
+  background: #efefef;
   width: 100%;
   height: 80px;
-  border-radius: 3px;
-  -webkit-animation: colorchange 5s linear 1s infinite alternate;
-  animation: colorchange 5s linear 1s infinite alternate; }
+  border-radius: 3px; }
+
+.example-gradient-horizontal {
+  background-color: #8ecb25;
+  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25);
+  background-image: linear-gradient(left, #2ab0ea, #8ecb25);
+  background-repeat: repeat-y; }
+
+/* Vertical Gradient */
+.example-gradient-vertical {
+  background-color: #e69242;
+  background-image: -webkit-linear-gradient(top, #f1c40f, #e69242);
+  background-image: linear-gradient(top, #f1c40f, #e69242);
+  background-repeat: repeat-x; }
 
 /*==============================================================================
   @ Doc Examples
@@ -1697,14 +1676,14 @@ table {
 .example-border-radius {
   margin: 10px 0;
   padding: 9px 10px;
-  background: #c8e041;
+  background: #e7ea2a;
   list-style: none;
   border-radius: 6px; }
 
 .example-border-radius li {
   margin: 1px 0;
   padding: 10px 15px;
-  background: #b3cd21;
+  background: #c6cd14;
   color: #ffffff; }
 
 .example-border-radius li:first-child {
@@ -1717,7 +1696,7 @@ table {
 
 .example-border-circle {
   margin: 10px auto;
-  background: #e1ac2f;
+  background: #f1ac22;
   width: 140px;
   height: 140px;
   border-radius: 50%; }
@@ -1768,7 +1747,7 @@ table {
   transition: all 0.25s linear; }
 
 .example-transition-trigger:hover .example-transition-target-1 {
-  background: #e7bd5c;
+  background: #f4bb52;
   left: 100%;
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -1788,6 +1767,48 @@ table {
 .example-transition-trigger:hover .example-transition-target-2 {
   background: #70a01d;
   left: 100%; }
+
+/* Keyframes */
+@-webkit-keyframes colorchange {
+  0% {
+    background-color: #e67c7c; }
+
+  25% {
+    background-color: #f4d03f; }
+
+  50% {
+    background-color: #a6dd46; }
+
+  75% {
+    background-color: #58c2ef; }
+
+  100% {
+    background-color: #e67c7c; } }
+
+@keyframes colorchange {
+  0% {
+    background-color: #e67c7c; }
+
+  25% {
+    background-color: #f4d03f; }
+
+  50% {
+    background-color: #a6dd46; }
+
+  75% {
+    background-color: #58c2ef; }
+
+  100% {
+    background-color: #e67c7c; } }
+
+.example-animation {
+  margin: 10px 0;
+  background-color: #e67c7c;
+  width: 100%;
+  height: 80px;
+  border-radius: 3px;
+  -webkit-animation: colorchange 5s linear 1s infinite alternate;
+  animation: colorchange 5s linear 1s infinite alternate; }
 
 /*==============================================================================
   @ Semantic Grid Demo
@@ -1879,7 +1900,7 @@ table {
   background-color: #de5151; }
 
 .color-yellow {
-  background-color: #d1c329; }
+  background-color: #f1c40f; }
 
 .color-blue {
   background-color: #2ab0ea; }
@@ -1900,10 +1921,10 @@ table {
   background-color: #e76d44; }
 
 .color-yellow-orange {
-  background-color: #e1ac2f; }
+  background-color: #f1ac22; }
 
 .color-yellow-green {
-  background-color: #b3cd21; }
+  background-color: #c6cd14; }
 
 .color-blue-green {
   background-color: #56c385; }
@@ -1918,10 +1939,10 @@ table {
   background-color: #e67c7c; }
 
 .color-yellow-light {
-  background-color: #d9c93b; }
+  background-color: #f2ca27; }
 
 .color-yellow-lighter {
-  background-color: #ddcf50; }
+  background-color: #f4d03f; }
 
 .color-blue-light {
   background-color: #41b9ec; }
@@ -1960,16 +1981,16 @@ table {
   background-color: #ed9071; }
 
 .color-yellow-orange-light {
-  background-color: #e4b545; }
+  background-color: #f2b23a; }
 
 .color-yellow-orange-lighter {
-  background-color: #e7bd5c; }
+  background-color: #f4bb52; }
 
 .color-yellow-green-light {
-  background-color: #c2dd2b; }
+  background-color: #e0e417; }
 
 .color-yellow-green-lighter {
-  background-color: #c8e041; }
+  background-color: #e7ea2a; }
 
 .color-blue-green-light {
   background-color: #69c993; }
@@ -1990,10 +2011,10 @@ table {
   background-color: #d42828; }
 
 .color-yellow-dark {
-  background-color: #bcad25; }
+  background-color: #dab10d; }
 
 .color-yellow-darker {
-  background-color: #a69921; }
+  background-color: #c29d0b; }
 
 .color-blue-dark {
   background-color: #16a6e4; }
@@ -2032,16 +2053,16 @@ table {
   background-color: #dc4c1c; }
 
 .color-yellow-orange-dark {
-  background-color: #d7a01f; }
+  background-color: #eb9e0f; }
 
 .color-yellow-orange-darker {
-  background-color: #c1901c; }
+  background-color: #d38e0d; }
 
 .color-yellow-green-dark {
-  background-color: #a0b71e; }
+  background-color: #b3b512; }
 
 .color-yellow-green-darker {
-  background-color: #8da11a; }
+  background-color: #9c9e10; }
 
 .color-blue-green-dark {
   background-color: #43bc78; }

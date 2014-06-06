@@ -187,7 +187,7 @@
 // Transitions Timing Function
 // 
 // @param: $transition-timing-function
-//   type: predefined keyword values (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
+//   type: timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
 //   default: $transition-timing-function
 @mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
   -webkit-transition-timing-function: $transition-timing-function;
@@ -220,33 +220,76 @@
   }
 }
 
+// Animation
+//
+// @param: $animation
+//   type: animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction])
 @mixin animation( $animation... ) {
   -webkit-animation: $animation;
   animation: $animation;
 }
-@mixin animation-name( $name ) {
+
+// Animation Name
+//
+// @param: $name
+//   type: animation name
+@mixin animation-name( $name... ) {
   -webkit-animation-name: $name;
   animation-name: $name;
 }
-@mixin animation-duration( $duration ) {
+
+// Animation Duration
+//
+// @param: $duration
+//   type: time value (seconds, milliseconds)
+@mixin animation-duration( $duration... ) {
   -webkit-animation-duration: $duration;
   animation-duration: $duration;
 }
-@mixin animation-timing-function( $timing-function ) {
+
+// Animation Timing Function
+//
+// @param: $timing-function
+//   type: timing function (linear, ease, ease-in, ease-out, ease-in-out)
+@mixin animation-timing-function( $timing-function... ) {
   -webkit-animation-timing-function: $timing-function;
   animation-timing-function: $timing-function;
 }
-@mixin animation-delay( $delay ) {
+
+// Animation Delay
+//
+// @param: $delay
+//   type: time value (seconds, milliseconds)
+@mixin animation-delay( $delay... ) {
   -webkit-animation-delay: $delay;
   animation-delay: $delay;
 }
-@mixin animation-iteration-count( $iteration-count ) {
+
+// Animation Iteration Count
+//
+// @param: $iteration-count
+//   type: unit (number, infinite)
+@mixin animation-iteration-count( $iteration-count... ) {
   -webkit-animation-iteration-count: $iteration-count;
   animation-iteration-count: $iteration-count;
 }
-@mixin animation-direction( $direction ) {
+
+// Animation Direction
+//
+// @param: $direction
+//   type: animation direction (normal, reverse, alternate, alternate-reverse)
+@mixin animation-direction( $direction... ) {
   -webkit-animation-direction: $direction;
   animation-direction: $direction;
+}
+
+// Animation Pause
+//
+// @param: $play-state
+//   type: play state (running, paused)
+@mixin animation-play-state( $play-stay... ) {
+  -webkit-animation-play-state: $play-stay;
+  animation-play-state: $play-stay;
 }
 
 // Horizontal Gradient
