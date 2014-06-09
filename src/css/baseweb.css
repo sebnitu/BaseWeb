@@ -89,8 +89,8 @@ a, .anchor {
   color: #2ab0ea;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-transition: color linear 0.25s, border-color linear 0.25s;
-  transition: color linear 0.25s, border-color linear 0.25s; }
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s; }
   a:hover, .anchor:hover {
     color: #bc6bd3;
     cursor: pointer;
@@ -1625,26 +1625,40 @@ table {
 /*==============================================================================
   @ Test
 ==============================================================================*/
-/* Horizontal Gradient */
-.example-gradient {
-  margin: 10px 0;
-  background: #efefef;
-  width: 100%;
-  height: 80px;
-  border-radius: 3px; }
+/* Anchor */
+.example-anchor-wrap-light, .example-anchor-wrap-dark {
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center; }
 
-.example-gradient-horizontal {
-  background-color: #8ecb25;
-  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25);
-  background-image: linear-gradient(left, #2ab0ea, #8ecb25);
-  background-repeat: repeat-y; }
 
-/* Vertical Gradient */
-.example-gradient-vertical {
-  background-color: #e69242;
-  background-image: -webkit-linear-gradient(top, #f1c40f, #e69242);
-  background-image: linear-gradient(top, #f1c40f, #e69242);
-  background-repeat: repeat-x; }
+.example-anchor-wrap-dark {
+  background: #303030; }
+
+.example-anchor {
+  color: #2ab0ea;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s; }
+  .example-anchor:hover {
+    color: #bc6bd3;
+    cursor: pointer;
+    border-color: rgba(0, 0, 0, 0.25); }
+
+.example-anchor-alt {
+  color: #cd92df;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s; }
+  .example-anchor-alt:hover {
+    color: #e67c7c;
+    cursor: pointer;
+    border-color: rgba(255, 255, 255, 0.25); }
 
 /*==============================================================================
   @ Doc Examples
@@ -1809,6 +1823,63 @@ table {
   border-radius: 3px;
   -webkit-animation: colorchange 5s linear 1s infinite alternate;
   animation: colorchange 5s linear 1s infinite alternate; }
+
+/* Global Gradient */
+.example-gradient {
+  margin: 10px 0;
+  background: #efefef;
+  width: 100%;
+  height: 80px;
+  border-radius: 3px; }
+
+/* Horizontal Gradient */
+.example-gradient-horizontal {
+  background-color: #8ecb25;
+  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25);
+  background-image: linear-gradient(left, #2ab0ea, #8ecb25);
+  background-repeat: repeat-y; }
+
+/* Vertical Gradient */
+.example-gradient-vertical {
+  background-color: #e69242;
+  background-image: -webkit-linear-gradient(top, #f1c40f, #e69242);
+  background-image: linear-gradient(top, #f1c40f, #e69242);
+  background-repeat: repeat-x; }
+
+/* Directional Gradient */
+.example-gradient-directional {
+  background-color: #bc6bd3;
+  background-image: -webkit-linear-gradient(45deg, #de5151, #bc6bd3);
+  background-image: linear-gradient(45deg, #de5151, #bc6bd3);
+  background-repeat: repeat-x; }
+
+/* Three Color Horizontal Gradient */
+.example-gradient-horizontal-three-colors {
+  background-color: #8dba7c;
+  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25 50%, #f1c40f);
+  background-image: linear-gradient(left, #2ab0ea, #8ecb25 50%, #f1c40f);
+  background-repeat: no-repeat; }
+
+/* Three Color Vertical Gradient */
+.example-gradient-vertical-three-colors {
+  background-color: #f2bd30;
+  background-image: -webkit-linear-gradient(top, #f4d03f, #f1c40f 50%, #f1ac22);
+  background-image: linear-gradient(top, #f4d03f, #f1c40f 50%, #f1ac22);
+  background-repeat: no-repeat; }
+
+/* Three Color Directional Gradient */
+.example-gradient-directional-three-colors {
+  background-color: #8996ac;
+  background-image: -webkit-linear-gradient(45deg, #bc6bd3, #6f8ce2 50%, #56c385);
+  background-image: linear-gradient(45deg, #bc6bd3, #6f8ce2 50%, #56c385);
+  background-repeat: no-repeat; }
+
+/* Radial Gradient */
+.example-gradient-radial {
+  background-color: #446cda;
+  background-image: -webkit-radial-gradient(circle, #58c2ef, #446cda);
+  background-image: radial-gradient(circle, #58c2ef, #446cda);
+  background-repeat: no-repeat; }
 
 /*==============================================================================
   @ Semantic Grid Demo

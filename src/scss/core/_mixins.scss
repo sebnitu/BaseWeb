@@ -364,18 +364,18 @@
 //   type: color
 //   default: $gradient-middle
 //
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
-//
 // @param: $ge
 //   type: color
 //   default: $gradient-end
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
 @mixin gradient-horizontal-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
-    $stop : $gradient-stop,
-    $ge : $gradient-end
+    $ge : $gradient-end,
+    $stop : $gradient-stop
   ) {
   background-color: mix($gs, $ge, 50%);
   background-image: -webkit-linear-gradient(left, $gs, $gm $stop, $ge);
@@ -393,18 +393,18 @@
 //   type: color
 //   default: $gradient-middle
 //
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
-//
 // @param: $ge
 //   type: color
 //   default: $gradient-end
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
 @mixin gradient-vertical-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
-    $stop : $gradient-stop,
-    $ge : $gradient-end
+    $ge : $gradient-end,
+    $stop : $gradient-stop
   ) {
   background-color: mix($gs, $ge, 50%);
   background-image: -webkit-linear-gradient(top, $gs, $gm $stop, $ge);
@@ -422,10 +422,6 @@
 //   type: color
 //   default: $gradient-middle
 //
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
-//
 // @param: $ge
 //   type: color
 //   default: $gradient-end
@@ -433,12 +429,16 @@
 // @param: $deg
 //   type: unit (degree)
 //   default: $gradient-deg
+//
+// @param: $stop
+//   type: unit (pixel, percentage)
+//   default: $gradient-stop
 @mixin gradient-directional-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
-    $stop : $gradient-stop,
     $ge : $gradient-end,
-    $deg : $gradient-deg
+    $deg : $gradient-deg,
+    $stop : $gradient-stop
   ) {
   background-color: mix($gs, $ge, 50%);
   background-image: -webkit-linear-gradient($deg, $gs, $gm $stop, $ge);
@@ -465,29 +465,6 @@
   background-repeat: no-repeat;
 }
 
-// Striped Gradients
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
-//
-// @param: $deg
-//   type: unit (degree)
-//   default: $gradient-deg
-@mixin gradient-striped(
-    $color : $gradient-start,
-    $shade : $gradient-shade,
-    $deg : $gradient-deg
-  ) {
-  background-color: $color;
-  background-image: -webkit-linear-gradient($deg, $shade 25%, transparent 25%, transparent 50%, $shade 50%, $shade 75%, transparent 75%, transparent);
-  background-image: linear-gradient($deg, $shade 25%, transparent 25%, transparent 50%, $shade 50%, $shade 75%, transparent 75%, transparent);
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // @ Typography
 ////////////////////////////////////////////////////////////////////////////////
@@ -504,6 +481,10 @@
 
 // Truncate Text
 // Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
+//
+// @param: $display
+//   type: display property (block, inline-block)
+//   default: block
 @mixin text-truncate( $display : block ) {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -516,79 +497,121 @@
 
 // Anchor Styles
 // Builds the base styles for anchor tags
-@mixin anchor {
+//
+// @param: $color-link
+//   type: color
+//   default: $color-link
+//
+// @param: $color-link-hover
+//   type: color
+//   default: $color-link-hover
+//
+// @param: $border-color
+//   type: color
+//   default: $border-color
+//
+// @param: $border-color-hover
+//   type: color
+//   default: $border-color-hover
+//
+// @param: $color-link
+//   type: boolean (true, false)
+//   default: true
+@mixin anchor(
+    $color-link : $color-link,
+    $color-link-hover : $color-link-hover,
+    $border-color : $border-color,
+    $border-color-hover : $border-color-hover,
+    $transition : true
+  ) {
   color: $color-link;
   text-decoration: none;
-  border-bottom: 1px solid rgba($black, 0.1);
-  @include transition(
-    color $transition-timing-function $transition-duration,
-    border-color $transition-timing-function $transition-duration
-  );
+  border-bottom: 1px solid $border-color;
+  
+  @if ($transition != false) {
+    @include transition(
+      color $transition-timing-function $transition-duration,
+      border $transition-timing-function $transition-duration
+    );
+  }
   
   &:hover {
     color: $color-link-hover;
     cursor: pointer;
-    border-color: rgba($black, 0.25);
+    border-color: $border-color-hover;
   }
 }
 
-// Uppercase
-@mixin uppercase( $letter-spacing : $letter-spacing ) {
-  text-transform: uppercase;
+// Case
+// Sets the case and letter spacing
+//
+// @param: $case
+//   type: string ('upper', 'lower', 'cap', 'none')
+@mixin case($case, $letter-spacing : $letter-spacing) {
+
+  @if ($case == 'upper') {
+    text-transform: uppercase;
+  } @else if ($case == 'lower') {
+    text-transform: lowercase;
+  } @else if ($case == 'cap') {
+    text-transform: capitalize;
+  } @else if ($case == 'none') {
+    text-transform: none;
+  }
+  
   letter-spacing: $letter-spacing;
 }
 
-// Lowercase
-@mixin lowercase( $letter-spacing : 0) {
-  text-transform: lowercase;
-  letter-spacing: $letter-spacing;
-}
-
-// Reset Case
-@mixin resetcase {
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-// Sans Font
-// Outputs styles for sans-serif font stack
-@mixin font-sans(
-    $base-font-size : $base-font-size,
-    $base-line-height : $base-line-height
+// Font
+// Sets the font family, size and lineheight
+//
+// @param: $stack
+//   type: string ('default', 'sans', 'serif', 'mono')
+//   default: 'default'
+//
+// @param: $font-size
+//   type: unit (pixel, em, rem)
+//   default: $base-font-size
+//
+// @param: $line-height
+//   type: unit (pixel, em, rem)
+//   default: $base-line-height
+@mixin font(
+    $stack : 'default',
+    $font-size : $base-font-size,
+    $line-height : $base-line-height
   ) {
-  font-family: $font-family-sans;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-}
-
-// Serif Font
-// Outputs styles for serif font stack
-@mixin font-serif(
-    $base-font-size : $base-font-size,
-    $base-line-height : $base-line-height
-  ) {
-  font-family: $font-family-serif;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-}
-
-// Mono Font
-// Outputs styles for monospaced font stack
-@mixin font-mono(
-    $base-font-size : $base-font-size,
-    $base-line-height : $base-line-height
-  ) {
-  font-family: $font-family-mono;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  
+  @if ($stack == 'default') {
+    font-family: $base-font-family;
+  } @else if ($stack == 'sans') {
+    font-family: $font-family-sans;
+  } @else if ($stack == 'serif') {
+    font-family: $font-family-serif;
+  } @else if ($stack == 'mono') {
+    font-family: $font-family-mono;
+  }
+  
+  font-size: $font-size;
+  line-height: $line-height;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-// Arrows
+// Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
+//
+// @param: $size
+//   type: unit (pixel, em, rem)
+//
+// @param: $color
+//   type: color
+//
+// @param: $direction
+//   type: string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
+//   desc: The direction that the triangle will point.
 @mixin triangle(
     $size,
     $color,
@@ -602,39 +625,39 @@
   border-style: solid;
   border-color: transparent;
 
-  @if ($direction == up) {
+  @if ($direction == 'up') {
     border-width: 0 $size $size $size;
     border-bottom-color: $color;
   }
-  @if ($direction == right) {
+  @if ($direction == 'right') {
     border-width: $size 0 $size $size;
     border-left-color: $color;
   }
-  @if ($direction == down) {
+  @if ($direction == 'down') {
     border-width: $size $size 0 $size;
     border-top-color: $color;
   }
-  @if ($direction == left) {
+  @if ($direction == 'left') {
     border-width: $size $size $size 0;
     border-right-color: $color;
   }
   
-  @if ($direction == up-right or $direction == right-up) {
+  @if ($direction == 'up-right' or $direction == 'right-up') {
     border-width: $sizeh;
     border-top-color: $color;
     border-right-color: $color;
   }
-  @if ($direction == up-left or $direction == left-up) {
+  @if ($direction == 'up-left' or $direction == 'left-up') {
     border-width: $sizeh;
     border-top-color: $color;
     border-left-color: $color;
   }
-  @if ($direction == down-right or $direction == right-down) {
+  @if ($direction == 'down-right' or $direction == 'right-down') {
     border-width: $sizeh;
     border-bottom-color: $color;
     border-right-color: $color;
   }
-  @if ($direction == down-left or $direction == left-down) {
+  @if ($direction == 'down-left' or $direction == 'left-down') {
     border-width: $sizeh;
     border-bottom-color: $color;
     border-left-color: $color;
@@ -644,6 +667,18 @@
 // Console
 // Let's you output a LESS variable in the browser.
 // Requires that `<div id="console"></div>` be somewhere in the DOM
+//
+// @param: $value
+//   type: parameter or value
+//   desc: The parameter or value you want displayed in the browser.
+//
+// @param: $value
+//   type: string ('left', 'right', 'bottom left', 'bottom right')
+//   default: 'right'
+//
+// @param: $value
+//   type: unit (number)
+//   default: 100
 @mixin console(
     $value,
     $position : 'right',

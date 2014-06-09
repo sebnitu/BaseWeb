@@ -815,6 +815,21 @@ $darker-deg:  10% !default;</code></pre>
 <span class="reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
 </article>
 
+<!-- #variable #border-color -->
+
+<article id="variable-border-color-hover" class="block block-variable" data-type="variable">
+<h3>border-color</h3>
+<p>The scaffolding border color for hover states. It's used as the hover border color for some elements and blocks.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$border-color-hover
+  type: color
+  default: rgba($black, 0.25)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
+</article>
+
 <hr>
 
 <!-- #functions -->
@@ -2063,6 +2078,69 @@ $darker-deg:  10% !default;</code></pre>
 <pre><code class="language-scss">@mixin gradient-directional( $gs, $ge, $deg )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $deg
+  type: unit (degree)
+  default: $gradient-deg</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-deg" class="code-link"><code>$gradient-deg</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-directional"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-directional {
+  @include gradient-directional($red, $violet, 45deg);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-directional {
+  background-color: #bc6bd3;
+  background-image: -webkit-linear-gradient(45deg, #de5151, #bc6bd3);
+  background-image: linear-gradient(45deg, #de5151, #bc6bd3);
+  background-repeat: repeat-x;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-horizontal-three-colors -->
@@ -2072,9 +2150,82 @@ $darker-deg:  10% !default;</code></pre>
 <p>Creates a three color horizontal color gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-horizontal-three-colors( $gs, $gm, $stop, $ge )</code></pre>
+<pre><code class="language-scss">@mixin gradient-horizontal-three-colors( $gs, $gm, $ge, $stop )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gm
+  type: color
+  default: $gradient-middle</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-middle" class="code-link"><code>$gradient-middle</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $stop
+  type: unit (percentage)
+  default: $gradient-stop</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-stop" class="code-link"><code>$gradient-stop</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-horizontal-three-colors"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-horizontal-three-colors {
+  @include gradient-horizontal-three-colors($blue, $green, $yellow, 50%);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-horizontal-three-colors {
+  background-color: #8dba7c;
+  background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25 50%, #f1c40f);
+  background-image: linear-gradient(left, #2ab0ea, #8ecb25 50%, #f1c40f);
+  background-repeat: no-repeat;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-vertical-three-colors -->
@@ -2084,9 +2235,82 @@ $darker-deg:  10% !default;</code></pre>
 <p>Creates a three color vertical color gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-vertical-three-colors( $gs, $gm, $stop, $ge )</code></pre>
+<pre><code class="language-scss">@mixin gradient-vertical-three-colors( $gs, $gm, $ge, $stop )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gm
+  type: color
+  default: $gradient-middle</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-middle" class="code-link"><code>$gradient-middle</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $stop
+  type: unit (percentage)
+  default: $gradient-stop</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-stop" class="code-link"><code>$gradient-stop</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-vertical-three-colors"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-vertical-three-colors {
+  @include gradient-vertical-three-colors($yellow-lighter, $yellow, $yellow-orange, 50%);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-vertical-three-colors {
+  background-color: #b583bf;
+  background-image: -webkit-linear-gradient(top, #99afeb, #bc6bd3 50%, #d25993);
+  background-image: linear-gradient(top, #99afeb, #bc6bd3 50%, #d25993);
+  background-repeat: no-repeat;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-directional-three-colors -->
@@ -2096,9 +2320,92 @@ $darker-deg:  10% !default;</code></pre>
 <p>Creates a three color directional color gradient with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-directional-three-colors( $gs, $gm, $stop, $ge, $deg )</code></pre>
+<pre><code class="language-scss">@mixin gradient-directional-three-colors( $gs, $gm, $ge, $deg, $stop )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gs
+  type: color
+  default: $gradient-start</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $gm
+  type: color
+  default: $gradient-middle</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-middle" class="code-link"><code>$gradient-middle</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $ge
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $deg
+  type: unit (degree)
+  default: $gradient-deg</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-deg" class="code-link"><code>$gradient-deg</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $stop
+  type: unit (percentage)
+  default: $gradient-stop</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-stop" class="code-link"><code>$gradient-stop</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-directional-three-colors"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-directional-three-colors {
+  @include gradient-directional-three-colors($violet, $blue-violet, $blue-green, 45deg, 50%);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-directional-three-colors {
+  background-color: #8996ac;
+  background-image: -webkit-linear-gradient(45deg, #bc6bd3, #6f8ce2 50%, #56c385);
+  background-image: linear-gradient(45deg, #bc6bd3, #6f8ce2 50%, #56c385);
+  background-repeat: no-repeat;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #gradient-radial -->
@@ -2111,18 +2418,59 @@ $darker-deg:  10% !default;</code></pre>
 <pre><code class="language-scss">@mixin gradient-radial( $inner, $outer )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
-</article>
 
-<!-- #mixin #gradient-striped -->
+<h4>Parameters</h4>
 
-<article id="mixin-gradient-striped" class="block block-mixin" data-type="mixin">
-<h3>gradient-striped</h3>
-<p>Creates a striped gradient with browser prefixes if needed.</p>
+<ul class="param-list">
+<li class="param">
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin gradient-striped( $color, $shade, $deg )</code></pre>
+<pre><code class="language-scss">@param: $inner
+  type: color
+  default: $gradient-start</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-start" class="code-link"><code>$gradient-start</code></a></span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $outer
+  type: color
+  default: $gradient-end</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#variable-gradient-end" class="code-link"><code>$gradient-end</code></a></span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="example-gradient example-gradient-radial"></div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-gradient-radial {
+  @include gradient-radial($blue-lighter, $blue-violet-darker);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-gradient-radial {
+  background-color: #446cda;
+  background-image: -webkit-radial-gradient(circle, #58c2ef, #446cda);
+  background-image: radial-gradient(circle, #58c2ef, #446cda);
+  background-repeat: no-repeat;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #text-hide -->
@@ -2147,88 +2495,184 @@ $darker-deg:  10% !default;</code></pre>
 <pre><code class="language-scss">@mixin text-truncate( $display )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $inner
+  type: display property (block, inline-block)
+  default: block</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
 </article>
 
 <!-- #mixin #anchor -->
 
 <article id="mixin-anchor" class="block block-mixin" data-type="mixin">
 <h3>anchor</h3>
-<p>Builds the base styles for anchor tags.</p>
+<p>Builds the base styles for anchor tags. It can also be used to give anchor styles to none anchor elements.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin anchor</code></pre>
+<pre><code class="language-scss">@mixin anchor(
+  $color-link,
+  $color-link-hover,
+  $border-color,
+  $border-color-hover,
+  $transition
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $color-link
+  type: color
+  default: $color-link</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $color-link-hover
+  type: color
+  default: $color-link-hover</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $border-color
+  type: color
+  default: $border-color</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $border-color-hover
+  type: color
+  default: $border-color-hover</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $transition
+  type: boolean (true, false)
+  default: true</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-6 example-anchor-wrap example-anchor-wrap-light">
+        <span class="example-anchor">This is a link</span>
+      </div>
+      <div class="col col-6 example-anchor-wrap example-anchor-wrap-dark">
+        <span class="example-anchor-alt">This is a link</span>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-anchor {
+  @include anchor;
+}
+
+.example-anchor-alt {
+  @include anchor(
+    $violet-lighter,
+    $red-lighter,
+    rgba($white, 0.1),
+    rgba($white, 0.25)
+  );
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-anchor {
+  color: #2ab0ea;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s;
+}
+
+.example-anchor:hover {
+  color: #bc6bd3;
+  cursor: pointer;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.example-anchor-alt {
+  color: #cd92df;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s;
+}
+
+.example-anchor-alt:hover {
+  color: #e67c7c;
+  cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.25); 
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">References:
+  <a href="#variable-color-link" class="code-link"><code>$color-link</code></a>
+  <a href="#variable-color-link-hover" class="code-link"><code>$color-link-hover</code></a>
+  <a href="#variable-border-color" class="code-link"><code>$border-color</code></a>
+  <a href="#variable-border-color-hover" class="code-link"><code>$border-color-hover</code></a>
+</span>
+
+</article>
+
+<!-- #mixin #case -->
+
+<article id="mixin-case" class="block block-mixin" data-type="mixin">
+<h3>case</h3>
+<p>...</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin case</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
 
-<!-- #mixin #uppercase -->
+<!-- #mixin #font -->
 
-<article id="mixin-uppercase" class="block block-mixin" data-type="mixin">
-<h3>uppercase</h3>
+<article id="mixin-font" class="block block-mixin" data-type="mixin">
+<h3>font</h3>
 <p>...</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin uppercase</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #lowercase -->
-
-<article id="mixin-lowercase" class="block block-mixin" data-type="mixin">
-<h3>lowercase</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin lowercase</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #resetcase -->
-
-<article id="mixin-resetcase" class="block block-mixin" data-type="mixin">
-<h3>resetcase</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin resetcase</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #font-sans -->
-
-<article id="mixin-font-sans" class="block block-mixin" data-type="mixin">
-<h3>font-sans</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin font-sans</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #font-serif -->
-
-<article id="mixin-font-serif" class="block block-mixin" data-type="mixin">
-<h3>font-serif</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin font-serif</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #mixin #font-mono -->
-
-<article id="mixin-font-mono" class="block block-mixin" data-type="mixin">
-<h3>font-mono</h3>
-<p>...</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">@mixin font-mono</code></pre>
+<pre><code class="language-scss">@mixin font</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 </article>
