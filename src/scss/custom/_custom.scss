@@ -24,32 +24,59 @@
   @ Test
 ==============================================================================*/
 
-/* Anchor */
-%example-anchor-wrap {
-  @include border-radius;
+/* Arrows */
+%triangle {
+  @include triangle-base;
+}
+
+.example-arrow {
+  position: relative;
+  height: 80px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 20px;
   border: 1px solid $border-color;
   text-align: center;
+  @include border-radius;
 }
-.example-anchor-wrap-light {
-  @extend %example-anchor-wrap;
+.example-arrow.fold {
+  &:before,
+  &:after {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+  }
+  &:before {
+    @include triangle( 8px, $white, 'up right' );
+  }
+  &:after {
+    @include triangle( 8px, $gray-light, 'down left' );
+    @include border-radius-bottom-left;
+  }
 }
-.example-anchor-wrap-dark {
-  @extend %example-anchor-wrap;
-  background: $gray-darker;
+
+.example-arrow-1,
+.example-arrow-2,
+.example-arrow-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
-.example-anchor {
-  @include anchor;
+
+.example-arrow-1 {
+  @include triangle( 14px, $blue, 'left' );
+  margin-top: -14px;
+  margin-left: -7px;
 }
-.example-anchor-alt {
-  @include anchor(
-    $violet-lighter,
-    $red-lighter,
-    rgba($white, 0.1),
-    rgba($white, 0.25)
-  );
+.example-arrow-2 {
+  @include triangle( 14px, $violet, 'down' );
+  margin-top: -7px;
+  margin-left: -14px;
+}
+.example-arrow-3 {
+  @include triangle( 14px, $red, 'right' );
+  margin-top: -14px;
+  margin-left: -7px;
 }
 
 /*==============================================================================
@@ -227,6 +254,70 @@
 /* Radial Gradient */
 .example-gradient-radial {
   @include gradient-radial($blue-lighter, $blue-violet-darker);
+}
+
+/* Anchor */
+%example-anchor-wrap {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $border-color;
+  text-align: center;
+  @include border-radius;
+}
+.example-anchor-wrap-light {
+  @extend %example-anchor-wrap;
+}
+.example-anchor-wrap-dark {
+  @extend %example-anchor-wrap;
+  background: $gray-darker;
+}
+.example-anchor {
+  @include anchor;
+}
+.example-anchor-alt {
+  @include anchor(
+    $violet-lighter,
+    $red-lighter,
+    rgba($white, 0.1),
+    rgba($white, 0.25)
+  );
+}
+
+/* Case */
+%example-case {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $border-color;
+  text-align: center;
+  @include border-radius;
+}
+
+.example-case-upper {
+  @extend %example-case;
+  @include case('upper', 2px);
+}
+.example-case-cap {
+  @extend %example-case;
+  @include case('cap', 0);
+}
+
+/* Font */
+.example-font-serif,
+.example-font-mono {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $border-color;
+  text-align: center;
+  @include border-radius;
+}
+.example-font-serif {
+  @include font('serif', 16px, 20px, italic);
+}
+.example-font-mono {
+  @include font('mono', 12px, 20px);
 }
 
 /*==============================================================================

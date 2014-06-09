@@ -2641,6 +2641,9 @@ $darker-deg:  10% !default;</code></pre>
   default: $color-link</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-color-link" class="code-link"><code>$color-link</code></a>
+</span>
 </li>
 <li class="param">
 <div class="example">
@@ -2650,6 +2653,9 @@ $darker-deg:  10% !default;</code></pre>
   default: $color-link-hover</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-color-link-hover" class="code-link"><code>$color-link-hover</code></a>
+</span>
 </li>
 
 <li class="param">
@@ -2660,6 +2666,9 @@ $darker-deg:  10% !default;</code></pre>
   default: $border-color</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-border-color" class="code-link"><code>$border-color</code></a>
+</span>
 </li>
 <li class="param">
 <div class="example">
@@ -2669,6 +2678,9 @@ $darker-deg:  10% !default;</code></pre>
   default: $border-color-hover</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-border-color-hover" class="code-link"><code>$border-color-hover</code></a>
+</span>
 </li>
 
 <li class="param">
@@ -2745,12 +2757,6 @@ $darker-deg:  10% !default;</code></pre>
 </code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
-<span class="reference">References:
-  <a href="#variable-color-link" class="code-link"><code>$color-link</code></a>
-  <a href="#variable-color-link-hover" class="code-link"><code>$color-link-hover</code></a>
-  <a href="#variable-border-color" class="code-link"><code>$border-color</code></a>
-  <a href="#variable-border-color-hover" class="code-link"><code>$border-color-hover</code></a>
-</span>
 
 </article>
 
@@ -2758,36 +2764,386 @@ $darker-deg:  10% !default;</code></pre>
 
 <article id="mixin-case" class="block block-mixin" data-type="mixin">
 <h3>case</h3>
-<p>...</p>
+<p>A typography mixin that changes the case and letter spacing of text.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin case</code></pre>
+<pre><code class="language-scss">@mixin case( $$case, $letter-spacing )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $letter-spacing
+  type: string ('upper', 'lower', 'cap', 'none')</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $letter-spacing
+  type: unit (pixel, em, rem)
+  default: $letter-spacing</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-letter-spacing" class="code-link"><code>$letter-spacing</code></a>
+</span>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-6 example-case-upper">
+        This is some text
+      </div>
+      <div class="col col-6 example-case-cap">
+        This is some text
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-case-upper {
+  @include case('upper', 2px);
+}
+
+.example-case-cap {
+  @include case('cap', 0);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-case-upper {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.example-case-cap {
+  text-transform: capitalize;
+  letter-spacing: 0;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #font -->
 
 <article id="mixin-font" class="block block-mixin" data-type="mixin">
 <h3>font</h3>
-<p>...</p>
+<p>A typography mixin that adds a font stack, font size and line height.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin font</code></pre>
+<pre><code class="language-scss">@mixin font( $stack, $font-size, $line-height, $other )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $stack
+  type: string ('default', 'sans', 'serif', 'mono')
+  default: 'default'</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-base-font-family" class="code-link"><code>$base-font-family</code></a>
+</span>
+<p>Used to determine which font stack to use. If the string <code>'default'</code> is used, the base font stack variable will be applied.</p>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $font-size
+  type: unit (pixel, em, rem)
+  default: $base-font-size</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-base-font-size" class="code-link"><code>$base-font-size</code></a>
+</span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $line-height
+  type: unit (pixel, em, rem)
+  default: $base-line-height</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-base-line-height" class="code-link"><code>$base-line-height</code></a>
+</span>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $other
+  type: font weight and/or style value
+  default: false</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>If a weight and/or style font value is defined, the shorthand font property is used. Otherwise, if set to false, it outputs the longhand form for family, size and line-height.</p>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-6 example-font-serif">
+        This is some text
+      </div>
+      <div class="col col-6 example-font-mono">
+        This is some text
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.example-font-serif {
+  @include font('serif', 16px, 20px, italic);
+}
+
+.example-font-mono {
+  @include font('mono', 12px, 20px);
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-font-serif {
+  font: italic 16px/20px georgia, "Times New Roman", times, serif;
+}
+
+.example-font-mono {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 20px;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+</article>
+
+<!-- #mixin #triangle-base -->
+
+<article id="mixin-triangle-base" class="block block-mixin" data-type="mixin">
+<h3>triangle-base</h3>
+<p>The base styles for creating CSS triangles. This is used within <a href="#mixin-triangle" class="code-link"><code>@mixin triangle</code></a> to either apply to individual elements or to the <code>%triangle</code> placeholder.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin triangle-base</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+%triangle {
+  @include triangle-base;
+}
+
+.sample-1 {
+  @extend %triangle;
+}
+
+.sample-2 {
+  @extend %triangle;
+}
+
+.sample-3 {
+  @extend %triangle;
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.sample-1,
+.sample-2,
+.sample-3 {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #triangle -->
 
 <article id="mixin-triangle" class="block block-mixin" data-type="mixin">
 <h3>triangle</h3>
-<p>...</p>
+<p>Uses the zero width by zero height element with borders trick to draw arrows in CSS.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin triangle</code></pre>
+<pre><code class="language-scss">@mixin triangle( $size, $color, $direction )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<h4>Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $size
+  type: unit (pixel, em, rem)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $color
+  type: color</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $direction
+  type: string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The direction that the triangle will point.</p>
+</li>
+<li class="param">
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $base
+  type: boolean (true, false)
+  default: false</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-triangle-base" class="code-link"><code>@mixin triangle-base</code></a>
+</span>
+<p>Whether or not triangle base styles are applied individually or extended to the placeholder <code>%triangle</code></p>
+</li>
+</ul>
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-output">
+    
+    <div class="row">
+      <div class="col col-4 example-arrow">
+        <span class="example-arrow-1"></span>
+      </div>
+      <div class="col col-4 example-arrow">
+        <span class="example-arrow-2"></span>
+      </div>
+      <div class="col col-4 example-arrow fold">
+        <span class="example-arrow-3"></span>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+%triangle {
+  @include triangle-base;
+}
+
+.example-arrow.fold {
+  &:before {
+    @include triangle( 8px, $white, 'up right' );
+  }
+  &:after {
+    @include triangle( 8px, $gray-light, 'down left' );
+  }
+}
+
+.example-arrow-1 {
+  @include triangle( 14px, $blue, 'left' );
+}
+
+.example-arrow-2 {
+  @include triangle( 14px, $violet, 'down' );
+}
+
+.example-arrow-3 {
+  @include triangle( 14px, $red, 'right' );
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.example-arrow.fold:before,
+.example-arrow.fold:after,
+.example-arrow-1,
+.example-arrow-2,
+.example-arrow-3 {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.example-arrow.fold:before {
+  border-width: 8px;
+  border-top-color: #ffffff;
+  border-right-color: #ffffff;
+}
+
+.example-arrow.fold:after {
+  border-width: 8px;
+  border-bottom-color: #aaaaaa;
+  border-left-color: #aaaaaa;
+  border-bottom-left-radius: 3px;
+}
+
+.example-arrow-1 {
+  border-width: 14px 14px 14px 0;
+  border-right-color: #2ab0ea;
+}
+
+.example-arrow-2 {
+  border-width: 14px 14px 0 14px;
+  border-top-color: #bc6bd3;
+}
+
+.example-arrow-3 {
+  border-width: 14px 0 14px 14px;
+  border-left-color: #de5151;
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
 </article>
 
 <!-- #mixin #console -->

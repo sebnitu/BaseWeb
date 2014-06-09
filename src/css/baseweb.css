@@ -1625,40 +1625,62 @@ table {
 /*==============================================================================
   @ Test
 ==============================================================================*/
-/* Anchor */
-.example-anchor-wrap-light, .example-anchor-wrap-dark {
-  border-radius: 3px;
+/* Arrows */
+.example-arrow.fold:before, .example-arrow.fold:after, .example-arrow-1, .example-arrow-2, .example-arrow-3 {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent; }
+
+.example-arrow {
+  position: relative;
+  height: 80px;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: center; }
+  text-align: center;
+  border-radius: 3px; }
 
+.example-arrow.fold:before, .example-arrow.fold:after {
+  position: absolute;
+  top: -1px;
+  right: -1px; }
+.example-arrow.fold:before {
+  border-width: 8px;
+  border-top-color: #ffffff;
+  border-right-color: #ffffff; }
+.example-arrow.fold:after {
+  border-width: 8px;
+  border-bottom-color: #aaaaaa;
+  border-left-color: #aaaaaa;
+  border-bottom-left-radius: 3px; }
 
-.example-anchor-wrap-dark {
-  background: #303030; }
+.example-arrow-1, .example-arrow-2, .example-arrow-3 {
+  position: absolute;
+  top: 50%;
+  left: 50%; }
 
-.example-anchor {
-  color: #2ab0ea;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-transition: color linear 0.25s, border linear 0.25s;
-  transition: color linear 0.25s, border linear 0.25s; }
-  .example-anchor:hover {
-    color: #bc6bd3;
-    cursor: pointer;
-    border-color: rgba(0, 0, 0, 0.25); }
+.example-arrow-1 {
+  border-width: 14px 14px 14px 0;
+  border-right-color: #2ab0ea;
+  margin-top: -14px;
+  margin-left: -7px; }
 
-.example-anchor-alt {
-  color: #cd92df;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  -webkit-transition: color linear 0.25s, border linear 0.25s;
-  transition: color linear 0.25s, border linear 0.25s; }
-  .example-anchor-alt:hover {
-    color: #e67c7c;
-    cursor: pointer;
-    border-color: rgba(255, 255, 255, 0.25); }
+.example-arrow-2 {
+  border-width: 14px 14px 0 14px;
+  border-top-color: #bc6bd3;
+  margin-top: -7px;
+  margin-left: -14px; }
+
+.example-arrow-3 {
+  border-width: 14px 0 14px 14px;
+  border-left-color: #de5151;
+  margin-top: -14px;
+  margin-left: -7px; }
 
 /*==============================================================================
   @ Doc Examples
@@ -1880,6 +1902,75 @@ table {
   background-image: -webkit-radial-gradient(circle, #58c2ef, #446cda);
   background-image: radial-gradient(circle, #58c2ef, #446cda);
   background-repeat: no-repeat; }
+
+/* Anchor */
+.example-anchor-wrap-light, .example-anchor-wrap-dark {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 3px; }
+
+
+.example-anchor-wrap-dark {
+  background: #303030; }
+
+.example-anchor {
+  color: #2ab0ea;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s; }
+  .example-anchor:hover {
+    color: #bc6bd3;
+    cursor: pointer;
+    border-color: rgba(0, 0, 0, 0.25); }
+
+.example-anchor-alt {
+  color: #cd92df;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: color linear 0.25s, border linear 0.25s;
+  transition: color linear 0.25s, border linear 0.25s; }
+  .example-anchor-alt:hover {
+    color: #e67c7c;
+    cursor: pointer;
+    border-color: rgba(255, 255, 255, 0.25); }
+
+/* Case */
+.example-case-upper, .example-case-cap {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 3px; }
+
+.example-case-upper {
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+.example-case-cap {
+  text-transform: capitalize;
+  letter-spacing: 0; }
+
+/* Font */
+.example-font-serif, .example-font-mono {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 3px; }
+
+.example-font-serif {
+  font: italic 16px/20px georgia, "Times New Roman", times, serif; }
+
+.example-font-mono {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 20px; }
 
 /*==============================================================================
   @ Semantic Grid Demo

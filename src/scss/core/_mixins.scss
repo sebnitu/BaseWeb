@@ -547,6 +547,10 @@
 //
 // @param: $case
 //   type: string ('upper', 'lower', 'cap', 'none')
+//
+// @param: $letter-spacing
+//   type: unit (pixel, em, rem)
+//   default: $letter-spacing
 @mixin case($case, $letter-spacing : $letter-spacing) {
 
   @if ($case == 'upper') {
@@ -576,29 +580,54 @@
 // @param: $line-height
 //   type: unit (pixel, em, rem)
 //   default: $base-line-height
+//
+// @param: $other
+//   type: font weight and/or style value
+//   default: false
 @mixin font(
     $stack : 'default',
     $font-size : $base-font-size,
-    $line-height : $base-line-height
+    $line-height : $base-line-height,
+    $other : false
   ) {
   
   @if ($stack == 'default') {
-    font-family: $base-font-family;
+    $stack: $base-font-family;
   } @else if ($stack == 'sans') {
-    font-family: $font-family-sans;
+    $stack: $font-family-sans;
   } @else if ($stack == 'serif') {
-    font-family: $font-family-serif;
+    $stack: $font-family-serif;
   } @else if ($stack == 'mono') {
-    font-family: $font-family-mono;
+    $stack: $font-family-mono;
   }
   
-  font-size: $font-size;
-  line-height: $line-height;
+  @if ($other != false) {
+    font: $other #{$font-size}/#{$line-height} $stack;
+  } @else {
+    font-family: $stack;        
+    font-size: $font-size;
+    line-height: $line-height;
+  }
 }
+
+// font: font-style font-variant font-weight font-size/line-height font-family;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
+
+// Base Triangle
+// The base styles for creating CSS triangles
+// Use with `%triangle` as placeholder
+@mixin triangle-base {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+}
 
 // Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
@@ -612,55 +641,54 @@
 // @param: $direction
 //   type: string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
 //   desc: The direction that the triangle will point.
+//
+// @param $base
+//   type: boolean (true, false)
+//   default: false
+//   desc: Whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`
 @mixin triangle(
     $size,
     $color,
-    $direction
+    $direction,
+    $base : false
   ) {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 0 none;
-  border-style: solid;
-  border-color: transparent;
+  
+  @if ($base == false) {
+    @extend %triangle;
+  } @else {
+    @include triangle-base;
+  }
 
   @if ($direction == 'up') {
     border-width: 0 $size $size $size;
     border-bottom-color: $color;
-  }
-  @if ($direction == 'right') {
+  } @else if ($direction == 'right') {
     border-width: $size 0 $size $size;
     border-left-color: $color;
-  }
-  @if ($direction == 'down') {
+  } @else if ($direction == 'down') {
     border-width: $size $size 0 $size;
     border-top-color: $color;
-  }
-  @if ($direction == 'left') {
+  } @else if ($direction == 'left') {
     border-width: $size $size $size 0;
     border-right-color: $color;
-  }
-  
-  @if ($direction == 'up-right' or $direction == 'right-up') {
-    border-width: $sizeh;
+  } @else if ($direction == 'up right' or $direction == 'right up') {
+    border-width: $size;
     border-top-color: $color;
     border-right-color: $color;
-  }
-  @if ($direction == 'up-left' or $direction == 'left-up') {
-    border-width: $sizeh;
+  } @else if ($direction == 'up left' or $direction == 'left up') {
+    border-width: $size;
     border-top-color: $color;
     border-left-color: $color;
-  }
-  @if ($direction == 'down-right' or $direction == 'right-down') {
-    border-width: $sizeh;
+  } @else if ($direction == 'down right' or $direction == 'right down') {
+    border-width: $size;
     border-bottom-color: $color;
     border-right-color: $color;
-  }
-  @if ($direction == 'down-left' or $direction == 'left-down') {
-    border-width: $sizeh;
+  } @else if ($direction == 'down left' or $direction == 'left down') {
+    border-width: $size;
     border-bottom-color: $color;
     border-left-color: $color;
+  } @else {
+    @warn "#{$direction} is not a valid direction for @mixin triangle";
   }
 }
 
