@@ -3004,7 +3004,7 @@ $darker-deg:  10% !default;</code></pre>
 <p>Uses the zero width by zero height element with borders trick to draw arrows in CSS.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin triangle( $size, $color, $direction )</code></pre>
+<pre><code class="language-scss">@mixin triangle( $size, $color, $direction, $base )</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -3047,7 +3047,11 @@ $darker-deg:  10% !default;</code></pre>
 <span class="reference">Reference:
   <a href="#mixin-triangle-base" class="code-link"><code>@mixin triangle-base</code></a>
 </span>
-<p>Whether or not triangle base styles are applied individually or extended to the placeholder <code>%triangle</code></p>
+<p>Whether or not triangle base styles are applied individually or extended to the placeholder <code>%triangle</code>.</p>
+<ul>
+  <li><strong>true :</strong> Outputs the triangle base styles</li>
+  <li><strong>false :</strong> Extends triangle base styles to <code>%triangle</code></li>
+</ul>
 </li>
 </ul>
 
@@ -3143,6 +3147,10 @@ $darker-deg:  10% !default;</code></pre>
 </code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+<div class="block-warning">
+  <p>If you decide to use the extend method for triangle-base, make sure to define <code>%triangle</code> somewhere in your SCSS and include <code>@mixin triangle-base</code></p>
+</div>
 
 </article>
 
