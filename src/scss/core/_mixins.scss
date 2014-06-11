@@ -700,68 +700,81 @@
 //   type: parameter or value
 //   desc: The parameter or value you want displayed in the browser.
 //
-// @param: $value
-//   type: string ('left', 'right', 'bottom left', 'bottom right')
+// @param: $location
+//   type: string ('left', 'right', 'bottom left', 'bottom right', 'auto')
 //   default: 'right'
 //
-// @param: $value
+// @param: $position
+//   type: position value (fixed, absolute)
+//   default: fixed
+//
+// @param: $index
 //   type: unit (number)
 //   default: 100
 @mixin console(
     $value,
-    $position : 'right',
+    $location : 'right',
+    $position : fixed,
     $index : 100
   ) {
 
-  #console {
-    position: fixed;
-    @if ($position == 'left') or ($position == 'top left') or ($position == 'left top') {
-      top: 0;
-      left: 0;
-    } @else if ($position == 'right') or ($position == 'top right') or ($position == 'right top') {
-      top: 0;
-      right: 0;
-    } @else if ($position == 'bottom left') or ($position == 'left bottom') {
-      bottom: 0;
-      left: 0;
-    } @else if ($position == 'bottom right') or ($position == 'right bottom') {
-      bottom: 0;
-      right: 0;
-    } @else {
-      top: 0;
-      right: 0;
-    }
-    z-index: $index;
-    @include mono-font(12px, 20px);
+  z-index: $index;
+  @include font('mono', 12px, 20px);
+  
+  @if ($location == 'left') or ($location == 'top left') or ($location == 'left top') {
+    position: $position;
+    top: 0;
+    left: 0;
+  } @else if ($location == 'right') or ($location == 'top right') or ($location == 'right top') {
+    position: $position;
+    top: 0;
+    right: 0;
+  } @else if ($location == 'bottom left') or ($location == 'left bottom') {
+    position: $position;
+    bottom: 0;
+    left: 0;
+  } @else if ($location == 'bottom right') or ($location == 'right bottom') {
+    position: $position;
+    bottom: 0;
+    right: 0;
+  } @else if ($location == 'auto') {
+    position: relative;
+    display: inline-block;
+  } @else {
+    @warn "#{$location} is not a valid location for @mixin console";
+  }
+  
+  &:before, &:after {
+    display: block;
+    padding: 5px 15px;
+    float: left;
+  }
+  
+  &:before {
+    content: "Console:";
+    background: $blue;
+    color: $white;
     
-    &:before, &:after {
-      display: block;
-      padding: 5px 15px;
-      float: left;
+    @if ($location == 'right') {
+      @include border-radius-bottom-left;
+    } @else if ($location == 'bottom right') {
+      @include border-radius-top-left;
+    } @else if ($location == 'auto') {
+      @include border-radius-left;
     }
-    
-    &:before {
-      content: "Console:";
-      background: $blue;
-      color: $white;
+  }
+  
+  &:after {
+    content: "#{$value}";
+    background: $gray-lighter;
+    color: $color-dark;
       
-      @if ($position == right) {
-        @include border-radius-bottom-left();
-      } @else if ($position == bottom-right) {
-        @include border-radius-top-left();
-      }
-    }
-    
-    &:after {
-      content: "#{$value}";
-      background: $gray-lighter;
-      color: $color-dark;
-        
-      @if ($position == left) {
-        @include border-radius-bottom-right();
-      }  @else if ($position == bottom-left) {
-        @include border-radius-top-right();
-      }
+    @if ($location == 'left') {
+      @include border-radius-bottom-right;
+    }  @else if ($location == 'bottom left') {
+      @include border-radius-top-right;
+    } @else if ($location == 'auto') {
+      @include border-radius-right;
     }
   }
 }

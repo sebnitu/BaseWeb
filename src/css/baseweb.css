@@ -9,6 +9,53 @@
  * Copyright (c) 2014 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
+  @ Reset Styles
+==============================================================================*/
+html, body {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.remove-clearfix:after {
+  content: none;
+  display: none;
+  clear: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+nav ul, nav ol {
+  list-style: none;
+  margin: 0; }
+  nav ul li, nav ol li {
+    margin: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+::-moz-selection {
+  background: rgba(142, 203, 37, 0.25);
+  text-shadow: none; }
+
+::selection {
+  background: rgba(142, 203, 37, 0.25);
+  text-shadow: none; }
+
+/*==============================================================================
   Typography
 ==============================================================================*/
 html, body {
@@ -1369,54 +1416,6 @@ form .btn {
     border-bottom-left-radius: 3px; }
 
 /*==============================================================================
-  @ Reset Styles
-==============================================================================*/
-html, body {
-  margin: 0;
-  padding: 0; }
-
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; }
-
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-.remove-clearfix:after {
-  content: none;
-  display: none;
-  clear: none; }
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-nav ul, nav ol {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-  nav ul li, nav ol li {
-    margin: 0; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-::-moz-selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
-
-::selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
-
-/*==============================================================================
   @ Mobile Grid System
 ==============================================================================*/
 .container {
@@ -1625,6 +1624,53 @@ table {
 /*==============================================================================
   @ Test
 ==============================================================================*/
+.example-console-right {
+  z-index: 100;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0; }
+  .example-console-right:before, .example-console-right:after {
+    display: block;
+    padding: 5px 15px;
+    float: left; }
+  .example-console-right:before {
+    content: "Console:";
+    background: #2ab0ea;
+    color: #ffffff;
+    border-bottom-left-radius: 3px; }
+  .example-console-right:after {
+    content: "#2ab0ea";
+    background: #efefef;
+    color: #303030; }
+
+.example-console-left {
+  margin: 10px 0;
+  z-index: 100;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 20px;
+  position: relative;
+  display: inline-block; }
+  .example-console-left:before, .example-console-left:after {
+    display: block;
+    padding: 5px 15px;
+    float: left; }
+  .example-console-left:before {
+    content: "Console:";
+    background: #2ab0ea;
+    color: #ffffff;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .example-console-left:after {
+    content: "2em";
+    background: #efefef;
+    color: #303030;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+
 /*==============================================================================
   @ Doc Examples
 ==============================================================================*/
