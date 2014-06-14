@@ -70,8 +70,8 @@
 
 <ul class="list-rowed list-stripes list-no-clear">
   <li><strong>Settings:</strong> Used for global framework variables</li>
-  <li><strong>Core:</strong> Global framework files that include base mixins, functions and styles</li>
-  <li><strong>Elements:</strong> Base HTML element styling (e.g. headers, lists, tables, etc.)</li>
+  <li><strong>Core:</strong> Global framework functions and mixins. Includs grid system and media query mixins.</li>
+  <li><strong>Elements:</strong> Base HTML element styling such as a base reset, headers, lists, tables, etc.</li>
   <li><strong>Blocks:</strong> Groups of HTML elements that define a specific component or block (e.g. dropdowns, modals, tabs, etc.)</li>
   <li><strong>Custom:</strong> Where you store your custom styles and framework overrides</li>
 </ul>
@@ -239,7 +239,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #compiler -->
 
 <article id="variable-compiler" class="block block-variable" data-type="variable">
-<h3>compiler</h3>
+<h3>$compiler</h3>
 <p>Set the compiler that you're using. Currently supports <a href="https://www.npmjs.org/package/node-sass">node-sass</a> (which uses <a href="http://libsass.org/">libsass</a>) and <a href="http://sass-lang.com/install">ruby-sass</a>. The reason this exists is because there are some differences between how the two compilers work. This variable allows the framework to make the most out of both.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -253,7 +253,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #global-box-sizing -->
 
 <article id="variable-global-box-sizing" class="block block-variable" data-type="variable">
-<h3>global-box-sizing</h3>
+<h3>$global-box-sizing</h3>
 <p>Sets the global box-sizing for everything. It's output in <code>elements/_reset.scss</code> and targets all DOM elements using the <code>*, *:before, *:after</code> selector. To disable the output, set this variable to <code>none</code></p>
 <div class="example">
   <div class="example-block example-code">
@@ -271,7 +271,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #class-clearfix -->
 
 <article id="variable-class-clearfix" class="block block-variable" data-type="variable">
-<h3>class-clearfix</h3>
+<h3>$class-clearfix</h3>
 <p>The class name used for creating the clearfix class. It's output in <code>elements/_reset.scss</code> but if set to <code>none</code>, it will not output a clearfix class.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -285,7 +285,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #class-remove-clearfix -->
 
 <article id="variable-class-remove-clearfix" class="block block-variable" data-type="variable">
-<h3>class-remove-clearfix</h3>
+<h3>$class-remove-clearfix</h3>
 <p>The class name used for creating the remove-clearfix class. It's output in <code>elements/_reset.scss</code> but if set to <code>none</code>, it will not output a remove-clearfix class.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -299,7 +299,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #box-sizing -->
 
 <article id="variable-box-sizing" class="block block-variable" data-type="variable">
-<h3>box-sizing</h3>
+<h3>$box-sizing</h3>
 <p>The box sizing property with browser prefixes if needed.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -314,7 +314,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #box-shadow -->
 
 <article id="variable-box-shadow" class="block block-variable" data-type="variable">
-<h3>box-shadow</h3>
+<h3>$box-shadow</h3>
 <p>The global box shadow property.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -335,7 +335,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #border-radius -->
 
 <article id="variable-border-radius" class="block block-variable" data-type="variable">
-<h3>border-radius</h3>
+<h3>$border-radius</h3>
 <p>The global border radius property.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -350,7 +350,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #transition -->
 
 <article id="variable-transition" class="block block-variable" data-type="variable">
-<h3>transition</h3>
+<h3>$transition</h3>
 <p>The global transition property.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -370,7 +370,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #transition-property -->
 
 <article id="variable-transition-property" class="block block-variable" data-type="variable">
-<h3>transition-property</h3>
+<h3>$transition-property</h3>
 <p>The global transition property name.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -385,7 +385,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #transition-duration -->
 
 <article id="variable-transition-duration" class="block block-variable" data-type="variable">
-<h3>transition-duration</h3>
+<h3>$transition-duration</h3>
 <p>The global transition duration.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -400,7 +400,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #transition-timing-function -->
 
 <article id="variable-transition-timing-function" class="block block-variable" data-type="variable">
-<h3>transition-timing-function</h3>
+<h3>$transition-timing-function</h3>
 <p>The global transition timing function.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -423,7 +423,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #transition-delay -->
 
 <article id="variable-transition-delay" class="block block-variable" data-type="variable">
-<h3>transition-delay</h3>
+<h3>$transition-delay</h3>
 <p>The global transition delay.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -438,7 +438,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-start -->
 
 <article id="variable-gradient-start" class="block block-variable" data-type="variable">
-<h3>gradient-start</h3>
+<h3>$gradient-start</h3>
 <p>The gradient color used as the default starting color for gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -452,7 +452,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-middle -->
 
 <article id="variable-gradient-middle" class="block block-variable" data-type="variable">
-<h3>gradient-middle</h3>
+<h3>$gradient-middle</h3>
 <p>The gradient color used as the default middle color for gradient mixins that use three colors.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -466,7 +466,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-end -->
 
 <article id="variable-gradient-end" class="block block-variable" data-type="variable">
-<h3>gradient-end</h3>
+<h3>$gradient-end</h3>
 <p>The gradient color used as the default ending color for gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -480,7 +480,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-shade -->
 
 <article id="variable-gradient-shade" class="block block-variable" data-type="variable">
-<h3>gradient-shade</h3>
+<h3>$gradient-shade</h3>
 <p>The gradient color used as the default shade color for <a href="#mixin-gradient-striped" class="code-link"><code>@mixin gradient-striped</code></a></p>
 <div class="example">
   <div class="example-block example-code">
@@ -494,7 +494,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-deg -->
 
 <article id="variable-gradient-deg" class="block block-variable" data-type="variable">
-<h3>gradient-deg</h3>
+<h3>$gradient-deg</h3>
 <p>The gradient degree used as the default value for directional gradient mixins.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -508,7 +508,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #gradient-stop -->
 
 <article id="variable-gradient-stop" class="block block-variable" data-type="variable">
-<h3>gradient-stop</h3>
+<h3>$gradient-stop</h3>
 <p>The default stopping point of a middle color in gradient mixin that use three colors.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -522,7 +522,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #font-family-sans -->
 
 <article id="variable-font-family-sans" class="block block-variable" data-type="variable">
-<h3>font-family-sans</h3>
+<h3>$font-family-sans</h3>
 <p>The sans-serif font family stack.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -537,7 +537,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #font-family-serif -->
 
 <article id="variable-font-family-serif" class="block block-variable" data-type="variable">
-<h3>font-family-serif</h3>
+<h3>$font-family-serif</h3>
 <p>The serif font family stack.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -552,7 +552,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #font-family-mono -->
 
 <article id="variable-font-family-mono" class="block block-variable" data-type="variable">
-<h3>font-family-mono</h3>
+<h3>$font-family-mono</h3>
 <p>The monospaced font family stack.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -567,7 +567,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #base-font-family -->
 
 <article id="variable-base-font-family" class="block block-variable" data-type="variable">
-<h3>base-font-family</h3>
+<h3>$base-font-family</h3>
 <p>The base font stack that gets set in <code>_elements/typography.scss</code> to the <code>&lt;body&gt;</code> element. Also used as the default font stack for form elements set in <code>_elements/forms.scss</code></p>
 <div class="example">
   <div class="example-block example-code">
@@ -582,7 +582,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #base-font-size -->
 
 <article id="variable-base-font-size" class="block block-variable" data-type="variable">
-<h3>base-font-size</h3>
+<h3>$base-font-size</h3>
 <p>The base font size that gets set in <code>_elements/typography.scss</code> to the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element. It's also used as a default value for many mixins that require a font size as a parameter.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -596,7 +596,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #base-line-height -->
 
 <article id="variable-base-line-height" class="block block-variable" data-type="variable">
-<h3>base-line-height</h3>
+<h3>$base-line-height</h3>
 <p>The base line height that gets set in <code>_elements/typography.scss</code> to the <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> element.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -610,7 +610,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #base-font-weight -->
 
 <article id="variable-base-font-weight" class="block block-variable" data-type="variable">
-<h3>base-font-weight</h3>
+<h3>$base-font-weight</h3>
 <p>The base font weight that gets set in <code>_elements/typography.scss</code> to the <code>&lt;body&gt;</code> element.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -624,7 +624,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #font-family-header -->
 
 <article id="variable-font-family-header" class="block block-variable" data-type="variable">
-<h3>font-family-header</h3>
+<h3>$font-family-header</h3>
 <p>The font stack used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -638,7 +638,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #font-weight-header -->
 
 <article id="variable-font-weight-header" class="block block-variable" data-type="variable">
-<h3>font-weight-header</h3>
+<h3>$font-weight-header</h3>
 <p>The font weight used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -652,7 +652,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color -->
 
 <article id="variable-color" class="block block-variable" data-type="variable">
-<h3>color</h3>
+<h3>$color</h3>
 <p>The base text color.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -667,7 +667,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-light -->
 
 <article id="variable-color-light" class="block block-variable" data-type="variable">
-<h3>color-light</h3>
+<h3>$color-light</h3>
 <p>The lighter version of the base text color. It's applied to elements to de-emphasize them.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -682,7 +682,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-dark -->
 
 <article id="variable-color-dark" class="block block-variable" data-type="variable">
-<h3>color-dark</h3>
+<h3>$color-dark</h3>
 <p>The darker version of the base text color. It's applied to elements to add emphases.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -697,7 +697,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-header -->
 
 <article id="variable-color-header" class="block block-variable" data-type="variable">
-<h3>color-header</h3>
+<h3>$color-header</h3>
 <p>The default color used for headers.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -712,7 +712,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-link -->
 
 <article id="variable-color-link" class="block block-variable" data-type="variable">
-<h3>color-link</h3>
+<h3>$color-link</h3>
 <p>The default color used for links.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -727,7 +727,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-link-hover -->
 
 <article id="variable-color-link-hover" class="block block-variable" data-type="variable">
-<h3>color-link-hover</h3>
+<h3>$color-link-hover</h3>
 <p>The default color used for the hover state of links.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -742,7 +742,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-link-header -->
 
 <article id="variable-color-link-header" class="block block-variable" data-type="variable">
-<h3>color-link-header</h3>
+<h3>$color-link-header</h3>
 <p>The default color used for header links.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -757,7 +757,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #color-link-header-hover -->
 
 <article id="variable-color-link-header-hover" class="block block-variable" data-type="variable">
-<h3>color-link-header-hover</h3>
+<h3>$color-link-header-hover</h3>
 <p>The default color used for the hover state of header links.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -772,7 +772,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #letter-spacing -->
 
 <article id="variable-letter-spacing" class="block block-variable" data-type="variable">
-<h3>letter-spacing</h3>
+<h3>$letter-spacing</h3>
 <p>The default letter spacing property. This is primarily used in the <a href="#mixin-uppercase" class="code-link"><code>@mixin uppercase</code></a></p>
 <div class="example">
   <div class="example-block example-code">
@@ -786,7 +786,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #bg-color -->
 
 <article id="variable-bg-color" class="block block-variable" data-type="variable">
-<h3>bg-color</h3>
+<h3>$bg-color</h3>
 <p>The scaffolding background color. It's used as the background color for some elements and blocks.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -801,7 +801,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #bg-selection -->
 
 <article id="variable-bg-selection" class="block block-variable" data-type="variable">
-<h3>bg-selection</h3>
+<h3>$bg-selection</h3>
 <p>The default background color used for text selections.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -816,7 +816,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #border-color -->
 
 <article id="variable-border-color" class="block block-variable" data-type="variable">
-<h3>border-color</h3>
+<h3>$border-color</h3>
 <p>The scaffolding border color. It's used as the border color for some elements and blocks.</p>
 <div class="example">
   <div class="example-block example-code">
@@ -831,7 +831,7 @@ $darker-deg:  10% !default;</code></pre>
 <!-- #variable #border-color -->
 
 <article id="variable-border-color-hover" class="block block-variable" data-type="variable">
-<h3>border-color-hover</h3>
+<h3>$border-color-hover</h3>
 <p>The scaffolding border color for hover states. It's used as the hover border color for some elements and blocks.</p>
 <div class="example">
   <div class="example-block example-code">
