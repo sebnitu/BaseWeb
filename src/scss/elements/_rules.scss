@@ -1,0 +1,32 @@
+////////////////////////////////////////////////////////////////////////////////
+// Rules Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$border-color-rule: $border-color !default;
+$border-color-rule-darker: rgba($black, 0.25);
+
+/*==============================================================================
+  Horizontal Rules
+==============================================================================*/
+
+hr {
+  display: block;
+  height: 0;
+  width: 100%;
+  clear: both;
+  margin: 20px 0;
+  padding: 0;
+  background: none;
+  border: 0 none;
+  border-bottom: 1px solid $border-color-rule;
+  
+  &.dotted {
+    border-bottom: 1px dotted $border-color-rule-darker;
+  }
+  &.dashed {
+    border-bottom: 1px dashed $border-color-rule-darker;
+  }
+  &.double {
+    border-bottom: 3px double $border-color-rule;
+  }
+}

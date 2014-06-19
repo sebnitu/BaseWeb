@@ -1,0 +1,78 @@
+/*==============================================================================
+  Code
+==============================================================================*/
+
+code, pre {
+  background: $bg-color;
+  @include font('mono', 12px, 20px);
+  @include border-radius();
+}
+code {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 5px; 
+  white-space: nowrap;
+  line-height: inherit;
+  color: $red-violet;
+}
+pre {
+  margin: 10px 0;
+  padding: 20px;
+  overflow: auto;
+  color: $color-dark;
+  
+  code {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    font-size: 100%;
+    color: inherit;
+    background: none;
+    border: 0 none;
+  }
+  &.max-height {
+    max-height: 400px;
+  }
+}
+
+/**
+ * Code Links
+ */
+a.code-link {
+  position: relative;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 5px 0 0;
+  background: $bg-color;
+  border: 0 none;
+  @include border-radius();
+  
+  &:before {
+    content: "#";
+    display: inline-block;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    color: $color-light;
+    background: $bg-color;
+    @include border-radius-left();
+  }
+  
+  code {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+}
+a.code-link:hover {
+  background: $red-violet;
+  
+  &:before {
+    color: $white;
+    background: rgba($black, 0.1);
+  }
+  
+  code {
+    color: $white;
+  }
+}

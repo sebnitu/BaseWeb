@@ -1,0 +1,99 @@
+{
+  "name": "BaseWeb",
+  "description": "A fresh front-end development framework.",
+  "version": "0.9.0",
+  "keywords": ["BaseWeb", "CSS", "LESS", "Front-end", "Framework"],
+  "homepage": "http://sebnitu.github.com/baseweb/",
+  "author": "Sebastian Nitu",
+  "url": "http://sebnitu.com",
+  "year": "2014",
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebnitu/BaseWeb.git"
+  },
+  
+  "licenses": [{
+    "type": "The MIT License (MIT)",
+    "url": "http://en.wikipedia.org/wiki/MIT_License"
+  }],
+  
+  "devDependencies": {
+    "jake": "*",
+    "mustache": "*",
+    "less": "*",
+    "node-sass": "*",
+    "uglify-js": "*",
+    "imagemin": "*",
+    "node-watch": "0.3.x"
+  },
+  
+  "paths": {
+    "base"     : "src/",
+    "less"     : "src/less/",
+    "scss"     : "src/scss/",
+    "css"      : "src/css/",
+    "js"       : "src/js/",
+    "img"      : "src/img/",
+    "mustache" : {
+      "base" : "assets/",
+      "directories" : {
+        "docs"     : {
+          "url" : "docs/",
+          "text" : "Documentation",
+          "slug" : "documentation"
+        },
+        "examples" : {
+          "url" : "examples/",
+          "text" : "Examples",
+          "slug" : "examples"
+        },
+        "devlog" : {
+          "url" : "devlog/",
+          "text" : "Development Log",
+          "slug" : "devlog"
+        }
+      }
+    }
+  },
+  
+  "watch": {
+    "less"     : ["./src/less/"],
+    "scss"     : ["./src/scss/"],
+    "js"       : ["./src/js/"],
+    "css"      : ["./src/css/"],
+    "mustache" : ["./assets/templates/"],
+    "docs"     : ["./docs/templates/"],
+    "examples" : ["./examples/templates/"],
+    "devlog"   : ["./devlog/templates/"]
+  },
+    
+  "css": {
+    "input": [
+      "baseweb.css"
+    ],
+    "output": [
+      "baseweb.min.css"
+    ]
+  },
+  
+  "scss": {
+    "input": [
+      "_baseweb.scss"
+    ],
+    "output": [
+      "baseweb.css"
+    ]
+  },
+  
+  "js": {
+    "input": [
+      "baseweb.js",
+      "jquery.function.js",
+      "jquery.docready.js"
+    ],
+    "output": [
+      "baseweb.min.js"
+    ]
+  }
+}

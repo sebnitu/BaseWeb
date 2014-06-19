@@ -1,0 +1,131 @@
+////////////////////////////////////////////////////////////////////////////////
+// Image Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Rounded
+// Rounded corner styles for images
+@mixin rounded( $radius : $border-radius ) {
+  @include border-radius( $radius );
+}
+
+// Circle
+// Makes an image a circle
+@mixin circle( $radius : 50% ) {
+  @include border-radius( $radius );
+}
+
+// Polaroid
+// Makes images have the polaroid styles
+@mixin polaroid() {
+  background: $white;
+  background-clip: padding-box;
+  padding: 5px;
+  border: 1px solid rgba($black, 0.2);
+  @include box-shadow( 0 1px 3px rgba(0,0,0, 0.1) );
+}
+
+// Image Wrap Mixin
+@mixin image-wrap( $width : none ) {
+  
+  @if ($width != none) {
+    width: $width;
+  }
+  
+  position: relative;
+  display: inline-block;
+  margin: 10px 0;
+  
+  img {
+    position: relative;
+    z-index: 5;
+    margin: 0 auto;
+    float: none;
+    display: block;
+  }
+  
+  .caption {
+    position: relative;
+    z-index: 10;
+    display: block; 
+    margin: -1px 0 0 0;
+    padding: 5px 10px;
+    clear: both;
+    font-size: 0.75em;
+    text-align: center;
+    border: 1px solid rgba($black, 0.1);
+    @include border-radius-bottom(3px);
+  }
+  
+}
+
+/*==============================================================================
+  Images
+==============================================================================*/
+
+img {
+  margin: 10px 0;
+  display: block; 
+  max-width: 100%;
+  height: auto;
+}
+
+img.full,
+.img-full {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.rounded,
+.img-rounded  { 
+  @include rounded();
+}
+
+img.circle,
+.img-circle   { 
+  @include circle();
+}
+
+img.polaroid,
+.img-polaroid { 
+  @include polaroid();
+}
+
+/**
+ * Image Wrap
+ */
+.image-wrap {
+  @include image-wrap();
+}
+
+/**
+ * Image Alignment
+ */
+img.align-center,
+.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+p img.align-center {
+  margin-top: 0;
+}
+
+img.align-left,
+.align-left {
+  float: left;
+  margin: 10px 15px 10px 0;
+}
+p img.align-left {
+  margin-top: 0;
+  
+}
+
+img.align-right,
+.align-right {
+  float: right;
+  margin: 10px 0 10px 15px;
+}
+p img.align-right {
+  margin-top: 0;
+}

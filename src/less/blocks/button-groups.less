@@ -1,0 +1,115 @@
+/*==============================================================================
+  Button Groups
+==============================================================================*/
+
+// Global button group mixin
+.base-btn-group() {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+  .clearfix();
+  
+  * {
+    font-size: @font-size-button;
+  }
+  .btn {
+    position: relative;
+    z-index: 2;
+    border-radius: 0;
+  }
+  
+  // Stack order
+  .btn:hover,
+  .btn:active,
+  .btn:focus {
+    z-index: 3;
+  }
+  .btn.btn-active {
+    z-index: 4;
+  }
+  
+  // Prefix, middle and suffix
+  .btn-prefix,
+  .btn-suffix,
+  .btn-middle {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    padding: @button-padding;
+    .font-sequence( @font-size-button, @line-height-button );
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: @bg;
+    border: 1px solid @border;
+  }
+}
+
+/**
+ * Horizontal groups
+ */
+.btn-group {
+  .base-btn-group();
+  
+  .btn,
+  .btn-prefix,
+  .btn-middle {
+    margin-right: -1px;
+  }
+  > :first-child {
+    .border-radius-left();
+  }
+  > :last-child {
+    .border-radius-right();
+    margin-right: 0;
+  }
+}
+
+/**
+ * Vertical groups
+ */
+.btn-group-vertical {
+  .base-btn-group();
+  
+  .btn,
+  .btn-prefix,
+  .btn-suffix,
+  .btn-middle {
+    display: block;
+    width: 100%;
+  }
+  .btn,
+  .btn-prefix,
+  .btn-middle {
+    margin-bottom: -1px;
+  }
+  > :first-child {
+    .border-radius-top();
+  }
+  > :last-child {
+    .border-radius-bottom();
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Wrap multiple button groups
+ */
+.btn-group-wrap {
+  font-size: 0;
+
+  // Nested button groups
+  .btn-group,
+  .btn-group-vertical {
+    margin-left: 10px;
+    vertical-align: top;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

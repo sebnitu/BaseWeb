@@ -1,0 +1,1245 @@
+{{! { 
+  
+  "menu" : {
+    "order" : "3"
+  },
+  
+  "description" : "A guide to BaseWeb's flexible semantic and class based grid system."
+  
+} }}
+
+<span class="icon icon-gridsystem"></span>
+<h2 id="grid-system">Grid System</h2>
+
+<p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
+
+<div class="example">
+  <div class="example-block example-desc">
+    <p>There are three basic elements in the BaseWeb grid system: the container, row and column. These three elements are defined by the classes <code>.container</code>, <code>.row</code> and <code>.col .col-x</code> respectively. Columns require two classes, the base <code>.col</code> and the <code>.col-x</code> where <code>x</code> represents the number of columns to span.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-output example-grid">
+    
+    <div class="container container-no-padding">
+      <div class="row">
+        <div class="col col-4"><p>.col-4</p></div>
+        <div class="col col-4"><p>.col-4</p></div>
+        <div class="col col-4"><p>.col-4</p></div>
+      </div>
+      <div class="row">
+        <div class="col col-6"><p>.col-6</p></div>
+        <div class="col col-6"><p>.col-6</p></div>
+      </div>
+      <div class="row">
+        <div class="col col-2"><p>.col-2</p></div>
+        <div class="col col-2"><p>.col-2</p></div>
+        <div class="col col-2"><p>.col-2</p></div>
+        <div class="col col-2"><p>.col-2</p></div>
+        <div class="col col-2"><p>.col-2</p></div>
+        <div class="col col-2"><p>.col-2</p></div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code id="code-sample" class="language-markup">&lt;div class=&quot;container&quot;&gt;
+
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-6&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;col col-6&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  
+  ...
+  
+&lt;/div&gt;</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<div class="block-warning">
+  <p>If you're using the <a href="https://github.com/andrew/node-sass">node-sass compiler</a> (as of version 0.8.6), it's possible to only include the <code>.col-X</code> class for columns and drop the base column class <code>.col</code>. But if you're using ruby-sass, you'll have to include both classes for columns. Use the <a href="#" class="code-link"><code>$compiler</code></a> variable to toggle compiler specific settings throughout the framework.</p>
+</div>
+
+<p>The class based grid system is generated using <a href="#mixin-build-grid-system" class="code-link"><code>@mixin build-grid-system()</code></a>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
+
+<p>There's also the mobile grid system mixin <a href="#mixin-build-mobile-grid-system" class="code-link"><code>@mixin build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
+
+<div class="example">
+  <div class="example-block example-desc">
+    <p>In this example, we're using the <a href="/docs/media-queries.html">media query mixins</a> to set grid systems for different breakpoints.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include build-mobile-grid-system();
+
+@include media-tablet {
+  @include build-grid-system(740px);
+}
+
+@include media-desktop {
+  @include build-grid-system(960px);
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h3 id="grid-system-modifier-classes">Modifier Classes</h3>
+
+<p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
+
+<table class="table-bordered">
+  <tr>
+    <th rowspan="1">Base Element</th>
+    <th>Modifier Class</th>
+    <th>Description</th>
+  </tr>
+  
+  <tr>
+    <td rowspan="4"><code>.container</code></td>
+    <td><code>.container-float-left</code></td>
+    <td>Floats container to the left</td>
+  </tr>
+  <tr>
+    <td><code>.container-float-right</code></td>
+    <td>Floats container to the right</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-padding</code></td>
+    <td>Removes padding from container</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-margin</code></td>
+    <td>Removes margin from container</td>
+  </tr>
+  
+  <tr>
+    <td rowspan="1"><code>.row</code></td>
+    <td><code>.row-center</code></td>
+    <td>Centers columns in the row</td>
+  </tr>
+  
+  <tr>
+    <td rowspan="3" class="rowspan-last"><code>.col</code></td>
+    <td><code>.prefix-X</code></td>
+    <td>Adds column spacing before the element based on <code>X</code></td>
+  </tr>
+  <tr>
+    <td><code>.suffix-X</code></td>
+    <td>Adds column spacing after the element based on <code>X</code></td>
+  </tr>
+  <tr>
+    <td><code>.col-no-gutter</code></td>
+    <td>Removes gutter from the column</td>
+  </tr>
+</table>
+
+<h2 id="semantic-grid">Semantic Grids</h2>
+
+<p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets. The <a href="#mixins">mixins</a> section below has details on all of the mixins available for semantic grids:</p>
+
+<ul>
+  <li><a href="#make-container" class="code-link"><code>@mixin make-container()</code></a></li>
+  <li><a href="#make-row" class="code-link"><code>@mixin make-row()</code></a></li>
+  <li><a href="#make-base-column" class="code-link"><code>@mixin make-base-column()</code></a></li>
+  <li><a href="#make-column" class="code-link"><code>@mixin make-column()</code></a></li>
+  <li><a href="#give-prefix" class="code-link"><code>@mixin give-prefix()</code></a></li>
+  <li><a href="#give-suffix" class="code-link"><code>@mixin give-suffix()</code></a></li>
+</ul>
+
+<div class="example">
+  <div class="example-block example-output example-grid">
+    
+    <div class="demo-wrapper">
+      <div class="demo-content">
+        <div class="demo-aside">
+          <p>@make-column(4);</p>
+        </div>
+        <div class="demo-article">
+          <p>@make-column(8);</p>
+        </div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">.wrapper {
+  @include make-container;
+  
+  .content {
+    @include make-row;
+    
+    .aside {
+      @include make-column(4);
+    }
+    
+    .article {
+      @include make-column(8);
+    }
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns and set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
+
+<ul>
+  <li><a href="#column_width" class="code-link"><code>@function column_width()</code></a></li>
+  <li><a href="#spacing_width" class="code-link"><code>@function spacing_width()</code></a></li>
+</ul>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.wrapper {
+  @include make-container;
+  
+  .content {
+    @include make-row;
+    
+    .aside,
+    .article {
+      @include make-base-column;
+    }
+    
+    .aside {
+      width: column_width(4);
+    }
+    .article {
+      width: column_width(6);
+      margin-left: spacing_width(2);
+    }
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2 id="prefix-and-suffix">Prefix and Suffix</h2>
+
+<p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
+
+<div class="example">
+  <div class="example-block example-output example-grid">
+    
+    <div class="container container-no-padding">
+      <div class="row">
+        <div class="col col-4 suffix-3"><p>.col-4</p></div>
+        <div class="col col-3 prefix-2"><p>.col-3</p></div>
+      </div>
+      <div class="row">
+        <div class="col col-5 prefix-4 suffix-3"><p>.col-5</p></div>
+      </div>
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-4 suffix-3&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;col col-3 prefix-2&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-5 prefix-4 suffix-3&quot;&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  
+&lt;/div&gt;</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>The semantic grid system equivalent would look like this:</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">.aside {
+  @include make-column(6);
+  @include give-prefix(2);
+}
+
+.article {
+  @include make-column(6);
+  @include give-suffix(2);
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h2 id="nested-columns">Nested Columns</h2>
+
+<p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to either manually remove the gutter margin or use the <a href="#grid-system-modifier-classes" class="code-link"><code>.col-no-gutter</code></a> modifier class.</p>
+
+<div class="example">
+  <div class="example-block example-desc">
+    <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent <code>.col</code> element. If you want to mix fixed and fluid grids between breakpoints, it's recommended to use the <a href="#semantic-grid">semantic grid</a> method.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-output example-grid">
+    
+    <div class="container container-no-padding">
+    
+      <div class="row">
+        <div class="col col-6">
+          <p>.col-6</p>
+          <div class="row">
+            <div class="col col-6"><p>.col-6</p></div>
+            <div class="col col-6"><p>.col-6</p></div>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <p>.col-6</p>
+          <div class="row">
+            <div class="col col-4"><p>.col-4</p></div>
+            <div class="col col-4"><p>.col-4</p></div>
+            <div class="col col-4"><p>.col-4</p></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div><!-- .example-output -->
+  <div class="example-block example-code">
+<pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-6&quot;&gt;
+      ...
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col col-6&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;col col-6&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col col-6&quot;&gt;
+      ...
+      &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+        &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<!-- #variables -->
+
+<h2 id="variables">Variables</h2>
+
+<!-- #variable #grid-total-width -->
+
+<article id="variable-grid-total-width" class="block block-variable" data-type="variable">
+<h3>$grid-total-width</h3>
+<p>Defines the total width of your grid. If set to 100%, it behaves as a fluid grid. Giving it a pixel value makes it a fixed grid. e.g. Setting it to <code>960px</code> will make it behave like the <a href="http://960.gs/" target="_blank">960 grid system</a>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$grid-total-width
+  type: unit (pixel, percentage)
+  default: 100%</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variables #grid-gutter-width -->
+
+<article id="variable-grid-gutter-width" class="block block-variable" data-type="variable">
+<h3>$grid-gutter-width</h3>
+<p>Defines the space between each column. The value type must be the same as the <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a>. So they both must be either percentages or pixels.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$grid-gutter-width
+  type: unit (pixel, percentage)
+  default: 2%</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #grid-columns -->
+
+<article id="variable-grid-columns" class="block block-variable" data-type="variable">
+<h3>$grid-columns</h3>
+<p>The maximum number of columns per row. This value must be an integer greater than zero.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$grid-columns
+  type: number (positive)
+  default: 12</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #container-margin -->
+
+<article id="variable-container-margin" class="block block-variable" data-type="variable">
+<h3>$container-margin</h3>
+<p>The left and right margin that is applied to the container element. If set to <code>auto</code> the container will be centered to the page or parent element.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$container-margin
+  type: unit (pixel, percentage, auto)
+  default: auto</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #container-padding -->
+
+<article id="variable-container-padding" class="block block-variable" data-type="variable">
+<h3>$container-padding</h3>
+<p>The left and right padding that is applied to the container element. This is added in addition to the containers total width that is set by <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$container-padding
+  type: unit (pixel, percentage)
+  default: 20px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #container-min-width -->
+
+<article id="variable-container-min-width" class="block block-variable" data-type="variable">
+<h3>$container-min-width</h3>
+<p>Minimum width that is applied to the container element. Only applicable when using a percentage based grid.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$container-min-width
+  type: unit (pixel, none)
+  default: none</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #container-max-width -->
+
+<article id="variable-container-max-width" class="block block-variable" data-type="variable">
+<h3>$container-max-width</h3>
+<p>Maximum width that is applied to the container element. Only applicable when using a percentage based grid.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$container-max-width
+  type: unit (pixel, none)
+  default: 1000px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #class-container -->
+
+<article id="variable-class-container" class="block block-variable" data-type="variable">
+<h3>$class-container</h3>
+<p>The class name to be used for the container element. The container element is what inherits the total width property and is the wrapping element of rows.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-container
+  type: class-name
+  default: container</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #class-row -->
+
+<article id="variable-class-row" class="block block-variable" data-type="variable">
+<h3>$class-row</h3>
+<p>The class name to be used for the row element. The row element is the wrapping element of columns and clears inner floats.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-row
+  type: class-name
+  default: row</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #class-column -->
+
+<article id="variable-class-column" class="block block-variable" data-type="variable">
+<h3>$class-column</h3>
+<p>The class name to be used for the column element. The column element is used inside of rows and sets the number of columns that are spanned. The column name will be output with a base column class and a column span class: e.g. <code>.col .col-X</code> where <code>col</code> is the defined column class and <code>X</code> is the number of columns to span.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-column
+  type: class-name
+  default: col</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #class-prefix -->
+
+<article id="variable-class-prefix" class="block block-variable" data-type="variable">
+<h3>$class-prefix</h3>
+<p>The class name to be used for the prefix element. The prefix class is added to columns to pad their left with a specific column span. The classes generated look like <code>.prefix-X</code> where <code>prefix</code> is the class name and <code>X</code> is the number of columns to span.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-prefix
+  type: class-name
+  default: prefix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<!-- #variable #class-suffix -->
+
+<article id="variable-class-suffix" class="block block-variable" data-type="variable">
+<h3>$class-suffix</h3>
+<p>The class name to be used for the suffix element. The suffix class is added to columns to pad their right with a specific column span. The classes generated look like <code>.suffix-X</code> where <code>suffix</code> is the class name and <code>X</code> is the number of columns to span.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$class-suffix
+  type: class-name
+  default: suffix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+</article>
+
+<hr>
+
+<!-- #functions -->
+
+<h2 id="functions">Functions</h2>
+
+<!-- #function #column_width -->
+
+<article id="functions-column_width" class="block block-function" data-type="function">
+<h3>column_width</h3>
+<p>A function that returns the width of a column span based on the properties passed in.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@function column_width(
+  $index,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
+)
+// returns: unit (pixel, percentage)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-column_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-column_width-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The number of column span you want returned.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: unit (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: unit (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-column_width-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #function #spacing_width -->
+
+<article id="functions-spacing_width" class="block block-function" data-type="function">
+<h3>spacing_width</h3>
+<p>A function that returns the width of column spacing (similar to how prefix and suffix works) based on the properties passed in.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@function spacing_width(
+  $index,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
+)
+// returns: unit (pixel, percentage)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-spacing_width">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-spacing_width-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The column span value you want returned.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: unit (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: unit (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-spacing_width-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
+</article>
+
+<hr>
+
+<!-- #mixins -->
+
+<h2 id="mixins">Mixins</h2>
+
+<!-- #mixin #make-container -->
+
+<article id="mixin-make-container" class="block block-mixin" data-type="mixin">
+<h3>make-container</h3>
+<p>Outputs all the styles needed to make an element a container, identical to the grid system class <code>.container</code>. It also outputs any modifier classes specific to this element.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin make-container(
+  $grid-total-width,
+  $container-margin,
+  $container-padding,
+  $container-max-width,
+  $container-min-width,
+  $class-container
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-make-container">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-make-container-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-margin
+  type: unit (pixel, percentage, auto)
+  default: $container-margin</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-margin" class="code-link"><code>$container-margin</code></a></span>
+<p>The left and right margin that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-padding
+  type: unit (pixel, percentage, auto)
+  default: $container-padding</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-padding" class="code-link"><code>$container-padding</code></a></span>
+<p>The left and right padding that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-max-width
+  type: unit (pixel, none)
+  default: $container-max-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-max-width" class="code-link"><code>$container-max-width</code></a></span>
+<p>Maximum width that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-min-width
+  type: unit (pixel, none)
+  default: $container-min-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-min-width" class="code-link"><code>$container-min-width</code></a></span>
+<p>Minimum width that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-container
+  type: class-name
+  default: $class-container</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-container" class="code-link"><code>$class-container</code></a></span>
+<p>The class name to be used for the container element.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #make-row -->
+
+<article id="mixin-make-row" class="block block-mixin" data-type="mixin">
+<h3>make-row</h3>
+<p>Outputs all the styles needed to make an element a row identical, to the grid system class <code>.row</code>. It also outputs any modifier classes specific to this element.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin make-row(
+  $class-row,
+  $class-column
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-make-row">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-make-container-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-row
+  type: class-name
+  default: $class-row</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-row" class="code-link"><code>$class-row</code></a></span>
+<p>The class name to be used for the row element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-container-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-column
+  type: class-name
+  default: $class-column</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-column" class="code-link"><code>$class-column</code></a></span>
+<p>The class name to be used for the column element.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #make-base-column -->
+
+<article id="mixin-make-base-column" class="block block-mixin" data-type="mixin">
+<h3>make-base-column</h3>
+<p>Creates the base styles for a column but excludes setting the width, identical to the grid system class <code>.col</code>. It also outputs any modifier classes specific to this element.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin make-base-column(
+  $grid-gutter-width,
+  $class-column
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-make-base-column">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-make-base-column-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-base-column-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-column
+  type: class-name
+  default: $class-column</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-column" class="code-link"><code>$class-column</code></a></span>
+<p>The class name to be used for the column element.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #make-column -->
+
+<article id="mixin-make-column" class="block block-mixin" data-type="mixin">
+<h3>make-column</h3>
+<p>Creates the base styles for a column and sets it's width, identical to the grid system classes <code>.col .col-X</code>. It also outputs any modifier classes specific to this element. If you want to output the width alone, use <a href="#column_width" class="code-link"><code>@function column_width()</code></a>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin make-column(
+  $index,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns,
+  $class-column
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-make-column">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-make-column-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The column span value you want the column to have.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-column-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-column-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-column-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+<li class="param">
+<div class="example" id="param-make-column-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-column
+  type: class-name
+  default: $class-column</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-column" class="code-link"><code>$class-column</code></a></span>
+<p>The class name to be used for the column element.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #give-prefix -->
+
+<article id="mixin-give-prefix" class="block block-mixin" data-type="mixin">
+<h3>give-prefix</h3>
+<p>Outputs the styles for giving a column element a prefix, identical to the grid system class <code>.prefix-X</code>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin give-prefix(
+  $index,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-give-prefix">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-give-prefix-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The column span value you want applied to the prefix.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-prefix-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-prefix-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-prefix-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #give-suffix -->
+
+<article id="mixin-give-suffix" class="block block-mixin" data-type="mixin">
+<h3>give-suffix</h3>
+<p>Outputs the styles for giving a column element a suffix, identical to the grid system class <code>.suffix-X</code>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin give-suffix(
+  $index,
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-give-suffix">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-give-suffix-index">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $index
+  type: number (positive)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<p>The column span value you want applied to the suffix.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-suffix-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-suffix-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-give-suffix-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #build-mobile-grid-system -->
+
+<article id="mixin-build-mobile-grid-system" class="block block-mixin" data-type="mixin">
+<h3>build-mobile-grid-system</h3>
+<p>Creates the styles for making a grid system mobile friendly. This includes making columns 100% width and stacking them on top of each other and removing any prefix/suffix spacing.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin build-mobile-grid-system(
+  $class-container,
+  $class-row,
+  $class-column
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-build-mobile-grid-system">Parameters</h4>
+
+<ul class="param-list">
+<li class="param">
+<div class="example" id="param-build-mobile-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-container
+  type: class-name
+  default: $class-container</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-container" class="code-link"><code>$class-container</code></a></span>
+<p>The class name to be used for the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-mobile-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-row
+  type: class-name
+  default: $class-row</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-row" class="code-link"><code>$class-row</code></a></span>
+<p>The class name to be used for the row element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-mobile-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-column
+  type: class-name
+  default: $class-column</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-column" class="code-link"><code>$class-column</code></a></span>
+<p>The class name to be used for the column element.</p>
+</li>
+</ul>
+
+</article>
+
+<!-- #mixin #build-grid-system -->
+
+<article id="mixin-build-grid-system" class="block block-mixin" data-type="mixin">
+<h3>build-grid-system</h3>
+<p>Creates the styles for making the class-based grid system. This includes outputting container, rows and column classes along with all applicable <a href="#grid-system-modifier-classes">modifier classes</a>.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin build-grid-system(
+  $grid-total-width,
+  $grid-gutter-width,
+  $grid-columns,
+  
+  $container-margin,
+  $container-padding,
+  $container-max-width,
+  $container-min-width,
+  
+  $class-container,
+  $class-row,
+  $class-column,
+  $class-prefix,
+  $class-suffix
+)</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4 id="param-build-grid-system">Parameters</h4>
+
+<ul class="param-list">
+<!-- Grid -->
+<li class="param">
+<div class="example" id="param-build-grid-system-grid-total-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-total-width
+  type: number (pixel, percentage)
+  default: $grid-total-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-total-width" class="code-link"><code>$grid-total-width</code></a></span>
+<p>The total width of your grid.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-grid-gutter-width">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-gutter-width
+  type: number (pixel, percentage)
+  default: $grid-gutter-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-gutter-width" class="code-link"><code>$grid-gutter-width</code></a></span>
+<p>The space between columns.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-grid-columns">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $grid-columns
+  type: number (positive)
+  default: $grid-columns</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a></span>
+<p>The maximum number of columns per row.</p>
+</li>
+
+<li class="param">
+<div class="example" id="param-build-grid-system-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-margin
+  type: unit (pixel, percentage, auto)
+  default: $container-margin</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-margin" class="code-link"><code>$container-margin</code></a></span>
+<p>The left and right margin that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-padding
+  type: unit (pixel, percentage, auto)
+  default: $container-padding</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-padding" class="code-link"><code>$container-padding</code></a></span>
+<p>The left and right padding that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-max-width
+  type: unit (pixel, none)
+  default: $container-max-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-max-width" class="code-link"><code>$container-max-width</code></a></span>
+<p>Maximum width that is applied to the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-container-margin">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $container-min-width
+  type: unit (pixel, none)
+  default: $container-min-width</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#container-min-width" class="code-link"><code>$container-min-width</code></a></span>
+<p>Minimum width that is applied to the container element.</p>
+</li>
+
+<li class="param">
+<div class="example" id="param-build-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-container
+  type: class-name
+  default: $class-container</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-container" class="code-link"><code>$class-container</code></a></span>
+<p>The class name to be used for the container element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-row
+  type: class-name
+  default: $class-row</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-row" class="code-link"><code>$class-row</code></a></span>
+<p>The class name to be used for the row element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-class-container">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-column
+  type: class-name
+  default: $class-column</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-column" class="code-link"><code>$class-column</code></a></span>
+<p>The class name to be used for the column element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-class-prefix">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-prefix
+  type: class-name
+  default: $class-prefix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-prefix" class="code-link"><code>$class-prefix</code></a></span>
+<p>The class name to be used for the prefix element.</p>
+</li>
+<li class="param">
+<div class="example" id="param-build-grid-system-class-suffix">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@param: $class-suffix
+  type: class-name
+  default: $class-suffix</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference: <a href="#class-suffix" class="code-link"><code>$class-suffix</code></a></span>
+<p>The class name to be used for the suffix element.</p>
+</li>
+</ul>
+
+</article>

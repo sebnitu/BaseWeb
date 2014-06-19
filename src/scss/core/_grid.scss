@@ -1,0 +1,337 @@
+////////////////////////////////////////////////////////////////////////////////
+// @ Grid Functions
+////////////////////////////////////////////////////////////////////////////////
+
+@function column_width(
+
+    $index,
+    
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width: $grid-gutter-width,
+    $grid-columns : $grid-columns
+  
+  ) {
+  
+  $column-width: ($grid-total-width - ($grid-gutter-width * ($grid-columns - 1))) / $grid-columns;
+  
+  @return ($column-width * $index) + ($grid-gutter-width * ($index - 1));
+  
+}
+
+@function spacing_width(
+    
+    $index,
+    
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width: $grid-gutter-width,
+    $grid-columns : $grid-columns
+  
+  ) {
+
+  $column-width : column_width( 1, $grid-total-width, $grid-gutter-width, $grid-columns );
+  
+  @return ($column-width * $index) + ($grid-gutter-width * $index);
+  
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @ Semantic Grid Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Container
+@mixin make-container(
+
+    $grid-total-width : $grid-total-width,
+    
+    $container-margin : $container-margin,
+    $container-padding : $container-padding,
+    $container-max-width : $container-max-width,
+    $container-min-width : $container-min-width,
+    
+    $class-container : $class-container
+  
+  ) {
+  
+  // Set the widths
+  width: $grid-total-width;
+  @if ($container-min-width != none) {
+    min-width: $container-min-width;
+  }
+  @if ($container-max-width != none) {
+    max-width: $container-max-width;
+  }
+  
+  margin: 0 $container-margin;
+  padding: 0 $container-padding;
+  
+  // Modifier Classes
+  @if ($class-container != none) {
+    &.#{$class-container}-float-left {
+      float: left;
+    }
+    &.#{$class-container}-float-right {
+      float: right;
+    }
+    &.#{$class-container}-no-padding {
+      padding: 0;
+    }
+    &.#{$class-container}-no-margin {
+      margin: 0;
+    }
+  }
+  
+  @include clearfix();
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+  
+  @content;
+}
+
+// Make Row
+@mixin make-row(
+
+    $class-row : $class-row,
+    $class-column : $class-column
+    
+  ) {
+  
+  @include clearfix();
+  
+  // Row Modifiers
+  @if ($class-row != none) {
+    &.#{$class-row}-center {
+      text-align: center;
+      
+      > * {
+        font-size: 0;
+        line-height: 0;
+      }
+      .#{$class-column} {
+        float: none;
+        display: inline-block;
+        @include clearfix();
+        font-size: $base-font-size;
+        line-height: $base-line-height;
+        text-align: left;
+      }
+    }
+  }
+  
+  @content;
+}
+
+// Make Base Column (Does not include column width)
+@mixin make-base-column(
+
+    $grid-gutter-width : $grid-gutter-width,
+    $class-column : $class-column
+  
+  ) {
+  
+  @if ($grid-gutter-width == mobile) {
+    width: 100%;
+    margin: 0;
+  } @else {
+    margin-left: $grid-gutter-width;
+    @if ($class-column != none) {
+      &.#{$class-column}-no-gutter,
+      &:first-child {
+        margin-left: 0;
+      }
+    } @else {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  float: left;
+  min-height: 1px;
+  
+  &.align-right {
+    float: right;
+  }
+  &.align-left {
+    float: left;
+  }
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+  
+  @content;
+}
+
+// Make Column
+@mixin make-column(
+
+    $index,
+    
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width: $grid-gutter-width,
+    $grid-columns : $grid-columns,
+    
+    $class-column : $class-column
+    
+  ) {
+  
+  @include make-base-column($grid-gutter-width, $class-column);
+  width: column_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
+  
+  @content;
+}
+
+// Make Prefix
+@mixin give-prefix(
+
+    $index,
+    
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width: $grid-gutter-width,
+    $grid-columns : $grid-columns
+
+  ) {
+
+  margin-left: (spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns ) + $grid-gutter-width);
+  &:first-child {
+    margin-left: spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
+  }
+  
+  @content;
+}
+
+// Make Suffix
+@mixin give-suffix(
+
+    $index,
+    
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width: $grid-gutter-width,
+    $grid-columns : $grid-columns
+
+  ) {
+
+  margin-right: spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
+  
+  @content;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @ Class Based Grid System Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Mobile Grid System
+// Outputs the styles for a mobile grid system where all columns are stacked
+@mixin build-mobile-grid-system(
+
+    $class-container : $class-container,
+    $class-row : $class-row,
+    $class-column : $class-column,
+    $class-prefix : $class-prefix,
+    $class-suffix : $class-suffix
+    
+  ) {
+  
+  .#{$class-container} {
+    @include make-container( 100% );
+  }
+  
+  .#{$class-row} {
+    @include make-row();
+  }
+  
+  .#{$class-column} {
+    @include make-base-column( mobile );
+  }
+  
+  @if ($class-prefix != none) {
+    .#{$class-prefix} {
+      margin-left: 0;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  @if ($class-suffix != none) {
+    .#{$class-suffix} {
+      margin-right: 0;
+    }
+  }
+  
+  @content;
+}
+
+// Build Grid System
+// Outputs all the classes and styles for the class based grid system
+@mixin build-grid-system(
+
+    $grid-total-width : $grid-total-width,
+    $grid-gutter-width : $grid-gutter-width,
+    $grid-columns : $grid-columns,
+    
+    $container-margin : $container-margin,
+    $container-padding : $container-padding,
+    $container-max-width : $container-max-width,
+    $container-min-width : $container-min-width,
+    
+    $class-container : $class-container,
+    $class-row : $class-row,
+    $class-column : $class-column,
+    $class-prefix : $class-prefix,
+    $class-suffix : $class-suffix
+  
+  ) {
+  
+  .#{$class-container} {
+    @include make-container(
+    
+      $grid-total-width,
+      
+      $container-margin,
+      $container-padding,
+      $container-max-width,
+      $container-min-width
+      
+    );
+  }
+    
+  .#{$class-row} {
+    @include make-row();
+  }
+  
+  .#{$class-column} {
+    @include make-base-column( $grid-gutter-width );
+  }
+  
+  @for $i from 1 through $grid-columns {
+    @if ($compiler == node-sass) {
+      .#{$class-column}-#{$i} {
+        @extend .#{$class-column};
+      }
+    }
+    .#{$class-column}-#{$i} {
+      width: column_width( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+    }
+  }
+  
+  @if ($class-prefix != none) {
+    @for $i from 1 through $grid-columns {    
+      .#{$class-prefix}-#{$i} {
+        @include give-prefix( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+      }
+    }
+  }
+  
+  @if ($class-suffix != none) {
+    @for $i from 1 through $grid-columns {  
+      .#{$class-suffix}-#{$i} {
+        @include give-suffix( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+      }
+    }
+  }
+  
+  @content;
+}

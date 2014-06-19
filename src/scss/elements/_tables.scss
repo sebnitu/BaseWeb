@@ -1,0 +1,257 @@
+////////////////////////////////////////////////////////////////////////////////
+// Table Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$color-bg-table: #f9f9f9 !default;
+$color-border-table: rgba($black, 0.1) !default;
+
+$table-padding-condensed: 5px 10px;
+$table-padding: 10px 15px;
+$table-padding-expanded: 15px 20px;
+
+$table-alignment: top;
+
+////////////////////////////////////////////////////////////////////////////////
+// Table Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Table Border Wrapper
+// Adds the outer border to a table
+@mixin make-table-bordered-wrap() {
+  border-collapse: separate;
+  border: 1px solid $color-border-table;
+  @include border-radius();
+}
+
+// Make Table Bordered Sep
+// Addes the inner borders to a table
+@mixin make-table-bordered-sep() {
+  td, th {
+    padding: $table-padding;
+    border-bottom: 1px solid $color-border-table;
+    border-left: 1px solid $color-border-table;
+    
+    // Modifiers
+    &[rowspan] {
+      border-right: 1px solid $color-border-table;
+      
+      & + td,
+      & + th {
+        border-left: 0 none;
+      }
+    }
+    &.rowspan-last {
+      border-bottom: 0 none;
+    }
+  }
+  
+  tr:first-child th {
+    border-bottom: 3px solid $color-border-table;
+  }
+  
+  tr:last-child td { border-bottom: 0 none; }
+  tr td:first-child, tr th:first-child { border-left: 0 none; }
+  
+  tbody tr:last-child td:first-child, 
+  tbody tr:last-child th:first-child {
+    @include border-radius-bottom-left();
+  }
+  
+  tbody tr:last-child td:last-child, 
+  tbody tr:last-child th:last-child {
+    @include border-radius-bottom-right();
+  }
+  
+  thead tr:first-child th:first-child, 
+  &.no-thead tr:first-child td:first-child, 
+  &.no-thead tr:first-child th:first-child {
+    @include border-radius-top-left();
+  }
+  
+  thead tr:first-child th:last-child, 
+  &.no-thead tr:first-child td:last-child, 
+  &.no-thead tr:first-child th:last-child {
+    @include border-radius-top-right();
+  }
+}
+
+// Make Table Bordered
+// Adds inner and outer borders to a table
+@mixin make-table-bordered() {
+  @include make-table-bordered-wrap();
+  @include make-table-bordered-sep();
+}
+
+// Rowed
+@mixin make-table-rowed() {
+  border-collapse: separate;
+  
+  td, th {
+    padding: $table-padding;
+    border-bottom: 1px solid $color-border-table;
+  }
+  
+  tr:first-child th {
+    border-bottom: 3px solid $color-border-table;
+  }
+  
+  tr:last-child td { 
+    border-bottom: 0 none; 
+  }
+}
+
+// Columned
+@mixin make-table-column() {
+  border-collapse: separate;
+  
+  td, th {
+    padding: $table-padding;
+    border-left: 1px solid $color-border-table;
+  }
+  
+  tr:first-child th {
+    border-bottom: 3px solid $color-border-table;
+    border-left: 1px solid $color-border-table;
+  }
+  
+  tr td:first-child, tr th:first-child { 
+    border-left: 0 none;
+  }
+}
+
+// Background
+@mixin make-table-background( $color : $color-bg-table ) {
+  td, th {
+    background: $color;
+  }
+}
+
+// Stripes
+@mixin make-table-stripes( $direction : horizontal ) {
+
+  @if ( $direction == horizontal ) {
+    tr:nth-child(odd) td {
+      background-color: $color-bg-table;
+    }
+  } @else if ( $direction == vertical ) {
+    th:nth-child(even) {
+      background-color: $color-bg-table;
+    }
+    tr td:nth-child(even) {
+      background-color: $color-bg-table;
+    }
+  }
+}
+
+// Padded
+@mixin make-table-padded( $padding : $table-padding ) {
+  td, th {
+    padding: $padding;
+  }
+}
+
+// Hover
+@mixin make-table-hover( $color : rgba($yellow, 0.4) ) {
+  thead tr th:hover, 
+  tbody tr:hover {
+    background-color: $color;
+  }
+  tbody tr:hover td {
+    background: transparent;
+  }
+}
+
+/*==============================================================================
+  Tables
+==============================================================================*/
+
+table {
+  width: 100%; 
+  max-width: 100%;
+  background: transparent;
+  margin: 20px 0;
+  overflow: auto;
+  
+  th {
+    color: $color-header;
+    text-align: left;
+    font-weight: bold;
+  }
+  tr {
+    // Default alignment
+    vertical-align: $table-alignment;
+  }
+  
+  // Modifiers
+  &.table-valign-baseline {
+    tr {
+      vertical-align: baseline;
+    }
+  }
+  &.table-valign-top {
+    tr {
+      vertical-align: top;
+    }
+  }
+  &.table-valign-middle {
+    tr {
+      vertical-align: middle;
+    }
+  }
+  &.table-valign-bottom {
+    tr {
+      vertical-align: bottom;
+    }
+  }
+}
+
+/**
+ * Table Borders
+ */
+.table-rowed {
+  @include make-table-rowed();
+}
+.table-columned { 
+  @include make-table-column();
+}
+.table-bordered { 
+  @include make-table-bordered();
+}
+.table-bordered-wrap {
+  @include make-table-bordered-wrap();
+}
+.table-bordered-sep {
+  @include make-table-bordered-sep();
+}
+
+/**
+ * Table Fills
+ */
+.table-background {
+  @include make-table-background();
+}
+.table-stripes { 
+  @include make-table-stripes();
+}
+.table-stripes-horizontal { 
+  @include make-table-stripes(horizontal);
+}
+.table-stripes-vertical { 
+  @include make-table-stripes(vertical);
+}
+
+/**
+ * Table Modifiers
+ */
+.table-padded { 
+  @include make-table-padded();
+}
+.table-padded-condensed { 
+  @include make-table-padded( $table-padding-condensed );
+}
+.table-padded-expanded { 
+  @include make-table-padded( $table-padding-expanded );
+}
+.table-hover { 
+  @include make-table-hover();
+}

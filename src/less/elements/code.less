@@ -1,0 +1,36 @@
+/*==============================================================================
+  Code
+==============================================================================*/
+
+code, pre {
+  .background-color( @bg-code-base, @bg-code-alpha, @bg-code );
+  .mono-font();
+}
+code {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 (@margin / 2); 
+  white-space: nowrap;
+  line-height: inherit;
+  color: @color-code-inline;
+}
+pre {
+  margin: @margin 0;
+  padding: @margin (@margin + (@margin / 2));
+  overflow: auto;
+  color: @color-code;
+  
+  code {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    font-size: 100%;
+    color: inherit;
+    background: none;
+    border: 0 none;
+  }
+  &.limit-height {
+    max-height: @code-max-height;
+  }
+}

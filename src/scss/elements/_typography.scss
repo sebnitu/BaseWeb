@@ -1,0 +1,122 @@
+/*==============================================================================
+  Typography
+==============================================================================*/
+
+html,
+body {
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+body {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  color: $color;
+}
+
+/**
+ * Headers
+ */
+h1, .h1, 
+h2, .h2,
+h3, .h4,
+h4, .h4,
+h5, .h5, 
+h6, .h6 {
+  margin: 20px 0 10px;
+  font-family: $font-family-header;
+  font-weight: $font-weight-header;
+  line-height: $base-line-height;
+  color: $color-header;
+
+  a {
+    color: $color-link-header;
+    border: 0 none;
+    &:hover {
+      color: $color-link-header-hover;
+    }
+  }
+}
+
+h1,
+.h1 {
+  font-size: 42px;
+  line-height: 50px;
+}
+h2,
+.h2 {
+  font-size: 34px;
+  line-height: 42px;
+}
+h3,
+.h3 {
+  font-size: 28px;
+  line-height: 36px;
+}
+h4,
+.h4 {
+  font-size: 20px;
+  line-height: 28px;
+}
+h5,
+.h5 {
+  font-size: 18px;
+  line-height: 26px;
+}
+h6,
+.h6 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+/**
+ * Base Elements
+ */
+p { 
+  margin: 10px 0;
+
+  &.intro {
+    font-size: 22px;
+    line-height: 28px;
+    color: $color-link;
+  }
+}
+strong,
+b {
+  font-weight: bold;
+  color: $color-header;
+}
+em,
+i {
+  font-style: italic;
+}
+small {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.75em;
+  color: $color-light;
+}
+
+/**
+ * Links
+ */
+a,
+.anchor {
+  @include anchor();
+}
+
+/**
+ * Text Modifiers
+ */
+.underline {
+  text-decoration: underline;
+}
+.strike {
+  text-decoration: line-through;
+}
+.highlight {
+  background: rgba($yellow, 0.6);
+}
+.uppercase { 
+  @include case('upper');
+}

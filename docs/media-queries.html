@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie9 ie8 ie7 ie6" lang="en"><![endif]-->
+<!--[if IE 7]><html class="ie9 ie8 ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie9 ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Media Queries &ndash; BaseWeb &ndash; A fresh front-end development framework.</title>
+  
+  <!-- Stylesheets and less -->
+  <link rel="stylesheet" type="text/css" media="all" href="../src/css/baseweb.min.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../assets/css/docs.css">
+  <link rel="stylesheet" type="text/css" media="all" href="../assets/css/prism.css">
+  
+  <!-- Typekit -->
+  <script type="text/javascript" src="//use.typekit.net/vre4dcv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+</head>
+<body>
+
+<div id="console"></div>
+
+<div class="block-wrapper">
+  
+  <div class="block block-header">
+    <div class="inner">
+      <nav>
+      
+        <ul class="menu-primary">
+          <li class="menu-item menu-item-logo"><a href="/">BaseWeb</a></li>
+            <li id="menu-item-documentation" class="menu-item menu-item-documentation active"><a href="/docs/">Documentation</a></li>
+            <li id="menu-item-examples" class="menu-item menu-item-examples"><a href="/examples/">Examples</a></li>
+            <li id="menu-item-devlog" class="menu-item menu-item-devlog"><a href="/devlog/">Development Log</a></li>
+          <li class="menu-item menu-item-download"><a href="https://github.com/sebnitu/BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
+        </ul>
+        
+        <ul class="menu-secondary">
+          <li><a href="#">Star (24)</a></li>
+          <li><a href="#">Fork (6)</a></li>
+          <li><a href="#">Follow (45)</a></li>
+          <li><a href="#">Tweet (18.6k)</a></li>
+        </ul>
+        
+      </nav>
+    </div>
+  </div>
+  
+  <div class="block block-main block-table">
+    
+    <div class="block block-cell block-aside">
+      <div id="aside-inner" class="aside-inner inner">
+        
+        <div id="aside-item-menu" class="aside-item aside-item-menu">
+          <nav>
+          	<ul>
+                <li id="menu-item-overview" class="menu-item menu-item-overview"><a href="../docs/index.html">Overview</a></li>
+                <li id="menu-item-media-queries" class="menu-item menu-item-media-queries active"><a href="../docs/media-queries.html">Media Queries</a></li>
+                <li id="menu-item-grid-system" class="menu-item menu-item-grid-system"><a href="../docs/grid-system.html">Grid System</a></li>
+                <li id="menu-item-elements" class="menu-item menu-item-elements"><a href="../docs/elements.html">Elements</a></li>
+                <li id="menu-item-blocks" class="menu-item menu-item-blocks"><a href="../docs/blocks.html">Blocks</a></li>
+                <li id="menu-item-customization" class="menu-item menu-item-customization"><a href="../docs/customization.html">Customization</a></li>
+          	</ul>
+          </nav>
+        </div>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-aside -->
+    
+    <div class="block block-cell block-content">
+      <div class="inner clearfix">
+        
+        <div class="container container-float-left container-no-padding">
+
+<span class="icon icon-mediaqueries"></span>
+<h2 id="media-queries">Media Queries</h2>
+
+<p>BaseWeb is built mobile first. What this means in terms of media queries is that each is additive starting from tablet. All styles not wrapped in a media query are applied to mobile directly. The tablet breakpoint is added on top of the base mobile styles, then desktop on top of mobile and tablet, etc.</p>
+
+<p>There are also two supplementary media queries. <code>@mixin media-mobile</code> lets you apply styles to only mobile and <code>@mixin media-small</code> to only vertical oriented mobile.</p>
+
+<div class="example">
+  <div class="example-block example-desc">
+    <p>Unlike most mixins, media mixins don't take parameters. Instead, you pass in the style blocks through brackets like you would with a normal media query.</p>
+  </div><!-- .example-desc -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// Styles here apply to all screen sizes
+
+@include media-small {
+  // Vertical Oriented Mobile Only
+}
+
+@include media-mobile {
+  // Mobile Only
+}
+
+@include media-tablet {
+  // Tablet and below
+}
+
+@include media-desktop {
+  // Desktop and below
+}
+
+@include media-large {
+  // Large desktop and below
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<div class="block-warning">
+  <p>If you prefer to run your queries differently (desktop first, for example), or if you'd like to add new queries, make sure to review the <a href="#">customization documentation</a>. If possible, try and avoid modifying core BaseWeb files directly as that makes updating to newer versions much more difficult.</p>
+</div>
+
+<h2 id="retina-media-query">Retina Media Query</h2>
+
+<p>The media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.logo {
+  background-image: src('logo.png');
+}
+
+@include media-retina {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.logo {
+  background-image: src('logo.png');
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<!-- #variables -->
+
+<h2 id="variables">Variables</h2>
+
+<!-- #variable #bp-small -->
+
+<article id="variable-bp-small" class="block block-variable" data-type="variable">
+<h3>$bp-small</h3>
+<p>The breakpoint to be used for vertical oriented mobile devices. The media feature is expressed using: <code>max-width</code></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bp-small
+  type: unit (pixel)
+  default: 480px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-media-small" class="code-link"><code>@mixin media-small</code></a>
+</span>
+</article>
+
+<!-- #variable #bp-mobile -->
+
+<article id="variable-bp-mobile" class="block block-variable" data-type="variable">
+<h3>$bp-mobile</h3>
+<p>The breakpoint to be used for all mobile devices and orientations. The media feature is expressed using: <code>max-width</code></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bp-mobile
+  type: unit (pixel)
+  default: 760px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-media-mobile" class="code-link"><code>@mixin media-mobile</code></a>
+</span>
+</article>
+
+<!-- #variable #bp-tablet -->
+
+<article id="variable-bp-tablet" class="block block-variable" data-type="variable">
+<h3>$bp-tablet</h3>
+<p>The breakpoint to be used for tablet devices. The media feature is expressed using: <code>min-width</code></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bp-tablet
+  type: unit (pixel)
+  default: 760px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-media-tablet" class="code-link"><code>@mixin media-tablet</code></a>
+</span>
+</article>
+
+<!-- #variable #bp-desktop -->
+
+<article id="variable-bp-desktop" class="block block-variable" data-type="variable">
+<h3>$bp-desktop</h3>
+<p>The breakpoint to be used for computer screens. The media feature is expressed using: <code>min-width</code></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bp-desktop
+  type: unit (pixel)
+  default: 990px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-media-desktop" class="code-link"><code>@mixin media-desktop</code></a>
+</span>
+</article>
+
+<!-- #variable #bp-large -->
+
+<article id="variable-bp-large" class="block block-variable" data-type="variable">
+<h3>$bp-large</h3>
+<p>The breakpoint to be used for large computer screens. The media feature is expressed using: <code>min-width</code></p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">$bp-large
+  type: unit (pixel)
+  default: 1380px</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#mixin-media-large" class="code-link"><code>@mixin media-large</code></a>
+</span>
+</article>
+
+<hr>
+
+<!-- #mixins -->
+
+<h2 id="mixins">Mixins</h2>
+
+<!-- #mixin #media-small -->
+
+<article id="mixin-media-small" class="block block-mixin" data-type="mixin">
+<h3>media-small</h3>
+<p>For applying styles specifically to vertically oriented mobile devices. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-small {
+  @media screen and ( max-width: $bp-small ) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include media-small {
+  // Your style block goes here
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-bp-small" class="code-link"><code>$bp-small</code></a>
+</span>
+</article>
+
+<!-- #mixin #media-mobile -->
+
+<article id="mixin-media-mobile" class="block block-mixin" data-type="mixin">
+<h3>media-mobile</h3>
+<p>For applying styles specifically to mobile devices. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-mobile {
+  @media screen and ( max-width: $bp-mobile ) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include media-mobile {
+  // Your style block goes here
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-bp-mobile" class="code-link"><code>$bp-mobile</code></a>
+</span>
+</article>
+
+<!-- #mixin #media-tablet -->
+
+<article id="mixin-media-tablet" class="block block-mixin" data-type="mixin">
+<h3>media-tablet</h3>
+<p>For applying styles to tablet devices and above. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-tablet {
+  @media screen and ( max-width: $bp-tablet ) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include media-tablet {
+  // Your style block goes here
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-bp-tablet" class="code-link"><code>$bp-tablet</code></a>
+</span>
+</article>
+
+<!-- #mixin #media-desktop -->
+
+<article id="mixin-media-desktop" class="block block-mixin" data-type="mixin">
+<h3>media-desktop</h3>
+<p>For applying styles to desktop screens and above. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-desktop {
+  @media screen and ( max-width: $bp-desktop ) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include media-desktop {
+  // Your style block goes here
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-bp-desktop" class="code-link"><code>$bp-desktop</code></a>
+</span>
+</article>
+
+<!-- #mixin #media-large -->
+
+<article id="mixin-media-large" class="block block-mixin" data-type="mixin">
+<h3>media-large</h3>
+<p>For applying styles to large desktop screens and above. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-large {
+  @media screen and ( max-width: $bp-large ) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@include media-large {
+  // Your style block goes here
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+<span class="reference">Reference:
+  <a href="#variable-bp-large" class="code-link"><code>$bp-large</code></a>
+</span>
+</article>
+
+<!-- #mixin #media-retina -->
+
+<article id="mixin-media-retina" class="block block-mixin" data-type="mixin">
+<h3>media-retina</h3>
+<p>For applying styles to retina screens or devices. The <code>@content</code> directive is where your style block will be placed.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin media-retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<h4>Example Usage</h4>
+
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">// SCSS
+.logo {
+  background-image: src('logo.png');
+}
+
+@include media-retina {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+</code></pre>
+  </div><!-- .example-code -->
+  <div class="example-block example-code">
+<pre><code class="language-scss">// CSS Output
+.logo {
+  background-image: src('logo.png');
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+</article>
+        </div>
+        
+      </div><!-- .inner -->
+    </div><!-- .block-cell .block-content -->
+    
+  </div><!-- .block-table -->
+  
+  <div class="block block-footer">
+    <div class="inner">
+      
+      <nav>
+        <ul class="menu-left">
+          <li class="menu-item-feedback"><a href="#">Feedback</a></li>
+          <li class="menu-item-copyright">&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</li>
+        </ul>
+        <ul class="menu-right">
+          <li><a href="#" target="_blank">Privacy Policy</a></li>
+          <li><a href="#" target="_blank">Terms of Service</a></li>
+        </ul>
+      </nav>
+      
+    </div><!-- .inner -->
+  </div><!-- .block-footer -->
+  
+</div>
+
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="../src/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+
+<!-- JS -->
+<script src="../src/js/baseweb.min.js"></script>
+<script src="../assets/js/jquery.stickykit.js"></script>
+<script src="../assets/js/prism.js"></script>
+<script src="../assets/js/jquery.docs.js"></script>
+
+</body>
+</html>

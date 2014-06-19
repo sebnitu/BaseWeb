@@ -1,0 +1,250 @@
+////////////////////////////////////////////////////////////////////////////////
+// Grid
+////////////////////////////////////////////////////////////////////////////////
+
+// Global grid settings
+@grid-total-width: 100%;
+@grid-gutter-width: 2%;
+@grid-columns: 12;
+
+// Fluid grid settings
+@container-padding: 20px;
+@container-min-width: 900px;
+@container-max-width: 1000px;
+
+// Grid class names
+@class-container: container;
+@class-row: row;
+@class-column: col;
+@class-prefix: prefix;
+@class-suffix: suffix;
+
+////////////////////////////////////////////////////////////////////////////////
+// Media Queries
+////////////////////////////////////////////////////////////////////////////////
+
+// Media query breakpoints(bp)
+@bp-small:   480px;      // max-width
+@bp-mobile:  760px;      // min-width
+@bp-tablet:  @bp-mobile; // min-width
+@bp-desktop: 990px;      // min-width
+@bp-large:   1380px;     // min-width
+
+// Media Query Templates
+// These are used to add styles to a media query without having to directly write the query.
+// 
+// @Syntax #responsive { .desktop() { ... your specific desktop styles here ... } }
+#responsive {
+  .small()   {}
+  .mobile()  {}
+  .tablet()  {}
+  .desktop() {}
+  .large()   {}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Mixin Defaults
+////////////////////////////////////////////////////////////////////////////////
+
+// CSS3
+@border-radius: 4px;
+@box-shadow: 0 1px 3px rgba(0,0,0, 0.25);
+
+@transition: all 0.25s linear; // property, duration, timing-function, delay
+@transition-property: all;
+@transition-duration: 0.25s;
+@transition-timing-function: ease-in-out;
+@transition-delay: 0.25s;
+
+@rotate-degree: 0;
+
+@gradient-start-color: @blue-light;
+@gradient-center-color: @blue;
+@gradient-end-color: @blue-darker;
+@gradient-deg: 45deg;
+@gradient-color-stop: 50%;
+
+// Miscellaneous
+@letter-spacing: 1px;
+@display-visible: block;
+
+// Directories
+@dir-images: "../img/layout/";
+@dir-fonts: "../fonts/";
+
+////////////////////////////////////////////////////////////////////////////////
+// Typography
+////////////////////////////////////////////////////////////////////////////////
+
+// Font Families
+@font-family-sans: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+@font-family-slab: @font-family-sans;
+@font-family-serif: georgia, "Times New Roman", times, serif;
+@font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-icon: "Glyphicons";
+
+// Base Styles
+@font-family: @font-family-sans;
+@font-size: 14px;
+@font-weight: normal;
+@font-unit: px; // Either `em` or `px` for font outputs
+
+@line-height-inc: 8px;
+@line-height: unit( (@font-size + @line-height-inc), px ); // 22px
+
+// Header Styles
+@font-family-header: inherit;
+@font-weight-header: bold;
+
+// Alternative Styles
+@font-family-alt: @font-family-serif;
+@font-weight-alt: inherit;
+
+// Text Color Assignment
+@color: @gray-dark;
+@color-light: @gray-lighter;
+@color-dark: @gray-darker;
+@color-header: @color;
+
+@color-link: @blue;
+@color-link-hover: @red;
+@color-link-header: @color-link;
+@color-link-header-hover: @color-link-hover;
+
+////////////////////////////////////////////////////////////////////////////////
+// Scaffolding
+////////////////////////////////////////////////////////////////////////////////
+
+// Backgrounds
+@bg: #f4f4f4;
+@bg-alpha: 0.04;
+@bg-base: @black;
+@bg-selection: #d7eba2;
+
+// Borders
+@border: #e0e0e0;
+@border-alpha: 0.1;
+@border-base: @black;
+
+// Spacing
+@margin: (@line-height / 2);
+@padding: (@line-height / 2);
+
+////////////////////////////////////////////////////////////////////////////////
+// Code
+////////////////////////////////////////////////////////////////////////////////
+
+// Backgrounds
+@bg-code: @bg;
+@bg-code-alpha: @bg-alpha;
+@bg-code-base: @bg-base;
+
+// Settings
+@color-code: @color;
+@color-code-inline: @cMyk;
+@font-size-code: 12px; // @font-size * 0.85
+@code-max-height: 400px;
+
+////////////////////////////////////////////////////////////////////////////////
+// Tables
+////////////////////////////////////////////////////////////////////////////////
+
+// Backgrounds
+@bg-table: @white;
+@bg-table-alpha: 0;
+@bg-table-base: @white;
+
+// Background Zebra
+@bg-table-zebra: @bg;
+@bg-table-zebra-alpha: @bg-alpha;
+@bg-table-zebra-base: @bg-base;
+
+// Background Hover
+@bg-table-hover: @yellow-lighter;
+@bg-table-hover-alpha: 0.25;
+@bg-table-hover-base: @cmYk;
+
+// Border
+@border-table: #d0d0d0;
+@border-table-alpha: 0.15;
+@border-table-base: @black;
+
+////////////////////////////////////////////////////////////////////////////////
+// Forms
+////////////////////////////////////////////////////////////////////////////////
+
+// Structure
+@key-column-width: 160px;
+@key-column-gutter: 20px;
+
+@bg-form: @bg;
+@bg-form-alpha: @bg-alpha;
+@bg-form-base: @bg-base;
+
+@border-form: #d8d8d8;
+@border-form-alpha: 0.15;
+@border-form-base: @black;
+
+// Input
+@font-family-form: @font-family;
+@font-size-form: 14px;
+@line-height-form: 20px;
+@color-form: @color;
+
+@bg-input: @white;
+@bg-input-alpha: 1;
+@bg-input-base: @white;
+
+@border-input: #bfbfbf;
+@border-input-alpha: 0.25;
+@border-input-base: @black;
+@border-input-size: 1px;
+@border-input-style: solid;
+
+@input-padding-top-bottom: round((@padding / 2));
+@input-padding-left-right: round((@padding / 2));
+@input-padding: round((@padding / 2));
+
+@input-width: 220px;
+@input-height: @line-height-form;
+@input-box-size: border-box;
+
+// Hard variables: Should not be changed!
+.input-schematics() when (@input-box-size = content-area) {
+  @true-input-width: (@input-width - ((@input-padding-left-right * 2) + (@border-input-size * 2)) );
+  @true-input-height: @input-height;
+}
+.input-schematics() when (@input-box-size = border-box) {
+  @true-input-width: @input-width;
+  @true-input-height: (@input-height + ((@input-padding-top-bottom * 2) + (@border-input-size * 2)) );
+}
+.input-schematics();
+
+// Labels
+// Used for horizontal forms to align labels with input fields
+@line-height-label: @true-input-height;
+
+////////////////////////////////////////////////////////////////////////////////
+// Modal Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Backgrounds
+@bg-modal: @white;
+@bg-modal-header: transparent;
+@bg-modal-body: transparent;
+@bg-modal-footer: @bg;
+
+// Borders
+@border-modal: @border;
+
+// Spacing
+@modal-padding-top-bottom: 15px;
+@modal-padding-left-right: 20px;
+@modal-padding: @modal-padding-top-bottom @modal-padding-left-right;
+
+// Typography
+@modal-font-size-header: 18px;
+
+// Details
+@modal-border-radius: @border-radius;
+@modal-box-shadow: 0 1px 5px rgba(0,0,0, 0.5);

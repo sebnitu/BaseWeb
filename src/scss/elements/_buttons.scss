@@ -1,0 +1,318 @@
+////////////////////////////////////////////////////////////////////////////////
+// Button Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Structure
+$button-height: 40px !default; // Best if set to the same height as $form-element-height
+
+// Default Colors
+$btn-color: #efefef !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// Button Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+////
+// Base Button Styles Mixin
+@mixin base-btn-init {
+  // Position
+  position: relative;
+  vertical-align: middle;
+  z-index: 5;
+  
+  // Box-model
+  position: relative;
+  display: inline-block;
+  height: $button-height;
+  margin: 0;
+  padding: 9px 25px;
+  
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing(border-box);
+  }
+  
+  // Type
+  font-family: $base-font-family;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  white-space: nowrap;
+  
+  // Miscellaneous
+  cursor: pointer;
+  @content;
+}
+
+////
+// Hover
+@mixin base-btn-hover() {
+  &:hover {
+    z-index: 10;
+    @content;
+  }
+}
+
+////
+// Active
+@mixin base-btn-active() {
+  &.btn-active,
+  &:active {
+    z-index: 15;
+    @content;
+  }
+}
+
+////
+// Focus
+@mixin base-btn-focus() {
+  &:focus {
+    z-index: 10;
+    outline: none;
+    @content;
+  }
+}
+
+////
+// Compiled Base Button Styles With States
+@mixin make-base-btn() {
+  @include base-btn-init;
+  @include base-btn-hover;
+  @include base-btn-active;
+  @include base-btn-focus;
+  @content;
+}
+
+////////////////////////////////////////
+// Button Colors
+////////////////////////////////////////
+
+@mixin btn-color-init( $bg-color, $color ) {
+  color: $color;
+  @if($color == #fff) {
+    text-shadow: 0 1px 1px rgba($black, 0.25);
+  } @else {
+    text-shadow: 0 1px 0 rgba($white, 0.5);
+  }
+  @include gradient-vertical($bg-color, darken($bg-color, $darker-deg));
+  border: 1px solid rgba(0,0,0, 0.15);
+  @include border-radius();
+  box-shadow: inset 0 0 0 rgba(0,0,0, 0);
+  @include transition(
+    background ease 0.25s,
+    border ease 0.25s,
+    box-shadow ease 0.25s
+  );
+  @content;
+}
+
+// All states (hover, active and focus)
+@mixin btn-color-state( $bg-color, $color ) {
+  &:hover,
+  &:focus {
+    color: $color;
+    background-position: 0 -40px;
+    border: 1px solid rgba(0,0,0, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0,0,0, 0.05);
+    @content;
+  }
+}
+
+// Active
+@mixin btn-color-active( $bg-color, $color ) {
+  &:active {
+    color: $color;
+    background-position: 0 -40px;
+    border: 1px solid rgba(0,0,0, 0.25);
+    box-shadow: inset 0 1px 2px rgba(0,0,0, 0.15);
+    @content;
+  }
+}
+
+// Compiled Color Button Styles With States
+@mixin btn-color( $bg-color, $color : #fff ) {
+  @include btn-color-init( $bg-color, $color );
+  @include btn-color-state( $bg-color, $color );
+  @include btn-color-active( $bg-color, $color );
+  @content;
+}
+
+////////////////////////////////////////
+// Button Sizing
+////////////////////////////////////////
+
+@mixin btn-size-huge() {
+  font-size: 18px;
+  line-height: 24px;
+  padding: 20px 60px;
+  height: auto;
+}
+@mixin btn-size-large() {
+  font-size: 16px;
+  line-height: 22px;
+  padding: 15px 30px;
+  height: auto;
+}
+@mixin btn-size-normal() {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 20px;
+}
+@mixin btn-size-small() {
+  font-size: 12px;
+  line-height: 20px;
+  padding: 6px 15px;
+  height: auto;
+}
+@mixin btn-size-tiny() {
+  font-size: 10px;
+  line-height: 18px;
+  padding: 2px 10px;
+  height: auto;
+}
+
+////////////////////////////////////////
+// Button Utility
+////////////////////////////////////////
+
+// Faint for subtle buttons
+@mixin make-btn-faint() {
+  @include btn-color( $btn-color, $color-dark );
+}
+
+// Disabled
+@mixin make-btn-disabled() {
+  cursor: not-allowed;
+  opacity: 0.75;
+  @include btn-color-init( $btn-color, $color-dark );
+}
+
+////////////////////////////////////////
+// Button Structure
+////////////////////////////////////////
+
+// BLock
+@mixin make-btn-block() {
+  display: block;
+  width: 100%;
+}
+
+// Inline
+@mixin make-btn-inline() {
+  display: inline-block;
+  width: auto;
+}
+
+// Mobile
+// Converts to block button on mobiles
+@mixin make-btn-mobile-block() {
+  @include make-btn-block();
+  @include media-tablet {
+    @include make-btn-inline();
+  }
+}
+
+// Small Mobile
+// Converts to block button on small mobiles
+@mixin make-btn-small-block() {
+  @include make-btn-inline();
+  @include media-small {
+    @include make-btn-block();
+  }
+}
+
+/*==============================================================================
+  Buttons
+==============================================================================*/
+
+/**
+ * Base Button Styles
+ */
+.btn {
+  @include make-base-btn();
+}
+form .btn { vertical-align: inherit; }
+
+/**
+ * Semantic Classes
+ */
+.btn-default {
+  @include btn-color( darken($btn-color, 1%), $color-dark );
+}
+.btn-primary {
+  @include btn-color( $blue-light );
+}
+.btn-secondary {
+  @include btn-color( $gray-dark );
+}
+.btn-success {
+  @include btn-color( mix($green-light, $yellow-light) );
+}
+.btn-warning {
+  @include btn-color( mix($yellow-light, $orange-light) );
+}
+.btn-danger {
+  @include btn-color( $red-light );
+}
+.btn-active {
+  @include btn-color( $blue-light );
+}
+
+/**
+ * Size Classes
+ */
+.btn-huge  {
+  @include btn-size-huge();
+}
+.btn-large {
+  @include btn-size-large();
+}
+.btn-normal {
+  @include btn-size-normal();
+}
+.btn-small {
+  @include btn-size-small();
+}
+.btn-tiny {
+  @include btn-size-tiny();
+}
+
+/*==============================================================================
+  Button Utilities
+==============================================================================*/
+
+/** 
+ * Faint
+ */
+.btn-faint {
+  @include make-btn-faint();
+}
+
+/**
+ * Disabled
+ */
+.btn.btn-disabled,
+.btn.btn-disabled:hover,
+.btn.btn-disabled:active,
+.btn.btn-disabled:focus,
+.btn[disabled],
+.btn[disabled]:hover,
+.btn[disabled]:active,
+.btn[disabled]:focus {
+  @include make-btn-disabled();
+}
+
+/**
+ * Button Structure
+ */
+.btn-block {
+  @include make-btn-block();
+}
+.btn-inline {
+  @include make-btn-inline();
+}
+.btn-mobile-block {
+  @include make-btn-mobile-block();
+}
+.btn-small-block {
+  @include make-btn-small-block();
+}

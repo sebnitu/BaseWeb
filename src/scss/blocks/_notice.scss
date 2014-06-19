@@ -1,0 +1,104 @@
+/*==============================================================================
+  Notices
+==============================================================================*/
+
+.notice {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 50px 10px 15px;
+  color: $color;
+  background: $bg-color;
+  border: 1px solid $border-color;
+  @include border-radius();
+  
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  &.notice-no-close {
+    padding-right: 15px;
+    
+    .notice-close {
+      display: none;
+    }
+  }
+  
+  &.notice-info {
+    background: $pale-blue;
+  }
+  &.notice-success {
+    background: $pale-green;
+  }
+  &.notice-warning {
+    background: $pale-yellow;
+  }
+  &.notice-danger,
+  &.notice-error {
+    background: $pale-red;
+  }
+}
+
+/**
+ * Close Button
+ */
+.notice .notice-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  float: right;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba($black, 0.2);
+  text-shadow: none;
+  
+  background: rgba($black, 0);
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  &:hover {
+    color: rgba($black, 0.5);
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+/**
+ * Notice Typography
+ */
+.notice {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 10px;
+    font-size: ($base-font-size + 4);
+    line-height: ($base-line-height + 4);
+  }
+  
+  p {
+    margin: 5px 0;
+  }
+  
+  ul {
+    margin: 10px 0;
+    padding: 0 0 0 20px;
+  }
+  ul li {
+    margin: 5px 0;
+  }
+
+}
