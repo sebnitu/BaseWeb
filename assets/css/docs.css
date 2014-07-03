@@ -532,6 +532,89 @@ html {
   position: relative;
 }
 
+/* Example Tags */
+.example .example-tag {
+  position: absolute;
+  top: 8px;
+  right: -8px;
+}
+
+.example .example-tag .tag {
+  float: left;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 15px;
+}
+.example .example-tag .tag:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.example .example-tag .tag-copy {
+  background: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0, 0.1);
+  margin-right: -1px;
+  -webkit-transition: none;
+  transition: none;
+}
+.example .example-tag .tag-copy:hover {
+  z-index: 2;
+}
+
+.example .example-tag .tag-lang {
+  background: #909090;
+  border: 1px solid rgba(0,0,0, 0.1);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0,0,0, 0.1);
+  text-transform: uppercase;
+}
+.example .example-tag .tag-lang:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+  /* Up Left */
+  border-width: 4px;
+  border-top-color: #707070;
+  border-left-color: #707070;
+  /* Position */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0 -1px 0 0;
+}
+
+.example .example-tag .tag-lang-html {
+  background: #8ecb25;
+}
+.example .example-tag .tag-lang-html:after {
+  border-top-color: #6d9d19;
+  border-left-color: #6d9d19;
+}
+
+.example .example-tag .tag-lang-scss {
+  background: #bc6bd3;
+}
+.example .example-tag .tag-lang-scss:after {
+  border-top-color: #a155b6;
+  border-left-color: #a155b6;
+}
+
+.example .example-tag .tag-lang-css {
+  background: #2ab0ea;
+}
+.example .example-tag .tag-lang-css:after {
+  border-top-color: #239acd;
+  border-left-color: #239acd;
+}
+
 /* Example Heading */
 .example .example-heading {
   z-index: 10;
@@ -586,6 +669,7 @@ html {
 .example .example-code {
   z-index: 5;
   background: #f8f8f8;
+  padding-right: 50px;
 }
 .example .example-code pre {
   margin: 5px 0;

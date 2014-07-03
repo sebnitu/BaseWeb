@@ -8,6 +8,7 @@ Some features I have planned to implement in the near future.
 
 ### To-Do List
 
+* Add copy button feature for example code blocks
 * Want to try collapsable variable, function and mixin displays for the docs (accordion style). Might help with navigating through all of them more easily.
 * Add hash tags back to the URL when clicking internal page links.
 * Add a table of context widget.

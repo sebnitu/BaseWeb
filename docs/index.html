@@ -87,6 +87,19 @@
 
 <p>BaseWeb is designed to be a starting point for your front-end projects. You can use the source as a base and make it your own, or keep it maintainable for future BaseWeb updates by keeping customization separate from the core files. You can also use the output CSS and JS files and not deal with the source at all. Although, it's recommended to work directly along side the SCSS to take full advantage of the framework.</p>
 
+<p>BaseWeb uses a unique padigm for both organizing your files and styles within your files. The system is GEBC (Global, Elements, Blocks and Custom). An easy way to imagin this sytem is to think of Core as being a set of variable and mixins that are globally available, Elements are the individual HTML styles that make up the DOM and Blocks are the combination of Elements that serve a specific semantic or user interface purpose (such as a dropdown, or modal window).</p>
+
+<p>Within these files, elements and blocks may also contain custom variables and mixins. If a variable or mixin is used in multiple blocks or elements however, it should be included in a core file. Elements and blocks will then contain their base styles and optional modifier classes. It's generally a good idea to use variables for defining classes and setup a way to disable their output if needed.</p>
+
+<ul>
+  <li>File Specific Variables</li>
+  <li>File Specific Mixins</li>
+  <li>Element or block Base Styles</li>
+  <li>Modifier Classes (classes that are used to modify the base styles)</li>
+</ul>
+
+<p>Custom styles contain things that are project specific. This may include BaseWeb overrides or completely unique files. By default, BaseWeb comes with <code>_custom.scss</code> which is where you'd set site specific styles. But if you'd like to override BaseWeb's files such as notice styles, you could create a new <code>_notice.scss</code> file within the <code>custom</code> directory and update <code>_baseweb.scss</code> with the new path. This allows you to maintain unique blocks while keeping the BaseWeb framework maintainable. Otherwise, if you're branching BaseWeb off as it's own project and you won't need to keep files updated with future versions, you could just override these files directly.</p>
+
 <aside class="col col-6 align-right">
   <div class="example">
     <div class="example-block example-heading">
@@ -179,6 +192,9 @@
     </div>
   </div><!-- .example-output -->
   <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
 <pre><code class="language-scss">// Gray Scale
 $black:        #000000 !default;
 $gray-darker:  #303030 !default;
@@ -212,6 +228,9 @@ $white:        #ffffff !default;</code></pre>
     </div>
   </div><!-- .example-output -->
   <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
 <pre><code class="language-scss">// Primary
 $red:    #de5151 !default;
 $yellow: #d1c329 !default;
@@ -255,6 +274,9 @@ $blue-violet:   saturate(mix($blue, $violet, 50), 5%) !default;
     </div>
   </div><!-- .example-output -->
   <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
 <pre><code class="language-scss">// Pale Primary
 $pale-red:    #fbeded !default;
 $pale-yellow: #fdf8e6 !default;
@@ -282,6 +304,9 @@ $pale-blue-violet:   saturate(mix($pale-blue, $pale-violet, 50), 5%) !default;
 
 <div class="example">
   <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
 <pre><code class="language-scss">$light-deg:   5%  !default;
 $lighter-deg: 10% !default;
 $dark-deg:    5%  !default;
@@ -987,8 +1012,10 @@ $darker-deg:  10% !default;</code></pre>
 
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-h1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">h1 {
   font-size: px_to_em(28px);
 }
 
@@ -1000,8 +1027,10 @@ h1 {
 }</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-h1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">h1 {
   font-size: 2em;
 }
 
@@ -1101,22 +1130,24 @@ h1 {
 
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.box-rectangle {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.box-rectangle {
   @include size(150px, 250px);
 }
-
 .box-square {
   @include size(75);
 }</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.box-rectangle {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.box-rectangle {
   width: 150px;
   height: 250px;
 }
-
 .box-square {
   width: 75px;
   height: 75px;
@@ -1141,8 +1172,10 @@ h1 {
 
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.wrapper {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.wrapper {
   @include clearfix;
   
   .aside,
@@ -1152,8 +1185,10 @@ h1 {
 }</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.wrapper:after {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.wrapper:after {
   content: "";
   display: table;
   clear: both;
@@ -1275,8 +1310,10 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.example-box-shadow-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.example-box-shadow-1 {
   @include box-shadow($box-shadow);
 }
 
@@ -1292,8 +1329,10 @@ h1 {
 }</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.example-box-shadow-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.example-box-shadow-1 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -1319,6 +1358,9 @@ h1 {
 <pre><code class="language-scss">@mixin border-radius( $radius )</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
 <pre><code class="language-scss">// Mixin Variations
 
 @include border-radius              // all four corners
@@ -1376,8 +1418,10 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.example-border-radius {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.example-border-radius {
   @include border-radius(6px);
 }
 
@@ -1397,8 +1441,10 @@ h1 {
 </code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.example-border-radius {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.example-border-radius {
   border-radius: 6px;
 }
   
@@ -1465,8 +1511,10 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.example-rotate-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.example-rotate-1 {
   @include rotate(15deg);
 }
 
@@ -1479,8 +1527,10 @@ h1 {
 }</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.example-rotate-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.example-rotate-1 {
   -webkit-transform: rotate(15deg);
   -ms-transform: rotate(15deg);
   transform: rotate(15deg);
@@ -1547,8 +1597,10 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.example-transition-target-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.example-transition-target-1 {
   // ...
   @include transition;
 }
@@ -1563,8 +1615,10 @@ h1 {
 </code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.example-transition-target-1 {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-scss">.example-transition-target-1 {
   // ...
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
@@ -1741,8 +1795,10 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-@include keyframes(colorchange) {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">@include keyframes(colorchange) {
   0%   { background-color: $red-lighter;    }
   25%  { background-color: $yellow-lighter; }
   50%  { background-color: $green-lighter;  }
@@ -1757,8 +1813,10 @@ h1 {
 </code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-@-webkit-keyframes colorchange {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-css">@-webkit-keyframes colorchange {
   0% { background-color: #e67c7c; }
   25% { background-color: #ddcf50; }
   50% { background-color: #a6dd46; }
@@ -1775,7 +1833,6 @@ h1 {
 }
 
 .example-animation {
-  // ...
   -webkit-animation-name: colorchange;
   animation-name: colorchange;
 }
@@ -2056,15 +2113,19 @@ h1 {
     
   </div><!-- .example-output -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// SCSS
-.example-gradient-horizontal {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-scss">SCSS</span>
+    </div>
+<pre><code class="language-scss">.example-gradient-horizontal {
   @include gradient-horizontal($blue, $green);
 }
 </code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
-<pre><code class="language-scss">// CSS Output
-.example-gradient-horizontal {
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-css">CSS</span>
+    </div>
+<pre><code class="language-css">.example-gradient-horizontal {
   background-color: #8ecb25;
   background-image: -webkit-linear-gradient(left, #2ab0ea, #8ecb25);
   background-image: linear-gradient(left, #2ab0ea, #8ecb25);
