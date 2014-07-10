@@ -59,12 +59,12 @@ table {
   Typography
 ==============================================================================*/
 html, body {
-  font-size: 14px;
-  line-height: 20px; }
+  font-size: 14px; }
 
 body {
   font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-weight: normal;
+  line-height: 20px;
   color: #606060; }
 
 /**
@@ -84,6 +84,10 @@ h1, .h1, h2, .h2, h3, .h4, h4, .h4, h5, .h5, h6, .h6 {
   h1 small, .h1 small, h2 small, .h2 small, h3 small, .h4 small, h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small {
     font-size: 14px;
     line-height: 20px;
+    font-weight: normal;
+    color: #909090; }
+  h1 .text-soften, .h1 .text-soften, h2 .text-soften, .h2 .text-soften, h3 .text-soften, .h4 .text-soften, h4 .text-soften, .h4 .text-soften, h5 .text-soften, .h5 .text-soften, h6 .text-soften, .h6 .text-soften {
+    font-weight: normal;
     color: #909090; }
 
 h1, .h1 {
@@ -95,16 +99,16 @@ h2, .h2 {
   line-height: 42px; }
 
 h3, .h3 {
-  font-size: 28px;
-  line-height: 36px; }
+  font-size: 26px;
+  line-height: 34px; }
 
 h4, .h4 {
-  font-size: 20px;
-  line-height: 28px; }
-
-h5, .h5 {
   font-size: 18px;
   line-height: 26px; }
+
+h5, .h5 {
+  font-size: 16px;
+  line-height: 22px; }
 
 h6, .h6 {
   font-size: 14px;
@@ -115,16 +119,12 @@ h6, .h6 {
  */
 p {
   margin: 10px 0; }
-  p.intro {
-    font-size: 22px;
-    line-height: 28px;
-    color: #2ab0ea; }
 
-strong, b {
+strong, b, .text-bold {
   font-weight: bold;
   color: #303030; }
 
-em, i {
+em, i, .text-italic {
   font-style: italic; }
 
 small {
@@ -133,16 +133,20 @@ small {
   font-size: 0.75em;
   color: #aaaaaa; }
 
+abbr[title], abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #aaaaaa; }
+
 /**
  * Links
  */
-a, .anchor {
+a, .text-anchor {
   color: #2ab0ea;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-transition: color linear 0.25s, border linear 0.25s;
   transition: color linear 0.25s, border linear 0.25s; }
-  a:hover, .anchor:hover {
+  a:hover, .text-anchor:hover {
     color: #bc6bd3;
     cursor: pointer;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -150,18 +154,51 @@ a, .anchor {
 /**
  * Text Modifiers
  */
-.underline {
+u, .text-underline {
   text-decoration: underline; }
 
-.strike {
+s, .text-strike {
   text-decoration: line-through; }
 
-.highlight {
+.text-highlight {
   background: rgba(241, 196, 15, 0.6); }
 
-.uppercase {
+.text-pull {
+  font-size: 22px;
+  line-height: 28px;
+  color: #2ab0ea; }
+
+.text-soften {
+  color: #909090; }
+
+.text-nowrap {
+  white-space: nowrap; }
+
+/* Case */
+.text-lowercase {
+  text-transform: lowercase;
+  letter-spacing: 0; }
+
+.text-uppercase {
   text-transform: uppercase;
   letter-spacing: 1px; }
+
+.text-capitalize {
+  text-transform: capitalize;
+  letter-spacing: 0; }
+
+/* Alignment */
+.text-left {
+  text-align: left; }
+
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.text-justify {
+  text-align: justify; }
 
 /*==============================================================================
   Insert & Delete
@@ -222,9 +259,14 @@ del, .del, .danger {
 /*==============================================================================
   @ Lists
 ==============================================================================*/
+/**
+ * Base List Styles
+ */
 ul, ol {
   margin: 10px 0 10px 20px;
   padding: 0; }
+  ul li, ol li {
+    margin: 5px 0; }
   ul.remove-list-styles, ol.remove-list-styles {
     list-style: none;
     margin: 0;
@@ -232,6 +274,9 @@ ul, ol {
     ul.remove-list-styles li, ol.remove-list-styles li {
       margin: 0; }
 
+/**
+ * Unordered Lists
+ */
 ul, ul ul ul ul {
   list-style: disc; }
 
@@ -241,6 +286,9 @@ ul ul {
 ul ul ul {
   list-style: disc; }
 
+/**
+ * Ordered Lists
+ */
 ol, ol ol ol ol {
   list-style: decimal; }
 
@@ -250,9 +298,9 @@ ol ol {
 ol ol ol {
   list-style: lower-roman; }
 
-ul li, ol li {
-  margin: 5px 0; }
-
+/**
+ * Description Lists
+ */
 dl {
   margin: 10px 0; }
   dl dt {
@@ -339,13 +387,13 @@ blockquote {
   padding: 10px 20px;
   background: rgba(0, 0, 0, 0.025);
   border-radius: 3px; }
-  blockquote small {
+  blockquote footer, blockquote .blockquote-footer {
     display: block;
     position: relative;
     margin: 10px 0;
     font-size: 100%;
-    color: #d3d3d3; }
-    blockquote small:before {
+    color: #aaaaaa; }
+    blockquote footer:before, blockquote .blockquote-footer:before {
       content: "\2014";
       margin-right: 5px; }
 

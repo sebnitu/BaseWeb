@@ -5,12 +5,12 @@
 html,
 body {
   font-size: $base-font-size;
-  line-height: $base-line-height;
 }
 
 body {
   font-family: $base-font-family;
   font-weight: $base-font-weight;
+  line-height: $base-line-height;
   color: $color;
 }
 
@@ -40,6 +40,12 @@ h6, .h6 {
   small {
     font-size: $base-font-size;
     line-height: $base-line-height;
+    font-weight: $base-font-weight;
+    color: $gray;
+  }
+  
+  .text-soften {
+    font-weight: $base-font-weight;
     color: $gray;
   }
 }
@@ -56,18 +62,18 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 26px;
+  line-height: 34px;
 }
 h4,
 .h4 {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 26px;
 }
 h5,
 .h5 {
-  font-size: 18px;
-  line-height: 26px;
+  font-size: 16px;
+  line-height: 22px;
 }
 h6,
 .h6 {
@@ -80,22 +86,21 @@ h6,
  */
 p { 
   margin: 10px 0;
-
-  &.intro {
-    font-size: 22px;
-    line-height: 28px;
-    color: $color-link;
-  }
 }
+
 strong,
-b {
+b,
+.text-bold {
   font-weight: bold;
   color: $color-header;
 }
+
 em,
-i {
+i,
+.text-italic {
   font-style: italic;
 }
+
 small {
   font-style: normal;
   font-weight: normal;
@@ -103,26 +108,67 @@ small {
   color: $color-light;
 }
 
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted $color-light;
+}
+
 /**
  * Links
  */
 a,
-.anchor {
+.text-anchor {
   @include anchor();
 }
 
 /**
  * Text Modifiers
  */
-.underline {
+u,
+.text-underline {
   text-decoration: underline;
 }
-.strike {
+s,
+.text-strike {
   text-decoration: line-through;
 }
-.highlight {
+.text-highlight {
   background: rgba($yellow, 0.6);
 }
-.uppercase { 
+.text-pull {
+  font-size: 22px;
+  line-height: 28px;
+  color: $color-link;
+}
+.text-soften {
+  color: $gray;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/* Case */
+.text-lowercase { 
+  @include case('lower', 0);
+}
+.text-uppercase { 
   @include case('upper');
+}
+.text-capitalize { 
+  @include case('cap', 0);
+}
+
+/* Alignment */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
 }

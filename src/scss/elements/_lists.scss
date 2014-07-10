@@ -118,14 +118,25 @@ $color-border-list: rgba($black, 0.1) !default;
   @ Lists
 ==============================================================================*/
 
+/**
+ * Base List Styles
+ */
 ul, ol {
   margin: 10px 0 10px 20px;
   padding: 0;
+  
+  li {
+    margin: 5px 0;
+  }
   
   &.remove-list-styles {
     @include remove-list-styles();
   }
 }
+
+/**
+ * Unordered Lists
+ */
 ul, ul ul ul ul {
   list-style: disc;
 }
@@ -136,6 +147,9 @@ ul ul ul {
   list-style: disc;
 }
 
+/**
+ * Ordered Lists
+ */
 ol, ol ol ol ol {
   list-style: decimal;
 }
@@ -146,10 +160,9 @@ ol ol ol {
   list-style: lower-roman;
 }
 
-ul li, ol li {
-  margin: 5px 0;
-}
-
+/**
+ * Description Lists
+ */
 dl {
   margin: 10px 0;
   dt {
