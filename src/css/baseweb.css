@@ -81,6 +81,10 @@ h1, .h1, h2, .h2, h3, .h4, h4, .h4, h5, .h5, h6, .h6 {
     border: 0 none; }
     h1 a:hover, .h1 a:hover, h2 a:hover, .h2 a:hover, h3 a:hover, .h4 a:hover, h4 a:hover, .h4 a:hover, h5 a:hover, .h5 a:hover, h6 a:hover, .h6 a:hover {
       color: #bc6bd3; }
+  h1 small, .h1 small, h2 small, .h2 small, h3 small, .h4 small, h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small {
+    font-size: 14px;
+    line-height: 20px;
+    color: #909090; }
 
 h1, .h1 {
   font-size: 42px;
@@ -324,7 +328,7 @@ dl {
 
 .list-stripes li {
   padding: 10px 15px; }
-.list-stripes > li:nth-child(odd) {
+.list-stripes > li:nth-child(even) {
   background-color: #f9f9f9; }
 
 /*==============================================================================
@@ -445,10 +449,10 @@ table {
   .table-rowed td, .table-rowed th {
     padding: 10px 15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .table-rowed tr:first-child td, .table-rowed tr:first-child th {
+    border-top: 1px solid rgba(0, 0, 0, 0.1); }
   .table-rowed tr:first-child th {
     border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
-  .table-rowed tr:last-child td {
-    border-bottom: 0 none; }
 
 .table-columned {
   border-collapse: separate; }
@@ -1414,6 +1418,33 @@ form .btn {
   .btn-group-vertical .btn:last-child {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px; }
+
+/*==============================================================================
+  @ Tags
+==============================================================================*/
+
+.tag-label {
+  display: inline-block;
+  margin: 0;
+  color: #aaaaaa;
+  font: normal 12px/20px Menlo, Monaco, Consolas, "Courier New", monospace; }
+
+.tag-default {
+  display: inline-block;
+  padding: 0 10px;
+  background: #aaaaaa;
+  border: 0 none;
+  color: #ffffff;
+  font: normal 12px/20px Menlo, Monaco, Consolas, "Courier New", monospace;
+  border-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear; }
+  .tag-default a, .tag-default small {
+    color: #ffffff; }
+
+a.tag-default:hover, .tag-link:hover {
+  color: #ffffff;
+  background: #bc6bd3; }
 
 /*==============================================================================
   @ Mobile Grid System
