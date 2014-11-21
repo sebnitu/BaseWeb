@@ -47,7 +47,7 @@ String.prototype.toTitleCase = function(){
      * Navigation
      * Add our h2's as sub navigation
      */
-    var headings = $('h2');
+    var headings = $('h1, h2');
     var sub_menu = '<ul class="sub-menu">';
     
     var text, href;

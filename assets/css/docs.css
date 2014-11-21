@@ -10,11 +10,6 @@ body {
   font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
 }
 
-.page-header h2 {
-  margin: 0;
-  padding: 40px 0 10px;
-}
-
 .block-variable h3,
 .block-function h3,
 .block-mixin h3 {
@@ -34,8 +29,7 @@ body {
 }
 
 hr {
-  width: auto;
-  margin-left: -50px;
+  margin: 0;
 }
 
 /*==============================================================================
@@ -47,15 +41,32 @@ html {
   height: 100%;
 }
 
-.block-wrapper {
-  position: relative;
-  height: 100%;
-  background: #fff;
+body {
+  background: #303030;
 }
 
-.block-header .menu-primary .menu-item-logo a,
-.block-aside {
+.block-wrapper {
+  position: relative;
+  min-height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.block-main {
+  position: relative;
+}
+.block-main .block-aside {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 200px;
+}
+.block-main .block-content {
+  position: relative;
+  z-index: 5;
+  padding-left: 200px;
 }
 
 /*==============================================================================
@@ -67,30 +78,6 @@ html {
 }
 .block .inner {
   position: relative;
-}
-
-/**
- * Main Content Block
- */
-.block-main {
-  position: relative;
-  z-index: 5;
-  margin: -50px 0 -50px;
-}
-
-/**
- * Table Blocks
- * Used to layout fluid columns
- */
-.block-table {
-  display: table;
-  width: 100%;
-  min-height: 100%;
-}
-.block-table .block-cell {
-  display: table-cell;
-  vertical-align: top;
-  padding: 50px 0 50px;
 }
 
 /*==============================================================================
@@ -116,6 +103,7 @@ html {
   background-size: 113px 25px;
   padding: 0;
   height: 50px;
+  width: 200px;
   overflow: hidden;
   text-indent: 100%;
 }
@@ -199,6 +187,10 @@ html {
   line-height: 20px;
   background: #303030;
 }
+.block-aside .aside-inner {
+  position: relative;
+  z-index: 10;
+}
 .block-table .block-cell.block-aside {
   padding: 75px 0 50px;
 }
@@ -216,6 +208,7 @@ html {
 .aside-item-menu nav ul li {
   padding: 0;
   border-left: 5px solid transparent;
+  list-style: none;
 }
 .aside-item-menu nav ul li a {
   position: relative;
@@ -281,10 +274,7 @@ html {
 
 .block-content {}
 .block-content .inner {
-  padding: 10px 50px 50px;
-}
-.block-content .container {
-  max-width: 800px;
+  background: #fff;
 }
 
 .block-content .align-right {
@@ -299,12 +289,32 @@ html {
 }
 
 /**
+ * Page Header
+ */
+.page-header {
+  padding: 40px 40px 0;
+}
+.page-header h1 {
+  margin: 0;
+}
+
+/**
+ * Page Content
+ */
+.page-content {
+  padding: 20px 40px;
+}
+.page-content hr {
+  margin: 20px 0;
+}
+
+/**
  * Icons
  */
 .icon {
   display: block;
   float: left;
-  margin: 35px 20px 0 0;
+  margin: 1px 20px 1px 0;
   background-position: center 0;
   background-repeat: no-repeat;
   opacity: 0.2;
@@ -349,12 +359,12 @@ html {
 /**
  * Tags
  */
-.page-header .tags {
-  float: right;
-  margin: 40px 0 10px 20px;
-}
 .tags {
   margin: 10px 0 20px;
+}
+.page-header .tags {
+  float: right;
+  margin: 0 0 10px 20px;
 }
 
 /**
@@ -363,8 +373,8 @@ html {
 .block-variable,
 .block-function,
 .block-mixin {
-  margin: 0 0 0 -50px;
-  padding: 0 0 0 50px;
+  margin: 0;
+  padding: 20px 40px;
   border-top: 1px solid rgba(0,0,0, 0.1);
 }
 .block-variable:after,
@@ -723,20 +733,22 @@ html {
 .block-footer {
   position: relative;
   z-index: 10;
-  height: 50px;
+  padding: 20px 0;
   overflow: hidden;
   font-size: 13px;
   line-height: 20px;
-  color: #aaa;
+  color: #707070;
 }
 .block-footer a {
-  color: #aaa;
+  color: #707070;
+  border-bottom: 1px solid rgba(255,255,255, 0.1);
 }
 .block-footer a:hover {
-  color: #2ab0ea;
+  color: #aaa;
+  border-color: rgba(255,255,255, 0.25);
 }
 .block-footer nav ul {
-  padding: 15px;
+  padding: 15px 0;
 }
 .block-footer nav ul li {
   float: left;
@@ -747,6 +759,7 @@ html {
 }
 .block-footer .menu-right {
   float: right;
+  padding-right: 10px;
 }
 
 /**
@@ -754,18 +767,10 @@ html {
  */
 .block-footer .menu-left .menu-item-feedback {
   width: 175px;
-  margin-right: 50px;
+  margin: 0 0 0 25px;
 }
 .block-footer .menu-left .menu-item-copyright {
   margin: 0;
-}
-.block-footer .menu-left .menu-item-feedback a {
-  color: #707070;
-  border-bottom: 1px solid rgba(255,255,255, 0.1);
-}
-.block-footer .menu-left .menu-item-feedback a:hover {
-  color: #aaa;
-  border-color: rgba(255,255,255, 0.25);
 }
 
 /*==============================================================================

@@ -45,7 +45,7 @@ $color-border-list: rgba($black, 0.1) !default;
   border: 1px solid $color-border-list;
   @include border-radius();
   
-  li {
+  > li {
     &:first-child {
       @include border-radius-top();
     }
@@ -99,12 +99,12 @@ $color-border-list: rgba($black, 0.1) !default;
 // Adds zebra stripes to list items
 @mixin give-list-stripes( $scope : children ) {
   
-  li {
+  > li {
     padding: 10px 15px;
   }
   
   @if ($scope == all) {
-    li:nth-child(even) {
+    > li:nth-child(even) {
       background-color: $color-bg-list;
     }
   } @else {

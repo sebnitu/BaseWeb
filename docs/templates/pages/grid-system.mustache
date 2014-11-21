@@ -11,43 +11,45 @@
 <header class="page-header">
   <p class="tags"><a href="#" class="tag-default tag-file">core/_grid.scss</a></p>
   <span class="icon icon-gridsystem"></span>
-  <h2 id="grid-system">Grid System</h2>
+  <h1 id="grid-system">Grid System</h1>
 </header>
 
-<p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
+<div class="page-content">
 
-<div class="example">
-  <div class="example-block example-desc">
-    <p>There are three basic elements in the BaseWeb grid system: the container, row and column. These three elements are defined by the classes <code>.container</code>, <code>.row</code> and <code>.col .col-x</code> respectively. Columns require two classes, the base <code>.col</code> and the <code>.col-x</code> where <code>x</code> represents the number of columns to span.</p>
-  </div><!-- .example-desc -->
-  <div class="example-block example-output example-grid">
-    
-    <div class="container container-no-padding">
-      <div class="row">
-        <div class="col col-4"><p>.col-4</p></div>
-        <div class="col col-4"><p>.col-4</p></div>
-        <div class="col col-4"><p>.col-4</p></div>
+  <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
+  
+  <div class="example">
+    <div class="example-block example-desc">
+      <p>There are three basic elements in the BaseWeb grid system: the container, row and column. These three elements are defined by the classes <code>.container</code>, <code>.row</code> and <code>.col .col-x</code> respectively. Columns require two classes, the base <code>.col</code> and the <code>.col-x</code> where <code>x</code> represents the number of columns to span.</p>
+    </div><!-- .example-desc -->
+    <div class="example-block example-output example-grid">
+      
+      <div class="container container-no-padding">
+        <div class="row">
+          <div class="col col-4"><p>.col-4</p></div>
+          <div class="col col-4"><p>.col-4</p></div>
+          <div class="col col-4"><p>.col-4</p></div>
+        </div>
+        <div class="row">
+          <div class="col col-6"><p>.col-6</p></div>
+          <div class="col col-6"><p>.col-6</p></div>
+        </div>
+        <div class="row">
+          <div class="col col-2"><p>.col-2</p></div>
+          <div class="col col-2"><p>.col-2</p></div>
+          <div class="col col-2"><p>.col-2</p></div>
+          <div class="col col-2"><p>.col-2</p></div>
+          <div class="col col-2"><p>.col-2</p></div>
+          <div class="col col-2"><p>.col-2</p></div>
+        </div>
       </div>
-      <div class="row">
-        <div class="col col-6"><p>.col-6</p></div>
-        <div class="col col-6"><p>.col-6</p></div>
+      
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-html">HTML</span>
       </div>
-      <div class="row">
-        <div class="col col-2"><p>.col-2</p></div>
-        <div class="col col-2"><p>.col-2</p></div>
-        <div class="col col-2"><p>.col-2</p></div>
-        <div class="col col-2"><p>.col-2</p></div>
-        <div class="col col-2"><p>.col-2</p></div>
-        <div class="col col-2"><p>.col-2</p></div>
-      </div>
-    </div>
-    
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-html">HTML</span>
-    </div>
-<pre><code id="code-sample" class="language-markup">&lt;div class=&quot;container&quot;&gt;
+  <pre><code id="code-sample" class="language-markup">&lt;div class=&quot;container&quot;&gt;
 
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4&quot;&gt;...&lt;/div&gt;
@@ -63,26 +65,26 @@
   ...
   
 &lt;/div&gt;</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<div class="block-warning">
-  <p>If you're using the <a href="https://github.com/andrew/node-sass">node-sass compiler</a> (as of version 0.8.6), it's possible to only include the <code>.col-X</code> class for columns and drop the base column class <code>.col</code>. But if you're using ruby-sass, you'll have to include both classes for columns. Use the <a href="#" class="code-link"><code>$compiler</code></a> variable to toggle compiler specific settings throughout the framework.</p>
-</div>
-
-<p>The class based grid system is generated using <a href="#mixin-build-grid-system" class="code-link"><code>@mixin build-grid-system()</code></a>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
-
-<p>There's also the mobile grid system mixin <a href="#mixin-build-mobile-grid-system" class="code-link"><code>@mixin build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
-
-<div class="example">
-  <div class="example-block example-desc">
-    <p>In this example, we're using the <a href="/docs/media-queries.html">media query mixins</a> to set grid systems for different breakpoints.</p>
-  </div><!-- .example-desc -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">@include build-mobile-grid-system();
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <div class="block-warning">
+    <p>If you're using the <a href="https://github.com/andrew/node-sass">node-sass compiler</a> (as of version 0.8.6), it's possible to only include the <code>.col-X</code> class for columns and drop the base column class <code>.col</code>. But if you're using ruby-sass, you'll have to include both classes for columns. Use the <a href="#" class="code-link"><code>$compiler</code></a> variable to toggle compiler specific settings throughout the framework.</p>
+  </div>
+  
+  <p>The class based grid system is generated using <a href="#mixin-build-grid-system" class="code-link"><code>@mixin build-grid-system()</code></a>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
+  
+  <p>There's also the mobile grid system mixin <a href="#mixin-build-mobile-grid-system" class="code-link"><code>@mixin build-mobile-grid-system()</code></a> that is available for easily making columns staked at 100% width.</p>
+  
+  <div class="example">
+    <div class="example-block example-desc">
+      <p>In this example, we're using the <a href="/docs/media-queries.html">media query mixins</a> to set grid systems for different breakpoints.</p>
+    </div><!-- .example-desc -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">@include build-mobile-grid-system();
 
 @include media-tablet {
   @include build-grid-system(740px);
@@ -91,92 +93,92 @@
 @include media-desktop {
   @include build-grid-system(960px);
 }</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h3 id="grid-system-modifier-classes">Modifier Classes</h3>
-
-<p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
-
-<table class="table-bordered">
-  <tr>
-    <th rowspan="1">Base Element</th>
-    <th>Modifier Class</th>
-    <th>Description</th>
-  </tr>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
   
-  <tr>
-    <td rowspan="4"><code>.container</code></td>
-    <td><code>.container-float-left</code></td>
-    <td>Floats container to the left</td>
-  </tr>
-  <tr>
-    <td><code>.container-float-right</code></td>
-    <td>Floats container to the right</td>
-  </tr>
-  <tr>
-    <td><code>.container-no-padding</code></td>
-    <td>Removes padding from container</td>
-  </tr>
-  <tr>
-    <td><code>.container-no-margin</code></td>
-    <td>Removes margin from container</td>
-  </tr>
+  <h3 id="grid-system-modifier-classes">Modifier Classes</h3>
   
-  <tr>
-    <td rowspan="1"><code>.row</code></td>
-    <td><code>.row-center</code></td>
-    <td>Centers columns in the row</td>
-  </tr>
+  <p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
   
-  <tr>
-    <td rowspan="3" class="rowspan-last"><code>.col</code></td>
-    <td><code>.prefix-X</code></td>
-    <td>Adds column spacing before the element based on <code>X</code></td>
-  </tr>
-  <tr>
-    <td><code>.suffix-X</code></td>
-    <td>Adds column spacing after the element based on <code>X</code></td>
-  </tr>
-  <tr>
-    <td><code>.col-no-gutter</code></td>
-    <td>Removes gutter from the column</td>
-  </tr>
-</table>
-
-<h2 id="semantic-grid">Semantic Grids</h2>
-
-<p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets. The <a href="#mixins">mixins</a> section below has details on all of the mixins available for semantic grids:</p>
-
-<ul>
-  <li><a href="#make-container" class="code-link"><code>@mixin make-container()</code></a></li>
-  <li><a href="#make-row" class="code-link"><code>@mixin make-row()</code></a></li>
-  <li><a href="#make-base-column" class="code-link"><code>@mixin make-base-column()</code></a></li>
-  <li><a href="#make-column" class="code-link"><code>@mixin make-column()</code></a></li>
-  <li><a href="#give-prefix" class="code-link"><code>@mixin give-prefix()</code></a></li>
-  <li><a href="#give-suffix" class="code-link"><code>@mixin give-suffix()</code></a></li>
-</ul>
-
-<div class="example">
-  <div class="example-block example-output example-grid">
+  <table class="table-bordered">
+    <tr>
+      <th rowspan="1">Base Element</th>
+      <th>Modifier Class</th>
+      <th>Description</th>
+    </tr>
     
-    <div class="demo-wrapper">
-      <div class="demo-content">
-        <div class="demo-aside">
-          <p>@make-column(4);</p>
-        </div>
-        <div class="demo-article">
-          <p>@make-column(8);</p>
+    <tr>
+      <td rowspan="4"><code>.container</code></td>
+      <td><code>.container-float-left</code></td>
+      <td>Floats container to the left</td>
+    </tr>
+    <tr>
+      <td><code>.container-float-right</code></td>
+      <td>Floats container to the right</td>
+    </tr>
+    <tr>
+      <td><code>.container-no-padding</code></td>
+      <td>Removes padding from container</td>
+    </tr>
+    <tr>
+      <td><code>.container-no-margin</code></td>
+      <td>Removes margin from container</td>
+    </tr>
+    
+    <tr>
+      <td rowspan="1"><code>.row</code></td>
+      <td><code>.row-center</code></td>
+      <td>Centers columns in the row</td>
+    </tr>
+    
+    <tr>
+      <td rowspan="3" class="rowspan-last"><code>.col</code></td>
+      <td><code>.prefix-X</code></td>
+      <td>Adds column spacing before the element based on <code>X</code></td>
+    </tr>
+    <tr>
+      <td><code>.suffix-X</code></td>
+      <td>Adds column spacing after the element based on <code>X</code></td>
+    </tr>
+    <tr>
+      <td><code>.col-no-gutter</code></td>
+      <td>Removes gutter from the column</td>
+    </tr>
+  </table>
+  
+  <h2 id="semantic-grid">Semantic Grids</h2>
+  
+  <p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets. The <a href="#mixins">mixins</a> section below has details on all of the mixins available for semantic grids:</p>
+  
+  <ul>
+    <li><a href="#make-container" class="code-link"><code>@mixin make-container()</code></a></li>
+    <li><a href="#make-row" class="code-link"><code>@mixin make-row()</code></a></li>
+    <li><a href="#make-base-column" class="code-link"><code>@mixin make-base-column()</code></a></li>
+    <li><a href="#make-column" class="code-link"><code>@mixin make-column()</code></a></li>
+    <li><a href="#give-prefix" class="code-link"><code>@mixin give-prefix()</code></a></li>
+    <li><a href="#give-suffix" class="code-link"><code>@mixin give-suffix()</code></a></li>
+  </ul>
+  
+  <div class="example">
+    <div class="example-block example-output example-grid">
+      
+      <div class="demo-wrapper">
+        <div class="demo-content">
+          <div class="demo-aside">
+            <p>@make-column(4);</p>
+          </div>
+          <div class="demo-article">
+            <p>@make-column(8);</p>
+          </div>
         </div>
       </div>
-    </div>
-    
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">.wrapper {
+      
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">.wrapper {
   @include make-container;
   
   .content {
@@ -191,22 +193,22 @@
     }
   }
 }</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns and set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
-
-<ul>
-  <li><a href="#column_width" class="code-link"><code>@function column_width()</code></a></li>
-  <li><a href="#spacing_width" class="code-link"><code>@function spacing_width()</code></a></li>
-</ul>
-
-<div class="example">
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">.wrapper {
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <a href="#make-base-column" class="code-link"><code>make-base-column()</code></a> to define multiple columns and set the widths separately to reduce the final CSS output. Checkout the <a href="#functions">functions</a> section below for more details:</p>
+  
+  <ul>
+    <li><a href="#column_width" class="code-link"><code>@function column_width()</code></a></li>
+    <li><a href="#spacing_width" class="code-link"><code>@function spacing_width()</code></a></li>
+  </ul>
+  
+  <div class="example">
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">.wrapper {
   @include make-container;
   
   .content {
@@ -226,32 +228,32 @@
     }
   }
 }</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h2 id="prefix-and-suffix">Prefix and Suffix</h2>
-
-<p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
-
-<div class="example">
-  <div class="example-block example-output example-grid">
-    
-    <div class="container container-no-padding">
-      <div class="row">
-        <div class="col col-4 suffix-3"><p>.col-4</p></div>
-        <div class="col col-3 prefix-2"><p>.col-3</p></div>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h2 id="prefix-and-suffix">Prefix and Suffix</h2>
+  
+  <p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
+  
+  <div class="example">
+    <div class="example-block example-output example-grid">
+      
+      <div class="container container-no-padding">
+        <div class="row">
+          <div class="col col-4 suffix-3"><p>.col-4</p></div>
+          <div class="col col-3 prefix-2"><p>.col-3</p></div>
+        </div>
+        <div class="row">
+          <div class="col col-5 prefix-4 suffix-3"><p>.col-5</p></div>
+        </div>
       </div>
-      <div class="row">
-        <div class="col col-5 prefix-4 suffix-3"><p>.col-5</p></div>
+      
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-html">HTML</span>
       </div>
-    </div>
-    
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-html">HTML</span>
-    </div>
-<pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+  <pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
 
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4 suffix-3&quot;&gt;...&lt;/div&gt;
@@ -263,67 +265,67 @@
   &lt;/div&gt;
   
 &lt;/div&gt;</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<p>The semantic grid system equivalent would look like this:</p>
-
-<div class="example">
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">.aside {
-  @include make-column(6);
-  @include give-prefix(2);
-}
-
-.article {
-  @include make-column(6);
-  @include give-suffix(2);
-}</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h2 id="nested-columns">Nested Columns</h2>
-
-<p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to either manually remove the gutter margin or use the <a href="#grid-system-modifier-classes" class="code-link"><code>.col-no-gutter</code></a> modifier class.</p>
-
-<div class="example">
-  <div class="example-block example-desc">
-    <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent <code>.col</code> element. If you want to mix fixed and fluid grids between breakpoints, it's recommended to use the <a href="#semantic-grid">semantic grid</a> method.</p>
-  </div><!-- .example-desc -->
-  <div class="example-block example-output example-grid">
-    
-    <div class="container container-no-padding">
-    
-      <div class="row">
-        <div class="col col-6">
-          <p>.col-6</p>
-          <div class="row">
-            <div class="col col-6"><p>.col-6</p></div>
-            <div class="col col-6"><p>.col-6</p></div>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <p>The semantic grid system equivalent would look like this:</p>
+  
+  <div class="example">
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">.aside {
+    @include make-column(6);
+    @include give-prefix(2);
+  }
+  
+  .article {
+    @include make-column(6);
+    @include give-suffix(2);
+  }</code></pre>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h2 id="nested-columns">Nested Columns</h2>
+  
+  <p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to either manually remove the gutter margin or use the <a href="#grid-system-modifier-classes" class="code-link"><code>.col-no-gutter</code></a> modifier class.</p>
+  
+  <div class="example">
+    <div class="example-block example-desc">
+      <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <a href="#grid-columns" class="code-link"><code>$grid-columns</code></a>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent <code>.col</code> element. If you want to mix fixed and fluid grids between breakpoints, it's recommended to use the <a href="#semantic-grid">semantic grid</a> method.</p>
+    </div><!-- .example-desc -->
+    <div class="example-block example-output example-grid">
+      
+      <div class="container container-no-padding">
+      
+        <div class="row">
+          <div class="col col-6">
+            <p>.col-6</p>
+            <div class="row">
+              <div class="col col-6"><p>.col-6</p></div>
+              <div class="col col-6"><p>.col-6</p></div>
+            </div>
+          </div>
+          
+          <div class="col col-6">
+            <p>.col-6</p>
+            <div class="row">
+              <div class="col col-4"><p>.col-4</p></div>
+              <div class="col col-4"><p>.col-4</p></div>
+              <div class="col col-4"><p>.col-4</p></div>
+            </div>
           </div>
         </div>
         
-        <div class="col col-6">
-          <p>.col-6</p>
-          <div class="row">
-            <div class="col col-4"><p>.col-4</p></div>
-            <div class="col col-4"><p>.col-4</p></div>
-            <div class="col col-4"><p>.col-4</p></div>
-          </div>
-        </div>
       </div>
       
-    </div>
-    
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-html">HTML</span>
-    </div>
-<pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-html">HTML</span>
+      </div>
+  <pre><code class="language-markup">&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-6&quot;&gt;
       ...
@@ -342,14 +344,18 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+
+</div><!-- .page-content -->
 
 <hr>
 
 <!-- #variables -->
 
-<h2 id="variables">Variables</h2>
+<div class="page-content">
+  <h2 id="variables">Variables</h2>
+</div><!-- .page-content -->
 
 <!-- #variable #grid-total-width -->
 
@@ -523,7 +529,9 @@
 
 <!-- #functions -->
 
-<h2 id="functions">Functions</h2>
+<div class="page-content">
+  <h2 id="functions">Functions</h2>
+</div><!-- .page-content -->
 
 <!-- #function #column_width -->
 
@@ -661,7 +669,9 @@
 
 <!-- #mixins -->
 
-<h2 id="mixins">Mixins</h2>
+<div class="page-content">
+  <h2 id="mixins">Mixins</h2>
+</div><!-- .page-content -->
 
 <!-- #mixin #make-container -->
 

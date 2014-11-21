@@ -15,116 +15,118 @@
 
 <header class="page-header">
   <span class="icon icon-overview"></span>
-  <h2 id="how-it-works">How It Works</h2>
+  <h1 id="how-it-works">How It Works</h1>
 </header>
 
-<p>BaseWeb is designed to be a starting point for your front-end projects. You can use the source as a base and make it your own, or keep it maintainable for future BaseWeb updates by keeping customization separate from the core files. You can also use the output CSS and JS files and not deal with the source at all. Although, it's recommended to work directly along side the SCSS to take full advantage of the framework.</p>
+<div class="page-content">
 
-<p>BaseWeb uses a unique padigm for both organizing your files and styles within your files. The system is GEBC (Global, Elements, Blocks and Custom). An easy way to imagin this sytem is to think of Core as being a set of variable and mixins that are globally available, Elements are the individual HTML styles that make up the DOM and Blocks are the combination of Elements that serve a specific semantic or user interface purpose (such as a dropdown, or modal window).</p>
-
-<p>Within these files, elements and blocks may also contain custom variables and mixins. If a variable or mixin is used in multiple blocks or elements however, it should be included in a core file. Elements and blocks will then contain their base styles and optional modifier classes. It's generally a good idea to use variables for defining classes and setup a way to disable their output if needed.</p>
-
-<ul>
-  <li>File Specific Variables</li>
-  <li>File Specific Mixins</li>
-  <li>Element or block Base Styles</li>
-  <li>Modifier Classes (classes that are used to modify the base styles)</li>
-</ul>
-
-<p>Custom styles contain things that are project specific. This may include BaseWeb overrides or completely unique files. By default, BaseWeb comes with <code>_custom.scss</code> which is where you'd set site specific styles. But if you'd like to override BaseWeb's files such as notice styles, you could create a new <code>_notice.scss</code> file within the <code>custom</code> directory and update <code>_baseweb.scss</code> with the new path. This allows you to maintain unique blocks while keeping the BaseWeb framework maintainable. Otherwise, if you're branching BaseWeb off as it's own project and you won't need to keep files updated with future versions, you could just override these files directly.</p>
-
-<aside class="col col-6 align-right">
+  <p>BaseWeb is designed to be a starting point for your front-end projects. You can use the source as a base and make it your own, or keep it maintainable for future BaseWeb updates by keeping customization separate from the core files. You can also use the output CSS and JS files and not deal with the source at all. Although, it's recommended to work directly along side the SCSS to take full advantage of the framework.</p>
+  
+  <p>BaseWeb uses a unique padigm for both organizing your files and styles within your files. The system is GEBC (Global, Elements, Blocks and Custom). An easy way to imagin this sytem is to think of Core as being a set of variable and mixins that are globally available, Elements are the individual HTML styles that make up the DOM and Blocks are the combination of Elements that serve a specific semantic or user interface purpose (such as a dropdown, or modal window).</p>
+  
+  <p>Within these files, elements and blocks may also contain custom variables and mixins. If a variable or mixin is used in multiple blocks or elements however, it should be included in a core file. Elements and blocks will then contain their base styles and optional modifier classes. It's generally a good idea to use variables for defining classes and setup a way to disable their output if needed.</p>
+  
+  <ul>
+    <li>File Specific Variables</li>
+    <li>File Specific Mixins</li>
+    <li>Element or block Base Styles</li>
+    <li>Modifier Classes (classes that are used to modify the base styles)</li>
+  </ul>
+  
+  <p>Custom styles contain things that are project specific. This may include BaseWeb overrides or completely unique files. By default, BaseWeb comes with <code>_custom.scss</code> which is where you'd set site specific styles. But if you'd like to override BaseWeb's files such as notice styles, you could create a new <code>_notice.scss</code> file within the <code>custom</code> directory and update <code>_baseweb.scss</code> with the new path. This allows you to maintain unique blocks while keeping the BaseWeb framework maintainable. Otherwise, if you're branching BaseWeb off as it's own project and you won't need to keep files updated with future versions, you could just override these files directly.</p>
+  
+  <aside class="col col-6 align-right">
+    <div class="example">
+      <div class="example-block example-heading">
+        <h4>BaseWeb File Structure</h4>
+      </div>
+      <div class="example-block example-code">
+  <pre><code><span class="token directory">scss</span>
+  <span class="token path">├── </span><span class="token directory">settings</span>
+  <span class="token path">│   ├── </span><span class="token file">_palette.scss</span>
+  <span class="token path">│   └── </span><span class="token file">_global.scss</span>
+  <span class="token path">├── </span><span class="token directory">core</span>
+  <span class="token path">│   ├── </span><span class="token file">_functions.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_mixins.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_media.scss</span>
+  <span class="token path">│   └── </span><span class="token file">_grid.scss</span>
+  <span class="token path">├── </span><span class="token directory">elements</span>
+  <span class="token path">│   ├── </span><span class="token file">_reset.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_typography.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_edit.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_lists.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_blockquotes.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_code.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_tables.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_images.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_rules.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_forms.scss</span>
+  <span class="token path">│   └── </span><span class="token file">_buttons.scss</span>
+  <span class="token path">├── </span><span class="token directory">blocks</span>
+  <span class="token path">│   ├── </span><span class="token file">_button-groups.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_dropdowns.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_modals.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_notice.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_tabs.scss</span>
+  <span class="token path">│   └── </span><span class="token file">_tooltips.scss</span>
+  <span class="token path">├── </span><span class="token directory">custom</span>
+  <span class="token path">│   └── </span><span class="token file">_custom.scss</span>
+  <span class="token path">└── </span><span class="token file">_baseweb.scss</span></code></pre>
+  <!--
+  <span class="token directory">css</span>
+  <span class="token path">├── </span><span class="token file">baseweb.css</span>
+  <span class="token path">└── </span><span class="token file">baseweb.min.css</span>
+  -->
+      </div><!-- .example-code -->
+    </div><!-- .example -->
+  </aside>
+  
+  <h2 id="file-structure">File Structure</h2>
+  
+  <p>The file structure of BaseWeb is designed to be easy to navigate, maintain and customize. All SCSS files are split into one of five groups:</p>
+  
+  <ul class="list-rowed list-stripes list-no-clear">
+    <li><strong>Settings:</strong> Used for global framework variables</li>
+    <li><strong>Core:</strong> Global framework functions and mixins. Includs grid system and media query mixins.</li>
+    <li><strong>Elements:</strong> Base HTML element styling such as a base reset, headers, lists, tables, etc.</li>
+    <li><strong>Blocks:</strong> Groups of HTML elements that define a specific component or block (e.g. dropdowns, modals, tabs, etc.)</li>
+    <li><strong>Custom:</strong> Where you store your custom styles and framework overrides</li>
+  </ul>
+  
+  <p>Files in these directories are routed together using <code>_baseweb.scss</code> where they are imported. By default, the output include an expanded and minified BaseWeb CSS files.</p>
+  
+  <p>Settings and core files should always be included in your compilations or errors may be thrown. They don't output any styles directly, so having them included doesn't increase the size of your final CSS.</p>
+  
+  <p>Elements and blocks however do output styles directly, but are optional. To not include their output in the final CSS files, you can simply comment out their imports in <code>_baseweb.scss</code>.</p>
+  
+  <!-- #variables -->
+  
+  <h2 id="palette">Palette</h2>
+  <p class="tags"><a href="#" class="tag-default tag-file">settings/_palette.scss</a></p>
+  
+  <p>The Color Palette in BaseWeb is defined using the settings file <code>settings/_palette.scss</code>. It contains the global color variables that are used throughout the framework. This allows you to easily change the color themes between elements and blocks as well as keeping them consistent with each other.</p>
+  
+  <h3>Gray Scale</h3>
+  
+  <p>The Gray Scale variables are simple ways of keeping your grays maintainable. These are most often used for text colors or default states for blocks, etc.</p>
+  
   <div class="example">
-    <div class="example-block example-heading">
-      <h4>BaseWeb File Structure</h4>
-    </div>
+    <div class="example-block example-output">
+      <div class="swatch-wrap">
+        <span class="swatch color-black"></span>
+        <span class="swatch color-gray-darker"></span>
+        <span class="swatch color-gray-dark"></span>
+        <span class="swatch color-gray"></span>
+        <span class="swatch color-gray-light"></span>
+        <span class="swatch color-gray-lighter"></span>
+        <span class="swatch color-white"></span>
+      </div>
+    </div><!-- .example-output -->
     <div class="example-block example-code">
-<pre><code><span class="token directory">scss</span>
-<span class="token path">├── </span><span class="token directory">settings</span>
-<span class="token path">│   ├── </span><span class="token file">_palette.scss</span>
-<span class="token path">│   └── </span><span class="token file">_global.scss</span>
-<span class="token path">├── </span><span class="token directory">core</span>
-<span class="token path">│   ├── </span><span class="token file">_functions.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_mixins.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_media.scss</span>
-<span class="token path">│   └── </span><span class="token file">_grid.scss</span>
-<span class="token path">├── </span><span class="token directory">elements</span>
-<span class="token path">│   ├── </span><span class="token file">_reset.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_typography.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_edit.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_lists.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_blockquotes.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_code.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_tables.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_images.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_rules.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_forms.scss</span>
-<span class="token path">│   └── </span><span class="token file">_buttons.scss</span>
-<span class="token path">├── </span><span class="token directory">blocks</span>
-<span class="token path">│   ├── </span><span class="token file">_button-groups.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_dropdowns.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_modals.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_notice.scss</span>
-<span class="token path">│   ├── </span><span class="token file">_tabs.scss</span>
-<span class="token path">│   └── </span><span class="token file">_tooltips.scss</span>
-<span class="token path">├── </span><span class="token directory">custom</span>
-<span class="token path">│   └── </span><span class="token file">_custom.scss</span>
-<span class="token path">└── </span><span class="token file">_baseweb.scss</span></code></pre>
-<!--
-<span class="token directory">css</span>
-<span class="token path">├── </span><span class="token file">baseweb.css</span>
-<span class="token path">└── </span><span class="token file">baseweb.min.css</span>
--->
-    </div><!-- .example-code -->
-  </div><!-- .example -->
-</aside>
-
-<h2 id="file-structure">File Structure</h2>
-
-<p>The file structure of BaseWeb is designed to be easy to navigate, maintain and customize. All SCSS files are split into one of five groups:</p>
-
-<ul class="list-rowed list-stripes list-no-clear">
-  <li><strong>Settings:</strong> Used for global framework variables</li>
-  <li><strong>Core:</strong> Global framework functions and mixins. Includs grid system and media query mixins.</li>
-  <li><strong>Elements:</strong> Base HTML element styling such as a base reset, headers, lists, tables, etc.</li>
-  <li><strong>Blocks:</strong> Groups of HTML elements that define a specific component or block (e.g. dropdowns, modals, tabs, etc.)</li>
-  <li><strong>Custom:</strong> Where you store your custom styles and framework overrides</li>
-</ul>
-
-<p>Files in these directories are routed together using <code>_baseweb.scss</code> where they are imported. By default, the output include an expanded and minified BaseWeb CSS files.</p>
-
-<p>Settings and core files should always be included in your compilations or errors may be thrown. They don't output any styles directly, so having them included doesn't increase the size of your final CSS.</p>
-
-<p>Elements and blocks however do output styles directly, but are optional. To not include their output in the final CSS files, you can simply comment out their imports in <code>_baseweb.scss</code>.</p>
-
-<!-- #variables -->
-
-<h2 id="palette">Palette</h2>
-<p class="tags"><a href="#" class="tag-default tag-file">settings/_palette.scss</a></p>
-
-<p>The Color Palette in BaseWeb is defined using the settings file <code>settings/_palette.scss</code>. It contains the global color variables that are used throughout the framework. This allows you to easily change the color themes between elements and blocks as well as keeping them consistent with each other.</p>
-
-<h3>Gray Scale</h3>
-
-<p>The Gray Scale variables are simple ways of keeping your grays maintainable. These are most often used for text colors or default states for blocks, etc.</p>
-
-<div class="example">
-  <div class="example-block example-output">
-    <div class="swatch-wrap">
-      <span class="swatch color-black"></span>
-      <span class="swatch color-gray-darker"></span>
-      <span class="swatch color-gray-dark"></span>
-      <span class="swatch color-gray"></span>
-      <span class="swatch color-gray-light"></span>
-      <span class="swatch color-gray-lighter"></span>
-      <span class="swatch color-white"></span>
-    </div>
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">// Gray Scale
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">// Gray Scale
 $black:        #000000 !default;
 $gray-darker:  #303030 !default;
 $gray-dark:    #606060 !default;
@@ -132,35 +134,35 @@ $gray:         #909090 !default;
 $gray-light:   #aaaaaa !default;
 $gray-lighter: #efefef !default;
 $white:        #ffffff !default;</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h3>Base Colors</h3>
-
-<p>The color palette is built using three primary colors and three secondary. These colors are mixed to create their in-between color variations. You can customize those six colors to create a new palette. Mixed (or tertiary) colors are created using the combination of primary and secondary colors.</p>
-
-<div class="example">
-  <div class="example-block example-output">
-    <div class="swatch-wrap">
-      <span class="swatch color-red-violet"></span>
-      <span class="swatch color-red"></span>
-      <span class="swatch color-red-orange"></span>
-      <span class="swatch color-orange"></span>
-      <span class="swatch color-yellow-orange"></span>
-      <span class="swatch color-yellow"></span>
-      <span class="swatch color-yellow-green"></span>
-      <span class="swatch color-green"></span>
-      <span class="swatch color-blue-green"></span>
-      <span class="swatch color-blue"></span>
-      <span class="swatch color-blue-violet"></span>
-      <span class="swatch color-violet"></span>
-    </div>
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">// Primary
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h3>Base Colors</h3>
+  
+  <p>The color palette is built using three primary colors and three secondary. These colors are mixed to create their in-between color variations. You can customize those six colors to create a new palette. Mixed (or tertiary) colors are created using the combination of primary and secondary colors.</p>
+  
+  <div class="example">
+    <div class="example-block example-output">
+      <div class="swatch-wrap">
+        <span class="swatch color-red-violet"></span>
+        <span class="swatch color-red"></span>
+        <span class="swatch color-red-orange"></span>
+        <span class="swatch color-orange"></span>
+        <span class="swatch color-yellow-orange"></span>
+        <span class="swatch color-yellow"></span>
+        <span class="swatch color-yellow-green"></span>
+        <span class="swatch color-green"></span>
+        <span class="swatch color-blue-green"></span>
+        <span class="swatch color-blue"></span>
+        <span class="swatch color-blue-violet"></span>
+        <span class="swatch color-violet"></span>
+      </div>
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">// Primary
 $red:    #de5151 !default;
 $yellow: #d1c329 !default;
 $blue:   #2ab0ea !default;
@@ -176,37 +178,36 @@ $red-orange:    saturate(mix($red, $orange, 50), 5%) !default;
 $yellow-orange: saturate(mix($yellow, $orange, 50), 5%) !default;
 $yellow-green:  saturate(mix($yellow, $green, 50), 5%) !default;
 $blue-green:    saturate(mix($blue, $green, 50), 5%) !default;
-$blue-violet:   saturate(mix($blue, $violet, 50), 5%) !default;
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h3>Pale Colors</h3>
-
-<p>Pale colors are built the same way as the base colors. They are primarily used as background colors for elements or components. For example, <code>elements/_edit.scss</code> and <code>blocks/_notice.scss</code> both use pale colors to annotate the importance of a message.</p>
-
-<div class="example">
-  <div class="example-block example-output">
-    <div class="swatch-wrap">
-      <span class="swatch color-pale-red-violet"></span>
-      <span class="swatch color-pale-red"></span>
-      <span class="swatch color-pale-red-orange"></span>
-      <span class="swatch color-pale-orange"></span>
-      <span class="swatch color-pale-yellow-orange"></span>
-      <span class="swatch color-pale-yellow"></span>
-      <span class="swatch color-pale-yellow-green"></span>
-      <span class="swatch color-pale-green"></span>
-      <span class="swatch color-pale-blue-green"></span>
-      <span class="swatch color-pale-blue"></span>
-      <span class="swatch color-pale-blue-violet"></span>
-      <span class="swatch color-pale-violet"></span>
-    </div>
-  </div><!-- .example-output -->
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">// Pale Primary
+$blue-violet:   saturate(mix($blue, $violet, 50), 5%) !default;</code></pre>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h3>Pale Colors</h3>
+  
+  <p>Pale colors are built the same way as the base colors. They are primarily used as background colors for elements or components. For example, <code>elements/_edit.scss</code> and <code>blocks/_notice.scss</code> both use pale colors to annotate the importance of a message.</p>
+  
+  <div class="example">
+    <div class="example-block example-output">
+      <div class="swatch-wrap">
+        <span class="swatch color-pale-red-violet"></span>
+        <span class="swatch color-pale-red"></span>
+        <span class="swatch color-pale-red-orange"></span>
+        <span class="swatch color-pale-orange"></span>
+        <span class="swatch color-pale-yellow-orange"></span>
+        <span class="swatch color-pale-yellow"></span>
+        <span class="swatch color-pale-yellow-green"></span>
+        <span class="swatch color-pale-green"></span>
+        <span class="swatch color-pale-blue-green"></span>
+        <span class="swatch color-pale-blue"></span>
+        <span class="swatch color-pale-blue-violet"></span>
+        <span class="swatch color-pale-violet"></span>
+      </div>
+    </div><!-- .example-output -->
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">// Pale Primary
 $pale-red:    #fbeded !default;
 $pale-yellow: #fdf8e6 !default;
 $pale-blue:   #e9f6fc !default;
@@ -222,48 +223,53 @@ $pale-red-orange:    saturate(mix($pale-red, $pale-orange, 50), 5%) !default;
 $pale-yellow-orange: saturate(mix($pale-yellow, $pale-orange, 50), 5%) !default;
 $pale-yellow-green:  saturate(mix($pale-yellow, $pale-green, 50), 5%) !default;
 $pale-blue-green:    saturate(mix($pale-blue, $pale-green, 50), 5%) !default;
-$pale-blue-violet:   saturate(mix($pale-blue, $pale-violet, 50), 5%) !default;
-</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-
-<h3>Modifier Degrees</h3>
-
-<p>Degree variables are used when altering the base colors for different purposes. They are also directly used in creating colors with the <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variations.</p>
-
-<div class="example">
-  <div class="example-block example-code">
-    <div class="example-tag">
-      <span class="tag tag-lang tag-lang-scss">SCSS</span>
-    </div>
-<pre><code class="language-scss">$light-deg:   5%  !default;
+$pale-blue-violet:   saturate(mix($pale-blue, $pale-violet, 50), 5%) !default;</code></pre>
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h3>Modifier Degrees</h3>
+  
+  <p>Degree variables are used when altering the base colors for different purposes. They are also directly used in creating colors with the <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variations.</p>
+  
+  <div class="example">
+    <div class="example-block example-code">
+      <div class="example-tag">
+        <span class="tag tag-lang tag-lang-scss">SCSS</span>
+      </div>
+  <pre><code class="language-scss">$light-deg:   5%  !default;
 $lighter-deg: 10% !default;
 $dark-deg:    5%  !default;
 $darker-deg:  10% !default;</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
+    </div><!-- .example-code -->
+  </div><!-- .example -->
+  
+  <h3>Light &amp; Dark Varients</h3>
+  
+  <p>Every primary, secondary and tertiary color comes with a <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variation. These are created using the degree modifier. Here's a table of all the possible color variables you can use. Hover over the swatch to get the exact variable name:</p>
+  
+  <table class="table-bordered palette-table">
+    <tr>
+      <td class="swatch-desc"></td>
+      <td class="swatch-cell swatch-desc"><code>-lighter</code></td>
+      <td class="swatch-cell swatch-desc"><code>-light</code></td>
+      <td class="swatch-cell swatch-desc"></td>
+      <td class="swatch-cell swatch-desc"><code>-dark</code></td>
+      <td class="swatch-cell swatch-desc"><code>-darker</code></td>
+    </tr>
+  </table>
 
-<h3>Light &amp; Dark Varients</h3>
-
-<p>Every primary, secondary and tertiary color comes with a <code>-light</code>, <code>-lighter</code> and <code>-dark</code>, <code>-darker</code> variation. These are created using the degree modifier. Here's a table of all the possible color variables you can use. Hover over the swatch to get the exact variable name:</p>
-
-<table class="table-bordered palette-table">
-  <tr>
-    <td class="swatch-desc"></td>
-    <td class="swatch-cell swatch-desc"><code>-lighter</code></td>
-    <td class="swatch-cell swatch-desc"><code>-light</code></td>
-    <td class="swatch-cell swatch-desc"></td>
-    <td class="swatch-cell swatch-desc"><code>-dark</code></td>
-    <td class="swatch-cell swatch-desc"><code>-darker</code></td>
-  </tr>
-</table>
+</div><!-- .page-content -->
 
 <hr>
 
 <!-- #variables -->
 
-<h2 id="global-variables">Global Variables</h2>
-<p class="tags"><a href="#" class="tag-default tag-file">settings/_global.scss</a></p>
+<div class="page-content">
+
+  <h2 id="global-variables">Global Variables</h2>
+  <p class="tags"><a href="#" class="tag-default tag-file">settings/_global.scss</a></p>
+
+</div><!-- .page-content -->
 
 <!-- #variable #compiler -->
 
@@ -876,9 +882,12 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #functions -->
 
-<h2 id="global-functions">Global Functions</h2>
-
-<p class="tags"><a href="#" class="tag-default tag-file">core/_functions.scss</a></p>
+<div class="page-content">
+  
+  <h2 id="global-functions">Global Functions</h2>
+  <p class="tags"><a href="#" class="tag-default tag-file">core/_functions.scss</a></p>
+  
+</div><!-- .page-content -->
 
 <!-- #function #strip_units -->
 
@@ -1026,9 +1035,12 @@ $darker-deg:  10% !default;</code></pre>
 
 <!-- #mixins -->
 
-<h2 id="global-mixins">Global Mixins</h2>
+<div class="page-content">
 
-<p class="tags"><a href="#" class="tag-default tag-file">core/_mixins.scss</a></p>
+  <h2 id="global-mixins">Global Mixins</h2>
+  <p class="tags"><a href="#" class="tag-default tag-file">core/_mixins.scss</a></p>
+
+</div><!-- .page-content -->
 
 <!-- #mixin #size -->
 
@@ -3245,6 +3257,14 @@ $darker-deg:  10% !default;</code></pre>
     <div class="example-console-right"></div>
     
   </div><!-- .example-output -->
+  <div class="example-block example-code">
+    <div class="example-tag">
+      <span class="tag tag-lang tag-lang-html">HTML</span>
+    </div>
+<pre><code class="language-scss">&lt;div class=&quot;example-console-left&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;example-console-right&quot;&gt;&lt;/div&gt;
+</code></pre>
+  </div><!-- .example-code -->
   <div class="example-block example-code">
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-scss">SCSS</span>
