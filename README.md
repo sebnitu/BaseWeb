@@ -8,7 +8,8 @@ Some features I have planned to implement in the near future.
 
 ### To-Do List
 
-* **For Docs**
+#### For Docs
+
 * Add copy button feature for example code blocks
 * Want to try collapsable variable, function and mixin displays for the docs (accordion style). Might help with navigating through all of them more easily.
 * Add hash tags back to the URL when clicking internal page links.
@@ -17,7 +18,9 @@ Some features I have planned to implement in the near future.
 * Tie documentation styles directly into BaseWeb so I can use Scss for docs but not have to modify BaseWeb source directly. Should then include watch and build tasks for this.
 * Create a partials system for including parts or widgets within mustache page and layout templates.
 * Include README.md somehow into the homepage of the docs. Was thinking this could be a dropdown somehow to show. This could be included using the future partials system.
-* **For Source**
+
+#### For Source
+
 * Add function and mixin documentation directly in source. The comment syntax should mimic what is done in `_functions.scss` for functions/mixins and `_global.scss` for variables.
 * Include some custom SVG icons directly in the framework for general web application use. Might be worth starting a new project for this and having SVGs separate. Still deciding on this.
 
