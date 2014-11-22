@@ -44,6 +44,40 @@ String.prototype.toTitleCase = function(){
     $('#aside-inner').stick_in_parent();
     
     /**
+     * To Top Button
+     */
+    var totop = $('#to-top')
+     ,  totopli = totop.parent().hide()
+     ,  scroll = $(window).scrollTop()
+     ,  aside = $('#aside-inner').offset();
+    
+    if(scroll > aside.top) {
+      totopli.fadeIn();
+    } else {
+      totopli.fadeOut();
+    }
+        
+    $(window).scroll(function (event) {
+      scroll = $(window).scrollTop();
+      
+      if(scroll > aside.top) {
+        totopli.fadeIn();
+      } else {
+        totopli.fadeOut();
+      }
+      
+    });
+    
+    totop.click(function() {
+      
+      $('html,body').animate({
+        scrollTop: 0
+      }, 1000);
+      return false;
+      
+    });
+    
+    /**
      * Navigation
      * Add our h2's as sub navigation
      */
