@@ -1,11 +1,4 @@
 ////////////////////////////////////////////////////////////////////////////////
-// @ Variables
-////////////////////////////////////////////////////////////////////////////////
-
-$color-bg-list: #f9f9f9 !default;
-$color-border-list: rgba($black, 0.1) !default;
-
-////////////////////////////////////////////////////////////////////////////////
 // @ Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -22,7 +15,7 @@ $color-border-list: rgba($black, 0.1) !default;
 }
 
 // Base List Styles
-@mixin make-base-list() {
+@mixin make-list-base() {
   margin: 10px 0;
   
   > li {
@@ -40,9 +33,8 @@ $color-border-list: rgba($black, 0.1) !default;
 // Wraps the list with a border and padding
 @mixin make-list-wrap() {
   
-  @include make-base-list();
   padding: 10px 15px 10px 35px;
-  border: 1px solid $color-border-list;
+  border: 1px solid rgba($black, 0.1);
   @include border-radius();
   
   > li {
@@ -60,14 +52,13 @@ $color-border-list: rgba($black, 0.1) !default;
 // Turns list items into rows by giving border seperators
 @mixin make-list-rowed() {
   
-  @include make-base-list();
   list-style: none;
-  border-bottom: 1px solid $color-border-list;
+  border-bottom: 1px solid rgba($black, 0.1);
   
   > li {
     margin: 0;
     padding: 10px 0;
-    border-top: 1px solid $color-border-list;
+    border-top: 1px solid rgba($black, 0.1);
   }
 }
 
@@ -75,15 +66,14 @@ $color-border-list: rgba($black, 0.1) !default;
 // Give the list outer and seperator borders
 @mixin make-list-bordered() {
 
-  @include make-base-list();
   list-style: none;
-  border: 1px solid $color-border-list;
+  border: 1px solid rgba($black, 0.1);
   @include border-radius();
   
   > li {
     margin: 0;
     padding: 10px 15px;
-    border-top: 1px solid $color-border-list;
+    border-top: 1px solid rgba($black, 0.1);
     
     &:first-child {
       border-top: 0 none;
@@ -97,20 +87,14 @@ $color-border-list: rgba($black, 0.1) !default;
 
 // Give Striped
 // Adds zebra stripes to list items
-@mixin give-list-stripes( $scope : children ) {
+@mixin give-list-stripes() {
   
   > li {
     padding: 10px 15px;
   }
   
-  @if ($scope == all) {
-    li:nth-child(even) {
-      background-color: $color-bg-list;
-    }
-  } @else {
-    > li:nth-child(even) {
-      background-color: $color-bg-list;
-    }
+  > li:nth-child(even) {
+    background-color: #f9f9f9;
   }
 }
 
@@ -178,15 +162,24 @@ dl {
 /**
  * Modifier Classes
  */
+%list-base {
+  @include make-list-base();
+}
+ 
 .list-wrap {
+  @extend %list-base;
   @include make-list-wrap();
 }
 .list-rowed {
+  @extend %list-base;
   @include make-list-rowed();
 }
 .list-bordered {
+  @extend %list-base;
   @include make-list-bordered();
 }
-.list-stripes {
+
+/* Alteration Classes */
+.give-list-stripes {
   @include give-list-stripes();
 }

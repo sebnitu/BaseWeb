@@ -307,11 +307,6 @@
   }
   
   @for $i from 1 through $grid-columns {
-    @if ($compiler == node-sass) {
-      .#{$class-column}-#{$i} {
-        @extend .#{$class-column};
-      }
-    }
     .#{$class-column}-#{$i} {
       width: column_width( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
     }

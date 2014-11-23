@@ -505,42 +505,6 @@
 
 <hr>
 
-<!-- #list variables -->
-
-<div class="page-content">
-  <h3>List Variables</h3>
-</div><!-- .page-content -->
-
-<!-- #variable #color-bg-list -->
-
-<article id="variable-color-bg-list" class="block block-variable" data-type="variable">
-<h3>$color-bg-list</h3>
-<p>The background color used for zebra striping a list items.</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$color-bg-list
-  type: color
-  default: #f9f9f9</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<!-- #variable #color-border-list -->
-
-<article id="variable-color-border-list" class="block block-variable" data-type="variable">
-<h3>$color-border-list</h3>
-<p>The border color used in the list modifier classes.</p>
-<div class="example">
-  <div class="example-block example-code">
-<pre><code class="language-scss">$color-border-list
-  type: color
-  default: rgba($black, 0.1)</code></pre>
-  </div><!-- .example-code -->
-</div><!-- .example -->
-</article>
-
-<hr>
-
 <!-- #list mixins -->
 
 <div class="page-content">
@@ -586,14 +550,14 @@ nav ul li {
 
 </article>
 
-<!-- #mixin #make-base-list -->
+<!-- #mixin #make-list-base -->
 
-<article id="mixin-make-base-list" class="block block-mixin" data-type="mixin">
-<h3>make-base-list</h3>
-<p>Creates the base styles for a list. This is primarily used as the base for modifier mixins and classes.</p>
+<article id="mixin-make-list-base" class="block block-mixin" data-type="mixin">
+<h3>make-list-base</h3>
+<p>Creates the base styles for a list. This is primarily used as the base for modifier mixins and classes that share similar style sets.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin make-base-list</code></pre>
+<pre><code class="language-scss">@mixin make-list-base</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -610,7 +574,19 @@ nav ul li {
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-css">CSS</span>
     </div>
-<pre><code class="language-scss">...</code></pre>
+<pre><code class="language-scss">
+.list-wrap, .list-rowed, .list-bordered, .list-wrap, .list-rowed, .list-bordered {
+margin: 10px 0; }
+%base-list > li:after {
+content: "";
+display: table;
+clear: both; }
+%base-list.list-no-clear > li:after {
+content: none;
+display: none;
+clear: none; }
+
+</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 

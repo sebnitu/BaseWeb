@@ -4,6 +4,18 @@ var extend = require('./modules/extend');
 var u = require('./modules/utility');
 
 /**
+  
+Sass Commands:
+
+sass config.paths.scss + '_baseweb.scss' config.paths.css + 'baseweb.css' --style expanded
+sass config.paths.scss + '_baseweb.scss' config.paths.css + 'baseweb.min.css' --style compressed
+
+sass src/scss/_baseweb.scss src/css/baseweb.css --style expanded
+sass src/scss/_baseweb.scss src/css/baseweb.min.css --style compressed
+
+**/
+
+/**
  * Jake task for compiling LESS files
  */
 desc('Parse a SASS file and write CSS to an output');
@@ -18,6 +30,7 @@ task('sass', {async: true}, function(options) {
   fs.readFile(o.input, 'utf8', function(err, data) {
     if (err) throw new Error(u.colorize(err, 'red'));
     
+    /*
     // Render and write expanded file
     sass.render({
       data: data,
@@ -42,6 +55,17 @@ task('sass', {async: true}, function(options) {
       },
       includePaths: [ o.paths ],
       outputStyle: 'compressed'
+    });
+    */
+    
+    var cmds = [
+      "sass src/scss/_baseweb.scss src/css/baseweb.css --style expanded"
+    , "sass src/scss/_baseweb.scss src/css/baseweb.min.css --style compressed"
+    ];
+    
+    jake.exec(cmds, {printStdout: true}, function () {
+      u.print('Sass has compiled successfully', 'green');
+      complete();
     });
     
   });
