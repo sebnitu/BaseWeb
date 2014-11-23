@@ -34,7 +34,15 @@
   </ul>
   
   <p>Custom styles contain things that are project specific. This may include BaseWeb overrides or completely unique files. By default, BaseWeb comes with <code>_custom.scss</code> which is where you'd set site specific styles. But if you'd like to override BaseWeb's files such as notice styles, you could create a new <code>_notice.scss</code> file within the <code>custom</code> directory and update <code>_baseweb.scss</code> with the new path. This allows you to maintain unique blocks while keeping the BaseWeb framework maintainable. Otherwise, if you're branching BaseWeb off as it's own project and you won't need to keep files updated with future versions, you could just override these files directly.</p>
+
+</div><!-- .page-content -->
+
+<hr>
+
+<!-- #file-structure -->
   
+<div class="page-content">
+
   <aside class="col col-6 align-right">
     <div class="example">
       <div class="example-block example-heading">
@@ -49,9 +57,9 @@
   <span class="token path">│   ├── </span><span class="token file">_functions.scss</span>
   <span class="token path">│   ├── </span><span class="token file">_mixins.scss</span>
   <span class="token path">│   ├── </span><span class="token file">_media.scss</span>
-  <span class="token path">│   └── </span><span class="token file">_grid.scss</span>
+  <span class="token path">│   ├── </span><span class="token file">_grid.scss</span>
+  <span class="token path">│   └── </span><span class="token file">_reset.scss</span>
   <span class="token path">├── </span><span class="token directory">elements</span>
-  <span class="token path">│   ├── </span><span class="token file">_reset.scss</span>
   <span class="token path">│   ├── </span><span class="token file">_typography.scss</span>
   <span class="token path">│   ├── </span><span class="token file">_edit.scss</span>
   <span class="token path">│   ├── </span><span class="token file">_lists.scss</span>
@@ -99,7 +107,13 @@
   
   <p>Elements and blocks however do output styles directly, but are optional. To not include their output in the final CSS files, you can simply comment out their imports in <code>_baseweb.scss</code>.</p>
   
-  <!-- #variables -->
+</div><!-- .page-content -->
+
+<hr>
+
+<!-- #variables -->
+  
+<div class="page-content">
   
   <h2 id="palette">Palette</h2>
   <p class="tags"><a href="#" class="tag-default tag-file">settings/_palette.scss</a></p>
@@ -3337,5 +3351,33 @@ $darker-deg:  10% !default;</code></pre>
 </code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
+
+</article>
+
+<!-- #mixin #build-reset -->
+
+<article id="mixin-build-reset" class="block block-mixin" data-type="mixin">
+
+<h3>build-reset</h3>
+<p>The reset mixin defines the basic styles of an HTML document and resets some browser defaults. It's typically the first styles that get output in a CSS document so this mixin is self declaring in <code>core/_reset.scss</code> and is the only core file that directly outputs CSS. You can remove the reset from <code>_baseweb.scss</code> or comment out the mixin include.</p>
+<div class="example">
+  <div class="example-block example-code">
+<pre><code class="language-scss">@mixin build-reset</code></pre>
+  </div><!-- .example-code -->
+</div><!-- .example -->
+
+<p>By default, the reset mixin will do the following:</p>
+
+<ul class="list-bordered">
+  <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
+  <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
+  <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
+  <li>Creates the clearfix class using the <a href="#class-clearfix" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#clearfix" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
+  <li>Creates the remove-clearfix class using the <a href="#remove-class-clearfix" class="code-link"><code>$remove-class-clearfix</code></a> class name and <a href="#remove-clearfix" class="code-link"><code>@mixin remove-clearfix</code></a> mixin</li>
+  <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
+  <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
+  <li>Sets border collapse and spacing for tables</li>
+  <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
+</ul>
 
 </article>

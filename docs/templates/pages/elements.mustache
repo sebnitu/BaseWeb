@@ -15,33 +15,7 @@
 
 <div class="page-content">
     
-  <p>Elements in BaseWeb are defined as global things like typography, lists, tables and any other HTML elements that you might need in your document.</p>
-
-</div><!-- .page-content -->
-
-<hr>
-
-<!-- #reset -->
-
-<div class="page-content">
-
-  <h2 id="reset">Reset</h2>
-
-  <p class="tags"><a href="#" class="tag-default tag-file">elements/_reset.scss</a></p>
-  
-  <p>BaseWeb comes with a very basic reset styles that do a few things such as:</p>
-  
-  <ul class="list-bordered list-stripes">
-    <li>Removes margin and padding from the <code>html</code> and <code>body</code> elements</li>
-    <li>Sets <code>text-size-adjust</code> to <code>100%</code> to prevent automatic text resizing on mobile devices</li>
-    <li>Sets the global box sizing model to <code>border-box</code> if it's set in <a href="#" class="code-link"><code>$global-box-sizing</code></a></li>
-    <li>Creates the clearfix class using the <a href="#class-clearfix" class="code-link"><code>$class-clearfix</code></a> class name and <a href="#clearfix" class="code-link"><code>@mixin clearfix</code></a> mixin</li>
-    <li>Creates the remove-clearfix class using the <a href="#remove-class-clearfix" class="code-link"><code>$remove-class-clearfix</code></a> class name and <a href="#remove-clearfix" class="code-link"><code>@mixin remove-clearfix</code></a> mixin</li>
-    <li>Sets appropriate HTML5 elements to <code>display: block;</code></li>
-    <li>Removes list styles from lists that are nested in the HTML5 <code>&lt;nav&gt;</code> element using the <a href="#" class="code-link"><code>@mixin remove-list-styles</code></a> mixin</li>
-    <li>Sets border collapse and spacing for tables</li>
-    <li>Sets the default background-color for selected text using the <a href="#" class="code-link"><code>$bg-selection</code></a> variable</li>
-  </ul>
+  <p>Elements in BaseWeb are defined as individual HTML components. Things like headers, paragraphs, lists, tables and any other HTML elements that make up the whole of your document. Although most elements in a document are used in groups to form blocks, each element has a base look that functions independently and can be enhanced in either blocks or using modifiers.</p>
 
 </div><!-- .page-content -->
 
@@ -55,7 +29,7 @@
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_typography.scss</a></p>
   
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet, ipsum a pulvinar faucibus, lorem est euismod neque, ut feugiat neque mauris non tellus. Donec in consectetur felis.</p>
+  <p>The base typographic styles for headers, body text, inline text elements and links as well as modifier classes.</p>
   
   <h3>Headers</h3>
   
@@ -301,49 +275,41 @@
   <table class="table-bordered table-stripes">
     <tr>
       <th>Class</th>
-      <th>Description</th>
       <th>Example</th>
     </tr>
     
     <tr>
       <td><code>.edit</code></td>
-      <td>...</td>
       <td><span class="edit">This is an example edit inline element.</span></td>
     </tr>
     
     <tr>
       <td><code>.info</code></td>
-      <td>...</td>
       <td><span class="info">This is an example information inline element.</span></td>
     </tr>
     
     <tr>
       <td><code>.warning</code></td>
-      <td>...</td>
       <td><span class="warning">This is an example warning inline element.</span></td>
     </tr>
     
     <tr>
       <td><code>.ins</code> <code>&lt;ins&gt;</code></td>
-      <td>...</td>
       <td><ins>This is an example insert inline element.</ins></td>
     </tr>
     
     <tr>
       <td><code>.success</code></td>
-      <td>...</td>
       <td><span class="success">This is an example success inline element.</span></td>
     </tr>
     
     <tr>
       <td><code>.del</code> <code>&lt;del&gt;</code></td>
-      <td>...</td>
       <td><del>This is an example deletion inline element.</del></td>
     </tr>
     
     <tr>
       <td><code>.danger</code></td>
-      <td>...</td>
       <td><span class="danger">This is an example danger inline element.</span></td>
     </tr>
   
@@ -413,12 +379,10 @@
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_lists.scss</a></p>
   
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet, ipsum a pulvinar faucibus, lorem est euismod neque, ut feugiat neque mauris non tellus. Donec in consectetur felis.</p>
+  <p>Base list styles and modifier classes. List elements in BaseWeb also take advantage of custom variable and mixins.</p>
   
   <h3>Base List Styles</h3>
-  
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet, ipsum a pulvinar faucibus, lorem est euismod neque, ut feugiat neque mauris non tellus. Donec in consectetur felis.</p>
-  
+    
   <table class="table-bordered table-stripes">
     <tr>
       <th>Tag</th>
@@ -428,7 +392,7 @@
     
     <tr>
       <td><code>&lt;ul&gt;</code></td>
-      <td>...</td>
+      <td>Unordered List</td>
       <td>
         <ul>
           <li>List Item</li>
@@ -440,7 +404,7 @@
     
     <tr>
       <td><code>&lt;ol&gt;</code></td>
-      <td>...</td>
+      <td>Ordered List</td>
       <td>
         <ol>
           <li>List Item</li>
@@ -452,7 +416,7 @@
     
     <tr>
       <td><code>&lt;dl&gt;</code></td>
-      <td>...</td>
+      <td>Definition List</td>
       <td>
         <dl>
           <dt>Term</dt>
@@ -465,9 +429,7 @@
   </table>
   
   <h3>List Modifier Classes</h3>
-  
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet, ipsum a pulvinar faucibus, lorem est euismod neque, ut feugiat neque mauris non tellus. Donec in consectetur felis.</p>
-  
+    
   <div class="example">
     <div class="example-block example-output">
       
@@ -553,7 +515,7 @@
 
 <article id="variable-color-bg-list" class="block block-variable" data-type="variable">
 <h3>$color-bg-list</h3>
-<p>...</p>
+<p>The background color used for zebra striping a list items.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-bg-list
@@ -567,7 +529,7 @@
 
 <article id="variable-color-border-list" class="block block-variable" data-type="variable">
 <h3>$color-border-list</h3>
-<p>...</p>
+<p>The border color used in the list modifier classes.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">$color-border-list
@@ -589,7 +551,7 @@
 
 <article id="mixin-remove-list-styles" class="block block-mixin" data-type="mixin">
 <h3>remove-list-styles</h3>
-<p>...</p>
+<p>Removes the default list styles. This is commonly used when styling a list in the context of a navigation, menu or breadcrumb.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin remove-list-styles</code></pre>
@@ -603,13 +565,22 @@
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-scss">SCSS</span>
     </div>
-<pre><code class="language-scss">...</code></pre>
+<pre><code class="language-scss">nav ul {
+  @include remove-list-styles();
+}</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-css">CSS</span>
     </div>
-<pre><code class="language-scss">...</code></pre>
+<pre><code class="language-scss">nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  margin: 0;
+}</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -619,7 +590,7 @@
 
 <article id="mixin-make-base-list" class="block block-mixin" data-type="mixin">
 <h3>make-base-list</h3>
-<p>...</p>
+<p>Creates the base styles for a list. This is primarily used as the base for modifier mixins and classes.</p>
 <div class="example">
   <div class="example-block example-code">
 <pre><code class="language-scss">@mixin make-base-list</code></pre>

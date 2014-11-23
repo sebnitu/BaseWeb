@@ -11,7 +11,7 @@ $color-border-list: rgba($black, 0.1) !default;
 
 // Remove List Styles
 // Removes default list styles and margins from a list element and it's children
-@mixin remove-list-styles {
+@mixin remove-list-styles() {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -21,7 +21,7 @@ $color-border-list: rgba($black, 0.1) !default;
   }
 }
 
-// Base Modifier Table Styles
+// Base List Styles
 @mixin make-base-list() {
   margin: 10px 0;
   
@@ -104,7 +104,7 @@ $color-border-list: rgba($black, 0.1) !default;
   }
   
   @if ($scope == all) {
-    > li:nth-child(even) {
+    li:nth-child(even) {
       background-color: $color-bg-list;
     }
   } @else {
