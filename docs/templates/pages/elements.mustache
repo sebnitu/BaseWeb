@@ -550,14 +550,14 @@ nav ul li {
 
 </article>
 
-<!-- #mixin #make-list-base -->
+<!-- #mixin #make-list-modifier-base -->
 
-<article id="mixin-make-list-base" class="block block-mixin" data-type="mixin">
-<h3>make-list-base</h3>
-<p>Creates the base styles for a list. This is primarily used as the base for modifier mixins and classes that share similar style sets.</p>
+<article id="mixin-make-list-modifier-base" class="block block-mixin" data-type="mixin">
+<h3>make-list-modifier-base</h3>
+<p>Creates the base styles for a list modifier.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin make-list-base</code></pre>
+<pre><code class="language-scss">@mixin make-list-modifier-base</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -568,25 +568,46 @@ nav ul li {
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-scss">SCSS</span>
     </div>
-<pre><code class="language-scss">...</code></pre>
+<pre><code class="language-scss">%list-base {
+  @include make-list-modifier-base();
+}
+
+.list-wrap {
+  @extend %list-base;
+  ...
+}
+.list-rowed {
+  @extend %list-base;
+  ...
+}
+.list-bordered {
+  @extend %list-base;
+  ...
+}</code></pre>
   </div><!-- .example-code -->
   <div class="example-block example-code">
     <div class="example-tag">
       <span class="tag tag-lang tag-lang-css">CSS</span>
     </div>
-<pre><code class="language-scss">
-.list-wrap, .list-rowed, .list-bordered, .list-wrap, .list-rowed, .list-bordered {
-margin: 10px 0; }
-%base-list > li:after {
-content: "";
-display: table;
-clear: both; }
-%base-list.list-no-clear > li:after {
-content: none;
-display: none;
-clear: none; }
-
-</code></pre>
+<pre><code class="language-scss">.list-wrap,
+.list-rowed,
+.list-bordered {
+  margin: 10px 0;
+}
+.list-wrap > li:after,
+.list-rowed > li:after,
+.list-bordered > li:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.list-no-clear.list-wrap > li:after,
+.list-no-clear.list-rowed > li:after,
+.list-no-clear.list-bordered > li:after {
+  content: none;
+  display: none;
+  clear: none;
+}</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
