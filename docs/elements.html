@@ -31,7 +31,7 @@
 
 <div class="block-wrapper">
   
-  <div class="block block-header">
+  <div id="header" class="block block-header">
     <div class="inner">
       <nav>
       
@@ -42,21 +42,14 @@
             <li id="menu-item-devlog" class="menu-item menu-item-devlog"><a href="/devlog/">Development Log</a></li>
           <li class="menu-item menu-item-download"><a href="https://github.com/sebnitu/BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
         </ul>
-        
-        <ul class="menu-secondary">
-          <li><a href="#">Star (24)</a></li>
-          <li><a href="#">Fork (6)</a></li>
-          <li><a href="#">Follow (45)</a></li>
-          <li><a href="#">Tweet (18.6k)</a></li>
-        </ul>
-        
+                
       </nav>
     </div>
   </div>
   
-  <div class="block block-main">
+  <div id="main" class="block block-main">
     
-    <div class="block block-aside">
+    <div id="aside" class="block block-aside">
       <div id="aside-inner" class="aside-inner inner">
         
         <div id="aside-item-menu" class="aside-item aside-item-menu">
@@ -76,28 +69,26 @@
       </div><!-- .inner -->
     </div><!-- .block-cell .block-aside -->
     
-    <section class="block block-content">
+    <section id="content" class="block block-content">
       <div class="inner clearfix">
         
 
-<header class="page-header">
-  <span class="icon icon-elements"></span>
-  <h1 id="elements">Elements</h1>
-</header>
-
-<div class="page-content">
+<div id="elements" class="block-content-group">
+    
+  <header class="page-header">
+    <span class="icon icon-elements"></span>
+    <h1>Elements</h1>
+  </header>
     
   <p>Elements in BaseWeb are defined as individual HTML components. Things like headers, paragraphs, lists, tables and any other HTML elements that make up the whole of your document. Although most elements in a document are used in groups to form blocks, each element has a base look that functions independently and can be enhanced in either blocks or using modifiers.</p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #typography -->
 
-<div class="page-content">
+<div id="typography" class="block-content-group">
 
-  <h2 id="typography">Typography</h2>
+  <h2>Typography</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_typography.scss</a></p>
   
@@ -328,15 +319,13 @@
     
   </table>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #edit -->
 
-<div class="page-content">
+<div id="edit" class="block-content-group">
 
-  <h2 id="edit">Edit</h2>
+  <h2>Edit</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_edit.scss</a></p>
   
@@ -439,15 +428,13 @@
     </div><!-- .example-code -->
   </div><!-- .example -->
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #lists -->
 
-<div class="page-content">
+<div id="lists" class="block-content-group">
 
-  <h2 id="lists">Lists</h2>
+  <h2>Lists</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_lists.scss</a></p>
   
@@ -573,15 +560,11 @@
     </div><!-- .example-code -->
   </div><!-- .example -->
 
-</div><!-- .page-content -->
-
-<hr>
-
 <!-- #list mixins -->
 
-<div class="page-content">
+  <hr>
+
   <h3>List Mixins</h3>
-</div><!-- .page-content -->
 
 <!-- #mixin #remove-list-styles -->
 
@@ -622,14 +605,14 @@ nav ul li {
 
 </article>
 
-<!-- #mixin #make-list-modifier-base -->
+<!-- #mixin #make-base-list-modifier -->
 
-<article id="mixin-make-list-modifier-base" class="block block-mixin" data-type="mixin">
-<h3>make-list-modifier-base</h3>
+<article id="mixin-make-base-list-modifier" class="block block-mixin" data-type="mixin">
+<h3>make-base-list-modifier</h3>
 <p>Creates the base styles for a list modifier.</p>
 <div class="example">
   <div class="example-block example-code">
-<pre><code class="language-scss">@mixin make-list-modifier-base</code></pre>
+<pre><code class="language-scss">@mixin make-base-list-modifier</code></pre>
   </div><!-- .example-code -->
 </div><!-- .example -->
 
@@ -641,7 +624,7 @@ nav ul li {
       <span class="tag tag-lang tag-lang-scss">SCSS</span>
     </div>
 <pre><code class="language-scss">%list-base {
-  @include make-list-modifier-base();
+  @include make-base-list-modifier();
 }
 
 .list-wrap {
@@ -805,13 +788,13 @@ nav ul li {
 
 </article>
 
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #blockquotes -->
 
-<div class="page-content">
+<div id="blockquotes" class="block-content-group">
 
-  <h2 id="blockquotes">Blockquotes</h2>
+  <h2>Blockquotes</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_blockquotes.scss</a></p>
   
@@ -837,98 +820,77 @@ nav ul li {
     </div><!-- .example-code -->
   </div><!-- .example -->
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #code -->
 
-<div class="page-content">
+<div id="code" class="block-content-group">
   
-  <h2 id="code">Code</h2>
+  <h2>Code</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_code.scss</a></p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #tables -->
 
-<div class="page-content">
+<div id="tables" class="block-content-group">
   
-  <h2 id="tables">Tables</h2>
+  <h2>Tables</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_tables.scss</a></p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #images -->
 
-<div class="page-content">
+<div id="images" class="block-content-group">
   
-  <h2 id="images">Images</h2>
+  <h2>Images</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_images.scss</a></p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #rules -->
 
-<div class="page-content">
+<div id="rules" class="block-content-group">
   
-  <h2 id="rules">Rules</h2>
+  <h2>Rules</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_rules.scss</a></p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #forms -->
 
-<div class="page-content">
+<div id="forms" class="block-content-group">
   
-  <h2 id="forms">Forms</h2>
+  <h2>Forms</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_forms.scss</a></p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #buttons -->
 
-<div class="page-content">
+<div id="buttons" class="block-content-group">
   
-  <h2 id="buttons">Buttons</h2>
+  <h2>Buttons</h2>
   
   <p class="tags"><a href="#" class="tag-default tag-file">elements/_buttons.scss</a></p>
 
-</div><!-- .page-content -->
+</div><!-- .block-content-group -->
         
       </div><!-- .inner -->
     </section><!-- .block-cell .block-content -->
     
   </div><!-- .block-table -->
   
-  <div class="block block-footer">
+  <div id="footer" class="block block-footer">
     <div class="inner">
       
-      <nav>
-        <ul class="menu-left">
-          <li class="menu-item-feedback"><a href="#">Feedback</a></li>
-          <li class="menu-item-copyright">&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</li>
-        </ul>
-        <ul class="menu-right">
-          <li><a href="#" target="_blank">Privacy Policy</a></li>
-          <li><a href="#" target="_blank">Terms of Service</a></li>
-        </ul>
-      </nav>
+      <p>&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a></p>
       
     </div><!-- .inner -->
   </div><!-- .block-footer -->

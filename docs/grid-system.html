@@ -31,7 +31,7 @@
 
 <div class="block-wrapper">
   
-  <div class="block block-header">
+  <div id="header" class="block block-header">
     <div class="inner">
       <nav>
       
@@ -42,21 +42,14 @@
             <li id="menu-item-devlog" class="menu-item menu-item-devlog"><a href="/devlog/">Development Log</a></li>
           <li class="menu-item menu-item-download"><a href="https://github.com/sebnitu/BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
         </ul>
-        
-        <ul class="menu-secondary">
-          <li><a href="#">Star (24)</a></li>
-          <li><a href="#">Fork (6)</a></li>
-          <li><a href="#">Follow (45)</a></li>
-          <li><a href="#">Tweet (18.6k)</a></li>
-        </ul>
-        
+                
       </nav>
     </div>
   </div>
   
-  <div class="block block-main">
+  <div id="main" class="block block-main">
     
-    <div class="block block-aside">
+    <div id="aside" class="block block-aside">
       <div id="aside-inner" class="aside-inner inner">
         
         <div id="aside-item-menu" class="aside-item aside-item-menu">
@@ -76,18 +69,18 @@
       </div><!-- .inner -->
     </div><!-- .block-cell .block-aside -->
     
-    <section class="block block-content">
+    <section id="content" class="block block-content">
       <div class="inner clearfix">
         
 
-<header class="page-header">
-  <p class="tags"><a href="#" class="tag-default tag-file">core/_grid.scss</a></p>
-  <span class="icon icon-gridsystem"></span>
-  <h1 id="grid-system">Grid System</h1>
-</header>
-
-<div class="page-content">
-
+<div id="grid-system" class="block-content-group">
+  
+  <header class="page-header">
+    <p class="tags"><a href="#" class="tag-default tag-file">core/_grid.scss</a></p>
+    <span class="icon icon-gridsystem"></span>
+    <h1>Grid System</h1>
+  </header>
+  
   <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure. Here's an example:</p>
   
   <div class="example">
@@ -214,7 +207,11 @@
     </tr>
   </table>
   
-  <h2 id="semantic-grid">Semantic Grids</h2>
+</div><!-- .block-content-group -->
+  
+<div id="semantic-grid" class="block-content-group">
+  
+  <h2>Semantic Grids</h2>
   
   <p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets. The <a href="#mixins">mixins</a> section below has details on all of the mixins available for semantic grids:</p>
   
@@ -299,7 +296,11 @@
     </div><!-- .example-code -->
   </div><!-- .example -->
   
-  <h2 id="prefix-and-suffix">Prefix and Suffix</h2>
+</div><!-- .block-content-group -->
+
+<div id="prefix-and-suffix" class="block-content-group">
+  
+  <h2>Prefix and Suffix</h2>
   
   <p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
   
@@ -355,7 +356,11 @@
     </div><!-- .example-code -->
   </div><!-- .example -->
   
-  <h2 id="nested-columns">Nested Columns</h2>
+</div><!-- .block-content-group -->
+
+<div id="nested-columns" class="block-content-group">
+  
+  <h2>Nested Columns</h2>
   
   <p>You can created nested columns in your grid system by adding a new <code>.row</code> element inside a <code>.col</code>. It's important to note that the first element inside a <code>.row</code> should always be a <code>.col</code>. Otherwise, you'll need to either manually remove the gutter margin or use the <a href="#grid-system-modifier-classes" class="code-link"><code>.col-no-gutter</code></a> modifier class.</p>
   
@@ -415,15 +420,12 @@
     </div><!-- .example-code -->
   </div><!-- .example -->
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #variables -->
 
-<div class="page-content">
-  <h2 id="variables">Variables</h2>
-</div><!-- .page-content -->
+<div id="variables" class="block-content-group">
+  <h2>Variables</h2>
 
 <!-- #variable #grid-total-width -->
 
@@ -593,13 +595,12 @@
 </div><!-- .example -->
 </article>
 
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #functions -->
 
-<div class="page-content">
-  <h2 id="functions">Functions</h2>
-</div><!-- .page-content -->
+<div id="functions" class="block-content-group">
+  <h2>Functions</h2>
 
 <!-- #function #column_width -->
 
@@ -733,13 +734,12 @@
 
 </article>
 
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #mixins -->
 
-<div class="page-content">
-  <h2 id="mixins">Mixins</h2>
-</div><!-- .page-content -->
+<div id="mixins" class="block-content-group">
+  <h2>Mixins</h2>
 
 <!-- #mixin #make-container -->
 
@@ -1347,25 +1347,18 @@
 </ul>
 
 </article>
+
+</div><!-- .block-content-group -->
         
       </div><!-- .inner -->
     </section><!-- .block-cell .block-content -->
     
   </div><!-- .block-table -->
   
-  <div class="block block-footer">
+  <div id="footer" class="block block-footer">
     <div class="inner">
       
-      <nav>
-        <ul class="menu-left">
-          <li class="menu-item-feedback"><a href="#">Feedback</a></li>
-          <li class="menu-item-copyright">&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</li>
-        </ul>
-        <ul class="menu-right">
-          <li><a href="#" target="_blank">Privacy Policy</a></li>
-          <li><a href="#" target="_blank">Terms of Service</a></li>
-        </ul>
-      </nav>
+      <p>&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a></p>
       
     </div><!-- .inner -->
   </div><!-- .block-footer -->

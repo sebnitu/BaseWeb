@@ -31,7 +31,7 @@
 
 <div class="block-wrapper">
   
-  <div class="block block-header">
+  <div id="header" class="block block-header">
     <div class="inner">
       <nav>
       
@@ -42,21 +42,14 @@
             <li id="menu-item-devlog" class="menu-item menu-item-devlog"><a href="/devlog/">Development Log</a></li>
           <li class="menu-item menu-item-download"><a href="https://github.com/sebnitu/BaseWeb.git">Download <span class="version">v0.9.0</span></a></li>
         </ul>
-        
-        <ul class="menu-secondary">
-          <li><a href="#">Star (24)</a></li>
-          <li><a href="#">Fork (6)</a></li>
-          <li><a href="#">Follow (45)</a></li>
-          <li><a href="#">Tweet (18.6k)</a></li>
-        </ul>
-        
+                
       </nav>
     </div>
   </div>
   
-  <div class="block block-main">
+  <div id="main" class="block block-main">
     
-    <div class="block block-aside">
+    <div id="aside" class="block block-aside">
       <div id="aside-inner" class="aside-inner inner">
         
         <div id="aside-item-menu" class="aside-item aside-item-menu">
@@ -76,18 +69,18 @@
       </div><!-- .inner -->
     </div><!-- .block-cell .block-aside -->
     
-    <section class="block block-content">
+    <section id="content" class="block block-content">
       <div class="inner clearfix">
         
 
 <!-- #how-it-works -->
 
-<header class="page-header">
-  <span class="icon icon-overview"></span>
-  <h1 id="how-it-works">How It Works</h1>
-</header>
+<div id="how-it-works" class="block-content-group">
 
-<div class="page-content">
+  <header class="page-header">
+    <span class="icon icon-overview"></span>
+    <h1>Overview</h1>
+  </header>
 
   <p>BaseWeb is designed to be a starting point for your front-end projects. You can use the source as a base and make it your own, or keep it maintainable for future BaseWeb updates by keeping customization separate from the core files. You can also use the output CSS and JS files and not deal with the source at all. Although, it's recommended to work directly along side the SCSS to take full advantage of the framework.</p>
   
@@ -104,13 +97,11 @@
   
   <p>Custom styles contain things that are project specific. This may include BaseWeb overrides or completely unique files. By default, BaseWeb comes with <code>_custom.scss</code> which is where you'd set site specific styles. But if you'd like to override BaseWeb's files such as notice styles, you could create a new <code>_notice.scss</code> file within the <code>custom</code> directory and update <code>_baseweb.scss</code> with the new path. This allows you to maintain unique blocks while keeping the BaseWeb framework maintainable. Otherwise, if you're branching BaseWeb off as it's own project and you won't need to keep files updated with future versions, you could just override these files directly.</p>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #file-structure -->
   
-<div class="page-content">
+<div id="file-structure" class="block-content-group">
 
   <aside class="col col-6 align-right">
     <div class="example">
@@ -158,7 +149,7 @@
     </div><!-- .example -->
   </aside>
   
-  <h2 id="file-structure">File Structure</h2>
+  <h2>File Structure</h2>
   
   <p>The file structure of BaseWeb is designed to be easy to navigate, maintain and customize. All SCSS files are split into one of five groups:</p>
   
@@ -176,15 +167,13 @@
   
   <p>Elements and blocks however do output styles directly, but are optional. To not include their output in the final CSS files, you can simply comment out their imports in <code>_baseweb.scss</code>.</p>
   
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #variables -->
   
-<div class="page-content">
+<div id="palette" class="block-content-group">
   
-  <h2 id="palette">Palette</h2>
+  <h2>Palette</h2>
   <p class="tags"><a href="#" class="tag-default tag-file">settings/_palette.scss</a></p>
   
   <p>The Color Palette in BaseWeb is defined using the settings file <code>settings/_palette.scss</code>. It contains the global color variables that are used throughout the framework. This allows you to easily change the color themes between elements and blocks as well as keeping them consistent with each other.</p>
@@ -341,18 +330,14 @@ $darker-deg:  10% !default;</code></pre>
     </tr>
   </table>
 
-</div><!-- .page-content -->
-
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #variables -->
 
-<div class="page-content">
+<div id="global-variables" class="block-content-group">
 
-  <h2 id="global-variables">Global Variables</h2>
+  <h2>Global Variables</h2>
   <p class="tags"><a href="#" class="tag-default tag-file">settings/_global.scss</a></p>
-
-</div><!-- .page-content -->
 
 <!-- #variable #global-box-sizing -->
 
@@ -947,16 +932,14 @@ $darker-deg:  10% !default;</code></pre>
 <span class="reference">Reference:  <a href="#black" class="code-link"><code>$black</code></a></span>
 </article>
 
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #functions -->
 
-<div class="page-content">
+<div id="global-functions" class="block-content-group">
   
-  <h2 id="global-functions">Global Functions</h2>
+  <h2>Global Functions</h2>
   <p class="tags"><a href="#" class="tag-default tag-file">core/_functions.scss</a></p>
-  
-</div><!-- .page-content -->
 
 <!-- #function #strip_units -->
 
@@ -1100,16 +1083,14 @@ $darker-deg:  10% !default;</code></pre>
 
 </article>
 
-<hr>
+</div><!-- .block-content-group -->
 
 <!-- #mixins -->
 
-<div class="page-content">
+<div id="global-mixins" class="block-content-group">
 
-  <h2 id="global-mixins">Global Mixins</h2>
+  <h2>Global Mixins</h2>
   <p class="tags"><a href="#" class="tag-default tag-file">core/_mixins.scss</a></p>
-
-</div><!-- .page-content -->
 
 <!-- #mixin #size -->
 
@@ -3436,25 +3417,18 @@ $darker-deg:  10% !default;</code></pre>
 </ul>
 
 </article>
+
+</div><!-- .block-content-group -->
         
       </div><!-- .inner -->
     </section><!-- .block-cell .block-content -->
     
   </div><!-- .block-table -->
   
-  <div class="block block-footer">
+  <div id="footer" class="block block-footer">
     <div class="inner">
       
-      <nav>
-        <ul class="menu-left">
-          <li class="menu-item-feedback"><a href="#">Feedback</a></li>
-          <li class="menu-item-copyright">&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a>. All rights reserved.</li>
-        </ul>
-        <ul class="menu-right">
-          <li><a href="#" target="_blank">Privacy Policy</a></li>
-          <li><a href="#" target="_blank">Terms of Service</a></li>
-        </ul>
-      </nav>
+      <p>&copy; 2014 <a href="http://sebnitu.com">Sebastian Nitu</a></p>
       
     </div><!-- .inner -->
   </div><!-- .block-footer -->

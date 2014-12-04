@@ -11,7 +11,6 @@ Some features I have planned to implement in the near future.
 #### For Docs
 
 * Add copy button feature for example code blocks
-* Want to try collapsable variable, function and mixin displays for the docs (accordion style). Might help with navigating through all of them more easily.
 * Add hash tags back to the URL when clicking internal page links.
 * Add a table of contents widget.
 * Automatic SVG compilation. SVGs saved to `img > svg` should get compiled to a single file in `img` called `svg-difs.svg` for use in SVG sprites. Source: [Icon System with SVG Sprites by Chris Coyier](http://css-tricks.com/svg-sprites-use-better-icon-fonts/)

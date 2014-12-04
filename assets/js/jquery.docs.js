@@ -81,16 +81,16 @@ String.prototype.toTitleCase = function(){
      * Navigation
      * Add our h2's as sub navigation
      */
-    var headings = $('h1, h2');
+    var content_groups = $('.block-content-group');
     var sub_menu = '<ul class="sub-menu">';
     
     var text, href;
     
     // Loop through the headers
-    headings.each(function(index, element) {
+    content_groups.each(function(index, element) {
     
       // Get the values
-      text = $(this).text();
+      text = $(this).find('h1, h2').first().text();
       href = $(this).attr('id');
       
       // Append link to navigation
@@ -104,10 +104,60 @@ String.prototype.toTitleCase = function(){
     sub_menu += '</ul>';
         
     // Append submenu to navigation
-    if (headings.length !== 0) {
+    if (content_groups.length !== 0) {
       sub_menu = $('.block-aside .active').append(sub_menu).find('.sub-menu').hide().delay(500).slideDown();
     }
     
+    /**
+     * Active Menu Item on Scroll
+     */
+    // Cache selectors
+    var aside_menu = $('#aside-item-menu .sub-menu'),
+        header_height = $('#header').outerHeight(),
+        // All list items
+        aside_menu_items = aside_menu.find('a');
+        
+    // Anchors corresponding to menu items
+    var scroll_items = aside_menu_items.map(function(){
+      var item = $($(this).attr('href'));
+      if (item.length) { return item; }
+    });
+    
+    // Get container scroll position
+    var from_top = $(this).scrollTop() + header_height;
+          
+    // Get id of current scroll item
+    var cur = scroll_items.map(function(){
+     if ($(this).offset().top < from_top)
+       return this;
+    });
+    // Get the id of the current element
+    cur = cur[cur.length-1];
+    var id = cur && cur.length ? cur[0].id : "";
+    // Set/remove active class
+    aside_menu_items
+     .parent().removeClass('active')
+     .end().filter('[href=#' + id + ']').parent().addClass('active');
+    
+    // Bind to scroll
+    $(window).scroll(function(){
+      // Get container scroll position
+      from_top = $(this).scrollTop() + header_height;
+            
+      // Get id of current scroll item
+      cur = scroll_items.map(function(){
+       if ($(this).offset().top < from_top)
+         return this;
+      });
+      // Get the id of the current element
+      cur = cur[cur.length-1];
+      id = cur && cur.length ? cur[0].id : "";
+      // Set/remove active class
+      aside_menu_items
+       .parent().removeClass('active')
+       .end().filter('[href=#' + id + ']').parent().addClass('active');
+    });
+
     /**
      * Scroll to element
      */
