@@ -99,3 +99,95 @@ namespace('build', function() {
   });
   
 });
+
+/*
+var getjsonsync = require('./modules/getjsonsync');
+var runless = require('./modules/runless');
+var runuglifyjs = require('./modules/runuglifyjs');
+var Imagemin = require('imagemin');
+var u = require('./modules/utility');
+
+// The Build Tasks
+namespace('build', function() {
+  
+  var settings = getjsonsync('settings.json');
+  
+  // Global Image Optimization
+  desc('Optimizes global images');
+  task('img', {async: true}, function() {
+    
+    settings.global.imgs.paths.forEach(function (path, index, array) {
+      
+      var imagemin = new Imagemin()
+        .src(path + 'raw/*.{gif,jpg,png,svg}')
+        .dest(path)
+        .use(Imagemin.jpegtran({ progressive: true }));
+      
+      imagemin.run(function (err, files) {
+        if (err) {
+          throw err;
+        }
+        u.print('√ Global Images optimized: ' + path, 'green');
+      });
+      
+    });
+    
+  });  
+  
+  // Theme Specific Build Scripts
+  settings.themes.forEach(function (theme, index, array) {
+    
+    index = index + 1;
+    
+    // Optimize Images Tasks
+    desc('Optimizes images for theme ' + index);
+    task('img_' + index, {async: true}, function() {
+            
+      var imagemin = new Imagemin()
+        .src(theme + 'assets/img/raw/*.{gif,jpg,png,svg}')
+        .dest(theme + 'assets/img/')
+        .use(Imagemin.jpegtran({ progressive: true }));
+      
+      imagemin.run(function (err, files) {
+        if (err) {
+          throw err;
+        }
+        u.print('√ Theme ' + index + ' Images optimized: ' + theme + 'assets/img/', 'green');
+      });
+      
+    });
+    
+    // Build CSS Tasks
+    desc('Compiles and minifies CSS for theme ' + index);
+    task('css_' + index, {async: true}, function() {
+            
+      runless({
+        input : theme + 'assets/less/bootstrap.less',
+        output : theme + 'assets/css/baseweb.css',
+        options : { compress: false }
+      });
+      
+      runless({
+        input : theme + 'assets/less/bootstrap.less',
+        output : theme + 'assets/css/baseweb.min.css',
+        options : { compress: true }
+      });
+      
+    });
+    
+    // Build JS Tasks
+    desc('Compiles and minifies JS for theme ' + index);
+    task('js_' + index, {async: true}, function() {
+            
+      runuglifyjs({
+        path : settings.global.js.path,
+        input : settings.global.js.files,
+        output : theme + 'assets/js/scripts.min.js'
+      });
+      
+    });
+    
+  });
+  
+});
+*/

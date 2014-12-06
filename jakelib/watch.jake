@@ -60,3 +60,47 @@ task('watch', {async: true}, function() {
   });
   
 });
+
+/*
+var getjsonsync = require('./modules/getjsonsync');
+var watch = require('node-watch');
+var u = require('./modules/utility');
+
+// The Watch Task
+desc('Watch for change to files and rebuild if they change');
+task('watch', {async: true}, function() {
+  
+  // Output the watch message to the console
+  u.print_notice('Files are now being watched (ctrl+c to exit)', 'yellow');
+  
+  var settings = getjsonsync('settings.json');
+  
+  // Global JS Watch
+  watch(settings.global.js.path, function(filename) {
+    u.print(filename + ' was changed:', 'cyan');
+    settings.themes.forEach(function (theme, index, array) {
+      index = index + 1;
+      jake.Task['build:js_' + index].execute();
+    });
+  });
+  
+  // Global LESS Watch
+  watch(settings.global.less.path, function(filename) {
+    u.print(filename + ' was changed:', 'cyan');
+    settings.themes.forEach(function (theme, index, array) {
+      index = index + 1;
+      jake.Task['build:css_' + index].execute();
+    });
+  });
+  
+  // Theme LESS Watch
+  settings.themes.forEach(function (theme, index, array) {
+    index = index + 1;
+    watch(theme + 'assets/less/', function(filename) {
+      u.print(filename + ' was changed:', 'cyan');
+      jake.Task['build:css_' + index].execute();
+    });
+  });
+        
+});
+*/
