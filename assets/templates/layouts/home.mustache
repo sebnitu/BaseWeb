@@ -30,29 +30,28 @@
 
 <header class="header">
   
-  <nav class="menu menu-nav">
-    <ul>
-      <li><a href="/docs/">Documentation</a></li>
-      <li class=""><a href="/examples/">Examples</a></li>
-      <li class=""><a href="{{ repository.url }}">Download <span class="version">v{{ version }}</span></a></li>
-    </ul>
-  </nav><!-- .menu-nav -->
-  
-  <nav class="menu menu-social">
-    <ul>
-      <li><a href="#">Star (24)</a></li>
-      <li><a href="#">Fork (6)</a></li>
-      <li><a href="#">Follow (45)</a></li>
-      <li><a href="#">Tweet (18.6k)</a></li>
-    </ul>
-  </nav><!-- .menu-social -->
-  
   <div class="container">
+  
+    <nav class="menu menu-nav">
+      <ul class="menu-primary">
+        {{ #directories_menu }}
+          <li id="{{ id }}" class="{{ classes }}"><a href="{{{ url }}}">{{ text }}</a></li>
+        {{ /directories_menu }}
+      </ul>
+
+      <ul class="menu-secondary">
+        <li><a href="#">Star (24)</a></li>
+        <li><a href="#">Fork (6)</a></li>
+        <li><a href="#">Follow (45)</a></li>
+        <li><a href="#">Tweet (18.6k)</a></li>
+      </ul>
+    </nav><!-- .menu-social -->
+  
     <h1 class="logo"><a href="/">{{ name }}</a></h1>
     <p class="slogan">{{ description }} <span class="version">v{{ version }}</span></p>
     <div class="btn-group">
-      <a href="{{ repository.url }}" class="btn btn-primary btn-large">Download BaseWeb</a>
-      <a href="/docs/" class="btn btn-primary btn-large">View Documentation</a>
+      <a href="{{ repository.url }}" class="btn btn-secondary btn-large">Download BaseWeb</a>
+      <a href="/docs/" class="btn btn-secondary btn-large">View Documentation</a>
     </div>
   </div><!-- .container -->
   

@@ -4,15 +4,14 @@
 
 body {
   font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
-  background: #f3f3f3;
+  background: #d7dbdf;
 }
 .header {
-  background: #303030;
   text-align: center;
 }
 .header .container {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 0;
+  padding-bottom: 20px;
 }
 
 /*==============================================================================
@@ -23,7 +22,8 @@ body {
  * Home Logo
  */
 .header .logo {
-  margin: 60px 0 0;
+  margin: 0;
+  padding: 60px 0 0;
 }
 .header .logo a {
   display: block;
@@ -42,11 +42,11 @@ body {
 .header .slogan {
   margin: 20px 0;
   text-align: center;
-  color: #fff;
+  color: #303030;
 }
 .header .slogan .version {
   display: block;
-  color: #707070;
+  color: #909090;
 }
 
 /**
@@ -68,28 +68,44 @@ body {
   Navigation
 ==============================================================================*/
 
-.menu ul {
-  padding: 15px;
-  font-size: 13px;
+.menu {
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
-.menu ul li {
-  display: inline-block;
-  margin: 0 5px;
-}
-.menu ul li a {
-  color: #707070;
-  border-color: rgba(255,255,255, 0.1);
-}
-.menu ul li a:hover {
-  color: #fff;
-  border-color: rgba(255,255,255, 0.25);
+.menu:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.menu-nav {
+.menu .menu-primary {
   float: left;
 }
-.menu-social {
+.menu .menu-secondary {
   float: right;
+}
+
+.menu ul {
+  border-left: 1px solid rgba(0,0,0, 0.1);
+}
+.menu ul li {
+  float: left;
+  border-right: 1px solid rgba(0,0,0, 0.1);
+}
+.menu ul li a {
+  display: block;
+  box-sizing: border-box;
+  padding: 15px 25px;
+  color: #303030;
+  border: 0 none;
+  /* CSS3 Transitions */
+  -webkit-transition: all linear 0.25s;
+  -moz-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.menu ul li a:hover {
+  background-color: rgba(255,255,255, 0.25);
 }
 
 /*==============================================================================
@@ -97,12 +113,14 @@ body {
 ==============================================================================*/
 
 .banner {
-  padding: 40px 0;
+  padding: 0;
   text-align: center;
-  background: #fff200;
 }
 .banner h2 {
   margin: 0;
+  padding: 40px 0;
+  border-top: 1px solid rgba(0,0,0, 0.1);
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
   font-weight: 300;
 }
 
@@ -241,13 +259,13 @@ body {
 
 .footer {
   padding: 20px 0;
-  color: #aaa;
+  color: #909090;
 }
 .footer a {
-  color: #aaa;
+  color: #909090;
 }
 .footer a:hover {
-  color: #2ab0ea;
+  color: #1495cd;
 }
 
 .footer .copyright {
