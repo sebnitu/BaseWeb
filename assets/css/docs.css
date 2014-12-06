@@ -69,6 +69,15 @@ body {
   padding: 20px 0 0 200px;
 }
 
+/**
+ * Typography
+ */
+.block-header,
+.block-aside {
+  font-size: 14px;
+  line-height: 20px;
+}
+
 /*==============================================================================
   Blocks
 ==============================================================================*/
@@ -87,8 +96,6 @@ body {
 .block-header {
   position: relative;
   z-index: 10;
-  font-size: 13px;
-  line-height: 20px;
   border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
 
@@ -109,7 +116,7 @@ body {
   text-indent: 100%;
 }
 .block-header .menu-primary .menu-item-logo a:hover {
-  background-color: rgba(255,255,255, 0.05);
+  background-color: rgba(255,255,255, 0.25);
 }
 
 /**
@@ -189,10 +196,7 @@ body {
   Aside
 ==============================================================================*/
 
-.block-aside {
-  font-size: 14px;
-  line-height: 20px;
-}
+.block-aside {}
 .block-aside .aside-inner {
   position: relative;
   z-index: 10;
@@ -212,7 +216,6 @@ body {
 }
 .aside-item-menu nav {
   padding: 0;
-  border-top: 1px solid rgba(0,0,0, 0.1);
 }
 .aside-item-menu nav ul {
   
@@ -220,16 +223,18 @@ body {
 .aside-item-menu nav ul li {
   list-style: none;
   padding: 0;
-  border-bottom: 1px solid rgba(0,0,0, 0.1);
+  border-top: 1px solid rgba(0,0,0, 0.1);
+}
+.aside-item-menu nav > ul > li:first-child {
+  border-top: 0 none;
 }
 .aside-item-menu nav ul li a {
   position: relative;
   display: block;
   border: 0 none;
   margin: 0;
-  padding: 5px 15px;
+  padding: 8px 15px;
   color: #505050;
-  font-weight: 600;
   /* CSS3 Transitions */
   -webkit-transition: all linear 0.25s;
   -moz-transition: all linear 0.25s;
@@ -274,7 +279,6 @@ body {
 }
 .aside-item-menu nav ul ul li a {
   color: #505050;
-  font-weight: 500;
 }
 .aside-item-menu nav ul ul li a:before {
   content: "– ";
@@ -295,7 +299,7 @@ body {
 .aside-item-menu nav ul li.menu-item-top {
   display: none;
   margin-top: 40px;
-  border-top: 1px solid rgba(0,0,0, 0.1);
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
 /*
 .aside-item-menu nav ul li.menu-item-top:before {
