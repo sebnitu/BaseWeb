@@ -17,6 +17,13 @@ task('watch', {async: true}, function() {
     jake.Task['build:scss'].execute();
   });
   
+  watch('docs/js/', function(filename) {
+    if(filename != 'docs/js/scripts.min.js') {
+      u.print(filename + ' was changed:', 'cyan');
+      jake.Task['build:js'].execute();
+    }
+  });
+  
   watch('docs/scss/', function(filename) {
     u.print(filename + ' was changed:', 'cyan');
     jake.Task['build:scss'].execute();

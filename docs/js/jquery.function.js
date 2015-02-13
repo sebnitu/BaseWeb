@@ -29,6 +29,7 @@
     callback: function() {
       activenav();
       subpages();
+      ishome();
     }
   }).data('smoothState');
   
@@ -38,25 +39,6 @@
   ishome();
   
 }(jQuery));
-
-/**
- * Is Home
- */
-function ishome() {
-    
-  var loc = window.location.pathname;
-  
-  if(loc === '/' || loc === '/index.html') {
-    $('body').addClass('is_home');
-  } else {
-    $('body').removeClass('is_home');
-  }
-  
-  $('.page-home .mainnav a').click(function() {
-    $('body').removeClass('is_home');
-  });
-  
-}
 
 /**
  * Current Subpage
@@ -120,4 +102,23 @@ function subpages(event) {
     
     return false;
   });
+}
+
+/**
+ * Is Home
+ */
+function ishome() {
+    
+  var loc = window.location.pathname;
+  
+  if(loc === '/' || loc === '/index.html') {
+    $('body').addClass('is_home');
+  } else {
+    $('body').removeClass('is_home');
+  }
+  
+  $('.page-home .mainnav a').click(function() {
+    $('body').removeClass('is_home');
+  });
+  
 }

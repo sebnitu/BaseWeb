@@ -2,7 +2,7 @@ var u = require('./modules/utility');
 var getjsonsync = require('./modules/getjsonsync');
 var runscss = require('./modules/runscss');
 var runmustache = require('./modules/runmustache');
-var sassdoc = require('sassdoc');
+var runuglifyjs = require('./modules/runuglifyjs');
 var Imagemin = require('imagemin');
 
 /**
@@ -46,25 +46,24 @@ namespace('build', function() {
     
   });
   
+  // Build JS Tasks
+  desc('Compiles and minifies JS');
+  task('js', {async: true}, function() {
+          
+    runuglifyjs({
+      path : 'docs/js/',
+      input : ['jquery.smoothState.js', 'jquery.function.js', 'jquery.docready.js'],
+      output : 'docs/js/scripts.min.js'
+    });
+    
+  });
+  
   // Build Docs
   desc('Build documentation');
   task('docs', {async: true}, function() {
     runmustache({
       dir : 'docs/'
     });
-  });
-  
-  // Build SassDocs
-  desc('Build SassDocs');
-  task('sassdocs', {async: true}, function() {
-    
-    sassdoc('src/scss/', { verbose: true })
-    .then(function () {
-      console.log('Your documentation has been generated!');
-    }, function (err) {
-      console.error(err);
-    });
-    
   });
   
   // Build Images
