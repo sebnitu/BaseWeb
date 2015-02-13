@@ -10,13 +10,32 @@
 ;(function ($) {
   'use strict';
   
+  var loc = window.location.pathname;
+  
+  if(loc === '/' || loc === '/index.html') {
+    $('#page-home').show();
+    $('#page-home .logo').click(function() {
+      return false;
+    });
+    $('#page-home .mainnav a').click(function() {
+      $('#page-home').fadeToggle(250);
+    });
+  } else {
+    homeoverlay();
+  }
+  
+  current_subpage();
+  activenav();
+  subpages();
+  stickynav();
+  
   /**
    * Smooth Page Transitions
    */
   var $body = $('html, body');
-  var $content = $('#main').smoothState({
-    // prefetch: true,
-    // pageCacheSize: 4,
+  var $content = $('#smooth').smoothState({
+    prefetch: true,
+    pageCacheSize: 4,
     onStart: {
       duration: 250, // Duration of our animation
       render: function (url, $container) {
@@ -29,14 +48,10 @@
     callback: function() {
       activenav();
       subpages();
-      ishome();
+      stickynav();
+      homeoverlay();
     }
   }).data('smoothState');
-  
-  current_subpage();
-  activenav();
-  subpages();
-  ishome();
   
 }(jQuery));
 
@@ -45,7 +60,6 @@
  */
 function current_subpage() {
   var hash = window.location.hash;
-  console.log(hash);
   $('.subnav a[href*="' + hash + '"]').closest('li').addClass('active');
   $(hash).fadeIn(250);
 }
@@ -89,9 +103,7 @@ function subpages(event) {
     
     var el = $(subpage);
     var id = el.attr('id');
-    
-    console.log(id);
-    
+        
     el.removeAttr('id');
     location.hash = subpage;
     el.attr('id',id);
@@ -105,20 +117,25 @@ function subpages(event) {
 }
 
 /**
- * Is Home
+ * Sticky Navigation
  */
-function ishome() {
-    
-  var loc = window.location.pathname;
-  
-  if(loc === '/' || loc === '/index.html') {
-    $('body').addClass('is_home');
-  } else {
-    $('body').removeClass('is_home');
-  }
-  
-  $('.page-home .mainnav a').click(function() {
-    $('body').removeClass('is_home');
+function stickynav() {
+  $('#main .nav').stick_in_parent({
+    parent : '.main',
+    recalc_every: 1
+  });
+}
+
+/**
+ * Home Overlay
+ */
+function homeoverlay() {
+  $('.header .logo').click(function() {
+    $('#page-home').fadeToggle(250);
+    return false;
   });
   
+  $('#page-home .mainnav a').click(function() {
+    $('#page-home').fadeToggle(250);
+  });
 }

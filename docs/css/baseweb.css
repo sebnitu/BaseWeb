@@ -1680,8 +1680,28 @@ body {
   background: #efefef;
   color: #101010; }
 
+.main {
+  position: relative; }
+
+.loader {
+  background-color: #de5151;
+  position: fixed;
+  z-index: 15;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%; }
+
+.page-docs {
+  position: relative;
+  z-index: 5; }
+
 .page-home {
-  position: absolute;
+  display: none;
+  position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -1689,6 +1709,21 @@ body {
   width: 100%;
   min-height: 100%;
   color: #ffffff; }
+
+.page-home .container {
+  position: relative;
+  z-index: 10; }
+
+.page-home .gradient-background {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.is_home .page-home {
+  display: block; }
 
 /**
  * Subpages
@@ -1728,19 +1763,9 @@ body {
     opacity: 1; } }
 
 /**
- * Background Color
+ * Animated Background Color
  */
-.page-home .container {
-  position: relative;
-  z-index: 10; }
-
-.page-home .gradient-background {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.gradient-background {
   -webkit-animation: colorchange 40s linear 1s infinite alternate;
   animation: colorchange 40s linear 1s infinite alternate;
   background-color: transparent;
@@ -1823,6 +1848,8 @@ body {
   @ Header
 ==============================================================================*/
 .header {
+  position: relative;
+  z-index: 10;
   padding: 60px 0; }
 
 .header h1 {
