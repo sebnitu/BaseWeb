@@ -1,14 +1,10 @@
+var u = require('./utility');
 var fs = require('fs');
 var uglify = require('uglify-js');
 var extend = require('./extend');
-var u = require('./utility');
 
-/**
- * Jake task for compiling LESS files
- */
 function runuglifyjs(o) {
   
-  // Minify and compile JS files
   if (typeof o.input === 'string') {
     var js = uglify.minify( o.path + o.input );
   } else {

@@ -62,10 +62,10 @@ html, body {
   font-size: 14px; }
 
 body {
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-weight: normal;
   line-height: 20px;
-  color: #303030; }
+  color: #101010; }
 
 /**
  * Headers
@@ -247,13 +247,13 @@ del, .del, .danger {
 .block-ins, .block-success {
   border-color: #70a01d;
   background: #f3f9e8;
-  color: #303030;
+  color: #101010;
   text-decoration: none; }
 
 .block-del, .block-danger {
   border-color: #d42828;
   background: #fbeded;
-  color: #303030;
+  color: #101010;
   text-decoration: none; }
 
 /*==============================================================================
@@ -723,10 +723,10 @@ textarea, select {
   max-width: 100%;
   margin: 5px 0;
   padding: 9px 10px;
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #303030;
+  color: #101010;
   background: #fff;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -748,10 +748,10 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
   max-width: 100%;
   margin: 5px 0;
   padding: 9px 10px;
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #303030;
+  color: #101010;
   background: #fff;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -1123,7 +1123,7 @@ form .group-success .group-key label {
   height: 40px;
   margin: 0;
   padding: 9px 25px;
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   text-align: center;
@@ -1674,5 +1674,561 @@ form .btn {
     margin-right: 102%; } }
 
 /*==============================================================================
+  @ Structure
+==============================================================================*/
+body {
+  background: #efefef;
+  color: #101010; }
+
+.page-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%;
+  color: #ffffff; }
+
+/**
+ * Subpages
+ */
+.subpage {
+  display: none; }
+
+/**
+ * Page Animations
+ */
+.scene .scene_element {
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
+
+.scene.is-exiting .scene_element {
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+/**
+ * Background Color
+ */
+.page-home .container {
+  position: relative;
+  z-index: 10; }
+
+.page-home .gradient-background {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: colorchange 40s linear 1s infinite alternate;
+  animation: colorchange 40s linear 1s infinite alternate;
+  background-color: transparent;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1), transparent);
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.1), transparent);
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.1), transparent);
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.1), transparent);
+  background-repeat: repeat-x;
+  background-color: #de5151; }
+
+@-webkit-keyframes colorchange {
+  0% {
+    background-color: #de5151; }
+
+  8% {
+    background-color: #e76e44; }
+
+  16% {
+    background-color: #e69242; }
+
+  25% {
+    background-color: #f1ad22; }
+
+  41% {
+    background-color: #c4cd14; }
+
+  58% {
+    background-color: #56c386; }
+
+  66% {
+    background-color: #2ab0ea; }
+
+  75% {
+    background-color: #6f8be2; }
+
+  83% {
+    background-color: #bc6bd3; }
+
+  92% {
+    background-color: #d25992; }
+
+  100% {
+    background-color: #de5151; } }
+
+@keyframes colorchange {
+  0% {
+    background-color: #de5151; }
+
+  8% {
+    background-color: #e76e44; }
+
+  16% {
+    background-color: #e69242; }
+
+  25% {
+    background-color: #f1ad22; }
+
+  41% {
+    background-color: #c4cd14; }
+
+  58% {
+    background-color: #56c386; }
+
+  66% {
+    background-color: #2ab0ea; }
+
+  75% {
+    background-color: #6f8be2; }
+
+  83% {
+    background-color: #bc6bd3; }
+
+  92% {
+    background-color: #d25992; }
+
+  100% {
+    background-color: #de5151; } }
+
+/*==============================================================================
+  @ Header
+==============================================================================*/
+.header {
+  padding: 60px 0; }
+
+.header h1 {
+  margin: 0; }
+  .header h1:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.header .logo {
+  background: url('../img/baseweb-logo-black.png') no-repeat left center;
+  display: block;
+  float: left;
+  padding: 6px 0 6px 80px;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+  color: #101010; }
+  .header .logo:hover {
+    opacity: 0.5;
+    color: #101010; }
+
+.is_home .header, .is_home .mainnav {
+  opacity: 0; }
+
+.is_home .page-home .header, .is_home .page-home .mainnav {
+  opacity: 1; }
+
+.page-home .header .logo {
+  background: url('../img/baseweb-logo-white.png') no-repeat left center;
+  color: #fff; }
+  .page-home .header .logo:hover {
+    color: #fff; }
+
+/*==============================================================================
+  @ Navigation
+==============================================================================*/
+/**
+ * Docs Navigation
+ */
+.nav {
+  margin: 10px 0;
+  list-style: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.nav li {
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .nav li:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.nav li a {
+  display: block;
+  padding: 10px;
+  background: transparent;
+  color: #101010;
+  border: 0 none; }
+  .nav li a:hover {
+    background-clip: padding-box;
+    color: #de5151; }
+
+.nav li.active a {
+  color: #de5151; }
+
+/**
+ * Home Navigation
+ */
+.page-home .nav {
+  margin: 0;
+  list-style: none;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 500;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); }
+
+.page-home .nav li {
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+
+.page-home .nav li a {
+  display: block;
+  padding: 10px 20px;
+  border: 0 none;
+  background: transparent;
+  color: #ffffff;
+  border-radius: 3px; }
+  .page-home .nav li a:hover {
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.05); }
+
+/*==============================================================================
+  @ Content
+==============================================================================*/
+.content {
+  padding-bottom: 100px; }
+
+.docs-header {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600; }
+
+/**
+ * Buttons
+ */
+.btn-group {
+  margin: 30px 0; }
+
+.btn {
+  height: auto;
+  padding: 15px 45px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.5); }
+  .btn:hover {
+    border-color: black; }
+
+.page-home .btn {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff; }
+  .page-home .btn:hover {
+    border-color: white;
+    color: #ffffff; }
+
+/*==============================================================================
+  @ Variables
+==============================================================================*/
+ul.variables {
+  list-style: none;
+  margin: 30px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+ul.variables li {
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  background-clip: padding-box;
+  -webkit-transition: background 0.25s linear;
+  transition: background 0.25s linear; }
+  ul.variables li:after {
+    content: "";
+    display: table;
+    clear: both; }
+  ul.variables li:hover {
+    background: rgba(255, 255, 255, 0.5);
+    background-clip: padding-box; }
+
+ul.variables li code {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: 30px; }
+
+ul.variables li .swatch, ul.variables li .value {
+  float: right; }
+
+/*==============================================================================
   @ End
 ==============================================================================*/
+/*==============================================================================
+  @ Swatches
+==============================================================================*/
+.swatch {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: #000000;
+  border-radius: 3px; }
+
+.swatch-black {
+  background: #000000; }
+
+.swatch-white {
+  background: #ffffff; }
+
+.swatch-gray-pale {
+  background: #efefef; }
+
+.swatch-gray-lighter {
+  background: #cccccc; }
+
+.swatch-gray-light {
+  background: #909090; }
+
+.swatch-gray {
+  background: #606060; }
+
+.swatch-gray-dark {
+  background: #303030; }
+
+.swatch-gray-darker {
+  background: #101010; }
+
+.swatch-red-pale {
+  background: #fbeded; }
+
+.swatch-red-lighter {
+  background: #e67c7c; }
+
+.swatch-red-light {
+  background: #e26666; }
+
+.swatch-red {
+  background: #de5151; }
+
+.swatch-red-dark {
+  background: #da3c3c; }
+
+.swatch-red-darker {
+  background: #d42828; }
+
+.swatch-red-orange-pale {
+  background: #fcf0eb; }
+
+.swatch-red-orange-lighter {
+  background: #ed9171; }
+
+.swatch-red-orange-light {
+  background: #ea805a; }
+
+.swatch-red-orange {
+  background: #e76e44; }
+
+.swatch-red-orange-dark {
+  background: #e45d2d; }
+
+.swatch-red-orange-darker {
+  background: #dc4e1c; }
+
+.swatch-orange-pale {
+  background: #fcf3eb; }
+
+.swatch-orange-lighter {
+  background: #ecac6f; }
+
+.swatch-orange-light {
+  background: #e99f59; }
+
+.swatch-orange {
+  background: #e69242; }
+
+.swatch-orange-dark {
+  background: #e3852b; }
+
+.swatch-orange-darker {
+  background: #d8781d; }
+
+.swatch-yellow-orange-pale {
+  background: #fdf5e7; }
+
+.swatch-yellow-orange-lighter {
+  background: #f4bf52; }
+
+.swatch-yellow-orange-light {
+  background: #f2b63a; }
+
+.swatch-yellow-orange {
+  background: #f1ad22; }
+
+.swatch-yellow-orange-dark {
+  background: #eba20f; }
+
+.swatch-yellow-orange-darker {
+  background: #d3920d; }
+
+.swatch-yellow-pale {
+  background: #fdf8e6; }
+
+.swatch-yellow-lighter {
+  background: #f4d03f; }
+
+.swatch-yellow-light {
+  background: #f2ca27; }
+
+.swatch-yellow {
+  background: #f1c40f; }
+
+.swatch-yellow-dark {
+  background: #dab10d; }
+
+.swatch-yellow-darker {
+  background: #c29d0b; }
+
+.swatch-yellow-green-pale {
+  background: #f9f9e6; }
+
+.swatch-yellow-green-lighter {
+  background: #e1ea2a; }
+
+.swatch-yellow-green-light {
+  background: #dae417; }
+
+.swatch-yellow-green {
+  background: #c4cd14; }
+
+.swatch-yellow-green-dark {
+  background: #aeb512; }
+
+.swatch-yellow-green-darker {
+  background: #989e10; }
+
+.swatch-green-pale {
+  background: #f3f9e8; }
+
+.swatch-green-lighter {
+  background: #a6dd46; }
+
+.swatch-green-light {
+  background: #9bd930; }
+
+.swatch-green {
+  background: #8ecb25; }
+
+.swatch-green-dark {
+  background: #7fb521; }
+
+.swatch-green-darker {
+  background: #70a01d; }
+
+.swatch-blue-green-pale {
+  background: #edf8f2; }
+
+.swatch-blue-green-lighter {
+  background: #7cd0a1; }
+
+.swatch-blue-green-light {
+  background: #69c994; }
+
+.swatch-blue-green {
+  background: #56c386; }
+
+.swatch-blue-green-dark {
+  background: #43bc79; }
+
+.swatch-blue-green-darker {
+  background: #3da96d; }
+
+.swatch-blue-pale {
+  background: #e9f6fc; }
+
+.swatch-blue-lighter {
+  background: #58c1ef; }
+
+.swatch-blue-light {
+  background: #41b9ec; }
+
+.swatch-blue {
+  background: #2ab0ea; }
+
+.swatch-blue-dark {
+  background: #16a6e4; }
+
+.swatch-blue-darker {
+  background: #1495cd; }
+
+.swatch-blue-violet-pale {
+  background: #f0f2fb; }
+
+.swatch-blue-violet-lighter {
+  background: #99adeb; }
+
+.swatch-blue-violet-light {
+  background: #849ce7; }
+
+.swatch-blue-violet {
+  background: #6f8be2; }
+
+.swatch-blue-violet-dark {
+  background: #597ade; }
+
+.swatch-blue-violet-darker {
+  background: #4469da; }
+
+.swatch-violet-pale {
+  background: #f8effa; }
+
+.swatch-violet-lighter {
+  background: #ce92df; }
+
+.swatch-violet-light {
+  background: #c57fd9; }
+
+.swatch-violet {
+  background: #bc6bd3; }
+
+.swatch-violet-dark {
+  background: #b357cd; }
+
+.swatch-violet-darker {
+  background: #aa44c7; }
+
+.swatch-red-violet-pale {
+  background: #faedf3; }
+
+.swatch-red-violet-lighter {
+  background: #dd81ac; }
+
+.swatch-red-violet-light {
+  background: #d86d9f; }
+
+.swatch-red-violet {
+  background: #d25992; }
+
+.swatch-red-violet-dark {
+  background: #cd4584; }
+
+.swatch-red-violet-darker {
+  background: #c33577; }

@@ -292,6 +292,15 @@
   animation-play-state: $play-stay;
 }
 
+// Animation Fill Mode
+//
+// @param: $fill-mode
+//   type: play state (none, forwards, backwards, both, initial, inherit)
+@mixin animation-fill-mode( $fill-mode... ) {
+  -webkit-animation-fill-mode: $fill-mode;
+  animation-fill-mode: $fill-mode;
+}
+
 // Horizontal Gradient
 //
 // @param: $gs
@@ -544,8 +553,10 @@
   
   @if ($transition != false) {
     @include transition(
+      opacity $transition-timing-function $transition-duration,
       color $transition-timing-function $transition-duration,
-      border $transition-timing-function $transition-duration
+      border $transition-timing-function $transition-duration,
+      background $transition-timing-function $transition-duration
     );
   }
   

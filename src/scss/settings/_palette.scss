@@ -1,35 +1,44 @@
 ////////////////////////////////////////////////////////////////////////////////
-// @ Gray Scale
+// @Palette
 ////////////////////////////////////////////////////////////////////////////////
 
-// type: color
+// Modifier Degrees
+// Used in creating colors with the light, lighter and dark, darker variations.
+// @type unit (percentage)
+$light-deg:   5%  !default;
+$lighter-deg: 10% !default;
+$dark-deg:    5%  !default;
+$darker-deg:  10% !default;
+
+// Black & White
+// @type color
 $black:        #000000 !default;
-$gray-darker:  #303030 !default;
-$gray-dark:    #606060 !default;
-$gray:         #909090 !default;
-$gray-light:   #aaaaaa !default;
-$gray-lighter: #efefef !default;
 $white:        #ffffff !default;
 
-////////////////////////////////////////////////////////////////////////////////
-// @ Base Palette
-////////////////////////////////////////////////////////////////////////////////
+// Gray Scale
+// @type color
+$gray-pale:    #efefef !default;
+$gray-lighter: #cccccc !default;
+$gray-light:   #909090 !default;
+$gray:         #606060 !default;
+$gray-dark:    #303030 !default;
+$gray-darker:  #101010 !default;
 
 // Primary
-// type: color
+// @type color
 $red:    #de5151 !default;
 $yellow: #f1c40f !default;
 $blue:   #2ab0ea !default;
 
 // Secondary
-// type: color
+// @type color
 $orange: #e69242 !default;
 $green:  #8ecb25 !default;
 $violet: #bc6bd3 !default;
 
 // Tertiary
 // Created by mixing primary and secondary colors
-// type: color
+// @type color
 $red-violet:    saturate(mix($red, $violet, 50), 5%) !default;
 $red-orange:    saturate(mix($red, $orange, 50), 5%) !default;
 $yellow-orange: saturate(mix($yellow, $orange, 50), 5%) !default;
@@ -38,44 +47,33 @@ $blue-green:    saturate(mix($blue, $green, 50), 5%) !default;
 $blue-violet:   saturate(mix($blue, $violet, 50), 5%) !default;
 
 // Pale Primary
-// type: color
-$pale-red:    #fbeded !default;
-$pale-yellow: #fdf8e6 !default;
-$pale-blue:   #e9f6fc !default;
+// @type color
+$red-pale:    #fbeded !default;
+$yellow-pale: #fdf8e6 !default;
+$blue-pale:   #e9f6fc !default;
 
 // Pale Secondary
-// type: color
-$pale-orange: #fcf3eb !default;
-$pale-green:  #f3f9e8 !default;
-$pale-violet: #f8effa !default;
+// @type color
+$orange-pale: #fcf3eb !default;
+$green-pale:  #f3f9e8 !default;
+$violet-pale: #f8effa !default;
 
 // Pale Tertiary
 // Created by mixing primary and secondary colors
-// type: color
-$pale-red-violet:    saturate(mix($pale-red, $pale-violet, 50), 5%) !default;
-$pale-red-orange:    saturate(mix($pale-red, $pale-orange, 50), 5%) !default;
-$pale-yellow-orange: saturate(mix($pale-yellow, $pale-orange, 50), 5%) !default;
-$pale-yellow-green:  saturate(mix($pale-yellow, $pale-green, 50), 5%) !default;
-$pale-blue-green:    saturate(mix($pale-blue, $pale-green, 50), 5%) !default;
-$pale-blue-violet:   saturate(mix($pale-blue, $pale-violet, 50), 5%) !default;
-
-////////////////////////////////////////////////////////////////////////////////
-// @ Modifier Degrees
-////////////////////////////////////////////////////////////////////////////////
-
-// Used in creating colors with the light, lighter and dark, darker variations.
-// type: unit (percentage)
-$light-deg:   5%  !default;
-$lighter-deg: 10% !default;
-$dark-deg:    5%  !default;
-$darker-deg:  10% !default;
+// @type color
+$red-violet-pale:    saturate(mix($red-pale, $violet-pale, 50), 5%) !default;
+$red-orange-pale:    saturate(mix($red-pale, $orange-pale, 50), 5%) !default;
+$yellow-orange-pale: saturate(mix($yellow-pale, $orange-pale, 50), 5%) !default;
+$yellow-green-pale:  saturate(mix($yellow-pale, $green-pale, 50), 5%) !default;
+$blue-green-pale:    saturate(mix($blue-pale, $green-pale, 50), 5%) !default;
+$blue-violet-pale:   saturate(mix($blue-pale, $violet-pale, 50), 5%) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @ Lighter Shades
 ////////////////////////////////////////////////////////////////////////////////
 
 // Primary
-// type: color
+// @type color
 $red-light:      lighten($red, $light-deg) !default;
 $red-lighter:    lighten($red, $lighter-deg) !default;
 $yellow-light:   lighten($yellow, $light-deg) !default;
@@ -84,7 +82,7 @@ $blue-light:     lighten($blue, $light-deg) !default;
 $blue-lighter:   lighten($blue, $lighter-deg) !default;
 
 // Secondary
-// type: color
+// type color
 $orange-light:   lighten($orange, $light-deg) !default;
 $orange-lighter: lighten($orange, $lighter-deg) !default;
 $green-light:    lighten($green, $light-deg) !default;
@@ -93,7 +91,7 @@ $violet-light:   lighten($violet, $light-deg) !default;
 $violet-lighter: lighten($violet, $lighter-deg) !default;
 
 // Tertiary
-// type: color
+// type color
 $red-violet-light:      lighten($red-violet, $light-deg) !default;
 $red-violet-lighter:    lighten($red-violet, $lighter-deg) !default;
 $red-orange-light:      lighten($red-orange, $light-deg) !default;
@@ -112,7 +110,7 @@ $blue-violet-lighter:   lighten($blue-violet, $lighter-deg) !default;
 ////////////////////////////////////////////////////////////////////////////////
 
 // Primary
-// type: color
+// @type color
 $red-dark:      darken($red, $dark-deg) !default;
 $red-darker:    darken($red, $darker-deg) !default;
 $yellow-dark:   darken($yellow, $dark-deg) !default;
@@ -121,7 +119,7 @@ $blue-dark:     darken($blue, $dark-deg) !default;
 $blue-darker:   darken($blue, $darker-deg) !default;
 
 // Secondary
-// type: color
+// @type color
 $orange-dark:   darken($orange, $dark-deg) !default;
 $orange-darker: darken($orange, $darker-deg) !default;
 $green-dark:    darken($green, $dark-deg) !default;
@@ -130,7 +128,7 @@ $violet-dark:   darken($violet, $dark-deg) !default;
 $violet-darker: darken($violet, $darker-deg) !default;
 
 // Tertiary
-// type: color
+// @type color
 $red-violet-dark:      darken($red-violet, $dark-deg) !default;
 $red-violet-darker:    darken($red-violet, $darker-deg) !default;
 $red-orange-dark:      darken($red-orange, $dark-deg) !default;
