@@ -16,6 +16,12 @@
   @ Structure
 ==============================================================================*/
 
+@include media-small() {
+  body {
+    background: $black;
+  }
+}
+
 body {
   background: $gray-pale;
   color: $color;
@@ -140,11 +146,11 @@ body {
   font-size: 22px;
   line-height: 30px;
   font-weight: 600;
-  color: $color-dark;
+  color: $color;
   
   &:hover {
     opacity: 0.5;
-    color: $color-dark;
+    color: $color;
   }
 }
 
@@ -187,7 +193,7 @@ body {
   display: block;
   padding: 10px;
   background: transparent;
-  color: $color-dark;
+  color: $color;
   border: 0 none;
   
   &:hover {
@@ -277,12 +283,12 @@ body {
 ul.variables {
   list-style: none;
   margin: 30px 0;
-  border-top: 1px solid rgba(0,0,0, 0.1);
+  border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
 ul.variables li {
   margin: 0;
   padding: 10px;
-  border-bottom: 1px solid rgba(0,0,0, 0.1);
+  border-top: 1px solid rgba(0,0,0, 0.1);
   background: transparent;
   background-clip: padding-box;
   @include clearfix();
@@ -293,15 +299,45 @@ ul.variables li {
     background-clip: padding-box;
   }
 }
+
+/**
+ * General Code
+ */
 ul.variables li code {
   margin: 0;
-  padding: 0;
+  padding: 5px 0;
   background: transparent;
-  line-height: 30px;
+}
+ul.variables li .value {
+  color: $blue-green-darker;
 }
 ul.variables li .swatch,
 ul.variables li .value {
   float: right;
+}
+
+/**
+ * Titles
+ */
+ul.variables li.title {
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 600;
+  
+  &:hover {
+    background: transparent;
+  }
+}
+
+/**
+ * Large
+ */
+ul.variables li.large .value {
+  float: none;
+  display: block;
+  margin-top: -10px;
+  white-space: normal;
 }
 
 /*==============================================================================

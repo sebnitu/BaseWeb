@@ -25,7 +25,7 @@
    */
   $(window).load(function () {
   
-    $('#loader').fadeOut(250);
+
   
   });
 

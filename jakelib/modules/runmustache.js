@@ -193,6 +193,23 @@ var writePage = function(data, name, o) {
     context.page.desc = context.description;
   }
   
+  // Set the page slug
+  context.page.slug = context.page.output.file.replace(/\.html/, '');
+  
+  // Reset the subpages variable
+  o.subpages = [];
+  
+  // Get all the subpages if they exists
+  if (fs.existsSync(o.path.pages + context.page.slug)) {
+    // Save our subpage listing
+    var subpages = fs.readdirSync(o.path.pages + context.page.slug);
+    for( i = 0; i < subpages.length; i++ ) {
+      if (subpages[i].match(/\.mustache$/)) {
+        o.subpages.push(subpages[i]);
+      }
+    }
+  }
+  
   // Get the partials from the partials directory
   o.partials.forEach(function(name) {
         
@@ -205,6 +222,21 @@ var writePage = function(data, name, o) {
     partials[name.replace(/\.mustache/, '')] = fs.readFileSync(o.path.partials + name, 'utf8');
     
   });
+    
+  // Get the subpages from the subpage directory
+  if (fs.existsSync(o.path.pages + context.page.slug)) {
+    o.subpages.forEach(function(subpage) {
+          
+      // Check that it's a mustache file, else return
+      if (!subpage.match(/\.mustache$/)) {
+        return;
+      }
+      
+      // Save our partial to the partials object
+      partials['subpage_' + subpage.replace(/\.mustache/, '')] = fs.readFileSync(o.path.pages + context.page.slug + '/' + subpage, 'utf8');
+      
+    });
+  }
   
   // Set he page partial
   partials['page'] = data;
