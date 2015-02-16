@@ -3,25 +3,20 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Srtips the unit from a value. e.g. 12px -> 12
-// 
-// @param: $val
-//   type: unit (pixel, number)
-//
-// @return: number
+// @param $val
+//   @type unit (pixel, number)
+// @return number
 @function strip_units($val) {
   @return ($val / ($val * 0 + 1));
 }
 
 // Converts a PX value to EM
-//
-// @param: $px
-//   type: unit (pixel, number)
-// 
-// @param: $base-font-size
-//   type: unit (pixel, number)
-//   default: $base-font-size
-//
-// @return: unit (em)
+// @param $px
+//   @type unit (pixel, number)
+// @param $base-font-size
+//   @type unit (pixel, number)
+//   @default $base-font-size
+// @return unit (em)
 @function px_to_em(
     $px,
     $base : $base-font-size
@@ -40,15 +35,12 @@
 }
 
 // Converts an EM value to PX
-//
-// @param: $px
-//   type: unit (em, number)
-// 
-// @param: $base-font-size
-//   type: unit (pixel, number)
-//   default: $base-font-size
-//
-// @return: unit (px)
+// @param $px
+//   @type unit (em, number)
+// @param $base-font-size
+//   @type unit (pixel, number)
+//   @default $base-font-size
+// @return unit (px)
 @function em_to_px(
     $em,
     $base : $base-font-size
