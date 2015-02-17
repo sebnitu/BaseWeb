@@ -1,82 +1,72 @@
-////////////////////////////////////////////////////////////////////////////////
-// @ Reset Mixin
-////////////////////////////////////////////////////////////////////////////////
-
-@mixin build-reset {
-
-  // Remove margins and padding from HTML and Body elements
-  html, body {
-    margin: 0; 
-    padding: 0;
-  }
-  
-  // Prevents automatic text resizing on mobile devices
-  html {
-    font-size: 100%;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-  }
-  
-  // Set default box sizing model to border-box
-  // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-  @if ($global-box-sizing != none) {
-    *, *:before, *:after {
-      @include box-sizing($global-box-sizing);
-    }
-  }
-  
-  // Clearfix class
-  @if ($class-clearfix != none) {
-    .#{$class-clearfix} {
-      @include clearfix;
-    }
-  }
-  
-  // Remove clearfix class
-  @if ($class-remove-clearfix != none) {
-    .#{$class-remove-clearfix} {
-      @include remove-clearfix;
-    }
-  }
-  
-  // Make HTML5 elements act like blocks
-  article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section {
-    display: block;
-  }
-  
-  // Remove default list styles for navigation
-  nav ul, nav ol { 
-    list-style: none;
-    margin: 0;
-    
-    li {
-      margin: 0;
-    }
-  }
-  
-  // Base table styles
-  table { 
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
-  // Custom Text Highlight Color
-  @if ($bg-selection != none) {
-    ::-moz-selection {
-      background: $bg-selection;
-      text-shadow: none;
-    }
-    ::selection {
-      background: $bg-selection;
-      text-shadow: none;
-    }
-  }
-
-}
-
 /*==============================================================================
-  @ Reset Styles
+  @Reset Styles
 ==============================================================================*/
 
-@include build-reset;
+// Remove margins and padding from HTML and Body elements
+html, body {
+  margin: 0; 
+  padding: 0;
+}
+
+// Prevents automatic text resizing on mobile devices
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Set default box sizing model to border-box
+// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+@if ($global-box-sizing != none) {
+  *, *:before, *:after {
+    @include box-sizing($global-box-sizing);
+  }
+}
+
+// Clearfix class
+@if ($class-clearfix != none) {
+  .#{$class-clearfix} {
+    @include clearfix;
+  }
+}
+
+// Remove clearfix class
+@if ($class-remove-clearfix != none) {
+  .#{$class-remove-clearfix} {
+    @include remove-clearfix;
+  }
+}
+
+// Make HTML5 elements act like blocks
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+// Remove default list styles for navigation
+nav ul, nav ol { 
+  list-style: none;
+  margin: 0;
+  
+  li {
+    margin: 0;
+  }
+}
+
+// Base table styles
+table { 
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Custom Text Highlight Color
+@if ($bg-selection != none) {
+  ::-moz-selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+  ::selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+}

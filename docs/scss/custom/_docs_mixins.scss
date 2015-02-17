@@ -1,0 +1,117 @@
+////////////////////////////////////////////////////////////////////////////////
+// @Mixin Documentation Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$radius-example: 50%;
+
+/*==============================================================================
+  @Examples
+==============================================================================*/
+
+
+
+/*==============================================================================
+  @ Mixin Documentation Styles
+==============================================================================*/
+
+.demo {
+  margin: 20px 0;
+  padding: 20px;
+  overflow: auto;
+  background: rgba($black, 0.05);
+}
+.demo-box {
+  background: $yellow-green-darker;
+  @include border-radius();
+  @include size(50px);
+}
+
+/**
+ * Border Radius
+ */
+.mixin-demo {
+  display: inline-block;
+  background: $yellow-green-dark;
+  @include size(30px);
+}
+
+.mixin-border-radius {
+  @include border-radius($radius-example);
+}
+
+.mixin-border-radius-top {
+  @include border-radius-top($radius-example);
+}
+.mixin-border-radius-top-left {
+  @include border-radius-top-left($radius-example);
+}
+.mixin-border-radius-top-right {
+  @include border-radius-top-right($radius-example);
+}
+
+.mixin-border-radius-bottom {
+  @include border-radius-bottom($radius-example);
+}
+.mixin-border-radius-bottom-left {
+  @include border-radius-bottom-left($radius-example);
+}
+.mixin-border-radius-bottom-right {
+  @include border-radius-bottom-right($radius-example);
+}
+
+.mixin-border-radius-left {
+  @include border-radius-left($radius-example);
+}
+.mixin-border-radius-left-top {
+  @include border-radius-left-top($radius-example);
+}
+.mixin-border-radius-left-bottom {
+  @include border-radius-left-bottom($radius-example);
+}
+
+.mixin-border-radius-right {
+  @include border-radius-right($radius-example);
+}
+.mixin-border-radius-right-top {
+  @include border-radius-right-top($radius-example);
+}
+.mixin-border-radius-right-bottom {
+  @include border-radius-right-bottom($radius-example);
+}
+
+/**
+ * Rotate
+ */
+.box-rotate {
+  background: $blue-darker;
+  margin: 20px auto;
+  @include rotate(45deg);
+}
+
+/**
+ * Transition
+ */
+.box-transition {
+  margin: 10px auto;
+  background-color: $blue-green-darker;
+  @include transition();
+}
+.box-transition:hover {
+  background-color: $red-violet;
+}
+
+/**
+ * Animations
+ */
+@include keyframes('example') {
+  0%   { background-color: $red; }
+  50%  { background-color: $blue; }
+  100% { background-color: $red; }
+}
+.box-animation {
+  margin: 10px auto;
+  background-color: $red;
+  @include animation(example 10s linear 1s infinite normal);
+}
+
+

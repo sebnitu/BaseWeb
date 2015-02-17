@@ -1,16 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////
-// @ Utility
+// @Utility
 ////////////////////////////////////////////////////////////////////////////////
 
 // Size Mixin
-// Shorthand for adding width and height sizing to an element.
-// 
-// @param: $width
-//   type: unit (number, pixel, percentage)
-//
-// @param: $height
-//   type: unit (pixel, percentage, false)
-//   default: false -> $width
+// Shorthand for adding width and height dimensions to an element. If you only
+// pass in a width, the height will be set to equal the width and create a 
+// square. If either the width or height are unit-less, it defaults to pixels.
+// @param $width
+//   @type unit (number, pixel, percentage)
+// @param $height
+//   @type unit (number, pixel, percentage, false)
+//   @default false -> $width
 @mixin size( 
     $width,
     $height : false
@@ -33,7 +33,7 @@
 }
 
 // Clearfix Mixins
-// Allows for clearfixing by adding as mixin or as class.
+// Allows you to apply a clearfix to an element that contains floats.
 @mixin clearfix() {
   &:after {
     content: "";
@@ -43,6 +43,7 @@
 }
 
 // Remove Clearfix
+// Removes the clearfix styles from an element.
 @mixin remove-clearfix() {
   &:after {
     content: none;
@@ -52,8 +53,8 @@
 }
 
 // Scrollable
-// Makes things scrollable in a sexy way
-@mixin scrollable {
+// Makes things scrollable in a sexy way.
+@mixin scrollable() {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   @include transition(
@@ -63,24 +64,24 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @ CSS3 Helpers
+// @CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
 // Box Sizing
-//
-// @param: $box-sizing
-//   type: box-sizing value (border-box, none)
-//   default: $box-sizing
+// Adds box sizing styles.
+// @param $box-sizing
+//   @type box-sizing value (border-box, none)
+//   @default $box-sizing
 @mixin box-sizing( $box-sizing : $box-sizing ) {
   -moz-box-sizing: $box-sizing;
   box-sizing: $box-sizing;
 }
 
 // Box Shadows
-//
-// @param: $shadow
-//   type: box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
-//   default: $box-shadow
+// Adds box shadow styles.
+// @param $shadow
+//   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
+//   @default $box-shadow
 @mixin box-shadow( $shadow... ) {
   
   @if length($shadow) == 0 {
@@ -91,10 +92,9 @@
 }
 
 // Border Radius
-// Border radius shorthand with defaults
-// 
-// @param: $radius
-//   type: unit (pixel, percent)
+// Adds border radius styles.
+// @param $radius
+//   @type unit (pixel, percent)
 @mixin border-radius( $radius : $border-radius ) {
   border-radius: $radius;
 }
@@ -140,9 +140,9 @@
 }
 
 // Rotate
-//
-// @param: $deg
-//   type: unit (degree)
+// Adds transform rotate styles.
+// @param $deg
+//   @type unit (degree)
 @mixin rotate( $deg ) {
   -webkit-transform: rotate($deg);
   -ms-transform: rotate($deg);
@@ -150,67 +150,64 @@
 }
 
 // Transitions
-// 
-// @param: $transition
-//   type: transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
-//   default: $transition
+// Addds transition styles.
+// @param $transition
+//   @type transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
+//   @default $transition
 @mixin transition( $trans... ) {
-  
   @if length($trans) == 0 {
     $trans: $transition;
   }
-  
   -webkit-transition: $trans;
   transition: $trans;
 }
 
 // Transitions Property
-// 
-// @param: $transition-property
-//   type: property name
-//   default: $transition-property
+// Adds transition property styles.
+// @param $transition-property
+//   @type property name
+//   @default $transition-property
 @mixin transition-property( $transition-property : $transition-property ) {
   -webkit-transition-property: $transition-property;
   transition-property: $transition-property;
 }
 
 // Transitions Duration
-// 
-// @param: $transition-duration
-//   type: time value (seconds, milliseconds)
-//   default: $transition-duration
+// Adds transition duration styles.
+// @param $transition-duration
+//   @type time value (seconds, milliseconds)
+//   @default $transition-duration
 @mixin transition-duration( $transition-duration : $transition-duration ) {
   -webkit-transition-duration: $transition-duration;
   transition-duration: $transition-duration;
 }
 
 // Transitions Timing Function
-// 
-// @param: $transition-timing-function
-//   type: timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
-//   default: $transition-timing-function
+// Adds transition timing function styles.
+// @param $transition-timing-function
+//   @type timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
+//   @default $transition-timing-function
 @mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
   -webkit-transition-timing-function: $transition-timing-function;
   transition-timing-function: $transition-timing-function;
 }
 
 // Transitions Delay
-// 
-// @param: $transition-delay
-//   type: time value (seconds, milliseconds)
-//   default: $transition-delay
+// Adds transition delay styles.
+// @param $transition-delay
+//   @type time value (seconds, milliseconds)
+//   @default $transition-delay
 @mixin transition-delay( $transition-delay : $transition-delay ) {
   -webkit-transition-delay: $transition-delay;
   transition-delay: $transition-delay;
 }
 
 // Keyframes
-//
-// @param: $name
-//   type: animation name
-//
-// @param: @content (passed in brackets)
-//   type: style block
+// Define keyframes.
+// @param $name
+//   @type animation name
+// @param @content (passed in brackets)
+//   @type style block
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {
     @content;
@@ -221,95 +218,87 @@
 }
 
 // Animation
-//
-// @param: $animation
-//   type: animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction])
+// Adds animation styles.
+// @param $animation
+//   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction])
 @mixin animation( $animation... ) {
   -webkit-animation: $animation;
   animation: $animation;
 }
 
 // Animation Name
-//
-// @param: $name
-//   type: animation name
+// Adds animation name styles.
+// @param $name
+//   @type animation name
 @mixin animation-name( $name... ) {
   -webkit-animation-name: $name;
   animation-name: $name;
 }
 
 // Animation Duration
-//
-// @param: $duration
-//   type: time value (seconds, milliseconds)
+// @param $duration
+//   @type time value (seconds, milliseconds)
 @mixin animation-duration( $duration... ) {
   -webkit-animation-duration: $duration;
   animation-duration: $duration;
 }
 
 // Animation Timing Function
-//
-// @param: $timing-function
-//   type: timing function (linear, ease, ease-in, ease-out, ease-in-out)
+// @param $timing-function
+//   @type timing function (linear, ease, ease-in, ease-out, ease-in-out)
 @mixin animation-timing-function( $timing-function... ) {
   -webkit-animation-timing-function: $timing-function;
   animation-timing-function: $timing-function;
 }
 
 // Animation Delay
-//
-// @param: $delay
-//   type: time value (seconds, milliseconds)
+// @param $delay
+//   @type time value (seconds, milliseconds)
 @mixin animation-delay( $delay... ) {
   -webkit-animation-delay: $delay;
   animation-delay: $delay;
 }
 
 // Animation Iteration Count
-//
-// @param: $iteration-count
-//   type: unit (number, infinite)
+// @param $iteration-count
+//   @type unit (number, infinite)
 @mixin animation-iteration-count( $iteration-count... ) {
   -webkit-animation-iteration-count: $iteration-count;
   animation-iteration-count: $iteration-count;
 }
 
 // Animation Direction
-//
-// @param: $direction
-//   type: animation direction (normal, reverse, alternate, alternate-reverse)
+// @param $direction
+//   @type direction (normal, reverse, alternate, alternate-reverse)
 @mixin animation-direction( $direction... ) {
   -webkit-animation-direction: $direction;
   animation-direction: $direction;
 }
 
 // Animation Pause
-//
-// @param: $play-state
-//   type: play state (running, paused)
+// @param $play-state
+//   @type play state (running, paused)
 @mixin animation-play-state( $play-stay... ) {
   -webkit-animation-play-state: $play-stay;
   animation-play-state: $play-stay;
 }
 
 // Animation Fill Mode
-//
-// @param: $fill-mode
-//   type: play state (none, forwards, backwards, both, initial, inherit)
+// @param $fill-mode
+//   @type fill mode (none, forwards, backwards, both, initial, inherit)
 @mixin animation-fill-mode( $fill-mode... ) {
   -webkit-animation-fill-mode: $fill-mode;
   animation-fill-mode: $fill-mode;
 }
 
-// Horizontal Gradient
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
+// Gradient Horizontal
+// Creates a horizontal gradient.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $ge
+//   @type color
+//   @default $gradient-end
 @mixin gradient-horizontal(
     $gs : $gradient-start,
     $ge : $gradient-end
@@ -322,15 +311,14 @@
   background-repeat: repeat-y;
 }
 
-// Vertical Gradient
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
+// Gradient Vertical
+// Creates a vertical gradient.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $ge
+//   @type color
+//   @default $gradient-end
 @mixin gradient-vertical(
     $gs : $gradient-start,
     $ge : $gradient-end
@@ -344,18 +332,16 @@
 }
 
 // Directional Gradient
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
-//
-// @param: $deg
-//   type: unit (degree)
-//   default: $gradient-deg
+// Creates a directional gradient.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $ge
+//   @type color
+//   @default $gradient-end
+// @param $deg
+//   @type unit (degree)
+//   @default $gradient-deg
 @mixin gradient-directional(
     $gs : $gradient-start,
     $ge : $gradient-end,
@@ -370,22 +356,19 @@
 }
 
 // Horizontal Gradient with Three Colors
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $gm
-//   type: color
-//   default: $gradient-middle
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
-//
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
+// Creates a horizontal gradient using three colors.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $gm
+//   @type color
+//   @default $gradient-middle
+// @param $ge
+//   @type color
+//   @default $gradient-end
+// @param $stop
+//   @type unit (pixel, percentage)
+//   @default $gradient-stop
 @mixin gradient-horizontal-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -401,22 +384,19 @@
 }
 
 // Vertical Gradient with Three Colors
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $gm
-//   type: color
-//   default: $gradient-middle
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
-//
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
+// Creates a vertical gradient using three colors.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $gm
+//   @type color
+//   @default $gradient-middle
+// @param $ge
+//   @type color
+//   @default $gradient-end
+// @param $stop
+//   @type unit (pixel, percentage)
+//   @default $gradient-stop
 @mixin gradient-vertical-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -432,26 +412,22 @@
 }
 
 // Directional Gradient with Three Colors
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $gm
-//   type: color
-//   default: $gradient-middle
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
-//
-// @param: $deg
-//   type: unit (degree)
-//   default: $gradient-deg
-//
-// @param: $stop
-//   type: unit (pixel, percentage)
-//   default: $gradient-stop
+// Creates a directional gradient using three colors.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $gm
+//   @type color
+//   @default $gradient-middle
+// @param $ge
+//   @type color
+//   @default $gradient-end
+// @param $deg
+//   @type unit (degree)
+//   @default $gradient-deg
+// @param $stop
+//   @type unit (pixel, percentage)
+//   @default: $gradient-stop
 @mixin gradient-directional-three-colors(
     $gs : $gradient-start,
     $gm : $gradient-middle,
@@ -468,14 +444,13 @@
 }
 
 // Radial Gradients
-//
-// @param: $gs
-//   type: color
-//   default: $gradient-start
-//
-// @param: $ge
-//   type: color
-//   default: $gradient-end
+// Creates a radial gradient.
+// @param $gs
+//   @type color
+//   @default $gradient-start
+// @param $ge
+//   @type color
+//   @default $gradient-end
 @mixin gradient-radial(
     $inner : $gradient-start,
     $outer : $gradient-end
@@ -489,12 +464,12 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @ Typography
+// @Typography
 ////////////////////////////////////////////////////////////////////////////////
 
 // Hide text
 // Image replacement trick that hides text.
-@mixin text-hide {
+@mixin text-hide() {
   font-size: 0;
   line-height: 0;
   text-indent: 100%;
@@ -504,7 +479,6 @@
 
 // Truncate Text
 // Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
-//
 // @param: $display
 //   type: display property (block, inline-block)
 //   default: block
@@ -520,23 +494,18 @@
 
 // Anchor Styles
 // Builds the base styles for anchor tags
-//
 // @param: $color-link
 //   type: color
 //   default: $color-link
-//
 // @param: $color-link-hover
 //   type: color
 //   default: $color-link-hover
-//
 // @param: $border-color
 //   type: color
 //   default: $border-color
-//
 // @param: $border-color-hover
 //   type: color
 //   default: $border-color-hover
-//
 // @param: $color-link
 //   type: boolean (true, false)
 //   default: true
@@ -553,10 +522,7 @@
   
   @if ($transition != false) {
     @include transition(
-      opacity $transition-timing-function $transition-duration,
-      color $transition-timing-function $transition-duration,
-      border $transition-timing-function $transition-duration,
-      background $transition-timing-function $transition-duration
+      all $transition-timing-function $transition-duration
     );
   }
   
@@ -569,10 +535,8 @@
 
 // Case
 // Sets the case and letter spacing
-//
 // @param: $case
 //   type: string ('upper', 'lower', 'cap', 'none')
-//
 // @param: $letter-spacing
 //   type: unit (pixel, em, rem)
 //   default: $letter-spacing
@@ -593,19 +557,15 @@
 
 // Font
 // Sets the font family, size and lineheight
-//
 // @param: $stack
 //   type: string ('default', 'sans', 'serif', 'mono')
 //   default: 'default'
-//
 // @param: $font-size
 //   type: unit (pixel, em, rem)
 //   default: $base-font-size
-//
 // @param: $line-height
 //   type: unit (pixel, em, rem)
 //   default: $base-line-height
-//
 // @param: $other
 //   type: font weight and/or style value
 //   default: false
@@ -638,7 +598,7 @@
 // font: font-style font-variant font-weight font-size/line-height font-family;
 
 ////////////////////////////////////////////////////////////////////////////////
-// @ UI Helpers
+// @UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
 // Base Triangle
@@ -656,17 +616,13 @@
 
 // Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
-//
 // @param: $size
 //   type: unit (pixel, em, rem)
-//
 // @param: $color
 //   type: color
-//
 // @param: $direction
 //   type: string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
 //   desc: The direction that the triangle will point.
-//
 // @param $base
 //   type: boolean (true, false)
 //   default: false
@@ -720,19 +676,15 @@
 // Console
 // Let's you output a LESS variable in the browser.
 // Requires that `<div id="console"></div>` be somewhere in the DOM
-//
 // @param: $value
 //   type: parameter or value
 //   desc: The parameter or value you want displayed in the browser.
-//
 // @param: $location
 //   type: string ('left', 'right', 'bottom left', 'bottom right', 'auto')
 //   default: 'right'
-//
 // @param: $position
 //   type: position value (fixed, absolute)
 //   default: fixed
-//
 // @param: $index
 //   type: unit (number)
 //   default: 100

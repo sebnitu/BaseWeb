@@ -9,7 +9,7 @@
  * Copyright (c) 2014 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
-  @ Reset Styles
+  @Reset Styles
 ==============================================================================*/
 html, body {
   margin: 0;
@@ -144,8 +144,8 @@ a, .text-anchor {
   color: #2ab0ea;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-transition: opacity linear 0.25s, color linear 0.25s, border linear 0.25s, background linear 0.25s;
-  transition: opacity linear 0.25s, color linear 0.25s, border linear 0.25s, background linear 0.25s; }
+  -webkit-transition: all linear 0.25s;
+  transition: all linear 0.25s; }
   a:hover, .text-anchor:hover {
     color: #bc6bd3;
     cursor: pointer;
@@ -403,7 +403,7 @@ code {
   color: #d25992; }
 
 pre {
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 20px;
   overflow: auto;
   color: #303030; }
@@ -1468,7 +1468,7 @@ form .btn {
     border-bottom-left-radius: 3px; }
 
 /*==============================================================================
-  @ Mobile Grid System
+  @Mobile Grid System
 ==============================================================================*/
 .container {
   width: 100%;
@@ -1527,7 +1527,7 @@ form .btn {
   margin-right: 0; }
 
 /*==============================================================================
-  @ Grid System
+  @Grid System
 ==============================================================================*/
 @media screen and (min-width: 760px) {
   .container {
@@ -1674,7 +1674,7 @@ form .btn {
     margin-right: 102%; } }
 
 /*==============================================================================
-  @ Structure
+  @Structure
 ==============================================================================*/
 @media screen and (max-width: 480px) {
   body {
@@ -1861,7 +1861,7 @@ body {
     background-color: #de5151; } }
 
 /*==============================================================================
-  @ Header
+  @Header
 ==============================================================================*/
 .header {
   position: relative;
@@ -1901,7 +1901,7 @@ body {
     color: #fff; }
 
 /*==============================================================================
-  @ Navigation
+  @Navigation
 ==============================================================================*/
 /**
  * Docs Navigation
@@ -1959,15 +1959,25 @@ body {
     background: rgba(0, 0, 0, 0.05); }
 
 /*==============================================================================
-  @ Content
+  @Content
 ==============================================================================*/
 .content {
   padding-bottom: 100px; }
 
-.docs-header {
+h1.docs-header {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600; }
+
+h2.docs-header {
   font-size: 22px;
   line-height: 30px;
   font-weight: 600; }
+
+h3.docs-header {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500; }
 
 /**
  * Buttons
@@ -1991,66 +2001,120 @@ body {
     color: #ffffff; }
 
 /*==============================================================================
-  @ Variables
+  @Variables, Functions & Mixins
 ==============================================================================*/
-ul.variables {
+/**
+ * General
+ */
+ul.variables, ul.functions, ul.mixins, ul.mixins-listing {
   list-style: none;
   margin: 30px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-ul.variables li {
+ul.variables > li, ul.functions > li, ul.mixins > li, ul.mixins-listing > li {
   margin: 0;
-  padding: 10px;
+  padding: 10px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   background: transparent;
   background-clip: padding-box;
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear; }
-  ul.variables li:after {
+  ul.variables > li:after, ul.functions > li:after, ul.mixins > li:after, ul.mixins-listing > li:after {
     content: "";
     display: table;
     clear: both; }
-  ul.variables li:hover {
+
+/**
+ * Variables
+ */
+ul.variables > li {
+  padding: 10px; }
+  ul.variables > li:hover {
     background: rgba(255, 255, 255, 0.5);
     background-clip: padding-box; }
 
-/**
- * General Code
- */
-ul.variables li code {
+ul.variables > li code {
   margin: 0;
   padding: 5px 0;
   background: transparent; }
 
-ul.variables li .value {
-  color: #3da96d; }
-
-ul.variables li .swatch, ul.variables li .value {
-  float: right; }
-
-/**
- * Titles
- */
-ul.variables li.title {
+ul.variables > li.title {
   padding: 10px 0;
   font-size: 18px;
   line-height: 30px;
-  font-weight: 600; }
-  ul.variables li.title:hover {
+  font-weight: 500; }
+  ul.variables > li.title:hover {
     background: transparent; }
 
-/**
- * Large
- */
-ul.variables li.large .value {
+ul.variables > li .swatch, ul.variables > li .value {
+  float: right; }
+
+ul.variables > li .value {
+  color: #3da96d; }
+
+ul.variables > li.large .value {
   float: none;
   display: block;
   margin-top: -10px;
   white-space: normal; }
 
-/*==============================================================================
-  @ End
-==============================================================================*/
+/**
+ * Function & Mixin Code Blocks
+ */
+pre.function .function-name, pre.function .function-desc, pre.mixin .mixin-name, pre.mixin .mixin-desc {
+  display: block;
+  margin: 0; }
+
+pre.function .function-name, pre.mixin .mixin-name {
+  color: #d25992; }
+
+pre.function .function-desc, pre.mixin .mixin-desc {
+  color: #303030; }
+
+/**
+ * Mixins Listing
+ */
+ul.mixins-listing:last-child {
+  margin-bottom: 10px;
+  border-bottom: 0 none; }
+
+ul.mixins-listing > li {
+  padding: 10px; }
+  ul.mixins-listing > li:hover {
+    background: rgba(255, 255, 255, 0.5);
+    background-clip: padding-box; }
+
+ul.mixins-listing > li code {
+  margin: 0;
+  padding: 5px 0;
+  background: transparent; }
+
+ul.mixins-listing > li.title:hover, ul.mixins-listing > li.desc:hover {
+  background: transparent; }
+
+ul.mixins-listing > li.title {
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500; }
+
+ul.mixins-listing > li.desc {
+  padding: 5px 10px; }
+
+ul.mixins-listing > li.desc p {
+  margin: 5px 0; }
+
+ul.mixins-listing > li .mixin-demo {
+  float: right; }
+
+ul.mixins-listing > li pre.mixin {
+  padding: 0;
+  margin: 0;
+  background: none; }
+
+ul.mixins-listing > li pre.mixin .mixin-desc {
+  margin-top: -10px; }
+
 /*==============================================================================
   @ Swatches
 ==============================================================================*/
@@ -2312,3 +2376,124 @@ ul.variables li.large .value {
 
 .swatch-border-color-hover {
   background: rgba(0, 0, 0, 0.25); }
+
+/*==============================================================================
+  @Examples
+==============================================================================*/
+/*==============================================================================
+  @ Mixin Documentation Styles
+==============================================================================*/
+.demo {
+  margin: 20px 0;
+  padding: 20px;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.05); }
+
+.demo-box {
+  background: #989e10;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px; }
+
+/**
+ * Border Radius
+ */
+.mixin-demo {
+  display: inline-block;
+  background: #aeb512;
+  width: 30px;
+  height: 30px; }
+
+.mixin-border-radius {
+  border-radius: 50%; }
+
+.mixin-border-radius-top {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%; }
+
+.mixin-border-radius-top-left {
+  border-top-left-radius: 50%; }
+
+.mixin-border-radius-top-right {
+  border-top-right-radius: 50%; }
+
+.mixin-border-radius-bottom {
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%; }
+
+.mixin-border-radius-bottom-left {
+  border-bottom-left-radius: 50%; }
+
+.mixin-border-radius-bottom-right {
+  border-bottom-right-radius: 50%; }
+
+.mixin-border-radius-left {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%; }
+
+.mixin-border-radius-left-top {
+  border-top-left-radius: 50%; }
+
+.mixin-border-radius-left-bottom {
+  border-bottom-left-radius: 50%; }
+
+.mixin-border-radius-right {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%; }
+
+.mixin-border-radius-right-top {
+  border-top-right-radius: 50%; }
+
+.mixin-border-radius-right-bottom {
+  border-bottom-right-radius: 50%; }
+
+/**
+ * Rotate
+ */
+.box-rotate {
+  background: #1495cd;
+  margin: 20px auto;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+/**
+ * Transition
+ */
+.box-transition {
+  margin: 10px auto;
+  background-color: #3da96d;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear; }
+
+.box-transition:hover {
+  background-color: #d25992; }
+
+/**
+ * Animations
+ */
+@-webkit-keyframes example {
+  0% {
+    background-color: #de5151; }
+
+  50% {
+    background-color: #2ab0ea; }
+
+  100% {
+    background-color: #de5151; } }
+
+@keyframes example {
+  0% {
+    background-color: #de5151; }
+
+  50% {
+    background-color: #2ab0ea; }
+
+  100% {
+    background-color: #de5151; } }
+
+.box-animation {
+  margin: 10px auto;
+  background-color: #de5151;
+  -webkit-animation: example 10s linear 1s infinite normal;
+  animation: example 10s linear 1s infinite normal; }

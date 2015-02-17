@@ -1,11 +1,11 @@
 /*==============================================================================
-  @ Mobile Grid System
+  @Mobile Grid System
 ==============================================================================*/
 
 @include build-mobile-grid-system;
 
 /*==============================================================================
-  @ Grid System
+  @Grid System
 ==============================================================================*/
 
 @include media-tablet {
@@ -13,7 +13,7 @@
 }
 
 /*==============================================================================
-  @ Structure
+  @Structure
 ==============================================================================*/
 
 @include media-small() {
@@ -125,7 +125,7 @@ body {
 }
 
 /*==============================================================================
-  @ Header
+  @Header
 ==============================================================================*/
 
 .header {
@@ -173,7 +173,7 @@ body {
 }
 
 /*==============================================================================
-  @ Navigation
+  @Navigation
 ==============================================================================*/
 
 /**
@@ -236,17 +236,27 @@ body {
 }
 
 /*==============================================================================
-  @ Content
+  @Content
 ==============================================================================*/
 
 .content {
   padding-bottom: 100px;
 }
 
-.docs-header {
+h1.docs-header {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+h2.docs-header {
   font-size: 22px;
   line-height: 30px;
   font-weight: 600;
+}
+h3.docs-header {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
 }
 
 /**
@@ -277,69 +287,141 @@ body {
 
 
 /*==============================================================================
-  @ Variables
+  @Variables, Functions & Mixins
 ==============================================================================*/
 
-ul.variables {
+/**
+ * General
+ */
+ul.variables,
+ul.functions,
+ul.mixins,
+ul.mixins-listing {
   list-style: none;
   margin: 30px 0;
   border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
-ul.variables li {
+ul.variables > li,
+ul.functions > li,
+ul.mixins > li,
+ul.mixins-listing > li {
   margin: 0;
-  padding: 10px;
+  padding: 10px 0;
   border-top: 1px solid rgba(0,0,0, 0.1);
   background: transparent;
   background-clip: padding-box;
   @include clearfix();
   @include transition(background 0.25s linear);
+}
+
+/**
+ * Variables
+ */
+ul.variables > li {
+  padding: 10px;
   
   &:hover {
     background: rgba($white, 0.5);
     background-clip: padding-box;
   }
 }
-
-/**
- * General Code
- */
-ul.variables li code {
+ul.variables > li code {
   margin: 0;
   padding: 5px 0;
   background: transparent;
 }
-ul.variables li .value {
-  color: $blue-green-darker;
-}
-ul.variables li .swatch,
-ul.variables li .value {
-  float: right;
-}
-
-/**
- * Titles
- */
-ul.variables li.title {
+ul.variables > li.title {
   padding: 10px 0;
   font-size: 18px;
   line-height: 30px;
-  font-weight: 600;
+  font-weight: 500;
   
   &:hover {
     background: transparent;
   }
 }
-
-/**
- * Large
- */
-ul.variables li.large .value {
+ul.variables > li .swatch,
+ul.variables > li .value {
+  float: right;
+}
+ul.variables > li .value {
+  color: $blue-green-darker;
+}
+ul.variables > li.large .value {
   float: none;
   display: block;
   margin-top: -10px;
   white-space: normal;
 }
 
-/*==============================================================================
-  @ End
-==============================================================================*/
+/**
+ * Function & Mixin Code Blocks
+ */
+pre.function .function-name,
+pre.function .function-desc,
+pre.mixin .mixin-name,
+pre.mixin .mixin-desc {
+  display: block;
+  margin: 0;
+}
+pre.function .function-name,
+pre.mixin .mixin-name {
+  color: $red-violet;
+}
+pre.function .function-desc,
+pre.mixin .mixin-desc {
+  color: $color;
+}
+
+/**
+ * Mixins Listing
+ */
+ul.mixins-listing {
+  &:last-child {
+    margin-bottom: 10px;
+    border-bottom: 0 none;
+  }
+}
+ul.mixins-listing > li {
+  padding: 10px;
+  
+  &:hover {
+    background: rgba($white, 0.5);
+    background-clip: padding-box;
+  }
+}
+ul.mixins-listing > li code {
+  margin: 0;
+  padding: 5px 0;
+  background: transparent;
+}
+ul.mixins-listing > li.title,
+ul.mixins-listing > li.desc {
+  
+  &:hover {
+    background: transparent;
+  }
+}
+ul.mixins-listing > li.title {
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+}
+ul.mixins-listing > li.desc {
+  padding: 5px 10px;
+}
+ul.mixins-listing > li.desc p {
+  margin: 5px 0;
+}
+ul.mixins-listing > li .mixin-demo {
+  float: right;
+}
+ul.mixins-listing > li pre.mixin {
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+ul.mixins-listing > li pre.mixin .mixin-desc {
+  margin-top: -10px;
+}
