@@ -144,15 +144,15 @@
   
   <li>
     <h2 class="docs-header">box-sizing</h2>
-    <p>Adds box sizing styles.</p>
+    <p>The box-sizing CSS property is used to alter the default CSS box model used to calculate widths and heights of elements.</p>
 <pre class="mixin"><code class="mixin-name">@mixin box-sizing( $box-sizing )</code><code class="mixin-desc">@param $box-sizing
-  @type box-sizing value (border-box, none)
+  @type box-sizing value (content-box, padding-box, border-box, inherit)
   @default $box-sizing</code></pre>
   </li>
   
   <li>
     <h2 class="docs-header">box-shadow</h2>
-    <p>Adds box shadow styles.</p>
+    <p>The box-shadow CSS property describes one or more shadow effects as a comma-separated list.</p>
 <pre class="mixin"><code class="mixin-name">@mixin box-shadow( $shadow... )</code><code class="mixin-desc">@param $shadow
   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
   @default $box-shadow</code></pre>
@@ -160,7 +160,7 @@
   
   <li>
     <h2 class="docs-header">border-radius</h2>
-    <p>Adds border radius styles.</p>
+    <p>The border-radius CSS property allows you to define how rounded border corners are.</p>
 <pre class="mixin"><code class="mixin-name">@mixin border-radius( $radius )</code><code class="mixin-desc">@param $radius
   @type unit (pixel, percent)</code></pre>
     <h3 class="docs-header">Example Usage</h3>
@@ -189,31 +189,49 @@
 }</code></pre>
     <ul class="mixins-listing">
       <li class="title">Available Mixins</li>
-      <li><code>@mixin border-radius()</code> <span class="mixin-demo mixin-border-radius"></span></li>
+      <li><code>border-radius()</code> <span class="box-border-radius mixin-border-radius"></span></li>
 
-      <li><code>@mixin border-radius-top()</code> <span class="mixin-demo mixin-border-radius-top"></span></li>
-      <li><code>@mixin border-radius-top-left()</code> <span class="mixin-demo mixin-border-radius-top-left"></span></li>
-      <li><code>@mixin border-radius-top-right()</code> <span class="mixin-demo mixin-border-radius-top-right"></span></li>
+      <li><code>border-radius-top()</code> <span class="box-border-radius mixin-border-radius-top"></span></li>
+      <li><code>border-radius-top-left()</code> <span class="box-border-radius mixin-border-radius-top-left"></span></li>
+      <li><code>border-radius-top-right()</code> <span class="box-border-radius mixin-border-radius-top-right"></span></li>
 
-      <li><code>@mixin border-radius-bottom()</code> <span class="mixin-demo mixin-border-radius-bottom"></span></li>
-      <li><code>@mixin border-radius-bottom-left()</code> <span class="mixin-demo mixin-border-radius-bottom-left"></span></li>
-      <li><code>@mixin border-radius-bottom-right()</code> <span class="mixin-demo mixin-border-radius-bottom-right"></span></li>
+      <li><code>border-radius-bottom()</code> <span class="box-border-radius mixin-border-radius-bottom"></span></li>
+      <li><code>border-radius-bottom-left()</code> <span class="box-border-radius mixin-border-radius-bottom-left"></span></li>
+      <li><code>border-radius-bottom-right()</code> <span class="box-border-radius mixin-border-radius-bottom-right"></span></li>
 
-      <li><code>@mixin border-radius-left()</code> <span class="mixin-demo mixin-border-radius-left"></span></li>
-      <li><code>@mixin border-radius-left-top()</code> <span class="mixin-demo mixin-border-radius-left-top"></span></li>
-      <li><code>@mixin border-radius-left-bottom()</code> <span class="mixin-demo mixin-border-radius-left-bottom"></span></li>
+      <li><code>border-radius-left()</code> <span class="box-border-radius mixin-border-radius-left"></span></li>
+      <li><code>border-radius-left-top()</code> <span class="box-border-radius mixin-border-radius-left-top"></span></li>
+      <li><code>border-radius-left-bottom()</code> <span class="box-border-radius mixin-border-radius-left-bottom"></span></li>
 
-      <li><code>@mixin border-radius-right()</code> <span class="mixin-demo mixin-border-radius-right"></span></li>
-      <li><code>@mixin border-radius-right-top()</code> <span class="mixin-demo mixin-border-radius-right-top"></span></li>
-      <li><code>@mixin border-radius-right-bottom()</code> <span class="mixin-demo mixin-border-radius-right-bottom"></span></li>
+      <li><code>border-radius-right()</code> <span class="box-border-radius mixin-border-radius-right"></span></li>
+      <li><code>border-radius-right-top()</code> <span class="box-border-radius mixin-border-radius-right-top"></span></li>
+      <li><code>border-radius-right-bottom()</code> <span class="box-border-radius mixin-border-radius-right-bottom"></span></li>
       <li class="desc"><p><em>For the examples above, I'm passing in a radius of <code>50%</code> so the effect is more obvious.</em></p></li>
     </ul>
   </li>
   
   <li>
+    <h2 class="docs-header">transform</h2>
+    <p>The CSS transform property lets you modify the coordinate space of the CSS visual formatting model.</p>
+<pre class="mixin"><code class="mixin-name">@mixin transform( $function... )</code><code class="mixin-desc">@param $function
+  @type transform-function ([matrix] [perspective] [rotate] [scale] [skew] [translate])</code></pre>
+    <ul class="mixins-listing">
+      <li class="title">Transform Functions</li>
+      <li><code>matrix()</code></li>
+      <li><code>perspective()</code></li>
+      <li><code>rotate()</code></li>
+      <li><code>scale()</code></li>
+      <li><code>skew()</code></li>
+      <li><code>translate()</code></li>
+      <li class="desc"><p><em>This is not a comprehensive list of transform functions. For a full list of transform functions, please see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</em></p></li>
+    </ul>
+  </li>
+  
+  <li>
     <h2 class="docs-header">rotate</h2>
-    <p>Adds transform rotate styles.</p>
-<pre class="mixin"><code class="mixin-name">@mixin rotate( $deg )</code><code class="mixin-desc">@param $deg
+    <p>Adds transform rotate styles using a passed in degree and the transform mixin.</p>
+<pre class="mixin"><code class="mixin-name">@mixin rotate( $deg )</code><code class="mixin-desc">@dependency mixin transform()
+@param $deg
   @type unit (degree)</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -235,7 +253,7 @@
   
   <li>
     <h2 class="docs-header">transition</h2>
-    <p>Adds transition styles.</p>
+    <p>The CSS transition property is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay. It allows to define the transition between two states of an element. Different states may be defined using pseudo-classes like :hover or :active or dynamically set using JavaScript.</p>
 <pre class="mixin"><code class="mixin-name">@mixin transition( $transition... )</code><code class="mixin-desc">@param $transition
   @type transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
   @default $transition</code></pre>
@@ -280,7 +298,7 @@
   
   <li>
     <h2 class="docs-header">keyframes</h2>
-    <p>Define keyframes.</p>
+    <p>The @keyframes CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.</p>
 <pre class="mixin"><code class="mixin-name">@mixin keyframes( $name )</code><code class="mixin-desc">@param $name
   @type animation name
 @param @content (passed in brackets)
@@ -314,9 +332,9 @@
   
   <li>
     <h2 class="docs-header">animation</h2>
-    <p>Adds animation styles.</p>
+    <p>The animation CSS property is a shorthand property for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode and animation-play-state.</p>
 <pre class="mixin"><code class="mixin-name">@mixin animation( $animation... )</code><code class="mixin-desc">@param $animation
-  @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction])</code></pre>
+  @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
 .box-animation {
@@ -347,118 +365,169 @@
   @type unit (number, infinite)</code></pre>
     <pre class="mixin"><code class="mixin-name">@mixin animation-direction( $direction... )</code><code class="mixin-desc">@param $direction
   @type direction (normal, reverse, alternate, alternate-reverse)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-play-stay( $play-stay... )</code><code class="mixin-desc">@param $play-stay
-  @type play state (running, paused)</code></pre>
     <pre class="mixin"><code class="mixin-name">@mixin animation-fill-mode( $fill-mode... )</code><code class="mixin-desc">@param $fill-mode
   @type fill mode (none, forwards, backwards, both, initial, inherit)</code></pre>
+    <pre class="mixin"><code class="mixin-name">@mixin animation-play-stay( $play-stay... )</code><code class="mixin-desc">@param $play-stay
+  @type play state (running, paused)</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">gradient-horizontal</h2>
-    <p>Creates a horizontal gradient.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-horizontal( $gs, $ge )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $ge
-  @type color
-  @default $gradient-end</code></pre>
+    <h2 class="docs-header">linear-gradient</h2>
+    <p>Creates an image which represents a linear gradient of colors.</p>
+<pre class="mixin"><code class="mixin-name">@mixin linear-gradient( $gradient... )</code><code class="mixin-desc">@param $gradient
+  @type gradient ([side-or-corner] [angle] [color-stop])</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.box-linear-gradient {
+  @include linear-gradient(left, $green, $blue, $violet);
+}
+
+// CSS
+.box-linear-gradient {
+  background-image: -webkit-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
+  background-image: -moz-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
+  background-image: -ms-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
+  background-image: linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
+}
+</code></pre>
+    <div class="demo">
+      <div class="demo-box box-linear-gradient"></div>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">gradient-vertical</h2>
-    <p>Creates a vertical gradient.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-vertical( $gs, $ge )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $ge
-  @type color
-  @default $gradient-end</code></pre>
+    <h2 class="docs-header">radial-gradient</h2>
+    <p>Creates an image which represents a gradient of colors radiating from an origin, the center of the gradient.</p>
+<pre class="mixin"><code class="mixin-name">@mixin radial-gradient( $gradient... )</code><code class="mixin-desc">@param $gradient
+  @type gradient ([position] [shape] [size] [color-stop] [color-stop] [extent-keyword])</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.box-radial-gradient {
+  @include radial-gradient(circle, $violet, $violet-darker);
+}
+
+// CSS
+.box-radial-gradient {
+  background-image: -webkit-radial-gradient(circle, #bc6bd3, #aa44c7);
+  background-image: -moz-radial-gradient(circle, #bc6bd3, #aa44c7);
+  background-image: -ms-radial-gradient(circle, #bc6bd3, #aa44c7);
+  background-image: radial-gradient(circle, #bc6bd3, #aa44c7);
+}
+</code></pre>
+    <div class="demo">
+      <div class="demo-box box-radial-gradient"></div>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">gradient-directional</h2>
-    <p>Creates a directional gradient.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-directional( $gs, $ge, $deg )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $ge
-  @type color
-  @default $gradient-end
-@param $deg
-  @type unit (degree)
-  @default $gradient-deg</code></pre>
+    <h2 class="docs-header">text-hide</h2>
+    <p>Image replacement trick that hides text.</p>
+<pre class="mixin"><code class="mixin-name">@mixin text-hide()</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.logo-image {
+  @include text-hide();
+}
+
+// CSS
+.logo-image {
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">gradient-horizontal-three-colors</h2>
-    <p>Creates a horizontal gradient using three colors.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-horizontal-three-colors( $gs, $gm, $ge, $stop )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $gm
-  @type color
-  @default $gradient-middle
-@param $ge
-  @type color
-  @default $gradient-end
-@param $stop
-  @type unit (pixel, percentage)
-  @default $gradient-stop</code></pre>
+    <h2 class="docs-header">text-truncate</h2>
+    <p>Truncates text with an ellipsis. Element applied must be block or inline-block.</p>
+<pre class="mixin"><code class="mixin-name">@mixin text-truncate()</code><code class="mixin-desc">@param $display
+  @type display property (block, inline-block)
+  @default block</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.text-truncate {
+  @include text-truncate();
+}
+
+// CSS
+.text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</code></pre>
+    <div class="demo">
+      <div class="text-truncate">This is some text that will get truncated</div>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">gradient-vertical-three-colors</h2>
-    <p>Creates a vertical gradient using three colors.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-vertical-three-colors( $gs, $gm, $ge, $stop )</code><code class="mixin-desc">@param $gs
+    <h2 class="docs-header">triangle</h2>
+    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles can be used with `%triangle` as placeholder or you can have it applied directly to your triangle element.</p>
+<pre class="mixin"><code class="mixin-name">@mixin triangle-base()</code></pre>
+<pre class="mixin"><code class="mixin-name">@mixin triangle( $size, $color, $direction, $base )</code><code class="mixin-desc">@param $size
+  @type unit (pixel, em, rem)
+@param $color
   @type color
-  @default $gradient-start
-@param $gm
-  @type color
-  @default $gradient-middle
-@param $ge
-  @type color
-  @default $gradient-end
-@param $stop
-  @type unit (pixel, percentage)
-  @default $gradient-stop</code></pre>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">gradient-directional-three-colors</h2>
-    <p>Creates a directional gradient using three colors.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-directional-three-colors( $gs, $gm, $ge, $deg, $stop )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $gm
-  @type color
-  @default $gradient-middle
-@param $ge
-  @type color
-  @default $gradient-end
-@param $deg
-  @type unit (degree)
-  @default $gradient-deg
-@param $stop
-  @type unit (pixel, percentage)
-  @default $gradient-stop</code></pre>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">gradient-radial</h2>
-    <p>Creates a radial gradient.</p>
-<pre class="mixin"><code class="mixin-name">@mixin gradient-radial( $gs, $ge )</code><code class="mixin-desc">@param $gs
-  @type color
-  @default $gradient-start
-@param $ge
-  @type color
-  @default $gradient-end</code></pre>
+@param $direction
+  @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
+  @desc The direction that the triangle will point.
+@param $base
+  @type boolean (true, false)
+  @default false
+  @desc whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+%triangle {
+  @include triangle-base;
+}
+.example-triangle-1 {
+  @include triangle( 14px, $blue, 'left' );
+}
+.example-triangle-2 {
+  @include triangle( 14px, $violet, 'down' );
+}
+.example-triangle-3 {
+  @include triangle( 14px, $red, 'right' );
+}
+
+// CSS
+.example-triangle-1,
+.example-triangle-2,
+.example-triangle-3 {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+}
+.example-triangle-1 {
+  border-width: 14px 14px 14px 0;
+  border-right-color: #2ab0ea;
+}
+.example-triangle-2 {
+  border-width: 14px 14px 0 14px;
+  border-top-color: #bc6bd3;
+}
+.example-triangle-3 {
+  border-width: 14px 0 14px 14px;
+  border-left-color: #de5151;
+}
+</code></pre>
+    <div class="demo demo-triangle">
+      <div class="col col-4"><span class="example-triangle-1"></span></div>
+      <div class="col col-4"><span class="example-triangle-2"></span></div>
+      <div class="col col-4"><span class="example-triangle-3"></span></div>
+    </div>
   </li>
   
 </ul>
-
-<!--
-
--->
   </section><!-- .subpage -->
   
   <section id="media" class="subpage">

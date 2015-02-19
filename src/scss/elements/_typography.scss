@@ -119,56 +119,14 @@ abbr[data-original-title] {
  */
 a,
 .text-anchor {
-  @include anchor();
-}
-
-/**
- * Text Modifiers
- */
-u,
-.text-underline {
-  text-decoration: underline;
-}
-s,
-.text-strike {
-  text-decoration: line-through;
-}
-.text-highlight {
-  background: rgba($yellow, 0.4);
-}
-.text-hard {
-  font-size: 22px;
-  line-height: 28px;
   color: $color-link;
-}
-.text-soft {
-  color: $gray;
-}
-.text-nowrap {
-  white-space: nowrap;
-}
-
-/* Case */
-.text-lowercase { 
-  @include case('lower', 0);
-}
-.text-uppercase { 
-  @include case('upper');
-}
-.text-capitalize { 
-  @include case('cap', 0);
-}
-
-/* Alignment */
-.text-left {
-  text-align: left;
-}
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
-.text-justify {
-  text-align: justify;
+  text-decoration: none;
+  border-bottom: 1px solid $border-color;
+  @include transition( $transition );
+  
+  &:hover {
+    cursor: pointer;
+    color: $color-link-hover;
+    border-color: $border-color-hover;
+  }
 }

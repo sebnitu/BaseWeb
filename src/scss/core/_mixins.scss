@@ -3,9 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Size Mixin
-// Shorthand for adding width and height dimensions to an element. If you only
-// pass in a width, the height will be set to equal the width and create a 
-// square. If either the width or height are unit-less, it defaults to pixels.
+// Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.
 // @param $width
 //   @type unit (number, pixel, percentage)
 // @param $height
@@ -64,13 +62,18 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @CSS3 Helpers
+// @CSS Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
+////
+// CSS descriptions were taken from Mozilla Developer Network(MDN)
+// https://developer.mozilla.org/en-US/docs/Web/CSS
+////
+
 // Box Sizing
-// Adds box sizing styles.
+// The box-sizing CSS property is used to alter the default CSS box model used to calculate widths and heights of elements.
 // @param $box-sizing
-//   @type box-sizing value (border-box, none)
+//   @type box-sizing value (content-box, padding-box, border-box, inherit)
 //   @default $box-sizing
 @mixin box-sizing( $box-sizing : $box-sizing ) {
   -moz-box-sizing: $box-sizing;
@@ -78,7 +81,7 @@
 }
 
 // Box Shadows
-// Adds box shadow styles.
+// The box-shadow CSS property describes one or more shadow effects as a comma-separated list.
 // @param $shadow
 //   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
 //   @default $box-shadow
@@ -92,7 +95,7 @@
 }
 
 // Border Radius
-// Adds border radius styles.
+// The border-radius CSS property allows you to define how rounded border corners are.
 // @param $radius
 //   @type unit (pixel, percent)
 @mixin border-radius( $radius : $border-radius ) {
@@ -139,18 +142,27 @@
   border-bottom-right-radius: $radius;
 }
 
+// Transform
+// The CSS transform property lets you modify the coordinate space of the CSS visual formatting model.
+// @param $function
+//   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew] [translate])
+@mixin transform( $function... ) {
+  -webkit-transform: $function;
+  -ms-transform: $function;
+  transform: $function;
+}
+
 // Rotate
-// Adds transform rotate styles.
+// Adds transform rotate styles using a passed in degree and the transform mixin.
+// @dependency mixin transform()
 // @param $deg
 //   @type unit (degree)
 @mixin rotate( $deg ) {
-  -webkit-transform: rotate($deg);
-  -ms-transform: rotate($deg);
-  transform: rotate($deg);
+  @include transform(rotate($deg));
 }
 
-// Transitions
-// Addds transition styles.
+// Transition
+// The CSS transition property is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay. It allows to define the transition between two states of an element. Different states may be defined using pseudo-classes like :hover or :active or dynamically set using JavaScript.
 // @param $transition
 //   @type transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
 //   @default $transition
@@ -163,7 +175,7 @@
 }
 
 // Transitions Property
-// Adds transition property styles.
+// The transition-property CSS property is used to specify the names of CSS properties to which a transition effect should be applied.
 // @param $transition-property
 //   @type property name
 //   @default $transition-property
@@ -173,7 +185,7 @@
 }
 
 // Transitions Duration
-// Adds transition duration styles.
+// The transition-duration CSS property specifies the number of seconds or milliseconds a transition animation should take to complete.
 // @param $transition-duration
 //   @type time value (seconds, milliseconds)
 //   @default $transition-duration
@@ -183,7 +195,7 @@
 }
 
 // Transitions Timing Function
-// Adds transition timing function styles.
+// The CSS transition-timing-function property is used to describe how the intermediate values of the CSS properties being affected by a transition effect are calculated.
 // @param $transition-timing-function
 //   @type timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
 //   @default $transition-timing-function
@@ -193,7 +205,7 @@
 }
 
 // Transitions Delay
-// Adds transition delay styles.
+// The transition-delay CSS property specifies the amount of time to wait between a change being requested to a property that is to be transitioned and the start of the transition effect.
 // @param $transition-delay
 //   @type time value (seconds, milliseconds)
 //   @default $transition-delay
@@ -203,7 +215,7 @@
 }
 
 // Keyframes
-// Define keyframes.
+// The @keyframes CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.
 // @param $name
 //   @type animation name
 // @param @content (passed in brackets)
@@ -218,16 +230,16 @@
 }
 
 // Animation
-// Adds animation styles.
+// The animation CSS property is a shorthand property for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode and animation-play-state.
 // @param $animation
-//   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction])
+//   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state])
 @mixin animation( $animation... ) {
   -webkit-animation: $animation;
   animation: $animation;
 }
 
 // Animation Name
-// Adds animation name styles.
+// The animation-name CSS property specifies a list of animations that should be applied to the selected element.
 // @param $name
 //   @type animation name
 @mixin animation-name( $name... ) {
@@ -236,6 +248,7 @@
 }
 
 // Animation Duration
+// The animation-duration CSS property specifies the length of time that an animation should take to complete one cycle.
 // @param $duration
 //   @type time value (seconds, milliseconds)
 @mixin animation-duration( $duration... ) {
@@ -244,6 +257,7 @@
 }
 
 // Animation Timing Function
+// The CSS animation-timing-function property specifies how a CSS animation should progress over the duration of each cycle.
 // @param $timing-function
 //   @type timing function (linear, ease, ease-in, ease-out, ease-in-out)
 @mixin animation-timing-function( $timing-function... ) {
@@ -252,6 +266,7 @@
 }
 
 // Animation Delay
+// The animation-delay CSS property specifies when the animation should start. This lets the animation sequence begin some time after it's applied to an element.
 // @param $delay
 //   @type time value (seconds, milliseconds)
 @mixin animation-delay( $delay... ) {
@@ -260,6 +275,7 @@
 }
 
 // Animation Iteration Count
+// The animation-iteration-count CSS property defines the number of times an animation cycle should be played before stopping.
 // @param $iteration-count
 //   @type unit (number, infinite)
 @mixin animation-iteration-count( $iteration-count... ) {
@@ -268,6 +284,7 @@
 }
 
 // Animation Direction
+// The animation-direction CSS property indicates whether the animation should play in reverse on alternate cycles.
 // @param $direction
 //   @type direction (normal, reverse, alternate, alternate-reverse)
 @mixin animation-direction( $direction... ) {
@@ -275,15 +292,8 @@
   animation-direction: $direction;
 }
 
-// Animation Pause
-// @param $play-state
-//   @type play state (running, paused)
-@mixin animation-play-state( $play-stay... ) {
-  -webkit-animation-play-state: $play-stay;
-  animation-play-state: $play-stay;
-}
-
 // Animation Fill Mode
+// The animation-fill-mode CSS property specifies how a CSS animation should apply styles to its target before and after it is executing.
 // @param $fill-mode
 //   @type fill mode (none, forwards, backwards, both, initial, inherit)
 @mixin animation-fill-mode( $fill-mode... ) {
@@ -291,176 +301,35 @@
   animation-fill-mode: $fill-mode;
 }
 
-// Gradient Horizontal
-// Creates a horizontal gradient.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $ge
-//   @type color
-//   @default $gradient-end
-@mixin gradient-horizontal(
-    $gs : $gradient-start,
-    $ge : $gradient-end
-  ) {
-  background-color: $ge;
-  background-image: -webkit-linear-gradient(left, $gs, $ge);
-  background-image: -moz-linear-gradient(left, $gs, $ge);
-  background-image: -ms-linear-gradient(left, $gs, $ge);
-  background-image: linear-gradient(left, $gs, $ge);
-  background-repeat: repeat-y;
+// Animation Play State
+// The animation-play-state CSS property determines whether an animation is running or paused.
+// @param $play-state
+//   @type play state (running, paused)
+@mixin animation-play-state( $play-stay... ) {
+  -webkit-animation-play-state: $play-stay;
+  animation-play-state: $play-stay;
 }
 
-// Gradient Vertical
-// Creates a vertical gradient.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $ge
-//   @type color
-//   @default $gradient-end
-@mixin gradient-vertical(
-    $gs : $gradient-start,
-    $ge : $gradient-end
-  ) {
-  background-color: $ge;
-  background-image: -webkit-linear-gradient(top, $gs, $ge);
-  background-image: -moz-linear-gradient(top, $gs, $ge);
-  background-image: -ms-linear-gradient(top, $gs, $ge);
-  background-image: linear-gradient(top, $gs, $ge);
-  background-repeat: repeat-x;
-}
-
-// Directional Gradient
-// Creates a directional gradient.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $ge
-//   @type color
-//   @default $gradient-end
-// @param $deg
-//   @type unit (degree)
-//   @default $gradient-deg
-@mixin gradient-directional(
-    $gs : $gradient-start,
-    $ge : $gradient-end,
-    $deg : $gradient-deg
-  ) {
-  background-color: $ge;
-  background-image: -webkit-linear-gradient($deg, $gs, $ge);
-  background-image: -moz-linear-gradient($deg, $gs, $ge);
-  background-image: -ms-linear-gradient($deg, $gs, $ge);
-  background-image: linear-gradient($deg, $gs, $ge);
-  background-repeat: repeat-x;
-}
-
-// Horizontal Gradient with Three Colors
-// Creates a horizontal gradient using three colors.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $gm
-//   @type color
-//   @default $gradient-middle
-// @param $ge
-//   @type color
-//   @default $gradient-end
-// @param $stop
-//   @type unit (pixel, percentage)
-//   @default $gradient-stop
-@mixin gradient-horizontal-three-colors(
-    $gs : $gradient-start,
-    $gm : $gradient-middle,
-    $ge : $gradient-end,
-    $stop : $gradient-stop
-  ) {
-  background-color: mix($gs, $ge, 50%);
-  background-image: -webkit-linear-gradient(left, $gs, $gm $stop, $ge);
-  background-image: -moz-linear-gradient(left, $gs, $gm $stop, $ge);
-  background-image: -ms-linear-gradient(left, $gs, $gm $stop, $ge);
-  background-image: linear-gradient(left, $gs, $gm $stop, $ge);
-  background-repeat: no-repeat;
-}
-
-// Vertical Gradient with Three Colors
-// Creates a vertical gradient using three colors.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $gm
-//   @type color
-//   @default $gradient-middle
-// @param $ge
-//   @type color
-//   @default $gradient-end
-// @param $stop
-//   @type unit (pixel, percentage)
-//   @default $gradient-stop
-@mixin gradient-vertical-three-colors(
-    $gs : $gradient-start,
-    $gm : $gradient-middle,
-    $ge : $gradient-end,
-    $stop : $gradient-stop
-  ) {
-  background-color: mix($gs, $ge, 50%);
-  background-image: -webkit-linear-gradient(top, $gs, $gm $stop, $ge);
-  background-image: -moz-linear-gradient(top, $gs, $gm $stop, $ge);
-  background-image: -ms-linear-gradient(top, $gs, $gm $stop, $ge);
-  background-image: linear-gradient(top, $gs, $gm $stop, $ge);
-  background-repeat: no-repeat;
-}
-
-// Directional Gradient with Three Colors
-// Creates a directional gradient using three colors.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $gm
-//   @type color
-//   @default $gradient-middle
-// @param $ge
-//   @type color
-//   @default $gradient-end
-// @param $deg
-//   @type unit (degree)
-//   @default $gradient-deg
-// @param $stop
-//   @type unit (pixel, percentage)
-//   @default: $gradient-stop
-@mixin gradient-directional-three-colors(
-    $gs : $gradient-start,
-    $gm : $gradient-middle,
-    $ge : $gradient-end,
-    $deg : $gradient-deg,
-    $stop : $gradient-stop
-  ) {
-  background-color: mix($gs, $ge, 50%);
-  background-image: -webkit-linear-gradient($deg, $gs, $gm $stop, $ge);
-  background-image: -moz-linear-gradient($deg, $gs, $gm $stop, $ge);
-  background-image: -ms-linear-gradient($deg, $gs, $gm $stop, $ge);
-  background-image: linear-gradient($deg, $gs, $gm $stop, $ge);
-  background-repeat: no-repeat;
+// Linear Gradient
+// Creates an image which represents a linear gradient of colors.
+// @param $gradient
+//   @type gradient ([side-or-corner] [angle] [color-stop])
+@mixin linear-gradient( $gradient... ) {
+  background-image: -webkit-linear-gradient($gradient);
+  background-image: -moz-linear-gradient($gradient);
+  background-image: -ms-linear-gradient($gradient);
+  background-image: linear-gradient($gradient);
 }
 
 // Radial Gradients
-// Creates a radial gradient.
-// @param $gs
-//   @type color
-//   @default $gradient-start
-// @param $ge
-//   @type color
-//   @default $gradient-end
-@mixin gradient-radial(
-    $inner : $gradient-start,
-    $outer : $gradient-end
-  ) {
-  background-color: $outer;
-  background-image: -webkit-radial-gradient(circle, $inner, $outer);
-  background-image: -moz-radial-gradient(circle, $inner, $outer);
-  background-image: -ms-radial-gradient(circle, $inner, $outer);
-  background-image: radial-gradient(circle, $inner, $outer);
-  background-repeat: no-repeat;
+// Creates an image which represents a gradient of colors radiating from an origin, the center of the gradient.
+// @param $gradient
+//   @type gradient ([position] [shape] [size] [color-stop] [color-stop] [extent-keyword])
+@mixin radial-gradient( $gradient... ) {
+  background-image: -webkit-radial-gradient($gradient);
+  background-image: -moz-radial-gradient($gradient);
+  background-image: -ms-radial-gradient($gradient);
+  background-image: radial-gradient($gradient);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -478,124 +347,18 @@
 }
 
 // Truncate Text
-// Truncates text with an ellipsis. Element applied must be `block` or `inline-block`
-// @param: $display
-//   type: display property (block, inline-block)
-//   default: block
+// Truncates text with an ellipsis. Element applied must be block or inline-block.
+// @param $display
+//   @type display property (block, inline-block)
+//   @default block
 @mixin text-truncate( $display : block ) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  
   @if ($display == inline-block or $display == block) {
     display: $display;
   }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
-// Anchor Styles
-// Builds the base styles for anchor tags
-// @param: $color-link
-//   type: color
-//   default: $color-link
-// @param: $color-link-hover
-//   type: color
-//   default: $color-link-hover
-// @param: $border-color
-//   type: color
-//   default: $border-color
-// @param: $border-color-hover
-//   type: color
-//   default: $border-color-hover
-// @param: $color-link
-//   type: boolean (true, false)
-//   default: true
-@mixin anchor(
-    $color-link : $color-link,
-    $color-link-hover : $color-link-hover,
-    $border-color : $border-color,
-    $border-color-hover : $border-color-hover,
-    $transition : true
-  ) {
-  color: $color-link;
-  text-decoration: none;
-  border-bottom: 1px solid $border-color;
-  
-  @if ($transition != false) {
-    @include transition(
-      all $transition-timing-function $transition-duration
-    );
-  }
-  
-  &:hover {
-    color: $color-link-hover;
-    cursor: pointer;
-    border-color: $border-color-hover;
-  }
-}
-
-// Case
-// Sets the case and letter spacing
-// @param: $case
-//   type: string ('upper', 'lower', 'cap', 'none')
-// @param: $letter-spacing
-//   type: unit (pixel, em, rem)
-//   default: $letter-spacing
-@mixin case($case, $letter-spacing : $letter-spacing) {
-
-  @if ($case == 'upper') {
-    text-transform: uppercase;
-  } @else if ($case == 'lower') {
-    text-transform: lowercase;
-  } @else if ($case == 'cap') {
-    text-transform: capitalize;
-  } @else if ($case == 'none') {
-    text-transform: none;
-  }
-  
-  letter-spacing: $letter-spacing;
-}
-
-// Font
-// Sets the font family, size and lineheight
-// @param: $stack
-//   type: string ('default', 'sans', 'serif', 'mono')
-//   default: 'default'
-// @param: $font-size
-//   type: unit (pixel, em, rem)
-//   default: $base-font-size
-// @param: $line-height
-//   type: unit (pixel, em, rem)
-//   default: $base-line-height
-// @param: $other
-//   type: font weight and/or style value
-//   default: false
-@mixin font(
-    $stack : 'default',
-    $font-size : $base-font-size,
-    $line-height : $base-line-height,
-    $other : false
-  ) {
-  
-  @if ($stack == 'default') {
-    $stack: $base-font-family;
-  } @else if ($stack == 'sans') {
-    $stack: $font-family-sans;
-  } @else if ($stack == 'serif') {
-    $stack: $font-family-serif;
-  } @else if ($stack == 'mono') {
-    $stack: $font-family-mono;
-  }
-  
-  @if ($other != false) {
-    font: $other #{$font-size}/#{$line-height} $stack;
-  } @else {
-    font-family: $stack;        
-    font-size: $font-size;
-    line-height: $line-height;
-  }
-}
-
-// font: font-style font-variant font-weight font-size/line-height font-family;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @UI Helpers
@@ -616,17 +379,17 @@
 
 // Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
-// @param: $size
-//   type: unit (pixel, em, rem)
-// @param: $color
-//   type: color
-// @param: $direction
-//   type: string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
-//   desc: The direction that the triangle will point.
+// @param $size
+//   @type unit (pixel, em, rem)
+// @param $color
+//   @type color
+// @param $direction
+//   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
+//   @desc The direction that the triangle will point.
 // @param $base
-//   type: boolean (true, false)
-//   default: false
-//   desc: Whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`
+//   @type boolean (true, false)
+//   @default false
+//   @desc whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`
 @mixin triangle(
     $size,
     $color,
@@ -670,88 +433,5 @@
     border-left-color: $color;
   } @else {
     @warn "#{$direction} is not a valid direction for @mixin triangle";
-  }
-}
-
-// Console
-// Let's you output a LESS variable in the browser.
-// Requires that `<div id="console"></div>` be somewhere in the DOM
-// @param: $value
-//   type: parameter or value
-//   desc: The parameter or value you want displayed in the browser.
-// @param: $location
-//   type: string ('left', 'right', 'bottom left', 'bottom right', 'auto')
-//   default: 'right'
-// @param: $position
-//   type: position value (fixed, absolute)
-//   default: fixed
-// @param: $index
-//   type: unit (number)
-//   default: 100
-@mixin console(
-    $value,
-    $location : 'right',
-    $position : fixed,
-    $index : 100
-  ) {
-
-  z-index: $index;
-  @include font('mono', 12px, 20px);
-  
-  @if ($location == 'left') or ($location == 'top left') or ($location == 'left top') {
-    position: $position;
-    top: 0;
-    left: 0;
-  } @else if ($location == 'right') or ($location == 'top right') or ($location == 'right top') {
-    position: $position;
-    top: 0;
-    right: 0;
-  } @else if ($location == 'bottom left') or ($location == 'left bottom') {
-    position: $position;
-    bottom: 0;
-    left: 0;
-  } @else if ($location == 'bottom right') or ($location == 'right bottom') {
-    position: $position;
-    bottom: 0;
-    right: 0;
-  } @else if ($location == 'auto') {
-    position: relative;
-    display: inline-block;
-  } @else {
-    @warn "#{$location} is not a valid location for @mixin console";
-  }
-  
-  &:before, &:after {
-    display: block;
-    padding: 5px 15px;
-    float: left;
-  }
-  
-  &:before {
-    content: "Console:";
-    background: $blue;
-    color: $white;
-    
-    @if ($location == 'right') {
-      @include border-radius-bottom-left;
-    } @else if ($location == 'bottom right') {
-      @include border-radius-top-left;
-    } @else if ($location == 'auto') {
-      @include border-radius-left;
-    }
-  }
-  
-  &:after {
-    content: "#{$value}";
-    background: $gray-lighter;
-    color: $color-dark;
-      
-    @if ($location == 'left') {
-      @include border-radius-bottom-right;
-    }  @else if ($location == 'bottom left') {
-      @include border-radius-top-right;
-    } @else if ($location == 'auto') {
-      @include border-radius-right;
-    }
   }
 }

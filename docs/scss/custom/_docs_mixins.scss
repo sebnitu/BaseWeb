@@ -29,8 +29,9 @@ $radius-example: 50%;
 /**
  * Border Radius
  */
-.mixin-demo {
+.box-border-radius {
   display: inline-block;
+  float: right;
   background: $yellow-green-dark;
   @include size(30px);
 }
@@ -114,4 +115,50 @@ $radius-example: 50%;
   @include animation(example 10s linear 1s infinite normal);
 }
 
+/**
+ * Gradient
+ */
+.box-linear-gradient {
+  width: auto;
+  @include linear-gradient(left, $green, $blue, $violet);
+}
+.box-radial-gradient {
+  margin: 10px auto;
+  @include size(80px);
+  @include radial-gradient(circle, $violet, $violet-darker);
+}
 
+/**
+ * Text
+ */
+.text-truncate {
+  background: $blue-green-darker;
+  width: 200px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+  color: $white;
+  @include box-sizing(border-box);
+  @include border-radius();
+  @include text-truncate();
+}
+
+/**
+ * Triangle
+ */
+.demo-triangle .col {
+  text-align: center;
+}
+%triangle {
+  @include triangle-base;
+  vertical-align: middle;
+}
+.example-triangle-1 {
+  @include triangle( 14px, $blue, 'left' );
+}
+.example-triangle-2 {
+  @include triangle( 14px, $violet, 'down' );
+}
+.example-triangle-3 {
+  @include triangle( 14px, $red, 'right' );
+}
