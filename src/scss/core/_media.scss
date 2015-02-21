@@ -2,46 +2,51 @@
 // @Media Query Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Notes:
-// http://www.sitepoint.com/breakpoints-tweakpoints-sass/
-
-// Vertical Mobile
-@mixin media-small {
-  @media screen and ( $bp-small-feature : $bp-small ) {
-    @content;
+// Media Min
+// A media query mixin that deifnes a query using min-width.
+// @param $point
+//   @type map key (defined in local $tweakpoints or global $breakpoints)
+// @param @content (passed in brackets)
+//   @type style block
+@mixin media-min($point) {
+  @if map-has-key($tweakpoints, $point) {
+    @media (max-width: map-get($tweakpoints, $point)) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints, $point) {
+    @media (min-width: map-get($breakpoints, $point)) {
+      @content;
+    }
+  } @else {
+    @warn "Could not find `#{$point}` in local ($tweakpoints) or global ($breakpoints) contexts. Media block omitted.";
   }
 }
 
-// Mobile
-@mixin media-mobile {
-  @media screen and ( $bp-mobile-feature : $bp-mobile ) {
-    @content;
+// Media Max
+// A media query mixin that deifnes a query using max-width. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.
+// @param $point
+//   @type map key (defined in local $tweakpoints or global $breakpoints)
+// @param @content (passed in brackets)
+//   @type style block
+@mixin media-max($point) {
+  @if map-has-key($tweakpoints, $point) {
+    @media (max-width: (map-get($tweakpoints, $point) - 1)) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints, $point) {
+    @media (max-width: (map-get($breakpoints, $point) - 1)) {
+      @content;
+    }
+  } @else {
+    @warn "Could not find `#{$point}` in local ($tweakpoints) or global ($breakpoints) contexts. Media block omitted.";
   }
 }
 
-// Tablet
-@mixin media-tablet {
-  @media screen and ( $bp-tablet-feature : $bp-tablet ) {
-    @content;
-  }
-}
-
-// Desktop
-@mixin media-desktop {
-  @media screen and ( $bp-desktop-feature : $bp-desktop ) {
-    @content;
-  }
-}
-
-// Large
-@mixin media-large {
-  @media screen and ( $bp-large-feature : $bp-large ) {
-    @content;
-  }
-}
-
-// Retina
-@mixin media-retina {
+// Retina Media Query
+// This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.
+// @param @content (passed in brackets)
+//   @type style block
+@mixin media-retina() {
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     @content;
   }

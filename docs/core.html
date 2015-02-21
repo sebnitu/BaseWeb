@@ -486,13 +486,13 @@
   @include triangle-base;
 }
 .example-triangle-1 {
-  @include triangle( 14px, $blue, 'left' );
+  @include triangle( 14px, $blue-darker, 'left' );
 }
 .example-triangle-2 {
-  @include triangle( 14px, $violet, 'down' );
+  @include triangle( 14px, $blue-violet-darker, 'down' );
 }
 .example-triangle-3 {
-  @include triangle( 14px, $red, 'right' );
+  @include triangle( 14px, $violet-darker, 'right' );
 }
 
 // CSS
@@ -509,15 +509,15 @@
 }
 .example-triangle-1 {
   border-width: 14px 14px 14px 0;
-  border-right-color: #2ab0ea;
+  border-right-color: #1495cd;
 }
 .example-triangle-2 {
   border-width: 14px 14px 0 14px;
-  border-top-color: #bc6bd3;
+  border-top-color: #4469da;
 }
 .example-triangle-3 {
   border-width: 14px 0 14px 14px;
-  border-left-color: #de5151;
+  border-left-color: #aa44c7;
 }
 </code></pre>
     <div class="demo demo-triangle">
@@ -532,7 +532,102 @@
   
   <section id="media" class="subpage">
 <h1 class="docs-header">Media Queries</h1>
-<p>...</p>  </section><!-- .subpage -->
+
+<p>The core framework mixins that deal with media queries. These break down to three primary mixins for setting minimum width, maximum width and retina display mixins.</p>
+
+<ul class="mixins">
+
+  <li>
+    <h2 class="docs-header">media-min</h2>
+    <p>A media query mixin that deifnes a query using min-width.</p>
+<pre class="mixin"><code class="mixin-name">@mixin media-min()</code><code class="mixin-desc">@param $point
+  @type map key (defined in local $tweakpoints or global $breakpoints)
+@param @content (passed in brackets)
+  @type style block</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.something {
+  width: 100%;
+}
+@include media-min('tablet') {
+  .something {
+    width: 300px;
+  }
+}
+
+// CSS
+.something {
+  width: 100%;
+}
+@media (min-width: 760px) {
+  .something {
+    width: 300px;
+  }
+}</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">media-max</h2>
+    <p>A media query mixin that deifnes a query using max-width. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.</p>
+<pre class="mixin"><code class="mixin-name">@mixin media-max()</code><code class="mixin-desc">@param $point
+  @type map key (defined in local $tweakpoints or global $breakpoints)
+@param @content (passed in brackets)
+  @type style block</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.something {
+  width: 300px;
+}
+@include media-max('tablet') {
+  .something {
+    width: 100%;
+  }
+}
+
+// CSS
+.something {
+  width: 300px;
+}
+@media (max-width: 759px) {
+  .something {
+    width: 100%;
+  }
+}</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">media-retina</h2>
+    <p>This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
+<pre class="mixin"><code class="mixin-name">@mixin media-retina()</code><code class="mixin-desc">@param @content (passed in brackets)
+  @type style block</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+<pre><code>// SCSS
+.logo {
+  background-image: src('logo.png');
+}
+
+@include media-retina {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}
+
+// CSS
+.logo {
+  background-image: src('logo.png');
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo {
+    background-image: src('logo-2x.png');
+    background-size: 100px 50px;
+  }
+}</code></pre>
+  </li>
+  
+</ul>
+  </section><!-- .subpage -->
   
   <section id="grid" class="subpage">
 <h1 class="docs-header">Grid System</h1>

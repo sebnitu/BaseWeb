@@ -2,30 +2,25 @@
   @Mobile Grid System
 ==============================================================================*/
 
-@include build-mobile-grid-system;
+@include build-mobile-grid-system();
 
 /*==============================================================================
   @Grid System
 ==============================================================================*/
 
-@include media-tablet {
-  @include build-grid-system;
+@include media-min('tablet') {
+  @include build-grid-system();
 }
 
 /*==============================================================================
   @Structure
 ==============================================================================*/
 
-@include media-small() {
-  body {
-    background: $black;
-  }
-}
-
 body {
   background: $gray-pale;
   color: $color;
 }
+
 .main {
   position: relative;
 }
