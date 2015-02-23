@@ -3,6 +3,8 @@
 
 <ul class="variables">
   
+  <li class="title">Tweakpoints Map</li>
+  <li><code>$tweakpoints()</code> <code class="value">...</code></li>
   <li class="title">Breakpoints Map</li>
   <li><code>$breakpoints('mobile')</code> <code class="value">480px</code></li>
   <li><code>$breakpoints('tablet')</code> <code class="value">760px</code></li>
@@ -10,3 +12,22 @@
   <li><code>$breakpoints('large')</code> <code class="value">1380px</code></li>
 
 </ul>
+
+
+<p>You can also define component specific tweakpoints that override the breakpoints map. This should be done at the beginning of a component file and should also be reset at the end of the file so values don't leak to following components.</p>
+
+<h3 class="docs-header">Example Usage</h3>
+
+<pre><code>// Inside `_component.scss`
+// Set our component specific tweakpoints
+$tweakpoints: ({
+  'inline' : 300px,
+  'block' : 500px
+});
+
+...
+
+// Reset tweak points so it doesn't 
+// leak to our next component file
+$tweakpoints: ();
+</code></pre>

@@ -2,36 +2,18 @@
 // @Grid Functions
 ////////////////////////////////////////////////////////////////////////////////
 
-@function column_width(
-
-    $index,
-    
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width: $grid-gutter-width,
-    $grid-columns : $grid-columns
-  
-  ) {
-  
-  $column-width: ($grid-total-width - ($grid-gutter-width * ($grid-columns - 1))) / $grid-columns;
-  
-  @return ($column-width * $index) + ($grid-gutter-width * ($index - 1));
-  
+// Column Width
+@function column_width($index, $options: ()) {
+  $o: map-merge( $grid, $options);
+  $column-width: (map-get($o, 'total-width') - (map-get($o, 'gutter-width') * (map-get($o, 'columns') - 1))) / map-get($o, 'columns');
+  @return ($column-width * $index) + (map-get($o, 'gutter-width') * ($index - 1));
 }
 
-@function spacing_width(
-    
-    $index,
-    
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width: $grid-gutter-width,
-    $grid-columns : $grid-columns
-  
-  ) {
-
-  $column-width : column_width( 1, $grid-total-width, $grid-gutter-width, $grid-columns );
-  
-  @return ($column-width * $index) + ($grid-gutter-width * $index);
-  
+// Spacing Width
+@function spacing_width($index, $options: ()) {
+  $o: map-merge( $grid, $options);
+  $column-width : column_width( 1, $o );
+  @return ($column-width * $index) + (map-get($o, 'gutter-width') * $index);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -39,76 +21,54 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Container
-@mixin make-container(
-
-    $grid-total-width : $grid-total-width,
-    
-    $container-margin : $container-margin,
-    $container-padding : $container-padding,
-    $container-max-width : $container-max-width,
-    $container-min-width : $container-min-width,
-    
-    $class-container : $class-container
-  
-  ) {
-  
-  // Set the widths
-  width: $grid-total-width;
-  @if ($container-min-width != none) {
-    min-width: $container-min-width;
+@mixin make-container($options: ()) {
+  $o: map-merge( $grid, $options);
+  width: map-get($o, 'total-width');
+  @if (map-get($o, 'container-min-width') != none) {
+    min-width: map-get($o, 'container-min-width');
   }
-  @if ($container-max-width != none) {
-    max-width: $container-max-width;
+  @if (map-get($o, 'container-max-width') != none) {
+    max-width: map-get($o, 'container-max-width');
   }
+  margin: 0 map-get($o, 'container-margin');
+  padding: 0 map-get($o, 'container-padding');
   
-  margin: 0 $container-margin;
-  padding: 0 $container-padding;
-  
-  // Modifier Classes
-  @if ($class-container != none) {
-    &.#{$class-container}-float-left {
+  @if (map-get($o, 'class-container') != none) {
+    &.#{map-get($o, 'class-container')}-float-left {
       float: left;
     }
-    &.#{$class-container}-float-right {
+    &.#{map-get($o, 'class-container')}-float-right {
       float: right;
     }
-    &.#{$class-container}-no-padding {
+    &.#{map-get($o, 'class-container')}-no-padding {
       padding: 0;
     }
-    &.#{$class-container}-no-margin {
+    &.#{map-get($o, 'class-container')}-no-margin {
       margin: 0;
     }
   }
-  
   @include clearfix();
-  
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  
   @content;
 }
 
 // Make Row
-@mixin make-row(
-
-    $class-row : $class-row,
-    $class-column : $class-column
-    
-  ) {
-  
+@mixin make-row($options: ()) {
+  $o: map-merge( $grid, $options);
+  margin-left: -(map-get($o, 'inner-gutter-width') / 2);
+  margin-right: -(map-get($o, 'inner-gutter-width') / 2);
   @include clearfix();
-  
-  // Row Modifiers
-  @if ($class-row != none) {
-    &.#{$class-row}-center {
+  @if (map-get($o, 'class-row') != none) {
+    &.#{map-get($o, 'class-row')}-center {
       text-align: center;
       
       > * {
         font-size: 0;
         line-height: 0;
       }
-      .#{$class-column} {
+      .#{map-get($o, 'class-column')} {
         float: none;
         display: inline-block;
         @include clearfix();
@@ -118,103 +78,66 @@
       }
     }
   }
-  
   @content;
 }
 
 // Make Base Column (Does not include column width)
-@mixin make-base-column(
-
-    $grid-gutter-width : $grid-gutter-width,
-    $class-column : $class-column
-  
-  ) {
-  
-  @if ($grid-gutter-width == mobile) {
+@mixin make-base-column($options: ()) {
+  $o: map-merge( $grid, $options);
+  @if (map-get($o, 'total-width') == mobile) {
     width: 100%;
     margin: 0;
+    padding: 0;
   } @else {
-    margin-left: $grid-gutter-width;
-    @if ($class-column != none) {
-      &.#{$class-column}-no-gutter,
-      &:first-child {
-        margin-left: 0;
-      }
-    } @else {
-      &:first-child {
+    margin-left: map-get($o, 'gutter-width');
+    padding-left: (map-get($o, 'inner-gutter-width') / 2);
+    padding-right: (map-get($o, 'inner-gutter-width') / 2);
+    
+    @if (map-get($o, 'class-column') != none) {
+      &.#{map-get($o, 'class-column')}-no-gutter {
         margin-left: 0;
       }
     }
+    &:first-child {
+      margin-left: 0;
+    }
   }
-  
   float: left;
   min-height: 1px;
-  
   &.align-right {
     float: right;
   }
   &.align-left {
     float: left;
   }
-  
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  
   @content;
 }
 
 // Make Column
-@mixin make-column(
-
-    $index,
-    
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width: $grid-gutter-width,
-    $grid-columns : $grid-columns,
-    
-    $class-column : $class-column
-    
-  ) {
-  
-  @include make-base-column($grid-gutter-width, $class-column);
-  width: column_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
-  
+@mixin make-column($index, $options: ()) {
+  $o: map-merge( $grid, $options);
+  @include make-base-column($o);
+  width: column_width($index, $o);
   @content;
 }
 
 // Make Prefix
-@mixin give-prefix(
-
-    $index,
-    
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width: $grid-gutter-width,
-    $grid-columns : $grid-columns
-
-  ) {
-
-  margin-left: (spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns ) + $grid-gutter-width);
+@mixin give-prefix($index, $options: ()) {
+  $o: map-merge( $grid, $options);
+  margin-left: (spacing_width($index, $o) + map-get($o, 'gutter-width'));
   &:first-child {
-    margin-left: spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
+    margin-left: spacing_width($index, $o);
   }
-  
   @content;
 }
 
 // Make Suffix
-@mixin give-suffix(
-
-    $index,
-    
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width: $grid-gutter-width,
-    $grid-columns : $grid-columns
-
-  ) {
-
-  margin-right: spacing_width( $index, $grid-total-width, $grid-gutter-width, $grid-columns );
-  
+@mixin give-suffix($index, $options: ()) {
+  $o: map-merge( $grid, $options);
+  margin-right: spacing_width($index, $o);
   @content;
 }
 
@@ -224,109 +147,67 @@
 
 // Make Mobile Grid System
 // Outputs the styles for a mobile grid system where all columns are stacked
-@mixin build-mobile-grid-system(
-
-    $class-container : $class-container,
-    $class-row : $class-row,
-    $class-column : $class-column,
-    $class-prefix : $class-prefix,
-    $class-suffix : $class-suffix
-    
-  ) {
-  
-  .#{$class-container} {
-    @include make-container( 100% );
+@mixin build-mobile-grid-system($options: ()) {
+  $o: map-merge( $grid, $options);
+  .#{map-get($o, 'class-container')} {
+    @include make-container( ('total-width': 100%) );
   }
-  
-  .#{$class-row} {
-    @include make-row();
+  .#{map-get($o, 'class-row')} {
+    @include make-row() {
+      margin-left: 0;
+      margin-right: 0;
+    };
   }
-  
-  .#{$class-column} {
-    @include make-base-column( mobile );
+  .#{map-get($o, 'class-column')} {
+    @include make-base-column(('total-width': mobile));
   }
-  
-  @if ($class-prefix != none) {
-    .#{$class-prefix} {
+  @if (map-get($o, 'class-prefix') != none) {
+    .#{map-get($o, 'class-prefix')} {
       margin-left: 0;
       &:first-child {
         margin-left: 0;
       }
     }
   }
-  
-  @if ($class-suffix != none) {
-    .#{$class-suffix} {
+  @if (map-get($o, 'class-suffix') != none) {
+    .#{map-get($o, 'class-suffix')} {
       margin-right: 0;
     }
   }
-  
   @content;
 }
 
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system
-@mixin build-grid-system(
-
-    $grid-total-width : $grid-total-width,
-    $grid-gutter-width : $grid-gutter-width,
-    $grid-columns : $grid-columns,
-    
-    $container-margin : $container-margin,
-    $container-padding : $container-padding,
-    $container-max-width : $container-max-width,
-    $container-min-width : $container-min-width,
-    
-    $class-container : $class-container,
-    $class-row : $class-row,
-    $class-column : $class-column,
-    $class-prefix : $class-prefix,
-    $class-suffix : $class-suffix
-  
-  ) {
-  
-  .#{$class-container} {
-    @include make-container(
-    
-      $grid-total-width,
-      
-      $container-margin,
-      $container-padding,
-      $container-max-width,
-      $container-min-width
-      
-    );
+@mixin build-grid-system($options: ()) {
+  $o: map-merge( $grid, $options);
+  .#{map-get($o, 'class-container')} {
+    @include make-container($o);
   }
-    
-  .#{$class-row} {
+  .#{map-get($o, 'class-row')} {
     @include make-row();
   }
-  
-  .#{$class-column} {
-    @include make-base-column( $grid-gutter-width );
+  .#{map-get($o, 'class-column')} {
+    @include make-base-column($o);
   }
-  
-  @for $i from 1 through $grid-columns {
-    .#{$class-column}-#{$i} {
-      width: column_width( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+  @for $i from 1 through map-get($o, 'columns') {
+    .#{map-get($o, 'class-column')}-#{$i} {
+      width: column_width( $i, $o );
     }
   }
-  
-  @if ($class-prefix != none) {
-    @for $i from 1 through $grid-columns {    
-      .#{$class-prefix}-#{$i} {
-        @include give-prefix( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+  @if (map-get($o, 'class-prefix') != none) {
+    @for $i from 1 through map-get($o, 'columns') {    
+      .#{map-get($o, 'class-prefix')}-#{$i} {
+        @include give-prefix( $i, $o );
       }
     }
   }
-  
-  @if ($class-suffix != none) {
-    @for $i from 1 through $grid-columns {  
-      .#{$class-suffix}-#{$i} {
-        @include give-suffix( $i, $grid-total-width, $grid-gutter-width, $grid-columns );
+  @if (map-get($o, 'class-suffix') != none) {
+    @for $i from 1 through map-get($o, 'columns') {  
+      .#{map-get($o, 'class-suffix')}-#{$i} {
+        @include give-suffix( $i, $o );
       }
     }
   }
-  
   @content;
 }

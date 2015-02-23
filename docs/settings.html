@@ -181,6 +181,8 @@ $yellow-green-lighter</code></pre>
 
 <ul class="variables">
   
+  <li class="title">Tweakpoints Map</li>
+  <li><code>$tweakpoints()</code> <code class="value">...</code></li>
   <li class="title">Breakpoints Map</li>
   <li><code>$breakpoints('mobile')</code> <code class="value">480px</code></li>
   <li><code>$breakpoints('tablet')</code> <code class="value">760px</code></li>
@@ -188,7 +190,25 @@ $yellow-green-lighter</code></pre>
   <li><code>$breakpoints('large')</code> <code class="value">1380px</code></li>
 
 </ul>
-  </section><!-- .subpage -->
+
+
+<p>You can also define component specific tweakpoints that override the breakpoints map. This should be done at the beginning of a component file and should also be reset at the end of the file so values don't leak to following components.</p>
+
+<h3 class="docs-header">Example Usage</h3>
+
+<pre><code>// Inside `_component.scss`
+// Set our component specific tweakpoints
+$tweakpoints: ({
+  'inline' : 300px,
+  'block' : 500px
+});
+
+...
+
+// Reset tweak points so it doesn't 
+// leak to our next component file
+$tweakpoints: ();
+</code></pre>  </section><!-- .subpage -->
   
   <section id="grid" class="subpage">
 <h1 class="docs-header">Grid System Variables</h1>
@@ -309,14 +329,16 @@ $yellow-green-lighter</code></pre>
 <div id="page-home" class="page page-home">
   <div class="container">
   
+    <div class="row">
 <header class="header col col-12">
   <h1><a href="/index.html" class="logo no-smoothstate">BaseWeb</a></h1>
-</header><!-- .header -->    
+</header><!-- .header -->    </div><!-- .row -->
+    
     <div class="row">
       
       <div class="col col-6">
-        <p>BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.</p>
-        <p class="btn-group"><a href="#" class="btn">Download</a></p>
+        <p class="intro">BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.</p>
+        <p class="action"><a href="#">Download</a></p>
       </div>
       
       <div class="col col-5 prefix-1">
