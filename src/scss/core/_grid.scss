@@ -3,6 +3,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Column Width
+// A function that returns the width of a column span.
+// @param $index
+//   @type integer
+//   @desc The number of column span you want returned.
+// @param $options
+//   @type map
+//   @default $grid map
+// @return unit (pixel, percentage)
 @function column_width($index, $options: ()) {
   $o: map-merge( $grid, $options);
   $column-width: (map-get($o, 'total-width') - (map-get($o, 'gutter-width') * (map-get($o, 'columns') - 1))) / map-get($o, 'columns');
@@ -10,6 +18,14 @@
 }
 
 // Spacing Width
+// A function that returns the spacing of a column span.
+// @param $index
+//   @type integer
+//   @desc The number of column spacing you want returned.
+// @param $options
+//   @type map
+//   @default $grid map
+// @return unit (pixel, percentage)
 @function spacing_width($index, $options: ()) {
   $o: map-merge( $grid, $options);
   $column-width : column_width( 1, $o );
@@ -21,6 +37,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Container
+// Outputs all the styles needed to make an element a grid container.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin make-container($options: ()) {
   $o: map-merge( $grid, $options);
   width: map-get($o, 'total-width');
@@ -55,6 +75,10 @@
 }
 
 // Make Row
+// Outputs all the styles needed to make an element a grid row.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin make-row($options: ()) {
   $o: map-merge( $grid, $options);
   margin-left: -(map-get($o, 'inner-gutter-width') / 2);
@@ -63,7 +87,6 @@
   @if (map-get($o, 'class-row') != none) {
     &.#{map-get($o, 'class-row')}-center {
       text-align: center;
-      
       > * {
         font-size: 0;
         line-height: 0;
@@ -81,7 +104,11 @@
   @content;
 }
 
-// Make Base Column (Does not include column width)
+// Make Base Column
+// Creates the base styles for a column but excludes setting the width.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin make-base-column($options: ()) {
   $o: map-merge( $grid, $options);
   @if (map-get($o, 'total-width') == mobile) {
@@ -117,6 +144,13 @@
 }
 
 // Make Column
+// Creates all the styles for a column and sets its width.
+// @param $index
+//   @type integer
+//   @desc The number of column span you want set.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin make-column($index, $options: ()) {
   $o: map-merge( $grid, $options);
   @include make-base-column($o);
@@ -125,6 +159,13 @@
 }
 
 // Make Prefix
+// Creates the base styles for a column and sets its width.
+// @param $index
+//   @type integer
+//   @desc The number of column prefix spacing you want set.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin give-prefix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   margin-left: (spacing_width($index, $o) + map-get($o, 'gutter-width'));
@@ -135,6 +176,13 @@
 }
 
 // Make Suffix
+// Creates the base styles for a spacing suffix.
+// @param $index
+//   @type integer
+//   @desc The number of column suffix spacing you want set.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin give-suffix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   margin-right: spacing_width($index, $o);
@@ -146,7 +194,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Mobile Grid System
-// Outputs the styles for a mobile grid system where all columns are stacked
+// Outputs the styles for a mobile grid system where all columns are stacked.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin build-mobile-grid-system($options: ()) {
   $o: map-merge( $grid, $options);
   .#{map-get($o, 'class-container')} {
@@ -178,7 +229,10 @@
 }
 
 // Build Grid System
-// Outputs all the classes and styles for the class based grid system
+// Outputs all the classes and styles for the class based grid system.
+// @param $options
+//   @type map
+//   @default $grid map
 @mixin build-grid-system($options: ()) {
   $o: map-merge( $grid, $options);
   .#{map-get($o, 'class-container')} {
