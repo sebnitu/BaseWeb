@@ -25,18 +25,6 @@ body {
   position: relative;
 }
 
-.loader {
-  background-color: $red;
-  position: fixed;
-  z-index: 15;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
 .page-docs {
   position: relative;
   z-index: 5;
@@ -126,15 +114,16 @@ body {
 .header {
   position: relative;
   z-index: 10;
-  padding: 60px 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 .header h1 {
   margin: 0;
   @include clearfix();
 }
-
 .header .logo {
   background: url('../img/baseweb-logo-black.png') no-repeat left center;
+  border: 0 none;
   display: block;
   float: left;
   padding: 6px 0 6px 80px;
@@ -255,14 +244,16 @@ h3.docs-header {
 }
 
 /**
- * Buttons
+ * Home
  */
 .page-home .intro {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 18px;
   line-height: 26px;
 }
 .page-home .action {
+  float: left;
+  text-align: center;
   margin: 30px 0 0;
 }
 .page-home .action a {
@@ -279,178 +270,132 @@ h3.docs-header {
     color: $white;
   }
 }
-
-
-/*==============================================================================
-  @Variables, Functions & Mixins
-==============================================================================*/
+.page-home .action span {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  padding: 16px 0;
+  color: rgba($white, 0.5);
+}
 
 /**
- * General
+ * Custom Code Blocks
  */
-ul.variables,
-ul.functions,
-ul.mixins,
-ul.mixins-listing {
-  list-style: none;
+.docs-code {
+  .name,
+  .desc {
+    display: block;
+    margin: 0;
+  }
+  .name {
+    color: $red-violet;
+  }
+  .desc {
+    color: $color;
+  }
+}
+
+/*==============================================================================
+  @Docs List
+==============================================================================*/
+
+ul.docs-list {
   margin: 30px 0;
-  border-bottom: 1px solid rgba(0,0,0, 0.1);
-}
-ul.variables > li,
-ul.functions > li,
-ul.mixins > li,
-ul.mixins-listing > li {
-  margin: 0;
-  padding: 10px 0;
-  border-top: 1px solid rgba(0,0,0, 0.1);
-  background: transparent;
-  background-clip: padding-box;
-  @include clearfix();
-  @include transition(background 0.25s linear);
-}
-
-/**
- * Variables
- */
-ul.variables > li {
-  padding: 10px;
+  list-style: none;
+  border-bottom: 1px solid rgba($black, 0.1);
   
-  &:hover {
-    background: rgba($white, 0.5);
+  > li {
+    margin: 0;
+    padding: 10px 0;
+    border-top: 1px solid rgba($black, 0.1);
+    background: transparent;
     background-clip: padding-box;
+    @include clearfix();
+    @include transition(background 0.25s linear);
   }
 }
-ul.variables > li code {
-  margin: 0;
-  padding: 5px 0;
-  background: transparent;
-}
-ul.variables > li.title {
-  padding: 10px 0;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500;
+ul.docs-list-hover {
   
-  &:hover {
+  > li {
+    padding: 15px 10px;
+    background-clip: padding-box;
+    
+    &:hover {
+      background: rgba($white, 0.5);
+    }
+  }
+  
+  > li.title {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    
+    &:hover {
+      background: transparent;
+    }
+    
+    > .docs-header {
+      margin: 0;
+    }
+  }
+  
+  > li.desc {
+    &:hover {
+      background: transparent;
+    }
+  }
+  
+  code {
+    margin: 0;
+    padding: 0;
     background: transparent;
   }
-}
-ul.variables > li .swatch,
-ul.variables > li .value {
-  float: right;
-}
-ul.variables > li .value {
-  color: $blue-green-darker;
-}
-ul.variables > li .desc {
-  display: block;
-  margin-top: -10px;
-  color: $gray-light;
-}
-ul.variables > li.large .value {
-  float: none;
-  display: block;
-  margin-top: -10px;
-  white-space: normal;
-}
-
-/**
- * Function & Mixin Code Blocks
- */
-pre.function .function-name,
-pre.function .function-desc,
-pre.mixin .mixin-name,
-pre.mixin .mixin-desc {
-  display: block;
-  margin: 0;
-}
-pre.function .function-name,
-pre.mixin .mixin-name {
-  color: $red-violet;
-}
-pre.function .function-desc,
-pre.mixin .mixin-desc {
-  color: $color;
-}
-
-/**
- * Mixins Listing
- */
-ul.mixins-listing {
-  &:last-child {
-    margin-bottom: 10px;
-    border-bottom: 0 none;
+  .left {
+    float: left;
   }
-}
-ul.mixins-listing > li {
-  padding: 15px 10px;
-  
-  &:hover {
-    background: rgba($white, 0.5);
-    background-clip: padding-box;
+  .right {
+    float: right;
   }
-}
-ul.mixins-listing > li code {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-}
-ul.mixins-listing > li .desc {
-
-  &:before {
-    content: ":";
+  .block {
+    display: block;
+    @include clearfix();
+  }
+  .value {
+    color: $color;
+  }
+  .light {
     color: $gray-light;
-    padding: 0 10px;
   }
-}
-ul.mixins-listing > li.title,
-ul.mixins-listing > li.desc {
-  
-  &:hover {
-    background: transparent;
+  .swatch,
+  .box-border-radius {
+    margin: -5px 0;
   }
-}
-ul.mixins-listing > li.title {
-  padding: 10px 0;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500;
-}
-ul.mixins-listing > li.desc {
-  padding: 5px 10px;
-}
-ul.mixins-listing > li.desc p {
-  margin: 5px 0;
-}
-ul.mixins-listing > li pre.mixin {
-  padding: 0;
-  margin: 0;
-  background: none;
-}
-ul.mixins-listing > li pre.mixin .mixin-desc {
-  margin-top: -10px;
 }
 
 /*==============================================================================
-  @Variables, Functions & Mixins
+  @Docs Table
 ==============================================================================*/
 
-.grid-example {
-  margin: 20px 0;
-}
-.grid-example .col {
-  margin: 10px 0;
-}
-.grid-example .col p {
-  margin: 0;
-  padding: 15px 20px;
+.docs-table {
+  margin: 30px 0;
   
-  background: $bg-color;
-  
-  font-family: $font-family-mono;
-  font-size: 12px;
-  line-height: 20px;
-  text-align: center;
-  
-  @include border-radius();
+  th {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  tr:first-child th {
+    border-bottom: 1px solid rgba($black, 0.1);
+  }
+  td {
+    padding: 15px 10px;
+  }
+  code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
 }

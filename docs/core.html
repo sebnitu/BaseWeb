@@ -30,9 +30,11 @@
   <div id="page-docs" class="page page-docs">
     <div class="container">
     
+      <div class="row">
 <header class="header col col-12">
   <h1><a href="/index.html" class="logo no-smoothstate">BaseWeb</a></h1>
-</header><!-- .header -->      
+</header><!-- .header -->      </div><!-- .row -->
+      
       <div id="main" class="main">
         <div class="row">
           
@@ -51,7 +53,6 @@
     <li><a href="#mixins">Mixins</a></li>
     <li><a href="#media">Media</a></li>
     <li><a href="#grid">Grid</a></li>
-    <li><a href="#reset">Reset</a></li>
   </ul>
 </div>
 
@@ -61,13 +62,12 @@
 <h1 class="docs-header">Functions</h1>
 <p>This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block.</p>
 
-
-<ul class="functions">
+<ul class="docs-list">
   
   <li>
     <h2 class="docs-header">strip_units</h2>
     <p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12.</p>
-<pre class="mixin"><code class="mixin-name">@function strip_units( $val )</code><code class="mixin-desc">@param $val
+<pre class="docs-code"><code class="name">@function strip_units( $val )</code><code class="desc">@param $val
   @type unit (pixel, number)
 @return unit-less number</code></pre>
   </li>
@@ -75,7 +75,7 @@
   <li>
     <h2 class="docs-header">px_to_em</h2>
     <p>Converts a pixel value to ems. By default it'll use the base font size, but can be passed a custom base font size.</p>
-<pre class="mixin"><code class="mixin-name">@function px_to_em( $px, $base )</code><code class="mixin-desc">@param $px
+<pre class="docs-code"><code class="name">@function px_to_em( $px, $base )</code><code class="desc">@param $px
   @type unit (pixel, number)
 @param $base-font-size
   @type unit (pixel, number)
@@ -86,7 +86,7 @@
   <li>
     <h2 class="docs-header">em_to_px</h2>
     <p>Converts an em value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
-<pre class="mixin"><code class="mixin-name">@function em_to_px( $em, $base )</code><code class="mixin-desc">@param $px
+<pre class="docs-code"><code class="name">@function em_to_px( $em, $base )</code><code class="desc">@param $px
   @type unit (em, number)
 @param $base-font-size
   @type unit (pixel, number)
@@ -100,12 +100,12 @@
 <h1 class="docs-header">Mixins</h1>
 <p>Global mixins for our framework. These mixins don't apply specifically to a single element/block but are used throughout.</p>
 
-<ul class="mixins">
+<ul class="docs-list">
   
   <li>
     <h2 class="docs-header">size</h2>
     <p>Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
-<pre class="mixin"><code class="mixin-name">@mixin size( $height, $width )</code><code class="mixin-desc">@param $width
+<pre class="docs-code"><code class="name">@mixin size( $height, $width )</code><code class="desc">@param $width
   @type unit (number, pixel, percentage)
 @param $height
   @type unit (number, pixel, percentage, false)
@@ -115,7 +115,7 @@
   <li>
     <h2 class="docs-header">clearfix</h2>
     <p>Allows you to apply a clearfix to an element that contains floats.</p>
-<pre class="mixin"><code class="mixin-name">@mixin clearfix()</code></pre>
+<pre class="docs-code"><code class="name">@mixin clearfix()</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
 .wrapper {
@@ -133,19 +133,19 @@
   <li>
     <h2 class="docs-header">remove-clearfix</h2>
     <p>Removes the clearfix styles from an element.</p>
-<pre class="mixin"><code class="mixin-name">@mixin remove-clearfix()</code></pre>
+    <pre class="docs-code"><code class="name">@mixin remove-clearfix()</code></pre>
   </li>
   
   <li>
     <h2 class="docs-header">scrollable</h2>
     <p>Makes things scrollable in a sexy way.</p>
-<pre class="mixin"><code class="mixin-name">@mixin scrollable()</code></pre>
+<pre class="docs-code"><code class="name">@mixin scrollable()</code></pre>
   </li>
   
   <li>
     <h2 class="docs-header">box-sizing</h2>
     <p>The box-sizing CSS property is used to alter the default CSS box model used to calculate widths and heights of elements.</p>
-<pre class="mixin"><code class="mixin-name">@mixin box-sizing( $box-sizing )</code><code class="mixin-desc">@param $box-sizing
+<pre class="docs-code"><code class="name">@mixin box-sizing( $box-sizing )</code><code class="desc">@param $box-sizing
   @type box-sizing value (content-box, padding-box, border-box, inherit)
   @default $box-sizing</code></pre>
   </li>
@@ -153,7 +153,7 @@
   <li>
     <h2 class="docs-header">box-shadow</h2>
     <p>The box-shadow CSS property describes one or more shadow effects as a comma-separated list.</p>
-<pre class="mixin"><code class="mixin-name">@mixin box-shadow( $shadow... )</code><code class="mixin-desc">@param $shadow
+<pre class="docs-code"><code class="name">@mixin box-shadow( $shadow... )</code><code class="desc">@param $shadow
   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
   @default $box-shadow</code></pre>
   </li>
@@ -161,7 +161,7 @@
   <li>
     <h2 class="docs-header">border-radius</h2>
     <p>The border-radius CSS property allows you to define how rounded border corners are.</p>
-<pre class="mixin"><code class="mixin-name">@mixin border-radius( $radius )</code><code class="mixin-desc">@param $radius
+<pre class="docs-code"><code class="name">@mixin border-radius( $radius )</code><code class="desc">@param $radius
   @type unit (pixel, percent)</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -187,35 +187,35 @@
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }</code></pre>
-    <ul class="mixins-listing">
+    <ul class="docs-list docs-list-hover">
       <li class="title">Available Mixins</li>
-      <li><code>border-radius()</code> <span class="box-border-radius mixin-border-radius"></span></li>
+      <li><code>border-radius()</code> <span class="right box-border-radius mixin-border-radius"></span></li>
 
-      <li><code>border-radius-top()</code> <span class="box-border-radius mixin-border-radius-top"></span></li>
-      <li><code>border-radius-top-left()</code> <span class="box-border-radius mixin-border-radius-top-left"></span></li>
-      <li><code>border-radius-top-right()</code> <span class="box-border-radius mixin-border-radius-top-right"></span></li>
+      <li><code>border-radius-top()</code> <span class="right box-border-radius mixin-border-radius-top"></span></li>
+      <li><code>border-radius-top-left()</code> <span class="right box-border-radius mixin-border-radius-top-left"></span></li>
+      <li><code>border-radius-top-right()</code> <span class="right box-border-radius mixin-border-radius-top-right"></span></li>
 
-      <li><code>border-radius-bottom()</code> <span class="box-border-radius mixin-border-radius-bottom"></span></li>
-      <li><code>border-radius-bottom-left()</code> <span class="box-border-radius mixin-border-radius-bottom-left"></span></li>
-      <li><code>border-radius-bottom-right()</code> <span class="box-border-radius mixin-border-radius-bottom-right"></span></li>
+      <li><code>border-radius-bottom()</code> <span class="right box-border-radius mixin-border-radius-bottom"></span></li>
+      <li><code>border-radius-bottom-left()</code> <span class="right box-border-radius mixin-border-radius-bottom-left"></span></li>
+      <li><code>border-radius-bottom-right()</code> <span class="right box-border-radius mixin-border-radius-bottom-right"></span></li>
 
-      <li><code>border-radius-left()</code> <span class="box-border-radius mixin-border-radius-left"></span></li>
-      <li><code>border-radius-left-top()</code> <span class="box-border-radius mixin-border-radius-left-top"></span></li>
-      <li><code>border-radius-left-bottom()</code> <span class="box-border-radius mixin-border-radius-left-bottom"></span></li>
+      <li><code>border-radius-left()</code> <span class="right box-border-radius mixin-border-radius-left"></span></li>
+      <li><code>border-radius-left-top()</code> <span class="right box-border-radius mixin-border-radius-left-top"></span></li>
+      <li><code>border-radius-left-bottom()</code> <span class="right box-border-radius mixin-border-radius-left-bottom"></span></li>
 
-      <li><code>border-radius-right()</code> <span class="box-border-radius mixin-border-radius-right"></span></li>
-      <li><code>border-radius-right-top()</code> <span class="box-border-radius mixin-border-radius-right-top"></span></li>
-      <li><code>border-radius-right-bottom()</code> <span class="box-border-radius mixin-border-radius-right-bottom"></span></li>
-      <li class="desc"><p><em>For the examples above, I'm passing in a radius of <code>50%</code> so the effect is more obvious.</em></p></li>
+      <li><code>border-radius-right()</code> <span class="right box-border-radius mixin-border-radius-right"></span></li>
+      <li><code>border-radius-right-top()</code> <span class="right box-border-radius mixin-border-radius-right-top"></span></li>
+      <li><code>border-radius-right-bottom()</code> <span class="right box-border-radius mixin-border-radius-right-bottom"></span></li>
+      <li class="desc"><em>For the examples above, I'm passing in a radius of <code>50%</code> so the effect is more obvious.</em></li>
     </ul>
   </li>
   
   <li>
     <h2 class="docs-header">transform</h2>
     <p>The CSS transform property lets you modify the coordinate space of the CSS visual formatting model.</p>
-<pre class="mixin"><code class="mixin-name">@mixin transform( $function... )</code><code class="mixin-desc">@param $function
+<pre class="docs-code"><code class="name">@mixin transform( $function... )</code><code class="desc">@param $function
   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew] [translate])</code></pre>
-    <ul class="mixins-listing">
+    <ul class="docs-list docs-list-hover">
       <li class="title">Transform Functions</li>
       <li><code>matrix()</code></li>
       <li><code>perspective()</code></li>
@@ -223,14 +223,14 @@
       <li><code>scale()</code></li>
       <li><code>skew()</code></li>
       <li><code>translate()</code></li>
-      <li class="desc"><p><em>This is not a comprehensive list of transform functions. For a full list of transform functions, please see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</em></p></li>
+      <li class="desc"><em>This is not a comprehensive list of transform functions. For a full list of transform functions, please see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</em></li>
     </ul>
   </li>
   
   <li>
     <h2 class="docs-header">rotate</h2>
     <p>Adds transform rotate styles using a passed in degree and the transform mixin.</p>
-<pre class="mixin"><code class="mixin-name">@mixin rotate( $deg )</code><code class="mixin-desc">@dependency mixin transform()
+<pre class="docs-code"><code class="name">@mixin rotate( $deg )</code><code class="desc">@dependency mixin transform()
 @param $deg
   @type unit (degree)</code></pre>
     <h3 class="docs-header">Example Usage</h3>
@@ -254,7 +254,7 @@
   <li>
     <h2 class="docs-header">transition</h2>
     <p>The CSS transition property is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay. It allows to define the transition between two states of an element. Different states may be defined using pseudo-classes like :hover or :active or dynamically set using JavaScript.</p>
-<pre class="mixin"><code class="mixin-name">@mixin transition( $transition... )</code><code class="mixin-desc">@param $transition
+<pre class="docs-code"><code class="name">@mixin transition( $transition... )</code><code class="desc">@param $transition
   @type transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
   @default $transition</code></pre>
     
@@ -282,16 +282,16 @@
       <div class="demo-box box-transition"></div>
     </div>
     <h3 class="docs-header">Available Mixins</h3>
-    <pre class="mixin"><code class="mixin-name">@mixin transition-property( $transition-property )</code><code class="mixin-desc">@param $transition-property
+    <pre class="docs-code"><code class="name">@mixin transition-property( $transition-property )</code><code class="desc">@param $transition-property
   @type property name
   @default $transition-property</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin transition-duration( $transition-duration )</code><code class="mixin-desc">@param $transition-duration
+    <pre class="docs-code"><code class="name">@mixin transition-duration( $transition-duration )</code><code class="desc">@param $transition-duration
   @type time value (seconds, milliseconds)
   @default $transition-duration</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin transition-timing-function( $transition-timing-function )</code><code class="mixin-desc">@param $transition-timing-function
+    <pre class="docs-code"><code class="name">@mixin transition-timing-function( $transition-timing-function )</code><code class="desc">@param $transition-timing-function
   @type timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
   @default $transition-timing-function</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin transition-delay( $transition-delay )</code><code class="mixin-desc">@param $transition-delay
+    <pre class="docs-code"><code class="name">@mixin transition-delay( $transition-delay )</code><code class="desc">@param $transition-delay
   @type time value (seconds, milliseconds)
   @default $transition-delay</code></pre>
   </li>
@@ -299,7 +299,7 @@
   <li>
     <h2 class="docs-header">keyframes</h2>
     <p>The @keyframes CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.</p>
-<pre class="mixin"><code class="mixin-name">@mixin keyframes( $name )</code><code class="mixin-desc">@param $name
+<pre class="docs-code"><code class="name">@mixin keyframes( $name )</code><code class="desc">@param $name
   @type animation name
 @param @content (passed in brackets)
   @type style block</code></pre>
@@ -333,7 +333,7 @@
   <li>
     <h2 class="docs-header">animation</h2>
     <p>The animation CSS property is a shorthand property for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode and animation-play-state.</p>
-<pre class="mixin"><code class="mixin-name">@mixin animation( $animation... )</code><code class="mixin-desc">@param $animation
+<pre class="docs-code"><code class="name">@mixin animation( $animation... )</code><code class="desc">@param $animation
   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -353,28 +353,28 @@
       <div class="demo-box box-animation"></div>
     </div>
     <h3 class="docs-header">Available Mixins</h3>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-name( $name... )</code><code class="mixin-desc">@param $name
+    <pre class="docs-code"><code class="name">@mixin animation-name( $name... )</code><code class="desc">@param $name
   @type animation name</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-duration( $duration... )</code><code class="mixin-desc">@param $duration
+    <pre class="docs-code"><code class="name">@mixin animation-duration( $duration... )</code><code class="desc">@param $duration
   @type time value (seconds, milliseconds)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-timing-function( $timing-function... )</code><code class="mixin-desc">@param $timing-function
+    <pre class="docs-code"><code class="name">@mixin animation-timing-function( $timing-function... )</code><code class="desc">@param $timing-function
   @type timing function (linear, ease, ease-in, ease-out, ease-in-out)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-delay( $delay... )</code><code class="mixin-desc">@param $delay
+    <pre class="docs-code"><code class="name">@mixin animation-delay( $delay... )</code><code class="desc">@param $delay
   @type time value (seconds, milliseconds)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-iteration-count( $iteration-count... )</code><code class="mixin-desc">@param $iteration-count
+    <pre class="docs-code"><code class="name">@mixin animation-iteration-count( $iteration-count... )</code><code class="desc">@param $iteration-count
   @type unit (number, infinite)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-direction( $direction... )</code><code class="mixin-desc">@param $direction
+    <pre class="docs-code"><code class="name">@mixin animation-direction( $direction... )</code><code class="desc">@param $direction
   @type direction (normal, reverse, alternate, alternate-reverse)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-fill-mode( $fill-mode... )</code><code class="mixin-desc">@param $fill-mode
+    <pre class="docs-code"><code class="name">@mixin animation-fill-mode( $fill-mode... )</code><code class="desc">@param $fill-mode
   @type fill mode (none, forwards, backwards, both, initial, inherit)</code></pre>
-    <pre class="mixin"><code class="mixin-name">@mixin animation-play-stay( $play-stay... )</code><code class="mixin-desc">@param $play-stay
+    <pre class="docs-code"><code class="name">@mixin animation-play-stay( $play-stay... )</code><code class="desc">@param $play-stay
   @type play state (running, paused)</code></pre>
   </li>
   
   <li>
     <h2 class="docs-header">linear-gradient</h2>
     <p>Creates an image which represents a linear gradient of colors.</p>
-<pre class="mixin"><code class="mixin-name">@mixin linear-gradient( $gradient... )</code><code class="mixin-desc">@param $gradient
+<pre class="docs-code"><code class="name">@mixin linear-gradient( $gradient... )</code><code class="desc">@param $gradient
   @type gradient ([side-or-corner] [angle] [color-stop])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -398,7 +398,7 @@
   <li>
     <h2 class="docs-header">radial-gradient</h2>
     <p>Creates an image which represents a gradient of colors radiating from an origin, the center of the gradient.</p>
-<pre class="mixin"><code class="mixin-name">@mixin radial-gradient( $gradient... )</code><code class="mixin-desc">@param $gradient
+<pre class="docs-code"><code class="name">@mixin radial-gradient( $gradient... )</code><code class="desc">@param $gradient
   @type gradient ([position] [shape] [size] [color-stop] [color-stop] [extent-keyword])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -422,7 +422,7 @@
   <li>
     <h2 class="docs-header">text-hide</h2>
     <p>Image replacement trick that hides text.</p>
-<pre class="mixin"><code class="mixin-name">@mixin text-hide()</code></pre>
+<pre class="docs-code"><code class="name">@mixin text-hide()</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
 .logo-image {
@@ -443,7 +443,7 @@
   <li>
     <h2 class="docs-header">text-truncate</h2>
     <p>Truncates text with an ellipsis. Element applied must be block or inline-block.</p>
-<pre class="mixin"><code class="mixin-name">@mixin text-truncate()</code><code class="mixin-desc">@param $display
+<pre class="docs-code"><code class="name">@mixin text-truncate()</code><code class="desc">@param $display
   @type display property (block, inline-block)
   @default block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
@@ -467,9 +467,9 @@
   
   <li>
     <h2 class="docs-header">triangle</h2>
-    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles can be used with `%triangle` as placeholder or you can have it applied directly to your triangle element.</p>
-<pre class="mixin"><code class="mixin-name">@mixin triangle-base()</code></pre>
-<pre class="mixin"><code class="mixin-name">@mixin triangle( $size, $color, $direction, $base )</code><code class="mixin-desc">@param $size
+    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles can be used with <code>%triangle</code> as placeholder or you can have it applied directly to your triangle element.</p>
+<pre class="docs-code"><code class="name">@mixin triangle-base()</code></pre>
+<pre class="docs-code"><code class="name">@mixin triangle( $size, $color, $direction, $base )</code><code class="desc">@param $size
   @type unit (pixel, em, rem)
 @param $color
   @type color
@@ -535,12 +535,12 @@
 
 <p>The core framework mixins that deal with media queries. These break down to three primary mixins for setting minimum width, maximum width and retina display mixins.</p>
 
-<ul class="mixins">
+<ul class="docs-list">
 
   <li>
     <h2 class="docs-header">media-min</h2>
     <p>A media query mixin that deifnes a query using min-width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin media-min()</code><code class="mixin-desc">@param $point
+<pre class="docs-code"><code class="name">@mixin media-min()</code><code class="desc">@param $point
   @type map key (defined in local $tweakpoints or global $breakpoints)
 @param @content (passed in brackets)
   @type style block</code></pre>
@@ -569,7 +569,7 @@
   <li>
     <h2 class="docs-header">media-max</h2>
     <p>A media query mixin that deifnes a query using max-width. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.</p>
-<pre class="mixin"><code class="mixin-name">@mixin media-max()</code><code class="mixin-desc">@param $point
+<pre class="docs-code"><code class="name">@mixin media-max()</code><code class="desc">@param $point
   @type map key (defined in local $tweakpoints or global $breakpoints)
 @param @content (passed in brackets)
   @type style block</code></pre>
@@ -598,7 +598,7 @@
   <li>
     <h2 class="docs-header">media-retina</h2>
     <p>This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
-<pre class="mixin"><code class="mixin-name">@mixin media-retina()</code><code class="mixin-desc">@param @content (passed in brackets)
+<pre class="docs-code"><code class="name">@mixin media-retina()</code><code class="desc">@param @content (passed in brackets)
   @type style block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
@@ -681,19 +681,49 @@
 
 <p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
 
-<ul class="mixins-listing">
-  <li class="title">Container Modifiers</li>
-  <li><code>.container-float-left</code> <span class="desc">Floats container to the left</span></li>
-  <li><code>.container-float-right</code> <span class="desc">Floats container to the right</span></li>
-  <li><code>.container-no-padding</code> <span class="desc">Removes padding from container</span></li>
-  <li><code>.container-no-margin</code> <span class="desc">Removes margin from container</span></li>
-  <li class="title">Row Modifiers</li>
-  <li><code>.row-center</code> <span class="desc">Centers columns within the row</span></li>
-  <li class="title">Column Modifiers</li>
-  <li><code>.prefix-#</code> <span class="desc">Adds column spacing before the element where # represents the number of columns to span.</span></li>
-  <li><code>.suffix-#</code> <span class="desc">Adds column spacing after the element where # represents the number of columns to span.</span></li>
-  <li><code>.col-no-gutter</code> <span class="desc">Removes gutter from the column</span></li>
-</ul>
+<table class="docs-table table-rowed">
+  <tr>
+    <th colspan="2">Container Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.container-float-left</code></td>
+    <td>Floats container to the left</td>
+  </tr>
+  <tr>
+    <td><code>.container-float-right</code></td>
+    <td>Floats container to the right</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-padding</code></td>
+    <td>Removes padding from container</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-margin</code></td>
+    <td>Removes margin from container</td>
+  </tr>
+  <tr>
+    <th colspan="2">Row Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.row-center</code></td>
+    <td>Centers columns within the row</td>
+  </tr>
+  <tr>
+    <th colspan="2">Column Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.prefix-#</code></td>
+    <td>Adds column spacing before the element where # represents the number of columns to span</td>
+  </tr>
+  <tr>
+    <td><code>.suffix-#</code></td>
+    <td>Adds column spacing after the element where # represents the number of columns to span</td>
+  </tr>
+  <tr>
+    <td><code>.col-no-gutter</code></td>
+    <td>Removes gutter from the column</td>
+  </tr>
+</table>
 
 <h2 class="docs-header">Semantic Grids</h2>
 
@@ -787,16 +817,15 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-<h1 class="docs-header">Grid Functions and Mixins</h1>
-
+<h2 class="docs-header">Grid Functions and Mixins</h2>
 <p>Below are all the available functions and mixins for outputting the class based grid system or creating a semantic grid system.</p>
 
-<ul class="mixins">
+<ul class="docs-list">
 
   <li>
-    <h2 class="docs-header">column_width</h2>
+    <h3 class="docs-header">column_width</h3>
     <p>A function that returns the width of a column span.</p>
-<pre class="mixin"><code class="mixin-name">@function column_width()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@function column_width()</code><code class="desc">@param $index
   @type integer
   @desc The number of column span you want returned.
 @param $options
@@ -806,9 +835,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">spacing_width</h2>
+    <h3 class="docs-header">spacing_width</h3>
     <p>A function that returns the spacing of a column span.</p>
-<pre class="mixin"><code class="mixin-name">@function spacing_width()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@function spacing_width()</code><code class="desc">@param $index
   @type integer
   @desc The number of column spacing you want returned.
 @param $options
@@ -818,33 +847,33 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-container</h2>
+    <h3 class="docs-header">make-container</h3>
     <p>Outputs all the styles needed to make an element a grid container.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-container()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-container()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-row</h2>
+    <h3 class="docs-header">make-row</h3>
     <p>Outputs all the styles needed to make an element a grid row.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-row()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-row()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-base-column</h2>
+    <h3 class="docs-header">make-base-column</h3>
     <p>Creates the base styles for a column but excludes setting the width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-base-column()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-base-column()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-column</h2>
+    <h3 class="docs-header">make-column</h3>
     <p>Creates all the styles for a column and sets its width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-column()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin make-column()</code><code class="desc">@param $index
   @type integer
   @desc The number of column span you want set.
 @param $options
@@ -853,9 +882,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-prefix</h2>
+    <h3 class="docs-header">give-prefix</h3>
     <p>Creates the base styles for a column and sets its width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin give-prefix()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin give-prefix()</code><code class="desc">@param $index
   @type integer
   @desc The number of column prefix spacing you want set.
 @param $options
@@ -864,9 +893,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-suffix</h2>
+    <h3 class="docs-header">give-suffix</h3>
     <p>Creates the base styles for a spacing suffix.</p>
-<pre class="mixin"><code class="mixin-name">@mixin give-suffix()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin give-suffix()</code><code class="desc">@param $index
   @type integer
   @desc The number of column suffix spacing you want set.
 @param $options
@@ -875,27 +904,23 @@
   </li>
   
   <li>
-    <h2 class="docs-header">build-mobile-grid-system</h2>
+    <h3 class="docs-header">build-mobile-grid-system</h3>
     <p>Outputs the styles for a mobile grid system where all columns are stacked.</p>
-<pre class="mixin"><code class="mixin-name">@mixin build-mobile-grid-system()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin build-mobile-grid-system()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">build-grid-system</h2>
+    <h3 class="docs-header">build-grid-system</h3>
     <p>Outputs all the classes and styles for the class based grid system.</p>
-<pre class="mixin"><code class="mixin-name">@mixin build-grid-system()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin build-grid-system()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
 
 </ul>
   </section><!-- .subpage -->
-  
-  <section id="reset" class="subpage">
-<h1 class="docs-header">Reset</h1>
-<p>...</p>  </section><!-- .subpage -->
   
 </div><!-- .content -->                
         </div><!-- .row -->
@@ -916,7 +941,7 @@
       
       <div class="col col-6">
         <p class="intro">BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.</p>
-        <p class="action"><a href="#">Download</a></p>
+        <p class="action"><a href="#">Download BaseWeb</a> <span class="version">Currently v0.9.0</span></p>
       </div>
       
       <div class="col col-5 prefix-1">
@@ -933,6 +958,7 @@
   </div><!-- .container -->
   <div class="gradient-background"></div>
 </div><!-- .page-home -->
+
 </div>
 
 <!-- jQuery -->

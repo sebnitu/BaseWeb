@@ -1,40 +1,26 @@
 /*==============================================================================
-  @Reset Styles
+  @Base Styles
 ==============================================================================*/
 
-// Remove margins and padding from HTML and Body elements
+// Remove margins and padding from HTML and Body elements and sets our base font-size
 html, body {
   margin: 0; 
   padding: 0;
+  font-size: $base-font-size;
 }
 
 // Prevents automatic text resizing on mobile devices
 html {
-  font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-// Set default box sizing model to border-box
-// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if ($global-box-sizing != none) {
-  *, *:before, *:after {
-    @include box-sizing($global-box-sizing);
-  }
-}
-
-// Clearfix class
-@if ($class-clearfix != none) {
-  .#{$class-clearfix} {
-    @include clearfix;
-  }
-}
-
-// Remove clearfix class
-@if ($class-remove-clearfix != none) {
-  .#{$class-remove-clearfix} {
-    @include remove-clearfix;
-  }
+// Set our base typographic settings (family, weight, lineheight and color)
+body {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+  color: $color;
 }
 
 // Make HTML5 elements act like blocks
@@ -43,23 +29,29 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-// Remove default list styles for navigation
-nav ul, nav ol { 
-  list-style: none;
-  margin: 0;
-  
-  li {
-    margin: 0;
+// Set default box sizing model to our global variable $global-box-sizing
+// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+@if ($global-box-sizing != none) {
+  *, *:before, *:after {
+    @include box-sizing($global-box-sizing);
   }
 }
 
-// Base table styles
-table { 
-  border-collapse: collapse;
-  border-spacing: 0;
+// Outputs our cleafix class if one is set in $class-clearfix
+@if ($class-clearfix != none) {
+  .#{$class-clearfix} {
+    @include clearfix();
+  }
 }
 
-// Custom Text Highlight Color
+// Outputs our remove cleafix class if one is set in $class-remove-clearfix
+@if ($class-remove-clearfix != none) {
+  .#{$class-remove-clearfix} {
+    @include remove-clearfix();
+  }
+}
+
+// Add custom text highlight color if a color is set in $bg-selection
 @if ($bg-selection != none) {
   ::-moz-selection {
     background: $bg-selection;

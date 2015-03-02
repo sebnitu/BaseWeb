@@ -1,21 +1,9 @@
 /*==============================================================================
-  Typography
+  @Typography
 ==============================================================================*/
 
-html,
-body {
-  font-size: $base-font-size;
-}
-
-body {
-  font-family: $base-font-family;
-  font-weight: $base-font-weight;
-  line-height: $base-line-height;
-  color: $color;
-}
-
 /**
- * Headers
+ * Headings
  */
 h1, .h1, 
 h2, .h2,
@@ -24,29 +12,17 @@ h4, .h4,
 h5, .h5, 
 h6, .h6 {
   margin: 10px 0;
-  font-family: $font-family-header;
-  font-weight: $font-weight-header;
+  font-family: $font-family-heading;
+  font-weight: $font-weight-heading;
   line-height: $base-line-height;
   color: $color-header;
 
   a {
-    color: $color-link-header;
+    color: $color-link-heading;
     border: 0 none;
     &:hover {
-      color: $color-link-header-hover;
+      color: $color-link-heading-hover;
     }
-  }
-  
-  small {
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: $base-font-weight;
-    color: $gray;
-  }
-  
-  .text-soften {
-    font-weight: $base-font-weight;
-    color: $gray;
   }
 }
 
@@ -78,44 +54,18 @@ h5,
 h6,
 .h6 {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 20px;
 }
 
 /**
- * Base Elements
+ * Paragraphs
  */
 p { 
   margin: 10px 0;
 }
 
-strong,
-b,
-.text-bold {
-  font-weight: bold;
-  color: $color-header;
-}
-
-em,
-i,
-.text-italic {
-  font-style: italic;
-}
-
-small {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.75em;
-  color: $color-light;
-}
-
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted $color-light;
-}
-
 /**
- * Links
+ * Anchors
  */
 a,
 .text-anchor {
@@ -129,4 +79,83 @@ a,
     color: $color-link-hover;
     border-color: $border-color-hover;
   }
+}
+
+/**
+ * Inline Text Elements
+ */
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+small {
+  font-size: 0.8em;
+}
+mark {
+  margin: 0 2px;
+  padding: 0 5px;
+  background: rgba(#ff0, 0.5);
+  @include border-radius();
+}
+cite {
+  font-style: italic;
+}
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted $color-light;
+}
+
+/**
+ * Stylistic Classes
+ */
+.text-lead {
+  font-size: 18px;
+  line-height: 26px;
+}
+.text-small {
+  font-size: 0.8em;
+  line-height: 1.5em;
+}
+.text-soften {
+  font-weight: $base-font-weight;
+  color: $gray-light;
+}
+.text-harden {
+  font-weight: 600;
+  color: $gray-dark;
+}
+
+/**
+ * Alignment Classes
+ */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+
+/**
+ * Transformation Classes
+ */
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
 }

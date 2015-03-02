@@ -8,7 +8,28 @@ $radius-example: 50%;
   @Examples
 ==============================================================================*/
 
-
+/**
+ * Grid System
+ */
+.grid-example {
+  margin: 20px 0;
+}
+.grid-example .col {
+  margin: 10px 0;
+}
+.grid-example .col p {
+  margin: 0;
+  padding: 15px 20px;
+  
+  background: $bg-color;
+  
+  font-family: $font-family-mono;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  
+  @include border-radius();
+}
 
 /*==============================================================================
   @ Mixin Documentation Styles
@@ -16,7 +37,7 @@ $radius-example: 50%;
 
 .demo {
   margin: 20px 0;
-  padding: 20px;
+  padding: 10px 20px;
   overflow: auto;
   background: rgba($black, 0.05);
 }
@@ -31,7 +52,6 @@ $radius-example: 50%;
  */
 .box-border-radius {
   display: inline-block;
-  float: right;
   background: $yellow-green-dark;
   @include size(30px);
 }
@@ -119,6 +139,7 @@ $radius-example: 50%;
  * Gradient
  */
 .box-linear-gradient {
+  margin: 10px auto;
   width: auto;
   @include linear-gradient(left, $green, $blue, $violet);
 }
@@ -135,7 +156,7 @@ $radius-example: 50%;
   background: $blue-green-darker;
   width: 200px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px 20px;
   color: $white;
   @include box-sizing(border-box);
@@ -150,14 +171,16 @@ $radius-example: 50%;
   text-align: center;
 }
 %triangle {
-  @include triangle-base;
+  @include triangle-base();
   vertical-align: middle;
+  margin: 10px 0;
 }
 .example-triangle-1 {
   @include triangle( 14px, $blue-darker, 'left' );
 }
 .example-triangle-2 {
   @include triangle( 14px, $blue-violet-darker, 'down' );
+  margin: 15px 0;
 }
 .example-triangle-3 {
   @include triangle( 14px, $violet-darker, 'right' );

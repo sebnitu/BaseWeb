@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
-// @ Mixins
+// @List Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Remove List Styles
-// Removes default list styles and margins from a list element and it's children
-@mixin remove-list-styles() {
+// Make List Unstyled
+// Removes default list styles and margins from a list element and it's children.
+@mixin make-list-unstyled() {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -14,8 +14,9 @@
   }
 }
 
-// Base List Styles
-@mixin make-base-list-modifier() {
+// Make List Base
+// Adds the base styles for custom list style mixins.
+@mixin make-list-base() {
   margin: 10px 0;
   
   > li {
@@ -29,10 +30,9 @@
   }
 }
 
-// Make Wrap
-// Wraps the list with a border and padding
-@mixin make-list-wrap() {
-  
+// Make List Wrapped
+// Adds a border and padding around a list.
+@mixin make-list-wrapped() {
   padding: 10px 15px 10px 35px;
   border: 1px solid rgba($black, 0.1);
   @include border-radius();
@@ -48,10 +48,9 @@
   
 }
 
-// Makes Row
-// Turns list items into rows by giving border seperators
+// Makes List Rowed
+// Turns list items into rows by giving border seperators between list items.
 @mixin make-list-rowed() {
-  
   list-style: none;
   border-bottom: 1px solid rgba($black, 0.1);
   
@@ -62,10 +61,9 @@
   }
 }
 
-// Make Bordered
-// Give the list outer and seperator borders
+// Make List Bordered
+// Adds a border around a list and row seperators between list items.
 @mixin make-list-bordered() {
-
   list-style: none;
   border: 1px solid rgba($black, 0.1);
   @include border-radius();
@@ -85,21 +83,22 @@
   }
 }
 
-// Give Striped
-// Adds zebra stripes to list items
-@mixin give-list-stripes() {
+// Make List Stripped
+// Adds zebra stripes to list items. This can be added to other list modifiers.
+@mixin make-list-stripped() {
   
   > li {
     padding: 10px 15px;
+    background-clip: padding-box;
   }
   
   > li:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: $bg-color;
   }
 }
 
 /*==============================================================================
-  @ Lists
+  @Lists
 ==============================================================================*/
 
 /**
@@ -108,13 +107,8 @@
 ul, ol {
   margin: 10px 0 10px 20px;
   padding: 0;
-  
   li {
     margin: 5px 0;
-  }
-  
-  &.remove-list-styles {
-    @include remove-list-styles();
   }
 }
 
@@ -158,17 +152,33 @@ dl {
   }
 }
 
-
 /**
- * Modifier Classes
+ * Navigation Lists
  */
-%list-base {
-  @include make-base-list-modifier();
+nav ul, nav ol { 
+  list-style: none;
+  margin: 0;
+  
+  li {
+    margin: 0;
+  }
 }
- 
-.list-wrap {
+
+/*==============================================================================
+  @Custom Lists
+==============================================================================*/
+
+.list-unstyled {
+  @include make-list-unstyled();
+}
+
+%list-base {
+  @include make-list-base();
+}
+
+.list-wrapped {
   @extend %list-base;
-  @include make-list-wrap();
+  @include make-list-wrapped();
 }
 .list-rowed {
   @extend %list-base;
@@ -180,8 +190,8 @@ dl {
 }
 
 /**
- * Alteration Classes
+ * Supplementary Classes
  */
-.give-list-stripes {
-  @include give-list-stripes();
+.list-stripped {
+  @include make-list-stripped();
 }

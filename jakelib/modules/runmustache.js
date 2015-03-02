@@ -240,7 +240,7 @@ var writePage = function(data, name, o) {
   
   // Set he page partial
   partials['page'] = data;
-    
+  
   // Create the mustache template
   template = mustache.to_html(layout, context, partials);
     

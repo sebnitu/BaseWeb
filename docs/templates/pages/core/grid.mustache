@@ -49,19 +49,49 @@
 
 <p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
 
-<ul class="mixins-listing">
-  <li class="title">Container Modifiers</li>
-  <li><code>.container-float-left</code> <span class="desc">Floats container to the left</span></li>
-  <li><code>.container-float-right</code> <span class="desc">Floats container to the right</span></li>
-  <li><code>.container-no-padding</code> <span class="desc">Removes padding from container</span></li>
-  <li><code>.container-no-margin</code> <span class="desc">Removes margin from container</span></li>
-  <li class="title">Row Modifiers</li>
-  <li><code>.row-center</code> <span class="desc">Centers columns within the row</span></li>
-  <li class="title">Column Modifiers</li>
-  <li><code>.prefix-#</code> <span class="desc">Adds column spacing before the element where # represents the number of columns to span.</span></li>
-  <li><code>.suffix-#</code> <span class="desc">Adds column spacing after the element where # represents the number of columns to span.</span></li>
-  <li><code>.col-no-gutter</code> <span class="desc">Removes gutter from the column</span></li>
-</ul>
+<table class="docs-table table-rowed">
+  <tr>
+    <th colspan="2">Container Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.container-float-left</code></td>
+    <td>Floats container to the left</td>
+  </tr>
+  <tr>
+    <td><code>.container-float-right</code></td>
+    <td>Floats container to the right</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-padding</code></td>
+    <td>Removes padding from container</td>
+  </tr>
+  <tr>
+    <td><code>.container-no-margin</code></td>
+    <td>Removes margin from container</td>
+  </tr>
+  <tr>
+    <th colspan="2">Row Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.row-center</code></td>
+    <td>Centers columns within the row</td>
+  </tr>
+  <tr>
+    <th colspan="2">Column Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.prefix-#</code></td>
+    <td>Adds column spacing before the element where # represents the number of columns to span</td>
+  </tr>
+  <tr>
+    <td><code>.suffix-#</code></td>
+    <td>Adds column spacing after the element where # represents the number of columns to span</td>
+  </tr>
+  <tr>
+    <td><code>.col-no-gutter</code></td>
+    <td>Removes gutter from the column</td>
+  </tr>
+</table>
 
 <h2 class="docs-header">Semantic Grids</h2>
 
@@ -155,16 +185,15 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-<h1 class="docs-header">Grid Functions and Mixins</h1>
-
+<h2 class="docs-header">Grid Functions and Mixins</h2>
 <p>Below are all the available functions and mixins for outputting the class based grid system or creating a semantic grid system.</p>
 
-<ul class="mixins">
+<ul class="docs-list">
 
   <li>
-    <h2 class="docs-header">column_width</h2>
+    <h3 class="docs-header">column_width</h3>
     <p>A function that returns the width of a column span.</p>
-<pre class="mixin"><code class="mixin-name">@function column_width()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@function column_width()</code><code class="desc">@param $index
   @type integer
   @desc The number of column span you want returned.
 @param $options
@@ -174,9 +203,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">spacing_width</h2>
+    <h3 class="docs-header">spacing_width</h3>
     <p>A function that returns the spacing of a column span.</p>
-<pre class="mixin"><code class="mixin-name">@function spacing_width()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@function spacing_width()</code><code class="desc">@param $index
   @type integer
   @desc The number of column spacing you want returned.
 @param $options
@@ -186,33 +215,33 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-container</h2>
+    <h3 class="docs-header">make-container</h3>
     <p>Outputs all the styles needed to make an element a grid container.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-container()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-container()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-row</h2>
+    <h3 class="docs-header">make-row</h3>
     <p>Outputs all the styles needed to make an element a grid row.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-row()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-row()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-base-column</h2>
+    <h3 class="docs-header">make-base-column</h3>
     <p>Creates the base styles for a column but excludes setting the width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-base-column()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin make-base-column()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">make-column</h2>
+    <h3 class="docs-header">make-column</h3>
     <p>Creates all the styles for a column and sets its width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin make-column()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin make-column()</code><code class="desc">@param $index
   @type integer
   @desc The number of column span you want set.
 @param $options
@@ -221,9 +250,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-prefix</h2>
+    <h3 class="docs-header">give-prefix</h3>
     <p>Creates the base styles for a column and sets its width.</p>
-<pre class="mixin"><code class="mixin-name">@mixin give-prefix()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin give-prefix()</code><code class="desc">@param $index
   @type integer
   @desc The number of column prefix spacing you want set.
 @param $options
@@ -232,9 +261,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-suffix</h2>
+    <h3 class="docs-header">give-suffix</h3>
     <p>Creates the base styles for a spacing suffix.</p>
-<pre class="mixin"><code class="mixin-name">@mixin give-suffix()</code><code class="mixin-desc">@param $index
+<pre class="docs-code"><code class="name">@mixin give-suffix()</code><code class="desc">@param $index
   @type integer
   @desc The number of column suffix spacing you want set.
 @param $options
@@ -243,17 +272,17 @@
   </li>
   
   <li>
-    <h2 class="docs-header">build-mobile-grid-system</h2>
+    <h3 class="docs-header">build-mobile-grid-system</h3>
     <p>Outputs the styles for a mobile grid system where all columns are stacked.</p>
-<pre class="mixin"><code class="mixin-name">@mixin build-mobile-grid-system()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin build-mobile-grid-system()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>
   
   <li>
-    <h2 class="docs-header">build-grid-system</h2>
+    <h3 class="docs-header">build-grid-system</h3>
     <p>Outputs all the classes and styles for the class based grid system.</p>
-<pre class="mixin"><code class="mixin-name">@mixin build-grid-system()</code><code class="mixin-desc">@param $options
+<pre class="docs-code"><code class="name">@mixin build-grid-system()</code><code class="desc">@param $options
   @type map
   @default $grid map</code></pre>
   </li>

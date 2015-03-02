@@ -27,7 +27,11 @@
   current_subpage();
   activenav();
   subpages();
-  stickynav();
+  // stickynav();
+  
+  $('#main .nav').stick_in_parent({
+    parent : '#main'
+  });
   
   /**
    * Smooth Page Transitions
@@ -48,8 +52,10 @@
     callback: function() {
       activenav();
       subpages();
-      stickynav();
+      // stickynav();
       homeoverlay();
+      
+      $(document.body).trigger("sticky_kit:recalc");
     }
   }).data('smoothState');
   
