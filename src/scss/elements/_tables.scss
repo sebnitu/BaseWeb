@@ -11,155 +11,67 @@ $table-padding-expanded: 15px;
 
 $table-alignment: top;
 
+$table: (
+  'base' : false,
+  'padding': 10px,
+  'border' : 1px solid rgba($black, 0.1),
+  'background' : none,
+) !default;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Table Border Wrapper
-// Adds the outer border to a table
-@mixin make-table-bordered-wrap() {
+// Make Table Modifier Base
+@mixin make-table-base($options: ()) {
+  $o: map-merge( $table, $options);
   border-collapse: separate;
-  border: 1px solid $color-border-table;
-  @include border-radius();
-}
-
-// Make Table Bordered Sep
-// Addes the inner borders to a table
-@mixin make-table-bordered-sep() {
-  td, th {
-    padding: $table-padding;
-    border-bottom: 1px solid $color-border-table;
-    border-left: 1px solid $color-border-table;
-    
-    // Modifiers
-    &[rowspan] {
-      border-right: 1px solid $color-border-table;
-      
-      & + td,
-      & + th {
-        border-left: 0 none;
-      }
-    }
-    &.rowspan-last {
-      border-bottom: 0 none;
-    }
-  }
-  
-  tr:first-child th {
-    border-bottom: 3px solid $color-border-table;
-  }
-  
-  tr:last-child td { border-bottom: 0 none; }
-  tr td:first-child, tr th:first-child { border-left: 0 none; }
-  
-  tbody tr:last-child td:first-child, 
-  tbody tr:last-child th:first-child {
-    @include border-radius-bottom-left();
-  }
-  
-  tbody tr:last-child td:last-child, 
-  tbody tr:last-child th:last-child {
-    @include border-radius-bottom-right();
-  }
-  
-  thead tr:first-child th:first-child, 
-  &.no-thead tr:first-child td:first-child, 
-  &.no-thead tr:first-child th:first-child {
-    @include border-radius-top-left();
-  }
-  
-  thead tr:first-child th:last-child, 
-  &.no-thead tr:first-child td:last-child, 
-  &.no-thead tr:first-child th:last-child {
-    @include border-radius-top-right();
-  }
-}
-
-// Make Table Bordered
-// Adds inner and outer borders to a table
-@mixin make-table-bordered() {
-  @include make-table-bordered-wrap();
-  @include make-table-bordered-sep();
+  background: map-get($o, 'background');
 }
 
 // Rowed
-@mixin make-table-rowed() {
-  border-collapse: separate;
+@mixin make-table-rowed($options: ()) {
+  $o: map-merge( $table, $options);
+  
+  @if (map-get($o, 'base') == true) {
+    @include make-table-base($o);
+  }
   
   td, th {
-    padding: $table-padding;
-    border-bottom: 1px solid $color-border-table;
+    padding: map-get($o, 'padding');
+    border-bottom: map-get($o, 'border');
   }
   
   tr:first-child {
     td, th {
-      border-top: 1px solid $color-border-table;
-    }
-    th {
-      border-bottom: 3px solid $color-border-table;
+      border-top: map-get($o, 'border');
     }
   }
 }
 
 // Columned
-@mixin make-table-column() {
-  border-collapse: separate;
-  
+@mixin make-table-columned($options: ()) {
+  $o: map-merge( $table, $options);
+
   td, th {
-    padding: $table-padding;
-    border-left: 1px solid $color-border-table;
+    padding: map-get($o, 'padding');
+    border-right: map-get($o, 'border');
   }
   
-  tr:first-child th {
-    border-bottom: 3px solid $color-border-table;
-    border-left: 1px solid $color-border-table;
-  }
-  
-  tr td:first-child, tr th:first-child { 
-    border-left: 0 none;
-  }
-}
-
-// Background
-@mixin make-table-background( $color : $color-bg-table ) {
-  td, th {
-    background: $color;
-  }
-}
-
-// Stripes
-@mixin make-table-stripes( $direction : horizontal ) {
-
-  @if ( $direction == horizontal ) {
-    tr:nth-child(odd) td {
-      background-color: $color-bg-table;
-    }
-  } @else if ( $direction == vertical ) {
-    th:nth-child(even) {
-      background-color: $color-bg-table;
-    }
-    tr td:nth-child(even) {
-      background-color: $color-bg-table;
+  tr {
+    td:first-child, th:first-child { 
+      border-left: map-get($o, 'border')
     }
   }
 }
 
-// Padded
-@mixin make-table-padded( $padding : $table-padding ) {
-  td, th {
-    padding: $padding;
-  }
-}
-
-// Hover
-@mixin make-table-hover( $color : rgba($yellow, 0.4) ) {
-  thead tr th:hover, 
-  tbody tr:hover {
-    background-color: $color;
-  }
-  tbody tr:hover td {
-    background: transparent;
-  }
+// Bordered
+@mixin make-table-bordered($options: ()) {
+  $o: map-merge( $table, $options);
+  
+  @include make-table-rowed($o);
+  @include make-table-columned($o);
+  
 }
 
 /*==============================================================================
@@ -171,7 +83,6 @@ table {
   border-spacing: 0;
   width: 100%; 
   max-width: 100%;
-  background: transparent;
   margin: 20px 0;
   overflow: auto;
   
@@ -211,50 +122,21 @@ table {
 /**
  * Table Borders
  */
+%table-base {
+  @include make-table-base();
+}
+
 .table-rowed {
+  @extend %table-base;
   @include make-table-rowed();
 }
-.table-columned { 
-  @include make-table-column();
+
+.table-columned {
+  @extend %table-base;
+  @include make-table-columned();
 }
-.table-bordered { 
+
+.table-bordered {
+  @extend %table-base;
   @include make-table-bordered();
-}
-.table-bordered-wrap {
-  @include make-table-bordered-wrap();
-}
-.table-bordered-sep {
-  @include make-table-bordered-sep();
-}
-
-/**
- * Table Fills
- */
-.table-background {
-  @include make-table-background();
-}
-.table-stripes { 
-  @include make-table-stripes();
-}
-.table-stripes-horizontal { 
-  @include make-table-stripes(horizontal);
-}
-.table-stripes-vertical { 
-  @include make-table-stripes(vertical);
-}
-
-/**
- * Table Modifiers
- */
-.table-padded { 
-  @include make-table-padded();
-}
-.table-padded-condensed { 
-  @include make-table-padded( $table-padding-condensed );
-}
-.table-padded-expanded { 
-  @include make-table-padded( $table-padding-expanded );
-}
-.table-hover { 
-  @include make-table-hover();
 }

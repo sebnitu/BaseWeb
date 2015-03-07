@@ -367,7 +367,7 @@
 // Base Triangle
 // The base styles for creating CSS triangles
 // Use with `%triangle` as placeholder
-@mixin triangle-base {
+@mixin triangle-base() {
   content: "";
   display: inline-block;
   width: 0;
@@ -400,7 +400,7 @@
   @if ($base == false) {
     @extend %triangle;
   } @else {
-    @include triangle-base;
+    @include triangle-base();
   }
 
   @if ($direction == 'up') {

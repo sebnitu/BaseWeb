@@ -291,7 +291,6 @@ table {
   border-spacing: 0;
   width: 100%;
   max-width: 100%;
-  background: transparent;
   margin: 20px 0;
   overflow: auto; }
   table th {
@@ -312,119 +311,32 @@ table {
 /**
  * Table Borders
  */
-.table-rowed {
-  border-collapse: separate; }
-  .table-rowed td, .table-rowed th {
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  .table-rowed tr:first-child td, .table-rowed tr:first-child th {
-    border-top: 1px solid rgba(0, 0, 0, 0.1); }
-  .table-rowed tr:first-child th {
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
-
-.table-columned {
-  border-collapse: separate; }
-  .table-columned td, .table-columned th {
-    padding: 10px;
-    border-left: 1px solid rgba(0, 0, 0, 0.1); }
-  .table-columned tr:first-child th {
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.1); }
-  .table-columned tr td:first-child, .table-columned tr th:first-child {
-    border-left: 0 none; }
-
-.table-bordered {
+.table-rowed, .table-columned, .table-bordered {
   border-collapse: separate;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
-  .table-bordered td, .table-bordered th {
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-left: 1px solid rgba(0, 0, 0, 0.1); }
-    .table-bordered td[rowspan], .table-bordered th[rowspan] {
-      border-right: 1px solid rgba(0, 0, 0, 0.1); }
-      .table-bordered td[rowspan] + td, .table-bordered td[rowspan] + th, .table-bordered th[rowspan] + td, .table-bordered th[rowspan] + th {
-        border-left: 0 none; }
-    .table-bordered td.rowspan-last, .table-bordered th.rowspan-last {
-      border-bottom: 0 none; }
-  .table-bordered tr:first-child th {
-    border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
-  .table-bordered tr:last-child td {
-    border-bottom: 0 none; }
-  .table-bordered tr td:first-child, .table-bordered tr th:first-child {
-    border-left: 0 none; }
-  .table-bordered tbody tr:last-child td:first-child, .table-bordered tbody tr:last-child th:first-child {
-    border-bottom-left-radius: 3px; }
-  .table-bordered tbody tr:last-child td:last-child, .table-bordered tbody tr:last-child th:last-child {
-    border-bottom-right-radius: 3px; }
-  .table-bordered thead tr:first-child th:first-child, .table-bordered.no-thead tr:first-child td:first-child, .table-bordered.no-thead tr:first-child th:first-child {
-    border-top-left-radius: 3px; }
-  .table-bordered thead tr:first-child th:last-child, .table-bordered.no-thead tr:first-child td:last-child, .table-bordered.no-thead tr:first-child th:last-child {
-    border-top-right-radius: 3px; }
+  background: none; }
 
-.table-bordered-wrap {
-  border-collapse: separate;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
-
-.table-bordered-sep td, .table-bordered-sep th {
+.table-rowed td, .table-rowed th {
   padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.table-rowed tr:first-child td, .table-rowed tr:first-child th {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.table-columned td, .table-columned th {
+  padding: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+.table-columned tr td:first-child, .table-columned tr th:first-child {
   border-left: 1px solid rgba(0, 0, 0, 0.1); }
-  .table-bordered-sep td[rowspan], .table-bordered-sep th[rowspan] {
-    border-right: 1px solid rgba(0, 0, 0, 0.1); }
-    .table-bordered-sep td[rowspan] + td, .table-bordered-sep td[rowspan] + th, .table-bordered-sep th[rowspan] + td, .table-bordered-sep th[rowspan] + th {
-      border-left: 0 none; }
-  .table-bordered-sep td.rowspan-last, .table-bordered-sep th.rowspan-last {
-    border-bottom: 0 none; }
-.table-bordered-sep tr:first-child th {
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
-.table-bordered-sep tr:last-child td {
-  border-bottom: 0 none; }
-.table-bordered-sep tr td:first-child, .table-bordered-sep tr th:first-child {
-  border-left: 0 none; }
-.table-bordered-sep tbody tr:last-child td:first-child, .table-bordered-sep tbody tr:last-child th:first-child {
-  border-bottom-left-radius: 3px; }
-.table-bordered-sep tbody tr:last-child td:last-child, .table-bordered-sep tbody tr:last-child th:last-child {
-  border-bottom-right-radius: 3px; }
-.table-bordered-sep thead tr:first-child th:first-child, .table-bordered-sep.no-thead tr:first-child td:first-child, .table-bordered-sep.no-thead tr:first-child th:first-child {
-  border-top-left-radius: 3px; }
-.table-bordered-sep thead tr:first-child th:last-child, .table-bordered-sep.no-thead tr:first-child td:last-child, .table-bordered-sep.no-thead tr:first-child th:last-child {
-  border-top-right-radius: 3px; }
 
-/**
- * Table Fills
- */
-.table-background td, .table-background th {
-  background: #f9f9f9; }
-
-.table-stripes tr:nth-child(odd) td {
-  background-color: #f9f9f9; }
-
-.table-stripes-horizontal tr:nth-child(odd) td {
-  background-color: #f9f9f9; }
-
-.table-stripes-vertical th:nth-child(even) {
-  background-color: #f9f9f9; }
-.table-stripes-vertical tr td:nth-child(even) {
-  background-color: #f9f9f9; }
-
-/**
- * Table Modifiers
- */
-.table-padded td, .table-padded th {
-  padding: 10px; }
-
-.table-padded-condensed td, .table-padded-condensed th {
-  padding: 5px; }
-
-.table-padded-expanded td, .table-padded-expanded th {
-  padding: 15px; }
-
-.table-hover thead tr th:hover, .table-hover tbody tr:hover {
-  background-color: rgba(241, 196, 15, 0.4); }
-.table-hover tbody tr:hover td {
-  background: transparent; }
+.table-bordered td, .table-bordered th {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.table-bordered tr:first-child td, .table-bordered tr:first-child th {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+.table-bordered td, .table-bordered th {
+  padding: 10px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+.table-bordered tr td:first-child, .table-bordered tr th:first-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.1); }
 
 /*==============================================================================
   Images
