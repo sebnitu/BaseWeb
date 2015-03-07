@@ -90,23 +90,23 @@
 }</code></pre>
     <ul class="docs-list docs-list-hover">
       <li class="title">Available Mixins</li>
-      <li><code>border-radius()</code> <span class="right box-border-radius mixin-border-radius"></span></li>
+      <li><code>border-radius()</code> <span class="right demo-border-radius mixin-border-radius"></span></li>
 
-      <li><code>border-radius-top()</code> <span class="right box-border-radius mixin-border-radius-top"></span></li>
-      <li><code>border-radius-top-left()</code> <span class="right box-border-radius mixin-border-radius-top-left"></span></li>
-      <li><code>border-radius-top-right()</code> <span class="right box-border-radius mixin-border-radius-top-right"></span></li>
+      <li><code>border-radius-top()</code> <span class="right demo-border-radius mixin-border-radius-top"></span></li>
+      <li><code>border-radius-top-left()</code> <span class="right demo-border-radius mixin-border-radius-top-left"></span></li>
+      <li><code>border-radius-top-right()</code> <span class="right demo-border-radius mixin-border-radius-top-right"></span></li>
 
-      <li><code>border-radius-bottom()</code> <span class="right box-border-radius mixin-border-radius-bottom"></span></li>
-      <li><code>border-radius-bottom-left()</code> <span class="right box-border-radius mixin-border-radius-bottom-left"></span></li>
-      <li><code>border-radius-bottom-right()</code> <span class="right box-border-radius mixin-border-radius-bottom-right"></span></li>
+      <li><code>border-radius-bottom()</code> <span class="right demo-border-radius mixin-border-radius-bottom"></span></li>
+      <li><code>border-radius-bottom-left()</code> <span class="right demo-border-radius mixin-border-radius-bottom-left"></span></li>
+      <li><code>border-radius-bottom-right()</code> <span class="right demo-border-radius mixin-border-radius-bottom-right"></span></li>
 
-      <li><code>border-radius-left()</code> <span class="right box-border-radius mixin-border-radius-left"></span></li>
-      <li><code>border-radius-left-top()</code> <span class="right box-border-radius mixin-border-radius-left-top"></span></li>
-      <li><code>border-radius-left-bottom()</code> <span class="right box-border-radius mixin-border-radius-left-bottom"></span></li>
+      <li><code>border-radius-left()</code> <span class="right demo-border-radius mixin-border-radius-left"></span></li>
+      <li><code>border-radius-left-top()</code> <span class="right demo-border-radius mixin-border-radius-left-top"></span></li>
+      <li><code>border-radius-left-bottom()</code> <span class="right demo-border-radius mixin-border-radius-left-bottom"></span></li>
 
-      <li><code>border-radius-right()</code> <span class="right box-border-radius mixin-border-radius-right"></span></li>
-      <li><code>border-radius-right-top()</code> <span class="right box-border-radius mixin-border-radius-right-top"></span></li>
-      <li><code>border-radius-right-bottom()</code> <span class="right box-border-radius mixin-border-radius-right-bottom"></span></li>
+      <li><code>border-radius-right()</code> <span class="right demo-border-radius mixin-border-radius-right"></span></li>
+      <li><code>border-radius-right-top()</code> <span class="right demo-border-radius mixin-border-radius-right-top"></span></li>
+      <li><code>border-radius-right-bottom()</code> <span class="right demo-border-radius mixin-border-radius-right-bottom"></span></li>
       <li class="desc"><em>For the examples above, I'm passing in a radius of <code>50%</code> so the effect is more obvious.</em></li>
     </ul>
   </li>
@@ -136,19 +136,19 @@
   @type unit (degree)</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.box-rotate {
+.demo-rotate {
   @include rotate(45deg);
 }
 
 // CSS
-.box-rotate {
+.demo-rotate {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 </code></pre>
     <div class="demo">
-      <div class="demo-box box-rotate"></div>
+      <div class="demo-example demo-rotate"></div>
     </div>
   </li>
   
@@ -161,26 +161,26 @@
     
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.box-transition {
+.demo-transition {
   background-color: $blue-green-darker;
   @include transition();
 }
-.box-transition:hover {
+.demo-transition:hover {
   background-color: $red-violet;
 }
 
 // CSS
-.box-transition {
+.demo-transition {
   background-color: #3da96d;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
-.box-transition:hover {
+.demo-transition:hover {
   background-color: #d25992;
 }
 </code></pre>
     <div class="demo">
-      <div class="demo-box box-transition"></div>
+      <div class="demo-example demo-transition"></div>
     </div>
     <h3 class="docs-header">Available Mixins</h3>
     <pre class="docs-code"><code class="name">@mixin transition-property( $transition-property )</code><code class="desc">@param $transition-property
@@ -238,20 +238,20 @@
   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.box-animation {
+.demo-animation {
   ...
   @include animation(example 10s linear 1s infinite normal);
 }
 
 // CSS
-.box-animation {
+.demo-animation {
   ...
   -webkit-animation: example 10s linear 1s infinite normal;
   animation: example 10s linear 1s infinite normal;
 }
 </code></pre>
     <div class="demo">
-      <div class="demo-box box-animation"></div>
+      <div class="demo-example demo-animation"></div>
     </div>
     <h3 class="docs-header">Available Mixins</h3>
     <pre class="docs-code"><code class="name">@mixin animation-name( $name... )</code><code class="desc">@param $name
@@ -279,12 +279,12 @@
   @type gradient ([side-or-corner] [angle] [color-stop])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.box-linear-gradient {
+.demo-linear-gradient {
   @include linear-gradient(left, $green, $blue, $violet);
 }
 
 // CSS
-.box-linear-gradient {
+.demo-linear-gradient {
   background-image: -webkit-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
   background-image: -moz-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
   background-image: -ms-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
@@ -292,7 +292,7 @@
 }
 </code></pre>
     <div class="demo">
-      <div class="demo-box box-linear-gradient"></div>
+      <div class="demo-example demo-linear-gradient"></div>
     </div>
   </li>
   
@@ -303,12 +303,12 @@
   @type gradient ([position] [shape] [size] [color-stop] [color-stop] [extent-keyword])</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.box-radial-gradient {
+.demo-radial-gradient {
   @include radial-gradient(circle, $violet, $violet-darker);
 }
 
 // CSS
-.box-radial-gradient {
+.demo-radial-gradient {
   background-image: -webkit-radial-gradient(circle, #bc6bd3, #aa44c7);
   background-image: -moz-radial-gradient(circle, #bc6bd3, #aa44c7);
   background-image: -ms-radial-gradient(circle, #bc6bd3, #aa44c7);
@@ -316,7 +316,7 @@
 }
 </code></pre>
     <div class="demo">
-      <div class="demo-box box-radial-gradient"></div>
+      <div class="demo-example demo-radial-gradient"></div>
     </div>
   </li>
   
@@ -349,12 +349,12 @@
   @default block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
 <pre><code>// SCSS
-.text-truncate {
+.demo-text-truncate {
   @include text-truncate();
 }
 
 // CSS
-.text-truncate {
+.demo-text-truncate {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -362,7 +362,7 @@
 }
 </code></pre>
     <div class="demo">
-      <div class="text-truncate">This is some text that will get truncated</div>
+      <div class="demo-text-truncate">This is some text that will get truncated</div>
     </div>
   </li>
   

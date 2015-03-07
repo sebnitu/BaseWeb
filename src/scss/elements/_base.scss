@@ -37,6 +37,22 @@ footer, header, hgroup, menu, nav, section {
   }
 }
 
+// Add custom text highlight color if a color is set in $bg-selection
+@if ($bg-selection != none) {
+  ::-moz-selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+  ::selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+}
+
+/*==============================================================================
+  @Base Classes
+==============================================================================*/
+
 // Outputs our cleafix class if one is set in $class-clearfix
 @if ($class-clearfix != none) {
   .#{$class-clearfix} {
@@ -48,17 +64,5 @@ footer, header, hgroup, menu, nav, section {
 @if ($class-remove-clearfix != none) {
   .#{$class-remove-clearfix} {
     @include remove-clearfix();
-  }
-}
-
-// Add custom text highlight color if a color is set in $bg-selection
-@if ($bg-selection != none) {
-  ::-moz-selection {
-    background: $bg-selection;
-    text-shadow: none;
-  }
-  ::selection {
-    background: $bg-selection;
-    text-shadow: none;
   }
 }

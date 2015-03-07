@@ -79,9 +79,15 @@
   <li>Add custom text highlight color if a color is set in <code>$bg-selection</code></li>
 </ul>
 
+<h2 class="docs-header">Base Classes</h2>
+
+<p>Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clear fix).</p>
+
+<p></p>
+
 <ul class="docs-list">
   <li>
-    <h2 class="docs-header">.clearfix</h2>
+    <h3 class="docs-header">.clearfix</h3>
     <p>Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
     <pre class="docs-code"><code class="name">@class clearfix</code></pre>
     <h3 class="docs-header">Example Usage</h3>
@@ -96,7 +102,7 @@
 </code></pre>
   <li>
   </li>
-    <h2 class="docs-header">.remove-clearfix</h2>
+    <h3 class="docs-header">.remove-clearfix</h3>
     <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
     <pre class="docs-code"><code class="name">@class remove-clearfix</code></pre>
   </li>
@@ -203,10 +209,12 @@
   &lt;p&gt;Take the risk of thinking for yourself&amp;mdash;much more happiness, truth, beauty and wisdom will come to you that way.&lt;/p&gt;
   &lt;footer&gt;&lt;cite&gt;&amp;ndash; Christopher Hitchens&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;</code></pre>
-    <blockquote>
-      <p>Take the risk of thinking for yourself&mdash;much more happiness, truth, beauty and wisdom will come to you that way.</p>
-      <footer><cite>&ndash; Christopher Hitchens</cite></footer>
-    </blockquote>
+    <div class="demo">
+      <blockquote>
+        <p>Take the risk of thinking for yourself&mdash;much more happiness, truth, beauty and wisdom will come to you that way.</p>
+        <footer><cite>&ndash; Christopher Hitchens</cite></footer>
+      </blockquote>
+    </div>
   </li>
   <li>
     <h3 class="docs-header">&lt;abbr&gt;</h3>
@@ -381,160 +389,108 @@
     <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
   </dl>
 </div>
-
-<h2 class="docs-header">Custom List Modifiers</h2>
-
-<p>This is where BaseWeb provides some custom list styles. These come in the form of both classes and mixins for semantic applications.</p>
-
-<ul class="docs-list">
-  
-  <li>
-    <h3 class="docs-header">make-list-unstyled</h3>
-    <p>Removes default list styles and margins from a list element and it's children.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-unstyled()</code></pre>
-    <pre><code>&lt;ul class="list-unstyled"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <div class="demo">
-      <ul class="list-unstyled">
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
-      </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-list-base</h3>
-    <p>Adds the base styles for custom list style mixins. You can include these styles to a list using <code>@include</code> or reduce the CSS output for multiple list modifies by using <code>@extend</code> and calling on the placeholder <code>%list-base</code> that is predefined in BaseWeb.</p>
-    <pre><code>// Included in BaseWeb
-%list-base {
-  @include make-list-base();
-}
-
-// In your custom SCSS files
-.custom-list {
-  @extend %list-base;
-  ...
-}</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-list-wrapped</h3>
-    <p>Adds a border and padding around a list.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-wrapped()</code></pre>
-    <pre><code>&lt;ul class="list-wrapped"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <div class="demo">
-      <ul class="list-wrapped">
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
-      </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-list-rowed</h3>
-    <p>Turns list items into rows by giving border seperators between list items.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-rowed()</code></pre>
-    <pre><code>&lt;ul class="list-rowed"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <div class="demo">
-      <ul class="list-rowed">
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
-      </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-list-bordered</h3>
-    <p>Adds a border around a list and row seperators between list items.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-bordered()</code></pre>
-    <pre><code>&lt;ul class="list-bordered"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <div class="demo">
-      <ul class="list-bordered">
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
-      </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-list-stripped</h3>
-    <p>Adds zebra stripes to list items. This can be added to other list modifiers.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-stripped()</code></pre>
-    <pre><code>&lt;ul class="list-bordered list-stripped"&gt;
-  &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    <div class="demo">
-      <ul class="list-bordered list-stripped">
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
-      </ul>
-    </div>
-  </li>
-  
-</ul>  </section><!-- .subpage -->
+  </section><!-- .subpage -->
   
   <section id="blockquotes" class="subpage">
-    <h1 class="docs-header">Blockquotes</h1>
+<h1 class="docs-header">Blockquotes</h1>
+
+<p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element, and optionally with in-line changes such as annotations and abbreviations.</p>
+
+<pre><code>&lt;blockquote&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;footer&gt;&lt;cite&gt;...&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+
+<div class="demo">
+  <blockquote>
+    <p>"The internet could be a very positive step towards education, organization and participation in a meaningful society."</p>
+    <footer>
+      <cite>&mdash; Noam Chomsky</cite>
+    </footer>
+  </blockquote>
+</div>
   </section><!-- .subpage -->
   
   <section id="code" class="subpage">
-    <h1 class="docs-header">Code</h1>
-  </section><!-- .subpage -->
+<h1 class="docs-header">Code</h1>
+
+<p>The <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> HTML elements are primarily used for displaying computer recognized programs or code. BaseWeb comes with some predefined styles for both inline code markup and blocks of code.</p>
+
+<h2 class="docs-header">Inline Code</h2>
+
+<p>Inline code primarily appear in small fragments within text blocks. BaseWeb styles them so that they are easy to recognize and parse in that context.</p>
+
+<pre><code>&lt;code&gt;...&lt;/code&gt;</code></pre>
+
+<div class="demo">
+  <p>Here is an example variable: <code>var example = 'This is a test';</code></p>
+</div>
+
+<h2 class="docs-header">Block Code</h2>
+
+<p>Code blocks are larger sections of code that utilize the combination of a <code>&lt;pre&gt;</code> element to retain preformatted text, in which structure is represented by typographic conventions rather than by elements.</p>
+
+<pre><code>&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+
+<div class="demo">
+<pre><code>var new = BaseWeb;
+
+class BaseWeb() {
+  desc: a fresh front-end development framework
+}
+</code></pre>
+</div>
+
+<p>If you've gotten this far into the documentation, you've probably already seen a lot of inline and block level code elements in action.</p>  </section><!-- .subpage -->
   
   <section id="tables" class="subpage">
-    <h1 class="docs-header">Tables</h1>
+<h1 class="docs-header">Tables</h1>
+<p>The HTML <code>&lt;table&gt;</code> element is used to display tabular data. Tables have rows <code>&lt;tr&gt;</code>, cells <code>&lt;td&gt;</code>, header cells <code>&lt;th&gt;</code> and also can include <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tfooter&gt;</code> which wrap their respective table data. Here's an example of a table markup and the default styles:</p>
+
+<pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;...&lt;/th&gt;
+    &lt;th&gt;...&lt;/th&gt;
+    &lt;th&gt;...&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;...&lt;/td&gt;
+    &lt;td&gt;...&lt;/td&gt;
+    &lt;td&gt;...&lt;/td&gt;
+  &lt;/tr&gt;
+  ...
+&lt;/table&gt;</code></pre>
+
+<div class="demo">
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Table Header</th>
+      <th>Table Header</th>
+      <th>Table Header</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+      <td>Table cell</td>
+    </tr>
+  </table>
+</div>
+
+<p>You'll notice that the base styles for a table are almost untouched. That's because tables are used in a wide array of data on the web, so any sort of custom styles that BaseWeb has available are best applied using modifier classes and mixins for semantic applications.</p>
   </section><!-- .subpage -->
   
   <section id="images" class="subpage">

@@ -35,13 +35,28 @@ $radius-example: 50%;
   @ Mixin Documentation Styles
 ==============================================================================*/
 
+/**
+ * Demo Blocks
+ * Used for wrapping demo block examples
+ */
 .demo {
   margin: 20px 0;
   padding: 10px 20px;
   overflow: auto;
-  background: rgba($black, 0.05);
+  background: rgba($white, 0.5);
+  @include border-radius();
 }
-.demo-box {
+.demo blockquote,
+.demo pre,
+.demo table {
+  margin: 10px 0;
+}
+
+/**
+ * Demo Example
+ * Used for inline demo examples
+ */
+.demo-example {
   background: $yellow-green-darker;
   @include border-radius();
   @include size(50px);
@@ -50,7 +65,7 @@ $radius-example: 50%;
 /**
  * Border Radius
  */
-.box-border-radius {
+.demo-border-radius {
   display: inline-block;
   background: $yellow-green-dark;
   @include size(30px);
@@ -103,7 +118,7 @@ $radius-example: 50%;
 /**
  * Rotate
  */
-.box-rotate {
+.demo-rotate {
   background: $blue-darker;
   margin: 20px auto;
   @include rotate(45deg);
@@ -112,12 +127,12 @@ $radius-example: 50%;
 /**
  * Transition
  */
-.box-transition {
+.demo-transition {
   margin: 10px auto;
   background-color: $blue-green-darker;
   @include transition();
 }
-.box-transition:hover {
+.demo-transition:hover {
   background-color: $red-violet;
 }
 
@@ -129,7 +144,7 @@ $radius-example: 50%;
   50%  { background-color: $blue; }
   100% { background-color: $red; }
 }
-.box-animation {
+.demo-animation {
   margin: 10px auto;
   background-color: $red;
   @include animation(example 10s linear 1s infinite normal);
@@ -138,12 +153,12 @@ $radius-example: 50%;
 /**
  * Gradient
  */
-.box-linear-gradient {
+.demo-linear-gradient {
   margin: 10px auto;
   width: auto;
   @include linear-gradient(left, $green, $blue, $violet);
 }
-.box-radial-gradient {
+.demo-radial-gradient {
   margin: 10px auto;
   @include size(80px);
   @include radial-gradient(circle, $violet, $violet-darker);
@@ -152,7 +167,7 @@ $radius-example: 50%;
 /**
  * Text
  */
-.text-truncate {
+.demo-text-truncate {
   background: $blue-green-darker;
   width: 200px;
   max-width: 100%;

@@ -33,6 +33,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+::-moz-selection {
+  background: rgba(142, 203, 37, 0.25);
+  text-shadow: none; }
+
+::selection {
+  background: rgba(142, 203, 37, 0.25);
+  text-shadow: none; }
+
+/*==============================================================================
+  @Base Classes
+==============================================================================*/
 .clearfix:after {
   content: "";
   display: table;
@@ -42,14 +53,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   content: none;
   display: none;
   clear: none; }
-
-::-moz-selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
-
-::selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
 
 /*==============================================================================
   @Typography
@@ -190,9 +193,6 @@ abbr[title], abbr[data-original-title] {
 /*==============================================================================
   @Lists
 ==============================================================================*/
-/**
- * Base List Styles
- */
 ul, ol {
   margin: 10px 0 10px 20px;
   padding: 0; }
@@ -234,82 +234,8 @@ dl {
   dl dd {
     margin: 0 0 10px 20px; }
 
-/**
- * Navigation Lists
- */
-nav ul, nav ol {
-  list-style: none;
-  margin: 0; }
-  nav ul li, nav ol li {
-    margin: 0; }
-
 /*==============================================================================
-  @Custom Lists
-==============================================================================*/
-.list-unstyled {
-  list-style: none;
-  margin: 0;
-  padding: 0; }
-  .list-unstyled li {
-    margin: 0; }
-
-.list-wrapped, .list-rowed, .list-bordered {
-  margin: 10px 0; }
-  .list-wrapped > li:after, .list-rowed > li:after, .list-bordered > li:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .list-no-clear.list-wrapped > li:after, .list-no-clear.list-rowed > li:after, .list-no-clear.list-bordered > li:after {
-    content: none;
-    display: none;
-    clear: none; }
-
-.list-wrapped {
-  padding: 10px 15px 10px 35px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
-  .list-wrapped > li:first-child {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px; }
-  .list-wrapped > li:last-child {
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px; }
-
-.list-rowed {
-  list-style: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  .list-rowed > li {
-    margin: 0;
-    padding: 10px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.list-bordered {
-  list-style: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
-  .list-bordered > li {
-    margin: 0;
-    padding: 10px 15px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1); }
-    .list-bordered > li:first-child {
-      border-top: 0 none;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px; }
-    .list-bordered > li:last-child {
-      border-bottom-right-radius: 3px;
-      border-bottom-left-radius: 3px; }
-
-/**
- * Supplementary Classes
- */
-.list-stripped > li {
-  padding: 10px 15px;
-  background-clip: padding-box; }
-.list-stripped > li:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-/*==============================================================================
-  Blockquotes
+  @Blockquotes
 ==============================================================================*/
 blockquote {
   margin: 15px 0;
@@ -323,7 +249,7 @@ blockquote {
     font-size: 100%; }
 
 /*==============================================================================
-  Code
+  @Code
 ==============================================================================*/
 code, pre {
   background: rgba(0, 0, 0, 0.05);
