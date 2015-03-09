@@ -2,20 +2,19 @@
 // Table Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-$color-bg-table: #f9f9f9 !default;
-$color-border-table: rgba($black, 0.1) !default;
-
-$table-padding-condensed: 5px;
-$table-padding: 10px;
-$table-padding-expanded: 15px;
-
-$table-alignment: top;
-
 $table: (
   'base' : false,
-  'padding': 10px,
-  'border' : 1px solid rgba($black, 0.1),
+  'valign' : top,
+  'nth' : odd,
+  'stripe' : horizontal,
+  'padding' : 10px,
+  'padding-condensed' : 5px,
+  'padding-expanded' : 15px,
   'background' : none,
+  'background-stripe' : rgba($black, 0.05),
+  'background-hover' : $yellow-pale,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-radius' : $border-radius,
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,51 +26,169 @@ $table: (
   $o: map-merge( $table, $options);
   border-collapse: separate;
   background: map-get($o, 'background');
+  
+  td, th {
+    padding: map-get($o, 'padding');
+  }
 }
 
+////
+// Spacing Mixins
+////
+// Condensed
+@mixin make-table-condensed($options: ()) {
+  $o: map-merge($table, $options);
+  td, th {
+    padding: map-get($o, 'padding-condensed');
+  }
+}
+// Expanded
+@mixin make-table-expanded($options: ()) {
+  $o: map-merge($table, $options);
+  td, th {
+    padding: map-get($o, 'padding-expanded');
+  }
+}
+
+////
+// Border Mixins
+////
 // Rowed
 @mixin make-table-rowed($options: ()) {
-  $o: map-merge( $table, $options);
+  $o: map-merge($table, $options);
   
   @if (map-get($o, 'base') == true) {
     @include make-table-base($o);
   }
-  
   td, th {
-    padding: map-get($o, 'padding');
     border-bottom: map-get($o, 'border');
   }
-  
-  tr:first-child {
-    td, th {
-      border-top: map-get($o, 'border');
+  thead:first-child,
+  tfoot:first-child,
+  tbody:first-child {
+    tr:first-child {
+      td, th {
+        border-top: map-get($o, 'border');
+      }
     }
   }
 }
-
 // Columned
 @mixin make-table-columned($options: ()) {
-  $o: map-merge( $table, $options);
-
+  $o: map-merge($table, $options);
+  
+  @if (map-get($o, 'base') == true) {
+    @include make-table-base($o);
+  }
   td, th {
-    padding: map-get($o, 'padding');
     border-right: map-get($o, 'border');
   }
-  
   tr {
     td:first-child, th:first-child { 
-      border-left: map-get($o, 'border')
+      border-left: map-get($o, 'border');
     }
   }
 }
-
 // Bordered
 @mixin make-table-bordered($options: ()) {
-  $o: map-merge( $table, $options);
+  $o: map-merge($table, $options);
   
   @include make-table-rowed($o);
   @include make-table-columned($o);
+}
+
+////
+// Miscellaneous Mixins
+////
+// Border Radius
+@mixin make-table-border-radius($radius: default, $options: ()) {
+  $o: map-merge($table, $options);
   
+  @if ($radius != default) {
+    $o: map-merge($o, ('border-radius': $radius));
+  }
+  
+  @include border-radius(map-get($o, 'border-radius'));
+  
+  thead:first-child,
+  tfoot:first-child,
+  tbody:first-child {
+    tr:first-child {
+      td:first-child, th:first-child {
+        @include border-radius-top-left(map-get($o, 'border-radius'));
+      }
+      td:last-child, th:last-child {
+        @include border-radius-top-right(map-get($o, 'border-radius'));
+      }
+    }
+  }
+  
+  thead:last-child,
+  tfoot:last-child,
+  tbody:last-child {
+    tr:last-child {
+      td:first-child, th:first-child {
+        @include border-radius-bottom-left(map-get($o, 'border-radius'));
+      }
+      td:last-child, th:last-child {
+        @include border-radius-bottom-right(map-get($o, 'border-radius'));
+      }
+    }
+  }
+}
+// Zebra Stripes
+@mixin make-table-striped($nth: default, $dir: default, $options: ()) {
+  $o: map-merge($table, $options);
+  
+  @if ($nth != default) {
+    $o: map-merge($o, ('nth': $nth));
+  }
+  @if ($dir != default) {
+    $o: map-merge($o, ('stripe': $dir));
+  }
+    
+  @if (map-get($o, 'stripe') == vertical) {
+    tr {
+      td:nth-of-type(#{map-get($o, 'nth')}),
+      th:nth-of-type(#{map-get($o, 'nth')}) {
+        background-color: map-get($o, 'background-stripe');
+      }
+    }
+  } @else {
+    tbody tr:nth-of-type(#{map-get($o, 'nth')}) {
+      td, th {
+        background-color: map-get($o, 'background-stripe');
+      }
+    }
+  }
+}
+// Hover
+@mixin make-table-hover($options: ()) {
+  $o: map-merge($table, $options);
+  
+  tbody tr:hover td {
+    background-color: map-get($o, 'background-hover');
+  }
+}
+
+////
+// Responsive Tables Mixin
+////
+@mixin make-table-responsive($options: ()) {
+  $o: map-merge($table, $options);
+  
+  margin: 10px 0;
+  table {
+    margin: 0;
+  }
+  @include media-max('tablet') {
+    overflow: auto;
+    border: map-get($o, 'border');
+    table td,
+    table th {
+      white-space: nowrap;
+    }
+  }
 }
 
 /*==============================================================================
@@ -86,17 +203,17 @@ table {
   margin: 20px 0;
   overflow: auto;
   
+  tr {
+    // Default alignment
+    vertical-align: map-get($table, 'valign');
+  }
   th {
     color: $color-header;
     text-align: left;
     font-weight: bold;
   }
-  tr {
-    // Default alignment
-    vertical-align: $table-alignment;
-  }
   
-  // Modifiers
+  // Vertical Alignment Modifiers
   &.table-valign-baseline {
     tr {
       vertical-align: baseline;
@@ -117,26 +234,70 @@ table {
       vertical-align: bottom;
     }
   }
+  
+  // Text Alignment Modifiers
+  &.table-align-left {
+    tr td, tr th {
+      text-align: left;
+    }
+  }
+  &.table-align-center {
+    tr td, tr th {
+      text-align: center;
+    }
+  }
+  &.table-align-right {
+    tr td, tr th {
+      text-align: right;
+    }
+  }
 }
 
-/**
- * Table Borders
- */
+/* Base Table Modifiers Styles */
 %table-base {
   @include make-table-base();
 }
 
+/* Border Variations */
 .table-rowed {
   @extend %table-base;
   @include make-table-rowed();
 }
-
 .table-columned {
   @extend %table-base;
   @include make-table-columned();
 }
-
 .table-bordered {
   @extend %table-base;
   @include make-table-bordered();
+}
+
+/* Padding Variations */
+.table-condensed {
+  @include make-table-condensed();
+}
+.table-expanded {
+  @include make-table-expanded();
+}
+
+/* Miscellaneous Modifiers */
+.table-border-radius {
+  @include make-table-border-radius();
+}
+.table-striped {
+  @include make-table-striped();
+}
+.table-striped-horizontal {
+  @include make-table-striped(default, horizontal);
+}
+.table-striped-vertical {
+  @include make-table-striped(default, vertical);
+}
+.table-hover {
+  @include make-table-hover();
+}
+
+/* Responsive Tables */
+.table-responsive {
+  @include make-table-responsive();
 }
