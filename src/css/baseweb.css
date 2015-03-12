@@ -398,85 +398,58 @@ table {
         white-space: nowrap; } }
 
 /*==============================================================================
-  Images
+  @Images
 ==============================================================================*/
 img {
-  margin: 10px 0;
   display: block;
+  margin: 10px 0;
   max-width: 100%;
   height: auto; }
 
-img.full, .img-full {
+/**
+ * Alignment Modifiers
+ */
+.align-center {
   display: block;
   margin-left: auto;
   margin-right: auto; }
 
-img.rounded, .img-rounded {
+p .align-center {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.align-left {
+  float: left;
+  margin: 10px 15px 10px 0; }
+
+p .align-left {
+  margin-top: 0; }
+
+.align-right {
+  float: right;
+  margin: 10px 0 10px 15px; }
+
+p .align-right {
+  margin-top: 0; }
+
+/**
+ * Stylistic Modifiers
+ */
+.img-rounded {
   border-radius: 3px; }
 
-img.circle, .img-circle {
+.img-circle {
   border-radius: 50%; }
 
-img.polaroid, .img-polaroid {
+.img-polaroid {
   background: #ffffff;
   background-clip: padding-box;
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
 
-/**
- * Image Wrap
- */
-.image-wrap {
-  position: relative;
-  display: inline-block;
-  margin: 10px 0; }
-  .image-wrap img {
-    position: relative;
-    z-index: 5;
-    margin: 0 auto;
-    float: none;
-    display: block; }
-  .image-wrap .caption {
-    position: relative;
-    z-index: 10;
-    display: block;
-    margin: -1px 0 0 0;
-    padding: 5px 10px;
-    clear: both;
-    font-size: 0.75em;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px; }
-
-/**
- * Image Alignment
- */
-img.align-center, .align-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
-p img.align-center {
-  margin-top: 0; }
-
-img.align-left, .align-left {
-  float: left;
-  margin: 10px 15px 10px 0; }
-
-p img.align-left {
-  margin-top: 0; }
-
-img.align-right, .align-right {
-  float: right;
-  margin: 10px 0 10px 15px; }
-
-p img.align-right {
-  margin-top: 0; }
-
 /*==============================================================================
-  Horizontal Rules
+  @Rules
 ==============================================================================*/
 hr {
   display: block;
@@ -488,51 +461,12 @@ hr {
   background: none;
   border: 0 none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  hr.dotted {
+  hr.hr-dotted {
     border-bottom: 1px dotted rgba(0, 0, 0, 0.25); }
-  hr.dashed {
+  hr.hr-dashed {
     border-bottom: 1px dashed rgba(0, 0, 0, 0.25); }
-  hr.double {
+  hr.hr-double {
     border-bottom: 3px double rgba(0, 0, 0, 0.1); }
-
-/*==============================================================================
-  Button Groups
-==============================================================================*/
-.btn-group, .btn-group-horizontal, .btn-group-vertical {
-  position: relative;
-  display: inline-block;
-  margin: 5px 0;
-  font-size: 0;
-  vertical-align: middle; }
-
-/**
- * Horizontal Button Groups
- */
-.btn-group .btn, .btn-group-horizontal .btn {
-  margin-left: -1px;
-  border-radius: 0; }
-  .btn-group .btn:first-child, .btn-group-horizontal .btn:first-child {
-    margin-left: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
-  .btn-group .btn:last-child, .btn-group-horizontal .btn:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px; }
-
-/**
- * Vertical Button Groups
- */
-.btn-group-vertical .btn {
-  display: block;
-  margin-top: -1px;
-  border-radius: 0; }
-  .btn-group-vertical .btn:first-child {
-    margin-top: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px; }
-  .btn-group-vertical .btn:last-child {
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px; }
 
 /*==============================================================================
   @ Mobile Grid System
