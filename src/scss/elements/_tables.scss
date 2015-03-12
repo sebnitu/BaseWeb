@@ -1,7 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Table Variables
+// @Table Variables
 ////////////////////////////////////////////////////////////////////////////////
 
+// Table Map
+// Define all the settings for the table mixins and classes.
 $table: (
   'base' : false,
   'valign' : top,
@@ -18,10 +20,14 @@ $table: (
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
-// Table Mixins
+// @Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Table Modifier Base
+// Make Table Base
+// Creates the base styles for a table modifer mixins or class. Usually applied directly through a mixin or `%table-base` placeholder.
+// @param $options
+//   @type map
+//   @default $table map
 @mixin make-table-base($options: ()) {
   $o: map-merge( $table, $options);
   border-collapse: separate;
@@ -32,28 +38,11 @@ $table: (
   }
 }
 
-////
-// Spacing Mixins
-////
-// Condensed
-@mixin make-table-condensed($options: ()) {
-  $o: map-merge($table, $options);
-  td, th {
-    padding: map-get($o, 'padding-condensed');
-  }
-}
-// Expanded
-@mixin make-table-expanded($options: ()) {
-  $o: map-merge($table, $options);
-  td, th {
-    padding: map-get($o, 'padding-expanded');
-  }
-}
-
-////
-// Border Mixins
-////
-// Rowed
+// Make Table Rowed
+// Adds borders to a table that divide table rows.
+// @param $options
+//   @type map
+//   @default $table map
 @mixin make-table-rowed($options: ()) {
   $o: map-merge($table, $options);
   
@@ -73,7 +62,12 @@ $table: (
     }
   }
 }
-// Columned
+
+// Make Table Columned
+// Adds borders to a table that divide table columns.
+// @param $options
+//   @type map
+//   @default $table map
 @mixin make-table-columned($options: ()) {
   $o: map-merge($table, $options);
   
@@ -89,7 +83,12 @@ $table: (
     }
   }
 }
-// Bordered
+
+// Make Table Bordered
+// Adds borders to a table that divide table cells.
+// @param $options
+//   @type map
+//   @default $table map
 @mixin make-table-bordered($options: ()) {
   $o: map-merge($table, $options);
   
@@ -97,11 +96,39 @@ $table: (
   @include make-table-columned($o);
 }
 
-////
-// Miscellaneous Mixins
-////
-// Border Radius
-@mixin make-table-border-radius($radius: default, $options: ()) {
+// Make Table Condensed
+// Gives a table a smaller cell padding than normal.
+// @param $options
+//   @type map
+//   @default $table map
+@mixin make-table-condensed($options: ()) {
+  $o: map-merge($table, $options);
+  td, th {
+    padding: map-get($o, 'padding-condensed');
+  }
+}
+
+// Make Table Expanded
+// Gives a table a larger cell padding than normal.
+// @param $options
+//   @type map
+//   @default $table map
+@mixin make-table-expanded($options: ()) {
+  $o: map-merge($table, $options);
+  td, th {
+    padding: map-get($o, 'padding-expanded');
+  }
+}
+
+// Give Table Border Radius
+// Gives a table rounded borders depending on parameters passed.
+// @param $radius
+//   @type unit (pixel, percent)
+//   @default default ($table('border-radius'))
+// @param $options
+//   @type map
+//   @default $table map
+@mixin give-table-border-radius($radius: default, $options: ()) {
   $o: map-merge($table, $options);
   
   @if ($radius != default) {
@@ -136,8 +163,19 @@ $table: (
     }
   }
 }
-// Zebra Stripes
-@mixin make-table-striped($nth: default, $dir: default, $options: ()) {
+
+// Give Table Stripes
+// Gives a table stripes either vertical or horizontal depending on parameters passed.
+// @param $nth
+//   @type nth (odd, even)
+//   @default default ($table('nth'))
+// @param $dir
+//   @type orientation of stripes (vertical, horizontal)
+//   @default default ($table('stripe'))
+// @param $options
+//   @type map
+//   @default $table map
+@mixin give-table-stripes($nth: default, $dir: default, $options: ()) {
   $o: map-merge($table, $options);
   
   @if ($nth != default) {
@@ -162,18 +200,32 @@ $table: (
     }
   }
 }
-// Hover
-@mixin make-table-hover($options: ()) {
+
+// Give Table Hover
+// Gives table hover styles for rows.
+// @param $bg-hover
+//   @type color
+//   @default default ($table('background-hover'))
+// @param $options
+//   @type map
+//   @default $table map
+@mixin give-table-hover($bg-hover: default, $options: ()) {
   $o: map-merge($table, $options);
+  
+  @if ($bg-hover != default) {
+    $o: map-merge($o, ('background-hover': $bg-hover));
+  }
   
   tbody tr:hover td {
     background-color: map-get($o, 'background-hover');
   }
 }
 
-////
-// Responsive Tables Mixin
-////
+// Make Table Responsive
+// When added to a wrapping element of a table, will make the table responsive for tablets and below.
+// @param $options
+//   @type map
+//   @default $table map
 @mixin make-table-responsive($options: ()) {
   $o: map-merge($table, $options);
   
@@ -204,7 +256,6 @@ table {
   overflow: auto;
   
   tr {
-    // Default alignment
     vertical-align: map-get($table, 'valign');
   }
   th {
@@ -213,7 +264,6 @@ table {
     font-weight: bold;
   }
   
-  // Vertical Alignment Modifiers
   &.table-valign-baseline {
     tr {
       vertical-align: baseline;
@@ -235,7 +285,6 @@ table {
     }
   }
   
-  // Text Alignment Modifiers
   &.table-align-left {
     tr td, tr th {
       text-align: left;
@@ -253,12 +302,20 @@ table {
   }
 }
 
-/* Base Table Modifiers Styles */
+/*==============================================================================
+  @Table Modifiers
+==============================================================================*/
+
+/**
+ * Base Table Modifiers Styles
+ */
 %table-base {
   @include make-table-base();
 }
 
-/* Border Variations */
+/**
+ * Border Variations
+ */
 .table-rowed {
   @extend %table-base;
   @include make-table-rowed();
@@ -272,7 +329,9 @@ table {
   @include make-table-bordered();
 }
 
-/* Padding Variations */
+/**
+ * Padding Variations
+ */
 .table-condensed {
   @include make-table-condensed();
 }
@@ -280,24 +339,28 @@ table {
   @include make-table-expanded();
 }
 
-/* Miscellaneous Modifiers */
+/**
+ * Miscellaneous Modifiers
+ */
 .table-border-radius {
-  @include make-table-border-radius();
+  @include give-table-border-radius();
 }
 .table-striped {
-  @include make-table-striped();
+  @include give-table-stripes();
 }
 .table-striped-horizontal {
-  @include make-table-striped(default, horizontal);
+  @include give-table-stripes(default, horizontal);
 }
 .table-striped-vertical {
-  @include make-table-striped(default, vertical);
+  @include give-table-stripes(default, vertical);
 }
 .table-hover {
-  @include make-table-hover();
+  @include give-table-hover();
 }
 
-/* Responsive Tables */
+/**
+ * Responsive Tables
+ */
 .table-responsive {
   @include make-table-responsive();
 }

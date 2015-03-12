@@ -492,335 +492,508 @@ class BaseWeb() {
 
 <p>You'll notice that the base styles for a table are almost untouched. That's because tables are used in a wide array of data on the web, so any sort of custom styles that BaseWeb has available are best applied using modifier classes and mixins for semantic applications.</p>
 
+<hr class="docs-hr">
+
+<h2 class="docs-header">Table Variables</h2>
+<p>The table variables are encompassed within the <code>$table</code> map and is used throughout all table mixins to set default values.</p>
+
+<ul class="docs-list docs-list-hover">
+  <li>
+    <code>$table('base')</code>
+    <code class="right value">false</code>
+    <span class="block light">Whether or not mixins should include base table styles. Set to false if you're using %table-base placeholder to apply base table styles to.</span>
+  </li>
+  <li><code>$grid('valign')</code> <code class="right value">top</code></li>
+  <li><code>$grid('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$grid('stripe')</code> <code class="right value">horizontal</code></li>
+
+  <li><code>$grid('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$grid('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$grid('padding-expanded')</code> <code class="right value">15px</code></li>
+  
+  <li><code>$grid('background')</code> <code class="right value">none</code></li>
+  <li><code>$grid('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$grid('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  
+  <li><code>$grid('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$grid('border-radius')</code> <code class="right value">$border-radius</code></li>
+</ul>
+
 <h2 class="docs-header">Table Modifiers</h2>
+<p>BaseWeb has a number of mixins and classes available for adjusting the appearance of tables. This includes things like vertical alignment, text alignment, borders, padding, stripes, hover and responsive table styles.</p>
 
-<p>Table modifiers are applied using table mixins or classes.</p>
-
-<h2 class="docs-header">Border Modifiers</h2>
-
-<div class="demo">
-  <table class="table-rowed">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-columned">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-bordered">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<h2 class="docs-header">Padding Modifiers</h2>
-
-<div class="demo">
-  <table class="table-bordered table-condensed">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-bordered table-expanded">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<h2 class="docs-header">Miscellaneous Modifiers</h2>
-
-<div class="demo">
-  <table class="table-bordered table-border-radius">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-bordered table-striped">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-bordered table-striped-vertical table-align-center">
-    <tr>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-      <th>#</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-      <td>7</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <td>I</td>
-      <td>II</td>
-      <td>III</td>
-      <td>IV</td>
-      <td>V</td>
-      <td>VI</td>
-      <td>VII</td>
-      <td>VIII</td>
-    </tr>
-    <tr>
-      <td>a</td>
-      <td>b</td>
-      <td>c</td>
-      <td>d</td>
-      <td>e</td>
-      <td>f</td>
-      <td>g</td>
-      <td>h</td>
-    </tr>
-    <tr>
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
-      <td>D</td>
-      <td>E</td>
-      <td>F</td>
-      <td>G</td>
-      <td>H</td>
-    </tr>
-  </table>
-</div>
-
-<div class="demo">
-  <table class="table-bordered table-hover">
-    <tr>
-      <th>#</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-      <th>Table Header</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </table>
-</div>
-
-<h2 class="docs-header">Responsive Tables</h2>
-
-<div class="demo">
-  <div class="table-responsive">
-    <table class="table-bordered">
+<ul class="docs-list">
+  
+  <li>
+    <h3 class="docs-header">.table-valign-*</h3>
+    <p>These classes are applied to a <code>&lt;table&gt;</code> element to set it's vertical alignment.</p>
+    <table class="docs-table table-rowed">
       <tr>
-        <th>#</th>
-        <th>Table Header</th>
-        <th>Table Header</th>
-        <th>Table Header</th>
+        <td><code>.table-valign-baseline</code></td>
+        <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
+       <tr>
+        <td><code>.table-valign-top</code></td>
+        <td>Applies <code>vertical-align: top;</code> to table rows.</td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
+       <tr>
+        <td><code>.table-valign-middle</code></td>
+        <td>Applies <code>vertical-align: middle;</code> to table rows.</td>
       </tr>
-      <tr>
-        <td>3</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
+       <tr>
+        <td><code>.table-valign-bottom</code></td>
+        <td>Applies <code>vertical-align: bottom;</code> to table rows.</td>
       </tr>
     </table>
-  </div>
-</div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">.table-align-*</h3>
+    <p>These classes are applied to a <code>&lt;table&gt;</code> element to set the text alignment.</p>
+    <table class="docs-table table-rowed">
+      <tr>
+        <td><code>.table-align-left</code></td>
+        <td>Aligns text to the left for all table cells.</td>
+      </tr>
+      <tr>
+        <td><code>.table-align-center</code></td>
+        <td>Aligns text to the center for all table cells.</td>
+      </tr>
+      <tr>
+        <td><code>.table-align-right</code></td>
+        <td>Aligns text to the right for all table cells.</td>
+      </tr>
+    </table>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-base</h3>
+    <p>Creates the base styles for a table modifer mixins or class. Usually applied directly through a mixin or <code>%table-base</code> placeholder.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-base()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>// SCSS
+%table-base {
+  @include make-table-base();
+}
+.table-example-1 {
+  @extend %table-base;
+  ...
+}
+.table-example-2 {
+  @extend %table-base;
+  ...
+}</code></pre>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-rowed</h3>
+    <p>Adds borders to a table that divide table rows.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-rowed()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-rowed">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-columned</h3>
+    <p>Adds borders to a table that divide table columns.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-columned()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-columned">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-bordered</h3>
+    <p>Adds borders to a table that divide table cells.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-bordered()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-condensed</h3>
+    <p>Gives a table a smaller cell padding than normal.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-condensed()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-condensed">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-expanded</h3>
+    <p>Gives a table a larger cell padding than normal.</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-expanded()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-expanded">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-table-border-radius</h3>
+    <p>Gives a table rounded borders depending on parameters passed.</p>
+    <pre class="docs-code"><code class="name">@mixin give-table-border-radius()</code><code class="desc">@param $radius
+  @type unit (pixel, percent)
+  @default default ($table('border-radius'))
+@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-border-radius&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-border-radius">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-table-stripes</h3>
+    <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
+    <pre class="docs-code"><code class="name">@mixin give-table-stripes()</code><code class="desc">@param $nth
+  @type nth (odd, even)
+  @default default ($table('nth'))
+@param $dir
+  @type orientation of stripes (vertical, horizontal)
+  @default default ($table('stripe'))
+@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-striped">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+    <pre><code>&lt;table class=&quot;table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-striped-vertical table-align-center">
+        <tr>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+          <th>#</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td>II</td>
+          <td>III</td>
+          <td>IV</td>
+          <td>V</td>
+          <td>VI</td>
+          <td>VII</td>
+          <td>VIII</td>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td>b</td>
+          <td>c</td>
+          <td>d</td>
+          <td>e</td>
+          <td>f</td>
+          <td>g</td>
+          <td>h</td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>B</td>
+          <td>C</td>
+          <td>D</td>
+          <td>E</td>
+          <td>F</td>
+          <td>G</td>
+          <td>H</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-table-hover</h3>
+    <p>Gives table hover styles for rows.</p>
+    <pre class="docs-code"><code class="name">@mixin give-table-hover()</code><code class="desc">@param $bg-hover
+  @type color
+  @default default ($table('background-hover'))
+@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
+    <div class="demo">
+      <table class="table-bordered table-hover">
+        <tr>
+          <th>#</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+          <th>Table Header</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+          <td>Table cell</td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-table-responsive</h3>
+    <p>When added to a wrapping element of a table, will make the table responsive for tablets and below</p>
+    <pre class="docs-code"><code class="name">@mixin make-table-responsive()</code><code class="desc">@param $options
+  @type map
+  @default $table map</code></pre>
+    <pre><code>&lt;div class=&quot;table-responsive&quot;&gt;
+  &lt;table class=&quot;table-bordered&quot;&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+    <div class="demo">
+      <div class="table-responsive">
+        <table class="table-bordered">
+          <tr>
+            <th>#</th>
+            <th>Table Header</th>
+            <th>Table Header</th>
+            <th>Table Header</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+            <td>Table cell</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </li>
+  
+</ul>
   </section><!-- .subpage -->
   
   <section id="images" class="subpage">
