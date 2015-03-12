@@ -324,72 +324,228 @@
 <h1 class="docs-header">Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
-<h2 class="docs-header">Unordered Lists</h2>
-
-<p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
-
-<pre><code>&lt;ul&gt;
+<ul class="docs-list">
+  
+  <li>
+    <h2 class="docs-header">Unordered Lists</h2>
+    <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
+    <pre><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-
-<div class="demo">
-  <ul>
-    <li>List Item</li>
-    <li>List Item
+    <div class="demo">
       <ul>
-        <li>Nested List Item</li>
-        <li>Nested List Item</li>
-        <li>Nested List Item</li>
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
       </ul>
-    </li>
-    <li>List Item</li>
-    <li>List Item</li>
-    <li>List Item</li>
-  </ul>
-</div>
-
-<h2 class="docs-header">Ordered Lists</h2>
-
-<p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
-
-<pre><code>&lt;ol&gt;
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Ordered Lists</h2>
+    <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
+    <pre><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-
-<div class="demo">
-  <ol>
-    <li>List item one</li>
-    <li>List item two
+    <div class="demo">
       <ol>
-        <li>Nested list item one</li>
-        <li>Nested list item two</li>
-        <li>Nested list item three</li>
+        <li>List item one</li>
+        <li>List item two
+          <ol>
+            <li>Nested list item one</li>
+            <li>Nested list item two</li>
+            <li>Nested list item three</li>
+          </ol>
+        </li>
+        <li>List item three</li>
+        <li>List item four</li>
+        <li>List item five</li>
       </ol>
-    </li>
-    <li>List item three</li>
-    <li>List item four</li>
-    <li>List item five</li>
-  </ol>
-</div>
-
-<h2 class="docs-header">Description Lists</h2>
-
-<p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
-
-<pre><code>&lt;dl&gt;
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Description Lists</h2>
+    <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
+    <pre><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
+    <div class="demo">
+      <dl>
+        <dt>Base</dt>
+        <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
+        <dt>Web</dt>
+        <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
+      </dl>
+    </div>
+  </li>
+  
+</ul>
 
-<div class="demo">
-  <dl>
-    <dt>Base</dt>
-    <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
-    <dt>Web</dt>
-    <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
-  </dl>
-</div>
-  </section><!-- .subpage -->
+<h2 class="docs-header">List Variables</h2>
+<p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
+
+<ul class="docs-list docs-list-hover">
+  <li>
+    <code>$list('base')</code>
+    <code class="right value">false</code>
+    <span class="block light">Whether or not mixins should include base list styles. Set to false if you're using %list-base placeholder to apply base list styles to.</span>
+  </li>
+  <li><code>$list('nth')</code> <code class="right value">odd</code></li>
+  <li>
+    <code>$list('flush')</code>
+    <code class="right value">false</code>
+    <span class="block light">Whether or not a list should have left and right padding.</span>
+  </li>
+
+  <li><code>$list('padding')</code> <code class="right value">10px</code></li>
+  
+  <li><code>$list('background')</code> <code class="right value">none</code></li>
+  <li><code>$list('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$list('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  
+  <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
+</ul>
+
+<h2 class="docs-header">List Modifiers</h2>
+<p>Lists are used to describe a wide range of content on the web. A lot of the time, you don't necessarily want a list to look like a standard list with bullets. BaseWeb provides some mixins and classes for creating commonly used styles for lists and effects.</p>
+
+<ul class="docs-list">
+  
+  <li>
+    <h3 class="docs-header">make-list-base</h3>
+    <p>...</p>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-list-rowed</h3>
+    <p>...</p>
+    <pre><code>&lt;ul class=&quot;list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <div class="demo">
+      <ul class="list-rowed">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+    <pre><code>&lt;ul class=&quot;list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <div class="demo">
+      <ul class="list-rowed list-flush">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-list-bordered</h3>
+    <p>...</p>
+    <div class="demo">
+      <ul class="list-bordered">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-list-rounded</h3>
+    <p>...</p>
+    <div class="demo">
+      <ul class="list-bordered list-rounded">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-list-stripes</h3>
+    <p>...</p>
+    <div class="demo">
+      <ul class="list-rowed list-striped">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <h3 class="docs-header">give-list-hover</h3>
+    <p>...</p>
+    <div class="demo">
+      <ul class="list-rowed list-hover">
+        <li>List Item</li>
+        <li>List Item
+          <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+          </ul>
+        </li>
+        <li>List Item</li>
+        <li>List Item</li>
+        <li>List Item</li>
+      </ul>
+    </div>
+  </li>
+  
+</ul>
+    </section><!-- .subpage -->
   
   <section id="blockquotes" class="subpage">
 <h1 class="docs-header">Blockquotes</h1>
@@ -502,20 +658,20 @@ class BaseWeb() {
     <code class="right value">false</code>
     <span class="block light">Whether or not mixins should include base table styles. Set to false if you're using %table-base placeholder to apply base table styles to.</span>
   </li>
-  <li><code>$grid('valign')</code> <code class="right value">top</code></li>
-  <li><code>$grid('nth')</code> <code class="right value">odd</code></li>
-  <li><code>$grid('stripe')</code> <code class="right value">horizontal</code></li>
+  <li><code>$table('valign')</code> <code class="right value">top</code></li>
+  <li><code>$table('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$table('stripe')</code> <code class="right value">horizontal</code></li>
 
-  <li><code>$grid('padding')</code> <code class="right value">10px</code></li>
-  <li><code>$grid('padding-condensed')</code> <code class="right value">5px</code></li>
-  <li><code>$grid('padding-expanded')</code> <code class="right value">15px</code></li>
+  <li><code>$table('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$table('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$table('padding-expanded')</code> <code class="right value">15px</code></li>
   
-  <li><code>$grid('background')</code> <code class="right value">none</code></li>
-  <li><code>$grid('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$grid('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$table('background')</code> <code class="right value">none</code></li>
+  <li><code>$table('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$table('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$grid('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$grid('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 
 <h2 class="docs-header">Table Modifiers</h2>
@@ -567,7 +723,7 @@ class BaseWeb() {
   
   <li>
     <h3 class="docs-header">make-table-base</h3>
-    <p>Creates the base styles for a table modifer mixins or class. Usually applied directly through a mixin or <code>%table-base</code> placeholder.</p>
+    <p>Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or <code>%table-base</code> placeholder.</p>
     <pre class="docs-code"><code class="name">@mixin make-table-base()</code><code class="desc">@param $options
   @type map
   @default $table map</code></pre>
@@ -771,17 +927,17 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-border-radius</h3>
+    <h3 class="docs-header">give-table-rounded</h3>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-border-radius()</code><code class="desc">@param $radius
+    <pre class="docs-code"><code class="name">@mixin give-table-rounded()</code><code class="desc">@param $radius
   @type unit (pixel, percent)
   @default default ($table('border-radius'))
 @param $options
   @type map
   @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table-bordered table-border-radius&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table-bordered table-border-radius">
+      <table class="table-bordered table-rounded">
         <tr>
           <th>#</th>
           <th>Table Header</th>

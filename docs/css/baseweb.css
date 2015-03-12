@@ -235,6 +235,65 @@ dl {
     margin: 0 0 10px 20px; }
 
 /*==============================================================================
+  @List Modifiers
+==============================================================================*/
+/**
+ * Base Table Modifiers Styles
+ */
+.list-rowed, .list-bordered {
+  margin: 20px 0;
+  list-style: none;
+  background: none; }
+  .list-rowed > li, .list-bordered > li {
+    margin: 0;
+    padding: 10px;
+    background-clip: padding-box; }
+    .list-rowed > li:after, .list-bordered > li:after {
+      content: "";
+      display: table;
+      clear: both; }
+
+/**
+ * Border Variations
+ */
+.list-rowed > li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+.list-rowed > li:first-child {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.list-flush > li {
+  padding-left: 0;
+  padding-right: 0; }
+
+.list-bordered {
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+  .list-bordered > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .list-bordered > li:last-child {
+    border-bottom: 0 none; }
+
+/**
+ * Miscellaneous Modifiers
+ */
+.list-rounded {
+  border-radius: 3px; }
+  .list-rounded > li:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+  .list-rounded > li:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; }
+
+.list-striped > li:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05); }
+
+.list-hover > li {
+  -webkit-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear; }
+.list-hover > li:hover {
+  background-color: #fdf8e6; }
+
+/*==============================================================================
   @Blockquotes
 ==============================================================================*/
 blockquote {
@@ -360,15 +419,15 @@ table {
 /**
  * Miscellaneous Modifiers
  */
-.table-border-radius {
+.table-rounded {
   border-radius: 3px; }
-  .table-border-radius thead:first-child tr:first-child td:first-child, .table-border-radius thead:first-child tr:first-child th:first-child, .table-border-radius tfoot:first-child tr:first-child td:first-child, .table-border-radius tfoot:first-child tr:first-child th:first-child, .table-border-radius tbody:first-child tr:first-child td:first-child, .table-border-radius tbody:first-child tr:first-child th:first-child {
+  .table-rounded thead:first-child tr:first-child td:first-child, .table-rounded thead:first-child tr:first-child th:first-child, .table-rounded tfoot:first-child tr:first-child td:first-child, .table-rounded tfoot:first-child tr:first-child th:first-child, .table-rounded tbody:first-child tr:first-child td:first-child, .table-rounded tbody:first-child tr:first-child th:first-child {
     border-top-left-radius: 3px; }
-  .table-border-radius thead:first-child tr:first-child td:last-child, .table-border-radius thead:first-child tr:first-child th:last-child, .table-border-radius tfoot:first-child tr:first-child td:last-child, .table-border-radius tfoot:first-child tr:first-child th:last-child, .table-border-radius tbody:first-child tr:first-child td:last-child, .table-border-radius tbody:first-child tr:first-child th:last-child {
+  .table-rounded thead:first-child tr:first-child td:last-child, .table-rounded thead:first-child tr:first-child th:last-child, .table-rounded tfoot:first-child tr:first-child td:last-child, .table-rounded tfoot:first-child tr:first-child th:last-child, .table-rounded tbody:first-child tr:first-child td:last-child, .table-rounded tbody:first-child tr:first-child th:last-child {
     border-top-right-radius: 3px; }
-  .table-border-radius thead:last-child tr:last-child td:first-child, .table-border-radius thead:last-child tr:last-child th:first-child, .table-border-radius tfoot:last-child tr:last-child td:first-child, .table-border-radius tfoot:last-child tr:last-child th:first-child, .table-border-radius tbody:last-child tr:last-child td:first-child, .table-border-radius tbody:last-child tr:last-child th:first-child {
+  .table-rounded thead:last-child tr:last-child td:first-child, .table-rounded thead:last-child tr:last-child th:first-child, .table-rounded tfoot:last-child tr:last-child td:first-child, .table-rounded tfoot:last-child tr:last-child th:first-child, .table-rounded tbody:last-child tr:last-child td:first-child, .table-rounded tbody:last-child tr:last-child th:first-child {
     border-bottom-left-radius: 3px; }
-  .table-border-radius thead:last-child tr:last-child td:last-child, .table-border-radius thead:last-child tr:last-child th:last-child, .table-border-radius tfoot:last-child tr:last-child td:last-child, .table-border-radius tfoot:last-child tr:last-child th:last-child, .table-border-radius tbody:last-child tr:last-child td:last-child, .table-border-radius tbody:last-child tr:last-child th:last-child {
+  .table-rounded thead:last-child tr:last-child td:last-child, .table-rounded thead:last-child tr:last-child th:last-child, .table-rounded tfoot:last-child tr:last-child td:last-child, .table-rounded tfoot:last-child tr:last-child th:last-child, .table-rounded tbody:last-child tr:last-child td:last-child, .table-rounded tbody:last-child tr:last-child th:last-child {
     border-bottom-right-radius: 3px; }
 
 .table-striped tbody tr:nth-of-type(odd) td, .table-striped tbody tr:nth-of-type(odd) th {
@@ -380,6 +439,9 @@ table {
 .table-striped-vertical tr td:nth-of-type(odd), .table-striped-vertical tr th:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05); }
 
+.table-hover tbody tr td {
+  -webkit-transition: background-color 0.25s linear;
+  transition: background-color 0.25s linear; }
 .table-hover tbody tr:hover td {
   background-color: #fdf8e6; }
 

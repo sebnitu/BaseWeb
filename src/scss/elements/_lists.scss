@@ -1,3 +1,145 @@
+////////////////////////////////////////////////////////////////////////////////
+// @List Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// List Map
+// Define all the settings for list mixins and classes.
+$list: (
+  'base' : false,
+  'nth' : odd,
+  'flush' : false,
+  'padding' : 10px,
+  'background' : none,
+  'background-stripe' : rgba($black, 0.05),
+  'background-hover' : $yellow-pale,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-radius' : $border-radius,
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Table Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make List Base
+// Creates the base styles for a list modifer mixin or class. Usually applied directly through a mixin or `%table-base` placeholder.
+// @param $options
+//   @type map
+//   @default $list map
+@mixin make-list-base($options: ()) {
+  $o: map-merge( $list, $options);
+  margin: 20px 0;
+  list-style: none;
+  background: map-get($o, 'background');
+  > li {
+    margin: 0;
+    padding: map-get($o, 'padding');
+    background-clip: padding-box;
+    @include clearfix();
+  }
+}
+
+// Make List Rowed
+// Adds borders to a list that divide list items.
+// @param $options
+//   @type map
+//   @default $list map
+@mixin make-list-rowed($options: ()) {
+  $o: map-merge($list, $options);
+  @if (map-get($o, 'base') == true) {
+    @include make-list-base($o);
+  }
+  > li {
+    border-bottom: map-get($o, 'border');
+    @if (map-get($o, 'flush') == true) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  > li:first-child  {
+    border-top: map-get($o, 'border');
+  }
+}
+
+// Make List Bordered
+// Adds borders to a list that wraps the list and divides list items.
+// @param $options
+//   @type map
+//   @default $list map
+@mixin make-list-bordered($options: ()) {
+  $o: map-merge($list, $options);
+  @if (map-get($o, 'base') == true) {
+    @include make-list-base($o);
+  }
+  border: map-get($o, 'border');
+  > li {
+    border-bottom: map-get($o, 'border');
+  }
+  > li:last-child  {
+    border-bottom: 0 none;
+  }
+}
+
+// Give List Rounded
+// Gives a list rounded borders depending on parameters passed.
+// @param $radius
+//   @type unit (pixel, percent)
+//   @default default ($list('border-radius'))
+// @param $options
+//   @type map
+//   @default $list map
+@mixin give-list-rounded($radius: default, $options: ()) {
+  $o: map-merge($list, $options);
+  @if ($radius != default) {
+    $o: map-merge($o, ('border-radius': $radius));
+  }
+  @include border-radius(map-get($o, 'border-radius'));
+  > li:first-child {
+    @include border-radius-top(map-get($o, 'border-radius'));
+  }
+  > li:last-child {
+    @include border-radius-bottom(map-get($o, 'border-radius'));
+  }
+}
+
+// Give List Stripes
+// Gives a list items alternating background colors.
+// @param $nth
+//   @type nth (odd, even)
+//   @default default ($list('nth'))
+// @param $options
+//   @type map
+//   @default $list map
+@mixin give-list-stripes($nth: default, $options: ()) {
+  $o: map-merge($list, $options);
+  @if ($nth != default) {
+    $o: map-merge($o, ('nth': $nth));
+  }
+  > li:nth-of-type(#{map-get($o, 'nth')}) {
+    background-color: map-get($o, 'background-stripe');
+  }
+}
+
+// Give List Hover
+// Gives list hover styles for list items.
+// @param $bg-hover
+//   @type color
+//   @default default ($list('background-hover'))
+// @param $options
+//   @type map
+//   @default $list map
+@mixin give-list-hover($bg-hover: default, $options: ()) {
+  $o: map-merge($list, $options);
+  @if ($bg-hover != default) {
+    $o: map-merge($o, ('background-hover': $bg-hover));
+  }
+  > li {
+    @include transition(background-color 0.25s linear);
+  }
+  > li:hover {
+    background-color: map-get($o, 'background-hover');
+  }
+}
+
 /*==============================================================================
   @Lists
 ==============================================================================*/
@@ -48,4 +190,46 @@ dl {
   dd {
     margin: 0 0 10px 20px;
   }
+}
+
+/*==============================================================================
+  @List Modifiers
+==============================================================================*/
+
+/**
+ * Base Table Modifiers Styles
+ */
+%list-base {
+  @include make-list-base();
+}
+
+/**
+ * Border Variations
+ */
+.list-rowed {
+  @extend %list-base;
+  @include make-list-rowed();
+}
+.list-flush {
+  > li {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.list-bordered {
+  @extend %list-base;
+  @include make-list-bordered();
+}
+
+/**
+ * Miscellaneous Modifiers
+ */
+.list-rounded {
+  @include give-list-rounded();
+}
+.list-striped {
+  @include give-list-stripes();
+}
+.list-hover {
+  @include give-list-hover();
 }

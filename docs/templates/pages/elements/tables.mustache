@@ -57,20 +57,20 @@
     <code class="right value">false</code>
     <span class="block light">Whether or not mixins should include base table styles. Set to false if you're using %table-base placeholder to apply base table styles to.</span>
   </li>
-  <li><code>$grid('valign')</code> <code class="right value">top</code></li>
-  <li><code>$grid('nth')</code> <code class="right value">odd</code></li>
-  <li><code>$grid('stripe')</code> <code class="right value">horizontal</code></li>
+  <li><code>$table('valign')</code> <code class="right value">top</code></li>
+  <li><code>$table('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$table('stripe')</code> <code class="right value">horizontal</code></li>
 
-  <li><code>$grid('padding')</code> <code class="right value">10px</code></li>
-  <li><code>$grid('padding-condensed')</code> <code class="right value">5px</code></li>
-  <li><code>$grid('padding-expanded')</code> <code class="right value">15px</code></li>
+  <li><code>$table('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$table('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$table('padding-expanded')</code> <code class="right value">15px</code></li>
   
-  <li><code>$grid('background')</code> <code class="right value">none</code></li>
-  <li><code>$grid('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$grid('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$table('background')</code> <code class="right value">none</code></li>
+  <li><code>$table('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$table('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$grid('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$grid('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 
 <h2 class="docs-header">Table Modifiers</h2>
@@ -122,7 +122,7 @@
   
   <li>
     <h3 class="docs-header">make-table-base</h3>
-    <p>Creates the base styles for a table modifer mixins or class. Usually applied directly through a mixin or <code>%table-base</code> placeholder.</p>
+    <p>Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or <code>%table-base</code> placeholder.</p>
     <pre class="docs-code"><code class="name">@mixin make-table-base()</code><code class="desc">@param $options
   @type map
   @default $table map</code></pre>
@@ -326,17 +326,17 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-border-radius</h3>
+    <h3 class="docs-header">give-table-rounded</h3>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-border-radius()</code><code class="desc">@param $radius
+    <pre class="docs-code"><code class="name">@mixin give-table-rounded()</code><code class="desc">@param $radius
   @type unit (pixel, percent)
   @default default ($table('border-radius'))
 @param $options
   @type map
   @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table-bordered table-border-radius&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table-bordered table-border-radius">
+      <table class="table-bordered table-rounded">
         <tr>
           <th>#</th>
           <th>Table Header</th>

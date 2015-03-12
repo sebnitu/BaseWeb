@@ -13,11 +13,9 @@
     $width,
     $height : false
   ) {
-
   @if unitless($width) {
     $width: 1px * $width;
   }
-  
   @if ($height != false) {
     @if unitless($height) {
       $height: 1px * $height;
@@ -25,7 +23,6 @@
   } @else {
     $height: $width;
   }
-  
   width: $width;
   height: $height;
 }
@@ -86,11 +83,9 @@
 //   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
 //   @default $box-shadow
 @mixin box-shadow( $shadow... ) {
-  
   @if length($shadow) == 0 {
     $shadow: $box-shadow;
   }
-  
   box-shadow: $shadow;
 }
 

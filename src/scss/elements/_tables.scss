@@ -3,27 +3,18 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Table Map
-// Define all the settings for the table mixins and classes.
+// Define all the settings for table mixins and classes.
 $table: (
-  // Miscellaneous
   'base' : false,
   'valign' : top,
-  
-  // Mixin Defaults
   'nth' : odd,
   'stripe' : horizontal,
-  
-  // Spacing
   'padding' : 10px,
   'padding-condensed' : 5px,
   'padding-expanded' : 15px,
-  
-  // Backgrounds
   'background' : none,
   'background-stripe' : rgba($black, 0.05),
   'background-hover' : $yellow-pale,
-  
-  // Borders
   'border' : 1px solid rgba($black, 0.1),
   'border-radius' : $border-radius,
 ) !default;
@@ -33,7 +24,7 @@ $table: (
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Table Base
-// Creates the base styles for a table modifer mixins or class. Usually applied directly through a mixin or `%table-base` placeholder.
+// Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or `%table-base` placeholder.
 // @param $options
 //   @type map
 //   @default $table map
@@ -41,7 +32,6 @@ $table: (
   $o: map-merge( $table, $options);
   border-collapse: separate;
   background: map-get($o, 'background');
-  
   td, th {
     padding: map-get($o, 'padding');
   }
@@ -54,7 +44,6 @@ $table: (
 //   @default $table map
 @mixin make-table-rowed($options: ()) {
   $o: map-merge($table, $options);
-  
   @if (map-get($o, 'base') == true) {
     @include make-table-base($o);
   }
@@ -79,7 +68,6 @@ $table: (
 //   @default $table map
 @mixin make-table-columned($options: ()) {
   $o: map-merge($table, $options);
-  
   @if (map-get($o, 'base') == true) {
     @include make-table-base($o);
   }
@@ -100,7 +88,6 @@ $table: (
 //   @default $table map
 @mixin make-table-bordered($options: ()) {
   $o: map-merge($table, $options);
-  
   @include make-table-rowed($o);
   @include make-table-columned($o);
 }
@@ -129,7 +116,7 @@ $table: (
   }
 }
 
-// Give Table Border Radius
+// Give Table Rounded
 // Gives a table rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
@@ -137,15 +124,12 @@ $table: (
 // @param $options
 //   @type map
 //   @default $table map
-@mixin give-table-border-radius($radius: default, $options: ()) {
+@mixin give-table-rounded($radius: default, $options: ()) {
   $o: map-merge($table, $options);
-  
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
-  
   @include border-radius(map-get($o, 'border-radius'));
-  
   thead:first-child,
   tfoot:first-child,
   tbody:first-child {
@@ -158,7 +142,6 @@ $table: (
       }
     }
   }
-  
   thead:last-child,
   tfoot:last-child,
   tbody:last-child {
@@ -186,14 +169,12 @@ $table: (
 //   @default $table map
 @mixin give-table-stripes($nth: default, $dir: default, $options: ()) {
   $o: map-merge($table, $options);
-  
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
   }
   @if ($dir != default) {
     $o: map-merge($o, ('stripe': $dir));
   }
-    
   @if (map-get($o, 'stripe') == vertical) {
     tr {
       td:nth-of-type(#{map-get($o, 'nth')}),
@@ -220,11 +201,12 @@ $table: (
 //   @default $table map
 @mixin give-table-hover($bg-hover: default, $options: ()) {
   $o: map-merge($table, $options);
-  
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
-  
+  tbody tr td {
+    @include transition(background-color 0.25s linear);
+  }
   tbody tr:hover td {
     background-color: map-get($o, 'background-hover');
   }
@@ -237,7 +219,6 @@ $table: (
 //   @default $table map
 @mixin make-table-responsive($options: ()) {
   $o: map-merge($table, $options);
-  
   margin: 10px 0;
   table {
     margin: 0;
@@ -272,7 +253,6 @@ table {
     text-align: left;
     font-weight: bold;
   }
-  
   &.table-valign-baseline {
     tr {
       vertical-align: baseline;
@@ -293,7 +273,6 @@ table {
       vertical-align: bottom;
     }
   }
-  
   &.table-align-left {
     tr td, tr th {
       text-align: left;
@@ -351,8 +330,8 @@ table {
 /**
  * Miscellaneous Modifiers
  */
-.table-border-radius {
-  @include give-table-border-radius();
+.table-rounded {
+  @include give-table-rounded();
 }
 .table-striped {
   @include give-table-stripes();
