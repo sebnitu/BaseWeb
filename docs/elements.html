@@ -25,46 +25,76 @@
 </head>
 <body>
 
-<div id="smooth" class="scene">
-
-  <div id="page-docs" class="page page-docs">
-    <div class="container">
-    
-      <div class="row">
-<header class="header col col-12">
-  <h1><a href="/index.html" class="logo no-smoothstate">BaseWeb</a></h1>
-</header><!-- .header -->      </div><!-- .row -->
-      
-      <div id="main" class="main">
-        <div class="row">
-          
-          <div class="col col-2">
-<ul class="nav mainnav">
-  <li><a href="/docs/settings.html">Settings</a></li>
-  <li><a href="/docs/core.html">Core</a></li>
-  <li><a href="/docs/elements.html">Elements</a></li>
-  <li><a href="/docs/blocks.html">Blocks</a></li>
-  <li><a href="/docs/custom.html">Custom</a></li>
-</ul>          </div><!-- .col -->
-                  
-<div class="scene_element col col-2">
-  <ul class="nav subnav">
-    <li><a href="#base">Base</a></li>
-    <li><a href="#typography">Typography</a></li>
-    <li><a href="#lists">Lists</a></li>
-    <li><a href="#blockquotes">Blockquotes</a></li>
-    <li><a href="#code">Code</a></li>
-    <li><a href="#tables">Tables</a></li>
-    <li><a href="#images">Images</a></li>
-    <li><a href="#rules">Rules</a></li>
-    <li><a href="#forms">Forms</a></li>
-    <li><a href="#buttons">Buttons</a></li>
-  </ul>
-</div>
-
-<div class="scene_element content col col-7 prefix-1">
+<div id="main" class="main m-scene">
   
-  <section id="base" class="subpage">
+<div class="container">
+
+  <div id="sidebar" class="sidebar">
+    <header id="header" class="header">
+      <h1><a href="/index.html" class="logo">BaseWeb</a></h1>
+    </header><!-- .header -->
+    <nav id="nav" class="nav">
+<ul>
+  
+  <li>
+    <a href="/docs/settings.html">Settings</a>
+    <ul>
+      <li><a href="#palette">Palette</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#grid">Grid</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#global">Global</a></li>
+    </ul>
+  </li>
+  
+  <li>
+    <a href="/docs/core.html">Core</a>
+    <ul>
+      <li><a href="#functions">Functions</a></li>
+      <li><a href="#mixins">Mixins</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#grid">Grid</a></li>
+    </ul>
+  </li>
+  
+  <li>
+    <a href="/docs/elements.html">Elements</a>
+    <ul>
+      <li><a href="#base">Base</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#lists">Lists</a></li>
+      <li><a href="#blockquotes">Blockquotes</a></li>
+      <li><a href="#code">Code</a></li>
+      <li><a href="#tables">Tables</a></li>
+      <li><a href="#images">Images</a></li>
+      <li><a href="#rules">Rules</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+    </ul>
+  </li>
+  
+  <li>
+    <a href="/docs/blocks.html">Blocks</a>
+    <ul>
+      <li><a href="#form-layout">Form Layout</a></li>
+      <li><a href="#button-groups">Button Groups</a></li>
+      <li><a href="#notice">Notice</a></li>
+    </ul>
+  </li>
+  
+  <li>
+    <a href="/docs/custom.html">Custom</a>
+    <ul>
+      <li><a href="#custom">Custom</a></li>
+    </ul>
+  </li>
+  
+</ul>    </nav>
+  </div><!-- .sidebar -->
+  
+  <div id="content" class="content">
+    <div class="scene_element scene_element--fadein">
+<section id="base" class="subpage">
 <h1 class="docs-header">Base Styles</h1>
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
 
@@ -107,14 +137,14 @@
     <pre class="docs-code"><code class="name">@class remove-clearfix</code></pre>
   </li>
 </ul>
-  </section><!-- .subpage -->
-  
-  <section id="typography" class="subpage">
+</section><!-- .subpage -->
+
+<section id="typography" class="subpage">
 <h1 class="docs-header">Typography</h1>
 <p>This is where BaseWeb defines our most basic typographic elements. This includes things like base font styles, headings, links and emphasis elements.</p>
 
 <h2 class="docs-header">Headings</h2>
-<p>Heading elements are used to describe the topic of the section it introduces. BaseWeb defines styles for headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> and also provide correlating <code>.h1</code> to <code>.h6</code> classes.</p>
+<p>Heading elements are used to describe the topic of the section it introduces. BaseWeb defines styles for headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>.</p>
 
 <pre><code>&lt;h1&gt;h1. BaseWeb Heading&lt;/h1&gt;
 &lt;h2&gt;h2. BaseWeb Heading&lt;/h2&gt;
@@ -318,9 +348,9 @@
     </div>
   </li>
 </ul>
-  </section><!-- .subpage -->
-  
-  <section id="lists" class="subpage">
+</section><!-- .subpage -->
+
+<section id="lists" class="subpage">
 <h1 class="docs-header">Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
@@ -424,12 +454,30 @@
   
   <li>
     <h3 class="docs-header">make-list-base</h3>
-    <p>...</p>
+    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a mixin or <code>%list-base</code> placeholder.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>// SCSS
+%list-base {
+  @include make-list-base();
+}
+.list-example-1 {
+  @extend %list-base;
+  ...
+}
+.list-example-2 {
+  @extend %list-base;
+  ...
+}</code></pre>
   </li>
   
   <li>
     <h3 class="docs-header">make-list-rowed</h3>
-    <p>...</p>
+    <p>Adds borders to a list that divide list items</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-rowed()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
     <pre><code>&lt;ul class=&quot;list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed">
@@ -446,6 +494,12 @@
         <li>List Item</li>
       </ul>
     </div>
+    <p>In the case where you don't want to create left and right padding on a list, you can set <code>$table('flush')</code> to true, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
+    <pre><code>// SCSS
+.new-list-styles {
+  @include make-list-rowed(('flush': true));
+}
+</code></pre>
     <pre><code>&lt;ul class=&quot;list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-flush">
@@ -466,7 +520,11 @@
   
   <li>
     <h3 class="docs-header">make-list-bordered</h3>
-    <p>...</p>
+    <p>Adds borders to a list that wraps the list and divides list items.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-bordered()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-bordered">
         <li>List Item</li>
@@ -486,7 +544,14 @@
   
   <li>
     <h3 class="docs-header">give-list-rounded</h3>
-    <p>...</p>
+    <p>Gives a list rounded borders depending on parameters passed.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-rounded()</code><code class="desc">@param $radius
+  @type unit (pixel, percent)
+  @default default ($list('border-radius'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-bordered list-rounded">
         <li>List Item</li>
@@ -506,7 +571,14 @@
   
   <li>
     <h3 class="docs-header">give-list-stripes</h3>
-    <p>...</p>
+    <p>Gives a list items alternating background colors.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-stripes()</code><code class="desc">@param $nth
+  @type nth (odd, even)
+  @default default ($list('nth'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-striped">
         <li>List Item</li>
@@ -526,7 +598,14 @@
   
   <li>
     <h3 class="docs-header">give-list-hover</h3>
-    <p>...</p>
+    <p>Gives list hover styles for list items.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-hover()</code><code class="desc">@param $bg-hover
+  @type color
+  @default default ($list('background-hover'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-hover">
         <li>List Item</li>
@@ -545,9 +624,9 @@
   </li>
   
 </ul>
-    </section><!-- .subpage -->
-  
-  <section id="blockquotes" class="subpage">
+  </section><!-- .subpage -->
+
+<section id="blockquotes" class="subpage">
 <h1 class="docs-header">Blockquotes</h1>
 
 <p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element, and optionally with in-line changes such as annotations and abbreviations.</p>
@@ -565,9 +644,9 @@
     </footer>
   </blockquote>
 </div>
-  </section><!-- .subpage -->
-  
-  <section id="code" class="subpage">
+</section><!-- .subpage -->
+
+<section id="code" class="subpage">
 <h1 class="docs-header">Code</h1>
 
 <p>The <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> HTML elements are primarily used for displaying computer recognized programs or code. BaseWeb comes with some predefined styles for both inline code markup and blocks of code.</p>
@@ -596,9 +675,9 @@ class BaseWeb() {
 }
 </code></pre>
 </div>
-  </section><!-- .subpage -->
-  
-  <section id="tables" class="subpage">
+</section><!-- .subpage -->
+
+<section id="tables" class="subpage">
 <h1 class="docs-header">Tables</h1>
 <p>The HTML <code>&lt;table&gt;</code> element is used to display tabular data. Tables have rows <code>&lt;tr&gt;</code>, cells <code>&lt;td&gt;</code>, header cells <code>&lt;th&gt;</code> and also can include <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tfooter&gt;</code> which wrap their respective table data. Here's an example of a table markup and the default styles:</p>
 
@@ -1149,9 +1228,9 @@ class BaseWeb() {
   </li>
   
 </ul>
-  </section><!-- .subpage -->
-  
-  <section id="images" class="subpage">
+</section><!-- .subpage -->
+
+<section id="images" class="subpage">
 <h1 class="docs-header">Images</h1>
 <p>Images in BaseWeb are handles responsively be default. You're also provided a few class modifiers for commonly used image styles as well as image alignment classes.</p>
 
@@ -1203,7 +1282,7 @@ class BaseWeb() {
     <h3 class="docs-header">.img-rounded</h3>
     <pre><code>&lt;img class=&quot;img-rounded&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="img-rounded" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center img-rounded" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
@@ -1211,7 +1290,7 @@ class BaseWeb() {
     <h3 class="docs-header">.img-circle</h3>
     <pre><code>&lt;img class=&quot;img-circle&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="img-circle" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center img-circle" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
@@ -1219,14 +1298,14 @@ class BaseWeb() {
     <h3 class="docs-header">.img-polaroid</h3>
     <pre><code>&lt;img class=&quot;img-polaroid&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="img-polaroid" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center img-polaroid" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
 </ul>
-  </section><!-- .subpage -->
-  
-  <section id="rules" class="subpage">
+</section><!-- .subpage -->
+
+<section id="rules" class="subpage">
 <h1 class="docs-header">Horizontal Rules</h1>
 <p>In HTML, the horizontal rule element (<code>&lt;hr&gt;</code>) represents a paragraph-level thematic break. BaseWeb provides some very basic and subtle styles for this element along with a few stylistic class modifiers.</p>
 
@@ -1267,56 +1346,30 @@ class BaseWeb() {
     </div>
   </li>
   
-</ul>  </section><!-- .subpage -->
-  
-  <section id="forms" class="subpage">
+</ul></section><!-- .subpage -->
+
+<section id="forms" class="subpage">
 <h1 class="docs-header">Forms</h1>
-<p>Forms are arguable the most intimidating aspect of HTML.</p>  </section><!-- .subpage -->
-  
-  <section id="buttons" class="subpage">
-<h1 class="docs-header">Buttons</h1>
-<p>...</p>  </section><!-- .subpage -->
-  
-</div><!-- .content -->
-                
-        </div><!-- .row -->
-      </div><!-- .main -->
-      
-    </div><!-- .container -->
-  </div>
-  
-<div id="page-home" class="page page-home">
-  <div class="container">
-  
-    <div class="row">
-<header class="header col col-12">
-  <h1><a href="/index.html" class="logo no-smoothstate">BaseWeb</a></h1>
-</header><!-- .header -->    </div><!-- .row -->
-    
-    <div class="row">
-      
-      <div class="col col-6">
-        <p class="intro">BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.</p>
-        <p class="action"><a href="#">Download BaseWeb</a> <span class="version">Currently v0.9.0</span></p>
-      </div>
-      
-      <div class="col col-5 prefix-1">
-<ul class="nav mainnav">
-  <li><a href="/docs/settings.html">Settings</a></li>
-  <li><a href="/docs/core.html">Core</a></li>
-  <li><a href="/docs/elements.html">Elements</a></li>
-  <li><a href="/docs/blocks.html">Blocks</a></li>
-  <li><a href="/docs/custom.html">Custom</a></li>
-</ul>      </div>
-    
-    </div><!-- .row -->
-  
-  </div><!-- .container -->
-  <div class="gradient-background"></div>
-</div><!-- .page-home -->
 
+<div class="notice notice-warning">
+  <p>The <strong>forms element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
 </div>
+</section><!-- .subpage -->
 
+<section id="buttons" class="subpage">
+<h1 class="docs-header">Buttons</h1>
+
+<div class="notice notice-warning">
+  <p>The <strong>buttons element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
+</div>
+</section><!-- .subpage -->
+    </div>
+  </div><!-- .content -->
+  
+</div><!-- .container -->
+  
+</div><!-- .main -->
+  
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/docs/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>

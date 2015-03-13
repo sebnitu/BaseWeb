@@ -1,1479 +1,3 @@
-/**
- * BaseWeb
- * A fresh front-end development framework
- * 
- * @author Sebastian Nitu
- * @url https://github.com/sebnitu/BaseWeb
- * @url http://sebnitu.com
- *
- * Copyright (c) 2014 Sebastian Nitu (MIT Licensed)
- */
-/*==============================================================================
-  @Base Styles
-==============================================================================*/
-html, body {
-  margin: 0;
-  padding: 0;
-  font-size: 14px; }
-
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; }
-
-body {
-  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
-  font-weight: normal;
-  line-height: 20px;
-  color: #303030; }
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-::-moz-selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
-
-::selection {
-  background: rgba(142, 203, 37, 0.25);
-  text-shadow: none; }
-
-/*==============================================================================
-  @Base Classes
-==============================================================================*/
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both; }
-
-.remove-clearfix:after {
-  content: none;
-  display: none;
-  clear: none; }
-
-/*==============================================================================
-  @Typography
-==============================================================================*/
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-  margin: 10px 0;
-  font-family: inherit;
-  font-weight: 600;
-  line-height: 20px;
-  color: #303030; }
-  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: #2ab0ea;
-    border: 0 none; }
-    h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-      color: #bc6bd3; }
-
-h1 {
-  font-size: 42px;
-  line-height: 50px; }
-
-h2 {
-  font-size: 34px;
-  line-height: 42px; }
-
-h3 {
-  font-size: 26px;
-  line-height: 34px; }
-
-h4 {
-  font-size: 18px;
-  line-height: 26px; }
-
-h5 {
-  font-size: 16px;
-  line-height: 22px; }
-
-h6 {
-  font-size: 14px;
-  line-height: 20px; }
-
-/**
- * Paragraphs
- */
-p {
-  margin: 10px 0; }
-
-/**
- * Anchors
- */
-a {
-  color: #2ab0ea;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
-  a:hover {
-    cursor: pointer;
-    color: #bc6bd3;
-    border-color: rgba(0, 0, 0, 0.25); }
-
-/**
- * Inline Text Elements
- */
-strong {
-  font-weight: bold; }
-
-em {
-  font-style: italic; }
-
-small {
-  font-size: 0.8em; }
-
-mark {
-  margin: 0 2px;
-  padding: 0 5px;
-  background: rgba(255, 255, 0, 0.5);
-  border-radius: 3px; }
-
-cite {
-  font-style: italic; }
-
-abbr[title], abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted #909090; }
-
-/**
- * Stylistic Classes
- */
-.text-lead {
-  font-size: 18px;
-  line-height: 26px; }
-
-.text-small {
-  font-size: 0.8em;
-  line-height: 1.5em; }
-
-.text-soften {
-  font-weight: normal;
-  color: #909090; }
-
-.text-harden {
-  font-weight: 600;
-  color: #303030; }
-
-/**
- * Alignment Classes
- */
-.text-left {
-  text-align: left; }
-
-.text-center {
-  text-align: center; }
-
-.text-right {
-  text-align: right; }
-
-.text-justify {
-  text-align: justify; }
-
-.text-nowrap {
-  white-space: nowrap; }
-
-/**
- * Transformation Classes
- */
-.text-lowercase {
-  text-transform: lowercase; }
-
-.text-uppercase {
-  text-transform: uppercase; }
-
-.text-capitalize {
-  text-transform: capitalize; }
-
-/*==============================================================================
-  @Lists
-==============================================================================*/
-ul, ol {
-  margin: 10px 0 10px 20px;
-  padding: 0; }
-  ul li, ol li {
-    margin: 5px 0; }
-
-/**
- * Unordered Lists
- */
-ul, ul ul ul ul {
-  list-style: disc; }
-
-ul ul {
-  list-style: circle; }
-
-ul ul ul {
-  list-style: disc; }
-
-/**
- * Ordered Lists
- */
-ol, ol ol ol ol {
-  list-style: decimal; }
-
-ol ol {
-  list-style: lower-alpha; }
-
-ol ol ol {
-  list-style: lower-roman; }
-
-/**
- * Description Lists
- */
-dl {
-  margin: 10px 0; }
-  dl dt {
-    margin: 10px 0 0;
-    font-weight: bold; }
-  dl dd {
-    margin: 0 0 10px 20px; }
-
-/*==============================================================================
-  @List Modifiers
-==============================================================================*/
-/**
- * Base Table Modifiers Styles
- */
-.list-rowed, .list-bordered, .docs-list {
-  margin: 20px 0;
-  list-style: none;
-  background: none; }
-  .list-rowed > li, .list-bordered > li, .docs-list > li {
-    margin: 0;
-    padding: 10px;
-    background-clip: padding-box; }
-    .list-rowed > li:after, .list-bordered > li:after, .docs-list > li:after {
-      content: "";
-      display: table;
-      clear: both; }
-
-/**
- * Border Variations
- */
-.list-rowed > li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-.list-rowed > li:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.list-flush > li {
-  padding-left: 0;
-  padding-right: 0; }
-
-.list-bordered {
-  border: 1px solid rgba(0, 0, 0, 0.1); }
-  .list-bordered > li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  .list-bordered > li:last-child {
-    border-bottom: 0 none; }
-
-/**
- * Miscellaneous Modifiers
- */
-.list-rounded {
-  border-radius: 3px; }
-  .list-rounded > li:first-child {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px; }
-  .list-rounded > li:last-child {
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px; }
-
-.list-striped > li:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-.list-hover > li {
-  -webkit-transition: background-color 0.25s linear;
-  transition: background-color 0.25s linear; }
-.list-hover > li:hover {
-  background-color: #fdf8e6; }
-
-/*==============================================================================
-  @Blockquotes
-==============================================================================*/
-blockquote {
-  margin: 15px 0;
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 3px; }
-  blockquote footer, blockquote .blockquote-footer {
-    display: block;
-    position: relative;
-    margin: 10px 0;
-    font-size: 100%; }
-
-/*==============================================================================
-  @Code
-==============================================================================*/
-code, pre {
-  background: rgba(0, 0, 0, 0.05);
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 12px;
-  line-height: 20px;
-  border-radius: 3px; }
-
-code {
-  display: inline-block;
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  line-height: inherit;
-  color: #d25992; }
-
-pre {
-  margin: 20px 0;
-  padding: 20px;
-  overflow: auto;
-  color: #303030; }
-  pre code {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    white-space: pre;
-    font-size: 100%;
-    color: inherit;
-    background: none;
-    border: 0 none; }
-  pre.max-height {
-    max-height: 400px; }
-
-/*==============================================================================
-  @Tables
-==============================================================================*/
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  max-width: 100%;
-  margin: 20px 0;
-  overflow: auto; }
-  table tr {
-    vertical-align: top; }
-  table th {
-    color: #303030;
-    text-align: left;
-    font-weight: bold; }
-  table.table-valign-baseline tr {
-    vertical-align: baseline; }
-  table.table-valign-top tr {
-    vertical-align: top; }
-  table.table-valign-middle tr {
-    vertical-align: middle; }
-  table.table-valign-bottom tr {
-    vertical-align: bottom; }
-  table.table-align-left tr td, table.table-align-left tr th {
-    text-align: left; }
-  table.table-align-center tr td, table.table-align-center tr th {
-    text-align: center; }
-  table.table-align-right tr td, table.table-align-right tr th {
-    text-align: right; }
-
-/*==============================================================================
-  @Table Modifiers
-==============================================================================*/
-/**
- * Base Table Modifiers Styles
- */
-.table-rowed, .table-columned, .table-bordered {
-  border-collapse: separate;
-  background: none; }
-  .table-rowed td, .table-columned td, .table-bordered td, .table-rowed th, .table-columned th, .table-bordered th {
-    padding: 10px; }
-
-/**
- * Border Variations
- */
-.table-rowed td, .table-rowed th {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-.table-rowed thead:first-child tr:first-child td, .table-rowed thead:first-child tr:first-child th, .table-rowed tfoot:first-child tr:first-child td, .table-rowed tfoot:first-child tr:first-child th, .table-rowed tbody:first-child tr:first-child td, .table-rowed tbody:first-child tr:first-child th {
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.table-columned td, .table-columned th {
-  border-right: 1px solid rgba(0, 0, 0, 0.1); }
-.table-columned tr td:first-child, .table-columned tr th:first-child {
-  border-left: 1px solid rgba(0, 0, 0, 0.1); }
-
-.table-bordered td, .table-bordered th {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-.table-bordered thead:first-child tr:first-child td, .table-bordered thead:first-child tr:first-child th, .table-bordered tfoot:first-child tr:first-child td, .table-bordered tfoot:first-child tr:first-child th, .table-bordered tbody:first-child tr:first-child td, .table-bordered tbody:first-child tr:first-child th {
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
-.table-bordered td, .table-bordered th {
-  border-right: 1px solid rgba(0, 0, 0, 0.1); }
-.table-bordered tr td:first-child, .table-bordered tr th:first-child {
-  border-left: 1px solid rgba(0, 0, 0, 0.1); }
-
-/**
- * Padding Variations
- */
-.table-condensed td, .table-condensed th {
-  padding: 5px; }
-
-.table-expanded td, .table-expanded th {
-  padding: 15px; }
-
-/**
- * Miscellaneous Modifiers
- */
-.table-rounded {
-  border-radius: 3px; }
-  .table-rounded thead:first-child tr:first-child td:first-child, .table-rounded thead:first-child tr:first-child th:first-child, .table-rounded tfoot:first-child tr:first-child td:first-child, .table-rounded tfoot:first-child tr:first-child th:first-child, .table-rounded tbody:first-child tr:first-child td:first-child, .table-rounded tbody:first-child tr:first-child th:first-child {
-    border-top-left-radius: 3px; }
-  .table-rounded thead:first-child tr:first-child td:last-child, .table-rounded thead:first-child tr:first-child th:last-child, .table-rounded tfoot:first-child tr:first-child td:last-child, .table-rounded tfoot:first-child tr:first-child th:last-child, .table-rounded tbody:first-child tr:first-child td:last-child, .table-rounded tbody:first-child tr:first-child th:last-child {
-    border-top-right-radius: 3px; }
-  .table-rounded thead:last-child tr:last-child td:first-child, .table-rounded thead:last-child tr:last-child th:first-child, .table-rounded tfoot:last-child tr:last-child td:first-child, .table-rounded tfoot:last-child tr:last-child th:first-child, .table-rounded tbody:last-child tr:last-child td:first-child, .table-rounded tbody:last-child tr:last-child th:first-child {
-    border-bottom-left-radius: 3px; }
-  .table-rounded thead:last-child tr:last-child td:last-child, .table-rounded thead:last-child tr:last-child th:last-child, .table-rounded tfoot:last-child tr:last-child td:last-child, .table-rounded tfoot:last-child tr:last-child th:last-child, .table-rounded tbody:last-child tr:last-child td:last-child, .table-rounded tbody:last-child tr:last-child th:last-child {
-    border-bottom-right-radius: 3px; }
-
-.table-striped tbody tr:nth-of-type(odd) td, .table-striped tbody tr:nth-of-type(odd) th {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-.table-striped-horizontal tbody tr:nth-of-type(odd) td, .table-striped-horizontal tbody tr:nth-of-type(odd) th {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-.table-striped-vertical tr td:nth-of-type(odd), .table-striped-vertical tr th:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05); }
-
-.table-hover tbody tr td {
-  -webkit-transition: background-color 0.25s linear;
-  transition: background-color 0.25s linear; }
-.table-hover tbody tr:hover td {
-  background-color: #fdf8e6; }
-
-/**
- * Responsive Tables
- */
-.table-responsive {
-  margin: 10px 0; }
-  .table-responsive table {
-    margin: 0; }
-  @media (max-width: 759px) {
-    .table-responsive {
-      overflow: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1); }
-      .table-responsive table td, .table-responsive table th {
-        white-space: nowrap; } }
-
-/*==============================================================================
-  @Images
-==============================================================================*/
-img {
-  display: block;
-  margin: 10px 0;
-  max-width: 100%;
-  height: auto; }
-
-/**
- * Alignment Modifiers
- */
-.align-center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-
-p .align-center {
-  margin-top: 0;
-  margin-bottom: 0; }
-
-.align-left {
-  float: left;
-  margin: 10px 15px 10px 0; }
-
-p .align-left {
-  margin-top: 0; }
-
-.align-right {
-  float: right;
-  margin: 10px 0 10px 15px; }
-
-p .align-right {
-  margin-top: 0; }
-
-/**
- * Stylistic Modifiers
- */
-.img-rounded {
-  border-radius: 3px; }
-
-.img-circle {
-  border-radius: 50%; }
-
-.img-polaroid {
-  background: #ffffff;
-  background-clip: padding-box;
-  padding: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
-
-/*==============================================================================
-  @Rules
-==============================================================================*/
-hr {
-  display: block;
-  height: 0;
-  width: 100%;
-  clear: both;
-  margin: 20px 0;
-  padding: 0;
-  background: none;
-  border: 0 none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  hr.hr-dotted {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.25); }
-  hr.hr-dashed {
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.25); }
-  hr.hr-double {
-    border-bottom: 3px double rgba(0, 0, 0, 0.1); }
-
-/*==============================================================================
-  @Notice
-==============================================================================*/
-.notice {
-  margin: 30px 0;
-  padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
-
-.notice-success {
-  background-color: #f3f9e8; }
-
-.notice-info {
-  background-color: #e9f6fc; }
-
-.notice-warning {
-  background-color: #fdf8e6; }
-
-.notice-danger {
-  background-color: #fbeded; }
-
-/*==============================================================================
-  @Mobile Grid System
-==============================================================================*/
-.container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px; }
-  .container.container-float-left {
-    float: left; }
-  .container.container-float-right {
-    float: right; }
-  .container.container-no-padding {
-    padding: 0; }
-  .container.container-no-margin {
-    margin: 0; }
-  .container:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-.row {
-  margin-left: -10px;
-  margin-right: -10px;
-  margin-left: 0;
-  margin-right: 0; }
-  .row:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .row.row-center {
-    text-align: center; }
-    .row.row-center > * {
-      font-size: 0;
-      line-height: 0; }
-    .row.row-center .col {
-      float: none;
-      display: inline-block;
-      font-size: 14px;
-      line-height: 20px;
-      text-align: left; }
-      .row.row-center .col:after {
-        content: "";
-        display: table;
-        clear: both; }
-
-.col {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  float: left;
-  min-height: 1px; }
-  .col.align-right {
-    float: right; }
-  .col.align-left {
-    float: left; }
-
-.prefix {
-  margin-left: 0; }
-  .prefix:first-child {
-    margin-left: 0; }
-
-.suffix {
-  margin-right: 0; }
-
-/*==============================================================================
-  @Grid System
-==============================================================================*/
-@media (min-width: 760px) {
-  .container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px; }
-    .container.container-float-left {
-      float: left; }
-    .container.container-float-right {
-      float: right; }
-    .container.container-no-padding {
-      padding: 0; }
-    .container.container-no-margin {
-      margin: 0; }
-    .container:after {
-      content: "";
-      display: table;
-      clear: both; }
-  .row {
-    margin-left: -10px;
-    margin-right: -10px; }
-    .row:after {
-      content: "";
-      display: table;
-      clear: both; }
-    .row.row-center {
-      text-align: center; }
-      .row.row-center > * {
-        font-size: 0;
-        line-height: 0; }
-      .row.row-center .col {
-        float: none;
-        display: inline-block;
-        font-size: 14px;
-        line-height: 20px;
-        text-align: left; }
-        .row.row-center .col:after {
-          content: "";
-          display: table;
-          clear: both; }
-  .col {
-    margin-left: 0;
-    padding-left: 10px;
-    padding-right: 10px;
-    float: left;
-    min-height: 1px; }
-    .col.col-no-gutter {
-      margin-left: 0; }
-    .col:first-child {
-      margin-left: 0; }
-    .col.align-right {
-      float: right; }
-    .col.align-left {
-      float: left; }
-  .col-1 {
-    width: 8.33333%; }
-  .col-2 {
-    width: 16.66667%; }
-  .col-3 {
-    width: 25%; }
-  .col-4 {
-    width: 33.33333%; }
-  .col-5 {
-    width: 41.66667%; }
-  .col-6 {
-    width: 50%; }
-  .col-7 {
-    width: 58.33333%; }
-  .col-8 {
-    width: 66.66667%; }
-  .col-9 {
-    width: 75%; }
-  .col-10 {
-    width: 83.33333%; }
-  .col-11 {
-    width: 91.66667%; }
-  .col-12 {
-    width: 100%; }
-  .prefix-1 {
-    margin-left: 8.33333%; }
-    .prefix-1:first-child {
-      margin-left: 8.33333%; }
-  .prefix-2 {
-    margin-left: 16.66667%; }
-    .prefix-2:first-child {
-      margin-left: 16.66667%; }
-  .prefix-3 {
-    margin-left: 25%; }
-    .prefix-3:first-child {
-      margin-left: 25%; }
-  .prefix-4 {
-    margin-left: 33.33333%; }
-    .prefix-4:first-child {
-      margin-left: 33.33333%; }
-  .prefix-5 {
-    margin-left: 41.66667%; }
-    .prefix-5:first-child {
-      margin-left: 41.66667%; }
-  .prefix-6 {
-    margin-left: 50%; }
-    .prefix-6:first-child {
-      margin-left: 50%; }
-  .prefix-7 {
-    margin-left: 58.33333%; }
-    .prefix-7:first-child {
-      margin-left: 58.33333%; }
-  .prefix-8 {
-    margin-left: 66.66667%; }
-    .prefix-8:first-child {
-      margin-left: 66.66667%; }
-  .prefix-9 {
-    margin-left: 75%; }
-    .prefix-9:first-child {
-      margin-left: 75%; }
-  .prefix-10 {
-    margin-left: 83.33333%; }
-    .prefix-10:first-child {
-      margin-left: 83.33333%; }
-  .prefix-11 {
-    margin-left: 91.66667%; }
-    .prefix-11:first-child {
-      margin-left: 91.66667%; }
-  .prefix-12 {
-    margin-left: 100%; }
-    .prefix-12:first-child {
-      margin-left: 100%; }
-  .suffix-1 {
-    margin-right: 8.33333%; }
-  .suffix-2 {
-    margin-right: 16.66667%; }
-  .suffix-3 {
-    margin-right: 25%; }
-  .suffix-4 {
-    margin-right: 33.33333%; }
-  .suffix-5 {
-    margin-right: 41.66667%; }
-  .suffix-6 {
-    margin-right: 50%; }
-  .suffix-7 {
-    margin-right: 58.33333%; }
-  .suffix-8 {
-    margin-right: 66.66667%; }
-  .suffix-9 {
-    margin-right: 75%; }
-  .suffix-10 {
-    margin-right: 83.33333%; }
-  .suffix-11 {
-    margin-right: 91.66667%; }
-  .suffix-12 {
-    margin-right: 100%; } }
-
-/*==============================================================================
-  @Structure
-==============================================================================*/
-body {
-  background: #efefef;
-  color: #303030; }
-
-.row {
-  position: relative; }
-
-.sidebar {
-  position: fixed;
-  height: 100%;
-  width: 300px;
-  top: 0;
-  bottom: 0; }
-
-.content {
-  margin: 0 0 0 300px;
-  padding: 160px 0 160px 60px; }
-
-/*==============================================================================
-  @Header
-==============================================================================*/
-.header {
-  position: relative;
-  z-index: 10;
-  padding: 61px 0; }
-
-.header h1 {
-  margin: 0; }
-  .header h1:after {
-    content: "";
-    display: table;
-    clear: both; }
-
-.header .logo {
-  background: url('../img/baseweb-logo-black.png') no-repeat left center;
-  border: 0 none;
-  display: block;
-  width: 180px;
-  height: 38px;
-  float: left;
-  padding: 0;
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  overflow: hidden; }
-
-/*==============================================================================
-  @Navigation
-==============================================================================*/
-.nav {
-  position: relative;
-  margin: 10px 0; }
-
-.nav ul {
-  width: 50%;
-  margin: 0;
-  list-style: none; }
-
-.nav ul li {
-  margin: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-
-.nav ul li:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.nav ul li a {
-  display: block;
-  padding: 10px;
-  background: transparent;
-  color: #303030;
-  border: 0 none; }
-  .nav ul li a:hover {
-    background-clip: padding-box;
-    color: #de5151; }
-
-.nav ul li.active > a {
-  color: #de5151; }
-
-/**
- * Primary Nav
- */
-.nav > ul {
-  width: 50%;
-  padding-right: 10px; }
-
-/**
- * Secondary Nav
- */
-.nav ul ul {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: none;
-  padding-left: 10px; }
-
-.nav ul li.active ul {
-  display: block; }
-
-/*==============================================================================
-  @Content
-==============================================================================*/
-h1.docs-header {
-  font-size: 26px;
-  line-height: 34px;
-  font-weight: 600; }
-
-h2.docs-header {
-  font-size: 22px;
-  line-height: 30px;
-  font-weight: 600; }
-
-h3.docs-header {
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500; }
-
-hr.docs-hr {
-  margin: 30px 0; }
-
-/**
- * Custom Code Blocks
- */
-.docs-code .name, .docs-code .desc {
-  display: block;
-  margin: 0; }
-.docs-code .name {
-  color: #d25992; }
-.docs-code .desc {
-  color: #303030; }
-
-/*==============================================================================
-  @Docs Lists
-==============================================================================*/
-.docs-list {
-  margin: 30px 0; }
-  .docs-list > li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-left: 0;
-    padding-right: 0; }
-  .docs-list > li:first-child {
-    border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.docs-list-hover {
-  margin: 20px 0;
-  list-style: none;
-  background: none;
-  margin: 30px 0; }
-  .docs-list-hover > li {
-    margin: 0;
-    padding: 15px 10px;
-    background-clip: padding-box; }
-    .docs-list-hover > li:after {
-      content: "";
-      display: table;
-      clear: both; }
-  .docs-list-hover > li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  .docs-list-hover > li:first-child {
-    border-top: 1px solid rgba(0, 0, 0, 0.1); }
-  .docs-list-hover > li {
-    -webkit-transition: background-color 0.25s linear;
-    transition: background-color 0.25s linear; }
-  .docs-list-hover > li:hover {
-    background-color: rgba(255, 255, 255, 0.5); }
-
-/**
- * Unique List Content
- */
-.docs-list-hover .title {
-  padding-left: 0;
-  padding-right: 0;
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500; }
-.docs-list-hover .title:hover, .docs-list-hover .desc:hover {
-  background: transparent; }
-.docs-list-hover .left {
-  float: left; }
-.docs-list-hover .right {
-  float: right; }
-.docs-list-hover .block {
-  display: block;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px dotted rgba(0, 0, 0, 0.2); }
-  .docs-list-hover .block:after {
-    content: "";
-    display: table;
-    clear: both; }
-.docs-list-hover .value {
-  color: #303030; }
-.docs-list-hover .light {
-  color: #909090; }
-.docs-list-hover .swatch, .docs-list-hover .box-border-radius {
-  margin: -5px 0; }
-.docs-list-hover code {
-  margin: 0;
-  padding: 0;
-  background: transparent; }
-
-/*==============================================================================
-  @Docs Tables
-==============================================================================*/
-.docs-table {
-  margin: 30px 0; }
-  .docs-table th {
-    font-size: 18px;
-    line-height: 30px;
-    font-weight: 500;
-    padding-left: 0;
-    padding-right: 0; }
-  .docs-table td {
-    padding: 15px 10px; }
-  .docs-table code {
-    margin: 0;
-    padding: 0;
-    background: transparent; }
-
-/*==============================================================================
-  @Grid Demo
-==============================================================================*/
-.demo-grid {
-  margin: 20px 0; }
-
-.demo-grid .col {
-  margin: 10px 0; }
-
-.demo-grid .col p {
-  margin: 0;
-  padding: 15px 20px;
-  background: rgba(0, 0, 0, 0.05);
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 12px;
-  line-height: 20px;
-  text-align: center;
-  border-radius: 3px; }
-
-/*==============================================================================
-  @Mixin Demos
-==============================================================================*/
-/**
- * Demo Blocks
- * Used for wrapping demo block examples
- */
-.demo {
-  margin: 20px 0;
-  padding: 10px 20px;
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 3px; }
-
-.demo blockquote, .demo pre, .demo table {
-  margin: 10px 0; }
-
-.demo .table-responsive table {
-  margin: 0; }
-
-/**
- * Demo Example
- * Used for inline demo examples
- */
-.demo-example {
-  background: #989e10;
-  border-radius: 3px;
-  width: 50px;
-  height: 50px; }
-
-/**
- * Border Radius
- */
-.demo-border-radius {
-  display: inline-block;
-  background: #aeb512;
-  width: 30px;
-  height: 30px; }
-
-.mixin-border-radius {
-  border-radius: 50%; }
-
-.mixin-border-radius-top {
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%; }
-
-.mixin-border-radius-top-left {
-  border-top-left-radius: 50%; }
-
-.mixin-border-radius-top-right {
-  border-top-right-radius: 50%; }
-
-.mixin-border-radius-bottom {
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%; }
-
-.mixin-border-radius-bottom-left {
-  border-bottom-left-radius: 50%; }
-
-.mixin-border-radius-bottom-right {
-  border-bottom-right-radius: 50%; }
-
-.mixin-border-radius-left {
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%; }
-
-.mixin-border-radius-left-top {
-  border-top-left-radius: 50%; }
-
-.mixin-border-radius-left-bottom {
-  border-bottom-left-radius: 50%; }
-
-.mixin-border-radius-right {
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%; }
-
-.mixin-border-radius-right-top {
-  border-top-right-radius: 50%; }
-
-.mixin-border-radius-right-bottom {
-  border-bottom-right-radius: 50%; }
-
-/**
- * Rotate
- */
-.demo-rotate {
-  background: #1495cd;
-  margin: 20px auto;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg); }
-
-/**
- * Transition
- */
-.demo-transition {
-  margin: 10px auto;
-  background-color: #3da96d;
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
-
-.demo-transition:hover {
-  background-color: #d25992; }
-
-/**
- * Animations
- */
-@-webkit-keyframes example {
-  0% {
-    background-color: #de5151; }
-
-  50% {
-    background-color: #2ab0ea; }
-
-  100% {
-    background-color: #de5151; } }
-
-@keyframes example {
-  0% {
-    background-color: #de5151; }
-
-  50% {
-    background-color: #2ab0ea; }
-
-  100% {
-    background-color: #de5151; } }
-
-.demo-animation {
-  margin: 10px auto;
-  background-color: #de5151;
-  -webkit-animation: example 10s linear 1s infinite normal;
-  animation: example 10s linear 1s infinite normal; }
-
-/**
- * Gradient
- */
-.demo-linear-gradient {
-  margin: 10px auto;
-  width: auto;
-  background-image: -webkit-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: -moz-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: -ms-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3); }
-
-.demo-radial-gradient {
-  margin: 10px auto;
-  width: 80px;
-  height: 80px;
-  background-image: -webkit-radial-gradient(circle, #bc6bd3, #aa44c7);
-  background-image: -moz-radial-gradient(circle, #bc6bd3, #aa44c7);
-  background-image: -ms-radial-gradient(circle, #bc6bd3, #aa44c7);
-  background-image: radial-gradient(circle, #bc6bd3, #aa44c7); }
-
-/**
- * Text
- */
-.demo-text-truncate {
-  background: #3da96d;
-  width: 200px;
-  max-width: 100%;
-  margin: 10px auto;
-  padding: 10px 20px;
-  color: #ffffff;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border-radius: 3px;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap; }
-
-/**
- * Triangle
- */
-.demo-triangle .col {
-  text-align: center; }
-
-.example-triangle-1, .example-triangle-2, .example-triangle-3 {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 0 none;
-  border-style: solid;
-  border-color: transparent;
-  vertical-align: middle;
-  margin: 10px 0; }
-
-.example-triangle-1 {
-  border-width: 14px 14px 14px 0;
-  border-right-color: #1495cd; }
-
-.example-triangle-2 {
-  border-width: 14px 14px 0 14px;
-  border-top-color: #4469da;
-  margin: 15px 0; }
-
-.example-triangle-3 {
-  border-width: 14px 0 14px 14px;
-  border-left-color: #aa44c7; }
-
-/*==============================================================================
-  @Swatches
-==============================================================================*/
-.swatch {
-  display: inline-block;
-  background: #000000;
-  width: 30px;
-  height: 30px;
-  border-radius: 3px; }
-
-.swatch-black {
-  background: #000000; }
-
-.swatch-white {
-  background: #ffffff; }
-
-.swatch-gray-pale {
-  background: #efefef; }
-
-.swatch-gray-lighter {
-  background: #cccccc; }
-
-.swatch-gray-light {
-  background: #909090; }
-
-.swatch-gray {
-  background: #606060; }
-
-.swatch-gray-dark {
-  background: #303030; }
-
-.swatch-gray-darker {
-  background: #101010; }
-
-.swatch-red-pale {
-  background: #fbeded; }
-
-.swatch-red-lighter {
-  background: #e67c7c; }
-
-.swatch-red-light {
-  background: #e26666; }
-
-.swatch-red {
-  background: #de5151; }
-
-.swatch-red-dark {
-  background: #da3c3c; }
-
-.swatch-red-darker {
-  background: #d42828; }
-
-.swatch-red-orange-pale {
-  background: #fcf0eb; }
-
-.swatch-red-orange-lighter {
-  background: #ed9171; }
-
-.swatch-red-orange-light {
-  background: #ea805a; }
-
-.swatch-red-orange {
-  background: #e76e44; }
-
-.swatch-red-orange-dark {
-  background: #e45d2d; }
-
-.swatch-red-orange-darker {
-  background: #dc4e1c; }
-
-.swatch-orange-pale {
-  background: #fcf3eb; }
-
-.swatch-orange-lighter {
-  background: #ecac6f; }
-
-.swatch-orange-light {
-  background: #e99f59; }
-
-.swatch-orange {
-  background: #e69242; }
-
-.swatch-orange-dark {
-  background: #e3852b; }
-
-.swatch-orange-darker {
-  background: #d8781d; }
-
-.swatch-yellow-orange-pale {
-  background: #fdf5e7; }
-
-.swatch-yellow-orange-lighter {
-  background: #f4bf52; }
-
-.swatch-yellow-orange-light {
-  background: #f2b63a; }
-
-.swatch-yellow-orange {
-  background: #f1ad22; }
-
-.swatch-yellow-orange-dark {
-  background: #eba20f; }
-
-.swatch-yellow-orange-darker {
-  background: #d3920d; }
-
-.swatch-yellow-pale {
-  background: #fdf8e6; }
-
-.swatch-yellow-lighter {
-  background: #f4d03f; }
-
-.swatch-yellow-light {
-  background: #f2ca27; }
-
-.swatch-yellow {
-  background: #f1c40f; }
-
-.swatch-yellow-dark {
-  background: #dab10d; }
-
-.swatch-yellow-darker {
-  background: #c29d0b; }
-
-.swatch-yellow-green-pale {
-  background: #f9f9e6; }
-
-.swatch-yellow-green-lighter {
-  background: #e1ea2a; }
-
-.swatch-yellow-green-light {
-  background: #dae417; }
-
-.swatch-yellow-green {
-  background: #c4cd14; }
-
-.swatch-yellow-green-dark {
-  background: #aeb512; }
-
-.swatch-yellow-green-darker {
-  background: #989e10; }
-
-.swatch-green-pale {
-  background: #f3f9e8; }
-
-.swatch-green-lighter {
-  background: #a6dd46; }
-
-.swatch-green-light {
-  background: #9bd930; }
-
-.swatch-green {
-  background: #8ecb25; }
-
-.swatch-green-dark {
-  background: #7fb521; }
-
-.swatch-green-darker {
-  background: #70a01d; }
-
-.swatch-blue-green-pale {
-  background: #edf8f2; }
-
-.swatch-blue-green-lighter {
-  background: #7cd0a1; }
-
-.swatch-blue-green-light {
-  background: #69c994; }
-
-.swatch-blue-green {
-  background: #56c386; }
-
-.swatch-blue-green-dark {
-  background: #43bc79; }
-
-.swatch-blue-green-darker {
-  background: #3da96d; }
-
-.swatch-blue-pale {
-  background: #e9f6fc; }
-
-.swatch-blue-lighter {
-  background: #58c1ef; }
-
-.swatch-blue-light {
-  background: #41b9ec; }
-
-.swatch-blue {
-  background: #2ab0ea; }
-
-.swatch-blue-dark {
-  background: #16a6e4; }
-
-.swatch-blue-darker {
-  background: #1495cd; }
-
-.swatch-blue-violet-pale {
-  background: #f0f2fb; }
-
-.swatch-blue-violet-lighter {
-  background: #99adeb; }
-
-.swatch-blue-violet-light {
-  background: #849ce7; }
-
-.swatch-blue-violet {
-  background: #6f8be2; }
-
-.swatch-blue-violet-dark {
-  background: #597ade; }
-
-.swatch-blue-violet-darker {
-  background: #4469da; }
-
-.swatch-violet-pale {
-  background: #f8effa; }
-
-.swatch-violet-lighter {
-  background: #ce92df; }
-
-.swatch-violet-light {
-  background: #c57fd9; }
-
-.swatch-violet {
-  background: #bc6bd3; }
-
-.swatch-violet-dark {
-  background: #b357cd; }
-
-.swatch-violet-darker {
-  background: #aa44c7; }
-
-.swatch-red-violet-pale {
-  background: #faedf3; }
-
-.swatch-red-violet-lighter {
-  background: #dd81ac; }
-
-.swatch-red-violet-light {
-  background: #d86d9f; }
-
-.swatch-red-violet {
-  background: #d25992; }
-
-.swatch-red-violet-dark {
-  background: #cd4584; }
-
-.swatch-red-violet-darker {
-  background: #c33577; }
-
-.swatch-bg-color {
-  background: rgba(0, 0, 0, 0.05); }
-
-.swatch-bg-selection {
-  background: rgba(142, 203, 37, 0.25); }
-
-.swatch-border-color {
-  background: rgba(0, 0, 0, 0.1); }
-
-.swatch-border-color-hover {
-  background: rgba(0, 0, 0, 0.25); }
-
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -1499,36 +23,33 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounce {
   /* line 28, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 35, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 42, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 49, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 20%, 53%, 80%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
+  /* line 35, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 43% {
     -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     -webkit-transform: translate3d(0, -30px, 0);
     transform: translate3d(0, -30px, 0); }
 
+  /* line 42, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   70% {
     -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     -webkit-transform: translate3d(0, -15px, 0);
     transform: translate3d(0, -15px, 0); }
 
+  /* line 49, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, -4px, 0);
     transform: translate3d(0, -4px, 0); } }
 
 @keyframes bounce {
   /* line 56, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 64, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 72, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 80, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 20%, 53%, 80%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -1536,6 +57,7 @@ Copyright (c) 2014 Daniel Eden
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
+  /* line 64, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 43% {
     -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
@@ -1543,6 +65,7 @@ Copyright (c) 2014 Daniel Eden
     -ms-transform: translate3d(0, -30px, 0);
     transform: translate3d(0, -30px, 0); }
 
+  /* line 72, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   70% {
     -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
@@ -1550,6 +73,7 @@ Copyright (c) 2014 Daniel Eden
     -ms-transform: translate3d(0, -15px, 0);
     transform: translate3d(0, -15px, 0); }
 
+  /* line 80, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, -4px, 0);
     -ms-transform: translate3d(0, -4px, 0);
@@ -1565,19 +89,19 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flash {
   /* line 96, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 100, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 50%, 100% {
     opacity: 1; }
 
+  /* line 100, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   25%, 75% {
     opacity: 0; } }
 
 @keyframes flash {
   /* line 106, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 110, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 50%, 100% {
     opacity: 1; }
 
+  /* line 110, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   25%, 75% {
     opacity: 0; } }
 
@@ -1589,34 +113,34 @@ Copyright (c) 2014 Daniel Eden
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 @-webkit-keyframes pulse {
   /* line 123, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 128, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 133, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 128, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(1.05, 1.05, 1.05); }
 
+  /* line 133, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
 @keyframes pulse {
   /* line 140, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 146, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 152, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 146, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     -ms-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(1.05, 1.05, 1.05); }
 
+  /* line 152, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
@@ -1629,78 +153,78 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rubberBand {
   /* line 165, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 170, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 175, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 180, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 185, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 190, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 195, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 170, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: scale3d(1.25, 0.75, 1);
     transform: scale3d(1.25, 0.75, 1); }
 
+  /* line 175, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: scale3d(0.75, 1.25, 1);
     transform: scale3d(0.75, 1.25, 1); }
 
+  /* line 180, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: scale3d(1.15, 0.85, 1);
     transform: scale3d(1.15, 0.85, 1); }
 
+  /* line 185, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   65% {
     -webkit-transform: scale3d(0.95, 1.05, 1);
     transform: scale3d(0.95, 1.05, 1); }
 
+  /* line 190, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: scale3d(1.05, 0.95, 1);
     transform: scale3d(1.05, 0.95, 1); }
 
+  /* line 195, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
 @keyframes rubberBand {
   /* line 202, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 208, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 214, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 220, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 226, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 232, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 238, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 208, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: scale3d(1.25, 0.75, 1);
     -ms-transform: scale3d(1.25, 0.75, 1);
     transform: scale3d(1.25, 0.75, 1); }
 
+  /* line 214, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: scale3d(0.75, 1.25, 1);
     -ms-transform: scale3d(0.75, 1.25, 1);
     transform: scale3d(0.75, 1.25, 1); }
 
+  /* line 220, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: scale3d(1.15, 0.85, 1);
     -ms-transform: scale3d(1.15, 0.85, 1);
     transform: scale3d(1.15, 0.85, 1); }
 
+  /* line 226, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   65% {
     -webkit-transform: scale3d(0.95, 1.05, 1);
     -ms-transform: scale3d(0.95, 1.05, 1);
     transform: scale3d(0.95, 1.05, 1); }
 
+  /* line 232, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: scale3d(1.05, 0.95, 1);
     -ms-transform: scale3d(1.05, 0.95, 1);
     transform: scale3d(1.05, 0.95, 1); }
 
+  /* line 238, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
@@ -1713,34 +237,34 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes shake {
   /* line 251, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 256, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 261, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 100% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
+  /* line 256, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   10%, 30%, 50%, 70%, 90% {
     -webkit-transform: translate3d(-10px, 0, 0);
     transform: translate3d(-10px, 0, 0); }
 
+  /* line 261, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20%, 40%, 60%, 80% {
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0); } }
 
 @keyframes shake {
   /* line 268, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 274, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 280, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 100% {
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
+  /* line 274, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   10%, 30%, 50%, 70%, 90% {
     -webkit-transform: translate3d(-10px, 0, 0);
     -ms-transform: translate3d(-10px, 0, 0);
     transform: translate3d(-10px, 0, 0); }
 
+  /* line 280, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20%, 40%, 60%, 80% {
     -webkit-transform: translate3d(10px, 0, 0);
     -ms-transform: translate3d(10px, 0, 0);
@@ -1753,56 +277,56 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes swing {
   /* line 293, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 298, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 303, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 308, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 313, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: rotate3d(0, 0, 1, 15deg);
     transform: rotate3d(0, 0, 1, 15deg); }
 
+  /* line 298, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: rotate3d(0, 0, 1, -10deg);
     transform: rotate3d(0, 0, 1, -10deg); }
 
+  /* line 303, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: rotate3d(0, 0, 1, 5deg);
     transform: rotate3d(0, 0, 1, 5deg); }
 
+  /* line 308, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: rotate3d(0, 0, 1, -5deg);
     transform: rotate3d(0, 0, 1, -5deg); }
 
+  /* line 313, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: rotate3d(0, 0, 1, 0deg);
     transform: rotate3d(0, 0, 1, 0deg); } }
 
 @keyframes swing {
   /* line 320, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 326, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 332, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 338, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 344, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: rotate3d(0, 0, 1, 15deg);
     -ms-transform: rotate3d(0, 0, 1, 15deg);
     transform: rotate3d(0, 0, 1, 15deg); }
 
+  /* line 326, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: rotate3d(0, 0, 1, -10deg);
     -ms-transform: rotate3d(0, 0, 1, -10deg);
     transform: rotate3d(0, 0, 1, -10deg); }
 
+  /* line 332, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: rotate3d(0, 0, 1, 5deg);
     -ms-transform: rotate3d(0, 0, 1, 5deg);
     transform: rotate3d(0, 0, 1, 5deg); }
 
+  /* line 338, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: rotate3d(0, 0, 1, -5deg);
     -ms-transform: rotate3d(0, 0, 1, -5deg);
     transform: rotate3d(0, 0, 1, -5deg); }
 
+  /* line 344, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: rotate3d(0, 0, 1, 0deg);
     -ms-transform: rotate3d(0, 0, 1, 0deg);
@@ -1818,56 +342,56 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes tada {
   /* line 360, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 365, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 370, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 375, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 380, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 365, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   10%, 20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 370, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30%, 50%, 70%, 90% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
 
+  /* line 375, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 60%, 80% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 380, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 
 @keyframes tada {
   /* line 387, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 393, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 399, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 405, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 411, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); }
 
+  /* line 393, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   10%, 20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     -ms-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 399, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30%, 50%, 70%, 90% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
 
+  /* line 405, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 60%, 80% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     -ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 411, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
@@ -1881,78 +405,78 @@ Copyright (c) 2014 Daniel Eden
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 @-webkit-keyframes wobble {
   /* line 426, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 431, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 436, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 441, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 446, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 451, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 456, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: none;
     transform: none; }
 
+  /* line 431, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   15% {
     -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
     transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
 
+  /* line 436, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
     transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
 
+  /* line 441, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   45% {
     -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
     transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 446, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
     transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
 
+  /* line 451, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
     transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
 
+  /* line 456, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     transform: none; } }
 
 @keyframes wobble {
   /* line 463, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 469, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 475, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 481, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 487, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 493, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 499, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: none;
     -ms-transform: none;
     transform: none; }
 
+  /* line 469, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   15% {
     -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
     -ms-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
     transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
 
+  /* line 475, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
     -ms-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
     transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
 
+  /* line 481, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   45% {
     -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
     -ms-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
     transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
 
+  /* line 487, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
     -ms-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
     transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
 
+  /* line 493, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
     -ms-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
     transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
 
+  /* line 499, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     -ms-transform: none;
@@ -1965,38 +489,38 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceIn {
   /* line 512, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 517, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 523, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 528, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 533, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 539, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 544, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 20%, 40%, 60%, 80%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 517, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 523, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1); }
 
+  /* line 528, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
     transform: scale3d(0.9, 0.9, 0.9); }
 
+  /* line 533, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(1.03, 1.03, 1.03);
     transform: scale3d(1.03, 1.03, 1.03); }
 
+  /* line 539, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: scale3d(0.97, 0.97, 0.97);
     transform: scale3d(0.97, 0.97, 0.97); }
 
+  /* line 544, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
@@ -2004,43 +528,43 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceIn {
   /* line 552, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 557, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 564, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 570, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 576, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 583, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 589, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 20%, 40%, 60%, 80%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 557, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     -ms-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 564, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1);
     -ms-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1); }
 
+  /* line 570, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
     -ms-transform: scale3d(0.9, 0.9, 0.9);
     transform: scale3d(0.9, 0.9, 0.9); }
 
+  /* line 576, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(1.03, 1.03, 1.03);
     -ms-transform: scale3d(1.03, 1.03, 1.03);
     transform: scale3d(1.03, 1.03, 1.03); }
 
+  /* line 583, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: scale3d(0.97, 0.97, 0.97);
     -ms-transform: scale3d(0.97, 0.97, 0.97);
     transform: scale3d(0.97, 0.97, 0.97); }
 
+  /* line 589, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: scale3d(1, 1, 1);
@@ -2056,70 +580,70 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceInDown {
   /* line 605, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 610, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 616, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 622, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 627, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 632, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 610, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -3000px, 0);
     transform: translate3d(0, -3000px, 0); }
 
+  /* line 616, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(0, 25px, 0);
     transform: translate3d(0, 25px, 0); }
 
+  /* line 622, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0); }
 
+  /* line 627, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, 5px, 0);
     transform: translate3d(0, 5px, 0); }
 
+  /* line 632, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     transform: none; } }
 
 @keyframes bounceInDown {
   /* line 639, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 644, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 651, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 658, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 664, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 670, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 644, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -3000px, 0);
     -ms-transform: translate3d(0, -3000px, 0);
     transform: translate3d(0, -3000px, 0); }
 
+  /* line 651, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(0, 25px, 0);
     -ms-transform: translate3d(0, 25px, 0);
     transform: translate3d(0, 25px, 0); }
 
+  /* line 658, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(0, -10px, 0);
     -ms-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0); }
 
+  /* line 664, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, 5px, 0);
     -ms-transform: translate3d(0, 5px, 0);
     transform: translate3d(0, 5px, 0); }
 
+  /* line 670, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     -ms-transform: none;
@@ -2132,70 +656,70 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceInLeft {
   /* line 683, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 688, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 694, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 700, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 705, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 710, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 688, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-3000px, 0, 0);
     transform: translate3d(-3000px, 0, 0); }
 
+  /* line 694, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(25px, 0, 0);
     transform: translate3d(25px, 0, 0); }
 
+  /* line 700, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(-10px, 0, 0);
     transform: translate3d(-10px, 0, 0); }
 
+  /* line 705, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(5px, 0, 0);
     transform: translate3d(5px, 0, 0); }
 
+  /* line 710, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     transform: none; } }
 
 @keyframes bounceInLeft {
   /* line 717, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 722, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 729, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 736, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 742, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 748, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 722, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-3000px, 0, 0);
     -ms-transform: translate3d(-3000px, 0, 0);
     transform: translate3d(-3000px, 0, 0); }
 
+  /* line 729, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(25px, 0, 0);
     -ms-transform: translate3d(25px, 0, 0);
     transform: translate3d(25px, 0, 0); }
 
+  /* line 736, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(-10px, 0, 0);
     -ms-transform: translate3d(-10px, 0, 0);
     transform: translate3d(-10px, 0, 0); }
 
+  /* line 742, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(5px, 0, 0);
     -ms-transform: translate3d(5px, 0, 0);
     transform: translate3d(5px, 0, 0); }
 
+  /* line 748, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     -ms-transform: none;
@@ -2208,70 +732,70 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceInRight {
   /* line 761, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 766, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 772, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 778, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 783, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 788, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 766, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(3000px, 0, 0);
     transform: translate3d(3000px, 0, 0); }
 
+  /* line 772, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(-25px, 0, 0);
     transform: translate3d(-25px, 0, 0); }
 
+  /* line 778, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0); }
 
+  /* line 783, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(-5px, 0, 0);
     transform: translate3d(-5px, 0, 0); }
 
+  /* line 788, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     transform: none; } }
 
 @keyframes bounceInRight {
   /* line 795, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 800, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 807, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 814, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 820, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 826, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 800, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(3000px, 0, 0);
     -ms-transform: translate3d(3000px, 0, 0);
     transform: translate3d(3000px, 0, 0); }
 
+  /* line 807, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(-25px, 0, 0);
     -ms-transform: translate3d(-25px, 0, 0);
     transform: translate3d(-25px, 0, 0); }
 
+  /* line 814, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(10px, 0, 0);
     -ms-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0); }
 
+  /* line 820, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(-5px, 0, 0);
     -ms-transform: translate3d(-5px, 0, 0);
     transform: translate3d(-5px, 0, 0); }
 
+  /* line 826, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     -ms-transform: none;
@@ -2284,70 +808,70 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceInUp {
   /* line 839, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 844, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 850, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 856, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 861, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 866, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 844, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 3000px, 0);
     transform: translate3d(0, 3000px, 0); }
 
+  /* line 850, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(0, -20px, 0);
     transform: translate3d(0, -20px, 0); }
 
+  /* line 856, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0); }
 
+  /* line 861, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, -5px, 0);
     transform: translate3d(0, -5px, 0); }
 
+  /* line 866, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
 
 @keyframes bounceInUp {
   /* line 873, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 878, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 885, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 892, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 898, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 904, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0%, 60%, 75%, 90%, 100% {
     -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
+  /* line 878, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 3000px, 0);
     -ms-transform: translate3d(0, 3000px, 0);
     transform: translate3d(0, 3000px, 0); }
 
+  /* line 885, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
     transform: translate3d(0, -20px, 0); }
 
+  /* line 892, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   75% {
     -webkit-transform: translate3d(0, 10px, 0);
     -ms-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0); }
 
+  /* line 898, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   90% {
     -webkit-transform: translate3d(0, -5px, 0);
     -ms-transform: translate3d(0, -5px, 0);
     transform: translate3d(0, -5px, 0); }
 
+  /* line 904, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
@@ -2360,17 +884,17 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceOut {
   /* line 917, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 922, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 928, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
     transform: scale3d(0.9, 0.9, 0.9); }
 
+  /* line 922, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50%, 55% {
     opacity: 1;
     -webkit-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1); }
 
+  /* line 928, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
@@ -2378,19 +902,19 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceOut {
   /* line 936, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 942, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 949, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: scale3d(0.9, 0.9, 0.9);
     -ms-transform: scale3d(0.9, 0.9, 0.9);
     transform: scale3d(0.9, 0.9, 0.9); }
 
+  /* line 942, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50%, 55% {
     opacity: 1;
     -webkit-transform: scale3d(1.1, 1.1, 1.1);
     -ms-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1); }
 
+  /* line 949, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
@@ -2406,17 +930,17 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceOutDown {
   /* line 965, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 970, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 976, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0); }
 
+  /* line 970, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 45% {
     opacity: 1;
     -webkit-transform: translate3d(0, -20px, 0);
     transform: translate3d(0, -20px, 0); }
 
+  /* line 976, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
@@ -2424,19 +948,19 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceOutDown {
   /* line 984, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 990, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 997, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: translate3d(0, 10px, 0);
     -ms-transform: translate3d(0, 10px, 0);
     transform: translate3d(0, 10px, 0); }
 
+  /* line 990, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 45% {
     opacity: 1;
     -webkit-transform: translate3d(0, -20px, 0);
     -ms-transform: translate3d(0, -20px, 0);
     transform: translate3d(0, -20px, 0); }
 
+  /* line 997, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
@@ -2450,12 +974,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceOutLeft {
   /* line 1011, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1017, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     opacity: 1;
     -webkit-transform: translate3d(20px, 0, 0);
     transform: translate3d(20px, 0, 0); }
 
+  /* line 1017, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
@@ -2463,13 +987,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceOutLeft {
   /* line 1025, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1032, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     opacity: 1;
     -webkit-transform: translate3d(20px, 0, 0);
     -ms-transform: translate3d(20px, 0, 0);
     transform: translate3d(20px, 0, 0); }
 
+  /* line 1032, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
@@ -2483,12 +1007,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceOutRight {
   /* line 1046, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1052, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     opacity: 1;
     -webkit-transform: translate3d(-20px, 0, 0);
     transform: translate3d(-20px, 0, 0); }
 
+  /* line 1052, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
@@ -2496,13 +1020,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceOutRight {
   /* line 1060, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1067, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     opacity: 1;
     -webkit-transform: translate3d(-20px, 0, 0);
     -ms-transform: translate3d(-20px, 0, 0);
     transform: translate3d(-20px, 0, 0); }
 
+  /* line 1067, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
@@ -2516,17 +1040,17 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes bounceOutUp {
   /* line 1081, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1086, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1092, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0); }
 
+  /* line 1086, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 45% {
     opacity: 1;
     -webkit-transform: translate3d(0, 20px, 0);
     transform: translate3d(0, 20px, 0); }
 
+  /* line 1092, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
@@ -2534,19 +1058,19 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes bounceOutUp {
   /* line 1100, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1106, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1113, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20% {
     -webkit-transform: translate3d(0, -10px, 0);
     -ms-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0); }
 
+  /* line 1106, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 45% {
     opacity: 1;
     -webkit-transform: translate3d(0, 20px, 0);
     -ms-transform: translate3d(0, 20px, 0);
     transform: translate3d(0, 20px, 0); }
 
+  /* line 1113, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
@@ -2560,19 +1084,19 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeIn {
   /* line 1127, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1131, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0; }
 
+  /* line 1131, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1; } }
 
 @keyframes fadeIn {
   /* line 1137, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1141, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0; }
 
+  /* line 1141, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1; } }
 
@@ -2583,12 +1107,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInDown {
   /* line 1152, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1158, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0); }
 
+  /* line 1158, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2596,13 +1120,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInDown {
   /* line 1166, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1173, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     -ms-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0); }
 
+  /* line 1173, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2616,12 +1140,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInDownBig {
   /* line 1187, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1193, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
     transform: translate3d(0, -2000px, 0); }
 
+  /* line 1193, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2629,13 +1153,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInDownBig {
   /* line 1201, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1208, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
     -ms-transform: translate3d(0, -2000px, 0);
     transform: translate3d(0, -2000px, 0); }
 
+  /* line 1208, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2649,12 +1173,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInLeft {
   /* line 1222, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1228, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0); }
 
+  /* line 1228, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2662,13 +1186,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInLeft {
   /* line 1236, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1243, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
     -ms-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0); }
 
+  /* line 1243, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2682,12 +1206,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInLeftBig {
   /* line 1257, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1263, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
     transform: translate3d(-2000px, 0, 0); }
 
+  /* line 1263, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2695,13 +1219,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInLeftBig {
   /* line 1271, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1278, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
     -ms-transform: translate3d(-2000px, 0, 0);
     transform: translate3d(-2000px, 0, 0); }
 
+  /* line 1278, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2715,12 +1239,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInRight {
   /* line 1292, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1298, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0); }
 
+  /* line 1298, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2728,13 +1252,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInRight {
   /* line 1306, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1313, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
     -ms-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0); }
 
+  /* line 1313, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2748,12 +1272,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInRightBig {
   /* line 1327, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1333, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
     transform: translate3d(2000px, 0, 0); }
 
+  /* line 1333, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2761,13 +1285,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInRightBig {
   /* line 1341, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1348, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
     -ms-transform: translate3d(2000px, 0, 0);
     transform: translate3d(2000px, 0, 0); }
 
+  /* line 1348, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2781,12 +1305,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInUp {
   /* line 1362, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1368, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0); }
 
+  /* line 1368, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2794,13 +1318,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInUp {
   /* line 1376, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1383, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
     -ms-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0); }
 
+  /* line 1383, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2814,12 +1338,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeInUpBig {
   /* line 1397, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1403, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
     transform: translate3d(0, 2000px, 0); }
 
+  /* line 1403, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2827,13 +1351,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeInUpBig {
   /* line 1411, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1418, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
     -ms-transform: translate3d(0, 2000px, 0);
     transform: translate3d(0, 2000px, 0); }
 
+  /* line 1418, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -2847,19 +1371,19 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOut {
   /* line 1432, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1436, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1436, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0; } }
 
 @keyframes fadeOut {
   /* line 1442, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1446, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1446, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0; } }
 
@@ -2870,10 +1394,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutDown {
   /* line 1457, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1461, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1461, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -2881,10 +1405,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutDown {
   /* line 1469, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1473, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1473, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 100%, 0);
@@ -2898,10 +1422,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutDownBig {
   /* line 1487, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1491, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1491, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
@@ -2909,10 +1433,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutDownBig {
   /* line 1499, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1503, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1503, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, 2000px, 0);
@@ -2926,10 +1450,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutLeft {
   /* line 1517, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1521, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1521, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -2937,10 +1461,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutLeft {
   /* line 1529, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1533, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1533, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -2954,10 +1478,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutLeftBig {
   /* line 1547, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1551, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1551, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
@@ -2965,10 +1489,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutLeftBig {
   /* line 1559, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1563, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1563, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(-2000px, 0, 0);
@@ -2982,10 +1506,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutRight {
   /* line 1577, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1581, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1581, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
@@ -2993,10 +1517,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutRight {
   /* line 1589, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1593, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1593, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
@@ -3010,10 +1534,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutRightBig {
   /* line 1607, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1611, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1611, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
@@ -3021,10 +1545,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutRightBig {
   /* line 1619, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1623, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1623, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(2000px, 0, 0);
@@ -3038,10 +1562,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutUp {
   /* line 1637, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1641, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1641, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -3049,10 +1573,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutUp {
   /* line 1649, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1653, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1653, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
@@ -3066,10 +1590,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes fadeOutUpBig {
   /* line 1667, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1671, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1671, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
@@ -3077,10 +1601,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes fadeOutUpBig {
   /* line 1679, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1683, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 1683, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -2000px, 0);
@@ -3094,34 +1618,34 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flip {
   /* line 1697, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1704, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1711, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1718, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1725, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out; }
 
+  /* line 1704, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out; }
 
+  /* line 1711, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; }
 
+  /* line 1718, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
     transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; }
 
+  /* line 1725, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     transform: perspective(400px);
@@ -3130,10 +1654,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes flip {
   /* line 1734, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1742, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1750, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1758, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1766, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
@@ -3141,6 +1661,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out; }
 
+  /* line 1742, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
     -ms-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
@@ -3148,6 +1669,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out; }
 
+  /* line 1750, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     -webkit-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
     -ms-transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
@@ -3155,6 +1677,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; }
 
+  /* line 1758, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
     -ms-transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
@@ -3162,6 +1685,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; }
 
+  /* line 1766, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     -ms-transform: perspective(400px);
@@ -3179,10 +1703,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flipInX {
   /* line 1784, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1792, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1799, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1805, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1810, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -3190,31 +1710,31 @@ Copyright (c) 2014 Daniel Eden
     transition-timing-function: ease-in;
     opacity: 0; }
 
+  /* line 1792, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     -webkit-transition-timing-function: ease-in;
     transition-timing-function: ease-in; }
 
+  /* line 1799, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     opacity: 1; }
 
+  /* line 1805, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
 
+  /* line 1810, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
 
 @keyframes flipInX {
   /* line 1817, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1826, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1834, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1841, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1847, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -3223,6 +1743,7 @@ Copyright (c) 2014 Daniel Eden
     transition-timing-function: ease-in;
     opacity: 0; }
 
+  /* line 1826, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
@@ -3230,17 +1751,20 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transition-timing-function: ease-in;
     transition-timing-function: ease-in; }
 
+  /* line 1834, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
     opacity: 1; }
 
+  /* line 1841, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
 
+  /* line 1847, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     -ms-transform: perspective(400px);
@@ -3256,10 +1780,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flipInY {
   /* line 1863, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1871, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1878, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1884, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1889, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -3267,31 +1787,31 @@ Copyright (c) 2014 Daniel Eden
     transition-timing-function: ease-in;
     opacity: 0; }
 
+  /* line 1871, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
     -webkit-transition-timing-function: ease-in;
     transition-timing-function: ease-in; }
 
+  /* line 1878, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     opacity: 1; }
 
+  /* line 1884, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -5deg); }
 
+  /* line 1889, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     transform: perspective(400px); } }
 
 @keyframes flipInY {
   /* line 1896, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1905, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1913, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1920, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1926, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -3300,6 +1820,7 @@ Copyright (c) 2014 Daniel Eden
     transition-timing-function: ease-in;
     opacity: 0; }
 
+  /* line 1905, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
@@ -3307,17 +1828,20 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transition-timing-function: ease-in;
     transition-timing-function: ease-in; }
 
+  /* line 1913, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
     opacity: 1; }
 
+  /* line 1920, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -5deg); }
 
+  /* line 1926, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px);
     -ms-transform: perspective(400px);
@@ -3333,17 +1857,17 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flipOutX {
   /* line 1942, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1947, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1953, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px);
     transform: perspective(400px); }
 
+  /* line 1947, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     opacity: 1; }
 
+  /* line 1953, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -3351,19 +1875,19 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes flipOutX {
   /* line 1961, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1967, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1974, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px);
     -ms-transform: perspective(400px);
     transform: perspective(400px); }
 
+  /* line 1967, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     opacity: 1; }
 
+  /* line 1974, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
     -ms-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
@@ -3382,17 +1906,17 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes flipOutY {
   /* line 1993, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 1998, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2004, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px);
     transform: perspective(400px); }
 
+  /* line 1998, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     opacity: 1; }
 
+  /* line 2004, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -3400,19 +1924,19 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes flipOutY {
   /* line 2012, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2018, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2025, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: perspective(400px);
     -ms-transform: perspective(400px);
     transform: perspective(400px); }
 
+  /* line 2018, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   30% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
     opacity: 1; }
 
+  /* line 2025, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
     -ms-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -3431,24 +1955,24 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes lightSpeedIn {
   /* line 2044, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2050, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2056, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2062, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
     transform: translate3d(100%, 0, 0) skewX(-30deg);
     opacity: 0; }
 
+  /* line 2050, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: skewX(20deg);
     transform: skewX(20deg);
     opacity: 1; }
 
+  /* line 2056, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: skewX(-5deg);
     transform: skewX(-5deg);
     opacity: 1; }
 
+  /* line 2062, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     transform: none;
@@ -3456,27 +1980,27 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes lightSpeedIn {
   /* line 2070, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2077, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2084, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2091, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
     -ms-transform: translate3d(100%, 0, 0) skewX(-30deg);
     transform: translate3d(100%, 0, 0) skewX(-30deg);
     opacity: 0; }
 
+  /* line 2077, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     -webkit-transform: skewX(20deg);
     -ms-transform: skewX(20deg);
     transform: skewX(20deg);
     opacity: 1; }
 
+  /* line 2084, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   80% {
     -webkit-transform: skewX(-5deg);
     -ms-transform: skewX(-5deg);
     transform: skewX(-5deg);
     opacity: 1; }
 
+  /* line 2091, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: none;
     -ms-transform: none;
@@ -3492,10 +2016,10 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes lightSpeedOut {
   /* line 2107, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2111, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2111, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
     transform: translate3d(100%, 0, 0) skewX(30deg);
@@ -3503,10 +2027,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes lightSpeedOut {
   /* line 2119, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2123, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2123, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(100%, 0, 0) skewX(30deg);
     -ms-transform: translate3d(100%, 0, 0) skewX(30deg);
@@ -3522,7 +2046,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateIn {
   /* line 2139, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2147, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: center;
     transform-origin: center;
@@ -3530,6 +2053,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -200deg);
     opacity: 0; }
 
+  /* line 2147, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: center;
     transform-origin: center;
@@ -3539,7 +2063,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateIn {
   /* line 2157, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2167, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: center;
     -ms-transform-origin: center;
@@ -3549,6 +2072,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -200deg);
     opacity: 0; }
 
+  /* line 2167, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: center;
     -ms-transform-origin: center;
@@ -3565,7 +2089,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateInDownLeft {
   /* line 2184, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2192, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3573,6 +2096,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -45deg);
     opacity: 0; }
 
+  /* line 2192, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3582,7 +2106,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateInDownLeft {
   /* line 2202, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2212, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3592,6 +2115,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -45deg);
     opacity: 0; }
 
+  /* line 2212, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3608,7 +2132,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateInDownRight {
   /* line 2229, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2237, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3616,6 +2139,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0; }
 
+  /* line 2237, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3625,7 +2149,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateInDownRight {
   /* line 2247, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2257, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3635,6 +2158,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0; }
 
+  /* line 2257, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3651,7 +2175,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateInUpLeft {
   /* line 2274, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2282, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3659,6 +2182,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0; }
 
+  /* line 2282, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3668,7 +2192,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateInUpLeft {
   /* line 2292, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2302, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3678,6 +2201,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, 45deg);
     opacity: 0; }
 
+  /* line 2302, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3694,7 +2218,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateInUpRight {
   /* line 2319, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2327, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3702,6 +2225,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -90deg);
     opacity: 0; }
 
+  /* line 2327, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3711,7 +2235,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateInUpRight {
   /* line 2337, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2347, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3721,6 +2244,7 @@ Copyright (c) 2014 Daniel Eden
     transform: rotate3d(0, 0, 1, -90deg);
     opacity: 0; }
 
+  /* line 2347, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3737,12 +2261,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateOut {
   /* line 2364, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2370, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: center;
     transform-origin: center;
     opacity: 1; }
 
+  /* line 2370, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: center;
     transform-origin: center;
@@ -3752,13 +2276,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateOut {
   /* line 2380, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2387, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: center;
     -ms-transform-origin: center;
     transform-origin: center;
     opacity: 1; }
 
+  /* line 2387, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: center;
     -ms-transform-origin: center;
@@ -3775,12 +2299,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateOutDownLeft {
   /* line 2404, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2410, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
     opacity: 1; }
 
+  /* line 2410, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3790,13 +2314,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateOutDownLeft {
   /* line 2420, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2427, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
     transform-origin: left bottom;
     opacity: 1; }
 
+  /* line 2427, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3813,12 +2337,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateOutDownRight {
   /* line 2444, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2450, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
     opacity: 1; }
 
+  /* line 2450, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3828,13 +2352,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateOutDownRight {
   /* line 2460, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2467, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
     transform-origin: right bottom;
     opacity: 1; }
 
+  /* line 2467, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3851,12 +2375,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateOutUpLeft {
   /* line 2484, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2490, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
     opacity: 1; }
 
+  /* line 2490, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     transform-origin: left bottom;
@@ -3866,13 +2390,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateOutUpLeft {
   /* line 2500, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2507, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
     transform-origin: left bottom;
     opacity: 1; }
 
+  /* line 2507, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: left bottom;
     -ms-transform-origin: left bottom;
@@ -3889,12 +2413,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes rotateOutUpRight {
   /* line 2524, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2530, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
     opacity: 1; }
 
+  /* line 2530, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     transform-origin: right bottom;
@@ -3904,13 +2428,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rotateOutUpRight {
   /* line 2540, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2547, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
     transform-origin: right bottom;
     opacity: 1; }
 
+  /* line 2547, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform-origin: right bottom;
     -ms-transform-origin: right bottom;
@@ -3927,15 +2451,13 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes hinge {
   /* line 2564, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2571, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2580, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2590, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: top left;
     transform-origin: top left;
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out; }
 
+  /* line 2571, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, 80deg);
     transform: rotate3d(0, 0, 1, 80deg);
@@ -3944,6 +2466,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out; }
 
+  /* line 2580, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, 60deg);
     transform: rotate3d(0, 0, 1, 60deg);
@@ -3953,6 +2476,7 @@ Copyright (c) 2014 Daniel Eden
     animation-timing-function: ease-in-out;
     opacity: 1; }
 
+  /* line 2590, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(0, 700px, 0);
     transform: translate3d(0, 700px, 0);
@@ -3960,9 +2484,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes hinge {
   /* line 2598, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2606, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2617, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2629, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     -webkit-transform-origin: top left;
     -ms-transform-origin: top left;
@@ -3970,6 +2491,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out; }
 
+  /* line 2606, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   20%, 60% {
     -webkit-transform: rotate3d(0, 0, 1, 80deg);
     -ms-transform: rotate3d(0, 0, 1, 80deg);
@@ -3980,6 +2502,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out; }
 
+  /* line 2617, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40%, 80% {
     -webkit-transform: rotate3d(0, 0, 1, 60deg);
     -ms-transform: rotate3d(0, 0, 1, 60deg);
@@ -3991,6 +2514,7 @@ Copyright (c) 2014 Daniel Eden
     animation-timing-function: ease-in-out;
     opacity: 1; }
 
+  /* line 2629, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     -webkit-transform: translate3d(0, 700px, 0);
     -ms-transform: translate3d(0, 700px, 0);
@@ -4005,12 +2529,12 @@ Copyright (c) 2014 Daniel Eden
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 @-webkit-keyframes rollIn {
   /* line 2645, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2651, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg); }
 
+  /* line 2651, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -4018,13 +2542,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rollIn {
   /* line 2659, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2666, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     -ms-transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
     transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg); }
 
+  /* line 2666, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -4039,10 +2563,10 @@ Copyright (c) 2014 Daniel Eden
 /* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 @-webkit-keyframes rollOut {
   /* line 2682, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2686, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2686, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
@@ -4050,10 +2574,10 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes rollOut {
   /* line 2694, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2698, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2698, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0) rotate3d(0, 0, 1, 120deg);
@@ -4067,24 +2591,24 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomIn {
   /* line 2712, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2718, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 2718, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     opacity: 1; } }
 
 @keyframes zoomIn {
   /* line 2724, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2731, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     -ms-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 2731, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     opacity: 1; } }
 
@@ -4095,7 +2619,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomInDown {
   /* line 2742, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2750, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
@@ -4103,6 +2626,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2750, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
@@ -4112,7 +2636,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomInDown {
   /* line 2760, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2769, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
@@ -4121,6 +2644,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2769, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
@@ -4136,7 +2660,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomInLeft {
   /* line 2785, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2793, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
@@ -4144,6 +2667,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2793, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
@@ -4153,7 +2677,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomInLeft {
   /* line 2803, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2812, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
@@ -4162,6 +2685,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2812, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
@@ -4177,7 +2701,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomInRight {
   /* line 2828, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2836, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
@@ -4185,6 +2708,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2836, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
@@ -4194,7 +2718,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomInRight {
   /* line 2846, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2855, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
@@ -4203,6 +2726,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2855, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
@@ -4218,7 +2742,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomInUp {
   /* line 2871, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2879, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
@@ -4226,6 +2749,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2879, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
@@ -4235,7 +2759,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomInUp {
   /* line 2889, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2898, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
@@ -4244,6 +2767,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2898, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   60% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
@@ -4259,32 +2783,32 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomOut {
   /* line 2914, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2918, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2924, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2918, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 2924, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0; } }
 
 @keyframes zoomOut {
   /* line 2930, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2934, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2941, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   0% {
     opacity: 1; }
 
+  /* line 2934, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   50% {
     opacity: 0;
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     -ms-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); }
 
+  /* line 2941, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0; } }
 
@@ -4295,7 +2819,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomOutDown {
   /* line 2952, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2960, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
@@ -4303,6 +2826,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2960, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
@@ -4314,7 +2838,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomOutDown {
   /* line 2972, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 2981, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
@@ -4323,6 +2846,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 2981, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
@@ -4341,12 +2865,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomOutLeft {
   /* line 3000, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3006, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
     transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0); }
 
+  /* line 3006, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale(0.1) translate3d(-2000px, 0, 0);
@@ -4356,13 +2880,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomOutLeft {
   /* line 3016, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3023, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
     -ms-transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0);
     transform: scale3d(0.475, 0.475, 0.475) translate3d(42px, 0, 0); }
 
+  /* line 3023, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale(0.1) translate3d(-2000px, 0, 0);
@@ -4379,12 +2903,12 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomOutRight {
   /* line 3040, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3046, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
     transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0); }
 
+  /* line 3046, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale(0.1) translate3d(2000px, 0, 0);
@@ -4394,13 +2918,13 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomOutRight {
   /* line 3056, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3063, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
     -ms-transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0);
     transform: scale3d(0.475, 0.475, 0.475) translate3d(-42px, 0, 0); }
 
+  /* line 3063, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale(0.1) translate3d(2000px, 0, 0);
@@ -4417,7 +2941,6 @@ Copyright (c) 2014 Daniel Eden
 
 @-webkit-keyframes zoomOutUp {
   /* line 3080, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3088, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
@@ -4425,6 +2948,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 3088, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
@@ -4436,7 +2960,6 @@ Copyright (c) 2014 Daniel Eden
 
 @keyframes zoomOutUp {
   /* line 3100, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
-  /* line 3109, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   40% {
     opacity: 1;
     -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
@@ -4445,6 +2968,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
 
+  /* line 3109, /Users/mperez/Sites/smoothstate/source/stylesheets/keyframes.css.scss */
   100% {
     opacity: 0;
     -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -2000px, 0);
@@ -4460,83 +2984,3 @@ Copyright (c) 2014 Daniel Eden
 .zoomOutUp {
   -webkit-animation-name: zoomOutUp;
   animation-name: zoomOutUp; }
-
-/*==============================================================================
-  @Smooth State Page Transitions
-==============================================================================*/
-/* @mixin respond-to
-------------------------------------------------------------------- */
-/* line 6, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene .scene_element {
-  -webkit-animation-duration: 0.25s;
-  animation-duration: 0.25s;
-  -webkit-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both; }
-
-/* line 17, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene .scene_element--fadein {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn; }
-
-/* line 22, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene .scene_element--fadeinup {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp; }
-
-/* line 27, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene .scene_element--fadeinright {
-  -webkit-animation-name: fadeInRight;
-  animation-name: fadeInRight; }
-
-/* line 32, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene .scene_element--delayed {
-  -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s; }
-
-/* line 38, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene.is-exiting .scene_element {
-  -webkit-animation-direction: alternate-reverse;
-  animation-direction: alternate-reverse; }
-
-/* line 43, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene.is-exiting .scene_element--delayed {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s; }
-
-/* line 48, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-.m-scene.is-exiting .scene_element--noexiting {
-  -webkit-animation-direction: alternate-reverse;
-  animation-direction: alternate-reverse; }
-
-@media screen and (min-width: 768px) {
-  /* line 57, /Users/mperez/Sites/smoothstate/source/stylesheets/pageTransitions.css.scss */
-  .m-scene .scene_element--fadeinright-wide {
-    -webkit-animation-name: fadeInRight;
-    animation-name: fadeInRight; } }
-
-/*
- * CSS Animations
- * Don't forget to add vendor prefixes!
- */
-.m-scene .scene_element {
-  animation-duration: 0.25s;
-  transition-timing-function: ease-in;
-  animation-fill-mode: both; }
-
-.m-scene .scene_element--fadein {
-  animation-name: fadeIn; }
-
-.m-scene.is-exiting .scene_element {
-  animation-direction: alternate-reverse; }
-
-/*
- * Keyframes
- */
-@keyframes fadeIn {
-  0% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1; } }

@@ -101,12 +101,30 @@
   
   <li>
     <h3 class="docs-header">make-list-base</h3>
-    <p>...</p>
+    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a mixin or <code>%list-base</code> placeholder.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>// SCSS
+%list-base {
+  @include make-list-base();
+}
+.list-example-1 {
+  @extend %list-base;
+  ...
+}
+.list-example-2 {
+  @extend %list-base;
+  ...
+}</code></pre>
   </li>
   
   <li>
     <h3 class="docs-header">make-list-rowed</h3>
-    <p>...</p>
+    <p>Adds borders to a list that divide list items</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-rowed()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
     <pre><code>&lt;ul class=&quot;list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed">
@@ -123,6 +141,12 @@
         <li>List Item</li>
       </ul>
     </div>
+    <p>In the case where you don't want to create left and right padding on a list, you can set <code>$table('flush')</code> to true, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
+    <pre><code>// SCSS
+.new-list-styles {
+  @include make-list-rowed(('flush': true));
+}
+</code></pre>
     <pre><code>&lt;ul class=&quot;list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-flush">
@@ -143,7 +167,11 @@
   
   <li>
     <h3 class="docs-header">make-list-bordered</h3>
-    <p>...</p>
+    <p>Adds borders to a list that wraps the list and divides list items.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-bordered()</code><code class="desc">@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-bordered">
         <li>List Item</li>
@@ -163,7 +191,14 @@
   
   <li>
     <h3 class="docs-header">give-list-rounded</h3>
-    <p>...</p>
+    <p>Gives a list rounded borders depending on parameters passed.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-rounded()</code><code class="desc">@param $radius
+  @type unit (pixel, percent)
+  @default default ($list('border-radius'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-bordered list-rounded">
         <li>List Item</li>
@@ -183,7 +218,14 @@
   
   <li>
     <h3 class="docs-header">give-list-stripes</h3>
-    <p>...</p>
+    <p>Gives a list items alternating background colors.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-stripes()</code><code class="desc">@param $nth
+  @type nth (odd, even)
+  @default default ($list('nth'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-striped">
         <li>List Item</li>
@@ -203,7 +245,14 @@
   
   <li>
     <h3 class="docs-header">give-list-hover</h3>
-    <p>...</p>
+    <p>Gives list hover styles for list items.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-hover()</code><code class="desc">@param $bg-hover
+  @type color
+  @default default ($list('background-hover'))
+@param $options
+  @type map
+  @default $list map</code></pre>
+    <pre><code>&lt;ul class=&quot;list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-hover">
         <li>List Item</li>

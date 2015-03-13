@@ -1,360 +1,36 @@
 /*==============================================================================
-  @Mobile Grid System
+  @Docs Lists
 ==============================================================================*/
 
-@include build-mobile-grid-system();
-
-/*==============================================================================
-  @Grid System
-==============================================================================*/
-
-@include media-min('tablet') {
-  @include build-grid-system();
+.docs-list {
+  @extend %list-base;
+  @include make-list-rowed(('flush':true));
+  margin: 30px 0;
 }
-
-/*==============================================================================
-  @Structure
-==============================================================================*/
-
-body {
-  background: $gray-pale;
-  color: $color;
-}
-
-.main {
-  position: relative;
-}
-
-.page-docs {
-  position: relative;
-  z-index: 5;
-}
-.page-home {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  min-height: 100%;
-  color: $white;
-}
-.page-home .container {
-  position: relative;
-  z-index: 10;
-}
-.page-home .gradient-background {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.is_home .page-home {
-  display: block;
-}
-
-/**
- * Subpages
- */
-.subpage {
-  display: none;
-}
-
-/**
- * Page Animations
- */
-.scene .scene_element {
-  @include animation-duration(0.25s);
-  @include animation-timing-function(ease-in);
-  @include animation-fill-mode(both);
-  @include animation-name(fadeIn);
-}
-.scene.is-exiting .scene_element {
-  @include animation-direction(alternate-reverse);
-}
-
-@include keyframes('fadeIn') {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/**
- * Animated Background Color
- */
-.gradient-background {
-  @include animation(colorchange 40s linear 1s infinite alternate-reverse);
-  @include linear-gradient(top, rgba($black, 0.1), rgba($black, 0));
-  background-color: $red;
-}
-
-@include keyframes('colorchange') {
-  0%   { background-color: $red; }
-  8%   { background-color: $red-orange; }
-  16%  { background-color: $orange; }
-  25%  { background-color: $yellow-orange; }
-  33%  { background-color: $yellow; }
-  41%  { background-color: $yellow-green; }
-  50%  { background-color: $green; }
-  58%  { background-color: $blue-green; }
-  66%  { background-color: $blue; }
-  75%  { background-color: $blue-violet; }
-  83%  { background-color: $violet; }
-  92%  { background-color: $red-violet; }
-  100% { background-color: $red; }
-}
-
-/*==============================================================================
-  @Header
-==============================================================================*/
-
-.header {
-  position: relative;
-  z-index: 10;
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-.header h1 {
-  margin: 0;
-  @include clearfix();
-}
-.header .logo {
-  background: url('../img/baseweb-logo-black.png') no-repeat left center;
-  border: 0 none;
-  display: block;
-  float: left;
-  padding: 6px 0 6px 80px;
-  font-size: 22px;
-  line-height: 30px;
-  font-weight: 600;
-  color: $color;
-  
-  &:hover {
-    color: $color;
-  }
-}
-
-.is_home .header,
-.is_home .mainnav {
-  opacity: 0;
-}
-.is_home .page-home .header,
-.is_home .page-home .mainnav {
-  opacity: 1;
-}
-
-.page-home .header .logo {
-  background: url('../img/baseweb-logo-white.png') no-repeat left center;
-  font-weight: 500;
-  color: $white;
-  
-  &:hover {
-    color: $white;
-  }
-}
-
-/*==============================================================================
-  @Navigation
-==============================================================================*/
-
-/**
- * Docs Navigation
- */
-.nav {
-  margin: 10px 0;
-  list-style: none;
-  border-top: 1px solid rgba($black, 0.1);
-}
-.nav li {
-  margin: 0;
-  border-bottom: 1px solid rgba($black, 0.1);
-  @include clearfix();
-}
-.nav li a {
-  display: block;
-  padding: 10px;
-  background: transparent;
-  color: $color;
-  border: 0 none;
-  
-  &:hover {
-    // background: rgba($white, 0.5);
-    background-clip: padding-box;
-    color: $red;
-  }
-}
-.nav li.active a {
-  color: $red;
-}
-
-/**
- * Home Navigation
- */
-.page-home .nav {
-  margin: 0;
-  list-style: none;
-  font-size: 22px;
-  line-height: 30px;
-  font-weight: 500;
-  border-top: 1px solid rgba($white, 0.2);
-}
-.page-home .nav li {
-  margin: 0;
-  border-bottom: 1px solid rgba($white, 0.2);
-}
-.page-home .nav li a {
-  display: block;
-  padding: 10px 20px;
-  border: 0 none;
-  background: rgba(0,0,0, 0);
-  color: $white;
-  @include border-radius();
-  
-  &:hover {
-    color: $white;
-    background: rgba(0,0,0, 0.05);
-  }
-}
-
-/*==============================================================================
-  @Content
-==============================================================================*/
-
-.content {
-  padding-bottom: 100px;
-}
-
-h1.docs-header {
-  font-size: 26px;
-  line-height: 34px;
-  font-weight: 600;
-}
-h2.docs-header {
-  font-size: 22px;
-  line-height: 30px;
-  font-weight: 600;
-}
-h3.docs-header {
-  font-size: 18px;
-  line-height: 30px;
-  font-weight: 500;
-}
-
-hr.docs-hr {
+.docs-list-hover {
+  @include make-list-base(('padding':15px 10px));
+  @include make-list-rowed();
+  @include give-list-hover(rgba($white, 0.5));
   margin: 30px 0;
 }
 
 /**
- * Home
+ * Unique List Content
  */
-.page-home .intro {
-  margin: 0;
-  font-size: 18px;
-  line-height: 26px;
-}
-.page-home .action {
-  float: left;
-  text-align: center;
-  margin: 30px 0 0;
-}
-.page-home .action a {
-  display: inline-block;
-  height: auto;
-  padding: 15px 45px;
-  border: 1px solid rgba(255,255,255, 0.5);
-  color: $white;
-  font-weight: 600;
-  @include border-radius();
+.docs-list-hover {
   
-  &:hover {
-    border-color: rgba(255,255,255, 1);
-    color: $white;
-  }
-}
-.page-home .action span {
-  display: inline-block;
-  margin: 0 0 0 20px;
-  padding: 16px 0;
-  color: rgba($white, 0.5);
-}
-
-/**
- * Custom Code Blocks
- */
-.docs-code {
-  .name,
-  .desc {
-    display: block;
-    margin: 0;
-  }
-  .name {
-    color: $red-violet;
-  }
-  .desc {
-    color: $color;
-  }
-}
-
-/*==============================================================================
-  @Docs List
-==============================================================================*/
-
-ul.docs-list {
-  margin: 30px 0;
-  list-style: none;
-  border-bottom: 1px solid rgba($black, 0.1);
-  
-  > li {
-    margin: 0;
-    padding: 10px 0;
-    border-top: 1px solid rgba($black, 0.1);
-    background: transparent;
-    background-clip: padding-box;
-    @include clearfix();
-    @include transition(background 0.25s linear);
-  }
-}
-ul.docs-list-hover {
-  
-  > li {
-    padding: 15px 10px;
-    background-clip: padding-box;
-    
-    &:hover {
-      background: rgba($white, 0.5);
-    }
-  }
-  
-  > li.title {
+  .title {
     padding-left: 0;
     padding-right: 0;
     font-size: 18px;
     line-height: 30px;
     font-weight: 500;
-    
-    &:hover {
-      background: transparent;
-    }
-    
-    > .docs-header {
-      margin: 0;
-    }
   }
-  
-  > li.desc {
-    &:hover {
-      background: transparent;
-    }
-  }
-  
-  code {
-    margin: 0;
-    padding: 0;
+  .title:hover,
+  .desc:hover {
     background: transparent;
   }
+  
   .left {
     float: left;
   }
@@ -368,20 +44,28 @@ ul.docs-list-hover {
     border-top: 1px dotted rgba($black, 0.2);
     @include clearfix();
   }
+  
   .value {
     color: $color;
   }
   .light {
     color: $gray-light;
   }
+  
   .swatch,
   .box-border-radius {
     margin: -5px 0;
   }
+  
+  code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
 }
 
 /*==============================================================================
-  @Docs Table
+  @Docs Tables
 ==============================================================================*/
 
 .docs-table {
@@ -394,9 +78,6 @@ ul.docs-list-hover {
     padding-left: 0;
     padding-right: 0;
   }
-  tr:first-child th {
-    border-bottom: 1px solid rgba($black, 0.1);
-  }
   td {
     padding: 15px 10px;
   }
@@ -405,4 +86,201 @@ ul.docs-list-hover {
     padding: 0;
     background: transparent;
   }
+}
+
+/*==============================================================================
+  @Grid Demo
+==============================================================================*/
+
+.demo-grid {
+  margin: 20px 0;
+}
+.demo-grid .col {
+  margin: 10px 0;
+}
+.demo-grid .col p {
+  margin: 0;
+  padding: 15px 20px;
+  
+  background: $bg-color;
+  
+  font-family: $font-family-mono;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  
+  @include border-radius();
+}
+
+/*==============================================================================
+  @Mixin Demos
+==============================================================================*/
+
+/**
+ * Demo Blocks
+ * Used for wrapping demo block examples
+ */
+.demo {
+  margin: 20px 0;
+  padding: 10px 20px;
+  overflow: auto;
+  background: rgba($white, 0.5);
+  @include border-radius();
+}
+.demo blockquote,
+.demo pre,
+.demo table {
+  margin: 10px 0;
+}
+.demo .table-responsive table {
+  margin: 0;
+}
+
+/**
+ * Demo Example
+ * Used for inline demo examples
+ */
+.demo-example {
+  background: $yellow-green-darker;
+  @include border-radius();
+  @include size(50px);
+}
+
+/**
+ * Border Radius
+ */
+.demo-border-radius {
+  display: inline-block;
+  background: $yellow-green-dark;
+  @include size(30px);
+}
+
+.mixin-border-radius {
+  @include border-radius(50%);
+}
+
+.mixin-border-radius-top {
+  @include border-radius-top(50%);
+}
+.mixin-border-radius-top-left {
+  @include border-radius-top-left(50%);
+}
+.mixin-border-radius-top-right {
+  @include border-radius-top-right(50%);
+}
+
+.mixin-border-radius-bottom {
+  @include border-radius-bottom(50%);
+}
+.mixin-border-radius-bottom-left {
+  @include border-radius-bottom-left(50%);
+}
+.mixin-border-radius-bottom-right {
+  @include border-radius-bottom-right(50%);
+}
+
+.mixin-border-radius-left {
+  @include border-radius-left(50%);
+}
+.mixin-border-radius-left-top {
+  @include border-radius-left-top(50%);
+}
+.mixin-border-radius-left-bottom {
+  @include border-radius-left-bottom(50%);
+}
+
+.mixin-border-radius-right {
+  @include border-radius-right(50%);
+}
+.mixin-border-radius-right-top {
+  @include border-radius-right-top(50%);
+}
+.mixin-border-radius-right-bottom {
+  @include border-radius-right-bottom(50%);
+}
+
+/**
+ * Rotate
+ */
+.demo-rotate {
+  background: $blue-darker;
+  margin: 20px auto;
+  @include rotate(45deg);
+}
+
+/**
+ * Transition
+ */
+.demo-transition {
+  margin: 10px auto;
+  background-color: $blue-green-darker;
+  @include transition();
+}
+.demo-transition:hover {
+  background-color: $red-violet;
+}
+
+/**
+ * Animations
+ */
+@include keyframes('example') {
+  0%   { background-color: $red; }
+  50%  { background-color: $blue; }
+  100% { background-color: $red; }
+}
+.demo-animation {
+  margin: 10px auto;
+  background-color: $red;
+  @include animation(example 10s linear 1s infinite normal);
+}
+
+/**
+ * Gradient
+ */
+.demo-linear-gradient {
+  margin: 10px auto;
+  width: auto;
+  @include linear-gradient(left, $green, $blue, $violet);
+}
+.demo-radial-gradient {
+  margin: 10px auto;
+  @include size(80px);
+  @include radial-gradient(circle, $violet, $violet-darker);
+}
+
+/**
+ * Text
+ */
+.demo-text-truncate {
+  background: $blue-green-darker;
+  width: 200px;
+  max-width: 100%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  color: $white;
+  @include box-sizing(border-box);
+  @include border-radius();
+  @include text-truncate();
+}
+
+/**
+ * Triangle
+ */
+.demo-triangle .col {
+  text-align: center;
+}
+%triangle {
+  @include triangle-base();
+  vertical-align: middle;
+  margin: 10px 0;
+}
+.example-triangle-1 {
+  @include triangle( 14px, $blue-darker, 'left' );
+}
+.example-triangle-2 {
+  @include triangle( 14px, $blue-violet-darker, 'down' );
+  margin: 15px 0;
+}
+.example-triangle-3 {
+  @include triangle( 14px, $violet-darker, 'right' );
 }

@@ -7,141 +7,29 @@
  * @url http://sebnitu.com
  */
 
-;(function ($) {
-  'use strict';
-  
-  var loc = window.location.pathname;
-  
-  if(loc === '/' || loc === '/index.html') {
-    $('#page-home').show();
-    $('#page-home .logo').click(function() {
-      return false;
-    });
-    $('#page-home .mainnav a').click(function() {
-      $('#page-home').fadeToggle(250);
-    });
-  } else {
-    homeoverlay();
-  }
-  
-  current_subpage();
-  activenav();
-  subpages();
-  // stickynav();
-  
-  $('#main .nav').stick_in_parent({
-    parent : '#main'
-  });
-  
-  /**
-   * Smooth Page Transitions
-   */
-  var $body = $('html, body');
-  var $content = $('#smooth').smoothState({
-    prefetch: true,
-    pageCacheSize: 4,
-    onStart: {
-      duration: 250, // Duration of our animation
-      render: function (url, $container) {
-        $content.toggleAnimationClass('is-exiting');
-        $body.animate({
-          scrollTop: 0
-        });
-      }
-    },
-    callback: function() {
-      activenav();
-      subpages();
-      // stickynav();
-      homeoverlay();
-      
-      $(document.body).trigger("sticky_kit:recalc");
-    }
-  }).data('smoothState');
-  
-}(jQuery));
-
 /**
- * Current Subpage
+ * Sets the active navigation elemnt base on URL Path and Hash
  */
-function current_subpage() {
-  var hash = window.location.hash;
-  $('.subnav a[href*="' + hash + '"]').closest('li').addClass('active');
-  $(hash).fadeIn(250);
-}
-
-/**
- * Active Navigation Function
- */
-function activenav() {
+function active_nav($selector) {
+  // Get the Path and Hash
   var path = window.location.pathname;
-  path = path.replace(/\/$/, "");
-  path = decodeURIComponent(path);
-
-  $('.mainnav a').each(function () {
+  var hash = window.location.hash;
+      
+  // Active link based on current URL
+  $selector.find('a').each(function () {
     var href = $(this).attr('href');
     if (path.substring(0, href.length) === href) {
       $(this).closest('li').addClass('active');
     }
-  }).click(function() {
-    $('.mainnav li').removeClass('active');
-    $(this).closest('li').addClass('active');
-  });
-}
-
-/**
- * Subpage Function
- */
-function subpages(event) {
-  $('.subnav a').click(function() {
-    
-    $('.subnav li').removeClass('active');
-    $(this).closest('li').addClass('active');
-    
-    var subpage = $(this).attr('href');
-    
-    if( $('.subpage').is(':visible') ) {
-      $('.subpage').fadeOut(250);
-      $(subpage).delay(250).fadeIn(250);
-    } else {
-      $(subpage).fadeIn(250);
+    if (hash === href) {
+      $(this).closest('li').addClass('active');
     }
     
-    var el = $(subpage);
-    var id = el.attr('id');
-        
-    el.removeAttr('id');
-    location.hash = subpage;
-    el.attr('id',id);
-    
-    $('html, body').animate({
-      scrollTop: 0
-    }, 250);
-    
-    return false;
-  });
-}
-
-/**
- * Sticky Navigation
- */
-function stickynav() {
-  $('#main .nav').stick_in_parent({
-    parent : '.main',
-    recalc_every: 1
-  });
-}
-
-/**
- * Home Overlay
- */
-function homeoverlay() {
-  $('.header .logo').click(function() {
-    $('#page-home').fadeToggle(250);
-    return false;
-  });
-  
-  $('#page-home .mainnav a').click(function() {
-    $('#page-home').fadeToggle(250);
+    if (/#/.test($(this).attr('href'))) {
+      $(this).click(function() {
+        $selector.find('ul ul li').removeClass('active');
+        $(this).closest('li').addClass('active');
+      });
+    }
   });
 }

@@ -15,9 +15,34 @@
    * When the document is ready
    */
   $(document).ready(function () {
-  
     
-  
+    active_nav($('#nav'));
+    
+    var $body = $('html, body');
+    var content = $('#main').smoothState({
+      // Runs when a link has been activated
+      blacklist: '.logo',
+      prefetch: true,
+      pageCacheSize: 4,
+      onStart: {
+        duration: 250, // Duration of our animation
+        render: function (url, $container) {
+          // toggleAnimationClass() is a public method
+          // for restarting css animations with a class
+          content.toggleAnimationClass('is-exiting');
+          // Scroll user to the top
+          $body.animate({
+            scrollTop: 0
+          });
+        }
+      },
+      callback: function(url, $container, $content) {
+        
+        active_nav($('#nav'));
+        
+      }
+    }).data('smoothState');
+    
   });
   
   /**

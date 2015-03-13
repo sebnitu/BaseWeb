@@ -1,0 +1,162 @@
+/*==============================================================================
+  @Mobile Grid System
+==============================================================================*/
+
+@include build-mobile-grid-system();
+
+/*==============================================================================
+  @Grid System
+==============================================================================*/
+
+@include media-min('tablet') {
+  @include build-grid-system();
+}
+
+/*==============================================================================
+  @Structure
+==============================================================================*/
+
+body {
+  background: $gray-pale;
+  color: $color;
+}
+.row {
+  position: relative;
+}
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 300px;
+  top: 0;
+  bottom: 0;
+}
+.content {
+  margin: 0 0 0 300px;
+  padding: 160px 0 160px 60px;
+}
+
+/*==============================================================================
+  @Header
+==============================================================================*/
+
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 61px 0;
+}
+.header h1 {
+  margin: 0;
+  @include clearfix();
+}
+.header .logo {
+  background: url('../img/baseweb-logo-black.png') no-repeat left center;
+  border: 0 none;
+  display: block;
+  width: 180px;
+  height: 38px;
+  float: left;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  overflow: hidden;
+}
+
+/*==============================================================================
+  @Navigation
+==============================================================================*/
+
+.nav {
+  position: relative;
+  margin: 10px 0;
+}
+.nav ul {
+  width: 50%;
+  margin: 0;
+  list-style: none;
+}
+.nav ul li {
+  margin: 0;
+  border-bottom: 1px solid rgba($black, 0.1);
+}
+.nav ul li:first-child {
+  border-top: 1px solid rgba($black, 0.1);
+}
+.nav ul li a {
+  display: block;
+  padding: 10px;
+  background: transparent;
+  color: $color;
+  border: 0 none;
+  
+  &:hover {
+    background-clip: padding-box;
+    color: $red;
+  }
+}
+.nav ul li.active > a {
+  color: $red;
+}
+
+/**
+ * Primary Nav
+ */
+.nav > ul {
+  width: column_width(6);
+  padding-right: 10px;
+}
+
+/**
+ * Secondary Nav
+ */
+.nav ul ul {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  padding-left: 10px;
+}
+.nav ul li.active ul {
+  display: block;
+}
+
+/*==============================================================================
+  @Content
+==============================================================================*/
+
+h1.docs-header {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+h2.docs-header {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+}
+h3.docs-header {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+hr.docs-hr {
+  margin: 30px 0;
+}
+
+/**
+ * Custom Code Blocks
+ */
+.docs-code {
+  .name,
+  .desc {
+    display: block;
+    margin: 0;
+  }
+  .name {
+    color: $red-violet;
+  }
+  .desc {
+    color: $color;
+  }
+}

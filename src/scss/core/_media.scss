@@ -10,7 +10,7 @@
 //   @type style block
 @mixin media-min($point) {
   @if map-has-key($tweakpoints, $point) {
-    @media (max-width: map-get($tweakpoints, $point)) {
+    @media (min-width: map-get($tweakpoints, $point)) {
       @content;
     }
   } @else if map-has-key($breakpoints, $point) {
