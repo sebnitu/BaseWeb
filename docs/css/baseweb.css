@@ -539,13 +539,13 @@ hr {
   font-size: 14px;
   line-height: 20px;
   color: #303030;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   background-clip: padding-box;
   border-radius: 3px; }
   .btn:hover {
     color: #303030;
-    background: rgba(255, 255, 255, 0);
+    background: rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
 
@@ -970,20 +970,44 @@ hr.docs-hr {
 /*==============================================================================
   @Structure
 ==============================================================================*/
+html, body {
+  height: 100%;
+  min-height: 100%; }
+
+.home {
+  width: 100%;
+  height: 100%;
+  min-height: 100%; }
+  .home .wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 100%; }
+  .home .wrapper .header, .home .wrapper .content {
+    height: 50%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+  .home .wrapper .container {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+
 .home {
   border: 0 none; }
+  .home .header {
+    padding: 0; }
   .home .content {
     margin: 0;
-    padding: 60px 0 160px; }
-  .home .content .container {
-    padding: 0 80px; }
+    padding: 0; }
 
 /*==============================================================================
   @Header
 ==============================================================================*/
 .home .header {
-  background: #303030;
-  padding: 200px 0; }
+  background: #303030; }
 .home .header .logo {
   background-image: url('../img/baseweb-logo-large.svg');
   background-size: 240px 145px;
@@ -992,36 +1016,6 @@ hr.docs-hr {
   height: 145px;
   float: none;
   margin: 0 auto; }
-.home .header .actions {
-  margin: 60px 0 0;
-  text-align: center; }
-.home .header .actions .version {
-  color: rgba(255, 255, 255, 0.25); }
-.home .header .actions .btn-group {
-  position: relative;
-  margin: 0;
-  font-size: 0;
-  line-height: 0; }
-.home .header .actions .btn {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0 -1px;
-  padding: 15px 30px;
-  background: none;
-  border: 1px solid #4e4e4e;
-  color: #ffffff;
-  border-radius: 0; }
-  .home .header .actions .btn:hover {
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.05);
-    border-color: #636363; }
-  .home .header .actions .btn:first-child {
-    margin: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
-  .home .header .actions .btn:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px; }
 
 /*==============================================================================
   @Navigation
@@ -1071,10 +1065,41 @@ hr.docs-hr {
 .home .content {
   text-align: center; }
 .home .content .text-lead {
-  margin: 0 0 60px;
+  margin: 0 0 40px;
+  padding: 0 80px;
   font-size: 26px;
   line-height: 36px;
   font-weight: 300; }
+.home .actions {
+  margin: 0;
+  text-align: center; }
+.home .actions .version {
+  color: #909090; }
+.home .actions .btn-group {
+  position: relative;
+  margin: 0;
+  font-size: 0;
+  line-height: 0; }
+.home .actions .btn {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0 -1px;
+  padding: 15px 30px;
+  background: none;
+  border: 1px solid #ccc;
+  color: #303030;
+  border-radius: 0; }
+  .home .actions .btn:hover {
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #aaa; }
+  .home .actions .btn:first-child {
+    margin: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .home .actions .btn:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
 
 /*==============================================================================
   @Docs Lists
@@ -1202,6 +1227,27 @@ hr.docs-hr {
 
 .demo .table-responsive table {
   margin: 0; }
+
+/**
+ * Vertical Center Demo
+ */
+.demo-vertical-center {
+  height: 300px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.demo-vertical-center .vertical-center {
+  background: #bc6bd3;
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
 
 /**
  * Demo Example

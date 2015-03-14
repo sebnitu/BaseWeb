@@ -145,16 +145,6 @@
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">size</h2>
-    <p>Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
-<pre class="docs-code"><code class="name">@mixin size( $height, $width )</code><code class="desc">@param $width
-  @type unit (number, pixel, percentage)
-@param $height
-  @type unit (number, pixel, percentage, false)
-  @default false -> $width</code></pre>
-  </li>
-
-  <li>
     <h2 class="docs-header">clearfix</h2>
     <p>Allows you to apply a clearfix to an element that contains floats.</p>
 <pre class="docs-code"><code class="name">@mixin clearfix()</code></pre>
@@ -176,6 +166,40 @@
     <h2 class="docs-header">remove-clearfix</h2>
     <p>Removes the clearfix styles from an element.</p>
     <pre class="docs-code"><code class="name">@mixin remove-clearfix()</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">size</h2>
+    <p>Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
+<pre class="docs-code"><code class="name">@mixin size( $height, $width )</code><code class="desc">@param $width
+  @type unit (number, pixel, percentage)
+@param $height
+  @type unit (number, pixel, percentage, false)
+  @default false -> $width</code></pre>
+  </li>
+
+  <li>
+    <h2 class="docs-header">vertical-center</h2>
+    <p>Centers an element vertically within it's parent. Parent element may need to have transform-style set to `preserve-3d` in order to prevent half pixel bluring.</p>
+<pre class="docs-code"><code class="name">@mixin vertical-center()</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre><code>// SCSS
+.vertical-center {
+  @include vertical-center();
+}
+
+// CSS
+.vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}</code></pre>
+
+    <div class="demo demo-vertical-center">
+      <div class="vertical-center"></div>
+    </div>
   </li>
   
   <li>
@@ -267,6 +291,13 @@
       <li><code>translate()</code></li>
       <li class="desc"><em>This is not a comprehensive list of transform functions. For a full list of transform functions, please see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</em></li>
     </ul>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">transform-style</h2>
+    <p>The transform-style CSS property determines if the children of the element are positioned in the 3D-space or are flattened in the plane of the element.</p>
+<pre class="docs-code"><code class="name">@mixin transform-style( $style... )</code><code class="desc">@param $style
+  @type transform style (flat, preserve-3d, inherit)</code></pre>
   </li>
   
   <li>

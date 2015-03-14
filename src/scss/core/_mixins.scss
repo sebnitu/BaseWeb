@@ -2,6 +2,26 @@
 // @Utility
 ////////////////////////////////////////////////////////////////////////////////
 
+// Clearfix
+// Allows you to apply a clearfix to an element that contains floats.
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Remove Clearfix
+// Removes the clearfix styles from an element.
+@mixin remove-clearfix() {
+  &:after {
+    content: none;
+    display: none;
+    clear: none;
+  }
+}
+
 // Size
 // Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.
 // @param $width
@@ -27,24 +47,12 @@
   height: $height;
 }
 
-// Clearfix
-// Allows you to apply a clearfix to an element that contains floats.
-@mixin clearfix() {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-// Remove Clearfix
-// Removes the clearfix styles from an element.
-@mixin remove-clearfix() {
-  &:after {
-    content: none;
-    display: none;
-    clear: none;
-  }
+// Vertical Center
+// Centers an element vertically within its parent. Parent element may need to have transform-style set to `preserve-3d` in order to prevent half pixel bluring.
+@mixin vertical-center() {
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
 }
 
 // Scrollable
@@ -145,6 +153,16 @@
   -webkit-transform: $function;
   -ms-transform: $function;
   transform: $function;
+}
+
+// Transform Style
+// The transform-style CSS property determines if the children of the element are positioned in the 3D-space or are flattened in the plane of the element.
+// @param $style
+//   @type transform style (flat, preserve-3d, inherit)
+@mixin transform-style( $style... ) {
+  -webkit-transform-style: $style;
+  -moz-transform-style: $style;
+  transform-style: $style;
 }
 
 // Rotate
