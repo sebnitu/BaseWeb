@@ -26,26 +26,29 @@
 <body>
 
 <div id="main" class="main m-scene">
+  <div class="container">
   
-<div class="container">
-
-  <div id="sidebar" class="sidebar">
-    <header id="header" class="header">
-      <h1><a href="/index.html" class="logo">{{ name }}</a></h1>
-    </header><!-- .header -->
-    <nav id="nav" class="nav">
-      {{ > nav }}
-    </nav>
-  </div><!-- .sidebar -->
-  
-  <div id="content" class="content">
-    <div class="scene_element scene_element--fadein">
-      {{ > page }}
-    </div>
-  </div><!-- .content -->
-  
-</div><!-- .container -->
-  
+    <div id="sidebar" class="sidebar">
+      <header id="header" class="header">
+        <h1><a href="/index.html" class="logo">{{ name }}</a></h1>
+      </header><!-- .header -->
+      <nav id="nav" class="nav">
+        {{ > nav }}
+      </nav>
+    </div><!-- .sidebar -->
+    
+    <div id="content" class="content">
+      <div class="toolbar">
+        <span class="version">Currently v{{ version }}</span>
+        <a href="{{ repository.url }}" class="btn">Download {{ name }}</a>
+      </div><!-- .toolbar -->
+      
+      <div class="scene_element">
+        {{ > page }}
+      </div>
+    </div><!-- .content -->
+    
+  </div><!-- .container -->
 </div><!-- .main -->
   
 <!-- jQuery -->

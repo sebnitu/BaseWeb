@@ -1,0 +1,151 @@
+/*==============================================================================
+  @Structure
+==============================================================================*/
+
+.home {
+  border: 0 none;
+  
+  .content {
+    margin: 0;
+    padding: 60px 0 160px;
+  }
+  .content .container {
+    padding: 0 80px;
+  }
+}
+
+/*==============================================================================
+  @Header
+==============================================================================*/
+
+.home {
+  
+  .header {
+    background: $color;
+    padding: 200px 0;
+  }
+  .header .logo {
+    background-image: url('../img/baseweb-logo-large.svg');
+    background-size: 240px 145px;
+    display: block;
+    width: 240px;
+    height: 145px;
+    float: none;
+    margin: 0 auto;
+  }
+  .header .actions {
+    margin: 60px 0 0;
+    text-align: center;
+  }
+  .header .actions .version {
+    color: rgba($white, 0.25);
+  }
+  .header .actions .btn-group {
+    position: relative;
+    margin: 0;
+    font-size: 0;
+    line-height: 0;
+  }
+  .header .actions .btn {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 0 -1px;
+    padding: 15px 30px;
+    background: none;
+    border: 1px solid #4e4e4e;
+    color: $white;
+    @include border-radius(0);
+    
+    &:hover {
+      z-index: 2;
+      background: rgba($white, 0.05);
+      border-color: #636363;
+    }
+    
+    &:first-child {
+      margin: 0;
+      @include border-radius-left();
+    }
+    &:last-child {
+      @include border-radius-right();
+    }
+  }
+  
+}
+
+/*==============================================================================
+  @Navigation
+==============================================================================*/
+
+.home {
+  
+  .nav {
+    font-size: 0;
+    line-height: 0;
+  }
+  .nav .rootnav {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+    padding: 0;
+    @include border-radius();
+  }
+  .nav .rootnav > li {
+    display: inline-block;
+    border-top: 0 none;
+    border-bottom: 0 none;
+    font-size: 0;
+    line-height: 0;
+    
+    &:first-child {
+      border-left: 0 none;
+    }
+  }
+  .nav .rootnav > li {
+    
+    > a {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 0 -1px;
+      padding: 15px 30px;
+      background: none;
+      border: 1px solid #d5d5d5;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    
+    > a:hover {
+      z-index: 2;
+      background: rgba($white, 0.5);
+      border-color: #bdbdbd;
+      color: $color;
+    }
+    
+    > &:first-child a {
+      margin: 0;
+      @include border-radius-left();
+    }
+    > &:last-child a {
+      @include border-radius-right();
+    }
+  }
+  
+}
+
+/*==============================================================================
+  @Content
+==============================================================================*/
+
+.home {
+  
+  .content {
+    text-align: center;
+  }
+  .content .text-lead {
+    margin: 0 0 60px;
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 300;
+  }
+  
+}

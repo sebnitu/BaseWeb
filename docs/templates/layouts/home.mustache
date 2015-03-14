@@ -23,18 +23,32 @@
   <![endif]-->
   
 </head>
-<body>
+<body class="home">
 
-<header class="header">
-  <h1><a href="/index.html" class="logo">{{ name }}</a></h1>
+<header id="header" class="header">
+  <div class="container">
+  
+    <h1><a href="/index.html" class="logo">{{ name }}</a></h1>
+    <div class="actions">
+      <div class="btn-group">
+        <a href="/docs/settings.html" class="btn">Documentation</a>
+        <a href="{{ repository.url }}" class="btn">Download {{ name }}</a>
+      </div>
+      <br>
+      <span class="version">Currently v{{ version }}</span>
+    </div>
+  
+  </div><!-- .container -->
 </header><!-- .header -->
 
-<nav class="nav">
-  {{ > nav }}
-</nav>
-
-{{ > page }}
+<div id="content" class="content">
+  <div class="container">
+        
+    <p class="text-lead">BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.</p>
   
+  </div><!-- .container -->
+</div><!-- .content -->
+
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/docs/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>

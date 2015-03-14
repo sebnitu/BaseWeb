@@ -16,14 +16,21 @@
    */
   $(document).ready(function () {
     
+    if (location.hash) {
+      setTimeout(function() {
+        window.scrollTo(0, 0);
+      }, 1);
+    }
+    
     active_nav($('#nav'));
+    active_subpage($('.subpage'));
     
     var $body = $('html, body');
     var content = $('#main').smoothState({
       // Runs when a link has been activated
       blacklist: '.logo',
       prefetch: true,
-      pageCacheSize: 4,
+      // pageCacheSize: 4,
       onStart: {
         duration: 250, // Duration of our animation
         render: function (url, $container) {
@@ -39,6 +46,7 @@
       callback: function(url, $container, $content) {
         
         active_nav($('#nav'));
+        active_subpage($('.subpage'));
         
       }
     }).data('smoothState');

@@ -26,19 +26,18 @@
 <body>
 
 <div id="main" class="main m-scene">
+  <div class="container">
   
-<div class="container">
-
-  <div id="sidebar" class="sidebar">
-    <header id="header" class="header">
-      <h1><a href="/index.html" class="logo">BaseWeb</a></h1>
-    </header><!-- .header -->
-    <nav id="nav" class="nav">
-<ul>
+    <div id="sidebar" class="sidebar">
+      <header id="header" class="header">
+        <h1><a href="/index.html" class="logo">BaseWeb</a></h1>
+      </header><!-- .header -->
+      <nav id="nav" class="nav">
+<ul class="rootnav">
   
   <li>
     <a href="/docs/settings.html">Settings</a>
-    <ul>
+    <ul class="subnav">
       <li><a href="#palette">Palette</a></li>
       <li><a href="#media">Media</a></li>
       <li><a href="#grid">Grid</a></li>
@@ -49,7 +48,7 @@
   
   <li>
     <a href="/docs/core.html">Core</a>
-    <ul>
+    <ul class="subnav">
       <li><a href="#functions">Functions</a></li>
       <li><a href="#mixins">Mixins</a></li>
       <li><a href="#media">Media</a></li>
@@ -59,7 +58,7 @@
   
   <li>
     <a href="/docs/elements.html">Elements</a>
-    <ul>
+    <ul class="subnav">
       <li><a href="#base">Base</a></li>
       <li><a href="#typography">Typography</a></li>
       <li><a href="#lists">Lists</a></li>
@@ -75,7 +74,7 @@
   
   <li>
     <a href="/docs/blocks.html">Blocks</a>
-    <ul>
+    <ul class="subnav">
       <li><a href="#form-layout">Form Layout</a></li>
       <li><a href="#button-groups">Button Groups</a></li>
       <li><a href="#notice">Notice</a></li>
@@ -84,16 +83,23 @@
   
   <li>
     <a href="/docs/custom.html">Custom</a>
-    <ul>
+    <ul class="subnav">
       <li><a href="#custom">Custom</a></li>
     </ul>
   </li>
   
-</ul>    </nav>
-  </div><!-- .sidebar -->
-  
-  <div id="content" class="content">
-    <div class="scene_element scene_element--fadein">
+</ul>      </nav>
+    </div><!-- .sidebar -->
+    
+    <div id="content" class="content">
+      <div class="toolbar">
+        <span class="version">Currently v0.9.0</span>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn">Download BaseWeb</a>
+      </div><!-- .toolbar -->
+      
+      <div class="scene_element">
+<section class="rootpage"></section>
+
 <section id="base" class="subpage">
 <h1 class="docs-header">Base Styles</h1>
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
@@ -551,7 +557,7 @@
 @param $options
   @type map
   @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre><code>&lt;ul class=&quot;list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-bordered list-rounded">
         <li>List Item</li>
@@ -578,7 +584,7 @@
 @param $options
   @type map
   @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre><code>&lt;ul class=&quot;list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-striped">
         <li>List Item</li>
@@ -605,7 +611,7 @@
 @param $options
   @type map
   @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre><code>&lt;ul class=&quot;list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list-rowed list-hover">
         <li>List Item</li>
@@ -937,7 +943,7 @@ class BaseWeb() {
     <pre class="docs-code"><code class="name">@mixin make-table-condensed()</code><code class="desc">@param $options
   @type map
   @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table-bordered table-condensed">
         <tr>
@@ -974,7 +980,7 @@ class BaseWeb() {
     <pre class="docs-code"><code class="name">@mixin make-table-expanded()</code><code class="desc">@param $options
   @type map
   @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre><code>&lt;table class=&quot;table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table-bordered table-expanded">
         <tr>
@@ -1363,11 +1369,10 @@ class BaseWeb() {
   <p>The <strong>buttons element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
 </div>
 </section><!-- .subpage -->
-    </div>
-  </div><!-- .content -->
-  
-</div><!-- .container -->
-  
+      </div>
+    </div><!-- .content -->
+    
+  </div><!-- .container -->
 </div><!-- .main -->
   
 <!-- jQuery -->
