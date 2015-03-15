@@ -5,6 +5,7 @@
 // Table Map
 // Define all the settings for table mixins and classes.
 $table: (
+  'modifier-classes' : true,
   'base' : false,
   'valign' : top,
   'nth' : odd,
@@ -250,9 +251,21 @@ table {
   }
   th {
     color: $color-header;
-    text-align: left;
     font-weight: bold;
   }
+}
+
+// Check if we should output modifier classes
+@if (map-get($table, 'modifier-classes') == true) {
+
+/*==============================================================================
+  @Table Modifiers
+==============================================================================*/
+
+/**
+ * Table Alignment Modifiers
+ */
+table {
   &.table-valign-baseline {
     tr {
       vertical-align: baseline;
@@ -290,13 +303,10 @@ table {
   }
 }
 
-/*==============================================================================
-  @Table Modifiers
-==============================================================================*/
-
 /**
- * Base Table Modifiers Styles
+ * Base Modifiers Styles
  */
+
 %table-base {
   @include make-table-base();
 }
@@ -352,3 +362,5 @@ table {
 .table-responsive {
   @include make-table-responsive();
 }
+
+} // endif
