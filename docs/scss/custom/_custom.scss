@@ -23,15 +23,25 @@ body {
   position: relative;
 }
 .sidebar {
-  position: fixed;
-  height: 100%;
-  width: 300px;
-  top: 0;
-  bottom: 0;
+  position: relative;
 }
 .content {
-  margin: 0 0 0 300px;
-  padding: 0 0 160px 60px;
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+@include media-min('tablet') {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    top: 0;
+    bottom: 0;
+  }
+  .content {
+    margin: 0 0 0 300px;
+    padding: 0 0 160px 60px;
+  }
 }
 
 /**
@@ -71,25 +81,34 @@ body {
 .header {
   position: relative;
   z-index: 10;
-  padding: 60px 0;
+  padding: 20px 0;
 }
 .header h1 {
-  margin: 0;
+  margin: 0 auto;
   @include clearfix();
 }
 .header .logo {
-  background: url('../img/baseweb-logo-small.svg') no-repeat left center;
-  background-size: 187px 40px;
-  border: 0 none;
   display: block;
-  width: 187px;
-  height: 40px;
-  float: left;
+  margin: 0 auto;
   padding: 0;
   font-size: 0;
   line-height: 0;
   text-indent: 100%;
   overflow: hidden;
+  border: 0 none;
+  background: url('../img/baseweb-logo-small.svg') no-repeat left center;
+  background-size: 187px 40px;
+  @include size(187px, 40px);
+}
+
+@include media-min('tablet') {
+  .header {
+    padding: 60px 0;
+  }
+  .header .logo {
+    float: left;
+    margin: 0;
+  }
 }
 
 /*==============================================================================
@@ -144,6 +163,18 @@ body {
   top: 0;
   right: 0;
   padding-left: 10px;
+  height: 100%;
+  @include scrollable();
+}
+
+@include media-min('tablet') {
+  .nav .subnav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 10px;
+    height: auto;
+  }
 }
 
 /*==============================================================================
@@ -151,15 +182,30 @@ body {
 ==============================================================================*/
 
 .toolbar {
-  padding: 59px 0;
+  padding: 20px 0;
   line-height: 42px;
-  text-align: right;
+  text-align: center;
 }
 .toolbar .version {
+  display: none;
   color: $color-light;
 }
 .toolbar .btn {
-  margin-left: 20px;
+  padding: 15px 30px;
+}
+
+@include media-min('tablet') {
+  .toolbar {
+    padding: 59px 0;
+    text-align: right;
+  }
+  .toolbar .version {
+    display: inline-block;
+  }
+  .toolbar .btn {
+    margin-left: 20px;
+    padding: 10px 20px;
+  }
 }
 
 /*==============================================================================
