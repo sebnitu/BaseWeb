@@ -5,12 +5,17 @@ A fresh front-end development framework.
 
 ---
 
+## Documentation
+Documentation is currently being worked on and you can view them if you clone or download the repo and view them. There will be an online version soon.
+
+---
+
 ## About
 BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.
 
 ---
 
-## Build Scripts
+## To-Do
 
 * Setup the docs as the website for [http://getbaseweb.com/](http://getbaseweb.com/).
 * Add responsive styles for docs.
