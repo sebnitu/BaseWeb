@@ -1,22 +1,174 @@
+////////////////////////////////////////////////////////////////////////////////
+// @Button Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Button Map
+// Define all the settings for button mixins and classes.
+$button: (
+  'modifier-classes' : true,
+  'base' : false,
+
+  'padding' : 10px 20px,
+  'padding-small' : 5px 10px,
+  'padding-large' : 15px 30px,
+  
+  'font-size' : $base-font-size,
+  'line-height' : $base-line-height,
+  'color' : $color-dark,
+  'text-shadow' : none,
+  
+  'background' : $gray-pale,
+  'background-gradient' : false,
+  'background-clip' : border-box,
+  'darken-deg' : $dark-deg,
+  
+  'border' : 1px solid rgba($black, 0.15),
+  'border-hover' : 1px solid rgba($black, 0.25),
+  'border-radius' : $border-radius,
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Button Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Button Base
+// ...
+// @param $options
+//   @type map
+//   @default $button map
+@mixin make-btn-base($options: ()) {
+  $o: map-merge( $button, $options);
+  
+  display: inline-block;
+  margin: 0;
+  padding: map-get($o, 'padding');
+  
+  font-family: $base-font-family;
+  font-size: map-get($o, 'font-size');
+  line-height: map-get($o, 'line-height');
+  font-weight: $base-font-weight;
+  white-space: nowrap;
+  
+  vertical-align: middle;
+  
+  border: map-get($o, 'border');
+  box-shadow: 0 0 0 rgba($black, 0);
+  
+  @include border-radius(map-get($o, 'border-radius'));
+  @include transition(all 1s);
+  
+  &:hover {
+    cursor: pointer;
+    box-shadow: inset 0 1px 2px rgba($black, 0.1);
+    
+    @include transition(all 0.25s);
+  }
+}
+
+@mixin make-btn-color($options: ()) {
+  $o: map-merge( $button, $options);
+  
+  color: map-get($o, 'color');
+  text-shadow: map-get($o, 'text-shadow');
+  @if (map-get($o, 'background-gradient') == true) {
+    @include linear-gradient(top, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'darken-deg')));
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-color: darken(map-get($o, 'background'), map-get($o, 'darken-deg'));
+  } @else {
+    background-color: map-get($o, 'background');
+  }
+  background-clip: map-get($o, 'background-clip');
+  border: map-get($o, 'border');
+  
+  &:hover {
+    color: map-get($o, 'color');
+    background-color: darken(map-get($o, 'background'), map-get($o, 'darken-deg'));
+    @if (map-get($o, 'background-gradient') == true) {
+      background-position: 0 -40px;
+    }
+    border: map-get($o, 'border-hover');
+  }
+}
+
+@mixin make-btn-size($size, $options: ()) {
+  $o: map-merge( $button, $options);
+  
+  @if ($size == small) {
+    padding: map-get($o, 'padding-small');
+  } @else if ($size == large) {
+    padding: map-get($o, 'padding-large');
+  } @else {
+    padding: $size;
+  }
+  
+  @if (map-get($o, 'font-size') != map-get($button, 'font-size')) {
+    font-size: map-get($o, 'font-size');
+  }
+  @if (map-get($o, 'line-height') != map-get($button, 'line-height')) {
+    font-size: map-get($o, 'line-height');
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($table, 'modifier-classes') == true) {
+
 /*==============================================================================
   @Buttons
 ==============================================================================*/
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  line-height: 20px;
-  color: $color-dark;
-  background: none;
-  border: 1px solid rgba($black, 0.15);
-  background-clip: padding-box;
-  @include border-radius();
-  
-  &:hover {
-    color: $color-dark;
-    background: rgba($black, 0.05);
-    border-color: rgba($black, 0.25);
-    box-shadow: inset 0 1px 2px rgba($black, 0.1);
-  }
+%btn-base {
+  @include make-btn-base();
 }
+
+/**
+ * Button Color
+ */
+.btn {
+  @extend %btn-base;
+  @include make-btn-color();
+}
+.btn-blue {
+  @extend %btn-base;
+  @include make-btn-color((
+    'color' : $white,
+    'text-shadow' : 0 1px 1px rgba($black, 0.25),
+    'background' : $blue,
+  ));
+}
+.btn-green {
+  @extend %btn-base;
+  @include make-btn-color((
+    'color' : $white,
+    'text-shadow' : 0 1px 1px rgba($black, 0.25),
+    'background' : $green,
+  ));
+}
+.btn-orange {
+  @extend %btn-base;
+  @include make-btn-color((
+    'color' : $white,
+    'text-shadow' : 0 1px 1px rgba($black, 0.25),
+    'background' : $orange,
+  ));
+}
+.btn-red {
+  @extend %btn-base;
+  @include make-btn-color((
+    'color' : $white,
+    'text-shadow' : 0 1px 1px rgba($black, 0.25),
+    'background' : $red,
+  ));
+}
+
+/**
+ * Button Size
+ */
+.btn-large {
+  @include make-btn-size(large);
+}
+.btn-small {
+  @include make-btn-size(small);
+}
+
+} // endif

@@ -34,11 +34,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box; }
 
 ::-moz-selection {
-  background: rgba(142, 203, 37, 0.25);
+  background: rgba(132, 183, 45, 0.25);
   text-shadow: none; }
 
 ::selection {
-  background: rgba(142, 203, 37, 0.25);
+  background: rgba(132, 183, 45, 0.25);
   text-shadow: none; }
 
 /*==============================================================================
@@ -536,21 +536,93 @@ hr {
 /*==============================================================================
   @Buttons
 ==============================================================================*/
-.btn {
+.btn, .btn-blue, .btn-green, .btn-orange, .btn-red {
   display: inline-block;
+  margin: 0;
   padding: 10px 20px;
+  font-family: "proxima-nova", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #303030;
-  background: none;
+  font-weight: normal;
+  white-space: nowrap;
+  vertical-align: middle;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  background-clip: padding-box;
-  border-radius: 3px; }
+  box-shadow: 0 0 0 transparent;
+  border-radius: 3px;
+  -webkit-transition: all 1s;
+  transition: all 1s; }
+  .btn:hover, .btn-blue:hover, .btn-green:hover, .btn-orange:hover, .btn-red:hover {
+    cursor: pointer;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s; }
+
+/**
+ * Button Color
+ */
+.btn {
+  color: #303030;
+  text-shadow: none;
+  background-color: #efefef;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
   .btn:hover {
     color: #303030;
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
+    background-color: #e2e2e2;
+    border: 1px solid rgba(0, 0, 0, 0.25); }
+
+.btn-blue {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #2ab0ea;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
+  .btn-blue:hover {
+    color: #ffffff;
+    background-color: #16a6e4;
+    border: 1px solid rgba(0, 0, 0, 0.25); }
+
+.btn-green {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #84b72d;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
+  .btn-green:hover {
+    color: #ffffff;
+    background-color: #75a328;
+    border: 1px solid rgba(0, 0, 0, 0.25); }
+
+.btn-orange {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #e69242;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
+  .btn-orange:hover {
+    color: #ffffff;
+    background-color: #e3852b;
+    border: 1px solid rgba(0, 0, 0, 0.25); }
+
+.btn-red {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  background-color: #de5151;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
+  .btn-red:hover {
+    color: #ffffff;
+    background-color: #da3c3c;
+    border: 1px solid rgba(0, 0, 0, 0.25); }
+
+/**
+ * Button Size
+ */
+.btn-large {
+  padding: 15px 30px; }
+
+.btn-small {
+  padding: 5px 10px; }
 
 /*==============================================================================
   @Notice
@@ -1337,7 +1409,7 @@ html, body {
  * Used for inline demo examples
  */
 .demo-example {
-  background: #989e10;
+  background: #939513;
   border-radius: 3px;
   width: 50px;
   height: 50px; }
@@ -1347,7 +1419,7 @@ html, body {
  */
 .demo-border-radius {
   display: inline-block;
-  background: #aeb512;
+  background: #a9ac16;
   width: 30px;
   height: 30px; }
 
@@ -1409,7 +1481,7 @@ html, body {
  */
 .demo-transition {
   margin: 10px auto;
-  background-color: #3da96d;
+  background-color: #3e9971;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear; }
 
@@ -1451,10 +1523,10 @@ html, body {
 .demo-linear-gradient {
   margin: 10px auto;
   width: auto;
-  background-image: -webkit-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: -moz-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: -ms-linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3);
-  background-image: linear-gradient(left, #8ecb25, #2ab0ea, #bc6bd3); }
+  background-image: -webkit-linear-gradient(left, #84b72d, #2ab0ea, #bc6bd3);
+  background-image: -moz-linear-gradient(left, #84b72d, #2ab0ea, #bc6bd3);
+  background-image: -ms-linear-gradient(left, #84b72d, #2ab0ea, #bc6bd3);
+  background-image: linear-gradient(left, #84b72d, #2ab0ea, #bc6bd3); }
 
 .demo-radial-gradient {
   margin: 10px auto;
@@ -1469,7 +1541,7 @@ html, body {
  * Text
  */
 .demo-text-truncate {
-  background: #3da96d;
+  background: #3e9971;
   width: 200px;
   max-width: 100%;
   margin: 10px auto;
@@ -1641,55 +1713,55 @@ html, body {
   background: #f9f9e6; }
 
 .swatch-yellow-green-lighter {
-  background: #e1ea2a; }
+  background: #e1e42a; }
 
 .swatch-yellow-green-light {
-  background: #dae417; }
+  background: #d6d91b; }
 
 .swatch-yellow-green {
-  background: #c4cd14; }
+  background: #bfc219; }
 
 .swatch-yellow-green-dark {
-  background: #aeb512; }
+  background: #a9ac16; }
 
 .swatch-yellow-green-darker {
-  background: #989e10; }
+  background: #939513; }
 
 .swatch-green-pale {
   background: #f3f9e8; }
 
 .swatch-green-lighter {
-  background: #a6dd46; }
+  background: #9ed146; }
 
 .swatch-green-light {
-  background: #9bd930; }
+  background: #93cb32; }
 
 .swatch-green {
-  background: #8ecb25; }
+  background: #84b72d; }
 
 .swatch-green-dark {
-  background: #7fb521; }
+  background: #75a328; }
 
 .swatch-green-darker {
-  background: #70a01d; }
+  background: #668e23; }
 
 .swatch-blue-green-pale {
   background: #edf8f2; }
 
 .swatch-blue-green-lighter {
-  background: #7cd0a1; }
+  background: #75c8a4; }
 
 .swatch-blue-green-light {
-  background: #69c994; }
+  background: #63c098; }
 
 .swatch-blue-green {
-  background: #56c386; }
+  background: #51b98c; }
 
 .swatch-blue-green-dark {
-  background: #43bc79; }
+  background: #45ac7f; }
 
 .swatch-blue-green-darker {
-  background: #3da96d; }
+  background: #3e9971; }
 
 .swatch-blue-pale {
   background: #e9f6fc; }
@@ -1767,7 +1839,7 @@ html, body {
   background: rgba(0, 0, 0, 0.05); }
 
 .swatch-bg-selection {
-  background: rgba(142, 203, 37, 0.25); }
+  background: rgba(132, 183, 45, 0.25); }
 
 .swatch-border-color {
   background: rgba(0, 0, 0, 0.1); }
