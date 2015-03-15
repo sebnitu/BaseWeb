@@ -1,51 +1,51 @@
+![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb - A fresh front-end development framework.")
+
 #BaseWeb
 A fresh front-end development framework.
 
 ---
 
-# Upcoming Features
-Some features I have planned to implement in the near future.
-
-### To-Do List
-
-#### For Docs
-
-* Add copy button feature for example code blocks
-* Add hash tags back to the URL when clicking internal page links.
-* Add a table of contents widget.
-* Automatic SVG compilation. SVGs saved to `img > svg` should get compiled to a single file in `img` called `svg-difs.svg` for use in SVG sprites. Source: [Icon System with SVG Sprites by Chris Coyier](http://css-tricks.com/svg-sprites-use-better-icon-fonts/)
-* Tie documentation styles directly into BaseWeb so I can use Scss for docs but not have to modify BaseWeb source directly. Should then include watch and build tasks for this.
-* Create a partials system for including parts or widgets within mustache page and layout templates.
-* Include README.md somehow into the homepage of the docs. Was thinking this could be a dropdown somehow to show. This could be included using the future partials system.
-
-#### For Source
-
-* Add function and mixin documentation directly in source. The comment syntax should mimic what is done in `_functions.scss` for functions/mixins and `_global.scss` for variables.
-* Include some custom SVG icons directly in the framework for general web application use. Might be worth starting a new project for this and having SVGs separate. Still deciding on this.
+## About
+BaseWeb is a front-end development framework built to make building web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.
 
 ---
 
-# Using Build Scripts
+## Build Scripts
 
-### Global Installations (One time)
+* Setup the docs as the website for [http://getbaseweb.com/](http://getbaseweb.com/).
+* Add responsive styles for docs.
+* Add some form of change or development log, similar to [Cargo Devlog](http://cargocollective.com/devlog).
+* Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the dev log.
+* Figure out versioning using [Semantic Versioning 2.0.0](http://semver.org/).
+* `npm install` latest versions of node packages and fix any issues with build scripts.
 
-* Make sure that you have [Node.js](http://nodejs.org/) installed.
+---
+
+## Build Scripts
+
+BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written specifically for BaseWeb, but they are modular so you're free to modify and use them in your own scripts.
+
+### Dependencies
+
+* Install [Node.js](http://nodejs.org/) by downloading the `.pkg` file.
 * Install [Jake](https://github.com/mde/jake) globally `sudo npm install -g jake`
 * Install [Jpegtran](http://jpegclub.org/jpegtran/) for the image optimizer to work. With [Homebrew](http://brew.sh/): `brew install jpeg`
 
-### Project specific (Per project)
+### Node Packages
 
-* Run `npm install` (Should be run every time a new module is added)
+* Run `sudo npm install` (Should be run every time a new module is added)
 * You should now be able to start running jake tasks!
+
+### Jake tasks
+
+* `jake build:scss`   Compiles and minifies SCSS
+* `jake build:js`     Compiles and minifies JS
+* `jake build:docs`   Build documentation
+* `jake build:img`    Optimizes global images
+* `jake watch`        Watch for change to files and rebuild if they change
 
 ---
 
-### Current jake tasks
+## Copyright and License
 
-* `jake build:less` : Compiles and minifies BaseWeb using LESS *(soon to be depricated)*
-* `jake build:scss` : Compiles and minifies BaseWeb using SASS
-* `jake build:js` : Compiles and minifies JavaScript
-* `jake build:img` : Optimize Images
-* `jake build:docs` : Build documentation pages
-* `jake build:examples` : Build example pages
-* `jake watch` : Watch for change to files and rebuild if they change
+BaseWeb and BaseWeb documentation copyright (c) 2015 [Sebastian Nitu](http://sebnitu.com). BaseWeb is released under the [MIT license](https://github.com/sebnitu/BaseWeb/blob/master/LICENSE) and BaseWeb documentation is released under [Creative Commons](https://github.com/sebnitu/BaseWeb/blob/master/docs/LICENSE).
