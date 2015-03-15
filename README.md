@@ -6,7 +6,7 @@ A fresh front-end development framework.
 ---
 
 ## Documentation
-Documentation is currently being worked on and you can view them if you clone or download the repo and view them. There will be an online version soon.
+Documentation is currently being worked on and you can view them if you clone or download the repo. There will be an online version soon at [http://getbaseweb.com/](http://getbaseweb.com/).
 
 ---
 
