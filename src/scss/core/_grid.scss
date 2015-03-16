@@ -43,35 +43,27 @@
 //   @default $grid map
 @mixin make-container($options: ()) {
   $o: map-merge( $grid, $options);
-  width: map-get($o, 'total-width');
-  @if (map-get($o, 'container-min-width') != none) {
-    min-width: map-get($o, 'container-min-width');
-  }
-  @if (map-get($o, 'container-max-width') != none) {
-    max-width: map-get($o, 'container-max-width');
-  }
-  margin: 0 map-get($o, 'container-margin');
   padding: 0 map-get($o, 'container-padding');
-  
-  @if (map-get($o, 'class-container') != none) {
-    &.#{map-get($o, 'class-container')}-float-left {
+  @include clearfix();
+  @if (map-get($o, 'type') != mobile) {
+    width: map-get($o, 'total-width');
+    margin: 0 map-get($o, 'container-margin');
+    @if (map-get($o, 'container-min-width') != none) {
+      min-width: map-get($o, 'container-min-width');
+    }
+    @if (map-get($o, 'container-max-width') != none) {
+      max-width: map-get($o, 'container-max-width');
+    }
+    &.#{map-get($o, 'class-container')}-left {
       float: left;
     }
-    &.#{map-get($o, 'class-container')}-float-right {
+    &.#{map-get($o, 'class-container')}-right {
       float: right;
     }
-    &.#{map-get($o, 'class-container')}-no-padding {
-      padding: 0;
-    }
-    &.#{map-get($o, 'class-container')}-no-margin {
-      margin: 0;
-    }
   }
-  @include clearfix();
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  @content;
 }
 
 // Make Row
@@ -81,27 +73,13 @@
 //   @default $grid map
 @mixin make-row($options: ()) {
   $o: map-merge( $grid, $options);
-  margin-left: -(map-get($o, 'inner-gutter-width') / 2);
-  margin-right: -(map-get($o, 'inner-gutter-width') / 2);
-  @include clearfix();
-  @if (map-get($o, 'class-row') != none) {
-    &.#{map-get($o, 'class-row')}-center {
-      text-align: center;
-      > * {
-        font-size: 0;
-        line-height: 0;
-      }
-      .#{map-get($o, 'class-column')} {
-        float: none;
-        display: inline-block;
-        @include clearfix();
-        font-size: $base-font-size;
-        line-height: $base-line-height;
-        text-align: left;
-      }
+  @if (map-get($o, 'type') != mobile) {
+    @include clearfix();
+    @if (map-get($o, 'inner-gutter-width') != 0) {
+      margin-left: -(map-get($o, 'inner-gutter-width') / 2);
+      margin-right: -(map-get($o, 'inner-gutter-width') / 2);
     }
   }
-  @content;
 }
 
 // Make Base Column
@@ -111,36 +89,23 @@
 //   @default $grid map
 @mixin make-column-base($options: ()) {
   $o: map-merge( $grid, $options);
-  @if (map-get($o, 'total-width') == mobile) {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  } @else {
-    margin-left: map-get($o, 'gutter-width');
-    padding-left: (map-get($o, 'inner-gutter-width') / 2);
-    padding-right: (map-get($o, 'inner-gutter-width') / 2);
-    
-    @if (map-get($o, 'class-column') != none) {
-      &.#{map-get($o, 'class-column')}-no-gutter {
+  @if (map-get($o, 'type') != mobile) {
+    min-height: 1px;
+    float: left;
+    @if (map-get($o, 'gutter-width') != 0) {
+      margin-left: map-get($o, 'gutter-width');
+      &:first-child {
         margin-left: 0;
       }
     }
-    &:first-child {
-      margin-left: 0;
+    @if (map-get($o, 'inner-gutter-width') != 0) {
+      padding-left: (map-get($o, 'inner-gutter-width') / 2);
+      padding-right: (map-get($o, 'inner-gutter-width') / 2);
     }
-  }
-  float: left;
-  min-height: 1px;
-  &.align-right {
-    float: right;
-  }
-  &.align-left {
-    float: left;
   }
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  @content;
 }
 
 // Make Column
@@ -155,7 +120,6 @@
   $o: map-merge( $grid, $options);
   @include make-column-base($o);
   width: column_width($index, $o);
-  @content;
 }
 
 // Make Prefix
@@ -168,11 +132,14 @@
 //   @default $grid map
 @mixin give-prefix($index, $options: ()) {
   $o: map-merge( $grid, $options);
-  margin-left: (spacing_width($index, $o) + map-get($o, 'gutter-width'));
-  &:first-child {
+  @if (map-get($o, 'gutter-width') != 0) {
+    margin-left: (spacing_width($index, $o) + map-get($o, 'gutter-width'));
+    &:first-child {
+      margin-left: spacing_width($index, $o);
+    }
+  } @else {
     margin-left: spacing_width($index, $o);
   }
-  @content;
 }
 
 // Make Suffix
@@ -186,82 +153,89 @@
 @mixin give-suffix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   margin-right: spacing_width($index, $o);
-  @content;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Class Based Grid System Mixins
+// @Class Based Grid System
 ////////////////////////////////////////////////////////////////////////////////
-
-// Make Mobile Grid System
-// Outputs the styles for a mobile grid system where all columns are stacked.
-// @param $options
-//   @type map
-//   @default $grid map
-@mixin build-mobile-grid-system($options: ()) {
-  $o: map-merge( $grid, $options);
-  .#{map-get($o, 'class-container')} {
-    @include make-container( ('total-width': 100%) );
-  }
-  .#{map-get($o, 'class-row')} {
-    @include make-row() {
-      margin-left: 0;
-      margin-right: 0;
-    };
-  }
-  .#{map-get($o, 'class-column')} {
-    @include make-column-base(('total-width': mobile));
-  }
-  @if (map-get($o, 'class-prefix') != none) {
-    .#{map-get($o, 'class-prefix')} {
-      margin-left: 0;
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-  @if (map-get($o, 'class-suffix') != none) {
-    .#{map-get($o, 'class-suffix')} {
-      margin-right: 0;
-    }
-  }
-  @content;
-}
 
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system.
 // @param $options
 //   @type map
 //   @default $grid map
-@mixin build-grid-system($options: ()) {
-  $o: map-merge( $grid, $options);
+@mixin build-grid-system($options: normal) {
+  
+  // Check if options is map or not
+  // If it's a map, merge it with our global grid map
+  // Else set options as our grid type
+  @if (type-of($options) == map) {
+    $o: map-merge( $grid, $options);
+  } @else {
+    $o: map-merge( $grid, ('type': $options));
+  }
+  
+  // Output our container class
   .#{map-get($o, 'class-container')} {
     @include make-container($o);
   }
+  
+  // Output our row class
   .#{map-get($o, 'class-row')} {
-    @include make-row();
+    @include make-row($o);
   }
-  .#{map-get($o, 'class-column')} {
+  
+  // Output our column placeholder
+  %#{map-get($o, 'class-column')} {
     @include make-column-base($o);
   }
-  @for $i from 1 through map-get($o, 'columns') {
-    .#{map-get($o, 'class-column')}-#{$i} {
-      width: column_width( $i, $o );
+  
+  // Check that this is not a mobile grid type
+  @if (map-get($o, 'type') != mobile) {
+    
+    // Set our column modifier classes
+    .#{map-get($o, 'class-column')}-left {
+      float: left;
     }
-  }
-  @if (map-get($o, 'class-prefix') != none) {
-    @for $i from 1 through map-get($o, 'columns') {    
-      .#{map-get($o, 'class-prefix')}-#{$i} {
-        @include give-prefix( $i, $o );
+    .#{map-get($o, 'class-column')}-right {
+      float: right;
+    }
+    @if (map-get($o, 'gutter-width') != 0) {
+      .#{map-get($o, 'class-column')}-no-gutter {
+        margin-left: 0;
       }
     }
-  }
-  @if (map-get($o, 'class-suffix') != none) {
-    @for $i from 1 through map-get($o, 'columns') {  
-      .#{map-get($o, 'class-suffix')}-#{$i} {
-        @include give-suffix( $i, $o );
+    @if (map-get($o, 'inner-gutter-width') != 0) {
+      .#{map-get($o, 'class-column')}-no-inner-gutter {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
-  }
-  @content;
+    
+    // Output our column classes
+    @for $i from 1 through map-get($o, 'columns') {
+      .#{map-get($o, 'class-column')}-#{$i} {
+        @extend %#{map-get($o, 'class-column')};
+        width: column_width( $i, $o );
+      }
+    }
+    
+    // Output our prefix classes if a class name is set
+    @if (map-get($o, 'class-prefix') != none) {
+      @for $i from 1 through (map-get($o, 'columns') - 1) {    
+        .#{map-get($o, 'class-prefix')}-#{$i} {
+          @include give-prefix( $i, $o );
+        }
+      }
+    }
+    
+    // Output our suffix classes if a class name is set
+    @if (map-get($o, 'class-suffix') != none) {
+      @for $i from 1 through (map-get($o, 'columns') - 1) {  
+        .#{map-get($o, 'class-suffix')}-#{$i} {
+          @include give-suffix( $i, $o );
+        }
+      }
+    }
+  } // End if not mobile
 }

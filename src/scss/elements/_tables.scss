@@ -6,7 +6,6 @@
 // Define all the settings for table mixins and classes.
 $table: (
   'modifier-classes' : true,
-  'base' : false,
   'valign' : top,
   'nth' : odd,
   'stripe' : horizontal,
@@ -45,9 +44,6 @@ $table: (
 //   @default $table map
 @mixin make-table-rowed($options: ()) {
   $o: map-merge($table, $options);
-  @if (map-get($o, 'base') == true) {
-    @include make-table-base($o);
-  }
   td, th {
     border-bottom: map-get($o, 'border');
   }
@@ -69,9 +65,6 @@ $table: (
 //   @default $table map
 @mixin make-table-columned($options: ()) {
   $o: map-merge($table, $options);
-  @if (map-get($o, 'base') == true) {
-    @include make-table-base($o);
-  }
   td, th {
     border-right: map-get($o, 'border');
   }
@@ -252,6 +245,7 @@ table {
   th {
     color: $color-header;
     font-weight: bold;
+    text-align: left;
   }
 }
 

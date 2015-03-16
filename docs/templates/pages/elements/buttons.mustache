@@ -1,27 +1,36 @@
 <h1 class="docs-header">Buttons</h1>
 
-<div class="notice notice-warning">
-  <p>The <strong>buttons element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
-</div>
-
-<hr>
-
-<p>There are three ways you can markup a button. An anchor, button or input element. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
+<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
 
 <pre><code>&lt;a class=&quot;btn&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
-&lt;input class=&quot;btn&quot; type=&quot;button&quot; value=&quot;Button&quot;&gt;</code></pre>
+&lt;input class=&quot;btn&quot; type=&quot;button&quot; value=&quot;Button&quot;&gt;
+&lt;input class=&quot;btn&quot; type=&quot;submit&quot; value=&quot;Button&quot;&gt;</code></pre>
 
 <div class="demo">
   <p>
     <a class="btn" href="#" role="button">Button</a>
     <button class="btn" type="submit">Button</button>
     <input class="btn" type="button" value="Button">
+    <input class="btn" type="submit" value="Button">
   </p>
 </div>
 
+<p>Because there isn't just one way to represent a button in HTML, BaseWeb requires that you use a class to style them. By default, the class is simply <code>.btn</code> and if class modifiers are enabled <code>.btn-</code> is used as a prefix to modifiers.</p>
+
+<p>If you decide to write your own button modifier classes, you have the <code>%btn-base</code> placeholder available to extend to inherit the base button styles.</p>
+
+<pre><code>// SCSS
+.btn-custom {
+  @extend %btn-base;
+  ...
+}
+</code></pre>
+
+<hr class="docs-hr">
+
 <h2 class="docs-header">Button Variables</h2>
-<p>...</p>
+<p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
 
 <h2 class="docs-header">Button Modifiers</h2>
 <p>...</p>

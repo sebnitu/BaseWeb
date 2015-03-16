@@ -6,22 +6,17 @@
 // Define all the settings for button mixins and classes.
 $button: (
   'modifier-classes' : true,
-  'base' : false,
-
   'padding' : 10px 20px,
   'padding-small' : 5px 10px,
   'padding-large' : 15px 30px,
-  
   'font-size' : $base-font-size,
   'line-height' : $base-line-height,
   'color' : $color-dark,
   'text-shadow' : none,
-  
   'background' : $gray-pale,
+  'background-darken-deg' : $dark-deg,
   'background-gradient' : false,
   'background-clip' : border-box,
-  'darken-deg' : $dark-deg,
-  
   'border' : 1px solid rgba($black, 0.15),
   'border-hover' : 1px solid rgba($black, 0.25),
   'border-radius' : $border-radius,
@@ -38,52 +33,43 @@ $button: (
 //   @default $button map
 @mixin make-btn-base($options: ()) {
   $o: map-merge( $button, $options);
-  
   display: inline-block;
   margin: 0;
   padding: map-get($o, 'padding');
-  
-  font-family: $base-font-family;
+  font-family: inherit;
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
-  font-weight: $base-font-weight;
+  font-weight: inherit;
   white-space: nowrap;
-  
-  vertical-align: middle;
-  
+  vertical-align: top;
   border: map-get($o, 'border');
   box-shadow: 0 0 0 rgba($black, 0);
-  
   @include border-radius(map-get($o, 'border-radius'));
   @include transition(all 1s);
-  
   &:hover {
     cursor: pointer;
     box-shadow: inset 0 1px 2px rgba($black, 0.1);
-    
     @include transition(all 0.25s);
   }
 }
 
 @mixin make-btn-color($options: ()) {
   $o: map-merge( $button, $options);
-  
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
   @if (map-get($o, 'background-gradient') == true) {
-    @include linear-gradient(top, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'darken-deg')));
+    @include linear-gradient(top, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'background-darken-deg')));
     background-repeat: repeat-x;
     background-position: 0 100%;
-    background-color: darken(map-get($o, 'background'), map-get($o, 'darken-deg'));
+    background-color: darken(map-get($o, 'background'), map-get($o, 'background-darken-deg'));
   } @else {
     background-color: map-get($o, 'background');
   }
   background-clip: map-get($o, 'background-clip');
   border: map-get($o, 'border');
-  
   &:hover {
     color: map-get($o, 'color');
-    background-color: darken(map-get($o, 'background'), map-get($o, 'darken-deg'));
+    background-color: darken(map-get($o, 'background'), map-get($o, 'background-darken-deg'));
     @if (map-get($o, 'background-gradient') == true) {
       background-position: 0 -40px;
     }
@@ -93,7 +79,6 @@ $button: (
 
 @mixin make-btn-size($size, $options: ()) {
   $o: map-merge( $button, $options);
-  
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
   } @else if ($size == large) {
@@ -101,7 +86,6 @@ $button: (
   } @else {
     padding: $size;
   }
-  
   @if (map-get($o, 'font-size') != map-get($button, 'font-size')) {
     font-size: map-get($o, 'font-size');
   }
@@ -110,24 +94,35 @@ $button: (
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($table, 'modifier-classes') == true) {
-
 /*==============================================================================
   @Buttons
 ==============================================================================*/
 
+/**
+ * Base Button
+ */
 %btn-base {
   @include make-btn-base();
 }
 
 /**
- * Button Color
+ * Default Button
  */
 .btn {
   @extend %btn-base;
   @include make-btn-color();
 }
+
+// Check if we should output modifier classes
+@if (map-get($button, 'modifier-classes') == true) {
+
+/*==============================================================================
+  @Button Modifiers
+==============================================================================*/
+
+/**
+ * Button Color
+ */
 .btn-blue {
   @extend %btn-base;
   @include make-btn-color((
@@ -159,6 +154,20 @@ $button: (
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $red,
   ));
+}
+
+// Semantic button classes
+.btn-primary {
+  @extend .btn-blue;
+}
+.btn-success {
+  @extend .btn-green;
+}
+.btn-warning {
+  @extend .btn-orange;
+}
+.btn-danger {
+  @extend .btn-red;
 }
 
 /**

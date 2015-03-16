@@ -356,7 +356,8 @@ table {
     vertical-align: top; }
   table th {
     color: #303030;
-    font-weight: bold; }
+    font-weight: bold;
+    text-align: left; }
 
 /*==============================================================================
   @Table Modifiers
@@ -536,29 +537,32 @@ hr {
 /*==============================================================================
   @Buttons
 ==============================================================================*/
-.btn, .btn-blue, .btn-green, .btn-orange, .btn-red {
+/**
+ * Base Button
+ */
+.btn, .btn-blue, .btn-primary, .btn-green, .btn-success, .btn-orange, .btn-warning, .btn-red, .btn-danger {
   display: inline-block;
   margin: 0;
   padding: 10px 20px;
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-family: inherit;
   font-size: 14px;
   line-height: 20px;
-  font-weight: normal;
+  font-weight: inherit;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: top;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 0 0 transparent;
   border-radius: 3px;
   -webkit-transition: all 1s;
   transition: all 1s; }
-  .btn:hover, .btn-blue:hover, .btn-green:hover, .btn-orange:hover, .btn-red:hover {
+  .btn:hover, .btn-blue:hover, .btn-primary:hover, .btn-green:hover, .btn-success:hover, .btn-orange:hover, .btn-warning:hover, .btn-red:hover, .btn-danger:hover {
     cursor: pointer;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
 
 /**
- * Button Color
+ * Default Button
  */
 .btn {
   color: #303030;
@@ -571,46 +575,52 @@ hr {
     background-color: #e2e2e2;
     border: 1px solid rgba(0, 0, 0, 0.25); }
 
-.btn-blue {
+/*==============================================================================
+  @Button Modifiers
+==============================================================================*/
+/**
+ * Button Color
+ */
+.btn-blue, .btn-primary {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #2ab0ea;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-blue:hover {
+  .btn-blue:hover, .btn-primary:hover {
     color: #ffffff;
     background-color: #16a6e4;
     border: 1px solid rgba(0, 0, 0, 0.25); }
 
-.btn-green {
+.btn-green, .btn-success {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #84b72d;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-green:hover {
+  .btn-green:hover, .btn-success:hover {
     color: #ffffff;
     background-color: #75a328;
     border: 1px solid rgba(0, 0, 0, 0.25); }
 
-.btn-orange {
+.btn-orange, .btn-warning {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #e69242;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-orange:hover {
+  .btn-orange:hover, .btn-warning:hover {
     color: #ffffff;
     background-color: #e3852b;
     border: 1px solid rgba(0, 0, 0, 0.25); }
 
-.btn-red {
+.btn-red, .btn-danger {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #de5151;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-red:hover {
+  .btn-red:hover, .btn-danger:hover {
     color: #ffffff;
     background-color: #da3c3c;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -627,12 +637,14 @@ hr {
 /*==============================================================================
   @Notice
 ==============================================================================*/
-.notice {
+.notice-default, .notice-success, .notice-info, .notice-warning, .notice-danger {
   margin: 30px 0;
   padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px; }
+
+.notice-default {
+  background-color: rgba(0, 0, 0, 0.05); }
 
 .notice-success {
   background-color: #f3f9e8; }
@@ -650,88 +662,29 @@ hr {
   @ Mobile Grid System
 ==============================================================================*/
 .container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
   padding: 0 20px; }
-  .container.container-float-left {
-    float: left; }
-  .container.container-float-right {
-    float: right; }
-  .container.container-no-padding {
-    padding: 0; }
-  .container.container-no-margin {
-    margin: 0; }
   .container:after {
     content: "";
     display: table;
     clear: both; }
-
-.row {
-  margin-left: -10px;
-  margin-right: -10px;
-  margin-left: 0;
-  margin-right: 0; }
-  .row:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .row.row-center {
-    text-align: center; }
-    .row.row-center > * {
-      font-size: 0;
-      line-height: 0; }
-    .row.row-center .col {
-      float: none;
-      display: inline-block;
-      font-size: 14px;
-      line-height: 20px;
-      text-align: left; }
-      .row.row-center .col:after {
-        content: "";
-        display: table;
-        clear: both; }
-
-.col {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  float: left;
-  min-height: 1px; }
-  .col.align-right {
-    float: right; }
-  .col.align-left {
-    float: left; }
-
-.prefix {
-  margin-left: 0; }
-  .prefix:first-child {
-    margin-left: 0; }
-
-.suffix {
-  margin-right: 0; }
 
 /*==============================================================================
   @ Grid System
 ==============================================================================*/
 @media (min-width: 760px) {
   .container {
+    padding: 0 20px;
     width: 100%;
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 20px; }
-    .container.container-float-left {
-      float: left; }
-    .container.container-float-right {
-      float: right; }
-    .container.container-no-padding {
-      padding: 0; }
-    .container.container-no-margin {
-      margin: 0; }
+    max-width: 1000px; }
     .container:after {
       content: "";
       display: table;
       clear: both; }
+    .container.container-left {
+      float: left; }
+    .container.container-right {
+      float: right; }
   .row {
     margin-left: -10px;
     margin-right: -10px; }
@@ -739,35 +692,18 @@ hr {
       content: "";
       display: table;
       clear: both; }
-    .row.row-center {
-      text-align: center; }
-      .row.row-center > * {
-        font-size: 0;
-        line-height: 0; }
-      .row.row-center .col {
-        float: none;
-        display: inline-block;
-        font-size: 14px;
-        line-height: 20px;
-        text-align: left; }
-        .row.row-center .col:after {
-          content: "";
-          display: table;
-          clear: both; }
-  .col {
-    margin-left: 0;
-    padding-left: 10px;
-    padding-right: 10px;
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    min-height: 1px;
     float: left;
-    min-height: 1px; }
-    .col.col-no-gutter {
-      margin-left: 0; }
-    .col:first-child {
-      margin-left: 0; }
-    .col.align-right {
-      float: right; }
-    .col.align-left {
-      float: left; }
+    padding-left: 10px;
+    padding-right: 10px; }
+  .col-left {
+    float: left; }
+  .col-right {
+    float: right; }
+  .col-no-inner-gutter {
+    padding-left: 0;
+    padding-right: 0; }
   .col-1 {
     width: 8.33333%; }
   .col-2 {
@@ -794,52 +730,26 @@ hr {
     width: 100%; }
   .prefix-1 {
     margin-left: 8.33333%; }
-    .prefix-1:first-child {
-      margin-left: 8.33333%; }
   .prefix-2 {
     margin-left: 16.66667%; }
-    .prefix-2:first-child {
-      margin-left: 16.66667%; }
   .prefix-3 {
     margin-left: 25%; }
-    .prefix-3:first-child {
-      margin-left: 25%; }
   .prefix-4 {
     margin-left: 33.33333%; }
-    .prefix-4:first-child {
-      margin-left: 33.33333%; }
   .prefix-5 {
     margin-left: 41.66667%; }
-    .prefix-5:first-child {
-      margin-left: 41.66667%; }
   .prefix-6 {
     margin-left: 50%; }
-    .prefix-6:first-child {
-      margin-left: 50%; }
   .prefix-7 {
     margin-left: 58.33333%; }
-    .prefix-7:first-child {
-      margin-left: 58.33333%; }
   .prefix-8 {
     margin-left: 66.66667%; }
-    .prefix-8:first-child {
-      margin-left: 66.66667%; }
   .prefix-9 {
     margin-left: 75%; }
-    .prefix-9:first-child {
-      margin-left: 75%; }
   .prefix-10 {
     margin-left: 83.33333%; }
-    .prefix-10:first-child {
-      margin-left: 83.33333%; }
   .prefix-11 {
     margin-left: 91.66667%; }
-    .prefix-11:first-child {
-      margin-left: 91.66667%; }
-  .prefix-12 {
-    margin-left: 100%; }
-    .prefix-12:first-child {
-      margin-left: 100%; }
   .suffix-1 {
     margin-right: 8.33333%; }
   .suffix-2 {
@@ -861,9 +771,7 @@ hr {
   .suffix-10 {
     margin-right: 83.33333%; }
   .suffix-11 {
-    margin-right: 91.66667%; }
-  .suffix-12 {
-    margin-right: 100%; } }
+    margin-right: 91.66667%; } }
 
 /*==============================================================================
   @ End

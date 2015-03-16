@@ -6,7 +6,6 @@
 // Define all the settings for list mixins and classes.
 $list: (
   'modifier-classes' : true,
-  'base' : false,
   'nth' : odd,
   'flush' : false,
   'padding' : 10px,
@@ -46,9 +45,6 @@ $list: (
 //   @default $list map
 @mixin make-list-rowed($options: ()) {
   $o: map-merge($list, $options);
-  @if (map-get($o, 'base') == true) {
-    @include make-list-base($o);
-  }
   > li {
     border-bottom: map-get($o, 'border');
     @if (map-get($o, 'flush') == true) {
@@ -68,9 +64,6 @@ $list: (
 //   @default $list map
 @mixin make-list-bordered($options: ()) {
   $o: map-merge($list, $options);
-  @if (map-get($o, 'base') == true) {
-    @include make-list-base($o);
-  }
   border: map-get($o, 'border');
   > li {
     border-bottom: map-get($o, 'border');
