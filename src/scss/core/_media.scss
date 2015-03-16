@@ -3,9 +3,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Media Min
-// A media query mixin that deifnes a query using min-width.
+// A media query mixin that deifnes a query using min-width. You can pass in the key to the `$teakpoints()` or `$breakpoints()` maps to access that value, or pass a pixel value to create your media query.
 // @param $point
-//   @type map key (defined in local $tweakpoints or global $breakpoints)
+//   @type map key | unit (pixel)
 // @param @content (passed in brackets)
 //   @type style block
 @mixin media-min($point) {
@@ -18,14 +18,18 @@
       @content;
     }
   } @else {
-    @warn "Could not find `#{$point}` in local ($tweakpoints) or global ($breakpoints) contexts. Media block omitted.";
+    @if (type-of($point) == number) {
+      @media (min-width: $point) {
+        @content;
+      }
+    }
   }
 }
 
 // Media Max
-// A media query mixin that deifnes a query using max-width. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.
+// A media query mixin that deifnes a query using max-width. You can pass in the key to the `$teakpoints()` or `$breakpoints()` maps to access that value, or pass a pixel value to create your media query. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.
 // @param $point
-//   @type map key (defined in local $tweakpoints or global $breakpoints)
+//   @type map key | unit (pixel)
 // @param @content (passed in brackets)
 //   @type style block
 @mixin media-max($point) {
@@ -38,7 +42,11 @@
       @content;
     }
   } @else {
-    @warn "Could not find `#{$point}` in local ($tweakpoints) or global ($breakpoints) contexts. Media block omitted.";
+    @if (type-of($point) == number) {
+      @media (max-width: $point) {
+        @content;
+      }
+    }
   }
 }
 
