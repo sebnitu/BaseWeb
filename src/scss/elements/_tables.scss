@@ -9,6 +9,7 @@ $table: (
   'valign' : top,
   'nth' : odd,
   'stripe' : horizontal,
+  'margin' : 20px 0,
   'padding' : 10px,
   'padding-condensed' : 5px,
   'padding-expanded' : 15px,
@@ -30,8 +31,9 @@ $table: (
 //   @default $table map
 @mixin make-table-base($options: ()) {
   $o: map-merge( $table, $options);
-  border-collapse: separate;
+  margin: map-get($o, 'margin');
   background: map-get($o, 'background');
+  border-collapse: separate;
   td, th {
     padding: map-get($o, 'padding');
   }
@@ -206,6 +208,28 @@ $table: (
   }
 }
 
+// Give Table Alignment
+// Sets the vertical and text alignment of a table if a parameter is passed.
+// @param $options
+//   @type map ('vertical-align', 'text-align')
+//   @default map (none, none)
+@mixin give-table-alignment($options: ()) {
+  $o: map-merge((
+    'vertical-align' : none,
+    'text-align' : none,
+  ), $options);
+  @if (map-get($o, 'vertical-align') != none) {
+    tr {
+      vertical-align: map-get($o, 'vertical-align');
+    }
+  }
+  @if (map-get($o, 'text-align') != none) {
+    tr td, tr th {
+      text-align: map-get($o, 'text-align');
+    }
+  }
+}
+
 // Make Table Responsive
 // When added to a wrapping element of a table, will make the table responsive for tablets and below.
 // @param $options
@@ -213,15 +237,15 @@ $table: (
 //   @default $table map
 @mixin make-table-responsive($options: ()) {
   $o: map-merge($table, $options);
-  margin: 10px 0;
-  table {
+  margin: map-get($o, 'margin');
+  > table {
     margin: 0;
   }
   @include media-max('tablet') {
     overflow: auto;
     border: map-get($o, 'border');
-    table td,
-    table th {
+    > table td,
+    > table th {
       white-space: nowrap;
     }
   }
@@ -257,50 +281,9 @@ table {
 ==============================================================================*/
 
 /**
- * Table Alignment Modifiers
- */
-table {
-  &.table-valign-baseline {
-    tr {
-      vertical-align: baseline;
-    }
-  }
-  &.table-valign-top {
-    tr {
-      vertical-align: top;
-    }
-  }
-  &.table-valign-middle {
-    tr {
-      vertical-align: middle;
-    }
-  }
-  &.table-valign-bottom {
-    tr {
-      vertical-align: bottom;
-    }
-  }
-  &.table-align-left {
-    tr td, tr th {
-      text-align: left;
-    }
-  }
-  &.table-align-center {
-    tr td, tr th {
-      text-align: center;
-    }
-  }
-  &.table-align-right {
-    tr td, tr th {
-      text-align: right;
-    }
-  }
-}
-
-/**
  * Base Modifiers Styles
  */
-%table-base {
+.table {
   @include make-table-base();
 }
 
@@ -308,15 +291,12 @@ table {
  * Border Variations
  */
 .table-rowed {
-  @extend %table-base;
   @include make-table-rowed();
 }
 .table-columned {
-  @extend %table-base;
   @include make-table-columned();
 }
 .table-bordered {
-  @extend %table-base;
   @include make-table-bordered();
 }
 
@@ -347,6 +327,31 @@ table {
 }
 .table-hover {
   @include give-table-hover();
+}
+
+/**
+ * Table Alignment Modifiers
+ */
+.table-valign-baseline {
+  @include give-table-alignment(('vertical-align': baseline));
+}
+.table-valign-top {
+  @include give-table-alignment(('vertical-align': top));
+}
+.table-valign-middle {
+  @include give-table-alignment(('vertical-align': middle));
+}
+.table-valign-bottom {
+  @include give-table-alignment(('vertical-align': bottom));
+}
+.table-align-left {
+  @include give-table-alignment(('text-align': left));
+}
+.table-align-center {
+  @include give-table-alignment(('text-align': center));
+}
+.table-align-right {
+  @include give-table-alignment(('text-align': right));
 }
 
 /**

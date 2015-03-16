@@ -7,6 +7,7 @@
 $list: (
   'modifier-classes' : true,
   'nth' : odd,
+  'margin' : 20px 0,
   'padding' : 10px,
   'background' : none,
   'background-stripe' : rgba($black, 0.05),
@@ -26,8 +27,8 @@ $list: (
 //   @default $list map
 @mixin make-list-base($options: ()) {
   $o: map-merge( $list, $options);
-  margin: 20px 0;
   list-style: none;
+  margin: map-get($o, 'margin');
   background: map-get($o, 'background');
   > li {
     margin: 0;

@@ -69,24 +69,24 @@
 ==============================================================================*/
 
 .docs-table {
-  margin: 30px 0;
-  
+  @include make-table-base(('margin':30px 0, 'padding':15px 10px));
+  @include make-table-rowed();
+    
   th {
     font-size: 18px;
     line-height: 30px;
     font-weight: 500;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 10px 0;
   }
-  td {
-    padding: 15px 10px;
-  }
-  
   code {
     margin: 0;
     padding: 0;
     background: transparent;
   }
+}
+
+.docs-table-responsive {
+  @include make-table-responsive(('margin':30px 0));
 }
 
 /*==============================================================================
