@@ -240,15 +240,15 @@ dl {
 /**
  * Base Table Modifiers Styles
  */
-.list-rowed, .list-bordered {
+.list {
   margin: 20px 0;
   list-style: none;
   background: none; }
-  .list-rowed > li, .list-bordered > li {
+  .list > li {
     margin: 0;
     padding: 10px;
     background-clip: padding-box; }
-    .list-rowed > li:after, .list-bordered > li:after {
+    .list > li:after {
       content: "";
       display: table;
       clear: both; }
@@ -260,8 +260,7 @@ dl {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 .list-rowed > li:first-child {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.list-flush > li {
+.list-rowed.list-flush > li {
   padding-left: 0;
   padding-right: 0; }
 
@@ -691,6 +690,10 @@ hr {
       float: left; }
     .container.container-right {
       float: right; }
+    .container.container-no-margin {
+      margin: 0; }
+    .container.container-no-padding {
+      padding: 0; }
     .container:after {
       content: "";
       display: table;

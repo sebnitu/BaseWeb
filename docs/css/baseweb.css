@@ -240,15 +240,15 @@ dl {
 /**
  * Base Table Modifiers Styles
  */
-.list-rowed, .list-bordered, .docs-list {
+.list {
   margin: 20px 0;
   list-style: none;
   background: none; }
-  .list-rowed > li, .list-bordered > li, .docs-list > li {
+  .list > li {
     margin: 0;
     padding: 10px;
     background-clip: padding-box; }
-    .list-rowed > li:after, .list-bordered > li:after, .docs-list > li:after {
+    .list > li:after {
       content: "";
       display: table;
       clear: both; }
@@ -260,8 +260,7 @@ dl {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 .list-rowed > li:first-child {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-
-.list-flush > li {
+.list-rowed.list-flush > li {
   padding-left: 0;
   padding-right: 0; }
 
@@ -691,6 +690,10 @@ hr {
       float: left; }
     .container.container-right {
       float: right; }
+    .container.container-no-margin {
+      margin: 0; }
+    .container.container-no-padding {
+      padding: 0; }
     .container:after {
       content: "";
       display: table;
@@ -1179,13 +1182,25 @@ html, body {
   @Docs Lists
 ==============================================================================*/
 .docs-list {
+  margin: 20px 0;
+  list-style: none;
+  background: none;
   margin: 30px 0; }
   .docs-list > li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-left: 0;
-    padding-right: 0; }
+    margin: 0;
+    padding: 10px 0;
+    background-clip: padding-box; }
+    .docs-list > li:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .docs-list > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .docs-list > li:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  .docs-list.list-flush > li {
+    padding-left: 0;
+    padding-right: 0; }
 
 .docs-list-hover {
   margin: 20px 0;
@@ -1204,6 +1219,9 @@ html, body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .docs-list-hover > li:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  .docs-list-hover.list-flush > li {
+    padding-left: 0;
+    padding-right: 0; }
   .docs-list-hover > li {
     -webkit-transition: background-color 0.25s linear;
     transition: background-color 0.25s linear; }

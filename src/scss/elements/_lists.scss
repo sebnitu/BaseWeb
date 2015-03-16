@@ -7,7 +7,6 @@
 $list: (
   'modifier-classes' : true,
   'nth' : odd,
-  'flush' : false,
   'padding' : 10px,
   'background' : none,
   'background-stripe' : rgba($black, 0.05),
@@ -47,13 +46,15 @@ $list: (
   $o: map-merge($list, $options);
   > li {
     border-bottom: map-get($o, 'border');
-    @if (map-get($o, 'flush') == true) {
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
   > li:first-child  {
     border-top: map-get($o, 'border');
+  }
+  &.list-flush {
+    > li {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
@@ -196,7 +197,7 @@ dl {
 /**
  * Base Table Modifiers Styles
  */
-%list-base {
+.list {
   @include make-list-base();
 }
 
@@ -204,17 +205,9 @@ dl {
  * Border Variations
  */
 .list-rowed {
-  @extend %list-base;
   @include make-list-rowed();
 }
-.list-flush {
-  > li {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
 .list-bordered {
-  @extend %list-base;
   @include make-list-bordered();
 }
 
