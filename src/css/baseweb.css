@@ -540,7 +540,7 @@ hr {
 /**
  * Base Button
  */
-.btn, .btn-blue, .btn-primary, .btn-green, .btn-success, .btn-orange, .btn-warning, .btn-red, .btn-danger {
+.btn-default, .btn-blue, .btn-primary, .btn-green, .btn-success, .btn-orange, .btn-warning, .btn-red, .btn-danger {
   display: inline-block;
   margin: 0;
   padding: 10px 20px;
@@ -551,11 +551,11 @@ hr {
   white-space: nowrap;
   vertical-align: top;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 0 transparent;
+  box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
   -webkit-transition: all 1s;
   transition: all 1s; }
-  .btn:hover, .btn-blue:hover, .btn-primary:hover, .btn-green:hover, .btn-success:hover, .btn-orange:hover, .btn-warning:hover, .btn-red:hover, .btn-danger:hover {
+  .btn-default:hover, .btn-blue:hover, .btn-primary:hover, .btn-green:hover, .btn-success:hover, .btn-orange:hover, .btn-warning:hover, .btn-red:hover, .btn-danger:hover {
     cursor: pointer;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
@@ -564,13 +564,13 @@ hr {
 /**
  * Default Button
  */
-.btn {
+.btn-default {
   color: #303030;
   text-shadow: none;
   background-color: #efefef;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn:hover {
+  .btn-default:hover {
     color: #303030;
     background-color: #e2e2e2;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -659,40 +659,51 @@ hr {
   background-color: #fbeded; }
 
 /*==============================================================================
-  @ Mobile Grid System
+  @Mobile Grid System
 ==============================================================================*/
 .container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0 20px; }
-  .container:after {
-    content: "";
-    display: table;
-    clear: both; }
+
+.row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0; }
+
+.col {
+  width: 100%;
+  float: none;
+  padding-left: 0;
+  padding-right: 0; }
 
 /*==============================================================================
-  @ Grid System
+  @Grid System
 ==============================================================================*/
 @media (min-width: 760px) {
   .container {
-    padding: 0 20px;
     width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    max-width: 1000px; }
-    .container:after {
-      content: "";
-      display: table;
-      clear: both; }
+    padding: 0 20px; }
     .container.container-left {
       float: left; }
     .container.container-right {
       float: right; }
+    .container:after {
+      content: "";
+      display: table;
+      clear: both; }
   .row {
+    width: auto;
     margin-left: -10px;
     margin-right: -10px; }
     .row:after {
       content: "";
       display: table;
       clear: both; }
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  .col {
     min-height: 1px;
     float: left;
     padding-left: 10px;

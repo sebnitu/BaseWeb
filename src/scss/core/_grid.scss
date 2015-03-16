@@ -43,26 +43,36 @@
 //   @default $grid map
 @mixin make-container($options: ()) {
   $o: map-merge( $grid, $options);
-  padding: 0 map-get($o, 'container-padding');
-  @include clearfix();
-  @if (map-get($o, 'type') != mobile) {
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+  @if (map-get($o, 'type') == mobile) {
+    width: 100%;
+    @if (map-get($o, 'container-min-width') != none) {
+      min-width: none;
+    }
+    @if (map-get($o, 'container-max-width') != none) {
+      max-width: none;
+    }
+    margin: 0;
+    padding: map-get($o, 'container-padding');
+  } @else {
     width: map-get($o, 'total-width');
-    margin: 0 map-get($o, 'container-margin');
     @if (map-get($o, 'container-min-width') != none) {
       min-width: map-get($o, 'container-min-width');
     }
     @if (map-get($o, 'container-max-width') != none) {
       max-width: map-get($o, 'container-max-width');
     }
+    margin: map-get($o, 'container-margin');
+    padding: map-get($o, 'container-padding');
     &.#{map-get($o, 'class-container')}-left {
       float: left;
     }
     &.#{map-get($o, 'class-container')}-right {
       float: right;
     }
-  }
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
+    @include clearfix();
   }
 }
 
@@ -73,12 +83,22 @@
 //   @default $grid map
 @mixin make-row($options: ()) {
   $o: map-merge( $grid, $options);
-  @if (map-get($o, 'type') != mobile) {
-    @include clearfix();
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+  @if (map-get($o, 'type') == mobile) {
+    width: 100%;
+    @if (map-get($o, 'inner-gutter-width') != 0) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  } @else {
+    width: auto;
     @if (map-get($o, 'inner-gutter-width') != 0) {
       margin-left: -(map-get($o, 'inner-gutter-width') / 2);
       margin-right: -(map-get($o, 'inner-gutter-width') / 2);
     }
+    @include clearfix();
   }
 }
 
@@ -89,7 +109,20 @@
 //   @default $grid map
 @mixin make-column-base($options: ()) {
   $o: map-merge( $grid, $options);
-  @if (map-get($o, 'type') != mobile) {
+  @if ($global-box-sizing != border-box) {
+    @include box-sizing( border-box );
+  }
+  @if (map-get($o, 'type') == mobile) {
+    width: 100%;
+    float: none;
+    @if (map-get($o, 'gutter-width') != 0) {
+      margin-left: 0;
+    }
+    @if (map-get($o, 'inner-gutter-width') != 0) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  } @else {
     min-height: 1px;
     float: left;
     @if (map-get($o, 'gutter-width') != 0) {
@@ -102,10 +135,7 @@
       padding-left: (map-get($o, 'inner-gutter-width') / 2);
       padding-right: (map-get($o, 'inner-gutter-width') / 2);
     }
-  }
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  } 
 }
 
 // Make Column
@@ -185,8 +215,8 @@
     @include make-row($o);
   }
   
-  // Output our column placeholder
-  %#{map-get($o, 'class-column')} {
+  // Output our column class
+  .#{map-get($o, 'class-column')} {
     @include make-column-base($o);
   }
   
@@ -215,7 +245,6 @@
     // Output our column classes
     @for $i from 1 through map-get($o, 'columns') {
       .#{map-get($o, 'class-column')}-#{$i} {
-        @extend %#{map-get($o, 'class-column')};
         width: column_width( $i, $o );
       }
     }

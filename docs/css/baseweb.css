@@ -540,7 +540,7 @@ hr {
 /**
  * Base Button
  */
-.btn, .btn-blue, .btn-primary, .btn-green, .btn-success, .btn-orange, .btn-warning, .btn-red, .btn-danger {
+.btn-default, .btn-blue, .btn-primary, .btn-green, .btn-success, .btn-orange, .btn-warning, .btn-red, .btn-danger {
   display: inline-block;
   margin: 0;
   padding: 10px 20px;
@@ -551,11 +551,11 @@ hr {
   white-space: nowrap;
   vertical-align: top;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 0 transparent;
+  box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
   -webkit-transition: all 1s;
   transition: all 1s; }
-  .btn:hover, .btn-blue:hover, .btn-primary:hover, .btn-green:hover, .btn-success:hover, .btn-orange:hover, .btn-warning:hover, .btn-red:hover, .btn-danger:hover {
+  .btn-default:hover, .btn-blue:hover, .btn-primary:hover, .btn-green:hover, .btn-success:hover, .btn-orange:hover, .btn-warning:hover, .btn-red:hover, .btn-danger:hover {
     cursor: pointer;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
@@ -564,13 +564,13 @@ hr {
 /**
  * Default Button
  */
-.btn {
+.btn-default {
   color: #303030;
   text-shadow: none;
   background-color: #efefef;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn:hover {
+  .btn-default:hover {
     color: #303030;
     background-color: #e2e2e2;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -662,37 +662,48 @@ hr {
   @Mobile Grid System
 ==============================================================================*/
 .container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 0 20px; }
-  .container:after {
-    content: "";
-    display: table;
-    clear: both; }
+
+.row {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0; }
+
+.col {
+  width: 100%;
+  float: none;
+  padding-left: 0;
+  padding-right: 0; }
 
 /*==============================================================================
   @Grid System
 ==============================================================================*/
 @media (min-width: 760px) {
   .container {
-    padding: 0 20px;
     width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    max-width: 1000px; }
-    .container:after {
-      content: "";
-      display: table;
-      clear: both; }
+    padding: 0 20px; }
     .container.container-left {
       float: left; }
     .container.container-right {
       float: right; }
+    .container:after {
+      content: "";
+      display: table;
+      clear: both; }
   .row {
+    width: auto;
     margin-left: -10px;
     margin-right: -10px; }
     .row:after {
       content: "";
       display: table;
       clear: both; }
-  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+  .col {
     min-height: 1px;
     float: left;
     padding-left: 10px;
@@ -943,7 +954,7 @@ body {
   display: none;
   color: #909090; }
 
-.toolbar .btn {
+.toolbar .btn-default {
   padding: 15px 30px; }
 
 @media (min-width: 760px) {
@@ -952,7 +963,7 @@ body {
     text-align: right; }
   .toolbar .version {
     display: inline-block; }
-  .toolbar .btn {
+  .toolbar .btn-default {
     margin-left: 20px;
     padding: 10px 20px; } }
 
@@ -1126,7 +1137,7 @@ html, body {
   font-size: 0;
   line-height: 0;
   white-space: nowrap; }
-.home .actions .btn {
+.home .actions .btn-default {
   position: relative;
   z-index: 1;
   margin: 0 0 0 -1px;
@@ -1135,33 +1146,33 @@ html, body {
   border: 1px solid #ccc;
   color: #303030;
   border-radius: 0; }
-  .home .actions .btn:hover {
+  .home .actions .btn-default:hover {
     z-index: 2;
     background: rgba(0, 0, 0, 0.05);
     border-color: #aaa; }
-  .home .actions .btn:first-child {
+  .home .actions .btn-default:first-child {
     margin: 0;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px; }
-  .home .actions .btn:last-child {
+  .home .actions .btn-default:last-child {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
 .home .actions .btn-group {
   width: 100%; }
-.home .actions .btn {
+.home .actions .btn-default {
   padding: 15px; }
-  .home .actions .btn:first-child {
+  .home .actions .btn-default:first-child {
     width: 45%; }
-  .home .actions .btn:last-child {
+  .home .actions .btn-default:last-child {
     width: 55%; }
 @media (min-width: 480px) {
   .home .actions .btn-group {
     width: auto; }
-  .home .actions .btn {
+  .home .actions .btn-default {
     padding: 15px 30px; }
-    .home .actions .btn:first-child {
+    .home .actions .btn-default:first-child {
       width: auto; }
-    .home .actions .btn:last-child {
+    .home .actions .btn-default:last-child {
       width: auto; } }
 
 /*==============================================================================
@@ -1258,8 +1269,11 @@ html, body {
 .demo-grid {
   margin: 20px 0; }
 
-.demo-grid p {
-  margin: 10px 0;
+.demo-grid .col {
+  margin: 10px 0; }
+
+.demo-grid .col p {
+  margin: 0;
   padding: 15px 20px;
   background: rgba(0, 0, 0, 0.05);
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
