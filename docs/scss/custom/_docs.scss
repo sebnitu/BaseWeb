@@ -14,6 +14,15 @@
   margin: 30px 0;
 }
 
+.docs-list .docs-list-hover {
+  &:last-child {
+    margin-bottom: 20px;
+    > li:last-child {
+      border-bottom: 0 none;
+    }
+  }
+}
+
 /**
  * Unique List Content
  */
@@ -299,6 +308,17 @@
 }
 
 /*==============================================================================
+  @Tables Demo
+==============================================================================*/
+
+.table-custom-alignment {
+  @include give-table-alignment((
+    'vertical-align': middle,
+    'text-align': center
+  ));
+}
+
+/*==============================================================================
   @Buttons Demo
 ==============================================================================*/
 
@@ -310,14 +330,8 @@
   ));
 }
 
-.demo .btn-custom-large {
-  @include make-btn-size(large, (
-    'font-size': 20px
-  ));
-}
-
 .demo .btn-custom-size {
-  @include make-btn-size(20px 40px, (
+  @include give-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 28px
   ));
@@ -326,6 +340,5 @@
 .demo .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include make-btn-size(large); // optional
-  @include make-btn-block();
+  @include give-btn-block();
 }

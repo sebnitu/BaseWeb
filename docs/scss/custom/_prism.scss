@@ -1,0 +1,126 @@
+/*==============================================================================
+  @Prism
+==============================================================================*/
+/**
+ * http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+scss
+ *
+ * prism.js custom theme for JavaScript, CSS, HTML and SCSS
+ * Built to run in BaseWeb with the _code.scss element module
+ */
+
+pre[class*="language-"],
+code[class*="language-"] {
+	color: $color-dark;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+pre[class*="language-"] {
+  position: relative;
+	overflow: scroll;
+}
+pre[class*="language-"] > code[class*="language-"] {
+  padding-right: 70px;
+}
+pre[class*="language-"] > code[class*="language-"]:before {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	padding: 5px 10px;
+	background: $gray-light;
+	opacity: 0.5;
+	font-size: 12px;
+	line-height: 16px;
+	text-transform: uppercase;
+	color: $white;
+	@include border-radius-top-right();
+	@include border-radius-bottom-left();
+	@include transition();
+}
+pre[class*="language-"]:hover > code:before {
+  opacity: 1;
+}
+pre.language-css > code:before {
+  content: 'CSS';
+}
+pre.language-scss > code:before {
+  content: 'SCSS';
+}
+pre.language-javascript > code:before {
+  content: 'JS';
+}
+pre.language-markup > code:before {
+  content: 'HTML';
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: $color-light;
+}
+.token.punctuation {
+	color: $color;
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: $red-orange-darker;
+}
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: $green-darker;
+}
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: $green-darker;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: $red-violet-darker;
+}
+.token.function {
+	color: $red-violet-darker;
+}
+.token.regex,
+.token.important,
+.token.variable {
+	color: $blue-darker;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+.token.entity {
+	cursor: help;
+}
+.namespace {
+	opacity: .7;
+}
+

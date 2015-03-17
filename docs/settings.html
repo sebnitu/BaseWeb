@@ -93,7 +93,7 @@
     
     <div id="content" class="content">
       <div class="toolbar">
-        <span class="version">Currently v0.11.0</span>
+        <span class="version">Currently v0.11.1</span>
         <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-default">Download BaseWeb</a>
       </div><!-- .toolbar -->
       
@@ -105,10 +105,10 @@
 <p>Where the global colors are defined. These colors are used throughout the framework and can be overridden to preference. To make them easiest to remember, every color is defined using the base color then modifier.</p>
 <p>In the case of a mixed color, the primary (red, yellow, blue) color is always used first and the secondary (orange, green, violet) after:</p>
 
-<pre><code>$[color]-[modifier]
+<pre class="language-scss"><code>// $[color]-[modifier]
 $blue-light
 
-$[primary]-[secondary]-[modifier]
+// $[primary]-[secondary]-[modifier]
 $yellow-green-lighter</code></pre>
 
 <p>All the shade variations (light, lighter, dark, darker) are created using the base primary and secondary colors and are modified using these degree variables:</p>
@@ -234,23 +234,28 @@ $yellow-green-lighter</code></pre>
 
 </ul>
 
+<h2 class="docs-header">Setting Tweakpoint Maps</h2>
+
 <p>You can also define component specific tweakpoints that override the breakpoints map. This should be done at the beginning of a component file and should also be reset at the end of the file so values don't leak to following components.</p>
 
-<h2 class="docs-header">Example Usage</h2>
-
-<pre><code>// Inside `_component.scss`
+<h3 class="docs-header">Example Usage</h3>
+<pre class="language-scss"><code>// Inside `_some_component.scss`
 // Set our component specific tweakpoints
 $tweakpoints: ({
-  'inline' : 300px,
-  'block' : 500px
+  'inline': 300px,
+  'block': 500px
 });
 
-...
+// Your component code goes here...
 
 // Reset tweak points so it doesn't 
 // leak to our next component file
 $tweakpoints: ();
-</code></pre></section><!-- .subpage -->
+</code></pre>
+
+<div class="notice notice-info">
+  <p>For more information on the tweakpoints method, make sure you checkout <a href="https://twitter.com/HugoGiraudel">Hugo Giraudel's</a> article over at Sitepoint: <a href="http://www.sitepoint.com/breakpoints-tweakpoints-sass/">Breakpoints and Tweakpoints in Sass</a>.</p>
+</div></section><!-- .subpage -->
 
 <section id="grid" class="subpage">
 <h1 class="docs-header">Grid System Variables</h1>

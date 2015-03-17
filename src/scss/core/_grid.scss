@@ -11,7 +11,7 @@
 //   @type map
 //   @default $grid map
 // @return unit (pixel, percentage)
-@function column_width($index, $options: ()) {
+@function column-width($index, $options: ()) {
   $o: map-merge( $grid, $options);
   $column-width: (map-get($o, 'total-width') - (map-get($o, 'gutter-width') * (map-get($o, 'columns') - 1))) / map-get($o, 'columns');
   @return ($column-width * $index) + (map-get($o, 'gutter-width') * ($index - 1));
@@ -26,9 +26,9 @@
 //   @type map
 //   @default $grid map
 // @return unit (pixel, percentage)
-@function spacing_width($index, $options: ()) {
+@function spacing-width($index, $options: ()) {
   $o: map-merge( $grid, $options);
-  $column-width : column_width( 1, $o );
+  $column-width : column-width( 1, $o );
   @return ($column-width * $index) + (map-get($o, 'gutter-width') * $index);
 }
 
@@ -155,7 +155,7 @@
 @mixin make-column($index, $options: ()) {
   $o: map-merge( $grid, $options);
   @include make-column-base($o);
-  width: column_width($index, $o);
+  width: column-width($index, $o);
 }
 
 // Make Prefix
@@ -169,12 +169,12 @@
 @mixin give-prefix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   @if (map-get($o, 'gutter-width') != 0) {
-    margin-left: (spacing_width($index, $o) + map-get($o, 'gutter-width'));
+    margin-left: (spacing-width($index, $o) + map-get($o, 'gutter-width'));
     &:first-child {
-      margin-left: spacing_width($index, $o);
+      margin-left: spacing-width($index, $o);
     }
   } @else {
-    margin-left: spacing_width($index, $o);
+    margin-left: spacing-width($index, $o);
   }
 }
 
@@ -188,17 +188,13 @@
 //   @default $grid map
 @mixin give-suffix($index, $options: ()) {
   $o: map-merge( $grid, $options);
-  margin-right: spacing_width($index, $o);
+  margin-right: spacing-width($index, $o);
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// @Class Based Grid System
-////////////////////////////////////////////////////////////////////////////////
 
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system.
-// @param $options
-//   @type map
+// @param $grid-type | $options
+//   @type string | map
 //   @default $grid map
 @mixin build-grid-system($options: normal) {
   
@@ -251,7 +247,7 @@
     // Output our column classes
     @for $i from 1 through map-get($o, 'columns') {
       .#{map-get($o, 'class-column')}-#{$i} {
-        width: column_width( $i, $o );
+        width: column-width( $i, $o );
       }
     }
     

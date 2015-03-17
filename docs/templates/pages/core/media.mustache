@@ -7,12 +7,13 @@
   <li>
     <h2 class="docs-header">media-min</h2>
     <p>A media query mixin that deifnes a query using min-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
-<pre class="docs-code"><code class="name">@mixin media-min()</code><code class="desc">@param $point
-  @type map key | unit (pixel)
-@param @content (passed in brackets)
-  @type style block</code></pre>
+    <pre class="language-scss"><code>@mixin media-min( $point ) { @content }
+// @param $point
+//   @type map key | unit (pixel)
+// @param @content (passed in brackets)
+//   @type style block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-<pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .something {
   width: 100%;
 }
@@ -22,7 +23,7 @@
   }
 }
 
-// CSS
+// CSS Output
 .something {
   width: 100%;
 }
@@ -36,12 +37,13 @@
   <li>
     <h2 class="docs-header">media-max</h2>
     <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.</p>
-<pre class="docs-code"><code class="name">@mixin media-max()</code><code class="desc">@param $point
-  @type map key | unit (pixel)
-@param @content (passed in brackets)
-  @type style block</code></pre>
+    <pre class="language-scss"><code>@mixin media-max( $point ) { @content }
+// @param $point
+//   @type map key | unit (pixel)
+// @param @content (passed in brackets)
+//   @type style block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-<pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .something {
   width: 300px;
 }
@@ -51,7 +53,7 @@
   }
 }
 
-// CSS
+// CSS Output
 .something {
   width: 300px;
 }
@@ -65,10 +67,11 @@
   <li>
     <h2 class="docs-header">media-retina</h2>
     <p>This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
-<pre class="docs-code"><code class="name">@mixin media-retina()</code><code class="desc">@param @content (passed in brackets)
-  @type style block</code></pre>
+    <pre class="language-scss"><code>@mixin media-retina() { @content }
+// @param @content (passed in brackets)
+//   @type style block</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-<pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .logo {
   background-image: src('logo.png');
 }
@@ -80,7 +83,7 @@
   }
 }
 
-// CSS
+// CSS Output
 .logo {
   background-image: src('logo.png');
 }

@@ -5,9 +5,9 @@
 // Strip Units
 // Srtips the unit from a value. e.g. 12px -> 12.
 // @param $val
-//   @type unit (pixel, number)
+//   @type unit (pixel, em, percent, number)
 // @return number
-@function strip_units($val) {
+@function strip-units($val) {
   @return ($val / ($val * 0 + 1));
 }
 
@@ -19,21 +19,15 @@
 //   @type unit (pixel, number)
 //   @default $base-font-size
 // @return unit (em)
-@function px_to_em(
-    $px,
-    $base : $base-font-size
-  ) {
-  
+@function px-to-em($px, $base : $base-font-size) {
   @if unitless($px) {
     $px: 1px * $px;
   }
-  
   @if unitless($base) {
     $base: 1px * $base;
   }
-  
   $px: ($px / $base) * 1em;
-  @return strip_units($px) * 1em;
+  @return strip-units($px) * 1em;
 }
 
 // Ems to Pixels
@@ -44,19 +38,13 @@
 //   @type unit (pixel, number)
 //   @default $base-font-size
 // @return unit (px)
-@function em_to_px(
-    $em,
-    $base : $base-font-size
-  ) {
-  
+@function em-to-px($em, $base : $base-font-size) {
   @if unitless($em) {
     $em: 1em * $em;
   }
-  
   @if unitless($base) {
     $base: 1px * $base;
   }
-  
   $em: ($em * $base) / 1px;
-  @return strip_units($em) * 1px;
+  @return strip-units($em) * 1px;
 }

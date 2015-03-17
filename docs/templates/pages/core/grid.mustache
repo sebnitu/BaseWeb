@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<pre><code>&lt;div class=&quot;container&quot;&gt;
+<pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4&quot;&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;
     &lt;div class=&quot;col col-4&quot;&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;
@@ -35,7 +35,7 @@
   
 <p>You can also set the grid type by passing a non-map parameter <code>build-grid-system(mobile)</code> which will make columns staked at 100% width.</p>
 
-<pre><code>@include build-grid-system(mobile);
+<pre class="language-scss"><code>@include build-grid-system(mobile);
 
 @include media-min('tablet') {
   @include build-grid-system(('total-width': 740px));
@@ -102,7 +102,7 @@
 
 <p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets.</p>
 
-<pre><code>.wrapper {
+<pre class="language-scss"><code>.wrapper {
   @include make-container();
   
   .content {
@@ -119,7 +119,7 @@
 
 <p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <code>make-column-base()</code> to define multiple columns and set the widths separately to reduce the final CSS output.</p>
 
-<pre><code>.wrapper {
+<pre class="language-scss"><code>.wrapper {
   @include make-container();
   
   .content {
@@ -130,11 +130,11 @@
       @include make-column-base();
     }
     .aside {
-      width: column_width(4);
+      width: column-width(4);
     }
     .article {
-      width: column_width(6);
-      margin-left: spacing_width(2);
+      width: column-width(6);
+      margin-left: spacing-width(2);
     }
   }
 }</code></pre>
@@ -143,7 +143,7 @@
 
 <p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
 
-<pre><code>&lt;div class=&quot;container&quot;&gt;
+<pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4 suffix-3&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;col col-3 prefix-2&quot;&gt;...&lt;/div&gt;
@@ -155,7 +155,7 @@
 
 <p>The semantic grid system equivalent would look like this:</p>
 
-<pre><code>.aside {
+<pre class="language-scss"><code>.aside {
   @include make-column(3);
   @include give-prefix(2);
 }
@@ -170,7 +170,7 @@
 
 <p>When using a fluid grid (percent based) the sum of columns in a row must equal the total column value <code>$grid('columns')</code>. But when using a fixed grid (pixel based), the sum must equal the column span of it's parent column element. If you want to mix fixed and fluid grids between breakpoints, it's recommended to use the semantic grid method.</p>
 
-<pre><code>&lt;div class=&quot;container&quot;&gt;
+<pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-6&quot;&gt;
       ...
@@ -190,100 +190,120 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
+<hr class="docs-hr">
+
+<section class="sub-section sub-section-functions">
+<h1 class="docs-header">Grid Functions</h1>
+<p>These functions are used to calculate specific grid maths such as the width a set number of columns should span. These are used within grid mixins and are often used when defining semantic grid systems.</p>
+
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">Grid Functions and Mixins</h2>
-    <p>Below are all the available functions and mixins for outputting the class based grid system or creating a semantic grid system.</p>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">column_width</h3>
+    <h2 class="docs-header">column-width</h2>
     <p>A function that returns the width of a column span.</p>
-<pre class="docs-code"><code class="name">@function column_width()</code><code class="desc">@param $index
-  @type integer
-  @desc The number of column span you want returned.
-@param $options
-  @type map
-  @default $grid map
-@return unit (pixel, percentage)</code></pre>
+    <pre class="language-scss"><code>@function column-width( $index, $options: () )
+// @param $index
+//   @type integer
+//   @desc The number of column span you want returned.
+// @param $options
+//   @type map
+//   @default $grid map
+// @return unit (pixel, percentage)</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">spacing_width</h3>
+    <h2 class="docs-header">spacing-width</h2>
     <p>A function that returns the spacing of a column span.</p>
-<pre class="docs-code"><code class="name">@function spacing_width()</code><code class="desc">@param $index
-  @type integer
-  @desc The number of column spacing you want returned.
-@param $options
-  @type map
-  @default $grid map
-@return unit (pixel, percentage)</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-container</h3>
-    <p>Outputs all the styles needed to make an element a grid container.</p>
-<pre class="docs-code"><code class="name">@mixin make-container()</code><code class="desc">@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-row</h3>
-    <p>Outputs all the styles needed to make an element a grid row.</p>
-<pre class="docs-code"><code class="name">@mixin make-row()</code><code class="desc">@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-column-base</h3>
-    <p>Creates the base styles for a column but excludes setting the width.</p>
-<pre class="docs-code"><code class="name">@mixin make-column-base()</code><code class="desc">@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-column</h3>
-    <p>Creates all the styles for a column and sets its width.</p>
-<pre class="docs-code"><code class="name">@mixin make-column()</code><code class="desc">@param $index
-  @type integer
-  @desc The number of column span you want set.
-@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">give-prefix</h3>
-    <p>Creates the base styles for a column and sets its width.</p>
-<pre class="docs-code"><code class="name">@mixin give-prefix()</code><code class="desc">@param $index
-  @type integer
-  @desc The number of column prefix spacing you want set.
-@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">give-suffix</h3>
-    <p>Creates the base styles for a spacing suffix.</p>
-<pre class="docs-code"><code class="name">@mixin give-suffix()</code><code class="desc">@param $index
-  @type integer
-  @desc The number of column suffix spacing you want set.
-@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">build-grid-system</h3>
-    <p>Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.</p>
-<pre class="docs-code"><code class="name">@mixin build-grid-system()</code><code class="desc">@param $options
-  @type map | grid type (normal, mobile)
-  @default $grid map</code></pre>
+    <pre class="language-scss"><code>@function spacing-width( $index, $options: () )
+// @param $index
+//   @type integer
+//   @desc The number of column spacing you want returned.
+// @param $options
+//   @type map
+//   @default $grid map
+// @return unit (pixel, percentage)</code></pre>
   </li>
 
 </ul>
+</section>
+
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Grid Mixins</h1>
+<p>These mixins are used to output styles that define a grid system's components. Such as grid containers, rows and columns as well as modifier classes like prefix and suffix spacing. They are also used for outputting the class based grid system.</p>
+
+<ul class="docs-list">
+  
+  <li>
+    <h2 class="docs-header">make-container</h2>
+    <p>Outputs all the styles needed to make an element a grid container.</p>
+    <pre class="language-scss"><code>@mixin make-container( $options: () )
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-row</h2>
+    <p>Outputs all the styles needed to make an element a grid row.</p>
+    <pre class="language-scss"><code>@mixin make-row( $options: () )
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-column-base</h2>
+    <p>Creates the base styles for a column but excludes setting the width.</p>
+    <pre class="language-scss"><code>@mixin make-column-base( $options: () )
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-column</h2>
+    <p>Creates all the styles for a column and sets its width.</p>
+    <pre class="language-scss"><code>@mixin make-column( $index, $options: () )
+// @param $index
+//   @type integer
+//   @desc The number of column span you want set.
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">give-prefix</h2>
+    <p>Creates the base styles for a column and sets its width.</p>
+    <pre class="language-scss"><code>@mixin give-prefix( $index, $options: () )
+// @param $index
+//   @type integer
+//   @desc The number of column prefix spacing you want set.
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">give-suffix</h2>
+    <p>Creates the base styles for a spacing suffix.</p>
+    <pre class="language-scss"><code>@mixin give-suffix( $index, $options: () )
+// @param $index
+//   @type integer
+//   @desc The number of column suffix spacing you want set.
+// @param $options
+//   @type map
+//   @default $grid map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">build-grid-system</h2>
+    <p>Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.</p>
+    <pre class="language-scss"><code>@mixin build-grid-system( $grid-type | $options: () )
+// @param $grid-type | $options
+//   @type string | map
+//   @default $grid map</code></pre>
+  </li>
+
+</ul>
+</section>

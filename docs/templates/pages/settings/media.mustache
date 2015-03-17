@@ -13,20 +13,25 @@
 
 </ul>
 
+<h2 class="docs-header">Setting Tweakpoint Maps</h2>
+
 <p>You can also define component specific tweakpoints that override the breakpoints map. This should be done at the beginning of a component file and should also be reset at the end of the file so values don't leak to following components.</p>
 
-<h2 class="docs-header">Example Usage</h2>
-
-<pre><code>// Inside `_component.scss`
+<h3 class="docs-header">Example Usage</h3>
+<pre class="language-scss"><code>// Inside `_some_component.scss`
 // Set our component specific tweakpoints
 $tweakpoints: ({
-  'inline' : 300px,
-  'block' : 500px
+  'inline': 300px,
+  'block': 500px
 });
 
-...
+// Your component code goes here...
 
 // Reset tweak points so it doesn't 
 // leak to our next component file
 $tweakpoints: ();
 </code></pre>
+
+<div class="notice notice-info">
+  <p>For more information on the tweakpoints method, make sure you checkout <a href="https://twitter.com/HugoGiraudel">Hugo Giraudel's</a> article over at Sitepoint: <a href="http://www.sitepoint.com/breakpoints-tweakpoints-sass/">Breakpoints and Tweakpoints in Sass</a>.</p>
+</div>

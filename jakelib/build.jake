@@ -52,7 +52,7 @@ namespace('build', function() {
           
     runuglifyjs({
       path : 'docs/js/',
-      input : ['jquery.smoothState.js', 'jquery.sticky-kit.js', 'jquery.function.js', 'jquery.docready.js'],
+      input : ['jquery.smoothState.js', 'prism.js', 'jquery.function.js', 'jquery.docready.js'],
       output : 'docs/js/scripts.min.js'
     });
     

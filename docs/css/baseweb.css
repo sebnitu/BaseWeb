@@ -1,4 +1,4 @@
-/**
+/*!
  * BaseWeb
  * A fresh front-end development framework
  * 
@@ -45,7 +45,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   @Base Classes
 ==============================================================================*/
 .clearfix:after {
-  content: "";
+  content: '';
   display: table;
   clear: both; }
 
@@ -249,7 +249,7 @@ dl {
     padding: 10px;
     background-clip: padding-box; }
     .list > li:after {
-      content: "";
+      content: '';
       display: table;
       clear: both; }
 
@@ -322,17 +322,18 @@ code {
   padding: 0 5px;
   white-space: nowrap;
   line-height: inherit;
-  color: #d25992; }
+  color: #c33577; }
 
 pre {
   margin: 20px 0;
-  padding: 20px;
+  padding: 5px;
   overflow: auto;
   color: #303030; }
   pre code {
-    display: inline-block;
+    display: block;
     margin: 0;
-    padding: 0;
+    padding: 15px;
+    overflow: scroll;
     white-space: pre;
     font-size: 100%;
     color: inherit;
@@ -720,7 +721,7 @@ hr {
     .container.container-no-padding {
       padding: 0; }
     .container:after {
-      content: "";
+      content: '';
       display: table;
       clear: both; }
   .row {
@@ -728,7 +729,7 @@ hr {
     margin-left: -10px;
     margin-right: -10px; }
     .row:after {
-      content: "";
+      content: '';
       display: table;
       clear: both; }
   .col {
@@ -884,7 +885,7 @@ body {
 .header h1 {
   margin: 0 auto; }
   .header h1:after {
-    content: "";
+    content: '';
     display: table;
     clear: both; }
 
@@ -1014,17 +1015,6 @@ h3.docs-header {
 
 hr.docs-hr {
   margin: 30px 0; }
-
-/**
- * Custom Code Blocks
- */
-.docs-code .name, .docs-code .desc {
-  display: block;
-  margin: 0; }
-.docs-code .name {
-  color: #d25992; }
-.docs-code .desc {
-  color: #303030; }
 
 /*==============================================================================
   @Home Structure
@@ -1215,7 +1205,7 @@ html, body {
     padding: 10px 0;
     background-clip: padding-box; }
     .docs-list > li:after {
-      content: "";
+      content: '';
       display: table;
       clear: both; }
   .docs-list > li {
@@ -1236,7 +1226,7 @@ html, body {
     padding: 15px 10px;
     background-clip: padding-box; }
     .docs-list-hover > li:after {
-      content: "";
+      content: '';
       display: table;
       clear: both; }
   .docs-list-hover > li {
@@ -1251,6 +1241,11 @@ html, body {
     transition: background-color 0.25s linear; }
   .docs-list-hover > li:hover {
     background-color: rgba(255, 255, 255, 0.5); }
+
+.docs-list .docs-list-hover:last-child {
+  margin-bottom: 20px; }
+  .docs-list .docs-list-hover:last-child > li:last-child {
+    border-bottom: 0 none; }
 
 /**
  * Unique List Content
@@ -1273,7 +1268,7 @@ html, body {
   padding-top: 10px;
   border-top: 1px dotted rgba(0, 0, 0, 0.2); }
   .docs-list-hover .block:after {
-    content: "";
+    content: '';
     display: table;
     clear: both; }
 .docs-list-hover .value {
@@ -1563,6 +1558,14 @@ html, body {
   border-left-color: #aa44c7; }
 
 /*==============================================================================
+  @Tables Demo
+==============================================================================*/
+.table-custom-alignment tr {
+  vertical-align: middle; }
+.table-custom-alignment tr td, .table-custom-alignment tr th {
+  text-align: center; }
+
+/*==============================================================================
   @Buttons Demo
 ==============================================================================*/
 .demo .btn-custom {
@@ -1596,10 +1599,6 @@ html, body {
     background-color: #b357cd;
     border: 1px solid rgba(0, 0, 0, 0.25); }
 
-.demo .btn-custom-large {
-  padding: 15px 30px;
-  font-size: 20px; }
-
 .demo .btn-custom-size {
   padding: 20px 40px;
   font-size: 20px;
@@ -1626,7 +1625,6 @@ html, body {
   background-color: #efefef;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  padding: 15px 30px;
   display: block;
   width: 100%;
   margin: 10px 0; }
@@ -1901,3 +1899,102 @@ html, body {
 
 .swatch-border-color-hover {
   background: rgba(0, 0, 0, 0.25); }
+
+/*==============================================================================
+  @Prism
+==============================================================================*/
+/**
+ * http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+scss
+ *
+ * prism.js custom theme for JavaScript, CSS, HTML and SCSS
+ * Built to run in BaseWeb with the _code.scss element module
+ */
+pre[class*="language-"], code[class*="language-"] {
+  color: #303030;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+pre[class*="language-"] {
+  position: relative;
+  overflow: scroll; }
+
+pre[class*="language-"] > code[class*="language-"] {
+  padding-right: 70px; }
+
+pre[class*="language-"] > code[class*="language-"]:before {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+  background: #909090;
+  opacity: 0.5;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear; }
+
+pre[class*="language-"]:hover > code:before {
+  opacity: 1; }
+
+pre.language-css > code:before {
+  content: 'CSS'; }
+
+pre.language-scss > code:before {
+  content: 'SCSS'; }
+
+pre.language-javascript > code:before {
+  content: 'JS'; }
+
+pre.language-markup > code:before {
+  content: 'HTML'; }
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata {
+  color: #909090; }
+
+.token.punctuation {
+  color: #303030; }
+
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
+  color: #dc4e1c; }
+
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted {
+  color: #668e23; }
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  color: #668e23; }
+
+.token.atrule, .token.attr-value, .token.keyword {
+  color: #c33577; }
+
+.token.function {
+  color: #c33577; }
+
+.token.regex, .token.important, .token.variable {
+  color: #1495cd; }
+
+.token.important, .token.bold {
+  font-weight: bold; }
+
+.token.italic {
+  font-style: italic; }
+
+.token.entity {
+  cursor: help; }
+
+.namespace {
+  opacity: .7; }

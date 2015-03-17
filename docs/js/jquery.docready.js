@@ -45,6 +45,10 @@
       },
       callback: function(url, $container, $content) {
         
+        // Call prism.js for syntax highlighting
+        Prism.highlightAll();
+        
+        // Show active nav and subpage
         active_nav($('#nav'));
         active_subpage($('.subpage'));
         

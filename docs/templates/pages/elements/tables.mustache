@@ -1,7 +1,7 @@
 <h1 class="docs-header">Tables</h1>
 <p>The HTML <code>&lt;table&gt;</code> element is used to display tabular data. Tables have rows, cells , header cells  and also can include <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tfooter&gt;</code> which wrap their respective table data. Here's an example of a table markup and the default styles:</p>
 
-<pre><code>&lt;table&gt;
+<pre class="language-markup"><code>&lt;table&gt;
   &lt;tr&gt;
     &lt;th&gt;...&lt;/th&gt;
     &lt;th&gt;...&lt;/th&gt;
@@ -48,7 +48,8 @@
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Table Variables</h2>
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">Table Variables</h1>
 <p>Table variables are encompassed within the <code>$table</code> map and are used throughout all table mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -73,39 +74,47 @@
   <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
   <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
+</section>
 
-<h2 class="docs-header">Table Modifiers</h2>
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Table Modifiers</h1>
 <p>BaseWeb has a number of mixins and classes available for adjusting the appearance of tables. This includes things like vertical alignment, text alignment, borders, padding, stripes, hover and responsive table styles.</p>
 
 <ul class="docs-list">
     
   <li>
-    <h3 class="docs-header">make-table-base</h3>
-    <p>Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-base()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>// SCSS
-%table-base {
+    <h2 class="docs-header">make-table-base</h2>
+    <p>Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.table</code> for your base table class.</p>
+    <pre class="language-scss"><code>@mixin make-table-base( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
+    <pre class="language-scss"><code>// SCSS
+%base-table {
   @include make-table-base();
 }
 .table-example-1 {
-  @extend %table-base;
+  @extend %base-table;
   ...
 }
 .table-example-2 {
-  @extend %table-base;
+  @extend %base-table;
   ...
 }</code></pre>
+    <p>Using table modifier classes requires you use the <code>.table</code> base class.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-rowed</h3>
+    <h2 class="docs-header">make-table-rowed</h2>
     <p>Adds borders to a table that divide table rows. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-rowed()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-rowed">
         <tr>
@@ -137,12 +146,13 @@
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-columned</h3>
+    <h2 class="docs-header">make-table-columned</h2>
     <p>Adds borders to a table that divide table columns. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-columned()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-columned">
         <tr>
@@ -174,12 +184,13 @@
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-bordered</h3>
+    <h2 class="docs-header">make-table-bordered</h2>
     <p>Adds borders to a table that divide table cells. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-bordered()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered">
         <tr>
@@ -211,12 +222,31 @@
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-condensed</h3>
-    <p>Gives a table a smaller cell padding than normal.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-condensed()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <h2 class="docs-header">give-table-size</h2>
+    <p>Toggles a tables padding size between condensed, expanded or a custom padding value.</p>
+    <pre class="language-scss"><code>@mixin give-table-size( $size, $options: () )
+// @param $size
+//   @type condensed | expanded | unit (pixel, em, percent)
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
+    <pre class="language-scss"><code>// SCSS
+.all-tables {
+  @include make-table-base();
+  @include make-table-bordered();
+}
+.small-tables {
+  @extend .all-tables;
+  @include give-table-size(condensed);
+}
+.custom-tables {
+  @extend .all-tables;
+  @include give-table-size(8px 16px);
+}</code></pre>
+    <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-condensed">
         <tr>
@@ -245,15 +275,7 @@
         </tr>
       </table>
     </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-table-expanded</h3>
-    <p>Gives a table a larger cell padding than normal.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-expanded()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-expanded">
         <tr>
@@ -285,15 +307,16 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-rounded</h3>
+    <h2 class="docs-header">give-table-rounded</h2>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-rounded()</code><code class="desc">@param $radius
-  @type unit (pixel, percent)
-  @default default ($table('border-radius'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-rounded( $radius, $options: () )
+// @param $radius
+//   @type unit (pixel, percent)
+//   @default default ($table('border-radius'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-rounded">
         <tr>
@@ -325,19 +348,20 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-stripes</h3>
+    <h2 class="docs-header">give-table-stripes</h2>
     <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-stripes()</code><code class="desc">@param $nth
-  @type nth (odd, even)
-  @default default ($table('nth'))
-@param $dir
-  @type orientation of stripes (vertical, horizontal)
-  @default default ($table('stripe'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-stripes( $nth, $dir, $options: () )
+// @param $nth
+//   @type nth (odd, even)
+//   @default default ($table('nth'))
+// @param $dir
+//   @type orientation of stripes (vertical, horizontal)
+//   @default default ($table('stripe'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped">
         <tr>
@@ -366,7 +390,7 @@
         </tr>
       </table>
     </div>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped-vertical table-align-center">
         <tr>
@@ -424,15 +448,16 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-hover</h3>
+    <h2 class="docs-header">give-table-hover</h2>
     <p>Gives table hover styles for rows.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-hover()</code><code class="desc">@param $bg-hover
-  @type color
-  @default default ($table('background-hover'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-hover( $bg-hover, $options: () )
+// @param $bg-hover
+//   @type color
+//   @default default ($table('background-hover'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-hover">
         <tr>
@@ -464,14 +489,37 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-alignment</h3>
+    <h2 class="docs-header">give-table-alignment</h2>
     <p>Sets the vertical and text alignment of a table if a parameter is passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-alignment()</code><code class="desc">@param $options
-  @type map ('vertical-align', 'text-align')
-  @default map (none, none)</code></pre>
-    
+    <pre class="language-scss"><code>@mixin give-table-alignment( $options: () )
+// @param $options
+//   @type map ('vertical-align', 'text-align')
+//   @default map (none, none)</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>If you don't have class modifiers enabled, or just want to set table alignment in your SCSS, just pass in the alignment settings you'd like set.</p>
+    <pre class="language-scss"><code>// SCSS
+.table-custom-alignment {
+  ...
+  @include give-table-alignment((
+    'vertical-align': middle,
+    'text-align': center
+  ));
+}
+
+// CSS Output
+.table-custom-alignment tr {
+  vertical-align: middle;
+}
+.table-custom-alignment tr td,
+.table-custom-alignment tr th {
+  text-align: center;
+}
+</code></pre>
     <div class="docs-table-responsive">
       <table class="docs-table">
+        <tr>
+          <th colspan="2">Available Classes</th>
+        </tr>
         <tr>
           <td><code>.table-valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
@@ -502,15 +550,20 @@
         </tr>
       </table>
     </div>
+    <p>Since this is a utility setting for tables, it's usually paired along side the table base and a stylistic table modifier.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-responsive</h3>
+    <h2 class="docs-header">make-table-responsive</h2>
     <p>When added to a wrapping element of a table, will make the table responsive for tablets and below</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-responsive()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;div class=&quot;table-responsive&quot;&gt;
+    <pre class="language-scss"><code>@mixin make-table-responsive( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;
   &lt;table class=&quot;table table-bordered&quot;&gt;
     ...
   &lt;/table&gt;
@@ -548,3 +601,4 @@
   </li>
   
 </ul>
+</section>

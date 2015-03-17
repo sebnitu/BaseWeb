@@ -2,14 +2,14 @@
 
 <p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
 
-<pre><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Button&lt;/a&gt;
+<pre class="language-markup"><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
 &lt;input class=&quot;btn btn-default&quot; type=&quot;button&quot; value=&quot;Button&quot;&gt;
 &lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Button&quot;&gt;</code></pre>
 
 <div class="demo">
   <p>
-    <a class="btn btn-default" href="#" role="button">Button</a>
+    <a class="btn btn-default" href="#">Button</a>
     <button class="btn btn-default" type="submit">Button</button>
     <input class="btn btn-default" type="button" value="Button">
     <input class="btn btn-default" type="submit" value="Button">
@@ -18,7 +18,8 @@
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Button Variables</h2>
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">Button Variables</h1>
 <p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -92,62 +93,70 @@
     <code class="right value">$border-radius</code>
   </li>
 </ul>
+</section>
 
-<h2 class="docs-header">Button Modifiers</h2>
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Button Modifiers</h1>
 <p>Button modifiers are used to alter a buttons appearance and size.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h3 class="docs-header">make-btn-base</h3>
-    <p>Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
-    <p>This mixin is used to create our base button class. You can also use the mixin to create semantic button classes by extending a button placeholder.</p>
-    <pre><code>// SCSS
-%btn-base {
+    <h2 class="docs-header">make-btn-base</h2>
+    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
+    <pre class="language-scss"><code>@mixin make-list-base( $options: () )
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
+    <pre class="language-scss"><code>// SCSS
+%base-btn {
   @include make-btn-base();
 }
 .btn-purchase {
-  @extend %btn-base;
+  @extend %base-btn;
   ...
 }
 .btn-cart {
-  @extend %btn-base;
+  @extend %base-btn;
   ...
 }
 </code></pre>
-    <p>If you're using the class modifiers, remember to pair the base class with a color modifier.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-default</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+    <p>Using button modifier classes requires you use the <code>.btn</code> base class.</p>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-default&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
-    <h3 class="docs-header">make-btn-color</h3>
+    <h2 class="docs-header">make-btn-color</h2>
     <p>Handles all the color variables of a button such as color, background, border and hover state.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-color()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
+    <pre class="language-scss"><code>@mixin make-btn-color( $options: () )
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    
+    <h3 class="docs-header">Example Usage</h3>
     <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
     'color' : $white,
     'background' : $violet
   ));
-}
-</code></pre>
-    <pre><code>&lt;button class=&quot;<strong>btn-custom</strong>&quot;&gt;Example Button&lt;/button&gt;</code></pre>
+}</code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom&quot;&gt;Custom Mixin Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Class Modifier Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
-        <button class="btn-custom">Custom Button</button>
+        <button class="btn-custom">Custom Mixin Button</button>
+        <button class="btn btn-primary">Class Modifier Button</button>
       </p>
     </div>
-    <p>If you have modifier classes enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
+    <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
     <ul class="docs-list docs-list-hover">
       <li class="title">
-        Available button color classes
+        Available Classes
       </li>
       <li>
         <span class="right"><button class="btn btn-default">Button</button></span>
@@ -174,20 +183,22 @@
         <code>.btn-black</code><br><code>.btn-secondary</code>
       </li>
     </ul>
-    <p>Just keep in mind that all button modifier classes still require the <code>.btn</code> as a base class for proper rendering.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-primary</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+    
   </li>
 
   <li>
-    <h3 class="docs-header">make-btn-size</h3>
+    <h2 class="docs-header">give-btn-size</h2>
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-size()</code><code class="desc">@param $size
-  @type small | Large | unit list (pixel, em, percent)
-@param $options
-  @type map
-  @default $button map</code></pre>
+    <pre class="language-scss"><code>@mixin give-btn-size()
+// @param $size
+//   @type small | Large | unit list (pixel, em, percent)
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    
+    <h3 class="docs-header">Example Usage</h3>
     <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 // Use default small size
 .btn-small {
   @include make-btn-size(small);
@@ -209,9 +220,11 @@
 }
 </code></pre>
     
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    
     <ul class="docs-list docs-list-hover">
       <li class="title">
-        Available button size classes
+        Available Classes
       </li>
       <li>
         <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
@@ -222,33 +235,34 @@
         <code>.btn-large</code>
       </li>
     </ul>
-    <p>Button sizes are utility classes, so they still need to be paired with both the base button class and a color modifier.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-primary btn-large</strong>&quot;&gt;Large Button&lt;/button&gt;</code></pre>
     
   </li>
   
   <li>
-    <h3 class="docs-header">make-btn-block</h3>
+    <h2 class="docs-header">give-btn-block</h2>
     <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-block()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>@mixin give-btn-block()
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>As a utility class, <code>give-btn-block()</code> is used along side base and modifier styles.</p>
+    <pre class="language-scss"><code>// SCSS
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include make-btn-size(large); // optional
-  @include make-btn-block();
+  @include give-btn-block();
 }
 </code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom-mobile&quot;&gt;Block Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
-        <a class="btn btn-green btn-block btn-large" href="#" role="button">Block Button</a>
+        <a class="btn btn-green btn-block" href="#" role="button">Block Button</a>
       </p>
     </div>
-    <pre><code>&lt;button class=&quot;<strong>btn-custom-mobile</strong>&quot;&gt;Block Button&lt;/button&gt;
-&lt;button class=&quot;<strong>btn btn-green btn-block</strong>&quot;&gt;Block Button&lt;/button&gt;</code></pre>
   </li>
 
 </ul>
+</section>

@@ -88,27 +88,27 @@ $table: (
   @include make-table-columned($o);
 }
 
-// Make Table Condensed
-// Gives a table a smaller cell padding than normal.
+// Give Table Size
+// Toggles a tables padding size between condensed, expanded or a custom padding value.
+// @param $size
+//   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
 //   @default $table map
-@mixin make-table-condensed($options: ()) {
+@mixin give-table-size($size, $options: ()) {
   $o: map-merge($table, $options);
-  td, th {
-    padding: map-get($o, 'padding-condensed');
-  }
-}
-
-// Make Table Expanded
-// Gives a table a larger cell padding than normal.
-// @param $options
-//   @type map
-//   @default $table map
-@mixin make-table-expanded($options: ()) {
-  $o: map-merge($table, $options);
-  td, th {
-    padding: map-get($o, 'padding-expanded');
+  @if ($size == condensed) {
+    td, th {
+      padding: map-get($o, 'padding-condensed');
+    }
+  } @else if ($size == expanded) {
+    td, th {
+      padding: map-get($o, 'padding-expanded');
+    }
+  } @else {
+    td, th {
+      padding: $size;
+    }
   }
 }
 
@@ -304,10 +304,10 @@ table {
  * Padding Variations
  */
 .table-condensed {
-  @include make-table-condensed();
+  @include give-table-size(condensed);
 }
 .table-expanded {
-  @include make-table-expanded();
+  @include give-table-size(expanded);
 }
 
 /**

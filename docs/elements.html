@@ -93,7 +93,7 @@
     
     <div id="content" class="content">
       <div class="toolbar">
-        <span class="version">Currently v0.11.0</span>
+        <span class="version">Currently v0.11.1</span>
         <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-default">Download BaseWeb</a>
       </div><!-- .toolbar -->
       
@@ -115,34 +115,36 @@
   <li>Add custom text highlight color if a color is set in <code>$bg-selection</code></li>
 </ul>
 
-<h2 class="docs-header">Base Classes</h2>
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Base Classes</h1>
 
 <p>Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clear fix).</p>
 
-<p></p>
-
 <ul class="docs-list">
+  
   <li>
-    <h3 class="docs-header">.clearfix</h3>
+    <h2 class="docs-header">.clearfix</h2>
     <p>Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
-    <pre class="docs-code"><code class="name">@class clearfix</code></pre>
+    <pre class="language-css"><code>.clearfix</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-<pre><code>&lt;div class=&quot;wrapper clearfix&quot;&gt;
+    <pre class="language-markup"><code>&lt;div class=&quot;wrapper clearfix&quot;&gt;
   &lt;aside class=&quot;sidebar&quot;&gt;
     ...
   &lt;/aside&gt;
   &lt;div class=&quot;content&quot;&gt;
     ...
   &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
   </li>
+  
   <li>
-    <h3 class="docs-header">.remove-clearfix</h3>
-    <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
-    <pre class="docs-code"><code class="name">@class remove-clearfix</code></pre>
+    <h2 class="docs-header">.remove-clearfix</h2>
+    <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>none</code> will not output the class styles. This class is typically used when a clearfix is inherited on an element and you'd like it removed.</p>
+    <pre class="language-scss"><code>.remove-clearfix</code></pre>
   </li>
+  
 </ul>
+</section>
 </section><!-- .subpage -->
 
 <section id="typography" class="subpage">
@@ -152,7 +154,7 @@
 <h2 class="docs-header">Headings</h2>
 <p>Heading elements are used to describe the topic of the section it introduces. BaseWeb defines styles for headings <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>.</p>
 
-<pre><code>&lt;h1&gt;h1. BaseWeb Heading&lt;/h1&gt;
+<pre class="language-markup"><code>&lt;h1&gt;h1. BaseWeb Heading&lt;/h1&gt;
 &lt;h2&gt;h2. BaseWeb Heading&lt;/h2&gt;
 &lt;h3&gt;h3. BaseWeb Heading&lt;/h3&gt;
 &lt;h4&gt;h4. BaseWeb Heading&lt;/h4&gt;
@@ -171,77 +173,80 @@
 <h2 class="docs-header">Body Copy</h2>
 <p>The body copy is set by applying our default typographic settings to the <code>&lt;body&gt;</code> element and applying margins to our paragraph element.</p>
 
-<pre><code>&lt;p&gt;...&lt;/p&gt;</code></pre>
+<pre class="language-markup"><code>&lt;p&gt;...&lt;/p&gt;</code></pre>
 
 <div class="demo">
   <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
   <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 </div>
 
-<h2 class="docs-header">Inline HTML Elements</h2>
-<p>HTML has a beautiful assortment of tools for adding rich semantics to a document. BaseWeb adds simplistic style to inline elements.</p>
+<hr class="docs-hr">
+
+<section class="sub-section sub-section-elements">
+<h1 class="docs-header">Typographic Elements</h1>
+<p>HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.</p>
 
 <ul class="docs-list">
   <li>
-    <h3 class="docs-header">&lt;a&gt;</h3>
+    <h2 class="docs-header">&lt;a&gt;</h2>
     <p>The HTML <code>&lt;a&gt;</code> Element (or the HTML Anchor Element) defines a hyperlink.</p>
-    <pre><code>&lt;p&gt;If you don't know something, try a &lt;a href="http://google.com"&gt;Google search&lt;/a&gt;!&lt;/p&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;p&gt;If you don't know something, try a &lt;a href="http://google.com"&gt;Google search&lt;/a&gt;!&lt;/p&gt;</code></pre>
     <div class="demo">
       <p>If you don't know something, try a <a href="http://google.com">Google search</a>!</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;strong&gt;</h3>
+    <h2 class="docs-header">&lt;strong&gt;</h2>
     <p>The HTML <code>&lt;strong&gt;</code> represents strong importance for its contents.</p>
-    <pre><code>&lt;p&gt;I learned a lot reading &lt;strong&gt;Pale Blue Dot&lt;/strong&gt;.&lt;/p&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;p&gt;I learned a lot reading &lt;strong&gt;Pale Blue Dot&lt;/strong&gt;.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p>I learned a lot reading <strong>Pale Blue Dot</strong>.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;em&gt;</h3>
+    <h2 class="docs-header">&lt;em&gt;</h2>
     <p>The HTML <code>&lt;em&gt;</code> element represents stress emphasis of its contents.</p>
-    <pre><code>&lt;p&gt;Cats are &lt;em&gt;cute&lt;/em&gt; animals.&lt;/p&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;p&gt;Cats are &lt;em&gt;cute&lt;/em&gt; animals.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p>Cats are <em>cute</em> animals.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;small&gt;</h3>
+    <h2 class="docs-header">&lt;small&gt;</h2>
     <p>The HTML <code>&lt;small&gt;</code> element represents side comments such as small print.</p>
-    <pre><code>&lt;small&gt;Copyright 2015&lt;/small&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;small&gt;Copyright 2015&lt;/small&gt;</code></pre>
     <div class="demo">
       <p><small>Copyright 2015</small></p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;mark&gt;</h3>
+    <h2 class="docs-header">&lt;mark&gt;</h2>
     <p>The HTML <code>&lt;mark&gt;</code> element represents a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.</p>
-    <pre><code>&lt;p&gt;Don't forget to pick up the &lt;mark&gt;hamburgers&lt;/mark&gt; at the store.&lt;/p&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;p&gt;Don't forget to pick up the &lt;mark&gt;hamburgers&lt;/mark&gt; at the store.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p>Don't forget to pick up the <mark>hamburgers</mark> at the store.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;ins&gt;</h3>
+    <h2 class="docs-header">&lt;ins&gt;</h2>
     <p>The HTML <code>&lt;ins&gt;</code> element represents an addition to the document.</p>
-    <pre><code>&lt;ins&gt;This content was added to our document.&lt;/ins&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ins&gt;This content was added to our document.&lt;/ins&gt;</code></pre>
     <div class="demo">
       <p><ins>This content was added to our document.</ins></p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;del&gt;</h3>
+    <h2 class="docs-header">&lt;del&gt;</h2>
     <p>The HTML <code>&lt;del&gt;</code> element represents a removal from the document.</p>
-    <pre><code>&lt;del&gt;This content was removed from our document.&lt;/del&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;del&gt;This content was removed from our document.&lt;/del&gt;</code></pre>
     <div class="demo">
       <p><del>This content was removed from our document.</del></p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;cite&gt;</h3>
+    <h2 class="docs-header">&lt;cite&gt;</h2>
     <p>The HTML <code>&lt;cite&gt;</code> element represents a reference to a creative work.</p>
-    <pre><code>&lt;blockquote&gt;
+    <pre class="language-markup"><code>&lt;blockquote&gt;
   &lt;p&gt;Take the risk of thinking for yourself&amp;mdash;much more happiness, truth, beauty and wisdom will come to you that way.&lt;/p&gt;
   &lt;footer&gt;&lt;cite&gt;&amp;ndash; Christopher Hitchens&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;</code></pre>
@@ -253,107 +258,122 @@
     </div>
   </li>
   <li>
-    <h3 class="docs-header">&lt;abbr&gt;</h3>
+    <h2 class="docs-header">&lt;abbr&gt;</h2>
     <p>The HTML <code>&lt;abbr&gt;</code> represents an abbreviation or acronym. The optional title attribute may be used to provide an expansion of the abbreviation.</p>
-    <pre><code>&lt;p&gt;The quintessential of front-end development includes &lt;abbr title=&quot;Hypertext Markup Language&quot;&gt;HTML&lt;/abbr&gt;, &lt;abbr title=&quot;Cascading Stylessheets&quot;&gt;CSS&lt;/abbr&gt; and &lt;abbr title=&quot;JavaScript&quot;&gt;JS&lt;/abbr&gt;.&lt;/p&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;p&gt;The quintessential of front-end development includes &lt;abbr title=&quot;Hypertext Markup Language&quot;&gt;HTML&lt;/abbr&gt;, &lt;abbr title=&quot;Cascading Stylessheets&quot;&gt;CSS&lt;/abbr&gt; and &lt;abbr title=&quot;JavaScript&quot;&gt;JS&lt;/abbr&gt;.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p>The quintessential of front-end development includes <abbr title="Hypertext Markup Language">HTML</abbr>, <abbr title="Cascading Stylessheets">CSS</abbr> and <abbr title="JavaScript">JS</abbr>.</p>
     </div>
   </li>
 </ul>
+</section>
 
-<h2 class="docs-header">Typographic Classes</h2>
-<p>In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents.</p>
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Typographic Classes</h1>
+<p>In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.</p>
 
 <ul class="docs-list">
   <li>
-    <h3 class="docs-header">.text-lead</h3>
-    <pre><code>&lt;p class="text-lead"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-lead</h2>
+    <p>Lead text can be used as an introduction paragraph or even as subtitle text.</p>
+    <pre class="language-markup"><code>&lt;p class="text-lead"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-lead">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-small</h3>
-    <pre><code>&lt;p class="text-small"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-small</h2>
+    <p>Used to make text look less important. Can be used to reduce the size of legal text, for example.</p>
+    <pre class="language-markup"><code>&lt;p class="text-small"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-small">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-soften</h3>
-    <pre><code>&lt;p class="text-soften"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-soften</h2>
+    <p>Softens the appearance of text for non-vital content such as meta data, dates or descriptions.</p>
+    <pre class="language-markup"><code>&lt;p class="text-soften"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-soften">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-harden</h3>
-    <pre><code>&lt;p class="text-harden"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-harden</h2>
+    <p>Makes text stand out or look more important. Could be used to attract attention to important information.</p>
+    <pre class="language-markup"><code>&lt;p class="text-harden"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-harden">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.text-left</h3>
-    <pre><code>&lt;p class="text-left"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-left</h2>
+    <p>Aligns text to the left.</p>
+    <pre class="language-markup"><code>&lt;p class="text-left"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-left">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-center</h3>
-    <pre><code>&lt;p class="text-center"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-center</h2>
+    <p>Aligns text to the center.</p>
+    <pre class="language-markup"><code>&lt;p class="text-center"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-center">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-right</h3>
-    <pre><code>&lt;p class="text-right"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-right</h2>
+    <p>Aligns text to the right.</p>
+    <pre class="language-markup"><code>&lt;p class="text-right"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-right">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-justify</h3>
-    <pre><code>&lt;p class="text-justify"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-justify</h2>
+    <p>Makes text justified.</p>
+    <pre class="language-markup"><code>&lt;p class="text-justify"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-justify">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.text-nowrap</h3>
-    <pre><code>&lt;p class="text-nowrap"&gt;...&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-nowrap</h2>
+    <p>Prevents text from wrapping.</p>
+    <pre class="language-markup"><code>&lt;p class="text-nowrap"&gt;...&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-nowrap">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.text-lowercase</h3>
-    <pre><code>&lt;p class="text-lowercase"&gt;Lowercase text goes here.&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-lowercase</h2>
+    <p>Makes text lowercase.</p>
+    <pre class="language-markup"><code>&lt;p class="text-lowercase"&gt;Lowercase text goes here.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-lowercase">Lowercase text goes here.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-uppercase</h3>
-    <pre><code>&lt;p class="text-uppercase"&gt;Uppercase text goes here.&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-uppercase</h2>
+    <p>Makes text uppercase.</p>
+    <pre class="language-markup"><code>&lt;p class="text-uppercase"&gt;Uppercase text goes here.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-uppercase">Uppercase text goes here.</p>
     </div>
   </li>
   <li>
-    <h3 class="docs-header">.text-capitalize</h3>
-    <pre><code>&lt;p class="text-capitalize"&gt;Capitalize text goes here.&lt;/p&gt;</code></pre>
+    <h2 class="docs-header">.text-capitalize</h2>
+    <p>Makes text capitalized.</p>
+    <pre class="language-markup"><code>&lt;p class="text-capitalize"&gt;Capitalize text goes here.&lt;/p&gt;</code></pre>
     <div class="demo">
       <p class="text-capitalize">Capitalize text goes here.</p>
     </div>
   </li>
 </ul>
+</section>
 </section><!-- .subpage -->
 
 <section id="lists" class="subpage">
@@ -365,7 +385,7 @@
   <li>
     <h2 class="docs-header">Unordered Lists</h2>
     <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
-    <pre><code>&lt;ul&gt;
+    <pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     <div class="demo">
@@ -388,7 +408,7 @@
   <li>
     <h2 class="docs-header">Ordered Lists</h2>
     <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
-    <pre><code>&lt;ol&gt;
+    <pre class="language-markup"><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
     <div class="demo">
@@ -411,7 +431,7 @@
   <li>
     <h2 class="docs-header">Description Lists</h2>
     <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
-    <pre><code>&lt;dl&gt;
+    <pre class="language-markup"><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
@@ -427,7 +447,8 @@
   
 </ul>
 
-<h2 class="docs-header">List Variables</h2>
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">List Variables</h1>
 <p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -448,39 +469,47 @@
   <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
   <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
+</section>
 
-<h2 class="docs-header">List Modifiers</h2>
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">List Modifiers</h1>
 <p>Lists are used to describe a wide range of content on the web. A lot of the time, you don't necessarily want a list to look like a standard list with bullets. BaseWeb provides some mixins and classes for creating commonly used styles for lists and effects.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h3 class="docs-header">make-list-base</h3>
+    <h2 class="docs-header">make-list-base</h2>
     <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>// SCSS
-%list-base {
+    <pre class="language-scss"><code>@mixin make-list-base( $options: () )
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
+    <pre class="language-scss"><code>// SCSS
+%base-list {
   @include make-list-base();
 }
 .list-example-1 {
-  @extend %list-base;
+  @extend %base-list;
   ...
 }
 .list-example-2 {
-  @extend %list-base;
+  @extend %base-list;
   ...
 }</code></pre>
+    <p>Using list modifier classes requires you use the <code>.list</code> base class.</p>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">make-list-rowed</h3>
+    <h2 class="docs-header">make-list-rowed</h2>
     <p>Adds borders to a list that divide list items. Requires the use of base list styles through base list class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-rowed()</code><code class="desc">@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed">
         <li>List Item</li>
@@ -497,13 +526,13 @@
       </ul>
     </div>
     <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .new-list-styles {
   @include make-list-base(('padding':10px 0));
   @include make-list-rowed();
 }
 </code></pre>
-    <pre><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-flush">
         <li>List Item</li>
@@ -522,12 +551,13 @@
   </li>
   
   <li>
-    <h3 class="docs-header">make-list-bordered</h3>
+    <h2 class="docs-header">make-list-bordered</h2>
     <p>Adds borders to a list that wraps the list and divides list items. Requires the use of base list styles through base list class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-bordered()</code><code class="desc">@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered">
         <li>List Item</li>
@@ -546,15 +576,16 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-list-rounded</h3>
+    <h2 class="docs-header">give-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-rounded()</code><code class="desc">@param $radius
-  @type unit (pixel, percent)
-  @default default ($list('border-radius'))
-@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-list-rounded( $radius, $options: () )
+// @param $radius
+//   @type unit (pixel, percent)
+//   @default default ($list('border-radius'))
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered list-rounded">
         <li>List Item</li>
@@ -573,15 +604,16 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-list-stripes</h3>
+    <h2 class="docs-header">give-list-stripes</h2>
     <p>Gives a list items alternating background colors.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-stripes()</code><code class="desc">@param $nth
-  @type nth (odd, even)
-  @default default ($list('nth'))
-@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-list-stripes( $nth, $options: () )
+// @param $nth
+//   @type nth (odd, even)
+//   @default default ($list('nth'))
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-striped">
         <li>List Item</li>
@@ -600,15 +632,16 @@
   </li>
   
   <li>
-    <h3 class="docs-header">give-list-hover</h3>
+    <h2 class="docs-header">give-list-hover</h2>
     <p>Gives list hover styles for list items.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-hover()</code><code class="desc">@param $bg-hover
-  @type color
-  @default default ($list('background-hover'))
-@param $options
-  @type map
-  @default $list map</code></pre>
-    <pre><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-list-hover( $bg-hover, $options: () )
+// @param $bg-hover
+//   @type color
+//   @default default ($list('background-hover'))
+// @param $options
+//   @type map
+//   @default $list map</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-hover">
         <li>List Item</li>
@@ -627,14 +660,15 @@
   </li>
   
 </ul>
-  </section><!-- .subpage -->
+</section>
+</section><!-- .subpage -->
 
 <section id="blockquotes" class="subpage">
 <h1 class="docs-header">Blockquotes</h1>
 
 <p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a footer or cite element, and optionally with in-line changes such as annotations and abbreviations.</p>
 
-<pre><code>&lt;blockquote&gt;
+<pre class="language-markup"><code>&lt;blockquote&gt;
   &lt;p&gt;...&lt;/p&gt;
   &lt;footer&gt;&lt;cite&gt;...&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;</code></pre>
@@ -658,7 +692,7 @@
 
 <p>Inline code primarily appear in small fragments within text blocks. BaseWeb styles them so that they are easy to recognize and parse in that context.</p>
 
-<pre><code>&lt;code&gt;...&lt;/code&gt;</code></pre>
+<pre class="language-markup"><code>&lt;code&gt;...&lt;/code&gt;</code></pre>
 
 <div class="demo">
   <p>Here is an example variable: <code>var example = 'This is a test';</code></p>
@@ -668,7 +702,7 @@
 
 <p>Code blocks are larger sections of code that utilize the combination of a <code>&lt;pre&gt;</code> element to retain preformatted text, in which structure is represented by typographic conventions rather than by elements.</p>
 
-<pre><code>&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<pre class="language-markup"><code>&lt;pre&gt;&lt;code&gt;...&lt;/code&gt;&lt;/pre&gt;</code></pre>
 
 <div class="demo">
 <pre><code>var new = BaseWeb;
@@ -684,7 +718,7 @@ class BaseWeb() {
 <h1 class="docs-header">Tables</h1>
 <p>The HTML <code>&lt;table&gt;</code> element is used to display tabular data. Tables have rows, cells , header cells  and also can include <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tfooter&gt;</code> which wrap their respective table data. Here's an example of a table markup and the default styles:</p>
 
-<pre><code>&lt;table&gt;
+<pre class="language-markup"><code>&lt;table&gt;
   &lt;tr&gt;
     &lt;th&gt;...&lt;/th&gt;
     &lt;th&gt;...&lt;/th&gt;
@@ -731,7 +765,8 @@ class BaseWeb() {
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Table Variables</h2>
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">Table Variables</h1>
 <p>Table variables are encompassed within the <code>$table</code> map and are used throughout all table mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -756,39 +791,47 @@ class BaseWeb() {
   <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
   <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
+</section>
 
-<h2 class="docs-header">Table Modifiers</h2>
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Table Modifiers</h1>
 <p>BaseWeb has a number of mixins and classes available for adjusting the appearance of tables. This includes things like vertical alignment, text alignment, borders, padding, stripes, hover and responsive table styles.</p>
 
 <ul class="docs-list">
     
   <li>
-    <h3 class="docs-header">make-table-base</h3>
-    <p>Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-base()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>// SCSS
-%table-base {
+    <h2 class="docs-header">make-table-base</h2>
+    <p>Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.table</code> for your base table class.</p>
+    <pre class="language-scss"><code>@mixin make-table-base( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
+    <pre class="language-scss"><code>// SCSS
+%base-table {
   @include make-table-base();
 }
 .table-example-1 {
-  @extend %table-base;
+  @extend %base-table;
   ...
 }
 .table-example-2 {
-  @extend %table-base;
+  @extend %base-table;
   ...
 }</code></pre>
+    <p>Using table modifier classes requires you use the <code>.table</code> base class.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-rowed</h3>
+    <h2 class="docs-header">make-table-rowed</h2>
     <p>Adds borders to a table that divide table rows. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-rowed()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-rowed">
         <tr>
@@ -820,12 +863,13 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-columned</h3>
+    <h2 class="docs-header">make-table-columned</h2>
     <p>Adds borders to a table that divide table columns. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-columned()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-columned">
         <tr>
@@ -857,12 +901,13 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-bordered</h3>
+    <h2 class="docs-header">make-table-bordered</h2>
     <p>Adds borders to a table that divide table cells. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-bordered()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered">
         <tr>
@@ -894,12 +939,31 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-condensed</h3>
-    <p>Gives a table a smaller cell padding than normal.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-condensed()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <h2 class="docs-header">give-table-size</h2>
+    <p>Toggles a tables padding size between condensed, expanded or a custom padding value.</p>
+    <pre class="language-scss"><code>@mixin give-table-size( $size, $options: () )
+// @param $size
+//   @type condensed | expanded | unit (pixel, em, percent)
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
+    <pre class="language-scss"><code>// SCSS
+.all-tables {
+  @include make-table-base();
+  @include make-table-bordered();
+}
+.small-tables {
+  @extend .all-tables;
+  @include give-table-size(condensed);
+}
+.custom-tables {
+  @extend .all-tables;
+  @include give-table-size(8px 16px);
+}</code></pre>
+    <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-condensed">
         <tr>
@@ -928,15 +992,7 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-  </li>
-  
-  <li>
-    <h3 class="docs-header">make-table-expanded</h3>
-    <p>Gives a table a larger cell padding than normal.</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-expanded()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-expanded">
         <tr>
@@ -968,15 +1024,16 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-rounded</h3>
+    <h2 class="docs-header">give-table-rounded</h2>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-rounded()</code><code class="desc">@param $radius
-  @type unit (pixel, percent)
-  @default default ($table('border-radius'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-rounded( $radius, $options: () )
+// @param $radius
+//   @type unit (pixel, percent)
+//   @default default ($table('border-radius'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-rounded">
         <tr>
@@ -1008,19 +1065,20 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-stripes</h3>
+    <h2 class="docs-header">give-table-stripes</h2>
     <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-stripes()</code><code class="desc">@param $nth
-  @type nth (odd, even)
-  @default default ($table('nth'))
-@param $dir
-  @type orientation of stripes (vertical, horizontal)
-  @default default ($table('stripe'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-stripes( $nth, $dir, $options: () )
+// @param $nth
+//   @type nth (odd, even)
+//   @default default ($table('nth'))
+// @param $dir
+//   @type orientation of stripes (vertical, horizontal)
+//   @default default ($table('stripe'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped">
         <tr>
@@ -1049,7 +1107,7 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-    <pre><code>&lt;table class=&quot;table table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped-vertical table-align-center">
         <tr>
@@ -1107,15 +1165,16 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-hover</h3>
+    <h2 class="docs-header">give-table-hover</h2>
     <p>Gives table hover styles for rows.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-hover()</code><code class="desc">@param $bg-hover
-  @type color
-  @default default ($table('background-hover'))
-@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-scss"><code>@mixin give-table-hover( $bg-hover, $options: () )
+// @param $bg-hover
+//   @type color
+//   @default default ($table('background-hover'))
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-hover">
         <tr>
@@ -1147,14 +1206,37 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h3 class="docs-header">give-table-alignment</h3>
+    <h2 class="docs-header">give-table-alignment</h2>
     <p>Sets the vertical and text alignment of a table if a parameter is passed.</p>
-    <pre class="docs-code"><code class="name">@mixin give-table-alignment()</code><code class="desc">@param $options
-  @type map ('vertical-align', 'text-align')
-  @default map (none, none)</code></pre>
-    
+    <pre class="language-scss"><code>@mixin give-table-alignment( $options: () )
+// @param $options
+//   @type map ('vertical-align', 'text-align')
+//   @default map (none, none)</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>If you don't have class modifiers enabled, or just want to set table alignment in your SCSS, just pass in the alignment settings you'd like set.</p>
+    <pre class="language-scss"><code>// SCSS
+.table-custom-alignment {
+  ...
+  @include give-table-alignment((
+    'vertical-align': middle,
+    'text-align': center
+  ));
+}
+
+// CSS Output
+.table-custom-alignment tr {
+  vertical-align: middle;
+}
+.table-custom-alignment tr td,
+.table-custom-alignment tr th {
+  text-align: center;
+}
+</code></pre>
     <div class="docs-table-responsive">
       <table class="docs-table">
+        <tr>
+          <th colspan="2">Available Classes</th>
+        </tr>
         <tr>
           <td><code>.table-valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
@@ -1185,15 +1267,20 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
+    <p>Since this is a utility setting for tables, it's usually paired along side the table base and a stylistic table modifier.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
-    <h3 class="docs-header">make-table-responsive</h3>
+    <h2 class="docs-header">make-table-responsive</h2>
     <p>When added to a wrapping element of a table, will make the table responsive for tablets and below</p>
-    <pre class="docs-code"><code class="name">@mixin make-table-responsive()</code><code class="desc">@param $options
-  @type map
-  @default $table map</code></pre>
-    <pre><code>&lt;div class=&quot;table-responsive&quot;&gt;
+    <pre class="language-scss"><code>@mixin make-table-responsive( $options: () )
+// @param $options
+//   @type map
+//   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;
   &lt;table class=&quot;table table-bordered&quot;&gt;
     ...
   &lt;/table&gt;
@@ -1231,13 +1318,14 @@ class BaseWeb() {
   </li>
   
 </ul>
+</section>
 </section><!-- .subpage -->
 
 <section id="images" class="subpage">
 <h1 class="docs-header">Images</h1>
 <p>Images in BaseWeb are handles responsively be default. You're also provided a few class modifiers for commonly used image styles as well as image alignment classes.</p>
 
-<pre><code>&lt;img src=&quot;...&quot;&gt;</code></pre>
+<pre class="language-markup"><code>&lt;img src=&quot;...&quot;&gt;</code></pre>
 
 <div class="demo">
   <img alt="Placeholder image" src="http://placehold.it/600x300">
@@ -1245,74 +1333,75 @@ class BaseWeb() {
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Alignment Modifiers</h2>
-<p>Alignment modifiers are classes for images that help position them within the context of a document. So it will float the image and add the appropriate margins needed for text to wrap properly.</p>
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Image Classes</h1>
+<p>Alignment modifiers are classes for images that help position them within the context of a document. There are also a few stylistic modifiers for commonly used image effects.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h3 class="docs-header">.align-left</h3>
-    <pre><code>&lt;img class=&quot;align-left&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.align-left</h2>
+    <p>Floats an image to the left and adds top, right and bottom margins so that text wraps around the image properly.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;align-left&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-left" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.align-center</h3>
-    <pre><code>&lt;img class=&quot;align-center&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.align-center</h2>
+    <p>Centers an image by making it block and giving it left and right margins of <code>auto</code>.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;align-center&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-center" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.align-right</h3>
-    <pre><code>&lt;img class=&quot;align-right&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.align-right</h2>
+    <p>Floats an image to the right and adds top, left and bottom margins so that text wraps around the image properly.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;align-right&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-right" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
-</ul>
-
-<h2 class="docs-header">Stylistic Modifiers</h2>
-<p>BaseWeb provides images with a few stylistic classes for commonly used effects.</p>
-
-<ul class="docs-list">
-  
   <li>
-    <h3 class="docs-header">.img-rounded</h3>
-    <pre><code>&lt;img class=&quot;img-rounded&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.img-rounded</h2>
+    <p>Adds rounded border radius based on the default border-radius setting <code>$border-radius</code>.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;img-rounded&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-center img-rounded" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.img-circle</h3>
-    <pre><code>&lt;img class=&quot;img-circle&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.img-circle</h2>
+    <p>Makes a circle effect on an image by adding <code>50%</code> border radius.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;img-circle&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-center img-circle" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.img-polaroid</h3>
-    <pre><code>&lt;img class=&quot;img-polaroid&quot; src=&quot;...&quot;&gt;</code></pre>
+    <h2 class="docs-header">.img-polaroid</h2>
+    <p>Adds a polaroid effect to an image.</p>
+    <pre class="language-markup"><code>&lt;img class=&quot;img-polaroid&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
       <img class="align-center img-polaroid" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
 </ul>
+</section>
 </section><!-- .subpage -->
 
 <section id="rules" class="subpage">
 <h1 class="docs-header">Horizontal Rules</h1>
 <p>In HTML, the horizontal rule element (<code>&lt;hr&gt;</code>) represents a paragraph-level thematic break. BaseWeb provides some very basic and subtle styles for this element along with a few stylistic class modifiers.</p>
 
-<pre><code>&lt;hr&gt;</code></pre>
+<pre class="language-markup"><code>&lt;hr&gt;</code></pre>
 
 <div class="demo">
   <hr>
@@ -1320,36 +1409,42 @@ class BaseWeb() {
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Stylistic Modifiers</h2>
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Horizontal Rule Classes</h1>
 <p>These are the available classes for modifying the look of your horizontal rule.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h3 class="docs-header">.hr-dotted</h3>
-    <pre><code>&lt;hr class=&quot;hr-dotted&quot;&gt;</code></pre>
+    <h2 class="docs-header">.hr-dotted</h2>
+    <p>Uses the dotted border style property to created a dotted rule.</p>
+    <pre class="language-markup"><code>&lt;hr class=&quot;hr-dotted&quot;&gt;</code></pre>
     <div class="demo">
       <hr class="hr-dotted">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.hr-dashed</h3>
-    <pre><code>&lt;hr class=&quot;hr-dashed&quot;&gt;</code></pre>
+    <h2 class="docs-header">.hr-dashed</h2>
+    <p>Uses the dashed border style property to created a dashed rule.</p>
+    <pre class="language-markup"><code>&lt;hr class=&quot;hr-dashed&quot;&gt;</code></pre>
     <div class="demo">
       <hr class="hr-dashed">
     </div>
   </li>
   
   <li>
-    <h3 class="docs-header">.hr-double</h3>
-    <pre><code>&lt;hr class=&quot;hr-double&quot;&gt;</code></pre>
+    <h2 class="docs-header">.hr-double</h2>
+    <p>Uses the double border style property to created a double bordered rule.</p>
+    <pre class="language-markup"><code>&lt;hr class=&quot;hr-double&quot;&gt;</code></pre>
     <div class="demo">
       <hr class="hr-double">
     </div>
   </li>
   
-</ul></section><!-- .subpage -->
+</ul>
+</section>
+</section><!-- .subpage -->
 
 <section id="forms" class="subpage">
 <h1 class="docs-header">Forms</h1>
@@ -1364,14 +1459,14 @@ class BaseWeb() {
 
 <p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
 
-<pre><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Button&lt;/a&gt;
+<pre class="language-markup"><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
 &lt;input class=&quot;btn btn-default&quot; type=&quot;button&quot; value=&quot;Button&quot;&gt;
 &lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Button&quot;&gt;</code></pre>
 
 <div class="demo">
   <p>
-    <a class="btn btn-default" href="#" role="button">Button</a>
+    <a class="btn btn-default" href="#">Button</a>
     <button class="btn btn-default" type="submit">Button</button>
     <input class="btn btn-default" type="button" value="Button">
     <input class="btn btn-default" type="submit" value="Button">
@@ -1380,7 +1475,8 @@ class BaseWeb() {
 
 <hr class="docs-hr">
 
-<h2 class="docs-header">Button Variables</h2>
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">Button Variables</h1>
 <p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -1454,62 +1550,70 @@ class BaseWeb() {
     <code class="right value">$border-radius</code>
   </li>
 </ul>
+</section>
 
-<h2 class="docs-header">Button Modifiers</h2>
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Button Modifiers</h1>
 <p>Button modifiers are used to alter a buttons appearance and size.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h3 class="docs-header">make-btn-base</h3>
-    <p>Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
-    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
-    <p>This mixin is used to create our base button class. You can also use the mixin to create semantic button classes by extending a button placeholder.</p>
-    <pre><code>// SCSS
-%btn-base {
+    <h2 class="docs-header">make-btn-base</h2>
+    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
+    <pre class="language-scss"><code>@mixin make-list-base( $options: () )
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
+    <pre class="language-scss"><code>// SCSS
+%base-btn {
   @include make-btn-base();
 }
 .btn-purchase {
-  @extend %btn-base;
+  @extend %base-btn;
   ...
 }
 .btn-cart {
-  @extend %btn-base;
+  @extend %base-btn;
   ...
 }
 </code></pre>
-    <p>If you're using the class modifiers, remember to pair the base class with a color modifier.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-default</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+    <p>Using button modifier classes requires you use the <code>.btn</code> base class.</p>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-default&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
-    <h3 class="docs-header">make-btn-color</h3>
+    <h2 class="docs-header">make-btn-color</h2>
     <p>Handles all the color variables of a button such as color, background, border and hover state.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-color()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
+    <pre class="language-scss"><code>@mixin make-btn-color( $options: () )
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    
+    <h3 class="docs-header">Example Usage</h3>
     <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
     'color' : $white,
     'background' : $violet
   ));
-}
-</code></pre>
-    <pre><code>&lt;button class=&quot;<strong>btn-custom</strong>&quot;&gt;Example Button&lt;/button&gt;</code></pre>
+}</code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom&quot;&gt;Custom Mixin Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Class Modifier Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
-        <button class="btn-custom">Custom Button</button>
+        <button class="btn-custom">Custom Mixin Button</button>
+        <button class="btn btn-primary">Class Modifier Button</button>
       </p>
     </div>
-    <p>If you have modifier classes enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
+    <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
     <ul class="docs-list docs-list-hover">
       <li class="title">
-        Available button color classes
+        Available Classes
       </li>
       <li>
         <span class="right"><button class="btn btn-default">Button</button></span>
@@ -1536,20 +1640,22 @@ class BaseWeb() {
         <code>.btn-black</code><br><code>.btn-secondary</code>
       </li>
     </ul>
-    <p>Just keep in mind that all button modifier classes still require the <code>.btn</code> as a base class for proper rendering.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-primary</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+    
   </li>
 
   <li>
-    <h3 class="docs-header">make-btn-size</h3>
+    <h2 class="docs-header">give-btn-size</h2>
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-size()</code><code class="desc">@param $size
-  @type small | Large | unit list (pixel, em, percent)
-@param $options
-  @type map
-  @default $button map</code></pre>
+    <pre class="language-scss"><code>@mixin give-btn-size()
+// @param $size
+//   @type small | Large | unit list (pixel, em, percent)
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    
+    <h3 class="docs-header">Example Usage</h3>
     <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>// SCSS
 // Use default small size
 .btn-small {
   @include make-btn-size(small);
@@ -1571,9 +1677,11 @@ class BaseWeb() {
 }
 </code></pre>
     
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    
     <ul class="docs-list docs-list-hover">
       <li class="title">
-        Available button size classes
+        Available Classes
       </li>
       <li>
         <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
@@ -1584,36 +1692,37 @@ class BaseWeb() {
         <code>.btn-large</code>
       </li>
     </ul>
-    <p>Button sizes are utility classes, so they still need to be paired with both the base button class and a color modifier.</p>
-    <pre><code>&lt;button class=&quot;<strong>btn btn-primary btn-large</strong>&quot;&gt;Large Button&lt;/button&gt;</code></pre>
     
   </li>
   
   <li>
-    <h3 class="docs-header">make-btn-block</h3>
+    <h2 class="docs-header">give-btn-block</h2>
     <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
-    <pre class="docs-code"><code class="name">@mixin make-btn-block()</code><code class="desc">@param $options
-  @type map
-  @default $button map</code></pre>
-    <pre><code>// SCSS
+    <pre class="language-scss"><code>@mixin give-btn-block()
+// @param $options
+//   @type map
+//   @default $button map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>As a utility class, <code>give-btn-block()</code> is used along side base and modifier styles.</p>
+    <pre class="language-scss"><code>// SCSS
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include make-btn-size(large); // optional
-  @include make-btn-block();
+  @include give-btn-block();
 }
 </code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom-mobile&quot;&gt;Block Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
-        <a class="btn btn-green btn-block btn-large" href="#" role="button">Block Button</a>
+        <a class="btn btn-green btn-block" href="#" role="button">Block Button</a>
       </p>
     </div>
-    <pre><code>&lt;button class=&quot;<strong>btn-custom-mobile</strong>&quot;&gt;Block Button&lt;/button&gt;
-&lt;button class=&quot;<strong>btn btn-green btn-block</strong>&quot;&gt;Block Button&lt;/button&gt;</code></pre>
   </li>
 
 </ul>
+</section>
 </section><!-- .subpage -->
       </div>
     </div><!-- .content -->
