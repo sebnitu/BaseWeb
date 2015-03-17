@@ -18,8 +18,9 @@ Documentation is currently being worked on and you can view them if you clone or
 
 ## To-Do
 
+* Add syntax highlighting JavaScript or Node.js module for documentation code examples. Look into: [prettify](https://code.google.com/p/google-code-prettify/), [prismjs](http://prismjs.com/), [highlightjs](https://highlightjs.org/)
 * Add some form of change or development log, similar to [Cargo Devlog](http://cargocollective.com/devlog).
-* Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the dev log.
+* Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the devlog and readme.
 * Figure out versioning using [Semantic Versioning 2.0.0](http://semver.org/).
 * `npm install` latest versions of node packages and fix any issues with build scripts.
 * Setup auto deployment for docs to [http://getbaseweb.com/](http://getbaseweb.com/).

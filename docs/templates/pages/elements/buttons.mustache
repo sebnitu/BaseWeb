@@ -1,5 +1,254 @@
 <h1 class="docs-header">Buttons</h1>
 
-<div class="notice notice-warning">
-  <p>The <strong>buttons element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
+<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
+
+<pre><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Button&lt;/a&gt;
+&lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
+&lt;input class=&quot;btn btn-default&quot; type=&quot;button&quot; value=&quot;Button&quot;&gt;
+&lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Button&quot;&gt;</code></pre>
+
+<div class="demo">
+  <p>
+    <a class="btn btn-default" href="#" role="button">Button</a>
+    <button class="btn btn-default" type="submit">Button</button>
+    <input class="btn btn-default" type="button" value="Button">
+    <input class="btn btn-default" type="submit" value="Button">
+  </p>
 </div>
+
+<hr class="docs-hr">
+
+<h2 class="docs-header">Button Variables</h2>
+<p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
+
+<ul class="docs-list docs-list-hover">
+  <li>
+    <code>$button('modifier-classes')</code>
+    <code class="right value">true</code>
+    <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
+  </li>
+  <li>
+    <code>$button('padding')</code>
+    <code class="right value">10px 20px</code>
+  </li>
+  <li>
+    <code>$button('padding-small')</code>
+    <code class="right value">5px 10px</code>
+  </li>
+  <li>
+    <code>$button('padding-large')</code>
+    <code class="right value">15px 30px</code>
+  </li>
+  <li>
+    <code>$button('font-size')</code>
+    <code class="right value">$base-font-size</code>
+  </li>
+  <li>
+    <code>$button('line-height')</code>
+    <code class="right value">$base-line-height</code>
+  </li>
+  <li>
+    <code>$button('color')</code>
+    <code class="right value">$color-dark</code>
+  </li>
+  <li>
+    <code>$button('text-shadow')</code>
+    <code class="right value">none</code>
+  </li>
+  <li>
+    <code>$button('background')</code>
+    <code class="right value">$gray-pale</code>
+  </li>
+  <li>
+    <code>$button('background-hover')</code>
+    <code class="right value">darken</code>
+    <span class="block light">The color to use on hover. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for hover.</span>
+  </li>
+  <li>
+    <code>$button('background-gradient')</code>
+    <code class="right value">false</code>
+    <span class="block light">Whether or not to use a gradient for button background. If true, the `background` will be used as the start color and darkened for the end color using the `background-deg` as a modifier.</span>
+  </li>
+  <li>
+    <code>$button('background-deg')</code>
+    <code class="right value">5%</code>
+    <span class="block light">The degree that the hover background color or gradient end color is modified.</span>
+  </li>
+  <li>
+    <code>$button('background-clip')</code>
+    <code class="right value">border-box</code>
+  </li>
+  
+  <li>
+    <code>$button('border')</code>
+    <code class="right value">1px solid rgba($black, 0.15)</code>
+  </li>
+  <li>
+    <code>$button('border-hover')</code>
+    <code class="right value">1px solid rgba($black, 0.25)</code>
+  </li>
+  <li>
+    <code>$button('border-radius')</code>
+    <code class="right value">$border-radius</code>
+  </li>
+</ul>
+
+<h2 class="docs-header">Button Modifiers</h2>
+<p>Button modifiers are used to alter a buttons appearance and size.</p>
+
+<ul class="docs-list">
+  
+  <li>
+    <h3 class="docs-header">make-btn-base</h3>
+    <p>Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
+    <pre class="docs-code"><code class="name">@mixin make-list-base()</code><code class="desc">@param $options
+  @type map
+  @default $button map</code></pre>
+    <p>This mixin is used to create our base button class. You can also use the mixin to create semantic button classes by extending a button placeholder.</p>
+    <pre><code>// SCSS
+%btn-base {
+  @include make-btn-base();
+}
+.btn-purchase {
+  @extend %btn-base;
+  ...
+}
+.btn-cart {
+  @extend %btn-base;
+  ...
+}
+</code></pre>
+    <p>If you're using the class modifiers, remember to pair the base class with a color modifier.</p>
+    <pre><code>&lt;button class=&quot;<strong>btn btn-default</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+  </li>
+
+  <li>
+    <h3 class="docs-header">make-btn-color</h3>
+    <p>Handles all the color variables of a button such as color, background, border and hover state.</p>
+    <pre class="docs-code"><code class="name">@mixin make-btn-color()</code><code class="desc">@param $options
+  @type map
+  @default $button map</code></pre>
+    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
+    <pre><code>// SCSS
+.btn-custom {
+  @include make-btn-base();
+  @include make-btn-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+}
+</code></pre>
+    <pre><code>&lt;button class=&quot;<strong>btn-custom</strong>&quot;&gt;Example Button&lt;/button&gt;</code></pre>
+    <div class="demo">
+      <p>
+        <button class="btn-custom">Custom Button</button>
+      </p>
+    </div>
+    <p>If you have modifier classes enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
+    <ul class="docs-list docs-list-hover">
+      <li class="title">
+        Available button color classes
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-default">Button</button></span>
+        <code>.btn-default</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-primary">Button</button></span>
+        <code>.btn-blue</code><br><code>.btn-primary</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-success">Button</button></span>
+        <code>.btn-green</code><br><code>.btn-success</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-warning">Button</button></span>
+        <code>.btn-orange</code><br><code>.btn-warning</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-danger">Button</button></span>
+        <code>.btn-red</code><br><code>.btn-danger</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-secondary">Button</button></span>
+        <code>.btn-black</code><br><code>.btn-secondary</code>
+      </li>
+    </ul>
+    <p>Just keep in mind that all button modifier classes still require the <code>.btn</code> as a base class for proper rendering.</p>
+    <pre><code>&lt;button class=&quot;<strong>btn btn-primary</strong>&quot;&gt;Button&lt;/button&gt;</code></pre>
+  </li>
+
+  <li>
+    <h3 class="docs-header">make-btn-size</h3>
+    <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
+    <pre class="docs-code"><code class="name">@mixin make-btn-size()</code><code class="desc">@param $size
+  @type small | Large | unit list (pixel, em, percent)
+@param $options
+  @type map
+  @default $button map</code></pre>
+    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
+    <pre><code>// SCSS
+// Use default small size
+.btn-small {
+  @include make-btn-size(small);
+}
+
+// Use default large size with custom font size
+.btn-custom-large {
+  @include make-btn-size(large, (
+    'font-size': 20px
+  ));
+}
+
+// Set a custom button size
+.btn-custom-size {
+  @include make-btn-size(20px 40px, (
+    'font-size': 20px,
+    'line-height': 24px
+  ));
+}
+</code></pre>
+    
+    <ul class="docs-list docs-list-hover">
+      <li class="title">
+        Available button size classes
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
+        <code>.btn-small</code>
+      </li>
+      <li>
+        <span class="right"><button class="btn btn-primary btn-large">Large Button</button></span>
+        <code>.btn-large</code>
+      </li>
+    </ul>
+    <p>Button sizes are utility classes, so they still need to be paired with both the base button class and a color modifier.</p>
+    <pre><code>&lt;button class=&quot;<strong>btn btn-primary btn-large</strong>&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    
+  </li>
+  
+  <li>
+    <h3 class="docs-header">make-btn-block</h3>
+    <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
+    <pre class="docs-code"><code class="name">@mixin make-btn-block()</code><code class="desc">@param $options
+  @type map
+  @default $button map</code></pre>
+    <pre><code>// SCSS
+.btn-custom-mobile {
+  @include make-btn-base();
+  @include make-btn-color();
+  @include make-btn-size(large); // optional
+  @include make-btn-block();
+}
+</code></pre>
+    <div class="demo">
+      <p>
+        <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
+        <a class="btn btn-green btn-block btn-large" href="#" role="button">Block Button</a>
+      </p>
+    </div>
+    <pre><code>&lt;button class=&quot;<strong>btn-custom-mobile</strong>&quot;&gt;Block Button&lt;/button&gt;
+&lt;button class=&quot;<strong>btn btn-green btn-block</strong>&quot;&gt;Block Button&lt;/button&gt;</code></pre>
+  </li>
+
+</ul>

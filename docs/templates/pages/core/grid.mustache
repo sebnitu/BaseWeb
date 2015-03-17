@@ -31,53 +31,62 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-<p>The class based grid system is generated using <code>build-grid-system()</code>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in custom grid variables manually to change grid parameters based on different media breakpoints.</p>
+<p>The class based grid system is generated using: <code>build-grid-system()</code>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in a map to override any default grid map settings based on different media breakpoints.</p>
   
-<p>There's also the mobile grid system mixin <code>build-mobile-grid-system()</code> that is available for easily making columns staked at 100% width.</p>
+<p>You can also set the grid type by passing a non-map parameter <code>build-grid-system(mobile)</code> which will make columns staked at 100% width.</p>
 
-<pre><code>@include build-mobile-grid-system();
+<pre><code>@include build-grid-system(mobile);
 
 @include media-min('tablet') {
-  @include build-grid-system(740px);
+  @include build-grid-system(('total-width': 740px));
 }
 
 @include media-min('desktop') {
-  @include build-grid-system(960px);
+  @include build-grid-system(('total-width': 960px));
 }</code></pre>
 
 <h2 class="docs-header">Modifier Classes</h2>
 
 <p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
 
-<table class="docs-table table-rowed">
+<table class="docs-table">
   <tr>
     <th colspan="2">Container Modifiers</th>
   </tr>
   <tr>
-    <td><code>.container-float-left</code></td>
+    <td><code>.container-left</code></td>
     <td>Floats container to the left</td>
   </tr>
   <tr>
-    <td><code>.container-float-right</code></td>
+    <td><code>.container-right</code></td>
     <td>Floats container to the right</td>
   </tr>
   <tr>
-    <td><code>.container-no-padding</code></td>
-    <td>Removes padding from container</td>
-  </tr>
-  <tr>
     <td><code>.container-no-margin</code></td>
-    <td>Removes margin from container</td>
+    <td>Removes margins from the container</td>
   </tr>
   <tr>
-    <th colspan="2">Row Modifiers</th>
-  </tr>
-  <tr>
-    <td><code>.row-center</code></td>
-    <td>Centers columns within the row</td>
+    <td><code>.container-no-padding</code></td>
+    <td>Removes padding from the container</td>
   </tr>
   <tr>
     <th colspan="2">Column Modifiers</th>
+  </tr>
+  <tr>
+    <td><code>.col-left</code></td>
+    <td>Floats column to the left</td>
+  </tr>
+  <tr>
+    <td><code>.col-right</code></td>
+    <td>Floats column to the right</td>
+  </tr>
+  <tr>
+    <td><code>.col-no-gutter</code></td>
+    <td>Removes margin gutter from the column</td>
+  </tr>
+  <tr>
+    <td><code>.col-no-inner-gutter</code></td>
+    <td>Removes padding gutter from the column</td>
   </tr>
   <tr>
     <td><code>.prefix-#</code></td>
@@ -86,10 +95,6 @@
   <tr>
     <td><code>.suffix-#</code></td>
     <td>Adds column spacing after the element where # represents the number of columns to span</td>
-  </tr>
-  <tr>
-    <td><code>.col-no-gutter</code></td>
-    <td>Removes gutter from the column</td>
   </tr>
 </table>
 
@@ -274,18 +279,10 @@
   </li>
   
   <li>
-    <h3 class="docs-header">build-mobile-grid-system</h3>
-    <p>Outputs the styles for a mobile grid system where all columns are stacked.</p>
-<pre class="docs-code"><code class="name">@mixin build-mobile-grid-system()</code><code class="desc">@param $options
-  @type map
-  @default $grid map</code></pre>
-  </li>
-  
-  <li>
     <h3 class="docs-header">build-grid-system</h3>
-    <p>Outputs all the classes and styles for the class based grid system.</p>
+    <p>Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.</p>
 <pre class="docs-code"><code class="name">@mixin build-grid-system()</code><code class="desc">@param $options
-  @type map
+  @type map | grid type (normal, mobile)
   @default $grid map</code></pre>
   </li>
 

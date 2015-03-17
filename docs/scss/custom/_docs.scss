@@ -3,8 +3,8 @@
 ==============================================================================*/
 
 .docs-list {
-  @extend %list-base;
-  @include make-list-rowed(('flush':true));
+  @include make-list-base(('padding':10px 0));
+  @include make-list-rowed();
   margin: 30px 0;
 }
 .docs-list-hover {
@@ -69,24 +69,24 @@
 ==============================================================================*/
 
 .docs-table {
-  margin: 30px 0;
-  
+  @include make-table-base(('margin':30px 0, 'padding':15px 10px));
+  @include make-table-rowed();
+    
   th {
     font-size: 18px;
     line-height: 30px;
     font-weight: 500;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 10px 0;
   }
-  td {
-    padding: 15px 10px;
-  }
-  
   code {
     margin: 0;
     padding: 0;
     background: transparent;
   }
+}
+
+.docs-table-responsive {
+  @include make-table-responsive(('margin':30px 0));
 }
 
 /*==============================================================================
@@ -102,14 +102,11 @@
 .demo-grid .col p {
   margin: 0;
   padding: 15px 20px;
-  
   background: $bg-color;
-  
   font-family: $font-family-mono;
   font-size: 12px;
   line-height: 20px;
   text-align: center;
-  
   @include border-radius();
 }
 
@@ -299,4 +296,36 @@
 }
 .example-triangle-3 {
   @include triangle( 14px, $violet-darker, 'right' );
+}
+
+/*==============================================================================
+  @Buttons Demo
+==============================================================================*/
+
+.demo .btn-custom {
+  @include make-btn-base();
+  @include make-btn-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+}
+
+.demo .btn-custom-large {
+  @include make-btn-size(large, (
+    'font-size': 20px
+  ));
+}
+
+.demo .btn-custom-size {
+  @include make-btn-size(20px 40px, (
+    'font-size': 20px,
+    'line-height': 28px
+  ));
+}
+
+.demo .btn-custom-mobile {
+  @include make-btn-base();
+  @include make-btn-color();
+  @include make-btn-size(large); // optional
+  @include make-btn-block();
 }
