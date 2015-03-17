@@ -297,3 +297,35 @@
 .example-triangle-3 {
   @include triangle( 14px, $violet-darker, 'right' );
 }
+
+/*==============================================================================
+  @Buttons Demo
+==============================================================================*/
+
+.demo .btn-custom {
+  @include make-btn-base();
+  @include make-btn-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+}
+
+.demo .btn-custom-large {
+  @include make-btn-size(large, (
+    'font-size': 20px
+  ));
+}
+
+.demo .btn-custom-size {
+  @include make-btn-size(20px 40px, (
+    'font-size': 20px,
+    'line-height': 28px
+  ));
+}
+
+.demo .btn-custom-mobile {
+  @include make-btn-base();
+  @include make-btn-color();
+  @include make-btn-size(large); // optional
+  @include make-btn-block();
+}
