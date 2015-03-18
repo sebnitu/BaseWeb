@@ -96,7 +96,8 @@
   margin: 20px 0;
 }
 .demo-grid .col {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .demo-grid .col p {
   margin: 0;
@@ -107,6 +108,71 @@
   line-height: 20px;
   text-align: center;
   @include border-radius();
+}
+
+/**
+ * Semantic Grid Demo
+ */
+.demo-grid-semantic {
+  .demo-wrapper,
+  .demo-content,
+  .demo-aside,
+  .demo-article {
+    background: rgba($blue, 0.1);
+    &:before {
+      display: block;
+      margin: 0;
+      padding: 15px 20px;
+      font-family: $font-family-mono;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+  
+  .demo-wrapper {
+    @include make-container();
+    &:before {
+      content: '.wrapper';
+    }
+  }
+  .demo-content {
+    
+    @include make-row();
+    &:before {
+      content: '.content';
+    }
+  }
+  .demo-aside,
+  .demo-article {
+    @include make-column-base();
+  }
+  .demo-aside {
+    width: column-width(4);
+    &:before {
+      content: '.aside';
+    }
+  }
+  .demo-article {
+    width: column-width(8);
+    &:before {
+      content: '.article';
+    }
+  }
+}
+
+/**
+ * Nested Grid Demo
+ */
+.demo-grid-nested .col {
+  margin-top: 0;
+  margin-bottom: 0;
+  
+  background: rgba($blue, 0.1);
+}
+.demo-grid-nested .col p {
+  margin: 10px 0;
+  @include text-truncate();
 }
 
 /*==============================================================================

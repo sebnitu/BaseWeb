@@ -1,21 +1,6 @@
 <h1 class="docs-header">Grid System</h1>
 <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure.</p>
 
-<div class="demo-grid">
-  <div class="row">
-    <div class="col col-4"><p>.col-4</p></div>
-    <div class="col col-4"><p>.col-4</p></div>
-    <div class="col col-4"><p>.col-4</p></div>
-  </div>
-  <div class="row">
-    <div class="col col-6"><p>.col-6</p></div>
-    <div class="col col-6"><p>.col-6</p></div>
-  </div>
-  <div class="row">
-    <div class="col col-12"><p>.col-12</p></div>
-  </div>
-</div>
-
 <pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
     &lt;div class=&quot;col col-4&quot;&gt;&lt;p&gt;...&lt;/p&gt;&lt;/div&gt;
@@ -31,6 +16,21 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
+<div class="demo-grid">
+  <div class="row">
+    <div class="col col-4"><p>.col-4</p></div>
+    <div class="col col-4"><p>.col-4</p></div>
+    <div class="col col-4"><p>.col-4</p></div>
+  </div>
+  <div class="row">
+    <div class="col col-6"><p>.col-6</p></div>
+    <div class="col col-6"><p>.col-6</p></div>
+  </div>
+  <div class="row">
+    <div class="col col-12"><p>.col-12</p></div>
+  </div>
+</div>
+
 <p>The class based grid system is generated using: <code>build-grid-system()</code>. By default it's going to generate all the classes for the container, row and columns based on the grid variables. You can also pass in a map to override any default grid map settings based on different media breakpoints.</p>
   
 <p>You can also set the grid type by passing a non-map parameter <code>build-grid-system(mobile)</code> which will make columns staked at 100% width.</p>
@@ -44,59 +44,6 @@
 @include media-min('desktop') {
   @include build-grid-system(('total-width': 960px));
 }</code></pre>
-
-<h2 class="docs-header">Modifier Classes</h2>
-
-<p>There are also a number of classes that can be used to modify specific grid elements without changing the base grid behavior. These are called modifier classes and are used in conjunction with the base grid element classes.</p>
-
-<table class="docs-table">
-  <tr>
-    <th colspan="2">Container Modifiers</th>
-  </tr>
-  <tr>
-    <td><code>.container-left</code></td>
-    <td>Floats container to the left</td>
-  </tr>
-  <tr>
-    <td><code>.container-right</code></td>
-    <td>Floats container to the right</td>
-  </tr>
-  <tr>
-    <td><code>.container-no-margin</code></td>
-    <td>Removes margins from the container</td>
-  </tr>
-  <tr>
-    <td><code>.container-no-padding</code></td>
-    <td>Removes padding from the container</td>
-  </tr>
-  <tr>
-    <th colspan="2">Column Modifiers</th>
-  </tr>
-  <tr>
-    <td><code>.col-left</code></td>
-    <td>Floats column to the left</td>
-  </tr>
-  <tr>
-    <td><code>.col-right</code></td>
-    <td>Floats column to the right</td>
-  </tr>
-  <tr>
-    <td><code>.col-no-gutter</code></td>
-    <td>Removes margin gutter from the column</td>
-  </tr>
-  <tr>
-    <td><code>.col-no-inner-gutter</code></td>
-    <td>Removes padding gutter from the column</td>
-  </tr>
-  <tr>
-    <td><code>.prefix-#</code></td>
-    <td>Adds column spacing before the element where # represents the number of columns to span</td>
-  </tr>
-  <tr>
-    <td><code>.suffix-#</code></td>
-    <td>Adds column spacing after the element where # represents the number of columns to span</td>
-  </tr>
-</table>
 
 <h2 class="docs-header">Semantic Grids</h2>
 
@@ -117,7 +64,7 @@
   }
 }</code></pre>
 
-<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <code>make-column-base()</code> to define multiple columns and set the widths separately to reduce the final CSS output.</p>
+<p>There are also a set of functions that you can use for setting column and spacing widths. These can be used along with <code>make-column-base()</code> to define multiple columns and set the widths separately to reduce our CSS output.</p>
 
 <pre class="language-scss"><code>.wrapper {
   @include make-container();
@@ -133,11 +80,19 @@
       width: column-width(4);
     }
     .article {
-      width: column-width(6);
-      margin-left: spacing-width(2);
+      width: column-width(8);
     }
   }
 }</code></pre>
+
+<div class="demo-grid demo-grid-semantic">
+  <div class="demo-wrapper">
+    <div class="demo-content">
+      <div class="demo-aside"></div>
+      <div class="demo-article"></div>
+    </div>
+  </div>
+</div>
 
 <h2 class="docs-header">Prefix and Suffix</h2>
 
@@ -153,16 +108,31 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-<p>The semantic grid system equivalent would look like this:</p>
+<p>The semantic grid system equivalent would use the <code>give-prefix()</code> and <code>give-suffix</code> mixins.</p>
 
 <pre class="language-scss"><code>.aside {
+  @include make-column(4);
+  @include give-suffix(3);
+}
+.article {
   @include make-column(3);
   @include give-prefix(2);
 }
-.article {
-  @include make-column(6);
-  @include give-suffix(1);
+.section {
+  @include make-column(5);
+  @include give-prefix(2);
+  @include give-suffix(3);
 }</code></pre>
+
+<div class="demo-grid">
+  <div class="row">
+    <div class="col col-4 suffix-3"><p>.suffix-3</p></div>
+    <div class="col col-3 prefix-2"><p>.prefix-3</p></div>
+  </div>
+  <div class="row">
+    <div class="col col-5 prefix-4 suffix-3"><p>.prefix-4 .suffix-3</p></div>
+  </div>
+</div>
 
 <h2 class="docs-header">Nested Columns</h2>
 
@@ -189,6 +159,30 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+
+<div class="demo-grid demo-grid-nested">
+  <div class="row">
+    <div class="col col-6">
+      <p>.col-6</p>
+      <div class="row">
+        <div class="col col-6"><p>.col-6</p></div>
+        <div class="col col-6"><p>.col-6</p></div>
+      </div>
+    </div>
+    <div class="col col-6">
+      <p>.col-6</p>
+      <div class="row">
+        <div class="col col-4"><p>.col-4</p></div>
+        <div class="col col-4"><p>.col-4</p></div>
+        <div class="col col-4"><p>.col-4</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="notice notice-info">
+  <p>By default, our grid system uses inner-gutter-width (padding) instead of gutter-width (margins). So we're able to keep absolute gutters with a fluid grid for nested elements. But if you used margin gutters with a fluid grid, gutters would need to be percentage based.</p>
+</div>
 
 <hr class="docs-hr">
 
@@ -303,6 +297,53 @@
 // @param $grid-type | $options
 //   @type string | map
 //   @default $grid map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <p>The most basic use of <code>build-grid-system()</code> is to output mobile styles and within a media query output our standard grid system. This is present in your <code>custom/_custom.scss</code> file by default.</p>
+    <pre class="language-scss"><code>// SCSS
+// Output our mobile grid system classes.
+@include build-grid-system(mobile);
+
+// Media query for styles that target tablet sized devices and above.
+@include media-min('tablet') {
+  // Output our standard grid system using all the settings in `$grid` map.
+  @include build-grid-system();
+}</code></pre>
+    <h3 class="docs-header">Classes Output</h3>
+    <p>These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our <code>$grid</code> map.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-4&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;col col-8&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col col-4 suffix-2&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;col col-4 prefix-2&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <div class="demo-grid">
+      <div class="row">
+        <div class="col col-4"><p>.col-4</p></div>
+        <div class="col col-8"><p>.col-8</p></div>
+      </div>
+      <div class="row">
+        <div class="col col-4 suffix-2"><p>.col-4</p></div>
+        <div class="col col-4 prefix-2"><p>.col-4</p></div>
+      </div>
+    </div>
+    
+    <div class="notice notice-info">
+      <p>You can disabled the output of prefix and suffix classes by setting their class name variables to <code>none</code> in <code>$grid</code> map or passing it directly to the mixin manually.</p>
+    </div>
+    
   </li>
 
 </ul>

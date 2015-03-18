@@ -712,14 +712,6 @@ hr {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px; }
-    .container.container-left {
-      float: left; }
-    .container.container-right {
-      float: right; }
-    .container.container-no-margin {
-      margin: 0; }
-    .container.container-no-padding {
-      padding: 0; }
     .container:after {
       content: '';
       display: table;
@@ -737,10 +729,6 @@ hr {
     float: left;
     padding-left: 10px;
     padding-right: 10px; }
-  .col-left {
-    float: left; }
-  .col-right {
-    float: right; }
   .col-no-inner-gutter {
     padding-left: 0;
     padding-right: 0; }
@@ -1318,7 +1306,8 @@ html, body {
   margin: 20px 0; }
 
 .demo-grid .col {
-  margin: 10px 0; }
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 .demo-grid .col p {
   margin: 0;
@@ -1329,6 +1318,69 @@ html, body {
   line-height: 20px;
   text-align: center;
   border-radius: 3px; }
+
+/**
+ * Semantic Grid Demo
+ */
+.demo-grid-semantic .demo-wrapper, .demo-grid-semantic .demo-content, .demo-grid-semantic .demo-aside, .demo-grid-semantic .demo-article {
+  background: rgba(42, 176, 234, 0.1); }
+  .demo-grid-semantic .demo-wrapper:before, .demo-grid-semantic .demo-content:before, .demo-grid-semantic .demo-aside:before, .demo-grid-semantic .demo-article:before {
+    display: block;
+    margin: 0;
+    padding: 15px 20px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center; }
+.demo-grid-semantic .demo-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px; }
+  .demo-grid-semantic .demo-wrapper:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .demo-grid-semantic .demo-wrapper:before {
+    content: '.wrapper'; }
+.demo-grid-semantic .demo-content {
+  width: auto;
+  margin-left: -10px;
+  margin-right: -10px; }
+  .demo-grid-semantic .demo-content:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .demo-grid-semantic .demo-content:before {
+    content: '.content'; }
+.demo-grid-semantic .demo-aside, .demo-grid-semantic .demo-article {
+  min-height: 1px;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px; }
+.demo-grid-semantic .demo-aside {
+  width: 33.33333%; }
+  .demo-grid-semantic .demo-aside:before {
+    content: '.aside'; }
+.demo-grid-semantic .demo-article {
+  width: 66.66667%; }
+  .demo-grid-semantic .demo-article:before {
+    content: '.article'; }
+
+/**
+ * Nested Grid Demo
+ */
+.demo-grid-nested .col {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: rgba(42, 176, 234, 0.1); }
+
+.demo-grid-nested .col p {
+  margin: 10px 0;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 /*==============================================================================
   @Mixin Demos

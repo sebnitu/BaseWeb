@@ -66,18 +66,6 @@
     }
     margin: map-get($o, 'container-margin');
     padding: map-get($o, 'container-padding');
-    &.#{map-get($o, 'class-container')}-left {
-      float: left;
-    }
-    &.#{map-get($o, 'class-container')}-right {
-      float: right;
-    }
-    &.#{map-get($o, 'class-container')}-no-margin {
-      margin: 0;
-    }
-    &.#{map-get($o, 'class-container')}-no-padding {
-      padding: 0;
-    }
     @include clearfix();
   }
 }
@@ -191,6 +179,10 @@
   margin-right: spacing-width($index, $o);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// @Build Grid Mixin
+////////////////////////////////////////////////////////////////////////////////
+
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system.
 // @param $grid-type | $options
@@ -225,13 +217,6 @@
   // Check that this is not a mobile grid type
   @if (map-get($o, 'type') != mobile) {
     
-    // Set our column modifier classes
-    .#{map-get($o, 'class-column')}-left {
-      float: left;
-    }
-    .#{map-get($o, 'class-column')}-right {
-      float: right;
-    }
     @if (map-get($o, 'gutter-width') != 0) {
       .#{map-get($o, 'class-column')}-no-gutter {
         margin-left: 0;
