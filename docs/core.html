@@ -102,7 +102,7 @@
 
 <section id="functions" class="subpage">
 <h1 class="docs-header">Functions</h1>
-<p>This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block.</p>
+<p>This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.</p>
 
 <ul class="docs-list">
   
@@ -143,7 +143,7 @@
 
 <section id="mixins" class="subpage">
 <h1 class="docs-header">Mixins</h1>
-<p>Global mixins for our framework. These mixins don't apply specifically to a single element/block but are used throughout.</p>
+<p>Global mixins for our framework. These mixins are global and don't apply specifically to a single element/block component.</p>
 
 <ul class="docs-list">
   
@@ -167,7 +167,7 @@
   
   <li>
     <h2 class="docs-header">remove-clearfix</h2>
-    <p>Removes the clearfix styles from an element. This is typically used when a clearfix is inherited on an element and you'd like it removed</p>
+    <p>Removes the clearfix styles from an element. This is typically used when a clearfix is inherited on an element and you'd like it removed.</p>
     <pre class="language-scss"><code>@mixin remove-clearfix()</code></pre>
   </li>
   
@@ -180,6 +180,23 @@
 // @param $height
 //   @type unit (number, pixel, percentage, false)
 //   @default false -> $width</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+.my-special-box {
+  @include size(100px, 50px);
+  ...
+}
+
+// CSS Output
+.my-special-box {
+  width: 100px;
+  height: 50px;
+  ...
+}
+</code></pre>
+    <div class="demo">
+      <div class="my-special-box"></div>
+    </div>
   </li>
 
   <li>
@@ -208,7 +225,7 @@
   
   <li>
     <h2 class="docs-header">scrollable</h2>
-    <p>Makes things scrollable in a sexy way.</p>
+    <p>Makes touch devices use momentum-based scrolling for the given element.</p>
     <pre class="language-scss"><code>@mixin scrollable()</code></pre>
   </li>
   
@@ -287,18 +304,25 @@
     <pre class="language-scss"><code>@mixin transform( $function... )
 // @param $function
 //   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew] [translate])</code></pre>
-    <ul class="docs-list-hover">
-      <li class="title">Transform Functions</li>
-      <li><code>matrix()</code></li>
-      <li><code>perspective()</code></li>
-      <li><code>rotate()</code></li>
-      <li><code>scale()</code></li>
-      <li><code>skew()</code></li>
-      <li><code>translate()</code></li>
-    </ul>
-    
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+.demo-transform-skew {
+  ...
+  @include transform(skew(30deg, 10deg));
+}
+
+// CSS Output
+.demo-transform-skew {
+  ...
+  -webkit-transform: skew(30deg, 10deg);
+  -ms-transform: skew(30deg, 10deg);
+  transform: skew(30deg, 10deg);
+}</code></pre>
+    <div class="demo">
+      <div class="demo-example demo-transform-skew"></div>
+    </div>
     <div class="notice notice-info">
-      <p>This is not a comprehensive list of transform functions. For a full list of transform functions, please see the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</p>
+      <p>For a full list of transform functions, checkout the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function">CSS documentation at MDN</a>.</p>
     </div>
     
   </li>
@@ -387,7 +411,7 @@
   
   <li>
     <h2 class="docs-header">keyframes</h2>
-    <p>The @keyframes CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.</p>
+    <p>The <code>@keyframes</code> CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.</p>
     <pre class="language-scss"><code>@mixin keyframes( $name )
 // @param $name
 //   @type animation name
@@ -519,27 +543,33 @@
   
   <li>
     <h2 class="docs-header">text-hide</h2>
-    <p>Image replacement trick that hides text.</p>
+    <p>Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.</p>
     <pre class="language-scss"><code class="name">@mixin text-hide()</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
-.logo-image {
+.demo-logo-image {
+  ...
   @include text-hide();
 }
 
 // CSS Output
-.logo-image {
+.demo-logo-image {
+  ...
   font-size: 0;
   line-height: 0;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }</code></pre>
+    <pre class="language-markup"><code>&lt;div class=&quot;demo-logo-image&quot;&gt;Demo Logo Image Replace&lt;/div&gt;</code></pre>
+    <div class="demo">
+      <div class="demo-logo-image">Demo Logo Image Replace</div>
+    </div>
   </li>
   
   <li>
     <h2 class="docs-header">text-truncate</h2>
-    <p>Truncates text with an ellipsis. Element applied must be block or inline-block.</p>
+    <p>Truncates text with an ellipsis. Element this is applied to must be block or inline-block.</p>
     <pre class="language-scss"><code>@mixin text-truncate()
 // @param $display
 //   @type display property (block, inline-block)
@@ -666,7 +696,8 @@
   
   <li>
     <h2 class="docs-header">media-max</h2>
-    <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query. Using this mixin will shave a pixel off your breakpoint so that it never overlaps with a breakpoint that might be used in the media-min mixin.</p>
+    <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
+    <p>This mixin will shave a pixel off your breakpoint value so that it never overlaps with a breakpoint that might be used in the <code>media-min</code> mixin except when a pixel value is passed directly.</p>
     <pre class="language-scss"><code>@mixin media-max( $point ) { @content }
 // @param $point
 //   @type map key | unit (pixel)

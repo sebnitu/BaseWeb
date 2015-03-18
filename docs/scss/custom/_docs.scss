@@ -134,6 +134,17 @@
 }
 
 /**
+ * Size Demo
+ */
+.demo .my-special-box {
+  background: $green;
+  display: block;
+  margin: 10px auto;
+  @include size(100px, 50px);
+  @include border-radius();
+}
+
+/**
  * Vertical Center Demo
  */
 .demo-vertical-center {
@@ -211,6 +222,15 @@
 }
 
 /**
+ * Transform Skew
+ */
+.demo .demo-transform-skew {
+  background: $blue-green;
+  margin: 20px auto;
+  @include transform(skew(30deg, 10deg));
+}
+
+/**
  * Rotate
  */
 .demo-rotate {
@@ -260,7 +280,21 @@
 }
 
 /**
- * Text
+ * Text Hide
+ */
+.demo .demo-logo-image {
+  display: block;
+  margin: 20px auto;
+  padding: 0;
+  border: 0 none;
+  background: url('../img/baseweb-logo-small.svg') no-repeat left center;
+  background-size: 187px 40px;
+  @include size(187px, 40px);
+  @include text-hide();
+}
+
+/**
+ * Text Truncate
  */
 .demo-text-truncate {
   background: $blue-green-darker;
