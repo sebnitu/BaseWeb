@@ -104,7 +104,7 @@
 <h1 class="docs-header">Base Styles</h1>
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
 
-<ul class="docs-list docs-list-hover">
+<ul class="docs-list-hover">
   <li>Remove margins and padding from HTML and Body elements and sets our base font-size</li>
   <li>Prevents automatic text resizing on mobile devices</li>
   <li>Set our base typographic settings (family, weight, lineheight and color)</li>
@@ -380,72 +380,64 @@
 <h1 class="docs-header">Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
-<ul class="docs-list">
-  
-  <li>
-    <h2 class="docs-header">Unordered Lists</h2>
-    <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
-    <pre class="language-markup"><code>&lt;ul&gt;
+<h2 class="docs-header">Unordered Lists</h2>
+<p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
+<pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ul>
+    <li>List Item</li>
+    <li>List Item
       <ul>
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
       </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Ordered Lists</h2>
-    <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
-    <pre class="language-markup"><code>&lt;ol&gt;
+    </li>
+    <li>List Item</li>
+    <li>List Item</li>
+    <li>List Item</li>
+  </ul>
+</div>
+
+<h2 class="docs-header">Ordered Lists</h2>
+<p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
+<pre class="language-markup"><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ol>
+    <li>List item one</li>
+    <li>List item two
       <ol>
-        <li>List item one</li>
-        <li>List item two
-          <ol>
-            <li>Nested list item one</li>
-            <li>Nested list item two</li>
-            <li>Nested list item three</li>
-          </ol>
-        </li>
-        <li>List item three</li>
-        <li>List item four</li>
-        <li>List item five</li>
+        <li>Nested list item one</li>
+        <li>Nested list item two</li>
+        <li>Nested list item three</li>
       </ol>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Description Lists</h2>
-    <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
-    <pre class="language-markup"><code>&lt;dl&gt;
+    </li>
+    <li>List item three</li>
+    <li>List item four</li>
+    <li>List item five</li>
+  </ol>
+</div>
+
+<h2 class="docs-header">Description Lists</h2>
+<p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
+<pre class="language-markup"><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
-    <div class="demo">
-      <dl>
-        <dt>Base</dt>
-        <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
-        <dt>Web</dt>
-        <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
-      </dl>
-    </div>
-  </li>
-  
-</ul>
+<div class="demo">
+  <dl>
+    <dt>Base</dt>
+    <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
+    <dt>Web</dt>
+    <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
+  </dl>
+</div>
+
+<hr class="docs-hr">
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">List Variables</h1>
@@ -1602,12 +1594,9 @@ class BaseWeb() {
     'background' : $violet
   ));
 }</code></pre>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom&quot;&gt;Custom Mixin Button&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary&quot;&gt;Class Modifier Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <button class="btn-custom">Custom Mixin Button</button>
-        <button class="btn btn-primary">Class Modifier Button</button>
       </p>
     </div>
     <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
@@ -1640,7 +1629,7 @@ class BaseWeb() {
         <code>.btn-black</code><br><code>.btn-secondary</code>
       </li>
     </ul>
-    
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
@@ -1652,7 +1641,6 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $button map</code></pre>
-    
     <h3 class="docs-header">Example Usage</h3>
     <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
     <pre class="language-scss"><code>// SCSS
@@ -1676,9 +1664,6 @@ class BaseWeb() {
   ));
 }
 </code></pre>
-    
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
-    
     <ul class="docs-list docs-list-hover">
       <li class="title">
         Available Classes
@@ -1692,7 +1677,7 @@ class BaseWeb() {
         <code>.btn-large</code>
       </li>
     </ul>
-    
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>    
   </li>
   
   <li>

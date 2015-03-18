@@ -1,7 +1,7 @@
 <h1 class="docs-header">Media Query Variables</h1>
 <p>Where media query breakpoints are defined. These are defined as a map and used in the core media file for the media queries mixins. Any number of breakpoints can be added to this map and called on in the media query mixins.</p>
 
-<ul class="docs-list docs-list-hover">
+<ul class="docs-list-hover">
   
   <li class="title">Tweakpoints Map</li>
   <li><code>$tweakpoints()</code> <code class="right value">...</code></li>
@@ -15,7 +15,7 @@
 
 <h2 class="docs-header">Setting Tweakpoint Maps</h2>
 
-<p>You can also define component specific tweakpoints that override the breakpoints map. This should be done at the beginning of a component file and should also be reset at the end of the file so values don't leak to following components.</p>
+<p>Tweakpoints are media queries that are used to finesse page elements without making any major changes to the layout. These points are usually component specific so there are none set by default. Instead, if a tweakpoint is needed, it should be defined at the top of a component file that requires it, then reset at the bottom of that component's file.</p>
 
 <h3 class="docs-header">Example Usage</h3>
 <pre class="language-scss"><code>// Inside `_some_component.scss`
