@@ -92,15 +92,14 @@
   
   <li>
     <h2 class="docs-header">make-list-base</h2>
-    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
+    <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-list {
+    <pre class="language-scss"><code>%base-list {
   @include make-list-base();
 }
 .list-example-1 {
@@ -111,8 +110,6 @@
   @extend %base-list;
   ...
 }</code></pre>
-    <p>Using list modifier classes requires you use the <code>.list</code> base class.</p>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
   </li>
   
   <li>
@@ -122,6 +119,11 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-rowed();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed">
@@ -139,12 +141,10 @@
       </ul>
     </div>
     <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
-    <pre class="language-scss"><code>// SCSS
-.new-list-styles {
+    <pre class="language-scss"><code>.custom-list {
   @include make-list-base(('padding':10px 0));
   @include make-list-rowed();
-}
-</code></pre>
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-flush">
@@ -170,6 +170,11 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered">
@@ -198,6 +203,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-rounded();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered list-rounded">
@@ -226,6 +237,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-stripes();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-striped">
@@ -254,6 +271,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-hover();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-hover">

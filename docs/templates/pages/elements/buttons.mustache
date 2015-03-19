@@ -1,6 +1,6 @@
 <h1 class="docs-header">Buttons</h1>
 
-<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
+<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb styles buttons the same, regardless of the method you use to mark them up.</p>
 
 <pre class="language-markup"><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
@@ -103,15 +103,14 @@
   
   <li>
     <h2 class="docs-header">make-btn-base</h2>
-    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
+    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base button class, mixin or an extend placeholder. If button modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-btn {
+    <pre class="language-scss"><code>%base-btn {
   @include make-btn-base();
 }
 .btn-purchase {
@@ -123,8 +122,6 @@
   ...
 }
 </code></pre>
-    <p>Using button modifier classes requires you use the <code>.btn</code> base class.</p>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-default&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
@@ -137,7 +134,7 @@
     
     <h3 class="docs-header">Example Usage</h3>
     <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
@@ -193,7 +190,7 @@
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 // Use default small size
 .btn-small {
   @include add-btn-size(small);
@@ -231,7 +228,7 @@
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();

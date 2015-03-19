@@ -91,8 +91,7 @@
 //   @default $table map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-table {
+    <pre class="language-scss"><code>%base-table {
   @include make-table-base();
 }
 .table-example-1 {
@@ -103,8 +102,6 @@
   @extend %base-table;
   ...
 }</code></pre>
-    <p>Using table modifier classes requires you use the <code>.table</code> base class.</p>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
@@ -114,6 +111,12 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-rowed();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-rowed">
@@ -152,6 +155,12 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-columned();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-columned">
@@ -190,6 +199,12 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered">
@@ -232,7 +247,7 @@
 //   @default $table map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .all-tables {
   @include make-table-base();
   @include make-table-bordered();
@@ -316,6 +331,13 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-rounded();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-rounded">
@@ -360,8 +382,15 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-stripes();
+}
+</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;
+&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped">
         <tr>
@@ -457,6 +486,13 @@
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-hover();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-hover">
@@ -515,11 +551,9 @@
   text-align: center;
 }
 </code></pre>
+    <h3 class="docs-header">Available Classes</h3>
     <div class="docs-table-responsive">
       <table class="docs-table">
-        <tr>
-          <th colspan="2">Available Classes</th>
-        </tr>
         <tr>
           <td><code>.table-valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
@@ -550,7 +584,6 @@
         </tr>
       </table>
     </div>
-    <p>Since this is a utility setting for tables, it's usually paired along side the table base and a stylistic table modifier.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   

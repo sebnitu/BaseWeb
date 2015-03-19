@@ -471,15 +471,14 @@
   
   <li>
     <h2 class="docs-header">make-list-base</h2>
-    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
+    <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-list {
+    <pre class="language-scss"><code>%base-list {
   @include make-list-base();
 }
 .list-example-1 {
@@ -490,8 +489,6 @@
   @extend %base-list;
   ...
 }</code></pre>
-    <p>Using list modifier classes requires you use the <code>.list</code> base class.</p>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
   </li>
   
   <li>
@@ -501,6 +498,11 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-rowed();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed">
@@ -518,12 +520,10 @@
       </ul>
     </div>
     <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
-    <pre class="language-scss"><code>// SCSS
-.new-list-styles {
+    <pre class="language-scss"><code>.custom-list {
   @include make-list-base(('padding':10px 0));
   @include make-list-rowed();
-}
-</code></pre>
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-flush">
@@ -549,6 +549,11 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered">
@@ -577,6 +582,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-rounded();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered list-rounded">
@@ -605,6 +616,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-stripes();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-striped">
@@ -633,6 +650,12 @@
 // @param $options
 //   @type map
 //   @default $list map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-hover();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-hover">
@@ -800,8 +823,7 @@ class BaseWeb() {
 //   @default $table map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-table {
+    <pre class="language-scss"><code>%base-table {
   @include make-table-base();
 }
 .table-example-1 {
@@ -812,8 +834,6 @@ class BaseWeb() {
   @extend %base-table;
   ...
 }</code></pre>
-    <p>Using table modifier classes requires you use the <code>.table</code> base class.</p>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
@@ -823,6 +843,12 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-rowed();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-rowed">
@@ -861,6 +887,12 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-columned();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-columned">
@@ -899,6 +931,12 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered">
@@ -941,7 +979,7 @@ class BaseWeb() {
 //   @default $table map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .all-tables {
   @include make-table-base();
   @include make-table-bordered();
@@ -1025,6 +1063,13 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-rounded();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-rounded">
@@ -1069,8 +1114,15 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-stripes();
+}
+</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;
+&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped">
         <tr>
@@ -1166,6 +1218,13 @@ class BaseWeb() {
 // @param $options
 //   @type map
 //   @default $table map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-hover();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-hover">
@@ -1224,11 +1283,9 @@ class BaseWeb() {
   text-align: center;
 }
 </code></pre>
+    <h3 class="docs-header">Available Classes</h3>
     <div class="docs-table-responsive">
       <table class="docs-table">
-        <tr>
-          <th colspan="2">Available Classes</th>
-        </tr>
         <tr>
           <td><code>.table-valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
@@ -1259,7 +1316,6 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-    <p>Since this is a utility setting for tables, it's usually paired along side the table base and a stylistic table modifier.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
@@ -1449,7 +1505,7 @@ class BaseWeb() {
 <section id="buttons" class="subpage">
 <h1 class="docs-header">Buttons</h1>
 
-<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
+<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb styles buttons the same, regardless of the method you use to mark them up.</p>
 
 <pre class="language-markup"><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
@@ -1552,15 +1608,14 @@ class BaseWeb() {
   
   <li>
     <h2 class="docs-header">make-btn-base</h2>
-    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
+    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base button class, mixin or an extend placeholder. If button modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-btn {
+    <pre class="language-scss"><code>%base-btn {
   @include make-btn-base();
 }
 .btn-purchase {
@@ -1572,8 +1627,6 @@ class BaseWeb() {
   ...
 }
 </code></pre>
-    <p>Using button modifier classes requires you use the <code>.btn</code> base class.</p>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-default&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
@@ -1586,7 +1639,7 @@ class BaseWeb() {
     
     <h3 class="docs-header">Example Usage</h3>
     <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
@@ -1642,7 +1695,7 @@ class BaseWeb() {
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 // Use default small size
 .btn-small {
   @include add-btn-size(small);
@@ -1680,7 +1733,7 @@ class BaseWeb() {
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();

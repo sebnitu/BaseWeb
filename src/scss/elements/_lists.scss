@@ -51,12 +51,6 @@ $list: (
   > li:first-child  {
     border-top: map-get($o, 'border');
   }
-  &.list-flush {
-    > li {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
 }
 
 // Make List Bordered
@@ -207,6 +201,13 @@ dl {
  */
 .list-rowed {
   @include make-list-rowed();
+  
+  &.list-flush {
+    > li {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 .list-bordered {
   @include make-list-bordered();
