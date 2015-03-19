@@ -372,11 +372,10 @@
 // @UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-// Base Triangle
+// Make Triangle Base
 // The base styles for creating CSS triangles
-// Use with `%triangle` as placeholder
-@mixin triangle-base() {
-  content: "";
+@mixin make-triangle-base() {
+  content: '';
   display: inline-block;
   width: 0;
   height: 0;
@@ -385,7 +384,7 @@
   border-color: transparent;
 }
 
-// Triangle
+// Make Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
 // @param $size
 //   @type unit (pixel, em, rem)
@@ -394,23 +393,7 @@
 // @param $direction
 //   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
 //   @desc The direction that the triangle will point.
-// @param $base
-//   @type boolean (true, false)
-//   @default false
-//   @desc whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`
-@mixin triangle(
-    $size,
-    $color,
-    $direction,
-    $base : false
-  ) {
-  
-  @if ($base == false) {
-    @extend %triangle;
-  } @else {
-    @include triangle-base();
-  }
-
+@mixin make-triangle( $size, $color, $direction ) {
   @if ($direction == 'up') {
     border-width: 0 $size $size $size;
     border-bottom-color: $color;

@@ -10,7 +10,7 @@
 .docs-list-hover {
   @include make-list-base(('padding':15px 10px));
   @include make-list-rowed();
-  @include give-list-hover(rgba($white, 0.5));
+  @include add-list-hover(rgba($white, 0.5));
 }
 
 /**
@@ -383,20 +383,24 @@
 .demo-triangle .col {
   text-align: center;
 }
+
 %triangle {
-  @include triangle-base();
+  @include make-triangle-base();
   vertical-align: middle;
   margin: 10px 0;
 }
 .example-triangle-1 {
-  @include triangle( 14px, $blue-darker, 'left' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-darker, 'left' );
 }
 .example-triangle-2 {
-  @include triangle( 14px, $blue-violet-darker, 'down' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-violet-darker, 'down' );
   margin: 15px 0;
 }
 .example-triangle-3 {
-  @include triangle( 14px, $violet-darker, 'right' );
+  @extend %triangle;
+  @include make-triangle( 14px, $violet-darker, 'right' );
 }
 
 /*==============================================================================
@@ -404,7 +408,7 @@
 ==============================================================================*/
 
 .table-custom-alignment {
-  @include give-table-alignment((
+  @include add-table-alignment((
     'vertical-align': middle,
     'text-align': center
   ));
@@ -414,16 +418,29 @@
   @Buttons Demo
 ==============================================================================*/
 
+.demo-buttons {
+  padding: 15px 20px;
+  font-size: 0;
+  line-height: 0;
+  text-align: center;
+  
+  .btn {
+    margin: 5px;
+    vertical-align: middle;
+  }
+}
+
 .demo .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
     'color' : $white,
     'background' : $violet
   ));
+  margin: 10px 5px;
 }
 
 .demo .btn-custom-size {
-  @include give-btn-size(20px 40px, (
+  @include add-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 28px
   ));
@@ -432,5 +449,5 @@
 .demo .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include give-btn-block();
+  @include add-btn-block();
 }

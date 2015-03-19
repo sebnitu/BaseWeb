@@ -108,20 +108,20 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 
-<p>The semantic grid system equivalent would use the <code>give-prefix()</code> and <code>give-suffix</code> mixins.</p>
+<p>The semantic grid system equivalent would use the <code>add-prefix()</code> and <code>add-suffix</code> mixins.</p>
 
 <pre class="language-scss"><code>.aside {
   @include make-column(4);
-  @include give-suffix(3);
+  @include add-suffix(3);
 }
 .article {
   @include make-column(3);
-  @include give-prefix(2);
+  @include add-prefix(2);
 }
 .section {
   @include make-column(5);
-  @include give-prefix(2);
-  @include give-suffix(3);
+  @include add-prefix(2);
+  @include add-suffix(3);
 }</code></pre>
 
 <div class="demo-grid">
@@ -267,9 +267,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-prefix</h2>
+    <h2 class="docs-header">add-prefix</h2>
     <p>Creates the base styles for a column and sets its width.</p>
-    <pre class="language-scss"><code>@mixin give-prefix( $index, $options: () )
+    <pre class="language-scss"><code>@mixin add-prefix( $index, $options: () )
 // @param $index
 //   @type integer
 //   @desc The number of column prefix spacing you want set.
@@ -279,9 +279,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-suffix</h2>
+    <h2 class="docs-header">add-suffix</h2>
     <p>Creates the base styles for a spacing suffix.</p>
-    <pre class="language-scss"><code>@mixin give-suffix( $index, $options: () )
+    <pre class="language-scss"><code>@mixin add-suffix( $index, $options: () )
 // @param $index
 //   @type integer
 //   @desc The number of column suffix spacing you want set.

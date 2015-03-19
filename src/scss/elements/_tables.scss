@@ -88,14 +88,14 @@ $table: (
   @include make-table-columned($o);
 }
 
-// Give Table Size
+// Add Table Size
 // Toggles a tables padding size between condensed, expanded or a custom padding value.
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
 //   @default $table map
-@mixin give-table-size($size, $options: ()) {
+@mixin add-table-size($size, $options: ()) {
   $o: map-merge($table, $options);
   @if ($size == condensed) {
     td, th {
@@ -112,7 +112,7 @@ $table: (
   }
 }
 
-// Give Table Rounded
+// Add Table Rounded
 // Gives a table rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
@@ -120,7 +120,7 @@ $table: (
 // @param $options
 //   @type map
 //   @default $table map
-@mixin give-table-rounded($radius: default, $options: ()) {
+@mixin add-table-rounded($radius: default, $options: ()) {
   $o: map-merge($table, $options);
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
@@ -152,7 +152,7 @@ $table: (
   }
 }
 
-// Give Table Stripes
+// Add Table Stripes
 // Gives a table stripes either vertical or horizontal depending on parameters passed.
 // @param $nth
 //   @type nth (odd, even)
@@ -163,7 +163,7 @@ $table: (
 // @param $options
 //   @type map
 //   @default $table map
-@mixin give-table-stripes($nth: default, $dir: default, $options: ()) {
+@mixin add-table-stripes($nth: default, $dir: default, $options: ()) {
   $o: map-merge($table, $options);
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
@@ -187,7 +187,7 @@ $table: (
   }
 }
 
-// Give Table Hover
+// Add Table Hover
 // Gives table hover styles for rows.
 // @param $bg-hover
 //   @type color
@@ -195,7 +195,7 @@ $table: (
 // @param $options
 //   @type map
 //   @default $table map
-@mixin give-table-hover($bg-hover: default, $options: ()) {
+@mixin add-table-hover($bg-hover: default, $options: ()) {
   $o: map-merge($table, $options);
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
@@ -208,12 +208,12 @@ $table: (
   }
 }
 
-// Give Table Alignment
+// Add Table Alignment
 // Sets the vertical and text alignment of a table if a parameter is passed.
 // @param $options
 //   @type map ('vertical-align', 'text-align')
 //   @default map (none, none)
-@mixin give-table-alignment($options: ()) {
+@mixin add-table-alignment($options: ()) {
   $o: map-merge((
     'vertical-align' : none,
     'text-align' : none,
@@ -304,54 +304,54 @@ table {
  * Padding Variations
  */
 .table-condensed {
-  @include give-table-size(condensed);
+  @include add-table-size(condensed);
 }
 .table-expanded {
-  @include give-table-size(expanded);
+  @include add-table-size(expanded);
 }
 
 /**
  * Miscellaneous Modifiers
  */
 .table-rounded {
-  @include give-table-rounded();
+  @include add-table-rounded();
 }
 .table-striped {
-  @include give-table-stripes();
+  @include add-table-stripes();
 }
 .table-striped-horizontal {
-  @include give-table-stripes(default, horizontal);
+  @include add-table-stripes(default, horizontal);
 }
 .table-striped-vertical {
-  @include give-table-stripes(default, vertical);
+  @include add-table-stripes(default, vertical);
 }
 .table-hover {
-  @include give-table-hover();
+  @include add-table-hover();
 }
 
 /**
  * Table Alignment Modifiers
  */
 .table-valign-baseline {
-  @include give-table-alignment(('vertical-align': baseline));
+  @include add-table-alignment(('vertical-align': baseline));
 }
 .table-valign-top {
-  @include give-table-alignment(('vertical-align': top));
+  @include add-table-alignment(('vertical-align': top));
 }
 .table-valign-middle {
-  @include give-table-alignment(('vertical-align': middle));
+  @include add-table-alignment(('vertical-align': middle));
 }
 .table-valign-bottom {
-  @include give-table-alignment(('vertical-align': bottom));
+  @include add-table-alignment(('vertical-align': bottom));
 }
 .table-align-left {
-  @include give-table-alignment(('text-align': left));
+  @include add-table-alignment(('text-align': left));
 }
 .table-align-center {
-  @include give-table-alignment(('text-align': center));
+  @include add-table-alignment(('text-align': center));
 }
 .table-align-right {
-  @include give-table-alignment(('text-align': right));
+  @include add-table-alignment(('text-align': right));
 }
 
 /**

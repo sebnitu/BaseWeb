@@ -449,41 +449,40 @@
   </li>
   
   <li>
-    <h2 class="docs-header">triangle</h2>
-    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles can be used with <code>%triangle</code> as placeholder or you can have it applied directly to your triangle element.</p>
-    <pre class="language-scss"><code>@mixin triangle-base()</code></pre>
-    <pre class="language-scss"><code>@mixin triangle( $size, $color, $direction, $base )
+    <h2 class="docs-header">make-triangle</h2>
+    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles must be applied either through mixin, class or extend.</p>
+    <pre class="language-scss"><code>@mixin make-triangle-base()</code></pre>
+    <pre class="language-scss"><code>@mixin make-triangle( $size, $color, $direction )
 // @param $size
 //   @type unit (pixel, em, rem)
 // @param $color
 //   @type color
 // @param $direction
 //   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
-//   @desc The direction that the triangle will point.
-// @param $base
-//   @type boolean (true, false)
-//   @default false
-//   @desc whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`</code></pre>
+//   @desc The direction that the triangle will point.</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 %triangle {
-  @include triangle-base;
+  @include make-triangle-base();
 }
 .example-triangle-1 {
-  @include triangle( 14px, $blue-darker, 'left' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-darker, 'left' );
 }
 .example-triangle-2 {
-  @include triangle( 14px, $blue-violet-darker, 'down' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-violet-darker, 'down' );
 }
 .example-triangle-3 {
-  @include triangle( 14px, $violet-darker, 'right' );
+  @extend %triangle;
+  @include make-triangle( 14px, $violet-darker, 'right' );
 }
 
 // CSS Output
 .example-triangle-1,
 .example-triangle-2,
 .example-triangle-3 {
-  content: "";
+  content: '';
   display: inline-block;
   width: 0;
   height: 0;

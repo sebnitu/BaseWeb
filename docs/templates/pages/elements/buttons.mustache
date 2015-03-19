@@ -145,48 +145,47 @@
     'background' : $violet
   ));
 }</code></pre>
-    <div class="demo">
-      <p>
-        <button class="btn-custom">Custom Mixin Button</button>
-      </p>
+    <div class="demo demo-buttons">
+      <button class="btn-custom">Custom Mixin Button</button>
     </div>
     <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-default">Button</button></span>
-        <code>.btn-default</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary">Button</button></span>
-        <code>.btn-blue</code><br><code>.btn-primary</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-success">Button</button></span>
-        <code>.btn-green</code><br><code>.btn-success</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-warning">Button</button></span>
-        <code>.btn-orange</code><br><code>.btn-warning</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-danger">Button</button></span>
-        <code>.btn-red</code><br><code>.btn-danger</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-secondary">Button</button></span>
-        <code>.btn-black</code><br><code>.btn-secondary</code>
-      </li>
-    </ul>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;</code></pre>
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;!-- .btn-default default button class --&gt;
+&lt;button class=&quot;btn btn-default&quot;&gt;Default&lt;/button&gt;
+
+&lt;!-- .btn-blue class with .btn-primary semantic alias --&gt;
+&lt;button class=&quot;btn btn-blue&quot;&gt;Blue&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+
+&lt;!-- .btn-green class with .btn-success semantic alias --&gt;
+&lt;button class=&quot;btn btn-green&quot;&gt;Green&lt;/button&gt;
+&lt;button class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+
+&lt;!-- .btn-orange class with .btn-warning semantic alias --&gt;
+&lt;button class=&quot;btn btn-orange&quot;&gt;Orange&lt;/button&gt;
+&lt;button class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+
+&lt;!-- .btn-red class with .btn-danger semantic alias --&gt;
+&lt;button class=&quot;btn btn-red&quot;&gt;Red&lt;/button&gt;
+&lt;button class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+
+&lt;!-- .btn-black class with .btn-secondary semantic alias --&gt;
+&lt;button class=&quot;btn btn-black&quot;&gt;Black&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-default">Default</button>
+      <button class="btn btn-primary">Primary Blue</button>
+      <button class="btn btn-success">Success Green</button>
+      <button class="btn btn-warning">Warning Orange</button>
+      <button class="btn btn-danger">Danger Red</button>
+      <button class="btn btn-secondary">Secondary Black</button>
+    </div>
   </li>
 
   <li>
-    <h2 class="docs-header">give-btn-size</h2>
+    <h2 class="docs-header">add-btn-size</h2>
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-btn-size()
+    <pre class="language-scss"><code>@mixin add-btn-size( $size, $option: () )
 // @param $size
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
@@ -197,58 +196,49 @@
     <pre class="language-scss"><code>// SCSS
 // Use default small size
 .btn-small {
-  @include make-btn-size(small);
+  @include add-btn-size(small);
 }
 
 // Use default large size with custom font size
 .btn-custom-large {
-  @include make-btn-size(large, (
+  @include add-btn-size(large, (
     'font-size': 20px
   ));
 }
 
 // Set a custom button size
 .btn-custom-size {
-  @include make-btn-size(20px 40px, (
+  @include add-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 24px
   ));
 }
 </code></pre>
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
-        <code>.btn-small</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-large">Large Button</button></span>
-        <code>.btn-large</code>
-      </li>
-    </ul>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>    
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-small&quot;&gt;Large Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-primary btn-small">Small Button</button>
+      <button class="btn btn-primary btn-large">Large Button</button>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">give-btn-block</h2>
+    <h2 class="docs-header">add-btn-block</h2>
     <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
-    <pre class="language-scss"><code>@mixin give-btn-block()
+    <pre class="language-scss"><code>@mixin add-btn-block( $option: () )
 // @param $options
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>As a utility class, <code>give-btn-block()</code> is used along side base and modifier styles.</p>
     <pre class="language-scss"><code>// SCSS
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include give-btn-block();
+  @include add-btn-block();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom-mobile&quot;&gt;Block Button&lt;/button&gt;
-&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>

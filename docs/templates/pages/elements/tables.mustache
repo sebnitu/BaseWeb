@@ -222,9 +222,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-size</h2>
+    <h2 class="docs-header">add-table-size</h2>
     <p>Toggles a tables padding size between condensed, expanded or a custom padding value.</p>
-    <pre class="language-scss"><code>@mixin give-table-size( $size, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-size( $size, $options: () )
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
@@ -239,11 +239,11 @@
 }
 .small-tables {
   @extend .all-tables;
-  @include give-table-size(condensed);
+  @include add-table-size(condensed);
 }
 .custom-tables {
   @extend .all-tables;
-  @include give-table-size(8px 16px);
+  @include add-table-size(8px 16px);
 }</code></pre>
     <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
@@ -307,9 +307,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-rounded</h2>
+    <h2 class="docs-header">add-table-rounded</h2>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
 //   @default default ($table('border-radius'))
@@ -348,9 +348,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-stripes</h2>
+    <h2 class="docs-header">add-table-stripes</h2>
     <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-stripes( $nth, $dir, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-stripes( $nth, $dir, $options: () )
 // @param $nth
 //   @type nth (odd, even)
 //   @default default ($table('nth'))
@@ -448,9 +448,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-hover</h2>
+    <h2 class="docs-header">add-table-hover</h2>
     <p>Gives table hover styles for rows.</p>
-    <pre class="language-scss"><code>@mixin give-table-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
 //   @default default ($table('background-hover'))
@@ -489,9 +489,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-alignment</h2>
+    <h2 class="docs-header">add-table-alignment</h2>
     <p>Sets the vertical and text alignment of a table if a parameter is passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-alignment( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-alignment( $options: () )
 // @param $options
 //   @type map ('vertical-align', 'text-align')
 //   @default map (none, none)</code></pre>
@@ -500,7 +500,7 @@
     <pre class="language-scss"><code>// SCSS
 .table-custom-alignment {
   ...
-  @include give-table-alignment((
+  @include add-table-alignment((
     'vertical-align': middle,
     'text-align': center
   ));

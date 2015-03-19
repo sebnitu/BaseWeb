@@ -568,9 +568,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-rounded</h2>
+    <h2 class="docs-header">add-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin make-list-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
 //   @default default ($list('border-radius'))
@@ -596,9 +596,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-stripes</h2>
+    <h2 class="docs-header">add-list-stripes</h2>
     <p>Gives a list items alternating background colors.</p>
-    <pre class="language-scss"><code>@mixin make-list-stripes( $nth, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
 //   @default default ($list('nth'))
@@ -624,9 +624,9 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-hover</h2>
+    <h2 class="docs-header">add-list-hover</h2>
     <p>Gives list hover styles for list items.</p>
-    <pre class="language-scss"><code>@mixin make-list-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
 //   @default default ($list('background-hover'))
@@ -931,9 +931,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-size</h2>
+    <h2 class="docs-header">add-table-size</h2>
     <p>Toggles a tables padding size between condensed, expanded or a custom padding value.</p>
-    <pre class="language-scss"><code>@mixin give-table-size( $size, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-size( $size, $options: () )
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
@@ -948,11 +948,11 @@ class BaseWeb() {
 }
 .small-tables {
   @extend .all-tables;
-  @include give-table-size(condensed);
+  @include add-table-size(condensed);
 }
 .custom-tables {
   @extend .all-tables;
-  @include give-table-size(8px 16px);
+  @include add-table-size(8px 16px);
 }</code></pre>
     <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
@@ -1016,9 +1016,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-rounded</h2>
+    <h2 class="docs-header">add-table-rounded</h2>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
 //   @default default ($table('border-radius'))
@@ -1057,9 +1057,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-stripes</h2>
+    <h2 class="docs-header">add-table-stripes</h2>
     <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-stripes( $nth, $dir, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-stripes( $nth, $dir, $options: () )
 // @param $nth
 //   @type nth (odd, even)
 //   @default default ($table('nth'))
@@ -1157,9 +1157,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-hover</h2>
+    <h2 class="docs-header">add-table-hover</h2>
     <p>Gives table hover styles for rows.</p>
-    <pre class="language-scss"><code>@mixin give-table-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
 //   @default default ($table('background-hover'))
@@ -1198,9 +1198,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-alignment</h2>
+    <h2 class="docs-header">add-table-alignment</h2>
     <p>Sets the vertical and text alignment of a table if a parameter is passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-alignment( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-alignment( $options: () )
 // @param $options
 //   @type map ('vertical-align', 'text-align')
 //   @default map (none, none)</code></pre>
@@ -1209,7 +1209,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>// SCSS
 .table-custom-alignment {
   ...
-  @include give-table-alignment((
+  @include add-table-alignment((
     'vertical-align': middle,
     'text-align': center
   ));
@@ -1594,48 +1594,47 @@ class BaseWeb() {
     'background' : $violet
   ));
 }</code></pre>
-    <div class="demo">
-      <p>
-        <button class="btn-custom">Custom Mixin Button</button>
-      </p>
+    <div class="demo demo-buttons">
+      <button class="btn-custom">Custom Mixin Button</button>
     </div>
     <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-default">Button</button></span>
-        <code>.btn-default</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary">Button</button></span>
-        <code>.btn-blue</code><br><code>.btn-primary</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-success">Button</button></span>
-        <code>.btn-green</code><br><code>.btn-success</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-warning">Button</button></span>
-        <code>.btn-orange</code><br><code>.btn-warning</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-danger">Button</button></span>
-        <code>.btn-red</code><br><code>.btn-danger</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-secondary">Button</button></span>
-        <code>.btn-black</code><br><code>.btn-secondary</code>
-      </li>
-    </ul>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;</code></pre>
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;!-- .btn-default default button class --&gt;
+&lt;button class=&quot;btn btn-default&quot;&gt;Default&lt;/button&gt;
+
+&lt;!-- .btn-blue class with .btn-primary semantic alias --&gt;
+&lt;button class=&quot;btn btn-blue&quot;&gt;Blue&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+
+&lt;!-- .btn-green class with .btn-success semantic alias --&gt;
+&lt;button class=&quot;btn btn-green&quot;&gt;Green&lt;/button&gt;
+&lt;button class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+
+&lt;!-- .btn-orange class with .btn-warning semantic alias --&gt;
+&lt;button class=&quot;btn btn-orange&quot;&gt;Orange&lt;/button&gt;
+&lt;button class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+
+&lt;!-- .btn-red class with .btn-danger semantic alias --&gt;
+&lt;button class=&quot;btn btn-red&quot;&gt;Red&lt;/button&gt;
+&lt;button class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+
+&lt;!-- .btn-black class with .btn-secondary semantic alias --&gt;
+&lt;button class=&quot;btn btn-black&quot;&gt;Black&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-default">Default</button>
+      <button class="btn btn-primary">Primary Blue</button>
+      <button class="btn btn-success">Success Green</button>
+      <button class="btn btn-warning">Warning Orange</button>
+      <button class="btn btn-danger">Danger Red</button>
+      <button class="btn btn-secondary">Secondary Black</button>
+    </div>
   </li>
 
   <li>
-    <h2 class="docs-header">give-btn-size</h2>
+    <h2 class="docs-header">add-btn-size</h2>
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-btn-size()
+    <pre class="language-scss"><code>@mixin add-btn-size( $size, $option: () )
 // @param $size
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
@@ -1646,58 +1645,49 @@ class BaseWeb() {
     <pre class="language-scss"><code>// SCSS
 // Use default small size
 .btn-small {
-  @include make-btn-size(small);
+  @include add-btn-size(small);
 }
 
 // Use default large size with custom font size
 .btn-custom-large {
-  @include make-btn-size(large, (
+  @include add-btn-size(large, (
     'font-size': 20px
   ));
 }
 
 // Set a custom button size
 .btn-custom-size {
-  @include make-btn-size(20px 40px, (
+  @include add-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 24px
   ));
 }
 </code></pre>
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
-        <code>.btn-small</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-large">Large Button</button></span>
-        <code>.btn-large</code>
-      </li>
-    </ul>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>    
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-small&quot;&gt;Large Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-primary btn-small">Small Button</button>
+      <button class="btn btn-primary btn-large">Large Button</button>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">give-btn-block</h2>
+    <h2 class="docs-header">add-btn-block</h2>
     <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
-    <pre class="language-scss"><code>@mixin give-btn-block()
+    <pre class="language-scss"><code>@mixin add-btn-block( $option: () )
 // @param $options
 //   @type map
 //   @default $button map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>As a utility class, <code>give-btn-block()</code> is used along side base and modifier styles.</p>
     <pre class="language-scss"><code>// SCSS
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include give-btn-block();
+  @include add-btn-block();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom-mobile&quot;&gt;Block Button&lt;/button&gt;
-&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>

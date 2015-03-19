@@ -92,14 +92,14 @@ $button: (
   }
 }
 
-// Give Button Size
+// Add Button Size
 // Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.
 // @param $size
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
 //   @type map
 //   @default $button map
-@mixin give-btn-size($size, $options: ()) {
+@mixin add-btn-size($size, $options: ()) {
   $o: map-merge( $button, $options);
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
@@ -116,12 +116,12 @@ $button: (
   }
 }
 
-// Make Button Block
+// Add Button Block
 // Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.
 // @param $options
 //   @type map
 //   @default $button map
-@mixin give-btn-block($options: ()) {
+@mixin add-btn-block($options: ()) {
   $o: map-merge( $button, $options);
   display: block;
   width: 100%;
@@ -206,13 +206,13 @@ $button: (
  * Button Size
  */
 .btn-small {
-  @include give-btn-size(small);
+  @include add-btn-size(small);
 }
 .btn-large {
-  @include give-btn-size(large, ('font-size': map-get($button, 'font-size') + 2 ));
+  @include add-btn-size(large, ('font-size': map-get($button, 'font-size') + 2 ));
 }
 .btn-block {
-  @include give-btn-block();
+  @include add-btn-block();
 }
 
 } // endif

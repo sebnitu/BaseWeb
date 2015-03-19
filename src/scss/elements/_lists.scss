@@ -75,7 +75,7 @@ $list: (
   }
 }
 
-// Give List Rounded
+// Add List Rounded
 // Gives a list rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
@@ -83,7 +83,7 @@ $list: (
 // @param $options
 //   @type map
 //   @default $list map
-@mixin give-list-rounded($radius: default, $options: ()) {
+@mixin add-list-rounded($radius: default, $options: ()) {
   $o: map-merge($list, $options);
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
@@ -97,7 +97,7 @@ $list: (
   }
 }
 
-// Give List Stripes
+// Add List Stripes
 // Gives a list items alternating background colors.
 // @param $nth
 //   @type nth (odd, even)
@@ -105,7 +105,7 @@ $list: (
 // @param $options
 //   @type map
 //   @default $list map
-@mixin give-list-stripes($nth: default, $options: ()) {
+@mixin add-list-stripes($nth: default, $options: ()) {
   $o: map-merge($list, $options);
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
@@ -115,7 +115,7 @@ $list: (
   }
 }
 
-// Give List Hover
+// Add List Hover
 // Gives list hover styles for list items.
 // @param $bg-hover
 //   @type color
@@ -123,7 +123,7 @@ $list: (
 // @param $options
 //   @type map
 //   @default $list map
-@mixin give-list-hover($bg-hover: default, $options: ()) {
+@mixin add-list-hover($bg-hover: default, $options: ()) {
   $o: map-merge($list, $options);
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
@@ -216,13 +216,13 @@ dl {
  * Miscellaneous Modifiers
  */
 .list-rounded {
-  @include give-list-rounded();
+  @include add-list-rounded();
 }
 .list-striped {
-  @include give-list-stripes();
+  @include add-list-stripes();
 }
 .list-hover {
-  @include give-list-hover();
+  @include add-list-hover();
 }
 
 } // endif
