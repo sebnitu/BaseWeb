@@ -1,0 +1,132 @@
+/**
+ * Form Structure Elements
+ */
+form {
+  margin: 20px 0;
+}
+
+fieldset {
+  margin: 20px 0;
+  padding: 0;
+  border: 0 none;
+}
+
+/**
+ * Legends
+ */
+legend {
+  margin: 0 0 0 -10px;
+  padding: 5px 10px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  color: $color-dark;
+}
+
+/**
+ * Labels
+ */
+label {
+  display: inline-block;
+  margin: 0 0 5px 0;
+}
+
+/**
+ * Text Input
+ */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="color"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  height: ($base-line-height + 20px + 2);
+  
+  margin: 0 0 20px 0;
+  padding: 10px;
+  
+  font-family: inherit;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  color: $color;
+  
+  background: rgba($white, 0.5);
+  border: 1px solid rgba($black, 0.2);
+  box-shadow: inset 0 1px 3px rgba($black, 0.05);
+  @include box-sizing(border-box);
+  @include border-radius();
+  @include transition();
+  
+  &:focus {
+    outline: none;
+    background: rgba($white, 1);
+    border-color: rgba($blue, 1);
+    box-shadow: 0 1px 3px rgba($black, 0.05);
+  }
+  
+  &[disabled] {
+    cursor: not-allowed;
+    background: rgba($black, 0.05);
+  }
+}
+
+/**
+ * Search
+ */
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+/**
+ * Color Picker
+ */
+input[type="color"] {
+  padding: 5px;
+}
+
+/**
+ * Choice Input
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0 5px 0 0;
+  
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/**
+ * Textarea
+ */
+textarea {
+  height: auto;
+}
+
+/**
+ * Multiple Select
+ */
+select[multiple] {
+  height: auto;
+}
+
+/**
+ * Output Element
+ */
+output {
+  display: inline-block;
+  font-family: inherit;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  color: $color;
+}
