@@ -547,14 +547,17 @@ hr {
 .hr-double {
   border-bottom: 3px double rgba(0, 0, 0, 0.1); }
 
+/*==============================================================================
+  @Forms
+==============================================================================*/
 /**
  * Form Structure Elements
  */
 form {
-  margin: 20px 0; }
+  margin: 30px 0; }
 
 fieldset {
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 0;
   border: 0 none; }
 
@@ -562,19 +565,23 @@ fieldset {
  * Legends
  */
 legend {
-  margin: 0 0 0 -10px;
-  padding: 5px 10px;
+  display: inline-block;
+  margin: 0 -10px;
+  padding: 0 10px;
   font-size: 18px;
   line-height: 26px;
   font-weight: bold;
-  color: #303030; }
+  color: #303030;
+  border: 0 none; }
 
 /**
  * Labels
  */
 label {
   display: inline-block;
-  margin: 0 0 5px 0; }
+  margin: 0 0 5px 0;
+  font-weight: 600;
+  color: #303030; }
 
 /**
  * Text Input
@@ -591,17 +598,17 @@ input[type="text"], input[type="password"], input[type="date"], input[type="mont
   color: #303030;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 3px;
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear; }
+  -webkit-transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s; }
   input[type="text"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="color"]:focus, textarea:focus, select:focus {
     outline: none;
     background: white;
     border-color: #2ab0ea;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
   input[type="text"][disabled], input[type="password"][disabled], input[type="date"][disabled], input[type="month"][disabled], input[type="week"][disabled], input[type="time"][disabled], input[type="email"][disabled], input[type="number"][disabled], input[type="search"][disabled], input[type="tel"][disabled], input[type="url"][disabled], input[type="color"][disabled], textarea[disabled], select[disabled] {
     cursor: not-allowed;
     background: rgba(0, 0, 0, 0.05); }
@@ -622,9 +629,24 @@ input[type="color"] {
  * Choice Input
  */
 input[type="checkbox"], input[type="radio"] {
-  margin: 0 5px 0 0; }
+  margin: 0 5px 15px 0; }
   input[type="checkbox"][disabled], input[type="radio"][disabled] {
     cursor: not-allowed; }
+
+/**
+ * File Input
+ */
+input[type="file"] {
+  display: block;
+  margin: 0 0 20px 0; }
+
+/**
+ * Range Input
+ */
+input[type="range"] {
+  display: block;
+  width: 100%;
+  margin: 0 0 20px 0; }
 
 /**
  * Textarea
@@ -635,7 +657,7 @@ textarea {
 /**
  * Multiple Select
  */
-select[multiple] {
+select[multiple], select[size] {
   height: auto; }
 
 /**
@@ -647,6 +669,37 @@ output {
   font-size: 14px;
   line-height: 20px;
   color: #303030; }
+
+/*==============================================================================
+  @Form Groups
+==============================================================================*/
+/**
+ * Choice Base
+ */
+.choice, .choice-inline {
+  margin-bottom: 20px; }
+  .choice label, .choice-inline label {
+    margin: 0;
+    font-weight: normal;
+    padding: 10px 20px 10px 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px; }
+  .choice input[type="checkbox"], .choice input[type="radio"], .choice-inline input[type="checkbox"], .choice-inline input[type="radio"] {
+    margin-bottom: 0; }
+
+/**
+ * Choice Block
+ */
+.choice label {
+  display: block; }
+.choice label + label {
+  margin-top: 10px; }
+
+/**
+ * Choice Inline
+ */
+.choice-inline label + label {
+  margin-left: 10px; }
 
 /*==============================================================================
   @Buttons
