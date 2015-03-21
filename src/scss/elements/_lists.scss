@@ -4,7 +4,7 @@
 
 // List Map
 // Define all the settings for list mixins and classes.
-$list: (
+$lists: (
   'modifier-classes' : true,
   'nth' : odd,
   'margin' : 20px 0,
@@ -24,9 +24,9 @@ $list: (
 // Creates the base styles for a list modifer mixin or class. Usually applied directly through a mixin or `%list-base` placeholder.
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin make-list-base($options: ()) {
-  $o: map-merge( $list, $options);
+  $o: map-merge( $lists, $options);
   list-style: none;
   margin: map-get($o, 'margin');
   background: map-get($o, 'background');
@@ -42,9 +42,9 @@ $list: (
 // Adds borders to a list that divide list items.
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin make-list-rowed($options: ()) {
-  $o: map-merge($list, $options);
+  $o: map-merge($lists, $options);
   > li {
     border-bottom: map-get($o, 'border');
   }
@@ -57,9 +57,9 @@ $list: (
 // Adds borders to a list that wraps the list and divides list items.
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin make-list-bordered($options: ()) {
-  $o: map-merge($list, $options);
+  $o: map-merge($lists, $options);
   border: map-get($o, 'border');
   > li {
     border-bottom: map-get($o, 'border');
@@ -73,12 +73,12 @@ $list: (
 // Gives a list rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($list('border-radius'))
+//   @default default ($lists('border-radius'))
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin add-list-rounded($radius: default, $options: ()) {
-  $o: map-merge($list, $options);
+  $o: map-merge($lists, $options);
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
@@ -95,12 +95,12 @@ $list: (
 // Gives a list items alternating background colors.
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($list('nth'))
+//   @default default ($lists('nth'))
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin add-list-stripes($nth: default, $options: ()) {
-  $o: map-merge($list, $options);
+  $o: map-merge($lists, $options);
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
   }
@@ -113,12 +113,12 @@ $list: (
 // Gives list hover styles for list items.
 // @param $bg-hover
 //   @type color
-//   @default default ($list('background-hover'))
+//   @default default ($lists('background-hover'))
 // @param $options
 //   @type map
-//   @default $list map
+//   @default $lists map
 @mixin add-list-hover($bg-hover: default, $options: ()) {
-  $o: map-merge($list, $options);
+  $o: map-merge($lists, $options);
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
@@ -183,7 +183,7 @@ dl {
 }
 
 // Check if we should output modifier classes
-@if (map-get($list, 'modifier-classes') == true) {
+@if (map-get($lists, 'modifier-classes') == true) {
 
 /*==============================================================================
   @List Modifiers

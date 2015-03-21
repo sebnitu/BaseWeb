@@ -20,76 +20,76 @@
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Button Variables</h1>
-<p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
+<p>Button variables are encompassed within the <code>$buttons</code> map and are used throughout all button mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$button('modifier-classes')</code>
+    <code>$buttons('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
   </li>
   <li>
-    <code>$button('padding')</code>
+    <code>$buttons('padding')</code>
     <code class="right value">10px 20px</code>
   </li>
   <li>
-    <code>$button('padding-small')</code>
+    <code>$buttons('padding-small')</code>
     <code class="right value">5px 10px</code>
   </li>
   <li>
-    <code>$button('padding-large')</code>
+    <code>$buttons('padding-large')</code>
     <code class="right value">15px 30px</code>
   </li>
   <li>
-    <code>$button('font-size')</code>
+    <code>$buttons('font-size')</code>
     <code class="right value">$base-font-size</code>
   </li>
   <li>
-    <code>$button('line-height')</code>
+    <code>$buttons('line-height')</code>
     <code class="right value">$base-line-height</code>
   </li>
   <li>
-    <code>$button('color')</code>
+    <code>$buttons('color')</code>
     <code class="right value">$color-dark</code>
   </li>
   <li>
-    <code>$button('text-shadow')</code>
+    <code>$buttons('text-shadow')</code>
     <code class="right value">none</code>
   </li>
   <li>
-    <code>$button('background')</code>
+    <code>$buttons('background')</code>
     <code class="right value">$gray-pale</code>
   </li>
   <li>
-    <code>$button('background-hover')</code>
+    <code>$buttons('background-hover')</code>
     <code class="right value">darken</code>
     <span class="block light">The color to use on hover. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for hover.</span>
   </li>
   <li>
-    <code>$button('background-gradient')</code>
+    <code>$buttons('background-gradient')</code>
     <code class="right value">false</code>
     <span class="block light">Whether or not to use a gradient for button background. If true, the `background` will be used as the start color and darkened for the end color using the `background-deg` as a modifier.</span>
   </li>
   <li>
-    <code>$button('background-deg')</code>
+    <code>$buttons('background-deg')</code>
     <code class="right value">5%</code>
     <span class="block light">The degree that the hover background color or gradient end color is modified.</span>
   </li>
   <li>
-    <code>$button('background-clip')</code>
+    <code>$buttons('background-clip')</code>
     <code class="right value">border-box</code>
   </li>
   
   <li>
-    <code>$button('border')</code>
+    <code>$buttons('border')</code>
     <code class="right value">1px solid rgba($black, 0.15)</code>
   </li>
   <li>
-    <code>$button('border-hover')</code>
+    <code>$buttons('border-hover')</code>
     <code class="right value">1px solid rgba($black, 0.25)</code>
   </li>
   <li>
-    <code>$button('border-radius')</code>
+    <code>$buttons('border-radius')</code>
     <code class="right value">$border-radius</code>
   </li>
 </ul>
@@ -107,7 +107,7 @@
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-btn {
@@ -130,10 +130,10 @@
     <pre class="language-scss"><code>@mixin make-btn-color( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     
     <h3 class="docs-header">Example Usage</h3>
-    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
+    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$buttons</code> map.</p>
     <pre class="language-scss"><code>
 .btn-custom {
   @include make-btn-base();
@@ -187,9 +187,9 @@
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
+    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$buttons</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
     <pre class="language-scss"><code>
 // Use default small size
 .btn-small {
@@ -226,7 +226,7 @@
     <pre class="language-scss"><code>@mixin add-btn-block( $option: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>
 .btn-custom-mobile {
@@ -239,6 +239,8 @@
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
+      </p>
+      <p>
         <a class="btn btn-green btn-block" href="#" role="button">Block Button</a>
       </p>
     </div>

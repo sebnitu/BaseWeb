@@ -50,29 +50,29 @@
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Table Variables</h1>
-<p>Table variables are encompassed within the <code>$table</code> map and are used throughout all table mixins to set default values.</p>
+<p>Table variables are encompassed within the <code>$tables</code> map and are used throughout all table mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$table('modifier-classes')</code>
+    <code>$tables('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the table modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$table('valign')</code> <code class="right value">top</code></li>
-  <li><code>$table('nth')</code> <code class="right value">odd</code></li>
-  <li><code>$table('stripe')</code> <code class="right value">horizontal</code></li>
+  <li><code>$tables('valign')</code> <code class="right value">top</code></li>
+  <li><code>$tables('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$tables('stripe')</code> <code class="right value">horizontal</code></li>
 
-  <li><code>$table('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$table('padding')</code> <code class="right value">10px</code></li>
-  <li><code>$table('padding-condensed')</code> <code class="right value">5px</code></li>
-  <li><code>$table('padding-expanded')</code> <code class="right value">15px</code></li>
+  <li><code>$tables('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$tables('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$tables('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$tables('padding-expanded')</code> <code class="right value">15px</code></li>
   
-  <li><code>$table('background')</code> <code class="right value">none</code></li>
-  <li><code>$table('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$table('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$tables('background')</code> <code class="right value">none</code></li>
+  <li><code>$tables('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$tables('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$tables('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$tables('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
@@ -88,7 +88,7 @@
     <pre class="language-scss"><code>@mixin make-table-base( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-table {
@@ -110,7 +110,7 @@
     <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -154,7 +154,7 @@
     <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -198,7 +198,7 @@
     <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -244,7 +244,7 @@
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
     <pre class="language-scss"><code>
@@ -327,10 +327,10 @@
     <pre class="language-scss"><code>@mixin add-table-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($table('border-radius'))
+//   @default default ($tables('border-radius'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -375,13 +375,13 @@
     <pre class="language-scss"><code>@mixin add-table-stripes( $nth, $dir, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($table('nth'))
+//   @default default ($tables('nth'))
 // @param $dir
 //   @type orientation of stripes (vertical, horizontal)
-//   @default default ($table('stripe'))
+//   @default default ($tables('stripe'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -482,10 +482,10 @@
     <pre class="language-scss"><code>@mixin add-table-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($table('background-hover'))
+//   @default default ($tables('background-hover'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -593,7 +593,7 @@
     <pre class="language-scss"><code>@mixin make-table-responsive( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;

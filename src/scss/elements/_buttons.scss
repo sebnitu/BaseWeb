@@ -4,7 +4,7 @@
 
 // Button Map
 // Define all the settings for button mixins and classes.
-$button: (
+$buttons: (
   'modifier-classes' : true,
   'padding' : 10px 20px,
   'padding-small' : 5px 10px,
@@ -31,9 +31,9 @@ $button: (
 // Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.
 // @param $options
 //   @type map
-//   @default $button map
+//   @default $buttons map
 @mixin make-btn-base($options: ()) {
-  $o: map-merge( $button, $options);
+  $o: map-merge( $buttons, $options);
   display: inline-block;
   margin: 0;
   padding: map-get($o, 'padding');
@@ -59,9 +59,9 @@ $button: (
 // Handles all the color variables of a button such as color, background, border and hover state.
 // @param $options
 //   @type map
-//   @default $button map
+//   @default $buttons map
 @mixin make-btn-color($options: ()) {
-  $o: map-merge( $button, $options);
+  $o: map-merge( $buttons, $options);
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
   @if (map-get($o, 'background-gradient') == true) {
@@ -98,9 +98,9 @@ $button: (
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $button map
+//   @default $buttons map
 @mixin add-btn-size($size, $options: ()) {
-  $o: map-merge( $button, $options);
+  $o: map-merge( $buttons, $options);
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
   } @else if ($size == large) {
@@ -108,10 +108,10 @@ $button: (
   } @else {
     padding: $size;
   }
-  @if (map-get($o, 'font-size') != map-get($button, 'font-size')) {
+  @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
     font-size: map-get($o, 'font-size');
   }
-  @if (map-get($o, 'line-height') != map-get($button, 'line-height')) {
+  @if (map-get($o, 'line-height') != map-get($buttons, 'line-height')) {
     line-height: map-get($o, 'line-height');
   }
 }
@@ -120,16 +120,15 @@ $button: (
 // Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.
 // @param $options
 //   @type map
-//   @default $button map
+//   @default $buttons map
 @mixin add-btn-block($options: ()) {
-  $o: map-merge( $button, $options);
+  $o: map-merge( $buttons, $options);
   display: block;
   width: 100%;
-  margin: 10px 0;
 }
 
 // Check if we should output modifier classes
-@if (map-get($button, 'modifier-classes') == true) {
+@if (map-get($buttons, 'modifier-classes') == true) {
 
 /*==============================================================================
   @Buttons
@@ -209,7 +208,7 @@ $button: (
   @include add-btn-size(small);
 }
 .btn-large {
-  @include add-btn-size(large, ('font-size': map-get($button, 'font-size') + 2 ));
+  @include add-btn-size(large, ('font-size': map-get($buttons, 'font-size') + 2 ));
 }
 .btn-block {
   @include add-btn-block();

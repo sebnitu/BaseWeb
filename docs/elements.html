@@ -441,25 +441,25 @@
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">List Variables</h1>
-<p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
+<p>List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$list('modifier-classes')</code>
+    <code>$lists('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$list('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$lists('nth')</code> <code class="right value">odd</code></li>
 
-  <li><code>$list('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$list('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$lists('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$lists('padding')</code> <code class="right value">10px</code></li>
   
-  <li><code>$list('background')</code> <code class="right value">none</code></li>
-  <li><code>$list('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$list('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$lists('background')</code> <code class="right value">none</code></li>
+  <li><code>$lists('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$lists('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$lists('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$lists('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
@@ -475,7 +475,7 @@
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-list {
@@ -497,7 +497,7 @@
     <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -548,7 +548,7 @@
     <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -578,10 +578,10 @@
     <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($list('border-radius'))
+//   @default default ($lists('border-radius'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -612,10 +612,10 @@
     <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($list('nth'))
+//   @default default ($lists('nth'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -646,10 +646,10 @@
     <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($list('background-hover'))
+//   @default default ($lists('background-hover'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -782,29 +782,29 @@ class BaseWeb() {
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Table Variables</h1>
-<p>Table variables are encompassed within the <code>$table</code> map and are used throughout all table mixins to set default values.</p>
+<p>Table variables are encompassed within the <code>$tables</code> map and are used throughout all table mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$table('modifier-classes')</code>
+    <code>$tables('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the table modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$table('valign')</code> <code class="right value">top</code></li>
-  <li><code>$table('nth')</code> <code class="right value">odd</code></li>
-  <li><code>$table('stripe')</code> <code class="right value">horizontal</code></li>
+  <li><code>$tables('valign')</code> <code class="right value">top</code></li>
+  <li><code>$tables('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$tables('stripe')</code> <code class="right value">horizontal</code></li>
 
-  <li><code>$table('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$table('padding')</code> <code class="right value">10px</code></li>
-  <li><code>$table('padding-condensed')</code> <code class="right value">5px</code></li>
-  <li><code>$table('padding-expanded')</code> <code class="right value">15px</code></li>
+  <li><code>$tables('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$tables('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$tables('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$tables('padding-expanded')</code> <code class="right value">15px</code></li>
   
-  <li><code>$table('background')</code> <code class="right value">none</code></li>
-  <li><code>$table('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$table('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$tables('background')</code> <code class="right value">none</code></li>
+  <li><code>$tables('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$tables('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$tables('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$tables('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
@@ -820,7 +820,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-base( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-table {
@@ -842,7 +842,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -886,7 +886,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -930,7 +930,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -976,7 +976,7 @@ class BaseWeb() {
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
     <pre class="language-scss"><code>
@@ -1059,10 +1059,10 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin add-table-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($table('border-radius'))
+//   @default default ($tables('border-radius'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -1107,13 +1107,13 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin add-table-stripes( $nth, $dir, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($table('nth'))
+//   @default default ($tables('nth'))
 // @param $dir
 //   @type orientation of stripes (vertical, horizontal)
-//   @default default ($table('stripe'))
+//   @default default ($tables('stripe'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -1214,10 +1214,10 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin add-table-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($table('background-hover'))
+//   @default default ($tables('background-hover'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
   @include make-table-base();
@@ -1325,7 +1325,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-responsive( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;
@@ -1498,47 +1498,185 @@ class BaseWeb() {
 <h1 class="docs-header">Forms</h1>
 
 <form>
+  
   <fieldset>
+    
+    <div class="form-group success">
+      <div class="row">
+        <div class="col col-4">
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="col col-4">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox" checked> Choice</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group warning">
+      <div class="row">
+        <div class="col col-4">
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="col col-4">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox" checked> Choice</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group error">
+      <div class="row">
+        <div class="col col-4">
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="col col-4">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox" checked> Choice</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group active">
+      <div class="row">
+        <div class="col col-4">
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="col col-4">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox" checked> Choice</label>
+        </div>
+      </div>
+    </div>
+    
+  </fieldset>
+  
+  <fieldset>
+    
+    <label for="input-1">Text Input</label>
+    <input id="input-1" type="text" placeholder="Text">
       
     <label for="input-1">Text Input</label>
-    <input id="input-1" type="text" placeholder="Text" required>
+    <div class="input-group">
+      <input id="input-1" type="text" placeholder="Text">
+      <input id="input-1" type="text" placeholder="Text">
+    </div>
     
-    
+    <label>Sign In Form</label>
+    <div class="row">
+      <div class="col col-6">
+        <input type="text" placeholder="Username">
+      </div>
+      <div class="col col-3">
+        <label class="choice"><input type="checkbox" checked> Remember</label>
+      </div>
+      <div class="col col-3">
+        <button class="btn btn-default btn-block">Sign In</button>
+      </div>
+    </div>
     
     <label for="textarea-1">Text Area</label>
     <textarea id="textarea-1" rows="4"></textarea>
   
     <label for="select-1">Select Dropdown</label>
-    <select id="select-1">
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-      <option>Option 4</option>
-    </select>
+    <div class="input-group">
+      <select id="select-1">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+      </select>
+      <select id="select-1">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+      </select>
+    </div>
+    
+    <div class="text-group">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed mi semper mauris placerat porta. Sed egestas nisi magna, pellentesque lacinia nulla efficitur eget.</p>
+    </div>
     
     <label>Checkbox Choice</label>
-    <div class="choice">
+    <div class="choice-group">
+      <label class="not-fancy"><input type="checkbox" checked> Yes</label>
+      <label class="not-fancy"><input type="checkbox"> No</label>
+      <label class="not-fancy"><input type="checkbox"> Maybe</label>
+    </div>
+  
+    <label>Radio Choice</label>
+    <div class="choice-group">
+      <label class="not-fancy"><input name="radio-1" type="radio" checked> Yes</label>
+      <label class="not-fancy"><input name="radio-1" type="radio"> No</label>
+      <label class="not-fancy"><input name="radio-1" type="radio"> Maybe</label>
+    </div>
+    
+    <label>Checkbox Choice</label>
+    <div class="choice-group-inline">
+      <label class="not-fancy"><input type="checkbox" checked> Yes</label>
+      <label class="not-fancy"><input type="checkbox"> No</label>
+      <label class="not-fancy"><input type="checkbox"> Maybe</label>
+    </div>
+  
+    <label>Radio Choice</label>
+    <div class="choice-group-inline">
+      <label class="not-fancy"><input name="radio-1" type="radio" checked> Yes</label>
+      <label class="not-fancy"><input name="radio-1" type="radio"> No</label>
+      <label class="not-fancy"><input name="radio-1" type="radio"> Maybe</label>
+    </div>
+    
+    <label>Checkbox Choice</label>
+    <div class="choice-group">
       <label><input type="checkbox" checked> Yes</label>
       <label><input type="checkbox"> No</label>
       <label><input type="checkbox"> Maybe</label>
     </div>
   
     <label>Radio Choice</label>
-    <div class="choice">
+    <div class="choice-group">
       <label><input name="radio-1" type="radio" checked> Yes</label>
       <label><input name="radio-1" type="radio"> No</label>
       <label><input name="radio-1" type="radio"> Maybe</label>
     </div>
     
     <label>Inline Checkbox Choice</label>
-    <div class="choice-inline">
+    <div class="choice-group-inline">
       <label><input type="checkbox" checked> Yes</label>
       <label><input type="checkbox"> No</label>
       <label><input type="checkbox"> Maybe</label>
     </div>
   
     <label>Inline Radio Choice</label>
-    <div class="choice-inline">
+    <div class="choice-group-inline">
       <label><input name="radio-2" type="radio" checked> Yes</label>
       <label><input name="radio-2" type="radio"> No</label>
       <label><input name="radio-2" type="radio"> Maybe</label>
@@ -1547,10 +1685,213 @@ class BaseWeb() {
     <button class="btn btn-default">Submit Form</button>
 
   </fieldset>
+
+  <fieldset>
+    
+    <div class="form-group">
+      <label>Text Input</label>
+      <input type="text" placeholder="Text">
+    </div>
+    
+    <div class="form-group">
+      <label>Text Input</label>
+      <div class="input-group">
+        <input type="text" placeholder="Text">
+        <input type="text" placeholder="Text">
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Sign In Form</label>
+      <div class="row">
+        <div class="col col-6">
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="col col-3">
+          <div class="choice-group">
+            <label><input type="checkbox" checked> Remember</label>
+          </div>
+        </div>
+        <div class="col col-3">
+          <button class="btn btn-default btn-block">Sign In</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Text Area</label>
+      <textarea rows="4"></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="select-1">Select Dropdown</label>
+      <select id="select-1">
+        <option>Option 1</option>
+        <option>Option 2</option>
+        <option>Option 3</option>
+        <option>Option 4</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="select-1">Select Dropdown</label>
+      <div class="input-group">
+        <select id="select-1">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+          <option>Option 4</option>
+        </select>
+        <select id="select-1">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+          <option>Option 4</option>
+        </select>
+      </div>
+      <div class="text-group">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed mi semper mauris placerat porta. Sed egestas nisi magna, pellentesque lacinia nulla efficitur eget.</p>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="row">
+        
+        <div class="col col-6">
+          <label>Checkbox Choice</label>
+          <div class="choice-group">
+            <label class="not-fancy"><input type="checkbox" checked> Yes</label>
+            <label class="not-fancy"><input type="checkbox"> No</label>
+            <label class="not-fancy"><input type="checkbox"> Maybe</label>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <label>Radio Choice</label>
+          <div class="choice-group">
+            <label class="not-fancy"><input name="radio-3" type="radio" checked> Yes</label>
+            <label class="not-fancy"><input name="radio-3" type="radio"> No</label>
+            <label class="not-fancy"><input name="radio-3" type="radio"> Maybe</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="row">
+        
+        <div class="col col-6">
+          <label>Inline Checkbox Choice</label>
+          <div class="choice-group-inline">
+            <label class="not-fancy"><input type="checkbox" checked> Yes</label>
+            <label class="not-fancy"><input type="checkbox"> No</label>
+            <label class="not-fancy"><input type="checkbox"> Maybe</label>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <label>Inline Radio Choice</label>
+          <div class="choice-group-inline">
+            <label class="not-fancy"><input name="radio-4" type="radio" checked> Yes</label>
+            <label class="not-fancy"><input name="radio-4" type="radio"> No</label>
+            <label class="not-fancy"><input name="radio-4" type="radio"> Maybe</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Checkbox Choice</label>
+      <div class="choice-group">
+        <label><input type="checkbox" checked> Yes</label>
+        <label><input type="checkbox"> No</label>
+        <label><input type="checkbox"> Maybe</label>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label>Radio Choice</label>
+      <div class="choice-group">
+        <label><input name="radio-3" type="radio" checked> Yes</label>
+        <label><input name="radio-3" type="radio"> No</label>
+        <label><input name="radio-3" type="radio"> Maybe</label>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Inline Checkbox Choice</label>
+      <div class="choice-group-inline">
+        <label><input type="checkbox" checked> Yes</label>
+        <label><input type="checkbox"> No</label>
+        <label><input type="checkbox"> Maybe</label>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Inline Radio Choice</label>
+      <div class="choice-group-inline">
+        <label><input name="radio-4" type="radio" checked> Yes</label>
+        <label><input name="radio-4" type="radio"> No</label>
+        <label><input name="radio-4" type="radio"> Maybe</label>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="row">
+        
+        <div class="col col-6">
+          <label>Checkbox Choice</label>
+          <div class="choice-group">
+            <label><input type="checkbox" checked> Yes</label>
+            <label><input type="checkbox"> No</label>
+            <label><input type="checkbox"> Maybe</label>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <label>Radio Choice</label>
+          <div class="choice-group">
+            <label><input name="radio-3" type="radio" checked> Yes</label>
+            <label><input name="radio-3" type="radio"> No</label>
+            <label><input name="radio-3" type="radio"> Maybe</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="row">
+        
+        <div class="col col-6">
+          <label>Inline Checkbox Choice</label>
+          <div class="choice-group-inline">
+            <label><input type="checkbox" checked> Yes</label>
+            <label><input type="checkbox"> No</label>
+            <label><input type="checkbox"> Maybe</label>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <label>Inline Radio Choice</label>
+          <div class="choice-group-inline">
+            <label><input name="radio-4" type="radio" checked> Yes</label>
+            <label><input name="radio-4" type="radio"> No</label>
+            <label><input name="radio-4" type="radio"> Maybe</label>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <button class="btn btn-default">Submit Form</button>
+    </div>
+
+  </fieldset>
 </form>
-
-
-
 
 <!--
 <label for="input-2">Password Input</label>
@@ -1625,76 +1966,76 @@ class BaseWeb() {
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Button Variables</h1>
-<p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
+<p>Button variables are encompassed within the <code>$buttons</code> map and are used throughout all button mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$button('modifier-classes')</code>
+    <code>$buttons('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
   </li>
   <li>
-    <code>$button('padding')</code>
+    <code>$buttons('padding')</code>
     <code class="right value">10px 20px</code>
   </li>
   <li>
-    <code>$button('padding-small')</code>
+    <code>$buttons('padding-small')</code>
     <code class="right value">5px 10px</code>
   </li>
   <li>
-    <code>$button('padding-large')</code>
+    <code>$buttons('padding-large')</code>
     <code class="right value">15px 30px</code>
   </li>
   <li>
-    <code>$button('font-size')</code>
+    <code>$buttons('font-size')</code>
     <code class="right value">$base-font-size</code>
   </li>
   <li>
-    <code>$button('line-height')</code>
+    <code>$buttons('line-height')</code>
     <code class="right value">$base-line-height</code>
   </li>
   <li>
-    <code>$button('color')</code>
+    <code>$buttons('color')</code>
     <code class="right value">$color-dark</code>
   </li>
   <li>
-    <code>$button('text-shadow')</code>
+    <code>$buttons('text-shadow')</code>
     <code class="right value">none</code>
   </li>
   <li>
-    <code>$button('background')</code>
+    <code>$buttons('background')</code>
     <code class="right value">$gray-pale</code>
   </li>
   <li>
-    <code>$button('background-hover')</code>
+    <code>$buttons('background-hover')</code>
     <code class="right value">darken</code>
     <span class="block light">The color to use on hover. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for hover.</span>
   </li>
   <li>
-    <code>$button('background-gradient')</code>
+    <code>$buttons('background-gradient')</code>
     <code class="right value">false</code>
     <span class="block light">Whether or not to use a gradient for button background. If true, the `background` will be used as the start color and darkened for the end color using the `background-deg` as a modifier.</span>
   </li>
   <li>
-    <code>$button('background-deg')</code>
+    <code>$buttons('background-deg')</code>
     <code class="right value">5%</code>
     <span class="block light">The degree that the hover background color or gradient end color is modified.</span>
   </li>
   <li>
-    <code>$button('background-clip')</code>
+    <code>$buttons('background-clip')</code>
     <code class="right value">border-box</code>
   </li>
   
   <li>
-    <code>$button('border')</code>
+    <code>$buttons('border')</code>
     <code class="right value">1px solid rgba($black, 0.15)</code>
   </li>
   <li>
-    <code>$button('border-hover')</code>
+    <code>$buttons('border-hover')</code>
     <code class="right value">1px solid rgba($black, 0.25)</code>
   </li>
   <li>
-    <code>$button('border-radius')</code>
+    <code>$buttons('border-radius')</code>
     <code class="right value">$border-radius</code>
   </li>
 </ul>
@@ -1712,7 +2053,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-btn {
@@ -1735,10 +2076,10 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-btn-color( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     
     <h3 class="docs-header">Example Usage</h3>
-    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
+    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$buttons</code> map.</p>
     <pre class="language-scss"><code>
 .btn-custom {
   @include make-btn-base();
@@ -1792,9 +2133,9 @@ class BaseWeb() {
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
+    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$buttons</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
     <pre class="language-scss"><code>
 // Use default small size
 .btn-small {
@@ -1831,7 +2172,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin add-btn-block( $option: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>
 .btn-custom-mobile {
@@ -1844,6 +2185,8 @@ class BaseWeb() {
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
+      </p>
+      <p>
         <a class="btn btn-green btn-block" href="#" role="button">Block Button</a>
       </p>
     </div>

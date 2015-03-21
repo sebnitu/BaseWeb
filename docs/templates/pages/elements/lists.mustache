@@ -62,25 +62,25 @@
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">List Variables</h1>
-<p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
+<p>List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$list('modifier-classes')</code>
+    <code>$lists('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$list('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$lists('nth')</code> <code class="right value">odd</code></li>
 
-  <li><code>$list('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$list('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$lists('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$lists('padding')</code> <code class="right value">10px</code></li>
   
-  <li><code>$list('background')</code> <code class="right value">none</code></li>
-  <li><code>$list('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$list('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$lists('background')</code> <code class="right value">none</code></li>
+  <li><code>$lists('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$lists('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$lists('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$lists('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
@@ -96,7 +96,7 @@
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-list {
@@ -118,7 +118,7 @@
     <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -169,7 +169,7 @@
     <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -199,10 +199,10 @@
     <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($list('border-radius'))
+//   @default default ($lists('border-radius'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -233,10 +233,10 @@
     <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($list('nth'))
+//   @default default ($lists('nth'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
@@ -267,10 +267,10 @@
     <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($list('background-hover'))
+//   @default default ($lists('background-hover'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();

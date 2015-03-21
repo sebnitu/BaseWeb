@@ -4,7 +4,7 @@
 
 // Table Map
 // Define all the settings for table mixins and classes.
-$table: (
+$tables: (
   'modifier-classes' : true,
   'valign' : top,
   'nth' : odd,
@@ -28,9 +28,9 @@ $table: (
 // Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or `%table-base` placeholder.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-base($options: ()) {
-  $o: map-merge( $table, $options);
+  $o: map-merge( $tables, $options);
   margin: map-get($o, 'margin');
   background: map-get($o, 'background');
   border-collapse: separate;
@@ -43,9 +43,9 @@ $table: (
 // Adds borders to a table that divide table rows.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-rowed($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   td, th {
     border-bottom: map-get($o, 'border');
   }
@@ -64,9 +64,9 @@ $table: (
 // Adds borders to a table that divide table columns.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-columned($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   td, th {
     border-right: map-get($o, 'border');
   }
@@ -81,9 +81,9 @@ $table: (
 // Adds borders to a table that divide table cells.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-bordered($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @include make-table-rowed($o);
   @include make-table-columned($o);
 }
@@ -94,9 +94,9 @@ $table: (
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin add-table-size($size, $options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @if ($size == condensed) {
     td, th {
       padding: map-get($o, 'padding-condensed');
@@ -116,12 +116,12 @@ $table: (
 // Gives a table rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($table('border-radius'))
+//   @default default ($tables('border-radius'))
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin add-table-rounded($radius: default, $options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
@@ -156,15 +156,15 @@ $table: (
 // Gives a table stripes either vertical or horizontal depending on parameters passed.
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($table('nth'))
+//   @default default ($tables('nth'))
 // @param $dir
 //   @type orientation of stripes (vertical, horizontal)
-//   @default default ($table('stripe'))
+//   @default default ($tables('stripe'))
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin add-table-stripes($nth: default, $dir: default, $options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
   }
@@ -191,12 +191,12 @@ $table: (
 // Gives table hover styles for rows.
 // @param $bg-hover
 //   @type color
-//   @default default ($table('background-hover'))
+//   @default default ($tables('background-hover'))
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin add-table-hover($bg-hover: default, $options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
@@ -234,9 +234,9 @@ $table: (
 // When added to a wrapping element of a table, will make the table responsive for tablets and below.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-responsive($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   margin: map-get($o, 'margin');
   > table {
     margin: 0;
@@ -264,7 +264,7 @@ table {
   overflow: auto;
   
   tr {
-    vertical-align: map-get($table, 'valign');
+    vertical-align: map-get($tables, 'valign');
   }
   th {
     color: $color-header;
@@ -274,7 +274,7 @@ table {
 }
 
 // Check if we should output modifier classes
-@if (map-get($table, 'modifier-classes') == true) {
+@if (map-get($tables, 'modifier-classes') == true) {
 
 /*==============================================================================
   @Table Modifiers
