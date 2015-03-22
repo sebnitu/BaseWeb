@@ -12,6 +12,11 @@ $forms: (
 // @Form Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Select Input
+// An input select helper. Either use a global class to select input types, or
+// an input[type="x"] selector for all applicable inputs.
+// Available input types:
+// ---
 // input[type="text"]
 // input[type="password"]
 // input[type="date"]
@@ -27,24 +32,15 @@ $forms: (
 // textarea
 // select
 @mixin select-input() {
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="month"],
-  input[type="week"],
-  input[type="time"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="url"],
-  input[type="color"],
-  textarea,
-  select {
+  .input {
     @content;
   }
 }
 
+// Select Input Other
+// An input select helper for other inputs that don't recieve the global input styles.
+// Available input types:
+// ---
 // input[type="file"]
 // input[type="range"]
 @mixin select-input-other() {
@@ -54,6 +50,7 @@ $forms: (
   }
 }
 
+// Select Choice
 @mixin select-choice() {
   .choice,
   .choice-inline,
@@ -63,7 +60,8 @@ $forms: (
   }
 }
 
-@mixin placeholder($color: $color-light) {
+// Placeholder
+@mixin placeholder($color: #aaa) {
   &::-webkit-input-placeholder {
      color: $color;
   }
@@ -128,6 +126,11 @@ label {
   margin: 0 0 5px 0;
   font-weight: 600;
   color: $color-dark;
+  
+  &.sub {
+    font-weight: normal;
+    color: $color;
+  }
 }
 
 /**
@@ -181,7 +184,8 @@ input[type="search"] {
   -webkit-appearance: none;
 }
 
-input[type="color"] {
+input[type="color"],
+input[type="color"].input {
   padding: 5px;
 }
 
@@ -200,6 +204,10 @@ input[type="radio"] {
     cursor: not-allowed;
   }
 }
+
+/**
+ * Checkbox & Radio Classes
+ */
 .checkbox,
 .radio {
   margin-bottom: 20px;
@@ -221,7 +229,7 @@ label.radio {
   margin-left: 15px;
   color: $color;
   font-weight: normal;
-  
+    
   &:first-child {
     margin-left: 0;
   }
@@ -235,7 +243,8 @@ label.radio {
 /**
  * Textarea
  */
-textarea {
+textarea,
+textarea.input {
   height: auto;
   max-width: 100%;
 }
@@ -244,7 +253,9 @@ textarea {
  * Multiple Select
  */
 select[multiple],
-select[size] {
+select[size],
+select[multiple].input,
+select[size].input {
   height: auto;
 }
 
@@ -425,10 +436,57 @@ fieldset[disabled] {
  * Text Group
  */
 .text-group {
-  margin-bottom: 20px;
+  margin: 10px 0;
+  font-size: $base-font-size;
   color: $color-light;
+  
+  p {
+    margin: 0;
+  }
+  p + p {
+    margin-top: 10px;
+  }
+}
+label + .text-group {
+  margin-top: 0;
+}
+.choice-group-inline .text-group {
+  margin-right: 10px;
+}
+.form-group .text-group:first-child,
+.input-group .text-group:first-child,
+.choice-group .text-group:first-child,
+.choice-group-inline .text-group:first-child {
+  margin-top: 0;
+}
+.form-group .text-group:last-child,
+.input-group .text-group:last-child,
+.choice-group .text-group:last-child {
+  margin-bottom: 0;
+}
+.choice-group-inline .text-group:last-child {
+  margin-bottom: 10px;
 }
 
+/*==============================================================================
+  @Form Grids
+==============================================================================*/
+
+form {
+  .col {
+    margin-bottom: 10px;
+  }
+  .col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@include media-min('tablet') {
+  form .col {
+    margin-bottom: 0;
+  }
+}
+  
 /*==============================================================================
   @Validation Status
 ==============================================================================*/
@@ -486,7 +544,8 @@ fieldset[disabled] {
 }
 
 label.checkbox,
-label.radio {
+label.radio,
+.text-group {
   &.success {
     color: $green-darker;
   }
@@ -511,7 +570,8 @@ label.radio {
   .checkbox label,
   .radio label,
   label.checkbox,
-  label.radio {
+  label.radio,
+  .text-group {
     color: $green-darker;
   }
 }
@@ -525,7 +585,8 @@ label.radio {
   .checkbox label,
   .radio label,
   label.checkbox,
-  label.radio {
+  label.radio,
+  .text-group {
     color: $yellow-darker;
   }
 }
@@ -539,7 +600,8 @@ label.radio {
   .checkbox label,
   .radio label,
   label.checkbox,
-  label.radio {
+  label.radio,
+  .text-group {
     color: $red-darker;
   }
 }
@@ -554,7 +616,8 @@ label.radio {
   .checkbox label,
   .radio label,
   label.checkbox,
-  label.radio {
+  label.radio,
+  .text-group {
     color: $blue-darker;
   }
 }
