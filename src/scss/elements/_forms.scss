@@ -5,8 +5,10 @@
 // Button Map
 // Define all the settings for form base elements, mixins and classes.
 $forms: (
-  'spacing' : 20px,
+  'vertical-spacing' : 20px,
 ) !default;
+
+// map-get($forms, 'vertical-spacing')
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Mixins
@@ -31,11 +33,6 @@ $forms: (
 // input[type="color"]
 // textarea
 // select
-@mixin select-input() {
-  .input {
-    @content;
-  }
-}
 
 // Select Input Other
 // An input select helper for other inputs that don't recieve the global input styles.
@@ -43,22 +40,6 @@ $forms: (
 // ---
 // input[type="file"]
 // input[type="range"]
-@mixin select-input-other() {
-  input[type="file"],
-  input[type="range"] {
-    @content;
-  }
-}
-
-// Select Choice
-@mixin select-choice() {
-  .choice,
-  .choice-inline,
-  .choice-group label,
-  .choice-group-inline label {
-    @content;
-  }
-}
 
 // Placeholder
 @mixin placeholder($color: #aaa) {
@@ -136,7 +117,7 @@ label {
 /**
  * Input
  */
-@include select-input() {
+.input {
   display: block;
   width: 100%;
   height: ($base-line-height + 20px + 2);
@@ -175,7 +156,8 @@ label {
 /**
  * Other Input
  */
-@include select-input-other() {
+input[type="file"],
+input[type="range"] {
   display: block;
   margin: 0 0 20px 0;
 }
@@ -209,95 +191,30 @@ input[type="radio"] {
  * Checkbox & Radio Classes
  */
 .checkbox,
-.radio {
+.radio,
+.checkbox-group label,
+.radio-group label {
+  display: block;
   margin-bottom: 20px;
-  
-  label {
-    margin-bottom: 0;
-    color: $color;
-    font-weight: normal;
-  }
-  
-  + .checkbox,
-  + .radio {
-    margin-top: -10px;
-  }
-}
-label.checkbox,
-label.radio {
-  margin-bottom: 20px;
-  margin-left: 15px;
   color: $color;
   font-weight: normal;
-    
+}
+.checkbox.inline,
+.radio.inline {
+  display: inline-block;
+  margin-left: 15px;
+  
   &:first-child {
     margin-left: 0;
   }
-  
-  + .checkbox,
-  + .radio {
-    margin-top: 0;
-  }
 }
 
 /**
- * Textarea
+ * Choice
  */
-textarea,
-textarea.input {
-  height: auto;
-  max-width: 100%;
-}
-
-/**
- * Multiple Select
- */
-select[multiple],
-select[size],
-select[multiple].input,
-select[size].input {
-  height: auto;
-}
-
-/**
- * Output Element
- */
-output {
-  display: inline-block;
-  font-family: inherit;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  color: $color;
-}
-
-/**
- * Disabled Fieldsets
- */
-fieldset[disabled] {
-  
-  @include select-input() {
-    cursor: not-allowed;
-    background: rgba($black, 0.05);
-  }
-  
-  @include select-choice() {
-    cursor: not-allowed;
-  }
-  
-  input[type="checkbox"],
-  input[type="radio"],
-  input[type="file"],
-  input[type="range"] {
-    cursor: not-allowed;
-  }
-}
-
-/*==============================================================================
-  @Choice
-==============================================================================*/
-
-@include select-choice() {
-  display: inline-block;
+.choice,
+.choice-group label {
+  display: block;
   position: relative;
   cursor: pointer;
   margin-bottom: 20px;
@@ -317,8 +234,58 @@ fieldset[disabled] {
     background-color: rgba($blue, 0.1);
   }
 }
-.choice {
-  display: block;
+.choice.inline {
+  display: inline-block;
+  margin-left: 15px;
+  
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+/**
+ * Textarea
+ */
+textarea,
+textarea.input {
+  height: auto;
+  max-width: 100%;
+}
+
+/**
+ * Select Dropdowns
+ */
+select,
+select.input {}
+
+/**
+ * Multiple Select
+ */
+select[multiple],
+select[size],
+select[multiple].input,
+select[size].input {
+  height: auto;
+}
+
+/**
+ * Disabled Fieldsets
+ */
+fieldset[disabled] {
+  
+  .input {
+    cursor: not-allowed;
+    background: rgba($black, 0.05);
+  }
+  
+  input[type="file"],
+  input[type="range"],
+  input[type="checkbox"],
+  input[type="radio"],
+  .choice,
+  .choice-group label {
+    cursor: not-allowed;
+  }
 }
 
 /*==============================================================================
@@ -328,47 +295,46 @@ fieldset[disabled] {
 /**
  * Form Group
  */
-.form-group {
+.group {
   margin-bottom: 20px;
   
   &:last-child {
     margin-bottom: 0;
   }
   
-  @include select-input() {
+  // Remove margins from elements
+  .input {
     margin-bottom: 0;
   }
-  @include select-input-other() {
+  input[type="file"],
+  input[type="range"] {
     margin-bottom: 0;
-  }
-  
-  .input-group,
-  .choice-group,
-  .choice,
-  .choice-inline {
-    margin-bottom: 0;
-  }
-  .choice-group-inline {
-    margin-bottom: -10px;
   }
   
   .checkbox,
   .radio {
     margin-bottom: 0;
-    
-    + .checkbox,
-    + .radio {
-      margin-top: 10px;
-    }
   }
-  label.checkbox,
-  label.radio {
+  
+  .choice,
+  .choice-inline {
     margin-bottom: 0;
-    
-    + .checkbox,
-    + .radio {
-      margin-top: 0;
-    }
+  }
+  
+  // Remove margins from groups
+  .input-group,
+  .checkbox-group,
+  .radio-group,
+  .choice-group {
+    margin-bottom: 0;
+  }
+  
+  // Inline Groups
+  .input-group.inline,
+  .checkbox-group.inline,
+  .radio-group.inline,
+  .choice-group.inline {
+    margin-bottom: -10px;
   }
 }
 
@@ -377,23 +343,71 @@ fieldset[disabled] {
  */
 .input-group {
   margin-bottom: 20px;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-  
-  @include select-input() {
-    margin-bottom: 10px;
+
+  .input,
+  input[type="file"],
+  input[type="range"] {
+    display: block;
+    margin: 0 0 10px 0;
     
     &:last-child {
       margin-bottom: 0;
     }
   }
-  @include select-input-other() {
-    margin-bottom: 10px;
+}
+.input-group.inline {
+  margin-bottom: 10px;
+  margin-right: -10px;
+  font-size: 0;
+  
+  .input,
+  input[type="file"],
+  input[type="range"] {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    font-size: $base-font-size;
+    
+    &:last-child {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+/**
+ * Checkbox & Radio Groups
+ */
+.checkbox-group,
+.radio-group {
+  margin-bottom: 20px;
+  
+  label,
+  .checkbox,
+  .radio {
+    display: block;
+    margin: 0 0 10px 0;
     
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+.checkbox-group.inline,
+.radio-group.inline {
+  margin-bottom: 10px;
+  margin-right: -15px;
+  font-size: 0;
+  
+  label,
+  .checkbox,
+  .radio {
+    display: inline-block;
+    width: auto;
+    margin-right: 15px;
+    font-size: $base-font-size;
+    
+    &:last-child {
+      margin-bottom: 10px;
     }
   }
 }
@@ -401,34 +415,34 @@ fieldset[disabled] {
 /**
  * Choice Group
  */
-.choice-group,
-.choice-group-inline {
-  label,
-  label.choice,
-  label.choice-inline {
-    margin-bottom: 10px;
-  }
-}
 .choice-group {
   margin-bottom: 20px;
   
   label,
-  label.choice-inline {
+  .choice {
     display: block;
+    margin: 0 0 10px 0;
     
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
-.choice-group-inline {
-  margin: 0 -10px 10px 0;
+.choice-group.inline {
+  margin-bottom: 10px;
+  margin-right: -10px;
   font-size: 0;
   
   label,
-  label.choice {
+  .choice {
+    display: inline-block;
+    width: auto;
     margin-right: 10px;
     font-size: $base-font-size;
+    
+    &:last-child {
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -441,10 +455,10 @@ fieldset[disabled] {
   color: $color-light;
   
   p {
-    margin: 0;
-  }
-  p + p {
-    margin-top: 10px;
+    margin: 0 0 10px 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 label + .text-group {
@@ -453,13 +467,13 @@ label + .text-group {
 .choice-group-inline .text-group {
   margin-right: 10px;
 }
-.form-group .text-group:first-child,
+.group .text-group:first-child,
 .input-group .text-group:first-child,
 .choice-group .text-group:first-child,
 .choice-group-inline .text-group:first-child {
   margin-top: 0;
 }
-.form-group .text-group:last-child,
+.group .text-group:last-child,
 .input-group .text-group:last-child,
 .choice-group .text-group:last-child {
   margin-bottom: 0;
@@ -491,7 +505,7 @@ form {
   @Validation Status
 ==============================================================================*/
 
-@include select-input() {
+.input {
   &.success {
     border-color: $green;
   }
@@ -506,7 +520,8 @@ form {
   }
 }
 
-@include select-choice() {
+.choice,
+.choice-group label {
   &.success,
   &.warning,
   &.error,
@@ -561,10 +576,11 @@ label.radio,
 }
 
 .success {
-  @include select-input() {
+  .input {
     border-color: $green;
   }
-  @include select-choice() {
+  .choice,
+  .choice-group label {
     background-color: rgba($green, 0.1);
   }
   .checkbox label,
@@ -576,10 +592,11 @@ label.radio,
   }
 }
 .warning {
-  @include select-input() {
+  .input {
     border-color: $yellow-dark;
   }
-  @include select-choice() {
+  .choice,
+  .choice-group label {
     background-color: rgba($yellow-darker, 0.1);
   }
   .checkbox label,
@@ -591,10 +608,11 @@ label.radio,
   }
 }
 .error {
-  @include select-input() {
+  .input {
     border-color: $red;
   }
-  @include select-choice() {
+  .choice,
+  .choice-group label {
     background-color: rgba($red, 0.1);
   }
   .checkbox label,
@@ -607,10 +625,11 @@ label.radio,
 }
 
 .active {
-  @include select-input() {
+  .input {
     border-color: $blue;
   }
-  @include select-choice() {
+  .choice,
+  .choice-group label {
     background-color: rgba($blue, 0.1);
   }
   .checkbox label,
