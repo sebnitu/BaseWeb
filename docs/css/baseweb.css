@@ -640,18 +640,18 @@ label {
   .input.inline:first-child {
     margin-left: 0; }
 
+input[type="search"], input[type="search"].input {
+  -webkit-appearance: none; }
+
+input[type="color"], input[type="color"].input {
+  padding: 5px; }
+
 /**
  * Other Input
  */
 input[type="file"], input[type="range"] {
   display: block;
   margin: 0 0 20px 0; }
-
-input[type="search"] {
-  -webkit-appearance: none; }
-
-input[type="color"], input[type="color"].input {
-  padding: 5px; }
 
 input[type="range"] {
   width: 100%; }
@@ -665,31 +665,24 @@ input[type="checkbox"], input[type="radio"] {
     cursor: not-allowed; }
 
 /**
- * Checkbox & Radio Classes
+ * Checkbox, Radio & Choice Classes
  */
-.checkbox, .radio, .checkbox-group label, .radio-group label {
+.checkbox, .radio, .choice, .checkbox-group label, .radio-group label, .choice-group label {
+  position: relative;
+  cursor: pointer;
   display: block;
   margin-bottom: 20px;
   color: #303030;
   font-weight: normal; }
 
-.checkbox.inline, .radio.inline {
+.checkbox.inline, .radio.inline, .choice.inline {
   display: inline-block;
-  margin-left: 15px; }
-  .checkbox.inline:first-child, .radio.inline:first-child {
+  margin-left: 10px; }
+  .checkbox.inline:first-child, .radio.inline:first-child, .choice.inline:first-child {
     margin-left: 0; }
 
-/**
- * Choice
- */
 .choice, .choice-group label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 20px;
   padding: 11px 25px 11px 35px;
-  color: #303030;
-  font-weight: normal;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 3px; }
   .choice input[type="checkbox"], .choice input[type="radio"], .choice-group label input[type="checkbox"], .choice-group label input[type="radio"] {
@@ -698,12 +691,6 @@ input[type="checkbox"], input[type="radio"] {
   .choice.active, .choice-group label.active {
     background-color: rgba(42, 176, 234, 0.1); }
 
-.choice.inline {
-  display: inline-block;
-  margin-left: 10px; }
-  .choice.inline:first-child {
-    margin-left: 0; }
-
 /**
  * Textarea
  */
@@ -711,9 +698,6 @@ textarea, textarea.input {
   height: auto;
   max-width: 100%; }
 
-/**
- * Select Dropdowns
- */
 /**
  * Multiple Select
  */
@@ -739,93 +723,51 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
   margin-bottom: 20px; }
   .group:last-child {
     margin-bottom: 0; }
-  .group .input {
-    margin-bottom: 0; }
-  .group input[type="file"], .group input[type="range"] {
-    margin-bottom: 0; }
-  .group .checkbox, .group .radio {
-    margin-bottom: 0; }
-  .group .choice, .group .choice-inline {
-    margin-bottom: 0; }
-  .group .input-group, .group .checkbox-group, .group .radio-group, .group .choice-group {
-    margin-bottom: 0; }
-  .group .input-group.inline, .group .checkbox-group.inline, .group .radio-group.inline, .group .choice-group.inline {
-    margin-bottom: -10px; }
-
-/**
- * Input Group
- */
-.input-group {
-  margin-bottom: 20px; }
-  .input-group .input, .input-group input[type="file"], .input-group input[type="range"] {
-    display: block;
-    margin: 0 0 10px 0; }
-    .input-group .input:last-child, .input-group input[type="file"]:last-child, .input-group input[type="range"]:last-child {
+  .group > label, .group .col > label {
+    margin-bottom: 5px; }
+  .group > .checkbox, .group > .radio, .group > .choice, .group .col > .checkbox, .group .col > .radio, .group .col > .choice {
+    margin-bottom: 10px; }
+  .group > *, .group .col > * {
+    margin-bottom: 10px; }
+    .group > *:last-child, .group .col > *:last-child {
+      margin-bottom: 0; }
+  .group .item-group {
+    margin-bottom: 20px; }
+    .group .item-group:last-child {
+      margin-bottom: 0; }
+  .group > .item-group.inline, .group .col > .item-group.inline {
+    margin-bottom: 10px; }
+    .group > .item-group.inline:last-child, .group .col > .item-group.inline:last-child {
       margin-bottom: 0; }
 
-.input-group.inline {
+/**
+ * Item Group
+ */
+.item-group {
+  margin-bottom: 20px; }
+  .item-group > * {
+    display: block;
+    margin: 0 0 10px 0; }
+    .item-group > *:last-child {
+      margin-bottom: 0; }
+
+.item-group.inline {
   margin-bottom: 10px;
   margin-right: -10px;
   font-size: 0; }
-  .input-group.inline .input, .input-group.inline input[type="file"], .input-group.inline input[type="range"] {
+  .item-group.inline > * {
     display: inline-block;
     width: auto;
     margin-right: 10px;
     font-size: 14px; }
-    .input-group.inline .input:last-child, .input-group.inline input[type="file"]:last-child, .input-group.inline input[type="range"]:last-child {
-      margin-bottom: 10px; }
-
-/**
- * Checkbox & Radio Groups
- */
-.checkbox-group, .radio-group {
-  margin-bottom: 20px; }
-  .checkbox-group label, .checkbox-group .checkbox, .checkbox-group .radio, .radio-group label, .radio-group .checkbox, .radio-group .radio {
-    display: block;
-    margin: 0 0 10px 0; }
-    .checkbox-group label:last-child, .checkbox-group .checkbox:last-child, .checkbox-group .radio:last-child, .radio-group label:last-child, .radio-group .checkbox:last-child, .radio-group .radio:last-child {
-      margin-bottom: 0; }
-
-.checkbox-group.inline, .radio-group.inline {
-  margin-bottom: 10px;
-  margin-right: -15px;
-  font-size: 0; }
-  .checkbox-group.inline label, .checkbox-group.inline .checkbox, .checkbox-group.inline .radio, .radio-group.inline label, .radio-group.inline .checkbox, .radio-group.inline .radio {
-    display: inline-block;
-    width: auto;
-    margin-right: 15px;
-    font-size: 14px; }
-    .checkbox-group.inline label:last-child, .checkbox-group.inline .checkbox:last-child, .checkbox-group.inline .radio:last-child, .radio-group.inline label:last-child, .radio-group.inline .checkbox:last-child, .radio-group.inline .radio:last-child {
-      margin-bottom: 10px; }
-
-/**
- * Choice Group
- */
-.choice-group {
-  margin-bottom: 20px; }
-  .choice-group label, .choice-group .choice {
-    display: block;
-    margin: 0 0 10px 0; }
-    .choice-group label:last-child, .choice-group .choice:last-child {
-      margin-bottom: 0; }
-
-.choice-group.inline {
-  margin-bottom: 10px;
-  margin-right: -10px;
-  font-size: 0; }
-  .choice-group.inline label, .choice-group.inline .choice {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    font-size: 14px; }
-    .choice-group.inline label:last-child, .choice-group.inline .choice:last-child {
+    .item-group.inline > *:last-child {
       margin-bottom: 10px; }
 
 /**
  * Text Group
  */
 .text-group {
-  margin: 10px 0;
+  margin-bottom: 10px;
   font-size: 14px;
   color: #909090; }
   .text-group p {
@@ -836,24 +778,15 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
 label + .text-group {
   margin-top: 0; }
 
-.choice-group-inline .text-group {
-  margin-right: 10px; }
-
-.group .text-group:first-child, .input-group .text-group:first-child, .choice-group .text-group:first-child, .choice-group-inline .text-group:first-child {
-  margin-top: 0; }
-
-.group .text-group:last-child, .input-group .text-group:last-child, .choice-group .text-group:last-child {
-  margin-bottom: 0; }
-
-.choice-group-inline .text-group:last-child {
-  margin-bottom: 10px; }
+.item-group + .text-group {
+  margin-top: -10px; }
 
 /*==============================================================================
   @Form Grids
 ==============================================================================*/
-form .col {
+form .row, form .col {
   margin-bottom: 10px; }
-form .col:last-child {
+form .row:last-child, form .col:last-child {
   margin-bottom: 0; }
 
 @media (min-width: 760px) {

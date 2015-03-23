@@ -161,6 +161,15 @@ label {
   }
 }
 
+input[type="search"],
+input[type="search"].input {
+  -webkit-appearance: none;
+}
+input[type="color"],
+input[type="color"].input {
+  padding: 5px;
+}
+
 /**
  * Other Input
  */
@@ -169,16 +178,6 @@ input[type="range"] {
   display: block;
   margin: 0 0 20px 0;
 }
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
-input[type="color"],
-input[type="color"].input {
-  padding: 5px;
-}
-
 input[type="range"] {
   width: 100%;
 }
@@ -196,39 +195,34 @@ input[type="radio"] {
 }
 
 /**
- * Checkbox & Radio Classes
+ * Checkbox, Radio & Choice Classes
  */
 .checkbox,
 .radio,
+.choice,
 .checkbox-group label,
-.radio-group label {
+.radio-group label,
+.choice-group label {
+  position: relative;
+  cursor: pointer;
   display: block;
   margin-bottom: 20px;
   color: $color;
   font-weight: normal;
 }
 .checkbox.inline,
-.radio.inline {
+.radio.inline,
+.choice.inline {
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 10px;
   
   &:first-child {
     margin-left: 0;
   }
 }
-
-/**
- * Choice
- */
 .choice,
 .choice-group label {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  margin-bottom: 20px;
   padding: 11px 25px 11px 35px;
-  color: $color;
-  font-weight: normal;
   background: rgba($black, 0.05);
   @include border-radius();
   
@@ -242,14 +236,6 @@ input[type="radio"] {
     background-color: rgba($blue, 0.1);
   }
 }
-.choice.inline {
-  display: inline-block;
-  margin-left: 10px;
-  
-  &:first-child {
-    margin-left: 0;
-  }
-}
 
 /**
  * Textarea
@@ -259,12 +245,6 @@ textarea.input {
   height: auto;
   max-width: 100%;
 }
-
-/**
- * Select Dropdowns
- */
-select,
-select.input {}
 
 /**
  * Multiple Select
@@ -310,51 +290,58 @@ fieldset[disabled] {
     margin-bottom: 0;
   }
   
-  // Remove margins from elements
-  .input {
-    margin-bottom: 0;
-  }
-  input[type="file"],
-  input[type="range"] {
-    margin-bottom: 0;
+  // Labels
+  > label,
+  .col > label {
+    margin-bottom: 5px;
   }
   
-  .checkbox,
-  .radio {
-    margin-bottom: 0;
+  > .checkbox,
+  > .radio,
+  > .choice,
+  .col > .checkbox,
+  .col > .radio,
+  .col > .choice {
+    margin-bottom: 10px;
   }
   
-  .choice,
-  .choice-inline {
-    margin-bottom: 0;
+  // Elements
+  > *,
+  .col > * {
+    margin-bottom: 10px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
-  // Remove margins from groups
-  .input-group,
-  .checkbox-group,
-  .radio-group,
-  .choice-group {
-    margin-bottom: 0;
+  // Item Group
+  .item-group {
+    margin-bottom: 20px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
-  // Inline Groups
-  .input-group.inline,
-  .checkbox-group.inline,
-  .radio-group.inline,
-  .choice-group.inline {
-    margin-bottom: -10px;
+  // Inline Item Group
+  > .item-group.inline,
+  .col > .item-group.inline {
+    margin-bottom: 10px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 /**
- * Input Group
+ * Item Group
  */
-.input-group {
+.item-group {
   margin-bottom: 20px;
-
-  .input,
-  input[type="file"],
-  input[type="range"] {
+  
+  > * {
     display: block;
     margin: 0 0 10px 0;
     
@@ -363,86 +350,12 @@ fieldset[disabled] {
     }
   }
 }
-.input-group.inline {
+.item-group.inline {
   margin-bottom: 10px;
   margin-right: -10px;
   font-size: 0;
   
-  .input,
-  input[type="file"],
-  input[type="range"] {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    font-size: $base-font-size;
-    
-    &:last-child {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-/**
- * Checkbox & Radio Groups
- */
-.checkbox-group,
-.radio-group {
-  margin-bottom: 20px;
-  
-  label,
-  .checkbox,
-  .radio {
-    display: block;
-    margin: 0 0 10px 0;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-.checkbox-group.inline,
-.radio-group.inline {
-  margin-bottom: 10px;
-  margin-right: -15px;
-  font-size: 0;
-  
-  label,
-  .checkbox,
-  .radio {
-    display: inline-block;
-    width: auto;
-    margin-right: 15px;
-    font-size: $base-font-size;
-    
-    &:last-child {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-/**
- * Choice Group
- */
-.choice-group {
-  margin-bottom: 20px;
-  
-  label,
-  .choice {
-    display: block;
-    margin: 0 0 10px 0;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-.choice-group.inline {
-  margin-bottom: 10px;
-  margin-right: -10px;
-  font-size: 0;
-  
-  label,
-  .choice {
+  > * {
     display: inline-block;
     width: auto;
     margin-right: 10px;
@@ -458,7 +371,7 @@ fieldset[disabled] {
  * Text Group
  */
 .text-group {
-  margin: 10px 0;
+  margin-bottom: 10px;
   font-size: $base-font-size;
   color: $color-light;
   
@@ -472,22 +385,8 @@ fieldset[disabled] {
 label + .text-group {
   margin-top: 0;
 }
-.choice-group-inline .text-group {
-  margin-right: 10px;
-}
-.group .text-group:first-child,
-.input-group .text-group:first-child,
-.choice-group .text-group:first-child,
-.choice-group-inline .text-group:first-child {
-  margin-top: 0;
-}
-.group .text-group:last-child,
-.input-group .text-group:last-child,
-.choice-group .text-group:last-child {
-  margin-bottom: 0;
-}
-.choice-group-inline .text-group:last-child {
-  margin-bottom: 10px;
+.item-group + .text-group {
+  margin-top: -10px;
 }
 
 /*==============================================================================
@@ -495,9 +394,11 @@ label + .text-group {
 ==============================================================================*/
 
 form {
+  .row,
   .col {
     margin-bottom: 10px;
   }
+  .row:last-child,
   .col:last-child {
     margin-bottom: 0;
   }
