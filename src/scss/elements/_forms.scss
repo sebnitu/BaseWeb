@@ -260,7 +260,7 @@ label.inline {
   line-height: map-get( $forms, 'line-height' );
   color: map-get( $forms, 'color' );
   
-  background: map-fetch( $forms, 'input', 'background' );
+  background-color: map-fetch( $forms, 'input', 'background' );
   border: map-fetch( $forms, 'input', 'border' );
   box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
   @include box-sizing(border-box);
@@ -270,7 +270,7 @@ label.inline {
   
   &:focus {
     outline: none;
-    background: map-fetch( $forms, 'input', 'focus', 'background' );
+    background-color: map-fetch( $forms, 'input', 'focus', 'background' );
     border: map-fetch( $forms, 'input', 'focus', 'border' );
     box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
   }
@@ -344,17 +344,25 @@ input[type="radio"] {
   margin-bottom: map-get( $forms, 'vertical-spacing' );
   color: $color;
   font-weight: normal;
-}
-.#{get-input-class(checkbox)}.inline,
-.#{get-input-class(radio)}.inline,
-.#{get-input-class(choice)}.inline {
-  display: inline-block;
-  margin-left: 10px;
   
-  &:first-child {
-    margin-left: 0;
+  &.inline {
+    display: inline-block;
+    
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)} {
+  
+  &.inline {
+    margin-left: 15px;
+    margin-bottom: 10px;
+    padding: 11px 0;
+  }
+}
+
 .#{get-input-class(choice)} {
   padding: map-fetch( $forms, 'choice', 'padding' );
   background: map-fetch( $forms, 'choice', 'background' );
@@ -369,6 +377,7 @@ input[type="radio"] {
   }
   
   &.inline {
+    margin-left: 10px;
     margin-bottom: map-get( $forms, 'vertical-spacing' );
   }
 }
@@ -389,17 +398,37 @@ input[type="radio"] {
 }
 
 /**
- * Multiple Select
+ * Select
  */
 @if ( get-input-class(input) != none ) {
+  select.input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+  }
   select[multiple].#{get-input-class(input)},
   select[size].#{get-input-class(input)} {
     height: auto;
+    padding: map-fetch( $forms, 'input', 'padding' );
+    background-image: none;
   }
 } @else {
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+  }
   select[multiple],
   select[size] {
     height: auto;
+    padding: map-fetch( $forms, 'input', 'padding' );
+    background-image: none;
   }
 }
 

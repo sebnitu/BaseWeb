@@ -619,7 +619,7 @@ label.inline {
   font-size: 14px;
   line-height: 20px;
   color: #303030;
-  background: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
   -moz-box-sizing: border-box;
@@ -637,7 +637,7 @@ label.inline {
     color: #aaa; }
   .input:focus {
     outline: none;
-    background: white;
+    background-color: white;
     border: 1px solid #2ab0ea;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
   .input.inline {
@@ -686,12 +686,15 @@ input[type="checkbox"], input[type="radio"] {
   margin-bottom: 20px;
   color: #303030;
   font-weight: normal; }
+  .checkbox.inline, .radio.inline, .choice.inline {
+    display: inline-block; }
+    .checkbox.inline:first-child, .radio.inline:first-child, .choice.inline:first-child {
+      margin-left: 0; }
 
-.checkbox.inline, .radio.inline, .choice.inline {
-  display: inline-block;
-  margin-left: 10px; }
-  .checkbox.inline:first-child, .radio.inline:first-child, .choice.inline:first-child {
-    margin-left: 0; }
+.checkbox.inline, .radio.inline {
+  margin-left: 15px;
+  margin-bottom: 10px;
+  padding: 11px 0; }
 
 .choice {
   padding: 11px 25px 11px 35px;
@@ -703,6 +706,7 @@ input[type="checkbox"], input[type="radio"] {
     position: absolute;
     margin: 3px 0 0 -20px; }
   .choice.inline {
+    margin-left: 10px;
     margin-bottom: 20px; }
 
 /**
@@ -713,10 +717,20 @@ textarea.input {
   max-width: 100%; }
 
 /**
- * Multiple Select
+ * Select
  */
+select.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  padding-right: 30px; }
+
 select[multiple].input, select[size].input {
-  height: auto; }
+  height: auto;
+  padding: 10px;
+  background-image: none; }
 
 /**
  * Disabled Fieldsets
@@ -1996,6 +2010,12 @@ html, body {
   vertical-align: middle; }
 .table-custom-alignment tr td, .table-custom-alignment tr th {
   text-align: center; }
+
+/*==============================================================================
+  @Forms Demo
+==============================================================================*/
+.demo form {
+  margin: 10px 0; }
 
 /*==============================================================================
   @Buttons Demo
