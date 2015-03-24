@@ -638,7 +638,7 @@ label.inline {
   .input:focus {
     outline: none;
     background: white;
-    border-color: #2ab0ea;
+    border: 1px solid #2ab0ea;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
   .input.inline {
     display: inline-block;
@@ -696,15 +696,14 @@ input[type="checkbox"], input[type="radio"] {
 .choice {
   padding: 11px 25px 11px 35px;
   background: rgba(0, 0, 0, 0.05);
+  border: none;
+  box-shadow: none;
   border-radius: 3px; }
   .choice input[type="checkbox"], .choice input[type="radio"] {
     position: absolute;
     margin: 3px 0 0 -20px; }
-  .choice.active {
-    background-color: rgba(42, 176, 234, 0.1); }
-
-.choice.inline {
-  margin-bottom: 20px; }
+  .choice.inline {
+    margin-bottom: 20px; }
 
 /**
  * Textarea
@@ -729,57 +728,69 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
   cursor: not-allowed; }
 
 /*==============================================================================
+  @Form Grids
+==============================================================================*/
+form .col {
+  margin-bottom: 10px; }
+form .col:last-child {
+  margin-bottom: 0; }
+
+@media (min-width: 760px) {
+  form .col {
+    margin-bottom: 0; } }
+
+/*==============================================================================
   @Form Groups
 ==============================================================================*/
 /**
  * Form Group
  */
-.group {
+.form-group {
   margin-bottom: 20px; }
-  .group:last-child {
+  .form-group:last-child {
     margin-bottom: 0; }
-  .group .row {
+  .form-group .row {
     margin-bottom: 10px; }
-  .group .row:last-child {
+  .form-group .row:last-child {
     margin-bottom: 0; }
-  .group .group, .group .col > .group, .group .item-group {
+  .form-group .form-group, .form-group .col > .form-group, .form-group .input-group {
     margin-bottom: 20px; }
-    .group .group:last-child, .group .col > .group:last-child, .group .item-group:last-child {
+    .form-group .form-group:last-child, .form-group .col > .form-group:last-child, .form-group .input-group:last-child {
       margin-bottom: 0; }
-  .group > .item-group.inline, .group .col > .item-group.inline {
+  .form-group > .input-group.inline, .form-group .col > .input-group.inline {
     margin-bottom: 0; }
-    .group > .item-group.inline:last-child, .group .col > .item-group.inline:last-child {
+    .form-group > .input-group.inline:last-child, .form-group .col > .input-group.inline:last-child {
       margin-bottom: -10px; }
-  .group > label, .group .col > label {
+  .form-group > label, .form-group .col > label {
     margin-bottom: 5px; }
-  .group > .checkbox, .group > .radio, .group > .choice, .group .col > .checkbox, .group .col > .radio, .group .col > .choice {
+  .form-group > .checkbox, .form-group > .radio, .form-group > .choice, .form-group .col > .checkbox, .form-group .col > .radio, .form-group .col > .choice {
     margin-bottom: 10px; }
-  .group > *, .group .col > * {
+  .form-group > *, .form-group .col > * {
     margin-bottom: 10px; }
-    .group > *:last-child, .group .col > *:last-child {
+    .form-group > *:last-child, .form-group .col > *:last-child {
       margin-bottom: 0; }
 
 /**
- * Item Group
+ * Input Group
  */
-.item-group {
+.input-group {
   margin-bottom: 20px; }
-  .item-group > * {
+  .input-group > * {
     display: block;
     margin-bottom: 10px; }
-    .item-group > *:last-child {
+    .input-group > *:last-child {
       margin-bottom: 0; }
 
-.item-group.inline {
+.input-group.inline {
   margin-bottom: 10px;
   margin-right: -10px;
   font-size: 0; }
-  .item-group.inline > * {
+  .input-group.inline > * {
     display: inline-block;
     width: auto;
     margin-right: 10px;
     font-size: 14px; }
-    .item-group.inline > *:last-child {
+    .input-group.inline > *:last-child {
       margin-bottom: 10px; }
 
 /**
@@ -797,23 +808,11 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
 label + .text-group {
   margin-top: 0; }
 
-.item-group + .text-group {
+.input-group + .text-group {
   margin-top: -10px; }
 
-.item-group.inline + .text-group {
+.input-group.inline + .text-group {
   margin-top: 0; }
-
-/*==============================================================================
-  @Form Grids
-==============================================================================*/
-form .col {
-  margin-bottom: 10px; }
-form .col:last-child {
-  margin-bottom: 0; }
-
-@media (min-width: 760px) {
-  form .col {
-    margin-bottom: 0; } }
 
 /*==============================================================================
   @Validation States
@@ -844,17 +843,17 @@ form .col:last-child {
   border-color: #dab10d; }
 
 .checkbox.warning, .radio.warning, .text-group.warning {
-  color: #dab10d; }
+  color: #c29d0b; }
 
 .choice.warning {
-  background-color: rgba(218, 177, 13, 0.1); }
+  background-color: rgba(218, 177, 13, 0.15); }
 
 .warning .input {
   border-color: #dab10d; }
 .warning .checkbox, .warning .radio, .warning .text-group {
-  color: #dab10d; }
+  color: #c29d0b; }
 .warning .choice {
-  background-color: rgba(218, 177, 13, 0.1); }
+  background-color: rgba(218, 177, 13, 0.15); }
 
 /**
  * Error

@@ -6,50 +6,78 @@
 // Define all the settings for form base elements, mixins and classes.
 $forms: (
   'vertical-spacing' : 20px,
+  'font-family' : inherit,
   'font-size' : $base-font-size,
   'line-height' : $base-line-height,
   'color' : $color,
   'color-label' : $color-dark,
   'color-placeholder' : #aaa,
+  'border-radius' : $border-radius,
   
-  'groups' : (
-    'class-form-group'  : form-group,
-    'class-input-group' : item-group,
-    'class-text-group'  : text-group,
+  'classes' : (
+    'inputs' : (
+      'class-input'    : input,
+      'class-checkbox' : checkbox,
+      'class-radio'    : radio,
+      'class-choice'   : choice,
+    ),
+    'groups' : (
+      'class-form-group'  : form-group,
+      'class-input-group' : input-group,
+      'class-text-group'  : text-group,
+    ),
+    'validation' : (
+      'class-success' : success,
+      'class-warning' : warning,
+      'class-error'   : error,
+      'class-active'  : active,
+    ),
   ),
-  'inputs' : (
-    'class-input'    : input,
-    'class-checkbox' : checkbox,
-    'class-radio'    : radio,
-    'class-choice'   : choice,
+  
+  'input' : (
+    'padding' : 10px,
+    'background' : rgba($white, 0.5),
+    'border' : 1px solid rgba($black, 0.15),
+    'box-shadow' : (0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)),
+    
+    'focus' : (
+      'background': rgba($white, 1),
+      'border': 1px solid rgba($blue, 1),
+      'box-shadow': (0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)),
+    )
   ),
-  'validation' : (
-    'class-success' : success,
-    'class-warning' : warning,
-    'class-error'   : error,
-    'class-active'  : active,
-  ),
+  
+  'choice' : (
+    'padding' : 11px 25px 11px 35px,
+    'background' : rgba($black, 0.05),
+    'border' : none,
+    'box-shadow' : none,
+  )
 ) !default;
-
-// map-get($forms, 'vertical-spacing')
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Functions
 ////////////////////////////////////////////////////////////////////////////////
 
-@function get-group-class($group-type, $options: ()) {
-  $o: map-merge( $forms, $options);
-  @return map-get(map-get( $o, 'groups' ), 'class-' + $group-type);
-}
-
+// Get Input Class
+// Returns the input class from $forms map based on the $input-type provided.
 @function get-input-class($input-type, $options: ()) {
   $o: map-merge( $forms, $options);
-  @return map-get(map-get( $o, 'inputs' ), 'class-' + $input-type);
+  @return map-fetch($o, 'classes', 'inputs', 'class-' + $input-type);
 }
 
+// Get Group Class
+// Returns the group class from $forms map based on the $group-type provided.
+@function get-group-class($group-type, $options: ()) {
+  $o: map-merge( $forms, $options);
+  @return map-fetch($o, 'classes', 'groups', 'class-' + $group-type);
+}
+
+// Get Validation Class
+// Returns the validation class from $forms map based on the $val-type provided.
 @function get-val-class($val-type, $options: ()) {
   $o: map-merge( $forms, $options);
-  @return map-get(map-get( $o, 'validation' ), 'class-' + $val-type);
+  @return map-fetch($o, 'classes', 'validation', 'class-' + $val-type);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -76,9 +104,8 @@ $forms: (
 // select
 @mixin select-input($options: ()) {
   $o: map-merge( $forms, $options);
-  $o-input: map-get( $o, 'inputs' );
   
-  @if ( map-get($o-input, 'class-input') == none ) {
+  @if ( map-fetch($o, 'classes', 'inputs', 'class-input') == none ) {
     input[type="text"],
     input[type="password"],
     input[type="date"],
@@ -96,25 +123,30 @@ $forms: (
       @content;
     }
   } @else {
-    .#{map-get($o-input, 'class-input')} {
+    .#{map-fetch($o, 'classes', 'inputs', 'class-input')} {
       @content;
     }
   }
 }
 
 // Placeholder
-@mixin placeholder($color: #aaa) {
+@mixin placeholder($color: default, $options: ()) {
+  $o: map-merge( $forms, $options);
+  @if ($color != default) {
+    $o: map-merge($o, ('color-placeholder': $color));
+  }
+  
   &::-webkit-input-placeholder {
-     color: $color;
+     color: map-get($o, 'color-placeholder');
   }
   &:-moz-placeholder {
-     color: $color;  
+     color: map-get($o, 'color-placeholder');
   }
   &::-moz-placeholder {
-     color: $color;  
+     color: map-get($o, 'color-placeholder');
   }
   &:-ms-input-placeholder {  
-     color: $color;  
+     color: map-get($o, 'color-placeholder');
   }
 }
 
@@ -126,14 +158,14 @@ $forms: (
  * Form Structure Elements
  */
 form {
-  margin: 30px 0;
+  margin: (map-get( $forms, 'vertical-spacing' ) * 1.5) 0;
 }
 
 /**
  * Fieldset
  */
 fieldset {
-  margin: 20px 0;
+  margin: map-get( $forms, 'vertical-spacing' ) 0;
   padding: 0;
   border: 0 none;
   
@@ -156,7 +188,7 @@ legend {
   font-size: 18px;
   line-height: 26px;
   font-weight: bold;
-  color: $color-dark;
+  color: map-get( $forms, 'color-label' );
   border: 0 none;
 }
 
@@ -167,11 +199,11 @@ label {
   display: inline-block;
   margin: 0 0 5px 0;
   font-weight: 600;
-  color: $color-dark;
+  color: map-get( $forms, 'color-label' );
   
   &.sub {
     font-weight: normal;
-    color: $color;
+    color: map-get( $forms, 'color' );
   }
 }
 label.block {
@@ -195,29 +227,29 @@ label.inline {
 @include select-input() {
   display: block;
   width: 100%;
-  height: ($base-line-height + 20px + 2);
+  height: (map-get( $forms, 'line-height' ) + 20px + 2);
   
-  margin: 0 0 20px 0;
-  padding: 10px;
+  margin: 0 0 map-get( $forms, 'vertical-spacing' ) 0;
+  padding: map-fetch( $forms, 'input', 'padding' );
   
-  font-family: inherit;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
-  color: $color;
+  font-family: map-get( $forms, 'font-family' );
+  font-size: map-get( $forms, 'font-size' );
+  line-height: map-get( $forms, 'line-height' );
+  color: map-get( $forms, 'color' );
   
-  background: rgba($white, 0.5);
-  border: 1px solid rgba($black, 0.15);
-  box-shadow: 0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05);
+  background: map-fetch( $forms, 'input', 'background' );
+  border: map-fetch( $forms, 'input', 'border' );
+  box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
   @include box-sizing(border-box);
-  @include border-radius();
+  @include border-radius(map-get( $forms, 'border-radius' ));
   @include placeholder();
   @include transition(border-color 0.25s, background-color 0.25s, box-shadow 0.25s);
   
   &:focus {
     outline: none;
-    background: rgba($white, 1);
-    border-color: rgba($blue, 1);
-    box-shadow: 0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0);
+    background: map-fetch( $forms, 'input', 'focus', 'background' );
+    border: map-fetch( $forms, 'input', 'focus', 'border' );
+    box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
   }
   
   &.inline {
@@ -259,7 +291,7 @@ input[type="search"] {
 input[type="file"],
 input[type="range"] {
   display: block;
-  margin: 0 0 20px 0;
+  margin: 0 0 map-get( $forms, 'vertical-spacing' ) 0;
 }
 input[type="range"] {
   width: 100%;
@@ -286,7 +318,7 @@ input[type="radio"] {
   position: relative;
   cursor: pointer;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: map-get( $forms, 'vertical-spacing' );
   color: $color;
   font-weight: normal;
 }
@@ -301,9 +333,11 @@ input[type="radio"] {
   }
 }
 .#{get-input-class(choice)} {
-  padding: 11px 25px 11px 35px;
-  background: rgba($black, 0.05);
-  @include border-radius();
+  padding: map-fetch( $forms, 'choice', 'padding' );
+  background: map-fetch( $forms, 'choice', 'background' );
+  border: map-fetch( $forms, 'choice', 'border' );
+  box-shadow: map-fetch( $forms, 'choice', 'box-shadow' );
+  @include border-radius(map-get( $forms, 'border-radius' ));
   
   input[type="checkbox"],
   input[type="radio"] {
@@ -311,12 +345,9 @@ input[type="radio"] {
     margin: 3px 0 0 -20px;
   }
   
-  &.active {
-    background-color: rgba($blue, 0.1);
+  &.inline {
+    margin-bottom: map-get( $forms, 'vertical-spacing' );
   }
-}
-.#{get-input-class(choice)}.inline {
-  margin-bottom: 20px;
 }
 
 /**
@@ -371,14 +402,41 @@ fieldset[disabled] {
 }
 
 /*==============================================================================
+  @Form Grids
+==============================================================================*/
+
+form {
+  .col {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+  .col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@include media-min('tablet') {
+  form .col {
+    margin-bottom: 0;
+  }
+}
+
+// Check if we should output validation classes
+@if ( 
+  get-group-class(form-group) != none or
+  get-group-class(input-group) != none or
+  get-group-class(text-group) != none 
+) {
+/*==============================================================================
   @Form Groups
 ==============================================================================*/
 
+@if (get-group-class(form-group) != none) {
+  
 /**
  * Form Group
  */
-.group {
-  margin-bottom: 20px;
+.#{get-group-class(form-group)} {
+  margin-bottom: map-get( $forms, 'vertical-spacing' );
   
   &:last-child {
     margin-bottom: 0;
@@ -386,17 +444,17 @@ fieldset[disabled] {
   
   // Grid
   .row {
-    margin-bottom: 10px;
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   }
   .row:last-child {
     margin-bottom: 0;
   }
   
   // Groups
-  .group,
-  .col > .group,
-  .item-group {
-    margin-bottom: 20px;
+  .#{get-group-class(form-group)},
+  .col > .#{get-group-class(form-group)},
+  .#{get-group-class(input-group)} {
+    margin-bottom: map-get( $forms, 'vertical-spacing' );
     
     &:last-child {
       margin-bottom: 0;
@@ -404,12 +462,12 @@ fieldset[disabled] {
   }
   
   // Inline Item Group
-  > .item-group.inline,
-  .col > .item-group.inline {
+  > .#{get-group-class(input-group)}.inline,
+  .col > .#{get-group-class(input-group)}.inline {
     margin-bottom: 0;
     
     &:last-child {
-      margin-bottom: -10px;
+      margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
     }
   }
   
@@ -418,19 +476,19 @@ fieldset[disabled] {
   .col > label {
     margin-bottom: 5px;
   }
-  > .checkbox,
-  > .radio,
-  > .choice,
-  .col > .checkbox,
-  .col > .radio,
-  .col > .choice {
-    margin-bottom: 10px;
+  > .#{get-input-class(checkbox)},
+  > .#{get-input-class(radio)},
+  > .#{get-input-class(choice)},
+  .col > .#{get-input-class(checkbox)},
+  .col > .#{get-input-class(radio)},
+  .col > .#{get-input-class(choice)} {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   }
   
   // Elements
   > *,
   .col > * {
-    margin-bottom: 10px;
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
     
     &:last-child {
       margin-bottom: 0;
@@ -438,23 +496,27 @@ fieldset[disabled] {
   }
 }
 
+} // endif Form Group
+
+@if (get-group-class(input-group) != none) {
+
 /**
- * Item Group
+ * Input Group
  */
-.item-group {
-  margin-bottom: 20px;
+.#{get-group-class(input-group)} {
+  margin-bottom: map-get( $forms, 'vertical-spacing' );
   
   > * {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
     
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
-.item-group.inline {
-  margin-bottom: 10px;
+.#{get-group-class(input-group)}.inline {
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   margin-right: -10px;
   font-size: 0;
   
@@ -470,50 +532,40 @@ fieldset[disabled] {
   }
 }
 
+} // endif Input Group
+
+@if (get-group-class(text-group) != none) {
+
 /**
  * Text Group
  */
-.text-group {
-  margin-bottom: 10px;
+.#{get-group-class(text-group)} {
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   font-size: $base-font-size;
   color: $color-light;
   
   p {
-    margin: 0 0 10px 0;
+    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
     &:last-child {
       margin-bottom: 0;
     }
   }
 }
-label + .text-group {
+label + .#{get-group-class(text-group)} {
   margin-top: 0;
 }
-.item-group + .text-group {
-  margin-top: -10px;
+.#{get-group-class(input-group)} + .#{get-group-class(text-group)} {
+  margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
 }
-.item-group.inline + .text-group {
+.#{get-group-class(input-group)}.inline + .#{get-group-class(text-group)} {
   margin-top: 0;
 }
 
-/*==============================================================================
-  @Form Grids
-==============================================================================*/
+} // endif Text Group
 
-form {
-  .col {
-    margin-bottom: 10px;
-  }
-  .col:last-child {
-    margin-bottom: 0;
-  }
-}
+} // endif Form Groups
 
-@include media-min('tablet') {
-  form .col {
-    margin-bottom: 0;
-  }
-}
-
+// Check if we should output validation classes
 @if ( 
   get-val-class(success) != none or
   get-val-class(warning) != none or
@@ -525,159 +577,167 @@ form {
 ==============================================================================*/
 
 @if ( get-val-class(success) != none ) {
+  
 /**
  * Success
  */
-  // Success class applied to elements
+// Success class applied to elements
+@include select-input() {
+  &.#{get-val-class(success)} {
+    border-color: $green;
+  }
+}
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)},
+.#{get-group-class(text-group)} {
+  &.#{get-val-class(success)} {
+    color: $green-darker;
+  }
+}
+.#{get-input-class(choice)} {
+  &.#{get-val-class(success)} {
+    background-color: rgba($green, 0.1);
+  }
+}
+
+// Success class applied to wrapper
+.#{get-val-class(success)} {
   @include select-input() {
-    &.#{get-val-class(success)} {
-      border-color: $green;
-    }
+    border-color: $green;
   }
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
   .#{get-group-class(text-group)} {
-    &.#{get-val-class(success)} {
-      color: $green-darker;
-    }
+    color: $green-darker;
   }
   .#{get-input-class(choice)} {
-    &.#{get-val-class(success)} {
-      background-color: rgba($green, 0.1);
-    }
-  }
-  
-  // Success class applied to wrapper
-  .#{get-val-class(success)} {
-    @include select-input() {
-      border-color: $green;
-    }
-    .#{get-input-class(checkbox)},
-    .#{get-input-class(radio)},
-    .#{get-group-class(text-group)} {
-      color: $green-darker;
-    }
-    .#{get-input-class(choice)} {
-      background-color: rgba($green, 0.1);
-    }
+    background-color: rgba($green, 0.1);
   }
 }
+  
+} // endif Success
 
 @if ( get-val-class(warning) != none ) {
+  
 /**
  * Warning
  */
-  // Warning class applied to elements
+// Warning class applied to elements
+@include select-input() {
+  &.#{get-val-class(warning)} {
+    border-color: $yellow-dark;
+  }
+}
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)},
+.#{get-group-class(text-group)} {
+  &.#{get-val-class(warning)} {
+    color: $yellow-darker;
+  }
+}
+.#{get-input-class(choice)} {
+  &.#{get-val-class(warning)} {
+    background-color: rgba($yellow-dark, 0.15);
+  }
+}
+
+// Warning class applied to wrapper
+.#{get-val-class(warning)} {
   @include select-input() {
-    &.#{get-val-class(warning)} {
-      border-color: $yellow-dark;
-    }
+    border-color: $yellow-dark;
   }
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
   .#{get-group-class(text-group)} {
-    &.#{get-val-class(warning)} {
-      color: $yellow-dark;
-    }
+    color: $yellow-darker;
   }
   .#{get-input-class(choice)} {
-    &.#{get-val-class(warning)} {
-      background-color: rgba($yellow-dark, 0.1);
-    }
-  }
-  
-  // Warning class applied to wrapper
-  .#{get-val-class(warning)} {
-    @include select-input() {
-      border-color: $yellow-dark;
-    }
-    .#{get-input-class(checkbox)},
-    .#{get-input-class(radio)},
-    .#{get-group-class(text-group)} {
-      color: $yellow-dark;
-    }
-    .#{get-input-class(choice)} {
-      background-color: rgba($yellow-dark, 0.1);
-    }
+    background-color: rgba($yellow-dark, 0.15);
   }
 }
+  
+} // endif Warning
 
 @if ( get-val-class(error) != none ) {
+  
 /**
  * Error
  */
-  // Error class applied to elements
+// Error class applied to elements
+@include select-input() {
+  &.#{get-val-class(error)} {
+    border-color: $red;
+  }
+}
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)},
+.#{get-group-class(text-group)} {
+  &.#{get-val-class(error)} {
+    color: $red-darker;
+  }
+}
+.#{get-input-class(choice)} {
+  &.#{get-val-class(error)} {
+    background-color: rgba($red, 0.1);
+  }
+}
+
+// Error class applied to wrapper
+.#{get-val-class(error)} {
   @include select-input() {
-    &.#{get-val-class(error)} {
-      border-color: $red;
-    }
+    border-color: $red;
   }
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
   .#{get-group-class(text-group)} {
-    &.#{get-val-class(error)} {
-      color: $red-darker;
-    }
+    color: $red-darker;
   }
   .#{get-input-class(choice)} {
-    &.#{get-val-class(error)} {
-      background-color: rgba($red, 0.1);
-    }
-  }
-  
-  // Error class applied to wrapper
-  .#{get-val-class(error)} {
-    @include select-input() {
-      border-color: $red;
-    }
-    .#{get-input-class(checkbox)},
-    .#{get-input-class(radio)},
-    .#{get-group-class(text-group)} {
-      color: $red-darker;
-    }
-    .#{get-input-class(choice)} {
-      background-color: rgba($red, 0.1);
-    }
+    background-color: rgba($red, 0.1);
   }
 }
+  
+} // endif Error
 
 @if ( get-val-class(active) != none ) {
+  
 /**
  * Active
  */
-  // Active class applied to elements
+// Active class applied to elements
+@include select-input() {
+  &.#{get-val-class(active)} {
+    border-color: $blue;
+  }
+}
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)},
+.#{get-group-class(text-group)} {
+  &.#{get-val-class(active)} {
+    color: $blue-darker;
+  }
+}
+.#{get-input-class(choice)} {
+  &.#{get-val-class(active)} {
+    background-color: rgba($blue, 0.1);
+  }
+}
+
+// Active class applied to wrapper
+.#{get-val-class(active)} {
   @include select-input() {
-    &.#{get-val-class(active)} {
-      border-color: $blue;
-    }
+    border-color: $blue;
   }
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
   .#{get-group-class(text-group)} {
-    &.#{get-val-class(active)} {
-      color: $blue-darker;
-    }
+    color: $blue-darker;
   }
   .#{get-input-class(choice)} {
-    &.#{get-val-class(active)} {
-      background-color: rgba($blue, 0.1);
-    }
-  }
-  
-  // Active class applied to wrapper
-  .#{get-val-class(active)} {
-    @include select-input() {
-      border-color: $blue;
-    }
-    .#{get-input-class(checkbox)},
-    .#{get-input-class(radio)},
-    .#{get-group-class(text-group)} {
-      color: $blue-darker;
-    }
-    .#{get-input-class(choice)} {
-      background-color: rgba($blue, 0.1);
-    }
+    background-color: rgba($blue, 0.1);
   }
 }
+  
+} // endif Active
 
-} // endif
+} // endif Validation States
