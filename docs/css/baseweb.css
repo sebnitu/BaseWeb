@@ -594,6 +594,18 @@ label {
     font-weight: normal;
     color: #303030; }
 
+label.block {
+  display: block;
+  margin: 0 0 5px 0;
+  padding-top: 11px; }
+
+label.inline {
+  display: inline-block;
+  margin: 0 0 5px 10px;
+  padding-top: 11px; }
+  label.inline:first-child {
+    margin-left: 0; }
+
 /**
  * Input
  */
@@ -628,22 +640,22 @@ label {
     background: white;
     border-color: #2ab0ea;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
+  .input.inline {
+    display: inline-block;
+    width: auto;
+    margin-left: 10px; }
+    .input.inline:first-child {
+      margin-left: 0; }
   .input[disabled] {
     cursor: not-allowed;
     background: rgba(0, 0, 0, 0.05); }
   .input[readonly] {
     background: rgba(0, 0, 0, 0.05); }
 
-.input.inline {
-  display: inline-block;
-  margin-left: 15px; }
-  .input.inline:first-child {
-    margin-left: 0; }
-
-input[type="search"], input[type="search"].input {
+input[type="search"] {
   -webkit-appearance: none; }
 
-input[type="color"], input[type="color"].input {
+input[type="color"].input {
   padding: 5px; }
 
 /**
@@ -667,7 +679,7 @@ input[type="checkbox"], input[type="radio"] {
 /**
  * Checkbox, Radio & Choice Classes
  */
-.checkbox, .radio, .choice, .checkbox-group label, .radio-group label, .choice-group label {
+.checkbox, .radio, .choice {
   position: relative;
   cursor: pointer;
   display: block;
@@ -681,27 +693,30 @@ input[type="checkbox"], input[type="radio"] {
   .checkbox.inline:first-child, .radio.inline:first-child, .choice.inline:first-child {
     margin-left: 0; }
 
-.choice, .choice-group label {
+.choice {
   padding: 11px 25px 11px 35px;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 3px; }
-  .choice input[type="checkbox"], .choice input[type="radio"], .choice-group label input[type="checkbox"], .choice-group label input[type="radio"] {
+  .choice input[type="checkbox"], .choice input[type="radio"] {
     position: absolute;
     margin: 3px 0 0 -20px; }
-  .choice.active, .choice-group label.active {
+  .choice.active {
     background-color: rgba(42, 176, 234, 0.1); }
+
+.choice.inline {
+  margin-bottom: 20px; }
 
 /**
  * Textarea
  */
-textarea, textarea.input {
+textarea.input {
   height: auto;
   max-width: 100%; }
 
 /**
  * Multiple Select
  */
-select[multiple], select[size], select[multiple].input, select[size].input {
+select[multiple].input, select[size].input {
   height: auto; }
 
 /**
@@ -710,7 +725,7 @@ select[multiple], select[size], select[multiple].input, select[size].input {
 fieldset[disabled] .input {
   cursor: not-allowed;
   background: rgba(0, 0, 0, 0.05); }
-fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .choice, fieldset[disabled] .choice-group label {
+fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
   cursor: not-allowed; }
 
 /*==============================================================================
@@ -723,6 +738,18 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
   margin-bottom: 20px; }
   .group:last-child {
     margin-bottom: 0; }
+  .group .row {
+    margin-bottom: 10px; }
+  .group .row:last-child {
+    margin-bottom: 0; }
+  .group .group, .group .col > .group, .group .item-group {
+    margin-bottom: 20px; }
+    .group .group:last-child, .group .col > .group:last-child, .group .item-group:last-child {
+      margin-bottom: 0; }
+  .group > .item-group.inline, .group .col > .item-group.inline {
+    margin-bottom: 0; }
+    .group > .item-group.inline:last-child, .group .col > .item-group.inline:last-child {
+      margin-bottom: -10px; }
   .group > label, .group .col > label {
     margin-bottom: 5px; }
   .group > .checkbox, .group > .radio, .group > .choice, .group .col > .checkbox, .group .col > .radio, .group .col > .choice {
@@ -730,14 +757,6 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
   .group > *, .group .col > * {
     margin-bottom: 10px; }
     .group > *:last-child, .group .col > *:last-child {
-      margin-bottom: 0; }
-  .group .item-group {
-    margin-bottom: 20px; }
-    .group .item-group:last-child {
-      margin-bottom: 0; }
-  .group > .item-group.inline, .group .col > .item-group.inline {
-    margin-bottom: 10px; }
-    .group > .item-group.inline:last-child, .group .col > .item-group.inline:last-child {
       margin-bottom: 0; }
 
 /**
@@ -747,7 +766,7 @@ fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], f
   margin-bottom: 20px; }
   .item-group > * {
     display: block;
-    margin: 0 0 10px 0; }
+    margin-bottom: 10px; }
     .item-group > *:last-child {
       margin-bottom: 0; }
 
@@ -781,12 +800,15 @@ label + .text-group {
 .item-group + .text-group {
   margin-top: -10px; }
 
+.item-group.inline + .text-group {
+  margin-top: 0; }
+
 /*==============================================================================
   @Form Grids
 ==============================================================================*/
-form .row, form .col {
+form .col {
   margin-bottom: 10px; }
-form .row:last-child, form .col:last-child {
+form .col:last-child {
   margin-bottom: 0; }
 
 @media (min-width: 760px) {
@@ -794,73 +816,83 @@ form .row:last-child, form .col:last-child {
     margin-bottom: 0; } }
 
 /*==============================================================================
-  @Validation Status
+  @Validation States
 ==============================================================================*/
+/**
+ * Success
+ */
 .input.success {
   border-color: #84b72d; }
-.input.warning {
-  border-color: #dab10d; }
-.input.error {
-  border-color: #de5151; }
-.input.active {
-  border-color: #2ab0ea; }
 
-.choice.success, .choice.warning, .choice.error, .choice.active, .choice-group label.success, .choice-group label.warning, .choice-group label.error, .choice-group label.active {
-  color: #303030; }
-.choice.success, .choice-group label.success {
+.checkbox.success, .radio.success, .text-group.success {
+  color: #668e23; }
+
+.choice.success {
   background-color: rgba(132, 183, 45, 0.1); }
-.choice.warning, .choice-group label.warning {
-  background-color: rgba(194, 157, 11, 0.1); }
-.choice.error, .choice-group label.error {
-  background-color: rgba(222, 81, 81, 0.1); }
-.choice.active, .choice-group label.active {
-  background-color: rgba(42, 176, 234, 0.1); }
-
-.checkbox.success label, .radio.success label {
-  color: #668e23; }
-.checkbox.warning label, .radio.warning label {
-  color: #c29d0b; }
-.checkbox.error label, .radio.error label {
-  color: #d42828; }
-.checkbox.active label, .radio.active label {
-  color: #1495cd; }
-
-label.checkbox.success, label.radio.success, .text-group.success {
-  color: #668e23; }
-label.checkbox.warning, label.radio.warning, .text-group.warning {
-  color: #c29d0b; }
-label.checkbox.error, label.radio.error, .text-group.error {
-  color: #d42828; }
-label.checkbox.active, label.radio.active, .text-group.active {
-  color: #1495cd; }
 
 .success .input {
   border-color: #84b72d; }
-.success .choice, .success .choice-group label {
-  background-color: rgba(132, 183, 45, 0.1); }
-.success .checkbox label, .success .radio label, .success label.checkbox, .success label.radio, .success .text-group {
+.success .checkbox, .success .radio, .success .text-group {
   color: #668e23; }
+.success .choice {
+  background-color: rgba(132, 183, 45, 0.1); }
+
+/**
+ * Warning
+ */
+.input.warning {
+  border-color: #dab10d; }
+
+.checkbox.warning, .radio.warning, .text-group.warning {
+  color: #dab10d; }
+
+.choice.warning {
+  background-color: rgba(218, 177, 13, 0.1); }
 
 .warning .input {
   border-color: #dab10d; }
-.warning .choice, .warning .choice-group label {
-  background-color: rgba(194, 157, 11, 0.1); }
-.warning .checkbox label, .warning .radio label, .warning label.checkbox, .warning label.radio, .warning .text-group {
-  color: #c29d0b; }
+.warning .checkbox, .warning .radio, .warning .text-group {
+  color: #dab10d; }
+.warning .choice {
+  background-color: rgba(218, 177, 13, 0.1); }
+
+/**
+ * Error
+ */
+.input.error {
+  border-color: #de5151; }
+
+.checkbox.error, .radio.error, .text-group.error {
+  color: #d42828; }
+
+.choice.error {
+  background-color: rgba(222, 81, 81, 0.1); }
 
 .error .input {
   border-color: #de5151; }
-.error .choice, .error .choice-group label {
-  background-color: rgba(222, 81, 81, 0.1); }
-.error .checkbox label, .error .radio label, .error label.checkbox, .error label.radio, .error .text-group {
+.error .checkbox, .error .radio, .error .text-group {
   color: #d42828; }
+.error .choice {
+  background-color: rgba(222, 81, 81, 0.1); }
+
+/**
+ * Active
+ */
+.input.active {
+  border-color: #2ab0ea; }
+
+.checkbox.active, .radio.active, .text-group.active {
+  color: #1495cd; }
+
+.choice.active {
+  background-color: rgba(42, 176, 234, 0.1); }
 
 .active .input {
   border-color: #2ab0ea; }
-.active .choice, .active .choice-group label {
-  background-color: rgba(42, 176, 234, 0.1); }
-.active .checkbox label, .active .radio label, .active label.checkbox, .active label.radio, .active .text-group {
+.active .checkbox, .active .radio, .active .text-group {
   color: #1495cd; }
+.active .choice {
+  background-color: rgba(42, 176, 234, 0.1); }
 
 /*==============================================================================
   @Buttons
