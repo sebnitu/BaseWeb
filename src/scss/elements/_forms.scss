@@ -61,6 +61,11 @@ $forms: (
 
 // Get Input Class
 // Returns the input class from $forms map based on the $input-type provided.
+// @param $input-type
+//   @type input class key (without the `class-` prefix)
+// @param $options
+//   @type map
+//   @default $forms map
 @function get-input-class($input-type, $options: ()) {
   $o: map-merge( $forms, $options);
   @return map-fetch($o, 'classes', 'inputs', 'class-' + $input-type);
@@ -68,6 +73,11 @@ $forms: (
 
 // Get Group Class
 // Returns the group class from $forms map based on the $group-type provided.
+// @param $group-type
+//   @type group class key (without the `class-` prefix)
+// @param $options
+//   @type map
+//   @default $forms map
 @function get-group-class($group-type, $options: ()) {
   $o: map-merge( $forms, $options);
   @return map-fetch($o, 'classes', 'groups', 'class-' + $group-type);
@@ -75,6 +85,11 @@ $forms: (
 
 // Get Validation Class
 // Returns the validation class from $forms map based on the $val-type provided.
+// @param $val-type
+//   @type validation class key (without the `class-` prefix)
+// @param $options
+//   @type map
+//   @default $forms map
 @function get-val-class($val-type, $options: ()) {
   $o: map-merge( $forms, $options);
   @return map-fetch($o, 'classes', 'validation', 'class-' + $val-type);
@@ -102,6 +117,10 @@ $forms: (
 // input[type="color"]
 // textarea
 // select
+// ---
+// @param $options
+//   @type map
+//   @default $forms map
 @mixin select-input($options: ()) {
   $o: map-merge( $forms, $options);
   
@@ -130,6 +149,10 @@ $forms: (
 }
 
 // Placeholder
+// Sets the placeholder text color for input fields that use the placeholder attribute.
+// @param $options
+//   @type map
+//   @default $forms map
 @mixin placeholder($color: default, $options: ()) {
   $o: map-merge( $forms, $options);
   @if ($color != default) {
