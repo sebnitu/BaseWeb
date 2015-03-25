@@ -15,28 +15,6 @@ $forms: (
   'color-select-arrow' : $color-dark,
   'border-radius' : $border-radius,
   
-  'classes' : (
-    'inputs' : (
-      'class-input'    : 'input',
-      'class-checkbox' : 'checkbox',
-      'class-radio'    : 'radio',
-      'class-choice'   : 'choice',
-      'class-note'     : 'note',
-    ),
-    'groups' : (
-      'class-form-group'   : 'form-group',
-      'class-input-group'  : 'input-group',
-      'class-action-group' : 'action-group',
-      'class-inline-group' : 'inline-group',
-    ),
-    'validation' : (
-      'class-success' : 'success',
-      'class-warning' : 'warning',
-      'class-error'   : 'error',
-      'class-active'  : 'active',
-    ),
-  ),
-  
   'input' : (
     'padding' : 10px,
     'background' : rgba($white, 0.5),
@@ -57,46 +35,6 @@ $forms: (
     'box-shadow' : none,
   )
 ) !default;
-
-////////////////////////////////////////////////////////////////////////////////
-// @Form Functions
-////////////////////////////////////////////////////////////////////////////////
-
-// Get Input Class
-// Returns the input class from $forms map based on the $input-type provided.
-// @param $input-type
-//   @type input class key (without the `class-` prefix)
-// @param $options
-//   @type map
-//   @default $forms map
-@function get-input-class($input-type, $options: ()) {
-  $o: map-merge( $forms, $options);
-  @return map-fetch($o, 'classes', 'inputs', 'class-' + $input-type);
-}
-
-// Get Group Class
-// Returns the group class from $forms map based on the $group-type provided.
-// @param $group-type
-//   @type group class key (without the `class-` prefix)
-// @param $options
-//   @type map
-//   @default $forms map
-@function get-group-class($group-type, $options: ()) {
-  $o: map-merge( $forms, $options);
-  @return map-fetch($o, 'classes', 'groups', 'class-' + $group-type);
-}
-
-// Get Validation Class
-// Returns the validation class from $forms map based on the $val-type provided.
-// @param $val-type
-//   @type validation class key (without the `class-` prefix)
-// @param $options
-//   @type map
-//   @default $forms map
-@function get-val-class($val-type, $options: ()) {
-  $o: map-merge( $forms, $options);
-  @return map-fetch($o, 'classes', 'validation', 'class-' + $val-type);
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Mixins
@@ -272,10 +210,10 @@ label.inline {
 /**
  * Base Inputs
  */
-.#{get-input-class('input')},
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('choice')} {
+.input,
+.checkbox,
+.radio,
+.choice {
   position: relative;
   display: block;
   width: 100%;
@@ -289,7 +227,7 @@ label.inline {
 /**
  * Text Inputs
  */
-.#{get-input-class('input')} {
+.input {
   height: (map-get( $forms, 'line-height' ) + 20px + 2);
   padding: map-fetch( $forms, 'input', 'padding' );
   font-family: map-get( $forms, 'font-family' );
@@ -323,14 +261,14 @@ label.inline {
 /**
  * Checkbox, Radio & Choice Classes
  */
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('choice')} {
+.checkbox,
+.radio,
+.choice {
   cursor: pointer;
   color: $color;
   font-weight: normal;
 }
-.#{get-input-class('choice')} {
+.choice {
   padding: map-fetch( $forms, 'choice', 'padding' );
   background: map-fetch( $forms, 'choice', 'background' );
   border: map-fetch( $forms, 'choice', 'border' );
@@ -367,14 +305,14 @@ input[type="range"] {
 input[type="search"] {
   -webkit-appearance: none;
 }
-input[type="color"].#{get-input-class('input')} {
+input[type="color"].input {
   padding: 5px;
 }
 
 /**
  * Textarea
  */
-textarea.#{get-input-class('input')} {
+textarea.input {
   height: auto;
   max-width: 100%;
 }
@@ -382,7 +320,7 @@ textarea.#{get-input-class('input')} {
 /**
  * Select
  */
-select.#{get-input-class('input')} {
+select.input {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='4'><polygon fill='"+ map-get($forms, 'color-select-arrow') +"' points='0,0 3,4 3,4 6,0 '/></svg>");
@@ -390,8 +328,8 @@ select.#{get-input-class('input')} {
   background-repeat: no-repeat;
   padding-right: 30px;
 }
-select[multiple].#{get-input-class('input')},
-select[size].#{get-input-class('input')} {
+select[multiple].input,
+select[size].input {
   height: auto;
   padding: map-fetch( $forms, 'input', 'padding' );
   background-image: none;
@@ -404,7 +342,7 @@ select[size].#{get-input-class('input')} {
 /**
  * Notes
  */
-.#{get-input-class('note')} {
+.note {
   margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   font-size: $base-font-size;
   color: $color-light;
@@ -420,11 +358,11 @@ select[size].#{get-input-class('input')} {
     }
   }
 }
-
-/* Contextual Styles */
-label + .#{get-input-class('note')} { margin-top: 0; }
-.#{get-group-class('form-group')} + .#{get-input-class('note')},
-.#{get-group-class('input-group')} + .#{get-input-class('note')} {
+label + .note {
+  margin-top: 0;
+}
+.form-group + .note,
+.input-group + .note {
   margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
 }
 
@@ -433,16 +371,16 @@ label + .#{get-input-class('note')} { margin-top: 0; }
  */
 label.inline,
 .btn.inline,
-.#{get-input-class('input')}.inline,
-.#{get-input-class('checkbox')}.inline,
-.#{get-input-class('radio')}.inline,
-.#{get-input-class('choice')}.inline,
+.input.inline,
+.checkbox.inline,
+.radio.inline,
+.choice.inline,
 .inline-group label,
 .inline-group .btn,
-.inline-group .#{get-input-class('input')},
-.inline-group .#{get-input-class('checkbox')},
-.inline-group .#{get-input-class('radio')},
-.inline-group .#{get-input-class('choice')} {
+.inline-group .input,
+.inline-group .checkbox,
+.inline-group .radio,
+.inline-group .choice {
   @include make-input-inline();
 }
 
@@ -455,13 +393,13 @@ fieldset[disabled] {
   input[type="range"],
   input[type="checkbox"],
   input[type="radio"],
-  .#{get-input-class('input')},
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('choice')} {
+  .input,
+  .checkbox,
+  .radio,
+  .choice {
     cursor: not-allowed;
   }
-  .#{get-input-class('input')} {
+  .input {
     background: rgba($black, 0.05);
   }
 }
@@ -500,33 +438,33 @@ form {
 /**
  * Form Group
  */
-.#{get-group-class('form-group')} {
+.form-group {
   @include make-form-group-base();
 }
-.#{get-group-class('form-group')}.#{get-group-class('inline-group')} {
+.form-group.inline-group {
   @include make-form-group-inline();
 }
 
 /**
  * Input Group
  */
-.#{get-group-class('input-group')} {
+.input-group {
   @include make-form-group-base();
 }
-.#{get-group-class('input-group')}.#{get-group-class('inline-group')} {
+.input-group.inline-group {
   @include make-form-group-inline();
 }
 
 /**
  * Action Group
  */
-.#{get-group-class('action-group')} {
+.action-group {
   @include make-form-group-inline();
   
-  .#{get-input-class('input')},
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('choice')},
+  .input,
+  .checkbox,
+  .radio,
+  .choice,
   .btn {
     @include make-input-inline();
   }
@@ -540,35 +478,35 @@ form {
  * Success
  */
 // Success class applied to elements
-.#{get-input-class('input')} {
-  &.#{get-val-class('success')} {
+.input {
+  &.success {
     border-color: $green;
   }
 }
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('note')} {
-  &.#{get-val-class('success')} {
+.checkbox,
+.radio,
+.note {
+  &.success {
     color: $green-darker;
   }
 }
-.#{get-input-class('choice')} {
-  &.#{get-val-class('success')} {
+.choice {
+  &.success {
     background-color: rgba($green, 0.1);
   }
 }
 
 // Success class applied to wrapper
-.#{get-val-class('success')} {
-  .#{get-input-class('input')} {
+.success {
+  .input {
     border-color: $green;
   }
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('note')} {
+  .checkbox,
+  .radio,
+  .note {
     color: $green-darker;
   }
-  .#{get-input-class('choice')} {
+  .choice {
     background-color: rgba($green, 0.1);
   }
 }
@@ -577,35 +515,35 @@ form {
  * Warning
  */
 // Warning class applied to elements
-.#{get-input-class('input')} {
-  &.#{get-val-class('warning')} {
+.input {
+  &.warning {
     border-color: $yellow-dark;
   }
 }
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('note')} {
-  &.#{get-val-class('warning')} {
+.checkbox,
+.radio,
+.note {
+  &.warning {
     color: $yellow-darker;
   }
 }
-.#{get-input-class('choice')} {
-  &.#{get-val-class('warning')} {
+.choice {
+  &.warning {
     background-color: rgba($yellow-dark, 0.15);
   }
 }
 
 // Warning class applied to wrapper
-.#{get-val-class('warning')} {
-  .#{get-input-class('input')} {
+.warning {
+  .input {
     border-color: $yellow-dark;
   }
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('note')} {
+  .checkbox,
+  .radio,
+  .note {
     color: $yellow-darker;
   }
-  .#{get-input-class('choice')} {
+  .choice {
     background-color: rgba($yellow-dark, 0.15);
   }
 }
@@ -614,35 +552,35 @@ form {
  * Error
  */
 // Error class applied to elements
-.#{get-input-class('input')} {
-  &.#{get-val-class('error')} {
+.input {
+  &.error {
     border-color: $red;
   }
 }
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('note')} {
-  &.#{get-val-class('error')} {
+.checkbox,
+.radio,
+.note {
+  &.error {
     color: $red-darker;
   }
 }
-.#{get-input-class('choice')} {
-  &.#{get-val-class('error')} {
+.choice {
+  &.error {
     background-color: rgba($red, 0.1);
   }
 }
 
 // Error class applied to wrapper
-.#{get-val-class('error')} {
-  .#{get-input-class('input')} {
+.error {
+  .input {
     border-color: $red;
   }
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('note')} {
+  .checkbox,
+  .radio,
+  .note {
     color: $red-darker;
   }
-  .#{get-input-class('choice')} {
+  .choice {
     background-color: rgba($red, 0.1);
   }
 }
@@ -651,35 +589,35 @@ form {
  * Active
  */
 // Active class applied to elements
-.#{get-input-class('input')} {
-  &.#{get-val-class('active')} {
+.input {
+  &.active {
     border-color: $blue;
   }
 }
-.#{get-input-class('checkbox')},
-.#{get-input-class('radio')},
-.#{get-input-class('note')} {
-  &.#{get-val-class('active')} {
+.checkbox,
+.radio,
+.note {
+  &.active {
     color: $blue-darker;
   }
 }
-.#{get-input-class('choice')} {
-  &.#{get-val-class('active')} {
+.choice {
+  &.active {
     background-color: rgba($blue, 0.1);
   }
 }
 
 // Active class applied to wrapper
-.#{get-val-class('active')} {
-  .#{get-input-class('input')} {
+.active {
+  .input {
     border-color: $blue;
   }
-  .#{get-input-class('checkbox')},
-  .#{get-input-class('radio')},
-  .#{get-input-class('note')} {
+  .checkbox,
+  .radio,
+  .note {
     color: $blue-darker;
   }
-  .#{get-input-class('choice')} {
+  .choice {
     background-color: rgba($blue, 0.1);
   }
 }
