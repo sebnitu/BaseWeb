@@ -493,17 +493,10 @@ form {
   }
 }
 
-// Check if we should output validation classes
-@if ( 
-  get-group-class('form-group') != none or
-  get-group-class('input-group') != none or
-  get-group-class('action-group') != none
-) {
 /*==============================================================================
   @Form Groups
 ==============================================================================*/
 
-@if (get-group-class('form-group') != none) {
 /**
  * Form Group
  */
@@ -513,9 +506,7 @@ form {
 .#{get-group-class('form-group')}.#{get-group-class('inline-group')} {
   @include make-form-group-inline();
 }
-} // endif Form Group
 
-@if (get-group-class('input-group') != none) {
 /**
  * Input Group
  */
@@ -525,9 +516,7 @@ form {
 .#{get-group-class('input-group')}.#{get-group-class('inline-group')} {
   @include make-form-group-inline();
 }
-} // endif Input Group
 
-@if (get-group-class('action-group') != none) {
 /**
  * Action Group
  */
@@ -542,22 +531,10 @@ form {
     @include make-input-inline();
   }
 }
-} // endif Action Group
 
-} // endif Form Groups
-
-// Check if we should output validation classes
-@if ( 
-  get-val-class('success') != none or
-  get-val-class('warning') != none or
-  get-val-class('error') != none or
-  get-val-class('active') != none 
-) {
 /*==============================================================================
   @Validation States
 ==============================================================================*/
-
-@if ( get-val-class('success') != none ) {
   
 /**
  * Success
@@ -596,10 +573,6 @@ form {
   }
 }
   
-} // endif Success
-
-@if ( get-val-class('warning') != none ) {
-  
 /**
  * Warning
  */
@@ -636,10 +609,6 @@ form {
     background-color: rgba($yellow-dark, 0.15);
   }
 }
-  
-} // endif Warning
-
-@if ( get-val-class('error') != none ) {
   
 /**
  * Error
@@ -678,10 +647,6 @@ form {
   }
 }
   
-} // endif Error
-
-@if ( get-val-class('active') != none ) {
-  
 /**
  * Active
  */
@@ -718,7 +683,3 @@ form {
     background-color: rgba($blue, 0.1);
   }
 }
-  
-} // endif Active
-
-} // endif Validation States
