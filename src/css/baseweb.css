@@ -592,27 +592,26 @@ label {
 
 label.block {
   display: block;
-  margin: 0 0 5px 0;
   padding-top: 11px; }
 
 label.inline {
   display: inline-block;
-  margin: 0 0 5px 10px;
   padding-top: 11px; }
-  label.inline:first-child {
-    margin-left: 0; }
 
 /**
- * Text Inputs
+ * Base Inputs
  */
-.checkbox, .radio, .choice, .input {
+.input, .checkbox, .radio, .choice {
   position: relative;
   display: block;
   width: 100%;
   margin: 0 0 10px 0; }
-  .checkbox:last-child, .radio:last-child, .choice:last-child, .input:last-child {
+  .input:last-child, .checkbox:last-child, .radio:last-child, .choice:last-child {
     margin-bottom: 0; }
 
+/**
+ * Text Inputs
+ */
 .input {
   height: 42px;
   padding: 10px;
@@ -708,10 +707,34 @@ select[multiple].input, select[size].input {
   padding: 10px;
   background-image: none; }
 
+/*==============================================================================
+  @Form Utilities
+==============================================================================*/
+/**
+ * Notes
+ */
+.note {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #909090; }
+  .note:last-child {
+    margin-bottom: 0; }
+  .note p {
+    margin: 0 0 10px 0; }
+    .note p:last-child {
+      margin-bottom: 0; }
+
+/* Contextual Styles */
+label + .note {
+  margin-top: 0; }
+
+.form-group + .note, .input-group + .note {
+  margin-top: -10px; }
+
 /**
  * Inline Inputs
  */
-label.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .btn.inline, .inline label, .inline .input, .inline .checkbox, .inline .radio, .inline .choice, .inline .btn {
+label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .inline-group label, .inline-group .btn, .inline-group .input, .inline-group .checkbox, .inline-group .radio, .inline-group .choice {
   display: inline-block;
   width: auto;
   margin-right: 10px;
@@ -719,11 +742,11 @@ label.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .b
   font-size: 14px; }
 
 /**
- * Disabled Fieldsets
+ * Disabled
  */
-fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .input, fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
+.disabled input[type="file"], .disabled input[type="range"], .disabled input[type="checkbox"], .disabled input[type="radio"], .disabled .input, .disabled .checkbox, .disabled .radio, .disabled .choice, fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .input, fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
   cursor: not-allowed; }
-fieldset[disabled] .input {
+.disabled .input, fieldset[disabled] .input {
   background: rgba(0, 0, 0, 0.05); }
 
 /*==============================================================================
@@ -753,11 +776,11 @@ form .col:last-child {
   .form-group:last-child {
     margin-bottom: 0; }
 
-.form-group.inline {
+.form-group.inline-group {
   margin-right: -10px;
   margin-bottom: 10px;
   font-size: 0; }
-  .form-group.inline:last-child {
+  .form-group.inline-group:last-child {
     margin-bottom: -10px; }
 
 /**
@@ -768,11 +791,11 @@ form .col:last-child {
   .input-group:last-child {
     margin-bottom: 0; }
 
-.input-group.inline {
+.input-group.inline-group {
   margin-right: -10px;
   margin-bottom: 10px;
   font-size: 0; }
-  .input-group.inline:last-child {
+  .input-group.inline-group:last-child {
     margin-bottom: -10px; }
 
 /**
@@ -791,26 +814,6 @@ form .col:last-child {
     margin-bottom: 10px;
     font-size: 14px; }
 
-/**
- * Note Group
- */
-.note-group {
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: #909090; }
-  .note-group:last-child {
-    margin-bottom: 0; }
-  .note-group p {
-    margin: 0 0 10px 0; }
-    .note-group p:last-child {
-      margin-bottom: 0; }
-
-label + .note-group {
-  margin-top: 0; }
-
-.form-group + .note-group, .input-group + .note-group {
-  margin-top: -10px; }
-
 /*==============================================================================
   @Validation States
 ==============================================================================*/
@@ -820,7 +823,7 @@ label + .note-group {
 .input.success {
   border-color: #84b72d; }
 
-.checkbox.success, .radio.success, .note-group.success {
+.checkbox.success, .radio.success, .note.success {
   color: #668e23; }
 
 .choice.success {
@@ -828,7 +831,7 @@ label + .note-group {
 
 .success .input {
   border-color: #84b72d; }
-.success .checkbox, .success .radio, .success .note-group {
+.success .checkbox, .success .radio, .success .note {
   color: #668e23; }
 .success .choice {
   background-color: rgba(132, 183, 45, 0.1); }
@@ -839,7 +842,7 @@ label + .note-group {
 .input.warning {
   border-color: #dab10d; }
 
-.checkbox.warning, .radio.warning, .note-group.warning {
+.checkbox.warning, .radio.warning, .note.warning {
   color: #c29d0b; }
 
 .choice.warning {
@@ -847,7 +850,7 @@ label + .note-group {
 
 .warning .input {
   border-color: #dab10d; }
-.warning .checkbox, .warning .radio, .warning .note-group {
+.warning .checkbox, .warning .radio, .warning .note {
   color: #c29d0b; }
 .warning .choice {
   background-color: rgba(218, 177, 13, 0.15); }
@@ -858,7 +861,7 @@ label + .note-group {
 .input.error {
   border-color: #de5151; }
 
-.checkbox.error, .radio.error, .note-group.error {
+.checkbox.error, .radio.error, .note.error {
   color: #d42828; }
 
 .choice.error {
@@ -866,7 +869,7 @@ label + .note-group {
 
 .error .input {
   border-color: #de5151; }
-.error .checkbox, .error .radio, .error .note-group {
+.error .checkbox, .error .radio, .error .note {
   color: #d42828; }
 .error .choice {
   background-color: rgba(222, 81, 81, 0.1); }
@@ -877,7 +880,7 @@ label + .note-group {
 .input.active {
   border-color: #2ab0ea; }
 
-.checkbox.active, .radio.active, .note-group.active {
+.checkbox.active, .radio.active, .note.active {
   color: #1495cd; }
 
 .choice.active {
@@ -885,7 +888,7 @@ label + .note-group {
 
 .active .input {
   border-color: #2ab0ea; }
-.active .checkbox, .active .radio, .active .note-group {
+.active .checkbox, .active .radio, .active .note {
   color: #1495cd; }
 .active .choice {
   background-color: rgba(42, 176, 234, 0.1); }

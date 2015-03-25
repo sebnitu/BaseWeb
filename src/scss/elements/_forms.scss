@@ -21,12 +21,13 @@ $forms: (
       'class-checkbox' : 'checkbox',
       'class-radio'    : 'radio',
       'class-choice'   : 'choice',
+      'class-note'     : 'note',
     ),
     'groups' : (
       'class-form-group'   : 'form-group',
       'class-input-group'  : 'input-group',
       'class-action-group' : 'action-group',
-      'class-note-group'   : 'note-group',
+      'class-inline-group' : 'inline-group',
     ),
     'validation' : (
       'class-success' : 'success',
@@ -175,6 +176,41 @@ $forms: (
   }
 }
 
+// Make Form Group Base
+@mixin make-form-group-base($options: ()) {
+  $o: map-merge( $forms, $options);
+  
+  margin-bottom: map-get( $o, 'vertical-spacing' );
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Make Form Group Inline
+@mixin make-form-group-inline($options: ()) {
+  $o: map-merge( $forms, $options);
+  
+  margin-right: -10px;
+  margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
+  font-size: 0;
+  
+  &:last-child {
+    margin-bottom: -(map-get( $o, 'vertical-spacing' ) / 2);
+  }
+}
+
+// Make Input Inline
+@mixin make-input-inline($options: ()) {
+  $o: map-merge( $forms, $options);
+  
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
+  font-size: map-get( $o, 'font-size' );
+}
+
 /*==============================================================================
   @Forms
 ==============================================================================*/
@@ -226,26 +262,20 @@ label {
 }
 label.block {
   display: block;
-  margin: 0 0 5px 0;
   padding-top: 11px;
 }
 label.inline {
   display: inline-block;
-  margin: 0 0 5px 10px;
   padding-top: 11px;
-    
-  &:first-child {
-    margin-left: 0;
-  }
 }
 
 /**
- * Text Inputs
+ * Base Inputs
  */
+.#{get-input-class('input')},
 .#{get-input-class('checkbox')},
 .#{get-input-class('radio')},
-.#{get-input-class('choice')},
-.#{get-input-class('input')} {
+.#{get-input-class('choice')} {
   position: relative;
   display: block;
   width: 100%;
@@ -255,7 +285,10 @@ label.inline {
     margin-bottom: 0;
   }
 }
- 
+
+/**
+ * Text Inputs
+ */
 .#{get-input-class('input')} {
   height: (map-get( $forms, 'line-height' ) + 20px + 2);
   padding: map-fetch( $forms, 'input', 'padding' );
@@ -364,38 +397,60 @@ select[size].#{get-input-class('input')} {
   background-image: none;
 }
 
+/*==============================================================================
+  @Form Utilities
+==============================================================================*/
+
+/**
+ * Notes
+ */
+.#{get-input-class('note')} {
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  font-size: $base-font-size;
+  color: $color-light;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  p {
+    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Contextual Styles */
+label + .#{get-input-class('note')} { margin-top: 0; }
+.#{get-group-class('form-group')} + .#{get-input-class('note')},
+.#{get-group-class('input-group')} + .#{get-input-class('note')} {
+  margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
+}
+
 /**
  * Inline Inputs
  */
-%inline-input {
-  display: inline-block;
-  width: auto;
-  margin-right: 10px;
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: $base-font-size;
-}
 label.inline,
+.btn.inline,
 .#{get-input-class('input')}.inline,
 .#{get-input-class('checkbox')}.inline,
 .#{get-input-class('radio')}.inline,
 .#{get-input-class('choice')}.inline,
-.btn.inline {
-  @extend %inline-input;
-}
-.inline label,
-.inline .#{get-input-class('input')},
-.inline .#{get-input-class('checkbox')},
-.inline .#{get-input-class('radio')},
-.inline .#{get-input-class('choice')},
-.inline .btn {
-  @extend %inline-input;
+.inline-group label,
+.inline-group .btn,
+.inline-group .#{get-input-class('input')},
+.inline-group .#{get-input-class('checkbox')},
+.inline-group .#{get-input-class('radio')},
+.inline-group .#{get-input-class('choice')} {
+  @include make-input-inline();
 }
 
 /**
- * Disabled Fieldsets
+ * Disabled
  */
+.disabled,
 fieldset[disabled] {
-  
   input[type="file"],
   input[type="range"],
   input[type="checkbox"],
@@ -442,120 +497,52 @@ form {
 @if ( 
   get-group-class('form-group') != none or
   get-group-class('input-group') != none or
-  get-group-class('action-group') != none or
-  get-group-class('note-group') != none 
+  get-group-class('action-group') != none
 ) {
 /*==============================================================================
   @Form Groups
 ==============================================================================*/
 
 @if (get-group-class('form-group') != none) {
-  
 /**
  * Form Group
  */
 .#{get-group-class('form-group')} {
-  margin-bottom: map-get( $forms, 'vertical-spacing' );
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+  @include make-form-group-base();
 }
-.#{get-group-class('form-group')}.inline {
-  margin-right: -10px;
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: 0;
-  
-  &:last-child {
-    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
-  }
+.#{get-group-class('form-group')}.#{get-group-class('inline-group')} {
+  @include make-form-group-inline();
 }
-
 } // endif Form Group
 
 @if (get-group-class('input-group') != none) {
-
 /**
  * Input Group
  */
 .#{get-group-class('input-group')} {
-  margin-bottom: map-get( $forms, 'vertical-spacing' );
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+  @include make-form-group-base();
 }
-.#{get-group-class('input-group')}.inline {
-  margin-right: -10px;
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: 0;
-  
-  &:last-child {
-    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
-  }
+.#{get-group-class('input-group')}.#{get-group-class('inline-group')} {
+  @include make-form-group-inline();
 }
-
 } // endif Input Group
 
 @if (get-group-class('action-group') != none) {
-
 /**
  * Action Group
  */
 .#{get-group-class('action-group')} {
-  margin-right: -10px;
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: 0;
-  
-  &:last-child {
-    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
-  }
+  @include make-form-group-inline();
   
   .#{get-input-class('input')},
   .#{get-input-class('checkbox')},
   .#{get-input-class('radio')},
   .#{get-input-class('choice')},
   .btn {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-    font-size: $base-font-size;
+    @include make-input-inline();
   }
 }
-
 } // endif Action Group
-
-@if (get-group-class('note-group') != none) {
-
-/**
- * Note Group
- */
-.#{get-group-class('note-group')} {
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: $base-font-size;
-  color: $color-light;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-  
-  p {
-    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-label + .#{get-group-class('note-group')} {
-  margin-top: 0;
-}
-.#{get-group-class('form-group')} + .#{get-group-class('note-group')},
-.#{get-group-class('input-group')} + .#{get-group-class('note-group')} {
-  margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
-}
-
-} // endif Note Group
 
 } // endif Form Groups
 
@@ -583,7 +570,7 @@ label + .#{get-group-class('note-group')} {
 }
 .#{get-input-class('checkbox')},
 .#{get-input-class('radio')},
-.#{get-group-class('note-group')} {
+.#{get-input-class('note')} {
   &.#{get-val-class('success')} {
     color: $green-darker;
   }
@@ -601,7 +588,7 @@ label + .#{get-group-class('note-group')} {
   }
   .#{get-input-class('checkbox')},
   .#{get-input-class('radio')},
-  .#{get-group-class('note-group')} {
+  .#{get-input-class('note')} {
     color: $green-darker;
   }
   .#{get-input-class('choice')} {
@@ -624,7 +611,7 @@ label + .#{get-group-class('note-group')} {
 }
 .#{get-input-class('checkbox')},
 .#{get-input-class('radio')},
-.#{get-group-class('note-group')} {
+.#{get-input-class('note')} {
   &.#{get-val-class('warning')} {
     color: $yellow-darker;
   }
@@ -642,7 +629,7 @@ label + .#{get-group-class('note-group')} {
   }
   .#{get-input-class('checkbox')},
   .#{get-input-class('radio')},
-  .#{get-group-class('note-group')} {
+  .#{get-input-class('note')} {
     color: $yellow-darker;
   }
   .#{get-input-class('choice')} {
@@ -665,7 +652,7 @@ label + .#{get-group-class('note-group')} {
 }
 .#{get-input-class('checkbox')},
 .#{get-input-class('radio')},
-.#{get-group-class('note-group')} {
+.#{get-input-class('note')} {
   &.#{get-val-class('error')} {
     color: $red-darker;
   }
@@ -683,7 +670,7 @@ label + .#{get-group-class('note-group')} {
   }
   .#{get-input-class('checkbox')},
   .#{get-input-class('radio')},
-  .#{get-group-class('note-group')} {
+  .#{get-input-class('note')} {
     color: $red-darker;
   }
   .#{get-input-class('choice')} {
@@ -706,7 +693,7 @@ label + .#{get-group-class('note-group')} {
 }
 .#{get-input-class('checkbox')},
 .#{get-input-class('radio')},
-.#{get-group-class('note-group')} {
+.#{get-input-class('note')} {
   &.#{get-val-class('active')} {
     color: $blue-darker;
   }
@@ -724,7 +711,7 @@ label + .#{get-group-class('note-group')} {
   }
   .#{get-input-class('checkbox')},
   .#{get-input-class('radio')},
-  .#{get-group-class('note-group')} {
+  .#{get-input-class('note')} {
     color: $blue-darker;
   }
   .#{get-input-class('choice')} {
