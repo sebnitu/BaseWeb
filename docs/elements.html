@@ -93,7 +93,7 @@
     
     <div id="content" class="content">
       <div class="toolbar">
-        <span class="version">Currently v0.11.1</span>
+        <span class="version">Currently v0.12.0</span>
         <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-default">Download BaseWeb</a>
       </div><!-- .toolbar -->
       
@@ -1604,8 +1604,8 @@ class BaseWeb() {
   
   <li>
     
-    <h2 class="docs-header">form .row .col</h2>
-    <p>For more complex forms, you also have BaseWeb's default grid system to create columns, horizontal forms, etc.</p>
+    <h2 class="docs-header">Form Grids</h2>
+    <p>For more complex form layouts, you also have BaseWeb's default grid system to create rows and columns.</p>
     
     <pre class="language-markup"><code>
 &lt;form&gt;
@@ -1656,6 +1656,78 @@ class BaseWeb() {
 </section>
 
 <hr class="docs-hr">
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="input" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="input" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="note">Example block-level help text here.</p>
+  </div>
+  <div class="form-group">
+    <label class="checkbox"><input type="checkbox"> Check me out</label>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </div>
+</form>
+
+<form>
+  <div class="form-group inline-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="input" id="exampleInputName2" placeholder="Jane Doe">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="input" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+    <button type="submit" class="btn btn-default">Send invitation</button>
+  </div>
+</form>
+
+<form>
+  <div class="form-group inline-group">
+    <div class="input-group">
+      <label class="label-hide" for="exampleInputEmail3">Email address</label>
+      <input type="email" class="input" id="exampleInputEmail3" placeholder="Enter email">
+    </div>
+    <div class="input-group">
+      <label class="label-hide" for="exampleInputPassword3">Password</label>
+      <input type="password" class="input" id="exampleInputPassword3" placeholder="Password">
+    </div>
+    <div class="input-group">
+      <label class="checkbox label-inline"><input type="checkbox"> Remember me</label>
+    </div>
+    <div class="input-group">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
+
+<form>
+  <div class="row">
+    <div class="col col-2">
+      <label for="inputEmail3" class="label-block">Email</label>
+    </div>
+    <div class="col col-10">
+      <input type="email" class="input" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-2">
+      <label for="inputPassword3" class="label-block">Password</label>
+    </div>
+    <div class="col col-10">
+      <input type="password" class="input" id="inputPassword3" placeholder="Password">
+      <label class="checkbox"><input type="checkbox"> Remember me</label>
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</form>
 
 <!--
 <label for="input-2">Password Input</label>
@@ -1774,11 +1846,11 @@ class BaseWeb() {
       <label>Grid Example</label>
       <div class="row">
         <div class="col col-4">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <input class="input" type="text" placeholder="Example">
         </div>
         <div class="col col-4">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <select class="input">
             <option>Option 1</option>
             <option>Option 2</option>
@@ -1787,7 +1859,7 @@ class BaseWeb() {
           </select>
         </div>
         <div class="col col-4">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <label class="choice"><input type="checkbox" checked> Choice</label>
         </div>
       </div>
@@ -1882,7 +1954,7 @@ class BaseWeb() {
           </select>
         </div>
         <div class="form-group">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">
@@ -1893,7 +1965,7 @@ class BaseWeb() {
           </div>
         </div>
         <div class="form-group">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <div class="row">
             <div class="col col-6">
               <div class="input-group">
@@ -1933,7 +2005,7 @@ class BaseWeb() {
           </select>
         </div>
         <div class="form-group">
-          <label class="sub">Sub Label</label>
+          <label class="label-sub">Sub Label</label>
           <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">

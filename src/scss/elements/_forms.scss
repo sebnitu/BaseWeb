@@ -193,18 +193,38 @@ label {
   font-weight: 600;
   color: map-get( $forms, 'color-label' );
   
-  &.sub {
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &.label-sub {
     font-weight: normal;
     color: map-get( $forms, 'color' );
   }
+  &.label-hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+  &.label-block {
+    display: block;
+    padding-top: 11px;
+  }
+  &.label-inline {
+    display: inline-block;
+    padding-top: 11px;
+  }
 }
-label.block {
-  display: block;
-  padding-top: 11px;
-}
-label.inline {
-  display: inline-block;
-  padding-top: 11px;
+.inline-group {
+  label.label-block,
+  label.label-inline {
+    padding-bottom: 11px;
+  }
 }
 
 /**
@@ -409,6 +429,12 @@ fieldset[disabled] {
 ==============================================================================*/
 
 form {
+  .row {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+  .row:last-child {
+    margin-bottom: 0;
+  }
   .col {
     margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   }
@@ -418,16 +444,8 @@ form {
 }
 
 @include media-min('tablet') {
-  form {
-    .row {
-      margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-    }
-    .row:last-child {
-      margin-bottom: 0;
-    }
-    .col {
-      margin-bottom: 0;
-    }
+  form .col {
+    margin-bottom: 0;
   }
 }
 
@@ -443,6 +461,16 @@ form {
 }
 .form-group.inline-group {
   @include make-form-group-inline();
+  
+  .input-group {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 /**

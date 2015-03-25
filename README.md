@@ -2,12 +2,12 @@
 
 ---
 
-Currently v0.11.1
+Currently v0.12.0
 
 ---
 
 ## About
-BaseWeb is a Sass front-end development framework built to make working on web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.
+BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.
 
 ---
 

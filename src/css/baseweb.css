@@ -586,17 +586,29 @@ label {
   font-size: 14px;
   font-weight: 600;
   color: #303030; }
-  label.sub {
+  label:last-child {
+    margin-bottom: 0; }
+  label.label-sub {
     font-weight: normal;
     color: #303030; }
+  label.label-hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0; }
+  label.label-block {
+    display: block;
+    padding-top: 11px; }
+  label.label-inline {
+    display: inline-block;
+    padding-top: 11px; }
 
-label.block {
-  display: block;
-  padding-top: 11px; }
-
-label.inline {
-  display: inline-block;
-  padding-top: 11px; }
+.inline-group label.label-block, .inline-group label.label-inline {
+  padding-bottom: 11px; }
 
 /**
  * Base Inputs
@@ -751,16 +763,16 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
 /*==============================================================================
   @Form Grids
 ==============================================================================*/
+form .row {
+  margin-bottom: 10px; }
+form .row:last-child {
+  margin-bottom: 0; }
 form .col {
   margin-bottom: 10px; }
 form .col:last-child {
   margin-bottom: 0; }
 
 @media (min-width: 760px) {
-  form .row {
-    margin-bottom: 10px; }
-  form .row:last-child {
-    margin-bottom: 0; }
   form .col {
     margin-bottom: 0; } }
 
@@ -781,6 +793,12 @@ form .col:last-child {
   font-size: 0; }
   .form-group.inline-group:last-child {
     margin-bottom: -10px; }
+  .form-group.inline-group .input-group {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0; }
+    .form-group.inline-group .input-group:last-child {
+      margin-right: 0; }
 
 /**
  * Input Group
