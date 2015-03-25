@@ -1499,18 +1499,22 @@ class BaseWeb() {
 
 <p>HTML forms are probably the most daunting part of front-end development to markup and style. BaseWeb's goal is to give you the tools to make forms easy to build and flexible.</p>
 
-<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code> and <code>.input-group</code> to use for structuring a form layout.</p>
+<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code>, <code>.input-group</code> and <code>.action-group</code> classes to use for structuring a form layout.</p>
 
 <pre class="language-markup"><code>
 &lt;form&gt;
   &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label&gt;Example Label&lt;/label&gt;
+    &lt;label&gt;Input Group&lt;/label&gt;
     &lt;div class=&quot;input-group&quot;&gt;
       ...
     &lt;/div&gt;
+    &lt;label&gt;Inline Input Group&lt;/label&gt;
     &lt;div class=&quot;input-group inline&quot;&gt;
       ...
     &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;action-group&quot;&gt;
+    ...
   &lt;/div&gt;
 &lt;/form&gt;
 </code></pre>
@@ -1532,6 +1536,7 @@ class BaseWeb() {
           <option>Option 2</option>
           <option>Option 3</option>
         </select>
+        <textarea class="input" rows="4"></textarea>
       </div>
       
       <label>Example Label</label>
@@ -1546,6 +1551,71 @@ class BaseWeb() {
       <button class="btn btn-default">Button</button>
     </div>
       
+  </form>
+</div>
+
+<p>For more complex forms, you also have BaseWeb's default grid system to create columns, horizontal forms, etc.</p>
+
+<pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Grid Example&lt;/label&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<div class="demo">
+  <form>
+    <div class="form-group">
+      <label>Grid Example</label>
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox" checked> Choice</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<p>You can also create inline forms by adding the class <code>.inline</code> to form structure elements.</p>
+
+<pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group inline&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<div class="demo">
+  <form>
+    <div class="form-group inline">
+      <label>Label</label>
+      <input type="text" class="input" placeholder="Example">
+      <label class="choice"><input type="checkbox" checked> Choice</label>
+      <button type="submit" class="btn btn-default">Button</button>
+    </div>
   </form>
 </div>
 
@@ -1764,7 +1834,7 @@ class BaseWeb() {
     <div class="row">
       <div class="col col-4">
         <label class="block">Sub Label</label>
-        <div class="text-group">
+        <div class="note-group">
           <p>Can we create a horizontal form just by using the tools we already have?</p>
         </div>
       </div>
@@ -1793,16 +1863,16 @@ class BaseWeb() {
           <div class="row">
             <div class="col col-6">
               <div class="input-group">
-                <label class="choice"><input name="radio-3" type="radio" checked> Yes</label>
-                <label class="choice"><input name="radio-3" type="radio"> No</label>
-                <label class="choice"><input name="radio-3" type="radio"> Maybe</label>
+                <label class="choice"><input name="radio-3" type="checkbox" checked> Yes</label>
+                <label class="choice"><input name="radio-3" type="checkbox"> No</label>
+                <label class="choice"><input name="radio-3" type="checkbox"> Maybe</label>
               </div>
             </div>
             <div class="col col-6">
               <div class="input-group">
-                <label class="choice"><input name="radio-3" type="radio" checked> Yes</label>
-                <label class="choice"><input name="radio-3" type="radio"> No</label>
-                <label class="choice"><input name="radio-3" type="radio"> Maybe</label>
+                <label class="choice"><input name="radio-3" type="checkbox" checked> Yes</label>
+                <label class="choice"><input name="radio-3" type="checkbox"> No</label>
+                <label class="choice"><input name="radio-3" type="checkbox"> Maybe</label>
               </div>
             </div>
           </div>
@@ -1815,7 +1885,7 @@ class BaseWeb() {
     <div class="row">
       <div class="col col-4">
         <label class="block">Sub Label</label>
-        <div class="text-group">
+        <div class="note-group">
           <p>The answer is yes!</p>
         </div>
       </div>
@@ -1868,7 +1938,7 @@ class BaseWeb() {
         <label class="checkbox"><input type="checkbox"> Choice</label>
         <label class="radio"><input type="radio"> Choice</label>
       </div>
-      <div class="text-group">
+      <div class="note-group">
         <p>This is a text group.</p>
       </div>
     </div>
@@ -1894,7 +1964,7 @@ class BaseWeb() {
         <label class="checkbox"><input type="checkbox"> Choice</label>
         <label class="radio"><input type="radio"> Choice</label>
       </div>
-      <div class="text-group">
+      <div class="note-group">
         <p>This is a text group.</p>
       </div>
     </div>
@@ -1920,7 +1990,7 @@ class BaseWeb() {
         <label class="checkbox"><input type="checkbox"> Choice</label>
         <label class="radio"><input type="radio"> Choice</label>
       </div>
-      <div class="text-group">
+      <div class="note-group">
         <p>This is a text group.</p>
       </div>
     </div>
@@ -1946,7 +2016,7 @@ class BaseWeb() {
         <label class="checkbox"><input type="checkbox"> Choice</label>
         <label class="radio"><input type="radio"> Choice</label>
       </div>
-      <div class="text-group">
+      <div class="note-group">
         <p>This is a text group.</p>
       </div>
     </div>

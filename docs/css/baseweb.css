@@ -609,7 +609,9 @@ label.inline {
   position: relative;
   display: block;
   width: 100%;
-  margin: 0; }
+  margin: 0 0 10px 0; }
+  .checkbox:last-child, .radio:last-child, .choice:last-child, .input:last-child {
+    margin-bottom: 0; }
 
 .input {
   height: 42px;
@@ -713,6 +715,7 @@ label.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .b
   display: inline-block;
   width: auto;
   margin-right: 10px;
+  margin-bottom: 10px;
   font-size: 14px; }
 
 /**
@@ -749,10 +752,6 @@ form .col:last-child {
   margin-bottom: 20px; }
   .form-group:last-child {
     margin-bottom: 0; }
-  .form-group .input, .form-group .checkbox, .form-group .radio, .form-group .choice {
-    margin-bottom: 10px; }
-    .form-group .input:last-child, .form-group .checkbox:last-child, .form-group .radio:last-child, .form-group .choice:last-child {
-      margin-bottom: 0; }
 
 .form-group.inline {
   margin-right: -10px;
@@ -760,8 +759,6 @@ form .col:last-child {
   font-size: 0; }
   .form-group.inline:last-child {
     margin-bottom: -10px; }
-  .form-group.inline .input, .form-group.inline .checkbox, .form-group.inline .radio, .form-group.inline .choice, .form-group.inline .btn {
-    margin-bottom: 10px; }
 
 /**
  * Input Group
@@ -770,10 +767,6 @@ form .col:last-child {
   margin-bottom: 20px; }
   .input-group:last-child {
     margin-bottom: 0; }
-  .input-group .input, .input-group .checkbox, .input-group .radio, .input-group .choice {
-    margin-bottom: 10px; }
-    .input-group .input:last-child, .input-group .checkbox:last-child, .input-group .radio:last-child, .input-group .choice:last-child {
-      margin-bottom: 0; }
 
 .input-group.inline {
   margin-right: -10px;
@@ -781,8 +774,6 @@ form .col:last-child {
   font-size: 0; }
   .input-group.inline:last-child {
     margin-bottom: -10px; }
-  .input-group.inline .input, .input-group.inline .checkbox, .input-group.inline .radio, .input-group.inline .choice, .input-group.inline .btn {
-    margin-bottom: 10px; }
 
 /**
  * Action Group
@@ -797,26 +788,27 @@ form .col:last-child {
     display: inline-block;
     width: auto;
     margin-right: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    font-size: 14px; }
 
 /**
- * Text Group
+ * Note Group
  */
-.text-group {
+.note-group {
   margin-bottom: 10px;
   font-size: 14px;
   color: #909090; }
-  .text-group:last-child {
+  .note-group:last-child {
     margin-bottom: 0; }
-  .text-group p {
+  .note-group p {
     margin: 0 0 10px 0; }
-    .text-group p:last-child {
+    .note-group p:last-child {
       margin-bottom: 0; }
 
-label + .text-group {
+label + .note-group {
   margin-top: 0; }
 
-.form-group + .text-group, .input-group + .text-group {
+.form-group + .note-group, .input-group + .note-group {
   margin-top: -10px; }
 
 /*==============================================================================
@@ -828,7 +820,7 @@ label + .text-group {
 .input.success {
   border-color: #84b72d; }
 
-.checkbox.success, .radio.success, .text-group.success {
+.checkbox.success, .radio.success, .note-group.success {
   color: #668e23; }
 
 .choice.success {
@@ -836,7 +828,7 @@ label + .text-group {
 
 .success .input {
   border-color: #84b72d; }
-.success .checkbox, .success .radio, .success .text-group {
+.success .checkbox, .success .radio, .success .note-group {
   color: #668e23; }
 .success .choice {
   background-color: rgba(132, 183, 45, 0.1); }
@@ -847,7 +839,7 @@ label + .text-group {
 .input.warning {
   border-color: #dab10d; }
 
-.checkbox.warning, .radio.warning, .text-group.warning {
+.checkbox.warning, .radio.warning, .note-group.warning {
   color: #c29d0b; }
 
 .choice.warning {
@@ -855,7 +847,7 @@ label + .text-group {
 
 .warning .input {
   border-color: #dab10d; }
-.warning .checkbox, .warning .radio, .warning .text-group {
+.warning .checkbox, .warning .radio, .warning .note-group {
   color: #c29d0b; }
 .warning .choice {
   background-color: rgba(218, 177, 13, 0.15); }
@@ -866,7 +858,7 @@ label + .text-group {
 .input.error {
   border-color: #de5151; }
 
-.checkbox.error, .radio.error, .text-group.error {
+.checkbox.error, .radio.error, .note-group.error {
   color: #d42828; }
 
 .choice.error {
@@ -874,7 +866,7 @@ label + .text-group {
 
 .error .input {
   border-color: #de5151; }
-.error .checkbox, .error .radio, .error .text-group {
+.error .checkbox, .error .radio, .error .note-group {
   color: #d42828; }
 .error .choice {
   background-color: rgba(222, 81, 81, 0.1); }
@@ -885,7 +877,7 @@ label + .text-group {
 .input.active {
   border-color: #2ab0ea; }
 
-.checkbox.active, .radio.active, .text-group.active {
+.checkbox.active, .radio.active, .note-group.active {
   color: #1495cd; }
 
 .choice.active {
@@ -893,7 +885,7 @@ label + .text-group {
 
 .active .input {
   border-color: #2ab0ea; }
-.active .checkbox, .active .radio, .active .text-group {
+.active .checkbox, .active .radio, .active .note-group {
   color: #1495cd; }
 .active .choice {
   background-color: rgba(42, 176, 234, 0.1); }
