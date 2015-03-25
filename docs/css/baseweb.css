@@ -562,19 +562,14 @@ form {
 fieldset {
   margin: 20px 0;
   padding: 0;
-  border: 0 none;
-  margin: 0;
-  padding: 20px 0px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
-  fieldset:last-child {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  border: 0 none; }
 
 /**
  * Legends
  */
 legend {
   display: inline-block;
-  margin: 0 -10px;
+  margin: 0 -10px 10px;
   padding: 0 10px;
   font-size: 18px;
   line-height: 26px;
@@ -588,6 +583,7 @@ legend {
 label {
   display: inline-block;
   margin: 0 0 5px 0;
+  font-size: 14px;
   font-weight: 600;
   color: #303030; }
   label.sub {
@@ -606,14 +602,20 @@ label.inline {
   label.inline:first-child {
     margin-left: 0; }
 
+label.hide, .inline label.hide {
+  display: none; }
+
 /**
- * Input
+ * Text Inputs
  */
-.input {
+.checkbox, .radio, .choice, .input {
+  position: relative;
   display: block;
   width: 100%;
+  margin: 0; }
+
+.input {
   height: 42px;
-  margin: 0 0 20px 0;
   padding: 10px;
   font-family: inherit;
   font-size: 14px;
@@ -640,61 +642,18 @@ label.inline {
     background-color: white;
     border: 1px solid #2ab0ea;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
-  .input.inline {
-    display: inline-block;
-    width: auto;
-    margin-left: 10px; }
-    .input.inline:first-child {
-      margin-left: 0; }
+  .input[readonly], .input[disabled] {
+    background: rgba(0, 0, 0, 0.05); }
   .input[disabled] {
-    cursor: not-allowed;
-    background: rgba(0, 0, 0, 0.05); }
-  .input[readonly] {
-    background: rgba(0, 0, 0, 0.05); }
-
-input[type="search"] {
-  -webkit-appearance: none; }
-
-input[type="color"].input {
-  padding: 5px; }
-
-/**
- * Other Input
- */
-input[type="file"], input[type="range"] {
-  display: block;
-  margin: 0 0 20px 0; }
-
-input[type="range"] {
-  width: 100%; }
-
-/**
- * Checkbox & Radio
- */
-input[type="checkbox"], input[type="radio"] {
-  margin: 0 5px 0 0; }
-  input[type="checkbox"][disabled], input[type="radio"][disabled] {
     cursor: not-allowed; }
 
 /**
  * Checkbox, Radio & Choice Classes
  */
 .checkbox, .radio, .choice {
-  position: relative;
   cursor: pointer;
-  display: block;
-  margin-bottom: 20px;
   color: #303030;
   font-weight: normal; }
-  .checkbox.inline, .radio.inline, .choice.inline {
-    display: inline-block; }
-    .checkbox.inline:first-child, .radio.inline:first-child, .choice.inline:first-child {
-      margin-left: 0; }
-
-.checkbox.inline, .radio.inline {
-  margin-left: 15px;
-  margin-bottom: 10px;
-  padding: 11px 0; }
 
 .choice {
   padding: 11px 25px 11px 35px;
@@ -705,9 +664,27 @@ input[type="checkbox"], input[type="radio"] {
   .choice input[type="checkbox"], .choice input[type="radio"] {
     position: absolute;
     margin: 3px 0 0 -20px; }
-  .choice.inline {
-    margin-left: 10px;
-    margin-bottom: 20px; }
+
+input[type="checkbox"], input[type="radio"] {
+  margin: 0 5px 0 0; }
+  input[type="checkbox"][disabled], input[type="radio"][disabled] {
+    cursor: not-allowed; }
+
+/**
+ * Other Inputs
+ */
+input[type="file"], input[type="range"] {
+  display: block;
+  margin: 0; }
+
+input[type="range"] {
+  width: 100%; }
+
+input[type="search"] {
+  -webkit-appearance: none; }
+
+input[type="color"].input {
+  padding: 5px; }
 
 /**
  * Textarea
@@ -722,7 +699,7 @@ textarea.input {
 select.input {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='4'><polygon fill='#303030' points='0,0 3,4 3,4 6,0 '/></svg>");
   background-position: 100% center;
   background-repeat: no-repeat;
   padding-right: 30px; }
@@ -733,13 +710,21 @@ select[multiple].input, select[size].input {
   background-image: none; }
 
 /**
+ * Inline Inputs
+ */
+label.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .btn.inline, .inline label, .inline .input, .inline .checkbox, .inline .radio, .inline .choice, .inline .btn {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  font-size: 14px; }
+
+/**
  * Disabled Fieldsets
  */
-fieldset[disabled] .input {
-  cursor: not-allowed;
-  background: rgba(0, 0, 0, 0.05); }
-fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
+fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .input, fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
   cursor: not-allowed; }
+fieldset[disabled] .input {
+  background: rgba(0, 0, 0, 0.05); }
 
 /*==============================================================================
   @Form Grids
@@ -750,6 +735,10 @@ form .col:last-child {
   margin-bottom: 0; }
 
 @media (min-width: 760px) {
+  form .row {
+    margin-bottom: 10px; }
+  form .row:last-child {
+    margin-bottom: 0; }
   form .col {
     margin-bottom: 0; } }
 
@@ -763,49 +752,19 @@ form .col:last-child {
   margin-bottom: 20px; }
   .form-group:last-child {
     margin-bottom: 0; }
-  .form-group .row {
+  .form-group .input, .form-group .checkbox, .form-group .radio, .form-group .choice, .form-group .btn {
     margin-bottom: 10px; }
-  .form-group .row:last-child {
-    margin-bottom: 0; }
-  .form-group .form-group, .form-group .col > .form-group, .form-group .input-group {
-    margin-bottom: 20px; }
-    .form-group .form-group:last-child, .form-group .col > .form-group:last-child, .form-group .input-group:last-child {
-      margin-bottom: 0; }
-  .form-group > .input-group.inline, .form-group .col > .input-group.inline {
-    margin-bottom: 0; }
-    .form-group > .input-group.inline:last-child, .form-group .col > .input-group.inline:last-child {
-      margin-bottom: -10px; }
-  .form-group > label, .form-group .col > label {
-    margin-bottom: 5px; }
-  .form-group > .checkbox, .form-group > .radio, .form-group > .choice, .form-group .col > .checkbox, .form-group .col > .radio, .form-group .col > .choice {
-    margin-bottom: 10px; }
-  .form-group > *, .form-group .col > * {
-    margin-bottom: 10px; }
-    .form-group > *:last-child, .form-group .col > *:last-child {
+    .form-group .input:last-child, .form-group .checkbox:last-child, .form-group .radio:last-child, .form-group .choice:last-child, .form-group .btn:last-child {
       margin-bottom: 0; }
 
-/**
- * Input Group
- */
-.input-group {
-  margin-bottom: 20px; }
-  .input-group > * {
-    display: block;
-    margin-bottom: 10px; }
-    .input-group > *:last-child {
-      margin-bottom: 0; }
-
-.input-group.inline {
-  margin-bottom: 10px;
+.form-group.inline {
   margin-right: -10px;
+  margin-bottom: 10px;
   font-size: 0; }
-  .input-group.inline > * {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    font-size: 14px; }
-    .input-group.inline > *:last-child {
-      margin-bottom: 10px; }
+  .form-group.inline:last-child {
+    margin-bottom: -10px; }
+  .form-group.inline .input, .form-group.inline .checkbox, .form-group.inline .radio, .form-group.inline .choice, .form-group.inline .btn {
+    margin-bottom: 10px; }
 
 /**
  * Text Group
@@ -822,11 +781,11 @@ form .col:last-child {
 label + .text-group {
   margin-top: 0; }
 
-.input-group + .text-group {
+.form-group + .text-group {
   margin-top: -10px; }
 
-.input-group.inline + .text-group {
-  margin-top: 0; }
+.form-group.inline + .text-group {
+  margin-top: -10px; }
 
 /*==============================================================================
   @Validation States

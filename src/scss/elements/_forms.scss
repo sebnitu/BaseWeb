@@ -12,6 +12,7 @@ $forms: (
   'color' : $color,
   'color-label' : $color-dark,
   'color-placeholder' : #aaa,
+  'color-select-arrow' : $color-dark,
   'border-radius' : $border-radius,
   
   'classes' : (
@@ -23,7 +24,6 @@ $forms: (
     ),
     'groups' : (
       'class-form-group'  : form-group,
-      'class-input-group' : input-group,
       'class-text-group'  : text-group,
     ),
     'validation' : (
@@ -191,14 +191,6 @@ fieldset {
   margin: map-get( $forms, 'vertical-spacing' ) 0;
   padding: 0;
   border: 0 none;
-  
-  // Docs
-  margin: 0;
-  padding: 20px 0px;
-  border-top: 1px solid rgba($black, 0.1);
-  &:last-child {
-    border-bottom: 1px solid rgba($black, 0.1);
-  }
 }
 
 /**
@@ -206,7 +198,7 @@ fieldset {
  */
 legend {
   display: inline-block;
-  margin: 0 -10px;
+  margin: 0 -10px 10px;
   padding: 0 10px;
   font-size: 18px;
   line-height: 26px;
@@ -221,6 +213,7 @@ legend {
 label {
   display: inline-block;
   margin: 0 0 5px 0;
+  font-size: $base-font-size;
   font-weight: 600;
   color: map-get( $forms, 'color-label' );
   
@@ -243,16 +236,27 @@ label.inline {
     margin-left: 0;
   }
 }
+label.hide,
+.inline label.hide {
+  display: none;
+}
 
 /**
- * Input
+ * Text Inputs
  */
-@include select-input() {
+.#{get-input-class(checkbox)},
+.#{get-input-class(radio)},
+.#{get-input-class(choice)},
+.#{get-input-class(input)} {
+  position: relative;
   display: block;
   width: 100%;
+  margin: 0;
+}
+ 
+.#{get-input-class(input)} {
   height: (map-get( $forms, 'line-height' ) + 20px + 2);
   
-  margin: 0 0 map-get( $forms, 'vertical-spacing' ) 0;
   padding: map-fetch( $forms, 'input', 'padding' );
   
   font-family: map-get( $forms, 'font-family' );
@@ -275,58 +279,10 @@ label.inline {
     box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
   }
   
-  &.inline {
-    display: inline-block;
-    width: auto;
-    margin-left: 10px;
-    
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-  
+  &[readonly],
   &[disabled] {
-    cursor: not-allowed;
     background: rgba($black, 0.05);
   }
-  &[readonly] {
-    background: rgba($black, 0.05);
-  }
-}
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
-@if ( get-input-class(input) != none ) {
-  input[type="color"].#{get-input-class(input)} {
-    padding: 5px;
-  }
-} @else {
-  input[type="color"] {
-    padding: 5px;
-  }
-}
-
-/**
- * Other Input
- */
-input[type="file"],
-input[type="range"] {
-  display: block;
-  margin: 0 0 map-get( $forms, 'vertical-spacing' ) 0;
-}
-input[type="range"] {
-  width: 100%;
-}
-
-/**
- * Checkbox & Radio
- */
-input[type="checkbox"],
-input[type="radio"] {
-  margin: 0 5px 0 0;
-  
   &[disabled] {
     cursor: not-allowed;
   }
@@ -338,31 +294,10 @@ input[type="radio"] {
 .#{get-input-class(checkbox)},
 .#{get-input-class(radio)},
 .#{get-input-class(choice)} {
-  position: relative;
   cursor: pointer;
-  display: block;
-  margin-bottom: map-get( $forms, 'vertical-spacing' );
   color: $color;
   font-weight: normal;
-  
-  &.inline {
-    display: inline-block;
-    
-    &:first-child {
-      margin-left: 0;
-    }
-  }
 }
-.#{get-input-class(checkbox)},
-.#{get-input-class(radio)} {
-  
-  &.inline {
-    margin-left: 15px;
-    margin-bottom: 10px;
-    padding: 11px 0;
-  }
-}
-
 .#{get-input-class(choice)} {
   padding: map-fetch( $forms, 'choice', 'padding' );
   background: map-fetch( $forms, 'choice', 'background' );
@@ -375,61 +310,86 @@ input[type="radio"] {
     position: absolute;
     margin: 3px 0 0 -20px;
   }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0 5px 0 0;
   
-  &.inline {
-    margin-left: 10px;
-    margin-bottom: map-get( $forms, 'vertical-spacing' );
+  &[disabled] {
+    cursor: not-allowed;
   }
+}
+
+/**
+ * Other Inputs
+ */
+input[type="file"],
+input[type="range"] {
+  display: block;
+  margin: 0;
+}
+input[type="range"] {
+  width: 100%;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+input[type="color"].#{get-input-class(input)} {
+  padding: 5px;
 }
 
 /**
  * Textarea
  */
-@if ( get-input-class(input) != none ) {
-  textarea.#{get-input-class(input)} {
-    height: auto;
-    max-width: 100%;
-  }
-} @else {
-  textarea {
-    height: auto;
-    max-width: 100%;
-  }
+textarea.#{get-input-class(input)} {
+  height: auto;
+  max-width: 100%;
 }
 
 /**
  * Select
  */
-@if ( get-input-class(input) != none ) {
-  select.#{get-input-class(input)} {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    padding-right: 30px;
-  }
-  select[multiple].#{get-input-class(input)},
-  select[size].#{get-input-class(input)} {
-    height: auto;
-    padding: map-fetch( $forms, 'input', 'padding' );
-    background-image: none;
-  }
-} @else {
-  select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    padding-right: 30px;
-  }
-  select[multiple],
-  select[size] {
-    height: auto;
-    padding: map-fetch( $forms, 'input', 'padding' );
-    background-image: none;
-  }
+select.#{get-input-class(input)} {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='4'><polygon fill='"+ map-get($forms, 'color-select-arrow') +"' points='0,0 3,4 3,4 6,0 '/></svg>");
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+}
+select[multiple].#{get-input-class(input)},
+select[size].#{get-input-class(input)} {
+  height: auto;
+  padding: map-fetch( $forms, 'input', 'padding' );
+  background-image: none;
+}
+
+/**
+ * Inline Inputs
+ */
+%inline-input {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  font-size: $base-font-size;
+}
+
+label.inline,
+.#{get-input-class(input)}.inline,
+.#{get-input-class(checkbox)}.inline,
+.#{get-input-class(radio)}.inline,
+.#{get-input-class(choice)}.inline,
+.btn.inline {
+  @extend %inline-input;
+}
+.inline label,
+.inline .#{get-input-class(input)},
+.inline .#{get-input-class(checkbox)},
+.inline .#{get-input-class(radio)},
+.inline .#{get-input-class(choice)},
+.inline .btn {
+  @extend %inline-input;
 }
 
 /**
@@ -437,19 +397,18 @@ input[type="radio"] {
  */
 fieldset[disabled] {
   
-  @include select-input() {
-    cursor: not-allowed;
-    background: rgba($black, 0.05);
-  }
-  
   input[type="file"],
   input[type="range"],
   input[type="checkbox"],
   input[type="radio"],
+  .#{get-input-class(input)},
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
   .#{get-input-class(choice)} {
     cursor: not-allowed;
+  }
+  .#{get-input-class(input)} {
+    background: rgba($black, 0.05);
   }
 }
 
@@ -467,15 +426,22 @@ form {
 }
 
 @include media-min('tablet') {
-  form .col {
-    margin-bottom: 0;
+  form {
+    .row {
+      margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+    }
+    .row:last-child {
+      margin-bottom: 0;
+    }
+    .col {
+      margin-bottom: 0;
+    }
   }
 }
 
 // Check if we should output validation classes
 @if ( 
   get-group-class(form-group) != none or
-  get-group-class(input-group) != none or
   get-group-class(text-group) != none 
 ) {
 /*==============================================================================
@@ -494,97 +460,38 @@ form {
     margin-bottom: 0;
   }
   
-  // Grid
-  .row {
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  }
-  .row:last-child {
-    margin-bottom: 0;
-  }
-  
-  // Groups
-  .#{get-group-class(form-group)},
-  .col > .#{get-group-class(form-group)},
-  .#{get-group-class(input-group)} {
-    margin-bottom: map-get( $forms, 'vertical-spacing' );
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  
-  // Inline Item Group
-  > .#{get-group-class(input-group)}.inline,
-  .col > .#{get-group-class(input-group)}.inline {
-    margin-bottom: 0;
-    
-    &:last-child {
-      margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
-    }
-  }
-  
-  // Labels
-  > label,
-  .col > label {
-    margin-bottom: 5px;
-  }
-  > .#{get-input-class(checkbox)},
-  > .#{get-input-class(radio)},
-  > .#{get-input-class(choice)},
-  .col > .#{get-input-class(checkbox)},
-  .col > .#{get-input-class(radio)},
-  .col > .#{get-input-class(choice)} {
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  }
-  
   // Elements
-  > *,
-  .col > * {
+  .#{get-input-class(input)},
+  .#{get-input-class(checkbox)},
+  .#{get-input-class(radio)},
+  .#{get-input-class(choice)},
+  .btn {
     margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
     
     &:last-child {
       margin-bottom: 0;
     }
+  }
+}
+.#{get-group-class(form-group)}.inline {
+  margin-right: -10px;
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  font-size: 0;
+  
+  &:last-child {
+    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
+  }
+  
+  .#{get-input-class(input)},
+  .#{get-input-class(checkbox)},
+  .#{get-input-class(radio)},
+  .#{get-input-class(choice)},
+  .btn {
+     margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   }
 }
 
 } // endif Form Group
-
-@if (get-group-class(input-group) != none) {
-
-/**
- * Input Group
- */
-.#{get-group-class(input-group)} {
-  margin-bottom: map-get( $forms, 'vertical-spacing' );
-  
-  > * {
-    display: block;
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-.#{get-group-class(input-group)}.inline {
-  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  margin-right: -10px;
-  font-size: 0;
-  
-  > * {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    font-size: $base-font-size;
-    
-    &:last-child {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-} // endif Input Group
 
 @if (get-group-class(text-group) != none) {
 
@@ -606,11 +513,11 @@ form {
 label + .#{get-group-class(text-group)} {
   margin-top: 0;
 }
-.#{get-group-class(input-group)} + .#{get-group-class(text-group)} {
+.#{get-group-class(form-group)} + .#{get-group-class(text-group)} {
   margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
 }
-.#{get-group-class(input-group)}.inline + .#{get-group-class(text-group)} {
-  margin-top: 0;
+.#{get-group-class(form-group)}.inline + .#{get-group-class(text-group)} {
+  margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
 }
 
 } // endif Text Group
@@ -634,7 +541,7 @@ label + .#{get-group-class(text-group)} {
  * Success
  */
 // Success class applied to elements
-@include select-input() {
+.#{get-input-class(input)} {
   &.#{get-val-class(success)} {
     border-color: $green;
   }
@@ -654,7 +561,7 @@ label + .#{get-group-class(text-group)} {
 
 // Success class applied to wrapper
 .#{get-val-class(success)} {
-  @include select-input() {
+  .#{get-input-class(input)} {
     border-color: $green;
   }
   .#{get-input-class(checkbox)},
@@ -675,7 +582,7 @@ label + .#{get-group-class(text-group)} {
  * Warning
  */
 // Warning class applied to elements
-@include select-input() {
+.#{get-input-class(input)} {
   &.#{get-val-class(warning)} {
     border-color: $yellow-dark;
   }
@@ -695,7 +602,7 @@ label + .#{get-group-class(text-group)} {
 
 // Warning class applied to wrapper
 .#{get-val-class(warning)} {
-  @include select-input() {
+  .#{get-input-class(input)} {
     border-color: $yellow-dark;
   }
   .#{get-input-class(checkbox)},
@@ -716,7 +623,7 @@ label + .#{get-group-class(text-group)} {
  * Error
  */
 // Error class applied to elements
-@include select-input() {
+.#{get-input-class(input)} {
   &.#{get-val-class(error)} {
     border-color: $red;
   }
@@ -736,7 +643,7 @@ label + .#{get-group-class(text-group)} {
 
 // Error class applied to wrapper
 .#{get-val-class(error)} {
-  @include select-input() {
+  .#{get-input-class(input)} {
     border-color: $red;
   }
   .#{get-input-class(checkbox)},
@@ -757,7 +664,7 @@ label + .#{get-group-class(text-group)} {
  * Active
  */
 // Active class applied to elements
-@include select-input() {
+.#{get-input-class(input)} {
   &.#{get-val-class(active)} {
     border-color: $blue;
   }
@@ -777,7 +684,7 @@ label + .#{get-group-class(text-group)} {
 
 // Active class applied to wrapper
 .#{get-val-class(active)} {
-  @include select-input() {
+  .#{get-input-class(input)} {
     border-color: $blue;
   }
   .#{get-input-class(checkbox)},
