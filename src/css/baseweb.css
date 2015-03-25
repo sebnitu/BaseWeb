@@ -602,9 +602,6 @@ label.inline {
   label.inline:first-child {
     margin-left: 0; }
 
-label.hide, .inline label.hide {
-  display: none; }
-
 /**
  * Text Inputs
  */
@@ -752,9 +749,9 @@ form .col:last-child {
   margin-bottom: 20px; }
   .form-group:last-child {
     margin-bottom: 0; }
-  .form-group .input, .form-group .checkbox, .form-group .radio, .form-group .choice, .form-group .btn {
+  .form-group .input, .form-group .checkbox, .form-group .radio, .form-group .choice {
     margin-bottom: 10px; }
-    .form-group .input:last-child, .form-group .checkbox:last-child, .form-group .radio:last-child, .form-group .choice:last-child, .form-group .btn:last-child {
+    .form-group .input:last-child, .form-group .checkbox:last-child, .form-group .radio:last-child, .form-group .choice:last-child {
       margin-bottom: 0; }
 
 .form-group.inline {
@@ -767,12 +764,50 @@ form .col:last-child {
     margin-bottom: 10px; }
 
 /**
+ * Input Group
+ */
+.input-group {
+  margin-bottom: 20px; }
+  .input-group:last-child {
+    margin-bottom: 0; }
+  .input-group .input, .input-group .checkbox, .input-group .radio, .input-group .choice {
+    margin-bottom: 10px; }
+    .input-group .input:last-child, .input-group .checkbox:last-child, .input-group .radio:last-child, .input-group .choice:last-child {
+      margin-bottom: 0; }
+
+.input-group.inline {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .input-group.inline:last-child {
+    margin-bottom: -10px; }
+  .input-group.inline .input, .input-group.inline .checkbox, .input-group.inline .radio, .input-group.inline .choice, .input-group.inline .btn {
+    margin-bottom: 10px; }
+
+/**
+ * Action Group
+ */
+.action-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .action-group:last-child {
+    margin-bottom: -10px; }
+  .action-group .input, .action-group .checkbox, .action-group .radio, .action-group .choice, .action-group .btn {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+
+/**
  * Text Group
  */
 .text-group {
   margin-bottom: 10px;
   font-size: 14px;
   color: #909090; }
+  .text-group:last-child {
+    margin-bottom: 0; }
   .text-group p {
     margin: 0 0 10px 0; }
     .text-group p:last-child {
@@ -781,10 +816,7 @@ form .col:last-child {
 label + .text-group {
   margin-top: 0; }
 
-.form-group + .text-group {
-  margin-top: -10px; }
-
-.form-group.inline + .text-group {
+.form-group + .text-group, .input-group + .text-group {
   margin-top: -10px; }
 
 /*==============================================================================

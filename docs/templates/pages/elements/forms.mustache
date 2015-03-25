@@ -2,16 +2,16 @@
 
 <p>HTML forms are probably the most daunting part of front-end development to markup and style. BaseWeb's goal is to give you the tools to make forms easy to build and flexible.</p>
 
-<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code> and <code>.form-group</code> to use for structuring a form layout.</p>
+<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code> and <code>.input-group</code> to use for structuring a form layout.</p>
 
 <pre class="language-markup"><code>
 &lt;form&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Example Label&lt;/label&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
       ...
     &lt;/div&gt;
-    &lt;div class=&quot;form-group inline&quot;&gt;
+    &lt;div class=&quot;input-group inline&quot;&gt;
       ...
     &lt;/div&gt;
   &lt;/div&gt;
@@ -20,11 +20,11 @@
 
 <div class="demo">
   <form>
+    
     <div class="form-group">
-      
       <label>Example Label</label>
-      <div class="form-group">
-        <input class="input" type="text">
+      <div class="input-group">
+        <input class="input" type="text" placeholder="Example text input...">
         <select class="input">
           <option>Option 1</option>
           <option>Option 2</option>
@@ -36,30 +36,19 @@
           <option>Option 3</option>
         </select>
       </div>
-      <div class="form-group">
-        <input class="input" type="text">
-        <input class="input" type="text">
-      </div>
       
-      <label>Test</label>
-      <div class="form-group inline">
+      <label>Example Label</label>
+      <div class="input-group inline">
         <label class="choice"><input type="checkbox"> Choice checkbox</label>
         <label class="choice"><input type="radio"> Choice radio</label>
       </div>
-      
-      <label>Test</label>
-      <div class="form-group">
-        <label class="choice"><input type="checkbox"> Choice checkbox</label>
-        <label class="choice"><input type="radio"> Choice radio</label>
-      </div>
-      
-      <label>Test</label>
-      <div class="form-group inline">
-        <label class="choice"><input type="checkbox"> Choice checkbox</label>
-        <label class="choice"><input type="radio"> Choice radio</label>
-      </div>
-      
     </div>
+      
+    <div class="action-group">
+      <button class="btn btn-primary">Button</button>
+      <button class="btn btn-default">Button</button>
+    </div>
+      
   </form>
 </div>
 
@@ -114,66 +103,12 @@
 </select>
 -->
 
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <div class="form-group">
-      <input type="email" class="input" id="exampleInputEmail1" placeholder="Enter email">
-      <input type="email" class="input" id="exampleInputEmail1" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <input type="email" class="input" id="exampleInputEmail1" placeholder="Enter email">
-      <input type="email" class="input" id="exampleInputEmail1" placeholder="Enter email">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="input" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="text-group">Example block-level help text here.</p>
-  </div>
-  <div class="form-group">
-    <label class="choice">
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-default">Submit</button>
-  </div>
-</form>
-
-<form class="">
-  <div class="form-group inline">
-    <label class="block" for="exampleInputName2">Name</label>
-    <input type="text" class="input" id="exampleInputName2" placeholder="Jane Doe">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="input" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-    <button type="submit" class="btn btn-default">Send invitation</button>
-  </div>
-</form>
+<hr class="docs-hr">
 
 <form>
   <fieldset>
     
     <legend>Using Form Grouping</legend>
-    
-    <div class="form-group">
-      <label>Text Label</label>
-      <div class="form-group inline">
-        <label class="sub inline">Inline Label</label>
-        <input id="input-1" class="input" type="text" placeholder="Text Input">
-        <select class="input">
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-          <option>Option 4</option>
-        </select>
-        <label class="choice"><input type="checkbox" checked> Choice</label>
-      </div>
-    </div>
     
     <div class="form-group">
       <label>Text Input</label>
@@ -182,7 +117,7 @@
     
     <div class="form-group">
       <label>Text Input Group</label>
-      <div class="form-group">
+      <div class="input-group">
         <input class="input" type="text">
         <input class="input" type="text">
       </div>
@@ -190,7 +125,7 @@
     
     <div class="form-group">
       <label>Select Dropdown</label>
-      <div class="form-group">
+      <div class="input-group">
         <select class="input">
           <option>Option 1</option>
           <option>Option 2</option>
@@ -210,13 +145,13 @@
       <label>Grid Example</label>
       <div class="row">
         <div class="col col-6">
-          <div class="form-group">
+          <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">
           </div>
         </div>
         <div class="col col-6">
-          <div class="form-group">
+          <div class="input-group">
             <select class="input">
               <option>Option 1</option>
               <option>Option 2</option>
@@ -264,7 +199,7 @@
     
     <div class="form-group">
       <label>Label</label>
-      <div class="form-group">
+      <div class="input-group">
         <label class="checkbox"><input type="checkbox"> Not fancy checkbox</label>
         <label class="checkbox"><input type="checkbox"> Not fancy checkbox</label>
         <label class="radio"><input type="radio"> Not fancy radio</label>
@@ -274,7 +209,7 @@
     
     <div class="form-group">
       <label>Label</label>
-      <div class="form-group inline">
+      <div class="input-group inline">
         <label class="checkbox"><input type="checkbox"> Not fancy checkbox</label>
         <label class="checkbox"><input type="checkbox"> Not fancy checkbox</label>
         <label class="radio"><input type="radio"> Not fancy radio</label>
@@ -286,7 +221,7 @@
       <div class="row">
         <div class="col col-6">
           <label>Checkbox Choice</label>
-          <div class="form-group">
+          <div class="input-group">
             <label class="choice"><input type="checkbox" checked> Yes</label>
             <label class="choice"><input type="checkbox"> No</label>
             <label class="choice"><input type="checkbox"> Maybe</label>
@@ -294,7 +229,7 @@
         </div>
         <div class="col col-6">
           <label>Radio Choice</label>
-          <div class="form-group">
+          <div class="input-group">
             <label class="choice"><input name="radio-3" type="radio" checked> Yes</label>
             <label class="choice"><input name="radio-3" type="radio"> No</label>
             <label class="choice"><input name="radio-3" type="radio"> Maybe</label>
@@ -307,7 +242,7 @@
       <div class="row">
         <div class="col col-6">
           <label>Inline Checkbox Choice</label>
-          <div class="form-group inline">
+          <div class="input-group inline">
             <label class="choice"><input type="checkbox" checked> Yes</label>
             <label class="choice"><input type="checkbox"> No</label>
             <label class="choice"><input type="checkbox"> Maybe</label>
@@ -315,7 +250,7 @@
         </div>
         <div class="col col-6">
           <label>Inline Radio Choice</label>
-          <div class="form-group inline">
+          <div class="input-group inline">
             <label class="choice"><input name="radio-4" type="radio" checked> Yes</label>
             <label class="choice"><input name="radio-4" type="radio"> No</label>
             <label class="choice"><input name="radio-4" type="radio"> Maybe</label>
@@ -324,115 +259,6 @@
       </div>
     </div>
 
-  </fieldset>
-  <fieldset>
-    
-    <legend>Validation States</legend>
-    
-    <div class="form-group success">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-      <div class="form-group inline">
-        <label class="checkbox"><input type="checkbox"> Choice</label>
-        <label class="radio"><input type="radio"> Choice</label>
-      </div>
-      <div class="text-group">
-        <p>This is a text group.</p>
-      </div>
-    </div>
-    
-    <div class="form-group warning">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-      <div class="form-group inline">
-        <label class="checkbox"><input type="checkbox"> Choice</label>
-        <label class="radio"><input type="radio"> Choice</label>
-      </div>
-      <div class="text-group">
-        <p>This is a text group.</p>
-      </div>
-    </div>
-    
-    <div class="form-group error">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-      <div class="form-group inline">
-        <label class="checkbox"><input type="checkbox"> Choice</label>
-        <label class="radio"><input type="radio"> Choice</label>
-      </div>
-      <div class="text-group">
-        <p>This is a text group.</p>
-      </div>
-    </div>
-    
-    <div class="form-group active">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-      <div class="form-group inline">
-        <label class="checkbox"><input type="checkbox"> Choice</label>
-        <label class="radio"><input type="radio"> Choice</label>
-      </div>
-      <div class="text-group">
-        <p>This is a text group.</p>
-      </div>
-    </div>
-    
   </fieldset>
   <fieldset>
     
@@ -456,11 +282,11 @@
         </div>
         <div class="form-group">
           <label class="sub">Sub Label</label>
-          <div class="form-group">
+          <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">
           </div>
-          <div class="form-group">
+          <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">
           </div>
@@ -469,14 +295,14 @@
           <label class="sub">Sub Label</label>
           <div class="row">
             <div class="col col-6">
-              <div class="form-group">
+              <div class="input-group">
                 <label class="choice"><input name="radio-3" type="radio" checked> Yes</label>
                 <label class="choice"><input name="radio-3" type="radio"> No</label>
                 <label class="choice"><input name="radio-3" type="radio"> Maybe</label>
               </div>
             </div>
             <div class="col col-6">
-              <div class="form-group">
+              <div class="input-group">
                 <label class="choice"><input name="radio-3" type="radio" checked> Yes</label>
                 <label class="choice"><input name="radio-3" type="radio"> No</label>
                 <label class="choice"><input name="radio-3" type="radio"> Maybe</label>
@@ -507,7 +333,7 @@
         </div>
         <div class="form-group">
           <label class="sub">Sub Label</label>
-          <div class="form-group">
+          <div class="input-group">
             <input class="input" type="text">
             <input class="input" type="text">
           </div>
@@ -519,5 +345,114 @@
     </div>
     </div>
 
+  </fieldset>
+  <fieldset>
+    
+    <legend>Validation States</legend>
+    
+    <div class="form-group success">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+      <div class="input-group inline">
+        <label class="checkbox"><input type="checkbox"> Choice</label>
+        <label class="radio"><input type="radio"> Choice</label>
+      </div>
+      <div class="text-group">
+        <p>This is a text group.</p>
+      </div>
+    </div>
+    
+    <div class="form-group warning">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+      <div class="input-group inline">
+        <label class="checkbox"><input type="checkbox"> Choice</label>
+        <label class="radio"><input type="radio"> Choice</label>
+      </div>
+      <div class="text-group">
+        <p>This is a text group.</p>
+      </div>
+    </div>
+    
+    <div class="form-group error">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+      <div class="input-group inline">
+        <label class="checkbox"><input type="checkbox"> Choice</label>
+        <label class="radio"><input type="radio"> Choice</label>
+      </div>
+      <div class="text-group">
+        <p>This is a text group.</p>
+      </div>
+    </div>
+    
+    <div class="form-group active">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+      <div class="input-group inline">
+        <label class="checkbox"><input type="checkbox"> Choice</label>
+        <label class="radio"><input type="radio"> Choice</label>
+      </div>
+      <div class="text-group">
+        <p>This is a text group.</p>
+      </div>
+    </div>
+    
   </fieldset>
 </form>

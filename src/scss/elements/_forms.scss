@@ -24,6 +24,8 @@ $forms: (
     ),
     'groups' : (
       'class-form-group'  : form-group,
+      'class-input-group'  : input-group,
+      'class-action-group'  : action-group,
       'class-text-group'  : text-group,
     ),
     'validation' : (
@@ -236,10 +238,6 @@ label.inline {
     margin-left: 0;
   }
 }
-label.hide,
-.inline label.hide {
-  display: none;
-}
 
 /**
  * Text Inputs
@@ -256,14 +254,11 @@ label.hide,
  
 .#{get-input-class(input)} {
   height: (map-get( $forms, 'line-height' ) + 20px + 2);
-  
   padding: map-fetch( $forms, 'input', 'padding' );
-  
   font-family: map-get( $forms, 'font-family' );
   font-size: map-get( $forms, 'font-size' );
   line-height: map-get( $forms, 'line-height' );
   color: map-get( $forms, 'color' );
-  
   background-color: map-fetch( $forms, 'input', 'background' );
   border: map-fetch( $forms, 'input', 'border' );
   box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
@@ -442,6 +437,8 @@ form {
 // Check if we should output validation classes
 @if ( 
   get-group-class(form-group) != none or
+  get-group-class(input-group) != none or
+  get-group-class(action-group) != none or
   get-group-class(text-group) != none 
 ) {
 /*==============================================================================
@@ -464,8 +461,7 @@ form {
   .#{get-input-class(input)},
   .#{get-input-class(checkbox)},
   .#{get-input-class(radio)},
-  .#{get-input-class(choice)},
-  .btn {
+  .#{get-input-class(choice)} {
     margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
     
     &:last-child {
@@ -493,6 +489,78 @@ form {
 
 } // endif Form Group
 
+@if (get-group-class(input-group) != none) {
+
+/**
+ * Input Group
+ */
+.#{get-group-class(input-group)} {
+  margin-bottom: map-get( $forms, 'vertical-spacing' );
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  // Elements
+  .#{get-input-class(input)},
+  .#{get-input-class(checkbox)},
+  .#{get-input-class(radio)},
+  .#{get-input-class(choice)} {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.#{get-group-class(input-group)}.inline {
+  margin-right: -10px;
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  font-size: 0;
+  
+  &:last-child {
+    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
+  }
+  
+  .#{get-input-class(input)},
+  .#{get-input-class(checkbox)},
+  .#{get-input-class(radio)},
+  .#{get-input-class(choice)},
+  .btn {
+     margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+}
+
+} // endif Input Group
+
+@if (get-group-class(action-group) != none) {
+
+/**
+ * Action Group
+ */
+.#{get-group-class(action-group)} {
+  margin-right: -10px;
+  margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  font-size: 0;
+  
+  &:last-child {
+    margin-bottom: -(map-get( $forms, 'vertical-spacing' ) / 2);
+  }
+  
+  .#{get-input-class(input)},
+  .#{get-input-class(checkbox)},
+  .#{get-input-class(radio)},
+  .#{get-input-class(choice)},
+  .btn {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+}
+
+} // endif Action Group
+
 @if (get-group-class(text-group) != none) {
 
 /**
@@ -502,6 +570,10 @@ form {
   margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   font-size: $base-font-size;
   color: $color-light;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
   
   p {
     margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
@@ -513,10 +585,8 @@ form {
 label + .#{get-group-class(text-group)} {
   margin-top: 0;
 }
-.#{get-group-class(form-group)} + .#{get-group-class(text-group)} {
-  margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
-}
-.#{get-group-class(form-group)}.inline + .#{get-group-class(text-group)} {
+.#{get-group-class(form-group)} + .#{get-group-class(text-group)},
+.#{get-group-class(input-group)} + .#{get-group-class(text-group)} {
   margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
 }
 
