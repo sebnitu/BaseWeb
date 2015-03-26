@@ -40,55 +40,6 @@ $forms: (
 // @Form Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Select Input
-// An input select helper.
-// Available input types:
-// ---
-// input[type="text"]
-// input[type="password"]
-// input[type="date"]
-// input[type="month"]
-// input[type="week"]
-// input[type="time"]
-// input[type="email"]
-// input[type="number"]
-// input[type="search"]
-// input[type="tel"]
-// input[type="url"]
-// input[type="color"]
-// textarea
-// select
-// ---
-// @param $options
-//   @type map
-//   @default $forms map
-@mixin select-input($options: ()) {
-  $o: map-merge( $forms, $options);
-  
-  @if ( map-fetch($o, 'classes', 'inputs', 'class-input') == none ) {
-    input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="month"],
-    input[type="week"],
-    input[type="time"]
-    input[type="email"],
-    input[type="number"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="url"],
-    input[type="color"],
-    textarea,
-    select {
-      @content;
-    }
-  } @else {
-    .#{map-fetch($o, 'classes', 'inputs', 'class-input')} {
-      @content;
-    }
-  }
-}
-
 // Placeholder
 // Sets the placeholder text color for input fields that use the placeholder attribute.
 // @param $options
@@ -317,7 +268,7 @@ input[type="radio"] {
 input[type="file"],
 input[type="range"] {
   display: block;
-  margin: 0;
+  margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
 }
 input[type="range"] {
   width: 100%;
@@ -462,6 +413,7 @@ form {
 .form-group.inline-group {
   @include make-form-group-inline();
   
+  .form-group,
   .input-group {
     display: inline-block;
     vertical-align: top;

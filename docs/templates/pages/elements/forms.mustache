@@ -2,7 +2,62 @@
 
 <p>HTML forms are probably the most daunting part of front-end development to markup and style. BaseWeb's goal is to give you the tools to make forms easy to build and flexible.</p>
 
+<p>BaseWeb supports a wide range of input types and tries to style all of them in a cohesive way. To do this, inputs are styled using classes.</p>
+
 <hr class="docs-hr">
+
+<section class="sub-section sub-section-classes">
+
+<h1 class="docs-header">Form Elements</h1>
+
+<ul class="docs-list">
+
+  <li>
+    <h2 class="docs-header">Input</h2>
+    <p>The <code>.input</code> class is used on the most commonly used input types: <code>text</code>, <code>password</code>, <code>date</code>, <code>month</code>, <code>week</code>, <code>time</code>, <code>email</code>, <code>number</code>, <code>search</code>, <code>tel</code>, <code>url</code> and <code>color</code>.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;input class=&quot;input&quot; type=&quot;text&quot; placeholder=&quot;Text Input&quot;&gt;
+  &lt;textarea class=&quot;input&quot; rows=&quot;4&quot; placeholder=&quot;Textarea...&quot;&gt;&lt;/textarea&gt;
+  &lt;select class=&quot;input&quot;&gt;
+    &lt;option&gt;Select Option 1&lt;/option&gt;
+    &lt;option&gt;Select Option 2&lt;/option&gt;
+    &lt;option&gt;Select Option 3&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/form&gt;
+    </code></pre>
+    <div class="demo">
+      <form>
+        <input class="input" type="text" placeholder="Text Input">
+        <textarea class="input" rows="4" placeholder="Textarea..."></textarea>
+        <select class="input">
+          <option>Select Option 1</option>
+          <option>Select Option 2</option>
+          <option>Select Option 3</option>
+        </select>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Textarea</h2>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Select</h2>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Checkbox and Radio</h2>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Choice</h2>
+  </li>
+  
+</ul>
+
+</section>
 
 <section class="sub-section sub-section-classes">
 
@@ -13,11 +68,11 @@
 <pre class="language-markup"><code>
 &lt;form&gt;
   &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label&gt;Input Group&lt;/label&gt;
+    &lt;label&gt;Example Label&lt;/label&gt;
     &lt;div class=&quot;input-group&quot;&gt;
       ...
     &lt;/div&gt;
-    &lt;label&gt;Inline Input Group&lt;/label&gt;
+    &lt;label&gt;Example Label&lt;/label&gt;
     &lt;div class=&quot;input-group inline-group&quot;&gt;
       ...
     &lt;/div&gt;
@@ -40,12 +95,7 @@
           <option>Option 2</option>
           <option>Option 3</option>
         </select>
-        <select class="input" multiple>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-        <textarea class="input" rows="4"></textarea>
+        <textarea class="input" rows="4" placeholder="Example textarea..."></textarea>
       </div>
       
       <label>Example Label</label>
@@ -67,23 +117,25 @@
 
   <li>
     <h2 class="docs-header">.form-group</h2>
-    
+    <p>Form groups are the first structure element used in a BaseWeb forms. It applies our vertical spacing and a hook for adding modifier classes and custom styles.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;form-group&quot;&gt;...&lt;/div&gt;</code></pre>
   </li>
-  <li>
   
+  <li>
     <h2 class="docs-header">.input-group</h2>
-  
+    <p>Input groups are used to wrap groups of related input elements. It, like form groups, applies vertical spacing and another hook for adding modifier classes.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;input-group&quot;&gt;...&lt;/div&gt;</code></pre>
   </li>
-  <li>
   
+  <li>
     <h2 class="docs-header">.action-group</h2>
-  
+    <p>Action groups are used to wrap form submission, resets and other form actions. It's also a way to apply custom styles and modifiers as a form footer.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;action-group&quot;&gt;...&lt;/div&gt;</code></pre>
   </li>
-  <li>
   
+  <li>
     <h2 class="docs-header">.inline-group</h2>
-    <p>You can also create inline forms by adding the class <code>.inline-group</code> to form structure elements.</p>
-    
+    <p>You can create inline forms by adding the class <code>.inline-group</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
     <pre class="language-markup"><code>
 &lt;form&gt;
   &lt;div class=&quot;form-group inline-group&quot;&gt;
@@ -91,25 +143,20 @@
   &lt;/div&gt;
 &lt;/form&gt;
     </code></pre>
-    
     <div class="demo">
       <form>
         <div class="form-group inline-group">
-          <label>Label</label>
-          <input type="text" class="input" placeholder="Example">
-          <label class="choice"><input type="checkbox" checked> Choice</label>
-          <button type="submit" class="btn btn-default">Button</button>
+          <input type="text" class="input" placeholder="Username" required>
+          <input type="password" class="input" placeholder="Password" required>
+          <button type="submit" class="btn btn-default">Sign In</button>
         </div>
       </form>
     </div>
-  
   </li>
   
   <li>
-    
     <h2 class="docs-header">Form Grids</h2>
-    <p>For more complex form layouts, you also have BaseWeb's default grid system to create rows and columns.</p>
-    
+    <p>For more complex form layouts, you also have BaseWeb's default grid system to create rows and columns. This is done using the <code>.row</code> <code>.col</code> and <code>.col-#</code> classes where <code>#</code> represents the number of columns to span.</p>
     <pre class="language-markup"><code>
 &lt;form&gt;
   &lt;div class=&quot;form-group&quot;&gt;
@@ -128,7 +175,6 @@
   &lt;/div&gt;
 &lt;/form&gt;
     </code></pre>
-    
     <div class="demo">
       <form>
         <div class="form-group">
@@ -150,8 +196,7 @@
           </div>
         </div>
       </form>
-    </div>
-  
+    </div><!-- .demo -->
   </li>
 
 </ul>
@@ -162,59 +207,87 @@
 
 <h1 class="docs-header">Form Variables</h1>
 
+<ul class="docs-list">
+
+  <li>
+  
+  </li>
+  
+</ul>
+
 </section>
 
 <section class="sub-section sub-section-mixins">
 
 <h1 class="docs-header">Form Mixins</h1>
 
+<ul class="docs-list">
+
+  <li>
+  
+  </li>
+  
+</ul>
+
 </section>
 
 <!--
-<label for="input-2">Password Input</label>
-<input id="input-2" type="password" placeholder="Password" required>
+<label>Text Input</label>
+<input class="input" type="text" placeholder="Text">
 
-<label for="input-3">Date Input</label>
-<input id="input-3" type="date">
+<label>Password Input</label>
+<input class="input" type="password" placeholder="Password">
 
-<label for="input-4">Month Input</label>
-<input id="input-4" type="month">
+<label>Date Input</label>
+<input class="input" type="date">
 
-<label for="input-5">Week Input</label>
-<input id="input-5" type="week">
+<label>Month Input</label>
+<input class="input" type="month">
 
-<label for="input-6">Time Input</label>
-<input id="input-6" type="time">
+<label>Week Input</label>
+<input class="input" type="week">
 
-<label for="input-7">Email Input</label>
-<input id="input-7" type="email" placeholder="example@email.com">
+<label>Time Input</label>
+<input class="input" type="time">
 
-<label for="input-8">Number Input</label>
-<input id="input-8" type="number">
+<label>Email Input</label>
+<input class="input" type="email" placeholder="example@email.com">
 
-<label for="input-9">Search Input</label>
-<input id="input-9" type="search">
+<label>Number Input</label>
+<input class="input" type="number">
 
-<label for="input-10">Telephone Input</label>
-<input id="input-10" type="tel">
+<label>Search Input</label>
+<input class="input" type="search">
 
-<label for="input-11">Web Address Input</label>
-<input id="input-11" type="url" placeholder="http://">
+<label>Telephone Input</label>
+<input class="input" type="tel">
 
-<label for="input-12">Color Input</label>
-<input id="input-12" type="color">
+<label>Web Address Input</label>
+<input class="input" type="url" placeholder="http://">
 
-<label for="input-13">File Input</label>
-<input id="input-13" type="file">
+<label>Color Input</label>
+<input class="input" type="color">
 
-<label for="input-14">Range Input</label>
-<input id="input-14" type="range">
+<label>Textarea</label>
+<textarea class="input"></textarea>
 
-<label for="select-2">Multiple Select</label>
-<select id="select-2" multiple>
+<label>Select</label>
+<select class="input">
   <option>1</option>
   <option>2</option>
   <option>3</option>
-  <option>4</option>
 </select>
+
+<label>Multiple Select</label>
+<select class="input" multiple>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+
+<label>File Input</label>
+<input type="file">
+
+<label>Range Input</label>
+<input type="range">
 -->
