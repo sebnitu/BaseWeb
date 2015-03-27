@@ -54,6 +54,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: none;
   clear: none; }
 
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
 /*==============================================================================
   @Typography
 ==============================================================================*/
@@ -547,7 +553,7 @@ hr {
   border-bottom: 3px double rgba(0, 0, 0, 0.1); }
 
 /*==============================================================================
-  @Forms
+  @Form Structure
 ==============================================================================*/
 /**
  * Form Structure Elements
@@ -576,6 +582,77 @@ legend {
   color: #303030;
   border: 0 none; }
 
+form .row {
+  margin-bottom: 10px; }
+form .row:last-child {
+  margin-bottom: 0; }
+form .col {
+  margin-bottom: 10px; }
+form .col:last-child {
+  margin-bottom: 0; }
+
+@media (min-width: 760px) {
+  form .col {
+    margin-bottom: 0; } }
+
+/*==============================================================================
+  @Form Groups
+==============================================================================*/
+/**
+ * Form Group
+ */
+.form-group {
+  margin-bottom: 20px; }
+  .form-group:last-child {
+    margin-bottom: 0; }
+
+.form-group.inline-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .form-group.inline-group:last-child {
+    margin-bottom: -10px; }
+  .form-group.inline-group .form-group, .form-group.inline-group .input-group {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0; }
+    .form-group.inline-group .form-group:last-child, .form-group.inline-group .input-group:last-child {
+      margin-right: 0; }
+
+/**
+ * Input Group
+ */
+.input-group {
+  margin-bottom: 20px; }
+  .input-group:last-child {
+    margin-bottom: 0; }
+
+.input-group.inline-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .input-group.inline-group:last-child {
+    margin-bottom: -10px; }
+
+/**
+ * Action Group
+ */
+.action-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .action-group:last-child {
+    margin-bottom: -10px; }
+  .action-group .input, .action-group .checkbox, .action-group .radio, .action-group .choice, .action-group .btn {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px; }
+
+/*==============================================================================
+  @Form Elements
+==============================================================================*/
 /**
  * Labels
  */
@@ -758,77 +835,6 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   cursor: not-allowed; }
 .disabled .input, fieldset[disabled] .input {
   background: rgba(0, 0, 0, 0.05); }
-
-/*==============================================================================
-  @Form Grids
-==============================================================================*/
-form .row {
-  margin-bottom: 10px; }
-form .row:last-child {
-  margin-bottom: 0; }
-form .col {
-  margin-bottom: 10px; }
-form .col:last-child {
-  margin-bottom: 0; }
-
-@media (min-width: 760px) {
-  form .col {
-    margin-bottom: 0; } }
-
-/*==============================================================================
-  @Form Groups
-==============================================================================*/
-/**
- * Form Group
- */
-.form-group {
-  margin-bottom: 20px; }
-  .form-group:last-child {
-    margin-bottom: 0; }
-
-.form-group.inline-group {
-  margin-right: -10px;
-  margin-bottom: 10px;
-  font-size: 0; }
-  .form-group.inline-group:last-child {
-    margin-bottom: -10px; }
-  .form-group.inline-group .form-group, .form-group.inline-group .input-group {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 10px 0 0; }
-    .form-group.inline-group .form-group:last-child, .form-group.inline-group .input-group:last-child {
-      margin-right: 0; }
-
-/**
- * Input Group
- */
-.input-group {
-  margin-bottom: 20px; }
-  .input-group:last-child {
-    margin-bottom: 0; }
-
-.input-group.inline-group {
-  margin-right: -10px;
-  margin-bottom: 10px;
-  font-size: 0; }
-  .input-group.inline-group:last-child {
-    margin-bottom: -10px; }
-
-/**
- * Action Group
- */
-.action-group {
-  margin-right: -10px;
-  margin-bottom: 10px;
-  font-size: 0; }
-  .action-group:last-child {
-    margin-bottom: -10px; }
-  .action-group .input, .action-group .checkbox, .action-group .radio, .action-group .choice, .action-group .btn {
-    display: inline-block;
-    width: auto;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 14px; }
 
 /*==============================================================================
   @Validation States

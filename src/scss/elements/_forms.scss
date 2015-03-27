@@ -15,6 +15,10 @@ $forms: (
   'color-select-arrow' : $color-dark,
   'border-radius' : $border-radius,
   
+  'label' : (
+    'padding' : 11px,
+  ),
+  
   'input' : (
     'padding' : 10px,
     'background' : rgba($white, 0.5),
@@ -42,6 +46,8 @@ $forms: (
 
 // Placeholder
 // Sets the placeholder text color for input fields that use the placeholder attribute.
+// @param $color
+//   @type color
 // @param $options
 //   @type map
 //   @default $forms map
@@ -66,6 +72,10 @@ $forms: (
 }
 
 // Make Form Group Base
+// Creates the styles for a base form group by applying vertical spacing.
+// @param $options
+//   @type map
+//   @default $forms map
 @mixin make-form-group-base($options: ()) {
   $o: map-merge( $forms, $options);
   
@@ -77,6 +87,10 @@ $forms: (
 }
 
 // Make Form Group Inline
+// Creates the styles for making an inline form group element.
+// @param $options
+//   @type map
+//   @default $forms map
 @mixin make-form-group-inline($options: ()) {
   $o: map-merge( $forms, $options);
   
@@ -90,6 +104,10 @@ $forms: (
 }
 
 // Make Input Inline
+// Creates the styles for making an inline form element.
+// @param $options
+//   @type map
+//   @default $forms map
 @mixin make-input-inline($options: ()) {
   $o: map-merge( $forms, $options);
   
@@ -101,7 +119,7 @@ $forms: (
 }
 
 /*==============================================================================
-  @Forms
+  @Form Structure
 ==============================================================================*/
 
 /**
@@ -134,6 +152,82 @@ legend {
   border: 0 none;
 }
 
+form {
+  .row {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+  .row:last-child {
+    margin-bottom: 0;
+  }
+  .col {
+    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
+  }
+  .col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@include media-min('tablet') {
+  form .col {
+    margin-bottom: 0;
+  }
+}
+
+/*==============================================================================
+  @Form Groups
+==============================================================================*/
+
+/**
+ * Form Group
+ */
+.form-group {
+  @include make-form-group-base();
+}
+.form-group.inline-group {
+  @include make-form-group-inline();
+  
+  .form-group,
+  .input-group {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+/**
+ * Input Group
+ */
+.input-group {
+  @include make-form-group-base();
+}
+.input-group.inline-group {
+  @include make-form-group-inline();
+}
+
+/**
+ * Action Group
+ */
+.action-group {
+  @include make-form-group-inline();
+  
+  .input,
+  .checkbox,
+  .radio,
+  .choice,
+  .btn {
+    @include make-input-inline();
+  }
+}
+
+
+/*==============================================================================
+  @Form Elements
+==============================================================================*/
+
 /**
  * Labels
  */
@@ -164,17 +258,17 @@ label {
   }
   &.label-block {
     display: block;
-    padding-top: 11px;
+    padding-top: map-fetch( $forms, 'label', 'padding' );
   }
   &.label-inline {
     display: inline-block;
-    padding-top: 11px;
+    padding-top: map-fetch( $forms, 'label', 'padding' );
   }
 }
 .inline-group {
   label.label-block,
   label.label-inline {
-    padding-bottom: 11px;
+    padding-bottom: map-fetch( $forms, 'label', 'padding' );
   }
 }
 
@@ -372,81 +466,6 @@ fieldset[disabled] {
   }
   .input {
     background: rgba($black, 0.05);
-  }
-}
-
-/*==============================================================================
-  @Form Grids
-==============================================================================*/
-
-form {
-  .row {
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  }
-  .row:last-child {
-    margin-bottom: 0;
-  }
-  .col {
-    margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  }
-  .col:last-child {
-    margin-bottom: 0;
-  }
-}
-
-@include media-min('tablet') {
-  form .col {
-    margin-bottom: 0;
-  }
-}
-
-/*==============================================================================
-  @Form Groups
-==============================================================================*/
-
-/**
- * Form Group
- */
-.form-group {
-  @include make-form-group-base();
-}
-.form-group.inline-group {
-  @include make-form-group-inline();
-  
-  .form-group,
-  .input-group {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 10px 0 0;
-    
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-/**
- * Input Group
- */
-.input-group {
-  @include make-form-group-base();
-}
-.input-group.inline-group {
-  @include make-form-group-inline();
-}
-
-/**
- * Action Group
- */
-.action-group {
-  @include make-form-group-inline();
-  
-  .input,
-  .checkbox,
-  .radio,
-  .choice,
-  .btn {
-    @include make-input-inline();
   }
 }
 
