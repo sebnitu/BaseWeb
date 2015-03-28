@@ -92,8 +92,9 @@ function resize() {
   $left_panel.css({ 'height': h - divHight + 'px' });
   $right_panel.css({
     'height': h - divHight + 'px',
-    'width': $content.width() - $left_panel.width() - $handle_vertical.width() + 'px'
+    'width': $content.width() - $left_panel.width() - $handle_vertical.outerWidth() + 'px'
   });
+  
 }
 
 jQuery.resizable = function(resizerID, vOrH) {
