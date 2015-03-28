@@ -238,7 +238,7 @@ var writePage = function(data, name, o) {
     });
   }
   
-  // Set he page partial
+  // Set the page partial
   partials['page'] = data;
   
   // Create the mustache template

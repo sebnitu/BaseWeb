@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BaseWeb &ndash; A fresh front-end development framework.</title>
+  <title>{{ name }} &ndash; A fresh front-end development framework.</title>
   
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" media="all" href="/docs/css/baseweb.min.css">
@@ -27,7 +27,23 @@
 
 <header class="example-header">
   <h1><a href="/index.html" class="logo">{{ name }}</a></h1>
+  
+  <div class="widget return-widget">
+    {{#page.return}}
+      <a href="{{ url }}" class="btn btn-light-on-black">&larr; Back to Docs</a>
+    {{/page.return}}
+    {{^page.return}}
+      <a href="/docs/" class="btn btn-light-on-black">&larr; Back to Docs</a>
+    {{/page.return}}
+  </div>
+  
+  <div class="widget display-widget">
+    <a href="#" class="btn btn-light-on-black">Display</a>
+  </div>
+  
 </header><!-- .header-bar -->
+
+
 
 <div class="example-main">
   
