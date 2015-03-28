@@ -125,8 +125,8 @@ var writePage = function(data, name, o) {
   
   // Set layout paths ordered by priority
   layout_paths = [
-    o.path.layouts + context.layout,
-    o.path.global.layouts + context.layout,
+    o.path.layouts + context.page.layout,
+    o.path.global.layouts + context.page.layout,
     o.path.layouts + name,
     o.path.global.layouts + name,
     o.path.layouts + o.defaultLayout,
