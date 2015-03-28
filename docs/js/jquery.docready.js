@@ -55,6 +55,13 @@
       }
     }).data('smoothState');
     
+    /**
+     * Resize
+     */
+    window.onresize = resize;
+    resize();
+    $.resizable('handler-vertical', "v");
+    
   });
   
   /**

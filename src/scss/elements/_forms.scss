@@ -190,6 +190,9 @@ form {
 .form-group.inline-group {
   @include make-form-group-inline();
   
+  > * {
+    @include make-input-inline();
+  }
   .form-group,
   .input-group {
     display: inline-block;
@@ -223,20 +226,21 @@ form {
  * Action Group
  */
 .form-action {
-  @include make-form-group-inline();
+  @include make-form-group-base();
+  font-size: 0;
   
-  .input,
-  .checkbox,
-  .radio,
-  .choice,
   .btn,
-  a {
-    @include make-input-inline();
-  }
-  
-  a {
+  .input-align {
     display: inline-block;
-    margin-top: 11px;
+    margin: 0 10px 0 0;
+    font-size: $base-font-size;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .input-align {
+    margin-top: map-fetch($forms, 'label', 'padding');
   }
 }
 
@@ -248,6 +252,10 @@ form {
 }
 .input-group.inline-group {
   @include make-form-group-inline();
+  
+  > * {
+    @include make-input-inline();
+  }
 }
 
 /*==============================================================================
@@ -460,6 +468,13 @@ label + .note {
 .form-group + .note,
 .input-group + .note {
   margin-top: -(map-get( $forms, 'vertical-spacing' ) / 2);
+}
+
+/**
+ * Required Classes
+ */
+.req {
+  color: $red;
 }
 
 /**

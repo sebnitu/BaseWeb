@@ -1,0 +1,211 @@
+<div class="widget return-widget">
+  <a href="/docs/elements.html#forms" class="btn btn-light-on-black">&larr; Back to Docs</a>
+</div>
+
+<div class="widget display-widget">
+  <a href="#" class="btn btn-light-on-black">Display</a>
+</div>
+
+<div id="example-content" class="example-content example-form-shirt-order">
+  
+  <div id="example-content-output" class="example-content-output">
+    
+    <div class="example-toolbar">
+      <form class="example-toolbar-form select-output-example">
+        <div class="row">
+          <div class="col col-4">
+            <select class="input" onchange="navigateTo(this, 'window', false);">
+              <option disabled>Examples</option>
+              <option value="/examples/forms.html" selected>Forms</option>
+            </select>
+          </div>
+          <div class="col col-8">
+            <select class="input" onchange="navigateTo(this, 'window', false);">
+              <option disabled>Example Form</option>
+              <option value="/examples/form-signin.html">Sign In Form</option>
+              <option value="/examples/form-contact.html">Contact Form</option>
+              <option value="/examples/form-shirt-order.html" selected>Shirt Order Form</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <script type="text/javascript">
+      function navigateTo(sel, target, newWindow) {
+        var url = sel.options[sel.selectedIndex].value;
+        if (newWindow) {
+          window.open(url, target, '--- attributes here, see below ---');
+        } else {
+          window[target].location.href = url;
+        }
+      }
+      </script>
+    </div>
+    
+    <div class="example-output-wrapper">
+    
+      <form>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-3">
+              <label class="label-block">Shirt Details</label>
+              <p class="note">Select the shirt details you'd like to purchase.</p>
+            </div>
+            <div class="col col-9">
+              
+              <div class="row">
+                <div class="col col-3">
+                  <label class="label-sub label-block" for="shirt-type">Shirt Type</label>
+                </div>
+                <div class="col col-9">
+                  <select class="input" id="shirt-type">
+                    <option selected></option>
+                    <option>T-Shirt</option>
+                    <option>Baseball T-Shirt</option>
+                    <option>Tank Shirt</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-3">
+                  <label class="label-sub label-block" for="shirt-size">Shirt Size</label>
+                </div>
+                <div class="col col-9">
+                  <select class="input" id="shirt-size">
+                    <option selected></option>
+                    <option>X-Small</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                    <option>X-Large</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-3">
+                  <label class="label-sub label-block" for="shirt-color">Shirt Color</label>
+                </div>
+                <div class="col col-9">
+                  <select class="input" id="shirt-color">
+                    <option selected></option>
+                    <option>Blue</option>
+                    <option>Red</option>
+                    <option>Green</option>
+                    <option>Black</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-3">
+              <label>Your Details</label>
+              <p class="note">We need to know some stuff about you.</p>
+            </div>
+            <div class="col col-9">
+              <div class="input-group">
+                <label class="label-sub">Full Name</label>
+                <div class="row">
+                  <div class="col col-6">
+                    <input type="text" class="input" placeholder="First Name">
+                  </div>
+                  <div class="col col-6">
+                    <input type="text" class="input" placeholder="Last Name">
+                  </div>
+                </div>
+              </div>
+              <div class="input-group">
+                <label class="label-sub" for="input-email">Email Address</label>
+                <input type="email" class="input" id="input-email" placeholder="example@gmail.com">
+              </div>
+              <div class="input-group">
+                <label class="label-sub">Shipping Address</label>
+                <input type="text" class="input" placeholder="Street Address">
+              </div>
+              <div class="input-group">
+                <input type="text" class="input" placeholder="Address Line 2">
+              </div>
+              <div class="row">
+                <div class="col col-4">
+                  <input type="text" class="input" placeholder="City">
+                </div>
+                <div class="col col-4">
+                  <input type="text" class="input" placeholder="State">
+                </div>
+                <div class="col col-4">
+                  <input type="text" class="input" placeholder="Zip">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-3">
+              <label class="label-block">Other Details</label>
+            </div>
+            <div class="col col-9">
+              <div class="row">
+                <div class="col col-6">
+                  <label class="choice"><input type="checkbox"> Is this item a gift?</label>
+                </div>
+                <div class="col col-6">
+                  <label class="choice"><input type="checkbox"> Create an Account</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-9 prefix-3">
+              <button class="btn btn-primary">Proceed to Checkout</button>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+      
+    </div><!-- .example-output-wrapper -->
+    <div class="shim"></div>
+  </div><!-- .example-content-output -->
+  
+  <div id="handler-vertical" class="handler-vertical"></div>
+  
+  <div id="example-content-input" class="example-content-input">
+    <div class="shim"></div>
+    
+    <div class="example-toolbar">
+      <form class="example-toolbar-form select-input-display">
+        <div class="form-group inline-group">
+          <label class="choice"><input type="checkbox" value="set-html" checked> HTML</label>
+          <label class="choice"><input type="checkbox" value="set-scss" checked> SCSS</label>
+          <label class="choice"><input type="checkbox" value="set-css" checked> CSS</label>
+          <label class="choice disabled"><input type="checkbox" value="set-js" disabled> JS</label>
+        </div>
+      </form>
+    </div>
+    
+    <div class="example-input-wrapper">
+
+<pre class="language-markup"><code>
+...
+</code></pre>
+    
+<pre class="language-scss"><code>
+...
+</code></pre>
+
+<pre class="language-css"><code>
+...
+</code></pre>
+    
+    </div><!-- .example-input-wrapper -->
+  </div><!-- .example-content-input -->
+
+</div><!-- .example-content -->
