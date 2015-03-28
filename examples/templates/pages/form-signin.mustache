@@ -14,13 +14,13 @@
       <form class="example-toolbar-form select-output-example">
         <div class="row">
           <div class="col col-4">
-            <select class="input" onchange="navigateTo(this, 'window', false);">
+            <select class="input">
               <option disabled>Examples</option>
               <option value="/examples/forms.html" selected>Forms</option>
             </select>
           </div>
           <div class="col col-8">
-            <select class="input" onchange="navigateTo(this, 'window', false);">
+            <select class="input">
               <option disabled>Example Form</option>
               <option value="/examples/form-signin.html" selected>Sign In Form</option>
               <option value="/examples/form-contact.html">Contact Form</option>
@@ -29,16 +29,6 @@
           </div>
         </div>
       </form>
-      <script type="text/javascript">
-      function navigateTo(sel, target, newWindow) {
-        var url = sel.options[sel.selectedIndex].value;
-        if (newWindow) {
-          window.open(url, target, '--- attributes here, see below ---');
-        } else {
-          window[target].location.href = url;
-        }
-      }
-      </script>
     </div>
     
     <div class="example-output-wrapper">
@@ -84,10 +74,10 @@
     <div class="example-toolbar">
       <form class="example-toolbar-form select-input-display">
         <div class="form-group inline-group">
-          <label class="choice"><input type="checkbox" value="set-html" checked> HTML</label>
-          <label class="choice"><input type="checkbox" value="set-scss" checked> SCSS</label>
-          <label class="choice"><input type="checkbox" value="set-css" checked> CSS</label>
-          <label class="choice disabled"><input type="checkbox" value="set-js" disabled> JS</label>
+          <label class="choice"><input type="checkbox" value="language-markup" checked> HTML</label>
+          <label class="choice"><input type="checkbox" value="language-scss" checked> SCSS</label>
+          <label class="choice"><input type="checkbox" value="language-css"> CSS</label>
+          <label class="choice disabled"><input type="checkbox" value="language-js" disabled> JS</label>
         </div>
       </form>
     </div>

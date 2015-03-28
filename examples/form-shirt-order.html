@@ -47,13 +47,13 @@
       <form class="example-toolbar-form select-output-example">
         <div class="row">
           <div class="col col-4">
-            <select class="input" onchange="navigateTo(this, 'window', false);">
+            <select class="input">
               <option disabled>Examples</option>
               <option value="/examples/forms.html" selected>Forms</option>
             </select>
           </div>
           <div class="col col-8">
-            <select class="input" onchange="navigateTo(this, 'window', false);">
+            <select class="input">
               <option disabled>Example Form</option>
               <option value="/examples/form-signin.html">Sign In Form</option>
               <option value="/examples/form-contact.html">Contact Form</option>
@@ -62,16 +62,6 @@
           </div>
         </div>
       </form>
-      <script type="text/javascript">
-      function navigateTo(sel, target, newWindow) {
-        var url = sel.options[sel.selectedIndex].value;
-        if (newWindow) {
-          window.open(url, target, '--- attributes here, see below ---');
-        } else {
-          window[target].location.href = url;
-        }
-      }
-      </script>
     </div>
     
     <div class="example-output-wrapper">
@@ -227,7 +217,131 @@
     <div class="example-input-wrapper">
 
 <pre class="language-markup"><code>
-...
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-3&quot;&gt;
+        &lt;label class=&quot;label-block&quot;&gt;Shirt Details&lt;/label&gt;
+        &lt;p class=&quot;note&quot;&gt;Select the shirt details you'd like to purchase.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-9&quot;&gt;
+        
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col col-3&quot;&gt;
+            &lt;label class=&quot;label-sub label-block text-right&quot; for=&quot;shirt-type&quot;&gt;Shirt Type&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-9&quot;&gt;
+            &lt;select class=&quot;input&quot; id=&quot;shirt-type&quot;&gt;
+              &lt;option selected&gt;&lt;/option&gt;
+              &lt;option&gt;T-Shirt&lt;/option&gt;
+              &lt;option&gt;Baseball T-Shirt&lt;/option&gt;
+              &lt;option&gt;Tank Shirt&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col col-3&quot;&gt;
+            &lt;label class=&quot;label-sub label-block text-right&quot; for=&quot;shirt-size&quot;&gt;Shirt Size&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-9&quot;&gt;
+            &lt;select class=&quot;input&quot; id=&quot;shirt-size&quot;&gt;
+              &lt;option selected&gt;&lt;/option&gt;
+              &lt;option&gt;X-Small&lt;/option&gt;
+              &lt;option&gt;Small&lt;/option&gt;
+              &lt;option&gt;Medium&lt;/option&gt;
+              &lt;option&gt;Large&lt;/option&gt;
+              &lt;option&gt;X-Large&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col col-3&quot;&gt;
+            &lt;label class=&quot;label-sub label-block text-right&quot; for=&quot;shirt-color&quot;&gt;Shirt Color&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-9&quot;&gt;
+            &lt;select class=&quot;input&quot; id=&quot;shirt-color&quot;&gt;
+              &lt;option selected&gt;&lt;/option&gt;
+              &lt;option&gt;Blue&lt;/option&gt;
+              &lt;option&gt;Red&lt;/option&gt;
+              &lt;option&gt;Green&lt;/option&gt;
+              &lt;option&gt;Black&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-3&quot;&gt;
+        &lt;label&gt;Your Details&lt;/label&gt;
+        &lt;p class=&quot;note&quot;&gt;We need to know some stuff about you.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-9&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          &lt;label class=&quot;label-sub&quot;&gt;Full Name&lt;/label&gt;
+          &lt;div class=&quot;row&quot;&gt;
+            &lt;div class=&quot;col col-6&quot;&gt;
+              &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;First Name&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col col-6&quot;&gt;
+              &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Last Name&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          &lt;label class=&quot;label-sub&quot; for=&quot;input-email&quot;&gt;Email Address&lt;/label&gt;
+          &lt;input type=&quot;email&quot; class=&quot;input&quot; id=&quot;input-email&quot; placeholder=&quot;example@gmail.com&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          &lt;label class=&quot;label-sub&quot;&gt;Shipping Address&lt;/label&gt;
+          &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Street Address&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Address Line 2&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col col-4&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;City&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-4&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;State&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-4&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Zip&quot;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-3&quot;&gt;
+        &lt;label class=&quot;label-block&quot;&gt;Other Details&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-9&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+          &lt;div class=&quot;col col-6&quot;&gt;
+            &lt;label class=&quot;choice&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Is this item a gift?&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;col col-6&quot;&gt;
+            &lt;label class=&quot;choice&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Create an Account&lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-9 prefix-3&quot;&gt;
+        &lt;button class=&quot;btn btn-primary&quot;&gt;Proceed to Checkout&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
 </code></pre>
     
 <pre class="language-scss"><code>

@@ -71,9 +71,6 @@ function active_subpage($selector) {
   });
 }
 
-$(function () {
-    
-});
 /**
  * Resize
  */
@@ -127,5 +124,17 @@ jQuery.resizable = function(resizerID, vOrH) {
     });
     
   });
+}
+
+/**
+ * Select Page Switcher
+ */
+function navigateTo(sel, target, newWindow) {
+  var url = sel.options[sel.selectedIndex].value;
+  if (newWindow) {
+    window.open(url, target, '--- attributes here, see below ---');
+  } else {
+    window[target].location.href = url;
+  }
 }
     
