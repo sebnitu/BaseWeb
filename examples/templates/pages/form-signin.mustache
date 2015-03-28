@@ -71,16 +71,7 @@
   <div id="example-content-input" class="example-content-input">
     <div class="shim"></div>
     
-    <div class="example-toolbar">
-      <form class="example-toolbar-form select-input-display">
-        <div class="form-group inline-group">
-          <label class="choice"><input type="checkbox" value="language-markup" checked> HTML</label>
-          <label class="choice"><input type="checkbox" value="language-scss" checked> SCSS</label>
-          <label class="choice"><input type="checkbox" value="language-css"> CSS</label>
-          <label class="choice disabled"><input type="checkbox" value="language-js" disabled> JS</label>
-        </div>
-      </form>
-    </div>
+    {{ > toolbar-input }}
     
     <div class="example-input-wrapper">
       
@@ -115,11 +106,25 @@
 </code></pre>
 
 <pre class="language-scss"><code>
-...
-</code></pre>
-
-<pre class="language-css"><code>
-...
+form {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: $white;
+  background-clip: padding-box;
+  border: 3px solid rgba($black, 0.1);
+  @include border-radius();
+}
+form .form-header,
+form .form-group,
+form .form-action {
+  margin: 0;
+  padding: 20px;
+}
+form .form-group,
+form .form-action {
+  border-top: 1px solid rgba($black, 0.1);
+}
 </code></pre>
       
     </div><!-- .example-input-wrapper -->

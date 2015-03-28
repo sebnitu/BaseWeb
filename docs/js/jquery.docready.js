@@ -25,6 +25,9 @@
     active_nav($('#nav'));
     active_subpage($('.subpage'));
     
+    /**
+     * Smooth State
+     */
     var $body = $('html, body');
     var content = $('#main').smoothState({
       // Runs when a link has been activated
