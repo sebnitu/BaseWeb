@@ -4,7 +4,7 @@
 
 // Table Map
 // Define all the settings for table mixins and classes.
-$table: (
+$tables: (
   'modifier-classes' : true,
   'valign' : top,
   'nth' : odd,
@@ -28,9 +28,9 @@ $table: (
 // Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or `%table-base` placeholder.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-base($options: ()) {
-  $o: map-merge( $table, $options);
+  $o: map-merge( $tables, $options);
   margin: map-get($o, 'margin');
   background: map-get($o, 'background');
   border-collapse: separate;
@@ -43,9 +43,9 @@ $table: (
 // Adds borders to a table that divide table rows.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-rowed($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   td, th {
     border-bottom: map-get($o, 'border');
   }
@@ -64,9 +64,9 @@ $table: (
 // Adds borders to a table that divide table columns.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-columned($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   td, th {
     border-right: map-get($o, 'border');
   }
@@ -81,22 +81,22 @@ $table: (
 // Adds borders to a table that divide table cells.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-bordered($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   @include make-table-rowed($o);
   @include make-table-columned($o);
 }
 
-// Give Table Size
+// Add Table Size
 // Toggles a tables padding size between condensed, expanded or a custom padding value.
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $table map
-@mixin give-table-size($size, $options: ()) {
-  $o: map-merge($table, $options);
+//   @default $tables map
+@mixin add-table-size($size, $options: ()) {
+  $o: map-merge($tables, $options);
   @if ($size == condensed) {
     td, th {
       padding: map-get($o, 'padding-condensed');
@@ -112,16 +112,16 @@ $table: (
   }
 }
 
-// Give Table Rounded
+// Add Table Rounded
 // Gives a table rounded borders depending on parameters passed.
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($table('border-radius'))
+//   @default default ($tables('border-radius'))
 // @param $options
 //   @type map
-//   @default $table map
-@mixin give-table-rounded($radius: default, $options: ()) {
-  $o: map-merge($table, $options);
+//   @default $tables map
+@mixin add-table-rounded($radius: default, $options: ()) {
+  $o: map-merge($tables, $options);
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
@@ -152,19 +152,19 @@ $table: (
   }
 }
 
-// Give Table Stripes
+// Add Table Stripes
 // Gives a table stripes either vertical or horizontal depending on parameters passed.
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($table('nth'))
+//   @default default ($tables('nth'))
 // @param $dir
 //   @type orientation of stripes (vertical, horizontal)
-//   @default default ($table('stripe'))
+//   @default default ($tables('stripe'))
 // @param $options
 //   @type map
-//   @default $table map
-@mixin give-table-stripes($nth: default, $dir: default, $options: ()) {
-  $o: map-merge($table, $options);
+//   @default $tables map
+@mixin add-table-stripes($nth: default, $dir: default, $options: ()) {
+  $o: map-merge($tables, $options);
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
   }
@@ -187,16 +187,16 @@ $table: (
   }
 }
 
-// Give Table Hover
+// Add Table Hover
 // Gives table hover styles for rows.
 // @param $bg-hover
 //   @type color
-//   @default default ($table('background-hover'))
+//   @default default ($tables('background-hover'))
 // @param $options
 //   @type map
-//   @default $table map
-@mixin give-table-hover($bg-hover: default, $options: ()) {
-  $o: map-merge($table, $options);
+//   @default $tables map
+@mixin add-table-hover($bg-hover: default, $options: ()) {
+  $o: map-merge($tables, $options);
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
@@ -208,12 +208,12 @@ $table: (
   }
 }
 
-// Give Table Alignment
+// Add Table Alignment
 // Sets the vertical and text alignment of a table if a parameter is passed.
 // @param $options
 //   @type map ('vertical-align', 'text-align')
 //   @default map (none, none)
-@mixin give-table-alignment($options: ()) {
+@mixin add-table-alignment($options: ()) {
   $o: map-merge((
     'vertical-align' : none,
     'text-align' : none,
@@ -234,16 +234,15 @@ $table: (
 // When added to a wrapping element of a table, will make the table responsive for tablets and below.
 // @param $options
 //   @type map
-//   @default $table map
+//   @default $tables map
 @mixin make-table-responsive($options: ()) {
-  $o: map-merge($table, $options);
+  $o: map-merge($tables, $options);
   margin: map-get($o, 'margin');
   > table {
     margin: 0;
   }
   @include media-max('tablet') {
     overflow: auto;
-    border: map-get($o, 'border');
     > table td,
     > table th {
       white-space: nowrap;
@@ -264,7 +263,7 @@ table {
   overflow: auto;
   
   tr {
-    vertical-align: map-get($table, 'valign');
+    vertical-align: map-get($tables, 'valign');
   }
   th {
     color: $color-header;
@@ -274,7 +273,7 @@ table {
 }
 
 // Check if we should output modifier classes
-@if (map-get($table, 'modifier-classes') == true) {
+@if (map-get($tables, 'modifier-classes') == true) {
 
 /*==============================================================================
   @Table Modifiers
@@ -304,54 +303,54 @@ table {
  * Padding Variations
  */
 .table-condensed {
-  @include give-table-size(condensed);
+  @include add-table-size(condensed);
 }
 .table-expanded {
-  @include give-table-size(expanded);
+  @include add-table-size(expanded);
 }
 
 /**
  * Miscellaneous Modifiers
  */
 .table-rounded {
-  @include give-table-rounded();
+  @include add-table-rounded();
 }
 .table-striped {
-  @include give-table-stripes();
+  @include add-table-stripes();
 }
 .table-striped-horizontal {
-  @include give-table-stripes(default, horizontal);
+  @include add-table-stripes(default, horizontal);
 }
 .table-striped-vertical {
-  @include give-table-stripes(default, vertical);
+  @include add-table-stripes(default, vertical);
 }
 .table-hover {
-  @include give-table-hover();
+  @include add-table-hover();
 }
 
 /**
  * Table Alignment Modifiers
  */
 .table-valign-baseline {
-  @include give-table-alignment(('vertical-align': baseline));
+  @include add-table-alignment(('vertical-align': baseline));
 }
 .table-valign-top {
-  @include give-table-alignment(('vertical-align': top));
+  @include add-table-alignment(('vertical-align': top));
 }
 .table-valign-middle {
-  @include give-table-alignment(('vertical-align': middle));
+  @include add-table-alignment(('vertical-align': middle));
 }
 .table-valign-bottom {
-  @include give-table-alignment(('vertical-align': bottom));
+  @include add-table-alignment(('vertical-align': bottom));
 }
 .table-align-left {
-  @include give-table-alignment(('text-align': left));
+  @include add-table-alignment(('text-align': left));
 }
 .table-align-center {
-  @include give-table-alignment(('text-align': center));
+  @include add-table-alignment(('text-align': center));
 }
 .table-align-right {
-  @include give-table-alignment(('text-align': right));
+  @include add-table-alignment(('text-align': right));
 }
 
 /**

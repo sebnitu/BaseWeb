@@ -34,4 +34,9 @@ task('watch', {async: true}, function() {
     jake.Task['build:docs'].execute();
   });
   
+  watch(['examples/templates/layouts/', 'examples/templates/pages/', 'examples/templates/partials/'], function(filename) {
+    u.print(filename + ' was changed:', 'cyan');
+    jake.Task['build:examples'].execute();
+  });
+  
 });

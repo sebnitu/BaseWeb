@@ -30,7 +30,7 @@
   
     <div id="sidebar" class="sidebar">
       <header id="header" class="header">
-        <h1><a href="/index.html" class="logo">BaseWeb</a></h1>
+        <h1><a href="/" class="logo">BaseWeb</a></h1>
       </header><!-- .header -->
       <nav id="nav" class="nav">
 <ul class="rootnav">
@@ -78,6 +78,7 @@
       <li><a href="#form-layout">Form Layout</a></li>
       <li><a href="#button-groups">Button Groups</a></li>
       <li><a href="#notice">Notice</a></li>
+      <li><a href="#breadcrumb">Breadcrumb</a></li>
     </ul>
   </li>
   
@@ -93,8 +94,8 @@
     
     <div id="content" class="content">
       <div class="toolbar">
-        <span class="version">Currently v0.11.1</span>
-        <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-default">Download BaseWeb</a>
+        <span class="version">Currently v0.12.0</span>
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-primary">Download BaseWeb</a>
       </div><!-- .toolbar -->
       
       <div class="scene_element">
@@ -104,7 +105,7 @@
 <h1 class="docs-header">Base Styles</h1>
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
 
-<ul class="docs-list docs-list-hover">
+<ul class="docs-list-hover">
   <li>Remove margins and padding from HTML and Body elements and sets our base font-size</li>
   <li>Prevents automatic text resizing on mobile devices</li>
   <li>Set our base typographic settings (family, weight, lineheight and color)</li>
@@ -125,7 +126,7 @@
   <li>
     <h2 class="docs-header">.clearfix</h2>
     <p>Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
-    <pre class="language-css"><code>.clearfix</code></pre>
+    <pre class="language-markup"><code>&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <pre class="language-markup"><code>&lt;div class=&quot;wrapper clearfix&quot;&gt;
   &lt;aside class=&quot;sidebar&quot;&gt;
@@ -140,7 +141,19 @@
   <li>
     <h2 class="docs-header">.remove-clearfix</h2>
     <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>none</code> will not output the class styles. This class is typically used when a clearfix is inherited on an element and you'd like it removed.</p>
-    <pre class="language-scss"><code>.remove-clearfix</code></pre>
+    <pre class="language-markup"><code>&lt;div class=&quot;remove-clearfix&quot;&gt;&lt;/div&gt;</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.float-left</h2>
+    <p>A quick way for floating an element to the left.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;float-left&quot;&gt;&lt;/div&gt;</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.float-right</h2>
+    <p>A quick way for floating an element to the right.</p>
+    <pre class="language-markup"><code>&lt;div class=&quot;float-right&quot;&gt;&lt;/div&gt;</code></pre>
   </li>
   
 </ul>
@@ -380,114 +393,105 @@
 <h1 class="docs-header">Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
-<ul class="docs-list">
-  
-  <li>
-    <h2 class="docs-header">Unordered Lists</h2>
-    <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
-    <pre class="language-markup"><code>&lt;ul&gt;
+<h2 class="docs-header">Unordered Lists</h2>
+<p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
+<pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ul>
+    <li>List Item</li>
+    <li>List Item
       <ul>
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
       </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Ordered Lists</h2>
-    <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
-    <pre class="language-markup"><code>&lt;ol&gt;
+    </li>
+    <li>List Item</li>
+    <li>List Item</li>
+    <li>List Item</li>
+  </ul>
+</div>
+
+<h2 class="docs-header">Ordered Lists</h2>
+<p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
+<pre class="language-markup"><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ol>
+    <li>List item one</li>
+    <li>List item two
       <ol>
-        <li>List item one</li>
-        <li>List item two
-          <ol>
-            <li>Nested list item one</li>
-            <li>Nested list item two</li>
-            <li>Nested list item three</li>
-          </ol>
-        </li>
-        <li>List item three</li>
-        <li>List item four</li>
-        <li>List item five</li>
+        <li>Nested list item one</li>
+        <li>Nested list item two</li>
+        <li>Nested list item three</li>
       </ol>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Description Lists</h2>
-    <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
-    <pre class="language-markup"><code>&lt;dl&gt;
+    </li>
+    <li>List item three</li>
+    <li>List item four</li>
+    <li>List item five</li>
+  </ol>
+</div>
+
+<h2 class="docs-header">Description Lists</h2>
+<p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
+<pre class="language-markup"><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
-    <div class="demo">
-      <dl>
-        <dt>Base</dt>
-        <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
-        <dt>Web</dt>
-        <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
-      </dl>
-    </div>
-  </li>
-  
-</ul>
+<div class="demo">
+  <dl>
+    <dt>Base</dt>
+    <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
+    <dt>Web</dt>
+    <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
+  </dl>
+</div>
+
+<hr class="docs-hr">
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">List Variables</h1>
-<p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
+<p>List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$list('modifier-classes')</code>
+    <code>$lists('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$list('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$lists('nth')</code> <code class="right value">odd</code></li>
 
-  <li><code>$list('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$list('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$lists('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$lists('padding')</code> <code class="right value">10px</code></li>
   
-  <li><code>$list('background')</code> <code class="right value">none</code></li>
-  <li><code>$list('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$list('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$lists('background')</code> <code class="right value">none</code></li>
+  <li><code>$lists('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$lists('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$lists('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$lists('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">List Modifiers</h1>
-<p>Lists are used to describe a wide range of content on the web. A lot of the time, you don't necessarily want a list to look like a standard list with bullets. BaseWeb provides some mixins and classes for creating commonly used styles for lists and effects.</p>
+<h1 class="docs-header">List Mixins</h1>
+<p>Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.</p>
 
 <ul class="docs-list">
   
   <li>
     <h2 class="docs-header">make-list-base</h2>
-    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
+    <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-list {
+    <pre class="language-scss"><code>%base-list {
   @include make-list-base();
 }
 .list-example-1 {
@@ -498,8 +502,6 @@
   @extend %base-list;
   ...
 }</code></pre>
-    <p>Using list modifier classes requires you use the <code>.list</code> base class.</p>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
   </li>
   
   <li>
@@ -508,7 +510,12 @@
     <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-rowed();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed">
@@ -526,12 +533,10 @@
       </ul>
     </div>
     <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
-    <pre class="language-scss"><code>// SCSS
-.new-list-styles {
+    <pre class="language-scss"><code>.custom-list {
   @include make-list-base(('padding':10px 0));
   @include make-list-rowed();
-}
-</code></pre>
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-flush">
@@ -556,7 +561,12 @@
     <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered">
@@ -576,15 +586,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-rounded</h2>
+    <h2 class="docs-header">add-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin make-list-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($list('border-radius'))
+//   @default default ($lists('border-radius'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-rounded();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered list-rounded">
@@ -604,15 +620,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-stripes</h2>
+    <h2 class="docs-header">add-list-stripes</h2>
     <p>Gives a list items alternating background colors.</p>
-    <pre class="language-scss"><code>@mixin make-list-stripes( $nth, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($list('nth'))
+//   @default default ($lists('nth'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-stripes();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-striped">
@@ -632,15 +654,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-hover</h2>
+    <h2 class="docs-header">add-list-hover</h2>
     <p>Gives list hover styles for list items.</p>
-    <pre class="language-scss"><code>@mixin make-list-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($list('background-hover'))
+//   @default default ($lists('background-hover'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-hover();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-hover">
@@ -767,35 +795,35 @@ class BaseWeb() {
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Table Variables</h1>
-<p>Table variables are encompassed within the <code>$table</code> map and are used throughout all table mixins to set default values.</p>
+<p>Table variables are encompassed within the <code>$tables</code> map and are used throughout all table mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$table('modifier-classes')</code>
+    <code>$tables('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the table modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$table('valign')</code> <code class="right value">top</code></li>
-  <li><code>$table('nth')</code> <code class="right value">odd</code></li>
-  <li><code>$table('stripe')</code> <code class="right value">horizontal</code></li>
+  <li><code>$tables('valign')</code> <code class="right value">top</code></li>
+  <li><code>$tables('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$tables('stripe')</code> <code class="right value">horizontal</code></li>
 
-  <li><code>$table('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$table('padding')</code> <code class="right value">10px</code></li>
-  <li><code>$table('padding-condensed')</code> <code class="right value">5px</code></li>
-  <li><code>$table('padding-expanded')</code> <code class="right value">15px</code></li>
+  <li><code>$tables('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$tables('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$tables('padding-condensed')</code> <code class="right value">5px</code></li>
+  <li><code>$tables('padding-expanded')</code> <code class="right value">15px</code></li>
   
-  <li><code>$table('background')</code> <code class="right value">none</code></li>
-  <li><code>$table('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$table('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$tables('background')</code> <code class="right value">none</code></li>
+  <li><code>$tables('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$tables('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$table('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$table('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$tables('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$tables('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">Table Modifiers</h1>
-<p>BaseWeb has a number of mixins and classes available for adjusting the appearance of tables. This includes things like vertical alignment, text alignment, borders, padding, stripes, hover and responsive table styles.</p>
+<h1 class="docs-header">Table Mixins</h1>
+<p>Tabular data can be frustrating to parse if they are not styled properly. BaseWeb provides the mixins and classes you need to make tables and their content a breeze to analyze.</p>
 
 <ul class="docs-list">
     
@@ -805,11 +833,10 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-base( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-table {
+    <pre class="language-scss"><code>%base-table {
   @include make-table-base();
 }
 .table-example-1 {
@@ -820,8 +847,6 @@ class BaseWeb() {
   @extend %base-table;
   ...
 }</code></pre>
-    <p>Using table modifier classes requires you use the <code>.table</code> base class.</p>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
@@ -830,7 +855,13 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-rowed();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-rowed">
@@ -868,7 +899,13 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-columned();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-columned">
@@ -906,7 +943,13 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered">
@@ -939,28 +982,28 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-size</h2>
+    <h2 class="docs-header">add-table-size</h2>
     <p>Toggles a tables padding size between condensed, expanded or a custom padding value.</p>
-    <pre class="language-scss"><code>@mixin give-table-size( $size, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-size( $size, $options: () )
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .all-tables {
   @include make-table-base();
   @include make-table-bordered();
 }
 .small-tables {
   @extend .all-tables;
-  @include give-table-size(condensed);
+  @include add-table-size(condensed);
 }
 .custom-tables {
   @extend .all-tables;
-  @include give-table-size(8px 16px);
+  @include add-table-size(8px 16px);
 }</code></pre>
     <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
@@ -1024,15 +1067,22 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-rounded</h2>
+    <h2 class="docs-header">add-table-rounded</h2>
     <p>Gives a table rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($table('border-radius'))
+//   @default default ($tables('border-radius'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-rounded();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-rounded">
@@ -1065,20 +1115,27 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-stripes</h2>
+    <h2 class="docs-header">add-table-stripes</h2>
     <p>Gives a table stripes either vertical or horizontal depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-stripes( $nth, $dir, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-stripes( $nth, $dir, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($table('nth'))
+//   @default default ($tables('nth'))
 // @param $dir
 //   @type orientation of stripes (vertical, horizontal)
-//   @default default ($table('stripe'))
+//   @default default ($tables('stripe'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;</code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-stripes();
+}
+</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;
+&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-striped">
         <tr>
@@ -1165,15 +1222,22 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-hover</h2>
+    <h2 class="docs-header">add-table-hover</h2>
     <p>Gives table hover styles for rows.</p>
-    <pre class="language-scss"><code>@mixin give-table-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-table-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($table('background-hover'))
+//   @default default ($tables('background-hover'))
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-table {
+  @include make-table-base();
+  @include make-table-bordered();
+  @include add-table-hover();
+}
+</code></pre>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
       <table class="table table-bordered table-hover">
@@ -1206,9 +1270,9 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2 class="docs-header">give-table-alignment</h2>
+    <h2 class="docs-header">add-table-alignment</h2>
     <p>Sets the vertical and text alignment of a table if a parameter is passed.</p>
-    <pre class="language-scss"><code>@mixin give-table-alignment( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-alignment( $options: () )
 // @param $options
 //   @type map ('vertical-align', 'text-align')
 //   @default map (none, none)</code></pre>
@@ -1217,7 +1281,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>// SCSS
 .table-custom-alignment {
   ...
-  @include give-table-alignment((
+  @include add-table-alignment((
     'vertical-align': middle,
     'text-align': center
   ));
@@ -1232,11 +1296,9 @@ class BaseWeb() {
   text-align: center;
 }
 </code></pre>
+    <h3 class="docs-header">Available Classes</h3>
     <div class="docs-table-responsive">
       <table class="docs-table">
-        <tr>
-          <th colspan="2">Available Classes</th>
-        </tr>
         <tr>
           <td><code>.table-valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
@@ -1267,7 +1329,6 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-    <p>Since this is a utility setting for tables, it's usually paired along side the table base and a stylistic table modifier.</p>
     <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
@@ -1277,7 +1338,7 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-table-responsive( $options: () )
 // @param $options
 //   @type map
-//   @default $table map</code></pre>
+//   @default $tables map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;
@@ -1449,15 +1510,806 @@ class BaseWeb() {
 <section id="forms" class="subpage">
 <h1 class="docs-header">Forms</h1>
 
-<div class="notice notice-warning">
-  <p>The <strong>forms element module</strong> and <strong>documentation</strong> is currently being worked on and will be available soon.</p>
+<p>HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.</p>
+
+<div class="notice notice-info">
+  <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html" class="no-smoothstate">Form Examples &rarr;</a></p>
 </div>
+
+<hr class="docs-hr">
+
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Form Structure</h1>
+
+<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code>, <code>.form-header</code>, <code>.form-action</code> and <code>.input-group</code> classes to use for structuring a form layout. You also have the BaseWeb Grid System available for creating more complex form layouts.</p>
+
+<pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    ...
+  &lt;/header&gt;&lt;!-- .form-header --&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+      ...
+    &lt;/div&gt;&lt;!-- .input-group --&gt;
+  &lt;/div&gt;&lt;!-- .form-group --&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-6&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          ...
+        &lt;/div&gt;&lt;!-- .input-group --&gt;
+      &lt;/div&gt;&lt;!-- .col --&gt;
+      &lt;div class=&quot;col col-6&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+          ...
+        &lt;/div&gt;&lt;!-- .input-group --&gt;
+      &lt;/div&gt;&lt;!-- .col --&gt;
+    &lt;/div&gt;&lt;!-- .row --&gt;
+  &lt;/div&gt;&lt;!-- .form-group --&gt;
+  
+  &lt;footer class=&quot;form-action&quot;&gt;
+    ...
+  &lt;/footer&gt;&lt;!-- .form-action --&gt;
+&lt;/form&gt;
+</code></pre>
+
+<div class="demo">
+  <form>
+    
+    <header class="form-header">
+      <h2>Form Heading</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in ultricies nunc. Maecenas egestas tellus eget ipsum fermentum commodo. Nam rhoncus magna quam, quis commodo lorem fermentum quis.</p>
+    </header>
+    
+    <div class="form-group">
+      <label>Example Label</label>
+      <div class="input-group">
+        <input class="input" type="text" placeholder="Example text input..." required>
+        <select class="input">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <textarea class="input" rows="4" placeholder="Example textarea..."></textarea>
+      </div>
+    </div>
+      
+    <div class="form-group">
+      <label>Example Label</label>
+      <div class="row">
+        <div class="col col-6">
+          <label class="label-sub">Choice Checkboxes</label>
+          <div class="input-group">
+            <label class="choice"><input type="checkbox"> Choice Checkbox 1</label>
+            <label class="choice"><input type="checkbox"> Choice Checkbox 2</label>
+          </div>
+        </div>
+        
+        <div class="col col-6">
+          <label class="label-sub">Choice Radios</label>
+          <div class="input-group">
+            <label class="choice"><input type="radio" name="radio-1"> Choice Radio 1</label>
+            <label class="choice"><input type="radio" name="radio-1"> Choice Radio 2</label>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <footer class="form-action">
+      <button class="btn btn-primary">Button</button>
+      <button class="btn btn-default">Button</button>
+    </footer>
+      
+  </form>
+</div>
+
+<ul class="docs-list">
+
+  <li>
+    <h2 class="docs-header">.form-group</h2>
+    <p>Form groups are the first structure element used in a BaseWeb forms. It applies our vertical spacing and a hook for adding modifier classes and custom styles.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+  ...
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input class="input" type="text">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="input" type="email">
+        </div>
+        <div class="form-group">
+          <label>Comment</label>
+          <textarea class="input" rows="4"></textarea>
+        </div>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.form-header</h2>
+    <p>Used to define a form header. It gets the vertical spacing and custom typographic styles for headings and paragraph elements that it contains.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    &lt;h2&gt;...&lt;/h2&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/header&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <header class="form-header">
+          <h2>Form Heading</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in ultricies nunc. Maecenas egestas tellus eget ipsum fermentum commodo. Nam rhoncus magna quam, quis commodo lorem fermentum quis.</p>
+        </header>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.form-action</h2>
+    <p>Action groups are used to wrap form submission, resets and other form actions. It's also a way to apply custom styles and modifiers as a form footer. Within the <code>.form-action</code> element, you also have the <code>.input-align</code> class to align none-input elements vertically.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;footer class=&quot;form-action&quot;&gt;
+    ...
+  &lt;/footer&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <footer class="form-action">
+          <button class="btn btn-green">Save Account</button>
+          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-default float-right">Cancel</button>
+        </footer>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.input-group</h2>
+    <p>Input groups are used to wrap groups of related input elements. It, like form groups, applies vertical spacing and another hook for adding modifier classes.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;input-group&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <input class="input" type="text">
+            <input class="input" type="text">
+          </div>
+          <div class="input-group">
+            <label class="choice"><input type="checkbox" checked> Choice</label>
+            <label class="choice"><input type="checkbox" checked> Choice</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.inline-group</h2>
+    <p>You can create inline forms by adding the class <code>.inline-group</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group inline-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group inline-group">
+          <input type="text" class="input" placeholder="Username" required>
+          <input type="password" class="input" placeholder="Password" required>
+          <button type="submit" class="btn btn-primary">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Form Grids</h2>
+    <p>For more complex form layouts, you have BaseWeb's default grid system to create rows and columns. This is done using the <code>.row</code> <code>.col</code> and <code>.col-#</code> classes where <code>#</code> represents the number of columns to span.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Grid Example&lt;/label&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-4&quot;&gt;
+        ...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group">
+          <label>Grid Example</label>
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox" checked> Choice</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div><!-- .demo -->
+  </li>
+
+  <li>
+    <h2 class="docs-header">Form Validation States</h2>
+    <p>There are three validation states represented through the classes <code>.success</code>, <code>.warning</code> and <code>.error</code>. There's also a fourth state class <code>.active</code>, that is used to simulate the focus styles for form inputs. It's also possible to add these states to form elements directly.</p>
+    <pre class="language-markup"><code>
+&lt;div class=&quot;form-group success&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group warning&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group error&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group active&quot;&gt;...&lt;/div&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+            
+        <div class="form-group success">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .success -->
+        
+        <div class="form-group warning">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .warning -->
+        
+        <div class="form-group error">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .error -->
+        
+        <div class="form-group active">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .active -->
+      
+      </form>
+    </div>
+  </li>
+
+</ul>
+
+</section>
+
+<section class="sub-section sub-section-classes">
+<h1 class="docs-header">Form Elements</h1>
+
+<p>BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in <code>$forms</code>.</p>
+
+<p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline-group</code> to a parent element.</p>
+
+<ul class="docs-list">
+
+  <li>
+    <h2 class="docs-header">Input</h2>
+    <p>The <code>.input</code> class is used to style the most common input types: <code>text</code>, <code>password</code>, <code>date</code>, <code>month</code>, <code>week</code>, <code>time</code>, <code>email</code>, <code>number</code>, <code>search</code>, <code>tel</code>, <code>url</code> and <code>color</code>.</p>
+    <pre class="language-markup"><code>
+&lt;input class=&quot;input&quot; type=&quot;text&quot; placeholder=&quot;Name&quot;&gt;
+&lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;Email&quot;&gt;
+&lt;input class=&quot;input&quot; type=&quot;url&quot; placeholder=&quot;http://&quot;&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <input class="input" type="text" placeholder="Name">
+        <input class="input" type="email" placeholder="Email">
+        <input class="input" type="url" placeholder="http://">
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Textarea</h2>
+    <p>The <code>.input</code> class is used to style textareas. The height is then reset to auto so that it can be manually set with the <code>rows</code> attribute. They also have their max-width set to 100% so that they can't be resized passed the width of their container.</p>
+    <pre class="language-markup"><code>&lt;textarea class=&quot;input&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;</code></pre>
+    <div class="demo">
+      <form>
+        <textarea class="input" rows="4" placeholder="Textarea..."></textarea>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Select</h2>
+    <p>Select elements are styled with the <code>.input</code> class and also receive custom styles with dropdown arrow. There are also custom styles applied to select elements that use the <code>size</code> and <code>multiple</code> attributes.</p>
+    <pre class="language-markup"><code>
+&lt;select class=&quot;input&quot;&gt;
+  &lt;option&gt;Select Option 1&lt;/option&gt;
+  &lt;option&gt;Select Option 2&lt;/option&gt;
+  &lt;option&gt;Select Option 3&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select class=&quot;input&quot; multiple&gt;
+  ...
+&lt;/select&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <select class="input">
+          <option>Select Option 1</option>
+          <option>Select Option 2</option>
+          <option>Select Option 3</option>
+        </select>
+        <select class="input" multiple>
+          <option>Select Option 1</option>
+          <option>Select Option 2</option>
+          <option>Select Option 3</option>
+        </select>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Checkbox and Radio</h2>
+    <p>BaseWeb styles checkbox and radio inputs by wrapping them with labels and applying <code>.checkbox</code> and <code>.radio</code> classes to them.</p>
+    <pre class="language-markup"><code>
+&lt;label class=&quot;checkbox&quot;&gt;
+  &lt;input type=&quot;checkbox&quot;&gt; Checkbox Example 1
+&lt;/label&gt;
+
+&lt;label class=&quot;radio&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot;&gt; Radio Example 1
+&lt;/label&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="row">
+          
+          <div class="col col-6">
+            <div class="input-group">
+              <label>Checkboxes</label>
+              <label class="checkbox"><input type="checkbox"> Checkbox Example 1</label>
+              <label class="checkbox"><input type="checkbox"> Checkbox Example 2</label>
+              <label class="checkbox"><input type="checkbox"> Checkbox Example 3</label>
+            </div>
+          </div>
+          
+          <div class="col col-6">
+            <div class="input-group">
+              <label>Radios</label>
+              <label class="radio"><input type="radio" name="radio-2"> Radio Example 1</label>
+              <label class="radio"><input type="radio" name="radio-2"> Radio Example 2</label>
+              <label class="radio"><input type="radio" name="radio-2"> Radio Example 3</label>
+            </div>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Choice</h2>
+    <p>Choice elements are custom styled checkbox and radio input elements. They are represented by adding the <code>.choice</code> class to the wrapping label element of checkboxes and radios.</p>
+    <p>They receive extra padding so that they match the height of <code>.input</code> elements which also makes them more user friendly.</p>
+    <pre class="language-markup"><code>
+&lt;label class=&quot;choice&quot;&gt;
+  &lt;input type=&quot;checkbox&quot;&gt; Choice Checkbox Example 1
+&lt;/label&gt;
+
+&lt;label class=&quot;choice&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;radio-1&quot;&gt; Choice Radio Example 1
+&lt;/label&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="row">
+          <div class="col col-6">
+            <label>Choice Checkboxes</label>
+            <label class="choice"><input type="checkbox"> Choice Checkbox Example 1</label>
+            <label class="choice"><input type="checkbox"> Choice Checkbox Example 2</label>
+            <label class="choice"><input type="checkbox"> Choice Checkbox Example 3</label>
+          </div>
+          
+          <div class="col col-6">
+            <label>Choice Radios</label>
+            <label class="choice"><input type="radio" name="radio-1"> Choice Radio Example 1</label>
+            <label class="choice"><input type="radio" name="radio-1"> Choice Radio Example 2</label>
+            <label class="choice"><input type="radio" name="radio-1"> Choice Radio Example 3</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Label</h2>
+    <p>You'll rarely have a form without labels and are styled differently depending on their context. There are a number of classes that are available to modify the appearance and behavior of labels.</p>
+    <pre class="language-markup"><code>
+&lt;label&gt;Default Label&lt;/label&gt;
+
+&lt;!-- Makes subtle styles for sub label --&gt;
+&lt;label class=&quot;label-sub&quot;&gt;...&lt;/label&gt;
+
+&lt;!-- Hides lables but keeps them accessible for screen readers --&gt;
+&lt;label class=&quot;label-hide&quot;&gt;...&lt;/label&gt;
+
+&lt;!-- Makes labels display block with top padding for alignment --&gt;
+&lt;label class=&quot;label-block&quot;&gt;...&lt;/label&gt;
+
+&lt;!-- Makes labels display inline-block with top padding for alignment --&gt;
+&lt;label class=&quot;label-inline&quot;&gt;...&lt;/label&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group">
+          <label>Default Label</label>
+          <div class="row">
+            <div class="col col-3">
+              <label class="label-sub">Sub Label</label>
+              <label class="label-block">Block Label</label>
+            </div>
+            <div class="col col-5">
+              <label class="label-sub">Sub Label</label>
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <label class="label-sub">Sub Label</label>
+              <label class="choice"><input type="checkbox" checked> Choice</label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div><!-- .demo -->
+  </li>
+  
+  <li>
+    <h2 class="docs-header">Notes</h2>
+    <p>Notes are custom form elements in BaseWeb and are represented using the <code>.note</code> class. Notes can work as descriptive text, help text or any sort of informative text to help a user navigate a form. They are contextual and receive unique spacing based on their siblings.</p>
+    <pre class="language-markup"><code>
+&lt;p class=&quot;note&quot;&gt;...&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col col-4">
+              <label class="label-block">Example Input with Notes</label>
+              <p class="note">This is an example note.</p>
+            </div>
+            <div class="col col-8">
+              <input class="input" type="text" placeholder="Example">
+              <select class="input">
+                <option>Select Option 1</option>
+                <option>Select Option 2</option>
+                <option>Select Option 3</option>
+              </select>
+              <p class="note">This is an example note.</p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div><!-- .demo -->
+  </li>
+  
+</ul>
+
+</section>
+
+<section class="sub-section sub-section-variables">
+<h1 class="docs-header">Form Variables</h1>
+<p>Form variables are encompassed within the <code>$forms</code> map and are used throughout all form mixins to set default values.</p>
+
+<ul class="docs-list docs-list-hover">
+  <!--
+  <li>
+    <code>$variable('key')</code>
+    <code class="right value">value</code>
+    <span class="block light">...</span>
+  </li>
+  -->
+  <li>
+    <code>$forms('vertical-spacing')</code>
+    <code class="right value">20px</code>
+  </li>
+  <li>
+    <code>$forms('vertical-align')</code>
+    <code class="right value">11px</code>
+  </li>
+  <li>
+    <code>$forms('font-family')</code>
+    <code class="right value">inherit</code>
+  </li>
+  <li>
+    <code>$forms('font-size')</code>
+    <code class="right value">$base-font-size</code>
+  </li>
+  <li>
+    <code>$forms('line-height')</code>
+    <code class="right value">$base-line-height</code>
+  </li>
+  <li>
+    <code>$forms('color')</code>
+    <code class="right value">$color</code>
+  </li>
+  <li>
+    <code>$forms('color-label')</code>
+    <code class="right value">$color-dark</code>
+  </li>
+  <li>
+    <code>$forms('color-placeholder')</code>
+    <code class="right value">#aaa</code>
+  </li>
+  <li>
+    <code>$forms('color-select-arrow')</code>
+    <code class="right value">$color-dark</code>
+  </li>
+  <li>
+    <code>$forms('border-radius')</code>
+    <code class="right value">$border-radius</code>
+  </li>
+  
+  <li class="list-sep">
+    <code>$forms('input':'padding')</code>
+    <code class="right value">10px</code>
+  </li>
+  <li>
+    <code>$forms('input':'background')</code>
+    <code class="right value">rgba($white, 0.5)</code>
+  </li>
+  <li>
+    <code>$forms('input':'border')</code>
+    <code class="right value">1px solid rgba($black, 0.15)</code>
+  </li>
+  <li>
+    <code>$forms('input':'box-shadow')</code>
+    <code class="block value">0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)</code>
+  </li>
+  
+  <li class="list-sep">
+    <code>$forms('input':'focus':'background')</code>
+    <code class="right value">rgba($white, 1)</code>
+  </li>
+  <li>
+    <code>$forms('input':'focus':'border')</code>
+    <code class="right value">1px solid rgba($blue, 1)</code>
+  </li>
+  <li>
+    <code>$forms('input':'focus':'box-shadow')</code>
+    <code class="block value">0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)</code>
+  </li>
+  
+  <li class="list-sep">
+    <code>$forms('choice':'padding')</code>
+    <code class="right value">11px 25px 11px 35px</code>
+  </li>
+  <li>
+    <code>$forms('choice':'background')</code>
+    <code class="right value">rgba($black, 0.05)</code>
+  </li>
+  <li>
+    <code>$forms('choice':'border')</code>
+    <code class="right value">none</code>
+  </li>
+  <li>
+    <code>$forms('choice':'box-shadow')</code>
+    <code class="right value">none</code>
+  </li>
+</ul>
+
+<div class="notice notice-warning">
+  <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
+</div>
+
+</section>
+
+<hr class="docs-hr">
+
+<section class="sub-section sub-section-mixins">
+<h1 class="docs-header">Form Mixins</h1>
+
+<ul class="docs-list">
+
+  <li>
+    <h2 class="docs-header">placeholder</h2>
+    <p>Sets the placeholder text color for input fields that use the placeholder attribute.</p>
+    <pre class="language-scss"><code>@mixin placeholder( $color, $options: () )
+// @param $color
+//   @type color
+// @param $options
+//   @type map
+//   @default $forms map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-form-group-base</h2>
+    <p>Creates the styles for a base form group by applying vertical spacing.</p>
+    <pre class="language-scss"><code>@mixin make-form-group-base( $options: () )
+// @param $options
+//   @type map
+//   @default $forms map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-form-group-inline</h2>
+    <p>Creates the styles for making an inline form group element.</p>
+    <pre class="language-scss"><code>@mixin make-form-group-inline( $options: () )
+// @param $options
+//   @type map
+//   @default $forms map</code></pre>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">make-input-inline</h2>
+    <p>Creates the styles for making an inline form element.</p>
+    <pre class="language-scss"><code>@mixin make-input-inline( $options: () )
+// @param $options
+//   @type map
+//   @default $forms map</code></pre>
+  </li>
+  
+</ul>
+
+</section>
+
+<!--
+<label>Text Input</label>
+<input class="input" type="text" placeholder="Text">
+
+<label>Password Input</label>
+<input class="input" type="password" placeholder="Password">
+
+<label>Date Input</label>
+<input class="input" type="date">
+
+<label>Month Input</label>
+<input class="input" type="month">
+
+<label>Week Input</label>
+<input class="input" type="week">
+
+<label>Time Input</label>
+<input class="input" type="time">
+
+<label>Email Input</label>
+<input class="input" type="email" placeholder="example@email.com">
+
+<label>Number Input</label>
+<input class="input" type="number">
+
+<label>Search Input</label>
+<input class="input" type="search">
+
+<label>Telephone Input</label>
+<input class="input" type="tel">
+
+<label>Web Address Input</label>
+<input class="input" type="url" placeholder="http://">
+
+<label>Color Input</label>
+<input class="input" type="color">
+
+<label>Textarea</label>
+<textarea class="input"></textarea>
+
+<label>Select</label>
+<select class="input">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+
+<label>Multiple Select</label>
+<select class="input" multiple>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+</select>
+
+<label>File Input</label>
+<input type="file">
+
+<label>Range Input</label>
+<input type="range">
+-->
 </section><!-- .subpage -->
 
 <section id="buttons" class="subpage">
 <h1 class="docs-header">Buttons</h1>
 
-<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb tries to style buttons the same, regardless of the method you use to mark them up.</p>
+<p>There are four ways you can markup a button. An anchor, button or input element that has a type set to <code>button</code> or <code>submit</code>. BaseWeb styles buttons the same, regardless of the method you use to mark them up.</p>
 
 <pre class="language-markup"><code>&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot;&gt;Button&lt;/a&gt;
 &lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;
@@ -1465,110 +2317,116 @@ class BaseWeb() {
 &lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Button&quot;&gt;</code></pre>
 
 <div class="demo">
-  <p>
-    <a class="btn btn-default" href="#">Button</a>
-    <button class="btn btn-default" type="submit">Button</button>
-    <input class="btn btn-default" type="button" value="Button">
-    <input class="btn btn-default" type="submit" value="Button">
-  </p>
+  <form>
+    <div class="form-action">
+      <a class="btn btn-default" href="#">Button</a>
+      <button class="btn btn-default" type="submit">Button</button>
+      <input class="btn btn-default" type="button" value="Button">
+      <input class="btn btn-default" type="submit" value="Button">
+    </div>
+  </form>
 </div>
 
 <hr class="docs-hr">
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">Button Variables</h1>
-<p>Button variables are encompassed within the <code>$button</code> map and are used throughout all button mixins to set default values.</p>
+<p>Button variables are encompassed within the <code>$buttons</code> map and are used throughout all button mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$button('modifier-classes')</code>
+    <code>$buttons('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
   </li>
   <li>
-    <code>$button('padding')</code>
+    <code>$buttons('padding')</code>
     <code class="right value">10px 20px</code>
   </li>
   <li>
-    <code>$button('padding-small')</code>
+    <code>$buttons('padding-small')</code>
     <code class="right value">5px 10px</code>
   </li>
   <li>
-    <code>$button('padding-large')</code>
+    <code>$buttons('padding-large')</code>
     <code class="right value">15px 30px</code>
   </li>
   <li>
-    <code>$button('font-size')</code>
+    <code>$buttons('font-size')</code>
     <code class="right value">$base-font-size</code>
   </li>
   <li>
-    <code>$button('line-height')</code>
+    <code>$buttons('line-height')</code>
     <code class="right value">$base-line-height</code>
   </li>
   <li>
-    <code>$button('color')</code>
+    <code>$buttons('color')</code>
     <code class="right value">$color-dark</code>
   </li>
   <li>
-    <code>$button('text-shadow')</code>
+    <code>$buttons('color-hover')</code>
+    <code class="right value">default</code>
+    <span class="block light">When set to default, the hover color will be set to the base button color.</span>
+  </li>
+  <li>
+    <code>$buttons('text-shadow')</code>
     <code class="right value">none</code>
   </li>
   <li>
-    <code>$button('background')</code>
+    <code>$buttons('background')</code>
     <code class="right value">$gray-pale</code>
   </li>
   <li>
-    <code>$button('background-hover')</code>
+    <code>$buttons('background-hover')</code>
     <code class="right value">darken</code>
     <span class="block light">The color to use on hover. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for hover.</span>
   </li>
   <li>
-    <code>$button('background-gradient')</code>
+    <code>$buttons('background-gradient')</code>
     <code class="right value">false</code>
     <span class="block light">Whether or not to use a gradient for button background. If true, the `background` will be used as the start color and darkened for the end color using the `background-deg` as a modifier.</span>
   </li>
   <li>
-    <code>$button('background-deg')</code>
+    <code>$buttons('background-deg')</code>
     <code class="right value">5%</code>
     <span class="block light">The degree that the hover background color or gradient end color is modified.</span>
   </li>
   <li>
-    <code>$button('background-clip')</code>
+    <code>$buttons('background-clip')</code>
     <code class="right value">border-box</code>
   </li>
   
   <li>
-    <code>$button('border')</code>
+    <code>$buttons('border')</code>
     <code class="right value">1px solid rgba($black, 0.15)</code>
   </li>
   <li>
-    <code>$button('border-hover')</code>
+    <code>$buttons('border-hover')</code>
     <code class="right value">1px solid rgba($black, 0.25)</code>
   </li>
   <li>
-    <code>$button('border-radius')</code>
+    <code>$buttons('border-radius')</code>
     <code class="right value">$border-radius</code>
   </li>
 </ul>
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">Button Modifiers</h1>
-<p>Button modifiers are used to alter a buttons appearance and size.</p>
+<h1 class="docs-header">Button Mixins</h1>
+<p>Button are common place on the web these days, especially in web applications. Whether you need one, or a dozen button types and styles, BaseWeb provides mixins and classes for creating beautiful buttons to add to your UI toolkit.</p>
 
 <ul class="docs-list">
   
   <li>
     <h2 class="docs-header">make-btn-base</h2>
-    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
+    <p>Creates the base styles for a button modifier mixin or class. Usually applied directly through a base button class, mixin or an extend placeholder. If button modifier classes are enabled, you are provided <code>.btn</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-btn</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-btn {
+    <pre class="language-scss"><code>%base-btn {
   @include make-btn-base();
 }
 .btn-purchase {
@@ -1580,8 +2438,6 @@ class BaseWeb() {
   ...
 }
 </code></pre>
-    <p>Using button modifier classes requires you use the <code>.btn</code> base class.</p>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-default&quot;&gt;Button&lt;/button&gt;</code></pre>
   </li>
 
   <li>
@@ -1590,11 +2446,11 @@ class BaseWeb() {
     <pre class="language-scss"><code>@mixin make-btn-color( $options: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     
     <h3 class="docs-header">Example Usage</h3>
-    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$button</code> map.</p>
-    <pre class="language-scss"><code>// SCSS
+    <p>Use this mixin along with <code>make-btn-base()</code> to create custom semantic button styles. You can pass in a map to replace any of the defaults from the <code>$buttons</code> map.</p>
+    <pre class="language-scss"><code>
 .btn-custom {
   @include make-btn-base();
   @include make-btn-color((
@@ -1602,120 +2458,105 @@ class BaseWeb() {
     'background' : $violet
   ));
 }</code></pre>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom&quot;&gt;Custom Mixin Button&lt;/button&gt;
-&lt;button class=&quot;btn btn-primary&quot;&gt;Class Modifier Button&lt;/button&gt;</code></pre>
-    <div class="demo">
-      <p>
-        <button class="btn-custom">Custom Mixin Button</button>
-        <button class="btn btn-primary">Class Modifier Button</button>
-      </p>
+    <div class="demo demo-buttons">
+      <button class="btn-custom">Custom Mixin Button</button>
     </div>
     <p>If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.</p>
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-default">Button</button></span>
-        <code>.btn-default</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary">Button</button></span>
-        <code>.btn-blue</code><br><code>.btn-primary</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-success">Button</button></span>
-        <code>.btn-green</code><br><code>.btn-success</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-warning">Button</button></span>
-        <code>.btn-orange</code><br><code>.btn-warning</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-danger">Button</button></span>
-        <code>.btn-red</code><br><code>.btn-danger</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-secondary">Button</button></span>
-        <code>.btn-black</code><br><code>.btn-secondary</code>
-      </li>
-    </ul>
-    
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;!-- .btn-default default button class --&gt;
+&lt;button class=&quot;btn btn-default&quot;&gt;Default&lt;/button&gt;
+
+&lt;!-- .btn-blue class with .btn-primary semantic alias --&gt;
+&lt;button class=&quot;btn btn-blue&quot;&gt;Blue&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+
+&lt;!-- .btn-green class with .btn-success semantic alias --&gt;
+&lt;button class=&quot;btn btn-green&quot;&gt;Green&lt;/button&gt;
+&lt;button class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+
+&lt;!-- .btn-orange class with .btn-warning semantic alias --&gt;
+&lt;button class=&quot;btn btn-orange&quot;&gt;Orange&lt;/button&gt;
+&lt;button class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+
+&lt;!-- .btn-red class with .btn-danger semantic alias --&gt;
+&lt;button class=&quot;btn btn-red&quot;&gt;Red&lt;/button&gt;
+&lt;button class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+
+&lt;!-- .btn-black class with .btn-secondary semantic alias --&gt;
+&lt;button class=&quot;btn btn-black&quot;&gt;Black&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-default">Default</button>
+      <button class="btn btn-primary">Primary Blue</button>
+      <button class="btn btn-success">Success Green</button>
+      <button class="btn btn-warning">Warning Orange</button>
+      <button class="btn btn-danger">Danger Red</button>
+      <button class="btn btn-secondary">Secondary Black</button>
+    </div>
   </li>
 
   <li>
-    <h2 class="docs-header">give-btn-size</h2>
+    <h2 class="docs-header">add-btn-size</h2>
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
-    <pre class="language-scss"><code>@mixin give-btn-size()
+    <pre class="language-scss"><code>@mixin add-btn-size( $size, $option: () )
 // @param $size
 //   @type small | Large | unit list (pixel, em, percent)
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
-    
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$button</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
-    <pre class="language-scss"><code>// SCSS
+    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$buttons</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
+    <pre class="language-scss"><code>
 // Use default small size
 .btn-small {
-  @include make-btn-size(small);
+  @include add-btn-size(small);
 }
 
 // Use default large size with custom font size
 .btn-custom-large {
-  @include make-btn-size(large, (
+  @include add-btn-size(large, (
     'font-size': 20px
   ));
 }
 
 // Set a custom button size
 .btn-custom-size {
-  @include make-btn-size(20px 40px, (
+  @include add-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 24px
   ));
 }
 </code></pre>
-    
-    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
-    
-    <ul class="docs-list docs-list-hover">
-      <li class="title">
-        Available Classes
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-small">Small Button</button></span>
-        <code>.btn-small</code>
-      </li>
-      <li>
-        <span class="right"><button class="btn btn-primary btn-large">Large Button</button></span>
-        <code>.btn-large</code>
-      </li>
-    </ul>
-    
+    <h3 class="docs-header">Available Classes</h3>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-primary btn-small&quot;&gt;Large Button&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-large&quot;&gt;Large Button&lt;/button&gt;</code></pre>
+    <div class="demo demo-buttons">
+      <button class="btn btn-primary btn-small">Small Button</button>
+      <button class="btn btn-primary btn-large">Large Button</button>
+    </div>
   </li>
   
   <li>
-    <h2 class="docs-header">give-btn-block</h2>
+    <h2 class="docs-header">add-btn-block</h2>
     <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
-    <pre class="language-scss"><code>@mixin give-btn-block()
+    <pre class="language-scss"><code>@mixin add-btn-block( $option: () )
 // @param $options
 //   @type map
-//   @default $button map</code></pre>
+//   @default $buttons map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
-    <p>As a utility class, <code>give-btn-block()</code> is used along side base and modifier styles.</p>
-    <pre class="language-scss"><code>// SCSS
+    <pre class="language-scss"><code>
 .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include give-btn-block();
+  @include add-btn-block();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;button class=&quot;btn-custom-mobile&quot;&gt;Block Button&lt;/button&gt;
-&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;button class=&quot;btn btn-green btn-block&quot;&gt;Block Button&lt;/button&gt;</code></pre>
     <div class="demo">
       <p>
         <a class="btn-custom-mobile" href="#" role="button">Block Button</a>
+      </p>
+      <p>
         <a class="btn btn-green btn-block" href="#" role="button">Block Button</a>
       </p>
     </div>

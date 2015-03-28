@@ -1,114 +1,105 @@
 <h1 class="docs-header">Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
-<ul class="docs-list">
-  
-  <li>
-    <h2 class="docs-header">Unordered Lists</h2>
-    <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
-    <pre class="language-markup"><code>&lt;ul&gt;
+<h2 class="docs-header">Unordered Lists</h2>
+<p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
+<pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ul>
+    <li>List Item</li>
+    <li>List Item
       <ul>
-        <li>List Item</li>
-        <li>List Item
-          <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-          </ul>
-        </li>
-        <li>List Item</li>
-        <li>List Item</li>
-        <li>List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
+        <li>Nested List Item</li>
       </ul>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Ordered Lists</h2>
-    <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
-    <pre class="language-markup"><code>&lt;ol&gt;
+    </li>
+    <li>List Item</li>
+    <li>List Item</li>
+    <li>List Item</li>
+  </ul>
+</div>
+
+<h2 class="docs-header">Ordered Lists</h2>
+<p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
+<pre class="language-markup"><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-    <div class="demo">
+<div class="demo">
+  <ol>
+    <li>List item one</li>
+    <li>List item two
       <ol>
-        <li>List item one</li>
-        <li>List item two
-          <ol>
-            <li>Nested list item one</li>
-            <li>Nested list item two</li>
-            <li>Nested list item three</li>
-          </ol>
-        </li>
-        <li>List item three</li>
-        <li>List item four</li>
-        <li>List item five</li>
+        <li>Nested list item one</li>
+        <li>Nested list item two</li>
+        <li>Nested list item three</li>
       </ol>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">Description Lists</h2>
-    <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
-    <pre class="language-markup"><code>&lt;dl&gt;
+    </li>
+    <li>List item three</li>
+    <li>List item four</li>
+    <li>List item five</li>
+  </ol>
+</div>
+
+<h2 class="docs-header">Description Lists</h2>
+<p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
+<pre class="language-markup"><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
   &lt;dd&gt;...&lt;/dd&gt;
 &lt;/dl&gt;</code></pre>
-    <div class="demo">
-      <dl>
-        <dt>Base</dt>
-        <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
-        <dt>Web</dt>
-        <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
-      </dl>
-    </div>
-  </li>
-  
-</ul>
+<div class="demo">
+  <dl>
+    <dt>Base</dt>
+    <dd>The lowest part or edge of something, especially the part on which it rests or is supported.</dd>
+    <dt>Web</dt>
+    <dd>An information system on the Internet that allows documents to be connected to other documents by hypertext links, enabling the user to search for information by moving from one document to another.</dd>
+  </dl>
+</div>
+
+<hr class="docs-hr">
 
 <section class="sub-section sub-section-variables">
 <h1 class="docs-header">List Variables</h1>
-<p>List variables are encompassed within the <code>$list</code> map and are used throughout all list mixins to set default values.</p>
+<p>List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
   <li>
-    <code>$list('modifier-classes')</code>
+    <code>$lists('modifier-classes')</code>
     <code class="right value">true</code>
     <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
   </li>
-  <li><code>$list('nth')</code> <code class="right value">odd</code></li>
+  <li><code>$lists('nth')</code> <code class="right value">odd</code></li>
 
-  <li><code>$list('margin')</code> <code class="right value">20px 0</code></li>
-  <li><code>$list('padding')</code> <code class="right value">10px</code></li>
+  <li><code>$lists('margin')</code> <code class="right value">20px 0</code></li>
+  <li><code>$lists('padding')</code> <code class="right value">10px</code></li>
   
-  <li><code>$list('background')</code> <code class="right value">none</code></li>
-  <li><code>$list('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
-  <li><code>$list('background-hover')</code> <code class="right value">$yellow-pale</code></li>
+  <li><code>$lists('background')</code> <code class="right value">none</code></li>
+  <li><code>$lists('background-stripe')</code> <code class="right value">rgba($black, 0.05)</code></li>
+  <li><code>$lists('background-hover')</code> <code class="right value">$yellow-pale</code></li>
   
-  <li><code>$list('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
-  <li><code>$list('border-radius')</code> <code class="right value">$border-radius</code></li>
+  <li><code>$lists('border')</code> <code class="right value">1px solid rgba($black, 0.1)</code></li>
+  <li><code>$lists('border-radius')</code> <code class="right value">$border-radius</code></li>
 </ul>
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">List Modifiers</h1>
-<p>Lists are used to describe a wide range of content on the web. A lot of the time, you don't necessarily want a list to look like a standard list with bullets. BaseWeb provides some mixins and classes for creating commonly used styles for lists and effects.</p>
+<h1 class="docs-header">List Mixins</h1>
+<p>Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.</p>
 
 <ul class="docs-list">
   
   <li>
     <h2 class="docs-header">make-list-base</h2>
-    <p>Creates the base styles for a list modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.</p>
+    <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
     <h3 class="docs-header">Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
-    <pre class="language-scss"><code>// SCSS
-%base-list {
+    <pre class="language-scss"><code>%base-list {
   @include make-list-base();
 }
 .list-example-1 {
@@ -119,8 +110,6 @@
   @extend %base-list;
   ...
 }</code></pre>
-    <p>Using list modifier classes requires you use the <code>.list</code> base class.</p>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
   </li>
   
   <li>
@@ -129,7 +118,12 @@
     <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-rowed();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed">
@@ -147,12 +141,10 @@
       </ul>
     </div>
     <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
-    <pre class="language-scss"><code>// SCSS
-.new-list-styles {
+    <pre class="language-scss"><code>.custom-list {
   @include make-list-base(('padding':10px 0));
   @include make-list-rowed();
-}
-</code></pre>
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-flush">
@@ -177,7 +169,12 @@
     <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered">
@@ -197,15 +194,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-rounded</h2>
+    <h2 class="docs-header">add-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
-    <pre class="language-scss"><code>@mixin make-list-rounded( $radius, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
 //   @type unit (pixel, percent)
-//   @default default ($list('border-radius'))
+//   @default default ($lists('border-radius'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-rounded();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-bordered list-rounded">
@@ -225,15 +228,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-stripes</h2>
+    <h2 class="docs-header">add-list-stripes</h2>
     <p>Gives a list items alternating background colors.</p>
-    <pre class="language-scss"><code>@mixin make-list-stripes( $nth, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
-//   @default default ($list('nth'))
+//   @default default ($lists('nth'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-stripes();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-striped">
@@ -253,15 +262,21 @@
   </li>
   
   <li>
-    <h2 class="docs-header">give-list-hover</h2>
+    <h2 class="docs-header">add-list-hover</h2>
     <p>Gives list hover styles for list items.</p>
-    <pre class="language-scss"><code>@mixin make-list-hover( $bg-hover, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
 //   @type color
-//   @default default ($list('background-hover'))
+//   @default default ($lists('background-hover'))
 // @param $options
 //   @type map
-//   @default $list map</code></pre>
+//   @default $lists map</code></pre>
+    <h3 class="docs-header">Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list-base();
+  @include make-list-bordered();
+  @include add-list-hover();
+}</code></pre>
     <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
       <ul class="list list-rowed list-hover">

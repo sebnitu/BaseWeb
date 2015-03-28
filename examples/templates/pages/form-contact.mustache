@@ -1,0 +1,183 @@
+{{! { 
+  
+  "return" : {
+    "url" : "/docs/elements.html#forms"
+  }
+  
+} }}
+
+<div id="example-content" class="example-content example-form-contact">
+  
+  <div id="example-content-output" class="example-content-output">
+     
+    <div class="example-toolbar">
+      <form class="example-toolbar-form select-output-example">
+        <div class="row">
+          <div class="col col-4">
+            <select class="input">
+              <option disabled>Examples</option>
+              <option value="/examples/forms.html" selected>Forms</option>
+            </select>
+          </div>
+          <div class="col col-8">
+            <select class="input">
+              <option disabled>Example Form</option>
+              <option value="/examples/form-signin.html">Sign In Form</option>
+              <option value="/examples/form-contact.html" selected>Contact Form</option>
+              <option value="/examples/form-shirt-order.html">Shirt Order Form</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+    <div class="example-output-wrapper">
+    
+      <form>
+        <header class="form-header">
+          <h2>Contact Us</h2>
+          <p>This is an example contact form that might appear on a design agencies website. It features a form header and footer along with required fields and some notes.</p>
+        </header>
+        <div class="form-group">
+          <label for="input-username">Your Name <span class="req">*</span></label>
+          <div class="row">
+            <div class="col col-6">
+              <input type="text" class="input" placeholder="First Name" required>
+            </div>
+            <div class="col col-6">
+              <input type="text" class="input" placeholder="Last Name" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address <span class="req">*</span></label>
+          <p class="note">Your email will not be shared with anyone.</p>
+          <input type="email" class="input" placeholder="example@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label>What are you interested in? <span class="req">*</span></label>
+          <select class="input" required>
+            <option disabled selected>Select One...</option>
+            <option>Web Design</option>
+            <option>Development</option>
+            <option>Content Creation</option>
+            <option>Search Engine Stuff</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea class="input" rows="4"></textarea>
+        </div>
+        <footer class="form-action">
+          <button class="btn btn-green">Submit Form</button>
+          <div class="note input-align float-right">
+            <p><em>* Required fields</em></p>
+          </div>
+        </footer>
+      </form>
+    
+    </div><!-- .example-output-wrapper -->
+    
+    <div class="shim"></div>
+  </div><!-- .example-content-output -->
+  
+  <div id="handler-vertical" class="handler-vertical"></div>
+  
+  <div id="example-content-input" class="example-content-input">
+    <div class="shim"></div>
+    
+    {{ > toolbar-input }}
+    
+    <div class="example-input-wrapper">
+      
+<pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    &lt;h2&gt;Contact Us&lt;/h2&gt;
+    &lt;p&gt;This is an example contact form that might appear on a design agencies website. It features a form header and footer along with required fields and some notes.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;input-username&quot;&gt;Your Name &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col col-6&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;First Name&quot; required&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col col-6&quot;&gt;
+        &lt;input type=&quot;text&quot; class=&quot;input&quot; placeholder=&quot;Last Name&quot; required&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Email Address &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;p class=&quot;note&quot;&gt;Your email will not be shared with anyone.&lt;/p&gt;
+    &lt;input type=&quot;email&quot; class=&quot;input&quot; placeholder=&quot;example@gmail.com&quot; required&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;What are you interested in? &lt;span class=&quot;req&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;select class=&quot;input&quot; required&gt;
+      &lt;option disabled selected&gt;Select One...&lt;/option&gt;
+      &lt;option&gt;Web Design&lt;/option&gt;
+      &lt;option&gt;Development&lt;/option&gt;
+      &lt;option&gt;Content Creation&lt;/option&gt;
+      &lt;option&gt;Search Engine Stuff&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;Your Message&lt;/label&gt;
+    &lt;textarea class=&quot;input&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;footer class=&quot;form-action&quot;&gt;
+    &lt;button class=&quot;btn btn-green&quot;&gt;Submit Form&lt;/button&gt;
+    &lt;div class=&quot;note input-align float-right&quot;&gt;
+      &lt;p&gt;&lt;em&gt;* Required fields&lt;/em&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre class="language-scss"><code>
+form {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: $white;
+  background-clip: padding-box;
+  border: 1px solid rgba($black, 0.1);
+  @include box-shadow(0 1px 6px rgba($black, 0.1));
+  @include border-radius();
+}
+form .form-group {
+  padding: 0 20px;
+}
+form .form-header {
+  margin-top: -1px;
+  margin-left: -1px;
+  margin-right: -1px;
+  padding: 20px;
+  text-shadow: 0 1px 1px rgba($black, 0.1);
+  background: $blue;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: rgba($black, 0.1);
+  @include linear-gradient(top, $blue-violet-darker, $blue-darker);
+  @include border-radius-top();
+  
+  h2 {
+    color: $white;
+  }
+  p {
+    color: rgba($white, 0.75);
+  }
+}
+form .form-action {
+  padding: 20px;
+  background: $blue-pale;
+  border-top: 1px solid rgba($black, 0.1);
+  @include border-radius-bottom();
+}
+</code></pre>
+      
+    </div><!-- .example-input-wrapper -->
+  </div><!-- .example-content-input -->
+
+</div><!-- .example-content -->

@@ -66,18 +66,6 @@
     }
     margin: map-get($o, 'container-margin');
     padding: map-get($o, 'container-padding');
-    &.#{map-get($o, 'class-container')}-left {
-      float: left;
-    }
-    &.#{map-get($o, 'class-container')}-right {
-      float: right;
-    }
-    &.#{map-get($o, 'class-container')}-no-margin {
-      margin: 0;
-    }
-    &.#{map-get($o, 'class-container')}-no-padding {
-      padding: 0;
-    }
     @include clearfix();
   }
 }
@@ -158,7 +146,7 @@
   width: column-width($index, $o);
 }
 
-// Make Prefix
+// Add Prefix
 // Creates the base styles for a column and sets its width.
 // @param $index
 //   @type integer
@@ -166,7 +154,7 @@
 // @param $options
 //   @type map
 //   @default $grid map
-@mixin give-prefix($index, $options: ()) {
+@mixin add-prefix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   @if (map-get($o, 'gutter-width') != 0) {
     margin-left: (spacing-width($index, $o) + map-get($o, 'gutter-width'));
@@ -178,7 +166,7 @@
   }
 }
 
-// Make Suffix
+// Add Suffix
 // Creates the base styles for a spacing suffix.
 // @param $index
 //   @type integer
@@ -186,10 +174,14 @@
 // @param $options
 //   @type map
 //   @default $grid map
-@mixin give-suffix($index, $options: ()) {
+@mixin add-suffix($index, $options: ()) {
   $o: map-merge( $grid, $options);
   margin-right: spacing-width($index, $o);
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// @Build Grid Mixin
+////////////////////////////////////////////////////////////////////////////////
 
 // Build Grid System
 // Outputs all the classes and styles for the class based grid system.
@@ -225,13 +217,6 @@
   // Check that this is not a mobile grid type
   @if (map-get($o, 'type') != mobile) {
     
-    // Set our column modifier classes
-    .#{map-get($o, 'class-column')}-left {
-      float: left;
-    }
-    .#{map-get($o, 'class-column')}-right {
-      float: right;
-    }
     @if (map-get($o, 'gutter-width') != 0) {
       .#{map-get($o, 'class-column')}-no-gutter {
         margin-left: 0;
@@ -255,7 +240,7 @@
     @if (map-get($o, 'class-prefix') != none) {
       @for $i from 1 through (map-get($o, 'columns') - 1) {    
         .#{map-get($o, 'class-prefix')}-#{$i} {
-          @include give-prefix( $i, $o );
+          @include add-prefix( $i, $o );
         }
       }
     }
@@ -264,7 +249,7 @@
     @if (map-get($o, 'class-suffix') != none) {
       @for $i from 1 through (map-get($o, 'columns') - 1) {  
         .#{map-get($o, 'class-suffix')}-#{$i} {
-          @include give-suffix( $i, $o );
+          @include add-suffix( $i, $o );
         }
       }
     }

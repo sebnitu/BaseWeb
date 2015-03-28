@@ -1,13 +1,13 @@
-![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb - A fresh front-end development framework.")
+![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
 
 ---
 
-Currently v0.11.1
+Currently v0.12.0
 
 ---
 
 ## About
-BaseWeb is a Sass front-end development framework built to make working web based projects more enjoyable. It's focused on keeping your projects simple, organized and responsive.
+BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
 
 ---
 
@@ -18,11 +18,11 @@ Documentation is currently being worked on and you can view them if you clone or
 
 ## To-Do
 
+* Use ems for sizing typography, margins and padding.
 * Add some form of change or development log, similar to [Cargo Devlog](http://cargocollective.com/devlog).
 * Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the devlog and readme.
 * `npm install` latest versions of node packages and fix any issues with build scripts.
 * Setup auto deployment for docs to [http://getbaseweb.com/](http://getbaseweb.com/).
-* Setup build script to auto generate our READE.me file.
 
 ---
 

@@ -66,6 +66,14 @@ namespace('build', function() {
     });
   });
   
+  // Build Examples
+  desc('Build Examples');
+  task('examples', {async: true}, function() {
+    runmustache({
+      dir : 'examples/'
+    });
+  });
+  
   // Build Images
   desc('Optimizes global images');
   task('img', {async: true}, function() {

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * BaseWeb
  * A fresh front-end development framework
@@ -53,6 +54,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   content: none;
   display: none;
   clear: none; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
 
 /*==============================================================================
   @Typography
@@ -465,8 +472,7 @@ table {
     margin: 0; }
   @media (max-width: 759px) {
     .table-responsive {
-      overflow: auto;
-      border: 1px solid rgba(0, 0, 0, 0.1); }
+      overflow: auto; }
       .table-responsive > table td, .table-responsive > table th {
         white-space: nowrap; } }
 
@@ -546,6 +552,410 @@ hr {
 
 .hr-double {
   border-bottom: 3px double rgba(0, 0, 0, 0.1); }
+
+/*==============================================================================
+  @Form Structure
+==============================================================================*/
+/**
+ * Form Structure Elements
+ */
+form {
+  margin: 30px 0; }
+
+/**
+ * Fieldset
+ */
+fieldset {
+  margin: 20px 0;
+  padding: 0;
+  border: 0 none; }
+
+/**
+ * Legends
+ */
+legend {
+  display: inline-block;
+  margin: 0 -10px 10px;
+  padding: 0 10px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  color: #303030;
+  border: 0 none; }
+
+form .row {
+  margin-bottom: 10px; }
+form .row:last-child {
+  margin-bottom: 0; }
+form .col {
+  margin-bottom: 10px; }
+form .col:last-child {
+  margin-bottom: 0; }
+
+@media (min-width: 760px) {
+  form .col {
+    margin-bottom: 0; } }
+
+/*==============================================================================
+  @Form Groups
+==============================================================================*/
+/**
+ * Form Group
+ */
+.form-group {
+  margin-bottom: 20px; }
+  .form-group:last-child {
+    margin-bottom: 0; }
+
+.form-group.inline-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .form-group.inline-group > * {
+    font-size: 14px; }
+  .form-group.inline-group:last-child {
+    margin-bottom: -10px; }
+  .form-group.inline-group > * {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px; }
+  .form-group.inline-group .form-group, .form-group.inline-group .input-group {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px 0 0; }
+    .form-group.inline-group .form-group:last-child, .form-group.inline-group .input-group:last-child {
+      margin-right: 0; }
+
+/**
+ * Header Group
+ */
+.form-header {
+  margin-bottom: 20px; }
+  .form-header:last-child {
+    margin-bottom: 0; }
+  .form-header h1, .form-header h2, .form-header h3, .form-header h4, .form-header h5, .form-header h6 {
+    margin: 0 0 5px 0;
+    font-size: 19.6px;
+    line-height: 1.2em; }
+  .form-header p {
+    margin: 0;
+    color: #909090; }
+
+/**
+ * Action Group
+ */
+.form-action {
+  margin-bottom: 20px;
+  font-size: 0; }
+  .form-action:last-child {
+    margin-bottom: 0; }
+  .form-action .btn, .form-action .input-align {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 14px; }
+    .form-action .btn:last-child, .form-action .input-align:last-child {
+      margin-right: 0; }
+  .form-action .input-align {
+    margin-top: 11px; }
+
+/**
+ * Input Group
+ */
+.input-group {
+  margin-bottom: 20px; }
+  .input-group:last-child {
+    margin-bottom: 0; }
+
+.input-group.inline-group {
+  margin-right: -10px;
+  margin-bottom: 10px;
+  font-size: 0; }
+  .input-group.inline-group > * {
+    font-size: 14px; }
+  .input-group.inline-group:last-child {
+    margin-bottom: -10px; }
+  .input-group.inline-group > * {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 14px; }
+
+/*==============================================================================
+  @Form Elements
+==============================================================================*/
+/**
+ * Labels
+ */
+label {
+  display: inline-block;
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #303030; }
+  label:last-child {
+    margin-bottom: 0; }
+  label.label-sub {
+    font-weight: normal;
+    color: #303030; }
+  label.label-hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0; }
+  label.label-block {
+    display: block;
+    padding-top: 11px; }
+  label.label-inline {
+    display: inline-block;
+    padding-top: 11px; }
+
+.inline-group label.label-block, .inline-group label.label-inline {
+  padding-bottom: 11px; }
+
+/**
+ * Base Inputs
+ */
+.input, .checkbox, .radio, .choice {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 10px 0; }
+  .input:last-child, .checkbox:last-child, .radio:last-child, .choice:last-child {
+    margin-bottom: 0; }
+
+/**
+ * Text Inputs
+ */
+.input {
+  height: 42px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: #303030;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 3px;
+  -webkit-transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s; }
+  .input::-webkit-input-placeholder {
+    color: #aaa; }
+  .input:-moz-placeholder {
+    color: #aaa; }
+  .input::-moz-placeholder {
+    color: #aaa; }
+  .input:-ms-input-placeholder {
+    color: #aaa; }
+  .input:focus {
+    outline: none;
+    background-color: white;
+    border: 1px solid #2ab0ea;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent; }
+  .input[readonly], .input[disabled] {
+    background: rgba(0, 0, 0, 0.05); }
+  .input[disabled] {
+    cursor: not-allowed; }
+
+/**
+ * Checkbox, Radio & Choice Classes
+ */
+.checkbox, .radio, .choice {
+  cursor: pointer;
+  color: #303030;
+  font-weight: normal; }
+  .checkbox.disabled, .radio.disabled, .choice.disabled {
+    cursor: not-allowed;
+    opacity: 0.5; }
+
+.choice {
+  padding: 11px 25px 11px 35px;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  box-shadow: none;
+  border-radius: 3px; }
+  .choice input[type="checkbox"], .choice input[type="radio"] {
+    position: absolute;
+    margin: 3px 0 0 -20px; }
+
+input[type="checkbox"], input[type="radio"] {
+  margin: 0 5px 0 0; }
+  input[type="checkbox"][disabled], input[type="radio"][disabled] {
+    cursor: not-allowed; }
+
+/**
+ * Other Inputs
+ */
+input[type="file"], input[type="range"] {
+  display: block;
+  margin: 0 0 10px 0; }
+
+input[type="range"] {
+  width: 100%; }
+
+input[type="search"] {
+  -webkit-appearance: none; }
+
+input[type="color"].input {
+  padding: 5px; }
+
+/**
+ * Textarea
+ */
+textarea.input {
+  height: auto;
+  max-width: 100%; }
+
+/**
+ * Select
+ */
+select.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='4'><polygon fill='#303030' points='0,0 3,4 3,4 6,0 '/></svg>");
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  padding-right: 30px; }
+
+select[multiple].input, select[size].input {
+  height: auto;
+  padding: 10px;
+  background-image: none; }
+
+/*==============================================================================
+  @Form Utilities
+==============================================================================*/
+/**
+ * Notes
+ */
+.note {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #909090; }
+  .note:last-child {
+    margin-bottom: 0; }
+  .note p {
+    margin: 0 0 10px 0; }
+    .note p:last-child {
+      margin-bottom: 0; }
+
+label + .note {
+  margin-top: 0; }
+
+.form-group + .note, .input-group + .note {
+  margin-top: -10px; }
+
+/**
+ * Required Classes
+ */
+.req {
+  color: #de5151; }
+
+/**
+ * Inline Inputs
+ */
+label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choice.inline, .inline-group label, .inline-group .btn, .inline-group .input, .inline-group .checkbox, .inline-group .radio, .inline-group .choice {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 14px; }
+
+/**
+ * Disabled
+ */
+.disabled input[type="file"], .disabled input[type="range"], .disabled input[type="checkbox"], .disabled input[type="radio"], .disabled .input, .disabled .checkbox, .disabled .radio, .disabled .choice, fieldset[disabled] input[type="file"], fieldset[disabled] input[type="range"], fieldset[disabled] input[type="checkbox"], fieldset[disabled] input[type="radio"], fieldset[disabled] .input, fieldset[disabled] .checkbox, fieldset[disabled] .radio, fieldset[disabled] .choice {
+  cursor: not-allowed; }
+.disabled .input, fieldset[disabled] .input {
+  background: rgba(0, 0, 0, 0.05); }
+
+/*==============================================================================
+  @Validation States
+==============================================================================*/
+/**
+ * Success
+ */
+.input.success {
+  border-color: #84b72d; }
+
+.checkbox.success, .radio.success, .note.success {
+  color: #668e23; }
+
+.choice.success {
+  background-color: rgba(132, 183, 45, 0.1); }
+
+.success .input {
+  border-color: #84b72d; }
+.success .checkbox, .success .radio, .success .note {
+  color: #668e23; }
+.success .choice {
+  background-color: rgba(132, 183, 45, 0.1); }
+
+/**
+ * Warning
+ */
+.input.warning {
+  border-color: #dab10d; }
+
+.checkbox.warning, .radio.warning, .note.warning {
+  color: #c29d0b; }
+
+.choice.warning {
+  background-color: rgba(218, 177, 13, 0.15); }
+
+.warning .input {
+  border-color: #dab10d; }
+.warning .checkbox, .warning .radio, .warning .note {
+  color: #c29d0b; }
+.warning .choice {
+  background-color: rgba(218, 177, 13, 0.15); }
+
+/**
+ * Error
+ */
+.input.error {
+  border-color: #de5151; }
+
+.checkbox.error, .radio.error, .note.error {
+  color: #d42828; }
+
+.choice.error {
+  background-color: rgba(222, 81, 81, 0.1); }
+
+.error .input {
+  border-color: #de5151; }
+.error .checkbox, .error .radio, .error .note {
+  color: #d42828; }
+.error .choice {
+  background-color: rgba(222, 81, 81, 0.1); }
+
+/**
+ * Active
+ */
+.input.active {
+  border-color: #2ab0ea; }
+
+.checkbox.active, .radio.active, .note.active {
+  color: #1495cd; }
+
+.choice.active {
+  background-color: rgba(42, 176, 234, 0.1); }
+
+.active .input {
+  border-color: #2ab0ea; }
+.active .checkbox, .active .radio, .active .note {
+  color: #1495cd; }
+.active .choice {
+  background-color: rgba(42, 176, 234, 0.1); }
 
 /*==============================================================================
   @Buttons
@@ -656,8 +1066,7 @@ hr {
 
 .btn-block {
   display: block;
-  width: 100%;
-  margin: 10px 0; }
+  width: 100%; }
 
 /*==============================================================================
   @Notice
@@ -682,6 +1091,23 @@ hr {
 
 .notice-danger {
   background-color: #fbeded; }
+
+.breadcrumb {
+  padding: 10px 20px; }
+
+.breadcrumb ul {
+  margin: 0;
+  list-style: none; }
+
+.breadcrumb ul li {
+  margin: 0;
+  display: inline-block; }
+  .breadcrumb ul li:after {
+    content: "→";
+    padding: 0 10px;
+    color: #aaa; }
+  .breadcrumb ul li:last-child:after {
+    content: none; }
 
 /*==============================================================================
   @Mobile Grid System
@@ -712,14 +1138,6 @@ hr {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px; }
-    .container.container-left {
-      float: left; }
-    .container.container-right {
-      float: right; }
-    .container.container-no-margin {
-      margin: 0; }
-    .container.container-no-padding {
-      padding: 0; }
     .container:after {
       content: '';
       display: table;
@@ -737,10 +1155,6 @@ hr {
     float: left;
     padding-left: 10px;
     padding-right: 10px; }
-  .col-left {
-    float: left; }
-  .col-right {
-    float: right; }
   .col-no-inner-gutter {
     padding-left: 0;
     padding-right: 0; }

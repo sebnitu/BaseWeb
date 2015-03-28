@@ -13,7 +13,7 @@
 }
 
 // Remove Clearfix
-// Removes the clearfix styles from an element.
+// Removes the clearfix styles from an element. This is typically used when a clearfix is inherited on an element and you'd like it removed.
 @mixin remove-clearfix() {
   &:after {
     content: none;
@@ -56,7 +56,7 @@
 }
 
 // Scrollable
-// Makes things scrollable in a sexy way.
+// Makes touch devices use momentum-based scrolling for the given element.
 @mixin scrollable() {
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
@@ -93,7 +93,7 @@
 }
 
 // Border Radius
-// The border-radius CSS property allows you to define how rounded border corners are.
+// Define border radius using mixin shorthand and global defaults.
 // @param $radius
 //   @type unit (pixel, percent)
 @mixin border-radius( $radius : $border-radius ) {
@@ -223,7 +223,7 @@
 }
 
 // Keyframes
-// The @keyframes CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.
+// The `@keyframes` CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.
 // @param $name
 //   @type animation name
 // @param @content (passed in brackets)
@@ -345,7 +345,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Hide text
-// Image replacement trick that hides text.
+// Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
 @mixin text-hide() {
   font-size: 0;
   line-height: 0;
@@ -355,7 +355,7 @@
 }
 
 // Truncate Text
-// Truncates text with an ellipsis. Element applied must be block or inline-block.
+// Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
 // @param $display
 //   @type display property (block, inline-block)
 //   @default block
@@ -372,11 +372,10 @@
 // @UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
-// Base Triangle
+// Make Triangle Base
 // The base styles for creating CSS triangles
-// Use with `%triangle` as placeholder
-@mixin triangle-base() {
-  content: "";
+@mixin make-triangle-base() {
+  content: '';
   display: inline-block;
   width: 0;
   height: 0;
@@ -385,7 +384,7 @@
   border-color: transparent;
 }
 
-// Triangle
+// Make Triangle
 // Uses the "0x0" element with borders trick to draw arrows.
 // @param $size
 //   @type unit (pixel, em, rem)
@@ -394,23 +393,7 @@
 // @param $direction
 //   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
 //   @desc The direction that the triangle will point.
-// @param $base
-//   @type boolean (true, false)
-//   @default false
-//   @desc whether or not triangle base styles are applied individually or extended to the placeholder `%triangle`
-@mixin triangle(
-    $size,
-    $color,
-    $direction,
-    $base : false
-  ) {
-  
-  @if ($base == false) {
-    @extend %triangle;
-  } @else {
-    @include triangle-base();
-  }
-
+@mixin make-triangle( $size, $color, $direction ) {
   @if ($direction == 'up') {
     border-width: 0 $size $size $size;
     border-bottom-color: $color;

@@ -1,4 +1,239 @@
 /*==============================================================================
+  @Mobile Grid System
+==============================================================================*/
+
+@include build-grid-system(mobile);
+
+/*==============================================================================
+  @Grid System
+==============================================================================*/
+
+@include media-min('tablet') {
+  @include build-grid-system();
+}
+
+/*==============================================================================
+  @Structure
+==============================================================================*/
+
+body {
+  background: $gray-pale;
+}
+.row {
+  position: relative;
+}
+.sidebar {
+  position: relative;
+}
+.content {
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+@include media-min('tablet') {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    top: 0;
+    bottom: 0;
+  }
+  .content {
+    margin: 0 0 0 300px;
+    padding: 0 0 160px 60px;
+  }
+}
+
+/**
+ * Hide elements we will use JS to reveal
+ */
+.nav .subnav,
+.content .subpage {
+  display: none;
+}
+
+/*
+ * Smooth State Page Transitions
+ */
+.m-scene .scene_element {
+  @include animation(fadeIn 0.25s linear 0 normal both);
+}
+.m-scene.is-exiting .scene_element {
+  @include animation-direction(alternate-reverse);
+}
+
+/*
+ * Keyframes
+ */
+@include keyframes('fadeIn') {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*==============================================================================
+  @Header
+==============================================================================*/
+
+.header {
+  position: relative;
+  z-index: 10;
+  padding: 20px 0;
+}
+.header h1 {
+  margin: 0 auto;
+  @include clearfix();
+}
+.header .logo {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: 0 none;
+  background: url('../img/baseweb-logo-small.svg') no-repeat left center;
+  background-size: 187px 40px;
+  @include size(187px, 40px);
+  @include text-hide();
+}
+
+@include media-min('tablet') {
+  .header {
+    padding: 60px 0;
+  }
+  .header .logo {
+    float: left;
+    margin: 0;
+  }
+}
+
+/*==============================================================================
+  @Navigation
+==============================================================================*/
+
+.nav {
+  position: relative;
+  margin: 10px 0;
+}
+.nav ul {
+  width: 50%;
+  margin: 0;
+  list-style: none;
+}
+.nav ul li {
+  margin: 0;
+  border-top: 1px solid rgba($black, 0.1);
+}
+.nav ul li:last-child {
+  border-bottom: 1px solid rgba($black, 0.1);
+}
+.nav ul li a {
+  display: block;
+  padding: 10px;
+  background: transparent;
+  color: $color;
+  border: 0 none;
+  
+  &:hover {
+    color: $red;
+  }
+}
+.nav ul li.active > a {
+  color: $red;
+}
+
+/**
+ * Primary Nav
+ */
+.nav .rootnav {
+  width: column_width(6);
+  padding-right: 10px;
+}
+
+/**
+ * Secondary Nav
+ */
+.nav .subnav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-left: 10px;
+  height: 100%;
+  @include scrollable();
+}
+
+@include media-min('tablet') {
+  .nav .subnav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-left: 10px;
+    height: auto;
+  }
+}
+
+/*==============================================================================
+  @Toolbar
+==============================================================================*/
+
+.toolbar {
+  padding: 20px 0;
+  line-height: 42px;
+  text-align: center;
+}
+.toolbar .version {
+  display: none;
+  color: $color-light;
+}
+.toolbar .btn {
+  padding: 15px 30px;
+}
+
+@include media-min('tablet') {
+  .toolbar {
+    padding: 59px 0;
+    text-align: right;
+  }
+  .toolbar .version {
+    display: inline-block;
+  }
+  .toolbar .btn {
+    margin-left: 20px;
+    padding: 10px 20px;
+  }
+}
+
+/*==============================================================================
+  @Content
+==============================================================================*/
+
+.sub-section {
+  margin: 30px 0;
+}
+
+h1.docs-header {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 600;
+}
+h2.docs-header {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+}
+h3.docs-header {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+hr.docs-hr {
+  margin: 30px 0;
+}
+
+
+/*==============================================================================
   @Docs Lists
 ==============================================================================*/
 
@@ -10,23 +245,21 @@
 .docs-list-hover {
   @include make-list-base(('padding':15px 10px));
   @include make-list-rowed();
-  @include give-list-hover(rgba($white, 0.5));
-  margin: 30px 0;
-}
-
-.docs-list .docs-list-hover {
-  &:last-child {
-    margin-bottom: 20px;
-    > li:last-child {
-      border-bottom: 0 none;
-    }
-  }
+  @include add-list-hover(rgba($white, 0.5));
 }
 
 /**
  * Unique List Content
  */
 .docs-list-hover {
+  
+  li {
+    overflow: auto;
+    
+    &.list-sep {
+      border-top: 1px solid rgba($black, 0.1);
+    }
+  }
   
   .title {
     padding-left: 0;
@@ -78,7 +311,7 @@
 ==============================================================================*/
 
 .docs-table {
-  @include make-table-base(('margin':30px 0, 'padding':15px 10px));
+  @include make-table-base(('margin': 20px 0, 'padding': 15px 10px));
   @include make-table-rowed();
     
   th {
@@ -95,7 +328,7 @@
 }
 
 .docs-table-responsive {
-  @include make-table-responsive(('margin':30px 0));
+  @include make-table-responsive(('margin': 20px 0));
 }
 
 /*==============================================================================
@@ -106,7 +339,8 @@
   margin: 20px 0;
 }
 .demo-grid .col {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .demo-grid .col p {
   margin: 0;
@@ -117,6 +351,74 @@
   line-height: 20px;
   text-align: center;
   @include border-radius();
+}
+
+/**
+ * Semantic Grid Demo
+ */
+.demo-grid-semantic {
+  .demo-wrapper,
+  .demo-content,
+  .demo-aside,
+  .demo-article {
+    background: rgba($blue, 0.1);
+    &:before {
+      display: block;
+      margin: 0;
+      padding: 15px 20px;
+      font-family: $font-family-mono;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+  
+  .demo-wrapper {
+    @include make-container();
+    &:before {
+      content: '.wrapper';
+    }
+  }
+  .demo-content {
+    
+    @include make-row();
+    &:before {
+      content: '.content';
+    }
+  }
+  .demo-aside,
+  .demo-article {
+    @include make-column-base();
+  }
+  .demo-aside {
+    width: column-width(4);
+    &:before {
+      content: '.aside';
+    }
+  }
+  .demo-article {
+    width: column-width(8);
+    &:before {
+      content: '.article';
+    }
+  }
+}
+
+/**
+ * Nested Grid Demo
+ */
+.demo-grid-nested {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.demo-grid-nested .col {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: rgba($blue, 0.1);
+}
+.demo-grid-nested .col p {
+  margin: 10px 0;
+  @include text-truncate();
 }
 
 /*==============================================================================
@@ -141,6 +443,17 @@
 }
 .demo .table-responsive table {
   margin: 0;
+}
+
+/**
+ * Size Demo
+ */
+.demo .my-special-box {
+  background: $green;
+  display: block;
+  margin: 10px auto;
+  @include size(100px, 50px);
+  @include border-radius();
 }
 
 /**
@@ -176,11 +489,13 @@
   background: $yellow-green-dark;
   @include size(30px);
 }
+.docs-list-hover .demo-border-radius {
+  margin: -5px 0;
+}
 
 .mixin-border-radius {
   @include border-radius(50%);
 }
-
 .mixin-border-radius-top {
   @include border-radius-top(50%);
 }
@@ -190,7 +505,6 @@
 .mixin-border-radius-top-right {
   @include border-radius-top-right(50%);
 }
-
 .mixin-border-radius-bottom {
   @include border-radius-bottom(50%);
 }
@@ -200,7 +514,6 @@
 .mixin-border-radius-bottom-right {
   @include border-radius-bottom-right(50%);
 }
-
 .mixin-border-radius-left {
   @include border-radius-left(50%);
 }
@@ -210,7 +523,6 @@
 .mixin-border-radius-left-bottom {
   @include border-radius-left-bottom(50%);
 }
-
 .mixin-border-radius-right {
   @include border-radius-right(50%);
 }
@@ -219,6 +531,15 @@
 }
 .mixin-border-radius-right-bottom {
   @include border-radius-right-bottom(50%);
+}
+
+/**
+ * Transform Skew
+ */
+.demo .demo-transform-skew {
+  background: $blue-green;
+  margin: 20px auto;
+  @include transform(skew(30deg, 10deg));
 }
 
 /**
@@ -271,7 +592,21 @@
 }
 
 /**
- * Text
+ * Text Hide
+ */
+.demo .demo-logo-image {
+  display: block;
+  margin: 20px auto;
+  padding: 0;
+  border: 0 none;
+  background: url('../img/baseweb-logo-small.svg') no-repeat left center;
+  background-size: 187px 40px;
+  @include size(187px, 40px);
+  @include text-hide();
+}
+
+/**
+ * Text Truncate
  */
 .demo-text-truncate {
   background: $blue-green-darker;
@@ -291,20 +626,24 @@
 .demo-triangle .col {
   text-align: center;
 }
+
 %triangle {
-  @include triangle-base();
+  @include make-triangle-base();
   vertical-align: middle;
   margin: 10px 0;
 }
 .example-triangle-1 {
-  @include triangle( 14px, $blue-darker, 'left' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-darker, 'left' );
 }
 .example-triangle-2 {
-  @include triangle( 14px, $blue-violet-darker, 'down' );
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-violet-darker, 'down' );
   margin: 15px 0;
 }
 .example-triangle-3 {
-  @include triangle( 14px, $violet-darker, 'right' );
+  @extend %triangle;
+  @include make-triangle( 14px, $violet-darker, 'right' );
 }
 
 /*==============================================================================
@@ -312,15 +651,35 @@
 ==============================================================================*/
 
 .table-custom-alignment {
-  @include give-table-alignment((
+  @include add-table-alignment((
     'vertical-align': middle,
     'text-align': center
   ));
 }
 
 /*==============================================================================
+  @Forms Demo
+==============================================================================*/
+
+.demo form {
+  margin: 10px 0;
+}
+
+/*==============================================================================
   @Buttons Demo
 ==============================================================================*/
+
+.demo-buttons {
+  padding: 15px 20px;
+  font-size: 0;
+  line-height: 0;
+  text-align: center;
+  
+  .btn {
+    margin: 5px;
+    vertical-align: middle;
+  }
+}
 
 .demo .btn-custom {
   @include make-btn-base();
@@ -328,10 +687,11 @@
     'color' : $white,
     'background' : $violet
   ));
+  margin: 10px 5px;
 }
 
 .demo .btn-custom-size {
-  @include give-btn-size(20px 40px, (
+  @include add-btn-size(20px 40px, (
     'font-size': 20px,
     'line-height': 28px
   ));
@@ -340,5 +700,5 @@
 .demo .btn-custom-mobile {
   @include make-btn-base();
   @include make-btn-color();
-  @include give-btn-block();
+  @include add-btn-block();
 }

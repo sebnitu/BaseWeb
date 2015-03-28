@@ -25,10 +25,13 @@
     active_nav($('#nav'));
     active_subpage($('.subpage'));
     
+    /**
+     * Smooth State
+     */
     var $body = $('html, body');
     var content = $('#main').smoothState({
       // Runs when a link has been activated
-      blacklist: '.logo',
+      blacklist: '.logo, .no-smoothstate',
       prefetch: true,
       // pageCacheSize: 4,
       onStart: {
@@ -54,6 +57,51 @@
         
       }
     }).data('smoothState');
+    
+    /**
+     * Example Resize
+     */
+    window.onresize = resize;
+    resize();
+    $.resizable('handler-vertical', "v");
+    
+    /**
+     * Example Output Switcher
+     */
+    $('.select-output-example select').change(function() {
+      navigateTo(this, 'window', false);
+    });
+    
+    /**
+     * Example Input Display
+     */
+    var $example_input_items = $('.example-input-wrapper pre');
+    var $example_input_values = $('.select-input-display input');
+    
+    $example_input_values.each(function() {
+      if( $(this).is(':checked') ) {
+        $('.example-input-wrapper').find('.' + $(this).val()).show();
+      } else {
+        $('.example-input-wrapper').find('.' + $(this).val()).hide();
+      }
+    });
+    
+    $('.select-input-display input').change(function() {
+      
+      var $value = $(this).val();
+      var $checked = $(this).is(':checked');
+      
+      $example_input_items.each(function() {
+        if ($(this).hasClass($value)) {
+          if ($checked) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        }
+      });
+      
+    });
     
   });
   
