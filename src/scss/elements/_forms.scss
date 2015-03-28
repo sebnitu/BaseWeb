@@ -6,6 +6,7 @@
 // Define all the settings for form base elements, mixins and classes.
 $forms: (
   'vertical-spacing' : 20px,
+  'vertical-align' : 11px,
   'font-family' : inherit,
   'font-size' : $base-font-size,
   'line-height' : $base-line-height,
@@ -14,10 +15,6 @@ $forms: (
   'color-placeholder' : #aaa,
   'color-select-arrow' : $color-dark,
   'border-radius' : $border-radius,
-  
-  'label' : (
-    'padding' : 11px,
-  ),
   
   'input' : (
     'padding' : 10px,
@@ -240,7 +237,7 @@ form {
     }
   }
   .input-align {
-    margin-top: map-fetch($forms, 'label', 'padding');
+    margin-top: map-get( $forms, 'vertical-align' );
   }
 }
 
@@ -292,17 +289,17 @@ label {
   }
   &.label-block {
     display: block;
-    padding-top: map-fetch( $forms, 'label', 'padding' );
+    padding-top: map-get( $forms, 'vertical-align' );
   }
   &.label-inline {
     display: inline-block;
-    padding-top: map-fetch( $forms, 'label', 'padding' );
+    padding-top: map-get( $forms, 'vertical-align' );
   }
 }
 .inline-group {
   label.label-block,
   label.label-inline {
-    padding-bottom: map-fetch( $forms, 'label', 'padding' );
+    padding-bottom: map-get( $forms, 'vertical-align' );
   }
 }
 
