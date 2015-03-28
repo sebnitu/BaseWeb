@@ -1,45 +1,58 @@
 <h1 class="docs-header">Forms</h1>
 
-<p>HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize.</p>
+<p>HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.</p>
+
+<div class="notice notice-info">
+  <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html" class="no-smoothstate">Form Examples &rarr;</a></p>
+</div>
 
 <hr class="docs-hr">
 
 <section class="sub-section sub-section-classes">
 <h1 class="docs-header">Form Structure</h1>
 
-<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code>, <code>.input-group</code> and <code>.action-group</code> classes to use for structuring a form layout. You also have the BaseWeb Grid System available for creating more complex form layouts.</p>
+<p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code>, <code>.form-header</code>, <code>.form-action</code> and <code>.input-group</code> classes to use for structuring a form layout. You also have the BaseWeb Grid System available for creating more complex form layouts.</p>
 
 <pre class="language-markup"><code>
 &lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    ...
+  &lt;/header&gt;&lt;!-- .form-header --&gt;
+  
   &lt;div class=&quot;form-group&quot;&gt;
-    &lt;label&gt;Example Label&lt;/label&gt;
     &lt;div class=&quot;input-group&quot;&gt;
       ...
-    &lt;/div&gt;
-    &lt;label&gt;Example Label&lt;/label&gt;
+    &lt;/div&gt;&lt;!-- .input-group --&gt;
+  &lt;/div&gt;&lt;!-- .form-group --&gt;
+  
+  &lt;div class=&quot;form-group&quot;&gt;
     &lt;div class=&quot;row&quot;&gt;
       &lt;div class=&quot;col col-6&quot;&gt;
-        &lt;label class=&quot;label-sub&quot;&gt;Choice Checkboxes&lt;/label&gt;
         &lt;div class=&quot;input-group&quot;&gt;
           ...
-        &lt;/div&gt;
-      &lt;/div&gt;
+        &lt;/div&gt;&lt;!-- .input-group --&gt;
+      &lt;/div&gt;&lt;!-- .col --&gt;
       &lt;div class=&quot;col col-6&quot;&gt;
-        &lt;label class=&quot;label-sub&quot;&gt;Choice Radios&lt;/label&gt;
         &lt;div class=&quot;input-group&quot;&gt;
           ...
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;action-group&quot;&gt;
+        &lt;/div&gt;&lt;!-- .input-group --&gt;
+      &lt;/div&gt;&lt;!-- .col --&gt;
+    &lt;/div&gt;&lt;!-- .row --&gt;
+  &lt;/div&gt;&lt;!-- .form-group --&gt;
+  
+  &lt;footer class=&quot;form-action&quot;&gt;
     ...
-  &lt;/div&gt;
+  &lt;/footer&gt;&lt;!-- .form-action --&gt;
 &lt;/form&gt;
 </code></pre>
 
 <div class="demo">
   <form>
+    
+    <header class="form-header">
+      <h2>Form Heading</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in ultricies nunc. Maecenas egestas tellus eget ipsum fermentum commodo. Nam rhoncus magna quam, quis commodo lorem fermentum quis.</p>
+    </header>
     
     <div class="form-group">
       <label>Example Label</label>
@@ -52,7 +65,9 @@
         </select>
         <textarea class="input" rows="4" placeholder="Example textarea..."></textarea>
       </div>
+    </div>
       
+    <div class="form-group">
       <label>Example Label</label>
       <div class="row">
         <div class="col col-6">
@@ -73,10 +88,10 @@
       </div>
     </div>
       
-    <div class="action-group">
+    <footer class="form-action">
       <button class="btn btn-primary">Button</button>
       <button class="btn btn-default">Button</button>
-    </div>
+    </footer>
       
   </form>
 </div>
@@ -116,6 +131,48 @@
   </li>
   
   <li>
+    <h2 class="docs-header">.form-header</h2>
+    <p>Used to define a form header. It gets the vertical spacing and custom typographic styles for headings and paragraph elements that it contains.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    &lt;h2&gt;...&lt;/h2&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/header&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <header class="form-header">
+          <h2>Form Heading</h2>
+          <p class="text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in ultricies nunc. Maecenas egestas tellus eget ipsum fermentum commodo. Nam rhoncus magna quam, quis commodo lorem fermentum quis.</p>
+        </header>
+      </form>
+    </div>
+  </li>
+  
+  <li>
+    <h2 class="docs-header">.form-action</h2>
+    <p>Action groups are used to wrap form submission, resets and other form actions. It's also a way to apply custom styles and modifiers as a form footer.</p>
+    <pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;footer class=&quot;form-action&quot;&gt;
+    ...
+  &lt;/footer&gt;
+&lt;/form&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+        <footer class="form-action">
+          <button class="btn btn-green">Save Account</button>
+          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-default float-right">Cancel</button>
+        </footer>
+      </form>
+    </div>
+  </li>
+  
+  <li>
     <h2 class="docs-header">.input-group</h2>
     <p>Input groups are used to wrap groups of related input elements. It, like form groups, applies vertical spacing and another hook for adding modifier classes.</p>
     <pre class="language-markup"><code>
@@ -141,27 +198,6 @@
             <label class="choice"><input type="checkbox" checked> Choice</label>
             <label class="choice"><input type="checkbox" checked> Choice</label>
           </div>
-        </div>
-      </form>
-    </div>
-  </li>
-  
-  <li>
-    <h2 class="docs-header">.action-group</h2>
-    <p>Action groups are used to wrap form submission, resets and other form actions. It's also a way to apply custom styles and modifiers as a form footer.</p>
-    <pre class="language-markup"><code>
-&lt;form&gt;
-  &lt;div class=&quot;action-group&quot;&gt;
-    ...
-  &lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
-    <div class="demo">
-      <form>
-        <div class="action-group">
-          <button class="btn btn-green">Save Account</button>
-          <button class="btn btn-danger">Delete</button>
-          <button class="btn btn-default float-right">Cancel</button>
         </div>
       </form>
     </div>
@@ -207,7 +243,7 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
-    </code></pre>
+</code></pre>
     <div class="demo">
       <form>
         <div class="form-group">
@@ -230,6 +266,94 @@
         </div>
       </form>
     </div><!-- .demo -->
+  </li>
+
+  <li>
+    <h2 class="docs-header">Form Validation States</h2>
+    <p>There are three validation states represented through the classes <code>.success</code>, <code>.warning</code> and <code>.error</code>. There's also a fourth state class <code>.active</code>, that is used to simulate the focus styles for form inputs. It's also possible to add these states to form elements directly.</p>
+    <pre class="language-markup"><code>
+&lt;div class=&quot;form-group success&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group warning&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group error&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;form-group active&quot;&gt;...&lt;/div&gt;
+</code></pre>
+    <div class="demo">
+      <form>
+            
+        <div class="form-group success">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .success -->
+        
+        <div class="form-group warning">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .warning -->
+        
+        <div class="form-group error">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .error -->
+        
+        <div class="form-group active">
+          <div class="row">
+            <div class="col col-4">
+              <input class="input" type="text" placeholder="Example">
+            </div>
+            <div class="col col-4">
+              <select class="input">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="col col-4">
+              <label class="choice"><input type="checkbox"> Choice</label>
+            </div>
+          </div>
+        </div><!-- .form-group .active -->
+      
+      </form>
+    </div>
   </li>
 
 </ul>
@@ -556,7 +680,7 @@
   </li>
 </ul>
 
-<div class="notice notice-info">
+<div class="notice notice-warning">
   <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
 </div>
 

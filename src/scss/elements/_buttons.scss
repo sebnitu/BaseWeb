@@ -12,6 +12,7 @@ $buttons: (
   'font-size' : $base-font-size,
   'line-height' : $base-line-height,
   'color' : $color-dark,
+  'color-hover' : default,
   'text-shadow' : none,
   'background' : $gray-pale,
   'background-hover' : darken,
@@ -75,7 +76,11 @@ $buttons: (
   background-clip: map-get($o, 'background-clip');
   border: map-get($o, 'border');
   &:hover {
-    color: map-get($o, 'color');
+    @if (map-get($o, 'color-hover') == default) {
+      color: map-get($o, 'color');
+    } @else {
+      color: map-get($o, 'color-hover');
+    }
     @if (map-get($o, 'background-gradient') == true) {
       background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
       background-position: 0 -40px;

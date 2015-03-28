@@ -1,0 +1,164 @@
+/*==============================================================================
+  @Example Structure
+==============================================================================*/
+
+.example-header {
+  width: 100%;
+  padding: 20px;
+  background: $color-dark;
+}
+.example-sidebar .widget {
+  margin: 0;
+  padding: 14px;
+  background: lighten($color-dark, 5%);
+}
+.example-content {
+  position: absolute;
+  width: 100%;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  background: $gray-pale;
+}
+
+.example-content-output,
+.example-content-input {
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
+
+/*==============================================================================
+  @Example Header
+==============================================================================*/
+
+.example-header h1 {
+  margin: 0 auto;
+  @include clearfix();
+}
+.example-header .logo {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: 0 none;
+  background: url('../img/baseweb-logo-small-light.svg') no-repeat left center;
+  background-size: 140px 30px;
+  @include size(43px, 30px);
+  @include text-hide();
+}
+
+/*==============================================================================
+  @Example Navigation
+==============================================================================*/
+
+.widget {
+  position: absolute;
+  top: 0;
+  padding: 14px;
+}
+.return-widget {
+  left: 0;
+}
+.display-widget {
+  right: 0;
+}
+.widget .btn-light-on-black {
+  @include make-btn-color((
+    'color' : rgba($white, 0.5),
+    'color-hover' : rgba($white, 1),
+    'background' : transparent,
+    'border' : 1px solid rgba($white, 0.1),
+    'border-hover' : 1px solid rgba($white, 0.25),
+  ));
+}
+
+.example-toolbar {
+  padding: 14px;
+  border-bottom: 1px solid rgba($black, 0.1);
+  background-clip: padding-box;
+  background: $gray-pale;
+  
+  form {
+    margin: 0;
+  }
+}
+.example-content-output .example-toolbar {
+  background: $gray-pale;
+}
+.example-content-input .example-toolbar {
+  background: #e2e2e2;
+}
+
+/*==============================================================================
+  @Example Main
+==============================================================================*/
+
+.example-content-output {
+  background: $gray-pale;
+  
+  .example-output-wrapper {
+    padding: 20px;
+  }
+  
+  .notice {
+    margin-top: 0;
+  }
+}
+.example-content-input {
+  background: #e2e2e2;
+  
+  pre {
+    margin: 0;
+    padding: 20px;
+    background: none;
+    border-bottom: 1px solid rgba($black, 0.1);
+    @include border-radius(0);
+    
+    &:last-child {
+      border-bottom: 0 none;
+    }
+  }
+  code {
+    margin: 0;
+    padding: 0;
+  }
+  pre[class*="language-"] > code[class*="language-"] {
+    padding-right: 50px;
+    
+    &:before {
+      @include border-radius(0);
+    }
+  }
+}
+
+/**
+ * Sign In Form
+ */
+.example-form-signin .example-output-wrapper {
+  form {
+    max-width: 400px;
+    margin: 30px auto;
+    background-clip: padding-box;
+    border: 3px solid rgba($black, 0.1);
+    border-radius: 4px;
+  }
+  form .form-header,
+  form .form-group {
+    margin: 0;
+    padding: 20px;
+  }
+  form .form-group {
+    border-top: 1px solid rgba($black, 0.1);
+  }
+}

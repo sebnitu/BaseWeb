@@ -98,6 +98,10 @@ $forms: (
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
   font-size: 0;
   
+  > * {
+    font-size: map-get( $o, 'font-size' );
+  }
+  
   &:last-child {
     margin-bottom: -(map-get( $o, 'vertical-spacing' ) / 2);
   }
@@ -199,6 +203,44 @@ form {
 }
 
 /**
+ * Header Group
+ */
+.form-header {
+  @include make-form-group-base();
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 5px 0;
+    font-size: ($base-font-size * 1.4);
+    line-height: 1.2em;
+  }
+  p {
+    margin: 0;
+    color: $color-light;
+  }
+}
+
+/**
+ * Action Group
+ */
+.form-action {
+  @include make-form-group-inline();
+  
+  .input,
+  .checkbox,
+  .radio,
+  .choice,
+  .btn,
+  a {
+    @include make-input-inline();
+  }
+  
+  a {
+    display: inline-block;
+    margin-top: 11px;
+  }
+}
+
+/**
  * Input Group
  */
 .input-group {
@@ -207,22 +249,6 @@ form {
 .input-group.inline-group {
   @include make-form-group-inline();
 }
-
-/**
- * Action Group
- */
-.action-group {
-  @include make-form-group-inline();
-  
-  .input,
-  .checkbox,
-  .radio,
-  .choice,
-  .btn {
-    @include make-input-inline();
-  }
-}
-
 
 /*==============================================================================
   @Form Elements
@@ -332,6 +358,11 @@ label {
   cursor: pointer;
   color: $color;
   font-weight: normal;
+  
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 .choice {
   padding: map-fetch( $forms, 'choice', 'padding' );

@@ -28,7 +28,7 @@
     var $body = $('html, body');
     var content = $('#main').smoothState({
       // Runs when a link has been activated
-      blacklist: '.logo',
+      blacklist: '.logo, .no-smoothstate',
       prefetch: true,
       // pageCacheSize: 4,
       onStart: {

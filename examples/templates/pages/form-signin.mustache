@@ -1,0 +1,159 @@
+<div class="widget return-widget">
+  <a href="/docs/elements.html#forms" class="btn btn-light-on-black">&larr; Back to Docs</a>
+</div>
+
+<div class="widget display-widget">
+  <a href="#" class="btn btn-light-on-black">Display</a>
+</div>
+
+<div class="example-content example-form-signin">
+  
+  <div class="example-content-output">
+    <div class="container">
+      
+      <div class="example-toolbar">
+        <form class="example-toolbar-form select-output-example">
+          <div class="row">
+            <div class="col col-4">
+              <select class="input" onchange="navigateTo(this, 'window', false);">
+                <option disabled>Examples</option>
+                <option value="/examples/forms.html" selected>Forms</option>
+              </select>
+            </div>
+            <div class="col col-8">
+              <select class="input" onchange="navigateTo(this, 'window', false);">
+                <option disabled>Example Form</option>
+                <option value="/examples/form-signin.html" selected>Sign In Form</option>
+              </select>
+            </div>
+          </div>
+        </form>
+        <script type="text/javascript">
+        function navigateTo(sel, target, newWindow) {
+          var url = sel.options[sel.selectedIndex].value;
+          if (newWindow) {
+            window.open(url, target, '--- attributes here, see below ---');
+          } else {
+            window[target].location.href = url;
+          }
+        }
+        </script>
+      </div>
+      
+      <div class="example-output-wrapper">
+      
+        <form>
+          <header class="form-header">
+            <h2>Sign In</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu commodo lacus.</p>
+          </header>
+          <div class="form-group">
+            <label for="input-username" class="label-hide">Username</label>
+            <input type="text" class="input" id="input-username" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="input-password" class="label-hide">Password</label>
+            <input type="password" class="input" id="input-password" placeholder="Password">
+            <p class="note"><a href="#">Reset Password</a></p>
+          </div>
+          <div class="form-group">
+            <label class="checkbox"><input type="checkbox"> Remember Me</label>
+          </div>
+          <div class="form-group">
+          <footer class="form-action">
+            <button class="btn btn-primary">Sign In</button>
+            <button class="btn btn-default">Create Account</button>
+          </footer>
+          </div>
+        </form>
+      
+      </div><!-- .example-output-wrapper -->
+      
+    </div><!-- .container -->
+  </div><!-- .example-content-output -->
+    
+  <div class="example-content-input">
+    <div class="container">
+      
+      <div class="example-toolbar">
+        <form class="example-toolbar-form select-input-display">
+          <div class="form-group inline-group">
+            <label class="choice"><input type="checkbox" value="set-html" checked> HTML</label>
+            <label class="choice"><input type="checkbox" value="set-scss" checked> SCSS</label>
+            <label class="choice"><input type="checkbox" value="set-css" checked> CSS</label>
+            <label class="choice disabled"><input type="checkbox" value="set-js" disabled> JS</label>
+          </div>
+        </form>
+      </div>
+      
+      <div class="example-input-wrapper">
+      
+<pre class="language-markup"><code>
+&lt;form&gt;
+  &lt;header class=&quot;form-header&quot;&gt;
+    &lt;h2&gt;Sign In&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu commodo lacus.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;input-username&quot; class=&quot;label-hide&quot;&gt;Username&lt;/label&gt;
+    &lt;input type=&quot;text&quot; class=&quot;input&quot; id=&quot;input-username&quot; placeholder=&quot;Username&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;input-password&quot; class=&quot;label-hide&quot;&gt;Password&lt;/label&gt;
+    &lt;input type=&quot;password&quot; class=&quot;input&quot; id=&quot;input-password&quot; placeholder=&quot;Password&quot;&gt;
+    &lt;p class=&quot;note&quot;&gt;&lt;a href=&quot;#&quot;&gt;Reset Password&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;checkbox&quot;&gt;&lt;input type=&quot;checkbox&quot;&gt; Remember Me&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;form-group&quot;&gt;
+  &lt;footer class=&quot;form-action&quot;&gt;
+    &lt;button class=&quot;btn btn-primary&quot;&gt;Sign In&lt;/button&gt;
+    &lt;button class=&quot;btn btn-default&quot;&gt;Create Account&lt;/button&gt;
+  &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre class="language-scss"><code>
+form {
+  max-width: 400px;
+  margin: 30px auto;
+  background-clip: padding-box;
+  border: 3px solid rgba($black, 0.1);
+  border-radius: 4px;
+}
+form .form-header,
+form .form-group {
+  margin: 0;
+  padding: 20px;
+}
+form .form-group {
+  border-top: 1px solid rgba($black, 0.1);
+}
+</code></pre>
+
+<pre class="language-css"><code>
+form {
+  max-width: 400px;
+  margin: 30px auto;
+  background-clip: padding-box;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+form .form-header,
+form .form-group {
+  margin: 0;
+  padding: 20px;
+}
+form .form-group {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+</code></pre>
+      
+      </div><!-- .example-input-wrapper -->
+      
+    </div><!-- .container -->
+  </div><!-- .example-content-input -->
+
+</div><!-- .example-content -->
