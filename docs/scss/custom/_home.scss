@@ -17,35 +17,74 @@ body {
     height: 100%;
     min-height: 100%;
   }
-  .wrapper .header,
-  .wrapper .content {
+  .header,
+  .content {
+    position: relative;
+    z-index: auto;
     margin: 0;
     padding: 40px 0;
   }
-  .wrapper .header {
-    padding: 40px 0;
+}
+
+@include media-min('tablet') {
+  .vertical-half {
+    height: 50%;
+    margin: 0;
+    padding: 0;
+    @include transform-style(preserve-3d);
   }
+  .vertical-full {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    @include transform-style(preserve-3d);
+  }
+  .vertical-center {
+    @include vertical-center();
+  }
+}
+
+/**
+ * Content Arrow
+ */
+%home-triangle {
+  @include make-triangle-base();
+}
+.content-arrow {
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  width: 20px;
+  height: 20px;
+  // background: $violet;
+  // @extend %triangle;
+  // @include make-triangle(50px, $red, 'down');
   
-  @include media-min('mobile') {
-    .wrapper .header,
-    .wrapper .content {
-      margin: 0;
-      padding: 40px 0;
-    }
+  &:before {
+    @extend %home-triangle;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 0;
   }
-  
-  @include media-min('tablet') {
-    .wrapper .header,
-    .wrapper .content {
-      height: 50%;
-      margin: 0;
-      padding: 0;
-      @include transform-style(preserve-3d);
-    }
-    .wrapper .container {
-      @include vertical-center();
-    }
+  &:after {
+    @extend %home-triangle;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 0;
   }
+}
+
+.content-inro .content-arrow {
+  // &:before { @include make-triangle(50px, $gray-pale, 'down'); }
+  &:after  { @include make-triangle(10px, $color, 'down'); }
+}
+.content-about .content-arrow {
+  // &:before { @include make-triangle(50px, $gray-pale-alt, 'down'); }
+  // &:after  { @include make-triangle(10px, $gray-pale, 'down'); }
 }
 
 /*==============================================================================
@@ -245,4 +284,17 @@ body {
     }
     
   }
+}
+
+/*==============================================================================
+  @Home About
+==============================================================================*/
+
+.home {
+  
+  .content-about {
+    padding: 100px 0;
+    background: $gray-pale-alt;
+  }
+  
 }

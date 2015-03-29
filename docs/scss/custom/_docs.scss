@@ -55,10 +55,10 @@ body {
 /*
  * Smooth State Page Transitions
  */
-.m-scene .scene_element {
+.scene .scene_element {
   @include animation(fadeIn 0.25s linear 0 normal both);
 }
-.m-scene.is-exiting .scene_element {
+.scene.is-exiting .scene_element {
   @include animation-direction(alternate-reverse);
 }
 
@@ -171,6 +171,48 @@ body {
     padding-left: 10px;
     height: auto;
   }
+}
+
+/**
+ * Footer Links
+ */
+.footer-links {
+  position: relative;
+  margin: 20px 0 0;
+  text-align: center;
+}
+.footer-links ul {
+  margin: 0;
+  list-style: none;
+}
+.footer-links ul li {
+  display: inline-block;
+  margin: 0;
+  
+  &:after {
+    content: '/';
+    padding: 0 10px 0 12px;
+    color: #ccc;
+  }
+  &:last-child:after {
+    content: none;
+  }
+}
+.footer-links ul li a {
+  color: $color-light;
+  
+  &:hover {
+    color: $red;
+  }
+}
+
+@include media-min('tablet') {
+  
+  .footer-links {
+    position: absolute;
+    bottom: 40px;
+  }
+  
 }
 
 /*==============================================================================
