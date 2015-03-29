@@ -95,6 +95,7 @@ body {
   
   .header {
     background: $color;
+    text-align: center;
   }
   .header .logo {
     display: block;
@@ -103,6 +104,11 @@ body {
     background-image: url('../img/baseweb-logo-large.svg');
     background-size: 125px 75px;
     @include size(125px, 75px);
+  }
+  .header .version {
+    display: inline-block;
+    margin: 20px 0 0;
+    color: rgba($white, 0.25);
   }
   
   @include media-min('mobile') {
@@ -129,55 +135,18 @@ body {
 .home {
   
   .nav {
-    font-size: 0;
-    line-height: 0;
+    display: block;
+    float: none;
+    margin: 0;
   }
-  .nav .rootnav {
+  .nav ul li {
     display: inline-block;
-    width: auto;
-    margin: 0 auto;
-    padding: 0;
-    @include border-radius();
+    float: none;
   }
-  .nav .rootnav > li {
+  .nav ul li a {
     display: inline-block;
-    border-top: 0 none;
-    border-bottom: 0 none;
-    font-size: 0;
-    line-height: 0;
-    
-    &:first-child {
-      border-left: 0 none;
-    }
   }
-  .nav .rootnav > li {
-    
-    > a {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 0 -1px;
-      padding: 15px 30px;
-      background: none;
-      border: 1px solid #d5d5d5;
-      font-size: 14px;
-      line-height: 20px;
-    }
-    
-    > a:hover {
-      z-index: 2;
-      background: rgba($white, 0.5);
-      border-color: #bdbdbd;
-      color: $color;
-    }
-    
-    > &:first-child a {
-      margin: 0;
-      @include border-radius-left();
-    }
-    > &:last-child a {
-      @include border-radius-right();
-    }
-  }
+  
 }
 
 /*==============================================================================
@@ -186,6 +155,7 @@ body {
 
 .home {
   
+  // Lead Content
   .content {
     text-align: center;
   }
@@ -213,77 +183,6 @@ body {
     }
   }
   
-  .actions {
-    margin: 0;
-    text-align: center;
-  }
-  .actions .version {
-    color: $color-light;
-  }
-  
-  .actions .btn-group {
-    position: relative;
-    margin: 0;
-    font-size: 0;
-    line-height: 0;
-    white-space: nowrap;
-  }
-  .actions .btn {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 0 -1px;
-    padding: 15px;
-    background: none;
-    border: 1px solid #ccc;
-    color: $color;
-    @include border-radius(0);
-    
-    &:hover {
-      z-index: 2;
-      background: rgba($black, 0.05);
-      border-color: #aaa;
-    }
-    
-    &:first-child {
-      margin: 0;
-      @include border-radius-left();
-    }
-    &:last-child {
-      @include border-radius-right();
-    }
-  }
-  
-  .actions .btn-group {
-    width: 100%;
-  }
-  .actions .btn {
-    padding: 15px;
-    
-    &:first-child {
-      width: 45%;
-    }
-    &:last-child {
-      width: 55%;
-    }
-  }
-  
-  @include media-min('mobile') {
-    
-    .actions .btn-group {
-      width: auto;
-    }
-    .actions .btn {
-      padding: 15px 30px;
-      
-      &:first-child {
-        width: auto;
-      }
-      &:last-child {
-        width: auto;
-      }
-    }
-    
-  }
 }
 
 /*==============================================================================

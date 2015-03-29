@@ -1068,6 +1068,27 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   display: block;
   width: 100%; }
 
+.btn-group {
+  position: relative;
+  display: inline-block;
+  font-size: 0; }
+  .btn-group .btn {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    margin: 0 -1px 0 0;
+    white-space: nowrap;
+    border-radius: 0; }
+    .btn-group .btn:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .btn-group .btn:last-child {
+      margin: 0;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .btn-group .btn:hover {
+      z-index: 2; }
+
 /*==============================================================================
   @Notice
 ==============================================================================*/
@@ -1326,47 +1347,46 @@ body {
     margin: 0; } }
 
 /*==============================================================================
-  @Navigation
+  @Sidebar Navigation
 ==============================================================================*/
-.nav {
+.sidebar .nav {
   position: relative;
   margin: 10px 0; }
 
-.nav ul {
+.sidebar .nav ul {
   width: 50%;
   margin: 0;
   list-style: none; }
 
-.nav ul li {
-  margin: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+.sidebar .nav ul li {
+  margin: 0; }
 
-.nav ul li:last-child {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-
-.nav ul li a {
+.sidebar .nav ul li a {
   display: block;
-  padding: 10px;
+  padding: 5px 0;
   background: transparent;
-  color: #303030;
+  font-size: 18px;
+  line-height: 30px;
+  color: #909090;
   border: 0 none; }
-  .nav ul li a:hover {
-    color: #de5151; }
+  .sidebar .nav ul li a:hover {
+    color: #2ab0ea; }
 
-.nav ul li.active > a {
-  color: #de5151; }
+.sidebar .nav ul li.active > a {
+  color: #303030; }
 
 /**
  * Primary Nav
  */
-.nav .rootnav {
+.sidebar .nav .root-nav {
   width: 50%;
   padding-right: 10px; }
 
 /**
  * Secondary Nav
  */
-.nav .subnav {
+.sidebar .nav .sub-nav {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -1378,44 +1398,45 @@ body {
   transition: top linear 0.2s, bottom linear 0.2s; }
 
 @media (min-width: 760px) {
-  .nav .subnav {
+  .sidebar .nav .sub-nav {
     position: absolute;
     top: 0;
     right: 0;
     padding-left: 10px;
     height: auto; } }
 
-/**
- * Footer Links
- */
-.footer-links {
+/*==============================================================================
+  @Sidebar Footer
+==============================================================================*/
+.sidebar .footer {
   position: relative;
-  margin: 20px 0 0;
+  color: #909090;
   text-align: center; }
 
-.footer-links ul {
-  margin: 0;
+.sidebar .footer ul {
+  margin: 20px 0;
   list-style: none; }
 
-.footer-links ul li {
+.sidebar .footer ul li {
   display: inline-block;
   margin: 0; }
-  .footer-links ul li:after {
+  .sidebar .footer ul li:after {
     content: '/';
     padding: 0 10px 0 12px;
     color: #ccc; }
-  .footer-links ul li:last-child:after {
+  .sidebar .footer ul li:last-child:after {
     content: none; }
 
-.footer-links ul li a {
+.sidebar .footer ul li a {
   color: #909090; }
-  .footer-links ul li a:hover {
+  .sidebar .footer ul li a:hover {
     color: #de5151; }
 
 @media (min-width: 760px) {
-  .footer-links {
+  .sidebar .footer {
     position: absolute;
-    bottom: 40px; } }
+    bottom: 20px;
+    text-align: left; } }
 
 /*==============================================================================
   @Toolbar
@@ -1441,6 +1462,40 @@ body {
   .toolbar .btn {
     margin-left: 20px;
     padding: 10px 20px; } }
+
+/**
+ * Toolbar
+ */
+.primary-nav {
+  float: left;
+  margin-left: -20px; }
+
+.primary-nav ul {
+  margin: 0;
+  list-style: none; }
+  .primary-nav ul:after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.primary-nav ul li {
+  float: left;
+  margin: 6px 0; }
+  .primary-nav ul li:first-child {
+    border-left: 0 none; }
+
+.primary-nav ul li a {
+  display: block;
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #909090;
+  border: 0 none; }
+  .primary-nav ul li a:hover {
+    color: #2ab0ea; }
+
+.primary-nav ul li.active a {
+  color: #303030; }
 
 /*==============================================================================
   @Content
@@ -2109,7 +2164,8 @@ html, body {
   @Home Header
 ==============================================================================*/
 .home .header {
-  background: #303030; }
+  background: #303030;
+  text-align: center; }
 .home .header .logo {
   display: block;
   float: none;
@@ -2118,6 +2174,10 @@ html, body {
   background-size: 125px 75px;
   width: 125px;
   height: 75px; }
+.home .header .version {
+  display: inline-block;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.25); }
 @media (min-width: 480px) {
   .home .header .logo {
     background-image: url('../img/baseweb-logo-large.svg');
@@ -2135,43 +2195,14 @@ html, body {
   @Home Navigation
 ==============================================================================*/
 .home .nav {
-  font-size: 0;
-  line-height: 0; }
-.home .nav .rootnav {
+  display: block;
+  float: none;
+  margin: 0; }
+.home .nav ul li {
   display: inline-block;
-  width: auto;
-  margin: 0 auto;
-  padding: 0;
-  border-radius: 3px; }
-.home .nav .rootnav > li {
-  display: inline-block;
-  border-top: 0 none;
-  border-bottom: 0 none;
-  font-size: 0;
-  line-height: 0; }
-  .home .nav .rootnav > li:first-child {
-    border-left: 0 none; }
-.home .nav .rootnav > li > a {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0 -1px;
-  padding: 15px 30px;
-  background: none;
-  border: 1px solid #d5d5d5;
-  font-size: 14px;
-  line-height: 20px; }
-.home .nav .rootnav > li > a:hover {
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.5);
-  border-color: #bdbdbd;
-  color: #303030; }
-> .home .nav .rootnav > li:first-child a {
-  margin: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px; }
-> .home .nav .rootnav > li:last-child a {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px; }
+  float: none; }
+.home .nav ul li a {
+  display: inline-block; }
 
 /*==============================================================================
   @Home Content
@@ -2194,54 +2225,6 @@ html, body {
     padding: 0 60px;
     font-size: 26px;
     line-height: 36px; } }
-.home .actions {
-  margin: 0;
-  text-align: center; }
-.home .actions .version {
-  color: #909090; }
-.home .actions .btn-group {
-  position: relative;
-  margin: 0;
-  font-size: 0;
-  line-height: 0;
-  white-space: nowrap; }
-.home .actions .btn {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0 -1px;
-  padding: 15px;
-  background: none;
-  border: 1px solid #ccc;
-  color: #303030;
-  border-radius: 0; }
-  .home .actions .btn:hover {
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.05);
-    border-color: #aaa; }
-  .home .actions .btn:first-child {
-    margin: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px; }
-  .home .actions .btn:last-child {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px; }
-.home .actions .btn-group {
-  width: 100%; }
-.home .actions .btn {
-  padding: 15px; }
-  .home .actions .btn:first-child {
-    width: 45%; }
-  .home .actions .btn:last-child {
-    width: 55%; }
-@media (min-width: 480px) {
-  .home .actions .btn-group {
-    width: auto; }
-  .home .actions .btn {
-    padding: 15px 30px; }
-    .home .actions .btn:first-child {
-      width: auto; }
-    .home .actions .btn:last-child {
-      width: auto; } }
 
 /*==============================================================================
   @Home About
@@ -2363,7 +2346,9 @@ html, body {
   text-shadow: none;
   background-color: transparent;
   background-clip: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.1); }
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100px;
+  padding: 10px; }
   .widget .btn-light-on-black:hover {
     color: white;
     background-color: transparent;

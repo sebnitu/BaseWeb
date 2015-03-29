@@ -22,7 +22,7 @@
       }, 1);
     }
     
-    active_nav($('#nav'));
+    active_nav($('.nav'));
     active_subpage($('.subpage'));
     
     /**
@@ -52,7 +52,7 @@
         Prism.highlightAll();
         
         // Show active nav and subpage
-        active_nav($('#nav'));
+        active_nav($('.nav'));
         active_subpage($('.subpage'));
         
       }

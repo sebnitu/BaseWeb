@@ -109,44 +109,42 @@ body {
 }
 
 /*==============================================================================
-  @Navigation
+  @Sidebar Navigation
 ==============================================================================*/
 
-.nav {
+.sidebar .nav {
   position: relative;
   margin: 10px 0;
 }
-.nav ul {
+.sidebar .nav ul {
   width: 50%;
   margin: 0;
   list-style: none;
 }
-.nav ul li {
+.sidebar .nav ul li {
   margin: 0;
-  border-top: 1px solid rgba($black, 0.1);
 }
-.nav ul li:last-child {
-  border-bottom: 1px solid rgba($black, 0.1);
-}
-.nav ul li a {
+.sidebar .nav ul li a {
   display: block;
-  padding: 10px;
+  padding: 5px 0;
   background: transparent;
-  color: $color;
+  font-size: ($base-font-size + 4);
+  line-height: 30px;
+  color: $color-light;
   border: 0 none;
   
   &:hover {
-    color: $red;
+    color: $blue;
   }
 }
-.nav ul li.active > a {
-  color: $red;
+.sidebar .nav ul li.active > a {
+  color: $color-dark;
 }
 
 /**
  * Primary Nav
  */
-.nav .rootnav {
+.sidebar .nav .root-nav {
   width: column_width(6);
   padding-right: 10px;
 }
@@ -154,7 +152,8 @@ body {
 /**
  * Secondary Nav
  */
-.nav .subnav {
+.sidebar .nav .sub-nav {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -164,7 +163,7 @@ body {
 }
 
 @include media-min('tablet') {
-  .nav .subnav {
+  .sidebar .nav .sub-nav {
     position: absolute;
     top: 0;
     right: 0;
@@ -173,19 +172,20 @@ body {
   }
 }
 
-/**
- * Footer Links
- */
-.footer-links {
+/*==============================================================================
+  @Sidebar Footer
+==============================================================================*/
+
+.sidebar .footer {
   position: relative;
-  margin: 20px 0 0;
+  color: $color-light;
   text-align: center;
 }
-.footer-links ul {
-  margin: 0;
+.sidebar .footer ul {
+  margin: 20px 0;
   list-style: none;
 }
-.footer-links ul li {
+.sidebar .footer ul li {
   display: inline-block;
   margin: 0;
   
@@ -198,7 +198,7 @@ body {
     content: none;
   }
 }
-.footer-links ul li a {
+.sidebar .footer ul li a {
   color: $color-light;
   
   &:hover {
@@ -208,9 +208,10 @@ body {
 
 @include media-min('tablet') {
   
-  .footer-links {
+  .sidebar .footer {
     position: absolute;
-    bottom: 40px;
+    bottom: 20px;
+    text-align: left;
   }
   
 }
@@ -244,6 +245,43 @@ body {
     margin-left: 20px;
     padding: 10px 20px;
   }
+}
+
+/**
+ * Toolbar
+ */
+.primary-nav {
+  float: left;
+  margin-left: -20px;
+}
+.primary-nav ul {
+  margin: 0;
+  list-style: none;
+  @include clearfix();
+}
+.primary-nav ul li {
+  float: left;
+  margin: 6px 0;
+  // border-left: 1px solid rgba($black, 0.1);
+  
+  &:first-child {
+    border-left: 0 none;
+  }
+}
+.primary-nav ul li a {
+  display: block;
+  padding: 0 20px;
+  font-size: ($base-font-size + 4);
+  line-height: 30px;
+  color: $color-light;
+  border: 0 none;
+  
+  &:hover {
+    color: $blue;
+  }
+}
+.primary-nav ul li.active a {
+  color: $color-dark;
 }
 
 /*==============================================================================

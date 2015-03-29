@@ -25,15 +25,15 @@ function active_nav($selector) {
       $(this).closest('li').addClass('active');
     }
     
-    $('#nav .rootnav > li.active').find('.subnav').fadeIn(250);
+    $('#nav .root-nav > li.active').find('.sub-nav').fadeIn(250);
     
-    $('#nav .rootnav > li > a').click(function() {
-      $selector.find('.subnav').fadeOut(250);
+    $('#nav .root-nav > li > a').click(function() {
+      $selector.find('.sub-nav').fadeOut(250);
     });
     
     if (/#/.test($(this).attr('href'))) {
       $(this).click(function() {
-        $selector.find('.subnav li').removeClass('active');
+        $selector.find('.sub-nav li').removeClass('active');
         $(this).closest('li').addClass('active');
       });
     }
@@ -56,7 +56,7 @@ function active_subpage($selector) {
     $('.rootpage').show();
   }
   
-  $('#nav .subnav a').click(function() {
+  $('#nav .sub-nav a').click(function() {
     var href = $(this).attr('href');
     $('.rootpage').fadeOut(250);
     $selector.fadeOut(250, function() {
