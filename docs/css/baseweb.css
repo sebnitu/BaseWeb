@@ -1430,10 +1430,69 @@ body {
  * Subnav
  */
 .sidebar .nav ul ul {
-  margin: 0 0 0 20px; }
-  .sidebar .nav ul ul li:last-child {
-    border-bottom: 0 none; }
+  margin-left: 20px;
+  margin-bottom: 0; }
 
+@media (min-width: 760px) {
+  .sidebar .nav ul ul {
+    margin-right: -20px; } }
+
+/*
+.sidebar .nav ul ul {
+  position: relative;
+  margin: 10px 0;
+  background: $white;
+  background-clip: padding-box;
+  border: 1px solid rgba($black, 0.1);
+  box-shadow: 0 1px 3px rgba($black, 0.1);
+  @include border-radius();
+  
+  li {
+    margin: 0;
+    border-bottom: 1px solid rgba($black, 0.1);
+    
+    &:first-child {
+      a {
+        @include border-radius-top();
+      }
+    }
+    &:last-child {
+      border-bottom: 0 none;
+      a {
+        @include border-radius-bottom();
+      }
+    }
+    
+  }
+  li a {
+    background: none;
+    @include border-radius(0);
+    
+    &:hover {
+      color: $red;
+    }
+  }
+  li.active a {
+    box-shadow: none;
+    color: $red;
+  }
+  
+  &:before,
+  &:after {
+    @include make-triangle-base();
+    position: absolute;
+    top: -6px;
+    left: 25px;
+  }
+  &:before {
+    @include make-triangle( 6px, rgba($black, 0.2), 'up' );
+    top: -7px;
+  }
+  &:after {
+    @include make-triangle( 6px, $white, 'up' );
+  }
+}
+*/
 /**
  * Subnav Display
  */
