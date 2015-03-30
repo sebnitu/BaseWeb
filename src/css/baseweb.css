@@ -239,7 +239,7 @@ dl {
     margin: 10px 0 0;
     font-weight: bold; }
   dl dd {
-    margin: 0 0 10px 20px; }
+    margin: 0 0 10px 10px; }
 
 /*==============================================================================
   @List Modifiers
@@ -1067,6 +1067,27 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
 .btn-block {
   display: block;
   width: 100%; }
+
+.btn-group {
+  position: relative;
+  display: inline-block;
+  font-size: 0; }
+  .btn-group .btn {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    margin: 0 -1px 0 0;
+    white-space: nowrap;
+    border-radius: 0; }
+    .btn-group .btn:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .btn-group .btn:last-child {
+      margin: 0;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .btn-group .btn:hover {
+      z-index: 2; }
 
 /*==============================================================================
   @Notice

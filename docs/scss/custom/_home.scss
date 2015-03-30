@@ -2,14 +2,7 @@
   @Home Structure
 ==============================================================================*/
 
-html,
-body {
-  height: 100%;
-  min-height: 100%;
-}
-
-.home {
-  border: 0 none;
+.template-home {
   
   .wrapper {
     display: block;
@@ -17,45 +10,64 @@ body {
     height: 100%;
     min-height: 100%;
   }
-  .wrapper .header,
-  .wrapper .content {
+  .header,
+  .content {
+    position: relative;
+    z-index: auto;
     margin: 0;
     padding: 40px 0;
   }
-  .wrapper .header {
-    padding: 40px 0;
-  }
+}
+
+/**
+ * Content Arrow
+ */
+%home-triangle {
+  @include make-triangle-base();
+}
+.content-arrow {
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  width: 20px;
+  height: 20px;
   
-  @include media-min('mobile') {
-    .wrapper .header,
-    .wrapper .content {
-      margin: 0;
-      padding: 40px 0;
-    }
+  &:before {
+    @extend %home-triangle;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    left: 0;
   }
-  
-  @include media-min('tablet') {
-    .wrapper .header,
-    .wrapper .content {
-      height: 50%;
-      margin: 0;
-      padding: 0;
-      @include transform-style(preserve-3d);
-    }
-    .wrapper .container {
-      @include vertical-center();
-    }
+  &:after {
+    @extend %home-triangle;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 0;
   }
+}
+
+.content-inro .content-arrow {
+  // &:before { @include make-triangle(50px, $gray-pale, 'down'); }
+  &:after  { @include make-triangle(10px, $color, 'down'); }
+}
+.content-about .content-arrow {
+  // &:before { @include make-triangle(50px, $gray-pale-alt, 'down'); }
+  // &:after  { @include make-triangle(10px, $gray-pale, 'down'); }
 }
 
 /*==============================================================================
   @Home Header
 ==============================================================================*/
 
-.home {
+.template-home {
   
   .header {
     background: $color;
+    text-align: center;
   }
   .header .logo {
     display: block;
@@ -64,6 +76,11 @@ body {
     background-image: url('../img/baseweb-logo-large.svg');
     background-size: 125px 75px;
     @include size(125px, 75px);
+  }
+  .header .version {
+    display: inline-block;
+    margin: 20px 0 0;
+    color: rgba($white, 0.25);
   }
   
   @include media-min('mobile') {
@@ -84,68 +101,10 @@ body {
 }
 
 /*==============================================================================
-  @Home Navigation
-==============================================================================*/
-
-.home {
-  
-  .nav {
-    font-size: 0;
-    line-height: 0;
-  }
-  .nav .rootnav {
-    display: inline-block;
-    width: auto;
-    margin: 0 auto;
-    padding: 0;
-    @include border-radius();
-  }
-  .nav .rootnav > li {
-    display: inline-block;
-    border-top: 0 none;
-    border-bottom: 0 none;
-    font-size: 0;
-    line-height: 0;
-    
-    &:first-child {
-      border-left: 0 none;
-    }
-  }
-  .nav .rootnav > li {
-    
-    > a {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 0 -1px;
-      padding: 15px 30px;
-      background: none;
-      border: 1px solid #d5d5d5;
-      font-size: 14px;
-      line-height: 20px;
-    }
-    
-    > a:hover {
-      z-index: 2;
-      background: rgba($white, 0.5);
-      border-color: #bdbdbd;
-      color: $color;
-    }
-    
-    > &:first-child a {
-      margin: 0;
-      @include border-radius-left();
-    }
-    > &:last-child a {
-      @include border-radius-right();
-    }
-  }
-}
-
-/*==============================================================================
   @Home Content
 ==============================================================================*/
 
-.home {
+.template-home {
   
   .content {
     text-align: center;
@@ -174,75 +133,26 @@ body {
     }
   }
   
-  .actions {
-    margin: 0;
-    text-align: center;
-  }
-  .actions .version {
-    color: $color-light;
-  }
+}
+
+/*==============================================================================
+  @Home Navigation
+==============================================================================*/
+
+.template-home {
   
-  .actions .btn-group {
-    position: relative;
+  .nav {
+    display: block;
+    float: none;
     margin: 0;
     font-size: 0;
-    line-height: 0;
-    white-space: nowrap;
   }
-  .actions .btn {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 0 -1px;
-    padding: 15px;
-    background: none;
-    border: 1px solid #ccc;
-    color: $color;
-    @include border-radius(0);
-    
-    &:hover {
-      z-index: 2;
-      background: rgba($black, 0.05);
-      border-color: #aaa;
-    }
-    
-    &:first-child {
-      margin: 0;
-      @include border-radius-left();
-    }
-    &:last-child {
-      @include border-radius-right();
-    }
+  .nav ul li {
+    display: inline-block;
+    float: none;
+  }
+  .nav ul li a {
+    display: inline-block;
   }
   
-  .actions .btn-group {
-    width: 100%;
-  }
-  .actions .btn {
-    padding: 15px;
-    
-    &:first-child {
-      width: 45%;
-    }
-    &:last-child {
-      width: 55%;
-    }
-  }
-  
-  @include media-min('mobile') {
-    
-    .actions .btn-group {
-      width: auto;
-    }
-    .actions .btn {
-      padding: 15px 30px;
-      
-      &:first-child {
-        width: auto;
-      }
-      &:last-child {
-        width: auto;
-      }
-    }
-    
-  }
 }

@@ -11,6 +11,9 @@
   
   <title>BaseWeb &ndash; A fresh front-end development framework.</title>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/docs/img/favicon.png">
+  
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" media="all" href="/docs/css/baseweb.min.css">
   
@@ -24,20 +27,24 @@
   
 </head>
 <body>
-
-<div id="main" class="main m-scene">
-  <div class="container">
   
+<div id="main" class="scene">
+<div class="template scene-element vertical-full">
+
+  <div class="container">
+    
     <div id="sidebar" class="sidebar">
+      
       <header id="header" class="header">
         <h1><a href="/" class="logo">BaseWeb</a></h1>
       </header><!-- .header -->
+      
       <nav id="nav" class="nav">
-<ul class="rootnav">
+<ul class="root-nav">
   
   <li>
     <a href="/docs/settings.html">Settings</a>
-    <ul class="subnav">
+    <ul class="sub-nav">
       <li><a href="#palette">Palette</a></li>
       <li><a href="#media">Media</a></li>
       <li><a href="#grid">Grid</a></li>
@@ -48,7 +55,7 @@
   
   <li>
     <a href="/docs/core.html">Core</a>
-    <ul class="subnav">
+    <ul class="sub-nav">
       <li><a href="#functions">Functions</a></li>
       <li><a href="#mixins">Mixins</a></li>
       <li><a href="#media">Media</a></li>
@@ -58,7 +65,7 @@
   
   <li>
     <a href="/docs/elements.html">Elements</a>
-    <ul class="subnav">
+    <ul class="sub-nav">
       <li><a href="#base">Base</a></li>
       <li><a href="#typography">Typography</a></li>
       <li><a href="#lists">Lists</a></li>
@@ -74,7 +81,7 @@
   
   <li>
     <a href="/docs/blocks.html">Blocks</a>
-    <ul class="subnav">
+    <ul class="sub-nav">
       <li><a href="#form-layout">Form Layout</a></li>
       <li><a href="#button-groups">Button Groups</a></li>
       <li><a href="#notice">Notice</a></li>
@@ -84,21 +91,32 @@
   
   <li>
     <a href="/docs/custom.html">Custom</a>
-    <ul class="subnav">
+    <ul class="sub-nav">
       <li><a href="#custom">Custom</a></li>
     </ul>
   </li>
   
 </ul>      </nav>
+      
+      <footer class="footer">
+        <p><span class="version">Currently v1.0.0</span></p>
+      </footer>
+      
     </div><!-- .sidebar -->
     
     <div id="content" class="content">
       <div class="toolbar">
-        <span class="version">Currently v0.12.0</span>
+        <!-- <span class="version">Currently v1.0.0</span> -->
+        <nav class="nav primary-nav">
+          <ul>
+            <li><a href="/docs/">Docs</a></li>
+            <li><a href="/usage.html">Usage</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </nav>
         <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-primary">Download BaseWeb</a>
       </div><!-- .toolbar -->
       
-      <div class="scene_element">
 <section class="rootpage"></section>
 
 <section id="palette" class="subpage">
@@ -408,12 +426,14 @@ $tweakpoints: ();
   <li><code>$border-color-hover</code> <span class="right swatch swatch-border-color-hover"></span></li>
   
 </ul>
-</section><!-- .subpage -->      </div>
+</section><!-- .subpage -->      
     </div><!-- .content -->
     
   </div><!-- .container -->
-</div><!-- .main -->
-  
+
+</div><!-- .scene-element -->
+</div><!-- .scene -->
+
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script>!window.jQuery && document.write(unescape('%3Cscript src="/docs/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
