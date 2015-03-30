@@ -2,20 +2,21 @@
   @Base Styles
 ==============================================================================*/
 
-// Remove margins and padding from HTML and Body elements and sets our base font-size
+// Remove margins and padding from HTML and Body elements and sets our base font-size.
 html, body {
   margin: 0; 
   padding: 0;
   font-size: $base-font-size;
 }
 
-// Prevents automatic text resizing on mobile devices
+// Prevents automatic text resizing on mobile devices and fix webkit font antialiasing.
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
-// Set our base typographic settings (family, weight, lineheight and color)
+// Set our base typographic settings (family, weight, lineheight and color).
 body {
   font-family: $base-font-family;
   font-weight: $base-font-weight;
@@ -29,7 +30,7 @@ footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-// Set default box sizing model to our global variable $global-box-sizing
+// Set default box sizing model to our global variable $global-box-sizing.
 // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 @if ($global-box-sizing != none) {
   *, *:before, *:after {
@@ -37,7 +38,7 @@ footer, header, hgroup, menu, nav, section {
   }
 }
 
-// Add custom text highlight color if a color is set in $bg-selection
+// Add custom text highlight color if a color is set in $bg-selection.
 @if ($bg-selection != none) {
   ::-moz-selection {
     background: $bg-selection;
@@ -53,14 +54,14 @@ footer, header, hgroup, menu, nav, section {
   @Base Classes
 ==============================================================================*/
 
-// Outputs our cleafix class if one is set in $class-clearfix
+// Outputs our cleafix class if one is set in $class-clearfix.
 @if ($class-clearfix != none) {
   .#{$class-clearfix} {
     @include clearfix();
   }
 }
 
-// Outputs our remove cleafix class if one is set in $class-remove-clearfix
+// Outputs our remove cleafix class if one is set in $class-remove-clearfix.
 @if ($class-remove-clearfix != none) {
   .#{$class-remove-clearfix} {
     @include remove-clearfix();
