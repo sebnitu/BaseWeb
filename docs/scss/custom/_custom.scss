@@ -1,0 +1,394 @@
+/*==============================================================================
+  @Mobile Grid System
+==============================================================================*/
+
+@include build-grid-system(mobile);
+
+/*==============================================================================
+  @Grid System
+==============================================================================*/
+
+@include media-min('tablet') {
+  @include build-grid-system();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Docs Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+@mixin baseweb-logo($type) {
+  
+  @if ($type == 'vert-black') {
+    background: url('../img/baseweb-vert-black.svg') no-repeat left center;
+    background-size: 166px 100px;
+    @include size(166px, 100px);
+  } @else if ($type == 'vert-white') {
+    background: url('../img/baseweb-vert-white.svg') no-repeat left center;
+    background-size: 166px 100px;
+    @include size(166px, 100px);
+  } @else if ($type == 'hori-black') {
+    background: url('../img/baseweb-hori-black.svg') no-repeat left center;
+    background-size: 189px 40px;
+    @include size(189px, 40px);
+  } @else if ($type == 'hori-white') {
+    background: url('../img/baseweb-hori-white.svg') no-repeat left center;
+    background-size: 189px 40px;
+    @include size(189px, 40px);
+  } @else if ($type == 'hori-black-small') {
+    background: url('../img/baseweb-hori-black.svg') no-repeat left center;
+    background-size: 142px 30px;
+    @include size(142px, 30px);
+  } @else if ($type == 'hori-white-small') {
+    background: url('../img/baseweb-hori-white.svg') no-repeat left center;
+    background-size: 142px 30px;
+    @include size(142px, 30px);
+  }
+  
+}
+
+/*==============================================================================
+  @Structure
+==============================================================================*/
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+body {
+  background: $gray-pale;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.header,
+.main,
+.footer {
+  padding: 20px 0;
+}
+
+@include media-min('tablet') {
+  
+  .header,
+  .main,
+  .footer {
+    padding: 40px 0;
+  }
+  
+}
+
+/**
+ * Vertical Size and Position
+ */
+@include media-min('tablet') {
+  .vertical-half {
+    position: relative;
+    height: 50%;
+    margin: 0;
+    padding: 0;
+    // @include transform-style(preserve-3d);
+  }
+  .vertical-full {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    // @include transform-style(preserve-3d);
+  }
+  .vertical-center {
+    @include vertical-center();
+  }
+}
+
+/**
+ * Hide elements we will use JS to reveal
+ */
+.content .subpage {
+  display: none;
+}
+
+/*
+ * Smooth State Page Transitions
+ */
+.scene .scene-element {
+  // @include animation(fadeIn 0.25s linear 0 normal both);
+}
+.scene.is-exiting .scene-element {
+  // @include animation-direction(alternate-reverse);
+}
+
+/*
+ * Keyframes
+ */
+@include keyframes('fadeIn') {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*==============================================================================
+  @Header
+==============================================================================*/
+
+.header {
+  color: $color-light;
+}
+
+/**
+ * Logo
+ */
+.header h1 {
+  margin: 0 auto 20px;
+  padding: 0;
+  @include clearfix();
+}
+.header h1 .logo {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: 0 none;
+  @include baseweb-logo('hori-black');
+  @include text-hide();
+}
+
+@include media-min('tablet') {
+  
+  .header h1 {
+    float: left;
+    margin: 0;
+  }
+  
+}
+
+/**
+ * Navigation
+ */
+.nav {
+  float: none;
+  margin: 0 auto;
+}
+.nav ul {
+  display: block;
+  margin: 0 0 20px 0;
+  list-style: none;
+  text-align: left;
+}
+.nav ul li {
+  display: block;
+  margin: 5px 0;
+}
+.nav ul li a {
+  display: block;
+  padding: 11px 20px;
+  color: $color;
+  border: 0 none;
+  background: rgba($black, 0.05);
+  @include border-radius();
+  
+  &:hover {
+    color: $color-dark;
+    background: rgba($black, 0.1);
+  }
+}
+.nav ul li.active > a {
+  color: $color-dark;
+  background: rgba($black, 0.1);
+  box-shadow: inset 0 1px 3px rgba($black, 0.1);
+}
+
+.nav .btn {
+  display: block;
+}
+
+@include media-min('tablet') {
+  .nav {
+    float: right;
+    font-size: 0;
+  }
+  .nav ul {
+    display: inline-block;
+    margin: 0 5px 0 0;
+    border-top: 0 none;
+  }
+  .nav ul li {
+    display: inline-block;
+    margin: 0 5px;
+    border-bottom: 0 none;
+    font-size: $base-font-size;
+  }
+  .nav .btn {
+    display: inline-block;
+  }
+}
+
+/*==============================================================================
+  @Sidebar
+==============================================================================*/
+
+.sidebar {
+  padding-bottom: 20px;
+}
+.sidebar .footer {
+  display: none;
+}
+.sidebar .nav {
+  float: none;
+}
+.sidebar .nav ul {
+  display: block;
+}
+
+@include media-min('tablet') {
+  
+  .sidebar {
+    padding-bottom: 0;
+  }
+  .sidebar .footer {
+    display: block;
+    padding: 10px 0;
+  }
+  .sidebar .nav ul {
+    margin: 0;
+  }
+  .sidebar .nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+  
+}
+
+/**
+ * Subnav
+ */
+.sidebar .nav ul ul {
+  margin: 0 0 0 20px;
+  
+  li:last-child {
+    border-bottom: 0 none;
+  }
+}
+
+/**
+ * Subnav Display
+ */
+.sidebar .nav ul ul {
+  display: none;
+}
+.sidebar .nav ul .active > ul {
+  display: block;
+}
+
+/*==============================================================================
+  @Content
+==============================================================================*/
+
+.docs-list,
+.docs-list-hover {
+  list-style: none;
+}
+
+.docs-list {
+  margin: 30px 0;
+}
+.docs-list-hover {
+  margin: 20px 0;
+  
+  li {
+    padding: 20px;
+    margin: 10px 0;
+    background: $white;
+    @include border-radius();
+  }
+}
+
+/**
+ * Unique List Content
+ */
+.docs-list-hover {
+  
+  li {
+    overflow: auto;
+    
+    &.list-sep {
+      border-top: 1px solid rgba($black, 0.1);
+    }
+  }
+  
+  .title {
+    font-size: 18px;
+    line-height: 26px;
+    color: $color-dark;
+    background: rgba($white, 0.5);
+  }
+  
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  .block {
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dotted rgba($black, 0.2);
+    @include clearfix();
+  }
+  
+  .value {
+    color: $color;
+  }
+  .light {
+    color: $gray-light;
+  }
+  
+  .swatch,
+  .box-border-radius {
+    margin: -5px -5px -5px 0;
+  }
+  
+  code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+/**
+ * Docs Tables
+ */
+.docs-table {
+  @include make-table-base(('margin': 20px 0, 'padding': 15px 10px));
+  @include make-table-rowed();
+    
+  th {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 500;
+    padding: 10px 0;
+  }
+  code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+.docs-table-responsive {
+  @include make-table-responsive(('margin': 20px 0));
+}
+
+/*==============================================================================
+  @Footer
+==============================================================================*/
+
+.footer {
+  color: $color-light;
+}
+

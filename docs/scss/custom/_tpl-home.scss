@@ -11,11 +11,22 @@
     min-height: 100%;
   }
   .header,
-  .content {
+  .main {
     position: relative;
     z-index: auto;
     margin: 0;
+  }
+  .header {
     padding: 40px 0;
+  }
+  .main {
+    padding: 40px 0 20px;
+  }
+  
+  @include media-min('tablet') {
+    .main {
+      padding: 40px 0;
+    }
   }
 }
 
@@ -25,7 +36,7 @@
 %home-triangle {
   @include make-triangle-base();
 }
-.content-arrow {
+.arrow {
   position: absolute;
   z-index: 15;
   top: 0;
@@ -50,13 +61,8 @@
   }
 }
 
-.content-inro .content-arrow {
-  // &:before { @include make-triangle(50px, $gray-pale, 'down'); }
-  &:after  { @include make-triangle(10px, $color, 'down'); }
-}
-.content-about .content-arrow {
-  // &:before { @include make-triangle(50px, $gray-pale-alt, 'down'); }
-  // &:after  { @include make-triangle(10px, $gray-pale, 'down'); }
+.main-inro .arrow {
+  &:after  { @include make-triangle(10px, $color-dark, 'down'); }
 }
 
 /*==============================================================================
@@ -66,34 +72,41 @@
 .template-home {
   
   .header {
-    background: $color;
+    background: $color-dark;
     text-align: center;
   }
-  .header .logo {
+  .header h1 {
+    float: none;
+    margin: 0 auto;
+  }
+  .header h1 .logo {
     display: block;
     float: none;
     margin: 0 auto;
-    background-image: url('../img/baseweb-logo-large.svg');
+    background-image: url('../img/baseweb-vert-white.svg');
     background-size: 125px 75px;
     @include size(125px, 75px);
   }
   .header .version {
     display: inline-block;
-    margin: 20px 0 0;
+    margin: 10px 0 0;
     color: rgba($white, 0.25);
   }
   
   @include media-min('mobile') {
-    .header .logo {
-      background-image: url('../img/baseweb-logo-large.svg');
+    .header h1 .logo {
+      background-image: url('../img/baseweb-vert-white.svg');
       background-size: 160px 97px;
       @include size(160px, 97px);
     }
   }
   
   @include media-min('tablet') {
-    .header .logo {
-      background-image: url('../img/baseweb-logo-large.svg');
+    .header .version {
+      margin: 20px 0 0;
+    }
+    .header h1 .logo {
+      background-image: url('../img/baseweb-vert-white.svg');
       background-size: 240px 145px;
       @include size(240px, 145px);
     }
@@ -106,10 +119,10 @@
 
 .template-home {
   
-  .content {
+  .main {
     text-align: center;
   }
-  .content .text-lead {
+  .main .text-lead {
     margin: 0 0 40px;
     padding: 0;
     font-size: 18px;
@@ -118,7 +131,7 @@
   }
   
   @include media-min('mobile') {
-    .content .text-lead {
+    .main .text-lead {
       padding: 0 40px;
       font-size: 22px;
       line-height: 30px;
@@ -126,7 +139,7 @@
   }
   
   @include media-min('tablet') {
-    .content .text-lead {
+    .main .text-lead {
       padding: 0 60px;
       font-size: 26px;
       line-height: 36px;
@@ -141,18 +154,10 @@
 
 .template-home {
   
-  .nav {
-    display: block;
-    float: none;
-    margin: 0;
-    font-size: 0;
-  }
-  .nav ul li {
-    display: inline-block;
-    float: none;
-  }
-  .nav ul li a {
-    display: inline-block;
+  @include media-min('tablet') {
+    .nav {
+      float: none;
+    }
   }
   
 }

@@ -28,46 +28,60 @@
 </head>
 <body>
   
-<div id="main" class="scene">
+<div id="wrapper" class="wrapper scene">
 <div class="template scene-element vertical-full">
-
-  <div class="container">
-    
-    <div id="sidebar" class="sidebar">
+  
+  <header class="header">
+    <div class="container">
       
-      <header id="header" class="header">
-        <h1><a href="/" class="logo">{{ name }}</a></h1>
-      </header><!-- .header -->
+      <h1><a href="/" class="logo">{{ name }}</a></h1>
       
-      <nav id="nav" class="nav">
-        {{ > nav }}
+      <nav class="nav primary-nav">
+        <ul>
+          <li><a href="/docs/">Documentation</a></li>
+          <li><a href="/usage.html">Usage</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+        
+        <a href="{{ repository.url }}" class="btn btn-blue">Download</a>
       </nav>
+        
+    </div><!-- .container -->
+  </header><!-- .header -->
+  
+  <section class="main">
+    <div class="container">
       
-      <footer class="footer">
-        <p><span class="version">Currently v{{ version }}</span></p>
-      </footer>
+      <div class="row">
       
-    </div><!-- .sidebar -->
-    
-    <div id="content" class="content">
-      <div class="toolbar">
-        <!-- <span class="version">Currently v{{ version }}</span> -->
-        <nav class="nav primary-nav">
-          <ul>
-            <li><a href="/docs/">Docs</a></li>
-            <li><a href="/usage.html">Usage</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </nav>
-        <a href="{{ repository.url }}" class="btn btn-primary">Download {{ name }}</a>
-      </div><!-- .toolbar -->
+        <aside class="sidebar col col-3">
+          <nav class="nav">
+            {{ > nav }}
+          </nav>
+          <footer class="footer">
+            <p><span class="version">Currently v{{ version }}</span></p>
+          </footer>
+        </aside><!-- .sidebar -->
+        
+        <div class="content col col-8 prefix-1">
+          {{ > page }}
+        </div><!-- .content -->
       
-      {{ > page }}
+      </div><!-- .row -->
       
-    </div><!-- .content -->
-    
-  </div><!-- .container -->
-
+    </div><!-- .container -->
+  </section><!-- .main -->
+  
+  <!--
+  <footer class="footer">
+    <div class="container">
+      
+      <p><span class="version">Currently v{{ version }}</span></p>
+      
+    </div>
+  </footer>
+  -->
+   
 </div><!-- .scene-element -->
 </div><!-- .scene -->
 

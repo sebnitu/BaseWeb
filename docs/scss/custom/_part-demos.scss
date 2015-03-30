@@ -1,0 +1,373 @@
+/*==============================================================================
+  @Grid Demo
+==============================================================================*/
+
+.demo-grid {
+  margin: 20px 0;
+}
+.demo-grid .col {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.demo-grid .col p {
+  margin: 0;
+  padding: 15px 20px;
+  background: $bg-color;
+  font-family: $font-family-mono;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  @include border-radius();
+}
+
+/**
+ * Semantic Grid Demo
+ */
+.demo-grid-semantic {
+  .demo-wrapper,
+  .demo-content,
+  .demo-aside,
+  .demo-article {
+    background: rgba($blue, 0.1);
+    &:before {
+      display: block;
+      margin: 0;
+      padding: 15px 20px;
+      font-family: $font-family-mono;
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+  
+  .demo-wrapper {
+    @include make-container();
+    &:before {
+      content: '.wrapper';
+    }
+  }
+  .demo-content {
+    
+    @include make-row();
+    &:before {
+      content: '.content';
+    }
+  }
+  .demo-aside,
+  .demo-article {
+    @include make-column-base();
+  }
+  .demo-aside {
+    width: column-width(4);
+    &:before {
+      content: '.aside';
+    }
+  }
+  .demo-article {
+    width: column-width(8);
+    &:before {
+      content: '.article';
+    }
+  }
+}
+
+/**
+ * Nested Grid Demo
+ */
+.demo-grid-nested {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.demo-grid-nested .col {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: rgba($blue, 0.1);
+}
+.demo-grid-nested .col p {
+  margin: 10px 0;
+  @include text-truncate();
+}
+
+/*==============================================================================
+  @Mixin Demos
+==============================================================================*/
+
+/**
+ * Demo Blocks
+ * Used for wrapping demo block examples
+ */
+.demo {
+  position: relative;
+  margin: 20px 0;
+  padding: 10px 20px;
+  overflow: auto;
+  background: $white;
+  @include border-radius();
+}
+
+.demo blockquote,
+.demo pre,
+.demo table {
+  margin: 10px 0;
+}
+.demo .table-responsive table {
+  margin: 0;
+}
+
+/**
+ * Size Demo
+ */
+.demo .my-special-box {
+  background: $green;
+  display: block;
+  margin: 10px auto;
+  @include size(100px, 50px);
+  @include border-radius();
+}
+
+/**
+ * Vertical Center Demo
+ */
+.demo-vertical-center {
+  height: 300px;
+  @include transform-style(preserve-3d);
+}
+.demo-vertical-center .vertical-center {
+  background: $violet;
+  margin: 0 auto;
+  @include size(50px);
+  @include border-radius();
+  @include vertical-center();
+}
+
+/**
+ * Demo Example
+ * Used for inline demo examples
+ */
+.demo-example {
+  background: $yellow-green-darker;
+  @include border-radius();
+  @include size(50px);
+}
+
+/**
+ * Border Radius
+ */
+.demo-border-radius {
+  display: inline-block;
+  background: $yellow-green-dark;
+  @include size(30px);
+}
+.docs-list-hover .demo-border-radius {
+  margin: -5px 0;
+}
+
+.mixin-border-radius {
+  @include border-radius(50%);
+}
+.mixin-border-radius-top {
+  @include border-radius-top(50%);
+}
+.mixin-border-radius-top-left {
+  @include border-radius-top-left(50%);
+}
+.mixin-border-radius-top-right {
+  @include border-radius-top-right(50%);
+}
+.mixin-border-radius-bottom {
+  @include border-radius-bottom(50%);
+}
+.mixin-border-radius-bottom-left {
+  @include border-radius-bottom-left(50%);
+}
+.mixin-border-radius-bottom-right {
+  @include border-radius-bottom-right(50%);
+}
+.mixin-border-radius-left {
+  @include border-radius-left(50%);
+}
+.mixin-border-radius-left-top {
+  @include border-radius-left-top(50%);
+}
+.mixin-border-radius-left-bottom {
+  @include border-radius-left-bottom(50%);
+}
+.mixin-border-radius-right {
+  @include border-radius-right(50%);
+}
+.mixin-border-radius-right-top {
+  @include border-radius-right-top(50%);
+}
+.mixin-border-radius-right-bottom {
+  @include border-radius-right-bottom(50%);
+}
+
+/**
+ * Transform Skew
+ */
+.demo .demo-transform-skew {
+  background: $blue-green;
+  margin: 20px auto;
+  @include transform(skew(30deg, 10deg));
+}
+
+/**
+ * Rotate
+ */
+.demo-rotate {
+  background: $blue-darker;
+  margin: 20px auto;
+  @include rotate(45deg);
+}
+
+/**
+ * Transition
+ */
+.demo-transition {
+  margin: 10px auto;
+  background-color: $blue-green-darker;
+  @include transition();
+}
+.demo-transition:hover {
+  background-color: $red-violet;
+}
+
+/**
+ * Animations
+ */
+@include keyframes('example') {
+  0%   { background-color: $red; }
+  50%  { background-color: $blue; }
+  100% { background-color: $red; }
+}
+.demo-animation {
+  margin: 10px auto;
+  background-color: $red;
+  @include animation(example 10s linear 1s infinite normal);
+}
+
+/**
+ * Gradient
+ */
+.demo-linear-gradient {
+  margin: 10px auto;
+  width: auto;
+  @include linear-gradient(left, $green, $blue, $violet);
+}
+.demo-radial-gradient {
+  margin: 10px auto;
+  @include size(80px);
+  @include radial-gradient(circle, $violet, $violet-darker);
+}
+
+/**
+ * Text Hide
+ */
+.demo .demo-logo-image {
+  display: block;
+  margin: 20px auto;
+  padding: 0;
+  border: 0 none;
+  background: url('../img/baseweb-hori-black.svg') no-repeat left center;
+  background-size: 187px 40px;
+  @include size(187px, 40px);
+  @include text-hide();
+}
+
+/**
+ * Text Truncate
+ */
+.demo-text-truncate {
+  background: $blue-green-darker;
+  width: 200px;
+  max-width: 100%;
+  margin: 10px auto;
+  padding: 10px 20px;
+  color: $white;
+  @include box-sizing(border-box);
+  @include border-radius();
+  @include text-truncate();
+}
+
+/**
+ * Triangle
+ */
+.demo-triangle .col {
+  text-align: center;
+}
+
+%triangle {
+  @include make-triangle-base();
+  vertical-align: middle;
+  margin: 10px 0;
+}
+.example-triangle-1 {
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-darker, 'left' );
+}
+.example-triangle-2 {
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-violet-darker, 'down' );
+  margin: 15px 0;
+}
+.example-triangle-3 {
+  @extend %triangle;
+  @include make-triangle( 14px, $violet-darker, 'right' );
+}
+
+/*==============================================================================
+  @Tables Demo
+==============================================================================*/
+
+.table-custom-alignment {
+  @include add-table-alignment((
+    'vertical-align': middle,
+    'text-align': center
+  ));
+}
+
+/*==============================================================================
+  @Forms Demo
+==============================================================================*/
+
+.demo form {
+  margin: 10px 0;
+}
+
+/*==============================================================================
+  @Buttons Demo
+==============================================================================*/
+
+.demo-buttons {
+  padding: 15px 20px;
+  font-size: 0;
+  line-height: 0;
+  text-align: center;
+  
+  .btn {
+    margin: 5px;
+    vertical-align: middle;
+  }
+}
+
+.demo .btn-custom {
+  @include make-btn-base();
+  @include make-btn-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+  margin: 10px 5px;
+}
+
+.demo .btn-custom-size {
+  @include add-btn-size(20px 40px, (
+    'font-size': 20px,
+    'line-height': 28px
+  ));
+}
+
+.demo .btn-custom-mobile {
+  @include make-btn-base();
+  @include make-btn-color();
+  @include add-btn-block();
+}

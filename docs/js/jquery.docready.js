@@ -26,8 +26,9 @@
     active_subpage($('.subpage'));
     examples();
     
+    /*
     var $body = $('html, body');
-    var content = $('#main').smoothState({
+    var content = $('#wrapper').smoothState({
       prefetch: true,
       // pageCacheSize: 4,
       onStart: {
@@ -48,6 +49,7 @@
         
       }
     }).data('smoothState');
+    */
     
   });
 

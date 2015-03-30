@@ -28,20 +28,36 @@
 </head>
 <body>
   
-<div id="main" class="scene">
+<div id="wrapper" class="wrapper scene">
 <div class="template scene-element vertical-full">
-
-  <div class="container">
-    
-    <div id="sidebar" class="sidebar">
-      
-      <header id="header" class="header">
-        <h1><a href="/" class="logo">BaseWeb</a></h1>
-      </header><!-- .header -->
-      
-      <nav id="nav" class="nav">
-<ul class="root-nav">
   
+  <header class="header">
+    <div class="container">
+      
+      <h1><a href="/" class="logo">BaseWeb</a></h1>
+      
+      <nav class="nav primary-nav">
+        <ul>
+          <li><a href="/docs/">Documentation</a></li>
+          <li><a href="/usage.html">Usage</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+        
+        <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-blue">Download</a>
+      </nav>
+        
+    </div><!-- .container -->
+  </header><!-- .header -->
+  
+  <section class="main">
+    <div class="container">
+      
+      <div class="row">
+      
+        <aside class="sidebar col col-3">
+          <nav class="nav">
+<ul class="root-nav">
+    
   <li>
     <a href="/docs/settings.html">Settings</a>
     <ul class="sub-nav">
@@ -96,27 +112,13 @@
     </ul>
   </li>
   
-</ul>      </nav>
-      
-      <footer class="footer">
-        <p><span class="version">Currently v1.0.0</span></p>
-      </footer>
-      
-    </div><!-- .sidebar -->
-    
-    <div id="content" class="content">
-      <div class="toolbar">
-        <!-- <span class="version">Currently v1.0.0</span> -->
-        <nav class="nav primary-nav">
-          <ul>
-            <li><a href="/docs/">Docs</a></li>
-            <li><a href="/usage.html">Usage</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </nav>
-        <a href="https:&#x2F;&#x2F;github.com&#x2F;sebnitu&#x2F;BaseWeb.git" class="btn btn-primary">Download BaseWeb</a>
-      </div><!-- .toolbar -->
-      
+</ul>          </nav>
+          <footer class="footer">
+            <p><span class="version">Currently v1.0.0</span></p>
+          </footer>
+        </aside><!-- .sidebar -->
+        
+        <div class="content col col-8 prefix-1">
 <section class="rootpage"></section>
 
 <section id="base" class="subpage">
@@ -124,14 +126,14 @@
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
 
 <ul class="docs-list-hover">
-  <li>Remove margins and padding from HTML and Body elements and sets our base font-size</li>
-  <li>Prevents automatic text resizing on mobile devices</li>
-  <li>Set our base typographic settings (family, weight, lineheight and color)</li>
-  <li>Make HTML5 elements act like blocks</li>
-  <li>Set default box sizing model to our global variable <code>$global-box-sizing</code></li>
-  <li>Outputs our cleafix class if one is set in <code>$class-clearfix</code></li>
-  <li>Outputs our remove cleafix class if one is set in <code>$class-remove-clearfix</code></li>
-  <li>Add custom text highlight color if a color is set in <code>$bg-selection</code></li>
+  <li>Remove margins and padding from HTML and Body elements and sets our base font-size.</li>
+  <li>Prevents automatic text resizing on mobile devices.</li>
+  <li>Set our base typographic settings (family, weight, lineheight and color).</li>
+  <li>Make HTML5 elements act like blocks.</li>
+  <li>Set default box sizing model to our global variable <code>$global-box-sizing.</code></li>
+  <li>Outputs our cleafix class if one is set in <code>$class-clearfix</code>.</li>
+  <li>Outputs our remove cleafix class if one is set in <code>$class-remove-clearfix</code>.</li>
+  <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
 </ul>
 
 <section class="sub-section sub-section-classes">
@@ -1531,7 +1533,7 @@ class BaseWeb() {
 <p>HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.</p>
 
 <div class="notice notice-info">
-  <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html" class="no-smoothstate">Form Examples &rarr;</a></p>
+  <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html">Form Examples &rarr;</a></p>
 </div>
 
 <hr class="docs-hr">
@@ -2583,11 +2585,23 @@ class BaseWeb() {
 </ul>
 </section>
 </section><!-- .subpage -->
+        </div><!-- .content -->
       
-    </div><!-- .content -->
-    
-  </div><!-- .container -->
-
+      </div><!-- .row -->
+      
+    </div><!-- .container -->
+  </section><!-- .main -->
+  
+  <!--
+  <footer class="footer">
+    <div class="container">
+      
+      <p><span class="version">Currently v1.0.0</span></p>
+      
+    </div>
+  </footer>
+  -->
+   
 </div><!-- .scene-element -->
 </div><!-- .scene -->
 
