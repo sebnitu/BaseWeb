@@ -18,6 +18,7 @@ function active_nav($selector) {
   // Active link based on current URL
   $selector.find('a').each(function() {
     var href = $(this).attr('href');
+    
     if (path.substring(0, href.length) === href) {
       $(this).closest('li').addClass('active');
     }
@@ -25,11 +26,7 @@ function active_nav($selector) {
       $(this).closest('li').addClass('active');
     }
     
-    $('#nav .root-nav > li.active').find('.sub-nav').fadeIn(250);
-    
-    $('#nav .root-nav > li > a').click(function() {
-      $selector.find('.sub-nav').fadeOut(250);
-    });
+    $('.nav .root-nav > li.active').find('.sub-nav').show();
     
     if (/#/.test($(this).attr('href'))) {
       $(this).click(function() {
@@ -56,7 +53,7 @@ function active_subpage($selector) {
     $('.rootpage').show();
   }
   
-  $('#nav .sub-nav a').click(function() {
+  $('.nav .sub-nav a').click(function() {
     var href = $(this).attr('href');
     $('.rootpage').fadeOut(250);
     $selector.fadeOut(250, function() {
@@ -137,4 +134,55 @@ function navigateTo(sel, target, newWindow) {
     window[target].location.href = url;
   }
 }
+
+/**
+ * Examples JS
+ */
+function examples() {
+  
+  /**
+   * Example Resize
+   */
+  window.onresize = resize;
+  resize();
+  $.resizable('handler-vertical', "v");
+  
+  /**
+   * Example Output Switcher
+   */
+  $('.select-output-example select').change(function() {
+    navigateTo(this, 'window', false);
+  });
+  
+  /**
+   * Example Input Display
+   */
+  var $example_input_items = $('.example-input-wrapper pre');
+  var $example_input_values = $('.select-input-display input');
+  
+  $example_input_values.each(function() {
+    if( $(this).is(':checked') ) {
+      $('.example-input-wrapper').find('.' + $(this).val()).show();
+    } else {
+      $('.example-input-wrapper').find('.' + $(this).val()).hide();
+    }
+  });
+  
+  $('.select-input-display input').change(function() {
     
+    var $value = $(this).val();
+    var $checked = $(this).is(':checked');
+    
+    $example_input_items.each(function() {
+      if ($(this).hasClass($value)) {
+        if ($checked) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      }
+    });
+    
+  });
+  
+}

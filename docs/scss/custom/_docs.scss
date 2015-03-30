@@ -16,8 +16,18 @@
   @Structure
 ==============================================================================*/
 
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
 body {
   background: $gray-pale;
+}
+#main {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 .row {
   position: relative;
@@ -44,6 +54,26 @@ body {
   }
 }
 
+@include media-min('tablet') {
+  .vertical-half {
+    position: relative;
+    height: 50%;
+    margin: 0;
+    padding: 0;
+    // @include transform-style(preserve-3d);
+  }
+  .vertical-full {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    // @include transform-style(preserve-3d);
+  }
+  .vertical-center {
+    @include vertical-center();
+  }
+}
+
 /**
  * Hide elements we will use JS to reveal
  */
@@ -55,10 +85,10 @@ body {
 /*
  * Smooth State Page Transitions
  */
-.scene .scene_element {
+.scene .scene-element {
   @include animation(fadeIn 0.25s linear 0 normal both);
 }
-.scene.is-exiting .scene_element {
+.scene.is-exiting .scene-element {
   @include animation-direction(alternate-reverse);
 }
 
@@ -81,7 +111,7 @@ body {
 .header {
   position: relative;
   z-index: 10;
-  padding: 20px 0;
+  padding: 20px 0 (20px + 130px);
 }
 .header h1 {
   margin: 0 auto;
@@ -109,6 +139,28 @@ body {
 }
 
 /*==============================================================================
+  @Navigation
+==============================================================================*/
+
+.nav ul li {
+  margin: 1px 0;
+}
+.nav ul li a {
+  padding: 5px 0;
+  font-size: ($base-font-size + 2);
+  line-height: 30px;
+  color: #aaa;
+  border: 0 none;
+  
+  &:hover {
+    color: $blue;
+  }
+}
+.nav ul li.active > a {
+  color: $color-dark;
+}
+
+/*==============================================================================
   @Sidebar Navigation
 ==============================================================================*/
 
@@ -126,19 +178,6 @@ body {
 }
 .sidebar .nav ul li a {
   display: block;
-  padding: 5px 0;
-  background: transparent;
-  font-size: ($base-font-size + 4);
-  line-height: 30px;
-  color: $color-light;
-  border: 0 none;
-  
-  &:hover {
-    color: $blue;
-  }
-}
-.sidebar .nav ul li.active > a {
-  color: $color-dark;
 }
 
 /**
@@ -177,33 +216,13 @@ body {
 ==============================================================================*/
 
 .sidebar .footer {
-  position: relative;
-  color: $color-light;
-  text-align: center;
-}
-.sidebar .footer ul {
   margin: 20px 0;
-  list-style: none;
-}
-.sidebar .footer ul li {
-  display: inline-block;
-  margin: 0;
-  
-  &:after {
-    content: '/';
-    padding: 0 10px 0 12px;
-    color: #ccc;
-  }
-  &:last-child:after {
-    content: none;
-  }
-}
-.sidebar .footer ul li a {
-  color: $color-light;
-  
-  &:hover {
-    color: $red;
-  }
+  padding: 10px;
+  position: relative;
+  color: #aaa;
+  text-align: center;
+  background: rgba($black, 0.05);
+  @include border-radius();
 }
 
 @include media-min('tablet') {
@@ -211,7 +230,10 @@ body {
   .sidebar .footer {
     position: absolute;
     bottom: 20px;
+    margin: 0;
+    padding: 0;
     text-align: left;
+    background: transparent;
   }
   
 }
@@ -221,16 +243,39 @@ body {
 ==============================================================================*/
 
 .toolbar {
-  padding: 20px 0;
+  position: absolute;
+  z-index: 10;
+  top: 80px;
+  width: 100%;
+  margin: 0 0 0 -20px;
+  padding: 10px 0 20px;
   line-height: 42px;
   text-align: center;
+  border-top: 1px solid rgba($black, 0.1);
+  border-bottom: 1px solid rgba($black, 0.1);
 }
+
+@include media-min('tablet') {
+  
+  .toolbar {
+    position: relative;
+    top: auto;
+    margin: 0;
+    padding: 20px 0;
+    line-height: 42px;
+    text-align: center;
+    border-top: none;
+    border-bottom: none;
+  }
+  
+}
+
+/**
+ * Button & Version
+ */
 .toolbar .version {
   display: none;
-  color: $color-light;
-}
-.toolbar .btn {
-  padding: 15px 30px;
+  color: #aaa;
 }
 
 @include media-min('tablet') {
@@ -243,16 +288,14 @@ body {
   }
   .toolbar .btn {
     margin-left: 20px;
-    padding: 10px 20px;
   }
 }
 
 /**
- * Toolbar
+ * Primary Navigation
  */
 .primary-nav {
-  float: left;
-  margin-left: -20px;
+  margin-bottom: 10px;
 }
 .primary-nav ul {
   margin: 0;
@@ -260,28 +303,27 @@ body {
   @include clearfix();
 }
 .primary-nav ul li {
-  float: left;
-  margin: 6px 0;
-  // border-left: 1px solid rgba($black, 0.1);
-  
-  &:first-child {
-    border-left: 0 none;
-  }
+  display: inline-block;
+  margin: 1px 0;
 }
 .primary-nav ul li a {
   display: block;
-  padding: 0 20px;
-  font-size: ($base-font-size + 4);
-  line-height: 30px;
-  color: $color-light;
-  border: 0 none;
-  
-  &:hover {
-    color: $blue;
-  }
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.primary-nav ul li.active a {
-  color: $color-dark;
+
+@include media-min('tablet') {
+  
+  .primary-nav {
+    float: left;
+    margin-left: -20px;
+    margin-bottom: 0;
+  }
+  .primary-nav ul li {
+    float: left;
+    margin: 1px 0;
+  }
+  
 }
 
 /*==============================================================================
@@ -295,17 +337,14 @@ body {
 h1.docs-header {
   font-size: 26px;
   line-height: 34px;
-  font-weight: 600;
 }
 h2.docs-header {
   font-size: 22px;
   line-height: 30px;
-  font-weight: 600;
 }
 h3.docs-header {
   font-size: 18px;
-  line-height: 30px;
-  font-weight: 500;
+  line-height: 26px;
 }
 
 hr.docs-hr {

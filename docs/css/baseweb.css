@@ -239,7 +239,7 @@ dl {
     margin: 10px 0 0;
     font-weight: bold; }
   dl dd {
-    margin: 0 0 10px 20px; }
+    margin: 0 0 10px 10px; }
 
 /*==============================================================================
   @List Modifiers
@@ -1251,8 +1251,17 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
 /*==============================================================================
   @Structure
 ==============================================================================*/
+html, body {
+  height: 100%;
+  min-height: 100%; }
+
 body {
   background: #efefef; }
+
+#main {
+  position: relative;
+  width: 100%;
+  height: 100%; }
 
 .row {
   position: relative; }
@@ -1275,6 +1284,24 @@ body {
     margin: 0 0 0 300px;
     padding: 0 0 160px 60px; } }
 
+@media (min-width: 760px) {
+  .vertical-half {
+    position: relative;
+    height: 50%;
+    margin: 0;
+    padding: 0; }
+  .vertical-full {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0; }
+  .vertical-center {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); } }
+
 /**
  * Hide elements we will use JS to reveal
  */
@@ -1284,11 +1311,11 @@ body {
 /*
  * Smooth State Page Transitions
  */
-.scene .scene_element {
+.scene .scene-element {
   -webkit-animation: fadeIn 0.25s linear 0 normal both;
   animation: fadeIn 0.25s linear 0 normal both; }
 
-.scene.is-exiting .scene_element {
+.scene.is-exiting .scene-element {
   -webkit-animation-direction: alternate-reverse;
   animation-direction: alternate-reverse; }
 
@@ -1315,7 +1342,7 @@ body {
 .header {
   position: relative;
   z-index: 10;
-  padding: 20px 0; }
+  padding: 20px 0 150px; }
 
 .header h1 {
   margin: 0 auto; }
@@ -1347,6 +1374,24 @@ body {
     margin: 0; } }
 
 /*==============================================================================
+  @Navigation
+==============================================================================*/
+.nav ul li {
+  margin: 1px 0; }
+
+.nav ul li a {
+  padding: 5px 0;
+  font-size: 16px;
+  line-height: 30px;
+  color: #aaa;
+  border: 0 none; }
+  .nav ul li a:hover {
+    color: #2ab0ea; }
+
+.nav ul li.active > a {
+  color: #303030; }
+
+/*==============================================================================
   @Sidebar Navigation
 ==============================================================================*/
 .sidebar .nav {
@@ -1362,18 +1407,7 @@ body {
   margin: 0; }
 
 .sidebar .nav ul li a {
-  display: block;
-  padding: 5px 0;
-  background: transparent;
-  font-size: 18px;
-  line-height: 30px;
-  color: #909090;
-  border: 0 none; }
-  .sidebar .nav ul li a:hover {
-    color: #2ab0ea; }
-
-.sidebar .nav ul li.active > a {
-  color: #303030; }
+  display: block; }
 
 /**
  * Primary Nav
@@ -1409,49 +1443,55 @@ body {
   @Sidebar Footer
 ==============================================================================*/
 .sidebar .footer {
-  position: relative;
-  color: #909090;
-  text-align: center; }
-
-.sidebar .footer ul {
   margin: 20px 0;
-  list-style: none; }
-
-.sidebar .footer ul li {
-  display: inline-block;
-  margin: 0; }
-  .sidebar .footer ul li:after {
-    content: '/';
-    padding: 0 10px 0 12px;
-    color: #ccc; }
-  .sidebar .footer ul li:last-child:after {
-    content: none; }
-
-.sidebar .footer ul li a {
-  color: #909090; }
-  .sidebar .footer ul li a:hover {
-    color: #de5151; }
+  padding: 10px;
+  position: relative;
+  color: #aaa;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px; }
 
 @media (min-width: 760px) {
   .sidebar .footer {
     position: absolute;
     bottom: 20px;
-    text-align: left; } }
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background: transparent; } }
 
 /*==============================================================================
   @Toolbar
 ==============================================================================*/
 .toolbar {
-  padding: 20px 0;
+  position: absolute;
+  z-index: 10;
+  top: 80px;
+  width: 100%;
+  margin: 0 0 0 -20px;
+  padding: 10px 0 20px;
   line-height: 42px;
-  text-align: center; }
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
+@media (min-width: 760px) {
+  .toolbar {
+    position: relative;
+    top: auto;
+    margin: 0;
+    padding: 20px 0;
+    line-height: 42px;
+    text-align: center;
+    border-top: none;
+    border-bottom: none; } }
+
+/**
+ * Button & Version
+ */
 .toolbar .version {
   display: none;
-  color: #909090; }
-
-.toolbar .btn {
-  padding: 15px 30px; }
+  color: #aaa; }
 
 @media (min-width: 760px) {
   .toolbar {
@@ -1460,15 +1500,13 @@ body {
   .toolbar .version {
     display: inline-block; }
   .toolbar .btn {
-    margin-left: 20px;
-    padding: 10px 20px; } }
+    margin-left: 20px; } }
 
 /**
- * Toolbar
+ * Primary Navigation
  */
 .primary-nav {
-  float: left;
-  margin-left: -20px; }
+  margin-bottom: 10px; }
 
 .primary-nav ul {
   margin: 0;
@@ -1479,23 +1517,22 @@ body {
     clear: both; }
 
 .primary-nav ul li {
-  float: left;
-  margin: 6px 0; }
-  .primary-nav ul li:first-child {
-    border-left: 0 none; }
+  display: inline-block;
+  margin: 1px 0; }
 
 .primary-nav ul li a {
   display: block;
-  padding: 0 20px;
-  font-size: 18px;
-  line-height: 30px;
-  color: #909090;
-  border: 0 none; }
-  .primary-nav ul li a:hover {
-    color: #2ab0ea; }
+  padding-left: 20px;
+  padding-right: 20px; }
 
-.primary-nav ul li.active a {
-  color: #303030; }
+@media (min-width: 760px) {
+  .primary-nav {
+    float: left;
+    margin-left: -20px;
+    margin-bottom: 0; }
+  .primary-nav ul li {
+    float: left;
+    margin: 1px 0; } }
 
 /*==============================================================================
   @Content
@@ -1505,18 +1542,15 @@ body {
 
 h1.docs-header {
   font-size: 26px;
-  line-height: 34px;
-  font-weight: 600; }
+  line-height: 34px; }
 
 h2.docs-header {
   font-size: 22px;
-  line-height: 30px;
-  font-weight: 600; }
+  line-height: 30px; }
 
 h3.docs-header {
   font-size: 18px;
-  line-height: 30px;
-  font-weight: 500; }
+  line-height: 26px; }
 
 hr.docs-hr {
   margin: 30px 0; }
@@ -2086,44 +2120,16 @@ hr.docs-hr {
 /*==============================================================================
   @Home Structure
 ==============================================================================*/
-html, body {
+.template-home .wrapper {
+  display: block;
+  width: 100%;
   height: 100%;
   min-height: 100%; }
-
-.home {
-  border: 0 none; }
-  .home .wrapper {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 100%; }
-  .home .header, .home .content {
-    position: relative;
-    z-index: auto;
-    margin: 0;
-    padding: 40px 0; }
-
-@media (min-width: 760px) {
-  .vertical-half {
-    height: 50%;
-    margin: 0;
-    padding: 0;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
-  .vertical-full {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
-  .vertical-center {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); } }
+.template-home .header, .template-home .content {
+  position: relative;
+  z-index: auto;
+  margin: 0;
+  padding: 40px 0; }
 
 /**
  * Content Arrow
@@ -2163,10 +2169,10 @@ html, body {
 /*==============================================================================
   @Home Header
 ==============================================================================*/
-.home .header {
+.template-home .header {
   background: #303030;
   text-align: center; }
-.home .header .logo {
+.template-home .header .logo {
   display: block;
   float: none;
   margin: 0 auto;
@@ -2174,64 +2180,58 @@ html, body {
   background-size: 125px 75px;
   width: 125px;
   height: 75px; }
-.home .header .version {
+.template-home .header .version {
   display: inline-block;
   margin: 20px 0 0;
   color: rgba(255, 255, 255, 0.25); }
 @media (min-width: 480px) {
-  .home .header .logo {
+  .template-home .header .logo {
     background-image: url('../img/baseweb-logo-large.svg');
     background-size: 160px 97px;
     width: 160px;
     height: 97px; } }
 @media (min-width: 760px) {
-  .home .header .logo {
+  .template-home .header .logo {
     background-image: url('../img/baseweb-logo-large.svg');
     background-size: 240px 145px;
     width: 240px;
     height: 145px; } }
 
 /*==============================================================================
-  @Home Navigation
-==============================================================================*/
-.home .nav {
-  display: block;
-  float: none;
-  margin: 0; }
-.home .nav ul li {
-  display: inline-block;
-  float: none; }
-.home .nav ul li a {
-  display: inline-block; }
-
-/*==============================================================================
   @Home Content
 ==============================================================================*/
-.home .content {
+.template-home .content {
   text-align: center; }
-.home .content .text-lead {
+.template-home .content .text-lead {
   margin: 0 0 40px;
   padding: 0;
   font-size: 18px;
   line-height: 26px;
   font-weight: 300; }
 @media (min-width: 480px) {
-  .home .content .text-lead {
+  .template-home .content .text-lead {
     padding: 0 40px;
     font-size: 22px;
     line-height: 30px; } }
 @media (min-width: 760px) {
-  .home .content .text-lead {
+  .template-home .content .text-lead {
     padding: 0 60px;
     font-size: 26px;
     line-height: 36px; } }
 
 /*==============================================================================
-  @Home About
+  @Home Navigation
 ==============================================================================*/
-.home .content-about {
-  padding: 100px 0;
-  background: #e2e2e2; }
+.template-home .nav {
+  display: block;
+  float: none;
+  margin: 0;
+  font-size: 0; }
+.template-home .nav ul li {
+  display: inline-block;
+  float: none; }
+.template-home .nav ul li a {
+  display: inline-block; }
 
 /*==============================================================================
   @Example Structure
@@ -2754,12 +2754,12 @@ pre[class*="language-"], code[class*="language-"] {
 
 pre[class*="language-"] {
   position: relative;
-  overflow: scroll; }
+  overflow: auto; }
 
-pre[class*="language-"] > code[class*="language-"] {
+pre[class*="language-"] > code {
   padding-right: 70px; }
 
-pre[class*="language-"] > code[class*="language-"]:before {
+pre[class*="language-"] > code:before {
   position: absolute;
   z-index: 1;
   top: 0;
