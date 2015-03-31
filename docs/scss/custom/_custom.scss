@@ -12,40 +12,6 @@
   @include build-grid-system();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// @Docs Mixins
-////////////////////////////////////////////////////////////////////////////////
-
-@mixin baseweb-logo($type) {
-  
-  @if ($type == 'vert-black') {
-    background: url('../img/baseweb-vert-black.svg') no-repeat left center;
-    background-size: 166px 100px;
-    @include size(166px, 100px);
-  } @else if ($type == 'vert-white') {
-    background: url('../img/baseweb-vert-white.svg') no-repeat left center;
-    background-size: 166px 100px;
-    @include size(166px, 100px);
-  } @else if ($type == 'hori-black') {
-    background: url('../img/baseweb-hori-black.svg') no-repeat left center;
-    background-size: 189px 40px;
-    @include size(189px, 40px);
-  } @else if ($type == 'hori-white') {
-    background: url('../img/baseweb-hori-white.svg') no-repeat left center;
-    background-size: 189px 40px;
-    @include size(189px, 40px);
-  } @else if ($type == 'hori-black-small') {
-    background: url('../img/baseweb-hori-black.svg') no-repeat left center;
-    background-size: 142px 30px;
-    @include size(142px, 30px);
-  } @else if ($type == 'hori-white-small') {
-    background: url('../img/baseweb-hori-white.svg') no-repeat left center;
-    background-size: 142px 30px;
-    @include size(142px, 30px);
-  }
-  
-}
-
 /*==============================================================================
   @Structure
 ==============================================================================*/
@@ -63,30 +29,21 @@ body {
   width: 100%;
   height: 100%;
 }
-.template {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 
+/**
+ * Layout
+ */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 100%;
-  padding: 0;
-  overflow: auto;
+  position: relative;
 }
 .inner-header {
   position: relative;
-  padding: 30px 0 30px 30px;
+  padding: 1rem;
 }
 
 .main {
   position: relative;
-  min-height: 100%;
-  margin: 0 0 0 300px;
+  margin: 0;
   padding: 0;
   background: $gray-pale;
 }
@@ -94,21 +51,74 @@ body {
   position: relative;
   margin: 0;
 }
-.content-inner {
-  max-width: 700px;
+
+@include media-min(720px) {
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    padding: 0;
+    overflow: auto;
+  }
+  .inner-header {
+    min-height: 100%;
+    padding: 2rem 0 2rem 2rem;
+    margin-bottom: -158px;
+    &:after {
+      content: '';
+      display: block;
+      height: 158px;
+    }
+  }
+  
+  .main {
+    min-height: 100%;
+    margin: 0 0 0 250px;
+  }
+  
+}
+
+@include media-min(960px) {
+  .header {
+    width: 300px;
+  }
+  .main {
+    margin: 0 0 0 300px;
+  }
 }
 
 /**
  * Pages
  */
 .content .page {
-  padding: 4.5em 9em 9em;
+  padding: 1.5em;
 }
-.content .rootpage {
-
-}
+.content .rootpage {}
 .content .subpage {
   display: none; // Hide because we show these pages with JS
+}
+.content .content-inner {
+  max-width: 700px;
+}
+
+@include media-min(560px) {
+  .content .page {
+    padding: 1.5em 3em 3em;
+  }
+}
+
+@include media-min(960px) {
+  .content .page {
+    padding: 3em 6em 6em;
+  }
+}
+@include media-min(1100px) {
+  .content .page {
+    padding: 4.5em 9em 9em;
+  }
 }
 
 /**
@@ -149,32 +159,64 @@ body {
  * Logo
  */
 .header h1 {
-  margin: 0 0 30px;
-  padding: 30px 30px 30px 0;
+  margin: 0;
+  padding: 0;
   @include clearfix();
 }
 .header h1 .logo {
   display: block;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: 0 none;
-  @include baseweb-logo('hori-white');
+  background: url('../img/baseweb-hori-white.svg') no-repeat left center;
+  background-size: 142px 30px;
+  @include size(44px, 30px);
   @include text-hide();
+}
+
+@include media-min(560px) {
+  .header h1 .logo {
+    background-size: 142px 30px;
+    @include size(142px, 30px);
+  }
+}
+
+@include media-min(720px) {
+  .header h1 {
+    padding: 0 0 2rem 0;
+  }
+  .header h1 .logo {
+    margin: 0;
+    background-size: 142px 30px;
+    @include size(142px, 30px);
+  }
+}
+
+@include media-min(960px) {
+  .header h1 {
+    margin: 0 0 2rem;
+    padding: 0 2rem 2rem 0;
+  }
+  .header h1 .logo {
+    background-size: 189px 40px;
+    @include size(189px, 40px);
+  }
 }
 
 /**
  * Action
  */
 .header .action {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  display: none;
+  position: relative;
   width: 100%;
-  padding: 30px;
+  padding: 2rem;
   font-size: 0;
 }
-.header .action p {
-  font-size: 0.9rem;
+.header .action .version {
+  display: block;
+  margin: 1rem 0;
+  font-size: 0.8rem;
   color: $color;
   text-align: center;
 }
@@ -188,13 +230,25 @@ body {
   }
 }
 
+@include media-min(720px) {
+  .header .action {
+    display: block;
+  }
+}
+
 /*==============================================================================
   @Navigation
 ==============================================================================*/
 
 .nav {
-  float: none;
+  display: none;
 }
+@include media-min(720px) {
+  .nav {
+    display: block;
+  }
+}
+
 .nav ul {
   display: block;
   margin: 0;
@@ -235,10 +289,10 @@ body {
 /**
  * Root Nav
  */
-.nav > ul.root-nav {
+.nav > ul.rootnav {
   padding-bottom: 40px;
 }
-.nav > ul.root-nav > li:first-child > a {
+.nav > ul.rootnav > li:first-child > a {
   color: $color-light;
   
   &:hover {
@@ -284,31 +338,40 @@ body {
   position: relative;
   top: -2px;
   display: inline-block;
-  width: 20px;
-  height: 20px;
   vertical-align: middle;
+  @include size(20px);
 }
+
+/**
+ * Folder
+ */
 .icon-folder {
   background: url("../img/icon-folder-white.svg") no-repeat center center;
   background-size: 20px 20px;
-  
-  &.dark {
-    background: url("../img/icon-folder-black.svg") no-repeat center center;
-  }
-  &.light {
-    background: url("../img/icon-folder-white.svg") no-repeat center center;
-  }
 }
+.icon-folder.dark,
+.dark .icon-folder {
+  background: url("../img/icon-folder-black.svg") no-repeat center center;
+}
+.icon-folder.light,
+.light .icon-folder {
+  background: url("../img/icon-folder-white.svg") no-repeat center center;
+}
+
+/**
+ * File
+ */
 .icon-file {
   background: url("../img/icon-file-white.svg") no-repeat center center;
   background-size: 20px 20px;
-  
-  &.dark {
-    background: url("../img/icon-file-black.svg") no-repeat center center;
-  }
-  &.light {
-    background: url("../img/icon-file-white.svg") no-repeat center center;
-  }
+}
+.icon-file.dark,
+.dark .icon-file {
+  background: url("../img/icon-file-black.svg") no-repeat center center;
+}
+.icon-file.light,
+.light .icon-file {
+  background: url("../img/icon-file-white.svg") no-repeat center center;
 }
 
 /*==============================================================================
@@ -319,26 +382,48 @@ body {
  * Page
  */
 .page {
-  .breadcrumb {
+  .content-inner > .breadcrumb {
     margin: 0;
   }
-  h1 {
+  .content-inner > h1 {
     margin-top: 0;
   }
 }
 
 /**
- * Rootpage
+ * Sitemap
  */
-.rootpage {
+.sitemap > .rootnav,
+.sitemap > .subnav,
+.sitemap > .alt-nav, {
+  @include make-list-base(('padding': 0, 'margin': 2rem 0));
+  @include make-list-bordered();
+  @include add-list-rounded();
   
+  li {
+    
+  }
+  li a {
+    display: block;
+    padding: 1rem;
+    border: 0 none;
+    
+    &:hover {
+      background: rgba($white, 0.5);
+    }
+  }
+  li:first-child a {
+    @include border-radius-top();
+  }
+  li:last-child a {
+    @include border-radius-bottom();
+  }
 }
 
-/**
- * Subpage
- */
-.subpage {
-  
+.sitemap > .rootnav{  
+  ul {
+    display: none;
+  }
 }
 
 /**
@@ -357,7 +442,7 @@ body {
   
   li {
     padding: 1.5rem;
-    margin: .75rem 0;
+    margin: 0.75rem 0;
     background: rgba($white, 0.75);
     @include border-radius();
   }
@@ -372,7 +457,7 @@ body {
     overflow: auto;
     
     &.list-sep {
-      border-top: 1px solid rgba($black, 0.1);
+      margin-top: 1.5rem;
     }
   }
   
@@ -382,7 +467,7 @@ body {
     line-height: 1.5em;
     color: $color-dark;
     background: rgba($white, 0.75);
-    @include font-weight('medium');
+    @include font-weight('semi-bold');
   }
   
   .left {
@@ -393,8 +478,8 @@ body {
   }
   .block {
     display: block;
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
     border-top: 1px dotted rgba($black, 0.2);
     @include clearfix();
   }

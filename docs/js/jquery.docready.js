@@ -11,45 +11,43 @@
 ;(function ($) {
   'use strict';
   
-  /**
-   * When the document is ready
-   */
-  $(document).ready(function () {
-    
-    if (location.hash) {
-      setTimeout(function() {
-        window.scrollTo(0, 0);
-      }, 1);
-    }
-    
-    active_nav();
-    active_subpage();
-    examples();
-    
-    var $body = $('html, body');
-    var content = $('#wrapper').smoothState({
-      prefetch: true,
-      // pageCacheSize: 4,
-      onStart: {
-        duration: 0,
-        render: function (url, $container) {
-          content.toggleAnimationClass('is-exiting');
-          $body.animate({
-            scrollTop: 0
-          });
-        }
-      },
-      callback: function(url, $container, $content) {
-        
-        Prism.highlightAll();
-        
-        active_nav();
-        active_subpage();
-        examples();
-        
+  // Scroll the page to the top
+  if (location.hash) {
+    setTimeout(function() {
+      window.scrollTo(0, 0);
+    }, 1);
+  }
+  
+  // Initial JavaScript
+  active_nav();
+  active_subpage();
+  examples();
+  
+  // SmoothState
+  var $body = $('html, body');
+  var content = $('#wrapper').smoothState({
+    prefetch: true,
+    // pageCacheSize: 4,
+    onStart: {
+      duration: 0,
+      render: function (url, $container) {
+        content.toggleAnimationClass('is-exiting');
+        $body.animate({
+          scrollTop: 0
+        });
       }
-    }).data('smoothState');
-    
-  });
+    },
+    callback: function(url, $container, $content) {
+      
+      // Re-highlight code examples
+      Prism.highlightAll();
+      
+      // Re-initiate JavaScript
+      active_nav();
+      active_subpage();
+      examples();
+      
+    }
+  }).data('smoothState');
 
 }(jQuery));

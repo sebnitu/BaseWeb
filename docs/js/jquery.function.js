@@ -37,10 +37,10 @@ function active_nav() {
  */
 function active_subpage($selector) {
   // Get the Path and Hash
+  var path = window.location.pathname;
   var hash = window.location.hash;
   
-  $('.rootpage').hide();
-  $('.subpage').hide();
+  $('.rootpage, .subpage').hide();
   
   if (hash) {
     $(hash).show();
@@ -48,22 +48,55 @@ function active_subpage($selector) {
     $('.rootpage').show();
   }
   
-  $('.nav .sub-nav a').click(function() {
-    var href = $(this).attr('href');
-    var hash = href.substring(href.indexOf('#'));
+  $('.rootnav a, .breadcrumb a').click(function() {
+    var this_href = $(this).attr('href');
+    var this_hash = this_href.substring(this_href.indexOf('#'));
     
-    $(this).closest('ul').find('li').removeClass('active');
-    $(this).closest('li').addClass('active');
+    if(this_href === this_hash && this_hash === path && path === this_href) {
+      $('.rootpage, .subpage').fadeOut(250, function() {
+        setTimeout(function() {
+          $('.rootpage').fadeIn(250);
+        }, 250);
+      });
+      
+      $('html, body').animate({
+        scrollTop: 0
+      });
+            
+      // Update navigation
+      $('.subnav li').removeClass('active');
+      
+      // Re,pve
+      window.location.hash = '';
+      
+      return false;
+    }
     
-    $('.rootpage').fadeOut(250);
-    $('.subpage').fadeOut(250, function() {
+  });
+  
+  $('.subnav a').click(function() {
+    var this_href = $(this).attr('href');
+    var this_hash = this_href.substring(this_href.indexOf('#'));
+    
+    $('.page').fadeOut(250, function() {
       setTimeout(function() {
-        $(hash).fadeIn(250);
+        $(this_hash).fadeIn(250);
       }, 250);
     });
     
+    
     $('html, body').animate({
       scrollTop: 0
+    });
+    
+    // Update navigation
+    $('.subnav li').removeClass('active');
+    $('.subnav li a').each(function() {
+      var href = $(this).attr('href');
+              
+      if (this_href === href) {
+        $(this).closest('li').addClass('active');
+      }
     });
     
   });

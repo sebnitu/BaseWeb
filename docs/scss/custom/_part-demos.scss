@@ -3,19 +3,19 @@
 ==============================================================================*/
 
 .demo-grid {
-  margin: 20px 0;
+  margin: 1.5rem 0;
 }
 .demo-grid .col {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 .demo-grid .col p {
   margin: 0;
-  padding: 15px 20px;
+  padding: 1rem;
   background: $bg-color;
   font-family: $font-family-mono;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: px-to-em(14px);
+  line-height: 1.5em;
   text-align: center;
   @include border-radius();
 }
@@ -29,13 +29,14 @@
   .demo-aside,
   .demo-article {
     background: rgba($blue, 0.1);
+    
     &:before {
       display: block;
       margin: 0;
-      padding: 15px 20px;
+      padding: 1rem;
       font-family: $font-family-mono;
-      font-size: 12px;
-      line-height: 20px;
+      font-size: px-to-em(14px);
+      line-height: 1.5em;
       text-align: center;
     }
   }
@@ -75,8 +76,8 @@
  * Nested Grid Demo
  */
 .demo-grid-nested {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 .demo-grid-nested .col {
   margin-top: 0;
@@ -84,7 +85,7 @@
   background: rgba($blue, 0.1);
 }
 .demo-grid-nested .col p {
-  margin: 10px 0;
+  margin: 0.75rem 0;
   @include text-truncate();
 }
 
@@ -98,8 +99,8 @@
  */
 .demo {
   position: relative;
-  margin: 20px 0;
-  padding: 10px 20px;
+  margin: 1.5rem 0;
+  padding: 1rem 2rem;
   overflow: auto;
   background: rgba($white, 0.75);
   @include border-radius();
@@ -278,11 +279,12 @@
  * Text Truncate
  */
 .demo-text-truncate {
-  background: $blue-green-darker;
+  background: $blue-green;
   width: 200px;
   max-width: 100%;
   margin: 10px auto;
   padding: 10px 20px;
+  padding: 0.75rem 1.25rem;
   color: $white;
   @include box-sizing(border-box);
   @include border-radius();
@@ -299,7 +301,7 @@
 %triangle {
   @include make-triangle-base();
   vertical-align: middle;
-  margin: 10px 0;
+  margin: 0.5rem 0;
 }
 .example-triangle-1 {
   @extend %triangle;
@@ -308,7 +310,7 @@
 .example-triangle-2 {
   @extend %triangle;
   @include make-triangle( 14px, $blue-violet-darker, 'down' );
-  margin: 15px 0;
+  margin: 1rem 0;
 }
 .example-triangle-3 {
   @extend %triangle;
@@ -331,7 +333,7 @@
 ==============================================================================*/
 
 .demo form {
-  margin: 10px 0;
+  margin: 1rem 0;
 }
 
 /*==============================================================================
@@ -339,13 +341,13 @@
 ==============================================================================*/
 
 .demo-buttons {
-  padding: 15px 20px;
+  padding: 1rem 2rem;
   font-size: 0;
   line-height: 0;
   text-align: center;
   
   .btn {
-    margin: 5px;
+    margin: 0.5rem;
     vertical-align: middle;
   }
 }
@@ -356,7 +358,7 @@
     'color' : $white,
     'background' : $violet
   ));
-  margin: 10px 5px;
+  margin: 0.5rem;
 }
 
 .demo .btn-custom-size {

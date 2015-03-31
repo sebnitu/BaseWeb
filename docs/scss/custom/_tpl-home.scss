@@ -2,34 +2,25 @@
   @Home Structure
 ==============================================================================*/
 
-.template-home {
-  
-  .wrapper {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-  }
-  .header,
-  .main {
-    position: relative;
-    z-index: auto;
-    width: auto;
-    margin: 0;
-  }
-  .header {
-    height: auto;
-    padding: 3em 0;
-  }
-  .main {
-    min-height: 0;
-    padding: 3em 0;
-  }
-  
-  @include media-min('tablet') {
-    .header {
-      height: 50%;
-    }
+.home-header,
+.home-main {
+  position: relative;
+  z-index: auto;
+  width: auto;
+  margin: 0;
+}
+.home-header {
+  height: auto;
+  padding: 3em 0;
+}
+.home-main {
+  min-height: 0;
+  padding: 3em 0;
+}
+
+@include media-min('tablet') {
+  .home-header {
+    height: 50%;
   }
 }
 
@@ -64,7 +55,7 @@
   }
 }
 
-.main-inro .arrow {
+.home-main .arrow {
   &:after  { @include make-triangle(10px, $color-dark, 'down'); }
 }
 
@@ -72,48 +63,46 @@
   @Home Header
 ==============================================================================*/
 
-.template-home {
   
-  .header {
-    background: $color-dark;
-    text-align: center;
-  }
-  .header h1 {
-    float: none;
-    margin: 0 auto;
-    padding: 0;
-  }
-  .header h1 .logo {
-    display: block;
-    float: none;
-    margin: 0 auto;
+.home-header {
+  text-align: center;
+}
+.home-header h1 {
+  float: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.home-header h1 .logo {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  background-image: url('../img/baseweb-vert-white.svg');
+  background-size: 125px 75px;
+  @include size(125px, 75px);
+  @include text-hide();
+}
+.home-header .version {
+  display: inline-block;
+  margin: 10px 0 0;
+  color: $color;
+}
+
+@include media-min('mobile') {
+  .home-header h1 .logo {
     background-image: url('../img/baseweb-vert-white.svg');
-    background-size: 125px 75px;
-    @include size(125px, 75px);
+    background-size: 160px 97px;
+    @include size(160px, 97px);
   }
-  .header .version {
-    display: inline-block;
-    margin: 10px 0 0;
-    color: $color;
+}
+
+@include media-min('tablet') {
+  .home-header .version {
+    margin: 20px 0 0;
   }
-  
-  @include media-min('mobile') {
-    .header h1 .logo {
-      background-image: url('../img/baseweb-vert-white.svg');
-      background-size: 160px 97px;
-      @include size(160px, 97px);
-    }
-  }
-  
-  @include media-min('tablet') {
-    .header .version {
-      margin: 20px 0 0;
-    }
-    .header h1 .logo {
-      background-image: url('../img/baseweb-vert-white.svg');
-      background-size: 240px 145px;
-      @include size(240px, 145px);
-    }
+  .home-header h1 .logo {
+    background-image: url('../img/baseweb-vert-white.svg');
+    background-size: 240px 145px;
+    @include size(240px, 145px);
   }
 }
 
@@ -121,52 +110,49 @@
   @Home Content
 ==============================================================================*/
 
-.template-home {
-  
-  .main {
-    text-align: center;
-  }
-  .main .text-lead {
-    margin: 0 0 px-to-rem(40px);
-    padding: 0;
-  }
-  
-  @include media-min('mobile') {
-    .main .text-lead {
-      padding: 0 px-to-rem(60px);
-    }
-  }
-  
-  @include media-min('tablet') {
-    .main .text-lead {
-      padding: 0 px-to-rem(100px);
-    }
-  }
-  
+.home-main {
+  background: $gray-pale;
+  text-align: center;
+}
+.home-main .text-lead {
+  margin: 0 0 px-to-rem(40px);
+  padding: 0;
 }
 
+@include media-min('mobile') {
+  .home-main .text-lead {
+    padding: 0 px-to-rem(60px);
+  }
+}
+
+@include media-min('tablet') {
+  .home-main .text-lead {
+    padding: 0 px-to-rem(100px);
+  }
+}
+  
 /*==============================================================================
   @Home Navigation
 ==============================================================================*/
+  
+.home-main .action {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  padding: 0;
+}
+.home-main .action .btn {
+  display: block;
+  margin: 10px 0;
+}
 
-.template-home {
-  
-  .action {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    padding: 0;
+@include media-min('tablet') {
+  .home-main .action {
+    float: none;
   }
-  
-  @include media-min('tablet') {
-    .action {
-      float: none;
-    }
-    .action .btn {
-      display: inline-block;
-      margin: 0 5px;
-      float: none;
-    }
+  .home-main .action .btn {
+    display: inline-block;
+    margin: 0 5px;
+    float: none;
   }
-  
 }
