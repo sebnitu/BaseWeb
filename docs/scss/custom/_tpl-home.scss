@@ -8,28 +8,27 @@
   z-index: auto;
   width: auto;
   margin: 0;
+  padding: 3em 0;
 }
 .home-header {
-  height: auto;
-  padding: 3em 0;
+
 }
 .home-main {
-  min-height: 0;
-  padding: 3em 0;
+  margin: 0 1rem 1rem;
+  padding: 1.5rem 0;
+  @include border-radius();
 }
 
 @include media-min('tablet') {
-  .home-header {
-    height: 50%;
+  .home-main {
+    margin: 0;
+    @include border-radius(0);
   }
 }
 
 /**
  * Content Arrow
  */
-%home-triangle {
-  @include make-triangle-base();
-}
 .arrow {
   position: absolute;
   z-index: 15;
@@ -39,24 +38,24 @@
   width: 20px;
   height: 20px;
   
-  &:before {
-    @extend %home-triangle;
-    position: absolute;
-    z-index: 2;
-    top: 10px;
-    left: 0;
-  }
   &:after {
-    @extend %home-triangle;
+    @include make-triangle-base();
     position: absolute;
     z-index: 1;
-    top: 10px;
     left: 0;
   }
 }
 
-.home-main .arrow {
-  &:after  { @include make-triangle(10px, $color-dark, 'down'); }
+.home-main .arrow:after {
+  @include make-triangle(10px, $gray-pale, 'up');
+  top: 0;
+}
+
+@include media-min('tablet') {
+  .home-main .arrow:after { 
+    @include make-triangle(10px, $color-dark, 'down');
+    top: 10px;
+  }
 }
 
 /*==============================================================================
@@ -115,19 +114,19 @@
   text-align: center;
 }
 .home-main .text-lead {
-  margin: 0 0 px-to-rem(40px);
+  margin: 0 0 2rem;
   padding: 0;
 }
 
 @include media-min('mobile') {
   .home-main .text-lead {
-    padding: 0 px-to-rem(60px);
+    padding: 0 3rem;
   }
 }
 
 @include media-min('tablet') {
   .home-main .text-lead {
-    padding: 0 px-to-rem(100px);
+    padding: 0 6rem;
   }
 }
   
@@ -143,7 +142,11 @@
 }
 .home-main .action .btn {
   display: block;
-  margin: 10px 0;
+  margin: 0 0 0.75rem 0;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 @include media-min('tablet') {

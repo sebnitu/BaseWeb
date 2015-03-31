@@ -34,7 +34,12 @@ body {
  * Layout
  */
 .header {
-  position: relative;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $color-dark;
 }
 .inner-header {
   position: relative;
@@ -43,8 +48,9 @@ body {
 
 .main {
   position: relative;
+  min-height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 62px 0 0 0;
   background: $gray-pale;
 }
 .content {
@@ -55,9 +61,6 @@ body {
 @include media-min(720px) {
   
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 250px;
     height: 100%;
     padding: 0;
@@ -75,8 +78,8 @@ body {
   }
   
   .main {
-    min-height: 100%;
     margin: 0 0 0 250px;
+    padding: 0;
   }
   
 }

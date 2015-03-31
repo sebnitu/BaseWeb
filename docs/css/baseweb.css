@@ -1269,7 +1269,12 @@ body {
  * Layout
  */
 .header {
-  position: relative; }
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #303030; }
 
 .inner-header {
   position: relative;
@@ -1277,8 +1282,9 @@ body {
 
 .main {
   position: relative;
+  min-height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 62px 0 0 0;
   background: #efefef; }
 
 .content {
@@ -1287,9 +1293,6 @@ body {
 
 @media (min-width: 720px) {
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 250px;
     height: 100%;
     padding: 0;
@@ -1303,8 +1306,8 @@ body {
       display: block;
       height: 158px; }
   .main {
-    min-height: 100%;
-    margin: 0 0 0 250px; } }
+    margin: 0 0 0 250px;
+    padding: 0; } }
 
 @media (min-width: 960px) {
   .header {
@@ -1715,32 +1718,22 @@ body {
   position: relative;
   z-index: auto;
   width: auto;
-  margin: 0; }
-
-.home-header {
-  height: auto;
+  margin: 0;
   padding: 3em 0; }
 
 .home-main {
-  min-height: 0;
-  padding: 3em 0; }
+  margin: 0 1rem 1rem;
+  padding: 1.5rem 0;
+  border-radius: 3px; }
 
 @media (min-width: 760px) {
-  .home-header {
-    height: 50%; } }
+  .home-main {
+    margin: 0;
+    border-radius: 0; } }
 
 /**
  * Content Arrow
  */
-.arrow:before, .arrow:after {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 0 none;
-  border-style: solid;
-  border-color: transparent; }
-
 .arrow {
   position: absolute;
   z-index: 15;
@@ -1749,20 +1742,28 @@ body {
   margin: -10px 0 0 -10px;
   width: 20px;
   height: 20px; }
-  .arrow:before {
-    position: absolute;
-    z-index: 2;
-    top: 10px;
-    left: 0; }
   .arrow:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0 none;
+    border-style: solid;
+    border-color: transparent;
     position: absolute;
     z-index: 1;
-    top: 10px;
     left: 0; }
 
 .home-main .arrow:after {
-  border-width: 10px 10px 0 10px;
-  border-top-color: #303030; }
+  border-width: 0 10px 10px 10px;
+  border-bottom-color: #efefef;
+  top: 0; }
+
+@media (min-width: 760px) {
+  .home-main .arrow:after {
+    border-width: 10px 10px 0 10px;
+    border-top-color: #303030;
+    top: 10px; } }
 
 /*==============================================================================
   @Home Header
@@ -1818,16 +1819,16 @@ body {
   text-align: center; }
 
 .home-main .text-lead {
-  margin: 0 0 2.5rem;
+  margin: 0 0 2rem;
   padding: 0; }
 
 @media (min-width: 480px) {
   .home-main .text-lead {
-    padding: 0 3.75rem; } }
+    padding: 0 3rem; } }
 
 @media (min-width: 760px) {
   .home-main .text-lead {
-    padding: 0 6.25rem; } }
+    padding: 0 6rem; } }
 
 /*==============================================================================
   @Home Navigation
@@ -1840,7 +1841,9 @@ body {
 
 .home-main .action .btn {
   display: block;
-  margin: 10px 0; }
+  margin: 0 0 0.75rem 0; }
+  .home-main .action .btn:last-child {
+    margin-bottom: 0; }
 
 @media (min-width: 760px) {
   .home-main .action {
