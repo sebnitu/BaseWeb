@@ -22,17 +22,16 @@
       }, 1);
     }
     
-    active_nav($('.nav'));
-    active_subpage($('.subpage'));
+    active_nav();
+    active_subpage();
     examples();
     
-    /*
     var $body = $('html, body');
     var content = $('#wrapper').smoothState({
       prefetch: true,
       // pageCacheSize: 4,
       onStart: {
-        duration: 250,
+        duration: 0,
         render: function (url, $container) {
           content.toggleAnimationClass('is-exiting');
           $body.animate({
@@ -43,13 +42,13 @@
       callback: function(url, $container, $content) {
         
         Prism.highlightAll();
-        active_nav($('.nav'));
-        active_subpage($('.subpage'));
+        
+        active_nav();
+        active_subpage();
         examples();
         
       }
     }).data('smoothState');
-    */
     
   });
 

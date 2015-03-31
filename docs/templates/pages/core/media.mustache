@@ -1,18 +1,18 @@
-<h1 class="docs-header">Media Queries</h1>
+<h1>Media Queries</h1>
 
 <p>The core framework mixins that deal with media queries. These break down to three primary mixins for setting minimum width, maximum width and retina display mixins.</p>
 
 <ul class="docs-list">
 
   <li>
-    <h2 class="docs-header">media-min</h2>
+    <h2>media-min</h2>
     <p>A media query mixin that deifnes a query using min-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
     <pre class="language-scss"><code>@mixin media-min( $point ) { @content }
 // @param $point
 //   @type map key | unit (pixel)
 // @param @content (passed in brackets)
 //   @type style block</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 .something {
   width: 100%;
@@ -35,7 +35,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">media-max</h2>
+    <h2>media-max</h2>
     <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
     <p>This mixin will shave a pixel off your breakpoint value so that it never overlaps with a breakpoint that might be used in the <code>media-min</code> mixin except when a pixel value is passed directly.</p>
     <pre class="language-scss"><code>@mixin media-max( $point ) { @content }
@@ -43,7 +43,7 @@
 //   @type map key | unit (pixel)
 // @param @content (passed in brackets)
 //   @type style block</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 .something {
   width: 300px;
@@ -66,12 +66,12 @@
   </li>
   
   <li>
-    <h2 class="docs-header">media-retina</h2>
+    <h2>media-retina</h2>
     <p>This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
     <pre class="language-scss"><code>@mixin media-retina() { @content }
 // @param @content (passed in brackets)
 //   @type style block</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 .logo {
   background-image: src('logo.png');

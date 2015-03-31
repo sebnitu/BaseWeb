@@ -1,4 +1,4 @@
-<h1 class="docs-header">Grid System</h1>
+<h1>Grid System</h1>
 <p>BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure.</p>
 
 <pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
@@ -45,7 +45,7 @@
   @include build-grid-system(('total-width': 960px));
 }</code></pre>
 
-<h2 class="docs-header">Semantic Grids</h2>
+<h2>Semantic Grids</h2>
 
 <p>The BaseWeb grid system also supports the use of semantic grids. That means you can define a grid without having to use grid classes and instead use mixins to define grid elements directly in your stylesheets.</p>
 
@@ -94,7 +94,7 @@
   </div>
 </div>
 
-<h2 class="docs-header">Prefix and Suffix</h2>
+<h2>Prefix and Suffix</h2>
 
 <p>You can also create spacing on columns using the prefix and suffix modifiers. These classes are used by adding the prefix and suffix class with the appropriate amount of column spacing you want to be added before or after a column.</p>
 
@@ -134,7 +134,7 @@
   </div>
 </div>
 
-<h2 class="docs-header">Nested Columns</h2>
+<h2>Nested Columns</h2>
 
 <p>You can created nested columns in your grid system by adding a new row element inside a column. It's important to note that the first element inside a row should always be a column. Otherwise, you'll need to either manually remove the gutter margin or use the <code>.col-no-gutter</code> modifier class.</p>
 
@@ -187,13 +187,13 @@
 <hr class="docs-hr">
 
 <section class="sub-section sub-section-functions">
-<h1 class="docs-header">Grid Functions</h1>
+<h1>Grid Functions</h1>
 <p>These functions are used to calculate specific grid maths such as the width a set number of columns should span. These are used within grid mixins and are often used when defining semantic grid systems.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">column-width</h2>
+    <h2>column-width</h2>
     <p>A function that returns the width of a column span.</p>
     <pre class="language-scss"><code>@function column-width( $index, $options: () )
 // @param $index
@@ -206,7 +206,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">spacing-width</h2>
+    <h2>spacing-width</h2>
     <p>A function that returns the spacing of a column span.</p>
     <pre class="language-scss"><code>@function spacing-width( $index, $options: () )
 // @param $index
@@ -222,13 +222,13 @@
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">Grid Mixins</h1>
+<h1>Grid Mixins</h1>
 <p>These mixins are used to output styles that define a grid system's components. Such as grid containers, rows and columns as well as modifier classes like prefix and suffix spacing. They are also used for outputting the class based grid system.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">make-container</h2>
+    <h2>make-container</h2>
     <p>Outputs all the styles needed to make an element a grid container.</p>
     <pre class="language-scss"><code>@mixin make-container( $options: () )
 // @param $options
@@ -237,7 +237,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-row</h2>
+    <h2>make-row</h2>
     <p>Outputs all the styles needed to make an element a grid row.</p>
     <pre class="language-scss"><code>@mixin make-row( $options: () )
 // @param $options
@@ -246,7 +246,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-column-base</h2>
+    <h2>make-column-base</h2>
     <p>Creates the base styles for a column but excludes setting the width.</p>
     <pre class="language-scss"><code>@mixin make-column-base( $options: () )
 // @param $options
@@ -255,7 +255,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-column</h2>
+    <h2>make-column</h2>
     <p>Creates all the styles for a column and sets its width.</p>
     <pre class="language-scss"><code>@mixin make-column( $index, $options: () )
 // @param $index
@@ -267,7 +267,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">add-prefix</h2>
+    <h2>add-prefix</h2>
     <p>Creates the base styles for a column and sets its width.</p>
     <pre class="language-scss"><code>@mixin add-prefix( $index, $options: () )
 // @param $index
@@ -279,7 +279,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">add-suffix</h2>
+    <h2>add-suffix</h2>
     <p>Creates the base styles for a spacing suffix.</p>
     <pre class="language-scss"><code>@mixin add-suffix( $index, $options: () )
 // @param $index
@@ -291,13 +291,13 @@
   </li>
   
   <li>
-    <h2 class="docs-header">build-grid-system</h2>
+    <h2>build-grid-system</h2>
     <p>Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.</p>
     <pre class="language-scss"><code>@mixin build-grid-system( $grid-type | $options: () )
 // @param $grid-type | $options
 //   @type string | map
 //   @default $grid map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <p>The most basic use of <code>build-grid-system()</code> is to output mobile styles and within a media query output our standard grid system. This is present in your <code>custom/_custom.scss</code> file by default.</p>
     <pre class="language-scss"><code>// Output our mobile grid system classes.
 @include build-grid-system(mobile);
@@ -307,7 +307,7 @@
   // Output our standard grid system using all our default settings.
   @include build-grid-system();
 }</code></pre>
-    <h3 class="docs-header">Classes Output</h3>
+    <h3>Classes Output</h3>
     <p>These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our <code>$grid</code> map.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;

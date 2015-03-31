@@ -56,28 +56,59 @@ body {
   min-height: 100%;
 }
 body {
-  background: $gray-pale;
+  background: $color-dark;
 }
 .wrapper {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
-.header,
-.main,
-.footer {
-  padding: 20px 0;
+.template {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-@include media-min('tablet') {
-  
-  .header,
-  .main,
-  .footer {
-    padding: 40px 0;
-  }
-  
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+}
+.inner-header {
+  position: relative;
+  padding: 30px 0 30px 30px;
+}
+
+.main {
+  position: relative;
+  min-height: 100%;
+  margin: 0 0 0 300px;
+  padding: 0;
+  background: $gray-pale;
+}
+.content {
+  position: relative;
+  margin: 0;
+}
+.content-inner {
+  max-width: 700px;
+}
+
+/**
+ * Pages
+ */
+.content .page {
+  padding: 4.5em 9em 9em;
+}
+.content .rootpage {
+
+}
+.content .subpage {
+  display: none; // Hide because we show these pages with JS
 }
 
 /**
@@ -89,46 +120,15 @@ body {
     height: 50%;
     margin: 0;
     padding: 0;
-    // @include transform-style(preserve-3d);
   }
   .vertical-full {
     position: relative;
     height: 100%;
     margin: 0;
     padding: 0;
-    // @include transform-style(preserve-3d);
   }
   .vertical-center {
     @include vertical-center();
-  }
-}
-
-/**
- * Hide elements we will use JS to reveal
- */
-.content .subpage {
-  display: none;
-}
-
-/*
- * Smooth State Page Transitions
- */
-.scene .scene-element {
-  // @include animation(fadeIn 0.25s linear 0 normal both);
-}
-.scene.is-exiting .scene-element {
-  // @include animation-direction(alternate-reverse);
-}
-
-/*
- * Keyframes
- */
-@include keyframes('fadeIn') {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
@@ -137,8 +137,9 @@ body {
 ==============================================================================*/
 
 .header {
+  font-size: px-to-em(14px);
+  line-height: px-to-rem(20px);
   color: $color-light;
-  background: $white;
 }
 .header .container {
   position: relative;
@@ -148,149 +149,104 @@ body {
  * Logo
  */
 .header h1 {
-  margin: 0 auto 20px;
-  padding: 0;
+  margin: 0 0 30px;
+  padding: 30px 30px 30px 0;
   @include clearfix();
 }
 .header h1 .logo {
   display: block;
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   border: 0 none;
-  @include baseweb-logo('hori-black');
+  @include baseweb-logo('hori-white');
   @include text-hide();
 }
 
-@include media-min('tablet') {
-  
-  .header h1 {
-    float: left;
-    margin: 0;
-  }
-  
-}
-
 /**
- * Version
+ * Action
  */
-.header p {
-  display: none;
+.header .action {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 30px;
+  font-size: 0;
 }
-
-@include media-min('tablet') {
-  .header p {
-    display: block;
-    float: left;
-    margin: 0 0 0 10px;
-  }
+.header .action p {
+  font-size: 0.9rem;
+  color: $color;
+  text-align: center;
 }
-
-/**
- * Navigation
- */
-.nav {
-  float: none;
-  margin: 0 auto;
-}
-.nav > ul {
+.header .action .btn {
   display: block;
-  margin: 0 0 20px 0;
-  list-style: none;
-  text-align: left;
-}
-.nav > ul > li {
-  display: block;
-  margin: 5px 0;
-}
-.nav > ul > li > a {
-  display: block;
-  padding: 11px 20px;
-  color: $color-dark;
-  border: 0 none;
-  background: rgba($black, 0.05);
-  @include border-radius();
-  
-  &:hover {
-    color: $color-dark;
-    background: rgba($black, 0.1);
-  }
-}
-.nav > ul > li.active > a {
-  color: $color-dark;
-  background: rgba($black, 0.1);
-  box-shadow: inset 0 1px 3px rgba($black, 0.1);
-}
+  margin: 0 0 10px 0;
+  background-clip: padding-box;
 
-.nav > .btn {
-  display: block;
-}
-
-@include media-min('tablet') {
-  .nav {
-    float: right;
-    font-size: 0;
-  }
-  .nav > ul {
-    display: inline-block;
-    margin: 0 5px 0 0;
-    border-top: 0 none;
-  }
-  .nav > ul > li {
-    display: inline-block;
-    margin: 0 5px;
-    border-bottom: 0 none;
-    font-size: $base-font-size;
-  }
-  .nav > .btn {
-    display: inline-block;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 /*==============================================================================
-  @Sidebar
+  @Navigation
 ==============================================================================*/
 
-.sidebar .nav {
+.nav {
   float: none;
 }
-.sidebar .nav ul {
+.nav ul {
   display: block;
   margin: 0;
   list-style: none;
 }
-.sidebar .nav ul li {
+.nav ul li {
   margin: 0;
 }
-.sidebar .nav ul li a {
+.nav ul li a {
   display: block;
   padding: 10px 0;
-  color: $color-dark;
+  color: $color-light;
   background: none;
   border: 0 none;
   @include border-radius(0);
-}
-.sidebar .nav ul li.active > a {
-  color: $color-dark;
-  font-weight: bold;
-  box-shadow: none;
-}
-
-@include media-min('tablet') {
   
-  .sidebar .nav ul {
-    margin: 0;
+  .icon {
+    opacity: 0.5;
+    margin-right: 5px;
+    @include transition();
   }
-  .sidebar .nav ul li {
-    display: block;
+}
+.nav ul li a:hover {
+  color: $white;
+  
+  .icon {
+    opacity: 1;
   }
-
-} 
+}
+.nav ul li.active > a {
+  color: $white;
+  
+  .icon {
+    opacity: 1;
+  }
+}
 
 /**
  * Root Nav
  */
-.sidebar .nav > ul > li {
-  border-top: 1px solid rgba($black, 0.1);
+.nav > ul.root-nav {
+  padding-bottom: 40px;
+}
+.nav > ul.root-nav > li:first-child > a {
+  color: $color-light;
+  
+  &:hover {
+    color: $white;
+  }
+}
+.nav > ul > li {
+  border-top: 1px solid rgba($white, 0.1);
   
   &:first-child {
     border-top: 0 none;
@@ -300,23 +256,23 @@ body {
 /**
  * Sub Nav
  */
-.sidebar .nav ul ul {
+.nav ul ul {
   padding: 0 0 5px 10px;
 }
-.sidebar .nav ul ul > li {
+.nav ul ul > li {
   margin: 0;
 }
-.sidebar .nav ul ul > li > a {
+.nav ul ul > li > a {
   padding: 5px 10px;
 }
 
 /**
  * Subnav Display
  */
-.sidebar .nav ul ul {
+.nav ul ul {
   display: none;
 }
-.sidebar .nav ul .active > ul {
+.nav ul .active > ul {
   display: block;
 }
 
@@ -333,17 +289,23 @@ body {
   vertical-align: middle;
 }
 .icon-folder {
-  background: url("../img/icon-folder.svg") no-repeat center center;
+  background: url("../img/icon-folder-white.svg") no-repeat center center;
   background-size: 20px 20px;
   
+  &.dark {
+    background: url("../img/icon-folder-black.svg") no-repeat center center;
+  }
   &.light {
     background: url("../img/icon-folder-white.svg") no-repeat center center;
   }
 }
 .icon-file {
-  background: url("../img/icon-file.svg") no-repeat center center;
+  background: url("../img/icon-file-white.svg") no-repeat center center;
   background-size: 20px 20px;
   
+  &.dark {
+    background: url("../img/icon-file-black.svg") no-repeat center center;
+  }
   &.light {
     background: url("../img/icon-file-white.svg") no-repeat center center;
   }
@@ -353,21 +315,50 @@ body {
   @Content
 ==============================================================================*/
 
+/**
+ * Page
+ */
+.page {
+  .breadcrumb {
+    margin: 0;
+  }
+  h1 {
+    margin-top: 0;
+  }
+}
+
+/**
+ * Rootpage
+ */
+.rootpage {
+  
+}
+
+/**
+ * Subpage
+ */
+.subpage {
+  
+}
+
+/**
+ * Docs List
+ */
 .docs-list,
 .docs-list-hover {
   list-style: none;
 }
 
 .docs-list {
-  margin: 30px 0;
+  margin: 1.5em 0;
 }
 .docs-list-hover {
-  margin: 20px 0;
+  margin: 1.5rem 0;
   
   li {
-    padding: 20px;
-    margin: 10px 0;
-    background: $white;
+    padding: 1.5rem;
+    margin: .75rem 0;
+    background: rgba($white, 0.75);
     @include border-radius();
   }
 }
@@ -386,10 +377,12 @@ body {
   }
   
   .title {
-    font-size: 18px;
-    line-height: 26px;
+    padding: 20px;
+    font-size: px-to-em(18px);
+    line-height: 1.5em;
     color: $color-dark;
-    background: rgba($white, 0.5);
+    background: rgba($white, 0.75);
+    @include font-weight('medium');
   }
   
   .left {
@@ -407,7 +400,7 @@ body {
   }
   
   .value {
-    color: $color;
+    color: $color-dark;
   }
   .light {
     color: $gray-light;
@@ -434,9 +427,8 @@ body {
     
   th {
     font-size: 18px;
-    line-height: 30px;
-    font-weight: 500;
-    padding: 10px 0;
+    line-height: 26px;
+    color: $color-dark;
   }
   code {
     margin: 0;

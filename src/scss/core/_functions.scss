@@ -44,6 +44,22 @@
   @return strip-units($px) * 1em;
 }
 
+// Pixels to Rems
+// Converts a pixel value to rems.
+// @param $px
+//   @type unit (pixel, number)
+// @return unit (rem)
+@function px-to-rem($px) {
+  @if unitless($px) {
+    $px: 1px * $px;
+  }
+  @if unitless($base-font-size) {
+    $base-font-size: 1px * $base-font-size;
+  }
+  $px: ($px / $base-font-size) * 1rem;
+  @return strip-units($px) * 1rem;
+}
+
 // Ems to Pixels
 // Converts an em value to pixels.
 // @param $px

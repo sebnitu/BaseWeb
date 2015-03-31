@@ -13,7 +13,7 @@
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/docs/img/favicon.png">
-  
+    
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" media="all" href="/docs/css/baseweb.min.css">
   
@@ -32,42 +32,31 @@
 <div class="template scene-element vertical-full">
   
   <header class="header">
-    <div class="container">
-      
+    <div class="inner-header">
+    
       <h1><a href="/" class="logo">{{ name }}</a></h1>
-      <p><span class="version">v{{ version }}</span></p>
       
-      <nav class="nav primary-nav">
-        <ul>
-          <li><a href="/docs/">Documentation</a></li>
-          <li><a href="/usage.html">Usage</a></li>
-          <li><a href="/about.html">About</a></li>
-        </ul>
+      <aside class="sidebar">
+        <nav class="nav">
+          {{ > nav }}
+        </nav>
+      </aside><!-- .sidebar -->
+    
+    </div>
+    
+    <div class="action">
+      <p><span class="version">Currently v{{ version }}</span></p>
+      <a href="{{ repository.url }}" class="btn btn-blue">Download {{ name }}</a>
+    </div>
         
-        <a href="{{ repository.url }}" class="btn btn-blue">Download</a>
-      </nav>
-        
-    </div><!-- .container -->
   </header><!-- .header -->
   
   <section class="main">
-    <div class="container">
+  
+    <div class="content">
+      {{ > page }}
+    </div><!-- .content -->
       
-      <div class="row">
-      
-        <aside class="sidebar col col-3">
-          <nav class="nav">
-            {{ > nav }}
-          </nav>
-        </aside><!-- .sidebar -->
-        
-        <div class="content col col-8 prefix-1">
-          {{ > page }}
-        </div><!-- .content -->
-      
-      </div><!-- .row -->
-      
-    </div><!-- .container -->
   </section><!-- .main -->
   
   <!--

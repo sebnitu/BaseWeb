@@ -1,10 +1,10 @@
-<h1 class="docs-header">Functions</h1>
+<h1>Functions</h1>
 <p>This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">map-fetch</h2>
+    <h2>map-fetch</h2>
     <p>An easy way to fetch a value in a multi-level map. Works much like <code>map-get()</code> except that you pass multiple keys as the second variable argument to go down multiple levels in the nested map.</p>
     <pre class="language-scss"><code>@function map-fetch( $map, $keys... )
 // @param $map
@@ -12,7 +12,7 @@
 // @param $keys...
 //   @type map keys</code></pre>
 
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 $map: (
   themes: (
@@ -46,7 +46,7 @@ $map: (
   </li>
   
   <li>
-    <h2 class="docs-header">strip-units</h2>
+    <h2>strip-units</h2>
     <p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12.</p>
     <pre class="language-scss"><code>@function strip-units( $val )
 // @param $val
@@ -55,7 +55,7 @@ $map: (
   </li>
 
   <li>
-    <h2 class="docs-header">px-to-em</h2>
+    <h2>px-to-em</h2>
     <p>Converts a pixel value to ems. By default it'll use the base font size, but can be passed a custom base font size.</p>
     <pre class="language-scss"><code>@function px-to-em( $px, $base )
 // @param $px
@@ -65,9 +65,18 @@ $map: (
 //   @default $base-font-size
 // @return unit (em)</code></pre>
   </li>
+  
+    <li>
+    <h2>px-to-rem</h2>
+    <p>Converts a pixel value to rems. Rem units use the base font size set on the <code>&lt;html&gt;</code> element which BaseWeb uses <code>$base-font-size</code> to set.</p>
+    <pre class="language-scss"><code>@function px-to-rem( $px )
+// @param $px
+//   @type unit (pixel, number)
+// @return unit (rem)</code></pre>
+  </li>
 
   <li>
-    <h2 class="docs-header">em-to-px</h2>
+    <h2>em-to-px</h2>
     <p>Converts an em value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
     <pre class="language-scss"><code>@function em-to-px( $em, $base )
 // @param $px

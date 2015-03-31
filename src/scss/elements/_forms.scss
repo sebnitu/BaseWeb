@@ -8,8 +8,8 @@ $forms: (
   'vertical-spacing' : 20px,
   'vertical-align' : 11px,
   'font-family' : inherit,
-  'font-size' : $base-font-size,
-  'line-height' : $base-line-height,
+  'font-size' : 14px,
+  'line-height' : 20px,
   'color' : $color,
   'color-label' : $color-dark,
   'color-placeholder' : #aaa,
@@ -210,7 +210,7 @@ form {
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0 5px 0;
-    font-size: ($base-font-size * 1.4);
+    font-size: (map-get($forms, 'font-size') * 1.4);
     line-height: 1.2em;
   }
   p {
@@ -230,7 +230,7 @@ form {
   .input-align {
     display: inline-block;
     margin: 0 10px 0 0;
-    font-size: $base-font-size;
+    font-size: map-get($forms, 'font-size');
     
     &:last-child {
       margin-right: 0;
@@ -265,7 +265,8 @@ form {
 label {
   display: inline-block;
   margin: 0 0 5px 0;
-  font-size: $base-font-size;
+  font-size: map-get($forms, 'font-size');
+  line-height: map-get($forms, 'line-height');
   font-weight: 600;
   color: map-get( $forms, 'color-label' );
   
@@ -443,7 +444,7 @@ select[size].input {
  */
 .note {
   margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
-  font-size: $base-font-size;
+  font-size: map-get($forms, 'font-size');
   color: $color-light;
   
   &:last-child {

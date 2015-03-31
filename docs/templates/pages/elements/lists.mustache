@@ -1,7 +1,7 @@
-<h1 class="docs-header">Lists</h1>
+<h1>Lists</h1>
 <p>Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.</p>
 
-<h2 class="docs-header">Unordered Lists</h2>
+<h2>Unordered Lists</h2>
 <p>The <code>&lt;ul&gt;</code> element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.</p>
 <pre class="language-markup"><code>&lt;ul&gt;
   &lt;li&gt;...&lt;/li&gt;
@@ -22,7 +22,7 @@
   </ul>
 </div>
 
-<h2 class="docs-header">Ordered Lists</h2>
+<h2>Ordered Lists</h2>
 <p>The <code>&lt;ol&gt;</code> element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.</p>
 <pre class="language-markup"><code>&lt;ol&gt;
   &lt;li&gt;...&lt;/li&gt;
@@ -43,7 +43,7 @@
   </ol>
 </div>
 
-<h2 class="docs-header">Description Lists</h2>
+<h2>Description Lists</h2>
 <p>The <code>&lt;dl&gt;</code> element represents an association list consisting of zero or more name-value groups (a description list).</p>
 <pre class="language-markup"><code>&lt;dl&gt;
   &lt;dt&gt;...&lt;/dt&gt;
@@ -61,7 +61,7 @@
 <hr class="docs-hr">
 
 <section class="sub-section sub-section-variables">
-<h1 class="docs-header">List Variables</h1>
+<h1>List Variables</h1>
 <p>List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
 
 <ul class="docs-list docs-list-hover">
@@ -85,19 +85,19 @@
 </section>
 
 <section class="sub-section sub-section-mixins">
-<h1 class="docs-header">List Mixins</h1>
+<h1>List Mixins</h1>
 <p>Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.</p>
 
 <ul class="docs-list">
   
   <li>
-    <h2 class="docs-header">make-list-base</h2>
+    <h2>make-list-base</h2>
     <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
     <pre class="language-scss"><code>@mixin make-list-base( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-list {
   @include make-list-base();
@@ -113,13 +113,13 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-list-rowed</h2>
+    <h2>make-list-rowed</h2>
     <p>Adds borders to a list that divide list items. Requires the use of base list styles through base list class, mixin or extend.</p>
     <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
   @include make-list-rowed();
@@ -164,13 +164,13 @@
   </li>
   
   <li>
-    <h2 class="docs-header">make-list-bordered</h2>
+    <h2>make-list-bordered</h2>
     <p>Adds borders to a list that wraps the list and divides list items. Requires the use of base list styles through base list class, mixin or extend.</p>
     <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
   @include make-list-bordered();
@@ -194,7 +194,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">add-list-rounded</h2>
+    <h2>add-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
     <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )
 // @param $radius
@@ -203,7 +203,7 @@
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
   @include make-list-bordered();
@@ -228,7 +228,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">add-list-stripes</h2>
+    <h2>add-list-stripes</h2>
     <p>Gives a list items alternating background colors.</p>
     <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
 // @param $nth
@@ -237,7 +237,7 @@
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
   @include make-list-bordered();
@@ -262,7 +262,7 @@
   </li>
   
   <li>
-    <h2 class="docs-header">add-list-hover</h2>
+    <h2>add-list-hover</h2>
     <p>Gives list hover styles for list items.</p>
     <pre class="language-scss"><code>@mixin add-list-hover( $bg-hover, $options: () )
 // @param $bg-hover
@@ -271,7 +271,7 @@
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
-    <h3 class="docs-header">Example Usage</h3>
+    <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
   @include make-list-base();
   @include make-list-bordered();

@@ -344,6 +344,34 @@
 // @Typography
 ////////////////////////////////////////////////////////////////////////////////
 
+// Font Weight
+// Output the font weight using the weight key to output the number weight.
+// @param $weight
+//   @type font-weight keyword (thing, hairline, light, regular, medium, semi-bold, bold, extra-bold, black)
+@mixin font-weight($weight) {
+  @if ($weight == 'thin') {
+    font-weight: 100;
+  } @else if ($weight == 'hairline') {
+    font-weight: 200;
+  } @else if ($weight == 'light') {
+    font-weight: 300;
+  } @else if ($weight == 'regular') {
+    font-weight: 400;
+  } @else if ($weight == 'medium') {
+    font-weight: 500;
+  } @else if ($weight == 'semi-bold') {
+    font-weight: 600;
+  } @else if ($weight == 'bold') {
+    font-weight: 700;
+  } @else if ($weight == 'extra-bold') {
+    font-weight: 800;
+  } @else if ($weight == 'black') {
+    font-weight: 900;
+  } @else {
+    font-weight: $weight;
+  }
+}
+
 // Hide text
 // Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
 @mixin text-hide() {

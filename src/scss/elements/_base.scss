@@ -67,10 +67,16 @@ footer, header, hgroup, menu, nav, section {
   }
 }
 
-.float-left {
-  float: left;
+// Outputs our float-left class if one is set in $class-float-left.
+@if ($class-float-left != none) {
+  .#{$class-float-left} {
+    float: left;
+  }
 }
 
-.float-right {
-  float: right;
+// Outputs our float-right class if one is set in $class-float-right.
+@if ($class-float-right != none) {
+  .#{$class-float-right} {
+    float: right;
+  }
 }

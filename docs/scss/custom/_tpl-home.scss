@@ -14,18 +14,21 @@
   .main {
     position: relative;
     z-index: auto;
+    width: auto;
     margin: 0;
   }
   .header {
-    padding: 40px 0;
+    height: auto;
+    padding: 3em 0;
   }
   .main {
-    padding: 40px 0 20px;
+    min-height: 0;
+    padding: 3em 0;
   }
   
   @include media-min('tablet') {
-    .main {
-      padding: 40px 0;
+    .header {
+      height: 50%;
     }
   }
 }
@@ -78,6 +81,7 @@
   .header h1 {
     float: none;
     margin: 0 auto;
+    padding: 0;
   }
   .header h1 .logo {
     display: block;
@@ -90,7 +94,7 @@
   .header .version {
     display: inline-block;
     margin: 10px 0 0;
-    color: rgba($white, 0.25);
+    color: $color;
   }
   
   @include media-min('mobile') {
@@ -123,26 +127,19 @@
     text-align: center;
   }
   .main .text-lead {
-    margin: 0 0 40px;
+    margin: 0 0 px-to-rem(40px);
     padding: 0;
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 300;
   }
   
   @include media-min('mobile') {
     .main .text-lead {
-      padding: 0 40px;
-      font-size: 22px;
-      line-height: 30px;
+      padding: 0 px-to-rem(60px);
     }
   }
   
   @include media-min('tablet') {
     .main .text-lead {
-      padding: 0 60px;
-      font-size: 26px;
-      line-height: 36px;
+      padding: 0 px-to-rem(100px);
     }
   }
   
@@ -154,8 +151,20 @@
 
 .template-home {
   
+  .action {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    padding: 0;
+  }
+  
   @include media-min('tablet') {
-    .nav {
+    .action {
+      float: none;
+    }
+    .action .btn {
+      display: inline-block;
+      margin: 0 5px;
       float: none;
     }
   }

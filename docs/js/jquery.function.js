@@ -10,13 +10,13 @@
 /**
  * Sets the active navigation elemnt base on URL Path and Hash
  */
-function active_nav($selector) {
+function active_nav() {
   // Get the Path and Hash
   var path = window.location.pathname;
   var hash = window.location.hash;
-      
+  
   // Active link based on current URL
-  $selector.find('a').each(function() {
+  $('.nav').find('a').each(function() {
     var href = $(this).attr('href');
     
     if (path.substring(0, href.length) === href) {
@@ -25,15 +25,10 @@ function active_nav($selector) {
     if (hash === href) {
       $(this).closest('li').addClass('active');
     }
-    
-    $('.nav .root-nav > li.active').find('.sub-nav').show();
-    
-    if (/#/.test($(this).attr('href'))) {
-      $(this).click(function() {
-        $selector.find('.sub-nav li').removeClass('active');
-        $(this).closest('li').addClass('active');
-      });
+    if (path + hash === href) {
+      $(this).closest('li').addClass('active');
     }
+    
   });
 }
 
@@ -45,7 +40,7 @@ function active_subpage($selector) {
   var hash = window.location.hash;
   
   $('.rootpage').hide();
-  $selector.hide();
+  $('.subpage').hide();
   
   if (hash) {
     $(hash).show();
@@ -55,17 +50,24 @@ function active_subpage($selector) {
   
   $('.nav .sub-nav a').click(function() {
     var href = $(this).attr('href');
+    var hash = href.substring(href.indexOf('#'));
+    
+    $(this).closest('ul').find('li').removeClass('active');
+    $(this).closest('li').addClass('active');
+    
     $('.rootpage').fadeOut(250);
-    $selector.fadeOut(250, function() {
-      // $(href).fadeIn(250);
+    $('.subpage').fadeOut(250, function() {
       setTimeout(function() {
-        $(href).fadeIn(250);
+        $(hash).fadeIn(250);
       }, 250);
     });
+    
     $('html, body').animate({
       scrollTop: 0
     });
+    
   });
+
 }
 
 /**
