@@ -5,11 +5,13 @@
 // Button Map
 // Define all the settings for form base elements, mixins and classes.
 $forms: (
-  'vertical-spacing' : 20px,
-  'vertical-align' : 11px,
+  'vertical-spacing' : 1.5em,
+  'vertical-align' : 0.75em,
   'font-family' : inherit,
-  'font-size' : 14px,
-  'line-height' : 20px,
+  'base-font-size' : 1em,
+  'base-line-height' : 1.5em,
+  'font-size' : 1em,
+  'line-height' : 1.5em,
   'color' : $color,
   'color-label' : $color-dark,
   'color-placeholder' : #aaa,
@@ -17,9 +19,9 @@ $forms: (
   'border-radius' : $border-radius,
   
   'input' : (
-    'padding' : 10px,
+    'padding' : 0.75em,
     'background' : rgba($white, 0.5),
-    'border' : 1px solid rgba($black, 0.15),
+    'border' : 1px solid rgba($black, 0.2),
     'box-shadow' : (0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)),
     
     'focus' : (
@@ -30,9 +32,9 @@ $forms: (
   ),
   
   'choice' : (
-    'padding' : 11px 25px 11px 35px,
+    'padding' : 0.75em 0.75em 0.75em 2.25em,
     'background' : rgba($black, 0.05),
-    'border' : none,
+    'border' : 1px solid transparent,
     'box-shadow' : none,
   )
 ) !default;
@@ -91,13 +93,9 @@ $forms: (
 @mixin make-form-group-inline($options: ()) {
   $o: map-merge( $forms, $options);
   
-  margin-right: -10px;
+  @include clearfix();
+  margin-right: -(map-get( $forms, 'vertical-align' ));
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
-  font-size: 0;
-  
-  > * {
-    font-size: map-get( $o, 'font-size' );
-  }
   
   &:last-child {
     margin-bottom: -(map-get( $o, 'vertical-spacing' ) / 2);
@@ -112,11 +110,10 @@ $forms: (
 @mixin make-input-inline($options: ()) {
   $o: map-merge( $forms, $options);
   
-  display: inline-block;
+  float: left;
   width: auto;
-  margin-right: 10px;
+  margin-right: map-get( $o, 'vertical-align' );
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
-  font-size: map-get( $o, 'font-size' );
 }
 
 /*==============================================================================
@@ -128,6 +125,8 @@ $forms: (
  */
 form {
   margin: (map-get( $forms, 'vertical-spacing' ) * 1.5) 0;
+  font-size: map-get($forms, 'base-font-size');
+  line-height: map-get($forms, 'base-line-height');
 }
 
 /**
@@ -144,10 +143,10 @@ fieldset {
  */
 legend {
   display: inline-block;
-  margin: 0 -10px 10px;
-  padding: 0 10px;
-  font-size: 18px;
-  line-height: 26px;
+  margin: 0 -(map-get( $forms, 'vertical-spacing' ) / 2) (map-get( $forms, 'vertical-spacing' ) / 2);
+  padding: 0 (map-get( $forms, 'vertical-spacing' ) / 2);
+  font-size: px-to-em(22px);
+  line-height: 1.5em;
   font-weight: bold;
   color: map-get( $forms, 'color-label' );
   border: 0 none;
@@ -194,7 +193,7 @@ form {
   .input-group {
     display: inline-block;
     vertical-align: top;
-    margin: 0 10px 0 0;
+    margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
     
     &:last-child {
       margin-right: 0;
@@ -209,7 +208,7 @@ form {
   @include make-form-group-base();
   
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 5px 0;
+    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     font-size: (map-get($forms, 'font-size') * 1.4);
     line-height: 1.2em;
   }
@@ -224,16 +223,21 @@ form {
  */
 .form-action {
   @include make-form-group-base();
-  font-size: 0;
+  @include clearfix();
   
   .btn,
   .input-align {
-    display: inline-block;
-    margin: 0 10px 0 0;
-    font-size: map-get($forms, 'font-size');
+    float: left;
+    margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
     
     &:last-child {
       margin-right: 0;
+    }
+    
+    @if ($class-float-right != none) {
+      &.#{$class-float-right} {
+        float: right;
+      }
     }
   }
   .input-align {
@@ -264,7 +268,7 @@ form {
  */
 label {
   display: inline-block;
-  margin: 0 0 5px 0;
+  margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 3) 0;
   font-size: map-get($forms, 'font-size');
   line-height: map-get($forms, 'line-height');
   font-weight: 600;
@@ -290,16 +294,22 @@ label {
   &.label-block {
     display: block;
     padding-top: map-get( $forms, 'vertical-align' );
+    border-top: map-fetch( $forms, 'input', 'border' );
+    border-color: transparent;
   }
   &.label-inline {
     display: inline-block;
     padding-top: map-get( $forms, 'vertical-align' );
+    border-top: map-fetch( $forms, 'input', 'border' );
+    border-color: transparent;
   }
 }
 .inline-group {
   label.label-block,
   label.label-inline {
     padding-bottom: map-get( $forms, 'vertical-align' );
+    border-top: map-fetch( $forms, 'input', 'border' );
+    border-color: transparent;
   }
 }
 
@@ -378,12 +388,15 @@ label {
   input[type="checkbox"],
   input[type="radio"] {
     position: absolute;
-    margin: 4px 0 0 -20px;
+    top: auto;
+    margin: 5px 0 0 -20px;
   }
 }
 
 input[type="checkbox"],
 input[type="radio"] {
+  position: relative;
+  top: -1px;
   margin: 0 5px 0 0;
   
   &[disabled] {
@@ -406,7 +419,9 @@ input[type="search"] {
   -webkit-appearance: none;
 }
 input[type="color"].input {
-  padding: 5px;
+  width: 3.125rem;
+  height: 3.125rem;
+  padding: (map-fetch( $forms, 'input', 'padding' ) / 3);
 }
 
 /**
