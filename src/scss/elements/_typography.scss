@@ -2,6 +2,12 @@
   @Typography
 ==============================================================================*/
 
+// Set the base font size to HTML because that's what is used to size off of rem units
+html {
+  font-size: $base-font-size;
+}
+
+// Base font settings
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;
@@ -34,20 +40,21 @@ h1 {
   font-size: 3em;
 }
 h2 {
-  font-size: 2.5em;
-}
-h3 {
   font-size: 2em;
 }
-h4 {
+h3 {
   font-size: 1.5em;
+}
+h4 {
+  font-size: 1.25em;
 }
 h5 {
   font-size: 1.25em;
+  color: rgba($color-header, 0.6);
 }
 h6 {
   font-size: 1.25em;
-  color: $color-light;
+  color: rgba($color-header, 0.3);
 }
 
 /**
@@ -107,10 +114,12 @@ abbr[data-original-title] {
   font-size: px-to-em(22px);
   line-height: 1.4em;
   color: $color-dark;
+  @include font-weight(light);
 }
 
 .text-small {
   font-size: 0.8em;
+  line-height: 1.5em;
 }
 .text-soften {
   font-weight: $base-font-weight;

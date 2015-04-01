@@ -59,7 +59,7 @@ function active_subpage($selector) {
         }, 250);
       });
       
-      $('html, body').animate({
+      $('html, body, .main').animate({
         scrollTop: 0
       });
             
@@ -84,8 +84,7 @@ function active_subpage($selector) {
       }, 250);
     });
     
-    
-    $('html, body').animate({
+    $('html, body, .main').animate({
       scrollTop: 0
     });
     
