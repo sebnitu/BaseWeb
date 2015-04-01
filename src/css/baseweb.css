@@ -375,7 +375,7 @@ table {
   background: none;
   border-collapse: separate; }
   .table td, .table th {
-    padding: 1rem; }
+    padding: 0.75rem; }
 
 /**
  * Border Variations
@@ -403,10 +403,10 @@ table {
  * Padding Variations
  */
 .table-condensed td, .table-condensed th {
-  padding: 0.5rem; }
+  padding: 0.25rem; }
 
 .table-expanded td, .table-expanded th {
-  padding: 1.5rem; }
+  padding: 1.25rem; }
 
 /**
  * Miscellaneous Modifiers
@@ -621,6 +621,8 @@ form .col:last-child {
     width: auto;
     margin-right: 0.75em;
     margin-bottom: 0.75em; }
+    .form-group.inline-group > *.float-right {
+      float: right; }
   .form-group.inline-group .form-group, .form-group.inline-group .input-group {
     display: inline-block;
     vertical-align: top;
@@ -662,7 +664,14 @@ form .col:last-child {
     .form-action .btn.float-right, .form-action .input-align.float-right {
       float: right; }
   .form-action .input-align {
-    margin-top: 0.75em; }
+    margin-top: 0.75em;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-color: transparent; }
+  .form-action.form-action-center {
+    text-align: center; }
+    .form-action.form-action-center .btn, .form-action.form-action-center .input-align {
+      display: inline-block;
+      float: none; }
 
 /**
  * Input Group
@@ -686,6 +695,8 @@ form .col:last-child {
     width: auto;
     margin-right: 0.75em;
     margin-bottom: 0.75em; }
+    .input-group.inline-group > *.float-right {
+      float: right; }
 
 /*==============================================================================
   @Form Elements
@@ -882,6 +893,8 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   width: auto;
   margin-right: 0.75em;
   margin-bottom: 0.75em; }
+  label.inline.float-right, .btn.inline.float-right, .input.inline.float-right, .checkbox.inline.float-right, .radio.inline.float-right, .choice.inline.float-right, .inline-group label.float-right, .inline-group .btn.float-right, .inline-group .input.float-right, .inline-group .checkbox.float-right, .inline-group .radio.float-right, .inline-group .choice.float-right {
+    float: right; }
 
 /**
  * Disabled

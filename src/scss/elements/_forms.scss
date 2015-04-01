@@ -114,6 +114,12 @@ $forms: (
   width: auto;
   margin-right: map-get( $o, 'vertical-align' );
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
+  
+  @if ($class-float-right != none) {
+    &.#{$class-float-right} {
+      float: right;
+    }
+  }
 }
 
 /*==============================================================================
@@ -242,6 +248,19 @@ form {
   }
   .input-align {
     margin-top: map-get( $forms, 'vertical-align' );
+    border-top: map-fetch( $forms, 'input', 'border' );
+    border-color: transparent;
+  }
+  
+  &.form-action-center {
+    text-align: center;
+    
+    .btn,
+    .input-align {
+      display: inline-block;
+      float: none;
+      
+    }
   }
 }
 
