@@ -537,12 +537,12 @@ $edge-space: 3.125rem;
 ==============================================================================*/
 
 .subsection {
-  margin: 2rem (-($edge-space));
+  margin: 1.5rem (-($edge-space));
   border: 1px solid $border-color;
   @include border-radius();
   
   &.has-inner-subsection {
-    margin-top: 6rem;
+    margin-top: 3rem;
   }
   
   // Inner subsection
@@ -591,6 +591,18 @@ $edge-space: 3.125rem;
       @include font-weight('semi-bold');
     }
   }
+}
+
+@include media-min(560px) {
+  
+  .subsection {
+    margin: 2rem (-($edge-space));
+    
+    &.has-inner-subsection {
+      margin-top: 6rem;
+    }
+  }
+  
 }
 
 /*==============================================================================
