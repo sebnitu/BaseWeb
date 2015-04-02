@@ -18,7 +18,6 @@ Documentation is currently being worked on and you can view them if you clone or
 
 ## To-Do
 
-* Use ems for sizing typography, margins and padding.
 * Add some form of change or development log, similar to [Cargo Devlog](http://cargocollective.com/devlog).
 * Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the devlog and readme.
 * `npm install` latest versions of node packages and fix any issues with build scripts.
