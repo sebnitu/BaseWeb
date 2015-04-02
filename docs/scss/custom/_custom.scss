@@ -121,7 +121,7 @@ body {
     padding: 3em 6em 6em;
   }
 }
-@include media-min(1250px) {
+@include media-min(1290px) {
   .content .page {
     padding: 4.5em 9em 9em;
   }
@@ -383,7 +383,7 @@ body {
   @Content
 ==============================================================================*/
 
-$edge-space: 4rem;
+$edge-space: 3.125rem;
 
 /**
  * Page
@@ -450,7 +450,7 @@ $edge-space: 4rem;
   list-style: none;
 }
 .docs-list-hover {
-  @include make-list-base(('padding': 1rem, 'margin': 2rem 0));
+  @include make-list-base(('margin': 2rem 0, 'padding': 1rem));
   @include make-list-bordered();
   @include add-list-rounded();
   @include add-list-hover(rgba($white, 0.5));
@@ -459,7 +459,7 @@ $edge-space: 4rem;
     overflow: auto;
     
     &.list-sep {
-      border-top: 2px solid rgba($black, 0.05);
+      border-top: 2px solid rgba($black, 0.1);
     }
   }
   
@@ -468,6 +468,10 @@ $edge-space: 4rem;
     line-height: 1.5em;
     color: $color-dark;
     @include font-weight('semi-bold');
+    
+    &:hover {
+      background: none;
+    }
   }
   
   .left {
@@ -480,7 +484,7 @@ $edge-space: 4rem;
     display: block;
     margin-top: 0.75rem;
     padding-top: 0.75rem;
-    border-top: 1px dotted rgba($black, 0.2);
+    border-top: 1px solid rgba($black, 0.05);
     @include clearfix();
   }
   
@@ -507,8 +511,10 @@ $edge-space: 4rem;
  * Docs Tables
  */
 .docs-table {
-  @include make-table-base(('margin': 20px 0, 'padding': 15px 10px));
-  @include make-table-rowed();
+  @include make-table-base(('margin': 2rem 0, 'padding': 1rem));
+  @include make-table-bordered();
+  @include add-table-rounded();
+  @include add-table-hover(rgba($white, 0.5));
     
   th {
     font-size: 18px;
@@ -523,7 +529,7 @@ $edge-space: 4rem;
 }
 
 .docs-table-responsive {
-  @include make-table-responsive(('margin': 20px 0));
+  @include make-table-responsive(('margin': 2rem 0));
 }
 
 /*==============================================================================
@@ -539,8 +545,9 @@ $edge-space: 4rem;
     margin-top: 6rem;
   }
   
+  // Inner subsection
   .inner-subsection {
-    padding: 0 $edge-space;
+    padding: 0 $edge-space 1rem;
     
     > h1 {
       opacity: 0.75;
@@ -551,27 +558,14 @@ $edge-space: 4rem;
       color: $yellow-green-dark;
       @include font-weight('bold');
     }
-    > h2 {
-      
-    }
-    > h3 {
-      
-    }
-    > p {
-
-    }
   }
   
-  // The subsection listing
+  // Subsection listings
   > .docs-list {
-    margin: 2rem 0 0 0;
+    margin: 0;
     
-    &:first-child {
-      margin-top: 0;
-      
-      > li:first-child {
-        border-top: 0 none;
-      }
+    &:first-child > li:first-child {
+      border-top: 0 none;
     }
   }
   > .docs-list > li {
@@ -582,6 +576,10 @@ $edge-space: 4rem;
     > h2, > h3, > p {
       margin: 0.5rem 0;
     }
+    > pre, .notice, .demo, .docs-list-hover, .docs-table, .docs-table-responsive {
+      margin: 1rem 0;
+    }
+    
     > h2 {
       font-size: px-to-rem(26px);
     }
@@ -591,12 +589,6 @@ $edge-space: 4rem;
       letter-spacing: 1px;
       color: rgba($color-header, 0.3);
       @include font-weight('semi-bold');
-    }
-    > p {
-      
-    }
-    > pre {
-      margin: 1rem 0;
     }
   }
 }

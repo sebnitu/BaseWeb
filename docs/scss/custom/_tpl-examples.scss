@@ -61,6 +61,11 @@
   background: rgba($black, 0.1);
   border-left: 1px solid rgba($black, 0.05);
   border-right: 1px solid rgba($black, 0.05);
+  @include transition();
+  
+  &:hover {
+    background: $yellow-green-dark;
+  }
 }
 .shim {
   display: none;
@@ -162,10 +167,6 @@
     background: none;
     border-bottom: 1px solid rgba($black, 0.1);
     @include border-radius(0);
-    
-    &:last-child {
-      border-bottom: 0 none;
-    }
   }
   code {
     margin: 0;

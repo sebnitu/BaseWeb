@@ -6,10 +6,7 @@
   <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html">Form Examples &rarr;</a></p>
 </div>
 
-<hr class="docs-hr">
-
-<section class="sub-section sub-section-classes">
-<h1>Form Structure</h1>
+<h2>Form Structure</h2>
 
 <p>Along with all standard form elements, BaseWeb provides you with <code>.form-group</code>, <code>.form-header</code>, <code>.form-action</code> and <code>.input-group</code> classes to use for structuring a form layout. You also have the BaseWeb Grid System available for creating more complex form layouts.</p>
 
@@ -96,6 +93,118 @@
   </form>
 </div>
 
+<section class="subsection subsection-variables has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Form Variables</h1>
+  <p class="text-lead">Form variables are encompassed within the <code>$forms</code> map and are used throughout all form mixins to set default values.</p>
+  <ul class="docs-list docs-list-hover">
+    <li>
+      <code>$forms('vertical-spacing')</code>
+      <code class="right value">1.5em</code>
+    </li>
+    <li>
+      <code>$forms('vertical-align')</code>
+      <code class="right value">0.75em</code>
+    </li>
+    <li>
+      <code>$forms('font-family')</code>
+      <code class="right value">inherit</code>
+    </li>
+    <li>
+      <code>$forms('base-font-size')</code>
+      <code class="right value">1em</code>
+    </li>
+    <li>
+      <code>$forms('base-line-height')</code>
+      <code class="right value">1.5em</code>
+    </li>
+    <li>
+      <code>$forms('font-size')</code>
+      <code class="right value">1em</code>
+    </li>
+    <li>
+      <code>$forms('line-height')</code>
+      <code class="right value">1.5em</code>
+    </li>
+    <li>
+      <code>$forms('color')</code>
+      <code class="right value">$color</code>
+    </li>
+    <li>
+      <code>$forms('color-label')</code>
+      <code class="right value">$color-dark</code>
+    </li>
+    <li>
+      <code>$forms('color-placeholder')</code>
+      <code class="right value">#aaa</code>
+    </li>
+    <li>
+      <code>$forms('color-select-arrow')</code>
+      <code class="right value">$color-dark</code>
+    </li>
+    <li>
+      <code>$forms('border-radius')</code>
+      <code class="right value">$border-radius</code>
+    </li>
+    
+    <li class="list-sep">
+      <code>$forms('input':'padding')</code>
+      <code class="right value">0.75em</code>
+    </li>
+    <li>
+      <code>$forms('input':'background')</code>
+      <code class="right value">rgba($white, 0.5)</code>
+    </li>
+    <li>
+      <code>$forms('input':'border')</code>
+      <code class="right value">1px solid rgba($black, 0.15)</code>
+    </li>
+    <li>
+      <code>$forms('input':'box-shadow')</code>
+      <code class="block value">0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)</code>
+    </li>
+    
+    <li class="list-sep">
+      <code>$forms('input':'focus':'background')</code>
+      <code class="right value">rgba($white, 1)</code>
+    </li>
+    <li>
+      <code>$forms('input':'focus':'border')</code>
+      <code class="right value">1px solid rgba($blue, 1)</code>
+    </li>
+    <li>
+      <code>$forms('input':'focus':'box-shadow')</code>
+      <code class="block value">0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)</code>
+    </li>
+    
+    <li class="list-sep">
+      <code>$forms('choice':'padding')</code>
+      <code class="right value">0.75em 0.75em 0.75em 2.25em</code>
+    </li>
+    <li>
+      <code>$forms('choice':'background')</code>
+      <code class="right value">rgba($black, 0.05)</code>
+    </li>
+    <li>
+      <code>$forms('choice':'border')</code>
+      <code class="right value">1px solid transparent</code>
+    </li>
+    <li>
+      <code>$forms('choice':'box-shadow')</code>
+      <code class="right value">none</code>
+    </li>
+  </ul>
+  <div class="notice notice-warning">
+    <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
+  </div>
+</div>
+</section>
+
+<section class="subsection subsection-classes has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Form Structure Classes</h1>
+  <p class="text-lead">These are that classes that BaseWeb provides for structuring a form. They are supplementary to a form's base structure elements and can be omitted or expanded upon (using form mixins) depending on your needs.</p>
+</div>
 <ul class="docs-list">
 
   <li>
@@ -357,16 +466,14 @@
   </li>
 
 </ul>
-
 </section>
 
-<section class="sub-section sub-section-classes">
-<h1>Form Elements</h1>
-
-<p>BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in <code>$forms</code>.</p>
-
-<p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline-group</code> to a parent element.</p>
-
+<section class="subsection subsection-classes has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Form Elements</h1>
+  <p class="text-lead">BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in <code>$forms</code>.</p>
+  <p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline-group</code> to a parent element.</p>
+</div>
 <ul class="docs-list">
 
   <li>
@@ -575,129 +682,13 @@
   </li>
   
 </ul>
-
 </section>
 
-<section class="sub-section sub-section-variables">
-<h1>Form Variables</h1>
-<p>Form variables are encompassed within the <code>$forms</code> map and are used throughout all form mixins to set default values.</p>
-
-<ul class="docs-list docs-list-hover">
-  <!--
-  <li>
-    <code>$variable('key')</code>
-    <code class="right value">value</code>
-    <span class="block light">...</span>
-  </li>
-  -->
-  <li>
-    <code>$forms('vertical-spacing')</code>
-    <code class="right value">1.5em</code>
-  </li>
-  <li>
-    <code>$forms('vertical-align')</code>
-    <code class="right value">0.75em</code>
-  </li>
-  <li>
-    <code>$forms('font-family')</code>
-    <code class="right value">inherit</code>
-  </li>
-  <li>
-    <code>$forms('base-font-size')</code>
-    <code class="right value">1em</code>
-  </li>
-  <li>
-    <code>$forms('base-line-height')</code>
-    <code class="right value">1.5em</code>
-  </li>
-  <li>
-    <code>$forms('font-size')</code>
-    <code class="right value">1em</code>
-  </li>
-  <li>
-    <code>$forms('line-height')</code>
-    <code class="right value">1.5em</code>
-  </li>
-  <li>
-    <code>$forms('color')</code>
-    <code class="right value">$color</code>
-  </li>
-  <li>
-    <code>$forms('color-label')</code>
-    <code class="right value">$color-dark</code>
-  </li>
-  <li>
-    <code>$forms('color-placeholder')</code>
-    <code class="right value">#aaa</code>
-  </li>
-  <li>
-    <code>$forms('color-select-arrow')</code>
-    <code class="right value">$color-dark</code>
-  </li>
-  <li>
-    <code>$forms('border-radius')</code>
-    <code class="right value">$border-radius</code>
-  </li>
-  
-  <li class="list-sep">
-    <code>$forms('input':'padding')</code>
-    <code class="right value">0.75em</code>
-  </li>
-  <li>
-    <code>$forms('input':'background')</code>
-    <code class="right value">rgba($white, 0.5)</code>
-  </li>
-  <li>
-    <code>$forms('input':'border')</code>
-    <code class="right value">1px solid rgba($black, 0.15)</code>
-  </li>
-  <li>
-    <code>$forms('input':'box-shadow')</code>
-    <code class="block value">0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)</code>
-  </li>
-  
-  <li class="list-sep">
-    <code>$forms('input':'focus':'background')</code>
-    <code class="right value">rgba($white, 1)</code>
-  </li>
-  <li>
-    <code>$forms('input':'focus':'border')</code>
-    <code class="right value">1px solid rgba($blue, 1)</code>
-  </li>
-  <li>
-    <code>$forms('input':'focus':'box-shadow')</code>
-    <code class="block value">0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)</code>
-  </li>
-  
-  <li class="list-sep">
-    <code>$forms('choice':'padding')</code>
-    <code class="right value">0.75em 0.75em 0.75em 2.25em</code>
-  </li>
-  <li>
-    <code>$forms('choice':'background')</code>
-    <code class="right value">rgba($black, 0.05)</code>
-  </li>
-  <li>
-    <code>$forms('choice':'border')</code>
-    <code class="right value">1px solid transparent</code>
-  </li>
-  <li>
-    <code>$forms('choice':'box-shadow')</code>
-    <code class="right value">none</code>
-  </li>
-</ul>
-
-<div class="notice notice-warning">
-  <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Form Mixins</h1>
+  <p class="text-lead">Because of the complexity of HTML forms, BaseWeb mainly favors using classes and context to style forms. But there are a small set of mixins that can be used to expand form customization.</p>
 </div>
-
-</section>
-
-<hr class="docs-hr">
-
-<section class="sub-section sub-section-mixins">
-<h1>Form Mixins</h1>
-
 <ul class="docs-list">
 
   <li>
@@ -739,7 +730,6 @@
   </li>
   
 </ul>
-
 </section>
 
 <!--
