@@ -52,15 +52,15 @@ function active_subpage($selector) {
     var this_href = $(this).attr('href');
     var this_hash = this_href.substring(this_href.indexOf('#'));
     
+    $('html, body, .main').animate({
+      scrollTop: 0
+    });
+    
     if(this_href === this_hash && this_hash === path && path === this_href) {
       $('.rootpage, .subpage').fadeOut(250, function() {
         setTimeout(function() {
           $('.rootpage').fadeIn(250);
         }, 250);
-      });
-      
-      $('html, body, .main').animate({
-        scrollTop: 0
       });
             
       // Update navigation

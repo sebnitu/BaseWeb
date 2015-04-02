@@ -1,20 +1,12 @@
 ![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
 
----
-
 Currently v1.1.0
-
----
 
 ## About
 BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
 
----
-
 ## Documentation
 Documentation is currently being worked on and you can view them if you clone or download the repo. There will also be an online version at [http://getbaseweb.com/](http://getbaseweb.com/).
-
----
 
 ## To-Do
 
@@ -22,8 +14,6 @@ Documentation is currently being worked on and you can view them if you clone or
 * Incorporate [markdown-it](https://www.npmjs.com/package/markdown-it) node module for use with the devlog and readme.
 * `npm install` latest versions of node packages and fix any issues with build scripts.
 * Setup auto deployment for docs to [http://getbaseweb.com/](http://getbaseweb.com/).
-
----
 
 ## Build Scripts
 
