@@ -38,8 +38,6 @@ BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for buil
 * `jake build:img`    Optimizes global images
 * `jake watch`        Watch for change to files and rebuild if they change
 
----
-
 ## Copyright and License
 
 BaseWeb and BaseWeb documentation copyright (c) 2015 [Sebastian Nitu](http://sebnitu.com). BaseWeb is released under the [MIT license](https://github.com/sebnitu/BaseWeb/blob/master/LICENSE) and BaseWeb documentation is released under [Creative Commons](https://github.com/sebnitu/BaseWeb/blob/master/docs/LICENSE).
