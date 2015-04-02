@@ -27,9 +27,9 @@
   var $body = $('html, body');
   var content = $('#wrapper').smoothState({
     prefetch: true,
-    // pageCacheSize: 4,
+    pageCacheSize: 4,
     onStart: {
-      duration: 0,
+      duration: 250,
       render: function (url, $container) {
         content.toggleAnimationClass('is-exiting');
         $body.animate({
