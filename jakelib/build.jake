@@ -6,7 +6,7 @@ var runimagemin = require('./modules/jake-imagemin');
 
 namespace('build', function() {
   
-  var settings = u.getjsonsync('settings.json');
+  // var settings = u.getjsonsync('settings.json');
   
   // Build SCSS
   desc('Compiles and minifies SCSS');

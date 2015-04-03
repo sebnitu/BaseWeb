@@ -6,7 +6,7 @@ task('watch', {async: true}, function() {
 
   u.printNotice('Files are now being watched (ctrl+c to exit)', 'yellow');
   
-  var settings = u.getjsonsync('settings.json');
+  // var settings = u.getjsonsync('settings.json');
   
   watch('src/scss/', function(filename) {
     u.print(filename + ' was changed:', 'cyan');
