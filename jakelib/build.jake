@@ -1,16 +1,12 @@
-var u = require('./modules/utility');
-var getjsonsync = require('./modules/getjsonsync');
-var runscss = require('./modules/runscss');
-var runmustache = require('./modules/runmustache');
-var runuglifyjs = require('./modules/runuglifyjs');
-var Imagemin = require('imagemin');
+var u = require('./modules/node-utility');
+var runscss =     require('./modules/jake-scss');
+var runuglifyjs = require('./modules/jake-uglifyjs');
+var runmustache = require('./modules/jake-mustache');
+var runimagemin = require('./modules/jake-imagemin');
 
-/**
- * The Build Tasks
- */
 namespace('build', function() {
   
-  var settings = getjsonsync('settings.json');
+  var settings = u.getjsonsync('settings.json');
   
   // Build SCSS
   desc('Compiles and minifies SCSS');
@@ -67,7 +63,7 @@ namespace('build', function() {
   });
   
   // Build Examples
-  desc('Build Examples');
+  desc('Build examples');
   task('examples', {async: true}, function() {
     runmustache({
       dir : 'examples/'
@@ -77,19 +73,10 @@ namespace('build', function() {
   // Build Images
   desc('Optimizes global images');
   task('img', {async: true}, function() {
-      
-    var imagemin = new Imagemin()
-      .src('docs/img/raw/*.{gif,jpg,png,svg}')
-      .dest('docs/img/')
-      .use(Imagemin.jpegtran({ progressive: true }));
-    
-    imagemin.run(function (err, files) {
-      if (err) {
-        throw err;
-      }
-      u.print('√ Global Images optimized: docs/img/', 'green');
+    runimagemin({
+      src : 'docs/img/raw/*.{gif,jpg,png,svg}',
+      dest : 'docs/img/'
     });
-          
   });
   
 });

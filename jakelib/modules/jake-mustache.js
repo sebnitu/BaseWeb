@@ -1,12 +1,7 @@
-var u = require('./utility');
 var fs = require('fs');
-var extend = require('./extend');
-var getjsonsync = require('./getjsonsync');
+var u = require('./node-utility');
 var mustache = require('mustache');
 
-/**
- * Jake task for compiling mustache templates
- */
 function runmustache(options) {
   
   // Default Options
@@ -35,7 +30,7 @@ function runmustache(options) {
   };
       
   // Extend passed options with the defaults
-  var o = extend(defaultOptions, options);
+  var o = u.extend(defaultOptions, options);
   
   // Build the template paths
   o.path.template = o.dir + o.path.template;
@@ -115,10 +110,10 @@ var writePage = function(data, name, o) {
    ,  context = {};
   
   // Get package.json details
-  json = getjsonsync('package.json');
+  json = u.getjsonsync('package.json');
   
   // Combine context and json
-  context = extend(context, json);
+  context = u.extend(context, json);
     
   // Get page options
   context.page = get_page_options(o, data);
