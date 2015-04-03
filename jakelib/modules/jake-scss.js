@@ -1,5 +1,5 @@
-var u = require('./utility');
 var fs = require('fs');
+var u = require('./node-utility');
 var sass = require('node-sass');
 
 function runscss(o) {

@@ -1,7 +1,6 @@
-var u = require('./utility');
 var fs = require('fs');
+var u = require('./node-utility');
 var uglify = require('uglify-js');
-var extend = require('./extend');
 
 function runuglifyjs(o) {
   
