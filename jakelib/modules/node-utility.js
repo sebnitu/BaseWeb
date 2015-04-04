@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var utility = {
+module.exports = {
   
   /**
    * Colorize
@@ -228,8 +228,6 @@ var utility = {
       return json;
             
     }
-  },
+  }
   
 }
-
-module.exports = utility;
