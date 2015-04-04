@@ -9,6 +9,14 @@ var config = require('../jakefile');
 
 if ('build' in config) {
   
+  desc('Build everything');
+  task('build', {async: true}, function() {
+    u.printNotice('Building everything', 'yellow');
+    config.build.forEach(function (item, i, a) {
+      jake.Task['build:' + item.key].execute();
+    });
+  });
+  
   namespace('build', function() {
     
     config.build.forEach(function (item, i, a) {

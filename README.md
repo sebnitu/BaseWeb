@@ -1,6 +1,6 @@
 ![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
 
-Currently v1.1.1
+Currently v1.1.2
 
 ## About
 BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
@@ -82,7 +82,7 @@ build: [
 | `module` (optional) | `string` | The module you want to use for this task. If omitted, your key will be used instead. If your key does not match an existing node module, this field is required. |
 | `options` | `object` | The options that are passed to the node module. |
 
-*A build task is generated for every object in the build array.*
+*A build task is generated for every object in the build array. You can also use `jake build` to run all build scripts.*
 
 #### Watch Tasks
 
