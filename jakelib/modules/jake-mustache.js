@@ -2,7 +2,7 @@ var fs = require('fs');
 var u = require('./node-utility');
 var mustache = require('mustache');
 
-function runmustache(options) {
+module.exports = function runmustache(options) {
   
   // Default Options
   var defaultOptions = { 
@@ -73,8 +73,6 @@ function runmustache(options) {
   });
   
 }
-
-module.exports = runmustache;
 
 /**
  * Get Page Options

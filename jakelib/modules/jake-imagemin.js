@@ -2,7 +2,7 @@ var fs = require('fs');
 var u = require('./node-utility');
 var Imagemin = require('imagemin');
 
-function runimagemin(o) {
+module.exports = function runimagemin(o) {
   
   var imagemin = new Imagemin()
       .src(o.src)
@@ -16,6 +16,4 @@ function runimagemin(o) {
     u.print('√ Global Images optimized: docs/img/', 'green');
   });
   
-};
-
-module.exports = runimagemin;
+}
