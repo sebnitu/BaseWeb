@@ -2,7 +2,7 @@ var fs = require('fs');
 var u = require('./node-utility');
 var uglify = require('uglify-js');
 
-function runuglifyjs(o) {
+module.exports = function runuglifyjs(o) {
   
   if (typeof o.input === 'string') {
     var js = uglify.minify( o.path + o.input );
@@ -33,6 +33,4 @@ function runuglifyjs(o) {
     u.print('√ lessc: wrote ' + o.output, 'green');
   });
   
-};
-
-module.exports = runuglifyjs;
+}

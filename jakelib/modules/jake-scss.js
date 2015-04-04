@@ -2,7 +2,7 @@ var fs = require('fs');
 var u = require('./node-utility');
 var sass = require('node-sass');
 
-function runscss(o) {
+module.exports = function runscss(o) {
   
   fs.readFile(o.input, 'utf8', function(err, data) {
     if (err) throw new Error(u.colorize(err, 'red'));
@@ -29,5 +29,3 @@ function runscss(o) {
   });
   
 }
-
-module.exports = runscss;
