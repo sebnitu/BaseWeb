@@ -45,7 +45,7 @@ module.exports = {
       ]
     }, {
       key: 'img',
-      desc: 'Optimizes global images',
+      desc: 'Optimizes images',
       options: [
         {
           src : 'docs/img/raw/*.{gif,jpg,png,svg}',
