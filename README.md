@@ -29,7 +29,7 @@ Upcoming features and updates to BaseWeb documentation:
 
 ## Build Scripts
 
-BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written specifically for BaseWeb, but they are modular so you're free to modify and use them in your own scripts.
+BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written to be super flexible. The configurations are all setup using `jakefile.js` and can be adjusted as need for your own purposes.
 
 ### Dependencies
 
@@ -44,17 +44,62 @@ Run `npm install` to install required node modules for build scripts. This is th
 |----------------|------------|
 | `node-sass`    | `2.1.1`    |
 | `uglify-js`    | `2.4.19`   |
-| `mustache`     | `2.0.0`    |
 | `imagemin`     | `3.1.0`    |
+| `mustache`     | `2.0.0`    |
 
 ### Jake tasks
 The following tasks are available for building BaseWeb and related files:
 
-* `jake build:scss`   Compiles and minifies SCSS
-* `jake build:js`     Compiles and minifies JS
-* `jake build:docs`   Build documentation
-* `jake build:img`    Optimizes global images
-* `jake watch`        Watch for change to files and rebuild if they change
+| Jake Tasks        | Description                                          |
+|-------------------|------------------------------------------------------|
+| `jake build:scss` | Compiles and minifies SCSS                           |
+| `jake build:js`   | Compiles and minifies JS                             |
+| `jake build:img`  | Optimizes global images                              |
+| `jake build:docs` | Build documentation                                  |
+| `jake watch`      | Watch for change to files and rebuild if they change |
+
+### Cusomizing Jake tasks
+The build scripts for BaseWeb are easy to adapt to your own projects. All tasks are setup using the `jakefile.js` as a configuration file. Each of the node modules that are used have a custom jake wrapper to interface with more easily. These are all the options you can adjust:
+
+```
+// General Build Tasks
+build: [
+  {
+    key: '...',
+    desc: '...',
+    module: '...',
+    options: [{...}]
+  }
+]
+```
+
+| Field | Description |
+|-------|-------------|
+| `key` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:youKey`. |
+| `desc` | `string` | A description for your task. This appears when you list your tasks using `jake -ls`. |
+| `module` (optional) | `string` | The module you want to use for this task. If omitted, your key will be used instead. If your key does not match an existing node module, this field is required. |
+| `options` | `object` | The options that are passed to the node module. |
+
+*A build task is generated for every object in the build array.*
+
+```
+// General Watch Tasks
+watch: [
+  {
+    key: '...',
+    files: [...],
+    ignore: [...]
+  }
+]
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `key` | `string` | The key is directly linked to build tasks. If a watch key of `docs` is created, when it triggers the `build:docs` task gets fired. |
+| `files` | `array` | Files or directories to watch. |
+| `ignore` (optional) | `array` | An array of files to ignore. This is helpful if a build task generates a file within a directory that is also being watched. |
+
+*A watch task is generated for every object in the watch array.*
 
 ## Copyright and License
 
