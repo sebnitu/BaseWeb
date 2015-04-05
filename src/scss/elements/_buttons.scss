@@ -9,19 +9,26 @@ $filename: 'scss/elements/_buttons.scss';
 // Define all the settings for button mixins and classes.
 $buttons: (
   'classes' : true,
+  
   'padding-small' : 0.25em 0.75em,
   'padding' : 0.75em 1.5em,
   'padding-large' : 1.25em 2em,
+  
   'font-size' : 1em,
   'line-height' : 1.5em,
   'color' : $color-dark,
   'color-hover' : default,
   'text-shadow' : none,
+  
   'background' : rgba($black, 0.05),
   'background-hover' : rgba($black, 0.1),
   'background-gradient' : false,
   'background-deg' : 5%,
   'background-clip' : border-box,
+  
+  'box-shadow' : inset 0 0 0 rgba($black, 0),
+  'box-shadow-hover' : inset 0 1px 2px rgba($black, 0.1),
+  
   'border' : 1px solid rgba($black, 0.15),
   'border-hover' : 1px solid rgba($black, 0.25),
   'border-radius' : $border-radius,
@@ -38,23 +45,29 @@ $buttons: (
 //   @default $buttons map
 @mixin make-btn-base($options: ()) {
   $o: map-merge( $buttons, $options);
+  cursor: pointer;
   display: inline-block;
+  outline: none;
   margin: 0;
   padding: map-get($o, 'padding');
   font-family: inherit;
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
+  color: map-get($o, 'color');
   font-weight: inherit;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
+  background: transparent;
   border: map-get($o, 'border');
-  box-shadow: inset 0 0 0 rgba($black, 0);
+  box-shadow: map-get($o, 'box-shadow');
   @include border-radius(map-get($o, 'border-radius'));
   @include transition(all 1s);
-  &:hover {
-    cursor: pointer;
-    box-shadow: inset 0 1px 2px rgba($black, 0.1);
+  
+  &:hover, &:focus, &:active {
+    color: map-get($o, 'color');
+    background: rgba($black, 0.025);
+    box-shadow: map-get($o, 'box-shadow-hover');
     @include transition(all 0.25s);
   }
 }
@@ -78,7 +91,7 @@ $buttons: (
   }
   background-clip: map-get($o, 'background-clip');
   border: map-get($o, 'border');
-  &:hover {
+  &:hover, &:focus, &:hover {
     @if (map-get($o, 'color-hover') == default) {
       color: map-get($o, 'color');
     } @else {

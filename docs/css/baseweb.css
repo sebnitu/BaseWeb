@@ -996,23 +996,28 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
  * Base Button
  */
 .btn {
+  cursor: pointer;
   display: inline-block;
+  outline: none;
   margin: 0;
   padding: 0.75em 1.5em;
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
+  color: #303030;
   font-weight: inherit;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
+  background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
   -webkit-transition: all 1s;
   transition: all 1s; }
-  .btn:hover {
-    cursor: pointer;
+  .btn:hover, .btn:focus, .btn:active {
+    color: #303030;
+    background: rgba(0, 0, 0, 0.025);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
@@ -1026,7 +1031,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: rgba(0, 0, 0, 0.05);
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-default:hover {
+  .btn-default:hover, .btn-default:focus, .btn-default:hover {
     color: #303030;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -1037,7 +1042,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: #2ab0ea;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-blue:hover, .btn-primary:hover {
+  .btn-blue:hover, .btn-primary:hover, .btn-blue:focus, .btn-primary:focus, .btn-blue:hover, .btn-primary:hover {
     color: #ffffff;
     background-color: #16a6e4;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -1048,7 +1053,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: #84b72d;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-green:hover, .btn-success:hover {
+  .btn-green:hover, .btn-success:hover, .btn-green:focus, .btn-success:focus, .btn-green:hover, .btn-success:hover {
     color: #ffffff;
     background-color: #75a328;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -1059,7 +1064,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: #e69242;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-orange:hover, .btn-warning:hover {
+  .btn-orange:hover, .btn-warning:hover, .btn-orange:focus, .btn-warning:focus, .btn-orange:hover, .btn-warning:hover {
     color: #ffffff;
     background-color: #e3852b;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -1070,7 +1075,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: #de5151;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-red:hover, .btn-danger:hover {
+  .btn-red:hover, .btn-danger:hover, .btn-red:focus, .btn-danger:focus, .btn-red:hover, .btn-danger:hover {
     color: #ffffff;
     background-color: #da3c3c;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -1081,7 +1086,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   background-color: #606060;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-black:hover, .btn-secondary:hover {
+  .btn-black:hover, .btn-secondary:hover, .btn-black:focus, .btn-secondary:focus, .btn-black:hover, .btn-secondary:hover {
     color: #ffffff;
     background-color: #6d6d6d;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -2156,7 +2161,7 @@ body > div, .wrapper {
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100px;
   padding: 10px; }
-  .widget .btn-light-on-black:hover {
+  .widget .btn-light-on-black:hover, .widget .btn-light-on-black:focus, .widget .btn-light-on-black:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25); }
@@ -2646,16 +2651,20 @@ body > div, .wrapper {
     vertical-align: middle; }
 
 .demo .btn-custom {
+  cursor: pointer;
   display: inline-block;
+  outline: none;
   margin: 0;
   padding: 0.75em 1.5em;
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
+  color: #303030;
   font-weight: inherit;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
+  background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
@@ -2667,12 +2676,13 @@ body > div, .wrapper {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   margin: 0.25rem; }
-  .demo .btn-custom:hover {
-    cursor: pointer;
+  .demo .btn-custom:hover, .demo .btn-custom:focus, .demo .btn-custom:active {
+    color: #303030;
+    background: rgba(0, 0, 0, 0.025);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
-  .demo .btn-custom:hover {
+  .demo .btn-custom:hover, .demo .btn-custom:focus, .demo .btn-custom:hover {
     color: #ffffff;
     background-color: #b357cd;
     border: 1px solid rgba(0, 0, 0, 0.25); }
@@ -2683,16 +2693,20 @@ body > div, .wrapper {
   line-height: 28px; }
 
 .demo .btn-custom-mobile {
+  cursor: pointer;
   display: inline-block;
+  outline: none;
   margin: 0;
   padding: 0.75em 1.5em;
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
+  color: #303030;
   font-weight: inherit;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
+  background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
@@ -2705,12 +2719,13 @@ body > div, .wrapper {
   border: 1px solid rgba(0, 0, 0, 0.15);
   display: block;
   width: 100%; }
-  .demo .btn-custom-mobile:hover {
-    cursor: pointer;
+  .demo .btn-custom-mobile:hover, .demo .btn-custom-mobile:focus, .demo .btn-custom-mobile:active {
+    color: #303030;
+    background: rgba(0, 0, 0, 0.025);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
-  .demo .btn-custom-mobile:hover {
+  .demo .btn-custom-mobile:hover, .demo .btn-custom-mobile:focus, .demo .btn-custom-mobile:hover {
     color: #303030;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.25); }
