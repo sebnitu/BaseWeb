@@ -1136,14 +1136,17 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
 ==============================================================================*/
 .btn-group {
   position: relative;
-  display: inline-block;
-  font-size: 0; }
+  display: block;
+  margin: 1rem 0; }
+  .btn-group:after {
+    content: '';
+    display: table;
+    clear: both; }
   .btn-group .btn {
     position: relative;
-    display: inline-block;
+    float: left;
     z-index: 1;
     margin: 0 -1px 0 0;
-    white-space: nowrap;
     border-radius: 0; }
     .btn-group .btn:first-child {
       border-top-left-radius: 3px;
@@ -1154,6 +1157,8 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
       border-bottom-right-radius: 3px; }
     .btn-group .btn:hover {
       z-index: 2; }
+    .btn-group .btn.active {
+      z-index: 3; }
 
 /*==============================================================================
   @Notice - scss/blocks/_notice.scss
@@ -1162,11 +1167,13 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   margin: 2rem 0;
   padding: 0.5rem 1.5rem;
   color: #303030;
-  border: 3px solid rgba(0, 0, 0, 0.05); }
+  background: rgba(0, 0, 0, 0.05);
+  border: 3px solid rgba(0, 0, 0, 0.05);
+  border-radius: 3px; }
 
-.notice-default {
-  background-color: rgba(0, 0, 0, 0.05); }
-
+/**
+ * Context Classes
+ */
 .notice-success {
   background-color: rgba(132, 183, 45, 0.1); }
 
@@ -1183,23 +1190,37 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   @Breadcrumb - scss/blocks/_breadcrumb.scss
 ==============================================================================*/
 .breadcrumb {
-  margin: 1em 0px; }
-
-.breadcrumb ul {
-  margin: 0;
+  margin: 1em 0px;
   list-style: none;
-  font-size: 0; }
-
-.breadcrumb ul li {
-  margin: 0;
-  display: inline-block;
-  font-size: 16px; }
-  .breadcrumb ul li:after {
-    content: "→";
-    padding: 0 1em;
+  font-size: 1rem; }
+  .breadcrumb:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .breadcrumb > ul, .breadcrumb > ol {
+    margin: 0;
+    list-style: none; }
+    .breadcrumb > ul:after, .breadcrumb > ol:after {
+      content: '';
+      display: table;
+      clear: both; }
+  .breadcrumb > li, .breadcrumb > ul > li, .breadcrumb > ol > li {
+    float: left;
+    margin: 0; }
+  .breadcrumb > li a, .breadcrumb > ul > li a, .breadcrumb > ol > li a {
+    border: 0 none; }
+  .breadcrumb > li:after, .breadcrumb > ul > li:after, .breadcrumb > ol > li:after {
+    content: '/';
+    padding: 0 0.75em;
     color: rgba(0, 0, 0, 0.25); }
-  .breadcrumb ul li:last-child:after {
+  .breadcrumb > li:last-child:after, .breadcrumb > ul > li:last-child:after, .breadcrumb > ol > li:last-child:after {
     content: none; }
+
+.breadcrumb-wrapped {
+  padding: 0.5em 1em;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px; }
 
 /*==============================================================================
   @Grid System - scss/custom/_custom.scss
@@ -1641,6 +1662,10 @@ body > div, .wrapper {
  */
 .page .content-inner > .breadcrumb {
   margin: 0; }
+  .page .content-inner > .breadcrumb > li:after, .page .content-inner > .breadcrumb > ul > li:after, .page .content-inner > .breadcrumb > ol > li:after {
+    content: '→'; }
+  .page .content-inner > .breadcrumb > li:last-child:after, .page .content-inner > .breadcrumb > ul > li:last-child:after, .page .content-inner > .breadcrumb > ol > li:last-child:after {
+    content: none; }
 .page .content-inner > h1 {
   margin-top: 0; }
 

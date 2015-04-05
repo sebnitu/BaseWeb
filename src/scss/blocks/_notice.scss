@@ -8,29 +8,48 @@ $filename: 'scss/blocks/_notice.scss';
 // Notice Map
 // Define all the settings for table mixins and classes.
 $notice: (
-  
+  'classes' : true,
+  'margin' : 2rem 0,
+  'padding' : 0.5rem 1.5rem,
+  'color' : $color-dark,
+  'background' : rgba($black, 0.05),
+  'border' : 3px solid rgba($black, 0.05),
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Notice Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Make Notice
+// Creates the styles for a notice block.
+// @param $options
+//   @type map
+//   @default $notice map
+@mixin make-notice($options: ()) {
+  $o: map-merge( $notice, $options);
 
+  margin: map-get($o, 'margin');
+  padding: map-get($o, 'padding');
+  color: map-get($o, 'color');
+  background: map-get($o, 'background');
+  border: map-get($o, 'border');
+  @include border-radius();
+}
 
+// Check if we should output modifier classes
+@if (map-get($notice, 'classes') == true) {
+  
 /*==============================================================================
   @Notice - #{$filename}
 ==============================================================================*/
 
 .notice {
-  margin: 2rem 0;
-  padding: 0.5rem 1.5rem;
-  color: $color-dark;
-  border: 3px solid rgba($black, 0.05);
+  @include make-notice();
 }
 
-.notice-default {
-  background-color: rgba($black, 0.05);
-}
+/**
+ * Context Classes
+ */
 .notice-success {
   background-color: rgba($green, 0.1);
 }
@@ -43,3 +62,5 @@ $notice: (
 .notice-danger {
   background-color: rgba($red, 0.1);
 }
+
+} // endif

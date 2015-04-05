@@ -1,29 +1,128 @@
 // Set file variable
 $filename: 'scss/blocks/_breadcrumb.scss';
 
+////////////////////////////////////////////////////////////////////////////////
+// @Notice Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Notice Map
+// Define all the settings for table mixins and classes.
+$breadcrumb: (
+  'classes' : true,
+  'margin' : 1em 0px,
+  'padding' : 0.5em 1em,
+  'font-size' : 1rem,
+  'background' : $bg-color,
+  'border' : 1px solid $border-color,
+  'border-radius' : $border-radius,
+  'sep' : '/', // Seperator element content (e.g: '/', '—', '→', '').
+  'sep-padding' : 0 0.75em,
+  'sep-color' : rgba($black, 0.25),
+  'sep-end' : false, // Whether or not to show separator on last item.
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Notice Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Select Breadcrumb
+// Targets the breadcrumb based on the selection key passed.
+// @param $select
+//   @type string ('item', 'link', 'sep')
+// @param $options
+//   @type map
+//   @default $breadcrumb map
+@mixin select-breadcrumb($select, $options: ()) {
+  $o: map-merge( $breadcrumb, $options);
+  
+  @if ($select == 'item') {
+    > li,
+    > ul > li,
+    > ol > li {
+      @content;
+    }
+  } @else if ($select == 'link') {
+    > li a,
+    > ul > li a,
+    > ol > li a {
+      @content;
+    }
+  } @else if ($select == 'sep') {
+    > li,
+    > ul > li,
+    > ol > li {
+      
+      &:after {
+        @content;
+      }
+      
+      @if (map-get($o, 'sep-end') == false) {
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+// Make Breadcrumb
+// ...
+// @param $options
+//   @type map
+//   @default $breadcrumb map
+@mixin make-breadcrumb($options: ()) {
+  $o: map-merge( $breadcrumb, $options);
+  
+  margin: map-get($o, 'margin');
+  list-style: none;
+  font-size: map-get($o, 'font-size');
+  @include clearfix();
+  
+  > ul,
+  > ol {
+    margin: 0;
+    list-style: none;
+    @include clearfix();
+  }
+  
+  @include select-breadcrumb('item', $o) {
+    float: left;
+    margin: 0;
+  }
+  @include select-breadcrumb('link', $o) {
+    border: 0 none;
+  }
+  @include select-breadcrumb('sep', $o) {
+    content: map-get($o, 'sep');
+    padding: map-get($o, 'sep-padding');
+    color: map-get($o, 'sep-color');
+  }
+}
+
+// Add Breadcrumb Wrapped
+// Applies custom styles to breadcrumb wrapper.
+@mixin add-breadcrumb-wrapped($options: ()) {
+  $o: map-merge( $breadcrumb, $options);
+  
+  padding: map-get($o, 'padding');
+  background: map-get($o, 'background');
+  border: map-get($o, 'border');
+  @include border-radius(map-get($o, 'border-radius'));
+}
+
+// Check if we should output modifier classes
+@if (map-get($breadcrumb, 'classes') == true) {
+
 /*==============================================================================
   @Breadcrumb - #{$filename}
 ==============================================================================*/
 
 .breadcrumb {
-  margin: 1em 0px;
+  @include make-breadcrumb();
 }
-.breadcrumb ul {
-  margin: 0;
-  list-style: none;
-  font-size: 0;
+.breadcrumb-wrapped {
+  @include add-breadcrumb-wrapped();
 }
-.breadcrumb ul li {
-  margin: 0;
-  display: inline-block;
-  font-size: $base-font-size;
-  
-  &:after {
-    content: "→";
-    padding: 0 1em;
-    color: rgba($black, 0.25);
-  }
-  &:last-child:after {
-    content: none;
-  }
-}
+
+} // endif
+

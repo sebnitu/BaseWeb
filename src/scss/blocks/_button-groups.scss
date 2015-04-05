@@ -1,21 +1,24 @@
 // Set file variable
 $filename: 'scss/blocks/_button-groups.scss';
 
+// Dependencies
+// Buttom Element Module (scss/elements/_buttons.scss) 
+
 /*==============================================================================
   @Button Groups - #{$filename}
 ==============================================================================*/
 
 .btn-group {
   position: relative;
-  display: inline-block;
-  font-size: 0;
+  display: block;
+  margin: 1rem 0;
+  @include clearfix();
   
   .btn {
     position: relative;
-    display: inline-block;
+    float: left;
     z-index: 1;
     margin: 0 -1px 0 0;
-    white-space: nowrap;
     @include border-radius(0);
     
     &:first-child {
@@ -29,6 +32,9 @@ $filename: 'scss/blocks/_button-groups.scss';
     
     &:hover {
       z-index: 2;
+    }
+    &.active {
+      z-index: 3;
     }
   }
 }
