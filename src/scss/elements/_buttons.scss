@@ -2,7 +2,7 @@
 $filename: 'scss/elements/_buttons.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Button Variables
+// @Buttons Map
 ////////////////////////////////////////////////////////////////////////////////
 
 // Button Map
@@ -12,75 +12,106 @@ $buttons: (
   
   'padding-small' : 0.25em 0.75em,
   'padding' : 0.75em 1.5em,
-  'padding-large' : 1.25em 2em,
+  'padding-large' : 1em 1.75em,
   
   'font-size' : 1em,
   'line-height' : 1.5em,
   'color' : $color-dark,
-  'color-hover' : default,
   'text-shadow' : none,
   
-  'background' : rgba($black, 0.05),
-  'background-hover' : rgba($black, 0.1),
+  'background' : $white,
   'background-gradient' : false,
   'background-deg' : 5%,
   'background-clip' : border-box,
-  
   'box-shadow' : inset 0 0 0 rgba($black, 0),
-  'box-shadow-hover' : inset 0 1px 2px rgba($black, 0.1),
   
-  'border' : 1px solid rgba($black, 0.15),
-  'border-hover' : 1px solid rgba($black, 0.25),
+  'border-width' : 1px,
+  'border-style' : solid,
+  'border-color' : rgba($black, 0.15),
   'border-radius' : $border-radius,
+  
+  'hover' : (
+    'color'        : default,
+    'background'   : darken,
+    'box-shadow'   : inset 0 1px 2px rgba($black, 0.1),
+    'border-color' : rgba($black, 0.25),
+  ),
+  
+  'active' : (
+    'color'        : default,
+    'background'   : darken,
+    'box-shadow'   : inset 0 1px 2px rgba($black, 0.2),
+    'border-color' : rgba($black, 0.25),
+  ),
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Button Base
+// Make Button
 // Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin make-btn-base($options: ()) {
+@mixin make-button($options: ()) {
   $o: map-merge( $buttons, $options);
+  
   cursor: pointer;
   display: inline-block;
   outline: none;
   margin: 0;
   padding: map-get($o, 'padding');
+  
   font-family: inherit;
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
-  color: map-get($o, 'color');
   font-weight: inherit;
+  color: map-get($o, 'color');
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
-  background: transparent;
-  border: map-get($o, 'border');
+  
+  background: none;
+  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   box-shadow: map-get($o, 'box-shadow');
   @include border-radius(map-get($o, 'border-radius'));
   @include transition(all 1s);
   
   &:hover, &:focus, &:active {
-    color: map-get($o, 'color');
-    background: rgba($black, 0.025);
-    box-shadow: map-get($o, 'box-shadow-hover');
+    @if (map-fetch($o, 'hover', 'color') == default) {
+      color: map-get($o, 'color');
+    } @else {
+      color: map-fetch($o, 'hover', 'color');
+    }
+    background: none;
+    border-color: map-fetch($o, 'hover', 'border-color');
+    box-shadow: map-fetch($o, 'hover', 'box-shadow');
     @include transition(all 0.25s);
+  }
+  &:active {
+    @if (map-fetch($o, 'active', 'color') == default) {
+      color: map-get($o, 'color');
+    } @else {
+      color: map-fetch($o, 'active', 'color');
+    }
+    box-shadow: map-fetch($o, 'active', 'box-shadow');
+    @include transition(box-shadow 0);
   }
 }
 
-// Make Button Color
+// Add Button Color
 // Handles all the color variables of a button such as color, background, border and hover state.
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin make-btn-color($options: ()) {
+@mixin add-button-color($options: ()) {
   $o: map-merge( $buttons, $options);
+  
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
+  
   @if (map-get($o, 'background-gradient') == true) {
     @include linear-gradient(top, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'background-deg')));
     background-repeat: repeat-x;
@@ -89,27 +120,49 @@ $buttons: (
   } @else {
     background-color: map-get($o, 'background');
   }
+  
   background-clip: map-get($o, 'background-clip');
-  border: map-get($o, 'border');
-  &:hover, &:focus, &:hover {
-    @if (map-get($o, 'color-hover') == default) {
+  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
+  
+  &:hover, &:focus, &:active {
+    @if (map-fetch($o, 'hover', 'color') == default) {
       color: map-get($o, 'color');
     } @else {
-      color: map-get($o, 'color-hover');
+      color: map-fetch($o, 'hover', 'color');
     }
     @if (map-get($o, 'background-gradient') == true) {
       background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
       background-position: 0 -40px;
     } @else {
-      @if (map-get($o, 'background-hover') == darken) {
+      @if (map-fetch($o, 'hover', 'background') == darken) {
         background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
-      } @else if (map-get($o, 'background-hover') == lighten) {
+      } @else if (map-fetch($o, 'hover', 'background') == lighten) {
         background-color: lighten(map-get($o, 'background'), map-get($o, 'background-deg'));
       } @else {
-        background-color: map-get($o, 'background-hover');
+        background-color: map-fetch($o, 'hover', 'background');
       }
     }
-    border: map-get($o, 'border-hover');
+    border-color: map-fetch($o, 'hover', 'border-color');
+  }
+  &:active {
+    @if (map-fetch($o, 'active', 'color') == default) {
+      color: map-get($o, 'color');
+    } @else {
+      color: map-fetch($o, 'active', 'color');
+    }
+    @if (map-get($o, 'background-gradient') == true) {
+      background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      background-position: 0 -40px;
+    } @else {
+      @if (map-fetch($o, 'active', 'background') == darken) {
+        background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      } @else if (map-fetch($o, 'active', 'background') == lighten) {
+        background-color: lighten(lighten(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      } @else {
+        background-color: map-fetch($o, 'active', 'background');
+      }
+    }
+    border-color: map-fetch($o, 'active', 'border-color');
   }
 }
 
@@ -120,8 +173,9 @@ $buttons: (
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin add-btn-size($size, $options: ()) {
+@mixin add-button-size($size, $options: ()) {
   $o: map-merge( $buttons, $options);
+  
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
   } @else if ($size == default) {
@@ -131,12 +185,15 @@ $buttons: (
   } @else {
     padding: $size;
   }
+  
   @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
     font-size: map-get($o, 'font-size');
   }
+  
   @if (map-get($o, 'line-height') != map-get($buttons, 'line-height')) {
     line-height: map-get($o, 'line-height');
   }
+  
 }
 
 // Add Button Block
@@ -144,10 +201,12 @@ $buttons: (
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin add-btn-block($options: ()) {
+@mixin add-button-block($options: ()) {
   $o: map-merge( $buttons, $options);
+  
   display: block;
   width: 100%;
+
 }
 
 // Check if we should output modifier classes
@@ -160,87 +219,95 @@ $buttons: (
 /**
  * Base Button
  */
-.btn {
-  @include make-btn-base();
+.button {
+  @include make-button();
+  @include add-button-color();
 }
 
 /**
  * Button Color
  */
-.btn-default {
-  @include make-btn-color();
+.button.default {
+  @include add-button-color((
+    'background' : #efefef,
+    'hover' : (
+      'background': darken
+    ),
+  ));
 }
-.btn-blue {
-  @include make-btn-color((
+.button.blue {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $blue,
-    'background-hover' : darken,
   ));
 }
-.btn-green {
-  @include make-btn-color((
+.button.green {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $green,
-    'background-hover' : darken,
   ));
 }
-.btn-orange {
-  @include make-btn-color((
+.button.orange {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $orange,
-    'background-hover' : darken,
   ));
 }
-.btn-red {
-  @include make-btn-color((
+.button.red {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $red,
-    'background-hover' : darken,
   ));
 }
-.btn-black {
-  @include make-btn-color((
+.button.black {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $gray,
-    'background-hover' : lighten,
+    'hover' : (
+      'background': lighten
+    ),
+    'active' : (
+      'background': lighten
+    ),
   ));
 }
 
 // Semantic button classes
-.btn-primary {
-  @extend .btn-blue;
+.button.primary,
+.button.active {
+  @extend .button.blue;
 }
-.btn-secondary {
-  @extend .btn-black;
+.button.secondary {
+  @extend .button.black;
 }
-.btn-success {
-  @extend .btn-green;
+.button.success {
+  @extend .button.green;
 }
-.btn-warning {
-  @extend .btn-orange;
+.button.warning {
+  @extend .button.orange;
 }
-.btn-danger {
-  @extend .btn-red;
+.button.danger {
+  @extend .button.red;
 }
 
 /**
  * Button Size
  */
-.btn-small {
+.button.small {
   // @include add-btn-size(small);
-  @include add-btn-size(small, ('font-size': 12px));
+  @include add-button-size(small, ('font-size': 0.8em));
 }
-.btn-large {
+.button.large {
   // @include add-btn-size(large);
-  @include add-btn-size(large, ('font-size': 18px));
+  @include add-button-size(large, ('font-size': 1.4em));
 }
-.btn-block {
-  @include add-btn-block();
+.button.block {
+  @include add-button-block();
 }
 
 } // endif

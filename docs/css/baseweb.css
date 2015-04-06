@@ -995,7 +995,7 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
 /**
  * Base Button
  */
-.btn {
+.button {
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -1004,105 +1004,142 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
-  color: #303030;
   font-weight: inherit;
+  color: #303030;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
-  background: transparent;
+  background: none;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
   -webkit-transition: all 1s;
-  transition: all 1s; }
-  .btn:hover, .btn:focus, .btn:active {
+  transition: all 1s;
+  color: #303030;
+  text-shadow: none;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.15); }
+  .button:hover, .button:focus, .button:active {
     color: #303030;
-    background: rgba(0, 0, 0, 0.025);
+    background: none;
+    border-color: rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
+  .button:active {
+    color: #303030;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-transition: box-shadow 0;
+    transition: box-shadow 0; }
+  .button:hover, .button:focus, .button:active {
+    color: #303030;
+    background-color: #f2f2f2;
+    border-color: rgba(0, 0, 0, 0.25); }
+  .button:active {
+    color: #303030;
+    background-color: #e6e6e6;
+    border-color: rgba(0, 0, 0, 0.25); }
 
 /**
  * Button Color
  */
-.btn-default {
+.button.default {
   color: #303030;
   text-shadow: none;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #efefef;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-default:hover, .btn-default:focus, .btn-default:hover {
+  .button.default:hover, .button.default:focus, .button.default:active {
+    background-color: #e2e2e2; }
+  .button.default:active {
     color: #303030;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    background-color: #d5d5d5;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.btn-blue, .btn-primary {
+.button.blue, .button.primary, .button.active {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #2ab0ea;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-blue:hover, .btn-primary:hover, .btn-blue:focus, .btn-primary:focus, .btn-blue:hover, .btn-primary:hover {
+  .button.blue:hover, .button.primary:hover, .button.active:hover, .button.blue:focus, .button.primary:focus, .button.active:focus, .button.blue:active, .button.primary:active, .button.active:active {
     color: #ffffff;
     background-color: #16a6e4;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    border-color: rgba(0, 0, 0, 0.25); }
+  .button.blue:active, .button.primary:active, .button.active:active {
+    color: #ffffff;
+    background-color: #1495cd;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.btn-green, .btn-success {
+.button.green, .button.success {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #84b72d;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-green:hover, .btn-success:hover, .btn-green:focus, .btn-success:focus, .btn-green:hover, .btn-success:hover {
+  .button.green:hover, .button.success:hover, .button.green:focus, .button.success:focus, .button.green:active, .button.success:active {
     color: #ffffff;
     background-color: #75a328;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    border-color: rgba(0, 0, 0, 0.25); }
+  .button.green:active, .button.success:active {
+    color: #ffffff;
+    background-color: #668e23;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.btn-orange, .btn-warning {
+.button.orange, .button.warning {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #e69242;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-orange:hover, .btn-warning:hover, .btn-orange:focus, .btn-warning:focus, .btn-orange:hover, .btn-warning:hover {
+  .button.orange:hover, .button.warning:hover, .button.orange:focus, .button.warning:focus, .button.orange:active, .button.warning:active {
     color: #ffffff;
     background-color: #e3852b;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    border-color: rgba(0, 0, 0, 0.25); }
+  .button.orange:active, .button.warning:active {
+    color: #ffffff;
+    background-color: #d8781d;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.btn-red, .btn-danger {
+.button.red, .button.danger {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #de5151;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-red:hover, .btn-danger:hover, .btn-red:focus, .btn-danger:focus, .btn-red:hover, .btn-danger:hover {
+  .button.red:hover, .button.danger:hover, .button.red:focus, .button.danger:focus, .button.red:active, .button.danger:active {
     color: #ffffff;
     background-color: #da3c3c;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    border-color: rgba(0, 0, 0, 0.25); }
+  .button.red:active, .button.danger:active {
+    color: #ffffff;
+    background-color: #d42828;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.btn-black, .btn-secondary {
+.button.black, .button.secondary {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   background-color: #606060;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .btn-black:hover, .btn-secondary:hover, .btn-black:focus, .btn-secondary:focus, .btn-black:hover, .btn-secondary:hover {
-    color: #ffffff;
-    background-color: #6d6d6d;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+  .button.black:hover, .button.secondary:hover, .button.black:focus, .button.secondary:focus, .button.black:active, .button.secondary:active {
+    background-color: #6d6d6d; }
+  .button.black:active, .button.secondary:active {
+    background-color: #7a7a7a; }
 
 /**
  * Button Size
  */
-.btn-small {
+.button.small {
   padding: 0.25em 0.75em;
-  font-size: 12px; }
+  font-size: 0.8em; }
 
-.btn-large {
-  padding: 1.25em 2em;
-  font-size: 18px; }
+.button.large {
+  padding: 1em 1.75em;
+  font-size: 1.4em; }
 
-.btn-block {
+.button.block {
   display: block;
   width: 100%; }
 
@@ -1134,61 +1171,142 @@ label.inline, .btn.inline, .input.inline, .checkbox.inline, .radio.inline, .choi
   padding-bottom: 75%; }
 
 /*==============================================================================
-  @Form layout - scss/blocks/_form-layout.scss
-==============================================================================*/
-/*==============================================================================
   @Button Groups - scss/blocks/_button-groups.scss
 ==============================================================================*/
-.btn-group {
-  position: relative;
-  display: block;
-  margin: 1rem 0; }
-  .btn-group:after {
-    content: '';
-    display: table;
-    clear: both; }
-  .btn-group .btn {
+.is-1-of-2, .has-2 > * {
+  width: 50%; }
+
+.is-1-of-3, .has-3 > * {
+  width: 33.33333%; }
+
+.is-1-of-4, .has-4 > * {
+  width: 25%; }
+
+.is-1-of-5, .has-5 > * {
+  width: 20%; }
+
+.is-1-of-6, .has-6 > * {
+  width: 16.66667%; }
+
+.is-1-of-7, .has-7 > * {
+  width: 14.28571%; }
+
+.is-1-of-8, .has-8 > * {
+  width: 12.5%; }
+
+.is-1-of-9, .has-9 > * {
+  width: 11.11111%; }
+
+.is-1-of-10, .has-10 > * {
+  width: 10%; }
+
+.is-1-of-11, .has-11 > * {
+  width: 9.09091%; }
+
+.is-1-of-12, .has-12 > * {
+  width: 8.33333%; }
+
+.button-group {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0; }
+  .button-group + .button-group {
+    margin-left: 0.75em; }
+  .button-group > .button {
     position: relative;
     float: left;
     z-index: 1;
-    margin: 0 -1px 0 0;
+    margin: 0;
     border-radius: 0; }
-    .btn-group .btn:first-child {
+    .button-group > .button + .button {
+      margin-left: -1px; }
+    .button-group > .button:first-child {
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px; }
-    .btn-group .btn:last-child {
-      margin: 0;
+    .button-group > .button:last-child {
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px; }
-    .btn-group .btn:hover {
+    .button-group > .button:hover {
       z-index: 2; }
-    .btn-group .btn.active {
+    .button-group > .button:focus {
       z-index: 3; }
+    .button-group > .button:active {
+      z-index: 4; }
+    .button-group > .button.active {
+      z-index: 5; }
+
+.button-group.vertical > .button {
+  display: block;
+  width: 100%;
+  float: none;
+  margin: 0;
+  border-radius: 0; }
+  .button-group.vertical > .button + .button {
+    margin-top: -1px; }
+  .button-group.vertical > .button:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+  .button-group.vertical > .button:last-child {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; }
+
+.button-group.block {
+  display: block;
+  margin: 0; }
+  .button-group.block:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .button-group.block + .button-group.block {
+    margin-top: 1em; }
+  .button-group.block.has-2 {
+    margin-right: -1px; }
+  .button-group.block.has-3 {
+    margin-right: -2px; }
+  .button-group.block.has-4 {
+    margin-right: -3px; }
+  .button-group.block.has-5 {
+    margin-right: -4px; }
+  .button-group.block.has-6 {
+    margin-right: -5px; }
+  .button-group.block.has-7 {
+    margin-right: -6px; }
+  .button-group.block.has-8 {
+    margin-right: -7px; }
+  .button-group.block.has-9 {
+    margin-right: -8px; }
+  .button-group.block.has-10 {
+    margin-right: -9px; }
+  .button-group.block.has-11 {
+    margin-right: -10px; }
+  .button-group.block.has-12 {
+    margin-right: -11px; }
 
 /*==============================================================================
   @Notice - scss/blocks/_notice.scss
 ==============================================================================*/
 .notice {
   margin: 2rem 0;
-  padding: 0.5rem 1.5rem;
+  padding: 0.25rem 1.25rem;
   color: #303030;
   background: rgba(0, 0, 0, 0.05);
-  border: 3px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border-radius: 3px; }
 
 /**
  * Context Classes
  */
-.notice-success {
+.notice.success {
   background-color: rgba(132, 183, 45, 0.1); }
 
-.notice-info {
+.notice.info {
   background-color: rgba(42, 176, 234, 0.1); }
 
-.notice-warning {
+.notice.warning {
   background-color: rgba(241, 196, 15, 0.1); }
 
-.notice-danger {
+.notice.danger {
   background-color: rgba(222, 81, 81, 0.1); }
 
 /*==============================================================================
@@ -1533,11 +1651,12 @@ body > div, .wrapper {
   color: #606060;
   text-align: center; }
 
-.header .action .btn {
+.header .action .button {
   display: block;
+  width: 100%;
   margin: 0 0 10px 0;
   background-clip: padding-box; }
-  .header .action .btn:last-child {
+  .header .action .button:last-child {
     margin-bottom: 0; }
 
 @media (min-width: 720px) {
@@ -1733,9 +1852,9 @@ body > div, .wrapper {
 .docs-list-hover {
   list-style: none;
   margin: 2rem 0;
-  background: none;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
   .docs-list-hover > li {
     margin: 0;
     padding: 1rem;
@@ -1746,8 +1865,8 @@ body > div, .wrapper {
       clear: both; }
   .docs-list-hover > li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  .docs-list-hover > li:last-child {
-    border-bottom: 0 none; }
+  .docs-list-hover > li:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1); }
   .docs-list-hover > li:first-child {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px; }
@@ -1755,14 +1874,17 @@ body > div, .wrapper {
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px; }
   .docs-list-hover > li {
-    -webkit-transition: background-color 0.25s linear;
-    transition: background-color 0.25s linear; }
-  .docs-list-hover > li:hover {
-    background-color: rgba(255, 255, 255, 0.5); }
-  .docs-list-hover li {
     overflow: auto; }
-    .docs-list-hover li.list-sep {
+    .docs-list-hover > li:first-child {
+      border-top: 0 none; }
+    .docs-list-hover > li:last-child {
+      border-bottom: 0 none; }
+    .docs-list-hover > li.list-sep {
       border-top: 2px solid rgba(0, 0, 0, 0.1); }
+  .docs-list-hover code {
+    margin: 0;
+    padding: 0;
+    background: transparent; }
   .docs-list-hover .title {
     font-size: 1.125em;
     line-height: 1.5em;
@@ -1770,10 +1892,13 @@ body > div, .wrapper {
     font-weight: 600; }
     .docs-list-hover .title:hover {
       background: none; }
-  .docs-list-hover .left {
-    float: left; }
-  .docs-list-hover .right {
-    float: right; }
+  .docs-list-hover .left, .docs-list-hover .right {
+    display: block; }
+  @media (min-width: 760px) {
+    .docs-list-hover .left {
+      float: left; }
+    .docs-list-hover .right {
+      float: right; } }
   .docs-list-hover .block {
     display: block;
     margin-top: 0.75rem;
@@ -1788,11 +1913,8 @@ body > div, .wrapper {
   .docs-list-hover .light {
     color: #909090; }
   .docs-list-hover .swatch, .docs-list-hover .box-border-radius {
+    float: right;
     margin: -4px -4px -4px 0; }
-  .docs-list-hover code {
-    margin: 0;
-    padding: 0;
-    background: transparent; }
 
 /**
  * Docs Tables
@@ -2027,16 +2149,16 @@ body > div, .wrapper {
   bottom: auto;
   padding: 0; }
 
-.home-main .action .btn {
+.home-main .action .button {
   display: block;
   margin: 0 0 0.75rem 0; }
-  .home-main .action .btn:last-child {
+  .home-main .action .button:last-child {
     margin-bottom: 0; }
 
 @media (min-width: 760px) {
   .home-main .action {
     float: none; }
-  .home-main .action .btn {
+  .home-main .action .button {
     display: inline-block;
     margin: 0 5px;
     float: none; } }
@@ -2153,7 +2275,7 @@ body > div, .wrapper {
 .display-widget {
   right: 0; }
 
-.widget .btn-light-on-black {
+.widget .button-light-on-black {
   color: rgba(255, 255, 255, 0.5);
   text-shadow: none;
   background-color: transparent;
@@ -2161,10 +2283,11 @@ body > div, .wrapper {
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100px;
   padding: 10px; }
-  .widget .btn-light-on-black:hover, .widget .btn-light-on-black:focus, .widget .btn-light-on-black:hover {
+  .widget .button-light-on-black:hover, .widget .button-light-on-black:focus, .widget .button-light-on-black:active {
     color: white;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25); }
+    border-color: rgba(255, 255, 255, 0.25); }
+  .widget .button-light-on-black:active {
+    border-color: rgba(255, 255, 255, 0.5); }
 
 /**
  * Tooltip
@@ -2266,7 +2389,7 @@ body > div, .wrapper {
   border-radius: 3px; }
 
 /*==============================================================================
-  @Grid Demo - scss/custom/_part-demos.scss
+  @Demo Grids - scss/custom/_part-demos.scss
 ==============================================================================*/
 @media (min-width: 760px) {
   .demo-grid {
@@ -2355,7 +2478,7 @@ body > div, .wrapper {
   white-space: nowrap; }
 
 /*==============================================================================
-  @Mixin Demos - scss/custom/_part-demos.scss
+  @Demo Mixins - scss/custom/_part-demos.scss
 ==============================================================================*/
 /**
  * Demo Blocks
@@ -2369,6 +2492,8 @@ body > div, .wrapper {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border-radius: 3px; }
+  .demo.demo-pad {
+    padding: 1.5rem; }
 
 .demo blockquote, .demo pre, .demo table, .demo .video-wrapper {
   margin: 1rem 0; }
@@ -2622,7 +2747,7 @@ body > div, .wrapper {
   border-left-color: #aa44c7; }
 
 /*==============================================================================
-  @Tables Demo - scss/custom/_part-demos.scss
+  @Demo Tables - scss/custom/_part-demos.scss
 ==============================================================================*/
 .table-custom-alignment tr {
   vertical-align: middle; }
@@ -2630,13 +2755,13 @@ body > div, .wrapper {
   text-align: center; }
 
 /*==============================================================================
-  @Forms Demo - scss/custom/_part-demos.scss
+  @Demo Forms - scss/custom/_part-demos.scss
 ==============================================================================*/
 .demo form {
   margin: 1rem 0; }
 
 /*==============================================================================
-  @Buttons Demo - scss/custom/_part-demos.scss
+  @Demo Buttons - scss/custom/_part-demos.scss
 ==============================================================================*/
 .demo-buttons {
   padding: 1.25rem;
@@ -2645,12 +2770,12 @@ body > div, .wrapper {
     content: '';
     display: table;
     clear: both; }
-  .demo-buttons .btn {
+  .demo-buttons .button {
     float: left;
     margin: 0.25rem;
     vertical-align: middle; }
 
-.demo .btn-custom {
+.demo .button-custom {
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -2659,12 +2784,12 @@ body > div, .wrapper {
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
-  color: #303030;
   font-weight: inherit;
+  color: #303030;
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
-  background: transparent;
+  background: none;
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
   border-radius: 3px;
@@ -2676,59 +2801,84 @@ body > div, .wrapper {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   margin: 0.25rem; }
-  .demo .btn-custom:hover, .demo .btn-custom:focus, .demo .btn-custom:active {
+  .demo .button-custom:hover, .demo .button-custom:focus, .demo .button-custom:active {
     color: #303030;
-    background: rgba(0, 0, 0, 0.025);
+    background: none;
+    border-color: rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.25s;
     transition: all 0.25s; }
-  .demo .btn-custom:hover, .demo .btn-custom:focus, .demo .btn-custom:hover {
+  .demo .button-custom:active {
+    color: #303030;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-transition: box-shadow 0;
+    transition: box-shadow 0; }
+  .demo .button-custom:hover, .demo .button-custom:focus, .demo .button-custom:active {
     color: #ffffff;
     background-color: #b357cd;
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    border-color: rgba(0, 0, 0, 0.25); }
+  .demo .button-custom:active {
+    color: #ffffff;
+    background-color: #aa44c7;
+    border-color: rgba(0, 0, 0, 0.25); }
 
-.demo .btn-custom-size {
+.demo .button-custom-size {
   padding: 20px 40px;
   font-size: 20px;
   line-height: 28px; }
 
-.demo .btn-custom-mobile {
-  cursor: pointer;
-  display: inline-block;
-  outline: none;
-  margin: 0;
-  padding: 0.75em 1.5em;
-  font-family: inherit;
-  font-size: 1em;
-  line-height: 1.5em;
-  color: #303030;
-  font-weight: inherit;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: top;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0 0 transparent;
-  border-radius: 3px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-  color: #303030;
-  text-shadow: none;
-  background-color: rgba(0, 0, 0, 0.05);
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  display: block;
-  width: 100%; }
-  .demo .btn-custom-mobile:hover, .demo .btn-custom-mobile:focus, .demo .btn-custom-mobile:active {
+.demo-buttons-block {
+  padding: 1rem 1.5rem; }
+  .demo-buttons-block .button {
+    margin: 0.5rem 0; }
+  .demo-buttons-block .button-custom-mobile {
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    margin: 0;
+    padding: 0.75em 1.5em;
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.5em;
+    font-weight: inherit;
     color: #303030;
-    background: rgba(0, 0, 0, 0.025);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.25s;
-    transition: all 0.25s; }
-  .demo .btn-custom-mobile:hover, .demo .btn-custom-mobile:focus, .demo .btn-custom-mobile:hover {
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: top;
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 0 0 transparent;
+    border-radius: 3px;
+    -webkit-transition: all 1s;
+    transition: all 1s;
     color: #303030;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.25); }
+    text-shadow: none;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0; }
+    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus, .demo-buttons-block .button-custom-mobile:active {
+      color: #303030;
+      background: none;
+      border-color: rgba(0, 0, 0, 0.25);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s; }
+    .demo-buttons-block .button-custom-mobile:active {
+      color: #303030;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+      -webkit-transition: box-shadow 0;
+      transition: box-shadow 0; }
+    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus, .demo-buttons-block .button-custom-mobile:active {
+      color: #303030;
+      background-color: #f2f2f2;
+      border-color: rgba(0, 0, 0, 0.25); }
+    .demo-buttons-block .button-custom-mobile:active {
+      color: #303030;
+      background-color: #e6e6e6;
+      border-color: rgba(0, 0, 0, 0.25); }
 
 /*==============================================================================
   @Swatches - scss/custom/_part-swatches.scss

@@ -4,37 +4,107 @@ $filename: 'scss/blocks/_button-groups.scss';
 // Dependencies
 // Buttom Element Module (scss/elements/_buttons.scss) 
 
+////////////////////////////////////////////////////////////////////////////////
+// @Button Groups Map
+////////////////////////////////////////////////////////////////////////////////
+
+$button-groups: (
+  'classes' : true,
+  
+) !default;
+
 /*==============================================================================
   @Button Groups - #{$filename}
 ==============================================================================*/
 
-.btn-group {
-  position: relative;
-  display: block;
-  margin: 1rem 0;
-  @include clearfix();
+@for $i from 2 through 12 {
+  .is-1-of-#{$i} {
+    width: (100% / $i);
+  }
+}
+@for $i from 2 through 12 {
+  .has-#{$i} > * {
+    @extend .is-1-of-#{$i};
+  }
+}
+
+.button-group {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
   
-  .btn {
+  + .button-group {
+    margin-left: 0.75em;
+  }
+  
+  > .button {
     position: relative;
     float: left;
     z-index: 1;
-    margin: 0 -1px 0 0;
+    margin: 0;
     @include border-radius(0);
+    
+    + .button {
+      margin-left: -1px; // Border width of buttons
+    }
     
     &:first-child {
       @include border-radius-left();
     }
     
     &:last-child {
-      margin: 0;
       @include border-radius-right();
     }
     
     &:hover {
       z-index: 2;
     }
-    &.active {
+    &:focus {
       z-index: 3;
+    }
+    &:active {
+      z-index: 4;
+    }
+    &.active {
+      z-index: 5;
+    }
+  }
+}
+
+.button-group.vertical {
+  
+  > .button {
+    @include add-button-block();
+    float: none;
+    margin: 0;
+    @include border-radius(0);
+    
+    + .button {
+      margin-top: -1px; // Border width of buttons
+    }
+    
+    &:first-child {
+      @include border-radius-top();
+    }
+    
+    &:last-child {
+      @include border-radius-bottom();
+    }
+  }
+}
+
+.button-group.block {
+  display: block;
+  margin: 0;
+  @include clearfix();
+  
+  + .button-group.block {
+    margin-top: 1em;
+  }
+  
+  @for $i from 2 through 12 {
+    &.has-#{$i} {
+      margin-right: -(1px * ($i - 1)); // Border width of button * the number of buttons minus one.
     }
   }
 }

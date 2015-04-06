@@ -2,7 +2,7 @@
 $filename: 'scss/custom/_part-demos.scss';
 
 /*==============================================================================
-  @Grid Demo - #{$filename}
+  @Demo Grids - #{$filename}
 ==============================================================================*/
 
 @include media-min('tablet') {
@@ -98,7 +98,7 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /*==============================================================================
-  @Mixin Demos - #{$filename}
+  @Demo Mixins - #{$filename}
 ==============================================================================*/
 
 /**
@@ -113,6 +113,10 @@ $filename: 'scss/custom/_part-demos.scss';
   background: rgba($white, 0.75);
   box-shadow: 0 1px 3px rgba($black, 0.05);
   @include border-radius();
+  
+  &.demo-pad {
+    padding: 1.5rem;
+  }
 }
 
 .demo blockquote,
@@ -328,7 +332,7 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /*==============================================================================
-  @Tables Demo - #{$filename}
+  @Demo Tables - #{$filename}
 ==============================================================================*/
 
 .table-custom-alignment {
@@ -339,7 +343,7 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /*==============================================================================
-  @Forms Demo - #{$filename}
+  @Demo Forms - #{$filename}
 ==============================================================================*/
 
 .demo form {
@@ -347,7 +351,7 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /*==============================================================================
-  @Buttons Demo - #{$filename}
+  @Demo Buttons - #{$filename}
 ==============================================================================*/
 
 .demo-buttons {
@@ -355,16 +359,16 @@ $filename: 'scss/custom/_part-demos.scss';
   text-align: center;
   @include clearfix();
   
-  .btn {
+  .button {
     float: left;
     margin: 0.25rem;
     vertical-align: middle;
   }
 }
 
-.demo .btn-custom {
-  @include make-btn-base();
-  @include make-btn-color((
+.demo .button-custom {
+  @include make-button();
+  @include add-button-color((
     'color' : $white,
     'background' : $violet,
     'background-hover' : darken,
@@ -372,15 +376,23 @@ $filename: 'scss/custom/_part-demos.scss';
   margin: 0.25rem;
 }
 
-.demo .btn-custom-size {
-  @include add-btn-size(20px 40px, (
+.demo .button-custom-size {
+  @include add-button-size(20px 40px, (
     'font-size': 20px,
     'line-height': 28px
   ));
 }
 
-.demo .btn-custom-mobile {
-  @include make-btn-base();
-  @include make-btn-color();
-  @include add-btn-block();
+.demo-buttons-block {
+  padding: 1rem 1.5rem;
+  
+  .button {
+    margin: 0.5rem 0;
+  }
+  .button-custom-mobile {
+    @include make-button();
+    @include add-button-color();
+    @include add-button-block();
+    margin: 0.5rem 0;
+  }
 }

@@ -9,11 +9,16 @@ $filename: 'scss/blocks/_notice.scss';
 // Define all the settings for table mixins and classes.
 $notice: (
   'classes' : true,
+  
   'margin' : 2rem 0,
-  'padding' : 0.5rem 1.5rem,
+  'padding' : 0.25rem 1.25rem,
+  
   'color' : $color-dark,
+  
   'background' : rgba($black, 0.05),
-  'border' : 3px solid rgba($black, 0.05),
+  'border' : 1px solid rgba($black, 0.1),
+  'box-shadow' : 0 1px 3px rgba($black, 0.05),
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +38,7 @@ $notice: (
   color: map-get($o, 'color');
   background: map-get($o, 'background');
   border: map-get($o, 'border');
+  box-shadow: map-get($o, 'box-shadow');
   @include border-radius();
 }
 
@@ -50,16 +56,16 @@ $notice: (
 /**
  * Context Classes
  */
-.notice-success {
+.notice.success {
   background-color: rgba($green, 0.1);
 }
-.notice-info {
+.notice.info {
   background-color: rgba($blue, 0.1);
 }
-.notice-warning {
+.notice.warning {
   background-color: rgba($yellow, 0.1);
 }
-.notice-danger {
+.notice.danger {
   background-color: rgba($red, 0.1);
 }
 

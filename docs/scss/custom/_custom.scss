@@ -229,8 +229,8 @@ body > div,
   color: $gray;
   text-align: center;
 }
-.header .action .btn {
-  display: block;
+.header .action .button {
+  @include add-button-block();
   margin: 0 0 10px 0;
   background-clip: padding-box;
 
@@ -455,17 +455,29 @@ body > div,
   list-style: none;
 }
 .docs-list-hover {
-  @include make-list-base(('margin': 2rem 0, 'padding': 1rem));
-  @include make-list-bordered();
+  @include make-list-base(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
+  @include make-list-rowed();
   @include add-list-rounded();
-  @include add-list-hover(rgba($white, 0.5));
+  box-shadow: 0 1px 3px rgba($black, 0.05);
   
-  li {
+  > li {
     overflow: auto;
     
+    &:first-child {
+      border-top: 0 none;
+    }
+    &:last-child {
+      border-bottom: 0 none;
+    }
     &.list-sep {
       border-top: 2px solid rgba($black, 0.1);
     }
+  }
+  
+  code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
   }
   
   .title {
@@ -479,12 +491,20 @@ body > div,
     }
   }
   
-  .left {
-    float: left;
-  }
+  .left,
   .right {
-    float: right;
+    display: block;
   }
+  
+  @include media-min('tablet') {
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+  }
+  
   .block {
     display: block;
     margin-top: 0.75rem;
@@ -502,13 +522,8 @@ body > div,
   
   .swatch,
   .box-border-radius {
+    float: right;
     margin: -4px -4px -4px 0;
-  }
-  
-  code {
-    margin: 0;
-    padding: 0;
-    background: transparent;
   }
 }
 

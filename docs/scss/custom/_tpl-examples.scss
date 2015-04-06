@@ -117,13 +117,23 @@ $filename: 'scss/custom/_tpl-examples.scss';
 .display-widget {
   right: 0;
 }
-.widget .btn-light-on-black {
-  @include make-btn-color((
+.widget .button-light-on-black {
+  @include add-button-color((
     'color' : rgba($white, 0.5),
-    'color-hover' : rgba($white, 1),
     'background' : transparent,
-    'border' : 1px solid rgba($white, 0.1),
-    'border-hover' : 1px solid rgba($white, 0.25),
+    'border-color' : rgba($white, 0.1),
+    'box-shadow' : none,
+    
+    'hover' : (
+      'color' : rgba($white, 1),
+      'border-color' : rgba($white, 0.25),
+      'box-shadow' : none,
+    ),
+    
+    'active' : (
+      'border-color' : rgba($white, 0.5),
+      'box-shadow' : none,
+    ),
   ));
   width: 100px;
   padding: 10px;
