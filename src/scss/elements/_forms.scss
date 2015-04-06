@@ -193,7 +193,7 @@ form {
 .form-group {
   @include make-form-group-base();
 }
-.form-group.inline-group {
+.form-group.inline {
   @include make-form-group-inline();
   
   > * {
@@ -216,14 +216,15 @@ form {
  */
 .form-header {
   @include make-form-group-base();
+  color: $color-light;
   
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 3) 0;
+    margin: (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     font-size: (map-get($forms, 'font-size') * 1.4);
     line-height: 1.2em;
   }
   p {
-    margin: 0;
+    margin: (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     color: $color-light;
   }
 }
@@ -235,7 +236,7 @@ form {
   @include make-form-group-base();
   @include clearfix();
   
-  .btn,
+  .button,
   .input-align {
     float: left;
     margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
@@ -259,7 +260,7 @@ form {
   &.form-action-center {
     text-align: center;
     
-    .btn,
+    .button,
     .input-align {
       display: inline-block;
       float: none;
@@ -274,7 +275,7 @@ form {
 .input-group {
   @include make-form-group-base();
 }
-.input-group.inline-group {
+.input-group.inline {
   @include make-form-group-inline();
   
   > * {
@@ -301,10 +302,10 @@ label {
     margin-bottom: 0;
   }
   
-  &.label-sub {
+  &.sub {
     font-weight: normal;
   }
-  &.label-hide {
+  &.hide {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -314,22 +315,22 @@ label {
     clip: rect(0,0,0,0);
     border: 0;
   }
-  &.label-block {
+  &.block {
     display: block;
     padding-top: map-get( $forms, 'vertical-align' );
     border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
-  &.label-inline {
+  &.inline {
     display: inline-block;
     padding-top: map-get( $forms, 'vertical-align' );
     border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
 }
-.inline-group {
-  label.label-block,
-  label.label-inline {
+.inline {
+  label.block,
+  label.inline {
     padding-bottom: map-get( $forms, 'vertical-align' );
     border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
@@ -377,12 +378,11 @@ label {
     box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
   }
   
+  &.disabled,
   &[readonly],
   &[disabled] {
+    opacity: 0.5;
     background: rgba($black, 0.05);
-  }
-  &[disabled] {
-    cursor: not-allowed;
   }
 }
 
@@ -397,7 +397,6 @@ label {
   font-weight: normal;
   
   &.disabled {
-    cursor: not-allowed;
     opacity: 0.5;
   }
 }
@@ -421,10 +420,6 @@ input[type="radio"] {
   position: relative;
   top: -1px;
   margin: 0 5px 0 0;
-  
-  &[disabled] {
-    cursor: not-allowed;
-  }
 }
 
 /**
@@ -515,17 +510,17 @@ label + .note {
  * Inline Inputs
  */
 label.inline,
-.btn.inline,
+.button.inline,
 .input.inline,
 .checkbox.inline,
 .radio.inline,
 .choice.inline,
-.inline-group label,
-.inline-group .btn,
-.inline-group .input,
-.inline-group .checkbox,
-.inline-group .radio,
-.inline-group .choice {
+.inline label,
+.inline .button,
+.inline .input,
+.inline .checkbox,
+.inline .radio,
+.inline .choice {
   @include make-input-inline();
 }
 
@@ -542,7 +537,7 @@ fieldset[disabled] {
   .checkbox,
   .radio,
   .choice {
-    cursor: not-allowed;
+    opacity: 0.5;
   }
   .input {
     background: rgba($black, 0.05);

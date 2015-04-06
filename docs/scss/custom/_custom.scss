@@ -417,8 +417,8 @@ body > div,
 .sitemap > .rootnav,
 .sitemap > .subnav,
 .sitemap > .altnav, {
-  @include make-list-base(('padding': 0, 'margin': 2rem 0));
-  @include make-list-bordered();
+  @include make-list(('padding': 0, 'margin': 2rem 0));
+  @include add-list-bordered();
   @include add-list-rounded();
   font-size: px-to-rem(18px);
   
@@ -454,9 +454,9 @@ body > div,
 .docs-list {
   list-style: none;
 }
-.docs-list-hover {
-  @include make-list-base(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
-  @include make-list-rowed();
+.docs-list-compact {
+  @include make-list(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
+  @include add-list-rowed();
   @include add-list-rounded();
   box-shadow: 0 1px 3px rgba($black, 0.05);
   
@@ -531,16 +531,23 @@ body > div,
  * Docs Tables
  */
 .docs-table {
-  @include make-table-base(('margin': 2rem 0, 'padding': 1rem));
-  @include make-table-bordered();
+  @include make-table(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
+  @include add-table-rowed();
   @include add-table-rounded();
-  @include add-table-hover(rgba($white, 0.5));
-    
+  
   th {
     font-size: 18px;
     line-height: 26px;
     color: $color-dark;
   }
+  
+  tbody:first-child tr:first-child td {
+    border-top: 0 none;
+  }
+  tbody tr:last-child td {
+    border-bottom: 0 none;
+  }
+  
   code {
     margin: 0;
     padding: 0;
@@ -596,7 +603,7 @@ body > div,
     > h2, > h3, > p {
       margin: 0.5rem 0;
     }
-    > pre, .notice, .demo, .docs-list-hover, .docs-table, .docs-table-responsive {
+    > pre, .notice, .demo, .docs-list-compact, .docs-table, .docs-table-responsive {
       margin: 1rem 0;
     }
     

@@ -158,7 +158,7 @@
 <h1>Base Styles</h1>
 <p>Some general styles and global resets are defined here. This is where we store any styles that effect the <code>&lt;body&gt;</code> or <code>&lt;html&gt;</code> elements, set HTML5 elements to display as block and any output our global modifier classes.</p>
 
-<ul class="docs-list-hover">
+<ul class="docs-list-compact">
   <li>Remove margins and padding from HTML and Body elements and sets our base font-size.</li>
   <li>Prevents automatic text resizing on mobile devices.</li>
   <li>Make HTML5 elements act like blocks.</li>
@@ -523,7 +523,7 @@
 <div class="inner-subsection">
   <h1>List Variables</h1>
   <p class="text-lead">List variables are encompassed within the <code>$lists</code> map and are used throughout all list mixins to set default values.</p>
-<ul class="docs-list docs-list-hover">
+<ul class="docs-list docs-list-compact">
   <li>
     <code>$lists('classes')</code>
     <code class="right value">true</code>
@@ -552,16 +552,16 @@
 <ul class="docs-list">
   
   <li>
-    <h2>make-list-base</h2>
+    <h2>make-list</h2>
     <p>Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided <code>.list</code> for your base button class.</p>
-    <pre class="language-scss"><code>@mixin make-list-base( $options: () )
+    <pre class="language-scss"><code>@mixin make-list( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <p>Using the base list mixin for custom tables. This example shows us using a <code>%base-list</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-list {
-  @include make-list-base();
+  @include make-list();
 }
 .list-example-1 {
   @extend %base-list;
@@ -574,20 +574,20 @@
   </li>
   
   <li>
-    <h2>make-list-rowed</h2>
+    <h2>add-list-rowed</h2>
     <p>Adds borders to a list that divide list items. Requires the use of base list styles through base list class, mixin or extend.</p>
-    <pre class="language-scss"><code>@mixin make-list-rowed( $options: () )
+    <pre class="language-scss"><code>@mixin add-list-rowed( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base();
-  @include make-list-rowed();
+  @include make-list();
+  @include add-list-rowed();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list rowed&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-rowed">
+      <ul class="list rowed">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -601,14 +601,14 @@
         <li>List Item</li>
       </ul>
     </div>
-    <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list-base(('padding':10px 0))</code>, or use the <code>.list-flush</code> class to make the list flush to both sides.</p>
+    <p>In the case where you don't want to create left and right padding on a list, you can pass a custom padding through the base list mixin <code>make-list(('padding':10px 0))</code>, or use the <code>.flush</code> class to make the list flush to both sides.</p>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base(('padding':10px 0));
-  @include make-list-rowed();
+  @include make-list(('padding':10px 0));
+  @include add-list-rowed();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-flush&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list rowed flush&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-rowed list-flush">
+      <ul class="list rowed flush">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -625,20 +625,20 @@
   </li>
   
   <li>
-    <h2>make-list-bordered</h2>
+    <h2>add-list-bordered</h2>
     <p>Adds borders to a list that wraps the list and divides list items. Requires the use of base list styles through base list class, mixin or extend.</p>
-    <pre class="language-scss"><code>@mixin make-list-bordered( $options: () )
+    <pre class="language-scss"><code>@mixin add-list-bordered( $options: () )
 // @param $options
 //   @type map
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base();
-  @include make-list-bordered();
+  @include make-list();
+  @include add-list-bordered();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list bordered&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-bordered">
+      <ul class="list bordered">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -666,13 +666,13 @@
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base();
-  @include make-list-bordered();
+  @include make-list();
+  @include add-list-bordered();
   @include add-list-rounded();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-bordered list-rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list bordered rounded&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-bordered list-rounded">
+      <ul class="list bordered rounded">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -689,9 +689,9 @@
   </li>
   
   <li>
-    <h2>add-list-stripes</h2>
+    <h2>add-list-striped</h2>
     <p>Gives a list items alternating background colors.</p>
-    <pre class="language-scss"><code>@mixin add-list-stripes( $nth, $options: () )
+    <pre class="language-scss"><code>@mixin add-list-striped( $nth, $options: () )
 // @param $nth
 //   @type nth (odd, even)
 //   @default default ($lists('nth'))
@@ -700,13 +700,13 @@
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base();
-  @include make-list-bordered();
-  @include add-list-stripes();
+  @include make-list();
+  @include add-list-bordered();
+  @include add-list-striped();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-stripes&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list rowed striped&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-rowed list-striped">
+      <ul class="list rowed striped">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -734,13 +734,13 @@
 //   @default $lists map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-list {
-  @include make-list-base();
-  @include make-list-bordered();
+  @include make-list();
+  @include add-list-bordered();
   @include add-list-hover();
 }</code></pre>
-    <pre class="language-markup"><code>&lt;ul class=&quot;list list-rowed list-hover&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list rowed hover&quot;&gt;...&lt;/ul&gt;</code></pre>
     <div class="demo">
-      <ul class="list list-rowed list-hover">
+      <ul class="list rowed hover">
         <li>List Item</li>
         <li>List Item
           <ul>
@@ -884,7 +884,7 @@ class BaseWeb() {
 <div class="inner-subsection">
   <h1>Table Variables</h1>
   <p class="text-lead">Table variables are encompassed within the <code>$tables</code> map and are used throughout all table mixins to set default values.</p>
-<ul class="docs-list docs-list-hover">
+<ul class="docs-list docs-list-compact">
   <li>
     <code>$tables('classes')</code>
     <code class="right value">true</code>
@@ -917,16 +917,16 @@ class BaseWeb() {
 <ul class="docs-list">
     
   <li>
-    <h2>make-table-base</h2>
+    <h2>make-table</h2>
     <p>Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided <code>.table</code> for your base table class.</p>
-    <pre class="language-scss"><code>@mixin make-table-base( $options: () )
+    <pre class="language-scss"><code>@mixin make-table( $options: () )
 // @param $options
 //   @type map
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <p>Using the base table mixin for custom tables. This example shows us using a <code>%base-table</code> placeholder for the extend method.</p>
     <pre class="language-scss"><code>%base-table {
-  @include make-table-base();
+  @include make-table();
 }
 .table-example-1 {
   @extend %base-table;
@@ -939,21 +939,21 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>make-table-rowed</h2>
+    <h2>add-table-rowed</h2>
     <p>Adds borders to a table that divide table rows. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="language-scss"><code>@mixin make-table-rowed( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-rowed( $options: () )
 // @param $options
 //   @type map
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-rowed();
+  @include make-table();
+  @include add-table-rowed();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-rowed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table rowed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-rowed">
+      <table class="table rowed">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -983,21 +983,21 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>make-table-columned</h2>
+    <h2>add-table-columned</h2>
     <p>Adds borders to a table that divide table columns. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="language-scss"><code>@mixin make-table-columned( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-columned( $options: () )
 // @param $options
 //   @type map
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-columned();
+  @include make-table();
+  @include add-table-columned();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-columned&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table columned&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-columned">
+      <table class="table columned">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1027,21 +1027,21 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>make-table-bordered</h2>
+    <h2>add-table-bordered</h2>
     <p>Adds borders to a table that divide table cells. Requires the use of base table styles through base table class, mixin or extend.</p>
-    <pre class="language-scss"><code>@mixin make-table-bordered( $options: () )
+    <pre class="language-scss"><code>@mixin add-table-bordered( $options: () )
 // @param $options
 //   @type map
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-bordered();
+  @include make-table();
+  @include add-table-bordered();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered">
+      <table class="table bordered">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1083,8 +1083,8 @@ class BaseWeb() {
     <p>As a mixin, this is used when overriding the inherited table size of more general table styles.</p>
     <pre class="language-scss"><code>
 .all-tables {
-  @include make-table-base();
-  @include make-table-bordered();
+  @include make-table();
+  @include add-table-bordered();
 }
 .small-tables {
   @extend .all-tables;
@@ -1094,10 +1094,10 @@ class BaseWeb() {
   @extend .all-tables;
   @include add-table-size(8px 16px);
 }</code></pre>
-    <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.table-condensed</code>, <code>.table-expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-condensed&quot;&gt;...&lt;/table&gt;</code></pre>
+    <p>When class modifiers are enabled, you have the two sizing utility classes (<code>.condensed</code>, <code>.expanded</code>) available. This are primarily used along side the base and style modifier classes.</p>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered condensed&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-condensed">
+      <table class="table bordered condensed">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1124,9 +1124,9 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-expanded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered expanded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-expanded">
+      <table class="table bordered expanded">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1167,14 +1167,14 @@ class BaseWeb() {
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-bordered();
+  @include make-table();
+  @include add-table-bordered();
   @include add-table-rounded();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-rounded&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered rounded&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-rounded">
+      <table class="table bordered rounded">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1218,15 +1218,15 @@ class BaseWeb() {
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-bordered();
+  @include make-table();
+  @include add-table-bordered();
   @include add-table-stripes();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped&quot;&gt;...&lt;/table&gt;
-&lt;table class=&quot;table table-bordered table-striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered striped&quot;&gt;...&lt;/table&gt;
+&lt;table class=&quot;table bordered striped-horizontal&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-striped">
+      <table class="table bordered striped">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1253,9 +1253,9 @@ class BaseWeb() {
         </tr>
       </table>
     </div>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered striped-vertical&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-striped-vertical table-align-center">
+      <table class="table bordered striped-vertical align-center">
         <tr>
           <th>#</th>
           <th>#</th>
@@ -1322,14 +1322,14 @@ class BaseWeb() {
 //   @default $tables map</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>.custom-table {
-  @include make-table-base();
-  @include make-table-bordered();
+  @include make-table();
+  @include add-table-bordered();
   @include add-table-hover();
 }
 </code></pre>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-hover&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered hover&quot;&gt;...&lt;/table&gt;</code></pre>
     <div class="demo">
-      <table class="table table-bordered table-hover">
+      <table class="table bordered hover">
         <tr>
           <th>#</th>
           <th>Table Header</th>
@@ -1389,36 +1389,36 @@ class BaseWeb() {
     <div class="docs-table-responsive">
       <table class="docs-table">
         <tr>
-          <td><code>.table-valign-baseline</code></td>
+          <td><code>.valign-baseline</code></td>
           <td>Applies <code>vertical-align: baseline;</code> to table rows.</td>
         </tr>
          <tr>
-          <td><code>.table-valign-top</code></td>
+          <td><code>.valign-top</code></td>
           <td>Applies <code>vertical-align: top;</code> to table rows.</td>
         </tr>
          <tr>
-          <td><code>.table-valign-middle</code></td>
+          <td><code>.valign-middle</code></td>
           <td>Applies <code>vertical-align: middle;</code> to table rows.</td>
         </tr>
          <tr>
-          <td><code>.table-valign-bottom</code></td>
+          <td><code>.valign-bottom</code></td>
           <td>Applies <code>vertical-align: bottom;</code> to table rows.</td>
         </tr>
         <tr>
-          <td><code>.table-align-left</code></td>
+          <td><code>.align-left</code></td>
           <td>Aligns text to the left for all table cells.</td>
         </tr>
         <tr>
-          <td><code>.table-align-center</code></td>
+          <td><code>.align-center</code></td>
           <td>Aligns text to the center for all table cells.</td>
         </tr>
         <tr>
-          <td><code>.table-align-right</code></td>
+          <td><code>.align-right</code></td>
           <td>Aligns text to the right for all table cells.</td>
         </tr>
       </table>
     </div>
-    <pre class="language-markup"><code>&lt;table class=&quot;table table-bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;table class=&quot;table bordered table-align-center&quot;&gt;...&lt;/table&gt;</code></pre>
   </li>
   
   <li>
@@ -1431,13 +1431,13 @@ class BaseWeb() {
     <h3>Example Usage</h3>
     <p>Simply wrap a div with the <code>.table-responsive</code> class or apply the <code>make-table-responsive()</code> mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using <code>media-max('tablet')</code>.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;table-responsive&quot;&gt;
-  &lt;table class=&quot;table table-bordered&quot;&gt;
+  &lt;table class=&quot;table bordered&quot;&gt;
     ...
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
     <div class="demo">
       <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table bordered">
           <tr>
             <th>#</th>
             <th>Table Header</th>
@@ -1497,7 +1497,7 @@ class BaseWeb() {
 <ul class="docs-list">
   
   <li>
-    <h2>.align-left</h2>
+    <h2>img.align-left</h2>
     <p>Floats an image to the left and adds top, right and bottom margins so that text wraps around the image properly.</p>
     <pre class="language-markup"><code>&lt;img class=&quot;align-left&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
@@ -1506,7 +1506,7 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>.align-center</h2>
+    <h2>img.align-center</h2>
     <p>Centers an image by making it block and giving it left and right margins of <code>auto</code>.</p>
     <pre class="language-markup"><code>&lt;img class=&quot;align-center&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
@@ -1515,7 +1515,7 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>.align-right</h2>
+    <h2>img.align-right</h2>
     <p>Floats an image to the right and adds top, left and bottom margins so that text wraps around the image properly.</p>
     <pre class="language-markup"><code>&lt;img class=&quot;align-right&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
@@ -1524,29 +1524,29 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>.img-rounded</h2>
+    <h2>img.rounded</h2>
     <p>Adds rounded border radius based on the default border-radius setting <code>$border-radius</code>.</p>
-    <pre class="language-markup"><code>&lt;img class=&quot;img-rounded&quot; src=&quot;...&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;img class=&quot;rounded&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="align-center img-rounded" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center rounded" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h2>.img-circle</h2>
+    <h2>img.circle</h2>
     <p>Makes a circle effect on an image by adding <code>50%</code> border radius.</p>
-    <pre class="language-markup"><code>&lt;img class=&quot;img-circle&quot; src=&quot;...&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;img class=&quot;circle&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="align-center img-circle" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center circle" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
   <li>
-    <h2>.img-polaroid</h2>
+    <h2>img.polaroid</h2>
     <p>Adds a polaroid effect to an image.</p>
-    <pre class="language-markup"><code>&lt;img class=&quot;img-polaroid&quot; src=&quot;...&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;img class=&quot;polaroid&quot; src=&quot;...&quot;&gt;</code></pre>
     <div class="demo">
-      <img class="align-center img-polaroid" alt="Placeholder image" src="http://placehold.it/150x150">
+      <img class="align-center polaroid" alt="Placeholder image" src="http://placehold.it/150x150">
     </div>
   </li>
   
@@ -1580,29 +1580,29 @@ class BaseWeb() {
 <ul class="docs-list">
   
   <li>
-    <h2>.hr-dotted</h2>
+    <h2>hr.dotted</h2>
     <p>Uses the dotted border style property to created a dotted rule.</p>
-    <pre class="language-markup"><code>&lt;hr class=&quot;hr-dotted&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;hr class=&quot;dotted&quot;&gt;</code></pre>
     <div class="demo">
-      <hr class="hr-dotted">
+      <hr class="dotted">
     </div>
   </li>
   
   <li>
-    <h2>.hr-dashed</h2>
+    <h2>hr.dashed</h2>
     <p>Uses the dashed border style property to created a dashed rule.</p>
-    <pre class="language-markup"><code>&lt;hr class=&quot;hr-dashed&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;hr class=&quot;dashed&quot;&gt;</code></pre>
     <div class="demo">
-      <hr class="hr-dashed">
+      <hr class="dashed">
     </div>
   </li>
   
   <li>
-    <h2>.hr-double</h2>
+    <h2>hr.double</h2>
     <p>Uses the double border style property to created a double bordered rule.</p>
-    <pre class="language-markup"><code>&lt;hr class=&quot;hr-double&quot;&gt;</code></pre>
+    <pre class="language-markup"><code>&lt;hr class=&quot;double&quot;&gt;</code></pre>
     <div class="demo">
-      <hr class="hr-double">
+      <hr class="double">
     </div>
   </li>
   
@@ -1689,7 +1689,7 @@ class BaseWeb() {
       <label>Example Label</label>
       <div class="row">
         <div class="col col-6">
-          <label class="label-sub">Choice Checkboxes</label>
+          <label class="sub">Choice Checkboxes</label>
           <div class="input-group">
             <label class="choice"><input type="checkbox"> Choice Checkbox 1</label>
             <label class="choice"><input type="checkbox"> Choice Checkbox 2</label>
@@ -1697,7 +1697,7 @@ class BaseWeb() {
         </div>
         
         <div class="col col-6">
-          <label class="label-sub">Choice Radios</label>
+          <label class="sub">Choice Radios</label>
           <div class="input-group">
             <label class="choice"><input type="radio" name="radio-1"> Choice Radio 1</label>
             <label class="choice"><input type="radio" name="radio-1"> Choice Radio 2</label>
@@ -1707,8 +1707,8 @@ class BaseWeb() {
     </div>
       
     <footer class="form-action">
-      <button class="btn btn-primary">Button</button>
-      <button class="btn btn-default">Button</button>
+      <button class="button primary">Button</button>
+      <button class="button default">Button</button>
     </footer>
       
   </form>
@@ -1718,7 +1718,7 @@ class BaseWeb() {
 <div class="inner-subsection">
   <h1>Form Variables</h1>
   <p class="text-lead">Form variables are encompassed within the <code>$forms</code> map and are used throughout all form mixins to set default values.</p>
-  <ul class="docs-list docs-list-hover">
+  <ul class="docs-list docs-list-compact">
     <li>
       <code>$forms('vertical-spacing')</code>
       <code class="right value">1.5em</code>
@@ -1894,9 +1894,9 @@ class BaseWeb() {
     <div class="demo">
       <form>
         <footer class="form-action">
-          <button class="btn btn-green">Save Account</button>
-          <button class="btn btn-danger">Delete</button>
-          <button class="btn btn-default float-right">Cancel</button>
+          <button class="button green">Save Account</button>
+          <button class="button danger">Delete</button>
+          <button class="button default float-right">Cancel</button>
         </footer>
       </form>
     </div>
@@ -1934,20 +1934,20 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>.inline-group</h2>
-    <p>You can create inline forms by adding the class <code>.inline-group</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
+    <h2>.inline</h2>
+    <p>You can create inline forms by adding the class <code>.inline</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
     <pre class="language-markup"><code>
 &lt;form&gt;
-  &lt;div class=&quot;form-group inline-group&quot;&gt;
+  &lt;div class=&quot;form-group inline&quot;&gt;
     ...
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
     <div class="demo">
       <form>
-        <div class="form-group inline-group">
+        <div class="form-group inline">
           <input type="text" class="input" placeholder="Username" required>
           <input type="password" class="input" placeholder="Password" required>
-          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="submit" class="button primary">Sign In</button>
         </div>
       </form>
     </div>
@@ -2093,7 +2093,7 @@ class BaseWeb() {
 <div class="inner-subsection">
   <h1>Form Elements</h1>
   <p class="text-lead">BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in <code>$forms</code>.</p>
-  <p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline-group</code> to a parent element.</p>
+  <p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline</code> to a parent element.</p>
 </div>
 <ul class="docs-list">
 
@@ -2235,16 +2235,16 @@ class BaseWeb() {
 &lt;label&gt;Default Label&lt;/label&gt;
 
 &lt;!-- Makes subtle styles for sub label --&gt;
-&lt;label class=&quot;label-sub&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;sub&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Hides lables but keeps them accessible for screen readers --&gt;
-&lt;label class=&quot;label-hide&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;hide&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Makes labels display block with top padding for alignment --&gt;
-&lt;label class=&quot;label-block&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;block&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Makes labels display inline-block with top padding for alignment --&gt;
-&lt;label class=&quot;label-inline&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;inline&quot;&gt;...&lt;/label&gt;
 </code></pre>
     <div class="demo">
       <form>
@@ -2252,15 +2252,15 @@ class BaseWeb() {
           <label>Default Label</label>
           <div class="row">
             <div class="col col-3">
-              <label class="label-sub">Sub Label</label>
-              <label class="label-block">Block Label</label>
+              <label class="sub">Sub Label</label>
+              <label class="block">Block Label</label>
             </div>
             <div class="col col-5">
-              <label class="label-sub">Sub Label</label>
+              <label class="sub">Sub Label</label>
               <input class="input" type="text" placeholder="Example">
             </div>
             <div class="col col-4">
-              <label class="label-sub">Sub Label</label>
+              <label class="sub">Sub Label</label>
               <label class="choice"><input type="checkbox" checked> Choice</label>
             </div>
           </div>
@@ -2284,7 +2284,7 @@ class BaseWeb() {
         <div class="form-group">
           <div class="row">
             <div class="col col-4">
-              <label class="label-block">Example Input with Notes</label>
+              <label class="block">Example Input with Notes</label>
               <p class="note">This is an example note.</p>
             </div>
             <div class="col col-8">
@@ -2444,7 +2444,7 @@ class BaseWeb() {
 <div class="inner-subsection">
   <h1>Button Variables</h1>
   <p class="text-lead">Button variables are encompassed within the <code>$buttons</code> map and are used throughout all button mixins to set default values.</p>
-  <ul class="docs-list-hover">
+  <ul class="docs-list-compact">
     <li>
       <code>$buttons('classes')</code>
       <code class="right value">true</code>

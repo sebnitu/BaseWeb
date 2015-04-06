@@ -26,12 +26,12 @@ $lists: (
 // @Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make List Base
+// Make List
 // Creates the base styles for a list modifer mixin or class. Usually applied directly through a mixin or `%list-base` placeholder.
 // @param $options
 //   @type map
 //   @default $lists map
-@mixin make-list-base($options: ()) {
+@mixin make-list($options: ()) {
   $o: map-merge( $lists, $options);
   
   list-style: none;
@@ -47,12 +47,12 @@ $lists: (
   
 }
 
-// Make List Rowed
+// Add List Rowed
 // Adds borders to a list that divide list items.
 // @param $options
 //   @type map
 //   @default $lists map
-@mixin make-list-rowed($options: ()) {
+@mixin add-list-rowed($options: ()) {
   $o: map-merge($lists, $options);
   
   > li {
@@ -64,15 +64,16 @@ $lists: (
   
 }
 
-// Make List Bordered
+// Add List Bordered
 // Adds borders to a list that wraps the list and divides list items.
 // @param $options
 //   @type map
 //   @default $lists map
-@mixin make-list-bordered($options: ()) {
+@mixin add-list-bordered($options: ()) {
   $o: map-merge($lists, $options);
   
   border: map-get($o, 'border');
+  
   > li {
     border-bottom: map-get($o, 'border');
   }
@@ -107,7 +108,7 @@ $lists: (
   
 }
 
-// Add List Stripes
+// Add List Striped
 // Gives a list items alternating background colors.
 // @param $nth
 //   @type nth (odd, even)
@@ -115,7 +116,7 @@ $lists: (
 // @param $options
 //   @type map
 //   @default $lists map
-@mixin add-list-stripes($nth: default, $options: ()) {
+@mixin add-list-striped($nth: default, $options: ()) {
   $o: map-merge($lists, $options);
   
   @if ($nth != default) {
@@ -213,40 +214,38 @@ dl {
 ==============================================================================*/
 
 /**
- * Base Table Modifiers Styles
+ * Base Table Styles
  */
 .list {
-  @include make-list-base();
+  @include make-list();
 }
 
 /**
- * Border Variations
+ * Border Modifiers
  */
-.list-rowed {
-  @include make-list-rowed();
+.list.rowed {
+  @include add-list-rowed();
   
-  &.list-flush {
-    > li {
-      padding-left: 0;
-      padding-right: 0;
-    }
+  &.flush > li {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
-.list-bordered {
-  @include make-list-bordered();
+.list.bordered {
+  @include add-list-bordered();
 }
 
 /**
  * Miscellaneous Modifiers
  */
-.list-rounded {
+.list.rounded {
   @include add-list-rounded();
 }
-.list-striped {
-  @include add-list-stripes();
+.list.striped {
+  @include add-list-striped();
 }
-.list-hover {
+.list.hover {
   @include add-list-hover();
 }
 
-} // endif
+} // endif classes
