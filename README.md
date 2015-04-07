@@ -63,7 +63,7 @@ module.exports = {
   // Each object inside of the build array is output as a task under the namespace 'build'.
   build: [
     { ... }
-  ]
+  ],
   
   // Each object inside of the watch array is output as a watch task.
   watch: [
