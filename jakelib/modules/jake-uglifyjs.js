@@ -4,6 +4,10 @@ var uglify = require('uglify-js');
 
 module.exports = function runuglifyjs(o) {
   
+  if (o.path === undefined) {
+    o.path = '';
+  }
+  
   if (typeof o.input === 'string') {
     var js = uglify.minify( o.path + o.input );
   } else {

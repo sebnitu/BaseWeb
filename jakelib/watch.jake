@@ -2,7 +2,7 @@ var u = require('./modules/node-utility');
 var watch = require('node-watch');
 
 // Get our configuration settings
-var config = require('../jakefile');
+var config = require('../jake-config');
 
 // Create our watch task
 if ('watch' in config) {
@@ -18,11 +18,23 @@ if ('watch' in config) {
         if ('ignore' in item) {
           if (item.ignore.indexOf(filename) < 0) {
             u.print(filename + ' was changed:', 'cyan');
-            jake.Task['build:' + item.key].execute();
+            if (typeof item.key === 'string') {
+              jake.Task['build:' + item.key].execute();
+            } else {
+              item.key.forEach(function(task) {
+                jake.Task['build:' + task].execute();
+              });
+            }
           }
         } else {
           u.print(filename + ' was changed:', 'cyan');
-          jake.Task['build:' + item.key].execute();
+          if (typeof item.key === 'string') {
+            jake.Task['build:' + item.key].execute();
+          } else {
+            item.key.forEach(function(task) {
+              jake.Task['build:' + task].execute();
+            });
+          }
         }
       });
       

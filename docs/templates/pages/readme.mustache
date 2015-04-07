@@ -39,13 +39,7 @@ Upcoming features and updates to BaseWeb documentation:
 
 ## Build Scripts
 
-BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written to be super flexible. The configurations are all setup using `jakefile.js` and can be adjusted as need for your own purposes.
-
-### Dependencies
-
-* Install [Node.js](http://nodejs.org/) by downloading the `.pkg` file.
-* Install [Jake](https://github.com/mde/jake) globally `sudo npm install -g jake`.
-* Install [Jpegtran](http://jpegclub.org/jpegtran/) for the image optimizer to work. With [Homebrew](http://brew.sh/): `brew install jpeg`
+BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written to be super flexible. The configurations are all setup using `jake-config.js` and can be adjusted as need for your own purposes.
 
 ### Node Packages
 Run `npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb and related files:
@@ -56,6 +50,8 @@ Run `npm install` to install required node modules for build scripts. This is th
 | `uglify-js`    | `2.4.19`   |
 | `imagemin`     | `3.1.0`    |
 | `mustache`     | `2.0.0`    |
+
+*Keep in mind that if you use the imagemin module, [Jpegtran](http://jpegclub.org/jpegtran/) should be installed globally. You can install it with [Homebrew](http://brew.sh/) using: `brew install jpeg`*
 
 ### Jake Tasks
 The following tasks are available for building BaseWeb and related files:
@@ -69,11 +65,27 @@ The following tasks are available for building BaseWeb and related files:
 | `jake watch`      | Watch for change to files and rebuild if they change |
 
 ### Cusomizing Jake Tasks
-The build scripts for BaseWeb are easy to adapt to your own projects. All tasks are setup using the `jakefile.js` as a configuration file. Each of the node modules that are used have a custom jake wrapper to interface with more easily. These are all the options you can adjust for Build and Watch tasks:
+The build scripts for BaseWeb are easy to adapt to your own projects. All tasks are setup using the `jake-config.js` as a configuration file. Each of the node modules that are used have a custom jake wrapper to interface with more easily. These are all the options you can adjust for Build and Watch tasks:
+
+```js
+module.exports = {
+  
+  // Each object inside of the build array is output as a task under the namespace 'build'.
+  build: [
+    { ... }
+  ]
+  
+  // Each object inside of the watch array is output as a watch task.
+  watch: [
+    { ... }
+  ]
+  
+}
+```
 
 #### Build Tasks
 
-```
+```js
 // General Build Tasks
 build: [
   {
@@ -96,7 +108,7 @@ build: [
 
 #### Watch Tasks
 
-```
+```js
 // General Watch Tasks
 watch: [
   {

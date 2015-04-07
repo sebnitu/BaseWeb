@@ -27,7 +27,7 @@ if ('imagemin' in dependencies) {
 }
 
 // Get our configuration settings
-var config = require('../jakefile');
+var config = require('../jake-config');
 
 // Create our build tasks under the build namespace
 if ('build' in config) {
