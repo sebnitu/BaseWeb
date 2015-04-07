@@ -1007,29 +1007,35 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   white-space: nowrap;
   vertical-align: top;
   background: none;
-  border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition-property: color, background-color, box-shadow, border-color;
+  transition-property: color, background-color, box-shadow, border-color;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
   color: #303030;
   text-shadow: none;
   background-color: #ffffff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button:hover, .button:focus, .button:active {
+  .button:hover, .button:focus {
     color: #303030;
     background: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.25s;
-    transition: all 0.25s; }
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s; }
   .button:active {
     color: #303030;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-    -webkit-transition: box-shadow 0;
-    transition: box-shadow 0; }
-  .button:hover, .button:focus, .button:active {
+    background: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.25);
+    -webkit-transition-duration: 0;
+    transition-duration: 0; }
+  .button:hover, .button:focus {
     color: #303030;
     background-color: #f2f2f2;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -1047,7 +1053,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #efefef;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.default:hover, .button.default:focus, .button.default:active {
+  .button.default:hover, .button.default:focus {
     background-color: #e2e2e2; }
   .button.default:active {
     color: #303030;
@@ -1060,7 +1066,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #2ab0ea;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.blue:hover, .button.primary:hover, .button.active:hover, .button.blue:focus, .button.primary:focus, .button.active:focus, .button.blue:active, .button.primary:active, .button.active:active {
+  .button.blue:hover, .button.primary:hover, .button.active:hover, .button.blue:focus, .button.primary:focus, .button.active:focus {
     color: #ffffff;
     background-color: #16a6e4;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -1075,7 +1081,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #84b72d;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.green:hover, .button.success:hover, .button.green:focus, .button.success:focus, .button.green:active, .button.success:active {
+  .button.green:hover, .button.success:hover, .button.green:focus, .button.success:focus {
     color: #ffffff;
     background-color: #75a328;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -1090,7 +1096,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #e69242;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.orange:hover, .button.warning:hover, .button.orange:focus, .button.warning:focus, .button.orange:active, .button.warning:active {
+  .button.orange:hover, .button.warning:hover, .button.orange:focus, .button.warning:focus {
     color: #ffffff;
     background-color: #e3852b;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -1105,7 +1111,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #de5151;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.red:hover, .button.danger:hover, .button.red:focus, .button.danger:focus, .button.red:active, .button.danger:active {
+  .button.red:hover, .button.danger:hover, .button.red:focus, .button.danger:focus {
     color: #ffffff;
     background-color: #da3c3c;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -1120,7 +1126,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   background-color: #606060;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15); }
-  .button.black:hover, .button.secondary:hover, .button.black:focus, .button.secondary:focus, .button.black:active, .button.secondary:active {
+  .button.black:hover, .button.secondary:hover, .button.black:focus, .button.secondary:focus {
     background-color: #6d6d6d; }
   .button.black:active, .button.secondary:active {
     background-color: #7a7a7a; }
@@ -1141,13 +1147,13 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   width: 100%; }
 
 /*==============================================================================
-  @Video - scss/elements/_video.scss
+  @Video - scss/elements/_videos.scss
 ==============================================================================*/
 .video-wrapper {
   position: relative;
   display: block;
   height: 0;
-  margin: 2rem 0;
+  margin: 2em 0;
   padding-bottom: 56.25%;
   overflow: hidden; }
   .video-wrapper .video-item, .video-wrapper embed, .video-wrapper iframe, .video-wrapper object, .video-wrapper video {
@@ -1161,11 +1167,12 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 /**
  * Video Ratios
  */
-.video-wrapper.ratio-16x9 {
+.video-wrapper .ratio-16x9 {
   padding-bottom: 56.25%; }
-
-.video-wrapper.ratio-4x3 {
+.video-wrapper .ratio-4x3 {
   padding-bottom: 75%; }
+.video-wrapper .ratio-3x2 {
+  padding-bottom: 66.66667%; }
 
 /*==============================================================================
   @Button Groups - scss/blocks/_button-groups.scss
@@ -2275,7 +2282,7 @@ body > div, .wrapper {
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100px;
   padding: 10px; }
-  .widget .button-light-on-black:hover, .widget .button-light-on-black:focus, .widget .button-light-on-black:active {
+  .widget .button-light-on-black:hover, .widget .button-light-on-black:focus {
     color: white;
     border-color: rgba(255, 255, 255, 0.25); }
   .widget .button-light-on-black:active {
@@ -2785,30 +2792,36 @@ body > div, .wrapper {
   white-space: nowrap;
   vertical-align: top;
   background: none;
-  border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 0 transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition-property: color, background-color, box-shadow, border-color;
+  transition-property: color, background-color, box-shadow, border-color;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
   color: #ffffff;
   text-shadow: none;
   background-color: #bc6bd3;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   margin: 0.25rem; }
-  .demo .button-custom:hover, .demo .button-custom:focus, .demo .button-custom:active {
+  .demo .button-custom:hover, .demo .button-custom:focus {
     color: #303030;
     background: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.25s;
-    transition: all 0.25s; }
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s; }
   .demo .button-custom:active {
     color: #303030;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-    -webkit-transition: box-shadow 0;
-    transition: box-shadow 0; }
-  .demo .button-custom:hover, .demo .button-custom:focus, .demo .button-custom:active {
+    background: none;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.25);
+    -webkit-transition-duration: 0;
+    transition-duration: 0; }
+  .demo .button-custom:hover, .demo .button-custom:focus {
     color: #ffffff;
     background-color: #b357cd;
     border-color: rgba(0, 0, 0, 0.25); }
@@ -2841,11 +2854,15 @@ body > div, .wrapper {
     white-space: nowrap;
     vertical-align: top;
     background: none;
-    border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: inset 0 0 0 transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 3px;
-    -webkit-transition: all 1s;
-    transition: all 1s;
+    -webkit-transition-property: color, background-color, box-shadow, border-color;
+    transition-property: color, background-color, box-shadow, border-color;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
     color: #303030;
     text-shadow: none;
     background-color: #ffffff;
@@ -2854,19 +2871,21 @@ body > div, .wrapper {
     display: block;
     width: 100%;
     margin: 0.5rem 0; }
-    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus, .demo-buttons-block .button-custom-mobile:active {
+    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus {
       color: #303030;
       background: none;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
       border-color: rgba(0, 0, 0, 0.25);
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-      -webkit-transition: all 0.25s;
-      transition: all 0.25s; }
+      -webkit-transition-duration: 0.25s;
+      transition-duration: 0.25s; }
     .demo-buttons-block .button-custom-mobile:active {
       color: #303030;
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-      -webkit-transition: box-shadow 0;
-      transition: box-shadow 0; }
-    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus, .demo-buttons-block .button-custom-mobile:active {
+      background: none;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+      border-color: rgba(0, 0, 0, 0.25);
+      -webkit-transition-duration: 0;
+      transition-duration: 0; }
+    .demo-buttons-block .button-custom-mobile:hover, .demo-buttons-block .button-custom-mobile:focus {
       color: #303030;
       background-color: #f2f2f2;
       border-color: rgba(0, 0, 0, 0.25); }

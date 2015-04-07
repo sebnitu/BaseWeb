@@ -94,6 +94,19 @@
       <code class="right value">$border-radius</code>
     </li>
     
+    <li>
+      <code>$buttons('transition-property')</code>
+      <code class="block value">(color, background-color, box-shadow, border-color)</code>
+    </li>
+    <li>
+      <code>$buttons('transition-duration')</code>
+      <code class="right value">1s</code>
+    </li>
+    <li>
+      <code>$buttons('transition-timing-function')</code>
+      <code class="right value">linear</code>
+    </li>
+    
     <li class="list-sep">
       <code>$buttons('hover', 'color')</code>
       <code class="right value">default</code>
@@ -111,6 +124,10 @@
     <li>
       <code>$buttons('hover', 'border-color')</code>
       <code class="right value">rgba($black, 0.25)</code>
+    </li>
+    <li>
+      <code>$buttons('hover', 'transition-duration')</code>
+      <code class="right value">0.25s</code>
     </li>
     
     <li class="list-sep">
@@ -130,6 +147,10 @@
     <li>
       <code>$buttons('active', 'border-color')</code>
       <code class="right value">rgba($black, 0.25)</code>
+    </li>
+    <li>
+      <code>$buttons('active', 'transition-duration')</code>
+      <code class="right value">0</code>
     </li>
   </ul>
 </div>
@@ -167,7 +188,7 @@
 
   <li>
     <h2>add-button-color</h2>
-    <p>Handles all the color variables of a button such as color, background, border and hover state.</p>
+    <p>Handles all the color variations of a button such as color, text-shadow, background and border color.</p>
     <pre class="language-scss"><code>@mixin add-button-color( $options: () )
 // @param $options
 //   @type map
@@ -266,7 +287,7 @@
   
   <li>
     <h2>add-button-block</h2>
-    <p>Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.</p>
+    <p>Makes the button block with 100% width. This is typically used for mobile friendly buttons.</p>
     <pre class="language-scss"><code>@mixin add-button-block( $option: () )
 // @param $options
 //   @type map
@@ -274,8 +295,8 @@
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>
 .button-custom-mobile {
-  @include make-button-base();
-  @include make-button-color();
+  @include make-button();
+  @include add-button-color();
   @include add-button-block();
 }
 </code></pre>

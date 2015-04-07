@@ -30,18 +30,24 @@ $buttons: (
   'border-color' : rgba($black, 0.15),
   'border-radius' : $border-radius,
   
+  'transition-property' : (color, background-color, box-shadow, border-color),
+  'transition-duration' : 1s,
+  'transition-timing-function' : linear,
+  
   'hover' : (
     'color'        : default,
     'background'   : darken,
-    'box-shadow'   : inset 0 1px 2px rgba($black, 0.1),
+    'box-shadow'   : inset 0 1px 3px rgba($black, 0.1),
     'border-color' : rgba($black, 0.25),
+    'transition-duration' : 0.25s,
   ),
   
   'active' : (
     'color'        : default,
     'background'   : darken,
-    'box-shadow'   : inset 0 1px 2px rgba($black, 0.2),
+    'box-shadow'   : inset 0 1px 3px rgba($black, 0.2),
     'border-color' : rgba($black, 0.25),
+    'transition-duration' : 0,
   ),
   
 ) !default;
@@ -74,35 +80,33 @@ $buttons: (
   vertical-align: top;
   
   background: none;
-  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   box-shadow: map-get($o, 'box-shadow');
+  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   @include border-radius(map-get($o, 'border-radius'));
-  @include transition(all 1s);
+  @include transition-property(map-get($o, 'transition-property'));
+  @include transition-duration(map-get($o, 'transition-duration'));
+  @include transition-timing-function(map-get($o, 'transition-timing-function'));
   
-  &:hover, &:focus, &:active {
-    @if (map-fetch($o, 'hover', 'color') == default) {
-      color: map-get($o, 'color');
-    } @else {
-      color: map-fetch($o, 'hover', 'color');
-    }
+  &:hover, &:focus {
+    color: map-get($o, 'color');
     background: none;
-    border-color: map-fetch($o, 'hover', 'border-color');
     box-shadow: map-fetch($o, 'hover', 'box-shadow');
-    @include transition(all 0.25s);
+    border-color: map-fetch($o, 'hover', 'border-color');
+    @include transition-duration(map-fetch($o, 'hover', 'transition-duration'));
   }
+  
   &:active {
-    @if (map-fetch($o, 'active', 'color') == default) {
-      color: map-get($o, 'color');
-    } @else {
-      color: map-fetch($o, 'active', 'color');
-    }
+    color: map-get($o, 'color');
+    background: none;
     box-shadow: map-fetch($o, 'active', 'box-shadow');
-    @include transition(box-shadow 0);
+    border-color: map-fetch($o, 'active', 'border-color');
+    @include transition-duration(map-fetch($o, 'active', 'transition-duration'));
   }
+  
 }
 
 // Add Button Color
-// Handles all the color variables of a button such as color, background, border and hover state.
+// Handles all the color variations of a button such as color, text-shadow, background and border color.
 // @param $options
 //   @type map
 //   @default $buttons map
@@ -124,7 +128,7 @@ $buttons: (
   background-clip: map-get($o, 'background-clip');
   border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   
-  &:hover, &:focus, &:active {
+  &:hover, &:focus {
     @if (map-fetch($o, 'hover', 'color') == default) {
       color: map-get($o, 'color');
     } @else {
@@ -144,6 +148,7 @@ $buttons: (
     }
     border-color: map-fetch($o, 'hover', 'border-color');
   }
+  
   &:active {
     @if (map-fetch($o, 'active', 'color') == default) {
       color: map-get($o, 'color');
@@ -164,6 +169,7 @@ $buttons: (
     }
     border-color: map-fetch($o, 'active', 'border-color');
   }
+  
 }
 
 // Add Button Size
@@ -197,7 +203,7 @@ $buttons: (
 }
 
 // Add Button Block
-// Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.
+// Makes the button block with 100% width. This is typically used for mobile friendly buttons.
 // @param $options
 //   @type map
 //   @default $buttons map
@@ -299,11 +305,9 @@ $buttons: (
  * Button Size
  */
 .button.small {
-  // @include add-btn-size(small);
   @include add-button-size(small, ('font-size': 0.8em));
 }
 .button.large {
-  // @include add-btn-size(large);
   @include add-button-size(large, ('font-size': 1.4em));
 }
 .button.block {

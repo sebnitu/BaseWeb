@@ -1,0 +1,102 @@
+// Set file variable
+$filename: 'scss/elements/_videos.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Videos Map
+////////////////////////////////////////////////////////////////////////////////
+
+$videos: (
+  'classes' : true,
+  'margin' : 2em 0,
+  'ratio' : 56.25%
+) !default; // The default video ratio (56.25% = 16 by 9)
+
+////////////////////////////////////////////////////////////////////////////////
+// @Video Functions
+////////////////////////////////////////////////////////////////////////////////
+
+// Aspect Ratio
+// Returns the aspect ratio in the form of a percentage.
+// @param $width
+//   @type width aspect ratio (number)
+// @param $height
+//   @type height aspect ratio (number)
+// @return height percentage of aspect ratio
+@function aspect-ratio($width, $height) {
+  @return (($height / $width) * 100%);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Video Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Video Fluid
+// Adds styles for creating fluid videos. Should be applied to a wrapping element of a video.
+// @param $options
+//   @type map
+//   @default $video map
+@mixin make-video-fluid($options: ()) {
+  $o: map-merge( $videos, $options);
+  
+  position: relative;
+	display: block;
+	height: 0;
+	margin: map-get($o, 'margin');
+	padding-bottom: map-get($o, 'ratio');
+	overflow: hidden;
+
+  .video-item,
+  embed,
+  iframe,
+  object,
+  video {
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	border: 0 none;
+  }
+}
+
+// Add Video Ratio
+// Creates a ratio class using an aspect width and height. You can optionally output the bottom padding or a class with the bottom padding.
+// @param $width
+//   @type width aspect ratio (number)
+// @param $height
+//   @type height aspect ratio (number)
+// @param $class
+//   @type boolean (true, false)
+@mixin add-video-ratio($width, $height, $class: true) {
+    
+  @if ($class == true) {
+    .ratio-#{$width}x#{$height} {
+      padding-bottom: aspect-ratio($width, $height);
+    }
+  } @else {
+    padding-bottom: aspect-ratio($width, $height);
+  }
+  
+}
+
+// Check if we should output modifier classes
+@if (map-get($buttons, 'classes') == true) {
+  
+/*==============================================================================
+  @Video - #{$filename}
+==============================================================================*/
+
+.video-wrapper {
+	@include make-video-fluid();
+}
+
+/**
+ * Video Ratios
+ */
+.video-wrapper {
+	@include add-video-ratio(16, 9);
+  @include add-video-ratio(4, 3);
+  @include add-video-ratio(3, 2);
+}
+
+} // endif

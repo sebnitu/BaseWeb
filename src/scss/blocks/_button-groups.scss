@@ -52,7 +52,7 @@ $button-groups: (
     @include border-radius(0);
     
     + .button {
-      margin-left: -1px; // Border width of buttons
+      margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
     }
     
     &:first-child {
@@ -87,7 +87,7 @@ $button-groups: (
     @include border-radius(0);
     
     + .button {
-      margin-top: -1px; // Border width of buttons
+      margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
     }
     
     &:first-child {
@@ -111,7 +111,7 @@ $button-groups: (
   
   @for $i from 2 through 12 {
     &.has-#{$i} {
-      margin-right: -(1px * ($i - 1)); // Border width of button * the number of buttons minus one.
+      margin-right: -(map-get($buttons, 'border-width') * ($i - 1)); // Border width of button * the number of buttons minus one.
     }
   }
 }
