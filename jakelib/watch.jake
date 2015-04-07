@@ -1,8 +1,10 @@
 var u = require('./modules/node-utility');
 var watch = require('node-watch');
 
+// Get our configuration settings
 var config = require('../jakefile');
 
+// Create our watch task
 if ('watch' in config) {
   
   desc('Watch for change to files and rebuild if they change');
