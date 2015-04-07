@@ -12,7 +12,7 @@
 //   @default $grid map
 // @return unit (pixel, percentage)
 @function column-width($index, $options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   $column-width: (map-get($o, 'total-width') - (map-get($o, 'gutter-width') * (map-get($o, 'columns') - 1))) / map-get($o, 'columns');
   @return ($column-width * $index) + (map-get($o, 'gutter-width') * ($index - 1));
 }
@@ -27,7 +27,7 @@
 //   @default $grid map
 // @return unit (pixel, percentage)
 @function spacing-width($index, $options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   $column-width : column-width( 1, $o );
   @return ($column-width * $index) + (map-get($o, 'gutter-width') * $index);
 }
@@ -42,7 +42,7 @@
 //   @type map
 //   @default $grid map
 @mixin make-container($options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
@@ -76,7 +76,7 @@
 //   @type map
 //   @default $grid map
 @mixin make-row($options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
@@ -102,7 +102,7 @@
 //   @type map
 //   @default $grid map
 @mixin make-column-base($options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
@@ -141,7 +141,7 @@
 //   @type map
 //   @default $grid map
 @mixin make-column($index, $options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   @include make-column-base($o);
   width: column-width($index, $o);
 }
@@ -155,7 +155,7 @@
 //   @type map
 //   @default $grid map
 @mixin add-prefix($index, $options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   @if (map-get($o, 'gutter-width') != 0) {
     margin-left: (spacing-width($index, $o) + map-get($o, 'gutter-width'));
     &:first-child {
@@ -175,12 +175,12 @@
 //   @type map
 //   @default $grid map
 @mixin add-suffix($index, $options: ()) {
-  $o: map-merge( $grid, $options);
+  $o: map-merge($grid, $options);
   margin-right: spacing-width($index, $o);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Build Grid Mixin
+// @Build Grid Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Build Grid System
@@ -194,7 +194,7 @@
   // If it's a map, merge it with our global grid map
   // Else set options as our grid type
   @if (type-of($options) == map) {
-    $o: map-merge( $grid, $options);
+    $o: map-merge($grid, $options);
   } @else {
     $o: map-merge( $grid, ('type': $options));
   }
@@ -254,4 +254,38 @@
       }
     }
   } // End if not mobile
+}
+
+// Build Mini Grid System
+// Outputs all the classes for a mini-grid system.
+// @param $options
+//   @type map
+//   @default $mini-grid map
+@mixin build-mini-grid-system($options: ()) {
+  $o: map-merge($mini-grid, $options);
+  
+  %mini-grid-base {
+    display: block;
+    @include clearfix();
+  }
+  %mini-grid-mini-base {
+    float: left;
+  }
+  
+  @for $i from 1 through map-get($o, 'fractions') {
+    .#{map-get($o, 'class-is')}-1-of-#{$i} {
+      @extend %mini-grid-mini-base;
+      width: (100% / $i);
+    }
+  }
+  
+  @for $i from 1 through map-get($o, 'fractions') {
+    .#{map-get($o, 'class-has')}-#{$i} {
+      @extend %mini-grid-base;
+    }
+    .#{map-get($o, 'class-has')}-#{$i} > * {
+      @extend .#{map-get($o, 'class-is')}-1-of-#{$i};
+    }
+  }
+  
 }

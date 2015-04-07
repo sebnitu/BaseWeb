@@ -1,6 +1,10 @@
 // Set file variable
 $filename: 'scss/elements/_forms.scss';
 
+// Dependencies
+// ---
+// @mixin build-grid-system() - scss/core/_grid.scss
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Variables
 ////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +58,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin placeholder($color: default, $options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   @if ($color != default) {
     $o: map-merge($o, ('color-placeholder': $color));
@@ -80,7 +84,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-form-group-base($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   margin-bottom: map-get( $o, 'vertical-spacing' );
   
@@ -95,7 +99,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-form-group-inline($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   @include clearfix();
   margin-right: -(map-get( $forms, 'vertical-align' ));
@@ -112,7 +116,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-input-inline($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   float: left;
   width: auto;

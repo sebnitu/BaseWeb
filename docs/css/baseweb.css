@@ -1012,8 +1012,8 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   border-radius: 3px;
   -webkit-transition-property: color, background-color, box-shadow, border-color;
   transition-property: color, background-color, box-shadow, border-color;
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
+  -webkit-transition-duration: 0.75s;
+  transition-duration: 0.75s;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
   color: #303030;
@@ -1177,39 +1177,6 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 /*==============================================================================
   @Button Groups - scss/blocks/_button-groups.scss
 ==============================================================================*/
-.is-1-of-2, .has-2 > * {
-  width: 50%; }
-
-.is-1-of-3, .has-3 > * {
-  width: 33.33333%; }
-
-.is-1-of-4, .has-4 > * {
-  width: 25%; }
-
-.is-1-of-5, .has-5 > * {
-  width: 20%; }
-
-.is-1-of-6, .has-6 > * {
-  width: 16.66667%; }
-
-.is-1-of-7, .has-7 > * {
-  width: 14.28571%; }
-
-.is-1-of-8, .has-8 > * {
-  width: 12.5%; }
-
-.is-1-of-9, .has-9 > * {
-  width: 11.11111%; }
-
-.is-1-of-10, .has-10 > * {
-  width: 10%; }
-
-.is-1-of-11, .has-11 > * {
-  width: 9.09091%; }
-
-.is-1-of-12, .has-12 > * {
-  width: 8.33333%; }
-
 .button-group {
   display: inline-block;
   vertical-align: middle;
@@ -1463,6 +1430,55 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     margin-right: 83.33333%; }
   .suffix-11 {
     margin-right: 91.66667%; } }
+
+/*==============================================================================
+  @Mini Grid System - scss/custom/_custom.scss
+==============================================================================*/
+.has-1, .has-2, .has-3, .has-4, .has-5, .has-6, .has-7, .has-8, .has-9, .has-10, .has-11, .has-12 {
+  display: block; }
+  .has-1:after, .has-2:after, .has-3:after, .has-4:after, .has-5:after, .has-6:after, .has-7:after, .has-8:after, .has-9:after, .has-10:after, .has-11:after, .has-12:after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.is-1-of-1, .has-1 > *, .is-1-of-2, .has-2 > *, .is-1-of-3, .has-3 > *, .is-1-of-4, .has-4 > *, .is-1-of-5, .has-5 > *, .is-1-of-6, .has-6 > *, .is-1-of-7, .has-7 > *, .is-1-of-8, .has-8 > *, .is-1-of-9, .has-9 > *, .is-1-of-10, .has-10 > *, .is-1-of-11, .has-11 > *, .is-1-of-12, .has-12 > * {
+  float: left; }
+
+.is-1-of-1, .has-1 > * {
+  width: 100%; }
+
+.is-1-of-2, .has-2 > * {
+  width: 50%; }
+
+.is-1-of-3, .has-3 > * {
+  width: 33.33333%; }
+
+.is-1-of-4, .has-4 > * {
+  width: 25%; }
+
+.is-1-of-5, .has-5 > * {
+  width: 20%; }
+
+.is-1-of-6, .has-6 > * {
+  width: 16.66667%; }
+
+.is-1-of-7, .has-7 > * {
+  width: 14.28571%; }
+
+.is-1-of-8, .has-8 > * {
+  width: 12.5%; }
+
+.is-1-of-9, .has-9 > * {
+  width: 11.11111%; }
+
+.is-1-of-10, .has-10 > * {
+  width: 10%; }
+
+.is-1-of-11, .has-11 > * {
+  width: 9.09091%; }
+
+.is-1-of-12, .has-12 > * {
+  width: 8.33333%; }
 
 /*==============================================================================
   @Structure - scss/custom/_custom.scss
@@ -1905,8 +1921,8 @@ body > div, .wrapper {
       float: right; } }
   .docs-list-compact .block {
     display: block;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
+    margin: 0.75rem 0 0 0;
+    padding: 0.75rem 0 0 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05); }
     .docs-list-compact .block:after {
       content: '';
@@ -2480,6 +2496,33 @@ body > div, .wrapper {
   white-space: nowrap; }
 
 /*==============================================================================
+  @Demo Mini Grids - scss/custom/_part-demos.scss
+==============================================================================*/
+.demo .mini-grid {
+  margin: 1rem 0; }
+  .demo .mini-grid:after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.demo .mini-grid > * {
+  margin: 0;
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.05);
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.875em;
+  line-height: 1.5em;
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1); }
+  .demo .mini-grid > *:first-child {
+    border-left: 0 none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .demo .mini-grid > *:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+
+/*==============================================================================
   @Demo Mixins - scss/custom/_part-demos.scss
 ==============================================================================*/
 /**
@@ -2797,8 +2840,8 @@ body > div, .wrapper {
   border-radius: 3px;
   -webkit-transition-property: color, background-color, box-shadow, border-color;
   transition-property: color, background-color, box-shadow, border-color;
-  -webkit-transition-duration: 1s;
-  transition-duration: 1s;
+  -webkit-transition-duration: 0.75s;
+  transition-duration: 0.75s;
   -webkit-transition-timing-function: linear;
   transition-timing-function: linear;
   color: #ffffff;
@@ -2859,8 +2902,8 @@ body > div, .wrapper {
     border-radius: 3px;
     -webkit-transition-property: color, background-color, box-shadow, border-color;
     transition-property: color, background-color, box-shadow, border-color;
-    -webkit-transition-duration: 1s;
-    transition-duration: 1s;
+    -webkit-transition-duration: 0.75s;
+    transition-duration: 0.75s;
     -webkit-transition-timing-function: linear;
     transition-timing-function: linear;
     color: #303030;

@@ -31,7 +31,7 @@ $buttons: (
   'border-radius' : $border-radius,
   
   'transition-property' : (color, background-color, box-shadow, border-color),
-  'transition-duration' : 1s,
+  'transition-duration' : 0.75s,
   'transition-timing-function' : linear,
   
   'hover' : (
@@ -62,7 +62,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin make-button($options: ()) {
-  $o: map-merge( $buttons, $options);
+  $o: map-merge($buttons, $options);
   
   cursor: pointer;
   display: inline-block;
@@ -111,7 +111,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin add-button-color($options: ()) {
-  $o: map-merge( $buttons, $options);
+  $o: map-merge($buttons, $options);
   
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
@@ -180,7 +180,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin add-button-size($size, $options: ()) {
-  $o: map-merge( $buttons, $options);
+  $o: map-merge($buttons, $options);
   
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
@@ -208,7 +208,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin add-button-block($options: ()) {
-  $o: map-merge( $buttons, $options);
+  $o: map-merge($buttons, $options);
   
   display: block;
   width: 100%;

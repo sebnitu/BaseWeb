@@ -98,6 +98,33 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /*==============================================================================
+  @Demo Mini Grids - #{$filename}
+==============================================================================*/
+
+.demo .mini-grid {
+  margin: 1rem 0;
+  @include clearfix();
+}
+.demo .mini-grid > * {
+  margin: 0;
+  padding: 1rem 0;
+  background: $bg-color;
+  font-family: $font-family-mono;
+  font-size: px-to-em(14px);
+  line-height: 1.5em;
+  text-align: center;
+  border-left: 1px solid rgba($black, 0.1);
+  
+  &:first-child {
+    border-left: 0 none;
+    @include border-radius-left();
+  }
+  &:last-child {
+    @include border-radius-right();
+  }
+}
+
+/*==============================================================================
   @Demo Mixins - #{$filename}
 ==============================================================================*/
 

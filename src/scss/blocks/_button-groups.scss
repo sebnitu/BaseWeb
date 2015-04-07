@@ -2,7 +2,9 @@
 $filename: 'scss/blocks/_button-groups.scss';
 
 // Dependencies
-// Buttom Element Module (scss/elements/_buttons.scss) 
+// ---
+// @mixin build-mini-grid-system - scss/core/_grid.scss
+// @module Buttons Element - scss/elements/_buttons.scss
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Map
@@ -23,17 +25,6 @@ $button-groups: (
 /*==============================================================================
   @Button Groups - #{$filename}
 ==============================================================================*/
-
-@for $i from 2 through 12 {
-  .is-1-of-#{$i} {
-    width: (100% / $i);
-  }
-}
-@for $i from 2 through 12 {
-  .has-#{$i} > * {
-    @extend .is-1-of-#{$i};
-  }
-}
 
 .button-group {
   display: inline-block;
@@ -109,8 +100,8 @@ $button-groups: (
     margin-top: 1em;
   }
   
-  @for $i from 2 through 12 {
-    &.has-#{$i} {
+  @for $i from 2 through map-get($mini-grid, 'fractions') {
+    &.#{map-get($mini-grid, 'class-has')}-#{$i} {
       margin-right: -(map-get($buttons, 'border-width') * ($i - 1)); // Border width of button * the number of buttons minus one.
     }
   }
