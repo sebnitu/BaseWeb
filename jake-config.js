@@ -1,5 +1,6 @@
 module.exports = {
 
+  // Build Tasks
   build: [{
     task: 'scss',
     desc: 'Compiles and minifies SCSS',
@@ -59,6 +60,7 @@ module.exports = {
     }]
   }],
   
+  // Watch Tasks
   watch: [{
     task: 'scss',
     files: [
