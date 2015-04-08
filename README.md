@@ -1,6 +1,6 @@
 ![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
 
-Currently v1.1.2
+Currently v1.2.0
 
 ## About
 BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
@@ -45,7 +45,7 @@ Run `npm install` to install required node modules for build scripts. This is th
 *Keep in mind that if you use the imagemin module, [Jpegtran](http://jpegclub.org/jpegtran/) should be installed globally. You can install it with [Homebrew](http://brew.sh/) using: `brew install jpeg`*
 
 ### Jake Tasks
-The following tasks are available for building BaseWeb and related files:
+To see the full list of available Jake tasks for a project, use `jake -ls`. The following tasks are available for building BaseWeb and related files:
 
 | Jake Tasks        | Description                                          |
 |-------------------|------------------------------------------------------|
@@ -90,7 +90,7 @@ build: [
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `task` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:youKey`. |
+| `task` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:your_task_name`. |
 | `desc` | `string` | A description for your task. This appears when you list your tasks using `jake -ls`. |
 | `module` (optional) | `string` | The module you want to use for this task. If omitted, your key will be used instead. If your key does not match an existing node module, this field is required. |
 | `options` | `object` | The options that are passed to the node module. |
