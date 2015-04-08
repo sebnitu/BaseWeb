@@ -283,6 +283,36 @@ $map: (
   </li>
   
   <li>
+    <h2>float-modifiers</h2>
+    <p>Adds the float modifier classes to an element.</p>
+    <pre class="language-scss"><code>@mixin float-modifiers( $left, $right )
+// @param $left
+//   @type class name
+//   @default $class-float-left
+// @param $right
+//   @type class name
+//   @default $class-float-right</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+.button-group-wrapper .button-group {
+  float: left;
+  @include float-modifiers();
+}
+
+// CSS Output
+.button-group-wrapper .button-group {
+  float: left;
+}
+.button-group-wrapper .button-group.float-left {
+  float: left;
+}
+.button-group-wrapper .button-group.float-right {
+  float: right;
+}
+</code></pre>
+  </li>
+  
+  <li>
     <h2>size</h2>
     <p>Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.</p>
     <pre class="language-scss"><code>@mixin size( $height, $width )

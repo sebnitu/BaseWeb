@@ -10,11 +10,14 @@ $filename: 'scss/elements/_buttons.scss';
 $buttons: (
   'classes' : true,
   
-  'padding-small' : 0.25em 0.75em,
+  'padding-small' : 0.75em 1.5em,
   'padding' : 0.75em 1.5em,
-  'padding-large' : 1em 1.75em,
+  'padding-large' : 0.75em 1.5em,
   
+  'font-size-small' : 0.8em,
   'font-size' : 1em,
+  'font-size-large' : 1.4em,
+  
   'line-height' : 1.5em,
   'color' : $color-dark,
   'text-shadow' : none,
@@ -184,16 +187,20 @@ $buttons: (
   
   @if ($size == small) {
     padding: map-get($o, 'padding-small');
+    font-size: map-get($o, 'font-size-small');
   } @else if ($size == default) {
     padding: map-get($o, 'padding');
+    font-size: map-get($o, 'font-size');
   } @else if ($size == large) {
     padding: map-get($o, 'padding-large');
+    font-size: map-get($o, 'font-size-large');
   } @else {
-    padding: $size;
-  }
-  
-  @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
-    font-size: map-get($o, 'font-size');
+    @if (map-get($o, 'padding') != map-get($buttons, 'padding')) {
+      padding: map-get($o, 'padding');
+    }
+    @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
+      font-size: map-get($o, 'font-size');
+    }
   }
   
   @if (map-get($o, 'line-height') != map-get($buttons, 'line-height')) {

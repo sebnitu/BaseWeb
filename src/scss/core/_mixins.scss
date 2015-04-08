@@ -22,6 +22,27 @@
   }
 }
 
+// Float Modifiers
+// Adds the float modifier classes to an element.
+// @param $left
+//   @type class name
+//   @default $class-float-left
+// @param $right
+//   @type class name
+//   @default $class-float-right
+@mixin float-modifiers($left: $class-float-left, $right: $class-float-right) {
+  @if ($left != none) {
+    &.#{$left} {
+      float: left;
+    }
+  }
+  @if ($right != none) {
+    &.#{$right} {
+      float: right;
+    }
+  }
+}
+
 // Size
 // Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.
 // @param $width

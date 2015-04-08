@@ -12,46 +12,42 @@ $filename: 'scss/blocks/_button-groups.scss';
 
 $button-groups: (
   'classes' : true,
-  
+  'classes-extend' : true,
+  'spacing' : 1em,
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Check if we should output modifier classes
-@if (map-get($button-groups, 'classes') == true) {
-  
-/*==============================================================================
-  @Button Groups - #{$filename}
-==============================================================================*/
-
-.button-group {
+@mixin make-button-group() {
   display: inline-block;
   vertical-align: middle;
   margin: 0;
   
   + .button-group {
-    margin-left: 0.75em;
+    margin-left: map-get($button-groups, 'spacing') * 0.75;
   }
   
   > .button {
     position: relative;
-    float: left;
     z-index: 1;
+    float: left;
     margin: 0;
-    @include border-radius(0);
+    border-radius: 0;
     
     + .button {
+      margin-top: 0;
       margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
     }
     
     &:first-child {
-      @include border-radius-left();
+      @include border-radius-top(0);
+      @include border-radius-left(map-get($buttons, 'border-radius'));
     }
-    
     &:last-child {
-      @include border-radius-right();
+      @include border-radius-bottom(0);
+      @include border-radius-right(map-get($buttons, 'border-radius'));
     }
     
     &:hover {
@@ -69,35 +65,38 @@ $button-groups: (
   }
 }
 
-.button-group.vertical {
-  
+@mixin add-button-group-vertical() {
   > .button {
     @include add-button-block();
     float: none;
     margin: 0;
-    @include border-radius(0);
+    border-radius: 0;
     
     + .button {
+      margin-left: 0;
       margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
     }
     
     &:first-child {
-      @include border-radius-top();
+      @include border-radius-left(0);
+      @include border-radius-top(map-get($buttons, 'border-radius'));
     }
-    
     &:last-child {
-      @include border-radius-bottom();
+      @include border-radius-right(0);
+      @include border-radius-bottom(map-get($buttons, 'border-radius'));
     }
   }
 }
 
-.button-group.block {
+@mixin add-button-group-block() {
   display: block;
+  float: none;
   margin: 0;
   @include clearfix();
   
-  + .button-group.block {
-    margin-top: 1em;
+  + .button-group {
+    margin-left: 0;
+    margin-top: map-get($button-groups, 'spacing');
   }
   
   @for $i from 2 through map-get($mini-grid, 'fractions') {
@@ -106,5 +105,134 @@ $button-groups: (
     }
   }
 }
+
+@mixin make-button-group-wrapper() {
+  margin: 0 0 (-(map-get($button-groups, 'spacing'))) (-(map-get($button-groups, 'spacing')));
+  @include clearfix();
+  
+  > .button,
+  .button-group {
+    float: left;
+    @include float-modifiers();
+  }
+  > .button.block,
+  .button-group.block {
+    clear: both;
+  }
+  > .button,
+  > .button.block,
+  .button-group,
+  .button-group + .button-group,
+  .button-group.block,
+  .button-group.block + .button-group {
+    margin-top: 0;
+    margin-bottom: map-get($button-groups, 'spacing');
+    margin-left: map-get($button-groups, 'spacing');
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($button-groups, 'classes') == true) {
+  
+/*==============================================================================
+  @Button Groups - #{$filename}
+==============================================================================*/
+
+.button-group {
+  @include make-button-group();
+}
+.button-group-wrapper {
+  @include make-button-group-wrapper();
+}
+
+@include media-max('tablet') {
+  .button-group {
+    @include add-button-group-vertical();
+    @include add-button-group-block();
+  }
+  .button-group-wrapper .button-group {
+    float: none;
+  }
+}
+
+/**
+ * Button Group Modifiers
+ */
+.button-group.vertical {
+  @include add-button-group-vertical();
+}
+.button-group.block {
+  @include add-button-group-block();
+}
+
+@if (map-get($button-groups, 'classes-extend') == true) {
+// Button Group Extends
+// Adding these button modifier classes to a button group will apply them to children buttons
+
+// Color
+.button-group.default,
+.button-group-wrapper.default {
+  .button {
+    @extend .button.default;
+  }
+}
+.button-group.blue,
+.button-group.primary,
+.button-group.active,
+.button-group-wrapper.blue,
+.button-group-wrapper.primary,
+.button-group-wrapper.active {
+  .button {
+    @extend .button.blue;
+  }
+}
+.button-group.black,
+.button-group.secondary,
+.button-group-wrapper.black,
+.button-group-wrapper.secondary {
+  .button {
+    @extend .button.black;
+  }
+}
+.button-group.green,
+.button-group.success,
+.button-group-wrapper.green,
+.button-group-wrapper.success {
+  .button {
+    @extend .button.green;
+  }
+}
+.button-group.orange,
+.button-group.warning,
+.button-group-wrapper.orange,
+.button-group-wrapper.warning {
+  .button {
+    @extend .button.orange;
+  }
+}
+.button-group.red,
+.button-group.danger,
+.button-group-wrapper.red,
+.button-group-wrapper.danger {
+  .button {
+    @extend .button.red;
+  }
+}
+
+// Size
+.button-group.small,
+.button-group-wrapper.small {
+  .button {
+    @extend .button.small;
+  }
+}
+.button-group.large,
+.button-group-wrapper.large {
+  .button {
+    @extend .button.large;
+  }
+}
+
+} // endif classes-extend
 
 } // endif classes
