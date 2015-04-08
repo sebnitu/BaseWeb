@@ -1,7 +1,7 @@
 module.exports = {
 
   build: [{
-    key: 'scss',
+    task: 'scss',
     desc: 'Compiles and minifies SCSS',
     options: [{
       input   : 'src/scss/_baseweb.scss',
@@ -25,34 +25,33 @@ module.exports = {
       style   : 'compressed'
     }]
   }, {
-    key: 'js',
+    task: 'js',
     desc: 'Compiles and minifies JS',
     options: [{
-      path : 'docs/js/',
       input : [
-        'jquery.smoothState.js',
-        'prism.js',
-        'jquery.function.js',
-        'jquery.docready.js'
+        'docs/js/jquery.smoothState.js',
+        'docs/js/prism.js',
+        'docs/js/jquery.function.js',
+        'docs/js/jquery.docready.js'
       ],
       output : 'docs/js/scripts.min.js'
     }]
   }, {
-    key: 'img',
+    task: 'img',
     desc: 'Optimizes images',
     options: [{
-      src : 'docs/img/raw/*.{gif,jpg,png,svg}',
-      dest : 'docs/img/'
+      input : 'docs/img/raw/*.{gif,jpg,png,svg}',
+      output : 'docs/img/'
     }]
   }, {
-    key: 'docs',
+    task: 'docs',
     desc: 'Build documentation',
     module: 'mustache',
     options: [{
       dir : 'docs/'
     }]
   }, {
-    key: 'examples',
+    task: 'examples',
     desc: 'Build examples',
     module: 'mustache',
     options: [{
@@ -61,24 +60,24 @@ module.exports = {
   }],
   
   watch: [{
-    key: 'scss',
+    task: 'scss',
     files: [
       'src/scss/',
       'docs/scss/'
     ]
   }, {
-    key: 'js',
+    task: 'js',
     files: ['docs/js/'],
     ignore: ['docs/js/scripts.min.js']
   }, {
-    key: 'docs',
+    task: 'docs',
     files: [
       'docs/templates/layouts/',
       'docs/templates/pages/',
       'docs/templates/partials/'
     ]
   }, {
-    key: 'examples',
+    task: 'examples',
     files: [
       'examples/templates/layouts/',
       'examples/templates/pages/',

@@ -32,14 +32,15 @@ Upcoming features and updates to BaseWeb documentation:
 BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written to be super flexible. The configurations are all setup using `jake-config.js` and can be adjusted as need for your own purposes.
 
 ### Node Packages
-Run `npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb and related files:
+Run `npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb assets and documentation files:
 
-| Node Modules   | Versions   |
-|----------------|------------|
-| `node-sass`    | `2.1.1`    |
-| `uglify-js`    | `2.4.19`   |
-| `imagemin`     | `3.1.0`    |
-| `mustache`     | `2.0.0`    |
+| Node Modules   | Versions   | Description |
+|----------------|------------|-------------|
+| `node-watch`   | `0.3.4`    | Used in handling the watch task |
+| `node-sass`    | `2.1.1`    | Used for compiling and minifying src and doc CSS from SCSS files |
+| `uglify-js`    | `2.4.19`   | Used to compile and minify our JavaScript files |
+| `imagemin`     | `3.1.0`    | Used to optimize our image files |
+| `mustache`     | `2.0.0`    | Used to build our HTML files for docs, examples and readme |
 
 *Keep in mind that if you use the imagemin module, [Jpegtran](http://jpegclub.org/jpegtran/) should be installed globally. You can install it with [Homebrew](http://brew.sh/) using: `brew install jpeg`*
 
@@ -79,7 +80,7 @@ module.exports = {
 // General Build Tasks
 build: [
   {
-    key: '...',
+    task: '...',
     desc: '...',
     module: '...',
     options: [{...}]
@@ -89,7 +90,7 @@ build: [
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `key` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:youKey`. |
+| `task` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:youKey`. |
 | `desc` | `string` | A description for your task. This appears when you list your tasks using `jake -ls`. |
 | `module` (optional) | `string` | The module you want to use for this task. If omitted, your key will be used instead. If your key does not match an existing node module, this field is required. |
 | `options` | `object` | The options that are passed to the node module. |
@@ -102,7 +103,7 @@ build: [
 // General Watch Tasks
 watch: [
   {
-    key: '...',
+    task: '...',
     files: [...],
     ignore: [...]
   }
@@ -111,7 +112,7 @@ watch: [
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `key` | `string` | The key is directly linked to build tasks. If a watch key of `docs` is created, when it triggers the `build:docs` task gets fired. |
+| `task` | `string` | The key is directly linked to build tasks. If a watch key of `docs` is created, when it triggers the `build:docs` task gets fired. |
 | `files` | `array` | Files or directories to watch. |
 | `ignore` (optional) | `array` | An array of files to ignore. This is helpful if a build task generates a file within a directory that is also being watched. |
 

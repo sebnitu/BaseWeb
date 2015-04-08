@@ -37,7 +37,7 @@ if ('build' in config) {
   task('build', {async: true}, function() {
     u.printNotice('Building everything', 'yellow');
     config.build.forEach(function (item, i, a) {
-      jake.Task['build:' + item.key].execute();
+      jake.Task['build:' + item.task].execute();
     });
   });
   
@@ -47,13 +47,13 @@ if ('build' in config) {
     config.build.forEach(function (item, i, a) {
                     
       desc(item.desc);
-      task(item.key, {async: true}, function() {
+      task(item.task, {async: true}, function() {
 
         item.options.forEach(function(option, i, a) {
           if ('module' in item) {
             modules[item.module](option);
           } else {
-            modules[item.key](option);
+            modules[item.task](option);
           }
         });
 
