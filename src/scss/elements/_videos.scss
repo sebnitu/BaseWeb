@@ -65,18 +65,10 @@ $videos: (
 //   @type width aspect ratio (number)
 // @param $height
 //   @type height aspect ratio (number)
-// @param $class
-//   @type boolean (true, false)
-@mixin add-video-ratio($width, $height, $class: true) {
-    
-  @if ($class == true) {
-    .ratio-#{$width}x#{$height} {
-      padding-bottom: aspect-ratio($width, $height);
-    }
-  } @else {
+@mixin build-video-ratio($width, $height) {
+  .ratio-#{$width}x#{$height} {
     padding-bottom: aspect-ratio($width, $height);
   }
-  
 }
 
 // Check if we should output modifier classes
@@ -94,9 +86,9 @@ $videos: (
  * Video Ratios
  */
 .video-wrapper {
-	@include add-video-ratio(16, 9);
-  @include add-video-ratio(4, 3);
-  @include add-video-ratio(3, 2);
+	@include build-video-ratio(16, 9);
+  @include build-video-ratio(4, 3);
+  @include build-video-ratio(3, 2);
 }
 
 } // endif

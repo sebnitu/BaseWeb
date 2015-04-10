@@ -10,16 +10,17 @@ $filename: 'scss/elements/_buttons.scss';
 $buttons: (
   'classes' : true,
   
-  'padding-small' : 0.75em 1.5em,
   'padding' : 0.75em 1.5em,
-  'padding-large' : 0.75em 1.5em,
+  'padding-small' : 0.5em 1.25em,
+  'padding-large' : null,
   
-  'font-size-small' : 0.8em,
+  'font-family' : inherit,
   'font-size' : 1em,
+  'font-size-small' : 0.9em,
   'font-size-large' : 1.4em,
-  
   'line-height' : 1.5em,
   'color' : $color-dark,
+  'font-weight' : inherit,
   'text-shadow' : none,
   
   'background' : $white,
@@ -73,10 +74,10 @@ $buttons: (
   margin: 0;
   padding: map-get($o, 'padding');
   
-  font-family: inherit;
+  font-family: map-get($o, 'font-family');
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
-  font-weight: inherit;
+  font-weight: map-get($o, 'font-weight');
   color: map-get($o, 'color');
   text-align: center;
   white-space: nowrap;
@@ -312,10 +313,10 @@ $buttons: (
  * Button Size
  */
 .button.small {
-  @include add-button-size(small, ('font-size': 0.8em));
+  @include add-button-size(small);
 }
 .button.large {
-  @include add-button-size(large, ('font-size': 1.4em));
+  @include add-button-size(large);
 }
 .button.block {
   @include add-button-block();

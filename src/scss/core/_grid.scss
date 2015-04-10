@@ -268,24 +268,19 @@
     display: block;
     @include clearfix();
   }
+
   %mini-grid-mini-base {
     float: left;
-  }
-  
-  @for $i from 1 through map-get($o, 'fractions') {
-    .#{map-get($o, 'class-is')}-1-of-#{$i} {
-      @extend %mini-grid-mini-base;
-      width: (100% / $i);
-    }
   }
   
   @for $i from 1 through map-get($o, 'fractions') {
     .#{map-get($o, 'class-has')}-#{$i} {
       @extend %mini-grid-base;
     }
+    .#{map-get($o, 'class-is')}-1-of-#{$i},
     .#{map-get($o, 'class-has')}-#{$i} > * {
-      @extend .#{map-get($o, 'class-is')}-1-of-#{$i};
+      @extend %mini-grid-mini-base;
+      width: (100% / $i);
     }
   }
-  
 }

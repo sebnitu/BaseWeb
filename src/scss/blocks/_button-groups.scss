@@ -3,7 +3,6 @@ $filename: 'scss/blocks/_button-groups.scss';
 
 // Dependencies
 // ---
-// @mixin build-mini-grid-system - scss/core/_grid.scss
 // @module Buttons Element - scss/elements/_buttons.scss
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -13,42 +12,35 @@ $filename: 'scss/blocks/_button-groups.scss';
 $button-groups: (
   'classes' : true,
   'classes-extend' : true,
+  'classes-stack' : true,
+  
+  'fractions' : map-get($mini-grid, 'fractions'),
+  
+  'class-has' : map-get($mini-grid, 'class-has'),
+  'class-is' : map-get($mini-grid, 'class-is'),
+  'class-group' : 'button-group',
+  'class-wrapper' : 'button-group-wrapper',
+  
   'spacing' : 1em,
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-@mixin make-button-group() {
-  display: inline-block;
+// Make Button Group
+@mixin make-button-group($options: ()) {
+  $o: map-merge($button-groups, $options);
+  
   vertical-align: middle;
   margin: 0;
-  
-  + .button-group {
-    margin-left: map-get($button-groups, 'spacing') * 0.75;
-  }
+  @include clearfix();
   
   > .button {
     position: relative;
     z-index: 1;
-    float: left;
     margin: 0;
-    border-radius: 0;
-    
-    + .button {
-      margin-top: 0;
-      margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
-    }
-    
-    &:first-child {
-      @include border-radius-top(0);
-      @include border-radius-left(map-get($buttons, 'border-radius'));
-    }
-    &:last-child {
-      @include border-radius-bottom(0);
-      @include border-radius-right(map-get($buttons, 'border-radius'));
-    }
     
     &:hover {
       z-index: 2;
@@ -65,69 +57,165 @@ $button-groups: (
   }
 }
 
-@mixin add-button-group-vertical() {
-  > .button {
-    @include add-button-block();
+// Add Button Group Styles
+@mixin add-button-group-style($orientation: null, $display: null, $has: null, $options: ()) {
+  $o: map-merge($button-groups, $options);
+          
+  @if ($display == 'inline') {
+    
+    display: inline-block;
     float: none;
-    margin: 0;
-    border-radius: 0;
     
-    + .button {
-      margin-left: 0;
-      margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
+    + .#{map-get($o, 'class-group')} {
+      margin-top: 0;
     }
     
-    &:first-child {
-      @include border-radius-left(0);
-      @include border-radius-top(map-get($buttons, 'border-radius'));
+  } @else if ($display == 'block') {
+    
+    display: block;
+    float: none;
+    
+    + .#{map-get($o, 'class-group')} {
+      margin-top: map-get($o, 'spacing');
     }
-    &:last-child {
-      @include border-radius-right(0);
-      @include border-radius-bottom(map-get($buttons, 'border-radius'));
+    
+  }
+  
+  @if ($orientation == 'horizontal') {
+    
+    @include add-button-group-has($has);
+    
+    > .button {
+      display: inline-block;
+      float: left;
+      border-radius: 0;
+      
+      + .button {
+        margin-top: 0;
+        margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
+      }
+      
+      &:first-child {
+        @include border-radius-top(0);
+        @include border-radius-left(map-get($buttons, 'border-radius'));
+      }
+      &:last-child {
+        @include border-radius-bottom(0);
+        @include border-radius-right(map-get($buttons, 'border-radius'));
+      }
+    }
+    
+  } @else if ($orientation == 'vertical' ) {
+    
+    margin-right: 0;
+    
+    > .button {
+      display: block;
+      width: 100%;
+      float: none;
+      border-radius: 0;
+      
+      + .button {
+        margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
+        margin-left: 0;
+      }
+      
+      &:first-child {
+        @include border-radius-left(0);
+        @include border-radius-top(map-get($buttons, 'border-radius'));
+      }
+      &:last-child {
+        @include border-radius-right(0);
+        @include border-radius-bottom(map-get($buttons, 'border-radius'));
+      }
+    }
+    
+  }
+}
+
+// Add Button Group Has
+@mixin add-button-group-has($has: null) {
+  @if ($has) {
+    margin-right: -(map-get($buttons, 'border-width') * ($has - 1));
+    > .button {
+      width: (100% / $has);
+    }
+  } @else {
+    margin-right: 0;
+    > .button {
+      width: auto;
     }
   }
 }
 
-@mixin add-button-group-block() {
-  display: block;
-  float: none;
-  margin: 0;
+// Make Button Group Wrapper
+@mixin make-button-group-wrapper($options: ()) {
+  $o: map-merge($button-groups, $options);
+
+  margin: 0 0 (-(map-get($o, 'spacing'))) (-(map-get($o, 'spacing')));
   @include clearfix();
   
-  + .button-group {
-    margin-left: 0;
-    margin-top: map-get($button-groups, 'spacing');
+  > .button,
+  .#{map-get($o, 'class-group')},
+  .#{map-get($o, 'class-group')} + .#{map-get($o, 'class-group')},
+  .#{map-get($o, 'class-group')}.block + .#{map-get($o, 'class-group')} {
+    margin-top: 0;
   }
   
-  @for $i from 2 through map-get($mini-grid, 'fractions') {
-    &.#{map-get($mini-grid, 'class-has')}-#{$i} {
+  > .button,
+  .#{map-get($o, 'class-group')} {
+    float: left;
+    margin-bottom: map-get($o, 'spacing');
+    margin-left: map-get($o, 'spacing');
+    @include float-modifiers();
+  }
+  
+  .#{map-get($o, 'class-group')}.block {
+    float: none;
+    clear: both;
+  }
+}
+
+// Build Button Group Has Modifiers
+@mixin build-button-group-has-modifiers($options: ()) {
+  $o: map-merge($button-groups, $options);
+  
+  @for $i from 1 through map-get($o, 'fractions') {
+    .#{map-get($o, 'class-group')} > .button.#{map-get($o, 'class-is')}-1-of-#{$i},
+    .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-#{$i} > .button {
+      width: (100% / $i);
+    }
+  }
+
+  @for $i from 2 through map-get($o, 'fractions') {
+    .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-#{$i},
+    .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-margin-#{$i} {
       margin-right: -(map-get($buttons, 'border-width') * ($i - 1)); // Border width of button * the number of buttons minus one.
     }
   }
 }
 
-@mixin make-button-group-wrapper() {
-  margin: 0 0 (-(map-get($button-groups, 'spacing'))) (-(map-get($button-groups, 'spacing')));
-  @include clearfix();
-  
-  > .button,
-  .button-group {
-    float: left;
-    @include float-modifiers();
+// Build Button Group Stack Modifiers
+@mixin build-button-group-stack-modifiers($options: ()) {
+  $o: map-merge($button-groups, $options);
+
+  @include media-max('mobile') {
+    .#{map-get($o, 'class-group')}.stack-for-small,
+    .#{map-get($o, 'class-group')}.stack-for-small.block {
+      @include add-button-group-style(vertical, block);
+    }
   }
-  > .button.block,
-  .button-group.block {
-    clear: both;
+  @include media-max('tablet') {
+    .#{map-get($o, 'class-group')}.stack-for-mobile,
+    .#{map-get($o, 'class-group')}.stack-for-mobile.block {
+      @include add-button-group-style(vertical, block);
+    }
   }
-  > .button,
-  > .button.block,
-  .button-group,
-  .button-group + .button-group,
-  .button-group.block,
-  .button-group.block + .button-group {
-    margin-top: 0;
-    margin-bottom: map-get($button-groups, 'spacing');
-    margin-left: map-get($button-groups, 'spacing');
+  @include media-max('desktop') {
+    .#{map-get($o, 'class-group')}.stack-for-tablet,
+    .#{map-get($o, 'class-group')}.stack-for-tablet.block {
+      @include add-button-group-style(vertical, block);
+    }
   }
 }
 
@@ -138,96 +226,104 @@ $button-groups: (
   @Button Groups - #{$filename}
 ==============================================================================*/
 
-.button-group {
+.#{map-get($button-groups, 'class-group')} {
   @include make-button-group();
-}
-.button-group-wrapper {
-  @include make-button-group-wrapper();
+  @include add-button-group-style(horizontal, inline);
 }
 
-@include media-max('tablet') {
-  .button-group {
-    @include add-button-group-vertical();
-    @include add-button-group-block();
-  }
-  .button-group-wrapper .button-group {
-    float: none;
-  }
+/**
+ * Button Group Wrapper
+ */
+.#{map-get($button-groups, 'class-wrapper')} {
+  @include make-button-group-wrapper();
 }
 
 /**
  * Button Group Modifiers
  */
-.button-group.vertical {
-  @include add-button-group-vertical();
+.#{map-get($button-groups, 'class-group')}.block {
+  @include add-button-group-style($display: block);
 }
-.button-group.block {
-  @include add-button-group-block();
+.#{map-get($button-groups, 'class-group')}.vertical {
+  @include add-button-group-style($orientation: vertical);
 }
+
+/**
+ * Build Has Modifiers
+ */
+@include build-button-group-has-modifiers();
+
+@if (map-get($button-groups, 'classes-stack') == true) {
+/**
+ * Stack Modifiers
+ */
+@include build-button-group-stack-modifiers();
+
+} // endif classes
 
 @if (map-get($button-groups, 'classes-extend') == true) {
 // Button Group Extends
 // Adding these button modifier classes to a button group will apply them to children buttons
 
 // Color
-.button-group.default,
-.button-group-wrapper.default {
+.#{map-get($button-groups, 'class-group')}.default,
+.#{map-get($button-groups, 'class-wrapper')}.default {
   .button {
     @extend .button.default;
   }
 }
-.button-group.blue,
-.button-group.primary,
-.button-group.active,
-.button-group-wrapper.blue,
-.button-group-wrapper.primary,
-.button-group-wrapper.active {
+.#{map-get($button-groups, 'class-group')}.blue,
+.#{map-get($button-groups, 'class-group')}.primary,
+.#{map-get($button-groups, 'class-group')}.active,
+.#{map-get($button-groups, 'class-wrapper')}.blue,
+.#{map-get($button-groups, 'class-wrapper')}.primary,
+.#{map-get($button-groups, 'class-wrapper')}.active {
   .button {
     @extend .button.blue;
   }
 }
-.button-group.black,
-.button-group.secondary,
-.button-group-wrapper.black,
-.button-group-wrapper.secondary {
+.#{map-get($button-groups, 'class-group')}.black,
+.#{map-get($button-groups, 'class-group')}.secondary,
+.#{map-get($button-groups, 'class-wrapper')}.black,
+.#{map-get($button-groups, 'class-wrapper')}.secondary {
   .button {
     @extend .button.black;
   }
 }
-.button-group.green,
-.button-group.success,
-.button-group-wrapper.green,
-.button-group-wrapper.success {
+.#{map-get($button-groups, 'class-group')}.green,
+.#{map-get($button-groups, 'class-group')}.success,
+.#{map-get($button-groups, 'class-wrapper')}.green,
+.#{map-get($button-groups, 'class-wrapper')}.success {
   .button {
     @extend .button.green;
   }
 }
-.button-group.orange,
-.button-group.warning,
-.button-group-wrapper.orange,
-.button-group-wrapper.warning {
+.#{map-get($button-groups, 'class-group')}.orange,
+.#{map-get($button-groups, 'class-group')}.warning,
+.#{map-get($button-groups, 'class-wrapper')}.orange,
+.#{map-get($button-groups, 'class-wrapper')}.warning {
   .button {
     @extend .button.orange;
   }
 }
-.button-group.red,
-.button-group.danger,
-.button-group-wrapper.red,
-.button-group-wrapper.danger {
+.#{map-get($button-groups, 'class-group')}.red,
+.#{map-get($button-groups, 'class-group')}.danger,
+.#{map-get($button-groups, 'class-wrapper')}.red,
+.#{map-get($button-groups, 'class-wrapper')}.danger {
   .button {
     @extend .button.red;
   }
 }
 
 // Size
-.button-group.small,
-.button-group-wrapper.small {
+.#{map-get($button-groups, 'class-group')}.small,
+.#{map-get($button-groups, 'class-wrapper')}.small {
   .button {
     @extend .button.small;
   }
 }
-.button-group.large,
-.button-group-wrapper.large {
+.#{map-get($button-groups, 'class-group')}.large,
+.#{map-get($button-groups, 'class-wrapper')}.large {
   .button {
     @extend .button.large;
   }

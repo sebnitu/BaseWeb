@@ -2450,23 +2450,37 @@ class BaseWeb() {
       <code class="right value">true</code>
       <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
     </li>
-    <li>
-      <code>$buttons('padding-small')</code>
-      <code class="right value">0.25em 0.75em</code>
-    </li>
+    
     <li>
       <code>$buttons('padding')</code>
       <code class="right value">0.75em 1.5em</code>
     </li>
     <li>
+      <code>$buttons('padding-small')</code>
+      <code class="right value">0.5em 1.25em</code>
+    </li>
+    <li>
       <code>$buttons('padding-large')</code>
-      <code class="right value">1.25em 2em</code>
+      <code class="right value">null</code>
     </li>
     
+    <li>
+      <code>$buttons('font-family')</code>
+      <code class="right value">inherit</code>
+    </li>
     <li>
       <code>$buttons('font-size')</code>
       <code class="right value">1em</code>
     </li>
+    <li>
+      <code>$buttons('font-size-small')</code>
+      <code class="right value">0.9em</code>
+    </li>
+    <li>
+      <code>$buttons('font-size-large')</code>
+      <code class="right value">1.4em</code>
+    </li>
+    
     <li>
       <code>$buttons('line-height')</code>
       <code class="right value">1.5em</code>
@@ -2474,6 +2488,10 @@ class BaseWeb() {
     <li>
       <code>$buttons('color')</code>
       <code class="right value">$color-dark</code>
+    </li>
+    <li>
+      <code>$buttons('font-weight')</code>
+      <code class="right value">inherit</code>
     </li>
     <li>
       <code>$buttons('text-shadow')</code>
@@ -2840,20 +2858,18 @@ class BaseWeb() {
   </li>
   
   <li>
-    <h2>add-video-ratio</h2>
-    <p>Creates a ratio class using an aspect width and height. You can optionally output the bottom padding or a class with the bottom padding.</p>
-    <pre class="language-scss"><code>@mixin add-video-ratio( $width, $height, $class: true )
+    <h2>build-video-ratio</h2>
+    <p>Creates a ratio class using an aspect width and height. The class that's created uses the passed in ratio <code>.ratio-AxB</code> where <code>A</code> is the passed in width and <code>B</code> is the passed in height.</p>
+    <pre class="language-scss"><code>@mixin build-video-ratio( $width, $height, $class: true )
 // @param $width
 //   @type width aspect ratio (number)
 // @param $height
-//   @type height aspect ratio (number)
-// @param $class
-//   @type boolean (true, false)</code></pre>
+//   @type height aspect ratio (number)</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 .video-wrapper {
-  @include add-video-ratio(16, 9);
-  @include add-video-ratio(4, 3);
+  @include build-video-ratio(16, 9);
+  @include build-video-ratio(4, 3);
 }
 
 // CSS Output
