@@ -127,7 +127,7 @@
     
     <h1>Blocks</h1>
     <p class="text-lead">Blocks are a group of Elements that become an independent component. A block can be simple or compound (meaning it contains other blocks). A Block is contextually independent, but can be modified either through an internal modifier or parent block.</p>
-        
+    
     <div class="sitemap dark">
       <ul class="subnav">
         <li><a href="/docs/blocks.html#button-groups"><span class="icon icon-file"></span> Button Groups</a></li>
@@ -139,6 +139,17 @@
     <div class="notice warning">
       <p>BaseWeb is a young framework and still being actively developed. Blocks are currently the main focus of development and many more will be available soon.</p>
     </div>
+    
+    <ul class="list bordered rounded">
+      <li class="text-uppercase"><strong>Upcoming Blocks</strong></li>
+      <li>Icons</li>
+      <li>Dropdowns</li>
+      <li>Tooltips</li>
+      <li>Modals</li>
+      <li>Menus</li>
+      <li>Pagination</li>
+      <li>Tabs</li>
+    </ul>
     
   </div>
 </section>
@@ -153,91 +164,77 @@
     </nav>
 <h1>Button Group</h1>
 
-<div class="demo demo-pad example-group">
-  <div class="button-group-wrapper">
-  <div class="button-group block has-margin-3 stack-for-small">
-    <button class="button is-1-of-4">Button</button>
-    <button class="button is-1-of-4">Button</button>
-    <button class="button is-1-of-2">Button</button>
-  </div>
-  <div class="button-group block has-3 stack-for-small">
+<div class="demo demo-pad">
+  <div class="button-group">
     <button class="button">Button</button>
     <button class="button">Button</button>
     <button class="button">Button</button>
   </div>
+  <div class="button-group">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
 <div class="demo demo-pad">
-  <div class="button-group-wrapper">
-  <div class="button-group vertical stack-for-small">
+  <div class="button-group vertical">
     <button class="button">Button</button>
     <button class="button">Button</button>
     <button class="button">Button</button>
   </div>
-  <div class="button-group vertical stack-for-small">
+  <div class="button-group vertical">
     <button class="button">Button</button>
     <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
   </div>
 </div>
 
-
 <div class="demo demo-pad">
-  <div class="button-group-wrapper">
-    <div class="button-group block has-3">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group block has-5 stack-for-tablet">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group block vertical">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
+  <div class="button-group block has-3">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
-</div>
-
-
-<div class="demo demo-pad">
-  <div class="button-group-wrapper">
-    <div class="button-group block has-3 stack-for-mobile large">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group block has-5 stack-for-mobile small orange">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-  </div>
-</div>  
   
+  <div class="button-group block has-5 stack-for-tablet">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+  </div>
+  
+  <div class="button-group block vertical">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+  </div>
+</div>
+
 <div class="demo demo-pad">
-  <div class="button-group-wrapper">
-    <div class="button-group stack-for-small large">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    <div class="button-group stack-for-small small black">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
+  <div class="button-group stack-for-small large">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+  </div>
+  <div class="button-group stack-for-small small black">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+  </div>
+</div>
+
+<div class="demo demo-pad">
+  <div class="button-group block has-3 stack-for-mobile large">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+  </div>
+  
+  <div class="button-group block has-5 stack-for-mobile small orange">
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
@@ -308,16 +305,128 @@
   
   </div>
   
-  <br>
+</div>
+
+<section class="subsection subsection-variables has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Button Group Variables</h1>
+  <p class="text-lead">Button Group variables are encompassed within the <code>$button-groups</code> map and are used throughout all button group mixins to set default values and toggle classes output.</p>
+  <ul class="docs-list-compact">
+    <li>
+      <code>$button-groups('classes')</code>
+      <code class="right value">true</code>
+      <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button group modifier mixins semantically and/or reduce CSS output.</span>
+    </li>
+    <li>
+      <code>$button-groups('classes-stack')</code>
+      <code class="right value">true</code>
+    </li>
+    <li>
+      <code>$button-groups('classes-extend')</code>
+      <code class="right value">true</code>
+    </li>
+    
+    <li>
+      <code>$button-groups('class-group')</code>
+      <code class="right value">'button-group'</code>
+    </li>
+    <li>
+      <code>$button-groups('class-wrapper')</code>
+      <code class="right value">'button-group-wrapper'</code>
+    </li>
+    <li>
+      <code>$button-groups('class-has')</code>
+      <code class="right value">map-get($mini-grid, 'class-has')</code>
+    </li>
+    <li>
+      <code>$button-groups('class-is')</code>
+      <code class="right value">map-get($mini-grid, 'class-is')</code>
+    </li>
+    
+    <li>
+      <code>$button-groups('fractions')</code>
+      <code class="right value">map-get($mini-grid, 'fractions')</code>
+    </li>
+    <li>
+      <code>$button-groups('spacing')</code>
+      <code class="right value">1em</code>
+    </li>
+  </ul>
+</div>
+</section>
+
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Button Group Mixins</h1>
+  <p class="text-lead">Button group mixins are used to define and modify groups of buttons. They provide a way to toggle button groups being horizontal or vertical and inline or block along with other helpful modifiers and classes output.</p>
+</div>
+<ul class="docs-list">
   
-  <div class="button-group block has-4 stack-for-mobile default">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <li>
+    <h2>make-button-group</h2>
+    <p>Creates the base styles for button groups.</p>
+    <pre class="language-scss"><code>@mixin make-button-group( $options: () )
+// @param $options
+//   @type map
+//   @default $button-groups map</code></pre>
+  </li>
   
-</div>  </div>
+  <li>
+    <h2>add-button-group-style</h2>
+    <p>Adds button styles based on orientation and display type provided.</p>
+    <pre class="language-scss"><code>@mixin add-button-group-style( $orientation, $display, $has, $options: () )
+// @param $orientation
+//   @type horizontal | vertical
+//   @default null
+// @param $display
+//   @type inline | block
+//   @default null
+// @param $has
+//   @type number
+//   @default null
+// @param $options
+//   @type map
+//   @default $button-groups map</code></pre>
+  </li>
+  
+  <li>
+    <h2>add-button-group-has</h2>
+    <p>Adds the button width and right margin for a horizontal block button group.</p>
+    <pre class="language-scss"><code>@mixin add-button-group-has( $has )
+// @param $has
+//   @type number
+//   @default null</code></pre>
+  </li>
+  
+  <li>
+    <h2>build-button-group-mini-grid-modifiers</h2>
+    <p>Builds the modifier classes for button groups mini grid system.</p>
+    <pre class="language-scss"><code>@mixin build-button-group-mini-grid-modifiers( $options: () )
+// @param $options
+//   @type map
+//   @default $button-groups map</code></pre>
+  </li>
+  
+  <li>
+    <h2>build-button-group-stack-modifiers</h2>
+    <p>Builds the modifier classes for applying vertical block styles to a button group based on screen size.</p>
+    <pre class="language-scss"><code>@mixin build-button-group-stack-modifiers( $options: () )
+// @param $options
+//   @type map
+//   @default $button-groups map</code></pre>
+  </li>
+  
+  <li>
+    <h2>make-button-group-wrapper</h2>
+    <p>Creates the styles for a button group wrapper.</p>
+    <pre class="language-scss"><code>@mixin make-button-group-wrapper( $options: () )
+// @param $options
+//   @type map
+//   @default $button-groups map</code></pre>
+  </li>
+  
+</ul>
+</section>  </div>
 </section><!-- .subpage -->
 
 <section id="notice" class="page subpage">
@@ -331,24 +440,89 @@
 <h1>Notice</h1>
 
 <div class="notice">
-  <p>...</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
 
-<div class="notice success">
-  <p>...</p>
+<div class="notice blue">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice blue inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
 
-<div class="notice info">
-  <p>...</p>
+<div class="notice green">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice green inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
 
-<div class="notice warning">
-  <p>...</p>
+<div class="notice yellow">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice yellow inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
 
-<div class="notice danger">
-  <p>...</p>
+<div class="notice orange">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
+<div class="notice orange inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<div class="notice red">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice red inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<div class="notice violet">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+<div class="notice violet inverted">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<hr>
+
+<div class="notice small">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<div class="notice">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<div class="notice large">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<ul class="list rowed">
+  <li><span class="notice inline blue inverted">Inline blue inverted notice</span> <span class="notice inline blue">Inline blue notice</span></li>
+  <li><span class="notice inline green inverted">Inline green inverted notice</span> <span class="notice inline green">Inline green notice</span></li>
+  <li><span class="notice inline yellow inverted">Inline yellow inverted notice</span> <span class="notice inline yellow">Inline yellow notice</span></li>
+
+  <li><span class="notice inline orange inverted">Inline orange inverted notice</span> <span class="notice inline orange">Inline orange notice</span></li>
+  <li><span class="notice inline red inverted">Inline red inverted notice</span> <span class="notice inline red">Inline red notice</span></li>
+  <li><span class="notice inline violet inverted">Inline violet inverted notice</span> <span class="notice inline violet">Inline violet notice</span></li>
+</ul>
+
+<div class="notice small info pull-left">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et sem at justo suscipit porta. Suspendisse ligula leo, tristique id bibendum sed, ultricies quis eros. Nullam tristique sed nibh a facilisis. Phasellus tristique purus in faucibus laoreet. Morbi condimentum orci vel augue hendrerit, et condimentum sapien molestie. Cras enim eros, malesuada convallis molestie a, lobortis vitae massa. Nulla mattis posuere aliquam. Donec commodo erat ut sapien bibendum viverra.</p>
+
+<div class="notice small info pull-right">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et sem at justo suscipit porta. Suspendisse ligula leo, tristique id bibendum sed, ultricies quis eros. Nullam tristique sed nibh a facilisis. Phasellus tristique purus in faucibus laoreet. Morbi condimentum orci vel augue hendrerit, et condimentum sapien molestie. Cras enim eros, malesuada convallis molestie a, lobortis vitae massa. Nulla mattis posuere aliquam. Donec commodo erat ut sapien bibendum viverra.</p>
   </div>
 </section><!-- .subpage -->
 

@@ -10,13 +10,13 @@ $filename: 'scss/blocks/_notice.scss';
 $notice: (
   'classes' : true,
   
-  'margin' : 2rem 0,
-  'padding' : 0.25rem 1.25rem,
+  'margin' : 2em 0,
+  'padding' : 0.25em 1.25em,
   
   'color' : $color-dark,
   
   'background' : rgba($black, 0.05),
-  'border' : 1px solid rgba($black, 0.1),
+  'border' : 1px solid rgba($black, 0.15),
   'box-shadow' : 0 1px 3px rgba($black, 0.05),
   
 ) !default;
@@ -32,11 +32,11 @@ $notice: (
 //   @default $notice map
 @mixin make-notice($options: ()) {
   $o: map-merge( $notice, $options);
-
+  
+  font-size: 1em;
+  line-height: 1.5em;
   margin: map-get($o, 'margin');
   padding: map-get($o, 'padding');
-  color: map-get($o, 'color');
-  background: map-get($o, 'background');
   border: map-get($o, 'border');
   box-shadow: map-get($o, 'box-shadow');
   @include border-radius();
@@ -51,22 +51,131 @@ $notice: (
 
 .notice {
   @include make-notice();
+  
+  color: $color-dark;
+  text-shadow: 0 1px 0 rgba($white, 0.25);
+  background-color: rgba($black, 0.05);
+  
+  &.inverted {
+    color: $white;
+    text-shadow: 0 1px 1px rgba($black, 0.25);
+    background-color: rgba($color-dark, 0.9);
+  }
 }
 
 /**
- * Context Classes
+ * Notice Color
  */
-.notice.success {
+.notice.green {
   background-color: rgba($green, 0.1);
+  
+  &.inverted {
+    background-color: rgba($green, 0.9);
+  }
+}
+.notice.blue {
+  background-color: rgba($blue, 0.1);
+  
+  &.inverted {
+    background-color: rgba($blue, 0.9);
+  }
+}
+.notice.yellow {
+  background-color: rgba($yellow, 0.1);
+  
+  &.inverted {
+    background-color: rgba($yellow-dark, 0.9);
+  }
+}
+.notice.orange {
+  background-color: rgba($orange, 0.1);
+  
+  &.inverted {
+    background-color: rgba($orange, 0.9);
+  }
+}
+.notice.red {
+  background-color: rgba($red, 0.1);
+  
+  &.inverted {
+    background-color: rgba($red, 0.9);
+  }
+}
+.notice.violet {
+  background-color: rgba($violet, 0.1);
+  
+  &.inverted {
+    background-color: rgba($violet, 0.9);
+  }
+}
+
+// Semantic button classes
+.notice.success {
+  @extend .notice.green;
 }
 .notice.info {
-  background-color: rgba($blue, 0.1);
+  @extend .notice.blue;
 }
 .notice.warning {
-  background-color: rgba($yellow, 0.1);
+  @extend .notice.yellow;
 }
 .notice.danger {
-  background-color: rgba($red, 0.1);
+  @extend .notice.red;
+}
+
+/**
+ * Notice Size, Display and Pulls
+ */
+.notice.small {
+  font-size: 0.9em;
+}
+.notice.large {
+  font-size: 1.1em;
+}
+
+.notice.inline,
+.notice.inline-block {
+  margin: 0;
+  padding: 0 0.5em;
+  box-shadow: none;
+  
+  &.inverted {
+    border: 0 none;
+  }
+}
+.notice.inline {
+  display: inline;
+}
+.notice.inline-block {
+  display: inline-block;
+}
+
+.notice.pull-left,
+.notice.pull-right {
+
+}
+.notice.pull-left {
+
+}
+.notice.pull-right {
+
+}
+
+@include media-min('mobile') {
+  
+  .notice.pull-left,
+  .notice.pull-right {
+    max-width: 45%;
+  }
+  .notice.pull-left {
+    float: left;
+    margin: 0.5em 2em 1em 0;
+  }
+  .notice.pull-right {
+    float: right;
+    margin: 0.5em 0 1em 2em;
+  }
+  
 }
 
 } // endif classes

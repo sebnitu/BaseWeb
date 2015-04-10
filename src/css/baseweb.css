@@ -1198,7 +1198,8 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     .button-group > .button.active {
       z-index: 5; }
   .button-group + .button-group {
-    margin-top: 0; }
+    margin-top: 0;
+    margin-left: 0.75em; }
   .button-group > .button {
     width: auto; }
   .button-group > .button {
@@ -1220,36 +1221,14 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
       border-bottom-right-radius: 3px; }
 
 /**
- * Button Group Wrapper
- */
-.button-group-wrapper {
-  margin: 0 0 -1em -1em; }
-  .button-group-wrapper:after {
-    content: '';
-    display: table;
-    clear: both; }
-  .button-group-wrapper > .button, .button-group-wrapper .button-group, .button-group-wrapper .button-group + .button-group, .button-group-wrapper .button-group.block + .button-group {
-    margin-top: 0; }
-  .button-group-wrapper > .button, .button-group-wrapper .button-group {
-    float: left;
-    margin-bottom: 1em;
-    margin-left: 1em; }
-    .button-group-wrapper > .button.float-left, .button-group-wrapper .button-group.float-left {
-      float: left; }
-    .button-group-wrapper > .button.float-right, .button-group-wrapper .button-group.float-right {
-      float: right; }
-  .button-group-wrapper .button-group.block {
-    float: none;
-    clear: both; }
-
-/**
  * Button Group Modifiers
  */
 .button-group.block {
   display: block;
   float: none; }
   .button-group.block + .button-group {
-    margin-top: 1em; }
+    margin-top: 1em;
+    margin-left: 0; }
 
 .button-group.vertical {
   margin-right: 0; }
@@ -1273,7 +1252,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
       border-bottom-left-radius: 3px; }
 
 /**
- * Build Has Modifiers
+ * Mini-Grid Modifiers
  */
 .button-group > .button.is-1-of-1, .button-group.has-1 > .button {
   width: 100%; }
@@ -1348,109 +1327,192 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
  * Stack Modifiers
  */
 @media (max-width: 479px) {
-  .button-group.stack-for-small, .button-group.stack-for-small.block {
+  .button-group.stack-for-small {
     display: block;
     float: none;
     margin-right: 0; }
-    .button-group.stack-for-small + .button-group, .button-group.stack-for-small.block + .button-group {
-      margin-top: 1em; }
-    .button-group.stack-for-small > .button, .button-group.stack-for-small.block > .button {
+    .button-group.stack-for-small + .button-group {
+      margin-top: 1em;
+      margin-left: 0; }
+    .button-group.stack-for-small > .button {
       display: block;
       width: 100%;
       float: none;
       border-radius: 0; }
-      .button-group.stack-for-small > .button + .button, .button-group.stack-for-small.block > .button + .button {
+      .button-group.stack-for-small > .button + .button {
         margin-top: -1px;
         margin-left: 0; }
-      .button-group.stack-for-small > .button:first-child, .button-group.stack-for-small.block > .button:first-child {
+      .button-group.stack-for-small > .button:first-child {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px; }
-      .button-group.stack-for-small > .button:last-child, .button-group.stack-for-small.block > .button:last-child {
+      .button-group.stack-for-small > .button:last-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px; } }
 
 @media (max-width: 759px) {
-  .button-group.stack-for-mobile, .button-group.stack-for-mobile.block {
+  .button-group.stack-for-mobile {
     display: block;
     float: none;
     margin-right: 0; }
-    .button-group.stack-for-mobile + .button-group, .button-group.stack-for-mobile.block + .button-group {
-      margin-top: 1em; }
-    .button-group.stack-for-mobile > .button, .button-group.stack-for-mobile.block > .button {
+    .button-group.stack-for-mobile + .button-group {
+      margin-top: 1em;
+      margin-left: 0; }
+    .button-group.stack-for-mobile > .button {
       display: block;
       width: 100%;
       float: none;
       border-radius: 0; }
-      .button-group.stack-for-mobile > .button + .button, .button-group.stack-for-mobile.block > .button + .button {
+      .button-group.stack-for-mobile > .button + .button {
         margin-top: -1px;
         margin-left: 0; }
-      .button-group.stack-for-mobile > .button:first-child, .button-group.stack-for-mobile.block > .button:first-child {
+      .button-group.stack-for-mobile > .button:first-child {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px; }
-      .button-group.stack-for-mobile > .button:last-child, .button-group.stack-for-mobile.block > .button:last-child {
+      .button-group.stack-for-mobile > .button:last-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px; } }
 
 @media (max-width: 989px) {
-  .button-group.stack-for-tablet, .button-group.stack-for-tablet.block {
+  .button-group.stack-for-tablet {
     display: block;
     float: none;
     margin-right: 0; }
-    .button-group.stack-for-tablet + .button-group, .button-group.stack-for-tablet.block + .button-group {
-      margin-top: 1em; }
-    .button-group.stack-for-tablet > .button, .button-group.stack-for-tablet.block > .button {
+    .button-group.stack-for-tablet + .button-group {
+      margin-top: 1em;
+      margin-left: 0; }
+    .button-group.stack-for-tablet > .button {
       display: block;
       width: 100%;
       float: none;
       border-radius: 0; }
-      .button-group.stack-for-tablet > .button + .button, .button-group.stack-for-tablet.block > .button + .button {
+      .button-group.stack-for-tablet > .button + .button {
         margin-top: -1px;
         margin-left: 0; }
-      .button-group.stack-for-tablet > .button:first-child, .button-group.stack-for-tablet.block > .button:first-child {
+      .button-group.stack-for-tablet > .button:first-child {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px; }
-      .button-group.stack-for-tablet > .button:last-child, .button-group.stack-for-tablet.block > .button:last-child {
+      .button-group.stack-for-tablet > .button:last-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px; } }
 
+/**
+ * Button Group Wrapper
+ */
+.button-group-wrapper {
+  margin: 0 0 -1em -1em; }
+  .button-group-wrapper:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .button-group-wrapper > .button, .button-group-wrapper .button-group {
+    float: left; }
+    .button-group-wrapper > .button.float-left, .button-group-wrapper .button-group.float-left {
+      float: left; }
+    .button-group-wrapper > .button.float-right, .button-group-wrapper .button-group.float-right {
+      float: right; }
+  .button-group-wrapper .button-group.block {
+    float: none;
+    clear: both; }
+  .button-group-wrapper > .button, .button-group-wrapper .button-group, .button-group-wrapper .button-group.block, .button-group-wrapper .button-group + .button-group, .button-group-wrapper .button-group.block + .button-group, .button-group-wrapper .button-group.stack-for-small, .button-group-wrapper .button-group.stack-for-mobile, .button-group-wrapper .button-group.stack-for-tablet, .button-group-wrapper .button-group.stack-for-small + .button-group, .button-group-wrapper .button-group.stack-for-mobile + .button-group, .button-group-wrapper .button-group.stack-for-tablet + .button-group {
+    margin-top: 0;
+    margin-left: 1em;
+    margin-bottom: 1em; }
+
 /*==============================================================================
   @Notice - scss/blocks/_notice.scss
 ==============================================================================*/
 .notice {
-  margin: 2rem 0;
-  padding: 0.25rem 1.25rem;
-  color: #303030;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 2em 0;
+  padding: 0.25em 1.25em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border-radius: 3px; }
+  border-radius: 3px;
+  color: #303030;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.05); }
+  .notice.inverted {
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    background-color: rgba(48, 48, 48, 0.9); }
 
 /**
- * Context Classes
+ * Notice Color
  */
-.notice.success {
+.notice.green, .notice.success {
   background-color: rgba(132, 183, 45, 0.1); }
+  .notice.green.inverted, .inverted.notice.success {
+    background-color: rgba(132, 183, 45, 0.9); }
 
-.notice.info {
+.notice.blue, .notice.info {
   background-color: rgba(42, 176, 234, 0.1); }
+  .notice.blue.inverted, .inverted.notice.info {
+    background-color: rgba(42, 176, 234, 0.9); }
 
-.notice.warning {
+.notice.yellow, .notice.warning {
   background-color: rgba(241, 196, 15, 0.1); }
+  .notice.yellow.inverted, .inverted.notice.warning {
+    background-color: rgba(218, 177, 13, 0.9); }
 
-.notice.danger {
+.notice.orange {
+  background-color: rgba(230, 146, 66, 0.1); }
+  .notice.orange.inverted {
+    background-color: rgba(230, 146, 66, 0.9); }
+
+.notice.red, .notice.danger {
   background-color: rgba(222, 81, 81, 0.1); }
+  .notice.red.inverted, .inverted.notice.danger {
+    background-color: rgba(222, 81, 81, 0.9); }
+
+.notice.violet {
+  background-color: rgba(188, 107, 211, 0.1); }
+  .notice.violet.inverted {
+    background-color: rgba(188, 107, 211, 0.9); }
+
+/**
+ * Notice Size, Display and Pulls
+ */
+.notice.small {
+  font-size: 0.9em; }
+
+.notice.large {
+  font-size: 1.1em; }
+
+.notice.inline, .notice.inline-block {
+  margin: 0;
+  padding: 0 0.5em;
+  box-shadow: none; }
+  .notice.inline.inverted, .notice.inline-block.inverted {
+    border: 0 none; }
+
+.notice.inline {
+  display: inline; }
+
+.notice.inline-block {
+  display: inline-block; }
+
+@media (min-width: 480px) {
+  .notice.pull-left, .notice.pull-right {
+    max-width: 45%; }
+  .notice.pull-left {
+    float: left;
+    margin: 0.5em 2em 1em 0; }
+  .notice.pull-right {
+    float: right;
+    margin: 0.5em 0 1em 2em; } }
 
 /*==============================================================================
   @Breadcrumb - scss/blocks/_breadcrumb.scss

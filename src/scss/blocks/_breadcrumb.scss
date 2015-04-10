@@ -40,19 +40,24 @@ $breadcrumb: (
 @mixin select-breadcrumb($select, $options: ()) {
   $o: map-merge( $breadcrumb, $options);
   
-  @if ($select == 'item') {
+  @if ($select == 'lists') {
+    > ul,
+    > ol {
+      @content;
+    }
+  } @else if ($select == 'items') {
     > li,
     > ul > li,
     > ol > li {
       @content;
     }
-  } @else if ($select == 'link') {
+  } @else if ($select == 'links') {
     > li a,
     > ul > li a,
     > ol > li a {
       @content;
     }
-  } @else if ($select == 'sep') {
+  } @else if ($select == 'seps') {
     > li,
     > ul > li,
     > ol > li {
@@ -83,21 +88,19 @@ $breadcrumb: (
   font-size: map-get($o, 'font-size');
   @include clearfix();
   
-  > ul,
-  > ol {
+  @include select-breadcrumb('lists', $o) {
     margin: 0;
     list-style: none;
     @include clearfix();
   }
-  
-  @include select-breadcrumb('item', $o) {
+  @include select-breadcrumb('items', $o) {
     float: left;
     margin: 0;
   }
-  @include select-breadcrumb('link', $o) {
+  @include select-breadcrumb('links', $o) {
     border: 0 none;
   }
-  @include select-breadcrumb('sep', $o) {
+  @include select-breadcrumb('seps', $o) {
     content: map-get($o, 'sep');
     padding: map-get($o, 'sep-padding');
     color: map-get($o, 'sep-color');
