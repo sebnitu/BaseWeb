@@ -2,12 +2,12 @@
 $filename: 'scss/blocks/_notice.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notice Variables
+// @Notices Map
 ////////////////////////////////////////////////////////////////////////////////
 
 // Notice Map
 // Define all the settings for table mixins and classes.
-$notice: (
+$notices: (
   'classes' : true,
   
   'margin' : 2em 0,
@@ -29,9 +29,9 @@ $notice: (
 // Creates the styles for a notice block.
 // @param $options
 //   @type map
-//   @default $notice map
+//   @default $notices map
 @mixin make-notice($options: ()) {
-  $o: map-merge( $notice, $options);
+  $o: map-merge($notices, $options);
   
   font-size: 1em;
   line-height: 1.5em;
@@ -43,7 +43,7 @@ $notice: (
 }
 
 // Check if we should output modifier classes
-@if (map-get($notice, 'classes') == true) {
+@if (map-get($notices, 'classes') == true) {
   
 /*==============================================================================
   @Notice - #{$filename}

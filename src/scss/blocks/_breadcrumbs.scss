@@ -2,12 +2,12 @@
 $filename: 'scss/blocks/_breadcrumb.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notice Variables
+// @Breadcrumbs Map
 ////////////////////////////////////////////////////////////////////////////////
 
 // Notice Map
 // Define all the settings for table mixins and classes.
-$breadcrumb: (
+$breadcrumbs: (
   'classes' : true,
   
   'margin' : 1em 0px,
@@ -27,7 +27,7 @@ $breadcrumb: (
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notice Mixins
+// @Breadcrumb Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Select Breadcrumb
@@ -36,9 +36,9 @@ $breadcrumb: (
 //   @type string ('item', 'link', 'sep')
 // @param $options
 //   @type map
-//   @default $breadcrumb map
+//   @default $breadcrumbs map
 @mixin select-breadcrumb($select, $options: ()) {
-  $o: map-merge( $breadcrumb, $options);
+  $o: map-merge($breadcrumbs, $options);
   
   @if ($select == 'lists') {
     > ul,
@@ -79,9 +79,9 @@ $breadcrumb: (
 // ...
 // @param $options
 //   @type map
-//   @default $breadcrumb map
+//   @default $breadcrumbs map
 @mixin make-breadcrumb($options: ()) {
-  $o: map-merge( $breadcrumb, $options);
+  $o: map-merge($breadcrumbs, $options);
   
   margin: map-get($o, 'margin');
   list-style: none;
@@ -110,7 +110,7 @@ $breadcrumb: (
 // Add Breadcrumb Wrapped
 // Applies custom styles to breadcrumb wrapper.
 @mixin add-breadcrumb-wrapped($options: ()) {
-  $o: map-merge( $breadcrumb, $options);
+  $o: map-merge($breadcrumbs, $options);
   
   padding: map-get($o, 'padding');
   background: map-get($o, 'background');
@@ -119,7 +119,7 @@ $breadcrumb: (
 }
 
 // Check if we should output modifier classes
-@if (map-get($breadcrumb, 'classes') == true) {
+@if (map-get($breadcrumbs, 'classes') == true) {
 
 /*==============================================================================
   @Breadcrumb - #{$filename}
