@@ -165,8 +165,8 @@
     <pre class="language-scss"><code>@function map-fetch( $map, $keys... )
 // @param $map
 //   @type map
-// @param $keys...
-//   @type map keys
+// @param $keys
+//   @type list
 // @return map value</code></pre>
 
     <h3>Example Usage</h3>
@@ -187,19 +187,58 @@ $map: (
 );
 
 .header {
-  background-color: map-fetch($map, themes, light, header);
+  background-color: map-fetch($map, 'themes' 'light' 'header');
 }
 .content { 
-  background-color: map-fetch($map, themes, light, content);
+  background-color: map-fetch($map, 'themes' 'light' 'content');
 }
 .footer {
-  background-color: map-fetch($map, themes, light, footer);
+  background-color: map-fetch($map, 'themes' 'light' 'footer');
 }
 
 // CSS Output
 .header { background-color: #fff; }
 .content { background-color: #ccc; }
 .footer { background-color: #aaa; }</code></pre>
+  </li>
+  
+  <li>
+    <h2>map-set</h2>
+    <p>An easy to to set a deep value in a multi-level map. This by passing in a map, value and keys to the original map value you want changed.</p>
+    <pre class="language-scss"><code>@function map-set( $map, $value, $keys... )
+// @param $map
+//   @type map
+// @param $value
+//   @type value
+// @param $keys
+//   @type list
+// @return updated map value</code></pre>
+
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+$map: (
+  themes: (
+    light: (
+      header: #fff,
+      content: #ccc,
+      footer: #aaa
+    )
+  )
+);
+
+.header {
+  background-color: map-fetch($map, 'themes' 'light' 'header');
+}
+
+$map: map-set($map, #000, 'themes' 'light' 'header');
+
+.header {
+  background-color: map-fetch($map, 'themes' 'light' 'header');
+}
+
+// CSS Output
+.header { background-color: #fff; }
+.header { background-color: #000; }</code></pre>
   </li>
   
   <li>

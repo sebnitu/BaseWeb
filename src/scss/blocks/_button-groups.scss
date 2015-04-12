@@ -178,6 +178,14 @@ $button-groups: (
 @mixin build-button-group-mini-grid-modifiers($options: ()) {
   $o: map-merge($button-groups, $options);
   
+  .#{map-get($o, 'class-group')}.fluid {
+    display: table;
+    width: 100%;
+    > * {
+      display: table-cell;
+    }
+  }
+  
   @for $i from 1 through map-get($o, 'fractions') {
     .#{map-get($o, 'class-group')} > .button.#{map-get($o, 'class-is')}-1-of-#{$i},
     .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-#{$i} > .button {

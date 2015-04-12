@@ -474,9 +474,16 @@ body > div,
   }
   
   code {
+    display: block;
     margin: 0;
     padding: 0;
     background: transparent;
+  }
+  
+  @include media-min('tablet') {
+    code {
+      float: left;
+    }
   }
   
   .title {
@@ -563,26 +570,16 @@ body > div,
 ==============================================================================*/
 
 .subsection {
-  margin: 1.5rem (-($edge-space));
+  margin: 1em (-($edge-space));
   border: 1px solid $border-color;
   @include border-radius();
   
-  &.has-inner-subsection {
-    margin-top: 3rem;
-  }
-  
   // Inner subsection
   .inner-subsection {
-    padding: 0 $edge-space 1rem;
+    padding: 1rem $edge-space;
     
     > h1 {
-      opacity: 0.75;
-      margin: -1.25rem 0 1rem 0;
-      font-size: 2.5em;
-      line-height: 1em;
-      text-transform: uppercase;
-      color: $yellow-green-dark;
-      @include font-weight('bold');
+      
     }
   }
   
@@ -622,11 +619,7 @@ body > div,
 @include media-min(560px) {
   
   .subsection {
-    margin: 2rem (-($edge-space));
-    
-    &.has-inner-subsection {
-      margin-top: 6rem;
-    }
+    margin: 2em (-($edge-space));
   }
   
 }

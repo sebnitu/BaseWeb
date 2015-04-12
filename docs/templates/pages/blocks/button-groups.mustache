@@ -1,5 +1,18 @@
 <h1>Button Group</h1>
 
+<p>Button groups are a way to create a set of buttons and make them visually grouped together. Button groups can either be lined up horizontally, or stacked vertically. They can also either be presented inline, or block (meaning they span the full width of their container).</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  ...
+&lt;/div&gt;
+&lt;div class=&quot;button-group&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
 <div class="demo demo-pad">
   <div class="button-group">
     <button class="button">Button</button>
@@ -11,6 +24,21 @@
     <button class="button">Button</button>
   </div>
 </div>
+
+<p>By default, button groups are displayed horizontal and inline. To toggle between the vertical display button styles, you can use the <code>.vertical</code> class on the button group element.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;demo demo-pad&quot;&gt;
+  &lt;div class=&quot;button-group vertical&quot;&gt;
+    &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;button-group vertical&quot;&gt;
+    &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
 
 <div class="demo demo-pad">
   <div class="button-group vertical">
@@ -24,21 +52,19 @@
   </div>
 </div>
 
+<h2>Block Button Groups</h2>
+
+<p>To create a button group that expands the full width of its container, There's the <code>.block</code> class.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group block vertical&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
 <div class="demo demo-pad">
-  <div class="button-group block has-3">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
-  
-  <div class="button-group block has-5 stack-for-tablet">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
-  
   <div class="button-group block vertical">
     <button class="button">Button</button>
     <button class="button">Button</button>
@@ -46,26 +72,63 @@
   </div>
 </div>
 
+<p>If a button group is both horizontal and block, you'll need to define the number of children the button group has. For this, we use the mini grid system syntax of <code>.has-X</code> where <code>X</code> represents the number of children.</p> 
+
+<pre class="language-markup"><code>
+&lt;!-- Horizontal Block Button Group with 3 Chilren --&gt;
+&lt;div class=&quot;button-group block has-3&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
 <div class="demo demo-pad">
-  <div class="button-group stack-for-small large">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
-  <div class="button-group stack-for-small small black">
+  <div class="button-group block has-3">
     <button class="button">Button</button>
     <button class="button">Button</button>
     <button class="button">Button</button>
   </div>
 </div>
 
+<p>Using the <code>.has-X</code> modifier will give each button element equal widths to a total of 100%. But if you need to give each button element unique widths, you can use the <code>.is-1-of-X</code> classes where <code>1-of-X</code> represents the fraction you want the button to take.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group block has-margin-3&quot;&gt;
+  &lt;button class=&quot;button is-1-of-4&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button is-1-of-4&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button is-1-of-2&quot;&gt;Button&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
 <div class="demo demo-pad">
-  <div class="button-group block has-3 stack-for-mobile large">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
+  <div class="button-group block has-margin-3">
+    <button class="button is-1-of-4">Button</button>
+    <button class="button is-1-of-4">Button</button>
+    <button class="button is-1-of-2">Button</button>
   </div>
-  
-  <div class="button-group block has-5 stack-for-mobile small orange">
+</div>
+
+<div class="notice warning">
+  <p>If you use the <code>.is-1-of-X</code> modifier, remember that the parent button group element still needs a <code>has-margin-X</code> class to properly apply the negative right margins of the button group.</p>
+</div>
+
+<h2>Stack for Media Button Groups</h2>
+
+<p>For cases where you want button groups to be vertical block for only specific media queries, there's the <code>stack-for-X</code> classes. These classes are built using the max-width media queries, so the styles are applied to a specified breakpoint and below.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group block has-5 stack-for-tablet&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
+<div class="demo demo-pad">
+  <div class="button-group block has-5 stack-for-tablet">
     <button class="button">Button</button>
     <button class="button">Button</button>
     <button class="button">Button</button>
@@ -74,73 +137,126 @@
   </div>
 </div>
 
+<ul class="docs-list-compact">
+  <li class="title">Available Breakpoint Stack Classes</li>
+  <li>
+    <code>.stack-for-small</code>
+    <code class="right value">media-max('mobile')</code>
+  </li>
+  <li>
+    <code>.stack-for-mobile</code>
+    <code class="right value">media-max('tablet')</code>
+  </li>
+  <li>
+    <code>.stack-for-tablet</code>
+    <code class="right value">media-max('desktop')</code>
+  </li>
+</ul>
+
+<h2>Button Group Wrapper</h2>
+
+<p>In the cases where you have multiple button groups, you have the <code>.button-group-wrapper</code> which applies comfortable spacing between button groups as well as individual buttons.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group-wrapper&quot;&gt;
+  &lt;div class=&quot;button-group block has-3&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;button-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;button-group&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
 <div class="demo demo-pad">
-  
   <div class="button-group-wrapper">
-  
-    <div class="button-group block has-3 primary">
+    <div class="button-group block has-3">
       <button class="button">Button</button>
       <button class="button">Button</button>
       <button class="button">Button</button>
     </div>
-    
-    <div class="button-group secondary">
+    <div class="button-group">
       <button class="button">Button</button>
       <button class="button">Button</button>
     </div>
-    
-    <div class="button-group success">
+    <div class="button-group">
       <button class="button">Button</button>
       <button class="button">Button</button>
     </div>
-    
-    <button class="button red">Button</button>
-    
-    <div class="button-group block has-1">
-      <button class="button default">Button</button>
+    <button class="button">Button</button>
+  </div>
+</div>
+
+<p>For more complex button layouts, you can use the mini grid system along with the button group wrapper to create a columned button layout. We also added a stack modifier for better usability on smaller devices.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group-wrapper has-2&quot;&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;button-group block has-2 stack-for-tablet&quot;&gt;
+      &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+      &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;button-group block has-2 stack-for-tablet&quot;&gt;
+      &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+      &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<div class="demo demo-pad">
+  <div class="button-group-wrapper has-2">
+    <div>
+      <div class="button-group block has-2 stack-for-tablet">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
     </div>
-    
+    <div>
+      <div class="button-group block has-2 stack-for-tablet">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Button Modifier Classes</h2>
+
+<p>As a method to easily style a group of buttons, all button color and size modifier classes are available for button groups and button group wrappers to apply for all children button elements.</p>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;button-group-wrapper primary&quot;&gt; ... &lt;/div&gt;
+</code></pre>
+
+<div class="demo demo-pad">
+  <div class="button-group-wrapper primary">
+    <div class="button-group block has-3">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
     <div class="has-2">
       <div>
-        <div class="button-group block has-2 stack-for-mobile default">
+        <div class="button-group block has-2 stack-for-tablet">
           <button class="button">Button</button>
           <button class="button">Button</button>
         </div>
       </div>
       <div>
-        <div class="button-group block has-2 stack-for-mobile blue">
+        <div class="button-group block has-2 stack-for-tablet">
           <button class="button">Button</button>
           <button class="button">Button</button>
         </div>
       </div>
     </div>
-    
-    <div class="button-group warning">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group success">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group block has-3 danger">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    
-    <div class="button-group block has-4 stack-for-mobile default">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-  
   </div>
-  
 </div>
 
 <section class="subsection subsection-variables has-inner-subsection">
@@ -156,36 +272,44 @@
     <li>
       <code>$button-groups('classes-stack')</code>
       <code class="right value">true</code>
+      <span class="block light">Whether or not the stack modifier classes should be output.</span>
     </li>
     <li>
       <code>$button-groups('classes-extend')</code>
       <code class="right value">true</code>
+      <span class="block light">Whether or not the button modifier classes should be extended onto button group and button group wrapper elements.</span>
     </li>
     
     <li>
       <code>$button-groups('class-group')</code>
       <code class="right value">'button-group'</code>
+      <span class="block light">Class name for button group element.</span>
     </li>
     <li>
       <code>$button-groups('class-wrapper')</code>
       <code class="right value">'button-group-wrapper'</code>
+      <span class="block light">Class name for button group wrapper element.</span>
     </li>
     <li>
       <code>$button-groups('class-has')</code>
       <code class="right value">map-get($mini-grid, 'class-has')</code>
+      <span class="block light">Class name prefix for button-group mini-grid parent elements.</span>
     </li>
     <li>
       <code>$button-groups('class-is')</code>
       <code class="right value">map-get($mini-grid, 'class-is')</code>
+      <span class="block light">Class name prefix for button-group mini-grid children elements.</span>
     </li>
     
     <li>
       <code>$button-groups('fractions')</code>
       <code class="right value">map-get($mini-grid, 'fractions')</code>
+      <span class="block light">Used to define the number of fraction classes to output.</span>
     </li>
     <li>
       <code>$button-groups('spacing')</code>
       <code class="right value">1em</code>
+      <span class="block light">The amount of space that's created between button groups.</span>
     </li>
   </ul>
 </div>

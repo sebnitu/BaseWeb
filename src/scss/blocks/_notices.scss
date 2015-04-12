@@ -10,14 +10,24 @@ $filename: 'scss/blocks/_notice.scss';
 $notices: (
   'classes' : true,
   
+  'class-inverted' : 'inverted',
+  
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
   
   'color' : $color-dark,
-  
+  'text-shadow' : 0 1px 0 rgba($white, 0.25),
   'background' : rgba($black, 0.05),
   'border' : 1px solid rgba($black, 0.15),
   'box-shadow' : 0 1px 3px rgba($black, 0.05),
+  
+  'inverted' : (
+    'color' : $white,
+    'text-shadow' : 0 1px 0 rgba($black, 0.25),
+    'background' : rgba($color-dark, 0.9),
+    'border' : 1px solid rgba($black, 0.15),
+    'box-shadow' : 0 1px 3px rgba($black, 0.05),
+  ),
   
 ) !default;
 
@@ -37,9 +47,43 @@ $notices: (
   line-height: 1.5em;
   margin: map-get($o, 'margin');
   padding: map-get($o, 'padding');
-  border: map-get($o, 'border');
-  box-shadow: map-get($o, 'box-shadow');
+  
   @include border-radius();
+}
+
+@mixin add-notice-color($output: difference, $options: ()) {
+  $o: map-merge($notices, $options);
+  
+  @if (map-get($options, 'inverted')) {
+    $o: map-set($o, map-merge(map-get($notices, 'inverted'), map-get($options, 'inverted')), 'inverted' );
+  }
+  
+  @if ($output == all) {
+  
+    color: map-get($o, 'color');
+    text-shadow: map-get($o, 'text-shadow');
+    background: map-get($o, 'background');
+    border: map-get($o, 'border');
+    box-shadow: map-get($o, 'box-shadow');
+    
+    &.#{map-get($o, 'class-inverted')} {
+      color: map-fetch($o, 'inverted' 'color');
+      text-shadow: map-fetch($o, 'inverted' 'text-shadow');
+      background: map-fetch($o, 'inverted' 'background');
+      border: map-fetch($o, 'inverted' 'border');
+      box-shadow: map-fetch($o, 'inverted' 'box-shadow');
+    }
+  
+  } @else {
+    @if (map-get($o, 'background') != map-get($notices, 'background')) {
+      background: map-get($o, 'background');
+    }
+    &.#{map-get($o, 'class-inverted')} {
+      @if (map-fetch($o, 'inverted' 'background') != map-fetch($notices, 'inverted' 'background')) {
+        background: map-fetch($o, 'inverted' 'background');
+      }
+    }
+  }
 }
 
 // Check if we should output modifier classes
@@ -51,16 +95,7 @@ $notices: (
 
 .notice {
   @include make-notice();
-  
-  color: $color-dark;
-  text-shadow: 0 1px 0 rgba($white, 0.25);
-  background-color: rgba($black, 0.05);
-  
-  &.inverted {
-    color: $white;
-    text-shadow: 0 1px 0 rgba($black, 0.25);
-    background-color: rgba($color-dark, 0.9);
-  }
+  @include add-notice-color(all);
 }
 
 .notice .close {
@@ -72,47 +107,53 @@ $notices: (
 /**
  * Notice Color
  */
-.notice.green {
-  background-color: rgba($green, 0.1);
-  
-  &.inverted {
-    background-color: rgba($green, 0.9);
-  }
-}
 .notice.blue {
-  background-color: rgba($blue, 0.1);
-  
-  &.inverted {
-    background-color: rgba($blue, 0.9);
-  }
+  @include add-notice-color($options: (
+    'background' : rgba($blue, 0.1),
+    'inverted' : (
+      'background' : rgba($blue, 0.9)
+    )
+  ));
+}
+.notice.green {
+  @include add-notice-color($options: (
+    'background' : rgba($green, 0.1),
+    'inverted' : (
+      'background' : rgba($green, 0.9)
+    )
+  ));
 }
 .notice.yellow {
-  background-color: rgba($yellow, 0.1);
-  
-  &.inverted {
-    background-color: rgba($yellow-dark, 0.9);
-  }
+  @include add-notice-color($options: (
+    'background' : rgba($yellow, 0.1),
+    'inverted' : (
+      'background' : rgba($yellow-dark, 0.9)
+    )
+  ));
 }
 .notice.orange {
-  background-color: rgba($orange, 0.1);
-  
-  &.inverted {
-    background-color: rgba($orange, 0.9);
-  }
+  @include add-notice-color($options: (
+    'background' : rgba($orange, 0.1),
+    'inverted' : (
+      'background' : rgba($orange, 0.9)
+    )
+  ));
 }
 .notice.red {
-  background-color: rgba($red, 0.1);
-  
-  &.inverted {
-    background-color: rgba($red, 0.9);
-  }
+  @include add-notice-color($options: (
+    'background' : rgba($red, 0.1),
+    'inverted' : (
+      'background' : rgba($red, 0.9)
+    )
+  ));
 }
 .notice.violet {
-  background-color: rgba($violet, 0.1);
-  
-  &.inverted {
-    background-color: rgba($violet, 0.9);
-  }
+  @include add-notice-color($options: (
+    'background' : rgba($violet, 0.1),
+    'inverted' : (
+      'background' : rgba($violet, 0.9)
+    )
+  ));
 }
 
 // Semantic button classes

@@ -43,7 +43,7 @@ $buttons: (
     'background'   : darken,
     'box-shadow'   : inset 0 1px 3px rgba($black, 0.1),
     'border-color' : rgba($black, 0.25),
-    'transition-duration' : 0.25s,
+    'transition-duration' : 0.1s,
   ),
   
   'active' : (
@@ -94,17 +94,21 @@ $buttons: (
   &:hover, &:focus {
     color: map-get($o, 'color');
     background: none;
-    box-shadow: map-fetch($o, 'hover', 'box-shadow');
-    border-color: map-fetch($o, 'hover', 'border-color');
-    @include transition-duration(map-fetch($o, 'hover', 'transition-duration'));
+    box-shadow: map-fetch($o, 'hover' 'box-shadow');
+    border-color: map-fetch($o, 'hover' 'border-color');
+    @include transition-property(map-get($o, 'transition-property'));
+    @include transition-duration(map-fetch($o, 'hover' 'transition-duration'));
+    @include transition-timing-function(map-get($o, 'transition-timing-function'));
   }
   
   &:active {
     color: map-get($o, 'color');
     background: none;
-    box-shadow: map-fetch($o, 'active', 'box-shadow');
-    border-color: map-fetch($o, 'active', 'border-color');
-    @include transition-duration(map-fetch($o, 'active', 'transition-duration'));
+    box-shadow: map-fetch($o, 'active' 'box-shadow');
+    border-color: map-fetch($o, 'active' 'border-color');
+    @include transition-property(map-get($o, 'transition-property'));
+    @include transition-duration(map-fetch($o, 'active' 'transition-duration'));
+    @include transition-timing-function(map-get($o, 'transition-timing-function'));
   }
   
 }
@@ -116,6 +120,14 @@ $buttons: (
 //   @default $buttons map
 @mixin add-button-color($options: ()) {
   $o: map-merge($buttons, $options);
+  
+  @if (map-get($options, 'hover')) {
+    $o: map-set($o, map-merge(map-get($buttons, 'hover'), map-get($options, 'hover')), 'hover' );
+  }
+  
+  @if (map-get($options, 'active')) {
+    $o: map-set($o, map-merge(map-get($buttons, 'active'), map-get($options, 'active')), 'active' );
+  }
   
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
@@ -133,45 +145,45 @@ $buttons: (
   border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   
   &:hover, &:focus {
-    @if (map-fetch($o, 'hover', 'color') == default) {
+    @if (map-fetch($o, 'hover' 'color') == default) {
       color: map-get($o, 'color');
     } @else {
-      color: map-fetch($o, 'hover', 'color');
+      color: map-fetch($o, 'hover' 'color');
     }
     @if (map-get($o, 'background-gradient') == true) {
       background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
       background-position: 0 -40px;
     } @else {
-      @if (map-fetch($o, 'hover', 'background') == darken) {
+      @if (map-fetch($o, 'hover' 'background') == darken) {
         background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
-      } @else if (map-fetch($o, 'hover', 'background') == lighten) {
+      } @else if (map-fetch($o, 'hover' 'background') == lighten) {
         background-color: lighten(map-get($o, 'background'), map-get($o, 'background-deg'));
       } @else {
-        background-color: map-fetch($o, 'hover', 'background');
+        background-color: map-fetch($o, 'hover' 'background');
       }
     }
-    border-color: map-fetch($o, 'hover', 'border-color');
+    border-color: map-fetch($o, 'hover' 'border-color');
   }
   
   &:active {
-    @if (map-fetch($o, 'active', 'color') == default) {
+    @if (map-fetch($o, 'active' 'color') == default) {
       color: map-get($o, 'color');
     } @else {
-      color: map-fetch($o, 'active', 'color');
+      color: map-fetch($o, 'active' 'color');
     }
     @if (map-get($o, 'background-gradient') == true) {
       background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
       background-position: 0 -40px;
     } @else {
-      @if (map-fetch($o, 'active', 'background') == darken) {
+      @if (map-fetch($o, 'active' 'background') == darken) {
         background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
-      } @else if (map-fetch($o, 'active', 'background') == lighten) {
+      } @else if (map-fetch($o, 'active' 'background') == lighten) {
         background-color: lighten(lighten(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
       } @else {
-        background-color: map-fetch($o, 'active', 'background');
+        background-color: map-fetch($o, 'active' 'background');
       }
     }
-    border-color: map-fetch($o, 'active', 'border-color');
+    border-color: map-fetch($o, 'active' 'border-color');
   }
   
 }
@@ -235,7 +247,9 @@ $buttons: (
  */
 .button {
   @include make-button();
-  @include add-button-color();
+  @include add-button-color((
+    'background-deg' : 2%,
+  ));
 }
 
 /**
@@ -244,9 +258,7 @@ $buttons: (
 .button.default {
   @include add-button-color((
     'background' : #efefef,
-    'hover' : (
-      'background': darken
-    ),
+    'background-deg' : 2%,
   ));
 }
 .button.blue {
