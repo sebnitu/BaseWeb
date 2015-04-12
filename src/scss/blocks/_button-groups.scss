@@ -202,25 +202,26 @@ $button-groups: (
 }
 
 // Build Button Group Stack Modifiers
-// Builds the modifier classes for applying vertical block styles to a button group based on screen size.
+// Builds the modifier classes for applying vertical block styles to a button
+// group based on screen size.
 // @param $options
 //   @type map
 //   @default $button-groups map
 @mixin build-button-group-stack-modifiers($options: ()) {
   $o: map-merge($button-groups, $options);
 
-  @include media-max('mobile') {
+  @include media-max('small') {
+    .#{map-get($o, 'class-group')}.stack-for-tiny {
+      @include add-button-group-style(vertical, block);
+    }
+  }
+  @include media-max('medium') {
     .#{map-get($o, 'class-group')}.stack-for-small {
       @include add-button-group-style(vertical, block);
     }
   }
-  @include media-max('tablet') {
-    .#{map-get($o, 'class-group')}.stack-for-mobile {
-      @include add-button-group-style(vertical, block);
-    }
-  }
-  @include media-max('desktop') {
-    .#{map-get($o, 'class-group')}.stack-for-tablet {
+  @include media-max('large') {
+    .#{map-get($o, 'class-group')}.stack-for-medium {
       @include add-button-group-style(vertical, block);
     }
   }
@@ -318,7 +319,8 @@ $button-groups: (
 
 @if (map-get($button-groups, 'classes-extend') == true) {
 // Button Group Extends
-// Adding these button modifier classes to a button group will apply them to children buttons
+// Adding these button modifier classes to a button group will apply them to
+// children buttons
 
 // Color
 .#{map-get($button-groups, 'class-group')}.default,

@@ -1,4 +1,4 @@
-<h1>Button Group</h1>
+<h1>Button Groups</h1>
 
 <p>Button groups are a way to create a set of buttons and make them visually grouped together. Button groups can either be lined up horizontally, or stacked vertically. They can also either be presented inline, or block (meaning they span the full width of their container).</p>
 
@@ -118,7 +118,7 @@
 <p>For cases where you want button groups to be vertical block for only specific media queries, there's the <code>stack-for-X</code> classes. These classes are built using the max-width media queries, so the styles are applied to a specified breakpoint and below.</p>
 
 <pre class="language-markup"><code>
-&lt;div class=&quot;button-group block has-5 stack-for-tablet&quot;&gt;
+&lt;div class=&quot;button-group block has-5 stack-for-medium&quot;&gt;
   &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
   &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
   &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
@@ -128,7 +128,7 @@
 </code></pre>
 
 <div class="demo demo-pad">
-  <div class="button-group block has-5 stack-for-tablet">
+  <div class="button-group block has-5 stack-for-medium">
     <button class="button">Button</button>
     <button class="button">Button</button>
     <button class="button">Button</button>
@@ -140,16 +140,16 @@
 <ul class="docs-list-compact">
   <li class="title">Available Breakpoint Stack Classes</li>
   <li>
+    <code>.stack-for-tiny</code>
+    <code class="right value">media-max('small')</code>
+  </li>
+  <li>
     <code>.stack-for-small</code>
-    <code class="right value">media-max('mobile')</code>
+    <code class="right value">media-max('medium')</code>
   </li>
   <li>
-    <code>.stack-for-mobile</code>
-    <code class="right value">media-max('tablet')</code>
-  </li>
-  <li>
-    <code>.stack-for-tablet</code>
-    <code class="right value">media-max('desktop')</code>
+    <code>.stack-for-medium</code>
+    <code class="right value">media-max('large')</code>
   </li>
 </ul>
 
@@ -196,13 +196,13 @@
 <pre class="language-markup"><code>
 &lt;div class=&quot;button-group-wrapper has-2&quot;&gt;
   &lt;div&gt;
-    &lt;div class=&quot;button-group block has-2 stack-for-tablet&quot;&gt;
+    &lt;div class=&quot;button-group block has-2 stack-for-medium&quot;&gt;
       &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
       &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
   &lt;div&gt;
-    &lt;div class=&quot;button-group block has-2 stack-for-tablet&quot;&gt;
+    &lt;div class=&quot;button-group block has-2 stack-for-medium&quot;&gt;
       &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
       &lt;button class=&quot;button&quot;&gt;Button&lt;/button&gt;
     &lt;/div&gt;
@@ -213,13 +213,13 @@
 <div class="demo demo-pad">
   <div class="button-group-wrapper has-2">
     <div>
-      <div class="button-group block has-2 stack-for-tablet">
+      <div class="button-group block has-2 stack-for-medium">
         <button class="button">Button</button>
         <button class="button">Button</button>
       </div>
     </div>
     <div>
-      <div class="button-group block has-2 stack-for-tablet">
+      <div class="button-group block has-2 stack-for-medium">
         <button class="button">Button</button>
         <button class="button">Button</button>
       </div>
@@ -244,13 +244,13 @@
     </div>
     <div class="has-2">
       <div>
-        <div class="button-group block has-2 stack-for-tablet">
+        <div class="button-group block has-2 stack-for-medium">
           <button class="button">Button</button>
           <button class="button">Button</button>
         </div>
       </div>
       <div>
-        <div class="button-group block has-2 stack-for-tablet">
+        <div class="button-group block has-2 stack-for-medium">
           <button class="button">Button</button>
           <button class="button">Button</button>
         </div>
@@ -267,7 +267,7 @@
     <li>
       <code>$button-groups('classes')</code>
       <code class="right value">true</code>
-      <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button group modifier mixins semantically and/or reduce CSS output.</span>
+      <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the button group modifier mixins semantically and/or reduce CSS output.</span>
     </li>
     <li>
       <code>$button-groups('classes-stack')</code>

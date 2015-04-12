@@ -186,7 +186,7 @@
   
   <li>
     <h2>.clearfix</h2>
-    <p>Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to <code>none</code> will not output the class styles.</p>
+    <p>Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to <code>null</code> will not output the class styles.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-markup"><code>&lt;div class=&quot;wrapper clearfix&quot;&gt;
@@ -201,19 +201,19 @@
   
   <li>
     <h2>.remove-clearfix</h2>
-    <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>none</code> will not output the class styles. This class is typically used when a clearfix is inherited on an element and you'd like it removed.</p>
+    <p>Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the <code>$class-remove-clearfix</code> and if set to <code>null</code> will not output the class styles. This class is typically used when a clearfix is inherited on an element and you'd like it removed.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;remove-clearfix&quot;&gt;&lt;/div&gt;</code></pre>
   </li>
   
   <li>
     <h2>.float-left</h2>
-    <p>A quick way for floating an element to the left.</p>
+    <p>A quick way for floating an element to the left. If set to <code>null</code> will not output the class styles.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;float-left&quot;&gt;&lt;/div&gt;</code></pre>
   </li>
   
   <li>
     <h2>.float-right</h2>
-    <p>A quick way for floating an element to the right.</p>
+    <p>A quick way for floating an element to the right. If set to <code>null</code> will not output the class styles.</p>
     <pre class="language-markup"><code>&lt;div class=&quot;float-right&quot;&gt;&lt;/div&gt;</code></pre>
   </li>
   
@@ -533,7 +533,7 @@
   <li>
     <code>$lists('classes')</code>
     <code class="right value">true</code>
-    <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
+    <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the list modifier mixins semantically and/or reduce CSS output.</span>
   </li>
   <li><code>$lists('nth')</code> <code class="right value">odd</code></li>
 
@@ -894,7 +894,7 @@ class BaseWeb() {
   <li>
     <code>$tables('classes')</code>
     <code class="right value">true</code>
-    <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the table modifier mixins semantically and/or reduce CSS output.</span>
+    <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the table modifier mixins semantically and/or reduce CSS output.</span>
   </li>
   <li><code>$tables('valign')</code> <code class="right value">top</code></li>
   <li><code>$tables('nth')</code> <code class="right value">odd</code></li>
@@ -1581,7 +1581,6 @@ class BaseWeb() {
 <section class="subsection subsection-classes has-inner-subsection">
 <div class="inner-subsection">
   <h1>Horizontal Rule Classes</h1>
-  <p class="text-lead">These are the available classes for modifying the look of your horizontal rule.</p>
 </div>
 <ul class="docs-list">
   
@@ -2454,7 +2453,7 @@ class BaseWeb() {
     <li>
       <code>$buttons('classes')</code>
       <code class="right value">true</code>
-      <span class="block light">Whether or not we should output modifier classes. Set to `false` if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
+      <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
     </li>
     
     <li>
@@ -2511,7 +2510,7 @@ class BaseWeb() {
     <li>
       <code>$buttons('background-gradient')</code>
       <code class="right value">false</code>
-      <span class="block light">Whether or not to use a gradient for button background. If true, the `background` will be used as the start color and darkened for the end color using the `background-deg` as a modifier.</span>
+      <span class="block light">Whether or not to use a gradient for button background. If true, the <code>$buttons('background')</code> will be used as the start color and darkened for the end color using the <code>$buttons('background-deg')</code> as a modifier.</span>
     </li>
     <li>
       <code>$buttons('background-deg')</code>
@@ -2546,7 +2545,7 @@ class BaseWeb() {
     
     <li>
       <code>$buttons('transition-property')</code>
-      <code class="block value">(color, background-color, box-shadow, border-color)</code>
+      <code class="value">(color, background-color, box-shadow, border-color)</code>
     </li>
     <li>
       <code>$buttons('transition-duration')</code>
@@ -2565,7 +2564,7 @@ class BaseWeb() {
     <li>
       <code>$buttons('hover', 'background')</code>
       <code class="right value">darken</code>
-      <span class="block light">The color to use on :hover. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for :hover.</span>
+      <span class="block light">The color to use on <code>:hover</code>. If set to <code>lighten</code> or <code>darken</code> it will take the <code>$buttons('background')</code> color and lighten or darken it respectively using <code>$buttons('background-deg')</code> as the modifier. You can also pass a color to use for <code>:hover</code>.</span>
     </li>
     <li>
       <code>$buttons('hover', 'box-shadow')</code>
@@ -2588,7 +2587,7 @@ class BaseWeb() {
     <li>
       <code>$buttons('active', 'background')</code>
       <code class="right value">darken</code>
-      <span class="block light">The color to use on :active. If set to `lighten` or `darken` it will take the `background` color and lighten or darken it respectively using `background-deg` as the modifier. You can also pass a color to use for :active.</span>
+      <span class="block light">The color to use on <code>:active</code>. If set to <code>lighten</code> or <code>darken</code> it will take the <code>$buttons('background')</code> color and lighten or darken it respectively using <code>$buttons('background-deg')</code> as the modifier. You can also pass a color to use for <code>:active</code>.</span>
     </li>
     <li>
       <code>$buttons('active', 'box-shadow')</code>
@@ -2813,7 +2812,7 @@ class BaseWeb() {
     <li>
       <code>$videos('classes')</code>
       <code class="right value">true</code>
-      <span class="block light">Whether or not we should output video classes. Set to `false` if you want to use the mixins semantically and/or reduce CSS output.</span>
+      <span class="block light">Whether or not we should output video classes. Set to <code>false</code> if you want to use the mixins semantically and/or reduce CSS output.</span>
     </li>
     <li>
       <code>$videos('margin')</code>

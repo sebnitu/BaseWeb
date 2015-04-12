@@ -55,9 +55,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /*==============================================================================
   @Typography - scss/elements/_typography.scss
-==============================================================================*/
+================================================================================
+ *
+ * Sets the base typographic styles for BaseWeb.
+ * 
+ * 1. Set the base font size to the `<html>` element because that's what is
+ *    used when sizing things with Rem.
+ * 2. Makes safari fonts not look terrible.
+ */
 html {
-  font-size: 16px; }
+  font-size: 16px;
+  /* [1] */ }
 
 body {
   font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
@@ -65,7 +73,8 @@ body {
   line-height: 1.5em;
   font-weight: normal;
   color: #303030;
-  -webkit-font-smoothing: subpixel-antialiased; }
+  -webkit-font-smoothing: subpixel-antialiased;
+  /* [2] */ }
 
 /**
  * Headings
@@ -326,7 +335,7 @@ code, pre {
   border-radius: 3px; }
 
 code {
-  display: inline-block;
+  display: inline;
   margin: 0;
   padding: 0;
   white-space: nowrap;
@@ -473,11 +482,6 @@ table {
   margin: 1em 0; }
   .table-responsive > table {
     margin: 0; }
-  @media (max-width: 759px) {
-    .table-responsive {
-      overflow: auto; }
-      .table-responsive > table td, .table-responsive > table th {
-        white-space: nowrap; } }
 
 /*==============================================================================
   @Images - scss/elements/_images.scss
@@ -1365,6 +1369,33 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
  * Stack Modifiers
  */
 @media (max-width: 479px) {
+  .button-group.stack-for-tiny {
+    display: block;
+    float: none;
+    margin-right: 0; }
+    .button-group.stack-for-tiny + .button-group {
+      margin-top: 1em;
+      margin-left: 0; }
+    .button-group.stack-for-tiny > .button {
+      display: block;
+      width: 100%;
+      float: none;
+      border-radius: 0; }
+      .button-group.stack-for-tiny > .button + .button {
+        margin-top: -1px;
+        margin-left: 0; }
+      .button-group.stack-for-tiny > .button:first-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px; }
+      .button-group.stack-for-tiny > .button:last-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px; } }
+
+@media (max-width: 759px) {
   .button-group.stack-for-small {
     display: block;
     float: none;
@@ -1391,55 +1422,28 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px; } }
 
-@media (max-width: 759px) {
-  .button-group.stack-for-mobile {
-    display: block;
-    float: none;
-    margin-right: 0; }
-    .button-group.stack-for-mobile + .button-group {
-      margin-top: 1em;
-      margin-left: 0; }
-    .button-group.stack-for-mobile > .button {
-      display: block;
-      width: 100%;
-      float: none;
-      border-radius: 0; }
-      .button-group.stack-for-mobile > .button + .button {
-        margin-top: -1px;
-        margin-left: 0; }
-      .button-group.stack-for-mobile > .button:first-child {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px; }
-      .button-group.stack-for-mobile > .button:last-child {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        border-bottom-right-radius: 3px;
-        border-bottom-left-radius: 3px; } }
-
 @media (max-width: 989px) {
-  .button-group.stack-for-tablet {
+  .button-group.stack-for-medium {
     display: block;
     float: none;
     margin-right: 0; }
-    .button-group.stack-for-tablet + .button-group {
+    .button-group.stack-for-medium + .button-group {
       margin-top: 1em;
       margin-left: 0; }
-    .button-group.stack-for-tablet > .button {
+    .button-group.stack-for-medium > .button {
       display: block;
       width: 100%;
       float: none;
       border-radius: 0; }
-      .button-group.stack-for-tablet > .button + .button {
+      .button-group.stack-for-medium > .button + .button {
         margin-top: -1px;
         margin-left: 0; }
-      .button-group.stack-for-tablet > .button:first-child {
+      .button-group.stack-for-medium > .button:first-child {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px; }
-      .button-group.stack-for-tablet > .button:last-child {
+      .button-group.stack-for-medium > .button:last-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         border-bottom-right-radius: 3px;
@@ -1472,27 +1476,28 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   @Notice - scss/blocks/_notice.scss
 ==============================================================================*/
 .notice {
-  font-size: 1em;
-  line-height: 1.5em;
   margin: 2em 0;
   padding: 0.25em 1.25em;
+  font-size: 1em;
+  line-height: 1.5em;
   border-radius: 3px;
   color: #303030;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
+  .notice .close {
+    float: right;
+    margin: 0.45em -0.25em 0 1em;
+    color: inherit; }
+    .notice .close + * {
+      padding-right: 2.5em; }
   .notice.inverted {
     color: #ffffff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
     background: rgba(48, 48, 48, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
-
-.notice .close {
-  float: right;
-  margin: 0.45em -0.25em 0 1em;
-  color: inherit; }
 
 /**
  * Notice Color
@@ -1536,26 +1541,23 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 .notice.large {
   font-size: 1.1em; }
 
-.notice.inline, .notice.inline-block {
+.notice.inline {
+  display: inline;
   margin: 0;
-  padding: 0 0.5em;
+  padding: 0 0.25em;
   box-shadow: none; }
-  .notice.inline.inverted, .notice.inline-block.inverted {
+  .notice.inline.inverted {
     border: 0 none; }
 
-.notice.inline {
-  display: inline; }
-
-.notice.inline-block {
-  display: inline-block; }
-
-@media (min-width: 480px) {
-  .notice.pull-left, .notice.pull-right {
-    max-width: 45%; }
+@media (min-width: 760px) {
   .notice.pull-left {
+    width: 45%;
     float: left;
-    margin: 0.5em 2em 1em 0; }
+    margin: 0.5em 2em 1em 0; } }
+
+@media (min-width: 760px) {
   .notice.pull-right {
+    width: 45%;
     float: right;
     margin: 0.5em 0 1em 2em; } }
 
@@ -1600,6 +1602,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 ==============================================================================*/
 .container {
   width: 100%;
+  min-width: none;
   max-width: none;
   margin: 0;
   padding: 0 1.5rem; }
@@ -1618,6 +1621,7 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 @media (min-width: 760px) {
   .container {
     width: 100%;
+    min-width: none;
     max-width: 62rem;
     margin: 0 auto;
     padding: 0 1.5rem; }

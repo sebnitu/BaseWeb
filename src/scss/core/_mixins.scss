@@ -13,7 +13,8 @@
 }
 
 // Remove Clearfix
-// Removes the clearfix styles from an element. This is typically used when a clearfix is inherited on an element and you'd like it removed.
+// Removes the clearfix styles from an element. This is typically used when a
+// clearfix is inherited on an element and you'd like it removed.
 @mixin remove-clearfix() {
   &:after {
     content: none;
@@ -44,7 +45,9 @@
 }
 
 // Size
-// Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.
+// Shorthand for adding width and height dimensions to an element. If you only
+// pass in a width, the height will be set to equal the width and create a
+// square. If either the width or height are unit-less, it defaults to pixels.
 // @param $width
 //   @type unit (number, pixel, percentage)
 // @param $height
@@ -69,7 +72,8 @@
 }
 
 // Vertical Center
-// Centers an element vertically within its parent. Parent element may need to have transform-style set to `preserve-3d` in order to prevent half pixel bluring.
+// Centers an element vertically within its parent. Parent element may need to
+// have transform-style set to `preserve-3d` to prevent half pixel bluring.
 @mixin vertical-center() {
   position: relative;
   top: 50%;
@@ -92,7 +96,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Box Sizing
-// The box-sizing CSS property is used to alter the default CSS box model used to calculate widths and heights of elements.
+// The box-sizing CSS property is used to alter the default CSS box model used
+// to calculate widths and heights of elements.
 // @param $box-sizing
 //   @type box-sizing value (content-box, padding-box, border-box, inherit)
 //   @default $box-sizing
@@ -102,9 +107,11 @@
 }
 
 // Box Shadows
-// The box-shadow CSS property describes one or more shadow effects as a comma-separated list.
+// The box-shadow CSS property describes one or more shadow effects as a comma-
+// separated list.
 // @param $shadow
-//   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius] [spread radius] [color])
+//   @type box-shadow value ([horizontal offset] [vertical offset] [blur radius]
+//     [spread radius] [color])
 //   @default $box-shadow
 @mixin box-shadow( $shadow... ) {
   @if length($shadow) == 0 {
@@ -162,9 +169,11 @@
 }
 
 // Transform
-// The CSS transform property lets you modify the coordinate space of the CSS visual formatting model.
+// The CSS transform property lets you modify the coordinate space of the CSS
+// visual formatting model.
 // @param $function
-//   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew] [translate])
+//   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew]
+//     [translate])
 @mixin transform( $function... ) {
   -webkit-transform: $function;
   -ms-transform: $function;
@@ -172,7 +181,8 @@
 }
 
 // Transform Style
-// The transform-style CSS property determines if the children of the element are positioned in the 3D-space or are flattened in the plane of the element.
+// The transform-style CSS property determines if the children of the element
+// are positioned in the 3D-space or are flattened in the plane of the element.
 // @param $style
 //   @type transform style (flat, preserve-3d, inherit)
 @mixin transform-style( $style... ) {
@@ -182,7 +192,7 @@
 }
 
 // Rotate
-// Adds transform rotate styles using a passed in degree and the transform mixin.
+// Adds transform rotate styles using a degree and the transform mixin.
 // @dependency mixin transform()
 // @param $deg
 //   @type unit (degree)
@@ -191,9 +201,14 @@
 }
 
 // Transition
-// The CSS transition property is a shorthand property for transition-property, transition-duration, transition-timing-function, and transition-delay. It allows to define the transition between two states of an element. Different states may be defined using pseudo-classes like :hover or :active or dynamically set using JavaScript.
+// The CSS transition property is a shorthand property for transition-property,
+// transition-duration, transition-timing-function, and transition-delay. It
+// allows to define the transition between two states of an element. Different
+// states may be defined using pseudo-classes like :hover or :active or
+// dynamically set using JavaScript.
 // @param $transition
-//   @type transition value ([transition-property] [transition-duration] [transition-timing-function] [transition-delay])
+//   @type transition value ([transition-property] [transition-duration]
+//     [transition-timing-function] [transition-delay])
 //   @default $transition
 @mixin transition( $trans... ) {
   @if length($trans) == 0 {
@@ -204,7 +219,8 @@
 }
 
 // Transitions Property
-// The transition-property CSS property is used to specify the names of CSS properties to which a transition effect should be applied.
+// The transition-property CSS property is used to specify the names of CSS
+// properties to which a transition effect should be applied.
 // @param $transition-property
 //   @type property name
 //   @default $transition-property
@@ -214,7 +230,8 @@
 }
 
 // Transitions Duration
-// The transition-duration CSS property specifies the number of seconds or milliseconds a transition animation should take to complete.
+// The transition-duration CSS property specifies the number of seconds or
+// milliseconds a transition animation should take to complete.
 // @param $transition-duration
 //   @type time value (seconds, milliseconds)
 //   @default $transition-duration
@@ -224,9 +241,12 @@
 }
 
 // Transitions Timing Function
-// The CSS transition-timing-function property is used to describe how the intermediate values of the CSS properties being affected by a transition effect are calculated.
+// The CSS transition-timing-function property is used to describe how the
+// intermediate values of the CSS properties being affected by a transition
+// effect are calculated.
 // @param $transition-timing-function
-//   @type timing function (linear, ease, ease-in, ease-out, ease-in-out, step-start, step-end)
+//   @type timing function (linear, ease, ease-in, ease-out, ease-in-out,
+//     step-start, step-end)
 //   @default $transition-timing-function
 @mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
   -webkit-transition-timing-function: $transition-timing-function;
@@ -234,7 +254,9 @@
 }
 
 // Transitions Delay
-// The transition-delay CSS property specifies the amount of time to wait between a change being requested to a property that is to be transitioned and the start of the transition effect.
+// The transition-delay CSS property specifies the amount of time to wait
+// between a change being requested to a property that is to be transitioned and
+// the start of the transition effect.
 // @param $transition-delay
 //   @type time value (seconds, milliseconds)
 //   @default $transition-delay
@@ -244,7 +266,9 @@
 }
 
 // Keyframes
-// The `@keyframes` CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.
+// The `@keyframes` CSS at-rule lets you control the intermediate steps in a CSS
+// animation sequence by establishing keyframes (or waypoints) along the
+// animation sequence that must be reached during the animation.
 // @param $name
 //   @type animation name
 // @param @content (passed in brackets)
@@ -259,16 +283,22 @@
 }
 
 // Animation
-// The animation CSS property is a shorthand property for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode and animation-play-state.
+// The animation CSS property is a shorthand property for animation-name,
+// animation-duration, animation-timing-function, animation-delay,
+// animation-iteration-count, animation-direction, animation-fill-mode
+// and animation-play-state.
 // @param $animation
-//   @type animation value ([animation-name] [animation-duration] [animation-timing-function] [animation-delay] [animation-iteration-count] [animation-direction] [animation-fill-mode] [animation-play-state])
+//   @type animation value ([animation-name] [animation-duration]
+//     [animation-timing-function] [animation-delay] [animation-iteration-count]
+//     [animation-direction] [animation-fill-mode] [animation-play-state])
 @mixin animation( $animation... ) {
   -webkit-animation: $animation;
   animation: $animation;
 }
 
 // Animation Name
-// The animation-name CSS property specifies a list of animations that should be applied to the selected element.
+// The animation-name CSS property specifies a list of animations that should be
+// applied to the selected element.
 // @param $name
 //   @type animation name
 @mixin animation-name( $name... ) {
@@ -277,7 +307,8 @@
 }
 
 // Animation Duration
-// The animation-duration CSS property specifies the length of time that an animation should take to complete one cycle.
+// The animation-duration CSS property specifies the length of time that an
+// animation should take to complete one cycle.
 // @param $duration
 //   @type time value (seconds, milliseconds)
 @mixin animation-duration( $duration... ) {
@@ -286,7 +317,8 @@
 }
 
 // Animation Timing Function
-// The CSS animation-timing-function property specifies how a CSS animation should progress over the duration of each cycle.
+// The CSS animation-timing-function property specifies how a CSS animation
+// should progress over the duration of each cycle.
 // @param $timing-function
 //   @type timing function (linear, ease, ease-in, ease-out, ease-in-out)
 @mixin animation-timing-function( $timing-function... ) {
@@ -295,7 +327,9 @@
 }
 
 // Animation Delay
-// The animation-delay CSS property specifies when the animation should start. This lets the animation sequence begin some time after it's applied to an element.
+// The animation-delay CSS property specifies when the animation should start.
+// This lets the animation sequence begin some time after it's applied to
+// an element.
 // @param $delay
 //   @type time value (seconds, milliseconds)
 @mixin animation-delay( $delay... ) {
@@ -304,7 +338,8 @@
 }
 
 // Animation Iteration Count
-// The animation-iteration-count CSS property defines the number of times an animation cycle should be played before stopping.
+// The animation-iteration-count CSS property defines the number of times an
+// animation cycle should be played before stopping.
 // @param $iteration-count
 //   @type unit (number, infinite)
 @mixin animation-iteration-count( $iteration-count... ) {
@@ -313,7 +348,8 @@
 }
 
 // Animation Direction
-// The animation-direction CSS property indicates whether the animation should play in reverse on alternate cycles.
+// The animation-direction CSS property indicates whether the animation should
+// play in reverse on alternate cycles.
 // @param $direction
 //   @type direction (normal, reverse, alternate, alternate-reverse)
 @mixin animation-direction( $direction... ) {
@@ -322,7 +358,8 @@
 }
 
 // Animation Fill Mode
-// The animation-fill-mode CSS property specifies how a CSS animation should apply styles to its target before and after it is executing.
+// The animation-fill-mode CSS property specifies how a CSS animation should
+// apply styles to its target before and after it is executing.
 // @param $fill-mode
 //   @type fill mode (none, forwards, backwards, both, initial, inherit)
 @mixin animation-fill-mode( $fill-mode... ) {
@@ -331,7 +368,8 @@
 }
 
 // Animation Play State
-// The animation-play-state CSS property determines whether an animation is running or paused.
+// The animation-play-state CSS property determines whether an animation is
+// running or paused.
 // @param $play-state
 //   @type play state (running, paused)
 @mixin animation-play-state( $play-stay... ) {
@@ -351,9 +389,11 @@
 }
 
 // Radial Gradients
-// Creates an image which represents a gradient of colors radiating from an origin, the center of the gradient.
+// Creates an image which represents a gradient of colors radiating from an
+// origin, the center of the gradient.
 // @param $gradient
-//   @type gradient ([position] [shape] [size] [color-stop] [color-stop] [extent-keyword])
+//   @type gradient ([position] [shape] [size] [color-stop] [color-stop]
+//     [extent-keyword])
 @mixin radial-gradient( $gradient... ) {
   background-image: -webkit-radial-gradient($gradient);
   background-image: -moz-radial-gradient($gradient);
@@ -368,7 +408,8 @@
 // Font Weight
 // Output the font weight using the weight key to output the number weight.
 // @param $weight
-//   @type font-weight keyword (thing, hairline, light, regular, medium, semi-bold, bold, extra-bold, black)
+//   @type font-weight keyword (thing, hairline, light, regular, medium,
+//     semi-bold, bold, extra-bold, black)
 @mixin font-weight($weight) {
   @if ($weight == 'thin') {
     font-weight: 100;
@@ -394,7 +435,9 @@
 }
 
 // Hide text
-// Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
+// Hides text from an element. This is most commonly used as an image
+// replacement technique for hiding text in an element to reveal a
+// background image.
 @mixin text-hide() {
   font-size: 0;
   line-height: 0;
@@ -404,7 +447,8 @@
 }
 
 // Truncate Text
-// Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
+// Truncates text with an ellipsis. Element this is applied to must be block
+// or inline-block.
 // @param $display
 //   @type display property (block, inline-block)
 //   @default block
@@ -440,7 +484,8 @@
 // @param $color
 //   @type color
 // @param $direction
-//   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')
+//   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left',
+//     'down-right', 'down-left')
 //   @desc The direction that the triangle will point.
 @mixin make-triangle( $size, $color, $direction ) {
   @if ($direction == 'up') {

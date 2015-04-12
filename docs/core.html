@@ -411,7 +411,7 @@ $medium: map-set($grid-configuration, 1300px, 'layouts' 'medium');
 
   <li>
     <h2>vertical-center</h2>
-    <p>Centers an element vertically within it's parent. Parent element may need to have transform-style set to `preserve-3d` in order to prevent half pixel bluring.</p>
+    <p>Centers an element vertically within it's parent. Parent element may need to have transform-style set to `preserve-3d` to prevent half pixel bluring.</p>
     <pre class="language-scss"><code>@mixin vertical-center()</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
@@ -547,7 +547,7 @@ $medium: map-set($grid-configuration, 1300px, 'layouts' 'medium');
   
   <li>
     <h2>rotate</h2>
-    <p>Adds transform rotate styles using a passed in degree and the transform mixin.</p>
+    <p>Adds transform rotate styles using a degree and the transform mixin.</p>
     <pre class="language-scss"><code>@mixin rotate( $deg )
 // @dependency mixin transform()
 // @param $deg
@@ -624,7 +624,7 @@ $medium: map-set($grid-configuration, 1300px, 'layouts' 'medium');
   
   <li>
     <h2>keyframes</h2>
-    <p>The <code>@keyframes</code> CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached by certain points during the animation.</p>
+    <p>The <code>@keyframes</code> CSS at-rule lets you control the intermediate steps in a CSS animation sequence by establishing keyframes (or waypoints) along the animation sequence that must be reached during the animation.</p>
     <pre class="language-scss"><code>@mixin keyframes( $name )
 // @param $name
 //   @type animation name
@@ -913,7 +913,7 @@ h1 {
 
   <li>
     <h2>media-min</h2>
-    <p>A media query mixin that deifnes a query using min-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
+    <p>A media query mixin that deifnes a query using min-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a value to create your media query.</p>
     <pre class="language-scss"><code>@mixin media-min( $point ) { @content }
 // @param $point
 //   @type map key | unit (pixel)
@@ -924,7 +924,7 @@ h1 {
 .something {
   width: 100%;
 }
-@include media-min('tablet') {
+@include media-min('medium') {
   .something {
     width: 300px;
   }
@@ -943,8 +943,8 @@ h1 {
   
   <li>
     <h2>media-max</h2>
-    <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a pixel value to create your media query.</p>
-    <p>This mixin will shave a pixel off your breakpoint value so that it never overlaps with a breakpoint that might be used in the <code>media-min</code> mixin except when a pixel value is passed directly.</p>
+    <p>A media query mixin that deifnes a query using max-width. You can pass in the key to the <code>$teakpoints()</code> or <code>$breakpoints()</code> maps to access that value, or pass a value to create your media query.</p>
+    <p>This mixin will shave a pixel off your breakpoint value so that it never overlaps with a breakpoint that might be used in the <code>media-min</code> mixin except when a value is passed directly.</p>
     <pre class="language-scss"><code>@mixin media-max( $point ) { @content }
 // @param $point
 //   @type map key | unit (pixel)
@@ -955,7 +955,7 @@ h1 {
 .something {
   width: 300px;
 }
-@include media-max('tablet') {
+@include media-max('medium') {
   .something {
     width: 100%;
   }
@@ -974,7 +974,7 @@ h1 {
   
   <li>
     <h2>media-retina</h2>
-    <p>This media query mixin can be used for setting styles specifically to retina screens. This is most commonly used when setting higher resolution background images.</p>
+    <p>Media query mixin can be used for setting styles specifically to retina screens. Used when setting higher resolution background images.</p>
     <pre class="language-scss"><code>@mixin media-retina() { @content }
 // @param @content (passed in brackets)
 //   @type style block</code></pre>
@@ -1056,11 +1056,11 @@ h1 {
 
 <pre class="language-scss"><code>@include build-grid-system(mobile);
 
-@include media-min('tablet') {
+@include media-min('medium') {
   @include build-grid-system(('total-width': 740px));
 }
 
-@include media-min('desktop') {
+@include media-min('large') {
   @include build-grid-system(('total-width': 960px));
 }</code></pre>
 
@@ -1417,7 +1417,7 @@ h1 {
 @include build-grid-system(mobile);
 
 // Media query for styles that target tablet sized devices and above.
-@include media-min('tablet') {
+@include media-min('medium') {
   // Output our standard grid system using all our default settings.
   @include build-grid-system();
 }</code></pre>

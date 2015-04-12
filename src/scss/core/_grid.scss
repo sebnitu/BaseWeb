@@ -48,20 +48,20 @@
   }
   @if (map-get($o, 'type') == mobile) {
     width: 100%;
-    @if (map-get($o, 'container-min-width') != none) {
+    @if (map-get($o, 'container-min-width')) {
       min-width: none;
     }
-    @if (map-get($o, 'container-max-width') != none) {
+    @if (map-get($o, 'container-max-width')) {
       max-width: none;
     }
     margin: 0;
     padding: map-get($o, 'container-padding');
   } @else {
     width: map-get($o, 'total-width');
-    @if (map-get($o, 'container-min-width') != none) {
+    @if (map-get($o, 'container-min-width')) {
       min-width: map-get($o, 'container-min-width');
     }
-    @if (map-get($o, 'container-max-width') != none) {
+    @if (map-get($o, 'container-max-width')) {
       max-width: map-get($o, 'container-max-width');
     }
     margin: map-get($o, 'container-margin');
@@ -237,7 +237,7 @@
     }
     
     // Output our prefix classes if a class name is set
-    @if (map-get($o, 'class-prefix') != none) {
+    @if (map-get($o, 'class-prefix')) {
       @for $i from 1 through (map-get($o, 'columns') - 1) {    
         .#{map-get($o, 'class-prefix')}-#{$i} {
           @include add-prefix( $i, $o );
@@ -246,7 +246,7 @@
     }
     
     // Output our suffix classes if a class name is set
-    @if (map-get($o, 'class-suffix') != none) {
+    @if (map-get($o, 'class-suffix')) {
       @for $i from 1 through (map-get($o, 'columns') - 1) {  
         .#{map-get($o, 'class-suffix')}-#{$i} {
           @include add-suffix( $i, $o );

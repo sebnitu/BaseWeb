@@ -10,7 +10,7 @@ $edge-space: 3.125rem;
 
 @include build-grid-system(mobile);
 
-@include media-min('tablet') {
+@include media-min('medium') {
   @include build-grid-system();
 }
 
@@ -140,7 +140,7 @@ body > div,
 /**
  * Vertical Size and Position
  */
-@include media-min('tablet') {
+@include media-min('medium') {
   .vertical-half {
     position: relative;
     height: 50%;
@@ -473,15 +473,13 @@ body > div,
     }
   }
   
-  code {
+  .key,
+  .value {
     display: block;
-    margin: 0;
-    padding: 0;
-    background: transparent;
   }
   
-  @include media-min('tablet') {
-    code {
+  @include media-min('medium') {
+    .key {
       float: left;
     }
   }
@@ -502,7 +500,7 @@ body > div,
     display: block;
   }
   
-  @include media-min('tablet') {
+  @include media-min('medium') {
     .left {
       float: left;
     }
@@ -524,6 +522,10 @@ body > div,
   }
   .light {
     color: $gray-light;
+    
+    code {
+      color: $color;
+    }
   }
   
   .swatch,
