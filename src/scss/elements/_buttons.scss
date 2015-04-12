@@ -119,15 +119,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin add-button-color($options: ()) {
-  $o: map-merge($buttons, $options);
-  
-  @if (map-get($options, 'hover')) {
-    $o: map-set($o, map-merge(map-get($buttons, 'hover'), map-get($options, 'hover')), 'hover' );
-  }
-  
-  @if (map-get($options, 'active')) {
-    $o: map-set($o, map-merge(map-get($buttons, 'active'), map-get($options, 'active')), 'active' );
-  }
+  $o: map-extend($buttons, $options, true);
   
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
@@ -354,4 +346,4 @@ $buttons: (
   border-radius: 50%;
 }
 
-} // endif
+} // endif classes

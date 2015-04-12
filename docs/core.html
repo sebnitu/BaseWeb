@@ -160,6 +160,55 @@
 <ul class="docs-list">
   
   <li>
+    <h2>map-extend</h2>
+    <p>jQuery-style extend function for when `map-merge()` is not enough. Use when you need to merge more than two mixins and/or need our merge to be recursive.</p>
+    <pre class="language-scss"><code>@function map-extend( $map, $maps..., $deep )
+// @param $map
+//   @type first map
+// @param $maps
+//   @type list of maps
+// @param $deep
+//   @type boolean
+//   @desc Whether or not to enable recursive mode.
+// @return merged map value</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>
+$grid-configuration-default: (
+  'columns': 12,
+  'layouts': (
+    'small': 800px,
+    'medium': 1000px,
+    'large': 1200px,
+  ),
+);
+
+$grid-configuration-custom: (
+  'layouts': (
+    'large': 1300px,
+    'huge': 1500px
+  ),
+);
+
+$grid-configuration-user: (
+  'direction': 'ltr',
+  'columns': 16,
+  'layouts': (
+    'large': 1300px,
+    'huge': 1500px
+  ),
+);
+
+// Not deep
+$grid-configuration: map-extend($grid-configuration-default, $grid-configuration-custom, $grid-configuration-user);
+// -> ("columns": 16, "layouts": (("large": 1300px, "huge": 1500px)), "direction": "ltr")
+ 
+// Deep
+$grid-configuration: map-extend($grid-configuration-default, $grid-configuration-custom, $grid-configuration-user, true);
+// -> ("columns": 16, "layouts": (("small": 800px, "medium": 1000px, "large": 1300px, "huge": 1500px)), "direction": "ltr")
+</code></pre>
+  </li>
+  
+  <li>
     <h2>map-fetch</h2>
     <p>An easy way to fetch a value in a multi-level map. Works much like <code>map-get()</code> except that you pass multiple keys as the second variable argument to go down multiple levels in the nested map.</p>
     <pre class="language-scss"><code>@function map-fetch( $map, $keys... )
@@ -168,38 +217,23 @@
 // @param $keys
 //   @type list
 // @return map value</code></pre>
-
     <h3>Example Usage</h3>
-    <pre class="language-scss"><code>// SCSS
-$map: (
-  themes: (
-    light: (
-      header: #fff,
-      content: #ccc,
-      footer: #aaa
-    ),
-    dark: (
-      header: #333,
-      content: #222,
-      footer: #111
-    )
-  )
+    <pre class="language-scss"><code>
+$grid-configuration: (
+  'columns': 12,
+  'layouts': (
+    'small': 800px,
+    'medium': 1000px,
+    'large': 1200px,
+  ),
 );
 
-.header {
-  background-color: map-fetch($map, 'themes' 'light' 'header');
-}
-.content { 
-  background-color: map-fetch($map, 'themes' 'light' 'content');
-}
-.footer {
-  background-color: map-fetch($map, 'themes' 'light' 'footer');
-}
+// Without `map-fetch`
+$medium: map-get(map-get($grid-configuration, 'layouts'), 'medium');
 
-// CSS Output
-.header { background-color: #fff; }
-.content { background-color: #ccc; }
-.footer { background-color: #aaa; }</code></pre>
+// With `map-fetch`
+$medium: map-fetch($grid-configuration, 'layouts', 'medium');
+</code></pre>
   </li>
   
   <li>
@@ -213,32 +247,23 @@ $map: (
 // @param $keys
 //   @type list
 // @return updated map value</code></pre>
-
     <h3>Example Usage</h3>
-    <pre class="language-scss"><code>// SCSS
-$map: (
-  themes: (
-    light: (
-      header: #fff,
-      content: #ccc,
-      footer: #aaa
-    )
-  )
+    <pre class="language-scss"><code>
+$grid-configuration: (
+  'columns': 12,
+  'layouts': (
+    'small': 800px,
+    'medium': 1000px,
+    'large': 1200px,
+  ),
 );
-
-.header {
-  background-color: map-fetch($map, 'themes' 'light' 'header');
-}
-
-$map: map-set($map, #000, 'themes' 'light' 'header');
-
-.header {
-  background-color: map-fetch($map, 'themes' 'light' 'header');
-}
-
-// CSS Output
-.header { background-color: #fff; }
-.header { background-color: #000; }</code></pre>
+ 
+// Without `map-set`
+$grid-configuration: map-merge($grid-configuration, map-merge(map-get($grid-configuration, 'layouts'), ('large': 1300px)));
+ 
+// With `map-set`
+$medium: map-set($grid-configuration, 1300px, 'layouts' 'medium');
+</code></pre>
   </li>
   
   <li>

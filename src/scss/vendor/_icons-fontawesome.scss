@@ -1,8 +1,16 @@
+// Set file variable
+$filename: 'scss/vendor/_icons-fontawesome.scss';
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Buttons Map
 ////////////////////////////////////////////////////////////////////////////////
 
-$icons-map: (
+$icons-config: (
+  'font-family' : 'FontAwesome',
+  'font-path' : '../fonts/',
+);
+
+$icons: (
   'adjust' : '\f042',
   'adn' : '\f170',
   'align-center' : '\f037',
@@ -596,4 +604,20 @@ $icons-map: (
   'youtube' : '\f167',
   'youtube-play' : '\f16a',
   'youtube-square' : '\f166'
-) !default;
+);
+
+/*==============================================================================
+  @Font-Face - #{$filename}
+==============================================================================*/
+
+@font-face {
+  font-family: map-get($icons-config, 'font-family');
+  src: url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.eot');
+  src: url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.eot') format('embedded-opentype'),
+    url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.woff2') format('woff2'),
+    url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.woff') format('woff'),
+    url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.ttf') format('truetype'),
+    url('#{map-get($icons-config, 'font-path')}/fontawesome-webfont.svg}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -52,11 +52,9 @@ $notices: (
 }
 
 @mixin add-notice-color($output: difference, $options: ()) {
-  $o: map-merge($notices, $options);
+  $o: map-extend($notices, $options, true);
   
-  @if (map-get($options, 'inverted')) {
-    $o: map-set($o, map-merge(map-get($notices, 'inverted'), map-get($options, 'inverted')), 'inverted' );
-  }
+  $set: color, text-shadow, background, border, box-shadow;
   
   @if ($output == all) {
   
@@ -75,15 +73,22 @@ $notices: (
     }
   
   } @else {
-    @if (map-get($o, 'background') != map-get($notices, 'background')) {
-      background: map-get($o, 'background');
-    }
-    &.#{map-get($o, 'class-inverted')} {
-      @if (map-fetch($o, 'inverted' 'background') != map-fetch($notices, 'inverted' 'background')) {
-        background: map-fetch($o, 'inverted' 'background');
+    
+    @each $property in $set {
+      @if (map-get($o, $property) != map-get($notices, $property)) {
+        #{$property}: map-get($o, $property);
       }
     }
-  }
+    
+    &.#{map-get($o, 'class-inverted')} {
+      @each $property in $set {
+        @if (map-fetch($o, 'inverted' $property) != map-fetch($notices, 'inverted' $property)) {
+          #{$property}: map-fetch($o, 'inverted' $property);
+        }
+      }
+    }
+    
+  } // End if $output
 }
 
 // Check if we should output modifier classes

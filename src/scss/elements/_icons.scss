@@ -5,38 +5,23 @@ $filename: 'scss/elements/_icons.scss';
 // @Icons Map
 ////////////////////////////////////////////////////////////////////////////////
 
-$icons: (
-  'font-path' : null
+$icons-config: (
+  'font-family' : null,
+  'font-path' : '../fonts/',
 ) !default;
 
-$icons-font: () !default;
+$icons: null !default;
 
-@if (map-get($icons, 'font-path')) {
-/*==============================================================================
-  @Font-Face - #{$filename}
-==============================================================================*/
-
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.eot');
-  src: url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.eot') format('embedded-opentype'),
-    url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.woff2') format('woff2'),
-    url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.woff') format('woff'),
-    url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.ttf') format('truetype'),
-    url('#{map-get($icons-map, 'font-path')}/fontawesome-webfont.svg}#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-}
-
+// Check if we have any icons defined
+@if ($icons) {
+  
 /*==============================================================================
   @Icons - #{$filename}
 ==============================================================================*/
 
 .icon {
   display: inline-block;
-  font-family: 'FontAwesome';
+  font-family: map-get($icons-config, 'font-family');
   font-size: inherit;
   line-height: 1em;
   text-rendering: auto; // optimizelegibility throws things off #1094
@@ -50,3 +35,5 @@ $icons-font: () !default;
     content: $content;
   }
 }
+
+} // endif icons
