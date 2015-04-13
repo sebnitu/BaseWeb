@@ -29,7 +29,7 @@ Upcoming features and updates to BaseWeb documentation:
 
 ## Build Scripts
 
-BaseWeb uses [Node](https://nodejs.org/) and [Jake](http://jakejs.com/) for building both the source and docs. The build scripts themselves are written to be super flexible. The configurations are all setup using `jake-config.js` and can be adjusted as need for your own purposes.
+BaseWeb uses [Node](https://nodejs.org/), [Jake](http://jakejs.com/) and [Jake-Builds](https://github.com/sebnitu/jake-builds) for building both the source and docs. For more information on how to update build scripts using this stack, make sure to checkout [Jake-Builds](https://github.com/sebnitu/jake-builds).
 
 ### Node Packages
 Run `npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb assets and documentation files:
@@ -54,69 +54,6 @@ To see the full list of available Jake tasks for a project, use `jake -ls`. The 
 | `jake build:img`  | Optimizes images                                     |
 | `jake build:docs` | Build documentation                                  |
 | `jake watch`      | Watch for change to files and rebuild if they change |
-
-### Cusomizing Jake Tasks
-The build scripts for BaseWeb are easy to adapt to your own projects. All tasks are setup using the `jake-config.js` as a configuration file. Each of the node modules that are used have a custom jake wrapper to interface with more easily. These are all the options you can adjust for Build and Watch tasks:
-
-```js
-module.exports = {
-  
-  // Each object inside of the build array is output as a task under the namespace 'build'.
-  build: [
-    { ... }
-  ],
-  
-  // Each object inside of the watch array is output as a watch task.
-  watch: [
-    { ... }
-  ]
-  
-}
-```
-
-#### Build Tasks
-
-```js
-// General Build Tasks
-build: [
-  {
-    task: '...',
-    desc: '...',
-    module: '...',
-    options: [{...}]
-  }
-]
-```
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `task` | `string` | The jake task name. As a build task, this will be called on using the build namespace. E.g. `jake build:your_task_name`. |
-| `desc` | `string` | A description for your task. This appears when you list your tasks using `jake -ls`. |
-| `module` (optional) | `string` | The module you want to use for this task. If omitted, your key will be used instead. If your key does not match an existing node module, this field is required. |
-| `options` | `object` | The options that are passed to the node module. |
-
-*A build task is generated for every object in the build array. You can also use `jake build` to run all build scripts.*
-
-#### Watch Tasks
-
-```js
-// General Watch Tasks
-watch: [
-  {
-    task: '...',
-    files: [...],
-    ignore: [...]
-  }
-]
-```
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `task` | `string` | The key is directly linked to build tasks. If a watch key of `docs` is created, when it triggers the `build:docs` task gets fired. |
-| `files` | `array` | Files or directories to watch. |
-| `ignore` (optional) | `array` | An array of files to ignore. This is helpful if a build task generates a file within a directory that is also being watched. |
-
-*A watch task is generated for every object in the watch array.*
 
 ## Copyright and License
 
