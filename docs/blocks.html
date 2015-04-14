@@ -566,6 +566,199 @@
       </ul>
     </nav>
 <h1>Notices</h1>
+<p>...</p>
+
+<section class="subsection subsection-variables has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Notice Variables</h1>
+  <p class="text-lead">Notice variables are encompassed within the <code>$notices</code> map and are used throughout all notice mixins to set default values.</p>
+  <ul class="docs-list-compact">
+    <li>
+      <code class="key">$notices('classes')</code>
+      <code class="right value">true</code>
+      <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the notice modifier mixins semantically and/or reduce CSS output.</span>
+    </li>
+    <li>
+      <code class="key">$notices('class-inverted')</code>
+      <code class="right value">inverted</code>
+    </li>
+    <li>
+      <code class="key">$notices('class-close')</code>
+      <code class="right value">close</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('margin')</code>
+      <code class="right value">2em 0</code>
+    </li>
+    <li>
+      <code class="key">$notices('padding')</code>
+      <code class="right value">0.25em 1.25em</code>
+    </li>
+    <li>
+      <code class="key">$notices('padding-small')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('padding-large')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('padding-inline')</code>
+      <code class="right value">0 0.25em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('font-size')</code>
+      <code class="right value">1em</code>
+    </li>
+    <li>
+      <code class="key">$notices('font-size-small')</code>
+      <code class="right value">0.9em</code>
+    </li>
+    <li>
+      <code class="key">$notices('font-size-large')</code>
+      <code class="right value">1.1em</code>
+    </li>
+    <li>
+      <code class="key">$notices('line-height')</code>
+      <code class="right value">1.5em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('pull-breakpoint')</code>
+      <code class="right value">medium</code>
+    </li>
+    <li>
+      <code class="key">$notices('pull-width')</code>
+      <code class="right value">45%</code>
+    </li>
+    <li>
+      <code class="key">$notices('pull-left-margin')</code>
+      <code class="right value">0.5em 2em 1em 0</code>
+    </li>
+    <li>
+      <code class="key">$notices('pull-right-margin')</code>
+      <code class="right value">0.5em 0 1em 2em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('color')</code>
+      <code class="right value">$color-dark</code>
+    </li>
+    <li>
+      <code class="key">$notices('text-shadow')</code>
+      <code class="right value">0 1px 0 rgba($white, 0.25)</code>
+    </li>
+    <li>
+      <code class="key">$notices('background')</code>
+      <code class="right value">rgba($black, 0.05)</code>
+    </li>
+    <li>
+      <code class="key">$notices('box-shadow')</code>
+      <code class="right value">0 1px 3px rgba($black, 0.05)</code>
+    </li>
+    <li>
+      <code class="key">$notices('border')</code>
+      <code class="right value">1px solid rgba($black, 0.15)</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('border-radius')</code>
+      <code class="right value">$border-radius</code>
+    </li>
+    
+    <li class="list-sep">
+      <code>$buttons('inverted', 'color')</code>
+      <code class="right value">$white</code>
+    </li>
+    <li>
+      <code>$buttons('inverted', 'text-shadow')</code>
+      <code class="right value">0 1px 0 rgba($black, 0.25)</code>
+    </li>
+    <li>
+      <code>$buttons('inverted', 'background')</code>
+      <code class="right value">rgba($color-dark, 0.9)</code>
+    </li>
+    <li>
+      <code>$buttons('inverted', 'border')</code>
+      <code class="right value">1px solid rgba($black, 0.15)</code>
+    </li>
+    <li>
+      <code>$buttons('inverted', 'box-shadow')</code>
+      <code class="right value">0 1px 3px rgba($black, 0.05)</code>
+    </li>
+  </ul>
+</div>
+</section>
+
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Notice Mixins</h1>
+</div>
+<ul class="docs-list">
+  
+  <li>
+    <h2>make-notice</h2>
+    <p>Creates the base styles for a notice block.</p>
+    <pre class="language-scss"><code>@mixin make-notice( $options: () )
+// @param $options
+//   @type map
+//   @default $notices map</code></pre>
+  </li>
+  
+  <li>
+    <h2>add-notice-color</h2>
+    <p>Adds styles for a notice color with optional output type.</p>
+    <pre class="language-scss"><code>@mixin add-notice-color( $options: (), $output: 'difference' )
+// @param $options
+//   @type map
+//   @default $notices map
+// @param $output
+//   @type string (all, difference)
+//   @default difference
+//   @desc Whether to output all styles, or just the ones that are different
+//     from the `$notices` map.</code></pre>
+  </li>
+  
+  <li>
+    <h2>add-notice-size</h2>
+    <p>Adds styles for notice size based on keyword or options map difference.</p>
+    <pre class="language-scss"><code>@mixin add-notice-size( $size, $options: () )
+// @param $size
+//   @type string (small, default, large)
+// @param $options
+//   @type map
+//   @default $notices map</code></pre>
+  </li>
+  
+  <li>
+    <h2>add-notice-inline</h2>
+    <p>Adds styles for an inline or inline-block notice.</p>
+    <pre class="language-scss"><code>@mixin add-notice-inline( $display: inline, $options: () )
+// @param $display
+//   @type display property (inline, inline-block)
+//   @default inline
+// @param $options
+//   @type map
+//   @default $notices map</code></pre>
+  </li>
+  
+  <li>
+    <h2>add-notice-pull</h2>
+    <p>Adds styles for floating a notice to the left or right.</p>
+    <pre class="language-scss"><code>@mixin add-notice-pull( $direction, $options: () )
+// @param $direction
+//   @type string (left, right)
+// @param $options
+//   @type map
+//   @default $notices map</code></pre>
+  </li>
+  
+</ul>
+</section>
+
+<hr>
 
 <div class="notice">
   <button class="button close clip-padding">&times;</button>
@@ -622,8 +815,6 @@
 <div class="notice violet inverted">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc cursus luctus sollicitudin. Vestibulum et auctor nisi, nec dapibus nulla. Etiam pulvinar facilisis metus.</p>
 </div>
-
-<hr>
 
 <div class="notice small">
   <button class="button close clip-padding">&times;</button>

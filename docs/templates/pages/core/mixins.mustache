@@ -457,6 +457,31 @@ h1 {
   </li>
   
   <li>
+    <h2>text-truncate</h2>
+    <p>Truncates text with an ellipsis. Element this is applied to must be block or inline-block.</p>
+    <pre class="language-scss"><code>@mixin text-truncate()
+// @param $display
+//   @type display property (block, inline-block)
+//   @default block</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+.demo-text-truncate {
+  @include text-truncate();
+}
+
+// CSS Output
+.demo-text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}</code></pre>
+    <div class="demo">
+      <div class="demo-text-truncate">This is some text that will get truncated</div>
+    </div>
+  </li>
+  
+  <li>
     <h2>text-hide</h2>
     <p>Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.</p>
     <pre class="language-scss"><code class="name">@mixin text-hide()</code></pre>
@@ -483,33 +508,56 @@ h1 {
   </li>
   
   <li>
-    <h2>text-truncate</h2>
-    <p>Truncates text with an ellipsis. Element this is applied to must be block or inline-block.</p>
-    <pre class="language-scss"><code>@mixin text-truncate()
-// @param $display
-//   @type display property (block, inline-block)
-//   @default block</code></pre>
+    <h2>make-text-mask</h2>
+    <p>Lets you easily create text masks using background-clip.</p>
+    <pre class="language-scss"><code>@mixin make-text-mask( $bg-image, $text-color )
+// @param $big-image
+//   @type background-image property
+//   @default null
+// @param $text-color
+//   @type transparent color
+//   @default transparent
+// @param @content
+//   @type style block
+//   @desc use this to set custom background styles (such as gradients).</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
-.demo-text-truncate {
-  @include text-truncate();
+// Applied to a wrapping text element
+.demo-text-mask {
+  @include make-text-mask(url('../img/demo-mask.jpg'), rgba($black, 0.25));
+  
+  // Style text, or whatever...
+  p {
+    ...
+  }
 }
 
 // CSS Output
-.demo-text-truncate {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}</code></pre>
+.demo-text-mask {
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: url('../img/demo-mask.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+</code></pre>
+    <pre class="language-markup"><code>
+&lt;div class=&quot;demo-text-mask&quot;&gt;
+  &lt;p&gt;Demo Text Mask&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
     <div class="demo">
-      <div class="demo-text-truncate">This is some text that will get truncated</div>
+      <div class="demo-text-mask">
+        <p>Demo Text Mask</p>
+      </div>
     </div>
   </li>
   
   <li>
     <h2>make-triangle</h2>
-    <p>Uses the <code>0 * 0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles must be applied either through mixin, class or extend.</p>
+    <p>Uses the <code>0*0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles must be applied either through mixin, class or extend.</p>
     <pre class="language-scss"><code>@mixin make-triangle-base()</code></pre>
     <pre class="language-scss"><code>@mixin make-triangle( $size, $color, $direction )
 // @param $size

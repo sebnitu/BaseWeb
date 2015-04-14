@@ -184,20 +184,20 @@ $buttons: (
 // Handles size variations for buttons. This is done by changing the padding,
 // font-size and line-height based on the parameters passed.
 // @param $size
-//   @type small | Large | unit list (pixel, em, percent)
+//   @type string (small, default, large)
 // @param $options
 //   @type map
 //   @default $buttons map
 @mixin add-button-size($size, $options: ()) {
   $o: map-merge($buttons, $options);
   
-  @if ($size == small) {
+  @if ($size == 'small') {
     padding: map-get($o, 'padding-small');
     font-size: map-get($o, 'font-size-small');
-  } @else if ($size == default) {
+  } @else if ($size == 'default') {
     padding: map-get($o, 'padding');
     font-size: map-get($o, 'font-size');
-  } @else if ($size == large) {
+  } @else if ($size == 'large') {
     padding: map-get($o, 'padding-large');
     font-size: map-get($o, 'font-size-large');
   } @else {

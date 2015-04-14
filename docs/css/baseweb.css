@@ -1554,13 +1554,13 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   .notice.pull-left {
     width: 45%;
     float: left;
-    margin: 0.5em 2em 1em 0; } }
+    margin: 0.5em 5% 1em 0; } }
 
 @media (min-width: 760px) {
   .notice.pull-right {
     width: 45%;
     float: right;
-    margin: 0.5em 0 1em 2em; } }
+    margin: 0.5em 0 1em 5%; } }
 
 /*==============================================================================
   @Breadcrumb - scss/blocks/_breadcrumb.scss
@@ -2201,9 +2201,8 @@ body > div, .wrapper {
       float: right; } }
   .docs-list-compact .block {
     display: block;
-    margin: 0.75rem 0 0 0;
-    padding: 0.75rem 0 0 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05); }
+    margin: 0;
+    padding: 0; }
     .docs-list-compact .block:after {
       content: '';
       display: table;
@@ -2211,7 +2210,8 @@ body > div, .wrapper {
   .docs-list-compact .value {
     color: #303030; }
   .docs-list-compact .light {
-    color: #909090; }
+    color: #909090;
+    clear: both; }
     .docs-list-compact .light code {
       color: #303030; }
   .docs-list-compact .swatch, .docs-list-compact .box-border-radius {
@@ -2263,10 +2263,12 @@ body > div, .wrapper {
 ==============================================================================*/
 .subsection {
   margin: 1em -3.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px; }
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
   .subsection .inner-subsection {
     padding: 1rem 3.125rem; }
+    .subsection .inner-subsection > h1 {
+      font-size: 2.125rem;
+      text-transform: uppercase; }
   .subsection > .docs-list {
     margin: 0; }
     .subsection > .docs-list:first-child > li:first-child {
@@ -2291,6 +2293,11 @@ body > div, .wrapper {
 @media (min-width: 560px) {
   .subsection {
     margin: 2em -3.125rem; } }
+
+@media (min-width: 960px) {
+  .subsection {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px; } }
 
 /*==============================================================================
   @Footer - scss/custom/_custom.scss
@@ -3029,6 +3036,29 @@ body > div, .wrapper {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+/**
+ * Text mask
+ */
+.demo-text-mask {
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: url('../img/demo-mask.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
+  .demo-text-mask p {
+    margin: 1rem 0;
+    font-size: 4em;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
 
 /**
  * Triangle

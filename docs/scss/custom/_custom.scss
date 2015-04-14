@@ -511,9 +511,8 @@ body > div,
   
   .block {
     display: block;
-    margin: 0.75rem 0 0 0;
-    padding: 0.75rem 0 0 0;
-    border-top: 1px solid rgba($black, 0.05);
+    margin: 0;
+    padding: 0;
     @include clearfix();
   }
   
@@ -522,6 +521,7 @@ body > div,
   }
   .light {
     color: $gray-light;
+    clear: both;
     
     code {
       color: $color;
@@ -573,15 +573,15 @@ body > div,
 
 .subsection {
   margin: 1em (-($edge-space));
-  border: 1px solid $border-color;
-  @include border-radius();
+  border-top: 1px solid $border-color;
   
   // Inner subsection
   .inner-subsection {
     padding: 1rem $edge-space;
     
     > h1 {
-      
+      font-size: px-to-rem(34px);
+      text-transform: uppercase;
     }
   }
   
@@ -622,6 +622,15 @@ body > div,
   
   .subsection {
     margin: 2em (-($edge-space));
+  }
+  
+}
+
+@include media-min(960px) {
+  
+  .subsection {
+    border: 1px solid $border-color;
+    @include border-radius();
   }
   
 }

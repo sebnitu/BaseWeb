@@ -92,7 +92,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @CSS Helpers
+// @CSS3 Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
 // Box Sizing
@@ -434,18 +434,6 @@
   }
 }
 
-// Hide text
-// Hides text from an element. This is most commonly used as an image
-// replacement technique for hiding text in an element to reveal a
-// background image.
-@mixin text-hide() {
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 // Truncate Text
 // Truncates text with an ellipsis. Element this is applied to must be block
 // or inline-block.
@@ -464,6 +452,51 @@
 ////////////////////////////////////////////////////////////////////////////////
 // @UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
+
+// Hide text
+// Hides text from an element. This is most commonly used as an image
+// replacement technique for hiding text in an element to reveal a
+// background image.
+@mixin text-hide() {
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Make Text Mask
+// Lets you easily create text masks using background-clip.
+// @param $big-image
+//   @type background-image property
+//   @default null
+// @param $text-color
+//   @type transparent color
+//   @default transparent
+// @param @content
+//   @type style block
+//   @desc use this to set custom background styles (such as gradients).
+@mixin make-text-mask($bg-image: null, $text-color: transparent) {
+  
+  // Set our text color.
+  // Must have some transparency for background image to show.
+  -webkit-text-fill-color: $text-color;
+  
+  // Make text our clipping mask
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  // Set our background image if a source is provided.
+  @if ($bg-image) {
+    background-image: $bg-image;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  // Let's you set your own background properties.
+  @content;
+}
 
 // Make Triangle Base
 // The base styles for creating CSS triangles

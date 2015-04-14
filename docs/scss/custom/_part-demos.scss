@@ -333,6 +333,23 @@ $filename: 'scss/custom/_part-demos.scss';
 }
 
 /**
+ * Text mask
+ */
+.demo-text-mask {
+  @include make-text-mask(url('../img/demo-mask.jpg'), rgba($black, 0.25));
+  
+  p {
+    margin: 1rem 0;
+    font-size: 4em;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    @include font-weight('black');
+    @include text-truncate();
+  }
+}
+
+/**
  * Triangle
  */
 .demo-triangle .col {

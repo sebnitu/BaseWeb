@@ -24,8 +24,8 @@ $notices: (
   
   'pull-breakpoint' : 'medium',
   'pull-width' : 45%,
-  'pull-left-margin' : 0.5em 2em 1em 0,
-  'pull-right-margin' : 0.5em 0 1em 2em,
+  'pull-left-margin' : 0.5em 5% 1em 0,
+  'pull-right-margin' : 0.5em 0 1em 5%,
   
   'color' : $color-dark,
   'text-shadow' : 0 1px 0 rgba($white, 0.25),
@@ -75,6 +75,14 @@ $notices: (
 
 // Add Notice Color
 // Adds styles for a notice color with optional output type.
+// @param $options
+//   @type map
+//   @default $notices map
+// @param $output
+//   @type string (all, difference)
+//   @default difference
+//   @desc Whether to output all styles, or just the ones that are different
+//     from the `$notices` map.
 @mixin add-notice-color($options: (), $output: 'difference') {
   $o: map-extend($notices, $options, true);
   
@@ -123,16 +131,21 @@ $notices: (
 
 // Add Notice Size
 // Adds styles for notice size based on keyword or options map difference.
+// @param $size
+//   @type string (small, default, large)
+// @param $options
+//   @type map
+//   @default $notices map
 @mixin add-notice-size($size, $options: ()) {
   $o: map-merge($notices, $options);
   
-  @if ($size == small) {
+  @if ($size == 'small') {
     padding: map-get($o, 'padding-small');
     font-size: map-get($o, 'font-size-small');
-  } @else if ($size == default) {
+  } @else if ($size == 'default') {
     padding: map-get($o, 'padding');
     font-size: map-get($o, 'font-size');
-  } @else if ($size == large) {
+  } @else if ($size == 'large') {
     padding: map-get($o, 'padding-large');
     font-size: map-get($o, 'font-size-large');
   } @else {
@@ -152,6 +165,12 @@ $notices: (
 
 // Add Notice Inline
 // Adds styles for an inline or inline-block notice.
+// @param $display
+//   @type display property (inline, inline-block)
+//   @default inline
+// @param $options
+//   @type map
+//   @default $notices map
 @mixin add-notice-inline($display: inline, $options: ()) {
   $o: map-merge($notices, $options);
   
@@ -167,6 +186,11 @@ $notices: (
 
 // Add Notice Pull
 // Adds styles for floating a notice to the left or right.
+// @param $direction
+//   @type string (left, right)
+// @param $options
+//   @type map
+//   @default $notices map
 @mixin add-notice-pull($direction, $options: ()) {
   $o: map-merge($notices, $options);
   
@@ -174,10 +198,10 @@ $notices: (
   
     width: map-get($o, 'pull-width');
     
-    @if ($direction == left) {
+    @if ($direction == 'left') {
       float: left;
       margin: map-get($o, 'pull-left-margin');
-    } @else if ($direction == right) {
+    } @else if ($direction == 'right') {
       float: right;
       margin: map-get($o, 'pull-right-margin');
     }
