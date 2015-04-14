@@ -2453,7 +2453,7 @@ class BaseWeb() {
     <li>
       <code>$buttons('classes')</code>
       <code class="right value">true</code>
-      <span class="block light">Whether or not we should output modifier classes. Set to <code>false</code> if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
+      <span class="block light">Whether or not we should output button classes. Set to <code>false</code> if you want to use the button modifier mixins semantically and/or reduce CSS output.</span>
     </li>
     
     <li>
@@ -2620,7 +2620,7 @@ class BaseWeb() {
 //   @type map
 //   @default $buttons map</code></pre>
     <h3>Example Usage</h3>
-    <p>Using the base table mixin for custom buttons. This example shows us using a <code>%base-button</code> placeholder for the extend method.</p>
+    <p>This example shows us using a <code>%base-button</code> placeholder for the extend method. Other methods include adding <code>make-button()</code> to a general class which is applied to button elements directly (which is the method BaseWeb uses for its classes).</p>
     <pre class="language-scss"><code>%base-button {
   @include make-button();
 }
@@ -2661,24 +2661,24 @@ class BaseWeb() {
     <pre class="language-markup"><code>&lt;!-- .button-default default button class --&gt;
 &lt;button class=&quot;button default&quot;&gt;Default&lt;/button&gt;
 
-&lt;!-- .button-blue class with .primary & .active semantic aliases --&gt;
+&lt;!-- .button.blue class with .primary & .active semantic aliases --&gt;
 &lt;button class=&quot;button blue&quot;&gt;Blue&lt;/button&gt;
 &lt;button class=&quot;button primary&quot;&gt;Primary&lt;/button&gt;
 &lt;button class=&quot;button active&quot;&gt;Primary&lt;/button&gt;
 
-&lt;!-- .button-green class with .success semantic alias --&gt;
+&lt;!-- .button.green class with .success semantic alias --&gt;
 &lt;button class=&quot;button green&quot;&gt;Green&lt;/button&gt;
 &lt;button class=&quot;button success&quot;&gt;Success&lt;/button&gt;
 
-&lt;!-- .button-orange class with .warning semantic alias --&gt;
+&lt;!-- .button.orange class with .warning semantic alias --&gt;
 &lt;button class=&quot;button orange&quot;&gt;Orange&lt;/button&gt;
 &lt;button class=&quot;button warning&quot;&gt;Warning&lt;/button&gt;
 
-&lt;!-- .button-red class with .danger semantic alias --&gt;
+&lt;!-- .button.red class with .danger semantic alias --&gt;
 &lt;button class=&quot;button red&quot;&gt;Red&lt;/button&gt;
 &lt;button class=&quot;button danger&quot;&gt;Danger&lt;/button&gt;
 
-&lt;!-- .button-black class with .secondary semantic alias --&gt;
+&lt;!-- .button.black class with .secondary semantic alias --&gt;
 &lt;button class=&quot;button black&quot;&gt;Black&lt;/button&gt;
 &lt;button class=&quot;button secondary&quot;&gt;Secondary&lt;/button&gt;</code></pre>
     <div class="demo demo-buttons">
@@ -2696,21 +2696,21 @@ class BaseWeb() {
     <p>Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.</p>
     <pre class="language-scss"><code>@mixin add-button-size( $size, $option: () )
 // @param $size
-//   @type small | Large | unit list (pixel, em, percent)
+//   @type string (small, default, large)
 // @param $options
 //   @type map
 //   @default $buttons map</code></pre>
     <h3>Example Usage</h3>
-    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$buttons</code> map. Or you can pass in a unit list for custom padding along with a map for setting the font-size and line-height.</p>
+    <p>The first parameter is a quick way to make a button use the default small or large size set in our <code>$buttons</code> map. Or you can pass in a <code>$options:()</code> map for custom padding, font-size and line-height.</p>
     <pre class="language-scss"><code>
 // Use default small size
 .button-small {
-  @include add-button-size(small);
+  @include add-button-size('small');
 }
 
 // Use default large size with custom font size
 .button-custom-large {
-  @include add-button-size(large, (
+  @include add-button-size('large', (
     'font-size': 20px
   ));
 }

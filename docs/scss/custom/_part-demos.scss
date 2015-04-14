@@ -149,9 +149,27 @@ $filename: 'scss/custom/_part-demos.scss';
 .demo blockquote,
 .demo pre,
 .demo table,
-.demo .video-wrapper {
-  margin: 1rem 0;
+.demo .video-wrapper,
+.demo .notice {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
+
+@include media-min('medium') {
+  .subsection > .docs-list > li .notice.pull-left,
+  .demo .notice.pull-left {
+    margin: map-get($notices, 'pull-margin-left');
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .subsection > .docs-list > li .notice.pull-right,
+  .demo .notice.pull-right {
+    margin: map-get($notices, 'pull-margin-right');
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .demo .table-responsive table {
   margin: 0;
 }
@@ -491,4 +509,17 @@ $filename: 'scss/custom/_part-demos.scss';
     }
   }
   
+}
+
+/*==============================================================================
+  @Notices - #{$filename}
+==============================================================================*/
+
+.demo .notice.custom {
+  @include add-notice-color((
+    'background' : rgba($blue-green, 0.1),
+    'inverted' : (
+      'background' : rgba($blue-green, 0.9)
+    )
+  ));
 }

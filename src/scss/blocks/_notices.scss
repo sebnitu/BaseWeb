@@ -24,8 +24,8 @@ $notices: (
   
   'pull-breakpoint' : 'medium',
   'pull-width' : 45%,
-  'pull-left-margin' : 0.5em 5% 1em 0,
-  'pull-right-margin' : 0.5em 0 1em 5%,
+  'pull-margin-left' : 0.5em 5% 1em 0,
+  'pull-margin-right' : 0.5em 0 1em 5%,
   
   'color' : $color-dark,
   'text-shadow' : 0 1px 0 rgba($white, 0.25),
@@ -179,8 +179,10 @@ $notices: (
   padding: map-get($o, 'padding-inline');
   box-shadow: none;
   
-  &.#{map-get($o, 'class-inverted')} {
-    border: 0 none;
+  @if (map-get($o, 'class-inverted')) {
+    &.#{map-get($o, 'class-inverted')} {
+      border: 0 none;
+    }
   }
 }
 
@@ -194,17 +196,25 @@ $notices: (
 @mixin add-notice-pull($direction, $options: ()) {
   $o: map-merge($notices, $options);
   
-  @include media-min(map-get($o, 'pull-breakpoint')) {
-  
+  // Private mixin to store our pull styles.
+  @mixin add-notice-pull-styles() {
     width: map-get($o, 'pull-width');
-    
     @if ($direction == 'left') {
       float: left;
-      margin: map-get($o, 'pull-left-margin');
+      margin: map-get($o, 'pull-margin-left');
     } @else if ($direction == 'right') {
       float: right;
-      margin: map-get($o, 'pull-right-margin');
+      margin: map-get($o, 'pull-margin-right');
     }
+  }
+  
+  // Wrap our pull styles in a breakpoint if one is provided.
+  @if (map-get($o, 'pull-breakpoint')) {
+    @include media-min(map-get($o, 'pull-breakpoint')) {
+      @include add-notice-pull-styles();
+    }
+  } @else {
+    @include add-notice-pull-styles();
   }
 }
 
