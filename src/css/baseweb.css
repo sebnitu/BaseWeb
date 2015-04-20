@@ -1565,37 +1565,113 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   @Breadcrumb - scss/blocks/_breadcrumb.scss
 ==============================================================================*/
 .breadcrumb {
-  margin: 1em 0px;
-  list-style: none;
-  font-size: 1rem; }
-  .breadcrumb:after {
-    content: '';
-    display: table;
-    clear: both; }
-  .breadcrumb > ul, .breadcrumb > ol {
+  display: block;
+  margin: 1em 0;
+  font-size: 1em; }
+  .breadcrumb ul, .breadcrumb ol {
     margin: 0;
     list-style: none; }
-    .breadcrumb > ul:after, .breadcrumb > ol:after {
+    .breadcrumb ul:after, .breadcrumb ol:after {
       content: '';
       display: table;
       clear: both; }
-  .breadcrumb > li, .breadcrumb > ul > li, .breadcrumb > ol > li {
+  .breadcrumb li {
     float: left;
     margin: 0; }
-  .breadcrumb > li a, .breadcrumb > ul > li a, .breadcrumb > ol > li a {
+  .breadcrumb li a {
     border: 0 none; }
-  .breadcrumb > li:after, .breadcrumb > ul > li:after, .breadcrumb > ol > li:after {
+  .breadcrumb .current {
+    color: #909090; }
+  .breadcrumb li:after {
     content: '/';
     padding: 0 0.75em;
     color: rgba(0, 0, 0, 0.25); }
-  .breadcrumb > li:last-child:after, .breadcrumb > ul > li:last-child:after, .breadcrumb > ol > li:last-child:after {
+  .breadcrumb li:last-child:after {
     content: none; }
 
 .breadcrumb.wrapped {
   padding: 0.5em 1em;
-  background: rgba(0, 0, 0, 0.05);
+  background: #e9f7fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px; }
+
+.breadcrumb.fancy {
+  display: block;
+  margin: 1em 0;
+  font-size: 1em; }
+  .breadcrumb.fancy ul, .breadcrumb.fancy ol {
+    display: table;
+    margin: 0;
+    overflow: hidden;
+    vertical-align: middle;
+    list-style: none;
+    background: #e9f7fc;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px; }
+    .breadcrumb.fancy ul:after, .breadcrumb.fancy ol:after {
+      content: none;
+      display: none;
+      clear: none; }
+  .breadcrumb.fancy li {
+    display: table-cell;
+    margin: 0;
+    float: none; }
+    .breadcrumb.fancy li:first-child a, .breadcrumb.fancy li:first-child .item {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .breadcrumb.fancy li:last-child a, .breadcrumb.fancy li:last-child .item {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .breadcrumb.fancy li:after {
+      content: none;
+      display: none; }
+  .breadcrumb.fancy li a, .breadcrumb.fancy li .item {
+    position: relative;
+    display: block;
+    padding: 0.5em 0.5em 0.5em 2em;
+    color: #303030;
+    white-space: nowrap;
+    background: #e9f7fc;
+    border: 0 none;
+    -webkit-transition: background 0.25s linear;
+    transition: background 0.25s linear; }
+    .breadcrumb.fancy li a span, .breadcrumb.fancy li .item span {
+      position: relative;
+      z-index: 2; }
+    .breadcrumb.fancy li a:after, .breadcrumb.fancy li .item:after {
+      width: 2em;
+      height: 2em;
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: -1em;
+      margin: -1em 0 0 0;
+      background: #e9f7fc;
+      background-clip: padding-box;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+      border-right: 1px solid rgba(0, 0, 0, 0.15);
+      -webkit-transition: background 0.25s linear;
+      transition: background 0.25s linear;
+      border-radius: 0 5px 0 100%;
+      -webkit-transform: rotate(45deg) skew(10deg, 10deg);
+      -ms-transform: rotate(45deg) skew(10deg, 10deg);
+      transform: rotate(45deg) skew(10deg, 10deg); }
+    .breadcrumb.fancy li a:hover, .breadcrumb.fancy li .item:hover {
+      background: #d3eff9; }
+    .breadcrumb.fancy li a:hover:after, .breadcrumb.fancy li .item:hover:after {
+      background: #d3eff9; }
+  .breadcrumb.fancy li:first-child a, .breadcrumb.fancy li:first-child .item {
+    padding: 0.5em 0.5em 0.5em 1em; }
+  .breadcrumb.fancy li:last-child a, .breadcrumb.fancy li:last-child .item {
+    padding: 0.5em 1em 0.5em 2em; }
+    .breadcrumb.fancy li:last-child a:after, .breadcrumb.fancy li:last-child .item:after {
+      content: none;
+      display: none; }
+  .breadcrumb.fancy li .active, .breadcrumb.fancy li .active:hover {
+    background: #ffffff; }
+    .breadcrumb.fancy li .active:after, .breadcrumb.fancy li .active:hover:after {
+      background: #ffffff; }
 
 /*==============================================================================
   @Grid System - scss/custom/_custom.scss

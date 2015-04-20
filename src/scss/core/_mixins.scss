@@ -453,6 +453,24 @@
 // @UI Helpers
 ////////////////////////////////////////////////////////////////////////////////
 
+// Reverse Index
+// Sets the index of a set of elements to stack in reverse order.
+// @param $items
+//   @type number
+//   @desc The number of elements in the set.
+@mixin reverse-index($items) {
+  $index: $items;
+  $count: 1;
+    
+  @while $index > 0 {
+    &:nth-child(#{$count}) {
+      z-index: $count;
+    }
+    $index: $index - 1;
+    $count: $count + 1;
+  }
+}
+
 // Hide text
 // Hides text from an element. This is most commonly used as an image
 // replacement technique for hiding text in an element to reveal a

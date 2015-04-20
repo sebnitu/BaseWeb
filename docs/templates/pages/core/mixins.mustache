@@ -480,11 +480,37 @@ h1 {
       <div class="demo-text-truncate">This is some text that will get truncated</div>
     </div>
   </li>
+
+  <li>
+    <h2>reverse-index</h2>
+    <p>Sets the index of a set of elements to stack in reverse order.</p>
+    <pre class="language-scss"><code>@mixin reverse-index( $items )
+// @param $items
+//   @type number
+//   @desc The number of elements in the set.</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>
+ul.example-reverse-index li {
+  @include reverse-index( 3 );
+}
+</code></pre>
+<pre class="language-css"><code>
+ul.example-reverse-index li:nth-child(1) {
+  z-index: 1;
+}
+ul.example-reverse-index li:nth-child(2) {
+  z-index: 2;
+}
+ul.example-reverse-index li:nth-child(3) {
+  z-index: 3;
+}
+</code></pre>
+  </li>
   
   <li>
     <h2>text-hide</h2>
     <p>Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.</p>
-    <pre class="language-scss"><code class="name">@mixin text-hide()</code></pre>
+    <pre class="language-scss"><code>@mixin text-hide()</code></pre>
     <h3>Example Usage</h3>
     <pre class="language-scss"><code>// SCSS
 .demo-logo-image {

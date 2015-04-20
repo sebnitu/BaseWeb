@@ -590,8 +590,8 @@
 </code></pre>
 
 <pre class="language-javascript"><code>// Example jQuery implementation of dismissible notices
-$('.notice.dismissible > .close').on('click', function() {
-  $(this).closest('.notice').fadeOut();
+$('.dismissible > .close').on('click', function() {
+  $(this).closest('.dismissible').fadeOut();
 });
 </code></pre>
 
@@ -1018,48 +1018,364 @@ $(document).ready(function() {
     <nav class="breadcrumb">
       <ul>
         <li><a href="/docs/">Documentation</a></li>
-        <li><a href="/docs/blocks.html">Blocks</a></li>
+        <li class="active"><a href="/docs/blocks.html">Blocks</a></li>
       </ul>
     </nav>
 <h1>Breadcrumbs</h1>
 
+<p>Breadcrumbs are a type of navigation that let a user both understand the hierarchal depth they are currently in as well as the ability to "move up" in page hierarchy from their current location. With this in mind, BaseWeb's markup and styles for breadcrumbs reflect its use application by semantically and visually giving them hierarchal meaning.</p>
+
+<p>The most basic implementation of a breadcrumb looks like this:</p>
+
+<pre class="language-markup"><code>
+&lt;nav class=&quot;breadcrumb&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a&gt;Some Page&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a&gt;Some Category&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class=&quot;current&quot;&gt;Current Page&lt;/span&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;
+</code></pre>
+
 <div class="demo">
-  
   <nav class="breadcrumb">
-    <ul>
+    <ol>
       <li><a>Home</a></li>
       <li><a>Some Page</a></li>
       <li><a>Some Category</a></li>
-      <li><a>Some Page</a></li>
-    </ul>
+      <li><span class="current">Current Page</span></li>
+    </ol>
   </nav>
-  
-  <ul class="breadcrumb">
-    <li><a>Home</a></li>
-    <li><a>Some Page</a></li>
-    <li><a>Some Category</a></li>
-    <li><a>Some Page</a></li>
-  </ul>
-
 </div>
+
+<p>The first thing to not is that the list of links is wrapped with the <code>&lt;nav&gt;</code> element and is given the <code>.breadcrumb</code> class. Secondly, the list items of a breadcrumb are marked up as an ordered list <code>&lt;ol&gt;</code>. This is because the order that the links appear is important in representing their meaning.</p>
+
+<p>Sometimes, you want to omit the current page link all together, but still represent the current page with text. In this case, you just wrap the breadcrumb item with a <code>&lt;span&gt;</code> and can give it the <code>.current</code> class for more subtle text styling.</p>
+
+<p>You also have the <code>.wrapped</code> class to add simple wrapper styles to your breadcrumbs.</p>
+
+<pre class="language-markup"><code>
+&lt;nav class=&quot;breadcrumb wrapped&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ol&gt;
+&lt;/nav&gt;
+</code></pre>
 
 <div class="demo">
   <nav class="breadcrumb wrapped">
-    <ul>
+    <ol>
       <li><a>Home</a></li>
       <li><a>Some Page</a></li>
       <li><a>Some Category</a></li>
-      <li><a>Some Page</a></li>
-    </ul>
+      <li><span class="current">Current Page</span></li>
+    </ol>
   </nav>
-  
-  <ul class="breadcrumb wrapped">
-    <li><a>Home</a></li>
-    <li><a>Some Page</a></li>
-    <li><a>Some Category</a></li>
-    <li><a>Some Page</a></li>
+</div>
+
+<h2>Fancy Breadcrumbs</h2>
+
+<p>If you have your <code>$breadcrumbs('classes-fancy')</code> set to <code>true</code>, then you'll have the fancy class and fancy modifiers available for styling breadcrumbs. Fancy classes are used to create more complex breadcrumb styling.</p>
+
+<pre class="language-markup"><code>
+&lt;nav class=&quot;breadcrumb fancy&quot;&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a&gt;Home&lt;/a&gt;&lt;/li&gt;
+    ...
+  &lt;/ol&gt;
+&lt;/nav&gt;
+</code></pre>
+
+<div class="demo">
+  <nav class="breadcrumb fancy">
+    <ol>
+      <li><a><span>Home</span></a></li>
+      <li><a><span>Some Page</span></a></li>
+      <li><a><span>Some Category</span></a></li>
+      <li><span class="active item"><span>Current Page</span></span></li>
+    </ol>
+  </nav>
+</div>
+
+<section class="subsection subsection-variables has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Breadcrumb Variables</h1>
+  <p class="text-lead">Breadcrumb variables are encompassed within the <code>$breadcrumbs</code> map and are used throughout all breadcrumb mixins to set default values.</p>
+  <ul class="docs-list-compact">
+    <li>
+      <code class="key">$breadcrumbs('classes')</code>
+      <code class="right value">true</code>
+      <span class="block light">Whether or not we should output breadcrumb classes. Set to <code>false</code> if you want to use the notice modifier mixins semantically and/or reduce CSS output.</span>
+    </li>
+    <li>
+      <code class="key">$notices('class-item')</code>
+      <code class="right value">item</code>
+    </li>
+    <li>
+      <code class="key">$notices('class-active')</code>
+      <code class="right value">active</code>
+    </li>
+    <li>
+      <code class="key">$notices('class-current')</code>
+      <code class="right value">current</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('margin')</code>
+      <code class="right value">1em 0</code>
+    </li>
+    <li>
+      <code class="key">$notices('padding')</code>
+      <code class="right value">0.5em 1em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('font-size')</code>
+      <code class="right value">1em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('color')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('color-hover')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('color-current')</code>
+      <code class="right value">$color-light</code>
+    </li>
+    <li>
+      <code class="key">$notices('text-shadow')</code>
+      <code class="right value">null</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('background')</code>
+      <code class="right value">mix($blue, $white, 10%)</code>
+    </li>
+    <li>
+      <code class="key">$notices('border')</code>
+      <code class="right value">1px solid rgba($black, 0.1)</code>
+    </li>
+    <li>
+      <code class="key">$notices('border-radius')</code>
+      <code class="right value">$border-radius</code>
+    </li>
+    
+    <li class="list-sep">
+      <code class="key">$notices('delimiter')</code>
+      <code class="right value">'/'</code>
+      <span class="block light">Delimiter element content used to separate breadcrumb items (e.g: '/', '—', '→', '»').</span>
+    </li>
+    <li>
+      <code class="key">$notices('delimiter-padding')</code>
+      <code class="right value">0 0.75em</code>
+    </li>
+    <li>
+      <code class="key">$notices('delimiter-color')</code>
+      <code class="right value">rgba($black, 0.25)</code>
+    </li>
+    <li>
+      <code class="key">$notices('delimiter-end')</code>
+      <code class="right value">false</code>
+    </li>
+    
+    <li class="list-sep">
+      <code class="key">$notices('fancy' 'margin')</code>
+      <code class="right value">1em 0</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'padding')</code>
+      <code class="right value">0.5em 0.5em 0.5em 2em</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'padding-first')</code>
+      <code class="right value">0.5em 0.5em 0.5em 1em</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'padding-last')</code>
+      <code class="right value">0.5em 1em 0.5em 2em</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'font-size')</code>
+      <code class="right value">1em</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'color')</code>
+      <code class="right value">$color-dark</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'color-hover')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'color-active')</code>
+      <code class="right value">null</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'text-shadow')</code>
+      <code class="right value">null</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'background')</code>
+      <code class="right value">mix($blue, $white, 10%)</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'background-hover')</code>
+      <code class="right value">darken(mix($blue, $white, 10%), 5%)</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'background-active')</code>
+      <code class="right value">mix($blue, $white, 2%)</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'border')</code>
+      <code class="right value">1px solid rgba($black, 0.1)</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'border-radius')</code>
+      <code class="right value">$border-radius</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'delimiter-border')</code>
+      <code class="right value">1px solid rgba($black, 0.15)</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'delimiter-radius')</code>
+      <code class="right value">0 5px 0 100%</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'delimiter-rotate')</code>
+      <code class="right value">45deg</code>
+    </li>
+    <li>
+      <code class="key">$notices('fancy' 'delimiter-skew')</code>
+      <code class="right value">(10deg, 10deg)</code>
+    </li>
+    
+    <li>
+      <code class="key">$notices('fancy' 'transition')</code>
+      <code class="right value">background 0.25s linear</code>
+    </li>
   </ul>
-</div>  </div>
+</div>
+</section>
+
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Breadcrumb Mixins</h1>
+  <p class="text-lead">Breadcrumb mixins are used to create the class output for breadcrumbs. This includes basic breadcrumb styles and wrapper modifier as well as the fancy breadcrumb class.</p>
+</div>
+<ul class="docs-list">
+  
+  <li>
+    <h2>make-breadcrumb</h2>
+    <p>Creates the basic breadcrumb styles.</p>
+    <pre class="language-scss"><code>@mixin make-breadcrumb( $options: () )
+// @param $options
+//   @type map
+//   @default $breadcrumbs map</code></pre>
+    <h3>Example Usage</h3>
+    <p>In this example, we'll use the <code>make-breadcrumb()</code> mixin to create a custom breadcrumb style.</p>
+    <pre class="language-scss"><code>
+.custom-breadcrumb {
+  @include make-breadcrumb((
+    'color' : $green,
+    'color-hover' : $red,
+    'delimiter' : '»'
+  ));
+}</code></pre>
+    <pre class="language-markup"><code>&lt;nav class=&quot;custom-breadcrumb&quot;&gt;...&lt;/nav&gt;</code></pre>
+    <div class="demo">
+      <nav class="custom-breadcrumb">
+        <ol>
+          <li><a><span>Home</span></a></li>
+          <li><a><span>Some Page</span></a></li>
+          <li><a><span>Some Category</span></a></li>
+          <li><span class="active item"><span>Current Page</span></span></li>
+        </ol>
+      </nav>
+    </div>
+  </li>
+  
+  <li>
+    <h2>add-breadcrumb-wrapped</h2>
+    <p>Applies custom styles to breadcrumb wrapper.</p>
+    <pre class="language-scss"><code>@mixin add-breadcrumb-wrapped( $options: () )
+// @param $options
+//   @type map
+//   @default $breadcrumbs map</code></pre>
+    <h3>Example Usage</h3>
+    <p>For this example, we'll use the default <code>.breadcrumb</code> class but use the <code>add-breadcrumb-wrapped()</code> modifier mixin to create custom wrapper styles.</p>
+    <pre class="language-scss"><code>
+.breadcrumb.custom-wrapped {
+  @include add-breadcrumb-wrapped((
+    'background' : rgba($violet-darker, 0.1),
+    'border' : 3px solid rgba($black, 0.05),
+    'border-radius' : 0,
+  ));
+}</code></pre>
+    <pre class="language-markup"><code>&lt;nav class=&quot;breadcrumb custom-wrapped&quot;&gt;...&lt;/nav&gt;</code></pre>
+    <div class="demo">
+      <nav class="breadcrumb custom-wrapped">
+        <ol>
+          <li><a><span>Home</span></a></li>
+          <li><a><span>Some Page</span></a></li>
+          <li><a><span>Some Category</span></a></li>
+          <li><span class="active item"><span>Current Page</span></span></li>
+        </ol>
+      </nav>
+    </div>
+  </li>
+  
+  <li>
+    <h2>add-breadcrumb-fancy</h2>
+    <p>Creates fancy breadcrumb styles.</p>
+    <pre class="language-scss"><code>@mixin add-breadcrumb-fancy( $options: () )
+// @param $options
+//   @type map
+//   @default $breadcrumbs map</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>
+.breadcrumb.custom-fancy {
+  @include add-breadcrumb-fancy((
+    'fancy' : (
+      'color' : $white,
+      'text-shadow' : 0 1px 1px rgba($black, 0.25),
+      'border' : 1px solid $green-darker,
+      'background' : $green, 
+      'background-hover' : $green-dark,
+      'background-active' : $green-darker,
+      'delimiter-border' : 1px solid $green-darker,
+      'delimiter-skew' : (0),
+    )
+  ));
+}</code></pre>
+    <pre class="language-markup"><code>&lt;nav class=&quot;breadcrumb custom-fancy&quot;&gt;...&lt;/nav&gt;</code></pre>
+    <div class="demo">
+      <nav class="breadcrumb custom-fancy">
+        <ol>
+          <li><a><span>Home</span></a></li>
+          <li><a><span>Some Page</span></a></li>
+          <li><a><span>Some Category</span></a></li>
+          <li><span class="active item"><span>Current Page</span></span></li>
+        </ol>
+      </nav>
+    </div>
+  </li>
+  
+</ul>
+</section>
+  </div>
 </section><!-- .subpage -->
     </div><!-- .content -->
       
