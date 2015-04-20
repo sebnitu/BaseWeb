@@ -6,7 +6,7 @@ Currently v1.2.0
 BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
 
 ### Upcoming Features
-The main features being worked on right now are new blocks. The following list of blocks are what is coming soon:
+The main features being worked on right now are blocks. The following list of blocks are currently on the production list:
 
 * Modals
 * Tooltips
