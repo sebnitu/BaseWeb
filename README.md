@@ -8,13 +8,12 @@ BaseWeb is a SCSS front-end development framework built to make working on web b
 ### Upcoming Features
 The main features being worked on right now are new blocks. The following list of blocks are what is coming soon:
 
-* Create and document form-layout block
-* Create and document button-group block
-* Create and document notice block
-* Create and document breadcrumb block
-* Create and document dropdowns block
-* Create and document tabs block
-* Create and document modals block
+* Modals
+* Tooltips
+* Dropdowns
+* Menus
+* Pagination
+* Tabs
 
 ## Documentation
 Documentation is currently being worked on and you can view them if you clone or download the repo. There will also be an online version at [http://getbaseweb.com/](http://getbaseweb.com/).
