@@ -1,0 +1,295 @@
+// Set file variable
+$filename: 'scss/blocks/_breadcrumb.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Breadcrumbs Map
+////////////////////////////////////////////////////////////////////////////////
+
+$breadcrumbs: (
+  'classes' : true,
+  
+  'class-item' : 'item',
+  'class-active' : 'active',
+  'class-current' : 'current',
+  
+  'margin' : 1em 0,
+  'padding' : 0.5em 1em,
+  
+  'font-size' : 1em,
+  
+  'color' : null,
+  'color-hover' : null,
+  'color-current' : $color-light,
+  'text-shadow' : null,
+  
+  'background' : mix($blue, $white, 10%),
+  'border' : 1px solid rgba($black, 0.1),
+  'border-radius' : $border-radius,
+  
+  // Delimiter Styles
+  'delimiter' : '/', // Delimiter element content (e.g: '/', '—', '→', '»').
+  'delimiter-padding' : 0 0.75em,
+  'delimiter-color' : rgba($black, 0.25),
+  'delimiter-end' : false, // Whether or not to show delimiter on last item.
+    
+  // Fancy breadcrumb variables
+  'fancy' : (
+    
+    'margin' : 1em 0,
+    'padding' : 0.5em 0.5em 0.5em 2em,
+    'padding-first' : 0.5em 0.5em 0.5em 1em,
+    'padding-last' : 0.5em 1em 0.5em 2em,
+    
+    'font-size' : 1em,
+    
+    'color' : $color-dark,
+    'color-hover' : null,
+    'color-current' : null,
+    'color-active' : null,
+    'text-shadow' : null,
+    
+    // Some fancy breadcrumb styles require a non-transparent background
+    // color. So, we create a pale blue with color using $white as a base.
+    'background' : mix($blue, $white, 10%), 
+    'background-hover' : darken(mix($blue, $white, 10%), 5%),
+    'background-active' : $white,
+    
+    'border' : 1px solid rgba($black, 0.1),
+    'border-radius' : $border-radius,
+    
+    // Delimiter Styles
+    'delimiter-border' : 1px solid rgba($black, 0.15),
+    'delimiter-radius' : 0 5px 0 100%,
+    'delimiter-rotate' : 45deg,
+    'delimiter-skew' : (10deg, 10deg),
+    
+    'transition' : background 0.25s linear,
+  )
+  
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Breadcrumb Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Breadcrumb
+// Creates the basic breadcrumb styles.
+// @param $options
+//   @type map
+//   @default $breadcrumbs map
+@mixin make-breadcrumb($options: ()) {
+  $o: map-merge($breadcrumbs, $options);
+  
+  display: block;
+  margin: map-get($o, 'margin');
+  font-size: map-get($o, 'font-size');
+  
+  // Remove default list styles
+  ul,
+  ol {
+    margin: 0;
+    list-style: none;
+    @include clearfix();
+  }
+  
+  // Float list items to the left to:
+  //   a) Get rid of the extra white spacing from inline items.
+  //   b) Wrap properly if items don't fit on one line.
+  li {
+    float: left;
+    margin: 0;
+  }
+  
+  // Remove link borders and add link color styles
+  li a {
+    color: map-get($o, 'color');
+    text-shadow: map-get($o, 'text-shadow');
+    border: 0 none;
+    
+    &:hover {
+      color: map-get($o, 'color-hover');
+    }
+  }
+  
+  // Current item styles
+  .#{map-get($o, 'class-current')} {
+    color: map-get($o, 'color-current');
+  }
+  
+  // Delimiter styles
+  li:after {
+    content: map-get($o, 'delimiter');
+    padding: map-get($o, 'delimiter-padding');
+    color: map-get($o, 'delimiter-color');
+  }
+  
+  // Remove last delimiter if `delimiter-end` is set to false
+  @if (map-get($o, 'delimiter-end') == false) {
+    li:last-child:after {
+      content: none;
+    }
+  }
+}
+
+// Add Breadcrumb Wrapped
+// Applies custom styles to breadcrumb wrapper.
+// @param $options
+//   @type map
+//   @default $breadcrumbs map
+@mixin add-breadcrumb-wrapped($options: ()) {
+  $o: map-merge($breadcrumbs, $options);
+  
+  // Add styles for the wrapper element.
+  padding: map-get($o, 'padding');
+  background: map-get($o, 'background');
+  border: map-get($o, 'border');
+  @include border-radius(map-get($o, 'border-radius'));
+}
+
+// Add Breadcrumb Fancy
+// Creates fancy breadcrumb styles.
+// @param $options
+//   @type map
+//   @default $breadcrumbs map
+@mixin add-breadcrumb-fancy($options: ()) {
+  $o: map-extend($breadcrumbs, $options, true);
+  
+  display: block;
+  margin: map-fetch($o, 'fancy' 'margin');
+  font-size: map-fetch($o, 'fancy' 'font-size');
+  
+  // Fancy Lists
+  ul,
+  ol {
+    display: table;
+    margin: 0;
+    overflow: hidden;
+    vertical-align: middle;
+    list-style: none;
+    background: map-fetch($o, 'fancy' 'background');
+    border: map-fetch($o, 'fancy' 'border');
+    @include border-radius(map-fetch($o, 'fancy' 'border-radius'));
+    @include remove-clearfix();
+  }
+  
+  // Fancy List Items
+  li {
+    display: table-cell;
+    margin: 0;
+    float: none;
+    
+    &:first-child {
+      a, .#{map-get($o, 'class-item')} {
+        @include border-radius-left(map-fetch($o, 'fancy' 'border-radius'));
+      }
+    }
+    
+    &:last-child {
+      a, .#{map-get($o, 'class-item')} {
+        @include border-radius-right(map-fetch($o, 'fancy' 'border-radius'));
+      }
+    }
+    
+    // Remove the delimiter from fancy breadcrumbs
+    &:after {
+      content: none;
+      display: none;
+    }
+  }
+  
+  // Fancy links & Items
+  li a,
+  li .#{map-get($o, 'class-item')} {
+    position: relative;
+    display: block;
+    padding: map-fetch($o, 'fancy' 'padding');
+    color: map-fetch($o, 'fancy' 'color');
+    text-shadow: map-fetch($o, 'fancy' 'text-shadow');
+    white-space: nowrap;
+    background: map-fetch($o, 'fancy' 'background');
+    border: 0 none;
+    @include transition(map-fetch($o, 'fancy' 'transition'));
+    
+    // There's an issue with the `:after` element overlapping with the link
+    // text so we need to wrap the text with a span and give it a z-index.
+    span {
+      position: relative;
+      z-index: 2;
+    }
+    
+    &:after {
+      @include size(2em);
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: -1em;
+      margin: -1em 0 0 0;
+      background: map-fetch($o, 'fancy' 'background');
+      background-clip: padding-box;
+      border-top: map-fetch($o, 'fancy' 'delimiter-border');
+      border-right: map-fetch($o, 'fancy' 'delimiter-border');
+      @include transition(map-fetch($o, 'fancy' 'transition'));
+      @include border-radius(map-fetch($o, 'fancy' 'delimiter-radius'));
+      @include transform(rotate(map-fetch($o, 'fancy' 'delimiter-rotate')) skew(map-fetch($o, 'fancy' 'delimiter-skew')));
+    }
+    
+    &:hover {
+      color: map-fetch($o, 'fancy' 'color-hover');
+      background: map-fetch($o, 'fancy' 'background-hover');
+    }
+    
+    &:hover:after {
+      background: map-fetch($o, 'fancy' 'background-hover');
+    }
+  }
+  
+  // Set left and right padding of first item and remove
+  // any extra delimiter we added to the last item.
+  li:first-child {
+    a, .#{map-get($o, 'class-item')} {
+      padding: map-fetch($o, 'fancy' 'padding-first');
+    }
+  }
+  li:last-child {
+    a, .#{map-get($o, 'class-item')} {
+      padding: map-fetch($o, 'fancy' 'padding-last');
+      
+      &:after {
+        content: none;
+        display: none;
+      }
+    }
+  }
+  
+  // Active Class
+  li .#{map-get($o, 'class-active')},
+  li .#{map-get($o, 'class-active')}:hover {
+    color: map-fetch($o, 'fancy' 'color-active');
+    background: map-fetch($o, 'fancy' 'background-active');
+    &:after {
+      background: map-fetch($o, 'fancy' 'background-active');
+    }
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($breadcrumbs, 'classes') == true) {
+
+/*==============================================================================
+  @Breadcrumb - #{$filename}
+==============================================================================*/
+
+.breadcrumb {
+  @include make-breadcrumb();
+}
+
+.breadcrumb.wrapped {
+  @include add-breadcrumb-wrapped();
+}
+  
+.breadcrumb.fancy {
+  @include add-breadcrumb-fancy();
+}
+
+} // endif classes

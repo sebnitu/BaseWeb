@@ -3,21 +3,26 @@ $filename: 'scss/elements/_typography.scss';
 
 /*==============================================================================
   @Typography - #{$filename}
-==============================================================================*/
+================================================================================
+ *
+ * Sets the base typographic styles for BaseWeb.
+ * 
+ * 1. Set the base font size to the `<html>` element because that's what is
+ *    used when sizing things with Rem.
+ * 2. Makes safari fonts not look terrible.
+ */
 
-// Set the base font size to HTML because that's what is used to size off of rem units
 html {
-  font-size: $base-font-size;
+  font-size: $base-font-size; /* [1] */
 }
 
-// Base font settings
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;
   line-height: $base-line-height;
   font-weight: $base-font-weight;
   color: $color;
-  -webkit-font-smoothing: subpixel-antialiased; // Makes safari fonts not look terrible
+  -webkit-font-smoothing: subpixel-antialiased; /* [2] */
 }
 
 /**
@@ -64,7 +69,7 @@ h6 {
  * Paragraphs
  */
 p { 
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 /**

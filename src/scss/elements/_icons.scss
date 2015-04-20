@@ -1,0 +1,39 @@
+// Set file variable
+$filename: 'scss/elements/_icons.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Icons Map
+////////////////////////////////////////////////////////////////////////////////
+
+$icons-config: (
+  'font-family' : null,
+  'font-path' : '../fonts/',
+) !default;
+
+$icons: null !default;
+
+// Check if we have any icons defined
+@if ($icons) {
+  
+/*==============================================================================
+  @Icons - #{$filename}
+==============================================================================*/
+
+.icon {
+  display: inline-block;
+  font-family: map-get($icons-config, 'font-family');
+  font-size: inherit;
+  line-height: 1em;
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+}
+
+@each $icon, $content in $icons-font {
+  .icon-#{$icon}:before {
+    content: $content;
+  }
+}
+
+} // endif icons

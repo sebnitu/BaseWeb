@@ -3,14 +3,24 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 // Grid Map
-// Define all the settings for the grid system
+// Define all the settings for the grid system.
 $grid: (
   
   // Global Grid Settings
-  'type' : normal, // Sets the grid type (normal, mobile)
-  'total-width' : 100%, // Use same unit type as `gutter-width`.
-  'gutter-width' : 0,   // Use same unit type as `total-width`. Set using left and right margin of columns.
-  'inner-gutter-width' : 1.5rem, // Set using left and right padding of columns.
+  // Sets the grid type (normal, mobile)
+  'type' : normal,
+  
+  // Use same unit type as `$grid('gutter-width')`.
+  'total-width' : 100%,
+  
+  // Use same unit type as `$grid('total-width')`.
+  // Used to set left and right margin of columns.
+  'gutter-width' : 0,
+  
+  // Used to set using left and right padding of columns.
+  'inner-gutter-width' : 1.5rem,
+  
+  // Sets the number of columns in Grid System.
   'columns' : 12,
   
   // Container Settings
@@ -20,10 +30,30 @@ $grid: (
   'container-max-width' : 62rem,
   
   // Grid Class Names
-  'class-container' : container,
-  'class-row' : row,
-  'class-column' : col,
-  'class-prefix' : prefix, // Set to `none` to disable output
-  'class-suffix' : suffix, // Set to `none` to disable output
+  'class-container' : 'container',
+  'class-row' : 'row',
+  'class-column' : 'col',
+  
+  // Set to `null` to disable output
+  'class-prefix' : 'prefix',
+  
+  // Set to `null` to disable output
+  'class-suffix' : 'suffix',
 
+) !default;
+
+// Mini Grid Map
+// Define all the settings for the mini grid system.
+$mini-grid: (
+  
+  // Used to determine the number of fraction classes to output.
+  'fractions' : 12,
+  
+  // Mini-Grid Class Names
+  // Class name for mini-grid parent classes.
+  'class-has' : 'has',
+  
+  // Class name for mini-grid children classes.
+  'class-is' : 'is',
+  
 ) !default;

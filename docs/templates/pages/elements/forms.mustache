@@ -2,7 +2,7 @@
 
 <p>HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.</p>
 
-<div class="notice notice-info">
+<div class="notice info">
   <p>In addition to this form documentation, there are a number of form examples that can either be used as starter forms or templates for creating your own <a href="/examples/forms.html">Form Examples &rarr;</a></p>
 </div>
 
@@ -68,7 +68,7 @@
       <label>Example Label</label>
       <div class="row">
         <div class="col col-6">
-          <label class="label-sub">Choice Checkboxes</label>
+          <label class="sub">Choice Checkboxes</label>
           <div class="input-group">
             <label class="choice"><input type="checkbox"> Choice Checkbox 1</label>
             <label class="choice"><input type="checkbox"> Choice Checkbox 2</label>
@@ -76,7 +76,7 @@
         </div>
         
         <div class="col col-6">
-          <label class="label-sub">Choice Radios</label>
+          <label class="sub">Choice Radios</label>
           <div class="input-group">
             <label class="choice"><input type="radio" name="radio-1"> Choice Radio 1</label>
             <label class="choice"><input type="radio" name="radio-1"> Choice Radio 2</label>
@@ -86,8 +86,8 @@
     </div>
       
     <footer class="form-action">
-      <button class="btn btn-primary">Button</button>
-      <button class="btn btn-default">Button</button>
+      <button class="button primary">Button</button>
+      <button class="button default">Button</button>
     </footer>
       
   </form>
@@ -97,7 +97,7 @@
 <div class="inner-subsection">
   <h1>Form Variables</h1>
   <p class="text-lead">Form variables are encompassed within the <code>$forms</code> map and are used throughout all form mixins to set default values.</p>
-  <ul class="docs-list docs-list-hover">
+  <ul class="docs-list docs-list-compact">
     <li>
       <code>$forms('vertical-spacing')</code>
       <code class="right value">1.5em</code>
@@ -194,7 +194,7 @@
       <code class="right value">none</code>
     </li>
   </ul>
-  <div class="notice notice-warning">
+  <div class="notice warning">
     <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
   </div>
 </div>
@@ -273,9 +273,9 @@
     <div class="demo">
       <form>
         <footer class="form-action">
-          <button class="btn btn-green">Save Account</button>
-          <button class="btn btn-danger">Delete</button>
-          <button class="btn btn-default float-right">Cancel</button>
+          <button class="button green">Save Account</button>
+          <button class="button danger">Delete</button>
+          <button class="button default float-right">Cancel</button>
         </footer>
       </form>
     </div>
@@ -313,20 +313,20 @@
   </li>
   
   <li>
-    <h2>.inline-group</h2>
-    <p>You can create inline forms by adding the class <code>.inline-group</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
+    <h2>.inline</h2>
+    <p>You can create inline forms by adding the class <code>.inline</code> to form structure elements. If applied to a <code>.form-group</code> element, it also makes children <code>.form-group</code> and <code>.input-group</code> elements inline as well.</p>
     <pre class="language-markup"><code>
 &lt;form&gt;
-  &lt;div class=&quot;form-group inline-group&quot;&gt;
+  &lt;div class=&quot;form-group inline&quot;&gt;
     ...
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
     <div class="demo">
       <form>
-        <div class="form-group inline-group">
+        <div class="form-group inline">
           <input type="text" class="input" placeholder="Username" required>
           <input type="password" class="input" placeholder="Password" required>
-          <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="submit" class="button primary">Sign In</button>
         </div>
       </form>
     </div>
@@ -472,7 +472,7 @@
 <div class="inner-subsection">
   <h1>Form Elements</h1>
   <p class="text-lead">BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in <code>$forms</code>.</p>
-  <p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline-group</code> to a parent element.</p>
+  <p>The <code>.inline</code> class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying <code>.inline</code> to a parent element.</p>
 </div>
 <ul class="docs-list">
 
@@ -614,16 +614,16 @@
 &lt;label&gt;Default Label&lt;/label&gt;
 
 &lt;!-- Makes subtle styles for sub label --&gt;
-&lt;label class=&quot;label-sub&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;sub&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Hides lables but keeps them accessible for screen readers --&gt;
-&lt;label class=&quot;label-hide&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;hide&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Makes labels display block with top padding for alignment --&gt;
-&lt;label class=&quot;label-block&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;block&quot;&gt;...&lt;/label&gt;
 
 &lt;!-- Makes labels display inline-block with top padding for alignment --&gt;
-&lt;label class=&quot;label-inline&quot;&gt;...&lt;/label&gt;
+&lt;label class=&quot;inline&quot;&gt;...&lt;/label&gt;
 </code></pre>
     <div class="demo">
       <form>
@@ -631,15 +631,15 @@
           <label>Default Label</label>
           <div class="row">
             <div class="col col-3">
-              <label class="label-sub">Sub Label</label>
-              <label class="label-block">Block Label</label>
+              <label class="sub">Sub Label</label>
+              <label class="block">Block Label</label>
             </div>
             <div class="col col-5">
-              <label class="label-sub">Sub Label</label>
+              <label class="sub">Sub Label</label>
               <input class="input" type="text" placeholder="Example">
             </div>
             <div class="col col-4">
-              <label class="label-sub">Sub Label</label>
+              <label class="sub">Sub Label</label>
               <label class="choice"><input type="checkbox" checked> Choice</label>
             </div>
           </div>
@@ -663,7 +663,7 @@
         <div class="form-group">
           <div class="row">
             <div class="col col-4">
-              <label class="label-block">Example Input with Notes</label>
+              <label class="block">Example Input with Notes</label>
               <p class="note">This is an example note.</p>
             </div>
             <div class="col col-8">

@@ -5,22 +5,24 @@ $filename: 'scss/elements/_tables.scss';
 // @Table Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-// Table Map
-// Define all the settings for table mixins and classes.
 $tables: (
-  'modifier-classes' : true,
+  'classes' : true,
+  
   'valign' : top,
   'nth' : odd,
   'stripe' : horizontal,
-  'margin' : 1rem 0,
-  'padding-condensed' : 0.25rem,
-  'padding' : 0.75rem,
-  'padding-expanded' : 1.25rem,
+  
+  'margin' : 1em 0,
+  'padding-condensed' : 0.25em 0.5em,
+  'padding' : 0.5em 0.75em,
+  'padding-expanded' : 1em 1.25em,
+  
   'background' : none,
   'background-stripe' : rgba($black, 0.05),
   'background-hover' : $yellow-pale,
   'border' : 1px solid rgba($black, 0.1),
   'border-radius' : $border-radius,
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,12 +30,13 @@ $tables: (
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Table Base
-// Creates the base styles for a table modifer mixin or class. Usually applied directly through a mixin or `%table-base` placeholder.
+// Creates the base styles for a table modifer mixin or class. Usually applied
+// directly through a mixin or `%table-base` placeholder.
 // @param $options
 //   @type map
 //   @default $tables map
-@mixin make-table-base($options: ()) {
-  $o: map-merge( $tables, $options);
+@mixin make-table($options: ()) {
+  $o: map-merge($tables, $options);
   margin: map-get($o, 'margin');
   background: map-get($o, 'background');
   border-collapse: separate;
@@ -42,12 +45,12 @@ $tables: (
   }
 }
 
-// Make Table Rowed
+// Add Table Rowed
 // Adds borders to a table that divide table rows.
 // @param $options
 //   @type map
 //   @default $tables map
-@mixin make-table-rowed($options: ()) {
+@mixin add-table-rowed($options: ()) {
   $o: map-merge($tables, $options);
   td, th {
     border-bottom: map-get($o, 'border');
@@ -63,12 +66,12 @@ $tables: (
   }
 }
 
-// Make Table Columned
+// Add Table Columned
 // Adds borders to a table that divide table columns.
 // @param $options
 //   @type map
 //   @default $tables map
-@mixin make-table-columned($options: ()) {
+@mixin add-table-columned($options: ()) {
   $o: map-merge($tables, $options);
   td, th {
     border-right: map-get($o, 'border');
@@ -80,19 +83,20 @@ $tables: (
   }
 }
 
-// Make Table Bordered
+// Add Table Bordered
 // Adds borders to a table that divide table cells.
 // @param $options
 //   @type map
 //   @default $tables map
-@mixin make-table-bordered($options: ()) {
+@mixin add-table-bordered($options: ()) {
   $o: map-merge($tables, $options);
-  @include make-table-rowed($o);
-  @include make-table-columned($o);
+  @include add-table-rowed($o);
+  @include add-table-columned($o);
 }
 
 // Add Table Size
-// Toggles a tables padding size between condensed, expanded or a custom padding value.
+// Toggles a tables padding size between condensed, expanded or a custom
+// padding value.
 // @param $size
 //   @type condensed | expanded | unit (pixel, em, percent)
 // @param $options
@@ -156,7 +160,8 @@ $tables: (
 }
 
 // Add Table Stripes
-// Gives a table stripes either vertical or horizontal depending on parameters passed.
+// Gives a table stripes either vertical or horizontal depending on
+// parameters passed.
 // @param $nth
 //   @type nth (odd, even)
 //   @default default ($tables('nth'))
@@ -234,7 +239,8 @@ $tables: (
 }
 
 // Make Table Responsive
-// When added to a wrapping element of a table, will make the table responsive for tablets and below.
+// When added to a wrapping element of a table, will make the table responsive
+// for tablets and below.
 // @param $options
 //   @type map
 //   @default $tables map
@@ -276,7 +282,7 @@ table {
 }
 
 // Check if we should output modifier classes
-@if (map-get($tables, 'modifier-classes') == true) {
+@if (map-get($tables, 'classes') == true) {
 
 /*==============================================================================
   @Table Modifiers - #{$filename}
@@ -286,73 +292,73 @@ table {
  * Base Modifiers Styles
  */
 .table {
-  @include make-table-base();
+  @include make-table();
 }
 
 /**
  * Border Variations
  */
-.table-rowed {
-  @include make-table-rowed();
+.table.rowed {
+  @include add-table-rowed();
 }
-.table-columned {
-  @include make-table-columned();
+.table.columned {
+  @include add-table-columned();
 }
-.table-bordered {
-  @include make-table-bordered();
+.table.bordered {
+  @include add-table-bordered();
 }
 
 /**
  * Padding Variations
  */
-.table-condensed {
+.table.condensed {
   @include add-table-size(condensed);
 }
-.table-expanded {
+.table.expanded {
   @include add-table-size(expanded);
 }
 
 /**
  * Miscellaneous Modifiers
  */
-.table-rounded {
+.table.rounded {
   @include add-table-rounded();
 }
-.table-striped {
+.table.striped {
   @include add-table-stripes();
 }
-.table-striped-horizontal {
+.table.striped-horizontal {
   @include add-table-stripes(default, horizontal);
 }
-.table-striped-vertical {
+.table.striped-vertical {
   @include add-table-stripes(default, vertical);
 }
-.table-hover {
+.table.hover {
   @include add-table-hover();
 }
 
 /**
  * Table Alignment Modifiers
  */
-.table-valign-baseline {
+.table.valign-baseline {
   @include add-table-alignment(('vertical-align': baseline));
 }
-.table-valign-top {
+.table.valign-top {
   @include add-table-alignment(('vertical-align': top));
 }
-.table-valign-middle {
+.table.valign-middle {
   @include add-table-alignment(('vertical-align': middle));
 }
-.table-valign-bottom {
+.table.valign-bottom {
   @include add-table-alignment(('vertical-align': bottom));
 }
-.table-align-left {
+.table.align-left {
   @include add-table-alignment(('text-align': left));
 }
-.table-align-center {
+.table.align-center {
   @include add-table-alignment(('text-align': center));
 }
-.table-align-right {
+.table.align-right {
   @include add-table-alignment(('text-align': right));
 }
 
@@ -363,4 +369,4 @@ table {
   @include make-table-responsive();
 }
 
-} // endif
+} // endif classes

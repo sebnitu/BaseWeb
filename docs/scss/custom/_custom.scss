@@ -10,9 +10,15 @@ $edge-space: 3.125rem;
 
 @include build-grid-system(mobile);
 
-@include media-min('tablet') {
+@include media-min('medium') {
   @include build-grid-system();
 }
+
+/*==============================================================================
+  @Mini Grid System - #{$filename}
+==============================================================================*/
+
+@include build-mini-grid-system();
 
 /*==============================================================================
   @Structure - #{$filename}
@@ -134,7 +140,7 @@ body > div,
 /**
  * Vertical Size and Position
  */
-@include media-min('tablet') {
+@include media-min('medium') {
   .vertical-half {
     position: relative;
     height: 50%;
@@ -229,8 +235,8 @@ body > div,
   color: $gray;
   text-align: center;
 }
-.header .action .btn {
-  display: block;
+.header .action .button {
+  @include add-button-block();
   margin: 0 0 10px 0;
   background-clip: padding-box;
 
@@ -274,7 +280,7 @@ body > div,
   border: 0 none;
   @include border-radius(0);
   
-  .icon {
+  .bw-icon {
     opacity: 0.5;
     margin-right: 5px;
     @include transition();
@@ -283,14 +289,14 @@ body > div,
 .nav ul li a:hover {
   color: $white;
   
-  .icon {
+  .bw-icon {
     opacity: 1;
   }
 }
 .nav ul li.active > a {
   color: $white;
   
-  .icon {
+  .bw-icon {
     opacity: 1;
   }
 }
@@ -300,13 +306,6 @@ body > div,
  */
 .nav > ul.rootnav {
   padding-bottom: 40px;
-}
-.nav > ul.rootnav > li:first-child > a {
-  color: $color-light;
-  
-  &:hover {
-    color: $white;
-  }
 }
 .nav > ul > li {
   border-top: 1px solid rgba($white, 0.1);
@@ -343,7 +342,7 @@ body > div,
   @Icons - #{$filename}
 ==============================================================================*/
 
-.icon {
+.bw-icon {
   position: relative;
   top: -2px;
   display: inline-block;
@@ -354,32 +353,32 @@ body > div,
 /**
  * Folder
  */
-.icon-folder {
+.bw-icon-folder {
   background: url("../img/icon-folder-white.svg") no-repeat center center;
   background-size: 20px 20px;
 }
-.icon-folder.dark,
-.dark .icon-folder {
+.bw-icon-folder.dark,
+.dark .bw-icon-folder {
   background: url("../img/icon-folder-black.svg") no-repeat center center;
 }
-.icon-folder.light,
-.light .icon-folder {
+.bw-icon-folder.light,
+.light .bw-icon-folder {
   background: url("../img/icon-folder-white.svg") no-repeat center center;
 }
 
 /**
  * File
  */
-.icon-file {
+.bw-icon-file {
   background: url("../img/icon-file-white.svg") no-repeat center center;
   background-size: 20px 20px;
 }
-.icon-file.dark,
-.dark .icon-file {
+.bw-icon-file.dark,
+.dark .bw-icon-file {
   background: url("../img/icon-file-black.svg") no-repeat center center;
 }
-.icon-file.light,
-.light .icon-file {
+.bw-icon-file.light,
+.light .bw-icon-file {
   background: url("../img/icon-file-white.svg") no-repeat center center;
 }
 
@@ -393,6 +392,11 @@ body > div,
 .page {
   .content-inner > .breadcrumb {
     margin: 0;
+    font-size: 1em;
+    
+    li:after {
+      content: '→';
+    }
   }
   .content-inner > h1 {
     margin-top: 0;
@@ -414,8 +418,8 @@ body > div,
 .sitemap > .rootnav,
 .sitemap > .subnav,
 .sitemap > .altnav, {
-  @include make-list-base(('padding': 0, 'margin': 2rem 0));
-  @include make-list-bordered();
+  @include make-list(('padding': 0, 'margin': 2rem 0));
+  @include add-list-bordered();
   @include add-list-rounded();
   font-size: px-to-rem(18px);
   
@@ -451,17 +455,34 @@ body > div,
 .docs-list {
   list-style: none;
 }
-.docs-list-hover {
-  @include make-list-base(('margin': 2rem 0, 'padding': 1rem));
-  @include make-list-bordered();
+.docs-list-compact {
+  @include make-list(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
+  @include add-list-rowed();
   @include add-list-rounded();
-  @include add-list-hover(rgba($white, 0.5));
+  box-shadow: 0 1px 3px rgba($black, 0.05);
   
-  li {
+  > li {
     overflow: auto;
     
+    &:first-child {
+      border-top: 0 none;
+    }
+    &:last-child {
+      border-bottom: 0 none;
+    }
     &.list-sep {
       border-top: 2px solid rgba($black, 0.1);
+    }
+  }
+  
+  .key,
+  .value {
+    display: block;
+  }
+  
+  @include media-min('medium') {
+    .key {
+      float: left;
     }
   }
   
@@ -476,17 +497,24 @@ body > div,
     }
   }
   
-  .left {
-    float: left;
-  }
+  .left,
   .right {
-    float: right;
+    display: block;
   }
+  
+  @include media-min('medium') {
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+  }
+  
   .block {
     display: block;
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid rgba($black, 0.05);
+    margin: 0;
+    padding: 0;
     @include clearfix();
   }
   
@@ -495,17 +523,17 @@ body > div,
   }
   .light {
     color: $gray-light;
+    clear: both;
+    
+    code {
+      color: $color;
+    }
   }
   
   .swatch,
   .box-border-radius {
+    float: right;
     margin: -4px -4px -4px 0;
-  }
-  
-  code {
-    margin: 0;
-    padding: 0;
-    background: transparent;
   }
 }
 
@@ -513,16 +541,23 @@ body > div,
  * Docs Tables
  */
 .docs-table {
-  @include make-table-base(('margin': 2rem 0, 'padding': 1rem));
-  @include make-table-bordered();
+  @include make-table(('background': rgba($white, 0.75), 'margin': 2rem 0, 'padding': 1rem));
+  @include add-table-rowed();
   @include add-table-rounded();
-  @include add-table-hover(rgba($white, 0.5));
-    
+  
   th {
     font-size: 18px;
     line-height: 26px;
     color: $color-dark;
   }
+  
+  tbody:first-child tr:first-child td {
+    border-top: 0 none;
+  }
+  tbody tr:last-child td {
+    border-bottom: 0 none;
+  }
+  
   code {
     margin: 0;
     padding: 0;
@@ -539,26 +574,16 @@ body > div,
 ==============================================================================*/
 
 .subsection {
-  margin: 1.5rem (-($edge-space));
-  border: 1px solid $border-color;
-  @include border-radius();
-  
-  &.has-inner-subsection {
-    margin-top: 3rem;
-  }
+  margin: 1em (-($edge-space));
+  border-top: 1px solid $border-color;
   
   // Inner subsection
   .inner-subsection {
-    padding: 0 $edge-space 1rem;
+    padding: 1rem $edge-space;
     
     > h1 {
-      opacity: 0.75;
-      margin: -1.25rem 0 1rem 0;
-      font-size: 2.5em;
-      line-height: 1em;
+      font-size: px-to-rem(34px);
       text-transform: uppercase;
-      color: $yellow-green-dark;
-      @include font-weight('bold');
     }
   }
   
@@ -578,7 +603,7 @@ body > div,
     > h2, > h3, > p {
       margin: 0.5rem 0;
     }
-    > pre, .notice, .demo, .docs-list-hover, .docs-table, .docs-table-responsive {
+    > pre, .notice, .demo, .docs-list-compact, .docs-table, .docs-table-responsive {
       margin: 1rem 0;
     }
     
@@ -598,11 +623,16 @@ body > div,
 @include media-min(560px) {
   
   .subsection {
-    margin: 2rem (-($edge-space));
-    
-    &.has-inner-subsection {
-      margin-top: 6rem;
-    }
+    margin: 2em (-($edge-space));
+  }
+  
+}
+
+@include media-min(960px) {
+  
+  .subsection {
+    border: 1px solid $border-color;
+    @include border-radius();
   }
   
 }

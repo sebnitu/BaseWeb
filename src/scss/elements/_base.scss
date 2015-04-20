@@ -5,7 +5,7 @@ $filename: 'scss/elements/_base.scss';
   @Base Styles - #{$filename}
 ==============================================================================*/
 
-// Remove margins and padding from HTML and Body elements and sets our base font-size.
+// Remove margins and padding from HTML and Body elements
 html, body {
   margin: 0; 
   padding: 0;
@@ -25,14 +25,14 @@ footer, header, hgroup, menu, nav, section {
 
 // Set default box sizing model to our global variable $global-box-sizing.
 // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if ($global-box-sizing != none) {
+@if ($global-box-sizing) {
   *, *:before, *:after {
     @include box-sizing($global-box-sizing);
   }
 }
 
 // Add custom text highlight color if a color is set in $bg-selection.
-@if ($bg-selection != none) {
+@if ($bg-selection) {
   ::-moz-selection {
     background: $bg-selection;
     text-shadow: none;
@@ -48,28 +48,28 @@ footer, header, hgroup, menu, nav, section {
 ==============================================================================*/
 
 // Outputs our cleafix class if one is set in $class-clearfix.
-@if ($class-clearfix != none) {
+@if ($class-clearfix) {
   .#{$class-clearfix} {
     @include clearfix();
   }
 }
 
 // Outputs our remove cleafix class if one is set in $class-remove-clearfix.
-@if ($class-remove-clearfix != none) {
+@if ($class-remove-clearfix) {
   .#{$class-remove-clearfix} {
     @include remove-clearfix();
   }
 }
 
 // Outputs our float-left class if one is set in $class-float-left.
-@if ($class-float-left != none) {
+@if ($class-float-left) {
   .#{$class-float-left} {
     float: left;
   }
 }
 
 // Outputs our float-right class if one is set in $class-float-right.
-@if ($class-float-right != none) {
+@if ($class-float-right) {
   .#{$class-float-right} {
     float: right;
   }

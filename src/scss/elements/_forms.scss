@@ -1,12 +1,14 @@
 // Set file variable
 $filename: 'scss/elements/_forms.scss';
 
+// Dependencies
+// ---
+// @mixin build-grid-system() - scss/core/_grid.scss
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-// Button Map
-// Define all the settings for form base elements, mixins and classes.
 $forms: (
   'vertical-spacing' : 1.5em,
   'vertical-align' : 0.75em,
@@ -47,14 +49,16 @@ $forms: (
 ////////////////////////////////////////////////////////////////////////////////
 
 // Placeholder
-// Sets the placeholder text color for input fields that use the placeholder attribute.
+// Sets the placeholder text color for input fields that use the
+// placeholder attribute.
 // @param $color
 //   @type color
 // @param $options
 //   @type map
 //   @default $forms map
 @mixin placeholder($color: default, $options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
+  
   @if ($color != default) {
     $o: map-merge($o, ('color-placeholder': $color));
   }
@@ -79,7 +83,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-form-group-base($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   margin-bottom: map-get( $o, 'vertical-spacing' );
   
@@ -94,7 +98,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-form-group-inline($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   @include clearfix();
   margin-right: -(map-get( $forms, 'vertical-align' ));
@@ -111,7 +115,7 @@ $forms: (
 //   @type map
 //   @default $forms map
 @mixin make-input-inline($options: ()) {
-  $o: map-merge( $forms, $options);
+  $o: map-merge($forms, $options);
   
   float: left;
   width: auto;
@@ -176,7 +180,7 @@ form {
   }
 }
 
-@include media-min('tablet') {
+@include media-min('medium') {
   form .col {
     margin-bottom: 0;
   }
@@ -192,7 +196,7 @@ form {
 .form-group {
   @include make-form-group-base();
 }
-.form-group.inline-group {
+.form-group.inline {
   @include make-form-group-inline();
   
   > * {
@@ -215,14 +219,15 @@ form {
  */
 .form-header {
   @include make-form-group-base();
+  color: $color-light;
   
   h1, h2, h3, h4, h5, h6 {
-    margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 3) 0;
+    margin: (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     font-size: (map-get($forms, 'font-size') * 1.4);
     line-height: 1.2em;
   }
   p {
-    margin: 0;
+    margin: (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     color: $color-light;
   }
 }
@@ -234,7 +239,7 @@ form {
   @include make-form-group-base();
   @include clearfix();
   
-  .btn,
+  .button,
   .input-align {
     float: left;
     margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
@@ -251,14 +256,14 @@ form {
   }
   .input-align {
     margin-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input', 'border' );
+    border-top: map-fetch( $forms, 'input' 'border' );
     border-color: transparent;
   }
   
   &.form-action-center {
     text-align: center;
     
-    .btn,
+    .button,
     .input-align {
       display: inline-block;
       float: none;
@@ -273,7 +278,7 @@ form {
 .input-group {
   @include make-form-group-base();
 }
-.input-group.inline-group {
+.input-group.inline {
   @include make-form-group-inline();
   
   > * {
@@ -300,10 +305,10 @@ label {
     margin-bottom: 0;
   }
   
-  &.label-sub {
+  &.sub {
     font-weight: normal;
   }
-  &.label-hide {
+  &.hide {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -313,24 +318,24 @@ label {
     clip: rect(0,0,0,0);
     border: 0;
   }
-  &.label-block {
+  &.block {
     display: block;
     padding-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input', 'border' );
+    border-top: map-fetch( $forms, 'input' 'border' );
     border-color: transparent;
   }
-  &.label-inline {
+  &.inline {
     display: inline-block;
     padding-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input', 'border' );
+    border-top: map-fetch( $forms, 'input' 'border' );
     border-color: transparent;
   }
 }
-.inline-group {
-  label.label-block,
-  label.label-inline {
+.inline {
+  label.block,
+  label.inline {
     padding-bottom: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input', 'border' );
+    border-top: map-fetch( $forms, 'input' 'border' );
     border-color: transparent;
   }
 }
@@ -356,14 +361,14 @@ label {
  * Text Inputs
  */
 .input {
-  padding: map-fetch( $forms, 'input', 'padding' );
+  padding: map-fetch( $forms, 'input' 'padding' );
   font-family: map-get( $forms, 'font-family' );
   font-size: map-get( $forms, 'font-size' );
   line-height: map-get( $forms, 'line-height' );
   color: map-get( $forms, 'color' );
-  background-color: map-fetch( $forms, 'input', 'background' );
-  border: map-fetch( $forms, 'input', 'border' );
-  box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
+  background-color: map-fetch( $forms, 'input' 'background' );
+  border: map-fetch( $forms, 'input' 'border' );
+  box-shadow: map-fetch( $forms, 'input' 'box-shadow' );
   @include box-sizing(border-box);
   @include border-radius(map-get( $forms, 'border-radius' ));
   @include placeholder();
@@ -371,17 +376,16 @@ label {
   
   &:focus {
     outline: none;
-    background-color: map-fetch( $forms, 'input', 'focus', 'background' );
-    border: map-fetch( $forms, 'input', 'focus', 'border' );
-    box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
+    background-color: map-fetch( $forms, 'input' 'focus' 'background' );
+    border: map-fetch( $forms, 'input' 'focus' 'border' );
+    box-shadow: map-fetch( $forms, 'input' 'focus' 'box-shadow' );
   }
   
+  &.disabled,
   &[readonly],
   &[disabled] {
+    opacity: 0.5;
     background: rgba($black, 0.05);
-  }
-  &[disabled] {
-    cursor: not-allowed;
   }
 }
 
@@ -396,15 +400,14 @@ label {
   font-weight: normal;
   
   &.disabled {
-    cursor: not-allowed;
     opacity: 0.5;
   }
 }
 .choice {
-  padding: map-fetch( $forms, 'choice', 'padding' );
-  background: map-fetch( $forms, 'choice', 'background' );
-  border: map-fetch( $forms, 'choice', 'border' );
-  box-shadow: map-fetch( $forms, 'choice', 'box-shadow' );
+  padding: map-fetch( $forms, 'choice' 'padding' );
+  background: map-fetch( $forms, 'choice' 'background' );
+  border: map-fetch( $forms, 'choice' 'border' );
+  box-shadow: map-fetch( $forms, 'choice' 'box-shadow' );
   @include border-radius(map-get( $forms, 'border-radius' ));
   
   input[type="checkbox"],
@@ -420,10 +423,6 @@ input[type="radio"] {
   position: relative;
   top: -1px;
   margin: 0 5px 0 0;
-  
-  &[disabled] {
-    cursor: not-allowed;
-  }
 }
 
 /**
@@ -443,7 +442,7 @@ input[type="search"] {
 input[type="color"].input {
   width: 3.125rem;
   height: 3.125rem;
-  padding: (map-fetch( $forms, 'input', 'padding' ) / 3);
+  padding: (map-fetch( $forms, 'input' 'padding' ) / 3);
 }
 
 /**
@@ -468,7 +467,7 @@ select.input {
 select[multiple].input,
 select[size].input {
   height: auto;
-  padding: map-fetch( $forms, 'input', 'padding' );
+  padding: map-fetch( $forms, 'input' 'padding' );
   background-image: none;
 }
 
@@ -514,17 +513,17 @@ label + .note {
  * Inline Inputs
  */
 label.inline,
-.btn.inline,
+.button.inline,
 .input.inline,
 .checkbox.inline,
 .radio.inline,
 .choice.inline,
-.inline-group label,
-.inline-group .btn,
-.inline-group .input,
-.inline-group .checkbox,
-.inline-group .radio,
-.inline-group .choice {
+.inline label,
+.inline .button,
+.inline .input,
+.inline .checkbox,
+.inline .radio,
+.inline .choice {
   @include make-input-inline();
 }
 
@@ -541,7 +540,7 @@ fieldset[disabled] {
   .checkbox,
   .radio,
   .choice {
-    cursor: not-allowed;
+    opacity: 0.5;
   }
   .input {
     background: rgba($black, 0.05);

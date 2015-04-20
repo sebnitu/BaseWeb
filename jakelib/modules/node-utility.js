@@ -122,7 +122,7 @@ module.exports = {
    */
   getjson : function(files, callback) {
     // When no files are passed, these are parsed by default
-    var defaultFiles = [ 'package.json' ];
+    var defaultFiles = 'package.json';
     var json;
     
     // Let's us pass a file or callback first
@@ -182,13 +182,13 @@ module.exports = {
    */
   getjsonsync : function(files) {
     // When no files are passed, these are parsed by default
-    var defaultFiles = [ 'package.json' ];
+    var defaultFiles = 'package.json';
     
   	// Let's us pass a file or callback first
     if (typeof files === 'undefined') {
       files = defaultFiles;
     }
-    
+        
     var json;
   
     // If `files` is a string, just parse it and send it back

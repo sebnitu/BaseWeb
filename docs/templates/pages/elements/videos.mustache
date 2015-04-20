@@ -1,0 +1,120 @@
+<h1>Videos</h1>
+<p>Videos in HTML can be embedded into a document in a few different ways. If you're using YouTube or Vimeo, they provide an <code>&lt;iframe&gt;</code> for embedding videos. Flash based video implementations use the <code>&lt;object&gt;</code> and <code>&lt;embed&gt;</code> elements. And then there is the native HTML5 <code>&lt;video&gt;</code> element.</p>
+
+<p>Regardless of the method you use embedding a video, chances are you want that video to be responsive (or fluid). For those cases, you have the <code>.video-wrapper</code> element:</p>
+
+<pre class="language-markup"><code>&lt;div class=&quot;video-wrapper&quot;&gt;
+  &lt;iframe src=&quot;...&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+
+<div class="demo">
+  <div class="video-wrapper">
+    <iframe src="https://player.vimeo.com/video/90881247" width="500" height="281" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<p>You also have the <code>.video-item</code> class to specifically declare a video.</p>
+
+<pre class="language-markup"><code>&lt;div class=&quot;video-wrapper&quot;&gt;
+  &lt;iframe class=&quot;video-item&quot; src=&quot;...&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+
+<h2>Video Ratios</h2>
+
+<p>The default video ratio can be set using the <code>$videos('ratio')</code> variable (56.25% by default). Alternatively, you can also specifically set a video's ratio by applying the ratio classes to the video wrapper element.</p>
+
+<pre class="language-markup"><code>&lt;!-- Sets video ratio to 16x9 (56.25% height) --&gt;
+&lt;div class=&quot;video-wrapper ratio-16x9&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- Sets video ratio to 4x3 (75% height) --&gt;
+&lt;div class=&quot;video-wrapper ratio-4x3&quot;&gt;...&lt;/div&gt;</code></pre>
+
+<div class="notice info">
+  <p>For more information on the technique BaseWeb uses to create fluid videos, checkout <a href="https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php">this tutorial over at CSS-Tricks</a>.</p>
+</div>
+
+<section class="subsection subsection-variables has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Video Variables</h1>
+  <p class="text-lead">Video variables are encompassed within the <code>$videos</code> map and are used in video mixins to set default values.</p>
+  <ul class="docs-list-compact">
+    <li>
+      <code>$videos('classes')</code>
+      <code class="right value">true</code>
+      <span class="block light">Whether or not we should output video classes. Set to <code>false</code> if you want to use the mixins semantically and/or reduce CSS output.</span>
+    </li>
+    <li>
+      <code>$videos('margin')</code>
+      <code class="right value">2em 0</code>
+    </li>
+    <li>
+      <code>$videos('ratio')</code>
+      <code class="right value">56.25%</code>
+    </li>
+
+  </ul>
+</div>
+</section>
+
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Video Function</h1>
+</div>
+<ul class="docs-list">
+  
+  <li>
+    <h2>aspect-ratio</h2>
+    <p>Returns the aspect ratio in the form of a percentage.</p>
+    <pre class="language-scss"><code>@function aspect-ratio( $width, $height )
+// @param $width
+//   @type width aspect ratio (number)
+// @param $height
+//   @type height aspect ratio (number)
+// @return height percentage of aspect ratio</code></pre>
+  </li>
+  
+</ul>
+</section>
+
+<section class="subsection subsection-mixins has-inner-subsection">
+<div class="inner-subsection">
+  <h1>Video Mixins</h1>
+</div>
+<ul class="docs-list">
+  
+  <li>
+    <h2>make-video-fluid</h2>
+    <p>Adds styles for creating fluid videos. Should be applied to a wrapping element of a video.</p>
+    <pre class="language-scss"><code>@mixin make-video-fluid( $options: () )
+// @param $options
+//   @type map
+//   @default $video map</code></pre>
+  </li>
+  
+  <li>
+    <h2>build-video-ratio</h2>
+    <p>Creates a ratio class using an aspect width and height. The class that's created uses the passed in ratio <code>.ratio-AxB</code> where <code>A</code> is the passed in width and <code>B</code> is the passed in height.</p>
+    <pre class="language-scss"><code>@mixin build-video-ratio( $width, $height, $class: true )
+// @param $width
+//   @type width aspect ratio (number)
+// @param $height
+//   @type height aspect ratio (number)</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>// SCSS
+.video-wrapper {
+  @include build-video-ratio(16, 9);
+  @include build-video-ratio(4, 3);
+}
+
+// CSS Output
+.video-wrapper .ratio-16x9 {
+  padding-bottom: 56.25%;
+}
+.video-wrapper .ratio-4x3 {
+  padding-bottom: 75%;
+}
+    </code></pre>
+  </li>
+  
+</ul>
+</section>

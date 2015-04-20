@@ -117,13 +117,23 @@ $filename: 'scss/custom/_tpl-examples.scss';
 .display-widget {
   right: 0;
 }
-.widget .btn-light-on-black {
-  @include make-btn-color((
+.widget .button-light-on-black {
+  @include add-button-color((
     'color' : rgba($white, 0.5),
-    'color-hover' : rgba($white, 1),
     'background' : transparent,
-    'border' : 1px solid rgba($white, 0.1),
-    'border-hover' : 1px solid rgba($white, 0.25),
+    'border-color' : rgba($white, 0.1),
+    'box-shadow' : none,
+    
+    'hover' : (
+      'color' : rgba($white, 1),
+      'border-color' : rgba($white, 0.25),
+      'box-shadow' : none,
+    ),
+    
+    'active' : (
+      'border-color' : rgba($white, 0.5),
+      'box-shadow' : none,
+    ),
   ));
   width: 100px;
   padding: 10px;
@@ -198,11 +208,14 @@ $filename: 'scss/custom/_tpl-examples.scss';
     border: 3px solid rgba($black, 0.1);
     @include border-radius();
   }
-  form .form-header,
+  form .form-header {
+    margin: 0;
+    padding: 0.5em 1.5em;
+  }
   form .form-group,
   form .form-action {
     margin: 0;
-    padding: 20px;
+    padding: 1.5em;
   }
   form .form-group,
   form .form-action {
@@ -227,13 +240,13 @@ $filename: 'scss/custom/_tpl-examples.scss';
     @include border-radius();
   }
   form .form-group {
-    padding: 0 20px;
+    padding: 0 1.5em;
   }
   form .form-header {
     margin-top: -1px;
     margin-left: -1px;
     margin-right: -1px;
-    padding: 20px;
+    padding: 0.5em 1.5em;
     text-shadow: 0 1px 1px rgba($black, 0.1);
     background: $blue;
     border-width: 1px 1px 0 1px;
@@ -264,7 +277,7 @@ $filename: 'scss/custom/_tpl-examples.scss';
 .example-form-shirt-order .example-output-wrapper {
   
   form .form-group {
-    padding: 20px;
+    padding: 1.5em;
     background: rgba($black, 0.05);
     box-shadow: 0 1px 1px rgba($white, 0.5), inset 0 1px 2px rgba($black, 0.05);
     @include border-radius();

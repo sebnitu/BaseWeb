@@ -2,72 +2,128 @@
 $filename: 'scss/elements/_buttons.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Button Variables
+// @Buttons Map
 ////////////////////////////////////////////////////////////////////////////////
 
-// Button Map
-// Define all the settings for button mixins and classes.
 $buttons: (
-  'modifier-classes' : true,
-  'padding-small' : 0.25em 0.75em,
+  'classes' : true,
+  
   'padding' : 0.75em 1.5em,
-  'padding-large' : 1.25em 2em,
+  'padding-small' : 0.5em 1.25em,
+  'padding-large' : null,
+  
+  'font-family' : inherit,
   'font-size' : 1em,
+  'font-size-small' : 0.9em,
+  'font-size-large' : 1.4em,
   'line-height' : 1.5em,
   'color' : $color-dark,
-  'color-hover' : default,
+  'font-weight' : inherit,
   'text-shadow' : none,
-  'background' : rgba($black, 0.05),
-  'background-hover' : rgba($black, 0.1),
+  
+  'background' : $white,
   'background-gradient' : false,
   'background-deg' : 5%,
   'background-clip' : border-box,
-  'border' : 1px solid rgba($black, 0.15),
-  'border-hover' : 1px solid rgba($black, 0.25),
+  'box-shadow' : inset 0 0 0 rgba($black, 0),
+  
+  'border-width' : 1px,
+  'border-style' : solid,
+  'border-color' : rgba($black, 0.15),
   'border-radius' : $border-radius,
+  
+  'transition-property' : (color, background-color, box-shadow, border-color),
+  'transition-duration' : 0.75s,
+  'transition-timing-function' : linear,
+  
+  'hover' : (
+    'color'        : default,
+    'background'   : darken,
+    'box-shadow'   : inset 0 1px 3px rgba($black, 0.1),
+    'border-color' : rgba($black, 0.25),
+    'transition-duration' : 0.1s,
+  ),
+  
+  'active' : (
+    'color'        : default,
+    'background'   : darken,
+    'box-shadow'   : inset 0 1px 3px rgba($black, 0.2),
+    'border-color' : rgba($black, 0.25),
+    'transition-duration' : 0,
+  ),
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Button Base
-// Creates the base styles for a button modifer mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder.
+// Make Button
+// Creates the base styles for a button modifer mixin or class. Usually applied
+// directly through a base list class, mixin or an extend placeholder.
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin make-btn-base($options: ()) {
-  $o: map-merge( $buttons, $options);
+@mixin make-button($options: ()) {
+  $o: map-merge($buttons, $options);
+  
+  cursor: pointer;
   display: inline-block;
+  outline: none;
   margin: 0;
   padding: map-get($o, 'padding');
-  font-family: inherit;
+  
+  font-family: map-get($o, 'font-family');
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
-  font-weight: inherit;
+  font-weight: map-get($o, 'font-weight');
+  color: map-get($o, 'color');
   text-align: center;
   white-space: nowrap;
   vertical-align: top;
-  border: map-get($o, 'border');
-  box-shadow: inset 0 0 0 rgba($black, 0);
+  
+  background: none;
+  box-shadow: map-get($o, 'box-shadow');
+  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
   @include border-radius(map-get($o, 'border-radius'));
-  @include transition(all 1s);
-  &:hover {
-    cursor: pointer;
-    box-shadow: inset 0 1px 2px rgba($black, 0.1);
-    @include transition(all 0.25s);
+  @include transition-property(map-get($o, 'transition-property'));
+  @include transition-duration(map-get($o, 'transition-duration'));
+  @include transition-timing-function(map-get($o, 'transition-timing-function'));
+  
+  &:hover, &:focus {
+    color: map-get($o, 'color');
+    background: none;
+    box-shadow: map-fetch($o, 'hover' 'box-shadow');
+    border-color: map-fetch($o, 'hover' 'border-color');
+    @include transition-property(map-get($o, 'transition-property'));
+    @include transition-duration(map-fetch($o, 'hover' 'transition-duration'));
+    @include transition-timing-function(map-get($o, 'transition-timing-function'));
   }
+  
+  &:active {
+    color: map-get($o, 'color');
+    background: none;
+    box-shadow: map-fetch($o, 'active' 'box-shadow');
+    border-color: map-fetch($o, 'active' 'border-color');
+    @include transition-property(map-get($o, 'transition-property'));
+    @include transition-duration(map-fetch($o, 'active' 'transition-duration'));
+    @include transition-timing-function(map-get($o, 'transition-timing-function'));
+  }
+  
 }
 
-// Make Button Color
-// Handles all the color variables of a button such as color, background, border and hover state.
+// Add Button Color
+// Handles all the color variations of a button such as color, text-shadow,
+// background and border color.
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin make-btn-color($options: ()) {
-  $o: map-merge( $buttons, $options);
+@mixin add-button-color($options: ()) {
+  $o: map-extend($buttons, $options, true);
+  
   color: map-get($o, 'color');
   text-shadow: map-get($o, 'text-shadow');
+  
   @if (map-get($o, 'background-gradient') == true) {
     @include linear-gradient(top, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'background-deg')));
     background-repeat: repeat-x;
@@ -76,69 +132,105 @@ $buttons: (
   } @else {
     background-color: map-get($o, 'background');
   }
+  
   background-clip: map-get($o, 'background-clip');
-  border: map-get($o, 'border');
-  &:hover {
-    @if (map-get($o, 'color-hover') == default) {
+  border: map-get($o, 'border-width') map-get($o, 'border-style') map-get($o, 'border-color');
+  
+  &:hover, &:focus {
+    @if (map-fetch($o, 'hover' 'color') == default) {
       color: map-get($o, 'color');
     } @else {
-      color: map-get($o, 'color-hover');
+      color: map-fetch($o, 'hover' 'color');
     }
     @if (map-get($o, 'background-gradient') == true) {
       background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
       background-position: 0 -40px;
     } @else {
-      @if (map-get($o, 'background-hover') == darken) {
+      @if (map-fetch($o, 'hover' 'background') == darken) {
         background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
-      } @else if (map-get($o, 'background-hover') == lighten) {
+      } @else if (map-fetch($o, 'hover' 'background') == lighten) {
         background-color: lighten(map-get($o, 'background'), map-get($o, 'background-deg'));
       } @else {
-        background-color: map-get($o, 'background-hover');
+        background-color: map-fetch($o, 'hover' 'background');
       }
     }
-    border: map-get($o, 'border-hover');
+    border-color: map-fetch($o, 'hover' 'border-color');
   }
+  
+  &:active {
+    @if (map-fetch($o, 'active' 'color') == default) {
+      color: map-get($o, 'color');
+    } @else {
+      color: map-fetch($o, 'active' 'color');
+    }
+    @if (map-get($o, 'background-gradient') == true) {
+      background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      background-position: 0 -40px;
+    } @else {
+      @if (map-fetch($o, 'active' 'background') == darken) {
+        background-color: darken(darken(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      } @else if (map-fetch($o, 'active' 'background') == lighten) {
+        background-color: lighten(lighten(map-get($o, 'background'), map-get($o, 'background-deg')), map-get($o, 'background-deg'));
+      } @else {
+        background-color: map-fetch($o, 'active' 'background');
+      }
+    }
+    border-color: map-fetch($o, 'active' 'border-color');
+  }
+  
 }
 
 // Add Button Size
-// Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.
+// Handles size variations for buttons. This is done by changing the padding,
+// font-size and line-height based on the parameters passed.
 // @param $size
-//   @type small | Large | unit list (pixel, em, percent)
+//   @type string (small, default, large)
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin add-btn-size($size, $options: ()) {
-  $o: map-merge( $buttons, $options);
-  @if ($size == small) {
+@mixin add-button-size($size, $options: ()) {
+  $o: map-merge($buttons, $options);
+  
+  @if ($size == 'small') {
     padding: map-get($o, 'padding-small');
-  } @else if ($size == default) {
+    font-size: map-get($o, 'font-size-small');
+  } @else if ($size == 'default') {
     padding: map-get($o, 'padding');
-  } @else if ($size == large) {
-    padding: map-get($o, 'padding-large');
-  } @else {
-    padding: $size;
-  }
-  @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
     font-size: map-get($o, 'font-size');
+  } @else if ($size == 'large') {
+    padding: map-get($o, 'padding-large');
+    font-size: map-get($o, 'font-size-large');
+  } @else {
+    @if (map-get($o, 'padding') != map-get($buttons, 'padding')) {
+      padding: map-get($o, 'padding');
+    }
+    @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
+      font-size: map-get($o, 'font-size');
+    }
   }
+  
   @if (map-get($o, 'line-height') != map-get($buttons, 'line-height')) {
     line-height: map-get($o, 'line-height');
   }
+  
 }
 
 // Add Button Block
-// Makes the button block, 100% width with some top and bottom margin. This is typically used for mobile friendly buttons.
+// Makes the button block with 100% width. This is typically used for mobile
+// friendly buttons.
 // @param $options
 //   @type map
 //   @default $buttons map
-@mixin add-btn-block($options: ()) {
-  $o: map-merge( $buttons, $options);
+@mixin add-button-block($options: ()) {
+  $o: map-merge($buttons, $options);
+  
   display: block;
   width: 100%;
+
 }
 
 // Check if we should output modifier classes
-@if (map-get($buttons, 'modifier-classes') == true) {
+@if (map-get($buttons, 'classes') == true) {
 
 /*==============================================================================
   @Buttons - #{$filename}
@@ -147,87 +239,113 @@ $buttons: (
 /**
  * Base Button
  */
-.btn {
-  @include make-btn-base();
+.button {
+  @include make-button();
+  @include add-button-color((
+    'background-deg' : 2%,
+  ));
 }
 
 /**
  * Button Color
  */
-.btn-default {
-  @include make-btn-color();
+.button.default {
+  @include add-button-color((
+    'background' : #efefef,
+    'background-deg' : 2%,
+  ));
 }
-.btn-blue {
-  @include make-btn-color((
+.button.blue {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $blue,
-    'background-hover' : darken,
   ));
 }
-.btn-green {
-  @include make-btn-color((
+.button.green {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $green,
-    'background-hover' : darken,
   ));
 }
-.btn-orange {
-  @include make-btn-color((
+.button.orange {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $orange,
-    'background-hover' : darken,
   ));
 }
-.btn-red {
-  @include make-btn-color((
+.button.red {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $red,
-    'background-hover' : darken,
   ));
 }
-.btn-black {
-  @include make-btn-color((
+.button.black {
+  @include add-button-color((
     'color' : $white,
     'text-shadow' : 0 1px 1px rgba($black, 0.25),
     'background' : $gray,
-    'background-hover' : lighten,
+    'hover' : (
+      'background': lighten
+    ),
+    'active' : (
+      'background': lighten
+    ),
   ));
 }
 
 // Semantic button classes
-.btn-primary {
-  @extend .btn-blue;
+.button.primary,
+.button.active {
+  @extend .button.blue;
 }
-.btn-secondary {
-  @extend .btn-black;
+.button.secondary {
+  @extend .button.black;
 }
-.btn-success {
-  @extend .btn-green;
+.button.success {
+  @extend .button.green;
 }
-.btn-warning {
-  @extend .btn-orange;
+.button.warning {
+  @extend .button.orange;
 }
-.btn-danger {
-  @extend .btn-red;
+.button.danger {
+  @extend .button.red;
 }
 
 /**
- * Button Size
+ * Button Utility Classes
  */
-.btn-small {
-  // @include add-btn-size(small);
-  @include add-btn-size(small, ('font-size': 12px));
+.button.small {
+  @include add-button-size(small);
 }
-.btn-large {
-  // @include add-btn-size(large);
-  @include add-btn-size(large, ('font-size': 18px));
-}
-.btn-block {
-  @include add-btn-block();
+.button.large {
+  @include add-button-size(large);
 }
 
-} // endif
+.button.block {
+  @include add-button-block();
+}
+
+.button.clip-padding {
+  background-clip: padding-box;
+}
+.button.clip-border {
+  background-clip: border-box;
+}
+
+.button.close {
+  @include size(1.5em);
+  padding: 0;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  vertical-align: middle;
+  background: none;
+  border: 0 none;
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+} // endif classes

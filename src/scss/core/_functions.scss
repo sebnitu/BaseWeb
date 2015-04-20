@@ -2,18 +2,105 @@
 // @General Functions
 ////////////////////////////////////////////////////////////////////////////////
 
+// Map Extend
+// jQuery-style extend function for when `map-merge()` is not enough. Use when
+// we need to merge more than two mixins and/or need our merge to be recursive.
+// @param $map
+//   @type first map
+// @param $maps
+//   @type list of maps
+// @param $deep
+//   @type boolean
+//   @desc Whether or not to enable recursive mode.
+// @return merged map value
+@function map-extend($map, $maps.../*, $deep */) {
+  $last: nth($maps, -1);
+  $deep: $last == true;
+  $max: if($deep, length($maps) - 1, length($maps));
+ 
+  // Loop through all maps in $maps...
+  @for $i from 1 through $max {
+    // Store current map
+    $current: nth($maps, $i);
+ 
+    // If not in deep mode, simply merge current map with map
+    @if not $deep {
+      $map: map-merge($map, $current);
+    } @else {
+      // If in deep mode, loop through all tuples in current map
+      @each $key, $value in $current {
+ 
+        // If value is a nested map and same key from map is a nested map as well
+        @if type-of($value) == "map" and type-of(map-get($map, $key)) == "map" {
+          // Recursive extend
+          $value: map-extend(map-get($map, $key), $value, true);
+        }
+ 
+        // Merge current tuple with map
+        $map: map-merge($map, ($key: $value));
+      }
+    }
+  }
+ 
+  @return $map;
+}
+
 // Map Fetch
-// An easy way to fetch a deep value in a multi-level map. Works much like map-get() except that you pass multiple keys as the second variable argument to go down multiple levels in the nested map.
+// An easy way to fetch a deep value in a multi-level map. Works much like
+// map-get() except that you pass multiple keys as the second variable argument
+// to go down multiple levels in the nested map.
 // @param $map
 //   @type map
-// @param $keys...
-//   @type map keys
-@function map-fetch($map, $keys...) {
-  $value: $map;
+// @param $keys
+//   @type list
+// @return map value
+@function map-fetch($map, $keys) {
   @each $key in $keys {
-    $value: map-get($value, $key);
+    $map: map-get($map, $key);
   }
-  @return $value;
+  @return $map;
+}
+
+// Map Set
+// An easy to to set a deep value in a multi-level map. This by passing in a
+// map, value and keys to the original map value you want changed.
+// @param $map
+//   @type map
+// @param $value
+//   @type value
+// @param $keys
+//   @type list
+// @return updated map value
+@function map-set($map, $value, $keys) {
+  $maps: ($map,);
+  $result: null;
+
+  @if type-of(nth($keys, -1)) == "map" {
+    @warn "The last key you specified is a map; it will be overrided with `#{$value}`.";
+  }
+
+  @if length($keys) == 1 {
+    @return map-merge($map, ($keys: $value));
+  }
+
+  @for $i from 1 through length($keys) - 1 {
+    $current-key: nth($keys, $i);
+    $current-map: nth($maps, -1);
+    $current-get: map-get($current-map, $current-key);
+    @if $current-get == null {
+      @error "Key `#{$key}` doesn't exist at current level in map.";
+    }
+    $maps: append($maps, $current-get);
+  }
+
+  @for $i from length($maps) through 1 {
+    $current-map: nth($maps, $i);
+    $current-key: nth($keys, $i);
+    $current-val: if($i == length($maps), $value, $result);
+    $result: map-merge($current-map, ($current-key: $current-val));
+  }
+  
+  @return $result;
 }
 
 // Strip Units

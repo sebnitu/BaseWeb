@@ -1,0 +1,320 @@
+// Set file variable
+$filename: 'scss/blocks/_notice.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Notices Map
+////////////////////////////////////////////////////////////////////////////////
+
+$notices: (
+  'classes' : true,
+  
+  'class-inverted' : 'inverted',
+  'class-close' : 'close',
+  
+  'margin' : 2em 0,
+  'padding' : 0.25em 1.25em,
+  'padding-small' : null,
+  'padding-large' : null,
+  'padding-inline' : 0 0.25em,
+  
+  'font-size' : 1em,
+  'font-size-small' : 0.9em,
+  'font-size-large' : 1.1em,
+  'line-height' : 1.5em,
+  
+  'pull-breakpoint' : 'medium',
+  'pull-width' : 45%,
+  'pull-margin-left' : 0.5em 5% 1em 0,
+  'pull-margin-right' : 0.5em 0 1em 5%,
+  
+  'color' : $color-dark,
+  'text-shadow' : 0 1px 0 rgba($white, 0.25),
+  'background' : rgba($black, 0.05),
+  'box-shadow' : 0 1px 3px rgba($black, 0.05),
+  'border' : 1px solid rgba($black, 0.15),
+  'border-radius' : $border-radius,
+  
+  'inverted' : (
+    'color' : $white,
+    'text-shadow' : 0 1px 0 rgba($black, 0.25),
+    'background' : rgba($color-dark, 0.9),
+    'border' : 1px solid rgba($black, 0.15),
+    'box-shadow' : 0 1px 3px rgba($black, 0.05),
+  ),
+  
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Notice Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Notice
+// Creates the base styles for a notice block.
+// @param $options
+//   @type map
+//   @default $notices map
+@mixin make-notice($options: ()) {
+  $o: map-merge($notices, $options);
+  
+  margin: map-get($o, 'margin');
+  padding: map-get($o, 'padding');
+  font-size: map-get($o, 'font-size');
+  line-height: map-get($o, 'line-height');
+  @include border-radius(map-get($o, 'border-radius'));
+  
+  .#{map-get($o, 'class-close')} {
+    float: right;
+    margin: 0.45em -0.25em 0 1em;
+    color: inherit;
+    
+    + * {
+      padding-right: 2.5em;
+    }
+  }
+}
+
+// Add Notice Color
+// Adds styles for a notice color with optional output type.
+// @param $options
+//   @type map
+//   @default $notices map
+// @param $output
+//   @type string (all, difference)
+//   @default difference
+//   @desc Whether to output all styles, or just the ones that are different
+//     from the `$notices` map.
+@mixin add-notice-color($options: (), $output: 'difference') {
+  $o: map-extend($notices, $options, true);
+  
+  $set: color, text-shadow, background, border, box-shadow;
+  
+  @if ($output == 'all') {
+  
+    color: map-get($o, 'color');
+    text-shadow: map-get($o, 'text-shadow');
+    background: map-get($o, 'background');
+    border: map-get($o, 'border');
+    box-shadow: map-get($o, 'box-shadow');
+    
+    @if (map-get($o, 'class-inverted')) {
+      &.#{map-get($o, 'class-inverted')} {
+        color: map-fetch($o, 'inverted' 'color');
+        text-shadow: map-fetch($o, 'inverted' 'text-shadow');
+        background: map-fetch($o, 'inverted' 'background');
+        border: map-fetch($o, 'inverted' 'border');
+        box-shadow: map-fetch($o, 'inverted' 'box-shadow');
+      }
+    }
+  
+  } @else if ($output == 'difference') {
+    
+    @each $property in $set {
+      @if (map-get($o, $property) != map-get($notices, $property)) {
+        #{$property}: map-get($o, $property);
+      }
+    }
+    
+    @if (map-get($o, 'class-inverted')) {
+      &.#{map-get($o, 'class-inverted')} {
+        @each $property in $set {
+          @if (map-fetch($o, 'inverted' $property) != map-fetch($notices, 'inverted' $property)) {
+            #{$property}: map-fetch($o, 'inverted' $property);
+          }
+        }
+      }
+    }
+    
+  } @else {
+    @warn 'The output type "#{$output}" is not supported in `add-notice-color()`';
+  }
+}
+
+// Add Notice Size
+// Adds styles for notice size based on keyword or options map difference.
+// @param $size
+//   @type string (small, default, large)
+// @param $options
+//   @type map
+//   @default $notices map
+@mixin add-notice-size($size, $options: ()) {
+  $o: map-merge($notices, $options);
+  
+  @if ($size == 'small') {
+    padding: map-get($o, 'padding-small');
+    font-size: map-get($o, 'font-size-small');
+  } @else if ($size == 'default') {
+    padding: map-get($o, 'padding');
+    font-size: map-get($o, 'font-size');
+  } @else if ($size == 'large') {
+    padding: map-get($o, 'padding-large');
+    font-size: map-get($o, 'font-size-large');
+  } @else {
+    @if (map-get($o, 'padding') != map-get($buttons, 'padding')) {
+      padding: map-get($o, 'padding');
+    }
+    @if (map-get($o, 'font-size') != map-get($buttons, 'font-size')) {
+      font-size: map-get($o, 'font-size');
+    }
+  }
+  
+  @if (map-get($o, 'line-height') != map-get($buttons, 'line-height')) {
+    line-height: map-get($o, 'line-height');
+  }
+  
+}
+
+// Add Notice Inline
+// Adds styles for an inline or inline-block notice.
+// @param $display
+//   @type display property (inline, inline-block)
+//   @default inline
+// @param $options
+//   @type map
+//   @default $notices map
+@mixin add-notice-inline($display: inline, $options: ()) {
+  $o: map-merge($notices, $options);
+  
+  display: $display;
+  margin: 0;
+  padding: map-get($o, 'padding-inline');
+  box-shadow: none;
+  
+  @if (map-get($o, 'class-inverted')) {
+    &.#{map-get($o, 'class-inverted')} {
+      border: 0 none;
+    }
+  }
+}
+
+// Add Notice Pull
+// Adds styles for floating a notice to the left or right.
+// @param $direction
+//   @type string (left, right)
+// @param $options
+//   @type map
+//   @default $notices map
+@mixin add-notice-pull($direction, $options: ()) {
+  $o: map-merge($notices, $options);
+  
+  // Private mixin to store our pull styles.
+  @mixin add-notice-pull-styles() {
+    width: map-get($o, 'pull-width');
+    @if ($direction == 'left') {
+      float: left;
+      margin: map-get($o, 'pull-margin-left');
+    } @else if ($direction == 'right') {
+      float: right;
+      margin: map-get($o, 'pull-margin-right');
+    }
+  }
+  
+  // Wrap our pull styles in a breakpoint if one is provided.
+  @if (map-get($o, 'pull-breakpoint')) {
+    @include media-min(map-get($o, 'pull-breakpoint')) {
+      @include add-notice-pull-styles();
+    }
+  } @else {
+    @include add-notice-pull-styles();
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($notices, 'classes') == true) {
+  
+/*==============================================================================
+  @Notice - #{$filename}
+==============================================================================*/
+
+.notice {
+  @include make-notice();
+  @include add-notice-color($output: 'all');
+}
+
+/**
+ * Notice Color
+ */
+.notice.blue {
+  @include add-notice-color((
+    'background' : rgba($blue, 0.1),
+    'inverted' : (
+      'background' : rgba($blue, 0.9)
+    )
+  ));
+}
+.notice.green {
+  @include add-notice-color((
+    'background' : rgba($green, 0.1),
+    'inverted' : (
+      'background' : rgba($green, 0.9)
+    )
+  ));
+}
+.notice.yellow {
+  @include add-notice-color((
+    'background' : rgba($yellow, 0.1),
+    'inverted' : (
+      'background' : rgba($yellow-dark, 0.9)
+    )
+  ));
+}
+.notice.orange {
+  @include add-notice-color((
+    'background' : rgba($orange, 0.1),
+    'inverted' : (
+      'background' : rgba($orange, 0.9)
+    )
+  ));
+}
+.notice.red {
+  @include add-notice-color((
+    'background' : rgba($red, 0.1),
+    'inverted' : (
+      'background' : rgba($red, 0.9)
+    )
+  ));
+}
+.notice.violet {
+  @include add-notice-color((
+    'background' : rgba($violet, 0.1),
+    'inverted' : (
+      'background' : rgba($violet, 0.9)
+    )
+  ));
+}
+
+// Semantic button classes
+.notice.success {
+  @extend .notice.green;
+}
+.notice.info {
+  @extend .notice.blue;
+}
+.notice.warning {
+  @extend .notice.yellow;
+}
+.notice.danger {
+  @extend .notice.red;
+}
+
+/**
+ * Notice Size, Display and Pulls
+ */
+.notice.small {
+  @include add-notice-size('small');
+}
+.notice.large {
+  @include add-notice-size('large');
+}
+
+.notice.inline {
+  @include add-notice-inline();
+}
+
+.notice.pull-left {
+  @include add-notice-pull('left');
+}
+.notice.pull-right {
+  @include add-notice-pull('right');
+}
+
+} // endif classes
