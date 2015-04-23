@@ -1054,6 +1054,24 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     color: #303030;
     background-color: whitesmoke;
     border-color: rgba(0, 0, 0, 0.25); }
+  .button.inverted {
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    background-color: #303030;
+    background-clip: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.15); }
+    .button.inverted:hover, .button.inverted:focus {
+      color: #ffffff;
+      background-color: #353535;
+      border-color: rgba(255, 255, 255, 0.25); }
+    .button.inverted:active {
+      color: #ffffff;
+      background-color: #3a3a3a;
+      border-color: rgba(255, 255, 255, 0.25); }
+  .button.clip-border {
+    background-clip: border-box; }
+  .button.clip-padding {
+    background-clip: padding-box; }
 
 /**
  * Button Color
@@ -1676,16 +1694,44 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 /*==============================================================================
   @Notice - scss/blocks/_dropdowns.scss
 ==============================================================================*/
+/**
+ * Dropdown Trigger
+ */
+.dropdown-trigger {
+  position: relative;
+  display: inline-block; }
+  .dropdown-trigger .dropdown {
+    position: absolute;
+    z-index: 100;
+    margin: -1px 0 0 0;
+    left: 0;
+    top: 75%;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.25s ease-in-out 0.25s;
+    transition: all 0.25s ease-in-out 0.25s; }
+  .dropdown-trigger:hover .dropdown {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out; }
+
+/**
+ * General Dropdown Styles
+ */
 .dropdown {
+  position: relative;
+  display: block;
   float: left;
-  min-width: 150px;
-  max-width: 250px;
+  width: 250px;
   margin: 1em 1em 1em 0;
   padding: 0;
   font-size: 0.875em;
   line-height: 1.25em;
   background: #ffffff;
   background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border-radius: 3px; }
   .dropdown .dropdown-content, .dropdown .dropdown-menu {
@@ -1732,19 +1778,49 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     .dropdown a:hover {
       background: rgba(0, 0, 0, 0.05); }
 
+/**
+ * Inverted Dropdown Styles
+ */
 .dropdown.inverted {
   color: #ffffff;
   background: #303030; }
   .dropdown.inverted .dropdown-content, .dropdown.inverted .dropdown-menu {
     border-color: rgba(255, 255, 255, 0.1); }
-  .dropdown.inverted .dropdown-content .button {
-    background-clip: padding-box; }
   .dropdown.inverted .dropdown-menu li {
     border-color: rgba(255, 255, 255, 0.1); }
   .dropdown.inverted a {
     color: #ffffff; }
     .dropdown.inverted a:hover {
       background: rgba(255, 255, 255, 0.05); }
+
+/**
+ * Arrow
+ */
+.dropdown.arrow:before, .dropdown.arrow:after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 0 none;
+  border-style: solid;
+  border-color: transparent;
+  position: absolute;
+  left: 1.5em;
+  bottom: 100%; }
+.dropdown.arrow:before {
+  border-width: 0 7px 7px 7px;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 1px; }
+.dropdown.arrow:after {
+  border-width: 0 7px 7px 7px;
+  border-bottom-color: #ffffff; }
+
+.dropdown.inverted.arrow:before {
+  border-width: 0 7px 7px 7px;
+  border-bottom-color: #303030; }
+.dropdown.inverted.arrow:after {
+  border-width: 0 7px 7px 7px;
+  border-bottom-color: #303030; }
 
 /*==============================================================================
   @Grid System - scss/custom/_custom.scss

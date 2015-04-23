@@ -16,17 +16,50 @@ $dropdowns: (
   @Notice - #{$filename}
 ==============================================================================*/
 
+/**
+ * Dropdown Trigger
+ */
+.dropdown-trigger {
+  // Base trigger styles
+  position: relative;
+  display: inline-block;
+  
+  .dropdown {
+    // Position
+    position: absolute;
+    z-index: 100;
+    margin: -1px 0 0 0;
+    left: 0;
+    
+    // Transition
+    top: 75%;
+    opacity: 0;
+    visibility: hidden;
+    @include transition(all 0.25s ease-in-out 0.25s);
+  }
+  &:hover .dropdown {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+    @include transition(all 0.25s ease-in-out);
+  }
+}
+
+/**
+ * General Dropdown Styles
+ */
 .dropdown {
+  position: relative;
+  display: block;
   float: left;
-  min-width: 150px;
-  max-width: 250px;
+  width: 250px;
   margin: 1em 1em 1em 0;
   padding: 0;
   font-size: px-to-em(14px);
   line-height: 1.25em;
   background: $white;
   background-clip: padding-box;
-  // border: 1px solid rgba($black, 0.15);
+  border: 1px solid rgba($black, 0.1);
   box-shadow: 0 2px 6px rgba($black, 0.15);
   @include border-radius();
   
@@ -101,6 +134,9 @@ $dropdowns: (
   }
 }
 
+/**
+ * Inverted Dropdown Styles
+ */
 .dropdown.inverted {
   color: $white;
   background: $color;
@@ -113,7 +149,7 @@ $dropdowns: (
   
   .dropdown-content {
     .button {
-      background-clip: padding-box;
+      // background-clip: padding-box;
     }
   }
   
@@ -129,6 +165,38 @@ $dropdowns: (
     
     &:hover {
       background: rgba($white, 0.05);
+    }
+  }
+}
+
+/**
+ * Arrow
+ */
+.dropdown {
+  &.arrow {
+    &:before,
+    &:after {
+      @include make-triangle-base();
+      position: absolute;
+      left: 1.5em;
+      bottom: 100%;
+    }
+    &:before {
+      @include make-triangle( 7px, rgba($black, 0.25), 'up' );
+      margin-bottom: 1px;
+    }
+    &:after {
+      @include make-triangle( 7px, $white, 'up' );
+    }
+  }
+}
+.dropdown.inverted {
+  &.arrow {
+    &:before {
+      @include make-triangle( 7px, $color, 'up' );
+    }
+    &:after {
+      @include make-triangle( 7px, $color, 'up' );
     }
   }
 }
