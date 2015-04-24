@@ -1,9 +1,9 @@
 ![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
 
-Currently v1.2.0
+Currently v1.2.1
 
 ## About
-BaseWeb is a SCSS front-end development framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
+BaseWeb is a SCSS front-end development library and framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
 
 ### Upcoming Features
 The main features being worked on right now are blocks. The following list of blocks are currently on the production list:

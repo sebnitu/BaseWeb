@@ -221,48 +221,60 @@
 // Transitions Property
 // The transition-property CSS property is used to specify the names of CSS
 // properties to which a transition effect should be applied.
-// @param $transition-property
+// @param $trans
 //   @type property name
 //   @default $transition-property
-@mixin transition-property( $transition-property : $transition-property ) {
-  -webkit-transition-property: $transition-property;
-  transition-property: $transition-property;
+@mixin transition-property( $trans... ) {
+  @if length($trans) == 0 {
+    $trans: $transition-property;
+  }
+  -webkit-transition-property: $trans;
+  transition-property: $trans;
 }
 
 // Transitions Duration
 // The transition-duration CSS property specifies the number of seconds or
 // milliseconds a transition animation should take to complete.
-// @param $transition-duration
+// @param $trans
 //   @type time value (seconds, milliseconds)
 //   @default $transition-duration
-@mixin transition-duration( $transition-duration : $transition-duration ) {
-  -webkit-transition-duration: $transition-duration;
-  transition-duration: $transition-duration;
+@mixin transition-duration( $trans... ) {
+  @if length($trans) == 0 {
+    $trans: $transition-duration;
+  }
+  -webkit-transition-duration: $trans;
+  transition-duration: $trans;
 }
 
 // Transitions Timing Function
 // The CSS transition-timing-function property is used to describe how the
 // intermediate values of the CSS properties being affected by a transition
 // effect are calculated.
-// @param $transition-timing-function
+// @param $trans
 //   @type timing function (linear, ease, ease-in, ease-out, ease-in-out,
 //     step-start, step-end)
 //   @default $transition-timing-function
-@mixin transition-timing-function( $transition-timing-function : $transition-timing-function ) {
-  -webkit-transition-timing-function: $transition-timing-function;
-  transition-timing-function: $transition-timing-function;
+@mixin transition-timing-function( $trans... ) {
+  @if length($trans) == 0 {
+    $trans: $transition-timing-function;
+  }
+  -webkit-transition-timing-function: $trans;
+  transition-timing-function: $trans;
 }
 
 // Transitions Delay
 // The transition-delay CSS property specifies the amount of time to wait
 // between a change being requested to a property that is to be transitioned and
 // the start of the transition effect.
-// @param $transition-delay
+// @param $trans
 //   @type time value (seconds, milliseconds)
 //   @default $transition-delay
-@mixin transition-delay( $transition-delay : $transition-delay ) {
-  -webkit-transition-delay: $transition-delay;
-  transition-delay: $transition-delay;
+@mixin transition-delay( $trans... ) {
+  @if length($trans) == 0 {
+    $trans: $transition-delay;
+  }
+  -webkit-transition-delay: $trans;
+  transition-delay: $trans;
 }
 
 // Keyframes

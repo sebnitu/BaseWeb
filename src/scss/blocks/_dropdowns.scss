@@ -2,7 +2,7 @@
 $filename: 'scss/blocks/_dropdowns.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notices Map
+// @Dropdowns Map
 ////////////////////////////////////////////////////////////////////////////////
 
 $dropdowns: (
@@ -13,37 +13,8 @@ $dropdowns: (
 @if (map-get($dropdowns, 'classes') == true) {
 
 /*==============================================================================
-  @Notice - #{$filename}
+  @Dropdowns - #{$filename}
 ==============================================================================*/
-
-/**
- * Dropdown Trigger
- */
-.dropdown-trigger {
-  // Base trigger styles
-  position: relative;
-  display: inline-block;
-  
-  .dropdown {
-    // Position
-    position: absolute;
-    z-index: 100;
-    margin: -1px 0 0 0;
-    left: 0;
-    
-    // Transition
-    top: 75%;
-    opacity: 0;
-    visibility: hidden;
-    @include transition(all 0.25s ease-in-out 0.25s);
-  }
-  &:hover .dropdown {
-    top: 100%;
-    opacity: 1;
-    visibility: visible;
-    @include transition(all 0.25s ease-in-out);
-  }
-}
 
 /**
  * General Dropdown Styles
@@ -53,7 +24,7 @@ $dropdowns: (
   display: block;
   float: left;
   width: 250px;
-  margin: 1em 1em 1em 0;
+  margin: 0;
   padding: 0;
   font-size: px-to-em(14px);
   line-height: 1.25em;
@@ -65,24 +36,31 @@ $dropdowns: (
   
   .dropdown-content,
   .dropdown-menu {
+    position: relative;
     display: block;
     margin: 0;
-    border-top: 1px solid rgba($black, 0.1);
     border-bottom: 0 none;
-    
-    &:first-child {
-      border-top: 0 none;
-    }
   }
   
   .dropdown-content {
+    margin: 0.5em;
     padding: 1em;
+    @include border-radius();
+    
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -0.5em;
+      left: -0.5em;
+      right: -0.5em;
+      border-top: 1px solid rgba($black, 0.1);
+    }
     
     &:first-child {
-      @include border-radius-top();
-    }
-    &:last-child {
-      @include border-radius-bottom();
+      &:before {
+        content: none;
+      }
     }
     
     > * {
@@ -99,6 +77,11 @@ $dropdowns: (
   .dropdown-menu {
     list-style: none;
     padding: 0.5em;
+    border-top: 1px solid rgba($black, 0.1);
+    
+    &:first-child {
+      border-top: 0 none;
+    }
     
     li {
       margin: 0;
@@ -144,16 +127,18 @@ $dropdowns: (
   
   .dropdown-content,
   .dropdown-menu {
-    border-color: rgba($white, 0.1);
+    
   }
   
   .dropdown-content {
-    .button {
-      // background-clip: padding-box;
+    
+    &:before {
+      border-color: rgba($white, 0.1);
     }
   }
   
   .dropdown-menu {
+    border-color: rgba($white, 0.1);
     
     li {
       border-color: rgba($white, 0.1);
@@ -166,6 +151,181 @@ $dropdowns: (
     &:hover {
       background: rgba($white, 0.05);
     }
+  }
+}
+
+/**
+ * Dropdown Trigger
+ */
+.dropdown-trigger {
+  position: relative;
+  display: inline-block;
+  
+  .dropdown {
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    @include transition( transform, opacity, visibility );
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0.25s);
+  }
+  &:hover .dropdown {
+    z-index: 105;
+    opacity: 1;
+    visibility: visible;
+    @include transition( transform, opacity, visibility);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(none);
+  }
+}
+
+/**
+ * Dropdown Position Classes
+ */
+// Top / Bottom
+.dropdown-trigger.anchor-top-left,
+.dropdown-trigger.anchor-top-right,
+.dropdown-trigger.anchor-top-center {
+  .dropdown {
+    margin: 0 0 -1px 0;
+    top: auto;
+    bottom: 100%;
+    @include transform(translate3d(0, 1em, 0));
+  }
+  &:hover .dropdown {
+    top: auto;
+    bottom: 100%;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+.dropdown-trigger.anchor-bottom-left,
+.dropdown-trigger.anchor-bottom-right,
+.dropdown-trigger.anchor-bottom-center {
+  .dropdown {
+    margin: -1px 0 0 0;
+    top: 100%;
+    bottom: auto;
+    @include transform(translate3d(0, -1em, 0));
+  }
+  &:hover .dropdown {
+    top: 100%;
+    bottom: auto;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+.dropdown-trigger.anchor-top-left,
+.dropdown-trigger.anchor-bottom-left {
+  .dropdown {
+    left: 0;
+    right: auto;
+  }
+  &:hover .dropdown {
+    left: 0;
+    right: auto;
+  }
+}
+.dropdown-trigger.anchor-top-right,
+.dropdown-trigger.anchor-bottom-right {
+  .dropdown {
+    left: auto;
+    right: 0;
+  }
+  &:hover .dropdown {
+    left: auto;
+    right: 0;
+  }
+}
+.dropdown-trigger.anchor-top-center,
+.dropdown-trigger.anchor-bottom-center {
+  .dropdown {
+    margin-left: -125px;
+    left: 50%;
+    right: auto;
+  }
+  &:hover .dropdown {
+    left: 50%;
+    right: auto;
+  }
+}
+
+// Left / Right
+.dropdown-trigger.anchor-left-top,
+.dropdown-trigger.anchor-left-bottom,
+.dropdown-trigger.anchor-left-center {
+  .dropdown {
+    margin: 0 0 0 -1px;
+    left: 100%;
+    right: auto;
+    @include transform(translate3d(-1em, 0, 0));
+  }
+  &:hover .dropdown {
+    left: 100%;
+    right: auto;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+.dropdown-trigger.anchor-right-top,
+.dropdown-trigger.anchor-right-bottom,
+.dropdown-trigger.anchor-right-center {
+  .dropdown {
+    margin: 0 -1px 0 0;
+    left: auto;
+    right: 100%;
+    @include transform(translate3d(1em, 0, 0));
+  }
+  &:hover .dropdown {
+    left: auto;
+    right: 100%;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+.dropdown-trigger.anchor-left-top,
+.dropdown-trigger.anchor-right-top {
+  .dropdown {
+    top: 0;
+    bottom: auto;
+  }
+  &:hover .dropdown {
+    top: 0;
+    bottom: auto;
+  }
+}
+.dropdown-trigger.anchor-left-bottom,
+.dropdown-trigger.anchor-right-bottom {
+  .dropdown {
+    top: auto;
+    bottom: 0;
+  }
+  &:hover .dropdown {
+    top: auto;
+    bottom: 0;
+  }
+}
+.dropdown-trigger.anchor-left-center,
+.dropdown-trigger.anchor-right-center {
+  .dropdown {
+    top: 50%;
+    bottom: auto;
+  }
+  &:hover .dropdown {
+    top: 50%;
+    bottom: auto;
+    @include transform(translate3d(0, -50%, 0));
+  }
+}
+.dropdown-trigger.anchor-left-center {
+  .dropdown {
+    @include transform(translate3d(-1em, -50%, 0));
+  }
+}
+.dropdown-trigger.anchor-right-center  {
+  .dropdown {
+    @include transform(translate3d(1em, -50%, 0));
   }
 }
 
