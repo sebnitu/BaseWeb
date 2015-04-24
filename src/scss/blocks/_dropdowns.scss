@@ -257,21 +257,6 @@ $dropdowns: (
 .dropdown-trigger.anchor-left-bottom,
 .dropdown-trigger.anchor-left-center {
   .dropdown {
-    margin: 0 0 0 -1px;
-    left: 100%;
-    right: auto;
-    @include transform(translate3d(-1em, 0, 0));
-  }
-  &:hover .dropdown {
-    left: 100%;
-    right: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-.dropdown-trigger.anchor-right-top,
-.dropdown-trigger.anchor-right-bottom,
-.dropdown-trigger.anchor-right-center {
-  .dropdown {
     margin: 0 -1px 0 0;
     left: auto;
     right: 100%;
@@ -280,6 +265,22 @@ $dropdowns: (
   &:hover .dropdown {
     left: auto;
     right: 100%;
+    @include transform(translate3d(0, 0, 0));
+  }
+  
+}
+.dropdown-trigger.anchor-right-top,
+.dropdown-trigger.anchor-right-bottom,
+.dropdown-trigger.anchor-right-center {
+  .dropdown {
+    margin: 0 0 0 -1px;
+    left: 100%;
+    right: auto;
+    @include transform(translate3d(-1em, 0, 0));
+  }
+  &:hover .dropdown {
+    left: 100%;
+    right: auto;
     @include transform(translate3d(0, 0, 0));
   }
 }
@@ -332,32 +333,191 @@ $dropdowns: (
 /**
  * Arrow
  */
-.dropdown {
-  &.arrow {
-    &:before,
-    &:after {
-      @include make-triangle-base();
-      position: absolute;
-      left: 1.5em;
-      bottom: 100%;
-    }
-    &:before {
-      @include make-triangle( 7px, rgba($black, 0.25), 'up' );
-      margin-bottom: 1px;
-    }
-    &:after {
-      @include make-triangle( 7px, $white, 'up' );
-    }
+.dropdown.arrow {
+  &:before,
+  &:after {
+    @include make-triangle-base();
+    position: absolute;
   }
 }
-.dropdown.inverted {
-  &.arrow {
-    &:before {
-      @include make-triangle( 7px, $color, 'up' );
-    }
-    &:after {
-      @include make-triangle( 7px, $color, 'up' );
-    }
+
+.dropdown-trigger.anchor-bottom-left .dropdown.arrow,
+.dropdown-trigger.anchor-bottom-right .dropdown.arrow,
+.dropdown-trigger.anchor-bottom-center .dropdown.arrow {
+  &:before {
+    @include make-triangle( 7px, rgba($black, 0.25), 'up' );
+    margin: 0 0 1px 0;
+  }
+  &:after {
+    @include make-triangle( 7px, $white, 'up' );
+  }
+  
+  &.inverted {
+    &:before { @include make-triangle( 7px, $color, 'up' ); }
+    &:after  { @include make-triangle( 7px, $color, 'up' ); }
+  }
+}
+.dropdown-trigger.anchor-bottom-left .dropdown.arrow {
+  &:before,
+  &:after {
+    top: auto;
+    left: 1.5em;
+    right: auto;
+    bottom: 100%;
+  }
+}
+.dropdown-trigger.anchor-bottom-right .dropdown.arrow {
+  &:before,
+  &:after {
+    top: auto;
+    left: auto;
+    right: 1.5em;
+    bottom: 100%;
+  }
+}
+.dropdown-trigger.anchor-bottom-center .dropdown.arrow {
+  &:before,
+  &:after {
+    top: auto;
+    left: 50%;
+    right: auto;
+    bottom: 100%;
+    @include transform(translate3d(-50%, 0, 0));
+  }
+}
+
+.dropdown-trigger.anchor-top-left .dropdown.arrow,
+.dropdown-trigger.anchor-top-right .dropdown.arrow,
+.dropdown-trigger.anchor-top-center .dropdown.arrow {
+  &:before {
+    @include make-triangle( 7px, rgba($black, 0.25), 'down' );
+    margin: 1px 0 0 0;
+  }
+  &:after {
+    @include make-triangle( 7px, $white, 'down' );
+  }
+  
+  &.inverted {
+    &:before { @include make-triangle( 7px, $color, 'down' ); }
+    &:after  { @include make-triangle( 7px, $color, 'down' ); }
+  }
+}
+.dropdown-trigger.anchor-top-left .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 100%;
+    left: 1.5em;
+    right: auto;
+    bottom: auto;
+  }
+}
+.dropdown-trigger.anchor-top-right .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 100%;
+    left: auto;
+    right: 1.5em;
+    bottom: auto;
+  }
+}
+.dropdown-trigger.anchor-top-center .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 100%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(-50%, 0, 0));
+  }
+}
+
+.dropdown-trigger.anchor-left-top .dropdown.arrow,
+.dropdown-trigger.anchor-left-bottom .dropdown.arrow,
+.dropdown-trigger.anchor-left-center .dropdown.arrow {
+  &:before {
+    @include make-triangle( 7px, rgba($black, 0.25), 'right' );
+    margin: 0 0 0 1px;
+  }
+  &:after {
+    @include make-triangle( 7px, $white, 'right' );
+  }
+  
+  &.inverted {
+    &:before { @include make-triangle( 7px, $color, 'right' ); }
+    &:after  { @include make-triangle( 7px, $color, 'right' ); }
+  }
+}
+.dropdown-trigger.anchor-left-top .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 1.2em;
+    left: 100%;
+    right: auto;
+    bottom: auto;
+  }
+}
+.dropdown-trigger.anchor-left-bottom .dropdown.arrow {
+  &:before,
+  &:after {
+    top: auto;
+    left: 100%;
+    right: auto;
+    bottom: 1.2em;
+  }
+}
+.dropdown-trigger.anchor-left-center .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 50%;
+    left: 100%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, -50%, 0));
+  }
+}
+
+.dropdown-trigger.anchor-right-top .dropdown.arrow,
+.dropdown-trigger.anchor-right-bottom .dropdown.arrow,
+.dropdown-trigger.anchor-right-center .dropdown.arrow {
+  &:before {
+    @include make-triangle( 7px, rgba($black, 0.25), 'left' );
+    margin: 0 1px 0 0;
+  }
+  &:after {
+    @include make-triangle( 7px, $white, 'left' );
+  }
+  
+  &.inverted {
+    &:before { @include make-triangle( 7px, $color, 'left' ); }
+    &:after  { @include make-triangle( 7px, $color, 'left' ); }
+  }
+}
+.dropdown-trigger.anchor-right-top .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 1.2em;
+    left: auto;
+    right: 100%;
+    bottom: auto;
+  }
+}
+.dropdown-trigger.anchor-right-bottom .dropdown.arrow {
+  &:before,
+  &:after {
+    top: auto;
+    left: auto;
+    right: 100%;
+    bottom: 1.2em;
+  }
+}
+.dropdown-trigger.anchor-right-center .dropdown.arrow {
+  &:before,
+  &:after {
+    top: 50%;
+    left: auto;
+    right: 100%;
+    bottom: auto;
+    @include transform(translate3d(0, -50%, 0));
   }
 }
 
