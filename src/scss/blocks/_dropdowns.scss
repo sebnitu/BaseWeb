@@ -20,18 +20,19 @@ $dropdowns: (
 // 1) Create styles for dropdown menus
 // 2) Create styles for pure UL based dropdown menus
 // 3) Create default styles for dropdown position
-// 4) Create mixins, variables for dropdowns
+// 4) Create default styles for arrow position
+// 5) Create mixins, variables for dropdowns
 
 /**
  * General Dropdown Styles
  */
-.dropdown {
+.dropdown,
+.dropdown-content,
+.dropdown-menu {
   position: relative;
   display: block;
-  float: left;
   width: 250px;
   margin: 0;
-  padding: 0;
   font-size: px-to-rem(14px);
   line-height: 1.25em;
   background: $white;
@@ -39,30 +40,80 @@ $dropdowns: (
   border: 1px solid rgba($black, 0.1);
   box-shadow: 0 2px 6px rgba($black, 0.15);
   @include border-radius();
+}
+
+/* Dropdown */
+.dropdown {
+  padding: 0;
   
-  .dropdown-content,
-  .dropdown-menu {
-    position: relative;
-    display: block;
+  > .dropdown-content,
+  > .dropdown-menu {
+    width: auto;
     margin: 0;
-    border-bottom: 0 none;
-  }
-  
-  .dropdown-content {
-    padding: 1em;
+    background: none;
+    border: 0 none;
     border-top: 1px solid rgba($black, 0.1);
-    @include border-radius();
+    box-shadow: none;
+    @include border-radius(0);
     
     &:first-child {
       border-top: 0 none;
-      
-      &:before {
-        content: none;
-      }
+      @include border-radius-top();
+    }
+    &:last-child {
+      @include border-radius-bottom();
+    }
+  }
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  padding: 1em;
+  
+  > * {
+    margin: 0.5em 0;
+  }
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+  
+  // Padding Modifiers
+  &.condensed {
+    padding: 0.5em;
+    
+    > a.block {
+      @include border-radius(0);
+    }
+    &:first-child > a.block {
+      @include border-radius-top();
+    }
+    &:last-child > a.block {
+      @include border-radius-bottom();
+    }
+  }
+  &.expanded {
+    padding: 1.5em;
+  }
+  
+  // Block Links
+  > a.block {
+    display: block;
+    margin: -0.5em;
+    padding: 1em;
+    color: $color;
+    border: 0 none;
+    @include border-radius();
+    
+    &:hover {
+      background: rgba($black, 0.05);
     }
     
     > * {
-      margin: 0.5em 0;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
     }
     > :first-child {
       margin-top: 0;
@@ -70,85 +121,47 @@ $dropdowns: (
     > :last-child {
       margin-bottom: 0;
     }
+  }
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  list-style: none;
+  padding: 0.5em;
+  
+  &.condensed {
+    padding: 0;
+  }
+  &.expanded {
+    padding: 1em;
+  }
+  
+  li {
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid rgba($black, 0.1);
     
-    // Padding Modifiers
-    &.condensed {
-      padding: 0.5em;
-      
-      > a.block {
-        @include border-radius(0);
-      }
-      &:first-child > a.block {
+    &:first-child {
+      a {
         @include border-radius-top();
       }
-      &:last-child > a.block {
+    }
+    &:last-child {
+      border-bottom: 0 none;
+      
+      a {
         @include border-radius-bottom();
       }
     }
-    &.expanded {
-      padding: 1.5em;
-    }
     
-    // Block Links
-    > a.block {
+    a {
       display: block;
-      margin: -0.5em;
-      padding: 1em;
+      padding: 0.75em 1em;
       color: $color;
       border: 0 none;
-      @include border-radius();
       
       &:hover {
         background: rgba($black, 0.05);
-      }
-      
-      > * {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-      }
-      > :first-child {
-        margin-top: 0;
-      }
-      > :last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-  
-  .dropdown-menu {
-    list-style: none;
-    padding: 0.5em;
-    border-top: 1px solid rgba($black, 0.1);
-    
-    &:first-child {
-      border-top: 0 none;
-    }
-    
-    li {
-      margin: 0;
-      border-bottom: 1px solid rgba($black, 0.1);
-      
-      &:first-child {
-        a {
-          @include border-radius-top();
-        }
-      }
-      &:last-child {
-        border-bottom: 0 none;
-        
-        a {
-          @include border-radius-bottom();
-        }
-      }
-      
-      a {
-        display: block;
-        padding: 0.75em 1em;
-        color: $color;
-        border: 0 none;
-        &:hover {
-          background: rgba($black, 0.05);
-        }
       }
     }
   }
@@ -157,6 +170,7 @@ $dropdowns: (
 /**
  * Inverted Dropdown Styles
  */
+/*
 .dropdown.inverted,
 .dropdown.inverted .dropdown {
   color: $white;
@@ -170,8 +184,13 @@ $dropdowns: (
     }
   }
   
-  .dropdown-content {
-    border-color: rgba($white, 0.1);
+  > .dropdown-content {
+    border: 0 none;
+    border-top: 1px solid rgba($white, 0.1);
+    
+    &:first-child {
+      border-top: 0 none;
+    }
     
     // Block Links
     > a.block {
@@ -183,47 +202,145 @@ $dropdowns: (
     }
   }
   
-  .dropdown-menu {
-    border-color: rgba($white, 0.1);
+  > .dropdown-menu {
+    border: 0 none;
+    border-top: 1px solid rgba($white, 0.1);
+    
+    &:first-child {
+      border-top: 0 none;
+    }
     
     li {
       border-color: rgba($white, 0.1);
-    }
-  }
-  
-  li a {
-    color: $white;
-    
-    &:hover {
-      background: rgba($white, 0.05);
+      
+      a {
+        color: $white;
+        
+        &:hover {
+          background: rgba($white, 0.05);
+        }
+      }
     }
   }
 }
+
+.dropdown.inverted .dropdown-content,
+.dropdown.inverted .dropdown-menu,
+.dropdown-content.inverted,
+.dropdown-menu.inverted {
+  color: $white;
+  background: $color;
+  border: 1px solid transparent;
+}
+*/
 
 /**
  * Dropdown Menu Trigger
  */
 .dropdown-menu {
-  
   .dropdown-menu {
     position: absolute;
     z-index: 100;
     opacity: 0;
     visibility: hidden;
     @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s);
+    @include transition-duration(0.25s, 0.25s, 0.15s);
     @include transition-timing-function(ease-in-out);
     @include transition-delay(0.25s);
   }
-  
   li:hover > .dropdown-menu {
     z-index: 105;
     opacity: 1;
     visibility: visible;
     @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s);
+    @include transition-duration(0.25s, 0.25s, 0.25s);
     @include transition-timing-function(ease-in-out);
     @include transition-delay(none);
+  }
+  
+  // Default position
+  .dropdown-menu {
+    margin: -1px 0 0 0;
+    top: -0.5em;
+    left: 100%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(-1em, 0, 0));
+  }
+  li:hover > .dropdown-menu {
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+.dropdown-menu.anchor-left-top,
+.dropdown-menu.anchor-left-bottom,
+.dropdown-menu.anchor-left-center {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    left: auto;
+    right: 100%;
+    @include transform(translate3d(1em, 0, 0));
+  }
+  li:hover > .dropdown-menu {
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+.dropdown-menu.anchor-right-top,
+.dropdown-menu.anchor-right-bottom,
+.dropdown-menu.anchor-right-center {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    left: 100%;
+    right: auto;
+    @include transform(translate3d(-1em, 0, 0));
+  }
+  li:hover > .dropdown-menu {
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+.dropdown-menu.anchor-left-top,
+.dropdown-menu.anchor-right-top {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    margin: -1px 0 0 0;
+    top: -0.5em;
+    bottom: auto;
+  }
+}
+.dropdown-menu.anchor-left-bottom,
+.dropdown-menu.anchor-right-bottom {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    margin: 0 0 -1px 0;
+    top: auto;
+    bottom: -0.5em;
+  }
+}
+.dropdown-menu.anchor-left-center,
+.dropdown-menu.anchor-right-center {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    margin: 0;
+    top: 50%;
+    bottom: auto;
+  }
+}
+.dropdown-menu.anchor-left-center {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    @include transform(translate3d(1em, -50%, 0));
+  }
+  li:hover > .dropdown-menu {
+    @include transform(translate3d(0, -50%, 0));
+  }
+}
+.dropdown-menu.anchor-right-center {
+  .dropdown-menu,
+  > li > .dropdown-menu {
+    @include transform(translate3d(-1em, -50%, 0));
+  }
+  li:hover > .dropdown-menu {
+    @include transform(translate3d(0, -50%, 0));
   }
 }
 
@@ -240,7 +357,7 @@ $dropdowns: (
     opacity: 0;
     visibility: hidden;
     @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s);
+    @include transition-duration(0.25s, 0.25s, 0.15s);
     @include transition-timing-function(ease-in-out);
     @include transition-delay(0.25s);
   }
@@ -249,9 +366,26 @@ $dropdowns: (
     opacity: 1;
     visibility: visible;
     @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s);
+    @include transition-duration(0.25s, 0.25s, 0.25s);
     @include transition-timing-function(ease-in-out);
     @include transition-delay(none);
+  }
+  
+  // Default position
+  .dropdown {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, -1em, 0));
+  }
+  &:hover > .dropdown {
+    top: 100%;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, 0, 0));
   }
 }
 .dropdown .dropdown-trigger {
@@ -416,8 +550,29 @@ $dropdowns: (
     @include make-triangle-base();
     position: absolute;
   }
+  
+  // Default Arrow Position
+  &:before,
+  &:after {
+    top: auto;
+    left: 1.5em;
+    right: auto;
+    bottom: 100%;
+  }
+  &:before {
+    @include make-triangle( 7px, rgba($black, 0.25), 'up' );
+    margin: 0 0 1px 0;
+  }
+  &:after {
+    @include make-triangle( 7px, $white, 'up' );
+  }
+  &.inverted,
+  &.inverted .dropdown.arrow {
+    &:before { @include make-triangle( 7px, $color, 'up' ); }
+    &:after  { @include make-triangle( 7px, $color, 'up' ); }
+  }
 }
-// Arrow Bottom
+// Arrow Up
 .dropdown-trigger.anchor-bottom-left .dropdown.arrow,
 .dropdown-trigger.anchor-bottom-right .dropdown.arrow,
 .dropdown-trigger.anchor-bottom-center .dropdown.arrow {
@@ -463,7 +618,7 @@ $dropdowns: (
     @include transform(translate3d(-50%, 0, 0));
   }
 }
-// Arrow Top
+// Arrow Down
 .dropdown-trigger.anchor-top-left .dropdown.arrow,
 .dropdown-trigger.anchor-top-right .dropdown.arrow,
 .dropdown-trigger.anchor-top-center .dropdown.arrow {
@@ -509,7 +664,7 @@ $dropdowns: (
     @include transform(translate3d(-50%, 0, 0));
   }
 }
-// Arrow Left
+// Arrow Right
 .dropdown-trigger.anchor-left-top .dropdown.arrow,
 .dropdown-trigger.anchor-left-bottom .dropdown.arrow,
 .dropdown-trigger.anchor-left-center .dropdown.arrow {
@@ -555,7 +710,7 @@ $dropdowns: (
     @include transform(translate3d(0, -50%, 0));
   }
 }
-// Arrow Right
+// Arrow Left
 .dropdown-trigger.anchor-right-top .dropdown.arrow,
 .dropdown-trigger.anchor-right-bottom .dropdown.arrow,
 .dropdown-trigger.anchor-right-center .dropdown.arrow {
