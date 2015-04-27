@@ -1,5 +1,105 @@
 <h1>Dropdowns</h1>
 
+<div class="dropdown-trigger on-click">
+  <button class="button">On Click</button>
+  <div class="dropdown arrow">
+    <div class="dropdown-content text-center">
+      <a class="block">
+        <p>
+          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+          <strong>Sebastian Nitu</strong><br>
+          <small class="text-soften">View Profile</small>
+        </p>
+        <p>Welcome to this example of a dropdown-content block.</p>
+      </a>
+    </div>
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+    <div class="dropdown-content">
+      <div class="dropdown-trigger on-click anchor-right-top">
+        <button class="button block blue">Create Account</button>
+        <div class="dropdown arrow">
+          <ul class="dropdown-menu">
+            <li><a href="#">Help</a></li>
+            <li>
+              <a href="#">Settings</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Help</a></li>
+                <li>
+                  <a href="#">Settings</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Log Out</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Log Out</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="button-group block has-2">
+        <button class="button">&larr; Prev</button>
+        <button class="button">Next &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dropdown-trigger on-click">
+  <button class="button">On Click</button>
+  <div class="dropdown arrow">
+    <div class="dropdown-content text-center">
+      <a class="block">
+        <p>
+          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+          <strong>Sebastian Nitu</strong><br>
+          <small class="text-soften">View Profile</small>
+        </p>
+        <p>Welcome to this example of a dropdown-content block.</p>
+      </a>
+    </div>
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+    <div class="dropdown-content">
+      <button class="button block green">Create Account</button>
+      <div class="button-group block has-2">
+        <button class="button black">&larr; Prev</button>
+        <button class="button black">Next &rarr;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
 <div class="dropdown-trigger">
   <button class="button">anchor-bottom-left</button>
   <div class="dropdown arrow">
@@ -169,21 +269,71 @@
   </div>
 </div>
 
+<script>
+$(document).ready(function() {
+  
+  // Hide all dropdowns when something is clicked
+  $(document).click(function(){
+    // If the click event bubbles all the way down to the document
+    // without hitting a dropdown tigger, hide all the dropdowns.
+    $('.dropdown-trigger.on-click').removeClass('active');
+  });
+  
+  // Don't hide the dropdown if the trigger, or something inside the trigger is clicked.
+  $('.dropdown-trigger.on-click').click(function(e) {
+    
+    if ($(this).hasClass('active')) {
+      console.log('Trigger is active');
+    } else {
+      console.log('Trigger is NOT active');
+    }
+        
+    // Hide all other dropdowns
+    $('.dropdown-trigger.on-click').removeClass('active');
+    
+    // Make sure we don't had a parent dropdown
+    $(this).parents('.dropdown-trigger').addClass('active');
+    
+    // Only show the currently clicked dropdown
+    $(this).addClass('active');
+    
+    // Stop the click event from bubbling down to the document
+    e.stopPropagation();
+  });
+  
+  $('.dropdown-trigger.on-click .dropdown').click(function(e) {
+    
+    // Hide all other dropdowns
+    $('.dropdown-trigger.on-click').removeClass('active');
+    
+    // Make sure we don't had a parent dropdown
+    $(this).parents('.dropdown-trigger').addClass('active');
+    
+    // Only show the currently clicked dropdown
+    $(this).addClass('active');
+    
+    // Stop the click event from bubbling down to the document
+    e.stopPropagation();
+  });
+  
+});
+</script>
+
 <hr>
 
 <div class="clearfix">
   
   <div class="float-left">
     
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu all-condensed">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow inverted">
           <li><a href="#">Help</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow inverted">
               <li><a href="#">Help</a></li>
               <li><a href="#">Settings</a></li>
               <li><a href="#">Analytics</a></li>
@@ -204,11 +354,11 @@
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow inverted">
           <li><a href="#">Help</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow">
               <li><a href="#">Help</a></li>
               <li><a href="#">Settings</a></li>
               <li><a href="#">Analytics</a></li>
@@ -229,12 +379,12 @@
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow">
           <li><a href="#">Help</a></li>
           <li><a href="#">Test</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow inverted">
               <li><a href="#">Help</a></li>
               <li><a href="#">Test</a></li>
               <li><a href="#">Settings</a></li>
@@ -254,15 +404,15 @@
   
   <div class="float-right">
     
-    <ul class="dropdown-menu anchor-left-top">
+    <ul class="dropdown-menu anchor-left-top inverted">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow">
           <li><a href="#">Help</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow">
               <li><a href="#">Help</a></li>
               <li><a href="#">Settings</a></li>
               <li><a href="#">Analytics</a></li>
@@ -279,15 +429,15 @@
     
     <br>
     
-    <ul class="dropdown-menu anchor-left-bottom">
+    <ul class="dropdown-menu anchor-left-bottom inverted">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow">
           <li><a href="#">Help</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow inverted">
               <li><a href="#">Help</a></li>
               <li><a href="#">Settings</a></li>
               <li><a href="#">Analytics</a></li>
@@ -304,16 +454,16 @@
     
     <br>
     
-    <ul class="dropdown-menu anchor-left-center">
+    <ul class="dropdown-menu anchor-left-center inverted">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu arrow inverted">
           <li><a href="#">Help</a></li>
           <li><a href="#">Test</a></li>
           <li>
             <a href="#">Settings</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu arrow">
               <li><a href="#">Help</a></li>
               <li><a href="#">Test</a></li>
               <li><a href="#">Settings</a></li>
@@ -334,20 +484,71 @@
 </div>
 
 <hr>
-  
+
 <div class="clearfix">
-  
-  <ul class="dropdown-menu anchor-right-top inverted">
-    <li><a href="#">Help</a></li>
-    <li>
-      <a href="#">Settings</a>
-      <ul class="dropdown-menu">
+
+  <div class="float-left">
+
+    <div class="dropdown">
+      <div class="dropdown-content text-center condensed">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <div class="dropdown-content text-center">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <div class="dropdown-content text-center">
+        <p>
+          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+          <strong>Sebastian Nitu</strong><br>
+          <a href="#"><small class="text-soften">View Profile</small></a>
+        </p>
+        <p><a href="#">Welcome to this example</a> of a dropdown-content block.</p>
+      </div>
+      <ul class="dropdown-menu anchor-right-top condensed">
         <li><a href="#">Help</a></li>
         <li>
           <a href="#">Settings</a>
           <ul class="dropdown-menu">
             <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
+            <li>
+              <a href="#">Settings</a>
+              <ul class="dropdown-menu anchor-left-top">
+                <li><a href="#">Help</a></li>
+                <li>
+                  <a href="#">Settings</a>
+                  <ul class="dropdown-menu anchor-left-bottom">
+                    <li><a href="#">Help</a></li>
+                    <li>
+                      <a href="#">Settings</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Analytics</a></li>
+                        <li><a href="#">Log Out</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Analytics</a></li>
+                    <li><a href="#">Log Out</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Log Out</a></li>
+              </ul>
+            </li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Log Out</a></li>
           </ul>
@@ -355,63 +556,19 @@
         <li><a href="#">Analytics</a></li>
         <li><a href="#">Log Out</a></li>
       </ul>
-    </li>
-    <li><a href="#">Analytics</a></li>
-    <li><a href="#">Log Out</a></li>
-  </ul>
-
-</div>
-
-<hr>
-
-<div class="clearfix">
-
-  <div class="dropdown">
-    <div class="dropdown-content text-center condensed">
-      <a class="block">
-        <p>
-          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-          <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
-        </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <div class="dropdown-content text-center">
-      <a class="block">
-        <p>
-          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-          <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
-        </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <div class="dropdown-content text-center">
-      <p>
-        <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-        <strong>Sebastian Nitu</strong><br>
-        <a href="#"><small class="text-soften">View Profile</small></a>
-      </p>
-      <p><a href="#">Welcome to this example</a> of a dropdown-content block.</p>
-    </div>
-    <ul class="dropdown-menu anchor-right-top condensed">
-      <li><a href="#">Help</a></li>
-      <li>
-        <a href="#">Settings</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Help</a></li>
-          <li>
-            <a href="#">Settings</a>
-            <ul class="dropdown-menu anchor-left-top">
+      <div class="dropdown-content">
+        <div class="dropdown-trigger anchor-bottom-center">
+          <button class="button block blue">Create Account</button>
+          <div class="dropdown arrow">
+            <ul class="dropdown-menu">
               <li><a href="#">Help</a></li>
               <li>
                 <a href="#">Settings</a>
-                <ul class="dropdown-menu anchor-left-bottom">
+                <ul class="dropdown-menu arrow">
                   <li><a href="#">Help</a></li>
                   <li>
                     <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu arrow">
                       <li><a href="#">Help</a></li>
                       <li><a href="#">Settings</a></li>
                       <li><a href="#">Analytics</a></li>
@@ -425,96 +582,66 @@
               <li><a href="#">Analytics</a></li>
               <li><a href="#">Log Out</a></li>
             </ul>
-          </li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-    <div class="dropdown-content">
-      <div class="dropdown-trigger anchor-bottom-center">
-        <button class="button block blue">Create Account</button>
-        <div class="dropdown arrow">
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li>
-              <a href="#">Settings</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Help</a></li>
-                <li>
-                  <a href="#">Settings</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Log Out</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Log Out</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
+          </div>
+        </div>
+        <div class="button-group block has-2">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
         </div>
       </div>
-      <div class="button-group block has-2">
-        <button class="button">&larr; Prev</button>
-        <button class="button">Next &rarr;</button>
-      </div>
     </div>
-  </div>
   
-  <br>
+  </div><!-- .float-left -->
   
-  <div class="dropdown inverted">
-    <div class="dropdown-content text-center condensed">
-      <a class="block">
+  <div class="float-right">
+  
+    <div class="dropdown inverted">
+      <div class="dropdown-content text-center condensed">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <div class="dropdown-content text-center">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <div class="dropdown-content text-center">
         <p>
           <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
           <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
+          <a href="#"><small class="text-soften">View Profile</small></a>
         </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <div class="dropdown-content text-center">
-      <a class="block">
-        <p>
-          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-          <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
-        </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <div class="dropdown-content text-center">
-      <p>
-        <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-        <strong>Sebastian Nitu</strong><br>
-        <a href="#"><small class="text-soften">View Profile</small></a>
-      </p>
-      <p><a href="#">Welcome to this example</a> of a dropdown-content block.</p>
-    </div>
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-    <div class="dropdown-content">
-      <button class="button block green clip-padding">Create Account</button>
-      <div class="button-group block has-2">
-        <button class="button inverted">&larr; Prev</button>
-        <button class="button inverted">Next &rarr;</button>
+        <p><a href="#">Welcome to this example</a> of a dropdown-content block.</p>
+      </div>
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+      <div class="dropdown-content">
+        <button class="button block green clip-padding">Create Account</button>
+        <div class="button-group block has-2">
+          <button class="button inverted">&larr; Prev</button>
+          <button class="button inverted">Next &rarr;</button>
+        </div>
       </div>
     </div>
-  </div>
-
-</div>
+  
+  </div><!-- .float-right -->
+  
+</div><!-- .clearfix -->
 
 <hr>
 
