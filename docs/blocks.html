@@ -1453,7 +1453,7 @@ $(document).ready(function() {
 
 <div class="dropdown-trigger on-click">
   <button class="button">On Click</button>
-  <div class="dropdown arrow">
+  <div class="dropdown inverted arrow">
     <div class="dropdown-content text-center">
       <a class="block">
         <p>
@@ -1478,14 +1478,64 @@ $(document).ready(function() {
       <li><a href="#">Log Out</a></li>
     </ul>
     <div class="dropdown-content">
-      <button class="button block green">Create Account</button>
+      <button class="button block green clip-padding">Create Account</button>
       <div class="button-group block has-2">
-        <button class="button black">&larr; Prev</button>
-        <button class="button black">Next &rarr;</button>
+        <button class="button inverted">&larr; Prev</button>
+        <button class="button inverted">Next &rarr;</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+  
+  // Hide all dropdowns when something is clicked
+  $(document).click(function(){
+    // If the click event bubbles all the way down to the document
+    // without hitting a dropdown tigger, hide all the dropdowns.
+    $('.dropdown-trigger.on-click').removeClass('active');
+  });
+  
+  // Don't hide the dropdown if the trigger, or something inside the trigger is clicked.
+  $('.dropdown-trigger.on-click').click(function(e) {
+    
+    if ($(this).hasClass('active')) {
+      console.log('Trigger is active');
+    } else {
+      console.log('Trigger is NOT active');
+    }
+        
+    // Hide all other dropdowns
+    $('.dropdown-trigger.on-click').removeClass('active');
+    
+    // Make sure we don't had a parent dropdown
+    $(this).parents('.dropdown-trigger').addClass('active');
+    
+    // Only show the currently clicked dropdown
+    $(this).addClass('active');
+    
+    // Stop the click event from bubbling down to the document
+    e.stopPropagation();
+  });
+  
+  $('.dropdown-trigger.on-click .dropdown').click(function(e) {
+    
+    // Hide all other dropdowns
+    $('.dropdown-trigger.on-click').removeClass('active');
+    
+    // Make sure we don't had a parent dropdown
+    $(this).parents('.dropdown-trigger').addClass('active');
+    
+    // Only show the currently clicked dropdown
+    $(this).addClass('active');
+    
+    // Stop the click event from bubbling down to the document
+    e.stopPropagation();
+  });
+  
+});
+</script>
 
 <hr>
 
@@ -1658,55 +1708,159 @@ $(document).ready(function() {
   </div>
 </div>
 
-<script>
-$(document).ready(function() {
-  
-  // Hide all dropdowns when something is clicked
-  $(document).click(function(){
-    // If the click event bubbles all the way down to the document
-    // without hitting a dropdown tigger, hide all the dropdowns.
-    $('.dropdown-trigger.on-click').removeClass('active');
-  });
-  
-  // Don't hide the dropdown if the trigger, or something inside the trigger is clicked.
-  $('.dropdown-trigger.on-click').click(function(e) {
-    
-    if ($(this).hasClass('active')) {
-      console.log('Trigger is active');
-    } else {
-      console.log('Trigger is NOT active');
-    }
-        
-    // Hide all other dropdowns
-    $('.dropdown-trigger.on-click').removeClass('active');
-    
-    // Make sure we don't had a parent dropdown
-    $(this).parents('.dropdown-trigger').addClass('active');
-    
-    // Only show the currently clicked dropdown
-    $(this).addClass('active');
-    
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-  
-  $('.dropdown-trigger.on-click .dropdown').click(function(e) {
-    
-    // Hide all other dropdowns
-    $('.dropdown-trigger.on-click').removeClass('active');
-    
-    // Make sure we don't had a parent dropdown
-    $(this).parents('.dropdown-trigger').addClass('active');
-    
-    // Only show the currently clicked dropdown
-    $(this).addClass('active');
-    
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-  
-});
-</script>
+<hr>
+
+<div class="dropdown-trigger anchor-bottom-left">
+  <button class="button">anchor-bottom-left</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-bottom-right">
+  <button class="button">anchor-bottom-right</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-bottom-center">
+  <button class="button">anchor-bottom-center</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+<div class="dropdown-trigger anchor-top-left">
+  <button class="button">anchor-top-left</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-top-right">
+  <button class="button">anchor-top-right</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-top-center">
+  <button class="button">anchor-top-center</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+<div class="dropdown-trigger anchor-left-top">
+  <button class="button">anchor-left-top</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-left-bottom">
+  <button class="button">anchor-left-bottom</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-left-center">
+  <button class="button">anchor-left-center</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Learn More</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+<div class="dropdown-trigger anchor-right-top">
+  <button class="button">anchor-right-top</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-right-bottom">
+  <button class="button">anchor-right-bottom</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dropdown-trigger anchor-right-center">
+  <button class="button">anchor-right-center</button>
+  <div class="dropdown arrow inverted">
+    <ul class="dropdown-menu">
+      <li><a href="#">Help</a></li>
+      <li><a href="#">Learn More</a></li>
+      <li><a href="#">Settings</a></li>
+      <li><a href="#">Analytics</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </div>
+</div>
 
 <hr>
 
@@ -1764,7 +1918,7 @@ $(document).ready(function() {
     
     <br>
     
-    <ul class="dropdown-menu anchor-right-center expanded">
+    <ul class="dropdown-menu anchor-right-center">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
@@ -1793,7 +1947,7 @@ $(document).ready(function() {
   
   <div class="float-right">
     
-    <ul class="dropdown-menu anchor-left-top inverted">
+    <ul class="dropdown-menu anchor-left-top all-expanded inverted">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
@@ -1818,7 +1972,7 @@ $(document).ready(function() {
     
     <br>
     
-    <ul class="dropdown-menu anchor-left-bottom inverted">
+    <ul class="dropdown-menu anchor-left-bottom  expanded inverted">
       <li><a href="#">Help</a></li>
       <li>
         <a href="#">Settings</a>
@@ -2031,161 +2185,6 @@ $(document).ready(function() {
   </div><!-- .float-right -->
   
 </div><!-- .clearfix -->
-
-<hr>
-
-<div class="dropdown-trigger anchor-bottom-left">
-  <button class="button">anchor-bottom-left</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-bottom-right">
-  <button class="button">anchor-bottom-right</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-bottom-center">
-  <button class="button">anchor-bottom-center</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<br><br>
-
-<div class="dropdown-trigger anchor-top-left">
-  <button class="button">anchor-top-left</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-top-right">
-  <button class="button">anchor-top-right</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-top-center">
-  <button class="button">anchor-top-center</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<br><br>
-
-<div class="dropdown-trigger anchor-left-top">
-  <button class="button">anchor-left-top</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-left-bottom">
-  <button class="button">anchor-left-bottom</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-left-center">
-  <button class="button">anchor-left-center</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Learn More</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<br><br>
-
-<div class="dropdown-trigger anchor-right-top">
-  <button class="button">anchor-right-top</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-right-bottom">
-  <button class="button">anchor-right-bottom</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class="dropdown-trigger anchor-right-center">
-  <button class="button">anchor-right-center</button>
-  <div class="dropdown arrow inverted">
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Learn More</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-  </div>
-</div>
-
   </div>
 </section><!-- .subpage -->
     </div><!-- .content -->
