@@ -1490,44 +1490,43 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   
-  // Hide all dropdowns when something is clicked
+  // Bind document click event
   $(document).click(function(){
-    // If the click event bubbles all the way down to the document
-    // without hitting a dropdown tigger, hide all the dropdowns.
+    // Close all dropdowns if a click occures outside of a dropdown trigger or dropdown
     $('.dropdown-trigger.on-click').removeClass('active');
   });
   
-  // Don't hide the dropdown if the trigger, or something inside the trigger is clicked.
+  // Bind the click event to .dropdown-trigger
   $('.dropdown-trigger.on-click').click(function(e) {
     
-    if ($(this).hasClass('active')) {
-      console.log('Trigger is active');
-    } else {
-      console.log('Trigger is NOT active');
-    }
-        
+    // Is the dropdown already active?
+    var is_active = $(this).hasClass('active');
+    
     // Hide all other dropdowns
     $('.dropdown-trigger.on-click').removeClass('active');
     
-    // Make sure we don't had a parent dropdown
+    // Keep the parent dropdowns active
     $(this).parents('.dropdown-trigger').addClass('active');
-    
-    // Only show the currently clicked dropdown
-    $(this).addClass('active');
-    
+
+    // If the dropdown is not active, add the active class
+    if (!is_active) {
+      $(this).addClass('active');
+    }
+
     // Stop the click event from bubbling down to the document
     e.stopPropagation();
   });
   
+  // Bind the click event to .dropdown
   $('.dropdown-trigger.on-click .dropdown').click(function(e) {
-    
+        
     // Hide all other dropdowns
     $('.dropdown-trigger.on-click').removeClass('active');
     
-    // Make sure we don't had a parent dropdown
+    // Keep the parent dropdowns active
     $(this).parents('.dropdown-trigger').addClass('active');
     
-    // Only show the currently clicked dropdown
+    // Keep the current dropdown active
     $(this).addClass('active');
     
     // Stop the click event from bubbling down to the document
