@@ -28,45 +28,6 @@ $dropdowns: (
 @mixin add-dropdown-style($options: ()) {
   $o: map-merge($dropdowns, $options);
   
-  
-}
-
-@mixin add-dropdown-position($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  
-}
-
-@mixin add-dropdown-arrow($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  
-}
-
-// Check if we should output modifier classes
-@if (map-get($dropdowns, 'classes') == true) {
-
-/*==============================================================================
-  @Dropdowns - #{$filename}
-==============================================================================*/
-
-// To-do
-// 1) Add method support for dropdown trigger (on-hover, on-click)
-// 2) Add size modifiers (width of the dropdown)
-// 3) Create mixins, variables for dropdowns
-// 4) Explore an option to add inheritable midifier classes.
-//    (e.g. all-arrow, all-expanded, etc...)
-
-// Issues
-// 1) When changing direction of nested dropdown menus, you currently cannot
-//    also change orientation of arrows.
-
-/**
- * General Dropdown Styles
- */
-.dropdown,
-.dropdown-content,
-.dropdown-menu {
   position: relative;
   display: block;
   margin: 0;
@@ -115,6 +76,45 @@ $dropdowns: (
       width: 100%;
     }
   }
+}
+
+@mixin add-dropdown-position($options: ()) {
+  $o: map-merge($dropdowns, $options);
+  
+  
+}
+
+@mixin add-dropdown-arrow($options: ()) {
+  $o: map-merge($dropdowns, $options);
+  
+  
+}
+
+// Check if we should output modifier classes
+@if (map-get($dropdowns, 'classes') == true) {
+
+/*==============================================================================
+  @Dropdowns - #{$filename}
+==============================================================================*/
+
+// To-do
+// 1) Add method support for dropdown trigger (on-hover, on-click)
+// 2) Add size modifiers (width of the dropdown)
+// 3) Create mixins, variables for dropdowns
+// 4) Explore an option to add inheritable midifier classes.
+//    (e.g. all-arrow, all-expanded, etc...)
+
+// Issues
+// 1) When changing direction of nested dropdown menus, you currently cannot
+//    also change orientation of arrows.
+
+/**
+ * General Dropdown Styles
+ */
+.dropdown,
+.dropdown-content,
+.dropdown-menu {
+  @include add-dropdown-style();
 }
 
 /* Inverted General Dropdown Styles */
