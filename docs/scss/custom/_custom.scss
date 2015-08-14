@@ -1,9 +1,6 @@
 // Set file variable
 $filename: 'scss/custom/_custom.scss';
 
-// Custom variables
-$edge-space: 3.125rem;
-
 /*==============================================================================
   @Grid System - #{$filename}
 ==============================================================================*/
@@ -575,12 +572,11 @@ body > div,
 ==============================================================================*/
 
 .subsection {
-  margin: 1em (-($edge-space));
-  border-top: 1px solid $border-color;
+  margin: 1em 0;
   
   // Inner subsection
   .inner-subsection {
-    padding: 1rem $edge-space;
+    padding: 1rem 0;
     
     > h1 {
       font-size: px-to-rem(34px);
@@ -591,15 +587,9 @@ body > div,
   // Subsection listings
   > .docs-list {
     margin: 0;
-    
-    &:first-child > li:first-child {
-      border-top: 0 none;
-    }
   }
   > .docs-list > li {
-    margin: 0;
-    padding: 1.5rem $edge-space;
-    border-top: 1px solid $border-color;
+    margin: 2rem 0;
     
     > h2, > h3, > p {
       margin: 0.5rem 0;
@@ -619,23 +609,6 @@ body > div,
       @include font-weight('semi-bold');
     }
   }
-}
-
-@include media-min(560px) {
-  
-  .subsection {
-    margin: 2em (-($edge-space));
-  }
-  
-}
-
-@include media-min(960px) {
-  
-  .subsection {
-    border: 1px solid $border-color;
-    @include border-radius();
-  }
-  
 }
 
 /*==============================================================================
