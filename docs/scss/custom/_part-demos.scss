@@ -654,3 +654,41 @@ ul.example-reverse-index {
     )
   ));
 }
+
+/*==============================================================================
+  @Dropdowns - #{$filename}
+==============================================================================*/
+
+.menu.menu-hori > ul {
+  display: table;
+  margin: 0;
+  list-style: none;
+  @include border-radius();
+}
+.menu.menu-hori > ul > li {
+  position: relative;
+  display: table-cell;
+  margin: 0;
+  border: 1px solid rgba($black, 0.1);
+  border-right: 0 none;
+  
+  &:first-child {
+    a {
+      @include border-radius-left();
+    }
+  }
+  &:last-child {
+    border-right: 1px solid rgba($black, 0.1);
+    
+    a {
+      @include border-radius-right();
+    }
+  }
+}
+.menu.menu-hori > ul > li > a {
+  background: #fff;
+  display: block;
+  border: 0 none;
+  padding: 10px 15px;
+  color: $color;
+}

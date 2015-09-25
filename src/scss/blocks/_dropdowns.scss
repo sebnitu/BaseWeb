@@ -13,23 +13,18 @@ $dropdowns: (
 // @Dropdown Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-@mixin make-dropdown($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  
-}
-
 @mixin make-dropdown-trigger($options: ()) {
   $o: map-merge($dropdowns, $options);
   
   
 }
 
-@mixin add-dropdown-style($options: ()) {
+@mixin make-dropdown($options: ()) {
   $o: map-merge($dropdowns, $options);
   
   position: relative;
   display: block;
+  width: 15rem;
   margin: 0;
   font-size: px-to-rem(14px);
   line-height: 1.25em;
@@ -38,47 +33,111 @@ $dropdowns: (
   border: 1px solid rgba($black, 0.1);
   box-shadow: 0 2px 6px rgba($black, 0.15);
   @include border-radius();
-  
-  width: 15rem;
-  
-  &.size-small,
-  &.all-size-small {
-    width: 10rem;
-  }
-  &.all-size-small {
-    .dropdown,
-    .dropdown-content,
-    .dropdown-menu {
-      width: 10rem;
-    }
-  }
-  
-  &.size-large,
-  &.all-size-large {
-    width: 20rem;
-  }
-  &.all-size-large {
-    .dropdown,
-    .dropdown-content,
-    .dropdown-menu {
-      width: 20rem;
-    }
-  }
-  
-  &.size-fluid,
-  &.all-size-fluid  {
-    width: 100%;
-  }
-  &.all-size-fluid {
-    .dropdown,
-    .dropdown-content,
-    .dropdown-menu {
-      width: 100%;
-    }
-  }
 }
 
-@mixin add-dropdown-position($options: ()) {
+@mixin add-dropdown-style($options: (), $type : 'dropdown') {
+  $o: map-merge($dropdowns, $options);
+  
+  @if ($type == 'dropdown') {
+    
+    padding: 0;
+  
+    > .dropdown-content,
+    > .dropdown-menu {
+      width: auto;
+      margin: 0;
+      background: none;
+      border: 0 none;
+      border-top: 1px solid rgba($black, 0.1);
+      box-shadow: none;
+      @include border-radius(0);
+      
+      &:first-child {
+        border-top: 0 none;
+        @include border-radius-top();
+      }
+      &:last-child {
+        @include border-radius-bottom();
+      }
+    }
+    
+  } @else if ($type == 'dropdown-content') {
+    
+    padding: 1em;
+    
+    > * {
+      margin: 0.5em 0;
+    }
+    > :first-child {
+      margin-top: 0;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+    
+    // Block Links
+    > a.block {
+      display: block;
+      margin: -0.5em;
+      padding: 1em;
+      color: $color;
+      border: 0 none;
+      @include border-radius();
+      
+      &:hover {
+        background: rgba($black, 0.05);
+      }
+      
+      > * {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+      > :first-child {
+        margin-top: 0;
+      }
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+  } @else if ($type == 'dropdown-menu') {
+    
+    list-style: none;
+    padding: 0.5em;
+    
+    // Dropdown Menu Items
+    li {
+      position: relative;
+      margin: 0;
+      border-bottom: 1px solid rgba($black, 0.1);
+      @include transition(background-color 0.25s linear);
+    }
+    li:hover {
+      background: rgba($black, 0.05);
+      background-clip: padding-box;
+    }
+    li:first-child {
+      @include border-radius-top();
+    }
+    li:last-child {
+      border-bottom: 0 none;
+      @include border-radius-bottom();
+    }
+      
+    li a {
+      display: block;
+      padding: 0.75em 1em;
+      color: $color;
+      border: 0 none;
+    }
+    
+  } @else {
+    @warn 'The output type "#{$type}" is not supported in `add-dropdown-style()`';
+  }
+  
+}
+
+@mixin add-dropdown-position($options: (), $anchor : 'bottom-left', $arrow : false) {
   $o: map-merge($dropdowns, $options);
   
   
@@ -97,39 +156,78 @@ $dropdowns: (
   @Dropdowns - #{$filename}
 ==============================================================================*/
 
-// To-do
-// 1) Add method support for dropdown trigger (on-hover, on-click)
-// 2) Add size modifiers (width of the dropdown)
-// 3) Create mixins, variables for dropdowns
-// 4) Explore an option to add inheritable midifier classes.
-//    (e.g. all-arrow, all-expanded, etc...)
-
-// Issues
-// 1) When changing direction of nested dropdown menus, you currently cannot
-//    also change orientation of arrows.
-
 /**
  * General Dropdown Styles
  */
 .dropdown,
 .dropdown-content,
 .dropdown-menu {
-  @include add-dropdown-style();
+  @include make-dropdown();
 }
 
-/* Inverted General Dropdown Styles */
-.dropdown.inverted,
-.dropdown-content.inverted,
-.dropdown-menu.inverted {
-  color: $white;
-  background: $color;
-  border: 1px solid transparent;
-  
-  a {
-    border-color: rgba($white, 0.1);
-    &:hover {
-      border-color: rgba($white, 0.25);
-    }
+.menu.menu-hori ul ul {
+  @include make-dropdown();
+  @include add-dropdown-style($type: 'dropdown-menu');
+}
+
+.menu.menu-hori ul {
+  // Add menu trigger styles
+  ul {
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    @include transition( transform, opacity, visibility );
+    @include transition-duration(0.25s, 0.25s, 0.15s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0.25s);
+  }
+  li:hover > ul {
+    z-index: 105;
+    opacity: 1;
+    visibility: visible;
+    @include transition( transform, opacity, visibility);
+    @include transition-duration(0.25s, 0.25s, 0.25s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(none);
+  }
+}
+
+.menu.menu-hori ul {
+  // Position of first dropdown (bottom-center)
+  ul {
+    margin: 0 0 0 0; // Offset
+    top: 100%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(-50%, -1em, 0));
+  }
+  li:hover > ul {
+    top: 100%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(-50%, 0, 0));
+  }
+}
+
+.menu.menu-hori ul ul {
+  // Position of all other dropdowns (right-top)
+  ul {
+    margin: -0.5em 0 0 -1px; // Offset
+    top: -1px; // Secondary offset
+    left: 100%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(-1em, 0, 0));
+  }
+  li:hover > ul {
+    top: -1px; // Secondary offset
+    left: 100%;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, 0, 0));
   }
 }
 
@@ -137,242 +235,39 @@ $dropdowns: (
  * Dropdown
  */
 .dropdown {
-  padding: 0;
-  
-  > .dropdown-content,
-  > .dropdown-menu {
-    width: auto;
-    margin: 0;
-    background: none;
-    border: 0 none;
-    border-top: 1px solid rgba($black, 0.1);
-    box-shadow: none;
-    @include border-radius(0);
-    
-    &:first-child {
-      border-top: 0 none;
-      @include border-radius-top();
-    }
-    &:last-child {
-      @include border-radius-bottom();
-    }
-  }
-}
-
-/* Inverted Dropdown Styles */
-.dropdown.inverted {
-  > .dropdown-content,
-  > .dropdown-menu {
-    border: 0 none;
-    border-top: 1px solid rgba($white, 0.1);
-    
-    &:first-child {
-      border-top: 0 none;
-    }
-  }
+  @include add-dropdown-style($type: 'dropdown');
 }
 
 /**
  * Dropdown Content
  */
 .dropdown-content {
-  padding: 1em;
-  
-  > * {
-    margin: 0.5em 0;
-  }
-  > :first-child {
-    margin-top: 0;
-  }
-  > :last-child {
-    margin-bottom: 0;
-  }
-  
-  // Condensed Padding Modifiers
-  &.condensed {
-    padding: 0.5em;
-    
-    > a.block {
-      @include border-radius(0);
-    }
-    &:first-child > a.block {
-      @include border-radius-top();
-    }
-    &:last-child > a.block {
-      @include border-radius-bottom();
-    }
-  }
-  &.all-condensed {
-    padding: 0.5em;
-    
-    > a.block {
-      @include border-radius(0);
-    }
-    &:first-child > a.block {
-      @include border-radius-top();
-    }
-    &:last-child > a.block {
-      @include border-radius-bottom();
-    }
-    
-    .dropdown-content {
-      padding: 0.5em;
-      
-      > a.block {
-        @include border-radius(0);
-      }
-      &:first-child > a.block {
-        @include border-radius-top();
-      }
-      &:last-child > a.block {
-        @include border-radius-bottom();
-      }
-    }
-    .dropdown-menu {
-      padding: 0;
-    }
-  }
-  
-  // Expanded Padding Modifiers
-  &.expanded {
-    padding: 1.5em;
-  }
-  &.all-expanded {
-    padding: 1.5em;
-    
-    .dropdown-content {
-      padding: 1.5em;
-    }
-    .dropdown-menu {
-      padding: 1em;
-    }
-  }
-  
-  // Block Links
-  > a.block {
-    display: block;
-    margin: -0.5em;
-    padding: 1em;
-    color: $color;
-    border: 0 none;
-    @include border-radius();
-    
-    &:hover {
-      background: rgba($black, 0.05);
-    }
-    
-    > * {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-    }
-    > :first-child {
-      margin-top: 0;
-    }
-    > :last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-/* Inverted Dropdown Content */
-.dropdown.inverted > .dropdown-content,
-.dropdown-content.inverted {
-  > a.block {
-    color: $white;
-    
-    &:hover {
-      background: rgba($white, 0.05);
-    }
-  }
+  @include add-dropdown-style($type: 'dropdown-content');
 }
 
 /**
  * Dropdown Menu
  */
 .dropdown-menu {
-  list-style: none;
-  padding: 0.5em;
-  
-  // Condensed Padding Modifiers
-  &.condensed {
-    padding: 0;
-  }
-  &.all-condensed {
-    padding: 0;
-    .dropdown-content {
-      padding: 0.5em;
-    }
-    .dropdown-menu {
-      padding: 0;
-    }
-  }
-  
-  // Expanded Padding Modifiers
-  &.expanded {
-    padding: 1em;
-  }
-  &.all-expanded {
-    padding: 1em;
-    .dropdown-content {
-      padding: 1.5em;
-    }
-    .dropdown-menu {
-      padding: 1em;
-    }
-  }
-  
-  // Dropdown Menu Items
-  li {
-    position: relative;
-    margin: 0;
-    border-bottom: 1px solid rgba($black, 0.1);
-    @include transition(background-color 0.25s linear);
-  }
-  li:hover {
-    background: rgba($black, 0.05);
-    background-clip: padding-box;
-  }
-  li:first-child {
-    @include border-radius-top();
-  }
-  li:last-child {
-    border-bottom: 0 none;
-    @include border-radius-bottom();
-  }
-    
-  li a {
-    display: block;
-    padding: 0.75em 1em;
-    color: $color;
-    border: 0 none;
-  }
-}
-
-/* Inverted Dropdown Menu */
-.dropdown.inverted > .dropdown-menu,
-.dropdown-menu.inverted {
-  > li {
-    border-color: rgba($white, 0.1);
-  }
-  > li:hover {
-    background: rgba($white, 0.05);
-  }
-  > li > a {
-    color: $white;
-  }
+  @include add-dropdown-style($type: 'dropdown-menu');
 }
 
 /*==============================================================================
   @Dropdown Triggers - #{$filename}
 ==============================================================================*/
 
+.dropdown-trigger {
+  position: relative;
+  display: inline-block;
+}
+.dropdown .dropdown-trigger {
+  display: block;
+}
+
 /**
  * Dropdown Trigger
  */
 .dropdown-trigger {
-  position: relative;
-  display: inline-block;
-  
   .dropdown {
     position: absolute;
     z-index: 100;
@@ -411,9 +306,6 @@ $dropdowns: (
     bottom: auto;
     @include transform(translate3d(0, 0, 0));
   }
-}
-.dropdown .dropdown-trigger {
-  display: block;
 }
 
 /**
@@ -459,6 +351,50 @@ $dropdowns: (
 /*==============================================================================
   @Dropdown Anchor Positions - #{$filename}
 ==============================================================================*/
+
+/**
+ * Anchor Bottom Left
+ */
+.anchor-bottom-left {
+  .dropdown {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, -1em, 0));
+  }
+  &:not(.on-click):hover > .dropdown,
+  &.active > .dropdown {
+    top: 100%;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+/**
+ * Anchor Top Left
+ */
+.anchor-top-left {
+  .dropdown {
+    margin: 0 0 -1px 0;
+    top: auto;
+    left: 0;
+    right: auto;
+    bottom: 100%;
+    @include transform(translate3d(0, 1em, 0));
+  }
+  &:not(.on-click):hover > .dropdown,
+  &.active > .dropdown {
+    top: auto;
+    left: 0;
+    right: auto;
+    bottom: 100%;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
 
 /**
  * Top and Bottom Anchors
@@ -742,10 +678,6 @@ $dropdowns: (
   &:after {
     @include make-triangle( 7px, $white, 'up' );
   }
-  &.inverted {
-    &:before { @include make-triangle( 7px, $color, 'up' ); }
-    &:after  { @include make-triangle( 7px, $color, 'up' ); }
-  }
 }
 
 .dropdown-menu.arrow {
@@ -764,11 +696,6 @@ $dropdowns: (
   &:after {
     @include make-triangle( 7px, $white, 'left' );
   }
-  
-  &.inverted {
-    &:before { @include make-triangle( 7px, $color, 'left' ); }
-    &:after  { @include make-triangle( 7px, $color, 'left' ); }
-  }
 }
 
 /**
@@ -783,11 +710,6 @@ $dropdowns: (
   }
   &:after {
     @include make-triangle( 7px, $white, 'up' );
-  }
-  
-  &.inverted {
-    &:before { @include make-triangle( 7px, $color, 'up' ); }
-    &:after  { @include make-triangle( 7px, $color, 'up' ); }
   }
 }
 
@@ -832,10 +754,6 @@ $dropdowns: (
   }
   &:after {
     @include make-triangle( 7px, $white, 'down' );
-  }
-  &.inverted {
-    &:before { @include make-triangle( 7px, $color, 'down' ); }
-    &:after  { @include make-triangle( 7px, $color, 'down' ); }
   }
 }
 
@@ -883,10 +801,6 @@ $dropdowns: (
     }
     &:after {
       @include make-triangle( 7px, $white, 'right' );
-    }
-    &.inverted {
-      &:before { @include make-triangle( 7px, $color, 'right' ); }
-      &:after  { @include make-triangle( 7px, $color, 'right' ); }
     }
   }
 }
@@ -938,10 +852,6 @@ $dropdowns: (
     }
     &:after {
       @include make-triangle( 7px, $white, 'left' );
-    }
-    &.inverted {
-      &:before { @include make-triangle( 7px, $color, 'left' ); }
-      &:after  { @include make-triangle( 7px, $color, 'left' ); }
     }
   }
 }
