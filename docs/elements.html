@@ -662,6 +662,31 @@
   </li>
   
   <li>
+    <h2>add-list-linked</h2>
+    <p>Adds styles for a linked list where the padding is added to the anchor element instead of the list item.</p>
+    <pre class="language-scss"><code>@mixin add-list-linked( $options: () )
+// @param $options
+//   @type map
+//   @default $lists map</code></pre>
+    <h3>Example Usage</h3>
+    <pre class="language-scss"><code>.custom-list {
+  @include make-list();
+  @include add-list-bordered();
+  @include add-list-linked();
+}</code></pre>
+    <pre class="language-markup"><code>&lt;ul class=&quot;list bordered linked&quot;&gt;...&lt;/ul&gt;</code></pre>
+    <div class="demo">
+      <ul class="list bordered linked">
+        <li><a href="#">List Item</a></li>
+        <li><a href="#">List Item</a></li>
+        <li><a href="#">List Item</a></li>
+        <li><a href="#">List Item</a></li>
+        <li><a href="#">List Item</a></li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
     <h2>add-list-rounded</h2>
     <p>Gives a list rounded borders depending on parameters passed.</p>
     <pre class="language-scss"><code>@mixin add-list-rounded( $radius, $options: () )

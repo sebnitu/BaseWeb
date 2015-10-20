@@ -271,6 +271,9 @@ dl {
       content: '';
       display: table;
       clear: both; }
+  .list.flush > li {
+    padding-left: 0;
+    padding-right: 0; }
 
 /**
  * Border Modifiers
@@ -279,9 +282,6 @@ dl {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 .list.rowed > li:first-child {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
-.list.rowed.flush > li {
-  padding-left: 0;
-  padding-right: 0; }
 
 .list.bordered {
   border: 1px solid rgba(0, 0, 0, 0.1); }
@@ -289,6 +289,18 @@ dl {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
   .list.bordered > li:last-child {
     border-bottom: 0 none; }
+
+.list.linked > li {
+  padding: 0; }
+.list.linked > li > a {
+  display: block;
+  padding: 1rem;
+  background-clip: padding-box;
+  border: 0 none; }
+  .list.linked > li > a:after {
+    content: '';
+    display: table;
+    clear: both; }
 
 /**
  * Miscellaneous Modifiers
