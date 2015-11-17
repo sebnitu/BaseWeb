@@ -7,17 +7,20 @@ $filename: 'scss/blocks/_dropdowns.scss';
 
 $dropdowns: (
   'classes' : true,
+  
+  'class-dropdown'         : 'dropdown',
+  'class-dropdown-content' : 'dropdown-content',
+  'class-dropdown-menu'    : 'dropdown-menu',
+  'class-dropdown-trigger' : 'dropdown-trigger',
+
+  'target'        : '.dropdown',
+  'target-action' : '&:not(.on-click):hover > .dropdown, &.active > .dropdown',
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Dropdown Mixins
 ////////////////////////////////////////////////////////////////////////////////
-
-@mixin make-dropdown-trigger($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  
-}
 
 @mixin make-dropdown($options: ()) {
   $o: map-merge($dropdowns, $options);
@@ -137,10 +140,270 @@ $dropdowns: (
   
 }
 
-@mixin add-dropdown-position($options: (), $anchor : 'bottom-left', $arrow : false) {
+@mixin make-dropdown-trigger($options: ()) {
   $o: map-merge($dropdowns, $options);
   
+  // Base trigger styles
+  position: relative;
   
+  // Base target styles
+  #{map-get($o, 'target')} {
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    @include transition( transform, opacity, visibility );
+    @include transition-duration(0.25s, 0.25s, 0.15s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(0.25s);
+  }
+  
+  // Base target hover & active styles
+  #{map-get($o, 'target-action')} {
+    z-index: 105;
+    opacity: 1;
+    visibility: visible;
+    @include transition( transform, opacity, visibility);
+    @include transition-duration(0.25s, 0.25s, 0.25s);
+    @include transition-timing-function(ease-in-out);
+    @include transition-delay(none);
+  }
+}
+
+@mixin add-dropdown-position($options: (), $anchor : 'bottom-left') {
+  $o: map-merge($dropdowns, $options);
+  
+  // Bottom Left
+  @if ($anchor == 'bottom-left') {
+    #{map-get($o, 'target')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(0, -1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(0, 0, 0));
+    }
+  
+  // Bottom Right
+  } @else if ($anchor == 'bottom-right') {
+    #{map-get($o, 'target')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: auto;
+      right: 0;
+      bottom: auto;
+      @include transform(translate3d(0, -1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: auto;
+      right: 0;
+      bottom: auto;
+      @include transform(translate3d(0, 0, 0));
+    }
+    
+  // Bottom Center
+  } @else if ($anchor == 'bottom-center') {
+    #{map-get($o, 'target')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(-50%, -1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: -1px 0 0 0;
+      top: 100%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(-50%, 0, 0));
+    }
+  }
+  
+  // Top left
+  @if ($anchor == 'top-left') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: 0;
+      right: auto;
+      bottom: 100%;
+      @include transform(translate3d(0, 1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: 0;
+      right: auto;
+      bottom: 100%;
+      @include transform(translate3d(0, 0, 0));
+    }
+    
+  // Top Right
+  } @else if ($anchor == 'top-right') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 100%;
+      @include transform(translate3d(0, 1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 100%;
+      @include transform(translate3d(0, 0, 0));
+    }
+    
+  // Top Center
+  } @else if ($anchor == 'top-center') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: 50%;
+      right: auto;
+      bottom: 100%;
+      @include transform(translate3d(-50%, 1em, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 -1px 0;
+      top: auto;
+      left: 50%;
+      right: auto;
+      bottom: 100%;
+      @include transform(translate3d(-50%, 0, 0));
+    }
+  }
+  
+  // Left Top
+  @if ($anchor == 'left-top') {
+    #{map-get($o, 'target')} {
+      margin: 0 -1px 0 0;
+      top: 0;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      @include transform(translate3d(1em, 0, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 -1px 0 0;
+      top: 0;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      @include transform(translate3d(0, 0, 0));
+    }
+  
+  // Left Bottom
+  } @else if ($anchor == 'left-bottom') {
+    #{map-get($o, 'target')} {
+      margin: 0 -1px 0 0;
+      top: auto;
+      left: auto;
+      right: 100%;
+      bottom: 0;
+      @include transform(translate3d(1em, 0, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 -1px 0 0;
+      top: auto;
+      left: auto;
+      right: 100%;
+      bottom: 0;
+      @include transform(translate3d(0, 0, 0));
+    }
+  
+  // Left Center
+  } @else if ($anchor == 'left-center') {
+    #{map-get($o, 'target')} {
+      margin: 0 -1px 0 0;
+      top: 50%;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      @include transform(translate3d(1em, -50%, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 -1px 0 0;
+      top: 50%;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      @include transform(translate3d(0, -50%, 0));
+    }
+  }
+  
+  // Right Top
+  @if ($anchor == 'right-top') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 0 -1px;
+      top: 0;
+      left: 100%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(-1em, 0, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 0 -1px;
+      top: 0;
+      left: 100%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(0, 0, 0));
+    }
+  
+  // Right Bottom
+  } @else if ($anchor == 'right-bottom') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 0 -1px;
+      top: auto;
+      left: 100%;
+      right: auto;
+      bottom: 0;
+      @include transform(translate3d(-1em, 0, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 0 -1px;
+      top: auto;
+      left: 100%;
+      right: auto;
+      bottom: 0;
+      @include transform(translate3d(0, 0, 0));
+    }
+  
+  // Right Center
+  } @else if ($anchor == 'right-center') {
+    #{map-get($o, 'target')} {
+      margin: 0 0 0 -1px;
+      top: 50%;
+      left: 100%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(-1em, -50%, 0));
+    }
+    #{map-get($o, 'target-action')} {
+      margin: 0 0 0 -1px;
+      top: 50%;
+      left: 100%;
+      right: auto;
+      bottom: auto;
+      @include transform(translate3d(0, -50%, 0));
+    }
+  }
 }
 
 @mixin add-dropdown-arrow($options: ()) {
@@ -165,72 +428,6 @@ $dropdowns: (
   @include make-dropdown();
 }
 
-.menu.menu-hori ul ul {
-  @include make-dropdown();
-  @include add-dropdown-style($type: 'dropdown-menu');
-}
-
-.menu.menu-hori ul {
-  // Add menu trigger styles
-  ul {
-    position: absolute;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s, 0.25s, 0.15s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0.25s);
-  }
-  li:hover > ul {
-    z-index: 105;
-    opacity: 1;
-    visibility: visible;
-    @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s, 0.25s, 0.25s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(none);
-  }
-}
-
-.menu.menu-hori ul {
-  // Position of first dropdown (bottom-center)
-  ul {
-    margin: 0 0 0 0; // Offset
-    top: 100%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(-50%, -1em, 0));
-  }
-  li:hover > ul {
-    top: 100%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(-50%, 0, 0));
-  }
-}
-
-.menu.menu-hori ul ul {
-  // Position of all other dropdowns (right-top)
-  ul {
-    margin: -0.5em 0 0 -1px; // Offset
-    top: -1px; // Secondary offset
-    left: 100%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(-1em, 0, 0));
-  }
-  li:hover > ul {
-    top: -1px; // Secondary offset
-    left: 100%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-
 /**
  * Dropdown
  */
@@ -252,12 +449,27 @@ $dropdowns: (
   @include add-dropdown-style($type: 'dropdown-menu');
 }
 
+/**
+ * Custom Menu Dropdowns
+ */
+.menu.menu-hori ul ul {
+  @include make-dropdown();
+  @include add-dropdown-style($type: 'dropdown-menu');
+}
+.menu.menu-hori ul {
+  @include make-dropdown-trigger(('target' : 'ul', 'target-action' : 'li:hover > ul'));
+  @include add-dropdown-position(('target' : 'ul', 'target-action' : 'li:hover > ul'), $anchor: 'bottom-center');
+  
+  ul {
+    @include add-dropdown-position(('target' : 'ul', 'target-action' : 'li:hover > ul'), $anchor: 'right-top');
+  }
+}
+
 /*==============================================================================
   @Dropdown Triggers - #{$filename}
 ==============================================================================*/
 
 .dropdown-trigger {
-  position: relative;
   display: inline-block;
 }
 .dropdown .dropdown-trigger {
@@ -268,383 +480,61 @@ $dropdowns: (
  * Dropdown Trigger
  */
 .dropdown-trigger {
-  .dropdown {
-    position: absolute;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s, 0.25s, 0.15s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0.25s);
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    z-index: 105;
-    opacity: 1;
-    visibility: visible;
-    @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s, 0.25s, 0.25s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(none);
-  }
-  
-  // Default position
-  .dropdown {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, -1em, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: 100%;
-    left: 0;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
+  @include make-dropdown-trigger();
+  @include add-dropdown-position($anchor: 'bottom-left');
 }
 
 /**
  * Dropdown Menu Trigger
  */
 .dropdown-menu {
-  .dropdown-menu {
-    position: absolute;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s, 0.25s, 0.15s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0.25s);
-  }
-  > li:hover > .dropdown-menu,
-  &.active > li > .dropdown-menu {
-    z-index: 105;
-    opacity: 1;
-    visibility: visible;
-    @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s, 0.25s, 0.25s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(none);
-  }
-  
-  // Default position
-  .dropdown-menu {
-    margin: -1px 0 0 0;
-    top: -0.5em;
-    left: 100%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(-1em, 0, 0));
-  }
-  > li:hover > .dropdown-menu,
-  &.active > li > .dropdown-menu {
-    @include transform(translate3d(0, 0, 0));
-  }
+  @include make-dropdown-trigger(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'));
+  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'), $anchor: 'left-top');
 }
 
 /*==============================================================================
   @Dropdown Anchor Positions - #{$filename}
 ==============================================================================*/
 
-/**
- * Anchor Bottom Left
- */
 .anchor-bottom-left {
-  .dropdown {
-    margin: -1px 0 0 0;
-    top: 100%;
-    left: 0;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, -1em, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: 100%;
-    left: 0;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
+  @include add-dropdown-position($anchor: 'bottom-left');
 }
-
-/**
- * Anchor Top Left
- */
-.anchor-top-left {
-  .dropdown {
-    margin: 0 0 -1px 0;
-    top: auto;
-    left: 0;
-    right: auto;
-    bottom: 100%;
-    @include transform(translate3d(0, 1em, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: auto;
-    left: 0;
-    right: auto;
-    bottom: 100%;
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-
-/**
- * Top and Bottom Anchors
- */
-.anchor-top-left,
-.anchor-top-right,
-.anchor-top-center {
-  .dropdown {
-    margin: 0 0 -1px 0;
-    top: auto;
-    bottom: 100%;
-    @include transform(translate3d(0, 1em, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: auto;
-    bottom: 100%;
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-.anchor-bottom-left,
-.anchor-bottom-right,
-.anchor-bottom-center {
-  .dropdown {
-    margin: -1px 0 0 0;
-    top: 100%;
-    bottom: auto;
-    @include transform(translate3d(0, -1em, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: 100%;
-    bottom: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-
-.anchor-top-left,
-.anchor-bottom-left {
-  .dropdown {
-    left: 0;
-    right: auto;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    left: 0;
-    right: auto;
-  }
-}
-.anchor-top-right,
 .anchor-bottom-right {
-  .dropdown {
-    left: auto;
-    right: 0;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    left: auto;
-    right: 0;
-  }
+  @include add-dropdown-position($anchor: 'bottom-right');
 }
-.anchor-top-center,
 .anchor-bottom-center {
-  .dropdown {
-    left: 50%;
-    right: auto;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    left: 50%;
-    right: auto;
-    @include transform(translate3d(-50%, 0, 0));
-  }
+  @include add-dropdown-position($anchor: 'bottom-center');
 }
 
+.anchor-top-left {
+  @include add-dropdown-position($anchor: 'top-left');
+}
+.anchor-top-right {
+  @include add-dropdown-position($anchor: 'top-right');
+}
 .anchor-top-center {
-  .dropdown {
-    @include transform(translate3d(-50%, 1em, 0));
-  }
-}
-.anchor-bottom-center {
-  .dropdown {
-    @include transform(translate3d(-50%, -1em, 0));
-  }
+  @include add-dropdown-position($anchor: 'top-center');
 }
 
-/**
- * Left and Right Anchors
- */
-.anchor-left-top,
-.anchor-left-bottom,
+.anchor-left-top {
+  @include add-dropdown-position($anchor: 'left-top');
+}
+.anchor-left-bottom {
+  @include add-dropdown-position($anchor: 'left-bottom');
+}
 .anchor-left-center {
-  .dropdown {
-    margin: 0 -1px 0 0;
-    left: auto;
-    right: 100%;
-    @include transform(translate3d(1em, 0, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    left: auto;
-    right: 100%;
-    @include transform(translate3d(0, 0, 0));
-  }
-  
-}
-.anchor-right-top,
-.anchor-right-bottom,
-.anchor-right-center {
-  .dropdown {
-    margin: 0 0 0 -1px;
-    left: 100%;
-    right: auto;
-    @include transform(translate3d(-1em, 0, 0));
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    left: 100%;
-    right: auto;
-    @include transform(translate3d(0, 0, 0));
-  }
+  @include add-dropdown-position($anchor: 'left-center');
 }
 
-.anchor-left-top,
 .anchor-right-top {
-  .dropdown {
-    top: 0;
-    bottom: auto;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: 0;
-    bottom: auto;
-  }
+  @include add-dropdown-position($anchor: 'right-top');
 }
-.anchor-left-bottom,
 .anchor-right-bottom {
-  .dropdown {
-    top: auto;
-    bottom: 0;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: auto;
-    bottom: 0;
-  }
+  @include add-dropdown-position($anchor: 'right-bottom');
 }
-.anchor-left-center,
 .anchor-right-center {
-  .dropdown {
-    top: 50%;
-    bottom: auto;
-  }
-  &:not(.on-click):hover > .dropdown,
-  &.active > .dropdown {
-    top: 50%;
-    bottom: auto;
-    @include transform(translate3d(0, -50%, 0));
-  }
+  @include add-dropdown-position($anchor: 'right-center');
 }
-.anchor-left-center {
-  .dropdown {
-    @include transform(translate3d(-1em, -50%, 0));
-  }
-}
-.anchor-right-center  {
-  .dropdown {
-    @include transform(translate3d(1em, -50%, 0));
-  }
-}
-
-/**
- * Dropdown Menu Anchor Positions
- */
-.dropdown-menu.anchor-left-top,
-.dropdown-menu.anchor-left-bottom,
-.dropdown-menu.anchor-left-center {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    left: auto;
-    right: 100%;
-    @include transform(translate3d(1em, 0, 0));
-  }
-  > li:hover > .dropdown-menu,
-  &.active > li > .dropdown-menu {
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-.dropdown-menu.anchor-right-top,
-.dropdown-menu.anchor-right-bottom,
-.dropdown-menu.anchor-right-center {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    left: 100%;
-    right: auto;
-    @include transform(translate3d(-1em, 0, 0));
-  }
-  > li:hover > .dropdown-menu,
-  &.active > li > .dropdown-menu {
-    @include transform(translate3d(0, 0, 0));
-  }
-}
-.dropdown-menu.anchor-left-top,
-.dropdown-menu.anchor-right-top {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    margin: -1px 0 0 0;
-    top: -0.5em;
-    bottom: auto;
-  }
-}
-.dropdown-menu.anchor-left-bottom,
-.dropdown-menu.anchor-right-bottom {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    margin: 0 0 -1px 0;
-    top: auto;
-    bottom: -0.5em;
-  }
-}
-.dropdown-menu.anchor-left-center,
-.dropdown-menu.anchor-right-center {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    margin: 0;
-    top: 50%;
-    bottom: auto;
-  }
-}
-.dropdown-menu.anchor-left-center {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    @include transform(translate3d(1em, -50%, 0));
-  }
-  li:hover > .dropdown-menu,
-  &.active li > .dropdown-menu {
-    @include transform(translate3d(0, -50%, 0));
-  }
-}
-.dropdown-menu.anchor-right-center {
-  .dropdown-menu,
-  > li > .dropdown-menu {
-    @include transform(translate3d(-1em, -50%, 0));
-  }
-  li:hover > .dropdown-menu,
-  &.active li > .dropdown-menu {
-    @include transform(translate3d(0, -50%, 0));
-  }
-}
-
 
 /*==============================================================================
   @Dropdown Arrows - #{$filename}
