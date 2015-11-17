@@ -41,6 +41,9 @@ $dropdowns: (
   'offset-margin-alt' : 0,
   'offset-position'   : 0.5em,
   
+  'dropdown-position'      : 'bottom-left',
+  'dropdown-menu-position' : 'right-top',
+  
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -508,7 +511,7 @@ $dropdowns: (
  */
 .dropdown-menu {
   @include make-dropdown-trigger(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'));
-  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'), $anchor: 'left-top');
+  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'), $anchor: 'right-top');
 }
 
 // Check if we should output modifier classes

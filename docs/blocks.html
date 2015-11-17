@@ -1389,152 +1389,254 @@ $(document).ready(function() {
     </nav>
 <h1>Dropdowns</h1>
 
-<div class="dropdown-trigger on-click">
-  <button class="button">On Click</button>
-  <div class="dropdown arrow">
-    <div class="dropdown-content text-center">
-      <a class="block">
-        <p>
-          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-          <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
-        </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-    <div class="dropdown-content">
-      <div class="dropdown-trigger on-click anchor-right-top">
-        <button class="button block blue">Create Account</button>
-        <div class="dropdown arrow">
+<p>Dropdowns represent content that is initially hidden to the user and revealed by an action&mdash;usually a hover or click&mdash;on a target area. The most common use of a dropdown is sub-navigation in a navigation menu. The dropdown event consists of two components:</p>
+
+<ul class="list rowed flush">
+  <li><strong>The Trigger:</strong> this is the element that when acted upon reveals the hidden content relative to the placement of itself. The trigger is usually represented by a button or menu item.</li>
+  <li><strong>The Target (Dropdown):</strong> this is the hidden element that is revealed by the trigger. It can be any content, but it usually takes the form as a set of links. It's position is relative to the trigger that activates it.</li>
+</ul>
+
+<pre class="language-markup"><code>
+&lt;div class=&quot;dropdown-trigger&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;On Hover&lt;/button&gt;
+  &lt;div class=&quot;dropdown&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;dropdown-trigger on-click&quot;&gt;
+  &lt;button class=&quot;button&quot;&gt;On Click&lt;/button&gt;
+  &lt;div class=&quot;dropdown&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<div class="demo demo-dropdown">
+
+  <div class="dropdown-trigger">
+    <button class="button">On Hover</button>
+    <div class="dropdown arrow">
+      <div class="dropdown-content text-center">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a>
           <ul class="dropdown-menu">
             <li><a href="#">Help</a></li>
-            <li>
-              <a href="#">Settings</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Help</a></li>
-                <li>
-                  <a href="#">Settings</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Log Out</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Log Out</a></li>
-              </ul>
-            </li>
+            <li><a href="#">Settings</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Log Out</a></li>
           </ul>
+        </li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+      <div class="dropdown-content">
+        <div class="dropdown-trigger on-click anchor-right-top">
+          <button class="button block blue">Create Account</button>
+          <div class="dropdown arrow">
+            <ul class="dropdown-menu">
+              <li><a href="#">Help</a></li>
+              <li>
+                <a href="#">Settings</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Help</a></li>
+                  <li>
+                    <a href="#">Settings</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li><a href="#">Analytics</a></li>
+                      <li><a href="#">Log Out</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Analytics</a></li>
+                  <li><a href="#">Log Out</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Analytics</a></li>
+              <li><a href="#">Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="button-group block has-2">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
         </div>
       </div>
-      <div class="button-group block has-2">
-        <button class="button">&larr; Prev</button>
-        <button class="button">Next &rarr;</button>
+    </div>
+  </div>
+  
+  <div class="dropdown-trigger on-click">
+    <button class="button">On Click</button>
+    <div class="dropdown arrow">
+      <div class="dropdown-content text-center">
+        <a class="block">
+          <p>
+            <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+      <div class="dropdown-content">
+        <div class="dropdown-trigger on-click anchor-right-top">
+          <button class="button block blue">Create Account</button>
+          <div class="dropdown arrow">
+            <ul class="dropdown-menu">
+              <li><a href="#">Help</a></li>
+              <li>
+                <a href="#">Settings</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Help</a></li>
+                  <li>
+                    <a href="#">Settings</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li><a href="#">Analytics</a></li>
+                      <li><a href="#">Log Out</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Analytics</a></li>
+                  <li><a href="#">Log Out</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Analytics</a></li>
+              <li><a href="#">Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="button-group block has-2">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="dropdown-trigger on-click">
-  <button class="button">On Click</button>
-  <div class="dropdown  arrow">
-    <div class="dropdown-content text-center">
-      <a class="block">
-        <p>
-          <img src="./img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-          <strong>Sebastian Nitu</strong><br>
-          <small class="text-soften">View Profile</small>
-        </p>
-        <p>Welcome to this example of a dropdown-content block.</p>
-      </a>
-    </div>
-    <ul class="dropdown-menu">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Settings</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Analytics</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Analytics</a></li>
-      <li><a href="#">Log Out</a></li>
-    </ul>
-    <div class="dropdown-content">
-      <button class="button block green clip-padding">Create Account</button>
-      <div class="button-group block has-2">
-        <button class="button">&larr; Prev</button>
-        <button class="button">Next &rarr;</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-$(document).ready(function() {
   
-  // Bind document click event
-  $(document).click(function(){
-    // Close all dropdowns if a click occures outside of a dropdown trigger or dropdown
-    $('.dropdown-trigger.on-click').removeClass('active');
-  });
+  <script>
+  $(document).ready(function() {
+    
+    // Bind document click event
+    $(document).click(function(){
+      // Hide all dropdowns that are click activated
+      $('.dropdown-trigger.on-click').removeClass('active');
+    });
+    
+    // Bind the click event to .dropdown-trigger
+    $('.dropdown-trigger.on-click').click(function(e) {
+      
+      // Is the dropdown already active?
+      var is_active = $(this).hasClass('active');
+      
+      // Hide all dropdowns that are click activated
+      $('.dropdown-trigger.on-click').removeClass('active');
+      
+      // Keep the parent dropdowns active
+      $(this).parents('.dropdown-trigger').addClass('active');
   
-  // Bind the click event to .dropdown-trigger
-  $('.dropdown-trigger.on-click').click(function(e) {
+      // If the dropdown is not active, add the active class
+      if (!is_active) {
+        $(this).addClass('active');
+      }
+  
+      // Stop the click event from bubbling down to the document
+      e.stopPropagation();
+    });
     
-    // Is the dropdown already active?
-    var is_active = $(this).hasClass('active');
-    
-    // Hide all other dropdowns
-    $('.dropdown-trigger.on-click').removeClass('active');
-    
-    // Keep the parent dropdowns active
-    $(this).parents('.dropdown-trigger').addClass('active');
-
-    // If the dropdown is not active, add the active class
-    if (!is_active) {
+    // Bind the click event to .dropdown
+    $('.dropdown-trigger.on-click .dropdown').click(function(e) {
+          
+      // Hide all dropdowns that are click activated
+      $('.dropdown-trigger.on-click').removeClass('active');
+      
+      // Keep the parent dropdowns active
+      $(this).parents('.dropdown-trigger').addClass('active');
+      
+      // Keep the current dropdown active
       $(this).addClass('active');
-    }
+      
+      // Stop the click event from bubbling down to the document
+      e.stopPropagation();
+    });
+    
+  });
+  </script>
 
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-  
-  // Bind the click event to .dropdown
-  $('.dropdown-trigger.on-click .dropdown').click(function(e) {
-        
-    // Hide all other dropdowns
-    $('.dropdown-trigger.on-click').removeClass('active');
-    
-    // Keep the parent dropdowns active
-    $(this).parents('.dropdown-trigger').addClass('active');
-    
-    // Keep the current dropdown active
-    $(this).addClass('active');
-    
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-  
+</div><!-- .demo -->
+
+<p>The <code>on-click</code> class disables the hover styles from the dropdown trigger. This allows you to write whatever JavaScript you'd like to handle the dropdown action events. Here's an example of some jQuery you could use for displaying dropdowns on click with comments to explain the process:</p>
+
+<pre class="language-javascript"><code>
+// Bind document click event
+$(document).click(function(){
+  // Hide all dropdowns that are click activated
+  $('.dropdown-trigger.on-click').removeClass('active');
 });
-</script>
+
+// Bind the click event to .dropdown-trigger
+$('.dropdown-trigger.on-click').click(function(e) {
+  
+  // Is the dropdown already active?
+  var is_active = $(this).hasClass('active');
+  
+  // Hide all dropdowns that are click activated
+  $('.dropdown-trigger.on-click').removeClass('active');
+  
+  // Keep the parent dropdowns active
+  $(this).parents('.dropdown-trigger').addClass('active');
+
+  // If the dropdown is not active, add the active class
+  if (!is_active) {
+    $(this).addClass('active');
+  }
+
+  // Stop the click event from bubbling down to the document
+  e.stopPropagation();
+});
+
+// Bind the click event to .dropdown
+$('.dropdown-trigger.on-click .dropdown').click(function(e) {
+      
+  // Hide all dropdowns that are click activated
+  $('.dropdown-trigger.on-click').removeClass('active');
+  
+  // Keep the parent dropdowns active
+  $(this).parents('.dropdown-trigger').addClass('active');
+  
+  // Keep the current dropdown active
+  $(this).addClass('active');
+  
+  // Stop the click event from bubbling down to the document
+  e.stopPropagation();
+});
+</code></pre>
+
+<p>The two primary content types of dropdowns are dropdown menus and then more general dropdown content. Each content type can be  used to define different dropdowns or combined for more complex dropdown content.</p>
 
 <hr>
 
