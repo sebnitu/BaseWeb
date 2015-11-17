@@ -7,6 +7,7 @@ $filename: 'scss/blocks/_dropdowns.scss';
 
 $dropdowns: (
   'classes' : true,
+  'classes-position' : false,
   
   'class-dropdown'         : 'dropdown',
   'class-dropdown-content' : 'dropdown-content',
@@ -15,6 +16,30 @@ $dropdowns: (
 
   'target'        : '.dropdown',
   'target-action' : '&:not(.on-click):hover > .dropdown, &.active > .dropdown',
+  
+  'width'   : 15rem,
+  'padding' : 1em,
+  
+  'font-size'   : px-to-rem(14px),
+  'line-height' : 1.25em,
+  
+  'background'       : $white,
+  'background-hover' : rgba($black, 0.05),
+  'border'           : 1px solid rgba($black, 0.1),
+  'box-shadow'       : 0 2px 6px rgba($black, 0.15),
+  
+  'content-sep' : 0.5em,
+  
+  'transition'                 : 'transform, opacity, visibility',
+  'transition-duration'        : 0.25s, 0.25s, 0.15s,
+  'transition-timing-function' : ease-in-out,
+  'transition-delay'           : 0.25s,
+  
+  'transform-offset' : 1em,
+  
+  'offset-margin'     : -1px,
+  'offset-margin-alt' : 0,
+  'offset-position'   : 0.5em,
   
 ) !default;
 
@@ -406,12 +431,6 @@ $dropdowns: (
   }
 }
 
-@mixin add-dropdown-arrow($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  
-}
-
 // Check if we should output modifier classes
 @if (map-get($dropdowns, 'classes') == true) {
 
@@ -492,6 +511,9 @@ $dropdowns: (
   @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'), $anchor: 'left-top');
 }
 
+// Check if we should output modifier classes
+@if (map-get($dropdowns, 'classes-position') == true) {
+
 /*==============================================================================
   @Dropdown Anchor Positions - #{$filename}
 ==============================================================================*/
@@ -536,246 +558,6 @@ $dropdowns: (
   @include add-dropdown-position($anchor: 'right-center');
 }
 
-/*==============================================================================
-  @Dropdown Arrows - #{$filename}
-==============================================================================*/
-
-/**
- * Base Arrow
- */
-.dropdown.arrow,
-.dropdown-menu.arrow {
-  &:before,
-  &:after {
-    @include make-triangle-base();
-    position: absolute;
-  }
-}
-
-.dropdown.arrow {
-  // Default Arrow Position
-  &:before,
-  &:after {
-    top: auto;
-    left: 1.5em;
-    right: auto;
-    bottom: 100%;
-  }
-  &:before {
-    @include make-triangle( 7px, rgba($black, 0.25), 'up' );
-    margin: 0 0 1px 0;
-  }
-  &:after {
-    @include make-triangle( 7px, $white, 'up' );
-  }
-}
-
-.dropdown-menu.arrow {
-  // Default Arrow Position
-  &:before,
-  &:after {
-    top: 1.2em;
-    left: auto;
-    right: 100%;
-    bottom: auto;
-  }
-  &:before {
-    @include make-triangle( 7px, rgba($black, 0.25), 'left' );
-    margin: 0 1px 0 0;
-  }
-  &:after {
-    @include make-triangle( 7px, $white, 'left' );
-  }
-}
-
-/**
- * Arrow Up
- */
-.anchor-bottom-left .dropdown.arrow,
-.anchor-bottom-right .dropdown.arrow,
-.anchor-bottom-center .dropdown.arrow {
-  &:before {
-    @include make-triangle( 7px, rgba($black, 0.25), 'up' );
-    margin: 0 0 1px 0;
-  }
-  &:after {
-    @include make-triangle( 7px, $white, 'up' );
-  }
-}
-
-.anchor-bottom-left .dropdown.arrow {
-  &:before,
-  &:after {
-    top: auto;
-    left: 1.5em;
-    right: auto;
-    bottom: 100%;
-  }
-}
-.anchor-bottom-right .dropdown.arrow {
-  &:before,
-  &:after {
-    top: auto;
-    left: auto;
-    right: 1.5em;
-    bottom: 100%;
-  }
-}
-.anchor-bottom-center .dropdown.arrow {
-  &:before,
-  &:after {
-    top: auto;
-    left: 50%;
-    right: auto;
-    bottom: 100%;
-    @include transform(translate3d(-50%, 0, 0));
-  }
-}
-
-/**
- * Arrow Down
- */
-.anchor-top-left .dropdown.arrow,
-.anchor-top-right .dropdown.arrow,
-.anchor-top-center .dropdown.arrow {
-  &:before {
-    @include make-triangle( 7px, rgba($black, 0.25), 'down' );
-    margin: 1px 0 0 0;
-  }
-  &:after {
-    @include make-triangle( 7px, $white, 'down' );
-  }
-}
-
-.anchor-top-left .dropdown.arrow {
-  &:before,
-  &:after {
-    top: 100%;
-    left: 1.5em;
-    right: auto;
-    bottom: auto;
-  }
-}
-.anchor-top-right .dropdown.arrow {
-  &:before,
-  &:after {
-    top: 100%;
-    left: auto;
-    right: 1.5em;
-    bottom: auto;
-  }
-}
-.anchor-top-center .dropdown.arrow {
-  &:before,
-  &:after {
-    top: 100%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(-50%, 0, 0));
-  }
-}
-
-/**
- * Arrow Right
- */
-.anchor-left-top,
-.anchor-left-bottom,
-.anchor-left-center {
-  
-  .dropdown.arrow,
-  .dropdown-menu.arrow {
-    &:before {
-      @include make-triangle( 7px, rgba($black, 0.25), 'right' );
-      margin: 0 0 0 1px;
-    }
-    &:after {
-      @include make-triangle( 7px, $white, 'right' );
-    }
-  }
-}
-
-.anchor-left-top .dropdown.arrow,
-.anchor-left-top .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: 1.2em;
-    left: 100%;
-    right: auto;
-    bottom: auto;
-  }
-}
-.anchor-left-bottom .dropdown.arrow,
-.anchor-left-bottom .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: auto;
-    left: 100%;
-    right: auto;
-    bottom: 1.2em;
-  }
-}
-.anchor-left-center .dropdown.arrow,
-.anchor-left-center .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: 50%;
-    left: 100%;
-    right: auto;
-    bottom: auto;
-    @include transform(translate3d(0, -50%, 0));
-  }
-}
-
-/**
- * Arrow Left
- */
-.anchor-right-top,
-.anchor-right-bottom,
-.anchor-right-center {
-  
-  .dropdown.arrow,
-  .dropdown-menu.arrow {
-    &:before {
-      @include make-triangle( 7px, rgba($black, 0.25), 'left' );
-      margin: 0 1px 0 0;
-    }
-    &:after {
-      @include make-triangle( 7px, $white, 'left' );
-    }
-  }
-}
-
-.anchor-right-top .dropdown.arrow,
-.anchor-right-top .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: 1.2em;
-    left: auto;
-    right: 100%;
-    bottom: auto;
-  }
-}
-.anchor-right-bottom .dropdown.arrow,
-.anchor-right-bottom .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: auto;
-    left: auto;
-    right: 100%;
-    bottom: 1.2em;
-  }
-}
-.anchor-right-center .dropdown.arrow,
-.anchor-right-center .dropdown-menu.arrow {
-  &:before,
-  &:after {
-    top: 50%;
-    left: auto;
-    right: 100%;
-    bottom: auto;
-    @include transform(translate3d(0, -50%, 0));
-  }
-}
+} // endif classes-position
 
 } // endif classes
