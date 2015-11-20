@@ -1755,11 +1755,14 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
 .dropdown-content {
   padding: 1em; }
   .dropdown-content > * {
-    margin: 0.5em 0; }
+    margin-top: 0.5em;
+    margin-bottom: 0.5em; }
   .dropdown-content > :first-child {
     margin-top: 0; }
   .dropdown-content > :last-child {
     margin-bottom: 0; }
+  .dropdown-content > hr {
+    margin: 1em 0; }
   .dropdown-content > a.block {
     display: block;
     margin: -0.5em;
@@ -1851,12 +1854,12 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     z-index: 100;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: transform, opacity, visibility;
-    transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.15s;
-    transition-duration: 0.25s, 0.25s, 0.15s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition: 'transform, opacity, visibility';
+    transition: 'transform, opacity, visibility';
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: 0.25s;
     transition-delay: 0.25s; }
   .menu.menu-hori ul li:hover > ul {
@@ -1865,10 +1868,10 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     visibility: visible;
     -webkit-transition: transform, opacity, visibility;
     transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.25s;
-    transition-duration: 0.25s, 0.25s, 0.25s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: none;
     transition-delay: none; }
   .menu.menu-hori ul ul {
@@ -1912,27 +1915,18 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
   @Dropdown Triggers - scss/blocks/_dropdowns.scss
 ==============================================================================*/
 .dropdown-trigger {
-  display: inline-block; }
-
-.dropdown .dropdown-trigger {
-  display: block; }
-
-/**
- * Dropdown Trigger
- */
-.dropdown-trigger {
   position: relative; }
   .dropdown-trigger .dropdown {
     position: absolute;
     z-index: 100;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: transform, opacity, visibility;
-    transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.15s;
-    transition-duration: 0.25s, 0.25s, 0.15s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition: 'transform, opacity, visibility';
+    transition: 'transform, opacity, visibility';
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: 0.25s;
     transition-delay: 0.25s; }
   .dropdown-trigger:not(.on-click):hover > .dropdown, .dropdown-trigger.active > .dropdown {
@@ -1941,10 +1935,10 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     visibility: visible;
     -webkit-transition: transform, opacity, visibility;
     transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.25s;
-    transition-duration: 0.25s, 0.25s, 0.25s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: none;
     transition-delay: none; }
   .dropdown-trigger .dropdown {
@@ -1966,9 +1960,6 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
-/**
- * Dropdown Menu Trigger
- */
 .dropdown-menu {
   position: relative; }
   .dropdown-menu .dropdown-menu {
@@ -1976,12 +1967,12 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     z-index: 100;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: transform, opacity, visibility;
-    transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.15s;
-    transition-duration: 0.25s, 0.25s, 0.15s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition: 'transform, opacity, visibility';
+    transition: 'transform, opacity, visibility';
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: 0.25s;
     transition-delay: 0.25s; }
   .dropdown-menu > li:hover > .dropdown-menu, .dropdown-menu.active > li > .dropdown-menu {
@@ -1990,15 +1981,15 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     visibility: visible;
     -webkit-transition: transform, opacity, visibility;
     transition: transform, opacity, visibility;
-    -webkit-transition-duration: 0.25s, 0.25s, 0.25s;
-    transition-duration: 0.25s, 0.25s, 0.25s;
-    -webkit-transition-timing-function: ease-in-out;
-    transition-timing-function: ease-in-out;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    -webkit-transition-timing-function: ;
+    transition-timing-function: ;
     -webkit-transition-delay: none;
     transition-delay: none; }
   .dropdown-menu .dropdown-menu {
-    margin: 0 0 0 -1px;
-    top: 0;
+    margin: -1px 0 0 -1px;
+    top: -0.5em;
     left: 100%;
     right: auto;
     bottom: auto;
@@ -2006,8 +1997,8 @@ label.inline, .button.inline, .input.inline, .checkbox.inline, .radio.inline, .c
     -ms-transform: translate3d(-1em, 0, 0);
     transform: translate3d(-1em, 0, 0); }
   .dropdown-menu > li:hover > .dropdown-menu, .dropdown-menu.active > li > .dropdown-menu {
-    margin: 0 0 0 -1px;
-    top: 0;
+    margin: -1px 0 0 -1px;
+    top: -0.5em;
     left: 100%;
     right: auto;
     bottom: auto;
@@ -3886,6 +3877,18 @@ ul.example-reverse-index {
 .demo-dropdown {
   padding: 1.5em;
   overflow: visible; }
+  .demo-dropdown > .dropdown-trigger {
+    display: inline-block; }
+
+.demo-dropdown-styles {
+  padding: 1.5em 0.5em 0.5em 1.5em; }
+  .demo-dropdown-styles:after {
+    content: '';
+    display: table;
+    clear: both; }
+  .demo-dropdown-styles > .dropdown, .demo-dropdown-styles > .dropdown-content, .demo-dropdown-styles > .dropdown-menu {
+    float: left;
+    margin: 0 1em 1em 0; }
 
 .menu.menu-hori > ul {
   display: table;

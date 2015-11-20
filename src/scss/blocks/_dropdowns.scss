@@ -17,6 +17,9 @@ $dropdowns: (
   'target'        : '.dropdown',
   'target-action' : '&:not(.on-click):hover > .dropdown, &.active > .dropdown',
   
+  'target-zindex'        : 100,
+  'target-action-zindex' : 105,  
+  
   'width'   : 15rem,
   'padding' : 1em,
   
@@ -25,21 +28,26 @@ $dropdowns: (
   
   'background'       : $white,
   'background-hover' : rgba($black, 0.05),
+  'background-clip'  : padding-box,
   'border'           : 1px solid rgba($black, 0.1),
+  'border-radius'    : $border-radius,
   'box-shadow'       : 0 2px 6px rgba($black, 0.15),
   
-  'content-sep' : 0.5em,
+  'content-sep'    : 0.5em,
+  'content-sep-hr' : 1em,
   
-  'transition'                 : 'transform, opacity, visibility',
-  'transition-duration'        : 0.25s, 0.25s, 0.15s,
-  'transition-timing-function' : ease-in-out,
-  'transition-delay'           : 0.25s,
+  'transition'                     : 'transform, opacity, visibility',
+  'transition-in-duration'         : 0.25s, 0.25s, 0.25s,
+  'transition-in-timing-function'  : linear,
+  'transition-in-delay'            : none,
+  'transition-out-duration'        : 0.25s, 0.25s, 0.15s,
+  'transition-out-timing-function' : linear,
+  'transition-out-delay'           : 0.25s,
   
-  'transform-offset' : 1em,
-  
-  'offset-margin'     : -1px,
-  'offset-margin-alt' : 0,
-  'offset-position'   : 0.5em,
+  'offset-transition' : 1em,
+  'offset-margin'     : -1px, // The first posiiton margin offset
+  'offset-margin-alt' : 0,    // The second position margin offset (does not apply to centered dropdowns)
+  'offset-position'   : 0,    // The second position offset (does not apply to centered dropdowns)
   
   'dropdown-position'      : 'bottom-left',
   'dropdown-menu-position' : 'right-top',
@@ -55,15 +63,15 @@ $dropdowns: (
   
   position: relative;
   display: block;
-  width: 15rem;
+  width: map-get($o, 'width');
   margin: 0;
-  font-size: px-to-rem(14px);
-  line-height: 1.25em;
-  background: $white;
-  background-clip: padding-box;
-  border: 1px solid rgba($black, 0.1);
-  box-shadow: 0 2px 6px rgba($black, 0.15);
-  @include border-radius();
+  font-size: map-get($o, 'font-size');
+  line-height: map-get($o, 'line-height');
+  background: map-get($o, 'background');
+  background-clip: map-get($o, 'background-clip');
+  border: map-get($o, 'border');
+  box-shadow: map-get($o, 'box-shadow');
+  @include border-radius(map-get($o, 'border-radius'));
 }
 
 @mixin add-dropdown-style($options: (), $type : 'dropdown') {
@@ -73,31 +81,32 @@ $dropdowns: (
     
     padding: 0;
   
-    > .dropdown-content,
-    > .dropdown-menu {
+    > .#{map-get($o, 'class-dropdown-content')},
+    > .#{map-get($o, 'class-dropdown-menu')} {
       width: auto;
       margin: 0;
       background: none;
       border: 0 none;
-      border-top: 1px solid rgba($black, 0.1);
+      border-top: map-get($o, 'border');
       box-shadow: none;
       @include border-radius(0);
       
       &:first-child {
         border-top: 0 none;
-        @include border-radius-top();
+        @include border-radius-top(map-get($o, 'border-radius'));
       }
       &:last-child {
-        @include border-radius-bottom();
+        @include border-radius-bottom(map-get($o, 'border-radius'));
       }
     }
     
   } @else if ($type == 'dropdown-content') {
     
-    padding: 1em;
+    padding: map-get($o, 'padding');
     
     > * {
-      margin: 0.5em 0;
+      margin-top: map-get($o, 'content-sep');
+      margin-bottom: map-get($o, 'content-sep');
     }
     > :first-child {
       margin-top: 0;
@@ -106,22 +115,26 @@ $dropdowns: (
       margin-bottom: 0;
     }
     
+    > hr {
+      margin: map-get($o, 'content-sep-hr') 0;
+    }
+    
     // Block Links
     > a.block {
       display: block;
       margin: -0.5em;
-      padding: 1em;
+      padding: map-get($o, 'padding');
       color: $color;
       border: 0 none;
-      @include border-radius();
+      @include border-radius(map-get($o, 'border-radius'));
       
       &:hover {
-        background: rgba($black, 0.05);
+        background: map-get($o, 'background-hover');
       }
       
       > * {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
+        margin-top: map-get($o, 'content-sep');
+        margin-bottom: map-get($o, 'content-sep');
       }
       > :first-child {
         margin-top: 0;
@@ -140,19 +153,19 @@ $dropdowns: (
     li {
       position: relative;
       margin: 0;
-      border-bottom: 1px solid rgba($black, 0.1);
+      border-bottom: map-get($o, 'border');
       @include transition(background-color 0.25s linear);
     }
     li:hover {
-      background: rgba($black, 0.05);
+      background: map-get($o, 'background-hover');
       background-clip: padding-box;
     }
     li:first-child {
-      @include border-radius-top();
+      @include border-radius-top(map-get($o, 'border-radius'));
     }
     li:last-child {
       border-bottom: 0 none;
-      @include border-radius-bottom();
+      @include border-radius-bottom(map-get($o, 'border-radius'));
     }
       
     li a {
@@ -177,24 +190,24 @@ $dropdowns: (
   // Base target styles
   #{map-get($o, 'target')} {
     position: absolute;
-    z-index: 100;
+    z-index: map-get($o, 'target-zindex');
     opacity: 0;
     visibility: hidden;
-    @include transition( transform, opacity, visibility );
-    @include transition-duration(0.25s, 0.25s, 0.15s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0.25s);
+    @include transition(map-get($o, 'transition'));
+    @include transition-duration(map-get($o, 'transition-out-duration'));
+    @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
+    @include transition-delay(map-get($o, 'transition-out-delay'));
   }
   
   // Base target hover & active styles
   #{map-get($o, 'target-action')} {
-    z-index: 105;
+    z-index: map-get($o, 'target-action-zindex');
     opacity: 1;
     visibility: visible;
     @include transition( transform, opacity, visibility);
-    @include transition-duration(0.25s, 0.25s, 0.25s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(none);
+    @include transition-duration(map-get($o, 'transition-in-duration'));
+    @include transition-timing-function(map-get($o, 'transition-in-timing-function'));
+    @include transition-delay(map-get($o, 'transition-in-delay'));
   }
 }
 
@@ -204,17 +217,17 @@ $dropdowns: (
   // Bottom Left
   @if ($anchor == 'bottom-left') {
     #{map-get($o, 'target')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') 0 0 map-get($o, 'offset-margin-alt');
       top: 100%;
-      left: 0;
+      left: map-get($o, 'offset-position');
       right: auto;
       bottom: auto;
-      @include transform(translate3d(0, -1em, 0));
+      @include transform(translate3d(0, -(map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') 0 0 map-get($o, 'offset-margin-alt');
       top: 100%;
-      left: 0;
+      left: map-get($o, 'offset-position');
       right: auto;
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
@@ -223,18 +236,18 @@ $dropdowns: (
   // Bottom Right
   } @else if ($anchor == 'bottom-right') {
     #{map-get($o, 'target')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt') 0 0;
       top: 100%;
       left: auto;
-      right: 0;
+      right: map-get($o, 'offset-position');
       bottom: auto;
-      @include transform(translate3d(0, -1em, 0));
+      @include transform(translate3d(0, -(map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt') 0 0;
       top: 100%;
       left: auto;
-      right: 0;
+      right: map-get($o, 'offset-position');
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
     }
@@ -242,15 +255,15 @@ $dropdowns: (
   // Bottom Center
   } @else if ($anchor == 'bottom-center') {
     #{map-get($o, 'target')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') 0 0 0;
       top: 100%;
       left: 50%;
       right: auto;
       bottom: auto;
-      @include transform(translate3d(-50%, -1em, 0));
+      @include transform(translate3d(-50%, -(map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: -1px 0 0 0;
+      margin: map-get($o, 'offset-margin') 0 0 0;
       top: 100%;
       left: 50%;
       right: auto;
@@ -262,17 +275,17 @@ $dropdowns: (
   // Top left
   @if ($anchor == 'top-left') {
     #{map-get($o, 'target')} {
-      margin: 0 0 -1px 0;
+      margin: 0 0 map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt');
       top: auto;
-      left: 0;
+      left: map-get($o, 'offset-position');
       right: auto;
       bottom: 100%;
-      @include transform(translate3d(0, 1em, 0));
+      @include transform(translate3d(0, (map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 -1px 0;
+      margin: 0 0 map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt');
       top: auto;
-      left: 0;
+      left: map-get($o, 'offset-position');
       right: auto;
       bottom: 100%;
       @include transform(translate3d(0, 0, 0));
@@ -281,18 +294,18 @@ $dropdowns: (
   // Top Right
   } @else if ($anchor == 'top-right') {
     #{map-get($o, 'target')} {
-      margin: 0 0 -1px 0;
+      margin: 0 map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin') 0;
       top: auto;
       left: auto;
-      right: 0;
+      right: map-get($o, 'offset-position');
       bottom: 100%;
-      @include transform(translate3d(0, 1em, 0));
+      @include transform(translate3d(0, (map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 -1px 0;
+      margin: 0 map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin') 0;
       top: auto;
       left: auto;
-      right: 0;
+      right: map-get($o, 'offset-position');
       bottom: 100%;
       @include transform(translate3d(0, 0, 0));
     }
@@ -300,15 +313,15 @@ $dropdowns: (
   // Top Center
   } @else if ($anchor == 'top-center') {
     #{map-get($o, 'target')} {
-      margin: 0 0 -1px 0;
+      margin: 0 0 map-get($o, 'offset-margin') 0;
       top: auto;
       left: 50%;
       right: auto;
       bottom: 100%;
-      @include transform(translate3d(-50%, 1em, 0));
+      @include transform(translate3d(-50%, (map-get($o, 'offset-transition')), 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 -1px 0;
+      margin: 0 0 map-get($o, 'offset-margin') 0;
       top: auto;
       left: 50%;
       right: auto;
@@ -320,16 +333,16 @@ $dropdowns: (
   // Left Top
   @if ($anchor == 'left-top') {
     #{map-get($o, 'target')} {
-      margin: 0 -1px 0 0;
-      top: 0;
+      margin: map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin') 0 0;
+      top: map-get($o, 'offset-position');
       left: auto;
       right: 100%;
       bottom: auto;
-      @include transform(translate3d(1em, 0, 0));
+      @include transform(translate3d((map-get($o, 'offset-transition')), 0, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 -1px 0 0;
-      top: 0;
+      margin: map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin') 0 0;
+      top: map-get($o, 'offset-position');
       left: auto;
       right: 100%;
       bottom: auto;
@@ -339,34 +352,34 @@ $dropdowns: (
   // Left Bottom
   } @else if ($anchor == 'left-bottom') {
     #{map-get($o, 'target')} {
-      margin: 0 -1px 0 0;
+      margin: 0 map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt') 0;
       top: auto;
       left: auto;
       right: 100%;
-      bottom: 0;
-      @include transform(translate3d(1em, 0, 0));
+      bottom: map-get($o, 'offset-position');
+      @include transform(translate3d((map-get($o, 'offset-transition')), 0, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 -1px 0 0;
+      margin: 0 map-get($o, 'offset-margin') map-get($o, 'offset-margin-alt') 0;
       top: auto;
       left: auto;
       right: 100%;
-      bottom: 0;
+      bottom: map-get($o, 'offset-position');
       @include transform(translate3d(0, 0, 0));
     }
   
   // Left Center
   } @else if ($anchor == 'left-center') {
     #{map-get($o, 'target')} {
-      margin: 0 -1px 0 0;
+      margin: 0 map-get($o, 'offset-margin') 0 0;
       top: 50%;
       left: auto;
       right: 100%;
       bottom: auto;
-      @include transform(translate3d(1em, -50%, 0));
+      @include transform(translate3d((map-get($o, 'offset-transition')), -50%, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 -1px 0 0;
+      margin: 0 map-get($o, 'offset-margin') 0 0;
       top: 50%;
       left: auto;
       right: 100%;
@@ -378,16 +391,16 @@ $dropdowns: (
   // Right Top
   @if ($anchor == 'right-top') {
     #{map-get($o, 'target')} {
-      margin: 0 0 0 -1px;
-      top: 0;
+      margin: map-get($o, 'offset-margin-alt') 0 0 map-get($o, 'offset-margin');
+      top: map-get($o, 'offset-position');
       left: 100%;
       right: auto;
       bottom: auto;
-      @include transform(translate3d(-1em, 0, 0));
+      @include transform(translate3d(-(map-get($o, 'offset-transition')), 0, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 0 -1px;
-      top: 0;
+      margin: map-get($o, 'offset-margin-alt') 0 0 map-get($o, 'offset-margin');
+      top: map-get($o, 'offset-position');
       left: 100%;
       right: auto;
       bottom: auto;
@@ -397,34 +410,34 @@ $dropdowns: (
   // Right Bottom
   } @else if ($anchor == 'right-bottom') {
     #{map-get($o, 'target')} {
-      margin: 0 0 0 -1px;
+      margin: 0 0 map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin');
       top: auto;
       left: 100%;
       right: auto;
-      bottom: 0;
-      @include transform(translate3d(-1em, 0, 0));
+      bottom: map-get($o, 'offset-position');
+      @include transform(translate3d(-(map-get($o, 'offset-transition')), 0, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 0 -1px;
+      margin: 0 0 map-get($o, 'offset-margin-alt') map-get($o, 'offset-margin');
       top: auto;
       left: 100%;
       right: auto;
-      bottom: 0;
+      bottom: map-get($o, 'offset-position');
       @include transform(translate3d(0, 0, 0));
     }
   
   // Right Center
   } @else if ($anchor == 'right-center') {
     #{map-get($o, 'target')} {
-      margin: 0 0 0 -1px;
+      margin: 0 0 0 map-get($o, 'offset-margin');
       top: 50%;
       left: 100%;
       right: auto;
       bottom: auto;
-      @include transform(translate3d(-1em, -50%, 0));
+      @include transform(translate3d(-(map-get($o, 'offset-transition')), -50%, 0));
     }
     #{map-get($o, 'target-action')} {
-      margin: 0 0 0 -1px;
+      margin: 0 0 0 map-get($o, 'offset-margin');
       top: 50%;
       left: 100%;
       right: auto;
@@ -444,30 +457,30 @@ $dropdowns: (
 /**
  * General Dropdown Styles
  */
-.dropdown,
-.dropdown-content,
-.dropdown-menu {
+.#{map-get($dropdowns, 'class-dropdown')},
+.#{map-get($dropdowns, 'class-dropdown-content')},
+.#{map-get($dropdowns, 'class-dropdown-menu')} {
   @include make-dropdown();
 }
 
 /**
  * Dropdown
  */
-.dropdown {
+.#{map-get($dropdowns, 'class-dropdown')} {
   @include add-dropdown-style($type: 'dropdown');
 }
 
 /**
  * Dropdown Content
  */
-.dropdown-content {
+.#{map-get($dropdowns, 'class-dropdown-content')} {
   @include add-dropdown-style($type: 'dropdown-content');
 }
 
 /**
  * Dropdown Menu
  */
-.dropdown-menu {
+.#{map-get($dropdowns, 'class-dropdown-menu')} {
   @include add-dropdown-style($type: 'dropdown-menu');
 }
 
@@ -491,27 +504,14 @@ $dropdowns: (
   @Dropdown Triggers - #{$filename}
 ==============================================================================*/
 
-.dropdown-trigger {
-  display: inline-block;
-}
-.dropdown .dropdown-trigger {
-  display: block;
-}
-
-/**
- * Dropdown Trigger
- */
-.dropdown-trigger {
+.#{map-get($dropdowns, 'class-dropdown-trigger')} {
   @include make-dropdown-trigger();
   @include add-dropdown-position($anchor: 'bottom-left');
 }
 
-/**
- * Dropdown Menu Trigger
- */
-.dropdown-menu {
+.#{map-get($dropdowns, 'class-dropdown-menu')} {
   @include make-dropdown-trigger(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'));
-  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'), $anchor: 'right-top');
+  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu', 'offset-margin-alt' : -1px, 'offset-position' : -0.5em), $anchor: 'right-top');
 }
 
 // Check if we should output modifier classes
