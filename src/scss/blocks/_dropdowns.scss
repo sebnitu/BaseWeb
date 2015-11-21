@@ -20,8 +20,13 @@ $dropdowns: (
   'target-zindex'        : 100,
   'target-action-zindex' : 105,  
   
-  'width'   : 15rem,
-  'padding' : 1em,
+  'width'             : 15rem,
+  'padding'           : 1em,
+  'padding-menu'      : 0.5em,
+  'padding-menu-item' : 0.75em 1em,
+  
+  'block-margin'      : -0.5em,
+  'block-padding'     : 1em,
   
   'font-size'   : px-to-rem(14px),
   'line-height' : 1.25em,
@@ -58,6 +63,11 @@ $dropdowns: (
 // @Dropdown Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Make Dropdown
+// Creates the base styles for dropdowns.
+// @param $options
+//   @type map
+//   @default $dropdowns map
 @mixin make-dropdown($options: ()) {
   $o: map-merge($dropdowns, $options);
   
@@ -74,6 +84,14 @@ $dropdowns: (
   @include border-radius(map-get($o, 'border-radius'));
 }
 
+// Add Dropdown Style
+// Creates specific dropdown styles for a content type.
+// @param $options
+//   @type map
+//   @default $dropdowns map
+// @param $type
+//   @type string (dropdown, dropdown-content, dropdown-menu)
+//   @default dropdown
 @mixin add-dropdown-style($options: (), $type : 'dropdown') {
   $o: map-merge($dropdowns, $options);
   
@@ -122,8 +140,8 @@ $dropdowns: (
     // Block Links
     > a.block {
       display: block;
-      margin: -0.5em;
-      padding: map-get($o, 'padding');
+      margin: map-get($o, 'block-margin');
+      padding: map-get($o, 'block-padding');
       color: $color;
       border: 0 none;
       @include border-radius(map-get($o, 'border-radius'));
@@ -147,7 +165,7 @@ $dropdowns: (
   } @else if ($type == 'dropdown-menu') {
     
     list-style: none;
-    padding: 0.5em;
+    padding: map-get($o, 'padding-menu');
     
     // Dropdown Menu Items
     li {
@@ -170,7 +188,7 @@ $dropdowns: (
       
     li a {
       display: block;
-      padding: 0.75em 1em;
+      padding: map-get($o, 'padding-menu-item');
       color: $color;
       border: 0 none;
     }
@@ -181,6 +199,11 @@ $dropdowns: (
   
 }
 
+// Make Dropdown Trigger
+// Creates the base styles for a dropdown trigger.
+// @param $options
+//   @type map
+//   @default $dropdowns map
 @mixin make-dropdown-trigger($options: ()) {
   $o: map-merge($dropdowns, $options);
   
@@ -211,6 +234,15 @@ $dropdowns: (
   }
 }
 
+// Add Dropdown Position
+// Adds the position styles for a dropdown.
+// @param $options
+//   @type map
+//   @default $dropdowns map
+// @param $anchor
+//   @type string (bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, 
+//     left-top, left-bottom, left-center, right-top, right-bottom, right-center)
+//   @default bottom-left
 @mixin add-dropdown-position($options: (), $anchor : 'bottom-left') {
   $o: map-merge($dropdowns, $options);
   
@@ -482,22 +514,6 @@ $dropdowns: (
  */
 .#{map-get($dropdowns, 'class-dropdown-menu')} {
   @include add-dropdown-style($type: 'dropdown-menu');
-}
-
-/**
- * Custom Menu Dropdowns
- */
-.menu.menu-hori ul ul {
-  @include make-dropdown();
-  @include add-dropdown-style($type: 'dropdown-menu');
-}
-.menu.menu-hori ul {
-  @include make-dropdown-trigger(('target' : 'ul', 'target-action' : 'li:hover > ul'));
-  @include add-dropdown-position(('target' : 'ul', 'target-action' : 'li:hover > ul'), $anchor: 'bottom-center');
-  
-  ul {
-    @include add-dropdown-position(('target' : 'ul', 'target-action' : 'li:hover > ul'), $anchor: 'right-top');
-  }
 }
 
 /*==============================================================================
