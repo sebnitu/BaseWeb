@@ -12,7 +12,7 @@ module.exports = function runless(o) {
       
         fs.writeFile(o.output, output.css, 'utf8', function(err) {
           if (err) throw new Error(u.colorize(err, 'red'));
-          u.print('√ lessc: wrote ' + o.output, 'green');
+          u.print('√ less: wrote ' + o.output, 'green');
         });
         
       },

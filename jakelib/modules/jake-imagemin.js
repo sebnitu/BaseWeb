@@ -13,7 +13,7 @@ module.exports = function runimagemin(o) {
     if (err) {
       throw err;
     }
-    u.print('√ Global Images optimized: ' + o.dest, 'green');
+    u.print('√ imagemin: ' + o.dest, 'green');
   });
   
 }

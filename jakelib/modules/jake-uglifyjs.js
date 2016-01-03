@@ -34,7 +34,7 @@ module.exports = function runuglifyjs(o) {
   
   fs.writeFile(o.output, js.code, 'utf8', function(err) {
     if (err) throw new Error(u.colorize(err, 'red'));
-    u.print('√ lessc: wrote ' + o.output, 'green');
+    u.print('√ uglify-js: wrote ' + o.output, 'green');
   });
   
 }
