@@ -35,8 +35,11 @@ $dropdowns: (
   'background-hover' : rgba($black, 0.05),
   'background-clip'  : padding-box,
   'border'           : 1px solid rgba($black, 0.1),
+  'border-inner'     : 1px solid rgba($black, 0.1),
   'border-radius'    : $border-radius,
   'box-shadow'       : 0 2px 6px rgba($black, 0.15),
+  'color'            : $color,
+  'color-hover'      : $color,
   
   'content-sep'    : 0.5em,
   'content-sep-hr' : 1em,
@@ -58,10 +61,6 @@ $dropdowns: (
   'dropdown-menu-position' : 'right-top',
   
 ) !default;
-
-////////////////////////////////////////////////////////////////////////////////
-// @Dropdown Mixins
-////////////////////////////////////////////////////////////////////////////////
 
 // Make Dropdown
 // Creates the base styles for dropdowns.
@@ -105,7 +104,7 @@ $dropdowns: (
       margin: 0;
       background: none;
       border: 0 none;
-      border-top: map-get($o, 'border');
+      border-top: map-get($o, 'border-inner');
       box-shadow: none;
       @include border-radius(0);
       
@@ -142,12 +141,13 @@ $dropdowns: (
       display: block;
       margin: map-get($o, 'block-margin');
       padding: map-get($o, 'block-padding');
-      color: $color;
+      color: map-get($o, 'color');
       border: 0 none;
       @include border-radius(map-get($o, 'border-radius'));
       
       &:hover {
         background: map-get($o, 'background-hover');
+        color: map-get($o, 'color-hover');
       }
       
       > * {
@@ -171,12 +171,16 @@ $dropdowns: (
     li {
       position: relative;
       margin: 0;
-      border-bottom: map-get($o, 'border');
+      border-bottom: map-get($o, 'border-inner');
       @include transition(background-color 0.25s linear);
     }
     li:hover {
       background: map-get($o, 'background-hover');
       background-clip: padding-box;
+      
+      > a {
+        color: map-get($o, 'color-hover');
+      }
     }
     li:first-child {
       @include border-radius-top(map-get($o, 'border-radius'));
@@ -189,7 +193,7 @@ $dropdowns: (
     li a {
       display: block;
       padding: map-get($o, 'padding-menu-item');
-      color: $color;
+      color: map-get($o, 'color');
       border: 0 none;
     }
     
