@@ -10,7 +10,6 @@ The main features being worked on right now are blocks. The following list of bl
 
 * Modals
 * Tooltips
-* Dropdowns
 * Menus
 * Pagination
 * Tabs
@@ -37,10 +36,10 @@ Run `npm install` to install required node modules for build scripts. This is th
 |----------------|------------|-------------|
 | `jake`         | `8.0.12`   | The JavaScript build tool for Node.js |
 | `node-watch`   | `0.3.4`    | Used in handling the watch task |
-| `node-sass`    | `2.1.1`    | Used for compiling and minifying src and doc CSS from SCSS files |
+| `node-sass`    | `3.4.2`    | Used for compiling and minifying src and doc CSS from SCSS files |
 | `uglify-js`    | `2.4.19`   | Used to compile and minify our JavaScript files |
-| `imagemin`     | `3.1.0`    | Used to optimize our image files |
 | `mustache`     | `2.0.0`    | Used to build our HTML files for docs, examples and readme |
+| `imagemin`     | `3.1.0`    | Used to optimize our image files |
 
 *Keep in mind that if you use the imagemin module, [Jpegtran](http://jpegclub.org/jpegtran/) should be installed globally. You can install it with [Homebrew](http://brew.sh/) using: `brew install jpeg`*
 
