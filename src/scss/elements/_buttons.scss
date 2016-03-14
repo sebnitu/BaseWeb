@@ -244,6 +244,32 @@ $buttons: (
   @include add-button-color((
     'background-deg' : 2%,
   ));
+  
+  &.inverted {
+    @include add-button-color((
+      'color' : $white,
+      'text-shadow' : 0 1px 1px rgba($black, 0.25),
+      'background' : $color,
+      'border-color' : rgba($white, 0.15),
+      'background-deg' : 2%,
+      'background-clip' : border-box,
+      'hover' : (
+        'background': lighten,
+        'border-color' : rgba($white, 0.25),
+      ),
+      'active' : (
+        'background': lighten,
+        'border-color' : rgba($white, 0.25),
+      )
+    ));
+  }
+  
+  &.clip-border {
+    background-clip: border-box;
+  }
+  &.clip-padding {
+    background-clip: padding-box;
+  }
 }
 
 /**

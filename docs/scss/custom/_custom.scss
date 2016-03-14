@@ -1,9 +1,6 @@
 // Set file variable
 $filename: 'scss/custom/_custom.scss';
 
-// Custom variables
-$edge-space: 3.125rem;
-
 /*==============================================================================
   @Grid System - #{$filename}
 ==============================================================================*/
@@ -65,6 +62,7 @@ body > div,
 }
 .content {
   position: relative;
+  min-height: 100%;
   margin: 0;
   overflow: hidden;
 }
@@ -308,11 +306,7 @@ body > div,
   padding-bottom: 40px;
 }
 .nav > ul > li {
-  border-top: 1px solid rgba($white, 0.1);
-  
-  &:first-child {
-    border-top: 0 none;
-  }
+
 }
 
 /**
@@ -574,67 +568,15 @@ body > div,
 ==============================================================================*/
 
 .subsection {
-  margin: 1em (-($edge-space));
-  border-top: 1px solid $border-color;
-  
-  // Inner subsection
-  .inner-subsection {
-    padding: 1rem $edge-space;
-    
-    > h1 {
-      font-size: px-to-rem(34px);
-      text-transform: uppercase;
-    }
-  }
+  margin: 1em 0;
   
   // Subsection listings
   > .docs-list {
     margin: 0;
-    
-    &:first-child > li:first-child {
-      border-top: 0 none;
-    }
   }
   > .docs-list > li {
-    margin: 0;
-    padding: 1.5rem $edge-space;
-    border-top: 1px solid $border-color;
-    
-    > h2, > h3, > p {
-      margin: 0.5rem 0;
-    }
-    > pre, .notice, .demo, .docs-list-compact, .docs-table, .docs-table-responsive {
-      margin: 1rem 0;
-    }
-    
-    > h2 {
-      font-size: px-to-rem(26px);
-    }
-    > h3 {
-      font-size: px-to-rem(18px);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: rgba($color-header, 0.3);
-      @include font-weight('semi-bold');
-    }
+    margin: 2rem 0;
   }
-}
-
-@include media-min(560px) {
-  
-  .subsection {
-    margin: 2em (-($edge-space));
-  }
-  
-}
-
-@include media-min(960px) {
-  
-  .subsection {
-    border: 1px solid $border-color;
-    @include border-radius();
-  }
-  
 }
 
 /*==============================================================================

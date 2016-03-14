@@ -5,27 +5,24 @@ var sass = require('node-sass');
 module.exports = function runscss(o) {
   
   fs.readFile(o.input, 'utf8', function(err, data) {
-    if (err) throw new Error(u.colorize(err, 'red'));
-    
+  
     sass.render({
       data: data,
-      success: function(result){
-        
+      outFile: o.output,
+      includePaths: o.paths,
+      outputStyle: o.style,
+    }, function(error, result) {
+      if(!error){
         fs.writeFile(o.output, result.css, 'utf8', function(err) {
           if (err) throw new Error(u.colorize(err, 'red'));
           u.print('√ node-sass: wrote ' + o.output, 'green');
         });
-        
-      },
-      error: function(error) {
+      } else {
         u.print(error.message, 'red');
-        u.print(error.code, 'red');
         u.print('Line: ' + error.line + ', Column: ' + error.column, 'red');
-      },
-      includePaths: o.paths,
-      outputStyle: o.style
+      }
     });
-    
+  
   });
   
 }

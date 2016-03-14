@@ -82,6 +82,28 @@ $lists: (
   
 }
 
+// Add List Linked
+// Adds styles for a linked list where the padding is added to the anchor
+// element instead of the list item.
+// @param $options
+//   @type map
+//   @default $lists map
+@mixin add-list-linked($options: ()) {
+  $o: map-merge($lists, $options);
+  
+  > li {
+    padding: 0;
+  }
+  > li > a {
+    display: block;
+    padding: map-get($o, 'padding');
+    background-clip: padding-box;
+    border: 0 none;
+    @include clearfix();
+  }
+  
+}
+
 // Add List Rounded
 // Gives a list rounded borders depending on parameters passed.
 // @param $radius
@@ -159,8 +181,9 @@ $lists: (
 ul, ol {
   margin: 1rem 0 1rem 1.5rem;
   padding: 0;
-  li {
-    margin: 0.5rem 0;
+  ul, ol, li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -217,6 +240,11 @@ dl {
  */
 .list {
   @include make-list();
+  
+  &.flush > li {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /**
@@ -224,14 +252,12 @@ dl {
  */
 .list.rowed {
   @include add-list-rowed();
-  
-  &.flush > li {
-    padding-left: 0;
-    padding-right: 0;
-  }
 }
 .list.bordered {
   @include add-list-bordered();
+}
+.list.linked {
+  @include add-list-linked();
 }
 
 /**
