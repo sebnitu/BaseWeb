@@ -53,7 +53,7 @@ $dropdowns: (
   'transition-out-delay'           : 0.25s,
   
   'offset-transition' : 1em,
-  'offset-margin'     : -1px, // The first posiiton margin offset
+  'offset-margin'     : -1px, // The first position margin offset
   'offset-margin-alt' : 0,    // The second position margin offset (does not apply to centered dropdowns)
   'offset-position'   : 0,    // The second position offset (does not apply to centered dropdowns)
   
@@ -81,6 +81,41 @@ $dropdowns: (
   border: map-get($o, 'border');
   box-shadow: map-get($o, 'box-shadow');
   @include border-radius(map-get($o, 'border-radius'));
+}
+
+// Make Dropdown Trigger
+// Creates the base styles for a dropdown trigger.
+// @param $options
+//   @type map
+//   @default $dropdowns map
+@mixin make-dropdown-trigger($options: ()) {
+  $o: map-merge($dropdowns, $options);
+  
+  // Base trigger styles
+  position: relative;
+  
+  // Base target styles
+  #{map-get($o, 'target')} {
+    position: absolute;
+    z-index: map-get($o, 'target-zindex');
+    opacity: 0;
+    visibility: hidden;
+    @include transition(map-get($o, 'transition'));
+    @include transition-duration(map-get($o, 'transition-out-duration'));
+    @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
+    @include transition-delay(map-get($o, 'transition-out-delay'));
+  }
+  
+  // Base target hover & active styles
+  #{map-get($o, 'target-action')} {
+    z-index: map-get($o, 'target-action-zindex');
+    opacity: 1;
+    visibility: visible;
+    @include transition( transform, opacity, visibility);
+    @include transition-duration(map-get($o, 'transition-in-duration'));
+    @include transition-timing-function(map-get($o, 'transition-in-timing-function'));
+    @include transition-delay(map-get($o, 'transition-in-delay'));
+  }
 }
 
 // Add Dropdown Style
@@ -201,41 +236,6 @@ $dropdowns: (
     @warn 'The output type "#{$type}" is not supported in `add-dropdown-style()`';
   }
   
-}
-
-// Make Dropdown Trigger
-// Creates the base styles for a dropdown trigger.
-// @param $options
-//   @type map
-//   @default $dropdowns map
-@mixin make-dropdown-trigger($options: ()) {
-  $o: map-merge($dropdowns, $options);
-  
-  // Base trigger styles
-  position: relative;
-  
-  // Base target styles
-  #{map-get($o, 'target')} {
-    position: absolute;
-    z-index: map-get($o, 'target-zindex');
-    opacity: 0;
-    visibility: hidden;
-    @include transition(map-get($o, 'transition'));
-    @include transition-duration(map-get($o, 'transition-out-duration'));
-    @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
-    @include transition-delay(map-get($o, 'transition-out-delay'));
-  }
-  
-  // Base target hover & active styles
-  #{map-get($o, 'target-action')} {
-    z-index: map-get($o, 'target-action-zindex');
-    opacity: 1;
-    visibility: visible;
-    @include transition( transform, opacity, visibility);
-    @include transition-duration(map-get($o, 'transition-in-duration'));
-    @include transition-timing-function(map-get($o, 'transition-in-timing-function'));
-    @include transition-delay(map-get($o, 'transition-in-delay'));
-  }
 }
 
 // Add Dropdown Position
