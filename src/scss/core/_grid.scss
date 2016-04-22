@@ -129,7 +129,7 @@
       padding-left: (map-get($o, 'inner-gutter-width') / 2);
       padding-right: (map-get($o, 'inner-gutter-width') / 2);
     }
-  } 
+  }
 }
 
 // Make Column
@@ -189,7 +189,7 @@
 //   @type string | map
 //   @default $grid map
 @mixin build-grid-system($options: normal) {
-  
+
   // Check if options is map or not
   // If it's a map, merge it with our global grid map
   // Else set options as our grid type
@@ -198,25 +198,25 @@
   } @else {
     $o: map-merge( $grid, ('type': $options));
   }
-  
+
   // Output our container class
   .#{map-get($o, 'class-container')} {
     @include make-container($o);
   }
-  
+
   // Output our row class
   .#{map-get($o, 'class-row')} {
     @include make-row($o);
   }
-  
+
   // Output our column class
   .#{map-get($o, 'class-column')} {
     @include make-column-base($o);
   }
-  
+
   // Check that this is not a mobile grid type
   @if (map-get($o, 'type') != mobile) {
-    
+
     @if (map-get($o, 'gutter-width') != 0) {
       .#{map-get($o, 'class-column')}-no-gutter {
         margin-left: 0;
@@ -228,26 +228,26 @@
         padding-right: 0;
       }
     }
-    
+
     // Output our column classes
     @for $i from 1 through map-get($o, 'columns') {
       .#{map-get($o, 'class-column')}-#{$i} {
         width: column-width( $i, $o );
       }
     }
-    
+
     // Output our prefix classes if a class name is set
     @if (map-get($o, 'class-prefix')) {
-      @for $i from 1 through (map-get($o, 'columns') - 1) {    
+      @for $i from 1 through (map-get($o, 'columns') - 1) {
         .#{map-get($o, 'class-prefix')}-#{$i} {
           @include add-prefix( $i, $o );
         }
       }
     }
-    
+
     // Output our suffix classes if a class name is set
     @if (map-get($o, 'class-suffix')) {
-      @for $i from 1 through (map-get($o, 'columns') - 1) {  
+      @for $i from 1 through (map-get($o, 'columns') - 1) {
         .#{map-get($o, 'class-suffix')}-#{$i} {
           @include add-suffix( $i, $o );
         }
@@ -263,7 +263,7 @@
 //   @default $mini-grid map
 @mixin build-mini-grid-system($options: ()) {
   $o: map-merge($mini-grid, $options);
-  
+
   %mini-grid-base {
     display: block;
     @include clearfix();
@@ -272,7 +272,7 @@
   %mini-grid-mini-base {
     float: left;
   }
-  
+
   @for $i from 1 through map-get($o, 'fractions') {
     .#{map-get($o, 'class-has')}-#{$i} {
       @extend %mini-grid-base;
