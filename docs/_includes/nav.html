@@ -1,0 +1,12 @@
+<nav class="nav">
+  <ul>
+    {% assign nav = site.pages | sort: 'order' %}
+    {% assign current = page.url | downcase | split: '/' %}
+    {% assign parent = '/' | append: current[1] | append: '/' %}
+    {% for item in nav %}
+      {% if item.order %}
+        <li{% if item.url == page.url or item.url == parent %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
