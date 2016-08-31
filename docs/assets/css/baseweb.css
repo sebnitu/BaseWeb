@@ -95,7 +95,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 1rem 0;
   font-family: inherit;
-  font-weight: bold;
+  font-weight: normal;
   line-height: 1.25em;
   color: #303030;
 }
@@ -3036,6 +3036,9 @@ fieldset[disabled] .input {
   margin: 0;
 }
 
+/**
+ * Logo
+ */
 .header .logo {
   display: flex;
   align-items: center;
@@ -3048,10 +3051,19 @@ fieldset[disabled] .input {
 
 .header .logo .version {
   margin-top: 8px;
-  margin-left: 15px;
+  margin-left: 10px;
   color: #909090;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
 }
 
+.header .logo:hover .version {
+  color: #303030;
+}
+
+/**
+ * Navigation
+ */
 .header .nav ul {
   display: flex;
   align-items: center;
@@ -3069,6 +3081,44 @@ fieldset[disabled] .input {
 
 .header .nav li:last-child {
   margin-right: 0;
+}
+
+.header .nav li a:not(.button) {
+  color: #909090;
+  font-size: 15px;
+}
+
+.header .nav li a:not(.button):hover {
+  color: #303030;
+}
+
+.header .nav li.active a:not(.button) {
+  color: #303030;
+  border: 0 none;
+}
+
+/**
+ * Response
+ */
+.header .logo .mobile,
+.header .nav .mobile {
+  display: inline-block;
+}
+
+.header .logo .desktop,
+.header .nav .desktop {
+  display: none;
+}
+
+@media (min-width: 930px) {
+  .header .logo .mobile,
+  .header .nav .mobile {
+    display: none;
+  }
+  .header .logo .desktop,
+  .header .nav .desktop {
+    display: flex;
+  }
 }
 
 /*==============================================================================

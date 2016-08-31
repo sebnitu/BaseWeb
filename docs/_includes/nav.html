@@ -1,5 +1,5 @@
 <nav class="nav">
-  <ul>
+  <ul class="desktop">
     {% assign nav = site.pages | sort: 'order' %}
     {% assign current = page.url | downcase | split: '/' %}
     {% assign parent = '/' | append: current[1] | append: '/' %}
@@ -10,4 +10,5 @@
     {% endfor %}
     <li><a href="#" class="button primary">Download BaseWeb</a></li>
   </ul>
+  <a href="#" class="button default mobile">Menu</a>
 </nav>

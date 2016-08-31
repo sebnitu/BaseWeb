@@ -44,6 +44,9 @@ $filename: 'scss/custom/_custom.scss';
   margin: 0;
 }
 
+/**
+ * Logo
+ */
 .header .logo {
   display: flex;
   align-items: center;
@@ -54,11 +57,21 @@ $filename: 'scss/custom/_custom.scss';
   }
   .version {
     margin-top: 8px;
-    margin-left: 15px;
+    margin-left: 10px;
     color: $color-light;
+    @include transition();
+  }
+
+  &:hover {
+    .version {
+      color: $color;
+    }
   }
 }
 
+/**
+ * Navigation
+ */
 .header .nav {
   ul {
     display: flex;
@@ -75,6 +88,45 @@ $filename: 'scss/custom/_custom.scss';
     &:last-child {
       margin-right: 0;
     }
+
+    a:not(.button) {
+      color: $color-light;
+      font-size: 15px;
+      // border: 0 none;
+      // @include font-weight('semi-bold');
+
+      &:hover {
+        color: $color;
+      }
+    }
+  }
+  li.active {
+    a:not(.button) {
+      color: $color;
+      border: 0 none;
+    }
+  }
+}
+
+/**
+ * Response
+ */
+.header .logo .mobile,
+.header .nav .mobile {
+  display: inline-block;
+}
+.header .logo .desktop,
+.header .nav .desktop {
+  display: none;
+}
+@include media-min(930px) {
+  .header .logo .mobile,
+  .header .nav .mobile {
+    display: none;
+  }
+  .header .logo .desktop,
+  .header .nav .desktop {
+    display: flex;
   }
 }
 
