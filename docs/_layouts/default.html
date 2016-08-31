@@ -1,9 +1,23 @@
 <html{% if page.class %} class="{{ page.class }}"{% endif %}>
   {% include head.html %}
   <body>
-    {% include header.html %}
-    {{ content }}
-    {% include footer.html %}
+    <header class="header">
+      <div class="container">
+        {% include header.html %}
+      </div>
+    </header>
+
+    <section class="main">
+      <div class="container">
+        {{ content }}
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        {% include footer.html %}
+      </div>
+    </footer>
 
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>

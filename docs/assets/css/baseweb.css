@@ -75,13 +75,13 @@ footer, header, hgroup, menu, nav, section {
  * 2. Makes safari fonts not look terrible.
  */
 html {
-  font-size: 16px;
+  font-size: 14px;
   /* [1] */
 }
 
 body {
-  font-family: "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
-  font-size: 16px;
+  font-family: "Open Sans", "Helvetica Neue", "HelveticaNeue", helvetica, arial, sans-serif;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: normal;
   color: #303030;
@@ -195,7 +195,7 @@ abbr[data-original-title] {
  * Stylistic Classes
  */
 .text-lead {
-  font-size: 1.375em;
+  font-size: 1.57143em;
   line-height: 1.4em;
   color: #303030;
   font-weight: 300;
@@ -443,7 +443,7 @@ blockquote .blockquote-footer {
 code, pre {
   background: rgba(0, 0, 0, 0.05);
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 0.875em;
+  font-size: 1em;
   line-height: 1.5em;
   border-radius: 3px;
 }
@@ -795,7 +795,7 @@ legend {
   display: inline-block;
   margin: -0.75em 0.75em;
   padding: 0 0.75em;
-  font-size: 1.375em;
+  font-size: 1.57143em;
   line-height: 1.5em;
   font-weight: bold;
   color: #303030;
@@ -2512,7 +2512,7 @@ fieldset[disabled] .input {
   display: block;
   width: 15rem;
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.25em;
   background: #ffffff;
   background-clip: padding-box;
@@ -2787,7 +2787,7 @@ fieldset[disabled] .input {
   .container {
     width: 100%;
     min-width: none;
-    max-width: 62rem;
+    max-width: 80rem;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
@@ -3007,6 +3007,68 @@ fieldset[disabled] .input {
 .is-1-of-12,
 .has-12 > * {
   width: 8.33333%;
+}
+
+/*==============================================================================
+  @Structure - scss/custom/_custom.scss
+==============================================================================*/
+.header,
+.main,
+.footer {
+  padding: 2em 0;
+}
+
+.header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*==============================================================================
+  @Header - scss/custom/_custom.scss
+==============================================================================*/
+.header .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  border: 0 none;
+}
+
+.header .logo img {
+  margin: 0;
+}
+
+.header .logo .version {
+  margin-top: 8px;
+  margin-left: 15px;
+  color: #909090;
+}
+
+.header .nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  list-style: none;
+}
+
+.header .nav li {
+  margin: 0 15px;
+}
+
+.header .nav li:first-child {
+  margin-left: 0;
+}
+
+.header .nav li:last-child {
+  margin-right: 0;
 }
 
 /*==============================================================================

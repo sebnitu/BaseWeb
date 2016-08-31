@@ -18,5 +18,66 @@ $filename: 'scss/custom/_custom.scss';
 @include build-mini-grid-system();
 
 /*==============================================================================
+  @Structure - #{$filename}
+==============================================================================*/
+
+.header,
+.main,
+.footer {
+  padding: 2em 0;
+}
+.header {
+  border-bottom: 1px solid rgba($black, 0.1);
+}
+.footer {
+  border-top: 1px solid rgba($black, 0.1);
+}
+
+/*==============================================================================
+  @Header - #{$filename}
+==============================================================================*/
+
+.header .flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  border: 0 none;
+
+  img {
+    margin: 0;
+  }
+  .version {
+    margin-top: 8px;
+    margin-left: 15px;
+    color: $color-light;
+  }
+}
+
+.header .nav {
+  ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+  }
+  li {
+    margin: 0 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+/*==============================================================================
   @End - #{$filename}
 ==============================================================================*/
