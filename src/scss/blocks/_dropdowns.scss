@@ -8,7 +8,7 @@ $filename: 'scss/blocks/_dropdowns.scss';
 $dropdowns: (
   'classes' : true,
   'classes-position' : false,
-  
+
   'class-dropdown'         : 'dropdown',
   'class-dropdown-content' : 'dropdown-content',
   'class-dropdown-menu'    : 'dropdown-menu',
@@ -16,21 +16,21 @@ $dropdowns: (
 
   'target'        : '.dropdown',
   'target-action' : '&:not(.on-click):hover > .dropdown, &.active > .dropdown',
-  
+
   'target-zindex'        : 100,
-  'target-action-zindex' : 105,  
-  
+  'target-action-zindex' : 105,
+
   'width'             : 15rem,
   'padding'           : 1em,
   'padding-menu'      : 0.5em,
   'padding-menu-item' : 0.75em 1em,
-  
+
   'block-margin'      : -0.5em,
   'block-padding'     : 1em,
-  
+
   'font-size'   : px-to-rem(14px),
   'line-height' : 1.25em,
-  
+
   'background'       : $white,
   'background-hover' : rgba($black, 0.05),
   'background-clip'  : padding-box,
@@ -40,10 +40,11 @@ $dropdowns: (
   'box-shadow'       : 0 2px 6px rgba($black, 0.15),
   'color'            : $color,
   'color-hover'      : $color,
-  
+  'color-active'     : $color-light,
+
   'content-sep'    : 0.5em,
   'content-sep-hr' : 1em,
-  
+
   'transition'                     : 'transform, opacity, visibility',
   'transition-in-duration'         : 0.25s, 0.25s, 0.25s,
   'transition-in-timing-function'  : linear,
@@ -51,15 +52,15 @@ $dropdowns: (
   'transition-out-duration'        : 0.25s, 0.25s, 0.15s,
   'transition-out-timing-function' : linear,
   'transition-out-delay'           : 0.25s,
-  
+
   'offset-transition' : 1em,
   'offset-margin'     : -1px, // The first position margin offset
   'offset-margin-alt' : 0,    // The second position margin offset (does not apply to centered dropdowns)
   'offset-position'   : 0,    // The second position offset (does not apply to centered dropdowns)
-  
+
   'dropdown-position'      : 'bottom-left',
   'dropdown-menu-position' : 'right-top',
-  
+
 ) !default;
 
 // Make Dropdown
@@ -69,7 +70,7 @@ $dropdowns: (
 //   @default $dropdowns map
 @mixin make-dropdown($options: ()) {
   $o: map-merge($dropdowns, $options);
-  
+
   position: relative;
   display: block;
   width: map-get($o, 'width');
@@ -90,10 +91,10 @@ $dropdowns: (
 //   @default $dropdowns map
 @mixin make-dropdown-trigger($options: ()) {
   $o: map-merge($dropdowns, $options);
-  
+
   // Base trigger styles
   position: relative;
-  
+
   // Base target styles
   #{map-get($o, 'target')} {
     position: absolute;
@@ -105,7 +106,7 @@ $dropdowns: (
     @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
     @include transition-delay(map-get($o, 'transition-out-delay'));
   }
-  
+
   // Base target hover & active styles
   #{map-get($o, 'target-action')} {
     z-index: map-get($o, 'target-action-zindex');
@@ -128,11 +129,11 @@ $dropdowns: (
 //   @default dropdown
 @mixin add-dropdown-style($options: (), $type : 'dropdown') {
   $o: map-merge($dropdowns, $options);
-  
+
   @if ($type == 'dropdown') {
-    
+
     padding: 0;
-  
+
     > .#{map-get($o, 'class-dropdown-content')},
     > .#{map-get($o, 'class-dropdown-menu')} {
       width: auto;
@@ -142,7 +143,7 @@ $dropdowns: (
       border-top: map-get($o, 'border-inner');
       box-shadow: none;
       @include border-radius(0);
-      
+
       &:first-child {
         border-top: 0 none;
         @include border-radius-top(map-get($o, 'border-radius'));
@@ -151,11 +152,11 @@ $dropdowns: (
         @include border-radius-bottom(map-get($o, 'border-radius'));
       }
     }
-    
+
   } @else if ($type == 'dropdown-content') {
-    
+
     padding: map-get($o, 'padding');
-    
+
     > * {
       margin-top: map-get($o, 'content-sep');
       margin-bottom: map-get($o, 'content-sep');
@@ -166,11 +167,11 @@ $dropdowns: (
     > :last-child {
       margin-bottom: 0;
     }
-    
+
     > hr {
       margin: map-get($o, 'content-sep-hr') 0;
     }
-    
+
     // Block Links
     > a.block {
       display: block;
@@ -179,12 +180,12 @@ $dropdowns: (
       color: map-get($o, 'color');
       border: 0 none;
       @include border-radius(map-get($o, 'border-radius'));
-      
+
       &:hover {
         background: map-get($o, 'background-hover');
         color: map-get($o, 'color-hover');
       }
-      
+
       > * {
         margin-top: map-get($o, 'content-sep');
         margin-bottom: map-get($o, 'content-sep');
@@ -196,12 +197,12 @@ $dropdowns: (
         margin-bottom: 0;
       }
     }
-    
+
   } @else if ($type == 'dropdown-menu') {
-    
+
     list-style: none;
     padding: map-get($o, 'padding-menu');
-    
+
     // Dropdown Menu Items
     li {
       position: relative;
@@ -212,9 +213,17 @@ $dropdowns: (
     li:hover {
       background: map-get($o, 'background-hover');
       background-clip: padding-box;
-      
+
       > a {
         color: map-get($o, 'color-hover');
+      }
+    }
+    li.active {
+      > a {
+        color: map-get($o, 'color-active');
+      }
+      &:hover {
+        background: none;
       }
     }
     li:first-child {
@@ -224,18 +233,18 @@ $dropdowns: (
       border-bottom: 0 none;
       @include border-radius-bottom(map-get($o, 'border-radius'));
     }
-      
+
     li a {
       display: block;
       padding: map-get($o, 'padding-menu-item');
       color: map-get($o, 'color');
       border: 0 none;
     }
-    
+
   } @else {
     @warn 'The output type "#{$type}" is not supported in `add-dropdown-style()`';
   }
-  
+
 }
 
 // Add Dropdown Position
@@ -244,12 +253,12 @@ $dropdowns: (
 //   @type map
 //   @default $dropdowns map
 // @param $anchor
-//   @type string (bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, 
+//   @type string (bottom-left, bottom-right, bottom-center, top-left, top-right, top-center,
 //     left-top, left-bottom, left-center, right-top, right-bottom, right-center)
 //   @default bottom-left
 @mixin add-dropdown-position($options: (), $anchor : 'bottom-left') {
   $o: map-merge($dropdowns, $options);
-  
+
   // Bottom Left
   @if ($anchor == 'bottom-left') {
     #{map-get($o, 'target')} {
@@ -268,7 +277,7 @@ $dropdowns: (
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
     }
-  
+
   // Bottom Right
   } @else if ($anchor == 'bottom-right') {
     #{map-get($o, 'target')} {
@@ -287,7 +296,7 @@ $dropdowns: (
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
     }
-    
+
   // Bottom Center
   } @else if ($anchor == 'bottom-center') {
     #{map-get($o, 'target')} {
@@ -307,7 +316,7 @@ $dropdowns: (
       @include transform(translate3d(-50%, 0, 0));
     }
   }
-  
+
   // Top left
   @if ($anchor == 'top-left') {
     #{map-get($o, 'target')} {
@@ -326,7 +335,7 @@ $dropdowns: (
       bottom: 100%;
       @include transform(translate3d(0, 0, 0));
     }
-    
+
   // Top Right
   } @else if ($anchor == 'top-right') {
     #{map-get($o, 'target')} {
@@ -345,7 +354,7 @@ $dropdowns: (
       bottom: 100%;
       @include transform(translate3d(0, 0, 0));
     }
-    
+
   // Top Center
   } @else if ($anchor == 'top-center') {
     #{map-get($o, 'target')} {
@@ -365,7 +374,7 @@ $dropdowns: (
       @include transform(translate3d(-50%, 0, 0));
     }
   }
-  
+
   // Left Top
   @if ($anchor == 'left-top') {
     #{map-get($o, 'target')} {
@@ -384,7 +393,7 @@ $dropdowns: (
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
     }
-  
+
   // Left Bottom
   } @else if ($anchor == 'left-bottom') {
     #{map-get($o, 'target')} {
@@ -403,7 +412,7 @@ $dropdowns: (
       bottom: map-get($o, 'offset-position');
       @include transform(translate3d(0, 0, 0));
     }
-  
+
   // Left Center
   } @else if ($anchor == 'left-center') {
     #{map-get($o, 'target')} {
@@ -423,7 +432,7 @@ $dropdowns: (
       @include transform(translate3d(0, -50%, 0));
     }
   }
-  
+
   // Right Top
   @if ($anchor == 'right-top') {
     #{map-get($o, 'target')} {
@@ -442,7 +451,7 @@ $dropdowns: (
       bottom: auto;
       @include transform(translate3d(0, 0, 0));
     }
-  
+
   // Right Bottom
   } @else if ($anchor == 'right-bottom') {
     #{map-get($o, 'target')} {
@@ -461,7 +470,7 @@ $dropdowns: (
       bottom: map-get($o, 'offset-position');
       @include transform(translate3d(0, 0, 0));
     }
-  
+
   // Right Center
   } @else if ($anchor == 'right-center') {
     #{map-get($o, 'target')} {

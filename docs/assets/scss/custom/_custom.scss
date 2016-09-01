@@ -64,7 +64,7 @@ $filename: 'scss/custom/_custom.scss';
 
   &:hover {
     .version {
-      color: $color;
+      color: $color-link;
     }
   }
 }
@@ -73,13 +73,13 @@ $filename: 'scss/custom/_custom.scss';
  * Navigation
  */
 .header .nav {
-  ul {
+  ul.menu-hori {
     display: flex;
     align-items: center;
     margin: 0;
     list-style: none;
   }
-  li {
+  ul.menu-hori li {
     margin: 0 15px;
 
     &:first-child {
@@ -90,20 +90,56 @@ $filename: 'scss/custom/_custom.scss';
     }
 
     a:not(.button) {
-      color: $color-light;
+      color: $color;
       font-size: 15px;
       // border: 0 none;
       // @include font-weight('semi-bold');
 
       &:hover {
-        color: $color;
+        color: $color-link;
+        border-color: rgba($color-link, 0.4);
       }
     }
   }
-  li.active {
+  ul.menu-hori li.active {
     a:not(.button) {
-      color: $color;
+      color: $color-light;
       border: 0 none;
+    }
+  }
+}
+
+/**
+ * Dropdown
+ */
+.header .dropdown-trigger {
+  @include add-dropdown-position($anchor: 'bottom-right');
+}
+
+/**
+ * More Icon
+ */
+.icon.icon-more {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 8px;
+  height: 1.5em;
+  margin: 0 0 0 10px;
+  float: right;
+
+  .dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin: 0 0 3px 0;
+    background: $color;
+    @include border-radius(50%);
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -116,7 +152,7 @@ $filename: 'scss/custom/_custom.scss';
   display: inline-block;
 }
 .header .logo .desktop,
-.header .nav .desktop {
+.header .nav .menu-hori.desktop {
   display: none;
 }
 @include media-min(930px) {
@@ -125,7 +161,7 @@ $filename: 'scss/custom/_custom.scss';
     display: none;
   }
   .header .logo .desktop,
-  .header .nav .desktop {
+  .header .nav .menu-hori.desktop {
     display: flex;
   }
 }

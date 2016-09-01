@@ -1,5 +1,5 @@
 <nav class="nav">
-  <ul class="desktop">
+  <ul class="menu-hori desktop">
     {% assign nav = site.pages | sort: 'order' %}
     {% assign current = page.url | downcase | split: '/' %}
     {% assign parent = '/' | append: current[1] | append: '/' %}
@@ -8,7 +8,31 @@
         <li{% if item.url == page.url or item.url == parent %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
       {% endif %}
     {% endfor %}
-    <li><a href="#" class="button primary">Download BaseWeb</a></li>
+    <li><a href="{{ site.data.project.repository.url }}" class="button primary">Download BaseWeb</a></li>
   </ul>
-  <a href="#" class="button default mobile">Menu</a>
+  <div class="dropdown-trigger on-click mobile">
+    <button class="button">
+      Menu
+      <span class="icon icon-more">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </span>
+    </button>
+    <div class="dropdown">
+      <ul class="dropdown-menu">
+        {% assign nav = site.pages | sort: 'order' %}
+        {% assign current = page.url | downcase | split: '/' %}
+        {% assign parent = '/' | append: current[1] | append: '/' %}
+        {% for item in nav %}
+          {% if item.order %}
+            <li{% if item.url == page.url or item.url == parent %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <div class="dropdown-content">
+        <a href="{{ site.data.project.repository.url }}" class="button primary">Download BaseWeb</a>
+      </div>
+    </div>
+  </div>
 </nav>
