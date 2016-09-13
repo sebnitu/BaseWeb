@@ -1,39 +1,45 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<p class="date">{{ page.date | date: "%B %-d, %Y" }}{% if page.comments %} - <a href="{{ page.url }}#disqus_thread">Comments</a>{% endif %}</p>
+<div class="row">
+  <div class="col col-9">
+    <h1>{{ page.title }}</h1>
+    <p class="date">{{ page.date | date: "%B %-d, %Y" }}{% if page.comments %} - <a href="{{ page.url }}#disqus_thread">Comments</a>{% endif %}</p>
+    {{ content }}
 
-{{ content }}
+    {% if page.previous or page.next %}
+      <div class="page-nav">
+        {% if page.previous %}
+          <a href="{{ page.previous.url }}" class="prev"><span class="icon icon-arrow-left"></span>Previous</a>
+        {% endif %}
 
-{% if page.previous or page.next %}
-  <div class="page-nav">
-    {% if page.previous %}
-      <a href="{{ page.previous.url }}" class="prev"><span class="icon icon-arrow-left"></span>Previous</a>
+        {% if page.next %}
+          <a href="{{ page.next.url }}" class="next"><span class="icon icon-arrow-right"></span>Next Post</a>
+        {% endif %}
+      </div>
     {% endif %}
 
-    {% if page.next %}
-      <a href="{{ page.next.url }}" class="next"><span class="icon icon-arrow-right"></span>Next Post</a>
+    {% if page.comments %}
+    <div id="disqus_thread" class="comments"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'baseweb-1'; // required: replace example with your forum shortname
+            // var disqus_developer = 1; // Comment out when the site is live
+            var disqus_identifier = "{{ page.url }}";
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <script id="dsq-count-scr" src="//sebnitu.disqus.com/count.js" async></script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     {% endif %}
   </div>
-{% endif %}
-
-{% if page.comments %}
-<div id="disqus_thread" class="comments"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'sebnitu'; // required: replace example with your forum shortname
-        // var disqus_developer = 1; // Comment out when the site is live
-        var disqus_identifier = "{{ page.url }}";
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <script id="dsq-count-scr" src="//sebnitu.disqus.com/count.js" async></script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-{% endif %}
+  <aside class="sidebar col col-3">
+    {% include sidebar.html %}
+  </aside>
+</div>

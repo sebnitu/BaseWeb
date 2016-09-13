@@ -1,10 +1,12 @@
-<nav class="sidebar-item">
-  <h2>Navigation</h2>
-  <ul>
-    <li><a href="#">Settings</a></li>
-    <li><a href="#">Core</a></li>
-    <li><a href="#">Elements</a></li>
-    <li><a href="#">Blocks</a></li>
-    <li><a href="#">Custom</a></li>
-  </ul>
-</nav>
+{% assign current = page.url | downcase | split: '/' %}
+{% assign sidebar_file = 'sidebar-' | append: current[1] | append: '.html' %}
+
+{% if page.sidebar %}
+  {% if page.sidebar_file %}
+    {% include {{ page.sidebar_file }} %}
+  {% else %}
+    {% include {{ sidebar_file }} %}
+  {% endif %}
+{% else %}
+  <p>Default Sidebar</p>
+{% endif %}
