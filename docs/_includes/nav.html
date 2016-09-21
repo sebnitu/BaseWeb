@@ -8,7 +8,7 @@
         {% assign url = item.url | split: '/' %}
         {% assign url_size = url | size %}
         {% if url_size <= 2 %}
-          <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+          <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{% if item.link %}{{ item.link }}{% else %}{{ item.title }}{% endif %}</a></li>
         {% endif %}
       {% endif %}
     {% endfor %}
@@ -33,7 +33,7 @@
             {% assign url = item.url | split: '/' %}
             {% assign url_size = url | size %}
             {% if url_size <= 2 %}
-              <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+              <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{% if item.link %}{{ item.link }}{% else %}{{ item.title }}{% endif %}</a></li>
             {% endif %}
           {% endif %}
         {% endfor %}
