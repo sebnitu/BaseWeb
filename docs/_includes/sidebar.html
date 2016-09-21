@@ -1,4 +1,4 @@
-{% assign current = page.url | downcase | split: '/' %}
+{% assign current = page.url | split: '/' %}
 {% assign sidebar_file = 'sidebar-' | append: current[1] | append: '.html' %}
 
 {% if page.sidebar %}
@@ -8,5 +8,5 @@
     {% include {{ sidebar_file }} %}
   {% endif %}
 {% else %}
-  <p>Default Sidebar</p>
+  {% include sidebar-default.html %}
 {% endif %}

@@ -1,7 +1,6 @@
 ---
 layout: page
-title: Settings
-order: 1
+title: Examples
 ---
 
 {{ page.url }}

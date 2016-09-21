@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Settings
-order: 1
+title: Custom
+order: 5
 ---
 
 {{ page.url }}

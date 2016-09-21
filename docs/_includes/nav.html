@@ -1,11 +1,15 @@
 <nav class="nav">
   <ul class="menu-hori desktop">
-    {% assign nav = site.pages | sort: 'order' %}
-    {% assign current = page.url | downcase | split: '/' %}
-    {% assign parent = '/' | append: current[1] | append: '/' %}
-    {% for item in nav %}
+    {% assign pages = site.pages | sort: 'order' %}
+    {% assign url = page.url | split: '/' %}
+    {% assign url_root = '/' | append: url[1] | append: '/' %}
+    {% for item in pages %}
       {% if item.order %}
-        <li{% if item.url == page.url or item.url == parent %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+        {% assign url = item.url | split: '/' %}
+        {% assign url_size = url | size %}
+        {% if url_size <= 2 %}
+          <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+        {% endif %}
       {% endif %}
     {% endfor %}
     <li><a href="{{ site.data.project.repository.url }}" class="button primary">Download BaseWeb</a></li>
@@ -21,12 +25,16 @@
     </button>
     <div class="dropdown">
       <ul class="dropdown-menu">
-        {% assign nav = site.pages | sort: 'order' %}
-        {% assign current = page.url | downcase | split: '/' %}
-        {% assign parent = '/' | append: current[1] | append: '/' %}
-        {% for item in nav %}
+        {% assign pages = site.pages | sort: 'order' %}
+        {% assign url = page.url | split: '/' %}
+        {% assign url_root = '/' | append: url[1] | append: '/' %}
+        {% for item in pages %}
           {% if item.order %}
-            <li{% if item.url == page.url or item.url == parent %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+            {% assign url = item.url | split: '/' %}
+            {% assign url_size = url | size %}
+            {% if url_size <= 2 %}
+              <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{{ item.title | escape }}</a></li>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </ul>

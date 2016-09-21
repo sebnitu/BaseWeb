@@ -1,0 +1,81 @@
+{% assign pages = site.pages | sort: 'order' %}
+{% assign url = page.url | split: '/' %}
+{% assign url_root = '/' | append: url[1] | append: '/' %}
+{% assign has_children = false %}
+
+{% for item in pages %}
+  {% if item.url contains url_root and item.url != url_root %}
+    {% assign has_children = true %}
+  {% endif %}
+{% endfor %}
+
+{% if has_children == true %}
+<nav class="sidebar-item">
+  <h2>Menu</h2>
+
+  <ul>
+    {% for item in pages %}
+      {% if item.url contains url_root %}
+
+        {% assign item_url = item.url | split: '/' %}
+        {% assign item_depth = item_url | size %}
+        {% assign item_url_root = '/' | append: item_url[1] | append: '/' | append: item_url[2] | append: '/' %}
+        {% assign has_children = false %}
+
+        {% if item_depth == 3 %}
+          <li{% if page.url contains item.url or item.url == url_root %} class="active"{% endif %}>
+            <a href="{{ item.url | prepend: site.baseurl }}">{% if item.link %}{{ item.link }}{% else %}{{ item.title }}{% endif %}</a>
+
+            {% for subitem in pages %}
+              {% if subitem.url contains item_url_root and subitem.url != item_url_root %}
+                {% assign has_children = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% if has_children == true %}
+              <ul>
+                {% for subitem in pages %}
+                  {% if subitem.url contains item_url_root and subitem.url != item_url_root %}
+
+                    {% assign subitem_url = subitem.url | split: '/' %}
+                    {% assign subitem_depth = subitem_url | size %}
+                    {% assign subitem_url_root = '/' | append: subitem_url[1] | append: '/' | append: subitem_url[2] | append: '/' | append: subitem_url[3] | append: '/' %}
+                    {% assign has_children = false %}
+
+                    {% if subitem_depth == 4 %}
+                      <li{% if page.url contains subitem.url or subitem.url == item_url_root %} class="active"{% endif %}>
+                        <a href="{{ subitem.url | prepend: site.baseurl }}">{% if subitem.link %}{{ subitem.link }}{% else %}{{ subitem.title }}{% endif %}</a>
+
+                        {% for subsubitem in pages %}
+                          {% if subsubitem.url contains subitem_url_root and subsubitem.url != subitem_url_root %}
+                            {% assign has_children = true %}
+                          {% endif %}
+                        {% endfor %}
+
+                        {% if has_children == true %}
+                          <ul>
+                            {% for subsubitem in pages %}
+                              {% if subsubitem.url contains subitem_url_root and subsubitem.url != subitem_url_root %}
+                                <li{% if page.url contains subsubitem.url or subsubitem.url == subitem_url_root %} class="active"{% endif %}>
+                                  <a href="{{ subsubitem.url | prepend: site.baseurl }}">{% if subsubitem.link %}{{ subsubitem.link }}{% else %}{{ subsubitem.title }}{% endif %}</a>
+                                </li>
+                              {% endif %}
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+
+                      </li>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</nav>
+{% endif %}

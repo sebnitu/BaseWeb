@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Typography Variables"
+link: "Typography"
 order: 5
-sidebar: true
 ---
 
-typography.md
+{{ page.url }}

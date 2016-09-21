@@ -1,7 +1,6 @@
 ---
 layout: page
-title: "Palette Variables"
-link: "Palette"
+title: Core
 order: 2
 ---
 

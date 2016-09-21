@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Settings
-order: 1
+title: Blocks
+order: 4
 ---
 
 {{ page.url }}

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Settings
-order: 1
+title: Elements
+order: 3
 ---
 
 {{ page.url }}

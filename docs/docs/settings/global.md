@@ -1,8 +1,8 @@
 ---
 layout: page
 title: "Global Variables"
-order: 5
-sidebar: true
+link: "Global"
+order: 6
 ---
 
-global.md
+{{ page.url }}

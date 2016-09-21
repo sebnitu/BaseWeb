@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Settings
+title: Getting Started
 order: 1
 ---
 

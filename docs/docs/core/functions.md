@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Settings
+title: "Functions"
 order: 1
 ---
 

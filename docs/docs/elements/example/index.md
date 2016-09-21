@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Settings
+title: Examples
 order: 1
 ---
 
