@@ -7,7 +7,7 @@ order: 3
 
 Where media query breakpoints are defined. Global media breakpoints are set within the <code>$breakpoints</code> map while the <code>$tweakpoints</code> map is defined but no values are set. Any number of breakpoints can be added to the <code>$breakpoints</code> map and called on using the media query mixins.
 
-<table class="table table-variables">
+<table class="table table-docs">
   <tr>
     <th>Variable</th>
     <th>Default</th>
@@ -54,6 +54,6 @@ $tweakpoints: (
 $tweakpoints: ();
 ```
 
-<div class="notice info">
-  <p>For more information on the tweakpoints method, make sure you checkout <a href="https://twitter.com/HugoGiraudel">Hugo Giraudel's</a> article over at Sitepoint: <a href="http://www.sitepoint.com/breakpoints-tweakpoints-sass/">Breakpoints and Tweakpoints in Sass</a>.</p>
+<div class="notice info" markdown="1">
+  For more information on the tweakpoints method, make sure you checkout [Hugo Giraudel's](https://twitter.com/HugoGiraudel) article over at Sitepoint: [Breakpoints and Tweakpoints in Sass](http://www.sitepoint.com/breakpoints-tweakpoints-sass/).
 </div>

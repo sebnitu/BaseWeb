@@ -7,7 +7,7 @@ order: 5
 
 The default typographic settings. These dictate the base typographic styles for headings, body text, inline text elements and links as well as modifier classes.
 
-<table class="table table-variables">
+<table class="table table-docs">
   <tr>
     <th>Variable</th>
     <th>Default</th>

@@ -22,20 +22,20 @@ $forms: (
   'color-placeholder' : #aaa,
   'color-select-arrow' : $color-dark,
   'border-radius' : $border-radius,
-  
+
   'input' : (
     'padding' : 0.75em,
     'background' : rgba($white, 0.5),
     'border' : 1px solid rgba($black, 0.2),
     'box-shadow' : (0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)),
-    
+
     'focus' : (
       'background': rgba($white, 1),
       'border': 1px solid rgba($blue, 1),
       'box-shadow': (0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)),
     )
   ),
-  
+
   'choice' : (
     'padding' : 0.75em 0.75em 0.75em 2.25em,
     'background' : rgba($black, 0.05),
@@ -58,11 +58,11 @@ $forms: (
 //   @default $forms map
 @mixin placeholder($color: default, $options: ()) {
   $o: map-merge($forms, $options);
-  
+
   @if ($color != default) {
     $o: map-merge($o, ('color-placeholder': $color));
   }
-  
+
   &::-webkit-input-placeholder {
      color: map-get($o, 'color-placeholder');
   }
@@ -72,7 +72,7 @@ $forms: (
   &::-moz-placeholder {
      color: map-get($o, 'color-placeholder');
   }
-  &:-ms-input-placeholder {  
+  &:-ms-input-placeholder {
      color: map-get($o, 'color-placeholder');
   }
 }
@@ -84,9 +84,9 @@ $forms: (
 //   @default $forms map
 @mixin make-form-group-base($options: ()) {
   $o: map-merge($forms, $options);
-  
+
   margin-bottom: map-get( $o, 'vertical-spacing' );
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -99,11 +99,11 @@ $forms: (
 //   @default $forms map
 @mixin make-form-group-inline($options: ()) {
   $o: map-merge($forms, $options);
-  
+
   @include clearfix();
   margin-right: -(map-get( $forms, 'vertical-align' ));
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
-  
+
   &:last-child {
     margin-bottom: -(map-get( $o, 'vertical-spacing' ) / 2);
   }
@@ -116,12 +116,12 @@ $forms: (
 //   @default $forms map
 @mixin make-input-inline($options: ()) {
   $o: map-merge($forms, $options);
-  
+
   float: left;
   width: auto;
   margin-right: map-get( $o, 'vertical-align' );
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
-  
+
   @if ($class-float-right != none) {
     &.#{$class-float-right} {
       float: right;
@@ -198,7 +198,7 @@ form {
 }
 .form-group.inline {
   @include make-form-group-inline();
-  
+
   > * {
     @include make-input-inline();
   }
@@ -207,7 +207,7 @@ form {
     display: inline-block;
     vertical-align: top;
     margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
-    
+
     &:last-child {
       margin-right: 0;
     }
@@ -220,7 +220,7 @@ form {
 .form-header {
   @include make-form-group-base();
   color: $color-light;
-  
+
   h1, h2, h3, h4, h5, h6 {
     margin: (map-get( $forms, 'vertical-spacing' ) / 3) 0;
     font-size: (map-get($forms, 'font-size') * 1.4);
@@ -238,16 +238,16 @@ form {
 .form-action {
   @include make-form-group-base();
   @include clearfix();
-  
+
   .button,
   .input-align {
     float: left;
     margin: 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0 0;
-    
+
     &:last-child {
       margin-right: 0;
     }
-    
+
     @if ($class-float-right != none) {
       &.#{$class-float-right} {
         float: right;
@@ -256,18 +256,18 @@ form {
   }
   .input-align {
     margin-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input' 'border' );
+    border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
-  
+
   &.form-action-center {
     text-align: center;
-    
+
     .button,
     .input-align {
       display: inline-block;
       float: none;
-      
+
     }
   }
 }
@@ -280,7 +280,7 @@ form {
 }
 .input-group.inline {
   @include make-form-group-inline();
-  
+
   > * {
     @include make-input-inline();
   }
@@ -300,11 +300,11 @@ label {
   line-height: map-get($forms, 'line-height');
   font-weight: 600;
   color: map-get( $forms, 'color-label' );
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   &.sub {
     font-weight: normal;
   }
@@ -321,13 +321,13 @@ label {
   &.block {
     display: block;
     padding-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input' 'border' );
+    border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
   &.inline {
     display: inline-block;
     padding-top: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input' 'border' );
+    border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
 }
@@ -335,7 +335,7 @@ label {
   label.block,
   label.inline {
     padding-bottom: map-get( $forms, 'vertical-align' );
-    border-top: map-fetch( $forms, 'input' 'border' );
+    border-top: map-fetch( $forms, 'input', 'border' );
     border-color: transparent;
   }
 }
@@ -351,7 +351,7 @@ label {
   display: block;
   width: 100%;
   margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
-    
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -361,26 +361,26 @@ label {
  * Text Inputs
  */
 .input {
-  padding: map-fetch( $forms, 'input' 'padding' );
+  padding: map-fetch( $forms, 'input', 'padding' );
   font-family: map-get( $forms, 'font-family' );
   font-size: map-get( $forms, 'font-size' );
   line-height: map-get( $forms, 'line-height' );
   color: map-get( $forms, 'color' );
-  background-color: map-fetch( $forms, 'input' 'background' );
-  border: map-fetch( $forms, 'input' 'border' );
-  box-shadow: map-fetch( $forms, 'input' 'box-shadow' );
+  background-color: map-fetch( $forms, 'input', 'background' );
+  border: map-fetch( $forms, 'input', 'border' );
+  box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
   @include box-sizing(border-box);
   @include border-radius(map-get( $forms, 'border-radius' ));
   @include placeholder();
   @include transition(border-color 0.25s, background-color 0.25s, box-shadow 0.25s);
-  
+
   &:focus {
     outline: none;
-    background-color: map-fetch( $forms, 'input' 'focus' 'background' );
-    border: map-fetch( $forms, 'input' 'focus' 'border' );
-    box-shadow: map-fetch( $forms, 'input' 'focus' 'box-shadow' );
+    background-color: map-fetch( $forms, 'input', 'focus', 'background' );
+    border: map-fetch( $forms, 'input', 'focus', 'border' );
+    box-shadow: map-fetch( $forms, 'input', 'focus', 'box-shadow' );
   }
-  
+
   &.disabled,
   &[readonly],
   &[disabled] {
@@ -398,18 +398,18 @@ label {
   cursor: pointer;
   color: $color;
   font-weight: normal;
-  
+
   &.disabled {
     opacity: 0.5;
   }
 }
 .choice {
-  padding: map-fetch( $forms, 'choice' 'padding' );
-  background: map-fetch( $forms, 'choice' 'background' );
-  border: map-fetch( $forms, 'choice' 'border' );
-  box-shadow: map-fetch( $forms, 'choice' 'box-shadow' );
+  padding: map-fetch( $forms, 'choice', 'padding' );
+  background: map-fetch( $forms, 'choice', 'background' );
+  border: map-fetch( $forms, 'choice', 'border' );
+  box-shadow: map-fetch( $forms, 'choice', 'box-shadow' );
   @include border-radius(map-get( $forms, 'border-radius' ));
-  
+
   input[type="checkbox"],
   input[type="radio"] {
     position: absolute;
@@ -442,7 +442,7 @@ input[type="search"] {
 input[type="color"].input {
   width: 3.125rem;
   height: 3.125rem;
-  padding: (map-fetch( $forms, 'input' 'padding' ) / 3);
+  padding: (map-fetch( $forms, 'input', 'padding' ) / 3);
 }
 
 /**
@@ -467,7 +467,7 @@ select.input {
 select[multiple].input,
 select[size].input {
   height: auto;
-  padding: map-fetch( $forms, 'input' 'padding' );
+  padding: map-fetch( $forms, 'input', 'padding' );
   background-image: none;
 }
 
@@ -482,11 +482,11 @@ select[size].input {
   margin-bottom: map-get( $forms, 'vertical-spacing' ) / 2;
   font-size: map-get($forms, 'font-size');
   color: $color-light;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   p {
     margin: 0 0 (map-get( $forms, 'vertical-spacing' ) / 2) 0;
     &:last-child {
@@ -550,7 +550,7 @@ fieldset[disabled] {
 /*==============================================================================
   @Validation States - #{$filename}
 ==============================================================================*/
-  
+
 /**
  * Success
  */
@@ -587,7 +587,7 @@ fieldset[disabled] {
     background-color: rgba($green, 0.1);
   }
 }
-  
+
 /**
  * Warning
  */
@@ -624,7 +624,7 @@ fieldset[disabled] {
     background-color: rgba($yellow-dark, 0.15);
   }
 }
-  
+
 /**
  * Error
  */
@@ -661,7 +661,7 @@ fieldset[disabled] {
     background-color: rgba($red, 0.1);
   }
 }
-  
+
 /**
  * Active
  */

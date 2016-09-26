@@ -22,7 +22,7 @@ $yellow-green-lighter;
 
 The degree variables are what's used to determine the amount that each base color is either lightened or darkened. The gray scale is the only exception to this.
 
-<table class="table table-variables">
+<table class="table table-docs">
   <tr>
     <th>Variable</th>
     <th>Default</th>

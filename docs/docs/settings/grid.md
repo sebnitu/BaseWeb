@@ -7,13 +7,13 @@ order: 4
 
 All grid variables are defined within the <code>$grid</code> and <code>$mini-grid</code> maps and are used as the default settings for all grid system mixins and functions. You can modify these settings directly to effect all grid systems, or pass in a custom map to specific mixins.
 
-<table class="table table-variables">
+<table class="table table-docs">
   <tr>
     <th>Variable</th>
     <th>Default</th>
     <th>Description</th>
   </tr>
-  
+
   <tr>
     <th colspan="3">Global Grid Settings</th>
   </tr>
