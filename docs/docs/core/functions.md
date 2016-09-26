@@ -27,13 +27,13 @@ map-extend( $map, $maps..., $deep )
   <tr>
     <td><code>$map</code></td>
     <td>Map</td>
-    <td>null</td>
+    <td><span class="text-soften">None</span></td>
     <td>The first map.</td>
   </tr>
   <tr>
     <td><code>$maps...</code></td>
     <td>Map</td>
-    <td>null</td>
+    <td><span class="text-soften">None</span></td>
     <td>A list of all other maps.</td>
   </tr>
   <tr>
@@ -44,7 +44,7 @@ map-extend( $map, $maps..., $deep )
   </tr>
   <tr>
     <th>Return</th>
-    <td colspan="3">Merged map value</td>
+    <td colspan="3">Merged map</td>
   </tr>
 </table>
 
@@ -77,11 +77,11 @@ $grid-c: (
 );
 
 // Not deep
-$grid: map-extend($grid-a, $grid-b, $grid-c);
+$map: map-extend($grid-a, $grid-b, $grid-c);
 // -> ("columns": 16, "layouts": ("large": 1300px, "huge": 1500px), "direction": "ltr")
 
 // Deep
-$grid: map-extend($grid-a, $grid-b, $grid-c, true);
+$map: map-extend($grid-a, $grid-b, $grid-c, true);
 // -> ("columns": 16, "layouts": ("small": 800px, "medium": 1000px, "large": 1300px, "huge": 1500px), "direction": "ltr")
 ```
 
@@ -95,11 +95,6 @@ An easy way to fetch a value in a multi-level map. Works much like `map-get()` e
 
 ```scss
 map-fetch( $map, $keys... )
-// @param $map
-//   @type map
-// @param $keys
-//   @type list
-// @return map value
 ```
 
 <table class="table table-docs">
@@ -112,14 +107,14 @@ map-fetch( $map, $keys... )
   <tr>
     <td><code>$map</code></td>
     <td>Map</td>
-    <td>null</td>
-    <td>The first map.</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The multiple level map to search.</td>
   </tr>
   <tr>
     <td><code>$keys...</code></td>
     <td>List</td>
-    <td>null</td>
-    <td>A list of all map keys to search.</td>
+    <td><span class="text-soften">None</span></td>
+    <td>List of keys to search in nested map.</td>
   </tr>
   <tr>
     <th>Return</th>
@@ -140,11 +135,11 @@ $grid-a: (
 );
 
 // Using `map-get`
-$medium: map-get(map-get($grid-a, 'layouts'), 'medium');
+$map: map-get(map-get($grid-a, 'layouts'), 'medium');
 // -> 1000px
 
 // Using `map-fetch`
-$medium: map-fetch($grid-a, 'layouts', 'medium');
+$map: map-fetch($grid-a, 'layouts', 'medium');
 // -> 1000px
 ```
 
@@ -152,83 +147,198 @@ $medium: map-fetch($grid-a, 'layouts', 'medium');
 
 <li markdown="1">
 
-    <h2>map-set</h2>
-    <p>An easy to to set a deep value in a multi-level map. This by passing in a map, value and keys to the original map value you want changed.</p>
-    <pre class="language-scss"><code>@function map-set( $map, $value, $keys... )
-// @param $map
-//   @type map
-// @param $value
-//   @type value
-// @param $keys
-//   @type list
-// @return updated map value</code></pre>
-    <h3>Example Usage</h3>
-    <pre class="language-scss"><code>
-$grid-configuration: (
+## map-set
+
+An easy way to set a deep value in a multi-level map. By passing in a map, value and keys to the original map value you want changed.
+
+```scss
+map-set( $map, $value, $keys... )
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$map</code></td>
+    <td>Map</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The map to update.</td>
+  </tr>
+  <tr>
+    <td><code>$value</code></td>
+    <td>Value</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The new value to set.</td>
+  </tr>
+  <tr>
+    <td><code>$keys...</code></td>
+    <td>List</td>
+    <td><span class="text-soften">None</span></td>
+    <td>Keys to the multiple level map to update.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Updated map</td>
+  </tr>
+</table>
+
+### Example Usage
+
+```scss
+$grid-a: (
   'columns': 12,
   'layouts': (
     'small': 800px,
-    'medium': 1000px,
-    'large': 1200px,
-  ),
+    'medium': 1000px
+  )
 );
 
-// Without `map-set`
-$grid-configuration: map-merge($grid-configuration, map-merge(map-get($grid-configuration, 'layouts'), ('large': 1300px)));
-
-// With `map-set`
-$medium: map-set($grid-configuration, 1300px, 'layouts' 'medium');
-</code></pre>
+$map: map-set($grid-a, 1300px, 'layouts' 'medium');
+// -> ("columns": 12, "layouts": ("small": 800px, "medium": 1300px))
+```
 
 </li>
 
 <li markdown="1">
 
-    <h2>strip-units</h2>
-    <p>Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12.</p>
-    <pre class="language-scss"><code>@function strip-units( $val )
-// @param $val
-//   @type unit (pixel, em, percent, number)
-// @return number</code></pre>
+## strip-units
 
-</li>
+Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12.
 
-<li>
+```scss
+strip-units( $val )
+```
 
-    <h2>px-to-em</h2>
-    <p>Converts a pixel value to ems. By default it'll use the base font size, but can be passed a custom base font size.</p>
-    <pre class="language-scss"><code>@function px-to-em( $px, $base )
-// @param $px
-//   @type unit (pixel, number)
-// @param $base-font-size
-//   @type unit (pixel, number)
-//   @default $base-font-size
-// @return unit (em)</code></pre>
-
-</li>
-
-<li markdown="1">
-
-    <h2>px-to-rem</h2>
-    <p>Converts a pixel value to rems. Rem units use the base font size set on the <code>&lt;html&gt;</code> element which BaseWeb uses <code>$base-font-size</code> to set.</p>
-    <pre class="language-scss"><code>@function px-to-rem( $px )
-// @param $px
-//   @type unit (pixel, number)
-// @return unit (rem)</code></pre>
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$val</code></td>
+    <td>Unit (pixel, em, percent, number)</td>
+    <td><span class="text-soften">None</span></td>
+    <td>A unit value to strip.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unitless number</td>
+  </tr>
+</table>
 
 </li>
 
 <li markdown="1">
 
-    <h2>em-to-px</h2>
-    <p>Converts an em value to pixels. By default it'll use the base font size, but can be passed a custom base font size.</p>
-    <pre class="language-scss"><code>@function em-to-px( $em, $base )
+## px-to-em
+
+Converts a pixel value to ems. By default it'll use the base font size, but can be passed a custom base font size instead.
+
+```scss
+px-to-em( $px, $base )
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$px</code></td>
+    <td>Unit (pixel, number)</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The pixel value to be converted.</td>
+  </tr>
+  <tr>
+    <td><code>$base</code></td>
+    <td>Unit (pixel, number)</td>
+    <td><code>$base-font-size</code></td>
+    <td>The base font-size the conversion should use.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unit (em)</td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## px-to-rem
+
+Converts a pixel value to rems. Rem units use the base font size set on the `<html>` element which BaseWeb uses `$base-font-size` to set.
+
+```scss
+@function px-to-rem( $px )
 // @param $px
-//   @type unit (em, number)
-// @param $base-font-size
 //   @type unit (pixel, number)
-//   @default $base-font-size
-// @return unit (px)</code></pre>
+// @return unit (rem)
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$px</code></td>
+    <td>Unit (pixel, number)</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The em value to be converted.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unit (em)</td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## em-to-px
+
+Converts an em value to pixels. By default it'll use the base font size, but can be passed a custom base font size instead.
+
+```scss
+em-to-px( $em, $base )
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$em</code></td>
+    <td>Unit (em, number)</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The em value to be converted.</td>
+  </tr>
+  <tr>
+    <td><code>$base</code></td>
+    <td>Unit (pixel, number)</td>
+    <td><code>$base-font-size</code></td>
+    <td>The base font-size the conversion should use.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unit (em)</td>
+  </tr>
+</table>
 
 </li>
 
