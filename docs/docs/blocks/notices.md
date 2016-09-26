@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Examples
+title: "Notices"
+order: 2
 ---
 
 {{ page.url }}

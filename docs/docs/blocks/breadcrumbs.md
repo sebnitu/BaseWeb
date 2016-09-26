@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Examples
-order: 1
+title: "Breadcrumbs"
+order: 3
 ---
 
 {{ page.url }}

@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Example
+title: "Dropdowns"
+order: 4
 ---
 
 {{ page.url }}

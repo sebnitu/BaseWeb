@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Examples
+title: "Code"
+order: 5
 ---
 
 {{ page.url }}

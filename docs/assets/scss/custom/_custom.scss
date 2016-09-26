@@ -156,12 +156,18 @@ $filename: 'scss/custom/_custom.scss';
   display: none;
 }
 @include media-min(930px) {
-  .header .logo .mobile,
   .header .nav .mobile {
     display: none;
   }
-  .header .logo .desktop,
   .header .nav .menu-hori.desktop {
+    display: flex;
+  }
+}
+@include media-min('small') {
+  .header .logo .mobile {
+    display: none;
+  }
+  .header .logo .desktop {
     display: flex;
   }
 }
@@ -170,8 +176,125 @@ $filename: 'scss/custom/_custom.scss';
   @Sidebar - #{$filename}
 ==============================================================================*/
 
-.sidebar-item .active > a {
-  color: $color-link-hover;
+/**
+ * Sidebar Item
+ */
+.sidebar-item {
+  margin: 2rem 0;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba($black, 0.1);
+  @include border-radius();
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.sidebar-item h2 {
+  margin: 0.5rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba($black, 0.1);
+  font-size: px-to-em(16px);
+  @include font-weight('semi-bold');
+}
+
+/**
+ * Sidebar Menu
+ */
+.sidebar-item-menu {
+  ul {
+    list-style: none;
+    margin: 0.5rem 0;
+
+    li {
+      margin: 1em 0;
+      padding: 0;
+    }
+  }
+  ul ul {
+    margin: 0;
+    padding-left: 1rem;
+    display: none;
+  }
+
+  /* Links */
+  a {
+    color: $color;
+  }
+  a:hover {
+    color: $color-link;
+  }
+  .active > a {
+    color: $color-light;
+  }
+}
+
+/* Child Links */
+.sidebar-item-menu .active {
+  > ul {
+    display: block;
+  }
+}
+
+/*==============================================================================
+  @Main - #{$filename}
+==============================================================================*/
+
+/**
+ * Tables
+ */
+// rowed expanded valign-middle
+.table-variables {
+  // @include add-table-rowed();
+  // @include add-table-size(expanded);
+  // @include add-table-alignment(('vertical-align': middle));
+  @extend .table.rowed;
+  @extend .table.expanded;
+  @extend .table.valign-middle;
+}
+
+/**
+ * Swatches
+ */
+.swatch {
+  display: inline-block;
+  border: 1px solid rgba($black, 0.1);
+  @include size(44px);
+  @include border-radius();
+}
+
+.swatch-wrap {
+  position: relative;
+  height: 44px;
+  min-width: 44px;
+
+  .swatch {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .swatch-value {
+    margin-left: 49px;
+    display: inline-block;
+    width: auto;
+    font-family: $font-family-mono;
+  }
+}
+
+/*==============================================================================
+  @Footer - #{$filename}
+==============================================================================*/
+
+.footer {
+  text-align: center;
+}
+
+@include media-min('medium') {
+  .footer {
+    text-align: left;
+  }
 }
 
 /*==============================================================================
