@@ -96,7 +96,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-bg-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba(0, 0, 0, 0.05)" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.05)" readonly="">
       </div>
     </td>
     <td></td>
@@ -106,7 +106,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-bg-selection"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba(132, 183, 45, 0.25)" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($green, 0.25)" readonly="">
       </div>
     </td>
     <td></td>
@@ -116,7 +116,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-border-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba(0, 0, 0, 0.01)" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.10)" readonly="">
       </div>
     </td>
     <td></td>
@@ -126,7 +126,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-border-color-hover"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba(0, 0, 0, 0.25)" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.25)" readonly="">
       </div>
     </td>
     <td></td>

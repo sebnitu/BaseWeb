@@ -73,6 +73,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-gray-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -81,6 +82,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-gray-light"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-light" readonly="">
       </div>
     </td>
   </tr>
@@ -89,6 +91,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-gray-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -97,6 +100,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-gray-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -109,6 +113,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-blue-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -117,6 +122,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-yellow-green-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$yellow-green-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -129,6 +135,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-blue-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -137,6 +144,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch swatch-yellow-green-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$yellow-green-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -149,27 +157,3 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>1px</code></td>
   </tr>
 </table>
-
-<script defer="defer">
-;(function ($) {
-  'use strict';
-  $(document).ready(function () {
-
-    //Function to convert hex format to a rgb color
-    function rgb2hex(orig){
-      var rgb = orig.replace(/\s/g,'').match(/^rgba?\((\d+),(\d+),(\d+)/i);
-      return (rgb && rgb.length === 4) ? "#" +
-        ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : orig;
-    }
-
-    $('.swatch-wrap').each(function() {
-      var swatch = $(this).find('.swatch').css('background-color');
-      $(this).append('<input type="text" class="input swatch-value" onclick="this.select()" value="' + rgb2hex(swatch) + '" readonly="">');
-      // $(this).append('<code>' + rgb2hex(swatch) + '</code>');
-    });
-
-  });
-}(jQuery));
-</script>
