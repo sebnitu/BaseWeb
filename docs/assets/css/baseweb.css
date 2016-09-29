@@ -4216,17 +4216,23 @@ figure {
   background: rgba(42, 176, 234, 0.1);
 }
 
-.demo-grid-semantic .demo-wrapper:before,
-.demo-grid-semantic .demo-content:before,
-.demo-grid-semantic .demo-aside:before,
-.demo-grid-semantic .demo-article:before {
-  display: block;
+.demo-grid-semantic .demo-wrapper p,
+.demo-grid-semantic .demo-content p,
+.demo-grid-semantic .demo-aside p,
+.demo-grid-semantic .demo-article p {
   margin: 0;
   padding: 1rem;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 1em;
   line-height: 1.5em;
   text-align: center;
+}
+
+.demo-grid-semantic .demo-aside p,
+.demo-grid-semantic .demo-article p {
+  margin: 0.75rem 0;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
 }
 
 .demo-grid-semantic .demo-wrapper {
@@ -4243,10 +4249,6 @@ figure {
   clear: both;
 }
 
-.demo-grid-semantic .demo-wrapper:before {
-  content: '.wrapper';
-}
-
 .demo-grid-semantic .demo-content {
   width: auto;
   margin-left: -0.75rem;
@@ -4257,10 +4259,6 @@ figure {
   content: '';
   display: table;
   clear: both;
-}
-
-.demo-grid-semantic .demo-content:before {
-  content: '.content';
 }
 
 .demo-grid-semantic .demo-aside,
@@ -4275,16 +4273,22 @@ figure {
   width: 33.33333%;
 }
 
-.demo-grid-semantic .demo-aside:before {
-  content: '.aside';
-}
-
 .demo-grid-semantic .demo-article {
   width: 66.66667%;
 }
 
-.demo-grid-semantic .demo-article:before {
-  content: '.article';
+/**
+ * Prefix and Suffix Grid Demo
+ */
+@media (min-width: 760px) {
+  .demo-grid-prefix-suffix {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+.demo-grid-prefix-suffix .row {
+  background: rgba(42, 176, 234, 0.1);
 }
 
 /**

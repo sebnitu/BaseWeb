@@ -547,8 +547,7 @@ $filename: 'scss/custom/_custom.scss';
   .demo-article {
     background: rgba($blue, 0.1);
 
-    &:before {
-      display: block;
+    p {
       margin: 0;
       padding: 1rem;
       font-family: $font-family-mono;
@@ -558,18 +557,20 @@ $filename: 'scss/custom/_custom.scss';
     }
   }
 
-  .demo-wrapper {
-    @include make-container();
-    &:before {
-      content: '.wrapper';
+  .demo-aside,
+  .demo-article {
+    p {
+      margin: 0.75rem 0;
+      background: $bg-color;
+      @include border-radius();
     }
   }
-  .demo-content {
 
+  .demo-wrapper {
+    @include make-container();
+  }
+  .demo-content {
     @include make-row();
-    &:before {
-      content: '.content';
-    }
   }
   .demo-aside,
   .demo-article {
@@ -577,15 +578,24 @@ $filename: 'scss/custom/_custom.scss';
   }
   .demo-aside {
     width: column-width(4);
-    &:before {
-      content: '.aside';
-    }
   }
   .demo-article {
     width: column-width(8);
-    &:before {
-      content: '.article';
-    }
+  }
+}
+
+/**
+ * Prefix and Suffix Grid Demo
+ */
+ @include media-min('medium') {
+   .demo-grid-prefix-suffix {
+     padding-left: 0.75rem;
+     padding-right: 0.75rem;
+   }
+ }
+.demo-grid-prefix-suffix {
+  .row {
+    background: rgba($blue, 0.1);
   }
 }
 

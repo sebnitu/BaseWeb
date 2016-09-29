@@ -101,9 +101,15 @@ There are also a set of functions that you can use for setting column and spacin
 
 <div class="demo-grid demo-grid-semantic">
   <div class="demo-wrapper">
+    <p>.wrapper</p>
     <div class="demo-content">
-      <div class="demo-aside"></div>
-      <div class="demo-article"></div>
+      <p>.content</p>
+      <div class="demo-aside">
+        <p>.aside</p>
+      </div>
+      <div class="demo-article">
+        <p>.article</p>
+      </div>
     </div>
   </div>
 </div>
@@ -142,7 +148,7 @@ The semantic grid system equivalent would use the `add-prefix()` and `add-suffix
 }
 ```
 
-<div class="demo-grid">
+<div class="demo-grid demo-grid-prefix-suffix">
   <div class="row">
     <div class="col col-4 suffix-3"><p>.suffix-3</p></div>
     <div class="col col-3 prefix-2"><p>.prefix-2</p></div>
@@ -206,7 +212,7 @@ By default, our grid system uses inner-gutter-width (padding) instead of gutter-
 
 ## Mini Grid System
 
-The Mini Grid System works independently of the core Grid System. It's output using the `build-mini-grid-system()` mixin and takes the `$mini-grid` map as a parameter to customize the classes it outputs.
+The Mini Grid System works independently of the core Grid System. It's output using the `build-mini-grid-system()` mixin and takes the `$mini-grid()` map as a parameter to customize the classes it outputs.
 
 ### .has-#
 
@@ -316,15 +322,33 @@ These functions are used to calculate specific grid maths such as the width a se
 A function that returns the width of a column span.
 
 ```scss
-column-width( $index, $options: () );
-// @param $index
-//   @type integer
-//   @desc The number of column span you want returned.
-// @param $options
-//   @type map
-//   @default $grid map
-// @return unit (pixel, percentage)
+$return: column-width( $index, $options: () );
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$index</code></td>
+    <td>Integer</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The number of column span you want returned.</td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+    <td>Uses global grid settings if nothing is passed.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unit (pixel, percentage)</td>
+  </tr>
+</table>
 
 </li>
 
@@ -335,15 +359,33 @@ column-width( $index, $options: () );
 A function that returns the spacing of a column span.
 
 ```scss
-spacing-width( $index, $options: () );
-// @param $index
-//   @type integer
-//   @desc The number of column spacing you want returned.
-// @param $options
-//   @type map
-//   @default $grid map
-// @return unit (pixel, percentage)
+$return: spacing-width( $index, $options: () );
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$index</code></td>
+    <td>Integer</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The number of column spacing you want returned.</td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+    <td>Uses global grid settings if nothing is passed.</td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="3">Unit (pixel, percentage)</td>
+  </tr>
+</table>
 
 </li>
 
@@ -366,10 +408,20 @@ Outputs all the styles needed to make an element a grid container.
 
 ```scss
 @include make-container( $options: () );
-// @param $options
-//   @type map
-//   @default $grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+  </tr>
+</table>
 
 </li>
 
@@ -381,10 +433,20 @@ Outputs all the styles needed to make an element a grid row.
 
 ```scss
 @include make-row( $options: () );
-// @param $options
-//   @type map
-//   @default $grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+  </tr>
+</table>
 
 </li>
 
@@ -395,11 +457,21 @@ Outputs all the styles needed to make an element a grid row.
 Creates the base styles for a column but excludes setting the width.
 
 ```scss
-@include make-column-base( $options: () )[]
-// @param $options
-//   @type map
-//   @default $grid map
+@include make-column-base( $options: () );
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+  </tr>
+</table>
 
 </li>
 
@@ -411,13 +483,28 @@ Creates all the styles for a column and sets its width.
 
 ```scss
 @include make-column( $index, $options: () );
-// @param $index
-//   @type integer
-//   @desc The number of column span you want set.
-// @param $options
-//   @type map
-//   @default $grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$index</code></td>
+    <td>Integer</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The number of column span you want returned.</td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+    <td>Uses global grid settings if nothing is passed.</td>
+  </tr>
+</table>
 
 </li>
 
@@ -429,13 +516,28 @@ Creates the base styles for a column and sets its width.
 
 ```scss
 @include add-prefix( $index, $options: () );
-// @param $index
-//   @type integer
-//   @desc The number of column prefix spacing you want set.
-// @param $options
-//   @type map
-//   @default $grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$index</code></td>
+    <td>Integer</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The number of column spacing you want returned.</td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+    <td>Uses global grid settings if nothing is passed.</td>
+  </tr>
+</table>
 
 </li>
 
@@ -447,13 +549,28 @@ Creates the base styles for a spacing suffix.
 
 ```scss
 @include add-suffix( $index, $options: () );
-// @param $index
-//   @type integer
-//   @desc The number of column suffix spacing you want set.
-// @param $options
-//   @type map
-//   @default $grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$index</code></td>
+    <td>Integer</td>
+    <td><span class="text-soften">None</span></td>
+    <td>The number of column spacing you want returned.</td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$grid()</code></td>
+    <td>Uses global grid settings if nothing is passed.</td>
+  </tr>
+</table>
 
 </li>
 
@@ -464,11 +581,23 @@ Creates the base styles for a spacing suffix.
 Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.
 
 ```scss
-@mixin build-grid-system( $grid-type | $options: () )
-// @param $grid-type | $options
-//   @type string | map
-//   @default $grid map
+@include build-grid-system( $grid-type | $options: () );
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$grid-type | $options</code></td>
+    <td>String or Map</td>
+    <td><code>$grid()</code></td>
+    <td>Pass either a grid type string or a map with grid settings.</td>
+  </tr>
+</table>
 
 ### Example Usage
 
@@ -487,7 +616,7 @@ The most basic use of `build-grid-system()` is to output mobile styles and withi
 
 ### Classes Output
 
-These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid` map.
+These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid()` map.
 
 ```html
 <div class="container">
@@ -514,7 +643,7 @@ These are all the default classes that become available when generating your gri
 </div>
 
 <div class="notice info" markdown="1">
-You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid` map or passing it directly to the mixin manually.
+You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid()` map or passing it directly to the mixin manually.
 </div>
 
 </li>
@@ -523,14 +652,26 @@ You can disabled the output of prefix and suffix classes by setting their class 
 
 ## build-mini-grid-system
 
-Outputs all the classes for a mini-grid system using the `$mini-grid` map to set default parameters. You can also pass a custom map to customize the output or create multiple mini grid systems.
+Outputs all the classes for a mini-grid system using the `$mini-grid()` map to set default parameters. You can also pass a custom map to customize the output or create multiple mini grid systems.
 
 ```scss
 @include build-grid-system( $options: () );
-// @param $options
-//   @type map
-//   @default $mini-grid map
 ```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$mini-grid()</code></td>
+    <td>Uses global mini-grid settings if nothing is passed.</td>
+  </tr>
+</table>
 
 ### Example Usage
 

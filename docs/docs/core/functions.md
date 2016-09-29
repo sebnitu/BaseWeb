@@ -278,10 +278,7 @@ px-to-em( $px, $base )
 Converts a pixel value to rems. Rem units use the base font size set on the `<html>` element which BaseWeb uses `$base-font-size` to set.
 
 ```scss
-@function px-to-rem( $px )
-// @param $px
-//   @type unit (pixel, number)
-// @return unit (rem)
+px-to-rem( $px )
 ```
 
 <table class="table table-docs">
