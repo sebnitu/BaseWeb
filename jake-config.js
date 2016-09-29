@@ -30,6 +30,7 @@ module.exports = {
     desc: 'Compiles and minifies JS',
     options: [{
       input : [
+        'docs/assets/js/jquery.sticky.js',
         'docs/assets/js/jquery.function.js',
         'docs/assets/js/jquery.docready.js'
       ],

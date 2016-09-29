@@ -6,7 +6,7 @@ order: 1
 
 This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.
 
-<ul class="list rowed flush">
+<ul class="list list-docs">
 
 <li markdown="1">
 

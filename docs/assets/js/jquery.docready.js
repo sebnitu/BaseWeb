@@ -59,6 +59,12 @@
       e.stopPropagation();
     });
 
+    // Sticky Element
+    $('.sidebar').theiaStickySidebar({
+      containerSelector : '.row',
+      additionalMarginTop : 30
+    });
+
   });
 
   /**
