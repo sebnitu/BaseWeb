@@ -4,4 +4,6 @@ title: "Icons"
 order: 11
 ---
 
-{{ page.url }}
+<div class="notice warning">
+  <p>The Icons module is currently being developed.</p>
+</div>

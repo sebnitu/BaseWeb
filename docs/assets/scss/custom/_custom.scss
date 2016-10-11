@@ -729,6 +729,48 @@ $filename: 'scss/custom/_custom.scss';
   }
 }
 
+/**
+ * Buttons
+ */
+.demo-buttons {
+  padding-top: 1rem;
+
+  > p {
+    @include clearfix();
+    margin-left: -0.5rem;
+  }
+
+  .button,
+  .button-custom,
+  .button-custom-mobile {
+    float: left;
+    margin: 0.5rem 0 0 0.5rem;
+  }
+}
+.demo-buttons-mobile {
+  > p {
+    margin-left: 0;
+  }
+
+  .button,
+  .button-custom-mobile {
+    margin-left: 0;
+  }
+}
+
+.button-custom {
+  @include make-button();
+  @include add-button-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+}
+.button-custom-mobile {
+  @include make-button();
+  @include add-button-color();
+  @include add-button-block();
+}
+
 /*==============================================================================
   @Footer - #{$filename}
 ==============================================================================*/
