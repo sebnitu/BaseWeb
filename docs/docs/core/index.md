@@ -4,4 +4,4 @@ title: Core
 order: 2
 ---
 
-{{ page.url }}
+{% include widget-children.html %}

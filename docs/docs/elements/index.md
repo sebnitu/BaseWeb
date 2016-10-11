@@ -4,4 +4,4 @@ title: Elements
 order: 3
 ---
 
-{{ page.url }}
+{% include widget-children.html %}

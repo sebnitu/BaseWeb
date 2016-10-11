@@ -4,4 +4,4 @@ title: Blocks
 order: 4
 ---
 
-{{ page.url }}
+{% include widget-children.html %}

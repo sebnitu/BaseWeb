@@ -4,4 +4,4 @@ title: Custom
 order: 5
 ---
 
-{{ page.url }}
+{% include widget-children.html %}

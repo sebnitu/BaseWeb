@@ -680,6 +680,16 @@ table th {
   margin: 0;
 }
 
+@media (max-width: 759px) {
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > table td,
+  .table-responsive > table th {
+    white-space: nowrap;
+  }
+}
+
 /*==============================================================================
   @Images - scss/elements/_images.scss
 ==============================================================================*/
@@ -3848,6 +3858,32 @@ figure {
 /**
  * Tables
  */
+@media (max-width: 759px) {
+  .table-docs tr, .table-docs th, .table-docs td {
+    display: block;
+  }
+  .table-docs th,
+  .table-docs td,
+  .table-docs td:first-child,
+  .table-docs th:first-child,
+  .table-docs thead:first-child tr:first-child td,
+  .table-docs thead:first-child tr:first-child th,
+  .table-docs tfoot:first-child tr:first-child td,
+  .table-docs tfoot:first-child tr:first-child th,
+  .table-docs tbody:first-child tr:first-child td,
+  .table-docs tbody:first-child tr:first-child th {
+    border: 0 none;
+  }
+  .table-docs tr:first-child th:first-child,
+  .table-docs tr:first-child td:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .table-docs tr th:last-child,
+  .table-docs tr td:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
 /**
  * Lists
  */
@@ -3866,6 +3902,12 @@ figure {
  */
 .subsection {
   margin: 2rem 0;
+}
+
+@media (min-width: 760px) {
+  .subsection {
+    margin: 3rem 0;
+  }
 }
 
 /**
@@ -3898,12 +3940,62 @@ figure {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/**
+ * Tiles
+ */
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.tiles:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.tiles .tile {
+  min-height: 1px;
+  float: left;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  min-height: 1px;
+  float: left;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  width: 50%;
+  margin-bottom: 1.5em;
+}
+
+.tiles .tile a {
+  padding: 1rem 1.5rem;
+  display: block;
+  color: #303030;
+  border: 0 none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.tiles .tile a:hover {
+  color: #303030;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.tiles .tile h2 {
+  margin: 0.5rem 0;
+  font-size: 1.57143em;
+}
+
 /*==============================================================================
   @Demo - scss/custom/_custom.scss
 ==============================================================================*/
 .demo {
   margin: 1.5em 0;
-  padding: 3em;
+  padding: 1.5em 3em;
+  overflow: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }

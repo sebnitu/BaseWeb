@@ -4,4 +4,4 @@ title: Settings
 order: 1
 ---
 
-{{ page.url }}
+{% include widget-children.html %}

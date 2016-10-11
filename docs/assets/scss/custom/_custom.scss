@@ -251,6 +251,38 @@ $filename: 'scss/custom/_custom.scss';
   @extend .table.expanded;
   @extend .table.valign-middle;
 }
+@include media-max('medium') {
+  .table-docs {
+    tr, th, td {
+      display: block;
+    }
+
+    th,
+    td,
+    td:first-child,
+    th:first-child,
+    thead:first-child tr:first-child td,
+    thead:first-child tr:first-child th,
+    tfoot:first-child tr:first-child td,
+    tfoot:first-child tr:first-child th,
+    tbody:first-child tr:first-child td,
+    tbody:first-child tr:first-child th {
+      border: 0 none;
+    }
+    tr:first-child {
+      th:first-child,
+      td:first-child {
+        border-top: map-get($tables, 'border');
+      }
+    }
+    tr {
+      th:last-child,
+      td:last-child {
+        border-bottom: map-get($tables, 'border');
+      }
+    }
+  }
+}
 
 /**
  * Lists
@@ -272,6 +304,12 @@ $filename: 'scss/custom/_custom.scss';
  */
 .subsection {
   margin: 2rem 0;
+}
+
+@include media-min('medium') {
+  .subsection {
+    margin: 3rem 0;
+  }
 }
 
 /**
@@ -302,13 +340,53 @@ $filename: 'scss/custom/_custom.scss';
   }
 }
 
+/**
+ * Tiles
+ */
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  @include make-row();
+
+  .tile {
+    @include make-column-base();
+    @include make-column(6);
+    margin-bottom: 1.5em;
+
+    a {
+      padding: 1rem 1.5rem;
+      display: block;
+      color: $color;
+      border: 0 none;
+      border: 1px solid rgba($black, 0.1);
+      @include border-radius();
+
+
+      &:hover {
+        color: $color;
+        border-color: rgba($black, 0.25);
+      }
+    }
+
+    h2 {
+      margin: 0.5rem 0;
+      font-size: px-to-em(22px);
+    }
+
+    p {
+
+    }
+  }
+}
+
 /*==============================================================================
   @Demo - #{$filename}
 ==============================================================================*/
 
 .demo {
   margin: 1.5em 0;
-  padding: 3em;
+  padding: 1.5em 3em;
+  overflow: auto;
   border: 1px solid rgba($black, 0.1);
   @include border-radius();
 

@@ -342,7 +342,7 @@ $return: column-width( $index, $options: () );
     <td><code>$options</code></td>
     <td>Map</td>
     <td><code>$grid()</code></td>
-    <td>Uses global grid settings if nothing is passed.</td>
+    <td></td>
   </tr>
   <tr>
     <th>Return</th>
@@ -379,7 +379,7 @@ $return: spacing-width( $index, $options: () );
     <td><code>$options</code></td>
     <td>Map</td>
     <td><code>$grid()</code></td>
-    <td>Uses global grid settings if nothing is passed.</td>
+    <td></td>
   </tr>
   <tr>
     <th>Return</th>
@@ -502,7 +502,7 @@ Creates all the styles for a column and sets its width.
     <td><code>$options</code></td>
     <td>Map</td>
     <td><code>$grid()</code></td>
-    <td>Uses global grid settings if nothing is passed.</td>
+    <td></td>
   </tr>
 </table>
 
@@ -535,7 +535,7 @@ Creates the base styles for a column and sets its width.
     <td><code>$options</code></td>
     <td>Map</td>
     <td><code>$grid()</code></td>
-    <td>Uses global grid settings if nothing is passed.</td>
+    <td></td>
   </tr>
 </table>
 
@@ -568,7 +568,7 @@ Creates the base styles for a spacing suffix.
     <td><code>$options</code></td>
     <td>Map</td>
     <td><code>$grid()</code></td>
-    <td>Uses global grid settings if nothing is passed.</td>
+    <td></td>
   </tr>
 </table>
 
