@@ -256,29 +256,33 @@ $filename: 'scss/custom/_custom.scss';
     tr, th, td {
       display: block;
     }
+    tr {
+      padding: map-get($tables, 'padding');
+      border-bottom: map-get($tables, 'border');
 
-    th,
-    td,
-    td:first-child,
-    th:first-child,
-    thead:first-child tr:first-child td,
-    thead:first-child tr:first-child th,
-    tfoot:first-child tr:first-child td,
-    tfoot:first-child tr:first-child th,
-    tbody:first-child tr:first-child td,
-    tbody:first-child tr:first-child th {
-      border: 0 none;
-    }
-    tr:first-child {
-      th:first-child,
-      td:first-child {
+      &:first-child {
         border-top: map-get($tables, 'border');
+      }
+    }
+
+    tr {
+      th,
+      td {
+        padding: 0.5rem 0;
+        border-bottom: 1px dotted rgba($black, 0.1);
       }
     }
     tr {
       th:last-child,
       td:last-child {
-        border-bottom: map-get($tables, 'border');
+        border-bottom: 0 none;
+      }
+    }
+
+    tbody:first-child tr:first-child {
+      th,
+      td {
+        border-top: 0 none;
       }
     }
   }

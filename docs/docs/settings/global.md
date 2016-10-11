@@ -48,8 +48,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
   </tr>
   <tr>
     <td><code>$box-sizing</code></td>
-    <td><code>border-box</code></td>
-    <td></td>
+    <td colspan="2"><code>border-box</code></td>
   </tr>
   <tr>
     <td><code>$box-shadow</code></td>
@@ -57,8 +56,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
   </tr>
   <tr>
     <td><code>$border-radius</code></td>
-    <td><code>3px</code></td>
-    <td></td>
+    <td colspan="2"><code>3px</code></td>
   </tr>
 
   <tr>
@@ -67,23 +65,19 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
   </tr>
   <tr>
     <td><code>$transition-property</code></td>
-    <td><code>all</code></td>
-    <td></td>
+    <td colspan="2"><code>all</code></td>
   </tr>
   <tr>
     <td><code>$transition-duration</code></td>
-    <td><code>0.25s</code></td>
-    <td></td>
+    <td colspan="2"><code>0.25s</code></td>
   </tr>
   <tr>
     <td><code>$transition-timing-function</code></td>
-    <td><code>linear</code></td>
-    <td></td>
+    <td colspan="2"><code>linear</code></td>
   </tr>
   <tr>
     <td><code>$transition-delay</code></td>
-    <td><code>0.25s</code></td>
-    <td></td>
+    <td colspan="2"><code>0.25s</code></td>
   </tr>
 
   <tr>

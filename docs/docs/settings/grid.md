@@ -39,8 +39,7 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('columns')</code></td>
-    <td><code>12</code></td>
-    <td></td>
+    <td colspan="2"><code>12</code></td>
   </tr>
 
   <tr>
@@ -48,23 +47,19 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('container-margin')</code></td>
-    <td><code>auto</code></td>
-    <td></td>
+    <td colspan="2"><code>auto</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-padding')</code></td>
-    <td><code>20px</code></td>
-    <td></td>
+    <td colspan="2"><code>20px</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-min-width')</code></td>
-    <td><code>none</code></td>
-    <td></td>
+    <td colspan="2"><code>none</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-max-width')</code></td>
-    <td><code>1000px</code></td>
-    <td></td>
+    <td colspan="2"><code>1000px</code></td>
   </tr>
 
   <tr>
@@ -72,18 +67,15 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('class-container')</code></td>
-    <td><code>container</code></td>
-    <td></td>
+    <td colspan="2"><code>container</code></td>
   </tr>
   <tr>
     <td><code>$grid('class-row')</code></td>
-    <td><code>row</code></td>
-    <td></td>
+    <td colspan="2"><code>row</code></td>
   </tr>
   <tr>
     <td><code>$grid('class-column')</code></td>
-    <td><code>col</code></td>
-    <td></td>
+    <td colspan="2"><code>col</code></td>
   </tr>
   <tr>
     <td><code>$grid('class-prefix')</code></td>
