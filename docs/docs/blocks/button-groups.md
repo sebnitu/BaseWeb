@@ -18,15 +18,17 @@ Button groups are a way to create a set of buttons and make them visually groupe
 ```
 
 <div class="demo">
-  <div class="button-group">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
-  <div class="button-group">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <p>
+    <div class="button-group">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+    <div class="button-group">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+  </p>
 </div>
 
 By default, button groups are displayed horizontal and inline. To toggle between the vertical display button styles, you can use the `.vertical` class on the button group element.
@@ -43,15 +45,17 @@ By default, button groups are displayed horizontal and inline. To toggle between
 ```
 
 <div class="demo">
-  <div class="button-group vertical">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
-  <div class="button-group vertical">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <p>
+    <div class="button-group vertical">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+    <div class="button-group vertical">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+  </p>
 </div>
 
 ## Block Button Groups
@@ -67,11 +71,13 @@ To create a button group that expands the full width of its container, There's t
 ```
 
 <div class="demo">
-  <div class="button-group block vertical">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <p>
+    <div class="button-group block vertical">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+  </p>
 </div>
 
 If a button group is both horizontal and block, you'll need to define the number of children the button group has. For this, we use the mini grid system syntax of `.has-X` where `X` represents the number of children.
@@ -86,11 +92,13 @@ If a button group is both horizontal and block, you'll need to define the number
 ```
 
 <div class="demo">
-  <div class="button-group block has-3">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <p>
+    <div class="button-group block has-3">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+  </p>
 </div>
 
 Using the `.has-X` modifier will give each button element equal widths to a total of 100%. But if you need to give each button element unique widths, you can use the `.is-1-of-X` classes where `1-of-X` represents the fraction you want the button to take.
@@ -104,11 +112,13 @@ Using the `.has-X` modifier will give each button element equal widths to a tota
 ```
 
 <div class="demo">
-  <div class="button-group block has-margin-3">
-    <button class="button is-1-of-4">Button</button>
-    <button class="button is-1-of-4">Button</button>
-    <button class="button is-1-of-2">Button</button>
-  </div>
+  <p>
+    <div class="button-group block has-margin-3">
+      <button class="button is-1-of-4">Button</button>
+      <button class="button is-1-of-4">Button</button>
+      <button class="button is-1-of-2">Button</button>
+    </div>
+  </p>
 </div>
 
 <div class="notice warning" markdown="1">
@@ -130,13 +140,15 @@ For cases where you want button groups to be vertical block for only specific me
 ```
 
 <div class="demo">
-  <div class="button-group block has-5 stack-for-medium">
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-    <button class="button">Button</button>
-  </div>
+  <p>
+    <div class="button-group block has-5 stack-for-medium">
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+      <button class="button">Button</button>
+    </div>
+  </p>
 </div>
 
 ### Available Breakpoint Stack Classes
@@ -180,22 +192,24 @@ In the cases where you have multiple button groups, you have the `.button-group-
 ```
 
 <div class="demo">
-  <div class="button-group-wrapper">
-    <div class="button-group block has-3">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
+  <p>
+    <div class="button-group-wrapper">
+      <div class="button-group block has-3">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
+      <div class="button-group">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
+      <div class="button-group">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
       <button class="button">Button</button>
     </div>
-    <div class="button-group">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    <div class="button-group">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    <button class="button">Button</button>
-  </div>
+  </p>
 </div>
 
 For more complex button layouts, you can use the mini grid system along with the button group wrapper to create a columned button layout. We also added a stack modifier for better usability on smaller devices.
@@ -218,20 +232,22 @@ For more complex button layouts, you can use the mini grid system along with the
 ```
 
 <div class="demo">
-  <div class="button-group-wrapper has-2">
-    <div>
-      <div class="button-group block has-2 stack-for-medium">
-        <button class="button">Button</button>
-        <button class="button">Button</button>
+  <p>
+    <div class="button-group-wrapper has-2">
+      <div>
+        <div class="button-group block has-2 stack-for-medium">
+          <button class="button">Button</button>
+          <button class="button">Button</button>
+        </div>
+      </div>
+      <div>
+        <div class="button-group block has-2 stack-for-medium">
+          <button class="button">Button</button>
+          <button class="button">Button</button>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="button-group block has-2 stack-for-medium">
-        <button class="button">Button</button>
-        <button class="button">Button</button>
-      </div>
-    </div>
-  </div>
+  </p>
 </div>
 
 ## Button Modifier Classes
@@ -245,27 +261,29 @@ As a method to easily style a group of buttons, all button color and size modifi
 ```
 
 <div class="demo">
-  <div class="button-group-wrapper primary">
-    <div class="button-group block has-3">
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-      <button class="button">Button</button>
-    </div>
-    <div class="has-2">
-      <div>
-        <div class="button-group block has-2 stack-for-medium">
-          <button class="button">Button</button>
-          <button class="button">Button</button>
+  <p>
+    <div class="button-group-wrapper primary">
+      <div class="button-group block has-3">
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+        <button class="button">Button</button>
+      </div>
+      <div class="has-2">
+        <div>
+          <div class="button-group block has-2 stack-for-medium">
+            <button class="button">Button</button>
+            <button class="button">Button</button>
+          </div>
+        </div>
+        <div>
+          <div class="button-group block has-2 stack-for-medium">
+            <button class="button">Button</button>
+            <button class="button">Button</button>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="button-group block has-2 stack-for-medium">
-          <button class="button">Button</button>
-          <button class="button">Button</button>
-        </div>
-      </div>
     </div>
-  </div>
+  </p>
 </div>
 
 <section class="subsection subsection-variables" markdown="1">
@@ -326,75 +344,179 @@ Button Group variables are encompassed within the `$button-groups` map and are u
 
 </section>
 
-<section class="subsection subsection-mixins has-inner-subsection">
-<div class="inner-subsection">
-  <h1>Button Group Mixins</h1>
-  <p class="text-lead">Button group mixins are used to define and modify groups of buttons. They provide a way to toggle button groups being horizontal or vertical and inline or block along with other helpful modifiers and classes output.</p>
-</div>
-<ul class="docs-list">
+<section class="subsection subsection-mixins has-inner-subsection" markdown="1">
 
-  <li>
-    <h2>make-button-group</h2>
-    <p>Creates the base styles for button groups.</p>
-    <pre class="language-scss"><code>@mixin make-button-group( $options: () )
-// @param $options
-//   @type map
-//   @default $button-groups map</code></pre>
-  </li>
+# Button Group Mixins
 
-  <li>
-    <h2>add-button-group-style</h2>
-    <p>Adds button styles based on orientation and display type provided.</p>
-    <pre class="language-scss"><code>@mixin add-button-group-style( $orientation, $display, $has, $options: () )
-// @param $orientation
-//   @type horizontal | vertical
-//   @default null
-// @param $display
-//   @type inline | block
-//   @default null
-// @param $has
-//   @type number
-//   @default null
-// @param $options
-//   @type map
-//   @default $button-groups map</code></pre>
-  </li>
+Button group mixins are used to define and modify groups of buttons. They provide a way to toggle button groups being horizontal or vertical and inline or block along with other helpful modifiers and classes output.
 
-  <li>
-    <h2>add-button-group-has</h2>
-    <p>Adds the button width and right margin for a horizontal block button group.</p>
-    <pre class="language-scss"><code>@mixin add-button-group-has( $has )
-// @param $has
-//   @type number
-//   @default null</code></pre>
-  </li>
+<ul class="list list-docs">
 
-  <li>
-    <h2>build-button-group-mini-grid-modifiers</h2>
-    <p>Builds the modifier classes for button groups mini grid system.</p>
-    <pre class="language-scss"><code>@mixin build-button-group-mini-grid-modifiers( $options: () )
-// @param $options
-//   @type map
-//   @default $button-groups map</code></pre>
-  </li>
+<li markdown="1">
 
-  <li>
-    <h2>build-button-group-stack-modifiers</h2>
-    <p>Builds the modifier classes for applying vertical block styles to a button group based on screen size.</p>
-    <pre class="language-scss"><code>@mixin build-button-group-stack-modifiers( $options: () )
-// @param $options
-//   @type map
-//   @default $button-groups map</code></pre>
-  </li>
+## make-button-group
 
-  <li>
-    <h2>make-button-group-wrapper</h2>
-    <p>Creates the styles for a button group wrapper.</p>
-    <pre class="language-scss"><code>@mixin make-button-group-wrapper( $options: () )
-// @param $options
-//   @type map
-//   @default $button-groups map</code></pre>
-  </li>
+Creates the base styles for button groups.
+
+```scss
+@include make-button-group( $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$button-groups()</code></td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## add-button-group-style
+
+Adds button styles based on orientation and display type provided.
+
+```scss
+@include add-button-group-style( $orientation, $display, $has, $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$orientation</code></td>
+    <td>Keyword: horizontal | vertical</td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>$display</code></td>
+    <td>Keyword: inline | block</td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>$has</code></td>
+    <td>Number</td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$button-groups()</code></td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## add-button-group-has
+
+Adds the button width and right margin for a horizontal block button group.
+
+```scss
+@include add-button-group-has( $has );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$has</code></td>
+    <td>Number</td>
+    <td><code>null</code></td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## build-button-group-mini-grid-modifiers
+
+Builds the modifier classes for button groups mini grid system.
+
+```scss
+@include build-button-group-mini-grid-modifiers( $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$button-groups()</code></td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## build-button-group-stack-modifiers
+
+Builds the modifier classes for applying vertical block styles to a button group based on screen size.
+
+```scss
+@include build-button-group-stack-modifiers( $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$button-groups()</code></td>
+  </tr>
+</table>
+
+</li>
+
+<li markdown="1">
+
+## make-button-group-wrapper
+
+Creates the styles for a button group wrapper.
+
+```scss
+@include make-button-group-wrapper( $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$button-groups()</code></td>
+  </tr>
+</table>
+
+</li>
 
 </ul>
+
 </section>
