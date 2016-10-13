@@ -1,6 +1,8 @@
 {% assign pages = site.pages | sort: 'order' %}
 {% assign url_parts = page.url | split: '/' %}
-{% assign url_parts_size = url_parts | size %}
+{% assign url_depth = url_parts | size %}
+{% assign url_depth = url_depth | plus:1 %}
+
 {% assign has_children = false %}
 
 {% for node in pages %}
@@ -10,22 +12,23 @@
 {% endfor %}
 
 {% if has_children == true %}
-<div class="tiles">
-{% for node in pages %}
-  {% if node.url contains page.url %}
-    {% assign node_url_parts = node.url | split: '/' %}
-    {% assign node_url_parts_size = node_url_parts | size %}
-    {% if url_parts_size < node_url_parts_size %}
-      <div class="tile">
-        <a href="{{ node.url | prepend: site.baseurl }}">
-          <h2>{% if node.link %}{{ node.link }}{% else %}{{ node.title }}{% endif %}</h2>
-          {% if node.desc %}
-          <p>{{ node.desc }}</p>
-          {% endif %}
-        </a>
-      </div>
+  <ul>
+  {% for node in pages %}
+    {% if node.url contains page.url %}
+      {% assign node_parts = node.url | split: '/' %}
+      {% assign node_depth = node_parts | size %}
+      {% if node_depth == url_depth %}
+        <li>
+          <a href="{{ node.url }}">
+            {% if node.link %}
+              {{ node.link }}
+            {% else %}
+              {{ node.title }}
+            {% endif %}
+          </a>
+        </li>
+      {% endif %}
     {% endif %}
-  {% endif %}
-{% endfor %}
-</div>
+  {% endfor %}
+  </ul>
 {% endif %}

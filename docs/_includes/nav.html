@@ -1,14 +1,21 @@
+{% assign pages = site.pages | sort: 'order' %}
+
 <nav class="nav">
   <ul class="menu-hori desktop">
-    {% assign pages = site.pages | sort: 'order' %}
-    {% assign url = page.url | split: '/' %}
-    {% assign url_root = '/' | append: url[1] | append: '/' %}
-    {% for item in pages %}
-      {% if item.order %}
-        {% assign url = item.url | split: '/' %}
-        {% assign url_size = url | size %}
-        {% if url_size <= 2 %}
-          <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{% if item.link %}{{ item.link }}{% else %}{{ item.title }}{% endif %}</a></li>
+    {% for node in pages %}
+      {% assign node_parts = node.url | split: '/' %}
+      {% assign node_depth = node_parts | size %}
+      {% if node.order %}
+        {% if node_depth == 2 %}
+          <li{% if page.url contains node.url %} class="active"{% endif %}>
+            <a href="{{ node.url }}">
+              {% if node.link %}
+                {{ node.link }}
+              {% else %}
+                {{ node.title }}
+              {% endif %}
+            </a>
+          </li>
         {% endif %}
       {% endif %}
     {% endfor %}
@@ -25,15 +32,20 @@
     </button>
     <div class="dropdown">
       <ul class="dropdown-menu">
-        {% assign pages = site.pages | sort: 'order' %}
-        {% assign url = page.url | split: '/' %}
-        {% assign url_root = '/' | append: url[1] | append: '/' %}
-        {% for item in pages %}
-          {% if item.order %}
-            {% assign url = item.url | split: '/' %}
-            {% assign url_size = url | size %}
-            {% if url_size <= 2 %}
-              <li{% if item.url == page.url or item.url == url_root %} class="active"{% endif %}><a href="{{ item.url | prepend: site.baseurl }}">{% if item.link %}{{ item.link }}{% else %}{{ item.title }}{% endif %}</a></li>
+        {% for node in pages %}
+          {% assign node_parts = node.url | split: '/' %}
+          {% assign node_depth = node_parts | size %}
+          {% if node.order %}
+            {% if node_depth == 2 %}
+              <li{% if page.url contains node.url %} class="active"{% endif %}>
+                <a href="{{ node.url }}">
+                  {% if node.link %}
+                    {{ node.link }}
+                  {% else %}
+                    {{ node.title }}
+                  {% endif %}
+                </a>
+              </li>
             {% endif %}
           {% endif %}
         {% endfor %}
