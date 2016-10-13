@@ -1,0 +1,77 @@
+{% assign pages = site.pages | sort: 'order' %}
+
+<ul>
+{% for node in pages %}
+  {% assign node_parts = node.url | split: '/' %}
+  {% assign node_depth = node_parts | size %}
+
+  {% if node_depth == 2 %}
+    <li{% if page.url contains node.url %} class="active"{% endif %}>
+      <a href="{{ node.url }}">
+        {% if node.link %}
+          {{ node.link }}
+        {% else %}
+          {{ node.title }}
+        {% endif %}
+      </a>
+
+      {% assign node_root = '/' | append: node_parts[1] | append: '/' %}
+      {% assign has_children = false %}
+      {% for subnode in pages %}
+        {% if subnode.url contains node_root and subnode.url != node_root %}
+          {% assign has_children = true %}
+        {% endif %}
+      {% endfor %}
+
+      {% if has_children == true %}
+        <ul>
+          {% for subnode in pages %}
+            {% if subnode.url contains node_root and subnode.url != node_root %}
+              {% assign node_parts = subnode.url | split: '/' %}
+              {% assign node_depth = node_parts | size %}
+
+              {% if node_depth == 3 %}
+                <li{% if page.url contains subnode.url %} class="active"{% endif %}>
+                  <a href="{{ subnode.url }}">
+                    {% if subnode.link %}
+                      {{ subnode.link }}
+                    {% else %}
+                      {{ subnode.title }}
+                    {% endif %}
+                  </a>
+
+                  {% assign subnode_root = '/' | append: node_parts[1] | append: '/' | append: node_parts[2] | append: '/' %}
+                  {% assign has_children = false %}
+                  {% for subsubnode in pages %}
+                    {% if subsubnode.url contains subnode_root and subsubnode.url != subnode_root %}
+                      {% assign has_children = true %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if has_children == true %}
+                    <ul>
+                      {% for subsubnode in pages %}
+                        {% if subsubnode.url contains subnode_root and subsubnode.url != subnode_root %}
+                          <li{% if page.url contains subsubnode.url %} class="active"{% endif %}>
+                            <a href="{{ subsubnode.url }}">
+                              {% if subsubnode.link %}
+                                {{ subsubnode.link }}
+                              {% else %}
+                                {{ subsubnode.title }}
+                              {% endif %}
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
