@@ -121,8 +121,8 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-link-hover</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-yellow-green-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$yellow-green-dark" readonly="">
+        <span class="swatch swatch-violet-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$violet-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -143,8 +143,8 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-link-heading-hover</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-yellow-green-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$yellow-green-dark" readonly="">
+        <span class="swatch swatch-violet-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$violet-dark" readonly="">
       </div>
     </td>
   </tr>

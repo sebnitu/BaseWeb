@@ -22,7 +22,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
 
 ```html
 <div class="notice dismissible">
-  <button class="button close">&amp;times;</button>
+  <button class="button close">&times;</button>
   <p>...</p>
 </div>
 ```

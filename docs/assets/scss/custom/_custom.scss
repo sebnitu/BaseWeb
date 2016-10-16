@@ -96,8 +96,8 @@ $filename: 'scss/custom/_custom.scss';
       // @include font-weight('semi-bold');
 
       &:hover {
-        color: $color-link;
-        border-color: rgba($color-link, 0.4);
+        color: $color-link-hover;
+        border-color: rgba($color-link-hover, 0.4);
       }
     }
   }
@@ -228,7 +228,7 @@ $filename: 'scss/custom/_custom.scss';
     color: $color;
   }
   a:hover {
-    color: $color-link;
+    color: $color-link-hover;
   }
   .active > a {
     color: $color-light;
@@ -742,6 +742,48 @@ $filename: 'scss/custom/_custom.scss';
 .demo .notice {
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+/**
+ * Breadcrumb
+ */
+.custom-breadcrumb {
+  @include make-breadcrumb((
+    'color' : $green,
+    'color-hover' : $red,
+    'delimiter' : '»'
+  ));
+}
+.breadcrumb.custom-wrapped {
+  @include add-breadcrumb-wrapped((
+    'background' : rgba($violet-darker, 0.1),
+    'border' : 3px solid rgba($black, 0.05),
+    'border-radius' : 0,
+  ));
+}
+
+/**
+ * Dropdown
+ */
+.demo-dropdown {
+  @include clearfix();
+  padding: 2em 3em 2em;
+  overflow: visible;
+
+  > .dropdown-trigger {
+    float: left;
+    margin: 1em 1em 1em 0;
+  }
+}
+.demo-dropdown-styles {
+  padding: 2em 3em 3em;
+
+  > .dropdown,
+  > .dropdown-content,
+  > .dropdown-menu {
+    float: left;
+    margin: 1em 1em 0 0;
+  }
 }
 
 /*==============================================================================
