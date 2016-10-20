@@ -19,7 +19,13 @@
         {% endif %}
       {% endif %}
     {% endfor %}
-    <li><a href="{{ site.data.project.repository.url }}" class="button primary">Download BaseWeb</a></li>
+    <li>
+    {% if page.url == '/' %}
+      <a href="{{ site.data.project.repository.url }}" class="button">Download BaseWeb</a>
+    {% else %}
+      <a href="{{ site.data.project.repository.url }}" class="button primary">Download BaseWeb</a>
+    {% endif %}
+    </li>
   </ul>
   <div class="dropdown-trigger on-click mobile">
     <button class="button">
