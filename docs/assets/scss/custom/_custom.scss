@@ -26,9 +26,6 @@ $filename: 'scss/custom/_custom.scss';
 .footer {
   padding: 2em 0;
 }
-.header {
-  border-bottom: 1px solid rgba($black, 0.1);
-}
 .footer {
   border-top: 1px solid rgba($black, 0.1);
 }
@@ -37,6 +34,10 @@ $filename: 'scss/custom/_custom.scss';
   @Header - #{$filename}
 ==============================================================================*/
 
+.header {
+  background: $blue;
+  @include linear-gradient(left, $blue, $blue-violet-darker);
+}
 .header .flex {
   display: flex;
   justify-content: space-between;
@@ -58,13 +59,13 @@ $filename: 'scss/custom/_custom.scss';
   .version {
     margin-top: 8px;
     margin-left: 10px;
-    color: $color-light;
+    color: rgba($white, 0.5);
     @include transition();
   }
 
   &:hover {
     .version {
-      color: $color-link;
+      color: rgba($white, 1);
     }
   }
 }
@@ -90,27 +91,25 @@ $filename: 'scss/custom/_custom.scss';
     }
 
     a:not(.button) {
-      color: $color;
+      color: $white;
+      border-color: rgba($white, 0.25);
       font-size: px-to-em(15px);
-      // border: 0 none;
-      // @include font-weight('semi-bold');
 
       &:hover {
-        color: $color-link-hover;
-        border-color: rgba($color-link-hover, 0.4);
+        border-color: rgba($white, 1);
       }
     }
   }
   ul.menu-hori li.active {
     a:not(.button) {
-      color: $color-light;
+      color: rgba($white, 0.5);
       border: 0 none;
     }
   }
-}
-
-.active > a {
-  color: $red;
+  li > .button,
+  .dropdown-trigger > .button {
+    background-clip: padding-box;
+  }
 }
 
 /**
@@ -138,12 +137,12 @@ $filename: 'scss/custom/_custom.scss';
     display: inline-block;
     width: 3px;
     height: 3px;
-    margin: 0 0 3px 0;
+    margin: 0 0 2px 0;
     background: $color;
     @include border-radius(50%);
 
     &:last-child {
-      margin-bottom: 0;
+      margin-bottom: 1px;
     }
   }
 }
@@ -185,7 +184,6 @@ $filename: 'scss/custom/_custom.scss';
  */
 .hero {
   position: relative;
-  // overflow: hidden;
   background: $blue;
   @include linear-gradient(left, $blue, $blue-violet-darker);
 }
@@ -214,32 +212,6 @@ $filename: 'scss/custom/_custom.scss';
 }
 
 /**
- * Header
- */
-.home .header {
-  border-color: rgba($white, 0);
-
-  .logo .version {
-    color: rgba($white, 0.5);
-  }
-  .logo:hover .version {
-    color: rgba($white, 1);
-  }
-  .nav ul.menu-hori li a:not(.button) {
-    color: $white;
-    border-color: rgba($white, 0.25);
-
-    &:hover {
-      border-color: $white;
-    }
-  }
-  li > .button,
-  .dropdown-trigger > .button {
-    background-clip: padding-box;
-  }
-}
-
-/**
  * Hero Content
  */
 .hero-content {
@@ -251,6 +223,7 @@ $filename: 'scss/custom/_custom.scss';
   }
   h1 {
     font-size: px-to-em(18px);
+    line-height: 1.5em;
     @include font-weight('light');
     color: $white;
   }
@@ -265,7 +238,7 @@ $filename: 'scss/custom/_custom.scss';
       padding: 10em 10em 12em;
     }
     h1 {
-      font-size: px-to-em(22px);
+      font-size: px-to-em(24px);
     }
   }
 
@@ -276,12 +249,9 @@ $filename: 'scss/custom/_custom.scss';
  */
 .main {
   .row,
-  .flex {
+  .flex,
+  .feature {
     margin-bottom: 4em;
-
-    .col {
-      position: relative;
-    }
   }
 }
 .home .main {
@@ -308,15 +278,45 @@ $filename: 'scss/custom/_custom.scss';
         margin-right: 0;
       }
     }
+
+    .feature {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      > * {
+        width: 50%;
+      }
+      .feature-content {
+        width: 50%;
+        margin-left: 3em;
+        margin-right: 6em;
+      }
+      .feature-ill {
+        width: 50%;
+        margin-left: 6em;
+        margin-right: 0;
+      }
+
+      &.reverse {
+        flex-direction: row-reverse;
+
+        .feature-content {
+          margin-left: 6em;
+          margin-right: 3em;
+        }
+        .feature-ill {
+          margin-left: 0;
+          margin-right: 6em;
+        }
+      }
+    }
   }
 
   .home .main {
     img {
       width: auto;
-      margin: -2.5em auto 0;
-    }
-    .float-right {
-      float: right;
+      margin: 0 auto;
     }
   }
 
@@ -329,7 +329,7 @@ $filename: 'scss/custom/_custom.scss';
 /**
  * Sidebar Item
  */
-.sidebar-item {
+.widget {
   margin: 2rem 0;
   padding: 0.75rem 1.5rem;
   border: 1px solid rgba($black, 0.1);
@@ -342,7 +342,7 @@ $filename: 'scss/custom/_custom.scss';
     margin-bottom: 0;
   }
 }
-.sidebar-item h2 {
+.widget h2 {
   margin: 0.5rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba($black, 0.1);
@@ -353,7 +353,7 @@ $filename: 'scss/custom/_custom.scss';
 /**
  * Sidebar Menu
  */
-.sidebar-item-menu {
+.widget-menu {
   ul {
     list-style: none;
     margin: 0.5rem 0;
@@ -383,7 +383,7 @@ $filename: 'scss/custom/_custom.scss';
 }
 
 /* Child Links */
-.sidebar-item-menu .active {
+.widget-menu .active {
   > ul {
     display: block;
   }
@@ -452,6 +452,25 @@ $filename: 'scss/custom/_custom.scss';
     @include font-weight('light');
   }
 }
+.list-docs.numbered {
+  counter-reset: list-counter;
+
+  li {
+    position: relative;
+    padding-left: 3em;
+
+    &:before {
+      content: counter(list-counter);
+    	counter-increment: list-counter;
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      font-size: 2em;
+      line-height: 1.5em;
+      color: $violet;
+    }
+  }
+}
 
 /**
  * Sections
@@ -504,14 +523,35 @@ $filename: 'scss/custom/_custom.scss';
 .block-action {
   margin: 2em 0;
   padding: 1.5em 3em;
-  border: 1px solid rgba($black, 0.1);
+  // border: 1px solid rgba($black, 0.1);
+  background: $blue;
+  @include linear-gradient(left, $blue, $blue-violet-darker);
   @include border-radius();
+  color: $white;
   text-align: center;
+
+  h3 {
+    color: $white;
+  }
+  .button-group-wrapper {
+    display: block;
+    .button {
+      width: 100%;
+      display: block;
+      background-clip: padding-box;
+    }
+  }
 }
 
 @include media-min('medium') {
   .block-action {
-
+    .button-group-wrapper {
+      display: inline-block;
+      .button {
+        width: auto;
+        display: inline-block;
+      }
+    }
   }
 }
 
