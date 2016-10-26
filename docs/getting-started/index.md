@@ -44,6 +44,8 @@ If you're using the source to build your project, you also have available to you
 
 ## Basic Template
 
+Here is a typical starter template that has everything you'll need to get started with BaseWeb. It includes a simple scaffold using the class based grid system.
+
 ```html
 <html>
   <head>
@@ -99,6 +101,67 @@ If you're using the source to build your project, you also have available to you
 
   </body>
 </html>
+```
+
+## Basic SCSS Files
+
+You can structure your custom SCSS files in any way you like, but this is the general structure that they take within BaseWeb. This is a starter template for a custom component SCSS file.
+
+```scss
+// Set file variable
+$filename: 'scss/custom/_COMPONENT.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @COMPONENT Map
+////////////////////////////////////////////////////////////////////////////////
+
+$COMPONENT: (
+  'classes' : true
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @COMPONENT Functions
+////////////////////////////////////////////////////////////////////////////////
+
+// COMPONENT function name
+// Description...
+// @param $options
+//   @type map
+//   @default $COMPONENT map
+// @return ...
+@function COMPONENT-function-name($options: ()) {
+  $o: map-merge($COMPONENT, $options);
+
+  // Function code here...
+
+  @return $return;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @COMPONENT Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// COMPONENT mixin name
+// Description...
+// @param $options
+//   @type map
+//   @default $COMPONENT map
+@mixin COMPONENT-mixin-name($options: ()) {
+  $o: map-merge($COMPONENT, $options);
+
+  // Mixin code here...
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($COMPONENT, 'classes') == true) {
+/*==============================================================================
+  @SECTION TITLE - #{$filename}
+==============================================================================*/
+
+// Section styles here...
+
+} // endif classes
 ```
 
 ## Basic JavaScript
@@ -164,3 +227,7 @@ A place to store all your JavaScript you want to run after either the document i
 
 }(jQuery));
 ```
+
+## Build Scripts
+
+When using the source of BaseWeb, you'll need to setup a development environment for compiling and minifying SCSS and JS files.
