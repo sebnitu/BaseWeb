@@ -97,11 +97,70 @@ If you're using the source to build your project, you also have available to you
       </div><!-- .container -->
     </footer><!-- .footer -->
 
-    <!-- Include jQuery from CDN with local fallback and global JavaScript -->
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-    <script src="/assets/js/scripts.min.js"></script>
-
   </body>
 </html>
+```
+
+## Basic JavaScript
+
+Although BaseWeb isn't currently very opinionated about your JavaScript, it's pretty common to be using something like jQuery. So for best practice, we point to the latest version from a CDN and we have a local backup just in case.
+
+```html
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+```
+
+Also common as a starter is to have two JavaScript files that are then combined and minified for production. These files are empty but initiate a `$(document).ready` and `$(window).load` as well as a self executing function wrap. The final compiled and minified file is then included in the footer after jQuery.
+
+
+```html
+<script src="/assets/js/scripts.min.js"></script>
+```
+
+### jquery.function.js
+
+A place to store all your project specific JavaScript functions. This allows us to safely use the jQuery `$` alias without any conflicts.
+
+```js
+/**
+ * Self executing jQuery function wrap.
+ */
+;(function ($) {
+  'use strict';
+
+  // Your code here...
+
+}(jQuery));
+```
+
+### jquery.docready.js
+
+A place to store all your JavaScript you want to run after either the document is ready or images are finished loading. These are both also wrapped in the self executing jQuery function so we can safely use the jQuery `$` alias.
+
+```js
+/**
+ * Self executing jQuery function wrap.
+ */
+;(function ($) {
+  'use strict';
+
+  /**
+   * When the document is ready
+   */
+  $(document).ready(function () {
+
+    // Your code here...
+
+  });
+
+  /**
+   * When the images are loaded
+   */
+  $(window).load(function () {
+
+    // Your code here...
+
+  });
+
+}(jQuery));
 ```
