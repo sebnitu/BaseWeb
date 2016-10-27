@@ -513,6 +513,42 @@ $filename: 'scss/custom/_custom.scss';
   }
 }
 
+/**
+ * Article Listing
+ */
+.article-listing {
+  @include make-list();
+  @include add-list-rowed();
+  text-align: center;
+
+  li:first-child {
+    border-top: 0 none;
+  }
+  li:last-child {
+    border-bottom: 0 none;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@include media-min('medium') {
+  .article-listing {
+    @include add-prefix(2);
+    @include add-suffix(2);
+  }
+}
+
+/**
+ * Article
+ */
+.article {
+  .date {
+    color: $color-light;
+  }
+}
+
 /*==============================================================================
   @Blocks - #{$filename}
 ==============================================================================*/
@@ -568,6 +604,7 @@ $filename: 'scss/custom/_custom.scss';
   }
   img {
     display: inline-block;
+    opacity: 0.4;
   }
 
   a {
