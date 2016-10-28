@@ -62,7 +62,7 @@
     // Sticky Element
     $('.sidebar').theiaStickySidebar({
       containerSelector : '.row',
-      additionalMarginTop : 30
+      additionalMarginTop : 0
     });
 
   });

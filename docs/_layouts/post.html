@@ -2,24 +2,29 @@
 layout: default
 ---
 <div class="row">
-  <div class="col col-9">
-    <h1>{{ page.title }}</h1>
-    <p class="date">{{ page.date | date: "%B %-d, %Y" }}{% if page.comments %} - <a href="{{ page.url }}#disqus_thread">Comments</a>{% endif %}</p>
-    {{ content }}
+  <article class="article col col-8 prefix-2 suffix-2">
+    <header>
+      <h1>{{ page.title }}</h1>
+      <p class="date">{{ page.date | date: "%b %-d, %Y" }}</p>
+    </header>
+    <div class="content">
+      {{ content }}
+    </div>
 
     {% if page.previous or page.next %}
       <div class="page-nav">
         {% if page.previous %}
-          <a href="{{ page.previous.url }}" class="prev"><span class="icon icon-arrow-left"></span>Previous</a>
+          <a href="{{ page.previous.url }}" class="prev button"><span class="icon icon-arrow-left"></span>Previous</a>
         {% endif %}
 
         {% if page.next %}
-          <a href="{{ page.next.url }}" class="next"><span class="icon icon-arrow-right"></span>Next Post</a>
+          <a href="{{ page.next.url }}" class="next button"><span class="icon icon-arrow-right"></span>Next Post</a>
         {% endif %}
       </div>
     {% endif %}
 
     {% if page.comments %}
+    <h2>Comments</h2>
     <div id="disqus_thread" class="comments"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -38,8 +43,5 @@ layout: default
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     {% endif %}
-  </div>
-  <aside class="sidebar col col-3">
-    {% include sidebar.html %}
-  </aside>
+  </article>
 </div>

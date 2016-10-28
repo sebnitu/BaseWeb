@@ -74,7 +74,7 @@ table {
 ================================================================================
  *
  * Sets the base typographic styles for BaseWeb.
- * 
+ *
  * 1. Set the base font size to the `<html>` element because that's what is
  *    used when sizing things with Rem.
  * 2. Makes safari fonts not look terrible.
@@ -115,29 +115,44 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 }
 
 h1 {
-  font-size: 3em;
-}
-
-h2 {
   font-size: 2em;
 }
 
+h2 {
+  font-size: 1.75em;
+}
+
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 h4 {
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 h5 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba(48, 48, 48, 0.6);
 }
 
 h6 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba(48, 48, 48, 0.3);
+}
+
+@media (min-width: 760px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4, h5, h6 {
+    font-size: 1.25em;
+  }
 }
 
 /**
@@ -3026,27 +3041,49 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Structure - scss/custom/_custom.scss
 ==============================================================================*/
-.header,
-.main,
+body {
+  background: #efefef;
+}
+
+.header {
+  padding: 2em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.home .header {
+  padding-bottom: 0;
+  border-bottom: 0 none;
+}
+
+.main {
+  padding: 1em 0 2em;
+}
+
 .footer {
   padding: 2em 0;
 }
 
-.footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.header,
+.main {
+  background: #ffffff;
+}
+
+.home .header {
+  background: none;
+}
+
+@media (min-width: 760px) {
+  .home .header {
+    padding-bottom: 2em;
+  }
+  .main {
+    padding: 2em 0;
+  }
 }
 
 /*==============================================================================
   @Header - scss/custom/_custom.scss
 ==============================================================================*/
-.header {
-  background: #1489C9;
-  background-image: -webkit-linear-gradient(left, #1489C9, #3b54c8);
-  background-image: -moz-linear-gradient(left, #1489C9, #3b54c8);
-  background-image: -ms-linear-gradient(left, #1489C9, #3b54c8);
-  background-image: linear-gradient(left, #1489C9, #3b54c8);
-}
-
 .header .flex {
   display: flex;
   justify-content: space-between;
@@ -3070,12 +3107,20 @@ fieldset[disabled] .input {
 .header .logo .version {
   margin-top: 8px;
   margin-left: 10px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #aaaaaa;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
 
 .header .logo:hover .version {
+  color: #b357cd;
+}
+
+.home .header .logo .version {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.home .header .logo:hover .version {
   color: white;
 }
 
@@ -3102,23 +3147,38 @@ fieldset[disabled] .input {
 }
 
 .header .nav ul.menu-hori li a:not(.button) {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.25);
+  color: #303030;
+  border-color: rgba(0, 0, 0, 0.25);
   font-size: 1.07143em;
 }
 
 .header .nav ul.menu-hori li a:not(.button):hover {
-  border-color: white;
+  color: #b357cd;
+  border-color: #b357cd;
 }
 
 .header .nav ul.menu-hori li.active a:not(.button) {
-  color: rgba(255, 255, 255, 0.5);
+  color: #aaaaaa;
   border: 0 none;
 }
 
 .header .nav li > .button,
 .header .nav .dropdown-trigger > .button {
   background-clip: padding-box;
+}
+
+.home .header .nav ul.menu-hori li a:not(.button) {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.1);
+  font-size: 1.07143em;
+}
+
+.home .header .nav ul.menu-hori li a:not(.button):hover {
+  border-color: white;
+}
+
+.home .header .nav ul.menu-hori li.active a:not(.button) {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /**
@@ -3220,20 +3280,33 @@ fieldset[disabled] .input {
   background-image: linear-gradient(left, #1489C9, #3b54c8);
 }
 
-@media (min-width: 760px) {
-  .hero:after {
-    background: inherit;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 50%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transform: skewY(-4deg);
-    transform-origin: 100%;
-    z-index: -1;
-  }
+.hero {
+  position: relative;
+}
+
+.hero:after {
+  background: inherit;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: skewY(-4deg);
+  transform-origin: 100%;
+  z-index: -1;
+}
+
+.hero:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10em;
+  background: #ffffff;
+  z-index: -2;
 }
 
 /**
@@ -3241,10 +3314,11 @@ fieldset[disabled] .input {
  */
 .hero-content {
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .hero-content .container {
-  padding-top: 0;
+  padding-top: 2em;
   padding-bottom: 2em;
 }
 
@@ -3253,6 +3327,18 @@ fieldset[disabled] .input {
   line-height: 1.5em;
   font-weight: 300;
   color: #ffffff;
+}
+
+@media (min-width: 480px) {
+  .hero-content {
+    margin-bottom: 5em;
+  }
+  .hero-content .container {
+    padding: 5em 5em 6em;
+  }
+  .hero-content h1 {
+    font-size: 1.42857em;
+  }
 }
 
 @media (min-width: 760px) {
@@ -3270,10 +3356,22 @@ fieldset[disabled] .input {
 /**
  * Main
  */
-.main .row,
 .main .flex,
 .main .feature {
   margin-bottom: 4em;
+}
+
+.main .flex:last-child,
+.main .feature:last-child {
+  margin-bottom: 0;
+}
+
+.home .row {
+  margin-bottom: 4em;
+}
+
+.home hr {
+  margin: 8em 0;
 }
 
 .home .main img {
@@ -3337,24 +3435,23 @@ fieldset[disabled] .input {
  * Sidebar Item
  */
 .widget {
-  margin: 2rem 0;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
 .widget:first-child {
-  margin-top: 0;
+  padding-top: 1rem;
 }
 
 .widget:last-child {
-  margin-bottom: 0;
+  padding-bottom: 1rem;
+  border-bottom: 0 none;
 }
 
 .widget h2 {
   margin: 0.5rem 0;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 1.14286em;
   font-weight: 600;
 }
@@ -3462,7 +3559,11 @@ fieldset[disabled] .input {
   left: 0;
   font-size: 2em;
   line-height: 1.5em;
-  color: #bc6bd3;
+  color: #aaaaaa;
+}
+
+.subsection:last-child .list-docs:last-child li:last-child {
+  border-bottom: 0 none;
 }
 
 /**
@@ -3513,55 +3614,105 @@ fieldset[disabled] .input {
  */
 .article-listing {
   list-style: none;
-  margin: 1rem 0;
-  background: none;
-  text-align: center;
-}
-
-.article-listing > li {
   margin: 0;
-  padding: 1rem;
-  background-clip: padding-box;
 }
 
-.article-listing > li:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.article-listing > li {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.article-listing > li:first-child {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.article-listing li {
+  margin: 2rem 0;
 }
 
 .article-listing li:first-child {
-  border-top: 0 none;
-}
-
-.article-listing li:last-child {
-  border-bottom: 0 none;
+  margin-top: 0;
 }
 
 .article-listing h1 {
   font-size: 2em;
 }
 
+.article-listing h1 a {
+  color: #303030;
+}
+
+.article-listing h1 a:hover {
+  color: #b357cd;
+}
+
+.article-listing .thumbnail {
+  float: left;
+  width: 150px;
+  margin: 0 2em 1em 0;
+}
+
+.article-listing .thumbnail img {
+  margin: 0;
+}
+
+@media (min-width: 480px) {
+  .article-listing .thumbnail {
+    width: 200px;
+  }
+}
+
 @media (min-width: 760px) {
-  .article-listing {
-    margin-left: 16.66667%;
-    margin-right: 16.66667%;
+  .article-listing .thumbnail {
+    width: 300px;
   }
 }
 
 /**
  * Article
  */
+.article {
+  position: relative;
+}
+
 .article .date {
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #aaaaaa;
+}
+
+@media (min-width: 760px) {
+  .article .date {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    text-align: right;
+    margin-right: 1em;
+    white-space: nowrap;
+    line-height: 52px;
+  }
+  .article-listing .article .date {
+    line-height: 35px;
+  }
+}
+
+/**
+ * Page Navigation
+ */
+.page-nav {
+  margin: 2em 0;
+}
+
+.page-nav .button {
+  display: block;
+  margin: 0.5em 0;
+}
+
+@media (min-width: 480px) {
+  .page-nav {
+    margin: 4em 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-nav .button {
+    width: 50%;
+    margin-right: 1em;
+  }
+  .page-nav .button:last-child {
+    margin-right: 0;
+  }
 }
 
 /*==============================================================================

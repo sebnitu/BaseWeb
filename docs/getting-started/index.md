@@ -62,42 +62,7 @@ Here is a typical starter template that has everything you'll need to get starte
   </head>
   <body>
 
-    <header class="header">
-      <div class="container">
-        <h1>Welcome to BaseWeb</h1>
-      </div><!-- .container -->
-    </header><!-- .header -->
-
-    <section class="main">
-      <div class="container">
-        <div class="row">
-
-          <div class="col col-8 content">
-            <h2>Starter Template</h2>
-            <p>
-              Thank you for downloading BaseWeb. BaseWeb is a fresh SCSS front-end
-              development framework and library built to help keep your projects
-              simple, organized and responsive.
-            </p>
-            <p>...</p>
-          </div><!-- .content -->
-
-          <aside class="col col-4 aside">
-            <div class="widget">
-              <h3>Sidebar Item</h3>
-              <p>...</p>
-            </div><!-- .widget -->
-          </aside><!-- .aside -->
-
-        </div><!-- .row -->
-      </div><!-- .container -->
-    </section><!-- .main -->
-
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2016</p>
-      </div><!-- .container -->
-    </footer><!-- .footer -->
+    <!-- Your markup here... -->
 
   </body>
 </html>
@@ -116,26 +81,9 @@ $filename: 'scss/custom/_COMPONENT.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $COMPONENT: (
-  'classes' : true
+  'classes' : true,
+  'example' : 'something'
 ) !default;
-
-////////////////////////////////////////////////////////////////////////////////
-// @COMPONENT Functions
-////////////////////////////////////////////////////////////////////////////////
-
-// COMPONENT function name
-// Description...
-// @param $options
-//   @type map
-//   @default $COMPONENT map
-// @return ...
-@function COMPONENT-function-name($options: ()) {
-  $o: map-merge($COMPONENT, $options);
-
-  // Function code here...
-
-  @return $return;
-}
 
 ////////////////////////////////////////////////////////////////////////////////
 // @COMPONENT Mixins
@@ -148,9 +96,7 @@ $COMPONENT: (
 //   @default $COMPONENT map
 @mixin COMPONENT-mixin-name($options: ()) {
   $o: map-merge($COMPONENT, $options);
-
-  // Mixin code here...
-
+  // Your mixin code here...
 }
 
 // Check if we should output modifier classes
@@ -159,7 +105,7 @@ $COMPONENT: (
   @SECTION TITLE - #{$filename}
 ==============================================================================*/
 
-// Section styles here...
+// Your styles here...
 
 } // endif classes
 ```

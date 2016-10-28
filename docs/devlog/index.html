@@ -6,13 +6,18 @@ order: 3
 
 <ol class="article-listing">
   {% for post in site.posts %}
-    <li>
-      <article class="article">
+    <li class="row">
+      <article class="article col col-8 prefix-2 suffix-2">
         <header>
-          <p class="date"><span>{{ post.date | date: "%B %-d, %Y" }}</span></p>
           <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h1>
-          {{ post.excerpt }}
+          <p class="date"><span>{{ post.date | date: "%b %-d %Y" }}</span></p>
         </header>
+        <div class="content">
+          <div class="thumbnail">
+            <img src="http://placehold.it/300x300" class="rounded" alt="" width="300" height="300">
+          </div>
+          {{ post.excerpt }}
+        </div>
       </article>
     </li>
   {% endfor %}
