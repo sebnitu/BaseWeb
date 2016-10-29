@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Media Queries"
-link: "Media"
+link:
+  text: "Media"
 order: 3
 ---
 

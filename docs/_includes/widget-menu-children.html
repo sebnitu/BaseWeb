@@ -19,9 +19,9 @@
       {% assign node_depth = node_parts | size %}
       {% if node_depth == depth %}
         <li>
-          <a href="{{ node.url }}">
-            {% if node.link %}
-              {{ node.link }}
+          <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+            {% if node.link.text %}
+              {{ node.link.text }}
             {% else %}
               {{ node.title }}
             {% endif %}

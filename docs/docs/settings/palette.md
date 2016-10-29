@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Palette Variables"
-link: "Palette"
+link:
+  text: "Palette"
 order: 2
 ---
 

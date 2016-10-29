@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Typography Variables"
-link: "Typography"
+link:
+  text: "Typography"
 order: 5
 ---
 

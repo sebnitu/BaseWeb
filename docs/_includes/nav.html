@@ -8,9 +8,9 @@
       {% if node.order %}
         {% if node_depth == 2 %}
           <li{% if page.url contains node.url %} class="active"{% endif %}>
-            <a href="{{ node.url }}">
-              {% if node.link %}
-                {{ node.link }}
+            <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+              {% if node.link.text %}
+                {{ node.link.text }}
               {% else %}
                 {{ node.title }}
               {% endif %}
@@ -40,9 +40,9 @@
           {% if node.order %}
             {% if node_depth == 2 %}
               <li{% if page.url contains node.url %} class="active"{% endif %}>
-                <a href="{{ node.url }}">
-                  {% if node.link %}
-                    {{ node.link }}
+                <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+                  {% if node.link.text %}
+                    {{ node.link.text }}
                   {% else %}
                     {{ node.title }}
                   {% endif %}

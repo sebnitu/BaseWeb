@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Global Variables"
-link: "Global"
+link:
+  text: "Global"
 order: 6
 ---
 

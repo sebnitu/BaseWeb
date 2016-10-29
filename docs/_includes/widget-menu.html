@@ -20,9 +20,9 @@
 
         {% if node_depth == 3 %}
           <li{% if page.url contains node.url %} class="active"{% endif %}>
-            <a href="{{ node.url }}">
-              {% if node.link %}
-                {{ node.link }}
+            <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+              {% if node.link.text %}
+                {{ node.link.text }}
               {% else %}
                 {{ node.title }}
               {% endif %}
@@ -41,9 +41,9 @@
                 {% for subnode in pages %}
                   {% if subnode.url contains node_root and subnode.url != node_root %}
                     <li{% if page.url contains subnode.url %} class="active"{% endif %}>
-                      <a href="{{ subnode.url }}">
-                        {% if subnode.link %}
-                          {{ subnode.link }}
+                      <a href="{% if subnode.link.url %}{{ subnode.link.url }}{% else %}{{ subnode.url }}{% endif %}">
+                        {% if subnode.link.text %}
+                          {{ subnode.link.text }}
                         {% else %}
                           {{ subnode.title }}
                         {% endif %}

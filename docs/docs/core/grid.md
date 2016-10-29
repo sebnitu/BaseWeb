@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Grid System"
-link: "Grid"
+link:
+  text: "Grid"
 order: 4
 ---
 

@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Base Styles"
-link: "Base"
+link:
+  text: "Base"
 order: 1
 ---
 

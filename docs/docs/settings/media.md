@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Media Query Variables"
-link: "Media"
+link:
+  text: "Media"
 order: 3
 ---
 

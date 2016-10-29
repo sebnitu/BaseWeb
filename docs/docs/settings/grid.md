@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "Grid System Variables"
-link: "Grid"
+link:
+  text: "Grid"
 order: 4
 ---
 
