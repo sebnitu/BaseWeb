@@ -2,6 +2,7 @@ module.exports = {
 
   // Build Tasks
   build: [{
+    // SCSS Build Task
     task: 'scss',
     desc: 'Compiles and minifies SCSS',
     options: [{
@@ -26,6 +27,7 @@ module.exports = {
       style   : 'compressed'
     }]
   }, {
+    // JS Build Task
     task: 'js',
     desc: 'Compiles and minifies JS',
     options: [{
@@ -36,23 +38,18 @@ module.exports = {
       ],
       output : 'docs/assets/js/scripts.min.js'
     }]
-  }, {
-    task: 'img',
-    desc: 'Optimizes images',
-    options: [{
-      input : 'docs/assets/img/raw/*.{gif,jpg,png,svg}',
-      output : 'docs/assets/img/'
-    }]
   }],
 
   // Watch Tasks
   watch: [{
+    // SCSS Watch Task
     task: 'scss',
     files: [
       'src/scss/',
       'docs/assets/scss/'
     ]
   }, {
+    // JS Watch Task
     task: 'js',
     files: ['docs/assets/js/'],
     ignore: ['docs/assets/js/scripts.min.js']
