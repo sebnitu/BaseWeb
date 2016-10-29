@@ -46,7 +46,7 @@
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  @if (map-get($o, 'type') == mobile) {
+  @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'container-min-width')) {
       min-width: none;
@@ -80,7 +80,7 @@
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  @if (map-get($o, 'type') == mobile) {
+  @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'inner-gutter-width') != 0) {
       margin-left: 0;
@@ -106,7 +106,7 @@
   @if ($global-box-sizing != border-box) {
     @include box-sizing( border-box );
   }
-  @if (map-get($o, 'type') == mobile) {
+  @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     float: none;
     @if (map-get($o, 'gutter-width') != 0) {
@@ -118,7 +118,13 @@
     }
   } @else {
     min-height: 1px;
-    float: left;
+    float: map-get($o, 'column-float');
+    &.#{map-get($o, 'class-column-left')} {
+      float: left;
+    }
+    &.#{map-get($o, 'class-column-right')} {
+      float: right;
+    }
     @if (map-get($o, 'gutter-width') != 0) {
       margin-left: map-get($o, 'gutter-width');
       &:first-child {
@@ -188,7 +194,7 @@
 // @param $grid-type | $options
 //   @type string | map
 //   @default $grid map
-@mixin build-grid-system($options: normal) {
+@mixin build-grid-system($options: 'normal') {
   $o: null;
 
   // Check if options is map or not
@@ -216,7 +222,7 @@
   }
 
   // Check that this is not a mobile grid type
-  @if (map-get($o, 'type') != mobile) {
+  @if (map-get($o, 'type') != 'mobile') {
 
     @if (map-get($o, 'gutter-width') != 0) {
       .#{map-get($o, 'class-column')}-no-gutter {

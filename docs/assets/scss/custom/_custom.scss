@@ -5,7 +5,7 @@ $filename: 'scss/custom/_custom.scss';
   @Grid System - #{$filename}
 ==============================================================================*/
 
-@include build-grid-system(mobile);
+@include build-grid-system('mobile');
 
 @include media-min('medium') {
   @include build-grid-system();
@@ -34,19 +34,19 @@ body {
   border-bottom: 0 none;
 }
 
-.main {
-  padding: 1em 0 2em;
-}
-.footer {
-  padding: 2em 0;
-}
-
 .header,
 .main {
   background: $white;
 }
 .home .header {
   background: none;
+}
+
+.main {
+  padding: 1em 0 2em;
+}
+.footer {
+  padding: 2em 0;
 }
 
 @include media-min('medium') {
@@ -403,11 +403,11 @@ body {
 }
 
 /*==============================================================================
-  @Sidebar - #{$filename}
+  @Widgets - #{$filename}
 ==============================================================================*/
 
 /**
- * Sidebar Item
+ * Widget
  */
 .widget {
   margin: 0;
@@ -430,40 +430,55 @@ body {
 }
 
 /**
- * Sidebar Menu
+ * Widget Toggle
  */
-.widget-menu {
-  ul {
-    list-style: none;
-    margin: 0.5rem 0;
-
-    li {
-      margin: 1em 0;
-      padding: 0;
-    }
+.widget-toggle {}
+@include media-min('medium') {
+  .widget-toggle {
+    // display: none;
   }
-  ul ul {
-    margin: 0;
-    padding-left: 1rem;
+}
+@include media-max('medium') {
+  .widget-menu,
+  .widget-contents {
     display: none;
   }
+}
 
-  /* Links */
-  a {
-    color: $color;
+/**
+ * Widget Menu
+ */
+.widget-menu {
+  .active > a {
+    color: $color-light;
+    border: 0 none;
   }
-  a:hover {
-    color: $color-link-hover;
+  ul ul {
+    display: none;
   }
+  .active > ul {
+    display: block;
+  }
+}
+
+/**
+ * Widget Contents
+ */
+.widget-contents {
   .active > a {
     color: $color-light;
     border: 0 none;
   }
 }
 
-/* Child Links */
-.widget-menu .active {
-  > ul {
+/**
+ * Widget Action
+ */
+.widget-action {
+  display: none;
+}
+@include media-min('medium') {
+  .widget-action {
     display: block;
   }
 }

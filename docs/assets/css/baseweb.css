@@ -2841,6 +2841,12 @@ fieldset[disabled] .input {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
+  .col.col-left {
+    float: left;
+  }
+  .col.col-right {
+    float: right;
+  }
   .col-no-inner-gutter {
     padding-left: 0;
     padding-right: 0;
@@ -3055,14 +3061,6 @@ body {
   border-bottom: 0 none;
 }
 
-.main {
-  padding: 1em 0 2em;
-}
-
-.footer {
-  padding: 2em 0;
-}
-
 .header,
 .main {
   background: #ffffff;
@@ -3070,6 +3068,14 @@ body {
 
 .home .header {
   background: none;
+}
+
+.main {
+  padding: 1em 0 2em;
+}
+
+.footer {
+  padding: 2em 0;
 }
 
 @media (min-width: 760px) {
@@ -3429,10 +3435,10 @@ body {
 }
 
 /*==============================================================================
-  @Sidebar - scss/custom/_custom.scss
+  @Widgets - scss/custom/_custom.scss
 ==============================================================================*/
 /**
- * Sidebar Item
+ * Widget
  */
 .widget {
   margin: 0;
@@ -3457,44 +3463,50 @@ body {
 }
 
 /**
- * Sidebar Menu
+ * Widget Toggle
  */
-.widget-menu {
-  /* Links */
+@media (max-width: 759px) {
+  .widget-menu,
+  .widget-contents {
+    display: none;
+  }
 }
 
-.widget-menu ul {
-  list-style: none;
-  margin: 0.5rem 0;
-}
-
-.widget-menu ul li {
-  margin: 1em 0;
-  padding: 0;
-}
-
-.widget-menu ul ul {
-  margin: 0;
-  padding-left: 1rem;
-  display: none;
-}
-
-.widget-menu a {
-  color: #303030;
-}
-
-.widget-menu a:hover {
-  color: #b357cd;
-}
-
+/**
+ * Widget Menu
+ */
 .widget-menu .active > a {
   color: #aaaaaa;
   border: 0 none;
 }
 
-/* Child Links */
+.widget-menu ul ul {
+  display: none;
+}
+
 .widget-menu .active > ul {
   display: block;
+}
+
+/**
+ * Widget Contents
+ */
+.widget-contents .active > a {
+  color: #aaaaaa;
+  border: 0 none;
+}
+
+/**
+ * Widget Action
+ */
+.widget-action {
+  display: none;
+}
+
+@media (min-width: 760px) {
+  .widget-action {
+    display: block;
+  }
 }
 
 /*==============================================================================
@@ -4738,6 +4750,16 @@ figure {
   float: left;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+
+.demo-grid-semantic .demo-aside.col-left,
+.demo-grid-semantic .demo-article.col-left {
+  float: left;
+}
+
+.demo-grid-semantic .demo-aside.col-right,
+.demo-grid-semantic .demo-article.col-right {
+  float: right;
 }
 
 .demo-grid-semantic .demo-aside {

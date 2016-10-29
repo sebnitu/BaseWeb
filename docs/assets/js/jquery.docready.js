@@ -16,13 +16,17 @@
    */
   $(document).ready(function () {
 
-    // Bind document click event
+    /**
+     * Bind document click event
+     */
     $(document).click(function(){
       // Hide all dropdowns that are click activated
       $('.dropdown-trigger.on-click').removeClass('active');
     });
 
-    // Bind the click event to .dropdown-trigger
+    /**
+     * Bind the click event to .dropdown-trigger
+     */
     $('.dropdown-trigger.on-click').click(function(e) {
 
       // Is the dropdown already active?
@@ -43,7 +47,9 @@
       e.stopPropagation();
     });
 
-    // Bind the click event to .dropdown
+    /**
+     * Bind the click event to .dropdown
+     */
     $('.dropdown-trigger.on-click .dropdown').click(function(e) {
 
       // Hide all dropdowns that are click activated
@@ -59,10 +65,27 @@
       e.stopPropagation();
     });
 
-    // Sticky Element
-    $('.sidebar').theiaStickySidebar({
+    /**
+     * Sticky Element
+     */
+    $('.sticky').theiaStickySidebar({
       containerSelector : '.row',
       additionalMarginTop : 0
+    });
+
+    /**
+     * Wiget Toggle
+     */
+    $('#widget-toggle').each(function() {
+      
+    });
+
+    /**
+     * Navigation Toggle
+     */
+    $('.widget-menu .toggle').click(function() {
+      $(this).parent().toggleClass('active');
+      return false;
     });
 
   });

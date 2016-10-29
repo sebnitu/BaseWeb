@@ -10,7 +10,8 @@
 {% endfor %}
 
 {% if has_children == true %}
-<nav class="widget widget-menu">
+<nav class="widget widget-menu" id="widget-menu">
+  <h2>Menu</h2>
   <ul>
     {% for node in pages %}
       {% if node.url contains root %}
@@ -20,7 +21,7 @@
 
         {% if node_depth == 3 %}
           <li{% if page.url contains node.url %} class="active"{% endif %}>
-            <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+            <a{% if node.link.class %} class="{{ node.link.class }}"{% endif %} href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
               {% if node.link.text %}
                 {{ node.link.text }}
               {% else %}
@@ -41,7 +42,7 @@
                 {% for subnode in pages %}
                   {% if subnode.url contains node_root and subnode.url != node_root %}
                     <li{% if page.url contains subnode.url %} class="active"{% endif %}>
-                      <a href="{% if subnode.link.url %}{{ subnode.link.url }}{% else %}{{ subnode.url }}{% endif %}">
+                      <a{% if subnode.link.class %} class="{{ subnode.link.class }}"{% endif %} href="{% if subnode.link.url %}{{ subnode.link.url }}{% else %}{{ subnode.url }}{% endif %}">
                         {% if subnode.link.text %}
                           {{ subnode.link.text }}
                         {% else %}

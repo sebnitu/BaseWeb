@@ -42,6 +42,10 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
     <td><code>$grid('columns')</code></td>
     <td colspan="2"><code>12</code></td>
   </tr>
+  <tr>
+    <td><code>$grid('column-float')</code></td>
+    <td colspan="2"><code>left</code></td>
+  </tr>
 
   <tr>
     <th colspan="3">Container Settings</th>
@@ -77,6 +81,14 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   <tr>
     <td><code>$grid('class-column')</code></td>
     <td colspan="2"><code>col</code></td>
+  </tr>
+  <tr>
+    <td><code>$grid('class-column-left')</code></td>
+    <td colspan="2"><code>col-left</code></td>
+  </tr>
+  <tr>
+    <td><code>$grid('class-column-right')</code></td>
+    <td colspan="2"><code>col-right</code></td>
   </tr>
   <tr>
     <td><code>$grid('class-prefix')</code></td>

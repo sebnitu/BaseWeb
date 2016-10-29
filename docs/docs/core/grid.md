@@ -45,7 +45,7 @@ The class based grid system is generated using: `build-grid-system()`. By defaul
 You can also set the grid type by passing a non-map parameter `build-grid-system(mobile)` which will make columns staked at 100% width.
 
 ```scss
-@include build-grid-system(mobile);
+@include build-grid-system('mobile');
 
 @include media-min('medium') {
   @include build-grid-system(('total-width': 740px));
@@ -455,7 +455,7 @@ Outputs all the styles needed to make an element a grid row.
 
 ## make-column-base
 
-Creates the base styles for a column but excludes setting the width.
+Creates the base styles for a column but excludes setting the width. Also creates modifier classes for floating columns left or right giving you more flexibility with markup order. Default classes are `col-left` and `col-right`, respectively. 
 
 ```scss
 @include make-column-base( $options: () );
@@ -606,7 +606,7 @@ The most basic use of `build-grid-system()` is to output mobile styles and withi
 
 ```scss
 // Output our mobile grid system classes.
-@include build-grid-system(mobile);
+@include build-grid-system('mobile');
 
 // Media query for styles that target tablet sized devices and above.
 @include media-min('medium') {

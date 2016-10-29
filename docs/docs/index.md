@@ -2,6 +2,6 @@
 layout: page
 title: Documentation
 order: 2
-link:
-  url: '/docs/settings/palette/'
 ---
+
+I'll need to write something about the general docs.
