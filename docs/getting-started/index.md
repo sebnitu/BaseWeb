@@ -13,7 +13,7 @@ If you're using the source to build your project, you also have available to you
 
 <ol class="list list-docs numbered">
 <li markdown="1">
-**Download Source BaseWeb:** Once downloaded, you'll want to grab the `src` directory, and include it in your projects. From here, you can either work directly in the `scss` files and create your own custom project framework, or to keep core maintainability by override the files that you wish to edit using the `baseweb.scss` router file which is where all `@import` declarations are called.
+**Download Source BaseWeb:** Once downloaded, you'll want to grab the `src` directory, and include it in your projects. From here, you can either work directly in the `scss` files and create your own custom project framework, or to keep core maintainability by override the files that you wish to edit using the `_baseweb.scss` router file which is where all `@import` declarations are called.
 </li>
 <li markdown="1">
 **Setup a Development Environment:** Next, you'll need to setup some form of development environment and workflow that incorporates a compiling and minifying stage. This can be done in many ways and some common methods include [CodeKit](https://incident57.com/codekit/), [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) or [Jake](http://jakejs.com/) to name a few. No matter the method you choose, the compiler should be run on `baseweb.scss`, where all BaseWeb's files are routed through.

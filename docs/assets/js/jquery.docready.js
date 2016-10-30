@@ -72,14 +72,7 @@
       containerSelector : '.row',
       additionalMarginTop : 0
     });
-
-    /**
-     * Wiget Toggle
-     */
-    $('#widget-toggle').each(function() {
-      
-    });
-
+    
     /**
      * Navigation Toggle
      */
