@@ -465,6 +465,18 @@ body {
   }
 }
 
+/**
+ * Widget Back
+ */
+.widget-back {
+  text-align: center;
+}
+@include media-min('medium') {
+  .widget-back {
+    text-align: left;
+  }
+}
+
 /*==============================================================================
   @Main - #{$filename}
 ==============================================================================*/
@@ -637,10 +649,23 @@ body {
       background: rgba($black, 0.1);
     }
   }
-  .date {
+  .date,
+  .meta {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: $color-light;
+
+    a {
+      color: $color-light;
+
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+  }
+  .content {
+    font-size: px-to-em(16em);
+    line-height: 1.5em;
   }
 }
 
@@ -671,6 +696,18 @@ body {
         margin-right: 0;
       }
     }
+  }
+}
+
+/**
+ * Comments
+ */
+.comments-wrapper {
+  margin: 2em 0;
+}
+@include media-min('medium') {
+  .comments-wrapper {
+    margin: 6em 0;
   }
 }
 
