@@ -16,7 +16,7 @@ scss/
 ├── elements/
 ├── blocks/
 ├── custom/
-└── _baseweb.scss
+└── _custom.scss
 
 # CSS Output
 css/
