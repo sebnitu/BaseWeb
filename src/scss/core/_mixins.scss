@@ -53,19 +53,27 @@
 // @param $height
 //   @type unit (number, pixel, percentage, false)
 //   @default false -> $width
-@mixin size( 
+@mixin size(
     $width,
     $height : false
   ) {
-  @if unitless($width) {
-    $width: 1px * $width;
-  }
-  @if ($height != false) {
-    @if unitless($height) {
-      $height: 1px * $height;
+  @if ($width != auto) {
+    @if ($width != none) {
+      @if unitless($width) {
+        $width: 1px * $width;
+      }
     }
-  } @else {
-    $height: $width;
+  }
+  @if ($height != auto) {
+    @if ($height != none) {
+      @if ($height != false) {
+        @if unitless($height) {
+          $height: 1px * $height;
+        }
+      } @else {
+        $height: $width;
+      }
+    }
   }
   width: $width;
   height: $height;
@@ -424,12 +432,12 @@
 // Font Weight
 // Output the font weight using the weight key to output the number weight.
 // @param $weight
-//   @type font-weight keyword (thing, hairline, light, regular, medium,
+//   @type font-weight keyword (hairline, thin, light, regular, medium,
 //     semi-bold, bold, extra-bold, black)
 @mixin font-weight($weight) {
-  @if ($weight == 'thin') {
+  @if ($weight == 'hairline') {
     font-weight: 100;
-  } @else if ($weight == 'hairline') {
+  } @else if ($weight == 'thin') {
     font-weight: 200;
   } @else if ($weight == 'light') {
     font-weight: 300;
@@ -477,7 +485,7 @@
 @mixin reverse-index($items) {
   $index: $items;
   $count: 1;
-    
+
   @while $index > 0 {
     &:nth-child(#{$count}) {
       z-index: $count;
@@ -501,7 +509,7 @@
 
 // Make Text Mask
 // Lets you easily create text masks using background-clip.
-// @param $big-image
+// @param $bg-image
 //   @type background-image property
 //   @default null
 // @param $text-color
@@ -511,15 +519,15 @@
 //   @type style block
 //   @desc use this to set custom background styles (such as gradients).
 @mixin make-text-mask($bg-image: null, $text-color: transparent) {
-  
+
   // Set our text color.
   // Must have some transparency for background image to show.
   -webkit-text-fill-color: $text-color;
-  
+
   // Make text our clipping mask
   -webkit-background-clip: text;
   background-clip: text;
-  
+
   // Set our background image if a source is provided.
   @if ($bg-image) {
     background-image: $bg-image;
@@ -527,7 +535,7 @@
     background-position: center center;
     background-size: cover;
   }
-  
+
   // Let's you set your own background properties.
   @content;
 }

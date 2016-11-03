@@ -6,7 +6,7 @@ $filename: 'scss/elements/_typography.scss';
 ================================================================================
  *
  * Sets the base typographic styles for BaseWeb.
- * 
+ *
  * 1. Set the base font size to the `<html>` element because that's what is
  *    used when sizing things with Rem.
  * 2. Makes safari fonts not look terrible.
@@ -45,30 +45,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
-}
-h2 {
   font-size: 2em;
 }
+h2 {
+  font-size: 1.75em;
+}
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 h4 {
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 h5 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba($color-header, 0.6);
 }
 h6 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba($color-header, 0.3);
+}
+
+@include media-min('medium') {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4, h5, h6 {
+    font-size: 1.25em;
+  }
 }
 
 /**
  * Paragraphs
  */
-p { 
+p {
   margin: 1em 0;
 }
 
@@ -80,11 +95,11 @@ a {
   text-decoration: none;
   border-bottom: 1px solid $border-color;
   @include transition( $transition );
-  
+
   &:hover {
     cursor: pointer;
     color: $color-link-hover;
-    border-color: $border-color-hover;
+    border-color: $color-link-hover;
   }
 }
 

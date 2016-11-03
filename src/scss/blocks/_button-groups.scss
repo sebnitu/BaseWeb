@@ -12,15 +12,15 @@ $button-groups: (
   'classes' : true,
   'classes-extend' : true,
   'classes-stack' : true,
-  
+
   'class-group' : 'button-group',
   'class-wrapper' : 'button-group-wrapper',
   'class-has' : map-get($mini-grid, 'class-has'),
   'class-is' : map-get($mini-grid, 'class-is'),
-  
+
   'fractions' : map-get($mini-grid, 'fractions'),
   'spacing' : 1em,
-  
+
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,16 +34,16 @@ $button-groups: (
 //   @default $button-groups map
 @mixin make-button-group($options: ()) {
   $o: map-merge($button-groups, $options);
-  
+
   vertical-align: middle;
   margin: 0;
   @include clearfix();
-  
+
   > .button {
     position: relative;
     z-index: 1;
     margin: 0;
-    
+
     &:hover {
       z-index: 2;
     }
@@ -75,45 +75,45 @@ $button-groups: (
 //   @default $button-groups map
 @mixin add-button-group-style($orientation: null, $display: null, $has: null, $options: ()) {
   $o: map-merge($button-groups, $options);
-  
+
   // Inline or Block
   @if ($display == 'inline') {
-    
+
     display: inline-block;
     float: none;
-    
+
     + .#{map-get($o, 'class-group')} {
       margin-top: 0;
       margin-left: (map-get($o, 'spacing') * 0.75);
     }
-    
+
   } @else if ($display == 'block') {
-    
+
     display: block;
     float: none;
-    
+
     + .#{map-get($o, 'class-group')} {
       margin-top: map-get($o, 'spacing');
       margin-left: 0;
     }
-    
+
   }
-  
+
   // Horizontal or Vertical
   @if ($orientation == 'horizontal') {
-    
+
     @include add-button-group-has($has);
-    
+
     > .button {
       display: inline-block;
       float: left;
       border-radius: 0;
-      
+
       + .button {
         margin-top: 0;
         margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
       }
-      
+
       &:first-child {
         @include border-radius-top(0);
         @include border-radius-left(map-get($buttons, 'border-radius'));
@@ -123,22 +123,22 @@ $button-groups: (
         @include border-radius-right(map-get($buttons, 'border-radius'));
       }
     }
-    
+
   } @else if ($orientation == 'vertical' ) {
-    
+
     margin-right: 0;
-    
+
     > .button {
       display: block;
       width: 100%;
       float: none;
       border-radius: 0;
-      
+
       + .button {
         margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
         margin-left: 0;
       }
-      
+
       &:first-child {
         @include border-radius-left(0);
         @include border-radius-top(map-get($buttons, 'border-radius'));
@@ -177,7 +177,7 @@ $button-groups: (
 //   @default $button-groups map
 @mixin build-button-group-mini-grid-modifiers($options: ()) {
   $o: map-merge($button-groups, $options);
-  
+
   .#{map-get($o, 'class-group')}.fluid {
     display: table;
     width: 100%;
@@ -185,7 +185,7 @@ $button-groups: (
       display: table-cell;
     }
   }
-  
+
   @for $i from 1 through map-get($o, 'fractions') {
     .#{map-get($o, 'class-group')} > .button.#{map-get($o, 'class-is')}-1-of-#{$i},
     .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-#{$i} > .button {
@@ -235,26 +235,27 @@ $button-groups: (
 @mixin make-button-group-wrapper($options: ()) {
   $o: map-merge($button-groups, $options);
 
+  display: block;
   margin: 0 0 (-(map-get($o, 'spacing'))) (-(map-get($o, 'spacing')));
   @include clearfix();
-  
+
   > .button,
   .#{map-get($o, 'class-group')} {
     float: left;
     @include float-modifiers();
   }
-  
+
   .#{map-get($o, 'class-group')}.block {
     float: none;
     clear: both;
   }
-  
+
   %button-group-wrapper-margins {
     margin-top: 0;
     margin-left: map-get($o, 'spacing');
     margin-bottom: map-get($o, 'spacing');
   }
-  
+
   > .button,
   .#{map-get($o, 'class-group')},
   .#{map-get($o, 'class-group')}.block,
@@ -262,7 +263,7 @@ $button-groups: (
   .#{map-get($o, 'class-group')}.block + .#{map-get($o, 'class-group')} {
     @extend %button-group-wrapper-margins;
   }
-  
+
   @if (map-get($button-groups, 'classes-stack') == true) {
     .#{map-get($o, 'class-group')}.stack-for-small,
     .#{map-get($o, 'class-group')}.stack-for-mobile,
@@ -277,7 +278,7 @@ $button-groups: (
 
 // Check if we should output modifier classes
 @if (map-get($button-groups, 'classes') == true) {
-  
+
 /*==============================================================================
   @Button Groups - #{$filename}
 ==============================================================================*/

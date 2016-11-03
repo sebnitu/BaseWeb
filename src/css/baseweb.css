@@ -1,12 +1,12 @@
 /*!
  * BaseWeb
  * A fresh front-end development framework
- * 
+ *
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
  * @url http://sebnitu.com
  *
- * Copyright (c) 2015 Sebastian Nitu (MIT Licensed)
+ * Copyright (c) 2016 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
   @Base Styles - scss/elements/_base.scss
@@ -24,6 +24,10 @@ html {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
+}
+
+table {
+  font-size: 1em;
 }
 
 *, *:before, *:after {
@@ -69,7 +73,7 @@ footer, header, hgroup, menu, nav, section {
 ================================================================================
  *
  * Sets the base typographic styles for BaseWeb.
- * 
+ *
  * 1. Set the base font size to the `<html>` element because that's what is
  *    used when sizing things with Rem.
  * 2. Makes safari fonts not look terrible.
@@ -101,38 +105,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: #16a6e4;
+  color: #1489C9;
   border: 0 none;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-  color: #aaad16;
+  color: #b357cd;
 }
 
 h1 {
-  font-size: 3em;
-}
-
-h2 {
   font-size: 2em;
 }
 
+h2 {
+  font-size: 1.75em;
+}
+
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 h4 {
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 h5 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba(48, 48, 48, 0.6);
 }
 
 h6 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   color: rgba(48, 48, 48, 0.3);
+}
+
+@media (min-width: 760px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4, h5, h6 {
+    font-size: 1.25em;
+  }
 }
 
 /**
@@ -146,7 +165,7 @@ p {
  * Anchors
  */
 a {
-  color: #16a6e4;
+  color: #1489C9;
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.25s linear;
@@ -155,8 +174,8 @@ a {
 
 a:hover {
   cursor: pointer;
-  color: #aaad16;
-  border-color: rgba(0, 0, 0, 0.25);
+  color: #b357cd;
+  border-color: #b357cd;
 }
 
 /**
@@ -188,7 +207,7 @@ cite {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #909090;
+  border-bottom: 1px dotted #aaaaaa;
 }
 
 /**
@@ -208,7 +227,7 @@ abbr[data-original-title] {
 
 .text-soften {
   font-weight: normal;
-  color: #909090;
+  color: #aaaaaa;
 }
 
 .text-harden {
@@ -258,13 +277,13 @@ abbr[data-original-title] {
   @Lists - scss/elements/_lists.scss
 ==============================================================================*/
 ul, ol {
-  margin: 1rem 0 1rem 1.5rem;
+  margin: 1em 0 1em 2em;
   padding: 0;
 }
 
 ul ul, ul ol, ul li, ol ul, ol ol, ol li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 /**
@@ -301,17 +320,17 @@ ol ol ol {
  * Description Lists
  */
 dl {
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 dl dt {
-  margin: 1rem 0 0;
+  margin: 1em 0 0;
   font-weight: bold;
   color: #303030;
 }
 
 dl dd {
-  margin: 0 0 1rem 1rem;
+  margin: 0 0 1em 1em;
 }
 
 /*==============================================================================
@@ -454,7 +473,7 @@ code {
   padding: 0;
   white-space: nowrap;
   line-height: inherit;
-  color: #d25992;
+  color: #de5151;
   background: none;
 }
 
@@ -510,7 +529,7 @@ table th {
  * Base Modifiers Styles
  */
 .table {
-  margin: 1em 0;
+  margin: 2em 0;
   background: none;
   border-collapse: separate;
 }
@@ -669,11 +688,21 @@ table th {
  * Responsive Tables
  */
 .table-responsive {
-  margin: 1em 0;
+  margin: 2em 0;
 }
 
 .table-responsive > table {
   margin: 0;
+}
+
+@media (max-width: 759px) {
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > table td,
+  .table-responsive > table th {
+    white-space: nowrap;
+  }
 }
 
 /*==============================================================================
@@ -881,7 +910,7 @@ form .col:last-child {
  */
 .form-header {
   margin-bottom: 1.5em;
-  color: #909090;
+  color: #aaaaaa;
 }
 
 .form-header:last-child {
@@ -896,7 +925,7 @@ form .col:last-child {
 
 .form-header p {
   margin: 0.5em 0;
-  color: #909090;
+  color: #aaaaaa;
 }
 
 /**
@@ -1098,7 +1127,7 @@ label.inline {
 .input:focus {
   outline: none;
   background-color: white;
-  border: 1px solid #2ab0ea;
+  border: 1px solid #1489c9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent;
 }
 
@@ -1205,7 +1234,7 @@ select[size].input {
 .note {
   margin-bottom: 0.75em;
   font-size: 1em;
-  color: #909090;
+  color: #aaaaaa;
 }
 
 .note:last-child {
@@ -1399,31 +1428,31 @@ fieldset[disabled] .input {
  * Active
  */
 .input.active {
-  border-color: #2ab0ea;
+  border-color: #1489C9;
 }
 
 .checkbox.active,
 .radio.active,
 .note.active {
-  color: #1495cd;
+  color: #0f699b;
 }
 
 .choice.active {
-  background-color: rgba(42, 176, 234, 0.1);
+  background-color: rgba(20, 137, 201, 0.1);
 }
 
 .active .input {
-  border-color: #2ab0ea;
+  border-color: #1489C9;
 }
 
 .active .checkbox,
 .active .radio,
 .active .note {
-  color: #1495cd;
+  color: #0f699b;
 }
 
 .active .choice {
-  background-color: rgba(42, 176, 234, 0.1);
+  background-color: rgba(20, 137, 201, 0.1);
 }
 
 /*==============================================================================
@@ -1565,7 +1594,7 @@ fieldset[disabled] .input {
 .button-group-wrapper.active .button {
   color: #ffffff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: #2ab0ea;
+  background-color: #1489C9;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -1584,7 +1613,7 @@ fieldset[disabled] .input {
 .button-group-wrapper.primary .button:focus,
 .button-group-wrapper.active .button:focus {
   color: #ffffff;
-  background-color: #16a6e4;
+  background-color: #1279b2;
   border-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -1596,7 +1625,7 @@ fieldset[disabled] .input {
 .button-group-wrapper.primary .button:active,
 .button-group-wrapper.active .button:active {
   color: #ffffff;
-  background-color: #1495cd;
+  background-color: #0f699b;
   border-color: rgba(0, 0, 0, 0.25);
 }
 
@@ -1734,7 +1763,7 @@ fieldset[disabled] .input {
 .button.small, .button-group.small .button,
 .button-group-wrapper.small .button {
   padding: 0.5em 1.25em;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .button.large, .button-group.large .button,
@@ -2160,6 +2189,7 @@ fieldset[disabled] .input {
  * Button Group Wrapper
  */
 .button-group-wrapper {
+  display: block;
   margin: 0 0 -1em -1em;
 }
 
@@ -2189,16 +2219,7 @@ fieldset[disabled] .input {
   clear: both;
 }
 
-.button-group-wrapper > .button,
-.button-group-wrapper .button-group,
-.button-group-wrapper .button-group.block,
-.button-group-wrapper .button-group + .button-group,
-.button-group-wrapper .button-group.block + .button-group, .button-group-wrapper .button-group.stack-for-small,
-.button-group-wrapper .button-group.stack-for-mobile,
-.button-group-wrapper .button-group.stack-for-tablet,
-.button-group-wrapper .button-group.stack-for-small + .button-group,
-.button-group-wrapper .button-group.stack-for-mobile + .button-group,
-.button-group-wrapper .button-group.stack-for-tablet + .button-group {
+.button-group-wrapper > .button, .button-group-wrapper .button-group, .button-group-wrapper .button-group.block, .button-group-wrapper .button-group + .button-group, .button-group-wrapper .button-group.block + .button-group, .button-group-wrapper .button-group.stack-for-small, .button-group-wrapper .button-group.stack-for-mobile, .button-group-wrapper .button-group.stack-for-tablet, .button-group-wrapper .button-group.stack-for-small + .button-group, .button-group-wrapper .button-group.stack-for-mobile + .button-group, .button-group-wrapper .button-group.stack-for-tablet + .button-group {
   margin-top: 0;
   margin-left: 1em;
   margin-bottom: 1em;
@@ -2242,11 +2263,11 @@ fieldset[disabled] .input {
  * Notice Color
  */
 .notice.blue, .notice.info {
-  background: rgba(42, 176, 234, 0.1);
+  background: rgba(20, 137, 201, 0.1);
 }
 
 .notice.blue.inverted, .inverted.notice.info {
-  background: rgba(42, 176, 234, 0.9);
+  background: rgba(20, 137, 201, 0.9);
 }
 
 .notice.green, .notice.success {
@@ -2359,7 +2380,7 @@ fieldset[disabled] .input {
 }
 
 .breadcrumb .current {
-  color: #909090;
+  color: #aaaaaa;
 }
 
 .breadcrumb li:after {
@@ -2374,7 +2395,7 @@ fieldset[disabled] .input {
 
 .breadcrumb.wrapped {
   padding: 0.5em 1em;
-  background: #eaf7fd;
+  background: #e8f3fa;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
@@ -2392,7 +2413,7 @@ fieldset[disabled] .input {
   overflow: hidden;
   vertical-align: middle;
   list-style: none;
-  background: #eaf7fd;
+  background: #e8f3fa;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
@@ -2415,11 +2436,6 @@ fieldset[disabled] .input {
   border-bottom-left-radius: 3px;
 }
 
-.breadcrumb.fancy li:last-child a, .breadcrumb.fancy li:last-child .item {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
 .breadcrumb.fancy li:after {
   content: none;
   display: none;
@@ -2432,7 +2448,7 @@ fieldset[disabled] .input {
   padding: 0.5em 0.5em 0.5em 2em;
   color: #303030;
   white-space: nowrap;
-  background: #eaf7fd;
+  background: #e8f3fa;
   border: 0 none;
   -webkit-transition: background 0.25s linear;
   transition: background 0.25s linear;
@@ -2454,7 +2470,7 @@ fieldset[disabled] .input {
   top: 50%;
   right: -1em;
   margin: -1em 0 0 0;
-  background: #eaf7fd;
+  background: #e8f3fa;
   background-clip: padding-box;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   border-right: 1px solid rgba(0, 0, 0, 0.15);
@@ -2468,12 +2484,12 @@ fieldset[disabled] .input {
 
 .breadcrumb.fancy li a:hover,
 .breadcrumb.fancy li .item:hover {
-  background: #d3eefb;
+  background: #d3e8f5;
 }
 
 .breadcrumb.fancy li a:hover:after,
 .breadcrumb.fancy li .item:hover:after {
-  background: #d3eefb;
+  background: #d3e8f5;
 }
 
 .breadcrumb.fancy li:first-child a, .breadcrumb.fancy li:first-child .item {
@@ -2510,10 +2526,10 @@ fieldset[disabled] .input {
 .dropdown-menu {
   position: relative;
   display: block;
-  width: 15rem;
+  width: 16rem;
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.25em;
+  font-size: 0.75rem;
+  line-height: 1.35em;
   background: #ffffff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2603,6 +2619,10 @@ fieldset[disabled] .input {
   margin-bottom: 0;
 }
 
+.dropdown-content > .button {
+  display: block;
+}
+
 /**
  * Dropdown Menu
  */
@@ -2626,6 +2646,14 @@ fieldset[disabled] .input {
 
 .dropdown-menu li:hover > a {
   color: #303030;
+}
+
+.dropdown-menu li.active > a {
+  color: #aaaaaa;
+}
+
+.dropdown-menu li.active:hover {
+  background: none;
 }
 
 .dropdown-menu li:first-child {
@@ -2811,6 +2839,12 @@ fieldset[disabled] .input {
     float: left;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+  .col.col-left {
+    float: left;
+  }
+  .col.col-right {
+    float: right;
   }
   .col-no-inner-gutter {
     padding-left: 0;

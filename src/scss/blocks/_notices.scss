@@ -7,41 +7,41 @@ $filename: 'scss/blocks/_notice.scss';
 
 $notices: (
   'classes' : true,
-  
+
   'class-inverted' : 'inverted',
   'class-close' : 'close',
-  
+
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
   'padding-small' : null,
   'padding-large' : null,
   'padding-inline' : 0 0.25em,
-  
+
   'font-size' : 1em,
   'font-size-small' : 0.9em,
   'font-size-large' : 1.1em,
   'line-height' : 1.5em,
-  
+
   'pull-breakpoint' : 'medium',
   'pull-width' : 45%,
   'pull-margin-left' : 0.5em 5% 1em 0,
   'pull-margin-right' : 0.5em 0 1em 5%,
-  
+
   'color' : $color-dark,
   'text-shadow' : 0 1px 0 rgba($white, 0.25),
   'background' : rgba($black, 0.05),
   'box-shadow' : 0 1px 3px rgba($black, 0.05),
   'border' : 1px solid rgba($black, 0.15),
   'border-radius' : $border-radius,
-  
+
   'inverted' : (
     'color' : $white,
     'text-shadow' : 0 1px 0 rgba($black, 0.25),
     'background' : rgba($color-dark, 0.9),
     'border' : 1px solid rgba($black, 0.15),
     'box-shadow' : 0 1px 3px rgba($black, 0.05),
-  ),
-  
+  )
+
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,18 +55,18 @@ $notices: (
 //   @default $notices map
 @mixin make-notice($options: ()) {
   $o: map-merge($notices, $options);
-  
+
   margin: map-get($o, 'margin');
   padding: map-get($o, 'padding');
   font-size: map-get($o, 'font-size');
   line-height: map-get($o, 'line-height');
   @include border-radius(map-get($o, 'border-radius'));
-  
+
   .#{map-get($o, 'class-close')} {
     float: right;
     margin: 0.45em -0.25em 0 1em;
     color: inherit;
-    
+
     + * {
       padding-right: 2.5em;
     }
@@ -85,45 +85,45 @@ $notices: (
 //     from the `$notices` map.
 @mixin add-notice-color($options: (), $output: 'difference') {
   $o: map-extend($notices, $options, true);
-  
+
   $set: color, text-shadow, background, border, box-shadow;
-  
+
   @if ($output == 'all') {
-  
+
     color: map-get($o, 'color');
     text-shadow: map-get($o, 'text-shadow');
     background: map-get($o, 'background');
     border: map-get($o, 'border');
     box-shadow: map-get($o, 'box-shadow');
-    
+
     @if (map-get($o, 'class-inverted')) {
       &.#{map-get($o, 'class-inverted')} {
-        color: map-fetch($o, 'inverted' 'color');
-        text-shadow: map-fetch($o, 'inverted' 'text-shadow');
-        background: map-fetch($o, 'inverted' 'background');
-        border: map-fetch($o, 'inverted' 'border');
-        box-shadow: map-fetch($o, 'inverted' 'box-shadow');
+        color: map-fetch($o, 'inverted', 'color');
+        text-shadow: map-fetch($o, 'inverted', 'text-shadow');
+        background: map-fetch($o, 'inverted', 'background');
+        border: map-fetch($o, 'inverted', 'border');
+        box-shadow: map-fetch($o, 'inverted', 'box-shadow');
       }
     }
-  
+
   } @else if ($output == 'difference') {
-    
+
     @each $property in $set {
       @if (map-get($o, $property) != map-get($notices, $property)) {
         #{$property}: map-get($o, $property);
       }
     }
-    
+
     @if (map-get($o, 'class-inverted')) {
       &.#{map-get($o, 'class-inverted')} {
         @each $property in $set {
-          @if (map-fetch($o, 'inverted' $property) != map-fetch($notices, 'inverted' $property)) {
-            #{$property}: map-fetch($o, 'inverted' $property);
+          @if (map-fetch($o, 'inverted', $property) != map-fetch($notices, 'inverted', $property)) {
+            #{$property}: map-fetch($o, 'inverted', $property);
           }
         }
       }
     }
-    
+
   } @else {
     @warn 'The output type "#{$output}" is not supported in `add-notice-color()`';
   }
@@ -138,7 +138,7 @@ $notices: (
 //   @default $notices map
 @mixin add-notice-size($size, $options: ()) {
   $o: map-merge($notices, $options);
-  
+
   @if ($size == 'small') {
     padding: map-get($o, 'padding-small');
     font-size: map-get($o, 'font-size-small');
@@ -156,11 +156,11 @@ $notices: (
       font-size: map-get($o, 'font-size');
     }
   }
-  
+
   @if (map-get($o, 'line-height') != map-get($notices, 'line-height')) {
     line-height: map-get($o, 'line-height');
   }
-  
+
 }
 
 // Add Notice Inline
@@ -173,12 +173,12 @@ $notices: (
 //   @default $notices map
 @mixin add-notice-inline($display: inline, $options: ()) {
   $o: map-merge($notices, $options);
-  
+
   display: $display;
   margin: 0;
   padding: map-get($o, 'padding-inline');
   box-shadow: none;
-  
+
   @if (map-get($o, 'class-inverted')) {
     &.#{map-get($o, 'class-inverted')} {
       border: 0 none;
@@ -195,9 +195,20 @@ $notices: (
 //   @default $notices map
 @mixin add-notice-pull($direction, $options: ()) {
   $o: map-merge($notices, $options);
-  
-  // Private mixin to store our pull styles.
-  @mixin add-notice-pull-styles() {
+
+  // Wrap our pull styles in a breakpoint if one is provided.
+  @if (map-get($o, 'pull-breakpoint')) {
+    @include media-min(map-get($o, 'pull-breakpoint')) {
+      width: map-get($o, 'pull-width');
+      @if ($direction == 'left') {
+        float: left;
+        margin: map-get($o, 'pull-margin-left');
+      } @else if ($direction == 'right') {
+        float: right;
+        margin: map-get($o, 'pull-margin-right');
+      }
+    }
+  } @else {
     width: map-get($o, 'pull-width');
     @if ($direction == 'left') {
       float: left;
@@ -207,20 +218,11 @@ $notices: (
       margin: map-get($o, 'pull-margin-right');
     }
   }
-  
-  // Wrap our pull styles in a breakpoint if one is provided.
-  @if (map-get($o, 'pull-breakpoint')) {
-    @include media-min(map-get($o, 'pull-breakpoint')) {
-      @include add-notice-pull-styles();
-    }
-  } @else {
-    @include add-notice-pull-styles();
-  }
 }
 
 // Check if we should output modifier classes
 @if (map-get($notices, 'classes') == true) {
-  
+
 /*==============================================================================
   @Notice - #{$filename}
 ==============================================================================*/

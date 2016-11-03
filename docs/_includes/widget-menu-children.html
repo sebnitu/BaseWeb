@@ -1,0 +1,34 @@
+{% assign pages = site.pages | sort: 'order' %}
+
+{% assign parts = page.url | split: '/' %}
+{% assign depth = parts | size %}
+{% assign depth = depth | plus:1 %}
+
+{% assign has_children = false %}
+{% for node in pages %}
+  {% if node.url contains page.url and node.url != page.url %}
+    {% assign has_children = true %}
+  {% endif %}
+{% endfor %}
+
+{% if has_children == true %}
+  <ul>
+  {% for node in pages %}
+    {% if node.url contains page.url %}
+      {% assign node_parts = node.url | split: '/' %}
+      {% assign node_depth = node_parts | size %}
+      {% if node_depth == depth %}
+        <li>
+          <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+            {% if node.link.text %}
+              {{ node.link.text }}
+            {% else %}
+              {{ node.title }}
+            {% endif %}
+          </a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  </ul>
+{% endif %}

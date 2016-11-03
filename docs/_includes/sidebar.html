@@ -1,0 +1,12 @@
+{% assign current = page.url | split: '/' %}
+{% assign sidebar_file = 'sidebar-' | append: current[1] | append: '.html' %}
+
+{% if page.sidebar %}
+  {% if page.sidebar_file %}
+    {% include {{ page.sidebar_file }} %}
+  {% else %}
+    {% include {{ sidebar_file }} %}
+  {% endif %}
+{% else %}
+  {% include sidebar-default.html %}
+{% endif %}

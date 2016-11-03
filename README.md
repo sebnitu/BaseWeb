@@ -1,21 +1,20 @@
-![BaseWeb](http://f.cl.ly/items/201U3Y1g0c2M1u1Z3i0n/baseweb-banner.png "BaseWeb — A fresh front-end development framework.")
+![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/39132g291E2e2k3I0e2e/baseweb-logo.png "BaseWeb")
 
-Currently v1.2.1
+Currently v2.0.0
 
 ## About
-BaseWeb is a SCSS front-end development library and framework built to make working on web based projects more enjoyable. It&#39;s focused on keeping your projects simple, organized and responsive.
+BaseWeb is a fresh SCSS front-end development framework and library built to help keep your projects simple, organized and responsive.
 
 ### Upcoming Features
 The main features being worked on right now are blocks. The following list of blocks are currently on the production list:
 
 * Modals
-* Tooltips
-* Menus
-* Pagination
 * Tabs
+* Pagination
+* Tooltips
 
 ## Documentation
-Documentation is currently being worked on and you can view them if you clone or download the repo. There will also be an online version at [http://getbaseweb.com/](http://getbaseweb.com/).
+Documentation can be found at [http://getbaseweb.com/](http://getbaseweb.com/). A copy of the docs are also included when downloading this repo. If you see any errors or problems with the docs, please feel free to open an issue ticket and I'll do my best to get things fixed. BaseWeb is built on [Jekyll](https://jekyllrb.com/).
 
 ### Upcoming Features
 Upcoming features and updates to BaseWeb documentation:
@@ -30,29 +29,22 @@ Upcoming features and updates to BaseWeb documentation:
 BaseWeb uses [Node](https://nodejs.org/), [Jake](http://jakejs.com/) and [Jake-Builds](https://github.com/sebnitu/jake-builds) for building both the source and docs. For more information on how to update build scripts using this stack, make sure to checkout [Jake-Builds](https://github.com/sebnitu/jake-builds).
 
 ### Node Packages
-Run `npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb assets and documentation files:
+Run `sudo npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb assets and documentation files:
 
 | Node Modules   | Versions   | Description |
 |----------------|------------|-------------|
-| `jake`         | `8.0.12`   | The JavaScript build tool for Node.js |
-| `node-watch`   | `0.3.4`    | Used in handling the watch task |
-| `node-sass`    | `3.4.2`    | Used for compiling and minifying src and doc CSS from SCSS files |
-| `uglify-js`    | `2.4.19`   | Used to compile and minify our JavaScript files |
-| `mustache`     | `2.0.0`    | Used to build our HTML files for docs, examples and readme |
-| `imagemin`     | `3.1.0`    | Used to optimize our image files |
-
-*Keep in mind that if you use the imagemin module, [Jpegtran](http://jpegclub.org/jpegtran/) should be installed globally. You can install it with [Homebrew](http://brew.sh/) using: `brew install jpeg`*
+| `node-watch`   | `0.4.*`    | Used in handling the watch task |
+| `node-sass`    | `3.10.*`   | Used for compiling and minifying CSS from SCSS files |
+| `uglify-js`    | `2.7.*`    | Used to compile and minify our JavaScript files |
 
 ### Jake Tasks
 To see the full list of available Jake tasks for a project, use `jake -ls`. The following tasks are available for building BaseWeb and related files:
 
 | Jake Tasks            | Description                                          |
 |-----------------------|------------------------------------------------------|
+| `jake build`          | Build everything                                     |
 | `jake build:scss`     | Compiles and minifies SCSS                           |
-| `jake build:js`       | Compiles and minifies JavaScript                     |
-| `jake build:img`      | Optimizes images                                     |
-| `jake build:docs`     | Build documentation                                  |
-| `jake build:examples` | Build examples                                       |
+| `jake build:js`       | Compiles and minifies JS                             |
 | `jake watch`          | Watch for change to files and rebuild if they change |
 
 ## Copyright and License

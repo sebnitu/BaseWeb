@@ -2,6 +2,7 @@ module.exports = {
 
   // Build Tasks
   build: [{
+    // SCSS Build Task
     task: 'scss',
     desc: 'Compiles and minifies SCSS',
     options: [{
@@ -15,76 +16,43 @@ module.exports = {
       paths   : ['src/scss/'],
       style   : 'compressed'
     }, {
-      input   : 'docs/scss/_baseweb.scss',
-      output  : 'docs/css/baseweb.css',
-      paths   : ['docs/scss/', 'src/scss/'],
+      input   : 'docs/assets/scss/_baseweb.scss',
+      output  : 'docs/assets/css/baseweb.css',
+      paths   : ['docs/assets/scss/', 'src/scss/'],
       style   : 'expanded'
     }, {
-      input   : 'docs/scss/_baseweb.scss',
-      output  : 'docs/css/baseweb.min.css',
-      paths   : ['docs/scss/', 'src/scss/'],
+      input   : 'docs/assets/scss/_baseweb.scss',
+      output  : 'docs/assets/css/baseweb.min.css',
+      paths   : ['docs/assets/scss/', 'src/scss/'],
       style   : 'compressed'
     }]
   }, {
+    // JS Build Task
     task: 'js',
     desc: 'Compiles and minifies JS',
     options: [{
       input : [
-        'docs/js/jquery.smoothState.js',
-        'docs/js/prism.js',
-        'docs/js/jquery.function.js',
-        'docs/js/jquery.docready.js'
+        'docs/assets/js/jquery.sticky.js',
+        'docs/assets/js/jquery.function.js',
+        'docs/assets/js/jquery.docready.js'
       ],
-      output : 'docs/js/scripts.min.js'
-    }]
-  }, {
-    task: 'img',
-    desc: 'Optimizes images',
-    options: [{
-      input : 'docs/img/raw/*.{gif,jpg,png,svg}',
-      output : 'docs/img/'
-    }]
-  }, {
-    task: 'docs',
-    desc: 'Build documentation',
-    module: 'mustache',
-    options: [{
-      dir : 'docs/'
-    }]
-  }, {
-    task: 'examples',
-    desc: 'Build examples',
-    module: 'mustache',
-    options: [{
-      dir : 'examples/'
+      output : 'docs/assets/js/scripts.min.js'
     }]
   }],
-  
+
   // Watch Tasks
   watch: [{
+    // SCSS Watch Task
     task: 'scss',
     files: [
       'src/scss/',
-      'docs/scss/'
+      'docs/assets/scss/'
     ]
   }, {
+    // JS Watch Task
     task: 'js',
-    files: ['docs/js/'],
-    ignore: ['docs/js/scripts.min.js']
-  }, {
-    task: 'docs',
-    files: [
-      'docs/templates/layouts/',
-      'docs/templates/pages/',
-      'docs/templates/partials/'
-    ]
-  }, {
-    task: 'examples',
-    files: [
-      'examples/templates/layouts/',
-      'examples/templates/pages/',
-      'examples/templates/partials/'
-    ]
+    files: ['docs/assets/js/'],
+    ignore: ['docs/assets/js/scripts.min.js']
   }]
 
 };

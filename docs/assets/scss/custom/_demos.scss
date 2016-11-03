@@ -1,0 +1,440 @@
+// Set file variable
+$filename: 'scss/custom/_demos.scss';
+
+/*==============================================================================
+  @Demo - #{$filename}
+==============================================================================*/
+
+.demo {
+  margin: 1.5em 0;
+  padding: 1.5em 3em;
+  overflow: auto;
+  border: 1px solid rgba($black, 0.1);
+  @include border-radius();
+
+  .box {
+    @include size(50px);
+    margin: 0 auto;
+    color: $white;
+    background: $blue;
+    @include border-radius();
+  }
+}
+
+/**
+ * Vertical Center
+ */
+.demo.demo-vertical-center {
+  height: 200px;
+
+  .box {
+    @include vertical-center();
+  }
+}
+
+/**
+ * Border Radius
+ */
+.demo-border-radius {
+  display: inline-block;
+  background: $blue;
+  @include size(30px);
+}
+.mixin-border-radius {
+  @include border-radius(50%);
+}
+.mixin-border-radius-top {
+  @include border-radius-top(50%);
+}
+.mixin-border-radius-top-left {
+  @include border-radius-top-left(50%);
+}
+.mixin-border-radius-top-right {
+  @include border-radius-top-right(50%);
+}
+.mixin-border-radius-bottom {
+  @include border-radius-bottom(50%);
+}
+.mixin-border-radius-bottom-left {
+  @include border-radius-bottom-left(50%);
+}
+.mixin-border-radius-bottom-right {
+  @include border-radius-bottom-right(50%);
+}
+.mixin-border-radius-left {
+  @include border-radius-left(50%);
+}
+.mixin-border-radius-left-top {
+  @include border-radius-left-top(50%);
+}
+.mixin-border-radius-left-bottom {
+  @include border-radius-left-bottom(50%);
+}
+.mixin-border-radius-right {
+  @include border-radius-right(50%);
+}
+.mixin-border-radius-right-top {
+  @include border-radius-right-top(50%);
+}
+.mixin-border-radius-right-bottom {
+  @include border-radius-right-bottom(50%);
+}
+
+/**
+ * Transform
+ */
+.demo.demo-transform-skew {
+  .box {
+    @include transform(skew(30deg, 10deg));
+  }
+}
+
+/**
+ * Rotate
+ */
+.demo.demo-rotate {
+  .box {
+    @include rotate(45deg);
+  }
+}
+
+/**
+ * Transition
+ */
+.demo.demo-transition {
+  .box {
+    background-color: $blue;
+    @include transition();
+
+    &:hover {
+      background-color: $red;
+    }
+  }
+}
+
+/**
+ * Animation
+ */
+@include keyframes('example') {
+  0%   { background-color: $red; }
+  50% { background-color: $blue; }
+  100% { background-color: $red; }
+}
+.demo.demo-animation {
+  .box {
+    @include animation(example 10s linear 1s infinite normal);
+  }
+}
+
+/**
+ * Linear Gradient
+ */
+.demo.demo-linear-gradient {
+  .box {
+    width: 100%;
+    @include linear-gradient(left, $violet, $blue, $green);
+  }
+}
+
+/**
+ * Radial Gradient
+ */
+.demo.demo-radial-gradient {
+  .box {
+    @include size(100px);
+    @include radial-gradient(circle, $blue, $violet);
+  }
+}
+
+/**
+ * Text Truncate
+ */
+.demo.demo-text-truncate {
+  .box {
+    @include size(150px, auto);
+    padding: 1em 1.5em;
+    @include text-truncate();
+  }
+}
+
+/**
+ * Text Hide
+ */
+.demo.demo-logo-image {
+  .logo {
+    display: block;
+    margin: 1.5rem auto;
+    padding: 0;
+    border: 0 none;
+    background: url("../img/baseweb-hori-black.svg") no-repeat left center;
+    background-size: 187px 40px;
+    @include size(187px, 40px);
+    @include text-hide();
+  }
+}
+
+/**
+ * Text Mask
+ */
+.demo.demo-text-mask {
+  @include make-text-mask(url('../img/demo-mask.jpg'), rgba($black, 0.25));
+
+  p {
+    margin: 1rem 0;
+    font-size: 4em;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/**
+ * Triangle
+ */
+.demo.demo-triangle {
+  text-align: center;
+  @include clearfix();
+}
+%triangle {
+  @include make-triangle-base();
+}
+.example-triangle-1 {
+  @extend %triangle;
+  @include make-triangle( 14px, $blue, 'left' );
+}
+.example-triangle-2 {
+  @extend %triangle;
+  @include make-triangle( 14px, $blue-violet, 'down' );
+}
+.example-triangle-3 {
+  @extend %triangle;
+  @include make-triangle( 14px, $violet, 'right' );
+}
+
+/**
+ * Grid System
+ */
+.demo-grid {
+  margin: 1.5rem 0;
+}
+.demo-grid .col {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.demo-grid .col p {
+  margin: 0;
+  padding: 1rem;
+  background: $bg-color;
+  font-family: $font-family-mono;
+  font-size: px-to-em(14px);
+  line-height: 1.5em;
+  text-align: center;
+  @include border-radius();
+}
+
+/**
+ * Semantic Grid Demo
+ */
+.demo-grid-semantic {
+  .demo-wrapper,
+  .demo-content,
+  .demo-aside,
+  .demo-article {
+    background: rgba($blue, 0.1);
+
+    p {
+      margin: 0;
+      padding: 1rem;
+      font-family: $font-family-mono;
+      font-size: px-to-em(14px);
+      line-height: 1.5em;
+      text-align: center;
+    }
+  }
+
+  .demo-aside,
+  .demo-article {
+    p {
+      margin: 0.75rem 0;
+      background: $bg-color;
+      @include border-radius();
+    }
+  }
+
+  .demo-wrapper {
+    @include make-container();
+  }
+  .demo-content {
+    @include make-row();
+  }
+  .demo-aside,
+  .demo-article {
+    @include make-column-base();
+  }
+  .demo-aside {
+    width: column-width(4);
+  }
+  .demo-article {
+    width: column-width(8);
+  }
+}
+
+/**
+ * Prefix and Suffix Grid Demo
+ */
+ @include media-min('medium') {
+   .demo-grid-prefix-suffix {
+     padding-left: 0.75rem;
+     padding-right: 0.75rem;
+   }
+ }
+.demo-grid-prefix-suffix {
+  .row {
+    background: rgba($blue, 0.1);
+  }
+}
+
+/**
+ * Nested Grid Demo
+ */
+@include media-min('medium') {
+  .demo-grid-nested {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+.demo-grid-nested .col {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: rgba($blue, 0.1);
+}
+.demo-grid-nested .col p {
+  margin: 0.75rem 0;
+  @include text-truncate();
+}
+
+/**
+ * Mini Grid
+ */
+.demo.demo-mini-grid {
+  padding: 1.5em 3em;
+}
+.demo-mini-grid .mini-grid {
+  margin: 1rem 0;
+  @include clearfix();
+}
+.demo-mini-grid .mini-grid > * {
+  margin: 0;
+  padding: 1rem 0;
+  background: $bg-color;
+  font-family: $font-family-mono;
+  font-size: px-to-em(14px);
+  line-height: 1.5em;
+  text-align: center;
+  border-left: 1px solid rgba($black, 0.1);
+
+  &:first-child {
+    border-left: 0 none;
+    @include border-radius-left();
+  }
+  &:last-child {
+    @include border-radius-right();
+  }
+}
+
+/**
+ * Buttons
+ */
+.demo-buttons {
+  padding-top: 1rem;
+
+  > p {
+    @include clearfix();
+    margin-left: -0.5rem;
+  }
+
+  .button,
+  .button-custom,
+  .button-custom-mobile {
+    float: left;
+    margin: 0.5rem 0 0 0.5rem;
+  }
+}
+.demo-buttons-mobile {
+  > p {
+    margin-left: 0;
+  }
+
+  .button,
+  .button-custom-mobile {
+    margin-left: 0;
+  }
+}
+
+.button-custom {
+  @include make-button();
+  @include add-button-color((
+    'color' : $white,
+    'background' : $violet
+  ));
+}
+.button-custom-mobile {
+  @include make-button();
+  @include add-button-color();
+  @include add-button-block();
+}
+
+/**
+ * Notices
+ */
+.demo .notice {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/**
+ * Breadcrumb
+ */
+.custom-breadcrumb {
+  @include make-breadcrumb((
+    'color' : $green,
+    'color-hover' : $red,
+    'delimiter' : '»'
+  ));
+}
+.breadcrumb.custom-wrapped {
+  @include add-breadcrumb-wrapped((
+    'background' : rgba($violet-darker, 0.1),
+    'border' : 3px solid rgba($black, 0.05),
+    'border-radius' : 0,
+  ));
+}
+
+/**
+ * Dropdown
+ */
+.demo-dropdown {
+  @include clearfix();
+  padding: 2em 3em 2em;
+  overflow: visible;
+
+  > .dropdown-trigger {
+    float: left;
+    margin: 1em 1em 1em 0;
+  }
+}
+.demo-dropdown-styles {
+  padding: 2em 3em 3em;
+
+  > .dropdown,
+  > .dropdown-content,
+  > .dropdown-menu {
+    float: left;
+    margin: 1em 1em 0 0;
+  }
+}
