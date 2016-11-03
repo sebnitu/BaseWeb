@@ -47,6 +47,7 @@ If you're using the source to build your project, you also have available to you
 Here is a typical starter template that has everything you'll need to get started with BaseWeb. It includes a simple scaffold using the class based grid system.
 
 ```html
+<!DOCTYPE html>
 <html>
   <head>
     <!-- Required Meta Data -->
