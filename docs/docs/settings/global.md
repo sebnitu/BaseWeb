@@ -89,7 +89,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td colspan="2">
       <div class="swatch-wrap">
         <span class="swatch swatch-bg-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.05)" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-pale" readonly="">
       </div>
     </td>
   </tr>
