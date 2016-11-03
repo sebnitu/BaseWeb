@@ -6,17 +6,26 @@ $filename: 'scss/custom/_demos.scss';
 ==============================================================================*/
 
 .demo {
-  margin: 1.5em 0;
-  padding: 1.5em 3em;
+  margin: 1.5em -1.5em;
+  padding: 0 1.5em;
   overflow: auto;
-  border: 1px solid rgba($black, 0.1);
-  @include border-radius();
+  border-top: 1px solid rgba($black, 0.1);
+  border-bottom: 1px solid rgba($black, 0.1);
 
   .box {
     @include size(50px);
     margin: 0 auto;
     color: $white;
     background: $blue;
+    @include border-radius();
+  }
+}
+
+@include media-min('medium') {
+  .demo {
+    margin: 1.5em 0;
+    padding: 1.5em 3em;
+    border: 1px solid rgba($black, 0.1);
     @include border-radius();
   }
 }
