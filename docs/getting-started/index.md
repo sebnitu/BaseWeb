@@ -245,12 +245,12 @@ If you want to use this build environment, you'll need to install the following:
   </tr>
   <tr>
     <td><a href="https://nodejs.org/en/">Node</a></td>
-    <td><code>7.0.X</code></td>
+    <td><code>7.0.*</code></td>
     <td>A JavaScript runtime built on Chrome's V8 JavaScript engine</td>
   </tr>
   <tr>
     <td><a href="http://jakejs.com/">Jake</a></td>
-    <td><code>8.0.X</code></td>
+    <td><code>8.0.*</code></td>
     <td>JavaScript build tool</td>
   </tr>
   <tr>
@@ -264,8 +264,8 @@ You'll also need to include the following dependencies within your `package.json
 
 ```js
 "devDependencies": {
-  "node-watch" : "0.4.1",
-  "node-sass"  : "3.10.1",
-  "uglify-js"  : "2.7.4"
+  "node-watch" : "0.4.*",
+  "node-sass"  : "3.10.*",
+  "uglify-js"  : "2.7.*"
 }
 ```

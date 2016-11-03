@@ -7,17 +7,17 @@ $filename: 'scss/elements/_lists.scss';
 
 $lists: (
   'classes' : true,
-  
+
   'nth' : odd,
   'margin' : 1rem 0,
   'padding' : 1rem,
-  
+
   'background' : none,
   'background-stripe' : rgba($black, 0.05),
   'background-hover' : $yellow-pale,
   'border' : 1px solid rgba($black, 0.1),
   'border-radius' : $border-radius,
-  
+
 ) !default;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -32,18 +32,18 @@ $lists: (
 //   @default $lists map
 @mixin make-list($options: ()) {
   $o: map-merge($lists, $options);
-  
+
   list-style: none;
   margin: map-get($o, 'margin');
   background: map-get($o, 'background');
-  
+
   > li {
     margin: 0;
     padding: map-get($o, 'padding');
     background-clip: padding-box;
     @include clearfix();
   }
-  
+
 }
 
 // Add List Rowed
@@ -53,14 +53,14 @@ $lists: (
 //   @default $lists map
 @mixin add-list-rowed($options: ()) {
   $o: map-merge($lists, $options);
-  
+
   > li {
     border-bottom: map-get($o, 'border');
   }
   > li:first-child  {
     border-top: map-get($o, 'border');
   }
-  
+
 }
 
 // Add List Bordered
@@ -70,16 +70,16 @@ $lists: (
 //   @default $lists map
 @mixin add-list-bordered($options: ()) {
   $o: map-merge($lists, $options);
-  
+
   border: map-get($o, 'border');
-  
+
   > li {
     border-bottom: map-get($o, 'border');
   }
   > li:last-child  {
     border-bottom: 0 none;
   }
-  
+
 }
 
 // Add List Linked
@@ -90,7 +90,7 @@ $lists: (
 //   @default $lists map
 @mixin add-list-linked($options: ()) {
   $o: map-merge($lists, $options);
-  
+
   > li {
     padding: 0;
   }
@@ -101,7 +101,7 @@ $lists: (
     border: 0 none;
     @include clearfix();
   }
-  
+
 }
 
 // Add List Rounded
@@ -114,11 +114,11 @@ $lists: (
 //   @default $lists map
 @mixin add-list-rounded($radius: default, $options: ()) {
   $o: map-merge($lists, $options);
-  
+
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
-  
+
   @include border-radius(map-get($o, 'border-radius'));
   > li:first-child {
     @include border-radius-top(map-get($o, 'border-radius'));
@@ -126,7 +126,7 @@ $lists: (
   > li:last-child {
     @include border-radius-bottom(map-get($o, 'border-radius'));
   }
-  
+
 }
 
 // Add List Striped
@@ -139,15 +139,15 @@ $lists: (
 //   @default $lists map
 @mixin add-list-striped($nth: default, $options: ()) {
   $o: map-merge($lists, $options);
-  
+
   @if ($nth != default) {
     $o: map-merge($o, ('nth': $nth));
   }
-  
+
   > li:nth-of-type(#{map-get($o, 'nth')}) {
     background-color: map-get($o, 'background-stripe');
   }
-  
+
 }
 
 // Add List Hover
@@ -160,18 +160,18 @@ $lists: (
 //   @default $lists map
 @mixin add-list-hover($bg-hover: default, $options: ()) {
   $o: map-merge($lists, $options);
-  
+
   @if ($bg-hover != default) {
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
-  
+
   > li {
     @include transition(background-color 0.25s linear);
   }
   > li:hover {
     background-color: map-get($o, 'background-hover');
   }
-  
+
 }
 
 /*==============================================================================
@@ -179,11 +179,11 @@ $lists: (
 ==============================================================================*/
 
 ul, ol {
-  margin: 1rem 0 1rem 1.5rem;
+  margin: 1em 0 1em 2em;
   padding: 0;
   ul, ol, li {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
   }
 }
 
@@ -217,14 +217,14 @@ ol ol ol {
  * Description Lists
  */
 dl {
-  margin: 1rem 0;
+  margin: 1em 0;
   dt {
-    margin: 1rem 0 0;
+    margin: 1em 0 0;
     font-weight: bold;
     color: $color-dark;
   }
   dd {
-    margin: 0 0 1rem 1rem;
+    margin: 0 0 1em 1em;
   }
 }
 
@@ -240,7 +240,7 @@ dl {
  */
 .list {
   @include make-list();
-  
+
   &.flush > li {
     padding-left: 0;
     padding-right: 0;
