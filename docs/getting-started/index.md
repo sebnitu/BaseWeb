@@ -58,7 +58,7 @@ Here is a typical starter template that has everything you'll need to get starte
     <title>BaseWeb</title>
 
     <!-- BaseWeb -->
-    <link rel="stylesheet" href="/assets/css/baseweb.min.css">
+    <link rel="stylesheet" href="/src/css/baseweb.min.css">
 
   </head>
   <body>
