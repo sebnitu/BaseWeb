@@ -56,30 +56,6 @@ You also have the `.wrapped` class to add simple wrapper styles to your breadcru
   </nav>
 </div>
 
-## Fancy Breadcrumbs
-
-If you have your `$breadcrumbs('classes-fancy')` set to `true`, then you'll have the fancy class and fancy modifiers available for styling breadcrumbs. Fancy classes are used to create more complex breadcrumb styling.
-
-```html
-<nav class="breadcrumb fancy">
-  <ol>
-    <li><a>Home</a></li>
-    ...
-  </ol>
-</nav>
-```
-
-<div class="demo">
-  <nav class="breadcrumb fancy">
-    <ol>
-      <li><a><span>Home</span></a></li>
-      <li><a><span>Some Page</span></a></li>
-      <li><a><span>Some Category</span></a></li>
-      <li><span class="active item"><span>Current Page</span></span></li>
-    </ol>
-  </nav>
-</div>
-
 <section class="subsection subsection-variables" markdown="1">
 
 # Breadcrumb Variables
@@ -167,91 +143,6 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
   <tr>
     <td><code>$breadcrumbs('delimiter-end')</code></td>
     <td><code>false</code></td>
-  </tr>
-
-  <tr>
-    <th colspan="2">Fancy Breadcrumbs</th>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'margin')</code></td>
-    <td><code>1em 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'padding')</code></td>
-    <td><code>0.5em 0.5em 0.5em 2em</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'padding-first')</code></td>
-    <td><code>0.5em 0.5em 0.5em 1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'padding-last')</code></td>
-    <td><code>0.5em 1em 0.5em 2em</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'font-size')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'color')</code></td>
-    <td><code>$color-dark</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'color-hover')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'color-active')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'text-shadow')</code></td>
-    <td><code>null</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'background')</code></td>
-    <td><code>mix($blue, $white, 10%)</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'background-hover')</code></td>
-    <td><code>darken(mix($blue, $white, 10%), 5%)</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'background-active')</code></td>
-    <td><code>mix($blue, $white, 2%)</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'border')</code></td>
-    <td><code>1px solid</code> <code>rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'delimiter-border')</code></td>
-    <td><code>1px solid</code> <code>rgba($black, 0.15)</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'delimiter-radius')</code></td>
-    <td><code>0 5px 0 100%</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'delimiter-rotate')</code></td>
-    <td><code>45deg</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'delimiter-skew')</code></td>
-    <td><code>(10deg, 10deg)</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('fancy' 'transition')</code></td>
-    <td><code>background 0.25s linear</code></td>
   </tr>
 </table>
 
@@ -370,65 +261,6 @@ For this example, we'll use the default `.breadcrumb` class but use the `add-bre
 
 <div class="demo">
   <nav class="breadcrumb custom-wrapped">
-    <ol>
-      <li><a><span>Home</span></a></li>
-      <li><a><span>Some Page</span></a></li>
-      <li><a><span>Some Category</span></a></li>
-      <li><span class="active item"><span>Current Page</span></span></li>
-    </ol>
-  </nav>
-</div>
-
-</li>
-
-<li markdown="1">
-
-## add-breadcrumb-fancy
-
-Creates fancy breadcrumb styles.
-
-```scss
-@include add-breadcrumb-fancy( $options: () );
-```
-
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Type</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$breadcrumbs()</code></td>
-  </tr>
-</table>
-
-### Example Usage
-
-```scss
-.breadcrumb.custom-fancy {
-  @include add-breadcrumb-fancy((
-    'fancy' : (
-      'color' : $white,
-      'text-shadow' : 0 1px 1px rgba($black, 0.25),
-      'border' : 1px solid $green-darker,
-      'background' : $green,
-      'background-hover' : $green-dark,
-      'background-active' : $green-darker,
-      'delimiter-border' : 1px solid $green-darker,
-      'delimiter-skew' : (0),
-    )
-  ));
-}
-```
-
-```html
-<nav class="breadcrumb custom-fancy">...</nav>
-```
-
-<div class="demo">
-  <nav class="breadcrumb custom-fancy">
     <ol>
       <li><a><span>Home</span></a></li>
       <li><a><span>Some Page</span></a></li>
