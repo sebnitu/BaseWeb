@@ -48,7 +48,6 @@ Tabs are a navigation type component that gives a layered feel to a document. It
     <li><a href="#tab-panel-6">Tab 1</a></li>
     <li class="active"><a href="#tab-panel-7">Tab 2</a></li>
     <li><a href="#tab-panel-8">Tab 3</a></li>
-    <li><a href="#tab-panel-9">Tab 4</a></li>
-    <li><a href="#tab-panel-10">Tab 5</a></li>
+    <li><a href="#tab-panel-9">Longer Tab Item</a></li>
   </ul>
 </nav>

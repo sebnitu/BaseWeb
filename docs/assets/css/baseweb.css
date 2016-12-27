@@ -2677,12 +2677,27 @@ fieldset[disabled] .input {
   @Tabs - scss/blocks/_tabs.scss
 ==============================================================================*/
 .tabs {
+  position: relative;
   margin: 2em 0;
 }
 
 .tabs .tabs-nav,
 .tabs .tabs-content {
   margin: 0;
+}
+
+.tabs .tabs-nav {
+  z-index: 10;
+}
+
+.tabs .tabs-nav ul {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.tabs .tabs-nav ul li {
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
 }
 
 .tabs .tabs-nav ul li:first-child {
@@ -2698,6 +2713,7 @@ fieldset[disabled] .input {
 }
 
 .tabs .tabs-content {
+  z-index: 5;
   border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -2709,19 +2725,19 @@ fieldset[disabled] .input {
 }
 
 .tabs-nav ul {
-  position: relative;
   display: flex;
   list-style: none;
   margin: 0;
-  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
 }
 
 .tabs-nav ul li {
-  position: relative;
-  flex: 1;
+  flex: 1 0 auto;
   margin: 0;
+  background: #f5f5f5;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e6e6e6;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
@@ -2734,12 +2750,8 @@ fieldset[disabled] .input {
 }
 
 .tabs-nav ul li a:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: #e6e6e6;
   color: #303030;
-}
-
-.tabs-nav ul li:not(:last-child) {
-  border-right: none;
 }
 
 .tabs-nav ul li:first-child {
@@ -2748,6 +2760,7 @@ fieldset[disabled] .input {
 }
 
 .tabs-nav ul li:last-child {
+  border-right: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -2767,7 +2780,7 @@ fieldset[disabled] .input {
 .tabs-content {
   margin: 2em 0;
   padding: 1em 2em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid #e6e6e6;
   border-radius: 3px;
 }
 
