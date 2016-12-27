@@ -2676,19 +2676,107 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Tabs - scss/blocks/_tabs.scss
 ==============================================================================*/
-.tabs ul {
-  list-style: none;
+.tabs {
   margin: 2em 0;
 }
 
-.tabs ul li {
-  display: inline-block;
+.tabs .tabs-nav,
+.tabs .tabs-content {
   margin: 0;
 }
 
-.tabs ul li a {
+.tabs .tabs-nav ul li:first-child {
+  border-bottom-left-radius: 0;
+}
+
+.tabs .tabs-nav ul li:last-child {
+  border-bottom-right-radius: 0;
+}
+
+.tabs .tabs-nav ul li.active {
+  border-bottom: 1px solid #ffffff;
+}
+
+.tabs .tabs-content {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tabs-nav {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.tabs-nav ul {
+  position: relative;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.tabs-nav ul li {
+  position: relative;
+  flex: 1;
+  margin: 0;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.tabs-nav ul li a {
   display: block;
-  padding: 0.5em 1em;
+  padding: 1em 1em;
+  border: none;
+  color: #303030;
+}
+
+.tabs-nav ul li a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #303030;
+}
+
+.tabs-nav ul li:not(:last-child) {
+  border-right: none;
+}
+
+.tabs-nav ul li:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.tabs-nav ul li:last-child {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.tabs-nav ul li.active {
+  background: #ffffff;
+}
+
+.tabs-nav ul li.active a {
+  color: #303030;
+}
+
+.tabs-nav ul li.active a:hover {
+  background: #ffffff;
+}
+
+.tabs-content {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.tabs-content .tab-panel {
+  display: none;
+}
+
+.tabs-content .tab-panel.active {
+  display: block;
 }
 
 /*==============================================================================

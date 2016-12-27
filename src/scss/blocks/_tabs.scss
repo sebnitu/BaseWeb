@@ -6,20 +6,97 @@ $filename: 'scss/blocks/_tabs.scss';
 ==============================================================================*/
 
 .tabs {
+  margin: 2em 0;
 
-  ul {
-    list-style: none;
-    margin: 2em 0;
-  }
-
-  ul li {
-    display: inline-block;
+  .tabs-nav,
+  .tabs-content {
     margin: 0;
   }
 
-  ul li a {
-    display: block;
-    padding: 0.5em 1em;
+  .tabs-nav {
+    ul li:first-child {
+      @include border-radius-bottom-left(0);
+    }
+    ul li:last-child {
+      @include border-radius-bottom-right(0);
+    }
+    ul li.active {
+      border-bottom: 1px solid $white;
+    }
   }
 
+  .tabs-content {
+    border-top: none;
+    @include border-radius-top(0);
+  }
+}
+
+.tabs-nav {
+  margin: 2em 0;
+  text-align: center;
+
+  ul {
+    position: relative;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    background: rgba($black, 0.05);
+  }
+
+  ul li {
+    position: relative;
+    flex: 1;
+    margin: 0;
+    background-clip: padding-box;
+    border: 1px solid rgba($black, 0.1);
+    @include transition();
+
+    a {
+      display: block;
+      padding: 1em 1em;
+      border: none;
+      color: $color;
+
+      &:hover {
+        background: rgba($black, 0.05);
+        color: $color;
+      }
+    }
+  }
+  ul li:not(:last-child) {
+    border-right: none;
+  }
+  ul li:first-child {
+    @include border-radius-left();
+  }
+  ul li:last-child {
+    @include border-radius-right();
+  }
+
+  // Active State
+  ul li.active {
+    background: $white;
+
+    a {
+      color: $color;
+
+      &:hover {
+        background: $white;
+      }
+    }
+  }
+}
+
+.tabs-content {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border: 1px solid $border-color;
+  @include border-radius();
+
+  .tab-panel {
+    display: none;
+  }
+  .tab-panel.active {
+    display: block;
+  }
 }
