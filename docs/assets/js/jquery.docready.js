@@ -73,13 +73,13 @@
       var $this = $(this);
 
       // Save our tabs content
-      var tabs_content = $(this).parents('.tabs').find('.tabs-content');
+      var tabs_content = $this.parents('.tabs').find('.tabs-content');
       var has_content = tabs_content.length;
 
       // Check our other tabs content method if one wasn't found yet
       if (!has_content) {
         // Check if we have a linked content data attribute
-        tabs_content = $(this).attr('data-content');
+        tabs_content = $this.attr('data-content');
         if (tabs_content) {
           // Save our tabs content
           tabs_content = $('#' + tabs_content);

@@ -438,10 +438,40 @@ body {
  * Widget Menu
  */
 .widget-menu {
-  .active > a {
+  ul {
+    list-style: none;
+    margin: 1em 0;
+  }
+  ul ul {
+    margin: 0 0 0 1em;
+  }
+  ul li {
+    margin: 1px 0;
+  }
+  ul li a {
+    display: block;
+    padding: 0.5em 1em;
     color: $color-light;
     border: 0 none;
+    @include border-radius();
+
+    &:hover {
+      color: $color;
+    }
   }
+
+
+  // Active Item
+  .active > a {
+    background: $bg-color;
+    color: $red;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  // Display Styles
   ul ul {
     display: none;
   }

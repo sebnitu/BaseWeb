@@ -1,10 +1,43 @@
 // Set file variable
 $filename: 'scss/blocks/_tabs.scss';
 
+////////////////////////////////////////////////////////////////////////////////
+// @Tabs Map
+////////////////////////////////////////////////////////////////////////////////
+
+$tabs: (
+  'classes' : true,
+
+  'class-wrapper' : 'tabs',
+  'class-nav'     : 'tabs-nav',
+  'class-content' : 'tabs-content',
+
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Tabs Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Tabs
+// Creates the base styles for a tabs block.
+// @param $options
+//   @type map
+//   @default $tabs map
+@mixin make-tabs($options: ()) {
+  $o: map-merge($tabs, $options);
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($tabs, 'classes') == true) {
+
 /*==============================================================================
   @Tabs - #{$filename}
 ==============================================================================*/
 
+/**
+ * Base: Tabs
+ */
 .tabs {
   position: relative;
   margin: 2em 0;
@@ -13,32 +46,11 @@ $filename: 'scss/blocks/_tabs.scss';
   .tabs-content {
     margin: 0;
   }
-
   .tabs-nav {
     z-index: 10;
-
-    ul {
-      @include border-radius-bottom(0);
-    }
-    ul li {
-      border-bottom: 1px solid transparent;
-      margin-bottom: -1px;
-    }
-    ul li:first-child {
-      @include border-radius-bottom-left(0);
-    }
-    ul li:last-child {
-      @include border-radius-bottom-right(0);
-    }
-    ul li.active {
-      border-bottom: 1px solid $white;
-    }
   }
-
   .tabs-content {
     z-index: 5;
-    border-top: none;
-    @include border-radius-top(0);
   }
 }
 
@@ -50,22 +62,47 @@ $filename: 'scss/blocks/_tabs.scss';
     display: flex;
     list-style: none;
     margin: 0;
+  }
+  ul li {
+    flex: 1 0 auto;
+    margin: 0;
+
+    a {
+      display: block;
+      padding: 1em;
+      border: none;
+    }
+  }
+}
+
+.tabs-content {
+  margin: 2em 0;
+
+  .tab-panel {
+    display: none;
+  }
+  .tab-panel.active {
+    display: block;
+  }
+}
+
+/**
+ * Style: Default
+ */
+.tabs-default .tabs-nav,
+.tabs-nav.tabs-default {
+
+  ul {
+    background: #f5f5f5;
     border: 1px solid #e6e6e6;
     @include border-radius();
   }
 
   ul li {
-    flex: 1 0 auto;
-    margin: 0;
-    background: #f5f5f5;
-    background-clip: padding-box;
     border-right: 1px solid #e6e6e6;
     @include transition();
 
     a {
-      display: block;
-      padding: 1em 1em;
-      border: none;
       color: $color;
 
       &:hover {
@@ -85,25 +122,105 @@ $filename: 'scss/blocks/_tabs.scss';
   // Active State
   ul li.active {
     background: $white;
-  }
-  ul li.active a {
-    color: $color;
-    &:hover {
-      background: $white;
+
+     a {
+      color: $color;
+      &:hover {
+        background: $white;
+      }
     }
   }
 }
 
-.tabs-content {
-  margin: 2em 0;
+.tabs-default .tabs-content,
+.tabs-content.tabs-default {
   padding: 1em 2em;
   border: 1px solid #e6e6e6;
   @include border-radius();
+}
 
-  .tab-panel {
-    display: none;
+.tabs-default {
+  .tabs-nav {
+    ul {
+      @include border-radius-bottom(0);
+    }
+    ul li {
+      border-bottom: 1px solid transparent;
+      margin-bottom: -1px;
+    }
+    ul li:first-child {
+      @include border-radius-bottom-left(0);
+    }
+    ul li:last-child {
+      @include border-radius-bottom-right(0);
+    }
+    ul li.active {
+      border-bottom: 1px solid $white;
+    }
   }
-  .tab-panel.active {
-    display: block;
+  .tabs-content {
+    border-top: none;
+    @include border-radius-top(0);
   }
 }
+
+/**
+ * Style: Android
+ */
+.tabs-android .tabs-nav,
+.tabs-nav.tabs-android {
+  ul {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  ul li {
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+
+    a {
+      color: $color-light;
+      &:hover {
+        color: $color-link;
+      }
+    }
+  }
+  // Active State
+  ul li.active {
+    border-bottom: 3px solid $color-link;
+
+    a {
+      color: $color;
+      &:hover {
+        color: $color-link;
+      }
+    }
+  }
+}
+
+.tabs-android .tabs-content,
+.tabs-content.tabs-android {
+  padding: 1em 0;
+}
+
+/**
+ * Modifier: Inline
+ */
+.tabs-nav.inline {
+  ul {
+    flex-wrap: wrap;
+  }
+  ul li {
+    flex: 0 0 auto;
+
+    a {
+      padding: 1em 2em;
+    }
+  }
+}
+.tabs-default .tabs-nav.inline,
+.tabs-nav.tabs-default.inline {
+  ul li:last-child {
+    border-right: 1px solid #e6e6e6;
+  }
+}
+
+} // endif classes
