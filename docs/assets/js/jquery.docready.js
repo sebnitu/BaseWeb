@@ -106,7 +106,7 @@
           // Check if tabs-nav has an associated content block
           if (has_content) {
             // Hide current active content
-            tabs_content.find('.tab-panel').removeClass('active');
+            tabs_content.find('.tabs-panel').removeClass('active');
             // Show new active content
             var target = $(this).attr('href');
             $(target).addClass('active');

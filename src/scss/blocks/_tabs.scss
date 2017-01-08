@@ -8,9 +8,27 @@ $filename: 'scss/blocks/_tabs.scss';
 $tabs: (
   'classes' : true,
 
-  'class-wrapper' : 'tabs',
-  'class-nav'     : 'tabs-nav',
-  'class-content' : 'tabs-content',
+  'class-wrapper'       : 'tabs',
+  'class-nav'           : 'tabs-nav',
+  'class-content'       : 'tabs-content',
+  'class-content-panel' : 'tabs-panel',
+
+  'margin'             : 2em 0,
+  'padding-nav'        : 1em,
+  'padding-nav-inline' : 1em 2em,
+  'padding-content'    : 1em 2em,
+
+  'background'        : #f5f5f5,
+  'background-hover'  : #e6e6e6,
+  'background-active' : $white,
+  'border'            : 1px solid #e6e6e6,
+  'border-radius'     : $border-radius,
+
+  'color'        : $color,
+  'color-light'  : $color-light,
+  'color-accent' : $blue,
+
+  'transition' : $transition,
 
 ) !default;
 
@@ -25,37 +43,29 @@ $tabs: (
 //   @default $tabs map
 @mixin make-tabs($options: ()) {
   $o: map-merge($tabs, $options);
-
-}
-
-// Check if we should output modifier classes
-@if (map-get($tabs, 'classes') == true) {
-
-/*==============================================================================
-  @Tabs - #{$filename}
-==============================================================================*/
-
-/**
- * Base: Tabs
- */
-.tabs {
   position: relative;
-  margin: 2em 0;
+  margin: map-get($o, 'margin');
 
-  .tabs-nav,
-  .tabs-content {
+  .#{map-get($o, 'class-nav')},
+  .#{map-get($o, 'class-content')} {
     margin: 0;
   }
-  .tabs-nav {
+  .#{map-get($o, 'class-nav')} {
     z-index: 10;
   }
-  .tabs-content {
+  .#{map-get($o, 'class-content')} {
     z-index: 5;
   }
 }
 
-.tabs-nav {
-  margin: 2em 0;
+// Make Tabs Navigation
+// Creates the base styles for a tabs nav block.
+// @param $options
+//   @type map
+//   @default $tabs map
+@mixin make-tabs-nav($options: ()) {
+  $o: map-merge($tabs, $options);
+  margin: map-get($o, 'margin');
   text-align: center;
 
   ul {
@@ -66,161 +76,197 @@ $tabs: (
   ul li {
     flex: 1 0 auto;
     margin: 0;
+  }
+  a {
+    display: block;
+    padding: map-get($o, 'padding-nav');
+    border: none;
+  }
 
-    a {
-      display: block;
-      padding: 1em;
-      border: none;
+  &.inline {
+    ul {
+      flex-wrap: wrap;
+    }
+    ul li {
+      flex: 0 0 auto;
+
+      a {
+        padding: map-get($o, 'padding-nav-inline');
+      }
     }
   }
 }
 
-.tabs-content {
-  margin: 2em 0;
+// Make Tabs Content
+// Creates the base styles for a tabs content block.
+// @param $options
+//   @type map
+//   @default $tabs map
+@mixin make-tabs-content($options: ()) {
+  $o: map-merge($tabs, $options);
+  margin: map-get($o, 'margin');
 
-  .tab-panel {
+  .#{map-get($o, 'class-content-panel')} {
     display: none;
   }
-  .tab-panel.active {
+  .#{map-get($o, 'class-content-panel')}.active {
     display: block;
   }
 }
 
+// Add Tabs Style
+// Creates the styles for tabs.
+// @param $options
+//   @type map
+//   @default $tabs map
+@mixin add-tabs-style($options: (), $style : 'default', $class : null) {
+  $o: map-merge($tabs, $options);
+
+  @if ($class == null) {
+    $class: 'style-#{$style}';
+  }
+
+  @if ($style == 'fold') {
+
+    .#{$class} .#{map-get($o, 'class-nav')},
+    .#{map-get($o, 'class-nav')}.#{$class} {
+      ul {
+        background: map-get($o, 'background');
+        border: map-get($o, 'border');
+        @include border-radius(map-get($o, 'border-radius'));
+      }
+      ul li {
+        border-right: map-get($o, 'border');
+        @include transition(map-get($o, 'transition'));
+
+        &:first-child {
+          @include border-radius-left(map-get($o, 'border-radius'));
+        }
+        &:last-child {
+          border-right: none;
+          @include border-radius-right(map-get($o, 'border-radius'));
+        }
+      }
+      a {
+        color: map-get($o, 'color');
+        @include transition(map-get($o, 'transition'));
+
+        &:hover {
+          background: map-get($o, 'background-hover');
+          color: map-get($o, 'color');
+        }
+      }
+
+      // Active State
+      ul li.active {
+        background: map-get($o, 'background-active');
+      }
+      .active a {
+        color: map-get($o, 'color');
+        &:hover {
+          background: map-get($o, 'background-active');
+        }
+      }
+
+      // Inline styles
+      &.inline ul li:last-child {
+        border-right: map-get($o, 'border');
+      }
+    }
+    .#{$class} .#{map-get($o, 'class-nav')} {
+      ul {
+        @include border-radius-bottom(0);
+      }
+      ul li {
+        border-bottom: 1px solid transparent;
+        margin-bottom: -1px;
+      }
+      ul li:first-child {
+        @include border-radius-bottom-left(0);
+      }
+      ul li:last-child {
+        @include border-radius-bottom-right(0);
+      }
+      ul li.active {
+        border-bottom: 1px solid map-get($o, 'background-active');
+      }
+    }
+    .#{$class} .#{map-get($o, 'class-content')} {
+      padding: map-get($o, 'padding-content');
+      border: map-get($o, 'border');
+      border-top: none;
+      @include border-radius-bottom(map-get($o, 'border-radius'));
+    }
+
+  } @else if ($style == 'line') {
+
+    .#{$class} .#{map-get($o, 'class-nav')},
+    .#{map-get($o, 'class-nav')}.#{$class} {
+      ul {
+        border-bottom: map-get($o, 'border');
+      }
+      ul li {
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+        @include transition(map-get($o, 'transition'));
+      }
+      a {
+        color: map-get($o, 'color-light');
+        @include transition(map-get($o, 'transition'));
+        &:hover {
+          color: map-get($o, 'color-accent');
+        }
+      }
+      // Active State
+      ul li.active {
+        border-bottom: 3px solid map-get($o, 'color-accent');
+      }
+      .active a {
+        color: map-get($o, 'color');
+        &:hover {
+          color: map-get($o, 'color-accent');
+        }
+      }
+    }
+    .#{$class} .#{map-get($o, 'class-content')} {
+      padding: map-get($o, 'padding-content');
+      border: map-get($o, 'border');
+      border-top: none;
+    }
+
+  } @else {
+    @warn 'The tabs style of `#{$style}` does not exist';
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($tabs, 'classes') == true) {
+
+/*==============================================================================
+  @Tabs - #{$filename}
+==============================================================================*/
+
 /**
- * Style: Default
+ * Base styles for tab wrapper, nav and content
  */
-.tabs-default .tabs-nav,
-.tabs-nav.tabs-default {
-
-  ul {
-    background: #f5f5f5;
-    border: 1px solid #e6e6e6;
-    @include border-radius();
-  }
-
-  ul li {
-    border-right: 1px solid #e6e6e6;
-    @include transition();
-
-    a {
-      color: $color;
-
-      &:hover {
-        background: #e6e6e6;
-        color: $color;
-      }
-    }
-  }
-  ul li:first-child {
-    @include border-radius-left();
-  }
-  ul li:last-child {
-    border-right: none;
-    @include border-radius-right();
-  }
-
-  // Active State
-  ul li.active {
-    background: $white;
-
-     a {
-      color: $color;
-      &:hover {
-        background: $white;
-      }
-    }
-  }
+.#{map-get($tabs, 'class-wrapper')} {
+  @include make-tabs();
 }
-
-.tabs-default .tabs-content,
-.tabs-content.tabs-default {
-  padding: 1em 2em;
-  border: 1px solid #e6e6e6;
-  @include border-radius();
+.#{map-get($tabs, 'class-nav')} {
+  @include make-tabs-nav();
 }
-
-.tabs-default {
-  .tabs-nav {
-    ul {
-      @include border-radius-bottom(0);
-    }
-    ul li {
-      border-bottom: 1px solid transparent;
-      margin-bottom: -1px;
-    }
-    ul li:first-child {
-      @include border-radius-bottom-left(0);
-    }
-    ul li:last-child {
-      @include border-radius-bottom-right(0);
-    }
-    ul li.active {
-      border-bottom: 1px solid $white;
-    }
-  }
-  .tabs-content {
-    border-top: none;
-    @include border-radius-top(0);
-  }
+.#{map-get($tabs, 'class-content')} {
+  @include make-tabs-content();
 }
 
 /**
- * Style: Android
+ * Tabs Style: Default
  */
-.tabs-android .tabs-nav,
-.tabs-nav.tabs-android {
-  ul {
-    border-bottom: 1px solid #e6e6e6;
-  }
-  ul li {
-    border-bottom: 3px solid transparent;
-    margin-bottom: -1px;
-
-    a {
-      color: $color-light;
-      &:hover {
-        color: $color-link;
-      }
-    }
-  }
-  // Active State
-  ul li.active {
-    border-bottom: 3px solid $color-link;
-
-    a {
-      color: $color;
-      &:hover {
-        color: $color-link;
-      }
-    }
-  }
-}
-
-.tabs-android .tabs-content,
-.tabs-content.tabs-android {
-  padding: 1em 0;
-}
+@include add-tabs-style($style: 'fold');
 
 /**
- * Modifier: Inline
+ * Tabs Style: Line
  */
-.tabs-nav.inline {
-  ul {
-    flex-wrap: wrap;
-  }
-  ul li {
-    flex: 0 0 auto;
-
-    a {
-      padding: 1em 2em;
-    }
-  }
-}
-.tabs-default .tabs-nav.inline,
-.tabs-nav.tabs-default.inline {
-  ul li:last-child {
-    border-right: 1px solid #e6e6e6;
-  }
-}
+@include add-tabs-style($style: 'line');
 
 } // endif classes

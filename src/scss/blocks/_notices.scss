@@ -27,19 +27,19 @@ $notices: (
   'pull-margin-left' : 0.5em 5% 1em 0,
   'pull-margin-right' : 0.5em 0 1em 5%,
 
-  'color' : $color-dark,
-  'text-shadow' : 0 1px 0 rgba($white, 0.25),
   'background' : rgba($black, 0.05),
   'box-shadow' : 0 1px 3px rgba($black, 0.05),
   'border' : 1px solid rgba($black, 0.15),
   'border-radius' : $border-radius,
+  'color' : $color-dark,
+  'text-shadow' : 0 1px 0 rgba($white, 0.25),
 
   'inverted' : (
-    'color' : $white,
-    'text-shadow' : 0 1px 0 rgba($black, 0.25),
     'background' : rgba($color-dark, 0.9),
     'border' : 1px solid rgba($black, 0.15),
     'box-shadow' : 0 1px 3px rgba($black, 0.05),
+    'color' : $white,
+    'text-shadow' : 0 1px 0 rgba($black, 0.25),
   )
 
 ) !default;
@@ -108,6 +108,7 @@ $notices: (
 
   } @else if ($output == 'difference') {
 
+    // Cycle through properties and only output when different from default
     @each $property in $set {
       @if (map-get($o, $property) != map-get($notices, $property)) {
         #{$property}: map-get($o, $property);
@@ -116,6 +117,7 @@ $notices: (
 
     @if (map-get($o, 'class-inverted')) {
       &.#{map-get($o, 'class-inverted')} {
+        // Cycle through properties and only output when different from default
         @each $property in $set {
           @if (map-fetch($o, 'inverted', $property) != map-fetch($notices, 'inverted', $property)) {
             #{$property}: map-fetch($o, 'inverted', $property);
