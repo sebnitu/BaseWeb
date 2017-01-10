@@ -4,84 +4,198 @@ title: "Tabs"
 order: 5
 ---
 
-Tabs are a navigation type component that gives a layered feel to a document. It usually will show and hide content without linking to a separate page entirely.
+Tabs are a high level navigational component that anable switch between views of related groups of content. They typically appear above the content they describe. Tabs have consist of two primary components and optionally a wrapping element:
 
+<ul class="list list-docs">
+  <li>
+    <strong>Tabs Navigation:</strong> The component responsible to triggering the content switch event. Although its appearance may vary, they almost always appear above the content they describe.
+  </li>
+  <li>
+    <strong>Tabs Content:</strong> Are the grouped sections of content that the tabs switch between.
+  </li>
+  <li>
+    <strong>Tabs Wrapper:</strong> An optional element that allows for easier grouping and targetting of tab navigation and content. It can also help in styling tab blocks that look connected visually.
+  </li>
+</ul>
 
-## Fold Style
-
+```html
 <div class="tabs style-fold">
   <nav class="tabs-nav">
     <ul>
-      <li><a href="#tabs-panel-1">Tab 1</a></li>
-      <li class="active"><a href="#tabs-panel-2">Tab 2</a></li>
-      <li><a href="#tabs-panel-3">Tab 3</a></li>
-      <li><a href="#tabs-panel-4">Tab 4</a></li>
-      <li><a href="#tabs-panel-5">Tab 5</a></li>
+      <li class="active"><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      <li><a href="#">...</a></li>
+      ...
     </ul>
   </nav>
   <div class="tabs-content">
-    <section id="tabs-panel-1" class="tabs-panel"><p>Tab Content 1</p></section>
-    <section id="tabs-panel-2" class="tabs-panel active"><p>Tab Content 2</p></section>
-    <section id="tabs-panel-3" class="tabs-panel"><p>Tab Content 3</p></section>
-    <section id="tabs-panel-4" class="tabs-panel"><p>Tab Content 4</p></section>
-    <section id="tabs-panel-5" class="tabs-panel"><p>Tab Content 5</p></section>
+    <section id="#" class="tabs-panel active">...</section>
+    <section id="#" class="tabs-panel">...</section>
+    <section id="#" class="tabs-panel">...</section>
+    ...
   </div>
 </div>
+```
 
+<div class="demo demo-tabs">
+
+  <div class="tabs style-fold">
+    <nav class="tabs-nav">
+      <ul>
+        <li class="active"><a href="#tabs-panel-1">Tab 1</a></li>
+        <li><a href="#tabs-panel-2">Tab 2</a></li>
+        <li><a href="#tabs-panel-3">Tab 3</a></li>
+        <li><a href="#tabs-panel-4">Tab 4</a></li>
+        <li><a href="#tabs-panel-5">Tab 5</a></li>
+      </ul>
+    </nav>
+    <div class="tabs-content">
+      <section id="tabs-panel-1" class="tabs-panel active"><p>Tab Content 1</p></section>
+      <section id="tabs-panel-2" class="tabs-panel"><p>Tab Content 2</p></section>
+      <section id="tabs-panel-3" class="tabs-panel"><p>Tab Content 3</p></section>
+      <section id="tabs-panel-4" class="tabs-panel"><p>Tab Content 4</p></section>
+      <section id="tabs-panel-5" class="tabs-panel"><p>Tab Content 5</p></section>
+    </div>
+  </div>
+
+</div><!-- .demo -->
+
+Tab navigation items are linked to their respective content using the `href` attribute with a hash value of the `id` the content it represents. Tabs can also be displayed without the wrapping element and visually will not have the same visual connection:
+
+```html
 <nav class="tabs-nav style-fold" data-content="tabs-content-1">
   <ul>
-    <li><a href="#tabs-panel-6">Tab 1</a></li>
-    <li class="active"><a href="#tabs-panel-7">Tab 2</a></li>
-    <li><a href="#tabs-panel-8">Tab 3</a></li>
-    <li><a href="#tabs-panel-9">Tab 4</a></li>
-    <li><a href="#tabs-panel-10">Tab 5</a></li>
+    <li class="active"><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+    <li><a href="#">...</a></li>
+    ...
   </ul>
 </nav>
-
-<div class="tabs-content style-fold" id="tabs-content-1">
-  <section id="tabs-panel-6" class="tabs-panel"><p>Tab Content 1</p></section>
-  <section id="tabs-panel-7" class="tabs-panel active"><p>Tab Content 2</p></section>
-  <section id="tabs-panel-8" class="tabs-panel"><p>Tab Content 3</p></section>
-  <section id="tabs-panel-9" class="tabs-panel"><p>Tab Content 4</p></section>
-  <section id="tabs-panel-10" class="tabs-panel"><p>Tab Content 5</p></section>
+<div class="tabs-content" id="tabs-content-1">
+  <section id="#" class="tabs-panel active">...</section>
+  <section id="#" class="tabs-panel">...</section>
+  <section id="#" class="tabs-panel">...</section>
+  ...
 </div>
+```
 
+<div class="demo demo-tabs">
 
-## Line Style
-
-<div class="tabs style-line">
-  <nav class="tabs-nav">
+  <nav class="tabs-nav style-fold" data-content="tabs-content-1">
     <ul>
-      <li><a href="#tabs-panel-11">Tab 1</a></li>
-      <li class="active"><a href="#tabs-panel-12">Tab 2</a></li>
-      <li><a href="#tabs-panel-13">Tab 3</a></li>
-      <li><a href="#tabs-panel-14">Tab 4</a></li>
-      <li><a href="#tabs-panel-15">Tab 5</a></li>
+      <li class="active"><a href="#tabs-panel-6">Tab 1</a></li>
+      <li><a href="#tabs-panel-7">Tab 2</a></li>
+      <li><a href="#tabs-panel-8">Tab 3</a></li>
+      <li><a href="#tabs-panel-9">Tab 4</a></li>
+      <li><a href="#tabs-panel-10">Tab 5</a></li>
     </ul>
   </nav>
-  <div class="tabs-content">
-    <section id="tabs-panel-11" class="tabs-panel"><p>Tab Content 1</p></section>
-    <section id="tabs-panel-12" class="tabs-panel active"><p>Tab Content 2</p></section>
-    <section id="tabs-panel-13" class="tabs-panel"><p>Tab Content 3</p></section>
-    <section id="tabs-panel-14" class="tabs-panel"><p>Tab Content 4</p></section>
-    <section id="tabs-panel-15" class="tabs-panel"><p>Tab Content 5</p></section>
+  <div class="tabs-content" id="tabs-content-1">
+    <section id="tabs-panel-6" class="tabs-panel active"><p>Tab Content 1</p></section>
+    <section id="tabs-panel-7" class="tabs-panel"><p>Tab Content 2</p></section>
+    <section id="tabs-panel-8" class="tabs-panel"><p>Tab Content 3</p></section>
+    <section id="tabs-panel-9" class="tabs-panel"><p>Tab Content 4</p></section>
+    <section id="tabs-panel-10" class="tabs-panel"><p>Tab Content 5</p></section>
   </div>
+
+</div><!-- .demo -->
+
+<div class="notice info" markdown="1">
+  When voiding the use of tabs wrapping element, you'll need to establish the connected between the tabs navigation and the content it represents. You can do this using the data attribute on the tabs navigation element (e.g. `data-content="tabs-content"`) and the id attribute on the tabs content(e.g. `id="tabs-content"`).
 </div>
 
-<nav class="tabs-nav style-line" data-content="tabs-content-2">
-  <ul>
-    <li><a href="#tabs-panel-16">Tab 1</a></li>
-    <li class="active"><a href="#tabs-panel-17">Tab 2</a></li>
-    <li><a href="#tabs-panel-18">Tab 3</a></li>
-    <li><a href="#tabs-panel-19">Tab 4</a></li>
-    <li><a href="#tabs-panel-20">Tab 5</a></li>
-  </ul>
-</nav>
+BaseWeb also has two available tab style sets that can be used using the `.style-fold` (shown in examples above) or `.style-line` classes.
 
-<div class="tabs-content style-line" id="tabs-content-2">
-  <section id="tabs-panel-16" class="tabs-panel"><p>Tab Content 1</p></section>
-  <section id="tabs-panel-17" class="tabs-panel active"><p>Tab Content 2</p></section>
-  <section id="tabs-panel-18" class="tabs-panel"><p>Tab Content 3</p></section>
-  <section id="tabs-panel-19" class="tabs-panel"><p>Tab Content 4</p></section>
-  <section id="tabs-panel-20" class="tabs-panel"><p>Tab Content 5</p></section>
+```html
+<div class="tabs style-line">
+  ...
 </div>
+```
+
+<div class="demo demo-tabs">
+
+  <div class="tabs style-line">
+    <nav class="tabs-nav">
+      <ul>
+        <li><a href="#tabs-panel-11">Tab 1</a></li>
+        <li class="active"><a href="#tabs-panel-12">Tab 2</a></li>
+        <li><a href="#tabs-panel-13">Tab 3</a></li>
+        <li><a href="#tabs-panel-14">Tab 4</a></li>
+        <li><a href="#tabs-panel-15">Tab 5</a></li>
+      </ul>
+    </nav>
+    <div class="tabs-content">
+      <section id="tabs-panel-11" class="tabs-panel"><p>Tab Content 1</p></section>
+      <section id="tabs-panel-12" class="tabs-panel active"><p>Tab Content 2</p></section>
+      <section id="tabs-panel-13" class="tabs-panel"><p>Tab Content 3</p></section>
+      <section id="tabs-panel-14" class="tabs-panel"><p>Tab Content 4</p></section>
+      <section id="tabs-panel-15" class="tabs-panel"><p>Tab Content 5</p></section>
+    </div>
+  </div>
+
+</div><!-- .demo -->
+
+
+<section class="subsection subsection-js" markdown="1">
+
+# Tabs JavaScript
+
+There are many ways you can create the tabs behavior, all with varying features and complexity. For simplicities sake, below is a jQuery example of creating tabs using BaseWeb tabs markup. The key feature here is that it enables you to omit the tabs wrapper and allows for an unlimited number of tab blocks in a single view.
+
+```js
+$('.tabs-nav').each(function(e) {
+
+  // Save this
+  var $this = $(this);
+
+  // Save our tabs content
+  var tabs_content = $this.parents('.tabs').find('.tabs-content');
+  var has_content = tabs_content.length;
+
+  // Check our other tabs content method if one wasn't found yet
+  if (!has_content) {
+    // Check if we have a linked content data attribute
+    tabs_content = $this.attr('data-content');
+    if (tabs_content) {
+      // Save our tabs content
+      tabs_content = $('#' + tabs_content);
+      // Set has_content to true
+      if (tabs_content.length) {
+        has_content = 1;
+      }
+    } else {
+      console.log('Tabs content does not exist!');
+    }
+  }
+
+  // Add click event to tab links
+  $(this).find('a').click(function(e) {
+    // Check if item is already active or not
+    var is_active = $(this).parents('li').hasClass('active');
+
+    if (!is_active) {
+      // Remove active class from all children nav items
+      $this.find('li').removeClass('active');
+      // Add active class to currently selected item
+      $(this).parents('li').addClass('active');
+
+      // Check if tabs-nav has an associated content block
+      if (has_content) {
+        // Hide current active content
+        tabs_content.find('.tabs-panel').removeClass('active');
+        // Show new active content
+        var target = $(this).attr('href');
+        $(target).addClass('active');
+      } else {
+        console.log('Tabs content does not exist!');
+      }
+    }
+
+    // Stop the default behavior
+    return false;
+  });
+
+});
+```
+
+</section><!-- .subsection .subsection-js -->
