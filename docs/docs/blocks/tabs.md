@@ -135,10 +135,7 @@ BaseWeb also has two available tab style sets that can be used using the `.style
 
 </div><!-- .demo -->
 
-
-<section class="subsection subsection-js" markdown="1">
-
-# Tabs JavaScript
+## Tabs JavaScript
 
 There are many ways you can create the tabs behavior, all with varying features and complexity. For simplicities sake, below is a jQuery example of creating tabs using BaseWeb tabs markup. The key feature here is that it enables you to omit the tabs wrapper and allows for an unlimited number of tab blocks in a single view.
 
@@ -197,5 +194,3 @@ $('.tabs-nav').each(function(e) {
 
 });
 ```
-
-</section><!-- .subsection .subsection-js -->

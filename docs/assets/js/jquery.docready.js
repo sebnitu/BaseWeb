@@ -17,16 +17,21 @@
   $(document).ready(function () {
 
     /**
-     * Bind document click event
+     * @Notices
      */
-    $(document).click(function(){
-      // Hide all dropdowns that are click activated
-      $('.dropdown-trigger.on-click').removeClass('active');
+    $('.dismissible > .close').on('click', function() {
+      $(this).closest('.dismissible').fadeOut();
     });
 
     /**
      * @Dropdowns
      */
+    // Bind document click event
+    $(document).click(function(){
+      // Hide all dropdowns that are click activated
+      $('.dropdown-trigger.on-click').removeClass('active');
+    });
+
     // Bind the click event to .dropdown-trigger
     $('.dropdown-trigger.on-click').click(function(e) {
 
