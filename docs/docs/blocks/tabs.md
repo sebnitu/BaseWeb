@@ -290,3 +290,61 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
 </div>
 
 </section>
+
+<section class="subsection subsection-mixins" markdown="1">
+
+# Tab Mixins
+
+Tab mixins are used to create the base styles for a tabs.
+
+<ul class="list list-docs">
+
+<li markdown="1">
+
+## make-tabs
+
+Will output base tab wrapper styles such as margins to itself and stack order to child nav and content blocks.
+
+```scss
+@include make-tabs( $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$tabs()</code></td>
+  </tr>
+</table>
+
+### Example Usage
+
+To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order and margins.
+
+```scss
+// Create custom tab styles using your own wrapper class:
+.tabs-wrapper {
+  @include make-tabs((
+    'class-nav'           : 'nav',
+    'class-content'       : 'content',
+    'class-content-panel' : 'panel'
+  ));
+}
+
+// Or to use the tabs wrapper class set in the tabs map,
+// you can use the following:
+.#{map-get($tabs, 'class-wrapper')} {
+  @include make-tabs();
+}
+```
+
+</li>
+
+</ul>
+
+</section>
