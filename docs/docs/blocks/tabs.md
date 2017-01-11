@@ -194,3 +194,99 @@ $('.tabs-nav').each(function(e) {
 
 });
 ```
+
+<section class="subsection subsection-variables" markdown="1">
+
+# Tabs Variables
+
+Tabs variables are encompassed within the '$tabs' map and are used throughout all tab mixins to set default values.
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$tabs('classes')</code></td>
+    <td><code>true</code> <a href="#var-note-1">*</a></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('class-wrapper')</code></td>
+    <td><code>'tabs'</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('class-nav')</code></td>
+    <td><code>'tabs-nav'</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('class-content')</code></td>
+    <td><code>'tabs-content'</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('class-content-panel')</code></td>
+    <td><code>'tabs-panel'</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$tabs('margin')</code></td>
+    <td><code>2em 0</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('padding-nav')</code></td>
+    <td><code>1em</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('padding-nav-inline')</code></td>
+    <td><code>1em 2em</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('padding-content')</code></td>
+    <td><code>1em 2em</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$tabs('background')</code></td>
+    <td><code>#f5f5f5</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('background-fade')</code></td>
+    <td><code>#e6e6e6</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('background-accent')</code></td>
+    <td><code>$white</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$tabs('border')</code></td>
+    <td><code>1px solid #e6e6e6</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('border-radius')</code></td>
+    <td><code>$border-radius</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$tabs('color')</code></td>
+    <td><code>$color</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('color-fade')</code></td>
+    <td><code>$color-light</code></td>
+  </tr>
+  <tr>
+    <td><code>$tabs('color-accent')</code></td>
+    <td><code>$blue</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$tabs('transition')</code></td>
+    <td><code>$transition</code></td>
+  </tr>
+</table>
+
+<div class="notice yellow" id="var-note-1" markdown="1">
+\* Whether or not we should output tabs classes. Set to `false` if you want to use the tabs modifier mixins semantically and/or reduce CSS output.
+</div>
+
+</section>
