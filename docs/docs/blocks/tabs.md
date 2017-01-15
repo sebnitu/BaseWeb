@@ -4,7 +4,7 @@ title: "Tabs"
 order: 5
 ---
 
-Tabs are a high level navigational component that anable switch between views of related groups of content. They typically appear above the content they describe. Tabs have consist of two primary components and optionally a wrapping element:
+Tabs are a high level navigational component that enable switch between views of related groups of content. They typically appear above the content they describe. Tabs have consist of two primary components and optionally a wrapping element:
 
 <ul class="list list-docs">
   <li>
@@ -14,7 +14,7 @@ Tabs are a high level navigational component that anable switch between views of
     <strong>Tabs Content:</strong> Are the grouped sections of content that the tabs switch between.
   </li>
   <li>
-    <strong>Tabs Wrapper:</strong> An optional element that allows for easier grouping and targetting of tab navigation and content. It can also help in styling tab blocks that look connected visually.
+    <strong>Tabs Wrapper:</strong> An optional element that allows for easier grouping and targeting of tab navigation and content. It can also help in styling tab blocks that look connected visually.
   </li>
 </ul>
 
