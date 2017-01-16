@@ -4,34 +4,22 @@ title: "Tabs"
 order: 5
 ---
 
-Tabs are a high level navigational component that enable switch between views of related groups of content. They typically appear above the content they describe. Tabs have consist of two primary components and optionally a wrapping element:
-
-<ul class="list list-docs">
-  <li>
-    <strong>Tabs Navigation:</strong> The component responsible to triggering the content switch event. Although its appearance may vary, they almost always appear above the content they describe.
-  </li>
-  <li>
-    <strong>Tabs Content:</strong> Are the grouped sections of content that the tabs switch between.
-  </li>
-  <li>
-    <strong>Tabs Wrapper:</strong> An optional element that allows for easier grouping and targeting of tab navigation and content. It can also help in styling tab blocks that look connected visually.
-  </li>
-</ul>
+Tabs are a high level navigational component that enable switching between views of related groups of content. They appear above the content they describe and consist of two primary parts: navigation items and the content they represent. Optionally, you can use the tabs wrapping `div` with the class of `.tabs` (default) for more easily grouping content together. Tabs are linked to their content part using the `href` attribute whos hash value contains the ID of the content it describes.
 
 ```html
 <div class="tabs style-fold">
   <nav class="tabs-nav">
     <ul>
-      <li class="active"><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
-      <li><a href="#">...</a></li>
+      <li class="active"><a href="#tabs-panel-1">...</a></li>
+      <li><a href="#tabs-panel-2">...</a></li>
+      <li><a href="#tabs-panel-3">...</a></li>
       ...
     </ul>
   </nav>
   <div class="tabs-content">
-    <section id="#" class="tabs-panel active">...</section>
-    <section id="#" class="tabs-panel">...</section>
-    <section id="#" class="tabs-panel">...</section>
+    <section id="tabs-panel-1" class="tabs-panel active">...</section>
+    <section id="tabs-panel-2" class="tabs-panel">...</section>
+    <section id="tabs-panel-3" class="tabs-panel">...</section>
     ...
   </div>
 </div>
@@ -137,7 +125,7 @@ BaseWeb also has two available tab style sets that can be used using the `.style
 
 ## Tabs JavaScript
 
-There are many ways you can create the tabs behavior, all with varying features and complexity. For simplicities sake, below is a jQuery example of creating tabs using BaseWeb tabs markup. The key feature here is that it enables you to omit the tabs wrapper and allows for an unlimited number of tab blocks in a single view.
+There are many ways you can create the tabs behavior, all with varying features and complexity. For simplicities sake, below is a jQuery example for creating tabs using BaseWeb tabs markup. The key feature here is that it enables you to omit the tabs wrapper and allows for an unlimited number of tab blocks in a single document.
 
 ```js
 $('.tabs-nav').each(function(e) {
@@ -303,7 +291,7 @@ Tab mixins are used to create the base styles for a tabs.
 
 ## make-tabs
 
-Creates the base styles for a the tabs block including tab wrapper, navigation and content.
+Creates the base styles for a the tabs block including tab wrapper, navigation and content whos default classes are output as `.tabs`, `.tabs-nav` and `.tabs-content` respectivly.
 
 ```scss
 @include make-tabs( $options: () );
@@ -327,7 +315,7 @@ Creates the base styles for a the tabs block including tab wrapper, navigation a
 To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order, margins and content display styles.
 
 ```scss
-// Outputs the default stules using the values in the $tabs map.
+// Outputs the default styles using the values in the $tabs map.
 @include make-tabs();
 
 // Create tab styles using custom tab classes class:
