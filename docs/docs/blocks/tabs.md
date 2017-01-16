@@ -303,7 +303,7 @@ Tab mixins are used to create the base styles for a tabs.
 
 ## make-tabs
 
-Will output base tab wrapper styles such as margins to itself and stack order to child nav and content blocks.
+Creates the base styles for a the tabs block including tab wrapper, navigation and content.
 
 ```scss
 @include make-tabs( $options: () );
@@ -324,23 +324,80 @@ Will output base tab wrapper styles such as margins to itself and stack order to
 
 ### Example Usage
 
-To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order and margins.
+To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order, margins and content display styles.
 
 ```scss
-// Create custom tab styles using your own wrapper class:
-.tabs-wrapper {
-  @include make-tabs((
-    'class-nav'           : 'nav',
-    'class-content'       : 'content',
-    'class-content-panel' : 'panel'
-  ));
-}
+// Outputs the default stules using the values in the $tabs map.
+@include make-tabs();
 
-// Or to use the tabs wrapper class set in the tabs map,
-// you can use the following:
-.#{map-get($tabs, 'class-wrapper')} {
-  @include make-tabs();
-}
+// Create tab styles using custom tab classes class:
+@include make-tabs((
+  'class-nav'           : 'nav',
+  'class-content'       : 'content',
+  'class-content-panel' : 'panel'
+));
+```
+
+</li>
+
+<li markdown="1">
+
+## add-tab-style
+
+Creates a predefined stylistic feel for your tabs. There are currently two presets, fold and line style tabs.
+
+```scss
+@include add-tab-style( $options: (), $style : 'fold', $class : null );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$tabs()</code></td>
+  </tr>
+  <tr>
+    <td><code>$style</code></td>
+    <td>String (fold, line)</td>
+    <td><code>'fold'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class</code></td>
+    <td>String</td>
+    <td><code>'style-#{$style}'</code></td>
+  </tr>
+</table>
+
+### Example Usage
+
+By default, both tab styles are output using their default classes `.style-fold` and `.style-line`.
+
+```scss
+// Tabs Style: Default
+@include add-tab-style($style: 'fold');
+
+// Tabs Style: Line
+@include add-tab-style($style: 'line');
+```
+
+```html
+<div class="tabs style-fold">
+  <nav class="tabs-nav">
+    ...
+  </nav>
+  <div class="tabs-content">
+    ...
+  </div>
+</div>
+
+<div class="tabs style-line">
+  ...
+</div>
 ```
 
 </li>

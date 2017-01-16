@@ -21,6 +21,7 @@ $tabs: (
   'background'        : #f5f5f5,
   'background-fade'   : #e6e6e6,
   'background-accent' : $white,
+
   'border'            : 1px solid #e6e6e6,
   'border-radius'     : $border-radius,
 
@@ -37,89 +38,85 @@ $tabs: (
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Tabs
-// Creates the base styles for a tabs block.
+// Creates the base styles for a the tabs block including tab wrapper,
+// navigation and content.
 // @param $options
 //   @type map
 //   @default $tabs map
 @mixin make-tabs($options: ()) {
   $o: map-merge($tabs, $options);
-  position: relative;
-  margin: map-get($o, 'margin');
 
-  .#{map-get($o, 'class-nav')},
-  .#{map-get($o, 'class-content')} {
-    margin: 0;
-  }
-  .#{map-get($o, 'class-nav')} {
-    z-index: 10;
-  }
-  .#{map-get($o, 'class-content')} {
-    z-index: 5;
-  }
-}
+  // Tab Wrapper
+  .#{map-get($tabs, 'class-wrapper')} {
+    position: relative;
+    margin: map-get($o, 'margin');
 
-// Make Tabs Navigation
-// Creates the base styles for a tabs nav block.
-// @param $options
-//   @type map
-//   @default $tabs map
-@mixin make-tabs-nav($options: ()) {
-  $o: map-merge($tabs, $options);
-  margin: map-get($o, 'margin');
-  text-align: center;
-
-  ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-  }
-  ul li {
-    flex: 1 0 auto;
-    margin: 0;
-  }
-  a {
-    display: block;
-    padding: map-get($o, 'padding-nav');
-    border: none;
+    .#{map-get($o, 'class-nav')},
+    .#{map-get($o, 'class-content')} {
+      margin: 0;
+    }
+    .#{map-get($o, 'class-nav')} {
+      z-index: 10;
+    }
+    .#{map-get($o, 'class-content')} {
+      z-index: 5;
+    }
   }
 
-  &.inline {
+  // Tab Navigation
+  .#{map-get($tabs, 'class-nav')} {
+    margin: map-get($o, 'margin');
+    text-align: center;
+
     ul {
-      flex-wrap: wrap;
+      display: flex;
+      list-style: none;
+      margin: 0;
     }
     ul li {
-      flex: 0 0 auto;
+      flex: 1 0 auto;
+      margin: 0;
+    }
+    a {
+      display: block;
+      padding: map-get($o, 'padding-nav');
+      border: none;
+    }
 
-      a {
-        padding: map-get($o, 'padding-nav-inline');
+    &.inline {
+      ul {
+        flex-wrap: wrap;
+      }
+      ul li {
+        flex: 0 0 auto;
+
+        a {
+          padding: map-get($o, 'padding-nav-inline');
+        }
       }
     }
   }
+
+  // Tab Content
+  .#{map-get($tabs, 'class-content')} {
+    margin: map-get($o, 'margin');
+
+    .#{map-get($o, 'class-content-panel')} {
+      display: none;
+    }
+    .#{map-get($o, 'class-content-panel')}.active {
+      display: block;
+    }
+  }
+
 }
 
-// Make Tabs Content
-// Creates the base styles for a tabs content block.
-// @param $options
-//   @type map
-//   @default $tabs map
-@mixin make-tabs-content($options: ()) {
-  $o: map-merge($tabs, $options);
-  margin: map-get($o, 'margin');
-
-  .#{map-get($o, 'class-content-panel')} {
-    display: none;
-  }
-  .#{map-get($o, 'class-content-panel')}.active {
-    display: block;
-  }
-}
-
-// Add Tabs Style
+// Add Tab Style
 // Creates the styles for tabs.
 // @param $options
 //   @type map
 //   @default $tabs map
-@mixin add-tabs-style($options: (), $style : 'default', $class : null) {
+@mixin add-tab-style($options: (), $style : 'fold', $class : null) {
   $o: map-merge($tabs, $options);
 
   @if ($class == null) {
@@ -249,24 +246,16 @@ $tabs: (
 /**
  * Base styles for tab wrapper, nav and content
  */
-.#{map-get($tabs, 'class-wrapper')} {
-  @include make-tabs();
-}
-.#{map-get($tabs, 'class-nav')} {
-  @include make-tabs-nav();
-}
-.#{map-get($tabs, 'class-content')} {
-  @include make-tabs-content();
-}
+@include make-tabs();
 
 /**
  * Tabs Style: Default
  */
-@include add-tabs-style($style: 'fold');
+@include add-tab-style($style: 'fold');
 
 /**
  * Tabs Style: Line
  */
-@include add-tabs-style($style: 'line');
+@include add-tab-style($style: 'line');
 
 } // endif classes
