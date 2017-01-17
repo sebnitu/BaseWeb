@@ -48,7 +48,7 @@ Tabs are a high level navigational component that enable switching between views
 
 </div><!-- .demo -->
 
-Tab navigation items are linked to their respective content using the `href` attribute with a hash value of the `id` the content it represents. Tabs can also be displayed without the wrapping element and visually will not have the same visual connection:
+Tabs can also be displayed without the wrapping `.tabs` element.
 
 ```html
 <nav class="tabs-nav style-fold" data-content="tabs-content-1">
@@ -89,7 +89,7 @@ Tab navigation items are linked to their respective content using the `href` att
 </div><!-- .demo -->
 
 <div class="notice info" markdown="1">
-  When voiding the use of tabs wrapping element, you'll need to establish the connected between the tabs navigation and the content it represents. You can do this using the data attribute on the tabs navigation element (e.g. `data-content="tabs-content"`) and the id attribute on the tabs content(e.g. `id="tabs-content"`).
+  When not using the tabs wrapping element, you'll need to establish the connected between the tabs navigation and the content it represents some other way. You can do this using the data attribute on the tabs navigation element (e.g. `data-content="tabs-content"`) and the id attribute on the tabs content(e.g. `id="tabs-content"`).
 </div>
 
 BaseWeb also has two available tab style sets that can be used using the `.style-fold` (shown in examples above) or `.style-line` classes.
