@@ -98,7 +98,7 @@
       }
 
       // Add click event to tab links
-      $(this).find('a').click(function(e) {
+      $this.find('a').click(function() {
         // Check if item is already active or not
         var is_active = $(this).parents('li').hasClass('active');
 

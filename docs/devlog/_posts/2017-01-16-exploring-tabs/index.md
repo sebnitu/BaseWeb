@@ -96,6 +96,200 @@ $('.tabs-nav').each(function(e) {
 });
 ```
 
+The next thing we'll want to do is check if our tab controls have content linked and then save it for later. We'll check first if we used the `.tab` wrapper and then if `.tabs-content` exists.
+
+```js
+// Save this
+var $this = $(this);
+
+// Save our tabs content
+var tabs_content = $this.parents('.tabs').find('.tabs-content');
+var has_content = tabs_content.length;
+```
+
+If content wasn't found, we'll check if we used the data attribute method. If no content is found that way either, we just output a message in console.
+
+```js
+// Check our other tabs content method if one wasn't found yet
+if (!has_content) {
+  // Check if we have a linked content data attribute
+  tabs_content = $this.attr('data-content');
+  if (tabs_content) {
+    // Save our tabs content
+    tabs_content = $('#' + tabs_content);
+    // Set has_content to true
+    if (tabs_content.length) {
+      has_content = 1;
+    }
+  } else {
+    console.log('Tabs content does not exist!');
+  }
+}
+```
+
+Next we'll add a click event on our tab controls and stop the default behavior.
+
+```js
+// Add click event to tab links
+$this.find('a').click(function() {
+
+  // Stop the default behavior
+  return false;
+});
+```
+
+When our tabs are clicked, we check if it's already active. If it's not, we remove all active classes off our tabs, add one to the tab that was just clicked and check again if there is content associated. If so, we toggle the active class on our tab panel using the href value of our active tab control.
+
+```js
+// Check if item is already active or not
+var is_active = $(this).parents('li').hasClass('active');
+
+if (!is_active) {
+  // Remove active class from all children nav items
+  $this.find('li').removeClass('active');
+  // Add active class to currently selected item
+  $(this).parents('li').addClass('active');
+
+  // Check if tabs-nav has an associated content block
+  if (has_content) {
+    // Hide current active content
+    tabs_content.find('.tabs-panel').removeClass('active');
+    // Show new active content
+    var target = $(this).attr('href');
+    $(target).addClass('active');
+  } else {
+    console.log('Tabs content does not exist!');
+  }
+}
+```
+
+That about does it with our JavaScript! Here's all of it together:
+
+```js
+$('.tabs-nav').each(function(e) {
+
+  // Save this
+  var $this = $(this);
+
+  // Save our tabs content
+  var tabs_content = $this.parents('.tabs').find('.tabs-content');
+  var has_content = tabs_content.length;
+
+  // Check our other tabs content method if one wasn't found yet
+  if (!has_content) {
+    // Check if we have a linked content data attribute
+    tabs_content = $this.attr('data-content');
+    if (tabs_content) {
+      // Save our tabs content
+      tabs_content = $('#' + tabs_content);
+      // Set has_content to true
+      if (tabs_content.length) {
+        has_content = 1;
+      }
+    } else {
+      console.log('Tabs content does not exist!');
+    }
+  }
+
+  // Add click event to tab links
+  $this.find('a').click(function() {
+    // Check if item is already active or not
+    var is_active = $(this).parents('li').hasClass('active');
+
+    if (!is_active) {
+      // Remove active class from all children nav items
+      $this.find('li').removeClass('active');
+      // Add active class to currently selected item
+      $(this).parents('li').addClass('active');
+
+      // Check if tabs-nav has an associated content block
+      if (has_content) {
+        // Hide current active content
+        tabs_content.find('.tabs-panel').removeClass('active');
+        // Show new active content
+        var target = $(this).attr('href');
+        $(target).addClass('active');
+      } else {
+        console.log('Tabs content does not exist!');
+      }
+    }
+
+    // Stop the default behavior
+    return false;
+  });
+
+});
+```
+
+## Styling Our Tabs
+
+So we've got some solid semantic markup and handled our requirements for tab behaviors, it's time to add our styles! There are many options here for creating tab styles, and there are a few helpful patterns that are specific to tabs that can have huge usability benefits, but first lets isolate styles that are universal to any tab controls. This mainly deals with establishing our show and hide styles with active classes, `z-index` order and structural styles.
+
+```scss
+// Tab Wrapper
+.#{map-get($tabs, 'class-wrapper')} {
+  position: relative;
+  margin: map-get($o, 'margin');
+
+  .#{map-get($o, 'class-nav')},
+  .#{map-get($o, 'class-content')} {
+    margin: 0;
+  }
+  .#{map-get($o, 'class-nav')} {
+    z-index: 10;
+  }
+  .#{map-get($o, 'class-content')} {
+    z-index: 5;
+  }
+}
+
+// Tab Navigation
+.#{map-get($tabs, 'class-nav')} {
+  margin: map-get($o, 'margin');
+  text-align: center;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+  }
+  ul li {
+    flex: 1 0 auto;
+    margin: 0;
+  }
+  a {
+    display: block;
+    padding: map-get($o, 'padding-nav');
+    border: none;
+  }
+
+  &.inline {
+    ul {
+      flex-wrap: wrap;
+    }
+    ul li {
+      flex: 0 0 auto;
+
+      a {
+        padding: map-get($o, 'padding-nav-inline');
+      }
+    }
+  }
+}
+
+// Tab Content
+.#{map-get($tabs, 'class-content')} {
+  margin: map-get($o, 'margin');
+
+  .#{map-get($o, 'class-content-panel')} {
+    display: none;
+  }
+  .#{map-get($o, 'class-content-panel')}.active {
+    display: block;
+  }
+}
+```
+
 ---
 
 ## Further Reading
