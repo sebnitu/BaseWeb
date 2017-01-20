@@ -223,29 +223,29 @@ $('.tabs-nav').each(function(e) {
 
 ## Styling Our Tabs
 
-So we've got some solid semantic markup and handled our requirements for tab behaviors, it's time to add our styles! There are many options here for creating tab styles, and there are a few helpful patterns that are specific to tabs that can have huge usability benefits, but first lets isolate styles that are universal to any tab controls. This mainly deals with establishing our show and hide styles with active classes, `z-index` order and structural styles.
+So we've got some solid semantic markup and handled our requirements for tab behaviors, it's time to add our styles! There are many options here for creating tab styles, and there are a few helpful patterns that are specific to tabs that can have huge usability benefits, but first lets isolate styles that are universal to any tab controls. This mainly deals with establishing our show and hide styles with the active class, `z-index` order and structural styles.
 
 ```scss
 // Tab Wrapper
-.#{map-get($tabs, 'class-wrapper')} {
+.tabs {
   position: relative;
-  margin: map-get($o, 'margin');
+  margin: 1em 0;
 
-  .#{map-get($o, 'class-nav')},
-  .#{map-get($o, 'class-content')} {
+  .tabs-nav,
+  .tabs-content {
     margin: 0;
   }
-  .#{map-get($o, 'class-nav')} {
+  .tabs-nav {
     z-index: 10;
   }
-  .#{map-get($o, 'class-content')} {
+  .tabs-content {
     z-index: 5;
   }
 }
 
 // Tab Navigation
-.#{map-get($tabs, 'class-nav')} {
-  margin: map-get($o, 'margin');
+.tabs-nav {
+  margin: 1em 0;
   text-align: center;
 
   ul {
@@ -259,36 +259,30 @@ So we've got some solid semantic markup and handled our requirements for tab beh
   }
   a {
     display: block;
-    padding: map-get($o, 'padding-nav');
+    padding: 1em;
     border: none;
-  }
-
-  &.inline {
-    ul {
-      flex-wrap: wrap;
-    }
-    ul li {
-      flex: 0 0 auto;
-
-      a {
-        padding: map-get($o, 'padding-nav-inline');
-      }
-    }
   }
 }
 
 // Tab Content
-.#{map-get($tabs, 'class-content')} {
-  margin: map-get($o, 'margin');
+.tabs-content {
+  margin: 1em 0;
 
-  .#{map-get($o, 'class-content-panel')} {
+  .tabs-panel {
     display: none;
   }
-  .#{map-get($o, 'class-content-panel')}.active {
+  .tabs-panel.active {
     display: block;
   }
 }
 ```
+
+Now we've got a fully functional tabs block component with just the bare minimum styling that you can test here.
+
+<p data-height="350" data-theme-id="light" data-slug-hash="bgqmJo" data-default-tab="result" data-user="sebnitu" data-embed-version="2" data-pen-title="bgqmJo" class="codepen">See the Pen <a href="https://codepen.io/sebnitu/pen/bgqmJo/">bgqmJo</a> by Sebastian Nitu (<a href="http://codepen.io/sebnitu">@sebnitu</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+With this as our base, we can go any stylistic direction we'd like. [Mary Lou](https://tympanus.net/codrops/2014/09/02/tab-styles-inspiration/) wrote a great post on Codrops if you're looking for some inspiration. For our purposes, we want some basic styles that can be easily adopted in most projects without much effort.
 
 ---
 
