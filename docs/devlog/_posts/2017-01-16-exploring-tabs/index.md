@@ -22,7 +22,7 @@ Before I get into the solution we applied in BaseWeb, I want to explore the proc
 
 ## Tackling the Markup
 
-A semantic tabs system contains two primary parts, the tabs controls themselves and the panels of content they toggle. We'll start with the tabs who's markup we can write similar to a set of navigation links:
+A semantic tabs system contains two primary parts, the tab controls and the panels of content they toggle. We'll start with the tabs who's markup we can write similar to a set of navigation links:
 
 ```html
 <nav class="tabs-nav">
@@ -32,6 +32,68 @@ A semantic tabs system contains two primary parts, the tabs controls themselves 
     <li><a href="#">Tab Item</a></li>
   </ul>
 </nav>
+```
+
+Next, we'll write a quick set of divs that represent our content panes which we'll control with the tabs navigation.
+
+```html
+<div class="tabs-content">
+  <div class="tabs-panel">
+    ...
+  </div>
+  <div class="tabs-panel">
+    ...
+  </div>
+  <div class="tabs-panel">
+    ...
+  </div>
+</div>
+```
+
+We'll need to settle on a class that we use to show the active tab item and also one to show and hide the panels. Lets just go with `.active` as it's pretty clear. The other markup aspect we'll need to handle is how we link the tabs navigation to it's respective tab content. The main concern here is in the case our document may have more than one set of tabs on a view. So we decided to incorporate two methods that are fairly intuitive and lets the developer decide what works best for them.
+
+### Data Attribute Link
+
+The first method we can use is a data attribute link that ties our two elements together. So let's add `data-content=""` to our tabs-nav element, a unique ID to the tabs-content and add the ID as the data attribute's value.
+
+```html
+<nav class="tabs-nav" data-content="tabs-content-1">
+  ...
+</nav>
+<div class="tabs-content" id="tabs-content-1">
+  ...
+</div>
+```
+
+This method allows us to clearly tie together tab components and guarantees we'll never have any conflicts with other tabs in our page.
+
+### Wrapper Link
+
+The second method is simply just wrapping our tab components with a `<div>` element. This gives us all the hooks we'll need to style our components and interact with them in JavaScript without having to specifically give each component unique IDs and data attributes.
+
+```html
+<div class="tabs">
+  <nav class="tabs-nav">
+    ...
+  </nav>
+  <div class="tabs-content">
+    ...
+  </div>
+</div>
+```
+
+## Adding Behavior with JavaScript
+
+A lot of what makes tab controls a useful pattern in content organization is their behavior. It's important to make sure we adhere to the patterns I've highlighted in the introduction, and now that we have some semantic markup, we can dive into writing our behavior.
+
+I'm personally very comfortable writing interface plugins in jQuery, but feel free to write this behavior in any framework or even raw JavaScript as you see fit. Making BaseWeb ambiguous in the way a developer handles their JavaScript was intentional.
+
+The first thing we'll want to do is iterate through all instances of our tab controls and work with their behavior separately to avoid any conflicts. In jQuery, we can do this using the `jQuery.each()` iteration function.
+
+```js
+$('.tabs-nav').each(function(e) {
+  // Do some stuff...
+});
 ```
 
 ---
