@@ -1,6 +1,6 @@
 ![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/39132g291E2e2k3I0e2e/baseweb-logo.png "BaseWeb")
 
-Currently v2.0.0
+Currently v2.1.0
 
 ## About
 BaseWeb is a fresh SCSS front-end development framework and library built to help keep your projects simple, organized and responsive.
@@ -49,4 +49,4 @@ To see the full list of available Jake tasks for a project, use `jake -ls`. The 
 
 ## Copyright and License
 
-BaseWeb and BaseWeb documentation copyright (c) 2016 [Sebastian Nitu](http://sebnitu.com). BaseWeb is released under the [MIT license](https://github.com/sebnitu/BaseWeb/blob/master/LICENSE) and BaseWeb documentation is released under [Creative Commons](https://github.com/sebnitu/BaseWeb/blob/master/docs/LICENSE).
+BaseWeb and BaseWeb documentation copyright (c) 2017 [Sebastian Nitu](http://sebnitu.com). BaseWeb is released under the [MIT license](https://github.com/sebnitu/BaseWeb/blob/master/LICENSE) and BaseWeb documentation is released under [Creative Commons](https://github.com/sebnitu/BaseWeb/blob/master/docs/LICENSE).
