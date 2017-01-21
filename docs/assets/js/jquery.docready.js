@@ -127,7 +127,7 @@
     });
 
     /**
-     * @Sticky Element
+     * Sticky Element
      */
     $('.sticky').theiaStickySidebar({
       containerSelector : '.row',
@@ -135,10 +135,19 @@
     });
 
     /**
-     * @Navigation Toggle
+     * Navigation Toggle
      */
     $('.widget-menu .toggle').click(function() {
       $(this).parent().toggleClass('active');
+      return false;
+    });
+
+    /**
+     * New Tab Links
+     */
+    $('.onclick-newtab').click(function() {
+      $(this).attr('target', '_blank');
+      window.open($(this).attr('href'));
       return false;
     });
 

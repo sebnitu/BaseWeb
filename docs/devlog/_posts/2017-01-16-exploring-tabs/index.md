@@ -50,7 +50,9 @@ Next, we'll write a quick set of divs that represent our content panes which we'
 </div>
 ```
 
-We'll need to settle on a class that we use to show the active tab item and also one to show and hide the panels. Lets just go with `.active` as it's pretty clear. The other markup aspect we'll need to handle is how we link the tabs navigation to it's respective tab content. The main concern here is in the case our document may have more than one set of tabs on a view. So we decided to incorporate two methods that are fairly intuitive and lets the developer decide what works best for them.
+Lastly we'll link the tab navigation using the `href` attribute on the links with the`id` value of the content panel they toggle. We'll also need to settle on a class that we use to show the active tab item and also one to show and hide the panels. Lets just go with `.active` as it's pretty clear.
+
+The other markup aspect we'll need to handle is how we link the tabs control group to a tabs content group. The main concern here is in the case our document may have more than one set of tabs on a view. So we decided to incorporate two methods that are fairly intuitive and lets the developer decide what works best for them.
 
 ### Data Attribute Link
 
@@ -279,18 +281,28 @@ So we've got some solid semantic markup and handled our requirements for tab beh
 
 Now we've got a fully functional tabs block component with just the bare minimum styling that you can test here.
 
-<p data-height="350" data-theme-id="light" data-slug-hash="bgqmJo" data-default-tab="result" data-user="sebnitu" data-embed-version="2" data-pen-title="bgqmJo" class="codepen">See the Pen <a href="https://codepen.io/sebnitu/pen/bgqmJo/">bgqmJo</a> by Sebastian Nitu (<a href="http://codepen.io/sebnitu">@sebnitu</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="230" data-theme-id="light" data-slug-hash="bgqmJo" data-default-tab="result" data-user="sebnitu" data-embed-version="2" data-pen-title="BaseWeb Tabs - Vanilla" class="codepen">See the Pen <a href="https://codepen.io/sebnitu/pen/bgqmJo/">BaseWeb Tabs - Vanilla</a> by Sebastian Nitu (<a href="http://codepen.io/sebnitu">@sebnitu</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-With this as our base, we can go any stylistic direction we'd like. [Mary Lou](https://tympanus.net/codrops/2014/09/02/tab-styles-inspiration/) wrote a great post on Codrops if you're looking for some inspiration. For our purposes, we want some basic styles that can be easily adopted in most projects without much effort.
+With this as our base, we can go any stylistic direction we'd like. [Mary Lou](https://tympanus.net/codrops/2014/09/02/tab-styles-inspiration/) wrote a great post on Codrops if you're looking for some inspiration. For our purposes, we want some very basic styles that can be easily adopted in most projects without much effort. Here are the two options that we came up with which can be modified to suit most situations.
 
----
+<p data-height="265" data-theme-id="light" data-slug-hash="mRWZOW" data-default-tab="result" data-user="sebnitu" data-embed-version="2" data-pen-title="BaseWeb Tabs - Fold Styles" class="codepen">See the Pen <a href="https://codepen.io/sebnitu/pen/mRWZOW/">BaseWeb Tabs - Fold Styles</a> by Sebastian Nitu (<a href="http://codepen.io/sebnitu">@sebnitu</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-## Further Reading
+<p data-height="265" data-theme-id="light" data-slug-hash="NdpZwB" data-default-tab="result" data-user="sebnitu" data-embed-version="2" data-pen-title="BaseWeb Tabs - Line Styles" class="codepen">See the Pen <a href="https://codepen.io/sebnitu/pen/NdpZwB/">BaseWeb Tabs - Line Styles</a> by Sebastian Nitu (<a href="http://codepen.io/sebnitu">@sebnitu</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-* [Material IO](https://material.io/guidelines/components/tabs.html#tabs-specs)
-* [Apple Developer UI Tab Bar](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/UIKitUICatalog/UITabBar.html)
-* [Bootstrap Twitter Tabs](http://getbootstrap.com/javascript/#tabs)
-* [Foundation Tabs](http://foundation.zurb.com/sites/docs/tabs.html)
-* [Tab Style Inspiration](https://tympanus.net/Development/TabStylesInspiration/)
-* [Tabs Used Right](https://www.nngroup.com/articles/tabs-used-right/)
+## Conclusion
+
+That wraps up our tabs block component solution. We've managed to hit all our requirements we listed in the introduction. The next steps we took in BaseWeb involve creating a variable map for customization and some handy mixins that abstract our styles a bit. You can read more about that implementation over on the [documentations page](/docs/blocks/tabs/).
+
+### Further Reading
+
+<ul class="list rowed">
+  <li><a href="https://material.io/guidelines/components/tabs.html#tabs-specs" class="onclick-newtab">Material IO</a></li>
+  <li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/UIKitUICatalog/UITabBar.html" class="onclick-newtab">Apple Developer UI Tab Bar</a></li>
+  <li><a href="http://getbootstrap.com/javascript/#tabs" class="onclick-newtab">Bootstrap Twitter Tabs</a></li>
+  <li><a href="http://foundation.zurb.com/sites/docs/tabs.html" class="onclick-newtab">Foundation Tabs</a></li>
+  <li><a href="https://tympanus.net/Development/TabStylesInspiration/" class="onclick-newtab">Tab Style Inspiration</a></li>
+  <li><a href="https://www.nngroup.com/articles/tabs-used-right/" class="onclick-newtab">Tabs Used Right</a></li>
+</ul>
