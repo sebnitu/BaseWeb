@@ -51,14 +51,6 @@ $('.dismissible > .close').on('click', function() {
   </div>
 </div>
 
-<script>
-$(document).ready(function() {
-  $('.dismissible > .close').on('click', function() {
-    $(this).closest('.dismissible').fadeOut();
-  });
-});
-</script>
-
 <section class="subsection subsection-variables" markdown="1">
 
 # Notice Variables
