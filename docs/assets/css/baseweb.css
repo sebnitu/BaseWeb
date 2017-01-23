@@ -3733,31 +3733,33 @@ body {
 /**
  * Swatches
  */
-/*
 .swatch {
   display: inline-block;
-  border: 1px solid rgba($black, 0.1);
-  @include size(44px);
-  @include border-radius();
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 3px;
 }
 
 .swatch-wrap {
   position: relative;
   height: 44px;
   min-width: 44px;
+}
 
-  .swatch {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .swatch-value {
-    margin-left: 49px;
-    display: inline-block;
-    width: auto;
-    font-family: $font-family-mono;
-  }
-}*/
+.swatch-wrap .swatch {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.swatch-wrap .swatch-value {
+  margin-left: 49px;
+  display: inline-block;
+  width: auto;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
 /**
  * Article Listing
  */
@@ -4215,21 +4217,50 @@ figure {
 /*==============================================================================
   @Swatches - scss/docs/_swatches.scss
 ==============================================================================*/
-.swatch {
-  padding: 0.5em 1.5em;
+.swatch-card {
+  margin: 2em 0;
+}
+
+.swatch-card ul {
+  margin: 0;
+  list-style: none;
+}
+
+.swatch-card ul li {
+  margin: 0;
+}
+
+.swatch-card ul li.sep {
+  margin-top: 0.5em;
+}
+
+.swatch-card .swatch {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 1em;
+  border: none;
+  border-radius: 0;
   color: #ffffff;
 }
 
-.swatch.indigo {
-  background: #3F51B5;
+.swatch-card .swatch.dark {
+  color: #212121;
 }
 
-.swatch.blue {
-  background: #2196F3;
+.swatch-card .swatch .name {
+  display: block;
+  margin-bottom: 2em;
+  font-size: 1.2em;
 }
 
-.swatch.light-blue {
-  background: #03A9F4;
+.swatch-card .swatch .var,
+.swatch-card .swatch .hex {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.swatch-card .swatch .hex {
+  float: right;
 }
 
 /*==============================================================================

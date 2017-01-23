@@ -5,17 +5,45 @@ $filename: 'scss/docs/_swatches.scss';
   @Swatches - #{$filename}
 ==============================================================================*/
 
-.swatch {
-  padding: 0.5em 1.5em;
-  color: $white;
+.swatch-card {
+  margin: 2em 0;
+
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+  ul li {
+    margin: 0;
+
+    &.sep {
+      margin-top: 0.5em;
+    }
+  }
 }
 
-.swatch.indigo {
-  background: $indigo;
-}
-.swatch.blue {
-  background: $blue;
-}
-.swatch.light-blue {
-  background: $light-blue;
+.swatch-card .swatch {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 1em;
+  border: none;
+  border-radius: 0;
+  color: $white;
+
+  &.dark {
+    color: $color;
+  }
+
+  .name {
+    display: block;
+    margin-bottom: 2em;
+    font-size: 1.2em;
+  }
+  .var,
+  .hex {
+    font-family: $font-family-mono;
+  }
+  .hex {
+    float: right;
+  }
 }
