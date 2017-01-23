@@ -3373,6 +3373,10 @@ body {
 .hero {
   position: relative;
   background: #2196F3;
+  background-image: -webkit-linear-gradient(left, #2196F3, #1976D2);
+  background-image: -moz-linear-gradient(left, #2196F3, #1976D2);
+  background-image: -ms-linear-gradient(left, #2196F3, #1976D2);
+  background-image: linear-gradient(left, #2196F3, #1976D2);
 }
 
 .hero {
@@ -3582,11 +3586,11 @@ body {
 }
 
 .widget-menu ul li a:hover {
+  background: #F5F5F5;
   color: #212121;
 }
 
 .widget-menu .active > a {
-  background: #F5F5F5;
   color: #F44336;
 }
 
@@ -3729,33 +3733,31 @@ body {
 /**
  * Swatches
  */
+/*
 .swatch {
   display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 44px;
-  height: 44px;
-  border-radius: 3px;
+  border: 1px solid rgba($black, 0.1);
+  @include size(44px);
+  @include border-radius();
 }
 
 .swatch-wrap {
   position: relative;
   height: 44px;
   min-width: 44px;
-}
 
-.swatch-wrap .swatch {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.swatch-wrap .swatch-value {
-  margin-left: 49px;
-  display: inline-block;
-  width: auto;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
+  .swatch {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .swatch-value {
+    margin-left: 49px;
+    display: inline-block;
+    width: auto;
+    font-family: $font-family-mono;
+  }
+}*/
 /**
  * Article Listing
  */
@@ -4213,6 +4215,23 @@ figure {
 /*==============================================================================
   @Swatches - scss/docs/_swatches.scss
 ==============================================================================*/
+.swatch {
+  padding: 0.5em 1.5em;
+  color: #ffffff;
+}
+
+.swatch.indigo {
+  background: #3F51B5;
+}
+
+.swatch.blue {
+  background: #2196F3;
+}
+
+.swatch.light-blue {
+  background: #03A9F4;
+}
+
 /*==============================================================================
   @Demo - scss/custom/_demos.scss
 ==============================================================================*/

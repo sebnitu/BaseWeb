@@ -1,8 +1,7 @@
 ---
-layout: page
+layout: page-full
 title: Getting Started
 order: 1
-sidebar: true
 ---
 
 BaseWeb is usable in two forms and the advantages of one over the other depends on your needs. The first is to use the source, precompiled SCSS files and the second is to include the compiled and minified CSS files in your project and use the available class based systems.
