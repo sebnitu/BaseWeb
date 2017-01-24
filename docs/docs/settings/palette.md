@@ -6,6 +6,8 @@ link:
 order: 2
 ---
 
+BaseWeb comes with variables of all the base colors, shades and accents found in [Material Design](https://material.io/guidelines/style/color.html)'s color styles and guidelines. They are stored in `/settings/_palette.scss` where they can be overridden, expanded upon, or changed in a seperate file and loaded before all other element and block components. It's recommended to not delete colors from this file as they may be used in componenets throughout BaseWeb.
+
 <div class="swatch-cards-wrapper">
 
   {% for swatch-card in site.data.palette %}
@@ -16,7 +18,7 @@ order: 2
     <div class="swatch primary" style="background-color:{{ default }};">
       <span class="name">{{ swatch-card[0] | replace: '-', ' '}}</span>
       <span class="var">${{ swatch-card[0] }}</span>
-      <span class="hex">{{ swatch-card[1].default }}</span>
+      <span class="hex">{{ default }}</span>
     </div>
 
     {% if swatch-card[1].shades %}
