@@ -9,15 +9,25 @@ $filename: 'scss/docs/_swatches.scss';
   margin: 2em 0;
 
   ul {
-    margin: 0;
+    margin: 0.5em 0 0;
     list-style: none;
   }
   ul li {
     margin: 0;
+  }
+}
 
-    &.sep {
-      margin-top: 0.5em;
-    }
+@include media-min('medium') {
+  .swatch-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -2em;
+  }
+  .swatch-card {
+    flex: 1 0 auto;
+    width: 40%;
+    margin: 2em 2em 0 0;
   }
 }
 

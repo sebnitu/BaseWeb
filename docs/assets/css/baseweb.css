@@ -3145,7 +3145,7 @@ fieldset[disabled] .input {
   @Structure - scss/custom/_custom.scss
 ==============================================================================*/
 body {
-  background: #F5F5F5;
+  background: #ECEFF1;
 }
 
 .header {
@@ -4222,7 +4222,7 @@ figure {
 }
 
 .swatch-card ul {
-  margin: 0;
+  margin: 0.5em 0 0;
   list-style: none;
 }
 
@@ -4230,8 +4230,18 @@ figure {
   margin: 0;
 }
 
-.swatch-card ul li.sep {
-  margin-top: 0.5em;
+@media (min-width: 760px) {
+  .swatch-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -2em;
+  }
+  .swatch-card {
+    flex: 1 0 auto;
+    width: 40%;
+    margin: 2em 2em 0 0;
+  }
 }
 
 .swatch-card .swatch {
