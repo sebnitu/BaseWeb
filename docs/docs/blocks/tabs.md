@@ -269,7 +269,7 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
 
   <tr>
     <td><code>$tabs('transition')</code></td>
-    <td><code>$transition</code></td>
+    <td><code>null</code></td>
   </tr>
 </table>
 

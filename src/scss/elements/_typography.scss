@@ -33,13 +33,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-family-heading;
   font-weight: $font-weight-heading;
   line-height: $line-height-heading;
-  color: $color-header;
+  color: $color-heading;
 
   a {
     color: $color-link-heading;
     border: 0 none;
     &:hover {
       color: $color-link-heading-hover;
+      text-decoration: none;
     }
   }
 }
@@ -58,11 +59,11 @@ h4 {
 }
 h5 {
   font-size: 1.1em;
-  color: rgba($color-header, 0.6);
+  color: rgba($color-heading, 0.6);
 }
 h6 {
   font-size: 1.1em;
-  color: rgba($color-header, 0.3);
+  color: rgba($color-heading, 0.3);
 }
 
 @include media-min('medium') {
@@ -93,13 +94,11 @@ p {
 a {
   color: $color-link;
   text-decoration: none;
-  border-bottom: 1px solid $border-color;
-  @include transition( $transition );
 
   &:hover {
     cursor: pointer;
     color: $color-link-hover;
-    border-color: $color-link-hover;
+    text-decoration: underline;
   }
 }
 

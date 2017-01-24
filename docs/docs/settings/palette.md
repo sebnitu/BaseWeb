@@ -6,9 +6,9 @@ link:
 order: 2
 ---
 
-BaseWeb comes with variables of all the base colors, shades and accents found in [Material Design](https://material.io/guidelines/style/color.html)'s color styles and guidelines. They are stored in `/settings/_palette.scss` where they can be overridden, expanded upon, or changed in a seperate file and loaded before all other element and block components. It's recommended to not delete colors from this file as they may be used in componenets throughout BaseWeb.
+BaseWeb comes with variables of all the base colors, shades and accents found in [Material Design](https://material.io/guidelines/style/color.html)'s color styles and guidelines. They are stored in `/settings/_palette.scss` where they can be overridden, expanded upon, or changed in a separate file and loaded before all other element and block components. It's recommended to not delete colors from this file as they may be used in components throughout BaseWeb.
 
-<div class="swatch-cards-wrapper">
+<div class="swatch-card-wrap">
 
   {% for swatch-card in site.data.palette %}
   <div class="swatch-card">
@@ -64,7 +64,7 @@ BaseWeb comes with variables of all the base colors, shades and accents found in
     </ul>
   </div>
 
-</div><!-- .swatch-cards-wrapper -->
+</div><!-- .swatch-card-wrap -->
 
 <script>
 // Source: http://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
@@ -93,17 +93,13 @@ function getContrastYIQ(hexcolor){
 
 ;(function ($) {
   'use strict';
-
   $(document).ready(function () {
-
     // Looping threw our swatches
     $('.swatch').each(function() {
       var bg = $(this).css('backgroundColor');
       var text = getContrastYIQ(rgb2hex(bg));
       $(this).addClass(text);
     });
-
   });
-
 }(jQuery));
 </script>

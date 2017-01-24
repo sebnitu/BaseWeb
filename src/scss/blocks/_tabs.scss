@@ -29,7 +29,7 @@ $tabs: (
   'color-fade'   : $color-light,
   'color-accent' : $blue,
 
-  'transition' : $transition,
+  'transition' : null,
 
 ) !default;
 
@@ -134,7 +134,9 @@ $tabs: (
       }
       ul li {
         border-right: map-get($o, 'border');
-        @include transition(map-get($o, 'transition'));
+        @if (map-get($o, 'transition') != null) {
+          @include transition(map-get($o, 'transition'));
+        }
 
         &:first-child {
           @include border-radius-left(map-get($o, 'border-radius'));
@@ -146,11 +148,14 @@ $tabs: (
       }
       a {
         color: map-get($o, 'color');
-        @include transition(map-get($o, 'transition'));
+        @if (map-get($o, 'transition') != null) {
+          @include transition(map-get($o, 'transition'));
+        }
 
         &:hover {
           background: map-get($o, 'background-fade');
           color: map-get($o, 'color');
+          text-decoration: none;
         }
       }
 
@@ -205,13 +210,18 @@ $tabs: (
       ul li {
         border-bottom: 3px solid transparent;
         margin-bottom: -1px;
-        @include transition(map-get($o, 'transition'));
+        @if (map-get($o, 'transition') != null) {
+          @include transition(map-get($o, 'transition'));
+        }
       }
       a {
         color: map-get($o, 'color-fade');
-        @include transition(map-get($o, 'transition'));
+        @if (map-get($o, 'transition') != null) {
+          @include transition(map-get($o, 'transition'));
+        }
         &:hover {
           color: map-get($o, 'color-accent');
+          text-decoration: none;
         }
       }
       // Active State

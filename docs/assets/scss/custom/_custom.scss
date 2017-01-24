@@ -82,11 +82,11 @@ body {
     margin-top: 8px;
     margin-left: 10px;
     color: $color-light;
-    @include transition();
   }
   &:hover {
+    text-decoration: none;
     .version {
-      color: $color-link-hover;
+      color: $color-link;
     }
   }
 }
@@ -127,7 +127,8 @@ body {
       font-size: px-to-em(15px);
 
       &:hover {
-        color: $color-link-hover;
+        color: $color-link;
+        text-decoration: none;
       }
     }
   }
@@ -460,15 +461,16 @@ body {
     &:hover {
       background: $bg-color;
       color: $color;
+      text-decoration: none;
     }
   }
 
   // Active Item
   .active > a {
-    color: $red;
+    color: $color-link;
 
     &:hover {
-      color: $red;
+      color: $color-link;
     }
   }
 
@@ -628,34 +630,6 @@ body {
 }
 
 /**
- * Swatches
- */
-.swatch {
-  display: inline-block;
-  border: 1px solid rgba($black, 0.1);
-  @include size(44px);
-  @include border-radius();
-}
-
-.swatch-wrap {
-  position: relative;
-  height: 44px;
-  min-width: 44px;
-
-  .swatch {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .swatch-value {
-    margin-left: 49px;
-    display: inline-block;
-    width: auto;
-    font-family: $font-family-mono;
-  }
-}
-
-/**
  * Article Listing
  */
 .article-listing {
@@ -671,13 +645,6 @@ body {
   }
   h1 {
     font-size: 2em;
-
-    a {
-      color: $color;
-    }
-    a:hover {
-      color: $color-link-hover;
-    }
   }
 }
 

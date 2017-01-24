@@ -3,8 +3,57 @@ $filename: 'scss/docs/_swatches.scss';
 
 /*==============================================================================
   @Swatches - #{$filename}
+  ---
+  Where we style our color presentation. Swatches refer to color samples.
 ==============================================================================*/
 
+/**
+ * Swatch
+ */
+.swatch {
+  display: inline-block;
+  border: 1px solid rgba($black, 0.1);
+  @include size(44px);
+  @include border-radius();
+}
+.bg-color { background: $color; }
+.bg-color-light { background: $color-light; }
+.bg-color-dark { background: $color-dark; }
+.bg-color-heading { background: $color-heading; }
+.bg-color-link { background: $color-link; }
+.bg-color-link-hover { background: $color-link-hover; }
+.bg-color-link-heading { background: $color-link-heading; }
+.bg-color-link-heading-hover { background: $color-link-heading-hover; }
+
+.bg-bg-color { background: $bg-color; }
+.bg-bg-selection { background: $bg-selection; }
+.bg-border-color { background: $border-color; }
+.bg-border-color-hover { background: $border-color-hover; }
+
+/**
+ * Swatch and Value combo
+ */
+.swatch-wrap {
+  position: relative;
+  height: 44px;
+  min-width: 44px;
+
+  .swatch {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .swatch-value {
+    margin-left: 49px;
+    display: inline-block;
+    width: auto;
+    font-family: $font-family-mono;
+  }
+}
+
+/**
+ * Swatch Cards
+ */
 .swatch-card {
   margin: 2em 0;
 
@@ -18,7 +67,7 @@ $filename: 'scss/docs/_swatches.scss';
 }
 
 @include media-min('medium') {
-  .swatch-cards-wrapper {
+  .swatch-card-wrap {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -54,7 +103,7 @@ $filename: 'scss/docs/_swatches.scss';
   &.text-dark .name {
     border-color: rgba($black, 0.1);
   }
-  
+
   .var,
   .hex {
     font-family: $font-family-mono;
