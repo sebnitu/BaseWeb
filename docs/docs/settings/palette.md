@@ -8,43 +8,61 @@ order: 2
 
 <div class="swatch-cards-wrapper">
 
-{% for swatch-card in site.data.palette %}
-<div class="swatch-card">
+  {% for swatch-card in site.data.palette %}
+  <div class="swatch-card">
 
-  {% assign default = swatch-card[1].shades | map: swatch-card[1].default %}
+    {% assign default = swatch-card[1].shades | map: swatch-card[1].default %}
 
-  <div class="swatch primary" style="background-color:{{ default }};">
-    <span class="name">{{ swatch-card[0] | replace: '-', ' '}}</span>
-    <span class="var">${{ swatch-card[0] }}</span>
-    <span class="hex">{{ swatch-card[1].default }}</span>
+    <div class="swatch primary" style="background-color:{{ default }};">
+      <span class="name">{{ swatch-card[0] | replace: '-', ' '}}</span>
+      <span class="var">${{ swatch-card[0] }}</span>
+      <span class="hex">{{ swatch-card[1].default }}</span>
+    </div>
+
+    {% if swatch-card[1].shades %}
+    <ul class="swatch-shades">
+    {% for swatch in swatch-card[1].shades %}
+      <li class="swatch shade" style="background-color:{{ swatch[1] }};">
+        <span class="var">${{ swatch-card[0] }}-{{ swatch[0] }}</span>
+        <span class="hex">{{ swatch[1] }}</span>
+      </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if swatch-card[1].accents %}
+    <ul class="swatch-accents">
+    {% for swatch in swatch-card[1].accents %}
+      <li class="swatch accent" style="background-color:{{ swatch[1] }};">
+        <span class="var">${{ swatch-card[0] }}-{{ swatch[0] }}</span>
+        <span class="hex">{{ swatch[1] }}</span>
+      </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+  {% endfor %}
+
+  <div class="swatch-card">
+    <div class="swatch primary" style="background-color:#f5f5f5;">
+      <span class="name">Utility Colors</span>
+      <span class="var">&mdash;</span>
+      <span class="hex"></span>
+    </div>
+    <ul class="swatch-shades">
+      <li class="swatch shade" style="background-color:#000;">
+        <span class="var">$black</span>
+        <span class="hex">#000</span>
+      </li>
+      <li class="swatch shade" style="background-color:#fff;">
+        <span class="var">$white</span>
+        <span class="hex">#fff</span>
+      </li>
+    </ul>
   </div>
 
-  {% if swatch-card[1].shades %}
-  <ul class="swatch-shades">
-  {% for swatch in swatch-card[1].shades %}
-    <li class="swatch shade" style="background-color:{{ swatch[1] }};">
-      <span class="var">${{ swatch-card[0] }}-{{ swatch[0] }}</span>
-      <span class="hex">{{ swatch[1] }}</span>
-    </li>
-  {% endfor %}
-  </ul>
-  {% endif %}
-
-  {% if swatch-card[1].accents %}
-  <ul class="swatch-accents">
-  {% for swatch in swatch-card[1].accents %}
-    <li class="swatch accent" style="background-color:{{ swatch[1] }};">
-      <span class="var">${{ swatch-card[0] }}-{{ swatch[0] }}</span>
-      <span class="hex">{{ swatch[1] }}</span>
-    </li>
-  {% endfor %}
-  </ul>
-  {% endif %}
-
-</div>
-{% endfor %}
-
-</div>
+</div><!-- .swatch-cards-wrapper -->
 
 <script>
 // Source: http://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
