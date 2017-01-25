@@ -273,7 +273,7 @@ Use this mixin along with `make-button()` to create custom semantic button style
   @include make-button();
   @include add-button-color((
     'color' : $white,
-    'background' : $violet
+    'background' : $purple
   ));
 }
 ```

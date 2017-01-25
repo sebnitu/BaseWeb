@@ -88,8 +88,8 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td><code>$bg-color</code></td>
     <td colspan="2">
       <div class="swatch-wrap">
-        <span class="swatch swatch-bg-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-pale" readonly="">
+        <span class="swatch bg-bg-color"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-100" readonly="">
       </div>
     </td>
   </tr>
@@ -97,7 +97,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td><code>$bg-selection</code></td>
     <td colspan="2">
       <div class="swatch-wrap">
-        <span class="swatch swatch-bg-selection"></span>
+        <span class="swatch bg-bg-selection"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($green, 0.25)" readonly="">
       </div>
     </td>
@@ -106,7 +106,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td><code>$border-color</code></td>
     <td colspan="2">
       <div class="swatch-wrap">
-        <span class="swatch swatch-border-color"></span>
+        <span class="swatch bg-border-color"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.10)" readonly="">
       </div>
     </td>
@@ -115,7 +115,7 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
     <td><code>$border-color-hover</code></td>
     <td colspan="2">
       <div class="swatch-wrap">
-        <span class="swatch swatch-border-color-hover"></span>
+        <span class="swatch bg-border-color-hover"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.25)" readonly="">
       </div>
     </td>

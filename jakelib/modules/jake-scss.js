@@ -3,9 +3,9 @@ var u = require('./node-utility');
 var sass = require('node-sass');
 
 module.exports = function runscss(o) {
-  
+
   fs.readFile(o.input, 'utf8', function(err, data) {
-  
+
     sass.render({
       data: data,
       outFile: o.output,
@@ -18,11 +18,12 @@ module.exports = function runscss(o) {
           u.print('√ node-sass: wrote ' + o.output, 'green');
         });
       } else {
-        u.print(error.message, 'red');
-        u.print('Line: ' + error.line + ', Column: ' + error.column, 'red');
+        u.print('#' + error.status + ' Message: ' + error.message, 'red');
+        u.print('File: ' + error.file, 'yellow');
+        u.print('Line: ' + error.line + ', Column: ' + error.column, 'yellow');
       }
     });
-  
+
   });
-  
+
 }

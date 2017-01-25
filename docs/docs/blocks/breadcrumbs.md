@@ -114,7 +114,7 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
 
   <tr>
     <td><code>$breadcrumbs('background')</code></td>
-    <td><code>mix($blue, $white, 10%)</code></td>
+    <td><code>$blue-50</code></td>
   </tr>
   <tr>
     <td><code>$breadcrumbs('border')</code></td>
@@ -138,7 +138,7 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
   </tr>
   <tr>
     <td><code>$breadcrumbs('delimiter-color')</code></td>
-    <td><code>rgba($black, 0.25)</code></td>
+    <td><code>$gray-400</code></td>
   </tr>
   <tr>
     <td><code>$breadcrumbs('delimiter-end')</code></td>
@@ -248,9 +248,10 @@ For this example, we'll use the default `.breadcrumb` class but use the `add-bre
 ```scss
 .breadcrumb.custom-wrapped {
   @include add-breadcrumb-wrapped((
-    'background' : rgba($violet-darker, 0.1),
-    'border' : 3px solid rgba($black, 0.05),
-    'border-radius' : 0,
+    'background' : $amber-50,
+    'border' : 1px solid rgba($black, 0.1),
+    'border-radius' : 50px,
+    'padding' : 1em 2em
   ));
 }
 ```

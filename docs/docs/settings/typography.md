@@ -73,8 +73,8 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-gray-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
+        <span class="swatch bg-color"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
       </div>
     </td>
   </tr>
@@ -82,8 +82,8 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-light</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-gray-light"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-light" readonly="">
+        <span class="swatch bg-color-light"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray" readonly="">
       </div>
     </td>
   </tr>
@@ -91,17 +91,17 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-dark</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-gray-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
+        <span class="swatch bg-color-dark"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
       </div>
     </td>
   </tr>
   <tr>
-    <td><code>$color-header</code></td>
+    <td><code>$color-heading</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-gray-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-dark" readonly="">
+        <span class="swatch bg-color-heading"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
       </div>
     </td>
   </tr>
@@ -113,7 +113,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-link</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-blue"></span>
+        <span class="swatch bg-color-link"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
       </div>
     </td>
@@ -122,20 +122,20 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-link-hover</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-violet-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$violet-dark" readonly="">
+        <span class="swatch bg-color-link-hover"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue-700" readonly="">
       </div>
     </td>
   </tr>
 
   <tr>
-    <th colspan="3">Header Links</th>
+    <th colspan="3">Heading Links</th>
   </tr>
   <tr>
     <td><code>$color-link-heading</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-blue"></span>
+        <span class="swatch bg-color-link-heading"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
       </div>
     </td>
@@ -144,8 +144,8 @@ The default typographic settings. These dictate the base typographic styles for 
     <td><code>$color-link-heading-hover</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch swatch-violet-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$violet-dark" readonly="">
+        <span class="swatch bg-color-link-heading-hover"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$deep-orange-700" readonly="">
       </div>
     </td>
   </tr>

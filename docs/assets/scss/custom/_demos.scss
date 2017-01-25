@@ -141,7 +141,7 @@ $filename: 'scss/custom/_demos.scss';
 .demo.demo-linear-gradient {
   .box {
     width: 100%;
-    @include linear-gradient(left, $violet, $blue, $green);
+    @include linear-gradient(left, $green, $blue, $purple);
   }
 }
 
@@ -150,8 +150,10 @@ $filename: 'scss/custom/_demos.scss';
  */
 .demo.demo-radial-gradient {
   .box {
-    @include size(100px);
-    @include radial-gradient(circle, $blue, $violet);
+    // @include size(100px);
+    width: 100%;
+    height: 100px;
+    @include radial-gradient(circle, $purple, $deep-purple);
   }
 }
 
@@ -218,11 +220,11 @@ $filename: 'scss/custom/_demos.scss';
 }
 .example-triangle-2 {
   @extend %triangle;
-  @include make-triangle( 14px, $blue-violet, 'down' );
+  @include make-triangle( 14px, $purple, 'down' );
 }
 .example-triangle-3 {
   @extend %triangle;
-  @include make-triangle( 14px, $violet, 'right' );
+  @include make-triangle( 14px, $red, 'right' );
 }
 
 /**
@@ -238,7 +240,7 @@ $filename: 'scss/custom/_demos.scss';
 .demo-grid .col p {
   margin: 0;
   padding: 1rem;
-  background: $bg-color;
+  background: rgba($black, 0.05);
   font-family: $font-family-mono;
   font-size: px-to-em(14px);
   line-height: 1.5em;
@@ -270,7 +272,7 @@ $filename: 'scss/custom/_demos.scss';
   .demo-article {
     p {
       margin: 0.75rem 0;
-      background: $bg-color;
+      background: rgba($black, 0.05);
       @include border-radius();
     }
   }
@@ -340,7 +342,7 @@ $filename: 'scss/custom/_demos.scss';
 .demo-mini-grid .mini-grid > * {
   margin: 0;
   padding: 1rem 0;
-  background: $bg-color;
+  background: rgba($black, 0.05);
   font-family: $font-family-mono;
   font-size: px-to-em(14px);
   line-height: 1.5em;
@@ -389,7 +391,7 @@ $filename: 'scss/custom/_demos.scss';
   @include make-button();
   @include add-button-color((
     'color' : $white,
-    'background' : $violet
+    'background' : $purple
   ));
 }
 .button-custom-mobile {
@@ -405,6 +407,14 @@ $filename: 'scss/custom/_demos.scss';
   margin-top: 1em;
   margin-bottom: 1em;
 }
+.notice.custom {
+  @include add-notice-color((
+    'background' : $teal-50,
+    'inverted' : (
+      'background' : $teal
+    )
+  ));
+}
 
 /**
  * Breadcrumb
@@ -418,9 +428,10 @@ $filename: 'scss/custom/_demos.scss';
 }
 .breadcrumb.custom-wrapped {
   @include add-breadcrumb-wrapped((
-    'background' : rgba($violet-darker, 0.1),
-    'border' : 3px solid rgba($black, 0.05),
-    'border-radius' : 0,
+    'background' : $amber-50,
+    'border' : 1px solid rgba($black, 0.1),
+    'border-radius' : 50px,
+    'padding' : 1em 2em
   ));
 }
 

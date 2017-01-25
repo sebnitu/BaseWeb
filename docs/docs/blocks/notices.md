@@ -132,7 +132,7 @@ Notice variables are encompassed within the '$notices' map and are used througho
 
   <tr>
     <td><code>$notices('color')</code></td>
-    <td><code>$color-dark</code></td>
+    <td><code>$color</code></td>
   </tr>
   <tr>
     <td><code>$notices('text-shadow')</code></td>
@@ -140,7 +140,7 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
   <tr>
     <td><code>$notices('background')</code></td>
-    <td><code>rgba($black, 0.05)</code></td>
+    <td><code>$gray-100</code></td>
   </tr>
   <tr>
     <td><code>$notices('box-shadow')</code></td>
@@ -169,7 +169,7 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
   <tr>
     <td><code>$notices('inverted', 'background')</code></td>
-    <td><code>rgba($color-dark, 0.9)</code></td>
+    <td><code>$color</code></td>
   </tr>
   <tr>
     <td><code>$notices('inverted', 'border')</code></td>
@@ -283,9 +283,9 @@ We can create custom notice color classes using this mixin while also using the 
 // using the default $output: 'difference' parameter.
 .notice.custom {
   @include add-notice-color((
-    'background' : rgba($blue-green, 0.1),
+    'background' : $teal-50,
     'inverted' : (
-      'background' : rgba($blue-green, 0.9)
+      'background' : $teal
     )
   ));
 }
@@ -323,8 +323,8 @@ If you have notice class output enabled, BaseWeb will provide you with a set of 
 <div class="notice red">...</div>
 <div class="notice red inverted">...</div>
 
-<div class="notice violet">...</div>
-<div class="notice violet inverted">...</div>
+<div class="notice purple">...</div>
+<div class="notice purple inverted">...</div>
 ```
 
 <div class="demo">
@@ -353,8 +353,8 @@ If you have notice class output enabled, BaseWeb will provide you with a set of 
     <div class="col col-6"><div class="notice red inverted"><p>.notice .red .inverted</p></div></div>
   </div>
   <div class="row">
-    <div class="col col-6"><div class="notice violet"><p>.notice .violet</p></div></div>
-    <div class="col col-6"><div class="notice violet inverted"><p>.notice .violet .inverted</p></div></div>
+    <div class="col col-6"><div class="notice purple"><p>.notice .purple</p></div></div>
+    <div class="col col-6"><div class="notice purple inverted"><p>.notice .purple .inverted</p></div></div>
   </div>
 </div>
 
