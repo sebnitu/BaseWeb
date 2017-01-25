@@ -27,17 +27,6 @@ css/
 All of BaseWeb components are routed through `_baseweb.scss`, where all our `@import` calls are made. The only required files are located in Settings and Core directories. These files, by default, have no CSS output and function simply as a libarary if functions and variables that you can use in your project. To exclude any other optional files, just comment out their `@import` declaration and recompile.
 
 ``` scss
-/*!
- * BaseWeb
- * A fresh front-end development framework
- *
- * @author Sebastian Nitu
- * @url https://github.com/sebnitu/BaseWeb
- * @url http://sebnitu.com
- *
- * Copyright (c) 2016 Sebastian Nitu (MIT Licensed)
- */
-
 // Settings (Required)
 @import "settings/palette";
 @import "settings/media";
