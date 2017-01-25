@@ -234,11 +234,11 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
 
   <tr>
     <td><code>$tabs('background')</code></td>
-    <td><code>#f5f5f5</code></td>
+    <td><code>$gray-100</code></td>
   </tr>
   <tr>
     <td><code>$tabs('background-fade')</code></td>
-    <td><code>#e6e6e6</code></td>
+    <td><code>$gray-200</code></td>
   </tr>
   <tr>
     <td><code>$tabs('background-accent')</code></td>
@@ -247,7 +247,7 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
 
   <tr>
     <td><code>$tabs('border')</code></td>
-    <td><code>1px solid #e6e6e6</code></td>
+    <td><code>1px solid $gray-300</code></td>
   </tr>
   <tr>
     <td><code>$tabs('border-radius')</code></td>

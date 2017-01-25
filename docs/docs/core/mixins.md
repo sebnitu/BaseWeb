@@ -667,7 +667,7 @@ The `@keyframes` CSS at-rule lets you control the intermediate steps in a CSS an
 // SCSS
 @include keyframes('example') {
   0%   { background-color: $red; }
-  50% { background-color: $blue; }
+  50%  { background-color: $blue; }
   100% { background-color: $red; }
 }
 
@@ -910,15 +910,15 @@ Creates an image which represents a linear gradient of colors.
 ```scss
 // SCSS
 .box {
-  @include linear-gradient(left, $green, $blue, $violet);
+  @include linear-gradient(left, $green, $blue, $purple);
 }
 
 // CSS Output
 .box {
-  background-image: -webkit-linear-gradient(left, #bc6bd3, #2ab0ea, #84b72d);
-  background-image: -moz-linear-gradient(left, #bc6bd3, #2ab0ea, #84b72d);
-  background-image: -ms-linear-gradient(left, #bc6bd3, #2ab0ea, #84b72d);
-  background-image: linear-gradient(left, #bc6bd3, #2ab0ea, #84b72d);
+  background-image: -webkit-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
+  background-image: -moz-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
+  background-image: -ms-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
+  background-image: linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
 }
 ```
 
@@ -956,15 +956,15 @@ Creates an image which represents a gradient of colors radiating from an origin,
 ```scss
 // SCSS
 .box {
-  @include radial-gradient(circle, $blue, $violet);
+  @include radial-gradient(circle, $purple, $deep-purple);
 }
 
 // CSS Output
 .box {
-  background-image: -webkit-radial-gradient(circle, #2ab0ea, #bc6bd3);
-  background-image: -moz-radial-gradient(circle, #2ab0ea, #bc6bd3);
-  background-image: -ms-radial-gradient(circle, #2ab0ea, #bc6bd3);
-  background-image: radial-gradient(circle, #2ab0ea, #bc6bd3);
+  background-image: -webkit-radial-gradient(circle, #9C27B0, #673AB7);
+  background-image: -moz-radial-gradient(circle, #9C27B0, #673AB7);
+  background-image: -ms-radial-gradient(circle, #9C27B0, #673AB7);
+  background-image: radial-gradient(circle, #9C27B0, #673AB7);
 }
 ```
 
@@ -1318,15 +1318,15 @@ Lets you easily create text masks using background-clip.
 }
 .example-triangle-1 {
   @extend %triangle;
-  @include make-triangle( 14px, $blue-darker, 'left' );
+  @include make-triangle( 14px, $blue, 'left' );
 }
 .example-triangle-2 {
   @extend %triangle;
-  @include make-triangle( 14px, $blue-violet-darker, 'down' );
+  @include make-triangle( 14px, $purple, 'down' );
 }
 .example-triangle-3 {
   @extend %triangle;
-  @include make-triangle( 14px, $violet-darker, 'right' );
+  @include make-triangle( 14px, $red, 'right' );
 }
 
 // CSS Output
@@ -1342,16 +1342,19 @@ Lets you easily create text masks using background-clip.
   border-color: transparent;
 }
 .example-triangle-1 {
+  border-color: transparent;
   border-width: 14px 14px 14px 0;
-  border-right-color: #1495cd;
+  border-right-color: #2196F3;
 }
 .example-triangle-2 {
+  border-color: transparent;
   border-width: 14px 14px 0 14px;
-  border-top-color: #4469da;
+  border-top-color: #9C27B0;
 }
 .example-triangle-3 {
+  border-color: transparent;
   border-width: 14px 0 14px 14px;
-  border-left-color: #aa44c7;
+  border-left-color: #F44336;
 }
 ```
 
