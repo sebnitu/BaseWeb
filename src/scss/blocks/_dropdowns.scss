@@ -45,7 +45,7 @@ $dropdowns: (
   'content-sep'    : 0.5em,
   'content-sep-hr' : 1em,
 
-  'transition'                     : 'transform, opacity, visibility',
+  'transition'                     : none,
   'transition-in-duration'         : 0.25s, 0.25s, 0.25s,
   'transition-in-timing-function'  : linear,
   'transition-in-delay'            : none,
@@ -99,23 +99,31 @@ $dropdowns: (
   #{map-get($o, 'target')} {
     position: absolute;
     z-index: map-get($o, 'target-zindex');
-    opacity: 0;
-    visibility: hidden;
-    @include transition(map-get($o, 'transition'));
-    @include transition-duration(map-get($o, 'transition-out-duration'));
-    @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
-    @include transition-delay(map-get($o, 'transition-out-delay'));
+    @if (map-get($o, 'transition') == none) or (map-get($o, 'transition') == null) {
+      display: none;
+    } @else {
+      opacity: 0;
+      visibility: hidden;
+      @include transition(map-get($o, 'transition'));
+      @include transition-duration(map-get($o, 'transition-out-duration'));
+      @include transition-timing-function(map-get($o, 'transition-out-timing-function'));
+      @include transition-delay(map-get($o, 'transition-out-delay'));
+    }
   }
 
   // Base target hover & active styles
   #{map-get($o, 'target-action')} {
     z-index: map-get($o, 'target-action-zindex');
-    opacity: 1;
-    visibility: visible;
-    @include transition( map-get($o, 'transition'));
-    @include transition-duration(map-get($o, 'transition-in-duration'));
-    @include transition-timing-function(map-get($o, 'transition-in-timing-function'));
-    @include transition-delay(map-get($o, 'transition-in-delay'));
+    @if (map-get($o, 'transition') == none) or (map-get($o, 'transition') == null) {
+      display: block;
+    } @else {
+      opacity: 1;
+      visibility: visible;
+      @include transition( map-get($o, 'transition'));
+      @include transition-duration(map-get($o, 'transition-in-duration'));
+      @include transition-timing-function(map-get($o, 'transition-in-timing-function'));
+      @include transition-delay(map-get($o, 'transition-in-delay'));
+    }
   }
 }
 
