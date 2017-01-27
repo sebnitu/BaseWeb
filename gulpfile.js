@@ -7,6 +7,8 @@ var
   newer = require('gulp-newer'),
   rename = require('gulp-rename'),
   merge = require('merge-stream'),
+  replace = require('gulp-replace'),
+  minimist = require('minimist'),
   // CSS
   sass = require('gulp-sass'),
   postcss = require('gulp-postcss'),
@@ -26,8 +28,52 @@ var
     dest: 'dist/',
     srcDocs: 'docs/src/',
     destDocs: 'docs/assets/'
-  }
+  },
+
+  // File sets to use for search and replace
+  searchFiles = {
+    version: [
+      'README.md',
+      'package.json',
+      'src/scss/baseweb.scss',
+      'docs/src/scss/docs.scss',
+      'docs/_data/project.yml'
+    ],
+    year: [
+      'README.md',
+      'LICENSE',
+      'src/scss/baseweb.scss',
+      'docs/src/scss/docs.scss',
+    ]
+  },
+
+  // Allows us to pass parameters to gulp tasks
+  options = minimist(process.argv.slice(2))
 ;
+
+// ---
+
+// Utility Tasks
+// Search and replace
+gulp.task('replace', function() {
+
+  var src;
+
+  if ((options.s == undefined) || (options.r == undefined) || (options.f == undefined)) {
+    console.error('USAGE: gulp replace -s <SEARCH> -r <REPLACE> -f <FILES>');
+  } else {
+    if (searchFiles[options.f] == undefined) {
+      src = options.f;
+    } else {
+      src = searchFiles[options.f];
+    }
+
+    return gulp.src(src, { base: './' })
+      .pipe(replace(String(options.s), String(options.r)))
+      .pipe(gulp.dest('./'));
+  }
+
+});
 
 // ---
 
