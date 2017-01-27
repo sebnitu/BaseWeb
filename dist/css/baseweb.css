@@ -32,7 +32,6 @@ table {
 }
 
 *, *:before, *:after {
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -139,21 +138,6 @@ h5 {
 h6 {
   font-size: 1.1em;
   color: rgba(33, 33, 33, 0.3);
-}
-
-@media (min-width: 760px) {
-  h1 {
-    font-size: 3em;
-  }
-  h2 {
-    font-size: 2em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  h4, h5, h6 {
-    font-size: 1.25em;
-  }
 }
 
 /**
@@ -449,12 +433,6 @@ blockquote .blockquote-footer {
   font-size: 100%;
 }
 
-@media (min-width: 760px) {
-  blockquote {
-    padding: 1em 2em;
-  }
-}
-
 /*==============================================================================
   @Code - scss/elements/_code.scss
 ==============================================================================*/
@@ -694,16 +672,6 @@ table th {
   margin: 0;
 }
 
-@media (max-width: 759px) {
-  .table-responsive {
-    overflow: auto;
-  }
-  .table-responsive > table td,
-  .table-responsive > table th {
-    white-space: nowrap;
-  }
-}
-
 /*==============================================================================
   @Images - scss/elements/_images.scss
 ==============================================================================*/
@@ -844,12 +812,6 @@ form .col {
 
 form .col:last-child {
   margin-bottom: 0;
-}
-
-@media (min-width: 760px) {
-  form .col {
-    margin-bottom: 0;
-  }
 }
 
 /*==============================================================================
@@ -1100,7 +1062,6 @@ label.inline {
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   border-radius: 3px;
   -webkit-transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
@@ -1482,9 +1443,9 @@ fieldset[disabled] .input {
   -webkit-transition-property: color, background-color, box-shadow, border-color;
   transition-property: color, background-color, box-shadow, border-color;
   -webkit-transition-duration: 0.75s;
-  transition-duration: 0.75s;
+          transition-duration: 0.75s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
   color: #212121;
   text-shadow: none;
   background-color: #fff;
@@ -1501,9 +1462,9 @@ fieldset[disabled] .input {
   -webkit-transition-property: color, background-color, box-shadow, border-color;
   transition-property: color, background-color, box-shadow, border-color;
   -webkit-transition-duration: 0.1s;
-  transition-duration: 0.1s;
+          transition-duration: 0.1s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
 }
 
 .button:active {
@@ -1514,9 +1475,9 @@ fieldset[disabled] .input {
   -webkit-transition-property: color, background-color, box-shadow, border-color;
   transition-property: color, background-color, box-shadow, border-color;
   -webkit-transition-duration: 0;
-  transition-duration: 0;
+          transition-duration: 0;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
 }
 
 .button:hover, .button:focus {
@@ -2084,107 +2045,6 @@ fieldset[disabled] .input {
 /**
  * Stack Modifiers
  */
-@media (max-width: 479px) {
-  .button-group.stack-for-tiny {
-    display: block;
-    float: none;
-    margin-right: 0;
-  }
-  .button-group.stack-for-tiny + .button-group {
-    margin-top: 1em;
-    margin-left: 0;
-  }
-  .button-group.stack-for-tiny > .button {
-    display: block;
-    width: 100%;
-    float: none;
-    border-radius: 0;
-  }
-  .button-group.stack-for-tiny > .button + .button {
-    margin-top: -1px;
-    margin-left: 0;
-  }
-  .button-group.stack-for-tiny > .button:first-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-  .button-group.stack-for-tiny > .button:last-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-}
-
-@media (max-width: 759px) {
-  .button-group.stack-for-small {
-    display: block;
-    float: none;
-    margin-right: 0;
-  }
-  .button-group.stack-for-small + .button-group {
-    margin-top: 1em;
-    margin-left: 0;
-  }
-  .button-group.stack-for-small > .button {
-    display: block;
-    width: 100%;
-    float: none;
-    border-radius: 0;
-  }
-  .button-group.stack-for-small > .button + .button {
-    margin-top: -1px;
-    margin-left: 0;
-  }
-  .button-group.stack-for-small > .button:first-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-  .button-group.stack-for-small > .button:last-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-}
-
-@media (max-width: 989px) {
-  .button-group.stack-for-medium {
-    display: block;
-    float: none;
-    margin-right: 0;
-  }
-  .button-group.stack-for-medium + .button-group {
-    margin-top: 1em;
-    margin-left: 0;
-  }
-  .button-group.stack-for-medium > .button {
-    display: block;
-    width: 100%;
-    float: none;
-    border-radius: 0;
-  }
-  .button-group.stack-for-medium > .button + .button {
-    margin-top: -1px;
-    margin-left: 0;
-  }
-  .button-group.stack-for-medium > .button:first-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-  }
-  .button-group.stack-for-medium > .button:last-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-}
 
 /**
  * Button Group Wrapper
@@ -2332,22 +2192,6 @@ fieldset[disabled] .input {
 
 .notice.inline.inverted {
   border: 0 none;
-}
-
-@media (min-width: 760px) {
-  .notice.pull-left {
-    width: 45%;
-    float: left;
-    margin: 0.5em 5% 1em 0;
-  }
-}
-
-@media (min-width: 760px) {
-  .notice.pull-right {
-    width: 45%;
-    float: right;
-    margin: 0.5em 0 1em 5%;
-  }
 }
 
 /*==============================================================================
@@ -2581,11 +2425,11 @@ fieldset[disabled] .input {
   -webkit-transition: "transform, opacity, visibility";
   transition: "transform, opacity, visibility";
   -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
+          transition-duration: 0.25s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
   -webkit-transition-delay: 0.25s;
-  transition-delay: 0.25s;
+          transition-delay: 0.25s;
 }
 
 .dropdown-trigger:not(.on-click):hover > .dropdown, .dropdown-trigger.active > .dropdown {
@@ -2595,11 +2439,11 @@ fieldset[disabled] .input {
   -webkit-transition: "transform, opacity, visibility";
   transition: "transform, opacity, visibility";
   -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
+          transition-duration: 0.25s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
   -webkit-transition-delay: none;
-  transition-delay: none;
+          transition-delay: none;
 }
 
 .dropdown-trigger .dropdown {
@@ -2609,8 +2453,7 @@ fieldset[disabled] .input {
   right: auto;
   bottom: auto;
   -webkit-transform: translate3d(0, -1em, 0);
-  -ms-transform: translate3d(0, -1em, 0);
-  transform: translate3d(0, -1em, 0);
+          transform: translate3d(0, -1em, 0);
 }
 
 .dropdown-trigger:not(.on-click):hover > .dropdown, .dropdown-trigger.active > .dropdown {
@@ -2620,8 +2463,7 @@ fieldset[disabled] .input {
   right: auto;
   bottom: auto;
   -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .dropdown-menu {
@@ -2636,11 +2478,11 @@ fieldset[disabled] .input {
   -webkit-transition: "transform, opacity, visibility";
   transition: "transform, opacity, visibility";
   -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
+          transition-duration: 0.25s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
   -webkit-transition-delay: 0.25s;
-  transition-delay: 0.25s;
+          transition-delay: 0.25s;
 }
 
 .dropdown-menu > li:hover > .dropdown-menu, .dropdown-menu.active > li > .dropdown-menu {
@@ -2650,11 +2492,11 @@ fieldset[disabled] .input {
   -webkit-transition: "transform, opacity, visibility";
   transition: "transform, opacity, visibility";
   -webkit-transition-duration: 0.25s;
-  transition-duration: 0.25s;
+          transition-duration: 0.25s;
   -webkit-transition-timing-function: linear;
-  transition-timing-function: linear;
+          transition-timing-function: linear;
   -webkit-transition-delay: none;
-  transition-delay: none;
+          transition-delay: none;
 }
 
 .dropdown-menu .dropdown-menu {
@@ -2664,8 +2506,7 @@ fieldset[disabled] .input {
   right: auto;
   bottom: auto;
   -webkit-transform: translate3d(-1em, 0, 0);
-  -ms-transform: translate3d(-1em, 0, 0);
-  transform: translate3d(-1em, 0, 0);
+          transform: translate3d(-1em, 0, 0);
 }
 
 .dropdown-menu > li:hover > .dropdown-menu, .dropdown-menu.active > li > .dropdown-menu {
@@ -2675,8 +2516,7 @@ fieldset[disabled] .input {
   right: auto;
   bottom: auto;
   -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 /*==============================================================================
@@ -2709,13 +2549,17 @@ fieldset[disabled] .input {
 }
 
 .tabs-nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
   margin: 0;
 }
 
 .tabs-nav ul li {
-  flex: 1 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   margin: 0;
 }
 
@@ -2726,11 +2570,14 @@ fieldset[disabled] .input {
 }
 
 .tabs-nav.inline ul {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .tabs-nav.inline ul li {
-  flex: 0 0 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
 }
 
 .tabs-nav.inline ul li a {
@@ -2909,7 +2756,130 @@ fieldset[disabled] .input {
   padding-right: 0;
 }
 
+/*==============================================================================
+  @Mini Grid System - scss/custom/_custom.scss
+==============================================================================*/
+.has-1, .has-2, .has-3, .has-4, .has-5, .has-6, .has-7, .has-8, .has-9, .has-10, .has-11, .has-12 {
+  display: block;
+}
+
+.has-1:after, .has-2:after, .has-3:after, .has-4:after, .has-5:after, .has-6:after, .has-7:after, .has-8:after, .has-9:after, .has-10:after, .has-11:after, .has-12:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.is-1-of-1,
+.has-1 > *, .is-1-of-2,
+.has-2 > *, .is-1-of-3,
+.has-3 > *, .is-1-of-4,
+.has-4 > *, .is-1-of-5,
+.has-5 > *, .is-1-of-6,
+.has-6 > *, .is-1-of-7,
+.has-7 > *, .is-1-of-8,
+.has-8 > *, .is-1-of-9,
+.has-9 > *, .is-1-of-10,
+.has-10 > *, .is-1-of-11,
+.has-11 > *, .is-1-of-12,
+.has-12 > * {
+  float: left;
+}
+
+.is-1-of-1,
+.has-1 > * {
+  width: 100%;
+}
+
+.is-1-of-2,
+.has-2 > * {
+  width: 50%;
+}
+
+.is-1-of-3,
+.has-3 > * {
+  width: 33.333%;
+}
+
+.is-1-of-4,
+.has-4 > * {
+  width: 25%;
+}
+
+.is-1-of-5,
+.has-5 > * {
+  width: 20%;
+}
+
+.is-1-of-6,
+.has-6 > * {
+  width: 16.667%;
+}
+
+.is-1-of-7,
+.has-7 > * {
+  width: 14.286%;
+}
+
+.is-1-of-8,
+.has-8 > * {
+  width: 12.5%;
+}
+
+.is-1-of-9,
+.has-9 > * {
+  width: 11.111%;
+}
+
+.is-1-of-10,
+.has-10 > * {
+  width: 10%;
+}
+
+.is-1-of-11,
+.has-11 > * {
+  width: 9.091%;
+}
+
+.is-1-of-12,
+.has-12 > * {
+  width: 8.333%;
+}
+
+/*==============================================================================
+  @Custom - scss/custom/_custom.scss
+==============================================================================*/
+/*==============================================================================
+  @End - scss/custom/_custom.scss
+==============================================================================*/
 @media (min-width: 760px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+  h3 {
+    font-size: 1.5em;
+  }
+  h4, h5, h6 {
+    font-size: 1.25em;
+  }
+  blockquote {
+    padding: 1em 2em;
+  }
+  form .col {
+    margin-bottom: 0;
+  }
+  .notice.pull-left {
+    width: 45%;
+    float: left;
+    margin: 0.5em 5% 1em 0;
+  }
+  .notice.pull-right {
+    width: 45%;
+    float: right;
+    margin: 0.5em 0 1em 5%;
+  }
   .container {
     width: 100%;
     min-width: none;
@@ -3051,99 +3021,109 @@ fieldset[disabled] .input {
     margin-right: 91.667%;
   }
 }
-
-/*==============================================================================
-  @Mini Grid System - scss/custom/_custom.scss
-==============================================================================*/
-.has-1, .has-2, .has-3, .has-4, .has-5, .has-6, .has-7, .has-8, .has-9, .has-10, .has-11, .has-12 {
-  display: block;
+@media (max-width: 759px) {
+  .table-responsive {
+    overflow: auto;
+  }
+  .table-responsive > table td,
+  .table-responsive > table th {
+    white-space: nowrap;
+  }
+  .button-group.stack-for-small {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .button-group.stack-for-small + .button-group {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  .button-group.stack-for-small > .button {
+    display: block;
+    width: 100%;
+    float: none;
+    border-radius: 0;
+  }
+  .button-group.stack-for-small > .button + .button {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+  .button-group.stack-for-small > .button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .button-group.stack-for-small > .button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 }
-
-.has-1:after, .has-2:after, .has-3:after, .has-4:after, .has-5:after, .has-6:after, .has-7:after, .has-8:after, .has-9:after, .has-10:after, .has-11:after, .has-12:after {
-  content: '';
-  display: table;
-  clear: both;
+@media (max-width: 479px) {
+  .button-group.stack-for-tiny {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .button-group.stack-for-tiny + .button-group {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  .button-group.stack-for-tiny > .button {
+    display: block;
+    width: 100%;
+    float: none;
+    border-radius: 0;
+  }
+  .button-group.stack-for-tiny > .button + .button {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+  .button-group.stack-for-tiny > .button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .button-group.stack-for-tiny > .button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 }
-
-.is-1-of-1,
-.has-1 > *, .is-1-of-2,
-.has-2 > *, .is-1-of-3,
-.has-3 > *, .is-1-of-4,
-.has-4 > *, .is-1-of-5,
-.has-5 > *, .is-1-of-6,
-.has-6 > *, .is-1-of-7,
-.has-7 > *, .is-1-of-8,
-.has-8 > *, .is-1-of-9,
-.has-9 > *, .is-1-of-10,
-.has-10 > *, .is-1-of-11,
-.has-11 > *, .is-1-of-12,
-.has-12 > * {
-  float: left;
+@media (max-width: 989px) {
+  .button-group.stack-for-medium {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .button-group.stack-for-medium + .button-group {
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  .button-group.stack-for-medium > .button {
+    display: block;
+    width: 100%;
+    float: none;
+    border-radius: 0;
+  }
+  .button-group.stack-for-medium > .button + .button {
+    margin-top: -1px;
+    margin-left: 0;
+  }
+  .button-group.stack-for-medium > .button:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .button-group.stack-for-medium > .button:last-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
 }
-
-.is-1-of-1,
-.has-1 > * {
-  width: 100%;
-}
-
-.is-1-of-2,
-.has-2 > * {
-  width: 50%;
-}
-
-.is-1-of-3,
-.has-3 > * {
-  width: 33.333%;
-}
-
-.is-1-of-4,
-.has-4 > * {
-  width: 25%;
-}
-
-.is-1-of-5,
-.has-5 > * {
-  width: 20%;
-}
-
-.is-1-of-6,
-.has-6 > * {
-  width: 16.667%;
-}
-
-.is-1-of-7,
-.has-7 > * {
-  width: 14.286%;
-}
-
-.is-1-of-8,
-.has-8 > * {
-  width: 12.5%;
-}
-
-.is-1-of-9,
-.has-9 > * {
-  width: 11.111%;
-}
-
-.is-1-of-10,
-.has-10 > * {
-  width: 10%;
-}
-
-.is-1-of-11,
-.has-11 > * {
-  width: 9.091%;
-}
-
-.is-1-of-12,
-.has-12 > * {
-  width: 8.333%;
-}
-
-/*==============================================================================
-  @Custom - scss/custom/_custom.scss
-==============================================================================*/
-/*==============================================================================
-  @End - scss/custom/_custom.scss
-==============================================================================*/
