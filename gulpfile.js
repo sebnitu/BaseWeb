@@ -4,6 +4,7 @@ var
   // Require Modules
   // Global
   gulp = require('gulp'),
+  newer = require('gulp-newer'),
   rename = require('gulp-rename'),
   merge = require('merge-stream'),
   // CSS
@@ -135,6 +136,35 @@ gulp.task('docs:js', function() {
 gulp.task('docs:img', function() {
   var dest = folder.destDocs + 'img/';
   return gulp.src(folder.srcDocs + 'img/**/*')
+    .pipe(newer(dest))
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(gulp.dest(dest));
 });
+
+// ---
+
+// Watch & Bulk Tasks
+// Build everything
+gulp.task('src', ['css', 'js']);
+gulp.task('docs', ['docs:css', 'docs:js', 'docs:img']);
+gulp.task('go', ['src', 'docs']);
+
+// watch for changes
+gulp.task('watch', function() {
+
+  // src scss changes
+  gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
+  // src js changes
+  gulp.watch(folder.src + 'js/**/*', ['js']);
+
+  // docs scss changes
+  gulp.watch(folder.srcDocs + 'scss/**/*', ['docs:css']);
+  // docs js changes
+  gulp.watch(folder.srcDocs + 'js/**/*', ['docs:js']);
+  // docs img changes
+  gulp.watch(folder.srcDocs + 'img/**/*', ['docs:img']);
+
+});
+
+// default task
+gulp.task('default', ['go', 'watch']);
