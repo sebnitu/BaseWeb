@@ -1,4 +1,4 @@
-![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/39132g291E2e2k3I0e2e/baseweb-logo.png "BaseWeb")
+![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg "BaseWeb")
 
 Currently v2.2.1
 
