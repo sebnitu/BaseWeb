@@ -114,7 +114,6 @@
 //   @type box-sizing value (content-box, padding-box, border-box, inherit)
 //   @default $box-sizing
 @mixin box-sizing( $box-sizing : $box-sizing ) {
-  -moz-box-sizing: $box-sizing;
   box-sizing: $box-sizing;
 }
 
@@ -187,8 +186,6 @@
 //   @type transform-function ([matrix] [perspective] [rotate] [scale] [skew]
 //     [translate])
 @mixin transform( $function... ) {
-  -webkit-transform: $function;
-  -ms-transform: $function;
   transform: $function;
 }
 
@@ -198,8 +195,6 @@
 // @param $style
 //   @type transform style (flat, preserve-3d, inherit)
 @mixin transform-style( $style... ) {
-  -webkit-transform-style: $style;
-  -moz-transform-style: $style;
   transform-style: $style;
 }
 
@@ -226,7 +221,6 @@
   @if length($trans) == 0 {
     $trans: $transition;
   }
-  -webkit-transition: $trans;
   transition: $trans;
 }
 
@@ -240,7 +234,6 @@
   @if length($trans) == 0 {
     $trans: $transition-property;
   }
-  -webkit-transition-property: $trans;
   transition-property: $trans;
 }
 
@@ -254,7 +247,6 @@
   @if length($trans) == 0 {
     $trans: $transition-duration;
   }
-  -webkit-transition-duration: $trans;
   transition-duration: $trans;
 }
 
@@ -270,7 +262,6 @@
   @if length($trans) == 0 {
     $trans: $transition-timing-function;
   }
-  -webkit-transition-timing-function: $trans;
   transition-timing-function: $trans;
 }
 
@@ -285,7 +276,6 @@
   @if length($trans) == 0 {
     $trans: $transition-delay;
   }
-  -webkit-transition-delay: $trans;
   transition-delay: $trans;
 }
 
@@ -316,7 +306,6 @@
 //     [animation-timing-function] [animation-delay] [animation-iteration-count]
 //     [animation-direction] [animation-fill-mode] [animation-play-state])
 @mixin animation( $animation... ) {
-  -webkit-animation: $animation;
   animation: $animation;
 }
 
@@ -326,7 +315,6 @@
 // @param $name
 //   @type animation name
 @mixin animation-name( $name... ) {
-  -webkit-animation-name: $name;
   animation-name: $name;
 }
 
@@ -336,7 +324,6 @@
 // @param $duration
 //   @type time value (seconds, milliseconds)
 @mixin animation-duration( $duration... ) {
-  -webkit-animation-duration: $duration;
   animation-duration: $duration;
 }
 
@@ -346,7 +333,6 @@
 // @param $timing-function
 //   @type timing function (linear, ease, ease-in, ease-out, ease-in-out)
 @mixin animation-timing-function( $timing-function... ) {
-  -webkit-animation-timing-function: $timing-function;
   animation-timing-function: $timing-function;
 }
 
@@ -357,7 +343,6 @@
 // @param $delay
 //   @type time value (seconds, milliseconds)
 @mixin animation-delay( $delay... ) {
-  -webkit-animation-delay: $delay;
   animation-delay: $delay;
 }
 
@@ -367,7 +352,6 @@
 // @param $iteration-count
 //   @type unit (number, infinite)
 @mixin animation-iteration-count( $iteration-count... ) {
-  -webkit-animation-iteration-count: $iteration-count;
   animation-iteration-count: $iteration-count;
 }
 
@@ -377,7 +361,6 @@
 // @param $direction
 //   @type direction (normal, reverse, alternate, alternate-reverse)
 @mixin animation-direction( $direction... ) {
-  -webkit-animation-direction: $direction;
   animation-direction: $direction;
 }
 
@@ -387,7 +370,6 @@
 // @param $fill-mode
 //   @type fill mode (none, forwards, backwards, both, initial, inherit)
 @mixin animation-fill-mode( $fill-mode... ) {
-  -webkit-animation-fill-mode: $fill-mode;
   animation-fill-mode: $fill-mode;
 }
 
@@ -397,7 +379,6 @@
 // @param $play-state
 //   @type play state (running, paused)
 @mixin animation-play-state( $play-stay... ) {
-  -webkit-animation-play-state: $play-stay;
   animation-play-state: $play-stay;
 }
 
@@ -406,9 +387,6 @@
 // @param $gradient
 //   @type gradient ([side-or-corner] [angle] [color-stop])
 @mixin linear-gradient( $gradient... ) {
-  background-image: -webkit-linear-gradient($gradient);
-  background-image: -moz-linear-gradient($gradient);
-  background-image: -ms-linear-gradient($gradient);
   background-image: linear-gradient($gradient);
 }
 
@@ -419,9 +397,6 @@
 //   @type gradient ([position] [shape] [size] [color-stop] [color-stop]
 //     [extent-keyword])
 @mixin radial-gradient( $gradient... ) {
-  background-image: -webkit-radial-gradient($gradient);
-  background-image: -moz-radial-gradient($gradient);
-  background-image: -ms-radial-gradient($gradient);
   background-image: radial-gradient($gradient);
 }
 
@@ -520,15 +495,14 @@
 //   @desc use this to set custom background styles (such as gradients).
 @mixin make-text-mask($bg-image: null, $text-color: transparent) {
 
-  // Set our text color.
+  // Set our text color
   // Must have some transparency for background image to show.
-  -webkit-text-fill-color: $text-color;
+  color: $text-color;
 
   // Make text our clipping mask
-  -webkit-background-clip: text;
   background-clip: text;
 
-  // Set our background image if a source is provided.
+  // Set our background image if a source is provided
   @if ($bg-image) {
     background-image: $bg-image;
     background-repeat: no-repeat;
@@ -536,7 +510,7 @@
     background-size: cover;
   }
 
-  // Let's you set your own background properties.
+  // Let's you set your own background properties
   @content;
 }
 

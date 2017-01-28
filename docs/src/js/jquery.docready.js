@@ -1,3 +1,4 @@
+// require jquery.sticky.js jquery.function.js
 /**
  * jquery.docready.js
  * A place to store all your JavaScript you want to run after
