@@ -1,6 +1,6 @@
-![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/39132g291E2e2k3I0e2e/baseweb-logo.png "BaseWeb")
+![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg "BaseWeb")
 
-Currently v2.2.1
+Currently v2.2.3
 
 ## About
 BaseWeb is a fresh SCSS front-end development framework and library built to help keep your projects simple, organized and responsive.
@@ -26,26 +26,29 @@ Upcoming features and updates to BaseWeb documentation:
 
 ## Build Scripts
 
-BaseWeb uses [Node](https://nodejs.org/), [Jake](http://jakejs.com/) and [Jake-Builds](https://github.com/sebnitu/jake-builds) for building both the source and docs. For more information on how to update build scripts using this stack, make sure to checkout [Jake-Builds](https://github.com/sebnitu/jake-builds).
+BaseWeb leverages Gulp for its build process. To use our Gulp tasks, after cloning this repo, you'll need to run `npm install`. Once all the necessary node packages are installed, you should have the following tasks available:
 
-### Node Packages
-Run `sudo npm install` to install required node modules for build scripts. This is the following node stack used to build BaseWeb assets and documentation files:
+| Task | Description |
+|------|-------------|
+| `gulp css` | Output expanded and minified CSS files from source |
+| `gulp js` | Output expanded and minified JS files from source |
+| `gulp docs:css` | Output expanded and minified CSS files from documentation |
+| `gulp docs:js` | Output expanded and minified JS files from documentation |
+| `gulp docs:img` | Compress all image files from documentation |
+| `gulp src` | Builds all source assets |
+| `gulp docs` | Builds all documentation assets |
+| `gulp go` | Builds everything |
+| `gulp watch` | Watches all asset files and runs the appropriate build task based on changed |
+| `gulp` | Builds everything and then initiates the watch task |
+| `gulp replace` | Runs a search and replace task on a given set of files.\* |
 
-| Node Modules   | Versions   | Description |
-|----------------|------------|-------------|
-| `node-watch`   | `0.4.*`    | Used in handling the watch task |
-| `node-sass`    | `3.10.*`   | Used for compiling and minifying CSS from SCSS files |
-| `uglify-js`    | `2.7.*`    | Used to compile and minify our JavaScript files |
+\*Great for updating current version numbers that are located throughout a project. 
 
-### Jake Tasks
-To see the full list of available Jake tasks for a project, use `jake -ls`. The following tasks are available for building BaseWeb and related files:
+```
+Usage: gulp replace -s SEARCH -r REPLACE -f FILES
+```
 
-| Jake Tasks            | Description                                          |
-|-----------------------|------------------------------------------------------|
-| `jake build`          | Build everything                                     |
-| `jake build:scss`     | Compiles and minifies SCSS                           |
-| `jake build:js`       | Compiles and minifies JS                             |
-| `jake watch`          | Watch for change to files and rebuild if they change |
+*All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.*
 
 ## Copyright and License
 
