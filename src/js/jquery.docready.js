@@ -24,7 +24,7 @@
   /**
    * When the images are loaded
    */
-  $(window).load(function () {
+  $(window).on('load', function() {
 
 
 

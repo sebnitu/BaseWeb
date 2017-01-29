@@ -79,7 +79,7 @@ gulp.task('replace', function() {
 
 // BaseWeb Source Builds
 // CSS processing
-// Output expanded and minified CSS files + plugins
+// Output expanded and minified CSS files from source
 gulp.task('css', function() {
   var
     src = folder.src + 'scss/baseweb.scss',
@@ -108,7 +108,7 @@ gulp.task('css', function() {
 });
 
 // JavaScript processing
-// Output expanded and minified JS files + plugins
+// Output expanded and minified JS files from source
 gulp.task('js', function() {
   var
     src = folder.src + 'js/**/*',
@@ -130,7 +130,7 @@ gulp.task('js', function() {
 // ---
 
 // Documentation Builds
-// CSS processing
+// Output expanded and minified CSS files from documentation
 gulp.task('docs:css', function() {
   var
     src = folder.srcDocs + 'scss/docs.scss',
@@ -160,6 +160,7 @@ gulp.task('docs:css', function() {
 });
 
 // JS Processing
+// Output expanded and minified JS files from documentation
 gulp.task('docs:js', function() {
   var
     src = folder.srcDocs + 'js/**/*',
@@ -179,6 +180,7 @@ gulp.task('docs:js', function() {
 });
 
 // Image processing
+// Compress all image files from documentation
 gulp.task('docs:img', function() {
   var dest = folder.destDocs + 'img/';
   return gulp.src(folder.srcDocs + 'img/**/*')
@@ -190,12 +192,15 @@ gulp.task('docs:img', function() {
 // ---
 
 // Watch & Bulk Tasks
-// Build everything
+// Builds all source assets
 gulp.task('src', ['css', 'js']);
+// Builds all documentation assets
 gulp.task('docs', ['docs:css', 'docs:js', 'docs:img']);
+// Build everything
 gulp.task('go', ['src', 'docs']);
 
 // watch for changes
+// Watches all asset files and runs the appropriate build task based on changed
 gulp.task('watch', function() {
 
   // src scss changes
@@ -213,4 +218,5 @@ gulp.task('watch', function() {
 });
 
 // default task
+// Builds everything and then initiates the watch task
 gulp.task('default', ['go', 'watch']);
