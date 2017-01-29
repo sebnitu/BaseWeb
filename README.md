@@ -40,7 +40,7 @@ BaseWeb leverages Gulp for its build process. To use our Gulp tasks, after cloni
 | `gulp go` | Builds everything |
 | `gulp watch` | Watches all asset files and runs the appropriate build task based on changed |
 | `gulp` | Builds everything and then initiates the watch task |
-| `gulp replace` | Runs a search and replace task on a given set of files. Great for updating current version numbers that are located throughout a project. **Usage:** `gulp replace -s SEARCH -r REPLACE -f FILES` |
+| `gulp replace` | Runs a search and replace task on a given set of files. |
 
 *All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.*
 
