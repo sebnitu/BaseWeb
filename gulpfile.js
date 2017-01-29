@@ -6,8 +6,8 @@ var
   gulp = require('gulp'),
   newer = require('gulp-newer'),
   rename = require('gulp-rename'),
-  merge = require('merge-stream'),
   replace = require('gulp-replace'),
+  merge = require('merge-stream'),
   minimist = require('minimist'),
   // CSS
   sass = require('gulp-sass'),

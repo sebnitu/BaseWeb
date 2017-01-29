@@ -464,12 +464,12 @@ Dropdown variables are encompassed within the `$dropdowns` map and are used thro
     <th colspan="2">Transition</th>
   </tr>
   <tr>
-    <td><code>$dropdowns('transition')</code></td>
-    <td><code>transform, opacity, visibility</code></td>
+    <td><code>$dropdowns('transition-property')</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$dropdowns('transition-in-duration')</code></td>
-    <td><code>0.25s, 0.25s, 0.25s</code></td>
+    <td><code>0.25s</code></td>
   </tr>
   <tr>
     <td><code>$dropdowns('transition-in-timing-function')</code></td>
@@ -477,11 +477,11 @@ Dropdown variables are encompassed within the `$dropdowns` map and are used thro
   </tr>
   <tr>
     <td><code>$dropdowns('transition-in-delay')</code></td>
-    <td><code>none</code></td>
+    <td><code>0s</code></td>
   </tr>
   <tr>
     <td><code>$dropdowns('transition-out-duration')</code></td>
-    <td><code>0.25s, 0.25s, 0.15s</code></td>
+    <td><code>0.25s</code></td>
   </tr>
   <tr>
     <td><code>$dropdowns('transition-out-timing-function')</code></td>
