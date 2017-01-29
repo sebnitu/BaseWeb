@@ -225,11 +225,15 @@ When using BaseWeb source, you'll need to utilize a method for compiling and min
   </tr>
   <tr>
     <td><code>gulp replace</code></td>
-    <td>
-      Runs a search and replace task on a given set of files. Great for updating current version numbers that are located throughout a project. <br><strong>Usage:</strong> <code>gulp replace -s SEARCH -r REPLACE -f FILES</code>
-    </td>
+    <td> Runs a search and replace task on a given set of files.*</td>
   </tr>
 </tbody></table>
+
+\* Great for updating current version numbers that are located throughout a project.
+
+```
+Usage: gulp replace -s SEARCH -r REPLACE -f FILES
+```
 
 <div class="notice info">
   <p markdown="1">All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.</p>
