@@ -1,6 +1,6 @@
 ![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg "BaseWeb")
 
-Currently v2.2.3
+Currently v2.2.4
 
 ## About
 BaseWeb is a fresh SCSS front-end development framework and library built to help keep your projects simple, organized and responsive.
