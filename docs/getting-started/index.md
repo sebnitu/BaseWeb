@@ -12,7 +12,7 @@ If you're using the source to build your project, you also have available to you
 
 <ol class="list list-docs numbered">
 <li markdown="1">
-**Download Source BaseWeb:** Once downloaded, you'll want to grab the `src` directory, and include it in your projects. From here, you can either work directly in the `scss` files and create your own custom project framework, or to keep core maintainability by override the files that you wish to edit using the `_baseweb.scss` router file which is where all `@import` declarations are called.
+**Download Source BaseWeb:** Once downloaded, you'll want to grab the `src` directory, and include it in your projects. From here, you can either work directly in the `scss` files and create your own custom project framework, or to keep core maintainability by override the files that you wish to edit using the `baseweb.scss` router file which is where all `@import` declarations are located.
 </li>
 <li markdown="1">
 **Setup a Development Environment:** Next, you'll need to setup some form of development environment and workflow that incorporates a compiling and minifying stage. This can be done in many ways and some common methods include [CodeKit](https://incident57.com/codekit/), [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) or [Jake](http://jakejs.com/) to name a few. No matter the method you choose, the compiler should be run on `baseweb.scss`, where all BaseWeb's files are routed through.
@@ -115,8 +115,8 @@ $COMPONENT: (
 Although BaseWeb isn't currently very opinionated about your JavaScript, it's pretty common to be using something like jQuery. So for best practice, we point to the latest version from a CDN and we have a local backup just in case.
 
 ```html
-<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>!window.jQuery && document.write(unescape('%3Cscript src="/assets/js/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 ```
 
 Also common as a starter is to have two JavaScript files that are then combined and minified for production. These files are empty but initiate a `$(document).ready` and `$(window).load` as well as a self executing function wrap. The final compiled and minified file is then included in the footer after jQuery.
@@ -165,7 +165,7 @@ A place to store all your JavaScript you want to run after either the document i
   /**
    * When the images are loaded
    */
-  $(window).load(function () {
+  $(window).on('load', function() {
 
     // Your code here...
 
@@ -176,96 +176,61 @@ A place to store all your JavaScript you want to run after either the document i
 
 ## Build Scripts
 
-When using the source of BaseWeb, you'll need to setup a development environment for compiling and minifying SCSS and JS files. BaseWeb leverages Jake for this and a wrapper called Jake Builds. This is an example of the build environment configuration for SCSS and JavaScript files that would be included in your `jake-config.js` file.
-
-```js
-module.exports = {
-
-  // Build Tasks
-  build: [{
-    // SCSS Build Task
-    task: 'scss',
-    desc: 'Compiles and minifies SCSS',
-    options: [{
-      input   : 'src/scss/_baseweb.scss',
-      output  : 'src/css/baseweb.min.css',
-      paths   : ['src/scss/'],
-      style   : 'compressed'
-    }]
-  }, {
-    // JS Build Task
-    task: 'js',
-    desc: 'Compiles and minifies JS',
-    options: [{
-      input : [
-        'docs/assets/js/jquery.function.js',
-        'docs/assets/js/jquery.docready.js'
-      ],
-      output : 'docs/assets/js/scripts.min.js'
-    }]
-  }],
-
-  // Watch Tasks
-  watch: [{
-    // SCSS Watch Task
-    task: 'scss',
-    files: [
-      'src/scss/',
-      'docs/assets/scss/'
-    ]
-  }, {
-    // JS Watch Task
-    task: 'js',
-    files: ['docs/assets/js/'],
-    ignore: ['docs/assets/js/scripts.min.js']
-  }]
-
-};
-```
-
-With these configurations set, it makes available four Jake tasks (viewable when running `jake -ls`):
-
-```console
-~$ jake -ls
-jake build            Build everything
-jake build:scss       Compiles and minifies SCSS
-jake build:js         Compiles and minifies JS
-jake watch            Watch for change to files and rebuild if they change
-```
-
-### Requirements
-
-If you want to use this build environment, you'll need to install the following:
+When using BaseWeb source, you'll need to utilize a method for compiling and minifying SCSS and JavaScript files. BaseWeb leverages Gulp for its build process. To use our Gulp tasks, after cloning this repo, you'll need to run `npm install`. Once all the necessary node packages are installed, you should have the following tasks available:
 
 <table class="table table-docs">
-  <tr>
-    <th>Software</th>
-    <th>Version</th>
+  <tbody><tr>
+    <th>Task</th>
     <th>Description</th>
   </tr>
   <tr>
-    <td><a href="https://nodejs.org/en/">Node</a></td>
-    <td><code>7.0.*</code></td>
-    <td>A JavaScript runtime built on Chrome's V8 JavaScript engine</td>
+    <td><code>gulp css</code></td>
+    <td>Output expanded and minified CSS files from source</td>
   </tr>
   <tr>
-    <td><a href="http://jakejs.com/">Jake</a></td>
-    <td><code>8.0.*</code></td>
-    <td>JavaScript build tool</td>
+    <td><code>gulp js</code></td>
+    <td>Output expanded and minified JS files from source</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sebnitu/jake-builds">Jake Builds</a></td>
-    <td><code>Current</code></td>
-    <td>A wrapper for creating jake tasks and interfacing with node modules</td>
+    <td><code>gulp docs:css</code></td>
+    <td>Output expanded and minified CSS files from documentation</td>
   </tr>
-</table>
+  <tr>
+    <td><code>gulp docs:js</code></td>
+    <td>Output expanded and minified JS files from documentation</td>
+  </tr>
+  <tr>
+    <td><code>gulp docs:img</code></td>
+    <td>Compress all image files from documentation</td>
+  </tr>
+  <tr>
+    <td><code>gulp src</code></td>
+    <td>Builds all source assets</td>
+  </tr>
+  <tr>
+    <td><code>gulp docs</code></td>
+    <td>Builds all documentation assets</td>
+  </tr>
+  <tr>
+    <td><code>gulp go</code></td>
+    <td>Builds everything</td>
+  </tr>
+  <tr>
+    <td><code>gulp watch</code></td>
+    <td>Watches all asset files and runs the appropriate build task based on changed</td>
+  </tr>
+  <tr>
+    <td><code>gulp</code></td>
+    <td>Builds everything and then initiates the watch task</td>
+  </tr>
+  <tr>
+    <td><code>gulp replace</code></td>
+    <td>
+      Runs a search and replace task on a given set of files. Great for updating current version numbers that are located throughout a project. <br><strong>Usage:</strong> <code>gulp replace -s SEARCH -r REPLACE -f FILES</code>
+    </td>
+  </tr>
+</tbody></table>
 
-You'll also need to include the following dependencies within your `package.json` file:
-
-```js
-"devDependencies": {
-  "node-watch" : "0.4.*",
-  "node-sass"  : "3.10.*",
-  "uglify-js"  : "2.7.*"
-}
-```
+<div class="notice info">
+  <p markdown="1">All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.</p>
+</div>

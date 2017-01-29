@@ -26,7 +26,24 @@ Upcoming features and updates to BaseWeb documentation:
 
 ## Build Scripts
 
-Build scripts have been rebuilt from `Jake` => `Gulp`. Need to write up some documentation for the new tasks (coming soon).
+BaseWeb leverages Gulp for its build process. To use our Gulp tasks, after cloning this repo, you'll need to run `npm install`. Once all the necessary node packages are installed, you should have the following tasks available:
+
+| Task | Description |
+|------|-------------|
+| `gulp css` | Output expanded and minified CSS files from source |
+| `gulp js` | Output expanded and minified JS files from source |
+| `gulp docs:css` | Output expanded and minified CSS files from documentation |
+| `gulp docs:js` | Output expanded and minified JS files from documentation |
+| `gulp docs:img` | Compress all image files from documentation |
+| `gulp src` | Builds all source assets |
+| `gulp docs` | Builds all documentation assets |
+| `gulp go` | Builds everything |
+| `gulp watch` | Watches all asset files and runs the appropriate build task based on changed |
+| `gulp` | Builds everything and then initiates the watch task |
+| `gulp replace` | Runs a search and replace task on a given set of files. Great for updating current version numbers that are located throughout a project.
+**Usage:** `gulp replace -s SEARCH -r REPLACE -f FILES` |
+
+*All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.*
 
 ## Copyright and License
 
