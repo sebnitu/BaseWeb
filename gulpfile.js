@@ -44,7 +44,8 @@ var
       'LICENSE',
       'src/scss/baseweb.scss',
       'docs/src/scss/docs.scss',
-    ]
+    ],
+    exclude: []
   },
 
   // Allows us to pass parameters to gulp tasks
@@ -57,15 +58,18 @@ var
 // Search and replace
 gulp.task('replace', function() {
 
-  var src;
+  var src = searchFiles['exclude'];
 
   if ((options.s == undefined) || (options.r == undefined) || (options.f == undefined)) {
     console.error('USAGE: gulp replace -s <SEARCH> -r <REPLACE> -f <FILES>');
   } else {
-    if (searchFiles[options.f] == undefined) {
-      src = options.f;
+    if (searchFiles[options.f] != undefined) {
+      src = searchFiles[options.f].concat(src);
     } else {
-      src = searchFiles[options.f];
+      src = String(options.f)
+        .replace(/\s+/g, '')
+        .split(',')
+        .concat(src);
     }
 
     return gulp.src(src, { base: './' })
