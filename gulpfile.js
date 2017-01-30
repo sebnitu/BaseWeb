@@ -58,7 +58,7 @@ var
 // Search and replace
 gulp.task('replace', function() {
 
-  var src = searchFiles['exclude'];
+  var src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : [];
 
   if ((options.s == undefined) || (options.r == undefined) || (options.f == undefined)) {
     console.error('USAGE: gulp replace -s <SEARCH> -r <REPLACE> -f <FILES>');
