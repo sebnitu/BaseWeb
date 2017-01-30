@@ -45,10 +45,12 @@ var
       'src/scss/baseweb.scss',
       'docs/src/scss/docs.scss',
     ],
-    exclude: []
+    exclude: [
+      '!./node_modules/**'
+    ]
   },
 
-  // Allows us to pass parameters to gulp tasks
+  // Save passed parameters to use in gulp tasks
   options = minimist(process.argv.slice(2))
 ;
 
@@ -71,6 +73,9 @@ gulp.task('replace', function() {
         .split(',')
         .concat(src);
     }
+
+    console.log('Searching for "\033[36m' + String(options.s) + '\033[39m" to replace with "\033[36m' + String(options.r) + '\033[39m"');
+    console.log('Files to search: ', src);
 
     return gulp.src(src, { base: './' })
       .pipe(replace(String(options.s), String(options.r)))
