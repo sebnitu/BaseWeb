@@ -74,7 +74,13 @@ gulp.task('replace', function() {
         .concat(src);
     }
 
-    console.log('Searching for "\033[36m' + String(options.s) + '\033[39m" to replace with "\033[36m' + String(options.r) + '\033[39m"');
+    console.log(
+      'Searching for "\033[36m' +
+      String(options.s) +
+      '\033[39m" to replace with "\033[36m' +
+      String(options.r) +
+      '\033[39m"'
+    );
     console.log('Files to search: ', src);
 
     return gulp.src(src, { base: './' })
