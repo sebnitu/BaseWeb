@@ -21,8 +21,13 @@ $override: (
 );
 
 // This is how we extend our default component maps with overrides
-@if (map-has-key($override, 'some_component') == true) {
-  $some_component: map-extend($some_component, map-get($override, 'some_component'), true);
+// First we check if the $override variable exists
+@if variable-exists(override) {
+  // Then we check if the component map inside $override exists
+  @if (map-has-key($override, 'some_component') == true) {
+    // Last, we extend the default component  map with overrides
+    $some_component: map-extend($some_component, map-get($override, 'some_component'), true);
+  }
 }
 
 @debug $some_component;
