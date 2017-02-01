@@ -54,6 +54,13 @@ $buttons: (
 
 ) !default;
 
+// Extend default $buttons map with $overrides.buttons, if it exists
+@if variable-exists(override) {
+  @if (map-has-key($override, 'buttons') == true) {
+    $buttons: map-extend($buttons, map-get($override, 'buttons'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Mixins
 ////////////////////////////////////////////////////////////////////////////////

@@ -1,33 +1,28 @@
-$some_component: (
-  'one': 1,
-  'two': 1,
-  'three': 1,
-  'map': (
-    'one': 1,
-    'two': 1,
-    'three': 1
-  )
-);
+////////////////////////////////////////////////////////////////////////////////
+// @Overrides Map
+////////////////////////////////////////////////////////////////////////////////
 
-$override: (
-  'some_component': (
-    'one': 0,
-    'two': 0,
-    'four': 0,
-    'map': (
-      'one': 0
-    )
-  )
-);
+// This is where we define all global, element and component map overrides
+$override: ();
 
-// This is how we extend our default component maps with overrides
-// First we check if the $override variable exists
-@if variable-exists(override) {
-  // Then we check if the component map inside $override exists
-  @if (map-has-key($override, 'some_component') == true) {
-    // Last, we extend the default component  map with overrides
-    $some_component: map-extend($some_component, map-get($override, 'some_component'), true);
-  }
+////////////////////////////////////////////////////////////////////////////////
+// @Settings Overrides
+////////////////////////////////////////////////////////////////////////////////
+
+// There are three maps that get defined before this override file is loaded
+// To extend them with the override map we need to extend them here
+// ---
+// Extend default $grid map with $overrides.grid, if it exists
+@if (map-has-key($override, 'grid') == true) {
+  $grid: map-extend($grid, map-get($override, 'grid'), true);
 }
 
-@debug $some_component;
+// Extend default $mini-grid map with $overrides.mini-grid, if it exists
+@if (map-has-key($override, 'mini-grid') == true) {
+  $mini-grid: map-extend($mini-grid, map-get($override, 'mini-grid'), true);
+}
+
+// Extend default $breakpoints map with $overrides.breakpoints, if it exists
+@if (map-has-key($override, 'breakpoints') == true) {
+  $breakpoints: map-extend($breakpoints, map-get($override, 'breakpoints'), true);
+}
