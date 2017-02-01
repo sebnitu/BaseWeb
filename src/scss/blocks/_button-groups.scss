@@ -23,6 +23,13 @@ $button-groups: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'button-groups') == true) {
+    $button-groups: map-extend($button-groups, map-get($override, 'button-groups'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Mixins
 ////////////////////////////////////////////////////////////////////////////////

@@ -25,6 +25,13 @@ $tables: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'tables') == true) {
+    $tables: map-extend($tables, map-get($override, 'tables'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Table Mixins
 ////////////////////////////////////////////////////////////////////////////////
