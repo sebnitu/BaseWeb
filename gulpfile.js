@@ -11,6 +11,7 @@ var
   minimist = require('minimist'),
   // CSS
   sass = require('gulp-sass'),
+  sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
@@ -107,16 +108,20 @@ gulp.task('css', function() {
       autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
     ],
     css = gulp.src(src)
+      .pipe(sourcemaps.init())
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest)),
     cssmin = gulp.src(src)
+      .pipe(sourcemaps.init())
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
       .pipe(postcss([cssnano]))
       .pipe(rename('baseweb.min.css'))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
 
   return merge(css, cssmin);
@@ -159,16 +164,20 @@ gulp.task('docs:css', function() {
       autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
     ],
     css = gulp.src(src)
+      .pipe(sourcemaps.init())
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest)),
     cssmin = gulp.src(src)
+      .pipe(sourcemaps.init())
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
       .pipe(postcss([cssnano]))
       .pipe(rename('docs.min.css'))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
 
   return merge(css, cssmin);
