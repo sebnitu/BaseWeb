@@ -103,16 +103,8 @@ Button variables are encompassed within the `$buttons` map and are used througho
     <td><code>inset 0 0 0</code> <code>rgba($black, 0)</code></td>
   </tr>
   <tr>
-    <td><code>$buttons('border-width')</code></td>
-    <td><code>1px</code></td>
-  </tr>
-  <tr>
-    <td><code>$buttons('border-style')</code></td>
-    <td><code>solid</code></td>
-  </tr>
-  <tr>
-    <td><code>$buttons('border-color')</code></td>
-    <td><code>rgba($black, 0.15)</code></td>
+    <td><code>$buttons('border')</code></td>
+    <td><code>1px solid rgba($black, 0.15)</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border-radius')</code></td>
