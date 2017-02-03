@@ -327,7 +327,10 @@ Button Group variables are encompassed within the `$button-groups` map and are u
     <td><code>$button-groups('class-is')</code></td>
     <td><code>map-get($mini-grid, 'class-is')</code></td>
   </tr>
-
+  <tr>
+    <td><code>$button-groups('border-width')</code></td>
+    <td><code>1px</code></td>
+  </tr>
   <tr>
     <td><code>$button-groups('fractions')</code></td>
     <td><code>map-get($mini-grid, 'fractions')</code></td>

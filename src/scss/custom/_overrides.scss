@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+// @Overrides Map
+////////////////////////////////////////////////////////////////////////////////
+
+// This is where we define all global, element and component map overrides
+$override: ();
+
+////////////////////////////////////////////////////////////////////////////////
+// @Settings Overrides
+////////////////////////////////////////////////////////////////////////////////
+
+// There are three maps that get defined before this override file is loaded
+// To extend them with the override map we need to extend them here
+// ---
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'grid') == true) {
+    $grid: map-extend($grid, map-get($override, 'grid'), true);
+  }
+  @if (map-has-key($override, 'mini-grid') == true) {
+    $mini-grid: map-extend($mini-grid, map-get($override, 'mini-grid'), true);
+  }
+  @if (map-has-key($override, 'breakpoints') == true) {
+    $breakpoints: map-extend($breakpoints, map-get($override, 'breakpoints'), true);
+  }
+}

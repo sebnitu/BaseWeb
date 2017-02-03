@@ -34,6 +34,13 @@ $breadcrumbs: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'breadcrumbs') == true) {
+    $breadcrumbs: map-extend($breadcrumbs, map-get($override, 'breadcrumbs'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Breadcrumb Mixins
 ////////////////////////////////////////////////////////////////////////////////

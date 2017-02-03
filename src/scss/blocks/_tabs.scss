@@ -33,6 +33,13 @@ $tabs: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'tabs') == true) {
+    $tabs: map-extend($tabs, map-get($override, 'tabs'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Tabs Mixins
 ////////////////////////////////////////////////////////////////////////////////

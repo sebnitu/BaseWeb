@@ -11,7 +11,20 @@
 
 {% if has_children == true %}
 <nav class="widget widget-menu" id="widget-menu">
-  <h2>Documentation</h2>
+  {% for node in pages %}
+    {% if node.url contains root and node.url == root %}
+      <h2>
+        <a{% if node.link.class %} class="{{ node.link.class }}"{% endif %} href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+          {% if node.link.text %}
+            {{ node.link.text }}
+          {% else %}
+            {{ node.title }}
+          {% endif %}
+        </a>
+      </h2>
+    {% endif %}
+  {% endfor %}
+
   <ul>
     {% for node in pages %}
       {% if node.url contains root %}

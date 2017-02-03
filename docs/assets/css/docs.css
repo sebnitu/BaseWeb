@@ -2,7 +2,7 @@
 /*!
  * BaseWeb
  * A fresh front-end development framework
- * @version 2.2.3
+ * @version 2.3.0
  *
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
@@ -2877,7 +2877,7 @@ fieldset[disabled] .input {
   .container {
     width: 100%;
     min-width: none;
-    max-width: 80rem;
+    max-width: 80em;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
@@ -3364,8 +3364,8 @@ body {
 .hero {
   position: relative;
   background: #2196F3;
-  background-image: -webkit-linear-gradient(left, #2196F3, #1976D2);
-  background-image: linear-gradient(to right, #2196F3, #1976D2);
+  background-image: -webkit-linear-gradient(left, #880E4F, #311B92);
+  background-image: linear-gradient(to right, #880E4F, #311B92);
 }
 
 .hero {
@@ -3540,6 +3540,46 @@ body {
 }
 
 /*==============================================================================
+  @Widget Wrap - scss/custom/_custom.scss
+==============================================================================*/
+.widget-wrap {
+  margin: 2em 0;
+}
+
+.widget-wrap .widget {
+  margin: 1em 0;
+}
+
+.widget-wrap .widget .button {
+  display: block;
+}
+
+@media (min-width: 480px) {
+  .widget-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .widget-wrap .widget {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 25%;
+            flex: 1 1 25%;
+  }
+  .widget-wrap .widget + .widget {
+    margin-left: 2em;
+  }
+  .widget-wrap .widget .button {
+    display: inline-block;
+  }
+}
+
+/*==============================================================================
   @Widgets - scss/custom/_custom.scss
 ==============================================================================*/
 /**
@@ -3548,7 +3588,6 @@ body {
 .widget {
   margin: 0;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
@@ -3558,13 +3597,30 @@ body {
 
 .widget:last-child {
   padding-bottom: 1rem;
-  border-bottom: 0 none;
+}
+
+.widget .widget + .widget {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.widget.card {
+  padding: 1em 2em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
 .widget h2 {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   font-size: 1.143em;
   font-weight: 600;
+}
+
+.widget h2 a {
+  color: #212121;
+}
+
+.widget h2 a:hover {
+  color: #2196F3;
 }
 
 /**
@@ -3868,7 +3924,8 @@ body {
 .block-action {
   margin: 2em 0;
   padding: 1.5em 3em;
-  background: #2196F3;
+  background-image: -webkit-linear-gradient(45deg, #880E4F, #311B92);
+  background-image: linear-gradient(45deg, #880E4F, #311B92);
   border-radius: 3px;
   color: #fff;
   text-align: center;
@@ -3940,417 +3997,6 @@ body {
 /*==============================================================================
   @End - scss/custom/_custom.scss
 ==============================================================================*/
-/*==============================================================================
-  @Code - scss/docs/_highlight.scss
-==============================================================================*/
-figure {
-  margin: 1em 0;
-}
-
-.highlight .c {
-  color: #998;
-  font-style: italic;
-}
-
-.highlight .err {
-  color: #a61717;
-}
-
-.highlight .k {
-  font-weight: bold;
-}
-
-.highlight .o {
-  font-weight: bold;
-}
-
-.highlight .cm {
-  color: #998;
-  font-style: italic;
-}
-
-.highlight .cp {
-  color: #999;
-  font-weight: bold;
-}
-
-.highlight .c1 {
-  color: #998;
-  font-style: italic;
-}
-
-.highlight .cs {
-  color: #999;
-  font-weight: bold;
-  font-style: italic;
-}
-
-.highlight .gd {
-  color: #000;
-}
-
-.highlight .gd .x {
-  color: #000;
-}
-
-.highlight .ge {
-  font-style: italic;
-}
-
-.highlight .gr {
-  color: #a00;
-}
-
-.highlight .gh {
-  color: #999;
-}
-
-.highlight .gi {
-  color: #000;
-}
-
-.highlight .gi .x {
-  color: #000;
-}
-
-.highlight .go {
-  color: #888;
-}
-
-.highlight .gp {
-  color: #555;
-}
-
-.highlight .gs {
-  font-weight: bold;
-}
-
-.highlight .gu {
-  color: #aaa;
-}
-
-.highlight .gt {
-  color: #a00;
-}
-
-.highlight .kc {
-  font-weight: bold;
-}
-
-.highlight .kd {
-  font-weight: bold;
-}
-
-.highlight .kp {
-  font-weight: bold;
-}
-
-.highlight .kr {
-  font-weight: bold;
-}
-
-.highlight .kt {
-  color: #458;
-  font-weight: bold;
-}
-
-.highlight .m {
-  color: #099;
-}
-
-.highlight .s {
-  color: #d14;
-}
-
-.highlight .na {
-  color: #008080;
-}
-
-.highlight .nb {
-  color: #0086B3;
-}
-
-.highlight .nc {
-  color: #458;
-  font-weight: bold;
-}
-
-.highlight .no {
-  color: #008080;
-}
-
-.highlight .ni {
-  color: #800080;
-}
-
-.highlight .ne {
-  color: #900;
-  font-weight: bold;
-}
-
-.highlight .nf {
-  color: #900;
-  font-weight: bold;
-}
-
-.highlight .nn {
-  color: #555;
-}
-
-.highlight .nt {
-  color: #000080;
-}
-
-.highlight .nv {
-  color: #008080;
-}
-
-.highlight .ow {
-  font-weight: bold;
-}
-
-.highlight .w {
-  color: #bbb;
-}
-
-.highlight .mf {
-  color: #099;
-}
-
-.highlight .mh {
-  color: #099;
-}
-
-.highlight .mi {
-  color: #099;
-}
-
-.highlight .mo {
-  color: #099;
-}
-
-.highlight .sb {
-  color: #d14;
-}
-
-.highlight .sc {
-  color: #d14;
-}
-
-.highlight .sd {
-  color: #d14;
-}
-
-.highlight .s2 {
-  color: #d14;
-}
-
-.highlight .se {
-  color: #d14;
-}
-
-.highlight .sh {
-  color: #d14;
-}
-
-.highlight .si {
-  color: #d14;
-}
-
-.highlight .sx {
-  color: #d14;
-}
-
-.highlight .sr {
-  color: #009926;
-}
-
-.highlight .s1 {
-  color: #d14;
-}
-
-.highlight .ss {
-  color: #990073;
-}
-
-.highlight .bp {
-  color: #999;
-}
-
-.highlight .vc {
-  color: #008080;
-}
-
-.highlight .vg {
-  color: #008080;
-}
-
-.highlight .vi {
-  color: #008080;
-}
-
-.highlight .il {
-  color: #099;
-}
-
-/*==============================================================================
-  @Swatches - scss/docs/_swatches.scss
-  ---
-  Where we style our color presentation. Swatches refer to color samples.
-==============================================================================*/
-/**
- * Swatch
- */
-.swatch {
-  display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 44px;
-  height: 44px;
-  border-radius: 3px;
-}
-
-.bg-color {
-  background: #212121;
-}
-
-.bg-color-light {
-  background: #9E9E9E;
-}
-
-.bg-color-dark {
-  background: #212121;
-}
-
-.bg-color-heading {
-  background: #212121;
-}
-
-.bg-color-link {
-  background: #2196F3;
-}
-
-.bg-color-link-hover {
-  background: #1976D2;
-}
-
-.bg-color-link-heading {
-  background: #2196F3;
-}
-
-.bg-color-link-heading-hover {
-  background: #E64A19;
-}
-
-.bg-bg-color {
-  background: #F5F5F5;
-}
-
-.bg-bg-selection {
-  background: rgba(76, 175, 80, 0.25);
-}
-
-.bg-border-color {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.bg-border-color-hover {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-/**
- * Swatch and Value combo
- */
-.swatch-wrap {
-  position: relative;
-  height: 44px;
-  min-width: 44px;
-}
-
-.swatch-wrap .swatch {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.swatch-wrap .swatch-value {
-  margin-left: 49px;
-  display: inline-block;
-  width: auto;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-/**
- * Swatch Cards
- */
-.swatch-card {
-  margin: 2em 0;
-}
-
-.swatch-card ul {
-  margin: 0.5em 0 0;
-  list-style: none;
-}
-
-.swatch-card ul li {
-  margin: 0;
-}
-
-@media (min-width: 760px) {
-  .swatch-card-wrap {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    margin: 0 -2em 2em 0;
-  }
-  .swatch-card {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    width: 40%;
-    margin: 2em 2em 0 0;
-  }
-}
-
-.swatch-card .swatch {
-  display: block;
-  width: auto;
-  height: auto;
-  padding: 1em;
-  border: none;
-  border-radius: 0;
-  color: #fff;
-}
-
-.swatch-card .swatch.text-dark {
-  color: #212121;
-}
-
-.swatch-card .swatch .name {
-  display: block;
-  margin-bottom: 3em;
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  text-transform: capitalize;
-}
-
-.swatch-card .swatch.text-dark .name {
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-.swatch-card .swatch .var,
-.swatch-card .swatch .hex {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
-.swatch-card .swatch .hex {
-  float: right;
-}
-
 /*==============================================================================
   @Demo - scss/custom/_demos.scss
 ==============================================================================*/
@@ -4693,7 +4339,7 @@ figure {
 .demo-grid-semantic .demo-wrapper {
   width: 100%;
   min-width: none;
-  max-width: 80rem;
+  max-width: 80em;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -5105,3 +4751,416 @@ figure {
 .demo-tabs.inverted {
   background: #212121;
 }
+
+/*==============================================================================
+  @Swatches - scss/docs/_swatches.scss
+  ---
+  Where we style our color presentation. Swatches refer to color samples.
+==============================================================================*/
+/**
+ * Swatch
+ */
+.swatch {
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 44px;
+  height: 44px;
+  border-radius: 3px;
+}
+
+.bg-color {
+  background: #212121;
+}
+
+.bg-color-light {
+  background: #9E9E9E;
+}
+
+.bg-color-dark {
+  background: #212121;
+}
+
+.bg-color-heading {
+  background: #212121;
+}
+
+.bg-color-link {
+  background: #2196F3;
+}
+
+.bg-color-link-hover {
+  background: #1976D2;
+}
+
+.bg-color-link-heading {
+  background: #2196F3;
+}
+
+.bg-color-link-heading-hover {
+  background: #E64A19;
+}
+
+.bg-bg-color {
+  background: #F5F5F5;
+}
+
+.bg-bg-selection {
+  background: rgba(76, 175, 80, 0.25);
+}
+
+.bg-border-color {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.bg-border-color-hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/**
+ * Swatch and Value combo
+ */
+.swatch-wrap {
+  position: relative;
+  height: 44px;
+  min-width: 44px;
+}
+
+.swatch-wrap .swatch {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.swatch-wrap .swatch-value {
+  margin-left: 49px;
+  display: inline-block;
+  width: auto;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/**
+ * Swatch Cards
+ */
+.swatch-card {
+  margin: 2em 0;
+}
+
+.swatch-card ul {
+  margin: 0.5em 0 0;
+  list-style: none;
+}
+
+.swatch-card ul li {
+  margin: 0;
+}
+
+@media (min-width: 760px) {
+  .swatch-card-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0 -2em 2em 0;
+  }
+  .swatch-card {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+    width: 40%;
+    margin: 2em 2em 0 0;
+  }
+}
+
+.swatch-card .swatch {
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 1em;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+}
+
+.swatch-card .swatch.text-dark {
+  color: #212121;
+}
+
+.swatch-card .swatch .name {
+  display: block;
+  margin-bottom: 3em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  text-transform: capitalize;
+}
+
+.swatch-card .swatch.text-dark .name {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.swatch-card .swatch .var,
+.swatch-card .swatch .hex {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.swatch-card .swatch .hex {
+  float: right;
+}
+
+/*==============================================================================
+  @Code - scss/docs/_highlight.scss
+==============================================================================*/
+figure {
+  margin: 1em 0;
+}
+
+.highlight .c {
+  color: #998;
+  font-style: italic;
+}
+
+.highlight .err {
+  color: #a61717;
+}
+
+.highlight .k {
+  font-weight: bold;
+}
+
+.highlight .o {
+  font-weight: bold;
+}
+
+.highlight .cm {
+  color: #998;
+  font-style: italic;
+}
+
+.highlight .cp {
+  color: #999;
+  font-weight: bold;
+}
+
+.highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.highlight .cs {
+  color: #999;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.highlight .gd {
+  color: #000;
+}
+
+.highlight .gd .x {
+  color: #000;
+}
+
+.highlight .ge {
+  font-style: italic;
+}
+
+.highlight .gr {
+  color: #a00;
+}
+
+.highlight .gh {
+  color: #999;
+}
+
+.highlight .gi {
+  color: #000;
+}
+
+.highlight .gi .x {
+  color: #000;
+}
+
+.highlight .go {
+  color: #888;
+}
+
+.highlight .gp {
+  color: #555;
+}
+
+.highlight .gs {
+  font-weight: bold;
+}
+
+.highlight .gu {
+  color: #aaa;
+}
+
+.highlight .gt {
+  color: #a00;
+}
+
+.highlight .kc {
+  font-weight: bold;
+}
+
+.highlight .kd {
+  font-weight: bold;
+}
+
+.highlight .kp {
+  font-weight: bold;
+}
+
+.highlight .kr {
+  font-weight: bold;
+}
+
+.highlight .kt {
+  color: #458;
+  font-weight: bold;
+}
+
+.highlight .m {
+  color: #099;
+}
+
+.highlight .s {
+  color: #d14;
+}
+
+.highlight .na {
+  color: #008080;
+}
+
+.highlight .nb {
+  color: #0086B3;
+}
+
+.highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.highlight .no {
+  color: #008080;
+}
+
+.highlight .ni {
+  color: #800080;
+}
+
+.highlight .ne {
+  color: #900;
+  font-weight: bold;
+}
+
+.highlight .nf {
+  color: #900;
+  font-weight: bold;
+}
+
+.highlight .nn {
+  color: #555;
+}
+
+.highlight .nt {
+  color: #000080;
+}
+
+.highlight .nv {
+  color: #008080;
+}
+
+.highlight .ow {
+  font-weight: bold;
+}
+
+.highlight .w {
+  color: #bbb;
+}
+
+.highlight .mf {
+  color: #099;
+}
+
+.highlight .mh {
+  color: #099;
+}
+
+.highlight .mi {
+  color: #099;
+}
+
+.highlight .mo {
+  color: #099;
+}
+
+.highlight .sb {
+  color: #d14;
+}
+
+.highlight .sc {
+  color: #d14;
+}
+
+.highlight .sd {
+  color: #d14;
+}
+
+.highlight .s2 {
+  color: #d14;
+}
+
+.highlight .se {
+  color: #d14;
+}
+
+.highlight .sh {
+  color: #d14;
+}
+
+.highlight .si {
+  color: #d14;
+}
+
+.highlight .sx {
+  color: #d14;
+}
+
+.highlight .sr {
+  color: #009926;
+}
+
+.highlight .s1 {
+  color: #d14;
+}
+
+.highlight .ss {
+  color: #990073;
+}
+
+.highlight .bp {
+  color: #999;
+}
+
+.highlight .vc {
+  color: #008080;
+}
+
+.highlight .vg {
+  color: #008080;
+}
+
+.highlight .vi {
+  color: #008080;
+}
+
+.highlight .il {
+  color: #099;
+}
+
+/*# sourceMappingURL=docs.css.map */

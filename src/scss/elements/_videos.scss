@@ -11,6 +11,13 @@ $videos: (
   'ratio' : 56.25%
 ) !default; // The default video ratio (56.25% = 16 by 9)
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'videos') == true) {
+    $videos: map-extend($videos, map-get($override, 'videos'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Video Functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,7 +45,7 @@ $videos: (
 //   @default $video map
 @mixin make-video-fluid($options: ()) {
   $o: map-merge($videos, $options);
-  
+
   position: relative;
 	display: block;
 	height: 0;
@@ -75,7 +82,7 @@ $videos: (
 
 // Check if we should output modifier classes
 @if (map-get($videos, 'classes') == true) {
-  
+
 /*==============================================================================
   @Video - #{$filename}
 ==============================================================================*/

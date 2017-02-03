@@ -18,10 +18,19 @@ $button-groups: (
   'class-has' : map-get($mini-grid, 'class-has'),
   'class-is' : map-get($mini-grid, 'class-is'),
 
+  'border-width': 1px,
+
   'fractions' : map-get($mini-grid, 'fractions'),
   'spacing' : 1em,
 
 ) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'button-groups') == true) {
+    $button-groups: map-extend($button-groups, map-get($override, 'button-groups'), true);
+  }
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Mixins
@@ -111,7 +120,7 @@ $button-groups: (
 
       + .button {
         margin-top: 0;
-        margin-left: -(map-get($buttons, 'border-width')); // Border width of buttons
+        margin-left: -(map-get($o, 'border-width')); // Border width of buttons
       }
 
       &:first-child {
@@ -135,7 +144,7 @@ $button-groups: (
       border-radius: 0;
 
       + .button {
-        margin-top: -(map-get($buttons, 'border-width')); // Border width of buttons
+        margin-top: -(map-get($o, 'border-width')); // Border width of buttons
         margin-left: 0;
       }
 
@@ -158,7 +167,7 @@ $button-groups: (
 //   @default null
 @mixin add-button-group-has($has: null) {
   @if ($has) {
-    margin-right: -(map-get($buttons, 'border-width') * ($has - 1));
+    margin-right: -(map-get($button-groups, 'border-width') * ($has - 1));
     > .button {
       width: (100% / $has);
     }
@@ -196,7 +205,7 @@ $button-groups: (
   @for $i from 2 through map-get($o, 'fractions') {
     .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-#{$i},
     .#{map-get($o, 'class-group')}.#{map-get($o, 'class-has')}-margin-#{$i} {
-      margin-right: -(map-get($buttons, 'border-width') * ($i - 1)); // Border width of button * the number of buttons minus one.
+      margin-right: -(map-get($o, 'border-width') * ($i - 1)); // Border width of button * the number of buttons minus one.
     }
   }
 }

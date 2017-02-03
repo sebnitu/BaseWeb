@@ -44,6 +44,13 @@ $notices: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'notices') == true) {
+    $notices: map-extend($notices, map-get($override, 'notices'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Notice Mixins
 ////////////////////////////////////////////////////////////////////////////////

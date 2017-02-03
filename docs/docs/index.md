@@ -21,7 +21,9 @@ scss/
 # CSS Output
 css/
 ├── baseweb.css
-└── baseweb.min.css
+├── baseweb.css.map
+├── baseweb.min.css
+└── baseweb.min.css.map
 ```
 
 All of BaseWeb components are routed through `_baseweb.scss`, where all our `@import` calls are made. The only required files are located in Settings and Core directories. These files, by default, have no CSS output and function simply as a libarary if functions and variables that you can use in your project. To exclude any other optional files, just comment out their `@import` declaration and recompile.
@@ -39,6 +41,9 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 @import "core/mixins";
 @import "core/media";
 @import "core/grid";
+
+// Overrides
+@import "custom/overrides";
 
 // Elements
 @import "elements/base";
@@ -59,6 +64,7 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 @import "blocks/notices";
 @import "blocks/breadcrumbs";
 @import "blocks/dropdowns";
+@import "blocks/tabs";
 
 // Custom
 @import "custom/custom";

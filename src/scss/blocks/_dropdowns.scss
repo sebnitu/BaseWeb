@@ -63,6 +63,17 @@ $dropdowns: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'dropdowns') == true) {
+    $dropdowns: map-extend($dropdowns, map-get($override, 'dropdowns'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Dropdown Mixins
+////////////////////////////////////////////////////////////////////////////////
+
 // Make Dropdown
 // Creates the base styles for dropdowns.
 // @param $options
