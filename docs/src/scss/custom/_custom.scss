@@ -229,7 +229,7 @@ body {
 .hero {
   position: relative;
   background: $blue;
-  @include linear-gradient(to right, $blue, $blue-700);
+  @include linear-gradient(to right, $pink-900, $deep-purple-900);
 }
 
 .hero {
@@ -408,6 +408,39 @@ body {
 }
 
 /*==============================================================================
+  @Widget Wrap - #{$filename}
+==============================================================================*/
+
+.widget-wrap {
+  margin: 2em 0;
+
+  .widget {
+    margin: 1em 0;
+  }
+  .widget .button {
+    display: block;
+  }
+}
+
+@include media-min('small') {
+  .widget-wrap {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    .widget {
+      flex: 1 1 25%;
+    }
+    .widget + .widget {
+      margin-left: 2em;
+    }
+    .widget .button {
+      display: inline-block;
+    }
+  }
+}
+
+/*==============================================================================
   @Widgets - #{$filename}
 ==============================================================================*/
 
@@ -417,7 +450,6 @@ body {
 .widget {
   margin: 0;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba($black, 0.1);
   @include border-radius();
 
   &:first-child {
@@ -425,13 +457,28 @@ body {
   }
   &:last-child {
     padding-bottom: 1rem;
-    border-bottom: 0 none;
+  }
+  .widget + .widget {
+    border-top: 1px solid rgba($black, 0.1);
+  }
+
+  &.card {
+    padding: 1em 2em;
+    border: 1px solid $border-color;
+    @include border-radius();
   }
 }
 .widget h2 {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   font-size: px-to-em(16px);
   @include font-weight('semi-bold');
+
+  a {
+    color: $color;
+  }
+  a:hover {
+    color: $color-link;
+  }
 }
 
 /**
@@ -747,8 +794,8 @@ body {
   margin: 2em 0;
   padding: 1.5em 3em;
   // border: 1px solid rgba($black, 0.1);
-  background: $blue;
-  // @include linear-gradient(to right, $blue, $blue-violet-darker);
+  // background: $deep-purple-700;
+  @include linear-gradient(45deg, $pink-900, $deep-purple-900);
   @include border-radius();
   color: $white;
   text-align: center;

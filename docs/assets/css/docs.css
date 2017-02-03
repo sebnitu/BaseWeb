@@ -3364,8 +3364,8 @@ body {
 .hero {
   position: relative;
   background: #2196F3;
-  background-image: -webkit-linear-gradient(left, #2196F3, #1976D2);
-  background-image: linear-gradient(to right, #2196F3, #1976D2);
+  background-image: -webkit-linear-gradient(left, #880E4F, #311B92);
+  background-image: linear-gradient(to right, #880E4F, #311B92);
 }
 
 .hero {
@@ -3540,6 +3540,46 @@ body {
 }
 
 /*==============================================================================
+  @Widget Wrap - scss/custom/_custom.scss
+==============================================================================*/
+.widget-wrap {
+  margin: 2em 0;
+}
+
+.widget-wrap .widget {
+  margin: 1em 0;
+}
+
+.widget-wrap .widget .button {
+  display: block;
+}
+
+@media (min-width: 480px) {
+  .widget-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .widget-wrap .widget {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 25%;
+            flex: 1 1 25%;
+  }
+  .widget-wrap .widget + .widget {
+    margin-left: 2em;
+  }
+  .widget-wrap .widget .button {
+    display: inline-block;
+  }
+}
+
+/*==============================================================================
   @Widgets - scss/custom/_custom.scss
 ==============================================================================*/
 /**
@@ -3548,7 +3588,6 @@ body {
 .widget {
   margin: 0;
   padding: 2rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 
@@ -3558,13 +3597,30 @@ body {
 
 .widget:last-child {
   padding-bottom: 1rem;
-  border-bottom: 0 none;
+}
+
+.widget .widget + .widget {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.widget.card {
+  padding: 1em 2em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
 }
 
 .widget h2 {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
   font-size: 1.143em;
   font-weight: 600;
+}
+
+.widget h2 a {
+  color: #212121;
+}
+
+.widget h2 a:hover {
+  color: #2196F3;
 }
 
 /**
@@ -3868,7 +3924,8 @@ body {
 .block-action {
   margin: 2em 0;
   padding: 1.5em 3em;
-  background: #2196F3;
+  background-image: -webkit-linear-gradient(45deg, #880E4F, #311B92);
+  background-image: linear-gradient(45deg, #880E4F, #311B92);
   border-radius: 3px;
   color: #fff;
   text-align: center;

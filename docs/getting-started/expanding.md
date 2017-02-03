@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Expand
-order: 3
+title: Expanding
+order: 2
 ---
 
-You can structure your custom SCSS files in any way you like, but this is the general structure that they take within BaseWeb. This is a starter template for a custom component SCSS file.
+Expanding BaseWeb is simple. To make a new element or block component, simply create a SCSS file with in the appropriate directory. You can structure your custom SCSS files in any way you like, but here is an example to help get you started. This will allow you to take full advantage of BaseWeb's features and keep it consistent with every other component:
 
 ```scss
 // Set file variable
