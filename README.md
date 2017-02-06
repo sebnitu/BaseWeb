@@ -1,6 +1,6 @@
 ![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg)
 
-Currently v2.3.0
+Currently v2.3.1
 
 ## About
 [BaseWeb](http://getbaseweb.com/) is a fresh SCSS (Sassy CSS) front-end development tool that can be used as a framework or library. It's built to help keep your projects simple, organized and responsive.
