@@ -11,6 +11,8 @@ title: Test
 
 **site.url**: {{ site.url }}
 
+**site.baseurl**: {{ site.baseurl }}
+
 **site.twitter_username**: {{ site.twitter_username }}
 
 **site.github_username**: {{ site.github_username }}
