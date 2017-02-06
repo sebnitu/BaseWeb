@@ -36,9 +36,9 @@ var
     version: [
       'README.md',
       'package.json',
-      '_config.yml',
       'src/scss/baseweb.scss',
       'docs/src/scss/docs.scss',
+      '_config.yml',
       'docs/_data/project.yml'
     ],
     year: [
