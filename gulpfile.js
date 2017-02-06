@@ -38,7 +38,8 @@ var
       'package.json',
       '_config.yml',
       'src/scss/baseweb.scss',
-      'docs/src/scss/docs.scss'
+      'docs/src/scss/docs.scss',
+      'docs/_data/project.yml'
     ],
     year: [
       'README.md',
