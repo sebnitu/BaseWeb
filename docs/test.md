@@ -9,13 +9,13 @@ title: Test
 
 **site.version**: {{ site.version }}
 
+**site.description**: {{ site.description }}
+
 **site.url**: {{ site.url }}
 
 **site.baseurl**: {{ site.baseurl }}
 
-**site.twitter_username**: {{ site.twitter_username }}
-
-**site.github_username**: {{ site.github_username }}
+**site.time**: {{ site.time }}
 
 ---
 
