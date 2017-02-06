@@ -1,40 +1,40 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing these this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Jekyll Config
+# Variables defined here will be accessible in the templates via
+# {{ site.myvariable }}.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Site
 title: BaseWeb
-email: me@sebnitu.com
-description: > # this means to ignore newlines until "baseurl:"
-  BaseWeb is a fresh SCSS front-end development framework and library built to help keep your projects simple, organized and responsive.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://sebnitu.com" # the base hostname & protocol for your site
+version: 2.3.3
+description: >
+  BaseWeb is a fresh SCSS front-end development framework and library built to
+  help keep your projects simple, organized and responsive.
+baseurl: ""
+url: "http://sebnitu.com" # base hostname & protocol for your site
+author: Sebastian Nitu
+author_url: http://sebnitu.com
+author_email: me@sebnitu.com
 twitter_username: sebnitu
 github_username: sebnitu
 
-# Build settings
+# Build
 markdown: kramdown
+kramdown:
+  auto_ids: true
+
+# Server
 source: docs
-destination: docs/_site
+destination: _site
 # permalink: pretty
 host: localhost
 port: 8080
 exclude: [
-  'src',
-  'LICENSE'
+  'src'
 ]
 
-# Collections
-# collections:
-#   pages:
-#    output: true
+# Custom
+repository:
+  type : git
+  url  : https://github.com/sebnitu/BaseWeb.git
+packages:
+  src: https://github.com/sebnitu/BaseWeb/tree/master/src
+  dist: https://github.com/sebnitu/BaseWeb/tree/master/dist
