@@ -2,6 +2,8 @@
 
 Currently v2.3.1
 
+[![devDependency Status](https://img.shields.io/david/dev/sebnitu/baseweb.svg)](https://david-dm.org/sebnitu/baseweb?type=dev)
+
 ## About
 [BaseWeb](http://getbaseweb.com/) is a fresh SCSS (Sassy CSS) front-end development tool that can be used as a framework or library. It's built to help keep your projects simple, organized and responsive.
 
