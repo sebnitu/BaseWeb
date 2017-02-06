@@ -12,4 +12,6 @@ Output **site.config.version**: {{ site.config.version }}
 
 Output **site.data.project.version**: {{ site.data.project.version }}
 
-Output **site**: {{ site }}
+---
+
+Output **site.github.hostname**: {{ site.github.hostname }}
