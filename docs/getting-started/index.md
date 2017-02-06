@@ -4,18 +4,18 @@ title: Getting Started
 order: 1
 ---
 
-BaseWeb can be used a few different ways depending on what you need. The quickest way to get started is to download BaseWeb! *BaseWeb is currently on version {{ site.data.project.version }}. For more details, checkout [our releases page](https://github.com/sebnitu/BaseWeb/releases).*
+BaseWeb can be used a few different ways depending on what you need. The quickest way to get started is to download BaseWeb! *BaseWeb is currently on version {{ site.version }}. For more details, checkout [our releases page](https://github.com/sebnitu/BaseWeb/releases).*
 
 <div class="widget-wrap widget-wrap-downloads">
   <div class="widget card widget-download">
     <h2>Download Compiled</h2>
     <p>Compiled contains all the expanded, minified and source map files for BaseWeb. These can be used simply by including them in your header.</p>
-    <p><a href="{{ site.data.project.packages.dist }}" class="button primary">Download</a></p>
+    <p><a href="{{ site.packages.dist }}" class="button primary">Download</a></p>
   </div>
   <div class="widget card widget-download">
     <h2>Download Source</h2>
     <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="/getting-started/build-scripts.html">our build scripts</a> to compile, or roll one of your own.</p>
-    <p><a href="{{ site.data.project.packages.src }}" class="button primary">Download</a></p>
+    <p><a href="{{ site.packages.src }}" class="button primary">Download</a></p>
   </div>
 </div>
 
