@@ -6,7 +6,6 @@ link:
 order: 1
 ---
 
-
 Here is a starter HTML document with the bear essentials to get you started. A few things of note include the HTML5 declaration, the three `<meta>` tags (to specify encoding, browser settings and mobile scale settings), a title and the link to BaseWeb's stylesheet.
 
 ```html
