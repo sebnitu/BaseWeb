@@ -15,3 +15,5 @@ Output **site.data.project.version**: {{ site.data.project.version }}
 ---
 
 Output **site.github.hostname**: {{ site.github.hostname }}
+
+Output **site.github.zip_url**: {{ site.github.zip_url }}
