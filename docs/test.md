@@ -1,9 +1,6 @@
 ---
-layout: page
+layout: test
 title: Test
-link:
-  text: ' '
-order: 10
 ---
 
 Output **site.version**: {{ site.version }}
