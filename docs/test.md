@@ -9,6 +9,8 @@ title: Test
 
 **site.version**: {{ site.version }}
 
+**site.url**: {{ site.url }}
+
 **site.twitter_username**: {{ site.twitter_username }}
 
 **site.github_username**: {{ site.github_username }}
