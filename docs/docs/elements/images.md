@@ -11,7 +11,7 @@ Images in BaseWeb are handles responsively be default. You're also provided a fe
 ```
 
 <div class="demo">
-  <img alt="Placeholder image" src="/assets/img/example-01.jpg">
+  <img alt="Placeholder image" src="/dist/img/example-01.jpg">
 </div>
 
 <section class="subsection subsection-classes" markdown="1">
@@ -33,7 +33,7 @@ Floats an image to the left and adds top, right and bottom margins so that text 
 ```
 
 <div class="demo">
-  <img class="align-left" alt="Placeholder image" src="/assets/img/example-02.jpg">
+  <img class="align-left" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
 </li>
@@ -49,7 +49,7 @@ Centers an image by making it block and giving it left and right margins of `aut
 ```
 
 <div class="demo">
-  <img class="align-center" alt="Placeholder image" src="/assets/img/example-02.jpg">
+  <img class="align-center" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
 </li>
@@ -65,7 +65,7 @@ Floats an image to the right and adds top, left and bottom margins so that text 
 ```
 
 <div class="demo">
-  <img class="align-right" alt="Placeholder image" src="/assets/img/example-02.jpg">
+  <img class="align-right" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
 </li>
@@ -81,7 +81,7 @@ Adds rounded border radius based on the default border-radius setting `$border-r
 ```
 
 <div class="demo">
-  <img class="align-center rounded" alt="Placeholder image" src="/assets/img/example-03.jpg">
+  <img class="align-center rounded" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
 </li>
@@ -97,7 +97,7 @@ Makes a circle effect on an image by adding `50%` border radius.
 ```
 
 <div class="demo">
-  <img class="align-center circle" alt="Placeholder image" src="/assets/img/example-03.jpg">
+  <img class="align-center circle" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
 </li>
@@ -113,7 +113,7 @@ Adds a polaroid effect to an image.
 ```
 
 <div class="demo">
-  <img class="align-center polaroid" alt="Placeholder image" src="/assets/img/example-03.jpg">
+  <img class="align-center polaroid" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
 </li>

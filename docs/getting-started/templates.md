@@ -84,5 +84,5 @@ Here is a starter template for a typical document structure. This includes some 
 ```
 
 <div class="notice info" markdown="1">
-More HTML examples and starter templates are planned to be released in the future. They'll be announced on the [development log](/devlog/) as soon as they are available!
+More HTML examples and starter templates are planned to be released in the future. They'll be announced on the [development log]({{ site.url }}{{ site.baseurl }}/devlog) as soon as they are available!
 </div>

@@ -35,7 +35,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
       <div class="dropdown-content text-center">
         <a class="block">
           <p>
-            <img src="/assets/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
             <strong>Sebastian Nitu</strong><br>
             <small class="text-soften">View Profile</small>
           </p>
@@ -97,7 +97,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
       <div class="dropdown-content text-center">
         <a class="block">
           <p>
-            <img src="/assets/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
             <strong>Sebastian Nitu</strong><br>
             <small class="text-soften">View Profile</small>
           </p>
@@ -261,7 +261,7 @@ The two primary content types of dropdowns are dropdown menus and then more gene
     <div class="dropdown-content text-center">
       <a class="block">
         <p>
-          <img src="/assets/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+          <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
           <strong>Sebastian Nitu</strong><br>
           <small class="text-soften">View Profile</small>
         </p>
@@ -293,7 +293,7 @@ The two primary content types of dropdowns are dropdown menus and then more gene
   <div class="dropdown-content text-center">
     <a class="block">
       <p>
-        <img src="/assets/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+        <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
         <strong>Sebastian Nitu</strong><br>
         <small class="text-soften">View Profile</small>
       </p>

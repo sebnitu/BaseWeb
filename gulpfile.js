@@ -28,7 +28,7 @@ var
     src: 'src/',
     dest: 'dist/',
     srcDocs: 'docs/src/',
-    destDocs: 'docs/assets/'
+    destDocs: 'docs/dist/'
   },
 
   // File sets to use for search and replace
@@ -38,8 +38,7 @@ var
       'package.json',
       'src/scss/baseweb.scss',
       'docs/src/scss/docs.scss',
-      '_config.yml',
-      'docs/_data/project.yml'
+      'docs/_config.yml'
     ],
     year: [
       'README.md',
@@ -48,7 +47,8 @@ var
       'docs/src/scss/docs.scss',
     ],
     exclude: [
-      '!./node_modules/**'
+      '!./node_modules/**',
+      '!./bower_components/**'
     ]
   },
 

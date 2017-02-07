@@ -6,11 +6,11 @@ img: illustration-tabs.png
 comments: true
 ---
 
-<img src="/assets/img/devlog/illustration-tabs-small.png" alt="Tabs" class="featured rounded">
+<img src="/dist/img/devlog/illustration-tabs-small.png" alt="Tabs" class="featured rounded">
 
 <p class="text-lead">Tabs have arrived! BaseWeb now makes available the tabs block component which includes two robust mixins for creating and styling semantic tabs.</p>
 
-You can read about how it works in the [documentation](/docs/blocks/tabs.html). Here, I'd like to explore the process of researching and developing this component. Tabs are a very common user interface control and have been around for a while. This is important because it means users have an expectation with how tabs function and look. So when developing a tabs system, we want to make sure we are as predictable as possible for users as well as being clear visually. So lets put together a checklist to clearly define how tabs should look and function before we code.
+You can read about how it works in the [documentation]({{ site.url }}{{ site.baseurl }}/docs/blocks/tabs). Here, I'd like to explore the process of researching and developing this component. Tabs are a very common user interface control and have been around for a while. This is important because it means users have an expectation with how tabs function and look. So when developing a tabs system, we want to make sure we are as predictable as possible for users as well as being clear visually. So lets put together a checklist to clearly define how tabs should look and function before we code.
 
 1. **Tabs are used to switch between views within the same context.** It's important to note that tabs should only be used as a high level organizational control for content.
 2. **Tabs appear horizontally above the panel they represent.** This may seem obvious, but keeping this pattern consistent leverages the already learned behavior of users.
@@ -294,7 +294,7 @@ With this as our base, we can go any stylistic direction we'd like. [Mary Lou](h
 
 ## Conclusion
 
-That wraps up our tabs block component solution. We've managed to hit all our requirements we listed in the introduction. The next steps we took in BaseWeb involve creating a variable map for customization and some handy mixins that abstract our styles a bit. You can read more about that implementation over on the [documentations page](/docs/blocks/tabs.html).
+That wraps up our tabs block component solution. We've managed to hit all our requirements we listed in the introduction. The next steps we took in BaseWeb involve creating a variable map for customization and some handy mixins that abstract our styles a bit. You can read more about that implementation over on the [documentations page]({{ site.url }}{{ site.baseurl }}/docs/blocks/tabs).
 
 ### Further Reading
 

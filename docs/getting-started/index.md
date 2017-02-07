@@ -4,18 +4,18 @@ title: Getting Started
 order: 1
 ---
 
-BaseWeb can be used a few different ways depending on what you need. The quickest way to get started is to download BaseWeb! *BaseWeb is currently on version {{ site.data.project.version }}. For more details, checkout [our releases page](https://github.com/sebnitu/BaseWeb/releases).*
+BaseWeb can be used a few different ways depending on what you need. The quickest way to get started is to download BaseWeb! *BaseWeb is currently on version {{ site.version }}. For more details, checkout [our releases page]({{ site.github.releases_url }}).*
 
 <div class="widget-wrap widget-wrap-downloads">
   <div class="widget card widget-download">
     <h2>Download Compiled</h2>
     <p>Compiled contains all the expanded, minified and source map files for BaseWeb. These can be used simply by including them in your header.</p>
-    <p><a href="{{ site.data.project.packages.dist }}" class="button primary">Download</a></p>
+    <p><a href="{{ site.github.repository_url }}/tree/master/dist" class="button primary">Download</a></p>
   </div>
   <div class="widget card widget-download">
     <h2>Download Source</h2>
-    <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="/getting-started/build-scripts.html">our build scripts</a> to compile, or roll one of your own.</p>
-    <p><a href="{{ site.data.project.packages.src }}" class="button primary">Download</a></p>
+    <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="{{ site.url }}{{ site.baseurl }}/getting-started/build-scripts">our build scripts</a> to compile, or roll one of your own.</p>
+    <p><a href="{{ site.github.repository_url }}/tree/master/src" class="button primary">Download</a></p>
   </div>
 </div>
 
@@ -114,7 +114,7 @@ gulp.task('js', function() {
 });
 ```
 
-For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`](https://github.com/sebnitu/BaseWeb/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page](/getting-started/build-scripts.html).
+For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`]({{ site.github.repository_url }}/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page]({{ site.url }}{{ site.baseurl }}/getting-started/build-scripts).
 
 <!--
 ## Basic JavaScript

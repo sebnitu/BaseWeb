@@ -1,157 +1,9 @@
-<html class="home">
+<!DOCTYPE html>
+<html{% if page.class %} class="{{ page.class }}"{% endif %}>
   {% include head.html %}
   <body>
-    <section class="hero">
-
-      <header class="header">
-        <div class="container">
-          {% include header.html %}
-        </div>
-      </header>
-
-      <div class="hero-content">
-        <div class="container">
-          <h1>BaseWeb is a fresh SCSS (Sassy CSS) front-end development tool that can be used as a framework or library. It's built to help keep your projects simple, organized and responsive.</h1>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="main">
-      <div class="container">
-
-        <div class="row">
-          <div class="col col-8 prefix-2 suffix-2 text-center">
-            <h2>How Does it Work?</h2>
-            <p>BaseWeb was designed to take advantage of the most current techniques and best practices for your projects. The goal is to give designers control of output while speeding up development.</p>
-          </div>
-        </div>
-
-        <div class="feature">
-          <div class="feature-ill">
-            <img src="/assets/img/ill-framework.svg" width="301" height="263" alt="">
-          </div>
-          <div class="feature-content">
-            <h3>It's a Framework</h3>
-            <p>Build on top of beautiful default styles and components. BaseWeb provides a starting point for your website or application that will make development faster and easier.</p>
-            <p><a href="/getting-started/">Learn More</a></p>
-          </div>
-        </div><!-- .feature -->
-        <div class="feature reverse">
-          <div class="feature-ill">
-            <img src="/assets/img/ill-library.svg" width="356" height="261" alt="">
-          </div>
-          <div class="feature-content">
-            <h3>It's a Library</h3>
-            <p>Written to give you full control of production output, BaseWeb makes available all mixins and functions with the option to omit default classes and styles.</p>
-            <p><a href="/getting-started/">Learn More</a></p>
-          </div>
-        </div><!-- .feature -->
-        <div class="feature">
-          <div class="feature-ill">
-            <img src="/assets/img/ill-flexible.svg" width="370" height="260" alt="">
-          </div>
-          <div class="feature-content">
-            <h3>It's Flexible</h3>
-            <p>BaseWeb is built mobile first, starting from the grid system to each component block. Using media queries to deliver the best user experience regardless of device.</p>
-            <p><a href="/getting-started/">Learn More</a></p>
-          </div>
-        </div><!-- .feature -->
-
-      </div>
-
-      <hr>
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col col-8 prefix-2 suffix-2 text-center">
-            <h2>Take a Look Inside</h2>
-            <p>The key to any project is organization. BaseWeb's architeture is designed to be easy to maintain and expand. Take a peak inside and see how BaseWeb's files are structured.</p>
-          </div>
-        </div>
-
-        <div class="flex">
-
-<pre><code>scss/
-├── settings/
-│   ├── _global.scss
-│   ├── _grid.scss
-│   ├── _media.scss
-│   ├── _palette.scss
-│   └── _typography.scss
-├── core/
-│   ├── _functions.scss
-│   ├── _grid.scss
-│   ├── _media.scss
-│   └── _mixins.scss
-├── elements/
-│   ├── _base.scss
-│   ├── _blockquotes.scss
-│   ├── _buttons.scss
-│   ├── _code.scss
-│   ├── _forms.scss
-│   ├── _icons.scss
-│   ├── _images.scss
-│   ├── _lists.scss
-│   ├── _rules.scss
-│   ├── _tables.scss
-│   ├── _typography.scss
-│   └── _videos.scss
-├── blocks/
-│   ├── _breadcrumbs.scss
-│   ├── _button-groups.scss
-│   ├── _dropdowns.scss
-│   ├── _notices.scss
-│   └── _tabs.scss
-├── custom/
-│   ├── _custom.scss
-│   └── _overrides.scss
-└── baseweb.scss</code></pre>
-
-          <ul class="list list-docs">
-            <li>
-              <h3>Settings</h3>
-              <p>This is where we store all of our global project variables and maps. Variables and maps that are used in core modules, multiple element and/or block modules go here.</p>
-            </li>
-            <li>
-              <h3>Core</h3>
-              <p>This is the heart and soul of BaseWeb. At a bear minimum, the Settings and Core files are required for BaseWeb to function. Core files do not output styles directly but are a collection of global functions and mixins.</p>
-            </li>
-            <li>
-              <h3>Elements</h3>
-              <p>Elements refer to individual components of an HTML document. Elements are the backbone of any HTML documents and have inherit semantic meaning. BaseWeb styles these elements here and makes them easy to customize and enhance.</p>
-            </li>
-            <li>
-              <h3>Blocks</h3>
-              <p>Blocks are a group of Elements that become an independent component. A block can be simple or compound (meaning it contains other blocks). A Block is contextually independent, but can be modified either through an internal modifier or parent block.</p>
-            </li>
-            <li>
-              <h3>Custom</h3>
-              <p>The Custom directory is a place to store all of your project specific code. By default, BaseWeb comes with an <code>_override.scs</code> file for setting overrides and <code>_custom.scss</code> file that will output a generic mobile first grid system.</p>
-            </li>
-          </ul>
-        </div><!-- .flex -->
-
-        <div class="row">
-          <div class="col col-8 prefix-2 suffix-2">
-
-            <div class="block block-action">
-              <h3>Check It Out</h3>
-              <p>See if BaseWeb can help your workflow. Try it out on your next project!</p>
-              <p>
-                <span class="button-group-wrapper">
-                  <a href="/getting-started/" class="button">Get Started</a>
-                  <a href="{{ site.data.project.repository.url }}" class="button">Download</a>
-                </span>
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
+    
+    {{ content }}
 
     <footer class="footer">
       <div class="container">
@@ -160,7 +12,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="/assets/js/docs.min.js"></script>
+    <script src="/dist/js/docs.min.js"></script>
 
   </body>
 </html>
