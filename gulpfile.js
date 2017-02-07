@@ -37,14 +37,14 @@ var
       'README.md',
       'package.json',
       'src/scss/baseweb.scss',
-      'docs/src/scss/docs.scss',
+      'docs/src/scss/styles.scss',
       'docs/_config.yml'
     ],
     year: [
       'README.md',
       'LICENSE',
       'src/scss/baseweb.scss',
-      'docs/src/scss/docs.scss',
+      'docs/src/scss/styles.scss',
     ],
     exclude: [
       '!./node_modules/**',
@@ -154,7 +154,7 @@ gulp.task('js', function() {
 // Output expanded and minified CSS files from documentation
 gulp.task('docs:css', function() {
   var
-    src = folder.srcDocs + 'scss/docs.scss',
+    src = folder.srcDocs + 'scss/styles.scss',
     dest = folder.destDocs + 'css/',
     sassOpts = {
       outputStyle: 'expanded',
@@ -177,7 +177,7 @@ gulp.task('docs:css', function() {
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
       .pipe(postcss([cssnano]))
-      .pipe(rename('docs.min.css'))
+      .pipe(rename('styles.min.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
 
@@ -192,11 +192,11 @@ gulp.task('docs:js', function() {
     dest = folder.destDocs + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('docs.js'))
+      .pipe(concat('scripts.js'))
       .pipe(gulp.dest(dest)),
     jsmin = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('docs.min.js'))
+      .pipe(concat('scripts.min.js'))
       .pipe(stripdebug())
       .pipe(uglify())
       .pipe(gulp.dest(dest));
