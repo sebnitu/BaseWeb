@@ -205,7 +205,11 @@ gulp.task('docs:css', function() {
 // Output expanded and minified JS files from documentation
 gulp.task('docs:js', function() {
   var
-    src = folder.srcDocs + 'js/**/*',
+    src = [
+      folder.srcDocs + 'js/**/*',
+      '!' + folder.srcDocs + 'js/loadcss.js',
+      '!' + folder.srcDocs + 'js/cssrelpreload.js'
+    ],
     dest = folder.destDocs + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
