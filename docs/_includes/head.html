@@ -2,11 +2,32 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>{% if page.title %}{{ site.title  }} - {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="/dist/img/favicon.png">
-  <link rel="stylesheet" href="/dist/css/styles.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/dist/js/vendor/jquery.min.js"><\/script>')</script>
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/feed.xml">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}{{ site.baseurl }}/dist/img/favicon.png">
+
+  <!-- Critical CSS -->
+  {% if page.class == 'home' %}
+  <style type="text/css">{% include critical.home.css %}</style>
+  {% else %}
+  <style type="text/css">{% include critical.css %}</style>
+  {% endif %}
+
+  <!-- Styles (Async) -->
+  <link rel="preload" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}">
+  </noscript>
+
+  <!-- Google Fonts (Async) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
+  </noscript>
+
 </head>

@@ -4,6 +4,7 @@ var
   // Require Modules
   // Global
   gulp = require('gulp'),
+  gutil = require('gulp-util'),
   newer = require('gulp-newer'),
   rename = require('gulp-rename'),
   replace = require('gulp-replace'),
@@ -12,6 +13,7 @@ var
   // CSS
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
+  critical = require('critical'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
@@ -77,13 +79,10 @@ gulp.task('replace', function() {
     }
 
     console.log(
-      'Searching for "\033[36m' +
-      String(options.s) +
-      '\033[39m" to replace with "\033[36m' +
-      String(options.r) +
-      '\033[39m"'
+      'Searching for "' + gutil.colors.cyan(String(options.s)) +
+      '" to replace with "' + gutil.colors.cyan(String(options.r)) + '"'
     );
-    console.log('Files to search: ', src);
+    console.log( 'Looking through:', '\n - ' + gutil.colors.yellow(src).replace(/,/g , "\n - ") );
 
     return gulp.src(src, { base: './' })
       .pipe(replace(String(options.s), String(options.r)))
@@ -126,6 +125,24 @@ gulp.task('css', function() {
       .pipe(gulp.dest(dest));
 
   return merge(css, cssmin);
+});
+
+// Builds critical CSS files to inject inline
+gulp.task('critical', function () {
+  critical.generate({
+    base: './',
+    src: 'docs/_site/index.html',
+    css: 'docs/_site/dist/css/styles.min.css',
+    dest: 'docs/_includes/critical.home.css',
+    minify: true
+  });
+  critical.generate({
+    base: './',
+    src: 'docs/_site/docs/index.html',
+    css: 'docs/_site/dist/css/styles.min.css',
+    dest: 'docs/_includes/critical.css',
+    minify: true
+  });
 });
 
 // JavaScript processing
@@ -199,9 +216,18 @@ gulp.task('docs:js', function() {
       .pipe(concat('scripts.min.js'))
       .pipe(stripdebug())
       .pipe(uglify())
-      .pipe(gulp.dest(dest));
+      .pipe(gulp.dest(dest)),
+    loadcss = gulp.src([
+        folder.srcDocs + 'js/loadcss.js',
+        folder.srcDocs + 'js/cssrelpreload.js'
+      ])
+      .pipe(deporder())
+      .pipe(concat('loadcss.js'))
+      .pipe(stripdebug())
+      .pipe(uglify())
+      .pipe(gulp.dest('docs/_includes/'));
 
-  return merge(js, jsmin);
+  return merge(js, jsmin, loadcss);
 });
 
 // Image processing
