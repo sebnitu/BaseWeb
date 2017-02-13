@@ -1,6 +1,6 @@
 [![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg)](http://getbaseweb.com)
 
-Currently v2.3.5
+Currently v2.3.6
 
 ![Bower version](https://img.shields.io/bower/v/baseweb.svg)
 [![npm version](https://img.shields.io/npm/v/baseweb.svg)](https://www.npmjs.com/package/baseweb)
