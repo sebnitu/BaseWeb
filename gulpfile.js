@@ -127,24 +127,6 @@ gulp.task('css', function() {
   return merge(css, cssmin);
 });
 
-// Builds critical CSS files to inject inline
-gulp.task('critical', function () {
-  critical.generate({
-    base: './',
-    src: 'docs/_site/index.html',
-    css: 'docs/_site/dist/css/styles.min.css',
-    dest: 'docs/_includes/critical.home.css',
-    minify: true
-  });
-  critical.generate({
-    base: './',
-    src: 'docs/_site/docs/index.html',
-    css: 'docs/_site/dist/css/styles.min.css',
-    dest: 'docs/_includes/critical.css',
-    minify: true
-  });
-});
-
 // JavaScript processing
 // Output expanded and minified JS files from source
 gulp.task('js', function() {
@@ -199,6 +181,24 @@ gulp.task('docs:css', function() {
       .pipe(gulp.dest(dest));
 
   return merge(css, cssmin);
+});
+
+// Builds critical CSS files to inject inline
+gulp.task('critical', function () {
+  critical.generate({
+    base: './',
+    src: 'docs/_site/index.html',
+    css: 'docs/_site/dist/css/styles.min.css',
+    dest: 'docs/_includes/critical.home.css',
+    minify: true
+  });
+  critical.generate({
+    base: './',
+    src: 'docs/_site/docs/index.html',
+    css: 'docs/_site/dist/css/styles.min.css',
+    dest: 'docs/_includes/critical.css',
+    minify: true
+  });
 });
 
 // JS Processing
