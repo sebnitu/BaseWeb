@@ -128,28 +128,33 @@
     });
 
     /**
-     * Sticky Element
+     * @Docs UserInterface
      */
+
+    // Sticky Element
     $('.sticky').theiaStickySidebar({
       containerSelector : '.row',
       additionalMarginTop : 0
     });
 
-    /**
-     * Navigation Toggle
-     */
+    // Navigation Toggle
     $('.widget-menu .toggle').click(function() {
       $(this).parent().toggleClass('active');
       return false;
     });
 
-    /**
-     * New Tab Links
-     */
+    // New Tab Links
     $('.onclick-newtab').click(function() {
       $(this).attr('target', '_blank');
       window.open($(this).attr('href'));
       return false;
+    });
+
+    // Swatches Background
+    $('.swatch').each(function() {
+      var bg = $(this).css('backgroundColor');
+      var text = getContrastYIQ(rgb2hex(bg));
+      $(this).addClass(text);
     });
 
   });
@@ -157,10 +162,6 @@
   /**
    * When the images are loaded
    */
-  $(window).on('load', function() {
-
-
-
-  });
+  $(window).on('load', function() { });
 
 }(jQuery));
