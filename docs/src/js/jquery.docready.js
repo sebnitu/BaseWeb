@@ -128,7 +128,7 @@
     });
 
     /**
-     * @Docs UserInterface
+     * @Docs Interface
      */
 
     // Sticky Element

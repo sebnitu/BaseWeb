@@ -515,7 +515,7 @@ function getContrastYIQ(hexcolor) {
     });
 
     /**
-     * @Docs UserInterface
+     * @Docs Interface
      */
 
     // Sticky Element
