@@ -414,7 +414,7 @@ function getContrastYIQ(hexcolor) {
     /**
      * @Dropdowns
      */
-    // Bind document click event
+    // Add click event bind to document
     $(document).click(function(){
       // Hide all dropdowns that are click activated
       $('.dropdown-trigger.on-click').removeClass('active');
@@ -460,7 +460,7 @@ function getContrastYIQ(hexcolor) {
     /**
      * @Tabs
      */
-    $('.tabs-nav').each(function(e) {
+    $('.tabs-nav').each(function() {
 
       // Save this
       var $this = $(this);
@@ -515,14 +515,59 @@ function getContrastYIQ(hexcolor) {
     });
 
     /**
+     * @Off Canvas
+     */
+    $('.oc-trigger').each(function () {
+      var
+        $this = $(this),
+        $wrap = $(this).parents('.oc-wrap'),
+        $aside = $wrap.find('.oc-aside'),
+        target = $this.attr('data-target'),
+        reset = $wrap.attr('class')
+      ;
+
+      // Button click event
+      $this.click(function(e) {
+        // Reset container class
+        $wrap.attr('class', reset);
+        // Add target class
+        if(target) {
+  				$wrap.addClass(target);
+          // Add active class after a slight delay
+  				setTimeout( function() {
+            $wrap.addClass('oc-active');
+  				}, 25 );
+        }
+
+        // Stop the default behavior
+        return false;
+      });
+
+      // Aside click event
+      $aside.click(function(e) {
+        // Stop the click propogation from bubbling down to the container
+        e.stopPropagation();
+      });
+
+      // Container click event
+      $wrap.click(function(e) {
+        // Remove the active class
+        $wrap.removeClass('oc-active');
+      });
+
+    });
+
+    /**
      * @Docs Interface
      */
 
     // Sticky Element
+    /*
     $('.sticky').theiaStickySidebar({
       containerSelector : '.row',
       additionalMarginTop : 0
     });
+    */
 
     // Navigation Toggle
     $('.widget-menu .toggle').click(function() {

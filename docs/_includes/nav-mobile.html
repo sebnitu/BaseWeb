@@ -1,0 +1,24 @@
+{% assign pages = site.pages | sort: 'order' %}
+
+<nav class="nav-mobile">
+  <ul class="list rowed">
+    {% for node in pages %}
+      {% assign node_parts = node.url | split: '/' %}
+      {% assign node_depth = node_parts | size %}
+      {% if node.order %}
+        {% if node_depth == 2 %}
+          <li{% if page.url contains node.url %} class="active"{% endif %}>
+            <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+              {% if node.link.text %}
+                {{ node.link.text }}
+              {% else %}
+                {{ node.title }}
+              {% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p><a href="{{ site.github.repository_url }}" class="button primary">Download BaseWeb</a></p>
+</nav>

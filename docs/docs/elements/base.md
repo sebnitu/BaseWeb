@@ -6,15 +6,16 @@ link:
 order: 1
 ---
 
-Some general styles and global resets are defined here. This is where we store any styles that effect the `<body>` or `<html>` elements, set HTML5 elements to display as block and any output our global modifier classes.
+Some general styles and global resets are defined here. This is where we store any styles that effect the `<body>` or `<html>` elements, set HTML5 elements to display as block and output our global modifier classes.
 
 <ul class="list list-docs">
-  <li>Remove margins and padding from HTML and Body elements and sets our base font-size.</li>
+  <li>Set the height for <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> to <code>100%</code></li>
+  <li>Remove margins and padding from <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code></li>
   <li>Prevents automatic text resizing on mobile devices.</li>
   <li>Make HTML5 elements act like blocks.</li>
   <li>Set default box sizing model to our global variable <code>$global-box-sizing.</code></li>
-  <li>Outputs our cleafix class if one is set in <code>$class-clearfix</code>.</li>
-  <li>Outputs our remove cleafix class if one is set in <code>$class-remove-clearfix</code>.</li>
+  <li>Outputs our clear fix class if one is set in <code>$class-clearfix</code>.</li>
+  <li>Outputs our remove clear fix class if one is set in <code>$class-remove-clearfix</code>.</li>
   <li>Outputs our float left class if one is set in <code>$class-float-left</code>.</li>
   <li>Outputs our float right class if one is set in <code>$class-float-right</code>.</li>
   <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
