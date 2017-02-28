@@ -22,6 +22,7 @@ $off-canvas: (
   'transition' : 'slide-in-left',
   'transition-duration' : 0.5s,
   'width' : 280px,
+  'wrap-height' : 100%,
 
   'background-wrap' : $bg-color,
   'background-aside' : $white,
@@ -49,7 +50,9 @@ $off-canvas: (
   $o: map-merge($off-canvas, $options);
 
   // Base structure styles
-  // .#{map-get($o, 'class-wrap')},
+  .#{map-get($o, 'class-wrap')} {
+    height: map-get($o, 'wrap-height');
+  }
   .#{map-get($o, 'class-content')},
   .#{map-get($o, 'class-inner')},
   .#{map-get($o, 'class-aside')} {
