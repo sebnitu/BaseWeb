@@ -8,21 +8,24 @@ $filename: 'scss/custom/off-canvas.scss';
 $off-canvas: (
   'classes' : true,
 
-  'class-wrap'    : 'oc-wrap',
-  'class-pusher'  : 'oc-pusher',
-  'class-content' : 'oc-content',
-  'class-aside'   : 'oc-aside',
-  'class-active'  : 'oc-active',
+  'class-wrap'     : 'oc-wrap',
+  'class-content'  : 'oc-content',
+  'class-inner'    : 'oc-inner',
+  'class-aside'    : 'oc-aside',
+  'class-aside-id' : 'oc-aside-left',
+  'class-active'   : 'oc-active',
+  'class-delay'    : 'oc-delay',
 
-  'class-aside-left'  : 'slide-in-left',
-  'class-aside-right' : 'slide-in-right',
-
-  'content-screen' : rgba(0,0,0,0.2),
-  'aside-screen'   : rgba(0,0,0,0.2),
+  'content-screen' : rgba($black, 0.2),
+  'aside-screen'   : rgba($black, 0.2),
 
   'transition' : 'slide-in-left',
   'transition-duration' : 0.5s,
   'width' : 280px,
+
+  'background-wrap' : $bg-color,
+  'background-aside' : $white,
+  'background-content' : $white,
 
 ) !default;
 
@@ -46,39 +49,43 @@ $off-canvas: (
   $o: map-merge($off-canvas, $options);
 
   // Base structure styles
-  .oc-wrap,
-  .oc-pusher,
-  .oc-content,
-  .oc-aside {
+  // .#{map-get($o, 'class-wrap')},
+  .#{map-get($o, 'class-content')},
+  .#{map-get($o, 'class-inner')},
+  .#{map-get($o, 'class-aside')} {
   	height: 100%;
   }
-  .oc-wrap {
+
+  .#{map-get($o, 'class-wrap')} {
   	position: relative;
   	overflow: hidden;
+    background: map-get($o, 'background-wrap');
   }
-  .oc-pusher {
+  .#{map-get($o, 'class-content')} {
   	position: relative;
   	left: 0;
   	z-index: 99;
-  	height: 100%;
   	transition: transform map-get($o, 'transition-duration');
+    background: map-get($o, 'background-content');
   }
-  .oc-content {
+  .#{map-get($o, 'class-inner')} {
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
-  .oc-aside {
-  	position: absolute;
+  .#{map-get($o, 'class-aside')} {
+  	position: fixed;
   	top: 0;
   	z-index: 100;
   	visibility: hidden;
   	width: map-get($o, 'width');
+    overflow-y: auto;
   	transition: all map-get($o, 'transition-duration');
+    background: map-get($o, 'background-aside');
   }
 
   // Content screen
   @if (map-get($o, 'content-screen')) {
-    .oc-pusher:after {
+    .#{map-get($o, 'class-content')}:after {
     	position: absolute;
     	top: 0;
     	right: 0;
@@ -89,7 +96,7 @@ $off-canvas: (
     	opacity: 0;
     	transition: opacity map-get($o, 'transition-duration'), width 0.1s map-get($o, 'transition-duration'), height 0.1s map-get($o, 'transition-duration');
     }
-    .oc-active .oc-pusher:after {
+    .#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')}:after {
     	width: 100%;
     	height: 100%;
     	opacity: 1;
@@ -99,7 +106,7 @@ $off-canvas: (
 
   // Aside screen
   @if (map-get($o, 'aside-screen')) {
-    .oc-aside:after {
+    .#{map-get($o, 'class-aside')}:after {
     	position: absolute;
     	top: 0;
     	left: 0;
@@ -110,7 +117,7 @@ $off-canvas: (
     	opacity: 1;
     	transition: opacity map-get($o, 'transition-duration');
     }
-    .oc-active .oc-aside:after {
+    .#{map-get($o, 'class-active')} .#{map-get($o, 'class-aside')}:after {
     	width: 0;
     	height: 0;
     	opacity: 0;
@@ -120,7 +127,7 @@ $off-canvas: (
 }
 
 // Add Off-Canvas Transition
-// Creates the base styles for off-canvas content
+// Creates transition styles for off-canvas elements
 // @param $options
 //   @type map
 //   @default $off-canvas map
@@ -130,10 +137,10 @@ $off-canvas: (
 // @param $style
 //   @type string
 //   @default $off-canvas('transition')
-@mixin add-off-canvas-transition($options: (), $target: map-get($off-canvas, 'class-aside-left'), $style: map-get($off-canvas, 'transition')) {
+@mixin add-off-canvas-transition($options: (), $target: map-get($off-canvas, 'class-aside-id'), $style: map-get($off-canvas, 'transition')) {
   $o: map-merge($off-canvas, $options);
 
-  // slide-in left
+  // slide in left
   @if ($style == 'slide-in-left') {
 
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -149,7 +156,7 @@ $off-canvas: (
     	display: none;
     }
 
-  // slide-in right
+  // slide in right
   } @else if ($style == 'slide-in-right') {
 
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -168,7 +175,7 @@ $off-canvas: (
   // reveal left
   } @else if ($style == 'reveal-left') {
 
-    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-pusher')} {
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
     	transform: translate3d(map-get($o, 'width'), 0, 0);
     }
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -186,7 +193,7 @@ $off-canvas: (
   // reveal right
   } @else if ($style == 'reveal-right') {
 
-    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-pusher')} {
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
     	transform: translate3d(-(map-get($o, 'width')), 0, 0);
     }
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -201,10 +208,10 @@ $off-canvas: (
     	display: none;
     }
 
-  // slide-along left
+  // slide along left
   } @else if ($style == 'slide-along-left') {
 
-    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-pusher')} {
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
     	transform: translate3d(map-get($o, 'width'), 0, 0);
     }
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -221,10 +228,10 @@ $off-canvas: (
     	display: none;
     }
 
-  // slide-along right
+  // slide along right
   } @else if ($style == 'slide-along-right') {
 
-    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-pusher')} {
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
     	transform: translate3d(-(map-get($o, 'width')), 0, 0);
     }
     .#{$target}.#{map-get($o, 'class-aside')} {
@@ -241,10 +248,286 @@ $off-canvas: (
     	display: none;
     }
 
+  // slide out right
+  } @else if ($style == 'slide-out-left') {
+
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(map-get($o, 'width'), 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      left: 0;
+    	z-index: 1;
+    	transform: translate3d(50%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+
+  // slide out right
+  } @else if ($style == 'slide-out-right') {
+
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(-(map-get($o, 'width')), 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      right: 0;
+    	z-index: 1;
+    	transform: translate3d(-50%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+
+  // scale down left
+  } @else if ($style == 'scale-down-left') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(0, 0, -(map-get($o, 'width')));
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      left: 0;
+    	opacity: 1;
+    	transform: translate3d(-100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // scale down right
+  } @else if ($style == 'scale-down-right') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(0, 0, -(map-get($o, 'width')));
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      right: 0;
+    	opacity: 1;
+    	transform: translate3d(100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // scale up left
+  } @else if ($style == 'scale-up-left') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    	perspective-origin: 0% 50%;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(map-get($o, 'width'), 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      left: 0;
+    	z-index: 1;
+    	opacity: 1;
+    	transform: translate3d(0, 0, -(map-get($o, 'width')));
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // scale up right
+  } @else if ($style == 'scale-up-right') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    	perspective-origin: 100% 50%;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(-(map-get($o, 'width')), 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      right: 0;
+    	z-index: 1;
+    	opacity: 1;
+    	transform: translate3d(0, 0, -(map-get($o, 'width')));
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // scale rotate left
+  } @else if ($style == 'scale-rotate-left') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(100px, 0, -600px) rotateY(-20deg);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      left: 0;
+    	opacity: 1;
+    	transform: translate3d(-100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // scale rotate right
+  } @else if ($style == 'scale-rotate-right') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: translate3d(100px, 0, -600px) rotateY(20deg);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      right: 0;
+    	opacity: 1;
+    	transform: translate3d(100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // open door left
+  } @else if ($style == 'open-door-left') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-origin: 100% 50%;
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: rotateY(-10deg);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      left: 0;
+    	opacity: 1;
+    	transform: translate3d(-100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
+  // open door right
+  } @else if ($style == 'open-door-right') {
+
+    .#{$target}.#{map-get($o, 'class-wrap')} {
+    	perspective: 1500px;
+    }
+    .#{$target} .#{map-get($o, 'class-content')} {
+    	transform-origin: 0 50%;
+    	transform-style: preserve-3d;
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
+    	transform: rotateY(10deg);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')} {
+      right: 0;
+    	opacity: 1;
+    	transform: translate3d(100%, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-active')} .#{$target}.#{map-get($o, 'class-aside')} {
+    	visibility: visible;
+    	transition: transform map-get($o, 'transition-duration');
+    	transform: translate3d(0, 0, 0);
+    }
+    .#{$target}.#{map-get($o, 'class-aside')}:after {
+    	display: none;
+    }
+
+    @include add-off-canvas-wrap-height($target, $o);
+
   // transition doesn't exist
   } @else {
     @warn 'The off-canvas transition of `#{$style}` does not exist';
   }
+}
+
+// Add Off-Canvas Wrap Height
+// Sets the oc-wrap height to 100% with delay. This is used for specific
+// transitions which use 3d transforms.
+// @param $target
+//   @type string
+// @param $options
+//   @type map
+//   @default $off-canvas map
+@mixin add-off-canvas-wrap-height($target, $options: ()) {
+  $o: map-merge($off-canvas, $options);
+
+  .#{$target}.#{map-get($o, 'class-wrap')} {
+    transition: height 0.1s map-get($o, 'transition-duration');
+  }
+  .#{$target}.#{map-get($o, 'class-delay')}.#{map-get($o, 'class-wrap')} {
+    height: 100%;
+  }
+  .#{$target}.#{map-get($o, 'class-active')}.#{map-get($o, 'class-wrap')} {
+    height: 100%;
+    transition: none;
+  }
+
 }
 
 // Check if we should output modifier classes
@@ -255,165 +538,23 @@ $off-canvas: (
 
 @include make-off-canvas();
 
-/**
- * Off-canvas transitions
- */
-@include add-off-canvas-transition($target: 'slide-in-left', $style: 'slide-in-left');
-@include add-off-canvas-transition($target: 'slide-in-right', $style: 'slide-in-right');
+// Available transitions
+// ---
+// slide-in-left, slide-in-right
+// reveal-left, reveal-right
+// slide-along-left, slide-along-right
+// slide-out-left, slide-out-right
+// scale-down-left, scale-down-right
+// scale-up-left, scale-up-right
+// scale-rotate-left, scale-rotate-right
+// open-door-left, open-door-right
+// ---
+// Example usage:
+// @include add-off-canvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
+// Notice:
+// When using scale transitions, it's recommended that you set the oc-wrap
+// element to height: 100% which will preserve scroll position.
 
-@include add-off-canvas-transition($target: 'reveal-left', $style: 'reveal-left');
-@include add-off-canvas-transition($target: 'reveal-right', $style: 'reveal-right');
-
-@include add-off-canvas-transition($target: 'slide-along-left', $style: 'slide-along-left');
-@include add-off-canvas-transition($target: 'slide-along-right', $style: 'slide-along-right');
-
-/**
- * Temp styles
- */
-.oc-aside {
-  padding: 1em 2em;
-  background: $blue;
-  color: $white;
-}
-.oc-content {
-  padding: 3em;
-  background: $white;
-}
-
-/* Effect 4: Reverse slide out */
-.oc-aside-4.oc-active .oc-pusher {
-	-webkit-transform: translate3d(280px, 0, 0);
-	transform: translate3d(280px, 0, 0);
-}
-.oc-aside-4.oc-aside {
-	z-index: 1;
-	-webkit-transform: translate3d(50%, 0, 0);
-	transform: translate3d(50%, 0, 0);
-}
-.oc-aside-4.oc-active .oc-aside-4.oc-aside {
-	visibility: visible;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
-
-/* Effect 5: Scale down pusher */
-
-.oc-aside-5.oc-wrap {
-	-webkit-perspective: 1500px;
-	perspective: 1500px;
-}
-.oc-aside-5 .oc-pusher {
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-}
-.oc-aside-5.oc-active .oc-pusher {
-	-webkit-transform: translate3d(0, 0, -280px);
-	transform: translate3d(0, 0, -280px);
-}
-.oc-aside-5.oc-aside {
-	opacity: 1;
-	-webkit-transform: translate3d(-100%, 0, 0);
-	transform: translate3d(-100%, 0, 0);
-}
-.oc-aside-5.oc-active .oc-aside-5.oc-aside {
-	visibility: visible;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
-.oc-aside-5.oc-aside::after {
-	display: none;
-}
-
-/* Effect 6: Scale up */
-
-.oc-aside-6.oc-wrap {
-	-webkit-perspective: 1500px;
-	perspective: 1500px;
-	-webkit-perspective-origin: 0% 50%;
-	perspective-origin: 0% 50%;
-}
-.oc-aside-6.oc-active .oc-pusher {
-	-webkit-transform: translate3d(280px, 0, 0);
-	transform: translate3d(280px, 0, 0);
-}
-.oc-aside-6.oc-aside {
-	z-index: 1;
-	opacity: 1;
-	-webkit-transform: translate3d(0, 0, -280px);
-	transform: translate3d(0, 0, -280px);
-}
-.oc-aside-6.oc-active .oc-aside-6.oc-aside {
-	visibility: visible;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
-
-/* Effect 7: Scale and rotate pusher */
-
-.oc-aside-7.oc-wrap {
-	-webkit-perspective: 1500px;
-	perspective: 1500px;
-}
-.oc-aside-7 .oc-pusher {
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-}
-.oc-aside-7.oc-active .oc-pusher {
-	-webkit-transform: translate3d(100px, 0, -600px) rotateY(-20deg);
-	transform: translate3d(100px, 0, -600px) rotateY(-20deg);
-}
-.oc-aside-7.oc-aside {
-	opacity: 1;
-	-webkit-transform: translate3d(-100%, 0, 0);
-	transform: translate3d(-100%, 0, 0);
-}
-.oc-aside-7.oc-active .oc-aside-7.oc-aside {
-	visibility: visible;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
-.oc-aside-7.oc-aside::after {
-	display: none;
-}
-
-/* Effect 8: Open door */
-
-.oc-aside-8.oc-wrap {
-	-webkit-perspective: 1500px;
-	perspective: 1500px;
-}
-.oc-aside-8 .oc-pusher {
-	-webkit-transform-origin: 100% 50%;
-	transform-origin: 100% 50%;
-	-webkit-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-}
-.oc-aside-8.oc-active .oc-pusher {
-	-webkit-transform: rotateY(-10deg);
-	transform: rotateY(-10deg);
-}
-.oc-aside-8.oc-aside {
-	opacity: 1;
-	-webkit-transform: translate3d(-100%, 0, 0);
-	transform: translate3d(-100%, 0, 0);
-}
-.oc-aside-8.oc-active .oc-aside-8.oc-aside {
-	visibility: visible;
-	-webkit-transition: -webkit-transform 0.5s;
-	transition: transform 0.5s;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
-}
-.oc-aside-8.oc-aside::after {
-	display: none;
-}
+@include add-off-canvas-transition();
 
 } // endif classes

@@ -4,7 +4,13 @@ layout: compress
 <!DOCTYPE html>
 <html>
   <head>
-    {% include head.html %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ site.title  }} - {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}{{ site.baseurl }}/dist/img/favicon.png">
+    <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i">
   </head>
   <body>
 
@@ -16,68 +22,139 @@ layout: compress
       <aside class="oc-aside slide-in-left">
         <button class="button close oc-trigger">&times;</button>
 				<p>slide-in-left</p>
+        {% include placeholder.html %}
 			</aside>
 
       <aside class="oc-aside slide-in-right">
         <button class="button close oc-trigger">&times;</button>
 				<p>slide-in-right</p>
+        {% include placeholder.html %}
 			</aside>
 
       <aside class="oc-aside reveal-left">
         <button class="button close oc-trigger">&times;</button>
 				<p>reveal-left</p>
+        {% include placeholder.html %}
 			</aside>
 
       <aside class="oc-aside reveal-right">
         <button class="button close oc-trigger">&times;</button>
 				<p>reveal-right</p>
+        {% include placeholder.html %}
 			</aside>
 
       <aside class="oc-aside slide-along-left">
         <button class="button close oc-trigger">&times;</button>
 				<p>slide-along-left</p>
+        {% include placeholder.html %}
 			</aside>
 
       <aside class="oc-aside slide-along-right">
         <button class="button close oc-trigger">&times;</button>
 				<p>slide-along-right</p>
+        {% include placeholder.html %}
 			</aside>
 
-      <div class="oc-pusher">
-        <section class="oc-content">
+      <aside class="oc-aside slide-out-left">
+        <button class="button close oc-trigger">&times;</button>
+				<p>slide-out-left</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <h2>Off-canvas transition styles</h2>
-          <ul class="list rowed">
-            <li><a class="oc-trigger" data-target="slide-in-left">slide-in-left</a></li>
-            <li><a class="oc-trigger" data-target="slide-in-right">slide-in-right</a></li>
-            <li><a class="oc-trigger" data-target="reveal-left">reveal-left</a></li>
-            <li><a class="oc-trigger" data-target="reveal-right">reveal-right</a></li>
-            <li><a class="oc-trigger" data-target="slide-along-left">slide-along-left</a></li>
-            <li><a class="oc-trigger" data-target="slide-along-right">slide-along-right</a></li>
-          </ul>
+      <aside class="oc-aside slide-out-right">
+        <button class="button close oc-trigger">&times;</button>
+				<p>slide-out-right</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <button class="button default oc-trigger" data-target="oc-aside-4">Reverse slide out (Effect 4)</button>
-          <button class="button default oc-trigger" data-target="oc-aside-5">Scale down pusher (Effect 5)</button>
-          <button class="button default oc-trigger" data-target="oc-aside-6">Scale Up (Effect 6)</button>
-          <button class="button default oc-trigger" data-target="oc-aside-7">Scale &amp; rotate pusher (Effect 7)</button>
-          <button class="button default oc-trigger" data-target="oc-aside-8">Open door (Effect 8)</button>
+      <aside class="oc-aside scale-down-left">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-down-left</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <hr>
+      <aside class="oc-aside scale-down-right">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-down-right</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <h2>Placeholder content</h2>
+      <aside class="oc-aside scale-up-left">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-up-left</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ante mi, lacinia tempor mauris bibendum a. Quisque fermentum turpis ac urna semper malesuada. Curabitur vehicula tortor eget turpis condimentum, quis fermentum felis fermentum. Integer imperdiet eros a mauris fringilla, non blandit lacus euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin ac lectus congue, tincidunt dolor ac, sagittis diam. Cras pharetra non urna sit amet pulvinar. Quisque eget est sit amet massa ullamcorper viverra.</p>
+      <aside class="oc-aside scale-up-right">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-up-right</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <p>Phasellus sollicitudin, diam et tincidunt elementum, lorem neque posuere elit, vel varius felis nisl sit amet leo. Nam eu volutpat neque. Aenean tristique in est vitae cursus. Sed pulvinar vel erat at laoreet. Proin vitae consequat urna. Mauris in leo nunc. Phasellus vitae nibh in nisl interdum condimentum vel a enim. Etiam sit amet finibus nunc. Duis congue, augue vel egestas elementum, enim justo volutpat turpis, in aliquam metus diam a purus. In orci nulla, ultrices non libero aliquet, consectetur dignissim massa.</p>
+      <aside class="oc-aside scale-rotate-left">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-rotate-left</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <p>Etiam mattis tellus quis nulla volutpat, at condimentum ante ornare. Aliquam sed ex gravida, dapibus nibh at, aliquam mi. Morbi sed gravida nisl. Fusce est risus, viverra ac malesuada vitae, luctus id nisl. Quisque vitae cursus dolor. Phasellus egestas tellus sit amet nisi tristique vehicula. Pellentesque pellentesque, turpis vel sodales fermentum, odio dolor viverra nulla, et egestas nibh erat ut urna. Ut ac scelerisque risus.</p>
+      <aside class="oc-aside scale-rotate-right">
+        <button class="button close oc-trigger">&times;</button>
+				<p>scale-rotate-right</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <p>Duis at urna porttitor, porta eros quis, interdum massa. Vestibulum luctus velit et velit faucibus eleifend. Phasellus velit mauris, finibus vitae tortor non, pellentesque blandit tellus. Morbi eu neque elementum, tincidunt massa nec, dapibus purus. Integer semper ut neque sit amet fermentum. Aenean vulputate cursus elit at aliquam. Etiam a tortor felis.</p>
+      <aside class="oc-aside open-door-left">
+        <button class="button close oc-trigger">&times;</button>
+				<p>open-door-left</p>
+        {% include placeholder.html %}
+			</aside>
 
-          <p>Suspendisse potenti. Maecenas ut viverra urna. Nunc aliquet risus accumsan, imperdiet risus ut, viverra erat. Nam id mauris sed urna tempus tincidunt. Suspendisse eu orci ullamcorper, pharetra sem eget, dictum ligula. Nunc mattis id tortor ac mollis. In iaculis sem at ornare ornare. Pellentesque non arcu nec sem dapibus efficitur. Duis dictum eget ipsum interdum convallis. Fusce et nisi nec urna sodales aliquet.</p>
+      <aside class="oc-aside open-door-right">
+        <button class="button close oc-trigger">&times;</button>
+				<p>open-door-right</p>
+        {% include placeholder.html %}
+			</aside>
 
-        </section><!-- .oc-content -->
-      </div><!-- .oc-pusher -->
+      <section class="oc-content">
+        <div class="oc-inner">
+
+          <div class="container">
+
+            <h2>Off-canvas transition styles</h2>
+            <ul class="list rowed">
+              <li><a class="oc-trigger" data-target="slide-in-left">slide-in-left</a></li>
+              <li><a class="oc-trigger" data-target="slide-in-right">slide-in-right</a></li>
+
+              <li><a class="oc-trigger" data-target="reveal-left">reveal-left</a></li>
+              <li><a class="oc-trigger" data-target="reveal-right">reveal-right</a></li>
+
+              <li><a class="oc-trigger" data-target="slide-along-left">slide-along-left</a></li>
+              <li><a class="oc-trigger" data-target="slide-along-right">slide-along-right</a></li>
+
+              <li><a class="oc-trigger" data-target="slide-out-left">slide-out-left</a></li>
+              <li><a class="oc-trigger" data-target="slide-out-right">slide-out-right</a></li>
+
+              <li><a class="oc-trigger" data-target="scale-down-left">scale-down-left</a></li>
+              <li><a class="oc-trigger" data-target="scale-down-right">scale-down-right</a></li>
+
+              <li><a class="oc-trigger" data-target="scale-up-left">scale-up-left</a></li>
+              <li><a class="oc-trigger" data-target="scale-up-right">scale-up-right</a></li>
+
+              <li><a class="oc-trigger" data-target="scale-rotate-left">scale-rotate-left</a></li>
+              <li><a class="oc-trigger" data-target="scale-rotate-right">scale-rotate-right</a></li>
+
+              <li><a class="oc-trigger" data-target="open-door-left">open-door-left</a></li>
+              <li><a class="oc-trigger" data-target="open-door-right">open-door-right</a></li>
+            </ul>
+
+            <hr />
+
+            {% include placeholder.html %}
+
+          </div><!-- .container -->
+
+        </div><!-- .oc-inner -->
+      </section><!-- .oc-content -->
 
     </div><!-- .oc-wrap -->
 

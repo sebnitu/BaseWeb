@@ -92,7 +92,7 @@
                 }
 
                 // Create sticky sidebar
-                o.sidebar.parents().css('-webkit-transform', 'none'); // Fix for WebKit bug - https://code.google.com/p/chromium/issues/detail?id=20574
+                // o.sidebar.parents().css('-webkit-transform', 'none'); // Fix for WebKit bug - https://code.google.com/p/chromium/issues/detail?id=20574
                 o.sidebar.css({
                     'position': 'relative',
                     'overflow': 'visible',
@@ -523,19 +523,33 @@ function getContrastYIQ(hexcolor) {
         $wrap = $(this).parents('.oc-wrap'),
         $aside = $wrap.find('.oc-aside'),
         target = $this.attr('data-target'),
-        reset = $wrap.attr('class')
+        reset = $wrap.attr('class'),
+        close = function() {
+          // Remove active class
+          $wrap.removeClass('oc-active');
+          // Remove delay class after the set transition duration
+          setTimeout( function() {
+            $wrap.removeClass('oc-delay');
+          }, 525 );
+        }
       ;
 
       // Button click event
       $this.click(function(e) {
-        // Reset container class
-        $wrap.attr('class', reset);
+        // Check if it's a close button
+        if($(this).hasClass('close')) {
+          // Close off-canvas content
+          close();
+        } else {
+          // Reset container class
+          $wrap.attr('class', reset);
+        }
         // Add target class
         if(target) {
-  				$wrap.addClass(target);
-          // Add active class after a slight delay
+          $wrap.addClass(target);
+          // Add active and delay classes after a slight delay
   				setTimeout( function() {
-            $wrap.addClass('oc-active');
+            $wrap.addClass('oc-active oc-delay');
   				}, 25 );
         }
 
@@ -551,8 +565,8 @@ function getContrastYIQ(hexcolor) {
 
       // Container click event
       $wrap.click(function(e) {
-        // Remove the active class
-        $wrap.removeClass('oc-active');
+        // Close off-canvas content
+        close();
       });
 
     });
@@ -562,17 +576,9 @@ function getContrastYIQ(hexcolor) {
      */
 
     // Sticky Element
-    /*
     $('.sticky').theiaStickySidebar({
       containerSelector : '.row',
       additionalMarginTop : 0
-    });
-    */
-
-    // Navigation Toggle
-    $('.widget-menu .toggle').click(function() {
-      $(this).parent().toggleClass('active');
-      return false;
     });
 
     // New Tab Links

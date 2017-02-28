@@ -1,7 +1,7 @@
 {% assign pages = site.pages | sort: 'order' %}
 
-<nav class="nav-mobile">
-  <ul class="list rowed">
+<nav class="nav">
+  <ul class="menu-vert">
     {% for node in pages %}
       {% assign node_parts = node.url | split: '/' %}
       {% assign node_depth = node_parts | size %}
@@ -20,5 +20,6 @@
       {% endif %}
     {% endfor %}
   </ul>
-  <p><a href="{{ site.github.repository_url }}" class="button primary">Download BaseWeb</a></p>
+
+  <a href="{{ site.github.repository_url }}" class="button primary">Download BaseWeb</a>
 </nav>

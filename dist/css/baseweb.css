@@ -2852,9 +2852,8 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Off-Canvas - scss/custom/off-canvas.scss
 ==============================================================================*/
-.oc-wrap,
-.oc-pusher,
 .oc-content,
+.oc-inner,
 .oc-aside {
   height: 100%;
 }
@@ -2862,35 +2861,38 @@ fieldset[disabled] .input {
 .oc-wrap {
   position: relative;
   overflow: hidden;
-}
-
-.oc-pusher {
-  position: relative;
-  left: 0;
-  z-index: 99;
-  height: 100%;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
+  background: #F5F5F5;
 }
 
 .oc-content {
   position: relative;
-  overflow-y: scroll;
+  left: 0;
+  z-index: 99;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  background: #fff;
+}
+
+.oc-inner {
+  position: relative;
+  overflow-y: auto;
 }
 
 .oc-aside {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 100;
   visibility: hidden;
   width: 280px;
+  overflow-y: auto;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+  background: #fff;
 }
 
-.oc-pusher:after {
+.oc-content:after {
   position: absolute;
   top: 0;
   right: 0;
@@ -2903,7 +2905,7 @@ fieldset[disabled] .input {
   transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
 }
 
-.oc-active .oc-pusher:after {
+.oc-active .oc-content:after {
   width: 100%;
   height: 100%;
   opacity: 1;
@@ -2932,312 +2934,20 @@ fieldset[disabled] .input {
   transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
 }
 
-/**
- * Off-canvas transitions
- */
-.slide-in-left.oc-aside {
+.oc-aside-left.oc-aside {
   left: 0;
   visibility: visible;
   -webkit-transform: translate3d(-100%, 0, 0);
           transform: translate3d(-100%, 0, 0);
 }
 
-.slide-in-left.oc-active .slide-in-left.oc-aside {
+.oc-aside-left.oc-active .oc-aside-left.oc-aside {
   visibility: visible;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
 
-.slide-in-left.oc-aside:after {
-  display: none;
-}
-
-.slide-in-right.oc-aside {
-  right: 0;
-  visibility: visible;
-  -webkit-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
-}
-
-.slide-in-right.oc-active .slide-in-right.oc-aside {
-  visibility: visible;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.slide-in-right.oc-aside:after {
-  display: none;
-}
-
-.reveal-left.oc-active .oc-pusher {
-  -webkit-transform: translate3d(280px, 0, 0);
-          transform: translate3d(280px, 0, 0);
-}
-
-.reveal-left.oc-aside {
-  left: 0;
-  z-index: 1;
-}
-
-.reveal-left.oc-active .reveal-left.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-
-.reveal-left.oc-aside:after {
-  display: none;
-}
-
-.reveal-right.oc-active .oc-pusher {
-  -webkit-transform: translate3d(-280px, 0, 0);
-          transform: translate3d(-280px, 0, 0);
-}
-
-.reveal-right.oc-aside {
-  right: 0;
-  z-index: 1;
-}
-
-.reveal-right.oc-active .reveal-right.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-
-.reveal-right.oc-aside:after {
-  display: none;
-}
-
-.slide-along-left.oc-active .oc-pusher {
-  -webkit-transform: translate3d(280px, 0, 0);
-          transform: translate3d(280px, 0, 0);
-}
-
-.slide-along-left.oc-aside {
-  left: 0;
-  z-index: 1;
-  -webkit-transform: translate3d(-50%, 0, 0);
-          transform: translate3d(-50%, 0, 0);
-}
-
-.slide-along-left.oc-active .slide-along-left.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.slide-along-left.oc-aside:after {
-  display: none;
-}
-
-.slide-along-right.oc-active .oc-pusher {
-  -webkit-transform: translate3d(-280px, 0, 0);
-          transform: translate3d(-280px, 0, 0);
-}
-
-.slide-along-right.oc-aside {
-  right: 0;
-  z-index: 1;
-  -webkit-transform: translate3d(50%, 0, 0);
-          transform: translate3d(50%, 0, 0);
-}
-
-.slide-along-right.oc-active .slide-along-right.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.slide-along-right.oc-aside:after {
-  display: none;
-}
-
-/**
- * Temp styles
- */
-.oc-aside {
-  padding: 1em 2em;
-  background: #2196F3;
-  color: #fff;
-}
-
-.oc-content {
-  padding: 3em;
-  background: #fff;
-}
-
-/* Effect 4: Reverse slide out */
-.oc-aside-4.oc-active .oc-pusher {
-  -webkit-transform: translate3d(280px, 0, 0);
-  transform: translate3d(280px, 0, 0);
-}
-
-.oc-aside-4.oc-aside {
-  z-index: 1;
-  -webkit-transform: translate3d(50%, 0, 0);
-  transform: translate3d(50%, 0, 0);
-}
-
-.oc-aside-4.oc-active .oc-aside-4.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-/* Effect 5: Scale down pusher */
-.oc-aside-5.oc-wrap {
-  -webkit-perspective: 1500px;
-  perspective: 1500px;
-}
-
-.oc-aside-5 .oc-pusher {
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.oc-aside-5.oc-active .oc-pusher {
-  -webkit-transform: translate3d(0, 0, -280px);
-  transform: translate3d(0, 0, -280px);
-}
-
-.oc-aside-5.oc-aside {
-  opacity: 1;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-
-.oc-aside-5.oc-active .oc-aside-5.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.oc-aside-5.oc-aside::after {
-  display: none;
-}
-
-/* Effect 6: Scale up */
-.oc-aside-6.oc-wrap {
-  -webkit-perspective: 1500px;
-  perspective: 1500px;
-  -webkit-perspective-origin: 0% 50%;
-  perspective-origin: 0% 50%;
-}
-
-.oc-aside-6.oc-active .oc-pusher {
-  -webkit-transform: translate3d(280px, 0, 0);
-  transform: translate3d(280px, 0, 0);
-}
-
-.oc-aside-6.oc-aside {
-  z-index: 1;
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, -280px);
-  transform: translate3d(0, 0, -280px);
-}
-
-.oc-aside-6.oc-active .oc-aside-6.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-/* Effect 7: Scale and rotate pusher */
-.oc-aside-7.oc-wrap {
-  -webkit-perspective: 1500px;
-  perspective: 1500px;
-}
-
-.oc-aside-7 .oc-pusher {
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.oc-aside-7.oc-active .oc-pusher {
-  -webkit-transform: translate3d(100px, 0, -600px) rotateY(-20deg);
-  transform: translate3d(100px, 0, -600px) rotateY(-20deg);
-}
-
-.oc-aside-7.oc-aside {
-  opacity: 1;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-
-.oc-aside-7.oc-active .oc-aside-7.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.oc-aside-7.oc-aside::after {
-  display: none;
-}
-
-/* Effect 8: Open door */
-.oc-aside-8.oc-wrap {
-  -webkit-perspective: 1500px;
-  perspective: 1500px;
-}
-
-.oc-aside-8 .oc-pusher {
-  -webkit-transform-origin: 100% 50%;
-  transform-origin: 100% 50%;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.oc-aside-8.oc-active .oc-pusher {
-  -webkit-transform: rotateY(-10deg);
-  transform: rotateY(-10deg);
-}
-
-.oc-aside-8.oc-aside {
-  opacity: 1;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-
-.oc-aside-8.oc-active .oc-aside-8.oc-aside {
-  visibility: visible;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.oc-aside-8.oc-aside::after {
+.oc-aside-left.oc-aside:after {
   display: none;
 }
 

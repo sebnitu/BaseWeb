@@ -7,14 +7,28 @@ layout: compress
     {% include head.html %}
   </head>
   <body>
+    <div class="oc-wrap">
 
-    {{ content }}
+      <div class="oc-content">
+        <div class="oc-inner">
 
-    <footer class="footer">
-      <div class="container">
-        {% include footer.html %}
-      </div>
-    </footer>
+          {{ content }}
+
+          <footer class="footer">
+            <div class="container">
+              {% include footer.html %}
+            </div>
+          </footer>
+
+        </div><!-- .oc-inner -->
+      </div><!-- .oc-content -->
+
+      <aside class="oc-aside oc-aside-right">
+        <a href="#" class="button close oc-trigger">&times;</a>
+        {% include nav-mobile.html %}
+      </aside><!-- .oc-aside -->
+
+    </div><!-- .oc-wrap -->
 
     {% include foot.html %}
 

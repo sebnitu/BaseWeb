@@ -23,38 +23,14 @@
       <a href="{{ site.github.repository_url }}" class="button{% if page.url != '/' %} primary{% endif %}">Download BaseWeb</a>
     </li>
   </ul>
-  <div class="dropdown-trigger on-click mobile">
-    <button class="button small">
-      Menu
-      <span class="icon icon-more">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </span>
-    </button>
-    <div class="dropdown">
-      <ul class="dropdown-menu">
-        {% for node in pages %}
-          {% assign node_parts = node.url | split: '/' %}
-          {% assign node_depth = node_parts | size %}
-          {% if node.order %}
-            {% if node_depth == 2 %}
-              <li{% if page.url contains node.url %} class="active"{% endif %}>
-                <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
-                  {% if node.link.text %}
-                    {{ node.link.text }}
-                  {% else %}
-                    {{ node.title }}
-                  {% endif %}
-                </a>
-              </li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-      <div class="dropdown-content">
-        <a href="{{ site.github.repository_url }}" class="button primary">Download BaseWeb</a>
-      </div>
-    </div>
-  </div>
+
+  <button class="button small oc-trigger mobile" data-target="oc-aside-right">
+    Menu
+    <span class="icon icon-more">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </span>
+  </button>
+
 </nav>
