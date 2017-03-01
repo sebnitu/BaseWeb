@@ -194,6 +194,12 @@
       additionalMarginTop : 0
     });
 
+    // Navigation Toggle
+    $('.widget-menu .toggle').click(function() {
+      $(this).parent().toggleClass('active');
+      return false;
+    });
+
     // New Tab Links
     $('.onclick-newtab').click(function() {
       $(this).attr('target', '_blank');
