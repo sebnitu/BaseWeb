@@ -76,7 +76,7 @@ $off-canvas: (
     overflow-y: auto;
   }
   .#{map-get($o, 'class-aside')} {
-  	position: fixed;
+  	position: absolute;
   	top: 0;
   	z-index: 100;
   	visibility: hidden;
@@ -100,7 +100,7 @@ $off-canvas: (
     	opacity: 0;
     	transition: opacity map-get($o, 'transition-duration'), width 0.1s map-get($o, 'transition-duration'), height 0.1s map-get($o, 'transition-duration');
     }
-    .#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')}:after {
+    .#{map-get($o, 'class-active')} > .#{map-get($o, 'class-content')}:after {
     	width: 100%;
     	height: 100%;
     	opacity: 1;
@@ -121,7 +121,7 @@ $off-canvas: (
     	opacity: 1;
     	transition: opacity map-get($o, 'transition-duration');
     }
-    .#{map-get($o, 'class-active')} .#{map-get($o, 'class-aside')}:after {
+    .#{map-get($o, 'class-active')} > .#{map-get($o, 'class-aside')}:after {
     	width: 0;
     	height: 0;
     	opacity: 0;

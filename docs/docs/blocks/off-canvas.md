@@ -24,3 +24,17 @@ The off-canvas aside is triggered using a button or link with the class of `oc-t
 ```html
 <button class="oc-trigger" data-target="oc-aside-id">Menu</button>
 ```
+
+<div class="demo">
+  <div class="oc-wrap">
+    <section class="oc-content">
+      <div class="oc-inner">
+        <button class="oc-trigger" data-target="slide-in-left">Menu</button>
+        ...
+      </div>
+    </section>
+    <aside class="oc-aside slide-in-left">
+      ...
+    </aside>
+  </div>
+</div>

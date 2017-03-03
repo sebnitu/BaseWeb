@@ -520,7 +520,7 @@ function getContrastYIQ(hexcolor) {
     $('.oc-trigger').each(function () {
       var
         $this = $(this),
-        $wrap = $(this).parents('.oc-wrap'),
+        $wrap = $(this).closest('.oc-wrap'),
         $aside = $wrap.find('.oc-aside'),
         target = $this.attr('data-target'),
         reset = $wrap.attr('class'),
