@@ -43,7 +43,7 @@ $COMPONENT: (
 // Check if we should output modifier classes
 @if (map-get($COMPONENT, 'classes') == true) {
 /*==============================================================================
-  @SECTION TITLE - #{$filename}
+  @COMPONENT - #{$filename}
 ==============================================================================*/
 
 // Your styles here...

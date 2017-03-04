@@ -3,26 +3,44 @@ layout: compress
 ---
 <!DOCTYPE html>
 <html{% if page.class %} class="{{ page.class }}"{% endif %}>
-  {% include head.html %}
+  <head>
+    {% include head.html %}
+  </head>
   <body>
+    <div class="oc-wrap">
 
-    <header class="header">
-      <div class="container">
-        {% include header.html %}
-      </div>
-    </header>
+      <div class="oc-content">
+        <div class="oc-inner">
 
-    <section class="main">
-      <div class="container">
-        {{ content }}
-      </div>
-    </section>
+          <header class="header">
+            <div class="container">
+              {% include header.html %}
+            </div>
+          </header>
 
-    <footer class="footer">
-      <div class="container">
-        {% include footer.html %}
-      </div>
-    </footer>
+          <section class="main">
+            <div class="container">
+              {{ content }}
+            </div>
+          </section>
+
+          <footer class="footer">
+            <div class="container">
+              {% include footer.html %}
+            </div>
+          </footer>
+
+        </div><!-- .oc-inner -->
+      </div><!-- .oc-content -->
+
+      <aside class="oc-aside oc-aside-right">
+        <div class="oc-aside-inner">
+          <a href="#" class="button close oc-trigger">&times;</a>
+          {% include nav-mobile.html %}
+        </div>
+      </aside><!-- .oc-aside -->
+
+    </div><!-- .oc-wrap -->
 
     {% include foot.html %}
 

@@ -1,7 +1,7 @@
 /*!
  * BaseWeb
  * A fresh front-end development framework
- * @version 2.3.4
+ * @version 2.4.0
  *
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
@@ -13,6 +13,7 @@
   @Base Styles - scss/elements/_base.scss
 ==============================================================================*/
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -2846,6 +2847,108 @@ fieldset[disabled] .input {
   padding: 1em 2em;
   border: 1px solid #E0E0E0;
   border-top: none;
+}
+
+/*==============================================================================
+  @Off-Canvas - scss/custom/off-canvas.scss
+==============================================================================*/
+.oc-content,
+.oc-inner,
+.oc-aside {
+  height: 100%;
+}
+
+.oc-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #F5F5F5;
+}
+
+.oc-content {
+  position: relative;
+  left: 0;
+  z-index: 5;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  background: #fff;
+}
+
+.oc-inner {
+  position: relative;
+  overflow-y: auto;
+}
+
+.oc-aside {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  visibility: hidden;
+  width: 280px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background: #fff;
+}
+
+.oc-content:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-active > .oc-content:after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-aside:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-active > .oc-aside:after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-aside-left.oc-aside {
+  left: 0;
+  visibility: visible;
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+
+.oc-aside-left.oc-active .oc-aside-left.oc-aside {
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.oc-aside-left.oc-aside:after {
+  display: none;
 }
 
 /*==============================================================================
