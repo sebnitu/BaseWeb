@@ -2852,10 +2852,6 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Off-Canvas - scss/custom/off-canvas.scss
 ==============================================================================*/
-.oc-wrap {
-  height: 100%;
-}
-
 .oc-content,
 .oc-inner,
 .oc-aside {
@@ -2871,7 +2867,7 @@ fieldset[disabled] .input {
 .oc-content {
   position: relative;
   left: 0;
-  z-index: 99;
+  z-index: 5;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -2885,9 +2881,9 @@ fieldset[disabled] .input {
 }
 
 .oc-aside {
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 10;
   visibility: hidden;
   width: 280px;
   overflow-y: auto;
@@ -2898,7 +2894,6 @@ fieldset[disabled] .input {
 
 .oc-content:after {
   position: absolute;
-  z-index: 10;
   top: 0;
   right: 0;
   width: 0;

@@ -470,11 +470,67 @@ $filename: 'scss/custom/_demos.scss';
  * Off-Canvas
  */
 .demo-off-canvas {
+  padding: 0;
+
+  .oc-wrap {
+    height: 100%;
+  }
+  .oc-content {}
+  .oc-inner {
+    padding: 1.5em;
+  }
   .oc-aside {
+    position: absolute;
     padding: 1em 2em;
+
+    .button.close {
+      margin: 0 -1rem;
+    }
+  }
+
+  form {
+    margin: 0;
+  }
+  .input[readonly] {
+    font-family: $font-family-mono;
+    color: $red;
+    opacity: 1;
+    background: rgba($white, 0.5);
+
+    &:focus {
+      background: $white;
+    }
+  }
+  .oc-trigger {
+    white-space: normal;
   }
 }
 
+@include media-min('medium') {
+  .demo-off-canvas {
+    padding: 1.5em;
+
+    .oc-inner {
+      padding: 3em;
+    }
+  }
+}
+
+.oc-custom {
+  @include make-off-canvas((
+    'aside-position' : absolute,
+    'background-aside' : $blue-gray,
+    'background-content' : $brown-100
+  ));
+  .oc-aside {
+    color: $white;
+  }
+}
+
+@include add-off-canvas-transition($target: 'oc-aside-left', $style: 'slide-out-left');
+@include add-off-canvas-transition($target: 'oc-aside-right', $style: 'scale-rotate-right');
+
+// All transition effects
 @include add-off-canvas-transition($target: 'slide-in-left', $style: 'slide-in-left');
 @include add-off-canvas-transition($target: 'slide-in-right', $style: 'slide-in-right');
 

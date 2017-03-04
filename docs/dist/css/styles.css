@@ -2868,7 +2868,7 @@ fieldset[disabled] .input {
 .oc-content {
   position: relative;
   left: 0;
-  z-index: 99;
+  z-index: 5;
   -webkit-transition: -webkit-transform 0.5s;
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -2882,9 +2882,9 @@ fieldset[disabled] .input {
 }
 
 .oc-aside {
-  position: absolute;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 10;
   visibility: hidden;
   width: 280px;
   overflow-y: auto;
@@ -2895,7 +2895,6 @@ fieldset[disabled] .input {
 
 .oc-content:after {
   position: absolute;
-  z-index: 10;
   top: 0;
   right: 0;
   width: 0;
@@ -4872,8 +4871,212 @@ body {
 /**
  * Off-Canvas
  */
+.demo-off-canvas {
+  padding: 0;
+}
+
+.demo-off-canvas .oc-wrap {
+  height: 100%;
+}
+
+.demo-off-canvas .oc-inner {
+  padding: 1.5em;
+}
+
 .demo-off-canvas .oc-aside {
+  position: absolute;
   padding: 1em 2em;
+}
+
+.demo-off-canvas .oc-aside .button.close {
+  margin: 0 -1rem;
+}
+
+.demo-off-canvas form {
+  margin: 0;
+}
+
+.demo-off-canvas .input[readonly] {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  color: #F44336;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.demo-off-canvas .input[readonly]:focus {
+  background: #fff;
+}
+
+.demo-off-canvas .oc-trigger {
+  white-space: normal;
+}
+
+@media (min-width: 760px) {
+  .demo-off-canvas {
+    padding: 1.5em;
+  }
+  .demo-off-canvas .oc-inner {
+    padding: 3em;
+  }
+}
+
+.oc-custom .oc-content,
+.oc-custom .oc-inner,
+.oc-custom .oc-aside {
+  height: 100%;
+}
+
+.oc-custom .oc-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #F5F5F5;
+}
+
+.oc-custom .oc-content {
+  position: relative;
+  left: 0;
+  z-index: 5;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  background: #D7CCC8;
+}
+
+.oc-custom .oc-inner {
+  position: relative;
+  overflow-y: auto;
+}
+
+.oc-custom .oc-aside {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  visibility: hidden;
+  width: 280px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background: #607D8B;
+}
+
+.oc-custom .oc-content:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-custom .oc-active > .oc-content:after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-custom .oc-aside:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-custom .oc-active > .oc-aside:after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-custom .oc-aside {
+  color: #fff;
+}
+
+.oc-aside-left.oc-active .oc-content {
+  -webkit-transform: translate3d(280px, 0, 0);
+          transform: translate3d(280px, 0, 0);
+}
+
+.oc-aside-left.oc-aside {
+  left: 0;
+  z-index: 1;
+  -webkit-transform: translate3d(50%, 0, 0);
+          transform: translate3d(50%, 0, 0);
+}
+
+.oc-aside-left.oc-active .oc-aside-left.oc-aside {
+  visibility: visible;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.oc-aside-right.oc-wrap {
+  -webkit-perspective: 1500px;
+          perspective: 1500px;
+}
+
+.oc-aside-right .oc-content {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.oc-aside-right.oc-active .oc-content {
+  -webkit-transform: translate3d(-100px, 0, -600px) rotateY(20deg);
+          transform: translate3d(-100px, 0, -600px) rotateY(20deg);
+}
+
+.oc-aside-right.oc-aside {
+  right: 0;
+  opacity: 1;
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+
+.oc-aside-right.oc-active .oc-aside-right.oc-aside {
+  visibility: visible;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.oc-aside-right.oc-aside:after {
+  display: none;
+}
+
+.oc-aside-right.oc-wrap {
+  -webkit-transition: height 0.1s 0.5s;
+  transition: height 0.1s 0.5s;
+}
+
+.oc-aside-right.oc-delay.oc-wrap {
+  height: 100%;
+}
+
+.oc-aside-right.oc-active.oc-wrap {
+  height: 100%;
+  -webkit-transition: none;
+  transition: none;
 }
 
 .slide-in-left.oc-aside {
@@ -5304,8 +5507,8 @@ body {
 }
 
 .scale-rotate-right.oc-active .oc-content {
-  -webkit-transform: translate3d(100px, 0, -600px) rotateY(20deg);
-          transform: translate3d(100px, 0, -600px) rotateY(20deg);
+  -webkit-transform: translate3d(-100px, 0, -600px) rotateY(20deg);
+          transform: translate3d(-100px, 0, -600px) rotateY(20deg);
 }
 
 .scale-rotate-right.oc-aside {

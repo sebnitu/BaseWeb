@@ -16,13 +16,14 @@ $off-canvas: (
   'class-active'   : 'oc-active',
   'class-delay'    : 'oc-delay',
 
-  'content-screen' : rgba($black, 0.2),
-  'aside-screen'   : rgba($black, 0.2),
+  'screen-content' : rgba($black, 0.2),
+  'screen-aside'   : rgba($black, 0.2),
 
   'transition' : 'slide-in-left',
   'transition-duration' : 0.5s,
   'width' : 280px,
-  'wrap-height' : 100%,
+  'wrap-height' : null,
+  'aside-position' : fixed,
 
   'background-wrap' : $bg-color,
   'background-aside' : $white,
@@ -67,7 +68,7 @@ $off-canvas: (
   .#{map-get($o, 'class-content')} {
   	position: relative;
   	left: 0;
-  	z-index: 99;
+  	z-index: 5;
   	transition: transform map-get($o, 'transition-duration');
     background: map-get($o, 'background-content');
   }
@@ -76,9 +77,9 @@ $off-canvas: (
     overflow-y: auto;
   }
   .#{map-get($o, 'class-aside')} {
-  	position: absolute;
+  	position: map-get($o, 'aside-position');
   	top: 0;
-  	z-index: 100;
+  	z-index: 10;
   	visibility: hidden;
   	width: map-get($o, 'width');
     overflow-y: auto;
@@ -87,15 +88,14 @@ $off-canvas: (
   }
 
   // Content screen
-  @if (map-get($o, 'content-screen')) {
+  @if (map-get($o, 'screen-content')) {
     .#{map-get($o, 'class-content')}:after {
     	position: absolute;
-      z-index: 10;
     	top: 0;
     	right: 0;
     	width: 0;
     	height: 0;
-    	background: map-get($o, 'content-screen');
+    	background: map-get($o, 'screen-content');
     	content: '';
     	opacity: 0;
     	transition: opacity map-get($o, 'transition-duration'), width 0.1s map-get($o, 'transition-duration'), height 0.1s map-get($o, 'transition-duration');
@@ -109,14 +109,14 @@ $off-canvas: (
   }
 
   // Aside screen
-  @if (map-get($o, 'aside-screen')) {
+  @if (map-get($o, 'screen-aside')) {
     .#{map-get($o, 'class-aside')}:after {
     	position: absolute;
     	top: 0;
     	left: 0;
     	width: 100%;
     	height: 100%;
-      background: map-get($o, 'aside-screen');
+      background: map-get($o, 'screen-aside');
     	content: '';
     	opacity: 1;
     	transition: opacity map-get($o, 'transition-duration');
@@ -428,7 +428,7 @@ $off-canvas: (
     	transform-style: preserve-3d;
     }
     .#{$target}.#{map-get($o, 'class-active')} .#{map-get($o, 'class-content')} {
-    	transform: translate3d(100px, 0, -600px) rotateY(20deg);
+    	transform: translate3d(-100px, 0, -600px) rotateY(20deg);
     }
     .#{$target}.#{map-get($o, 'class-aside')} {
       right: 0;
@@ -512,7 +512,7 @@ $off-canvas: (
 
 // Add Off-Canvas Wrap Height
 // Sets the oc-wrap height to 100% with delay. This is used for specific
-// transitions which use 3d transforms.
+// transitions which use 3D transforms.
 // @param $target
 //   @type string
 // @param $options
@@ -555,10 +555,8 @@ $off-canvas: (
 // ---
 // Example usage:
 // @include add-off-canvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
-// Notice:
-// When using scale transitions, it's recommended that you set the oc-wrap
-// element to height: 100% which will preserve scroll position.
-
-@include add-off-canvas-transition();
+@if (map-get($off-canvas, 'transition')) {
+  @include add-off-canvas-transition();
+}
 
 } // endif classes
