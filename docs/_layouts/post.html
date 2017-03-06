@@ -20,19 +20,21 @@ layout: default
       {{ content }}
     </div>
 
+    {% include social.html %}
+
     {% if page.previous or page.next %}
       <div class="page-nav">
         {% if page.previous %}
-          <a href="{{ page.previous.url }}" class="button prev">
-            <!--<svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>-->
-            <span><strong>Prev:</strong> {{ page.previous.title }}</span>
+          <a href="{{ page.previous.url }}" class="prev">
+            <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
+            <span>{{ page.previous.title }}</span>
           </a>
         {% endif %}
 
         {% if page.next %}
-          <a href="{{ page.next.url }}" class="button next">
-            <!--<svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>-->
-            <span><strong>Next:</strong> {{ page.next.title }}</span>
+          <a href="{{ page.next.url }}" class="next">
+            <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
+            <span>{{ page.next.title }}</span>
           </a>
         {% endif %}
       </div>

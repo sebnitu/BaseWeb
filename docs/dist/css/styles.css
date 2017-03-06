@@ -1799,6 +1799,18 @@ fieldset[disabled] .input {
 }
 
 /*==============================================================================
+  @Icons - scss/elements/_icons.scss
+==============================================================================*/
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/*==============================================================================
   @Video - scss/elements/_videos.scss
 ==============================================================================*/
 .video-wrapper {
@@ -3989,19 +4001,102 @@ body {
 }
 
 /**
+ * Social Links
+ */
+.social-links {
+  margin: 2em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.social-links a {
+  padding: 0.25em 0.75em;
+  background: #212121;
+  border-radius: 3px;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  color: #fff;
+}
+
+.social-links a.social-facebook {
+  background: #4862a3;
+}
+
+.social-links a.social-twitter {
+  background: #55acee;
+}
+
+.social-links a.social-google {
+  background: #dc473a;
+}
+
+.social-links a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.social-links a + a {
+  margin-left: 0.25rem;
+}
+
+.social-links .icon {
+  font-size: 1.571em;
+  vertical-align: top;
+}
+
+@media (min-width: 760px) {
+  .social-links {
+    margin-top: 4em;
+  }
+  .social-links a {
+    padding: 0.5em 1em;
+    font-size: 1em;
+  }
+  .social-links a + a {
+    margin-left: 0.5em;
+  }
+}
+
+/**
  * Page Navigation
  */
 .page-nav {
   margin: 2em 0;
-  font-size: 1.143em;
-  line-height: 1.6em;
 }
 
-.page-nav .button {
+.page-nav a {
+  position: relative;
   display: block;
   margin: 1em 0;
-  padding: 1.25em 1.75em;
-  text-align: left;
+  padding: 1em 1.5em;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  color: #212121;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.page-nav a:hover {
+  color: #212121;
+  border-color: #2196F3;
+  text-decoration: none;
+}
+
+.page-nav .icon {
+  float: left;
+  font-size: 2em;
+  vertical-align: top;
+}
+
+.page-nav span {
+  display: block;
+  padding-left: 3em;
+  line-height: 2em;
 }
 
 @media (min-width: 760px) {
