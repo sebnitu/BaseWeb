@@ -45,8 +45,7 @@ var
     year: [
       'README.md',
       'LICENSE',
-      'src/scss/_colophon.scss',
-      'docs/src/scss/styles.scss',
+      'src/scss/_colophon.scss'
     ],
     exclude: [
       '!./node_modules/**',
