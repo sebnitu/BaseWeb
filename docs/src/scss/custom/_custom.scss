@@ -754,7 +754,22 @@ body {
   }
   .content {
     font-size: px-to-em(16em);
-    line-height: 1.5em;
+    line-height: 1.6em;
+
+    code,
+    pre code {
+      font-size: 0.8em;
+      line-height: 1.5em;
+    }
+  }
+}
+
+@include media-min('medium') {
+  .article {
+    .content {
+      font-size: px-to-em(18em);
+      line-height: 1.6em;
+    }
   }
 }
 
@@ -763,28 +778,20 @@ body {
  */
 .page-nav {
   margin: 2em 0;
+  font-size: px-to-em(16em);
+  line-height: 1.6em;
 
   .button {
     display: block;
-    margin: 0.5em 0;
+    margin: 1em 0;
+    padding: 1.25em 1.75em;
+    text-align: left;
   }
 }
 
-@include media-min('small') {
+@include media-min('medium') {
   .page-nav {
     margin: 4em 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .button {
-      width: 50%;
-      margin-right: 1em;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
   }
 }
 
