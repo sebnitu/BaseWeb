@@ -38,14 +38,14 @@ var
     version: [
       'README.md',
       'package.json',
-      'src/scss/baseweb.scss',
+      'src/scss/_colophon.scss',
       'docs/src/scss/styles.scss',
       'docs/_config.yml'
     ],
     year: [
       'README.md',
       'LICENSE',
-      'src/scss/baseweb.scss',
+      'src/scss/_colophon.scss',
       'docs/src/scss/styles.scss',
     ],
     exclude: [
