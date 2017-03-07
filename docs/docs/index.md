@@ -16,6 +16,7 @@ scss/
 ├── elements/
 ├── blocks/
 ├── custom/
+├── _colophon.scss
 └── _custom.scss
 
 # CSS Output
@@ -29,6 +30,9 @@ css/
 All of BaseWeb components are routed through `_baseweb.scss`, where all our `@import` calls are made. The only required files are located in Settings and Core directories. These files, by default, have no CSS output and function simply as a libarary if functions and variables that you can use in your project. To exclude any other optional files, just comment out their `@import` declaration and recompile.
 
 ``` scss
+// BaseWeb meta information
+@import "colophon";
+
 // Settings (Required)
 @import "settings/palette";
 @import "settings/media";
@@ -65,6 +69,7 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 @import "blocks/breadcrumbs";
 @import "blocks/dropdowns";
 @import "blocks/tabs";
+@import "blocks/off-canvas";
 
 // Custom
 @import "custom/custom";
