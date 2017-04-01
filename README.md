@@ -2,7 +2,6 @@
 
 Currently v2.4.4
 
-![Bower version](https://img.shields.io/bower/v/baseweb.svg)
 [![npm version](https://img.shields.io/npm/v/baseweb.svg)](https://www.npmjs.com/package/baseweb)
 [![devDependency Status](https://img.shields.io/david/dev/sebnitu/baseweb.svg)](https://david-dm.org/sebnitu/baseweb?type=dev)
 
