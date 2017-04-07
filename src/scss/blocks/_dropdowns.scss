@@ -566,8 +566,16 @@ $dropdowns: (
 }
 
 .#{map-get($dropdowns, 'class-dropdown-menu')} {
-  @include make-dropdown-trigger(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'));
-  @include add-dropdown-position(('target' : '.dropdown-menu', 'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu', 'offset-margin-alt' : -1px, 'offset-position' : -0.5em), $anchor: 'right-top');
+  @include make-dropdown-trigger((
+    'target' : '.dropdown-menu',
+    'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'
+  ));
+  @include add-dropdown-position((
+    'target' : '.dropdown-menu',
+    'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu',
+    'offset-margin-alt' : -1px,
+    'offset-position' : -0.5em
+  ), $anchor: 'right-top');
 }
 
 // Check if we should output modifier classes
