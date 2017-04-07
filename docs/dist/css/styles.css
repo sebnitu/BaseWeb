@@ -2,7 +2,7 @@
 /*!
  * BaseWeb
  * A fresh front-end development framework
- * @version 2.4.3
+ * @version 2.4.4
  *
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
@@ -2965,6 +2965,123 @@ fieldset[disabled] .input {
 }
 
 /*==============================================================================
+  @Tooltips - scss/blocks/_tooltips.scss
+==============================================================================*/
+/**
+ * Base styles for tooltips
+ */
+.tooltip {
+  position: relative;
+}
+
+.tooltip:after {
+  content: attr(data-tooltip);
+  pointer-events: none;
+  position: absolute;
+  z-index: 100;
+  display: block;
+  max-width: 30em;
+  padding: 0.5em 1em;
+  background: rgba(33, 33, 33, 0.9);
+  border-radius: 3px;
+  font-size: 0.857rem;
+  line-height: 1.5em;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.2s;
+  transition: opacity 0.2s, -webkit-transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
+  transition: opacity 0.2s, transform 0.2s, -webkit-transform 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/**
+ * Default Tooltip Position
+ */
+.tooltip:after {
+  top: auto;
+  left: 50%;
+  right: auto;
+  bottom: 100%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.tooltip:hover:after,
+.tooltip:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -0.5em);
+          transform: translate(-50%, -0.5em);
+}
+
+/**
+ * Tooltip Positions
+ */
+.tooltip-top:after {
+  top: auto;
+  left: 50%;
+  right: auto;
+  bottom: 100%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.tooltip-top:hover:after,
+.tooltip-top:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -0.5em);
+          transform: translate(-50%, -0.5em);
+}
+
+.tooltip-left:after {
+  top: 50%;
+  left: auto;
+  right: 100%;
+  bottom: auto;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.tooltip-left:hover:after,
+.tooltip-left:focus:after {
+  -webkit-transform: translate(-0.5em, -50%);
+          transform: translate(-0.5em, -50%);
+}
+
+.tooltip-right:after {
+  top: auto;
+  left: 100%;
+  right: auto;
+  bottom: 50%;
+  -webkit-transform: translate(0, 50%);
+          transform: translate(0, 50%);
+}
+
+.tooltip-right:hover:after,
+.tooltip-right:focus:after {
+  -webkit-transform: translate(0.5em, 50%);
+          transform: translate(0.5em, 50%);
+}
+
+.tooltip-bottom:after {
+  top: 100%;
+  left: auto;
+  right: 50%;
+  bottom: auto;
+  -webkit-transform: translate(50%, 0);
+          transform: translate(50%, 0);
+}
+
+.tooltip-bottom:hover:after,
+.tooltip-bottom:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(50%, 0.5em);
+          transform: translate(50%, 0.5em);
+}
+
+/*==============================================================================
   @Grid System - scss/custom/_custom.scss
 ==============================================================================*/
 .container {
@@ -5062,7 +5179,7 @@ body {
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   transition: transform 0.5s, -webkit-transform 0.5s;
-  background: #D7CCC8;
+  background: #E3F2FD;
 }
 
 .oc-custom .oc-inner {
@@ -5773,6 +5890,28 @@ body {
   height: 100%;
   -webkit-transition: none;
   transition: none;
+}
+
+/**
+ * Tooltips
+ */
+.demo-tooltips {
+  overflow: visible;
+}
+
+.demo-tooltips:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.demo-tooltips hr {
+  margin: 0;
+}
+
+.demo-tooltips .button {
+  float: left;
+  margin: 1em 1em 1em 0;
 }
 
 /*==============================================================================

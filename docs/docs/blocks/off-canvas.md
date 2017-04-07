@@ -336,7 +336,7 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 // Change the background styles, but keep the rest of the $off-canvas defaults
 @include make-off-canvas((
   'background-aside' : $blue-gray,
-  'background-content' : $brown-100
+  'background-content' : $blue-50
 ));
 ```
 

@@ -1,0 +1,179 @@
+// Set file variable
+$filename: 'scss/blocks/_tooltips.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Tooltips Map
+////////////////////////////////////////////////////////////////////////////////
+
+$tooltips: (
+  'classes' : true,
+
+  'class' : 'tooltip',
+
+  'z-index' : 100,
+  'max-width' : 30em,
+  'padding' : 0.5em 1em,
+
+  'transition-duration' : 0.2s,
+
+  'background' : rgba($color, 0.9),
+  'border-radius' : $border-radius,
+
+  'font-size' : px-to-rem(12px),
+  'line-height' : 1.5em,
+  'color' : $white,
+
+  'position-start' : 0,
+  'position-end'   : 0.5em,
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'tooltips') == true) {
+    $tooltips: map-extend($tooltips, map-get($override, 'tooltips'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Tooltips Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Tooltips
+// Creates the base styles for tooltips element.
+// @param $options
+//   @type map
+//   @default $tooltips map
+@mixin make-tooltip($options: ()) {
+  $o: map-merge($tooltips, $options);
+
+  .#{map-get($o, 'class')} {
+    position: relative;
+  }
+  .#{map-get($o, 'class')}:after {
+    content: attr(data-tooltip); // Get the content of the data-tooltip attribute
+    pointer-events: none; // Turns off hover effect on the pseudo element
+    position: absolute;
+    z-index: map-get($o, 'z-index');
+
+    display: block;
+    max-width: map-get($o, 'max-width');
+    padding: map-get($o, 'padding');
+
+    background: map-get($o, 'background');
+    border-radius: map-get($o, 'border-radius');
+
+    font-size: map-get($o, 'font-size');
+    line-height: map-get($o, 'line-height');
+    color: map-get($o, 'color');
+
+    opacity: 0;
+    transition: opacity map-get($o, 'transition-duration'), transform map-get($o, 'transition-duration');
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+// Add Tooltip Position
+// Adds the position styles for a tooltip.
+// @param $options
+//   @type map
+//   @default $tooltips map
+// @param $anchor
+//   @type string ('top', 'left', 'right', 'bottom')
+//   @default 'top'
+// @param $class
+//   @type string | null | default
+//   @default null
+@mixin add-tooltip-position($options: (), $anchor : 'top', $class : null) {
+  $o: map-merge($tooltips, $options);
+
+  @if ($class == null) {
+    $class: '#{map-get($o, 'class')}-#{$anchor}';
+  } @else if ($class == default) {
+    $class: map-get($o, 'class');
+  }
+
+  @if ($anchor == 'top') {
+    .#{$class}:after {
+      top: auto;
+      left: 50%;
+      right: auto;
+      bottom: 100%;
+      transform: translate(-50%, -(map-get($o, 'position-start')));
+    }
+    .#{$class}:hover:after,
+    .#{$class}:focus:after {
+      opacity: 1;
+      transform: translate(-50%, -(map-get($o, 'position-end')));
+    }
+  } @else if ($anchor == 'left') {
+    .#{$class}:after {
+      top: 50%;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      transform: translate(-(map-get($o, 'position-start')), -50%);
+    }
+    .#{$class}:hover:after,
+    .#{$class}:focus:after {
+      transform: translate(-(map-get($o, 'position-end')), -50%);
+    }
+  } @else if ($anchor == 'right') {
+    .#{$class}:after {
+      top: auto;
+      left: 100%;
+      right: auto;
+      bottom: 50%;
+      transform: translate(map-get($o, 'position-start'), 50%);
+    }
+    .#{$class}:hover:after,
+    .#{$class}:focus:after {
+      transform: translate(map-get($o, 'position-end'), 50%);
+    }
+  } @else if ($anchor == 'bottom') {
+    .#{$class}:after {
+      top: 100%;
+      left: auto;
+      right: 50%;
+      bottom: auto;
+      transform: translate(50%, map-get($o, 'position-start'));
+    }
+    .#{$class}:hover:after,
+    .#{$class}:focus:after {
+      opacity: 1;
+      transform: translate(50%, map-get($o, 'position-end'));
+    }
+  } @else {
+    @warn 'The tooltip position of `#{$anchor}` does not exist';
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($tooltips, 'classes') == true) {
+
+/*==============================================================================
+  @Tooltips - #{$filename}
+==============================================================================*/
+
+/**
+ * Base styles for tooltips
+ */
+@include make-tooltip();
+
+/**
+ * Default Tooltip Position
+ */
+@include add-tooltip-position($anchor: 'top', $class: default);
+
+/**
+ * Tooltip Positions
+ */
+@include add-tooltip-position($anchor: 'top');
+@include add-tooltip-position($anchor: 'left');
+@include add-tooltip-position($anchor: 'right');
+@include add-tooltip-position($anchor: 'bottom');
+
+} // endif classes
