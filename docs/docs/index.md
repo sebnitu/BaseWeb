@@ -70,6 +70,7 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 @import "blocks/dropdowns";
 @import "blocks/tabs";
 @import "blocks/off-canvas";
+@import "blocks/tooltips";
 
 // Custom
 @import "custom/custom";
