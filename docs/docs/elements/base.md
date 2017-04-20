@@ -9,7 +9,6 @@ order: 1
 Some general styles and global resets are defined here. This is where we store any styles that effect the `<body>` or `<html>` elements, set HTML5 elements to display as block and output our global modifier classes.
 
 <ul class="list list-docs">
-  <li>Set the height for <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> to <code>100%</code></li>
   <li>Remove margins and padding from <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code></li>
   <li>Prevents automatic text resizing on mobile devices.</li>
   <li>Make HTML5 elements act like blocks.</li>
