@@ -22,7 +22,7 @@ $off-canvas: (
   'transition' : 'slide-in-left',
   'transition-duration' : 0.5s,
   'width' : 280px,
-  'wrap-height' : null,
+  'wrap-height' : 100%,
   'aside-position' : fixed,
 
   'background-wrap' : $bg-color,
@@ -53,6 +53,7 @@ $off-canvas: (
   // Base structure styles
   .#{map-get($o, 'class-wrap')} {
     height: map-get($o, 'wrap-height');
+    @include scrollable();
   }
   .#{map-get($o, 'class-content')},
   .#{map-get($o, 'class-inner')},
