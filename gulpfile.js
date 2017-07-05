@@ -39,7 +39,6 @@ var
       'README.md',
       'package.json',
       'src/scss/_colophon.scss',
-      'docs/src/scss/styles.scss',
       'docs/_config.yml'
     ],
     year: [

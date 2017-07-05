@@ -910,15 +910,15 @@ Creates an image which represents a linear gradient of colors.
 ```scss
 // SCSS
 .box {
-  @include linear-gradient(left, $green, $blue, $purple);
+  @include linear-gradient(to right, $green, $blue, $purple);
 }
 
 // CSS Output
 .box {
-  background-image: -webkit-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
-  background-image: -moz-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
-  background-image: -ms-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
-  background-image: linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
+  background-image: -webkit-linear-gradient(to right, #4CAF50, #2196F3, #9C27B0);
+  background-image: -moz-linear-gradient(to right, #4CAF50, #2196F3, #9C27B0);
+  background-image: -ms-linear-gradient(to right, #4CAF50, #2196F3, #9C27B0);
+  background-image: linear-gradient(to right, #4CAF50, #2196F3, #9C27B0);
 }
 ```
 
