@@ -268,26 +268,3 @@
 // @param $options
 //   @type map
 //   @default $mini-grid map
-@mixin build-mini-grid-system($options: ()) {
-  $o: map-merge($mini-grid, $options);
-
-  %mini-grid-base {
-    display: block;
-    @include clearfix();
-  }
-
-  %mini-grid-mini-base {
-    float: left;
-  }
-
-  @for $i from 1 through map-get($o, 'fractions') {
-    .#{map-get($o, 'class-has')}-#{$i} {
-      @extend %mini-grid-base;
-    }
-    .#{map-get($o, 'class-is')}-1-of-#{$i},
-    .#{map-get($o, 'class-has')}-#{$i} > * {
-      @extend %mini-grid-mini-base;
-      width: (100% / $i);
-    }
-  }
-}
