@@ -109,11 +109,11 @@ List variables are encompassed within the `$lists` map and are used throughout a
 
   <tr>
     <td><code>$lists('background')</code></td>
-    <td><code>none</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$lists('background-stripe')</code></td>
-    <td><code>rgba($black, 0.05)</code></td>
+    <td><code>rgba($black, 0.025)</code></td>
   </tr>
   <tr>
     <td><code>$lists('background-hover')</code></td>

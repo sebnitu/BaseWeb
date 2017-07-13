@@ -341,7 +341,6 @@ dl dd {
 .list {
   list-style: none;
   margin: 1rem 0;
-  background: none;
 }
 
 .list > li {
@@ -419,7 +418,7 @@ dl dd {
 }
 
 .list.striped > li:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.025);
 }
 
 .list.hover > li {
@@ -1779,48 +1778,16 @@ fieldset[disabled] .input {
   @Button Groups - scss/blocks/_button-groups.scss
 ==============================================================================*/
 .button-group {
-  vertical-align: middle;
-  margin: 0;
-  display: inline-block;
-  float: none;
-}
-
-.button-group:after {
-  content: '';
-  display: table;
-  clear: both;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
 }
 
 .button-group > .button {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-}
-
-.button-group > .button:hover {
-  z-index: 2;
-}
-
-.button-group > .button:focus {
-  z-index: 3;
-}
-
-.button-group > .button:active {
-  z-index: 4;
-}
-
-.button-group > .button.active {
-  z-index: 5;
-}
-
-.button-group + .button-group {
-  margin-top: 0;
-  margin-left: 0.75em;
-}
-
-.button-group > .button {
-  display: inline-block;
-  float: left;
   border-radius: 0;
   border-width: 1px;
 }
@@ -1844,35 +1811,109 @@ fieldset[disabled] .input {
   border-bottom-right-radius: 3px;
 }
 
+.button-group > .button {
+  position: relative;
+  z-index: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  margin: 0;
+}
+
+.button-group > .button:hover {
+  z-index: 2;
+}
+
+.button-group > .button:focus {
+  z-index: 3;
+}
+
+.button-group > .button:active {
+  z-index: 4;
+}
+
+.button-group > .button.active {
+  z-index: 5;
+}
+
+.button-group > .button.static {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
 /**
  * Button Group Modifiers
  */
+.button-group.inline {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
 .button-group.block {
-  display: block;
-  float: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.button-group.block + .button-group {
-  margin-top: 1em;
-  margin-left: 0;
+.button-group.hori,
+.button-group.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row;
+          flex-flow: row;
 }
 
-.button-group.vertical {
-  margin-right: 0;
-}
-
-.button-group.vertical > .button {
-  display: block;
-  width: 100%;
-  float: none;
+.button-group.hori > .button,
+.button-group.horizontal > .button {
   border-radius: 0;
+  border-width: 1px;
 }
 
+.button-group.hori > .button + .button,
+.button-group.horizontal > .button + .button {
+  margin-top: 0;
+  margin-left: -1px;
+}
+
+.button-group.hori > .button:first-child,
+.button-group.horizontal > .button:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.button-group.hori > .button:last-child,
+.button-group.horizontal > .button:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.button-group.vert,
+.button-group.vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.button-group.vert > .button,
+.button-group.vertical > .button {
+  border-radius: 0;
+  border-width: 1px;
+}
+
+.button-group.vert > .button + .button,
 .button-group.vertical > .button + .button {
   margin-top: -1px;
   margin-left: 0;
 }
 
+.button-group.vert > .button:first-child,
 .button-group.vertical > .button:first-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -1880,6 +1921,7 @@ fieldset[disabled] .input {
   border-top-right-radius: 3px;
 }
 
+.button-group.vert > .button:last-child,
 .button-group.vertical > .button:last-child {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -3597,7 +3639,7 @@ body {
   color: #9E9E9E;
 }
 
-.subsection:last-child .list-docs:last-child li:last-child {
+.subsection:last-child .list-docs:last-child > li:last-child {
   border-bottom: 0 none;
 }
 
@@ -3910,7 +3952,7 @@ body {
 ==============================================================================*/
 .demo {
   margin: 1.5em -1.5em;
-  padding: 0 1.5em;
+  padding: 0.5em 1.5em;
   overflow: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -3928,9 +3970,22 @@ body {
 @media (min-width: 760px) {
   .demo {
     margin: 1.5em 0;
-    padding: 1.5em 3em;
+    padding: 2em 3em;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
+  }
+}
+
+/**
+ * Demo Alternate Styles
+ */
+.demo.demo-alt {
+  padding: 1.5em;
+}
+
+@media (min-width: 760px) {
+  .demo.demo-alt {
+    padding: 3em;
   }
 }
 
@@ -4299,6 +4354,10 @@ body {
 /**
  * Prefix and Suffix Grid Demo
  */
+.demo-grid-prefix-suffix .row {
+  background: rgba(33, 150, 243, 0.1);
+}
+
 @media (min-width: 760px) {
   .demo-grid-prefix-suffix {
     padding-left: 0.75rem;
@@ -4306,20 +4365,9 @@ body {
   }
 }
 
-.demo-grid-prefix-suffix .row {
-  background: rgba(33, 150, 243, 0.1);
-}
-
 /**
  * Nested Grid Demo
  */
-@media (min-width: 760px) {
-  .demo-grid-nested {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-}
-
 .demo-grid-nested .col {
   margin-top: 0;
   margin-bottom: 0;
@@ -4334,43 +4382,11 @@ body {
   white-space: nowrap;
 }
 
-/**
- * Mini Grid
- */
-.demo.demo-mini-grid {
-  padding: 1.5em 3em;
-}
-
-.demo-mini-grid .mini-grid {
-  margin: 1rem 0;
-}
-
-.demo-mini-grid .mini-grid:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.demo-mini-grid .mini-grid > * {
-  margin: 0;
-  padding: 1rem 0;
-  background: rgba(0, 0, 0, 0.05);
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 1em;
-  line-height: 1.5em;
-  text-align: center;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.demo-mini-grid .mini-grid > *:first-child {
-  border-left: 0 none;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.demo-mini-grid .mini-grid > *:last-child {
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+@media (min-width: 760px) {
+  .demo-grid-nested {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
 /**

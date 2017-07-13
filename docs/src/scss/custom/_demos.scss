@@ -7,7 +7,7 @@ $filename: 'scss/custom/_demos.scss';
 
 .demo {
   margin: 1.5em -1.5em;
-  padding: 0 1.5em;
+  padding: 0.5em 1.5em;
   overflow: auto;
   border-top: 1px solid rgba($black, 0.1);
   border-bottom: 1px solid rgba($black, 0.1);
@@ -20,13 +20,24 @@ $filename: 'scss/custom/_demos.scss';
     @include border-radius();
   }
 }
-
 @include media-min('medium') {
   .demo {
     margin: 1.5em 0;
-    padding: 1.5em 3em;
+    padding: 2em 3em;
     border: 1px solid rgba($black, 0.1);
     @include border-radius();
+  }
+}
+
+/**
+ * Demo Alternate Styles
+ */
+.demo.demo-alt {
+  padding: 1.5em;
+}
+@include media-min('medium') {
+  .demo.demo-alt {
+    padding: 3em;
   }
 }
 
@@ -298,27 +309,21 @@ $filename: 'scss/custom/_demos.scss';
 /**
  * Prefix and Suffix Grid Demo
  */
- @include media-min('medium') {
-   .demo-grid-prefix-suffix {
-     padding-left: 0.75rem;
-     padding-right: 0.75rem;
-   }
- }
 .demo-grid-prefix-suffix {
   .row {
     background: rgba($blue, 0.1);
+  }
+}
+@include media-min('medium') {
+  .demo-grid-prefix-suffix {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 
 /**
  * Nested Grid Demo
  */
-@include media-min('medium') {
-  .demo-grid-nested {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-}
 .demo-grid-nested .col {
   margin-top: 0;
   margin-bottom: 0;
@@ -328,33 +333,10 @@ $filename: 'scss/custom/_demos.scss';
   margin: 0.75rem 0;
   @include text-truncate();
 }
-
-/**
- * Mini Grid
- */
-.demo.demo-mini-grid {
-  padding: 1.5em 3em;
-}
-.demo-mini-grid .mini-grid {
-  margin: 1rem 0;
-  @include clearfix();
-}
-.demo-mini-grid .mini-grid > * {
-  margin: 0;
-  padding: 1rem 0;
-  background: rgba($black, 0.05);
-  font-family: $font-family-mono;
-  font-size: px-to-em(14px);
-  line-height: 1.5em;
-  text-align: center;
-  border-left: 1px solid rgba($black, 0.1);
-
-  &:first-child {
-    border-left: 0 none;
-    @include border-radius-left();
-  }
-  &:last-child {
-    @include border-radius-right();
+@include media-min('medium') {
+  .demo-grid-nested {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 }
 

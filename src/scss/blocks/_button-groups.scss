@@ -11,9 +11,9 @@ $filename: 'scss/blocks/_button-groups.scss';
 $button-groups: (
   'classes' : true,
   'class-group' : 'button-group',
-  'border-width': 1px,
-  'spacing' : 1em,
-
+  'display' : 'inline',
+  'orientation' : 'horizontal',
+  'border-width': 1px
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -32,18 +32,21 @@ $button-groups: (
 // @param $options
 //   @type map
 //   @default $button-groups map
-@mixin make-button-group($options: ()) {
+@mixin make-button-group($defaults: true, $options: ()) {
   $o: map-merge($button-groups, $options);
 
-  vertical-align: middle;
-  margin: 0;
-  @include clearfix();
+  @if ($defaults == true) {
+    @include add-button-group-display(map-get($o, 'display'));
+    @include add-button-group-orientation(map-get($o, 'orientation'));
+  }
 
   > .button {
     position: relative;
     z-index: 1;
+    flex: 1 1 auto;
     margin: 0;
 
+    // Stack order
     &:hover {
       z-index: 2;
     }
@@ -56,55 +59,53 @@ $button-groups: (
     &.active {
       z-index: 5;
     }
+
+    // Flex modifiers
+    &.static {
+      flex-grow: 0;
+    }
   }
 }
 
-// Add Button Group Styles
+// Add Button Group Display
 // Adds button styles based on orientation and display type provided.
-// @param $orientation
-//   @type string 'horizontal' | 'vertical' | 'hori' | 'vert'
-//   @default null
 // @param $display
 //   @type string 'inline' | 'block'
-//   @default null
-// @param $has
-//   @type number
 //   @default null
 // @param $options
 //   @type map
 //   @default $button-groups map
-@mixin add-button-group-style($orientation: null, $display: null, $options: ()) {
+@mixin add-button-group-display($display: null, $options: ()) {
   $o: map-merge($button-groups, $options);
 
-  // Inline or Block
   @if ($display == 'inline') {
 
-    display: inline-block;
-    float: none;
+    display: inline-flex;
 
-    + .#{map-get($o, 'class-group')} {
-      margin-top: 0;
-      margin-left: (map-get($o, 'spacing') * 0.75);
-    }
+  } @else if ($display == 'block' ) {
 
-  } @else if ($display == 'block') {
-
-    display: block;
-    float: none;
-
-    + .#{map-get($o, 'class-group')} {
-      margin-top: map-get($o, 'spacing');
-      margin-left: 0;
-    }
+    display: flex;
 
   }
+}
+
+// Add Button Group Orientation
+// Adds button styles based on orientation and display type provided.
+// @param $orientation
+//   @type string 'horizontal' | 'vertical' | 'hori' | 'vert'
+//   @default null
+// @param $options
+//   @type map
+//   @default $button-groups map
+@mixin add-button-group-orientation($orientation: null, $options: ()) {
+  $o: map-merge($button-groups, $options);
 
   // Horizontal or Vertical
   @if (($orientation == 'horizontal') or ($orientation == 'hori')) {
 
+    flex-flow: row;
+
     > .button {
-      display: inline-block;
-      float: left;
       border-radius: 0;
       border-width: map-get($o, 'border-width');
 
@@ -125,13 +126,11 @@ $button-groups: (
 
   } @else if (($orientation == 'vertical' ) or ($orientation == 'vert' )) {
 
-    margin-right: 0;
+    flex-flow: column;
 
     > .button {
-      display: block;
-      width: 100%;
-      float: none;
       border-radius: 0;
+      border-width: map-get($o, 'border-width');
 
       + .button {
         margin-top: -(map-get($o, 'border-width')); // Border width of buttons
@@ -159,17 +158,26 @@ $button-groups: (
 
 .#{map-get($button-groups, 'class-group')} {
   @include make-button-group();
-  @include add-button-group-style('horizontal', 'inline');
+  // @include add-button-group-orientation('hori');
 }
 
 /**
  * Button Group Modifiers
  */
+.#{map-get($button-groups, 'class-group')}.inline {
+  @include add-button-group-display('inline');
+}
 .#{map-get($button-groups, 'class-group')}.block {
-  @include add-button-group-style($display: 'block');
+  @include add-button-group-display('block');
 }
+.#{map-get($button-groups, 'class-group')}.hori,
+.#{map-get($button-groups, 'class-group')}.horizontal {
+  @include add-button-group-orientation('hori');
+}
+.#{map-get($button-groups, 'class-group')}.vert,
 .#{map-get($button-groups, 'class-group')}.vertical {
-  @include add-button-group-style($orientation: 'vertical');
+  @include add-button-group-orientation('vert');
 }
+
 
 } // endif classes
