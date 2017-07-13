@@ -13,7 +13,7 @@ var
   // CSS
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  critical = require('critical'),
+  // critical = require('critical'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
@@ -181,33 +181,11 @@ gulp.task('docs:css', function() {
   return merge(css, cssmin);
 });
 
-// Builds critical CSS files to inject inline
-gulp.task('critical', function () {
-  critical.generate({
-    base: './',
-    src: 'docs/_site/index.html',
-    css: 'docs/_site/dist/css/styles.min.css',
-    dest: 'docs/_includes/critical.home.css',
-    minify: true
-  });
-  critical.generate({
-    base: './',
-    src: 'docs/_site/docs/index.html',
-    css: 'docs/_site/dist/css/styles.min.css',
-    dest: 'docs/_includes/critical.css',
-    minify: true
-  });
-});
-
 // JS Processing
 // Output expanded and minified JS files from documentation
 gulp.task('docs:js', function() {
   var
-    src = [
-      folder.srcDocs + 'js/**/*',
-      '!' + folder.srcDocs + 'js/loadcss.js',
-      '!' + folder.srcDocs + 'js/cssrelpreload.js'
-    ],
+    src = folder.srcDocs + 'js/**/*',
     dest = folder.destDocs + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
@@ -218,18 +196,9 @@ gulp.task('docs:js', function() {
       .pipe(concat('scripts.min.js'))
       .pipe(stripdebug())
       .pipe(uglify())
-      .pipe(gulp.dest(dest)),
-    loadcss = gulp.src([
-        folder.srcDocs + 'js/loadcss.js',
-        folder.srcDocs + 'js/cssrelpreload.js'
-      ])
-      .pipe(deporder())
-      .pipe(concat('loadcss.js'))
-      .pipe(stripdebug())
-      .pipe(uglify())
-      .pipe(gulp.dest('docs/_includes/'));
+      .pipe(gulp.dest(dest));
 
-  return merge(js, jsmin, loadcss);
+  return merge(js, jsmin);
 });
 
 // Image processing
