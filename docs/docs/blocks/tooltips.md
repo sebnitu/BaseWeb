@@ -100,7 +100,7 @@ Tooltip variables are encompassed within the `$tooltips` map and are used throug
 
 </table>
 
-<div class="notice yellow" id="var-note-1" markdown="1">
+<div class="notice info" id="var-note-1" markdown="1">
 \* Whether or not we should output tooltip classes. Set to `false` if you want to use the tooltip modifier mixins semantically and/or reduce CSS output.
 </div>
 

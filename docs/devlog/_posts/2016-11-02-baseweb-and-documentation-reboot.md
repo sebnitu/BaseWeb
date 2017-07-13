@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "BaseWeb 2.0 and Documentation Reboot"
+title: "BaseWeb and Documentation Reboot"
 date: 2016-11-02
 version: "2.0.0"
 ---

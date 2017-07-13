@@ -105,7 +105,7 @@ Button group variables are encompassed within the `$button-groups` map and are u
   </tr>
 </table>
 
-<div class="notice yellow" id="var-note-1" markdown="1">
+<div class="notice info" id="var-note-1" markdown="1">
 \* Whether or not we should output button group classes. Set to `false` if you want to use the button group mixins semantically and/or reduce CSS output.
 </div>
 
