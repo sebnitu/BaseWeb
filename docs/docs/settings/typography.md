@@ -127,6 +127,15 @@ The default typographic settings. These dictate the base typographic styles for 
       </div>
     </td>
   </tr>
+  <tr>
+    <td><code>$color-link-visited</code></td>
+    <td>
+      <div class="swatch-wrap">
+        <span class="swatch bg-color-link-visited"></span>
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$purple-700" readonly="">
+      </div>
+    </td>
+  </tr>
 
   <tr>
     <th colspan="3">Heading Links</th>
