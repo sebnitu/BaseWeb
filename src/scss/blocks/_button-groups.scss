@@ -115,12 +115,10 @@ $button-groups: (
       }
 
       &:first-child {
-        @include border-radius-top(0);
-        @include border-radius-left(map-get($buttons, 'border-radius'));
+        border-radius: map-get($buttons, 'border-radius') 0 0 map-get($buttons, 'border-radius');
       }
       &:last-child {
-        @include border-radius-bottom(0);
-        @include border-radius-right(map-get($buttons, 'border-radius'));
+        border-radius: 0 map-get($buttons, 'border-radius') map-get($buttons, 'border-radius') 0;
       }
     }
 
@@ -138,12 +136,10 @@ $button-groups: (
       }
 
       &:first-child {
-        @include border-radius-left(0);
-        @include border-radius-top(map-get($buttons, 'border-radius'));
+        border-radius: map-get($buttons, 'border-radius') map-get($buttons, 'border-radius') 0 0;
       }
       &:last-child {
-        @include border-radius-right(0);
-        @include border-radius-bottom(map-get($buttons, 'border-radius'));
+        border-radius: 0 0 map-get($buttons, 'border-radius') map-get($buttons, 'border-radius');
       }
     }
   }

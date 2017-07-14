@@ -143,7 +143,7 @@ $tabs: (
       ul {
         background: map-get($o, 'background');
         border: map-get($o, 'border');
-        @include border-radius(map-get($o, 'border-radius'));
+        border-radius: map-get($o, 'border-radius');
       }
       ul li {
         border-right: map-get($o, 'border');
@@ -152,11 +152,11 @@ $tabs: (
         }
 
         &:first-child {
-          @include border-radius-left(map-get($o, 'border-radius'));
+          @include border-left-radius(map-get($o, 'border-radius'));
         }
         &:last-child {
           border-right: none;
-          @include border-radius-right(map-get($o, 'border-radius'));
+          @include border-right-radius(map-get($o, 'border-radius'));
         }
       }
       a {
@@ -190,17 +190,17 @@ $tabs: (
     }
     .#{$class} .#{map-get($o, 'class-nav')} {
       ul {
-        @include border-radius-bottom(0);
+        @include border-bottom-radius(0);
       }
       ul li {
         border-bottom: 1px solid transparent;
         margin-bottom: -1px;
       }
       ul li:first-child {
-        @include border-radius-bottom-left(0);
+        border-bottom-left-radius: 0;
       }
       ul li:last-child {
-        @include border-radius-bottom-right(0);
+        border-bottom-right-radius: 0;
       }
       ul li.active {
         border-bottom: 1px solid map-get($o, 'background-accent');
@@ -210,7 +210,7 @@ $tabs: (
       padding: map-get($o, 'padding-content');
       border: map-get($o, 'border');
       border-top: none;
-      @include border-radius-bottom(map-get($o, 'border-radius'));
+      @include border-bottom-radius(map-get($o, 'border-radius'));
     }
 
   } @else if ($style == 'line') {

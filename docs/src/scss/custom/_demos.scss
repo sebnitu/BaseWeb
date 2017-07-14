@@ -17,7 +17,7 @@ $filename: 'scss/custom/_demos.scss';
     margin: 0 auto;
     color: $white;
     background: $blue;
-    @include border-radius();
+    border-radius: $border-radius;
   }
 }
 @include media-min('medium') {
@@ -25,7 +25,7 @@ $filename: 'scss/custom/_demos.scss';
     margin: 1.5em 0;
     padding: 2em 3em;
     border: 1px solid rgba($black, 0.1);
-    @include border-radius();
+    border-radius: $border-radius;
   }
 }
 
@@ -60,112 +60,17 @@ $filename: 'scss/custom/_demos.scss';
   background: $blue;
   @include size(30px);
 }
-.mixin-border-radius {
-  @include border-radius(50%);
+.mixin-border-top-radius {
+  @include border-top-radius(50%);
 }
-.mixin-border-radius-top {
-  @include border-radius-top(50%);
+.mixin-border-left-radius {
+  @include border-left-radius(50%);
 }
-.mixin-border-radius-top-left {
-  @include border-radius-top-left(50%);
+.mixin-border-right-radius {
+  @include border-right-radius(50%);
 }
-.mixin-border-radius-top-right {
-  @include border-radius-top-right(50%);
-}
-.mixin-border-radius-bottom {
-  @include border-radius-bottom(50%);
-}
-.mixin-border-radius-bottom-left {
-  @include border-radius-bottom-left(50%);
-}
-.mixin-border-radius-bottom-right {
-  @include border-radius-bottom-right(50%);
-}
-.mixin-border-radius-left {
-  @include border-radius-left(50%);
-}
-.mixin-border-radius-left-top {
-  @include border-radius-left-top(50%);
-}
-.mixin-border-radius-left-bottom {
-  @include border-radius-left-bottom(50%);
-}
-.mixin-border-radius-right {
-  @include border-radius-right(50%);
-}
-.mixin-border-radius-right-top {
-  @include border-radius-right-top(50%);
-}
-.mixin-border-radius-right-bottom {
-  @include border-radius-right-bottom(50%);
-}
-
-/**
- * Transform
- */
-.demo.demo-transform-skew {
-  .box {
-    @include transform(skew(30deg, 10deg));
-  }
-}
-
-/**
- * Rotate
- */
-.demo.demo-rotate {
-  .box {
-    @include rotate(45deg);
-  }
-}
-
-/**
- * Transition
- */
-.demo.demo-transition {
-  .box {
-    background-color: $blue;
-    @include transition();
-
-    &:hover {
-      background-color: $red;
-    }
-  }
-}
-
-/**
- * Animation
- */
-@include keyframes('example') {
-  0%   { background-color: $red; }
-  50% { background-color: $blue; }
-  100% { background-color: $red; }
-}
-.demo.demo-animation {
-  .box {
-    @include animation(example 10s linear 1s infinite normal);
-  }
-}
-
-/**
- * Linear Gradient
- */
-.demo.demo-linear-gradient {
-  .box {
-    width: 100%;
-    @include linear-gradient(to right, $green, $blue, $purple);
-  }
-}
-
-/**
- * Radial Gradient
- */
-.demo.demo-radial-gradient {
-  .box {
-    // @include size(100px);
-    width: 100%;
-    height: 100px;
-    @include radial-gradient(circle, $purple, $deep-purple);
-  }
+.mixin-border-bottom-radius {
+  @include border-bottom-radius(50%);
 }
 
 /**
@@ -192,26 +97,6 @@ $filename: 'scss/custom/_demos.scss';
     background-size: 187px 40px;
     @include size(187px, 40px);
     @include text-hide();
-  }
-}
-
-/**
- * Text Mask
- */
-.demo.demo-text-mask {
-  @include make-text-mask(url('../img/demo-mask.jpg'), rgba($black, 0.25));
-
-  p {
-    margin: 1rem 0;
-    font-size: 4em;
-    line-height: 1em;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 900;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 
@@ -256,7 +141,7 @@ $filename: 'scss/custom/_demos.scss';
   font-size: px-to-em(14px);
   line-height: 1.5em;
   text-align: center;
-  @include border-radius();
+  border-radius: $border-radius;
 }
 
 /**
@@ -284,7 +169,7 @@ $filename: 'scss/custom/_demos.scss';
     p {
       margin: 0.75rem 0;
       background: rgba($black, 0.05);
-      @include border-radius();
+      border-radius: $border-radius;
     }
   }
 
@@ -406,14 +291,6 @@ $filename: 'scss/custom/_demos.scss';
     'color' : $green,
     'color-hover' : $red,
     'delimiter' : '»'
-  ));
-}
-.breadcrumb.custom-wrapped {
-  @include add-breadcrumb-wrapped((
-    'background' : $amber-50,
-    'border' : 1px solid rgba($black, 0.1),
-    'border-radius' : 50px,
-    'padding' : 1em 2em
   ));
 }
 

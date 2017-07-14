@@ -377,10 +377,10 @@ label {
   background-color: map-fetch( $forms, 'input', 'background' );
   border: map-fetch( $forms, 'input', 'border' );
   box-shadow: map-fetch( $forms, 'input', 'box-shadow' );
-  @include box-sizing(border-box);
-  @include border-radius(map-get( $forms, 'border-radius' ));
+  box-sizing: border-box;
+  border-radius: map-get( $forms, 'border-radius' );
+  transition: border-color $transition-duration, background-color $transition-duration, box-shadow $transition-duration;
   @include placeholder();
-  @include transition(border-color 0.25s, background-color 0.25s, box-shadow 0.25s);
 
   &:focus {
     outline: none;
@@ -416,7 +416,7 @@ label {
   background: map-fetch( $forms, 'choice', 'background' );
   border: map-fetch( $forms, 'choice', 'border' );
   box-shadow: map-fetch( $forms, 'choice', 'box-shadow' );
-  @include border-radius(map-get( $forms, 'border-radius' ));
+  border-radius: map-get( $forms, 'border-radius' );
 
   input[type="checkbox"],
   input[type="radio"] {

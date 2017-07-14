@@ -7,24 +7,14 @@ $filename: 'scss/blocks/_breadcrumb.scss';
 
 $breadcrumbs: (
   'classes' : true,
-
   'class-item' : 'item',
-  'class-active' : 'active',
   'class-current' : 'current',
 
   'margin' : 1em 0,
-  'padding' : 0.5em 1em,
-
   'font-size' : 1em,
-
-  'color' : null,
-  'color-hover' : null,
+  'color' : $color-link,
+  'color-hover' : $color-link-hover,
   'color-current' : $color-light,
-  'text-shadow' : null,
-
-  'background' : $blue-50,
-  'border' : 1px solid rgba($black, 0.1),
-  'border-radius' : $border-radius,
 
   // Delimiter Styles
   'delimiter' : '/', // Delimiter element content (e.g: '/', '—', '→', '»').
@@ -73,11 +63,9 @@ $breadcrumbs: (
     margin: 0;
   }
 
-  // Remove link borders and add link color styles
+  // Link color styles
   li a {
     color: map-get($o, 'color');
-    text-shadow: map-get($o, 'text-shadow');
-    border: 0 none;
 
     &:hover {
       color: map-get($o, 'color-hover');
@@ -104,21 +92,6 @@ $breadcrumbs: (
   }
 }
 
-// Add Breadcrumb Wrapped
-// Applies custom styles to breadcrumb wrapper.
-// @param $options
-//   @type map
-//   @default $breadcrumbs map
-@mixin add-breadcrumb-wrapped($options: ()) {
-  $o: map-merge($breadcrumbs, $options);
-
-  // Add styles for the wrapper element.
-  padding: map-get($o, 'padding');
-  background: map-get($o, 'background');
-  border: map-get($o, 'border');
-  @include border-radius(map-get($o, 'border-radius'));
-}
-
 // Check if we should output modifier classes
 @if (map-get($breadcrumbs, 'classes') == true) {
 
@@ -128,10 +101,6 @@ $breadcrumbs: (
 
 .breadcrumb {
   @include make-breadcrumb();
-}
-
-.breadcrumb.wrapped {
-  @include add-breadcrumb-wrapped();
 }
 
 } // endif classes

@@ -32,29 +32,9 @@ The most basic implementation of a breadcrumb looks like this:
 
 The first thing to not is that the list of links is wrapped with the `<nav>` element and is given the `.breadcrumb` class. Secondly, the list items of a breadcrumb are marked up as an ordered list `<ol>`. This is because the order that the links appear is important in representing their meaning.
 
-Sometimes, you want to omit the current page link all together, but still represent the current page with text. In this case, you just wrap the breadcrumb item with a `<span>` and can give it the `.current` class for more subtle text styling.
+Sometimes, you want to omit the current page link all together, but still represent the current page with text. In this case, you just wrap the breadcrumb item with a `<span>` and can give it `.current` class for more subtle text styling.
 
 You also have the `.wrapped` class to add simple wrapper styles to your breadcrumbs.
-
-```html
-<nav class="breadcrumb wrapped">
-  <ol>
-    <li><a>Home</a></li>
-    ...
-  </ol>
-</nav>
-```
-
-<div class="demo">
-  <nav class="breadcrumb wrapped">
-    <ol>
-      <li><a>Home</a></li>
-      <li><a>Some Page</a></li>
-      <li><a>Some Category</a></li>
-      <li><span class="current">Current Page</span></li>
-    </ol>
-  </nav>
-</div>
 
 <section class="subsection subsection-variables" markdown="1">
 
@@ -76,10 +56,6 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
     <td><code>'item'</code></td>
   </tr>
   <tr>
-    <td><code>$breadcrumbs('class-active')</code></td>
-    <td><code>'active'</code></td>
-  </tr>
-  <tr>
     <td><code>$breadcrumbs('class-current')</code></td>
     <td><code>'current'</code></td>
   </tr>
@@ -88,43 +64,21 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
     <td><code>1em 0</code></td>
   </tr>
   <tr>
-    <td><code>$breadcrumbs('padding')</code></td>
-    <td><code>0.5em 1em</code></td>
-  </tr>
-  <tr>
     <td><code>$breadcrumbs('font-size')</code></td>
     <td><code>1em</code></td>
   </tr>
   <tr>
     <td><code>$breadcrumbs('color')</code></td>
-    <td><code>null</code></td>
+    <td><code>$color-link</code></td>
   </tr>
   <tr>
     <td><code>$breadcrumbs('color-hover')</code></td>
-    <td><code>null</code></td>
+    <td><code>$color-link-hover</code></td>
   </tr>
   <tr>
     <td><code>$breadcrumbs('color-current')</code></td>
     <td><code>$color-light</code></td>
   </tr>
-  <tr>
-    <td><code>$breadcrumbs('text-shadow')</code></td>
-    <td><code>null</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$breadcrumbs('background')</code></td>
-    <td><code>$blue-50</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('border')</code></td>
-    <td><code>1px solid</code> <code>rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
-
   <tr>
     <th colspan="2">Delimiter</th>
   </tr>
@@ -211,62 +165,7 @@ In this example, we'll use the `make-breadcrumb()` mixin to create a custom brea
       <li><a><span>Home</span></a></li>
       <li><a><span>Some Page</span></a></li>
       <li><a><span>Some Category</span></a></li>
-      <li><span class="active item"><span>Current Page</span></span></li>
-    </ol>
-  </nav>
-</div>
-
-</li>
-
-<li markdown="1">
-
-## add-breadcrumb-wrapped
-
-Applies custom styles to breadcrumb wrapper.
-
-```scss
-@include add-breadcrumb-wrapped( $options: () );
-```
-
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Type</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$breadcrumbs()</code></td>
-  </tr>
-</table>
-
-### Example Usage
-
-For this example, we'll use the default `.breadcrumb` class but use the `add-breadcrumb-wrapped()` modifier mixin to create custom wrapper styles.
-
-```scss
-.breadcrumb.custom-wrapped {
-  @include add-breadcrumb-wrapped((
-    'background' : $amber-50,
-    'border' : 1px solid rgba($black, 0.1),
-    'border-radius' : 50px,
-    'padding' : 1em 2em
-  ));
-}
-```
-
-```html
-<nav class="breadcrumb custom-wrapped">...</nav>
-```
-
-<div class="demo">
-  <nav class="breadcrumb custom-wrapped">
-    <ol>
-      <li><a><span>Home</span></a></li>
-      <li><a><span>Some Page</span></a></li>
-      <li><a><span>Some Category</span></a></li>
-      <li><span class="active item"><span>Current Page</span></span></li>
+      <li><span class="current">Current Page</span></li>
     </ol>
   </nav>
 </div>

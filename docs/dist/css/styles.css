@@ -1800,17 +1800,11 @@ fieldset[disabled] .input {
 }
 
 .button-group > .button:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-radius: 3px 0 0 3px;
 }
 
 .button-group > .button:last-child {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 0 3px 3px 0;
 }
 
 .button-group > .button {
@@ -1881,18 +1875,12 @@ fieldset[disabled] .input {
 
 .button-group.hori > .button:first-child,
 .button-group.horizontal > .button:first-child {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-radius: 3px 0 0 3px;
 }
 
 .button-group.hori > .button:last-child,
 .button-group.horizontal > .button:last-child {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 0 3px 3px 0;
 }
 
 .button-group.vert,
@@ -1917,18 +1905,12 @@ fieldset[disabled] .input {
 
 .button-group.vert > .button:first-child,
 .button-group.vertical > .button:first-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-radius: 3px 3px 0 0;
 }
 
 .button-group.vert > .button:last-child,
 .button-group.vertical > .button:last-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-radius: 0 0 3px 3px;
 }
 
 /*==============================================================================
@@ -2083,7 +2065,11 @@ fieldset[disabled] .input {
 }
 
 .breadcrumb li a {
-  border: 0 none;
+  color: #2196F3;
+}
+
+.breadcrumb li a:hover {
+  color: #1976D2;
 }
 
 .breadcrumb .current {
@@ -2098,13 +2084,6 @@ fieldset[disabled] .input {
 
 .breadcrumb li:last-child:after {
   content: none;
-}
-
-.breadcrumb.wrapped {
-  padding: 0.5em 1em;
-  background: #E3F2FD;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
 }
 
 /*==============================================================================
@@ -4011,140 +3990,24 @@ body {
   height: 30px;
 }
 
-.mixin-border-radius {
-  border-radius: 50%;
-}
-
-.mixin-border-radius-top {
+.mixin-border-top-radius {
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
 
-.mixin-border-radius-top-left {
-  border-top-left-radius: 50%;
-}
-
-.mixin-border-radius-top-right {
-  border-top-right-radius: 50%;
-}
-
-.mixin-border-radius-bottom {
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-}
-
-.mixin-border-radius-bottom-left {
-  border-bottom-left-radius: 50%;
-}
-
-.mixin-border-radius-bottom-right {
-  border-bottom-right-radius: 50%;
-}
-
-.mixin-border-radius-left {
+.mixin-border-left-radius {
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
 }
 
-.mixin-border-radius-left-top {
-  border-top-left-radius: 50%;
+.mixin-border-right-radius {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
 }
 
-.mixin-border-radius-left-bottom {
+.mixin-border-bottom-radius {
+  border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
-}
-
-.mixin-border-radius-right {
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-}
-
-.mixin-border-radius-right-top {
-  border-top-right-radius: 50%;
-}
-
-.mixin-border-radius-right-bottom {
-  border-bottom-right-radius: 50%;
-}
-
-/**
- * Transform
- */
-.demo.demo-transform-skew .box {
-  -webkit-transform: skew(30deg, 10deg);
-          transform: skew(30deg, 10deg);
-}
-
-/**
- * Rotate
- */
-.demo.demo-rotate .box {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-/**
- * Transition
- */
-.demo.demo-transition .box {
-  background-color: #2196F3;
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear;
-}
-
-.demo.demo-transition .box:hover {
-  background-color: #F44336;
-}
-
-/**
- * Animation
- */
-@-webkit-keyframes example {
-  0% {
-    background-color: #F44336;
-  }
-  50% {
-    background-color: #2196F3;
-  }
-  100% {
-    background-color: #F44336;
-  }
-}
-
-@keyframes example {
-  0% {
-    background-color: #F44336;
-  }
-  50% {
-    background-color: #2196F3;
-  }
-  100% {
-    background-color: #F44336;
-  }
-}
-
-.demo.demo-animation .box {
-  -webkit-animation: example 10s linear 1s infinite normal;
-          animation: example 10s linear 1s infinite normal;
-}
-
-/**
- * Linear Gradient
- */
-.demo.demo-linear-gradient .box {
-  width: 100%;
-  background-image: -webkit-linear-gradient(left, #4CAF50, #2196F3, #9C27B0);
-  background-image: linear-gradient(to right, #4CAF50, #2196F3, #9C27B0);
-}
-
-/**
- * Radial Gradient
- */
-.demo.demo-radial-gradient .box {
-  width: 100%;
-  height: 100px;
-  background-image: -webkit-radial-gradient(circle, #9C27B0, #673AB7);
-  background-image: radial-gradient(circle, #9C27B0, #673AB7);
 }
 
 /**
@@ -4177,31 +4040,6 @@ body {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-}
-
-/**
- * Text Mask
- */
-.demo.demo-text-mask {
-  color: rgba(0, 0, 0, 0.25);
-  background-clip: text;
-  background-image: url("../img/demo-mask.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-
-.demo.demo-text-mask p {
-  margin: 1rem 0;
-  font-size: 4em;
-  line-height: 1em;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 900;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /**
@@ -4609,7 +4447,6 @@ body {
 
 .custom-breadcrumb li a {
   color: #4CAF50;
-  border: 0 none;
 }
 
 .custom-breadcrumb li a:hover {
@@ -4628,13 +4465,6 @@ body {
 
 .custom-breadcrumb li:last-child:after {
   content: none;
-}
-
-.breadcrumb.custom-wrapped {
-  padding: 1em 2em;
-  background: #FFF8E1;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
 }
 
 /**
@@ -5499,9 +5329,9 @@ body {
  */
 .swatch {
   display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   width: 44px;
   height: 44px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
 

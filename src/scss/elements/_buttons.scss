@@ -91,10 +91,10 @@ $buttons: (
   background: none;
   box-shadow: map-get($o, 'box-shadow');
   border: map-get($o, 'border');
-  @include border-radius(map-get($o, 'border-radius'));
-  @include transition-property(map-get($o, 'transition-property'));
-  @include transition-duration(map-get($o, 'transition-duration'));
-  @include transition-timing-function(map-get($o, 'transition-timing-function'));
+  border-radius: map-get($o, 'border-radius');
+  transition-property: map-get($o, 'transition-property');
+  transition-duration: map-get($o, 'transition-duration');
+  transition-timing-function: map-get($o, 'transition-timing-function');
 
   &:hover, &:focus, &:visited {
     color: map-get($o, 'color');
@@ -102,9 +102,9 @@ $buttons: (
     background: none;
     box-shadow: map-fetch($o, 'hover', 'box-shadow');
     border-color: map-fetch($o, 'hover', 'border-color');
-    @include transition-property(map-get($o, 'transition-property'));
-    @include transition-duration(map-fetch($o, 'hover', 'transition-duration'));
-    @include transition-timing-function(map-get($o, 'transition-timing-function'));
+    transition-property: map-get($o, 'transition-property');
+    transition-duration: map-fetch($o, 'hover', 'transition-duration');
+    transition-timing-function: map-get($o, 'transition-timing-function');
   }
 
   &:active {
@@ -112,9 +112,9 @@ $buttons: (
     background: none;
     box-shadow: map-fetch($o, 'active', 'box-shadow');
     border-color: map-fetch($o, 'active', 'border-color');
-    @include transition-property(map-get($o, 'transition-property'));
-    @include transition-duration(map-fetch($o, 'active', 'transition-duration'));
-    @include transition-timing-function(map-get($o, 'transition-timing-function'));
+    transition-property: map-get($o, 'transition-property');
+    transition-duration: map-fetch($o, 'active', 'transition-duration');
+    transition-timing-function: map-get($o, 'transition-timing-function');
   }
 
 }
@@ -132,7 +132,7 @@ $buttons: (
   text-shadow: map-get($o, 'text-shadow');
 
   @if (map-get($o, 'background-gradient') == true) {
-    @include linear-gradient(to bottom, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'background-deg')));
+    background-image: linear-gradient(to bottom, map-get($o, 'background'), darken(map-get($o, 'background'), map-get($o, 'background-deg')));
     background-repeat: repeat-x;
     background-position: 0 100%;
     background-color: darken(map-get($o, 'background'), map-get($o, 'background-deg'));
