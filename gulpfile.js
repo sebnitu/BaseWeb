@@ -117,7 +117,7 @@ gulp.task('css', function() {
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
-      .pipe(postcss([cssnano]))
+      // .pipe(postcss([cssnano]))
       .pipe(rename('baseweb.min.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));

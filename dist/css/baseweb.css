@@ -32,7 +32,8 @@ table {
 }
 
 *, *:before, *:after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 ::-moz-selection {
@@ -206,7 +207,8 @@ cite {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /**
@@ -761,7 +763,8 @@ img.polaroid {
   background-clip: padding-box;
   padding: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /*==============================================================================
@@ -1098,11 +1101,15 @@ label.inline {
   color: #212121;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+  -webkit-box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-radius: 3px;
-  -webkit-transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+  -webkit-transition: border-color 0.25s, background-color 0.25s, -webkit-box-shadow 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, -webkit-box-shadow 0.25s;
   transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+  transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s, -webkit-box-shadow 0.25s;
 }
 
 .input::-webkit-input-placeholder {
@@ -1125,7 +1132,8 @@ label.inline {
   outline: none;
   background-color: white;
   border: 1px solid #2196f3;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 3px transparent;
 }
 
 .input.disabled, .input[readonly], .input[disabled] {
@@ -1154,7 +1162,8 @@ label.inline {
   padding: 0.75em 0.75em 0.75em 2.25em;
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid transparent;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 3px;
 }
 
@@ -1474,11 +1483,14 @@ fieldset[disabled] .input {
   white-space: nowrap;
   vertical-align: top;
   background: none;
-  box-shadow: inset 0 0 0 transparent;
+  -webkit-box-shadow: inset 0 0 0 transparent;
+          box-shadow: inset 0 0 0 transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
-  -webkit-transition-property: color, background-color, box-shadow, border-color;
+  -webkit-transition-property: color, background-color, border-color, -webkit-box-shadow;
+  transition-property: color, background-color, border-color, -webkit-box-shadow;
   transition-property: color, background-color, box-shadow, border-color;
+  transition-property: color, background-color, box-shadow, border-color, -webkit-box-shadow;
   -webkit-transition-duration: 0.75s;
           transition-duration: 0.75s;
   -webkit-transition-timing-function: linear;
@@ -1490,14 +1502,21 @@ fieldset[disabled] .input {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.button:visited {
+  color: #212121;
+}
+
 .button:hover, .button:focus {
   color: #212121;
   text-decoration: none;
   background: none;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.25);
-  -webkit-transition-property: color, background-color, box-shadow, border-color;
+  -webkit-transition-property: color, background-color, border-color, -webkit-box-shadow;
+  transition-property: color, background-color, border-color, -webkit-box-shadow;
   transition-property: color, background-color, box-shadow, border-color;
+  transition-property: color, background-color, box-shadow, border-color, -webkit-box-shadow;
   -webkit-transition-duration: 0.1s;
           transition-duration: 0.1s;
   -webkit-transition-timing-function: linear;
@@ -1507,14 +1526,21 @@ fieldset[disabled] .input {
 .button:active {
   color: #212121;
   background: none;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
   border-color: rgba(0, 0, 0, 0.25);
-  -webkit-transition-property: color, background-color, box-shadow, border-color;
+  -webkit-transition-property: color, background-color, border-color, -webkit-box-shadow;
+  transition-property: color, background-color, border-color, -webkit-box-shadow;
   transition-property: color, background-color, box-shadow, border-color;
+  transition-property: color, background-color, box-shadow, border-color, -webkit-box-shadow;
   -webkit-transition-duration: 0;
           transition-duration: 0;
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
+}
+
+.button:visited {
+  color: #212121;
 }
 
 .button:hover, .button:focus {
@@ -1535,6 +1561,10 @@ fieldset[disabled] .input {
   background-color: #212121;
   background-clip: border-box;
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.button.inverted:visited {
+  color: #fff;
 }
 
 .button.inverted:hover, .button.inverted:focus {
@@ -1568,6 +1598,10 @@ fieldset[disabled] .input {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.button.default:visited {
+  color: #212121;
+}
+
 .button.default:hover, .button.default:focus {
   color: #212121;
   background-color: #eaeaea;
@@ -1587,6 +1621,11 @@ fieldset[disabled] .input {
   background-color: #2196F3;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.button.blue:visited, .button.primary:visited,
+.button.active:visited {
+  color: #fff;
 }
 
 .button.blue:hover, .button.primary:hover,
@@ -1612,6 +1651,10 @@ fieldset[disabled] .input {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.button.green:visited, .button.success:visited {
+  color: #fff;
+}
+
 .button.green:hover, .button.success:hover, .button.green:focus, .button.success:focus {
   color: #fff;
   background-color: #449d48;
@@ -1630,6 +1673,10 @@ fieldset[disabled] .input {
   background-color: #FF9800;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.button.orange:visited, .button.warning:visited {
+  color: #fff;
 }
 
 .button.orange:hover, .button.warning:hover, .button.orange:focus, .button.warning:focus {
@@ -1652,6 +1699,10 @@ fieldset[disabled] .input {
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+.button.red:visited, .button.danger:visited {
+  color: #fff;
+}
+
 .button.red:hover, .button.danger:hover, .button.red:focus, .button.danger:focus {
   color: #fff;
   background-color: #f32c1e;
@@ -1670,6 +1721,10 @@ fieldset[disabled] .input {
   background-color: #9E9E9E;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.button.black:visited, .button.secondary:visited {
+  color: #fff;
 }
 
 .button.black:hover, .button.secondary:hover, .button.black:focus, .button.secondary:focus {
@@ -1718,7 +1773,8 @@ fieldset[disabled] .input {
   vertical-align: middle;
   background: none;
   border: 0 none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 50%;
 }
 
@@ -1924,7 +1980,8 @@ fieldset[disabled] .input {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   background: #F5F5F5;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .notice .close {
@@ -1942,7 +1999,8 @@ fieldset[disabled] .input {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   background: #212121;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /**
@@ -2012,7 +2070,8 @@ fieldset[disabled] .input {
   display: inline;
   margin: 0;
   padding: 0 0.25em;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .notice.inline.inverted {
@@ -2102,7 +2161,8 @@ fieldset[disabled] .input {
   background: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 
@@ -2120,7 +2180,8 @@ fieldset[disabled] .input {
   background: none;
   border: 0 none;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 0;
 }
 
