@@ -136,19 +136,22 @@ $tables: (
 //   @default $tables map
 @mixin add-table-rounded($radius: default, $options: ()) {
   $o: map-merge($tables, $options);
+
   @if ($radius != default) {
     $o: map-merge($o, ('border-radius': $radius));
   }
-  @include border-radius(map-get($o, 'border-radius'));
+
+  border-radius: map-get($o, 'border-radius');
+
   thead:first-child,
   tfoot:first-child,
   tbody:first-child {
     tr:first-child {
       td:first-child, th:first-child {
-        @include border-radius-top-left(map-get($o, 'border-radius'));
+        border-top-left-radius: map-get($o, 'border-radius');
       }
       td:last-child, th:last-child {
-        @include border-radius-top-right(map-get($o, 'border-radius'));
+        border-top-right-radius: map-get($o, 'border-radius');
       }
     }
   }
@@ -157,10 +160,10 @@ $tables: (
   tbody:last-child {
     tr:last-child {
       td:first-child, th:first-child {
-        @include border-radius-bottom-left(map-get($o, 'border-radius'));
+        border-bottom-left-radius: map-get($o, 'border-radius');
       }
       td:last-child, th:last-child {
-        @include border-radius-bottom-right(map-get($o, 'border-radius'));
+        border-bottom-right-radius: map-get($o, 'border-radius');
       }
     }
   }
@@ -216,7 +219,7 @@ $tables: (
     $o: map-merge($o, ('background-hover': $bg-hover));
   }
   tbody tr td {
-    @include transition(background-color 0.25s linear);
+    transition: background-color $transition-duration $transition-timing-function;
   }
   tbody tr:hover td {
     background-color: map-get($o, 'background-hover');

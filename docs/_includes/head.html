@@ -10,18 +10,8 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}{{ site.baseurl }}/dist/img/favicon.png">
 
-<!-- Critical CSS -->
-{% if page.class == 'home' %}
-<style type="text/css">{% include critical.home.css %}</style>
-{% else %}
-<style type="text/css">{% include critical.css %}</style>
-{% endif %}
-
-<!-- Styles (Async) -->
-<link rel="preload" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}" as="style" onload="this.rel='stylesheet'">
-<noscript>
-  <link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}">
-</noscript>
+<!-- Styles -->
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/styles.min.css?v={{ site.version }}">
 
 <!-- Google Fonts (Async) -->
 <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet" as="style" onload="this.rel='stylesheet'">

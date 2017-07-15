@@ -2,7 +2,7 @@
 layout: post
 title: "Tooltips Have Arrived"
 date: 2017-04-07
-comments: true
+version: "2.4.5"
 ---
 
 Tooltips have arrived for version 2.4.5 of BaseWeb. They are a very common and simple tool for displaying content on a page. Usually in the form of helper text, descriptions or clarifications. To get started using them, simply include `blocks/_tooltips.scss` into your router file and customize as you see fit.

@@ -2,7 +2,7 @@
 layout: post
 title: "Overriding Variable Maps with Sass"
 date: 2017-03-07
-comments: true
+version: "2.3.0"
 ---
 
 Variable maps are an extremely powerful tool when developing front-end systems. They allow you to store large amounts of variable data in a tight, easy to remember way. They were actually one of the deciding factors that convinced me to switch BaseWeb from Less to Sass. The way that I've used them in BaseWeb is to create a unique map for each component which stores all it's variable settings. So the grid system settings are stored in `$grid`, notice settings are in `$notices`, tabs in `$tabs`, etc.

@@ -273,7 +273,7 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
   </tr>
 </table>
 
-<div class="notice yellow" id="var-note-1" markdown="1">
+<div class="notice info" id="var-note-1" markdown="1">
 \* Whether or not we should output tabs classes. Set to `false` if you want to use the tabs modifier mixins semantically and/or reduce CSS output.
 </div>
 

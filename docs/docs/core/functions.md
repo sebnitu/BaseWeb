@@ -339,4 +339,86 @@ em-to-px( $em, $base )
 
 </li>
 
+<li markdown="1">
+
+## font-weight
+
+Output the font weight using the weight key to output the number weight.
+
+```scss
+font-weight( $weight );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$weight</code></td>
+    <td>Font-weight keyword (hairline, thin, light, regular, medium, semi-bold, bold, extra-bold, black)</td>
+    <td><span class="text-soften">None</span></td>
+  </tr>
+</table>
+
+### Example Usage
+
+```scss
+// SCSS
+h1 {
+  font-weight: font-weight('light');
+}
+
+//CSS
+h1 {
+  font-weight: 300;
+}
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Weight Name</th>
+    <th>Value Output</th>
+  </tr>
+  <tr>
+    <td><code>hairline</code></td>
+    <td><code>100</code></td>
+  </tr>
+  <tr>
+    <td><code>thin</code></td>
+    <td><code>200</code></td>
+  </tr>
+  <tr>
+    <td><code>light</code></td>
+    <td><code>300</code></td>
+  </tr>
+  <tr>
+    <td><code>regular</code></td>
+    <td><code>400</code></td>
+  </tr>
+  <tr>
+    <td><code>medium</code></td>
+    <td><code>500</code></td>
+  </tr>
+  <tr>
+    <td><code>semi-bold</code></td>
+    <td><code>600</code></td>
+  </tr>
+  <tr>
+    <td><code>bold</code></td>
+    <td><code>700</code></td>
+  </tr>
+  <tr>
+    <td><code>extra-bold</code></td>
+    <td><code>800</code></td>
+  </tr>
+  <tr>
+    <td><code>black</code></td>
+    <td><code>900</code></td>
+  </tr>
+</table>
+
+</li>
+
 </ul>

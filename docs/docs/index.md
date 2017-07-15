@@ -27,7 +27,7 @@ css/
 └── baseweb.min.css.map
 ```
 
-All of BaseWeb components are routed through `_baseweb.scss`, where all our `@import` calls are made. The only required files are located in Settings and Core directories. These files, by default, have no CSS output and function simply as a libarary if functions and variables that you can use in your project. To exclude any other optional files, just comment out their `@import` declaration and recompile.
+All of BaseWeb components are routed through `_baseweb.scss`, where all our `@import` calls are made. The only required files are located in Settings and Core directories. These files, by default, have no CSS output and function simply as a library of functions and variables that you can use in your project. To exclude any other optional files, just comment out their `@import` declaration and recompile.
 
 ``` scss
 // BaseWeb meta information
@@ -35,6 +35,7 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 
 // Settings (Required)
 @import "settings/palette";
+@import "settings/palette-social";
 @import "settings/media";
 @import "settings/grid";
 @import "settings/typography";
@@ -75,7 +76,3 @@ All of BaseWeb components are routed through `_baseweb.scss`, where all our `@im
 // Custom
 @import "custom/custom";
 ```
-
-<div class="notice yellow" markdown="1">
-**Notice:** Keep in mind that some components may be dependent on the inclusion of others. For example, the block component `_button-groups.scss` uses the element component `_buttons.scss` as a dependency.
-</div>

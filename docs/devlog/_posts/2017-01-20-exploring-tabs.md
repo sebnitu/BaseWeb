@@ -2,8 +2,7 @@
 layout: post
 title: "Exploring Tabs"
 date: 2017-01-20
-img: illustration-tabs.png
-comments: true
+version: "2.1.0"
 ---
 
 <img src="/dist/img/devlog/illustration-tabs-small.png" alt="Tabs" class="featured rounded">

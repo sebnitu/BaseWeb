@@ -12,8 +12,8 @@ $lists: (
   'margin' : 1rem 0,
   'padding' : 1rem,
 
-  'background' : none,
-  'background-stripe' : rgba($black, 0.05),
+  'background' : null,
+  'background-stripe' : rgba($black, 0.025),
   'background-hover' : $yellow-50,
   'border' : 1px solid rgba($black, 0.1),
   'border-radius' : $border-radius,
@@ -126,14 +126,13 @@ $lists: (
     $o: map-merge($o, ('border-radius': $radius));
   }
 
-  @include border-radius(map-get($o, 'border-radius'));
+  border-radius: map-get($o, 'border-radius');
   > li:first-child {
-    @include border-radius-top(map-get($o, 'border-radius'));
+    @include border-top-radius(map-get($o, 'border-radius'));
   }
   > li:last-child {
-    @include border-radius-bottom(map-get($o, 'border-radius'));
+    @include border-bottom-radius(map-get($o, 'border-radius'));
   }
-
 }
 
 // Add List Striped
@@ -173,7 +172,7 @@ $lists: (
   }
 
   > li {
-    @include transition(background-color 0.25s linear);
+    transition: background-color $transition-duration $transition-timing-function;
   }
   > li:hover {
     background-color: map-get($o, 'background-hover');

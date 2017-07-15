@@ -181,11 +181,11 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
 </table>
 
-<div class="notice yellow" id="var-note-1" markdown="1">
+<div class="notice info" id="var-note-1" markdown="1">
 \* Whether or not we should output notice classes. Set to `false` if you want to use the notice modifier mixins semantically and/or reduce CSS output.
 </div>
 
-<div class="notice yellow" id="var-note-2" markdown="1">
+<div class="notice info" id="var-note-2" markdown="1">
 ** The class to use for inverted notice colors. If set to `null`, inverted color styles won't be output.
 </div>
 
