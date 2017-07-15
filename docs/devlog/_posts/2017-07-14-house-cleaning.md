@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cleaning House"
-date: 2017-04-07
+date: 2017-07-14
 version: "2.5.0"
 ---
 
@@ -29,7 +29,7 @@ So my next major goal for BaseWeb is to include vanilla JavaScript plugins for c
 * Modals
 * Pagination
 
-**Elements:** It's rare that I'll have new element styles to add but there is one that's noticeably missing: icons. I've held off on developing this because I wasn't sure myself which technique I preferred using the most; font-based or SVG definitions. After a few more projects under my belt, I've settled on SVG and I want BaseWeb to be a step towards improving my process. I'd also like to do an audit on the existing elements for cleaning up modifiers and removing complexity.
+**Elements:** It's rare that I'll have new element styles to add but there is one that's noticeably missing: icons. I've held off on developing this because I wasn't sure which technique I preferred using the most; font-based or SVG definitions. After a few more projects under my belt, I've settled on SVG and I want BaseWeb to be a step towards improving my process. I'd also like to do an audit on the existing elements for cleaning up modifiers and removing complexity.
 
 ## Conclusion
 

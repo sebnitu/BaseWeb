@@ -734,11 +734,16 @@ body {
       background: rgba($black, 0.1);
     }
   }
-  .date,
+
   .meta {
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    vertical-align: middle;
     color: $color-light;
+
+    > * {
+      display: inline-block;
+      margin-right: 0.5em;
+      vertical-align: middle;
+    }
 
     a {
       color: $color-light;
@@ -748,6 +753,19 @@ body {
       }
     }
   }
+
+  .date {
+    color: $color-light;
+  }
+  .version {
+    display: inline-block;
+    color: $color-light;
+    font-size: 0.9em;
+    padding: 0 0.5em;
+    background: $gray-200;
+    border-radius: $border-radius;
+  }
+
   .content {
     font-size: px-to-em(16em);
     line-height: 1.6em;
@@ -763,7 +781,8 @@ body {
       line-height: 1.5em;
     }
   }
-}
+
+} // end .article
 
 @include media-min('medium') {
   .article {
