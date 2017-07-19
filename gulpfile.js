@@ -13,7 +13,6 @@ var
   // CSS
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  // critical = require('critical'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
@@ -117,7 +116,7 @@ gulp.task('css', function() {
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
-      // .pipe(postcss([cssnano]))
+      .pipe(postcss([cssnano]))
       .pipe(rename('baseweb.min.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
@@ -189,11 +188,11 @@ gulp.task('docs:js', function() {
     dest = folder.destDocs + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('scripts.js'))
+      .pipe(concat('baseweb.js'))
       .pipe(gulp.dest(dest)),
     jsmin = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('scripts.min.js'))
+      .pipe(concat('baseweb.min.js'))
       .pipe(stripdebug())
       .pipe(uglify())
       .pipe(gulp.dest(dest));
