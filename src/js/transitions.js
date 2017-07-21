@@ -1,4 +1,4 @@
-var transitions = (function () {
+var transitions = (function() {
 
   'use strict';
 
@@ -6,7 +6,11 @@ var transitions = (function () {
   // Variables
   //
 
-  var publicMethods = {}; // Placeholder for public methods
+  var publicMethods = {};
+  var settings;
+  var defaults = {
+    timer: 500
+  };
   var transitions = [
     'fadeOut',
     'fadeIn'

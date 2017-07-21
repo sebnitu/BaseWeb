@@ -8,24 +8,21 @@ var dismissible = (function () {
   // Variables
   //
 
-  var publicMethods = {}; // Placeholder for public methods
-
-  var u = utility;
   var t = transitions;
+  var u = utility;
 
-  var publicMethods = {}; // Our public APIs
+  var publicMethods = {};
   var settings;
   var defaults = {
     selectorTrigger : '.close',
+    timer: 500
   };
-
-  var timer = 500;
 
   //
   // Private Methods
   //
 
-  var runDismissible = function() {
+  var runDismissible = function () {
 
     // Only run if the clicked link was a dismissible item
     if ( !event.target.matches(settings.selectorTrigger)) return;
@@ -43,7 +40,7 @@ var dismissible = (function () {
     setInterval(function() {
       u.removeClass(dismissible, 'start');
       u.addClass(dismissible, 'end');
-    }, timer);
+    }, settings.timer);
 
   }
 
@@ -51,16 +48,26 @@ var dismissible = (function () {
   // Public Methods
   //
 
-  publicMethods.init = function (options) {
+  publicMethods.init = function ( options ) {
 
     // Destroy any previous initializations
-    // publicMethods.destroy();
+    publicMethods.destroy();
 
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
     // Add event listener
     document.addEventListener('click', runDismissible, false);
+
+  };
+
+  publicMethods.destroy = function () {
+
+    // Remove listener
+    document.removeEventListener('click', runDismissible, false);
+
+    // Reset settings
+    settings = null;
 
   };
 
@@ -71,11 +78,3 @@ var dismissible = (function () {
   return publicMethods;
 
 })();
-
-;(function (window, document, undefined) {
-
-  'use strict';
-
-  dismissible.init();
-
-})(window, document);
