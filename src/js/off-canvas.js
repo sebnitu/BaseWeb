@@ -1,7 +1,7 @@
 // require utility.js
 
 $('.oc-trigger').each(function () {
-  
+
   var
     $this = $(this),
     $wrap = $this.closest('.oc-wrap'),

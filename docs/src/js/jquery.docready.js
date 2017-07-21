@@ -18,13 +18,6 @@
   $(document).ready(function () {
 
     /**
-     * @Notices
-     */
-    $('.dismissible > .close').on('click', function() {
-      $(this).closest('.dismissible').fadeOut();
-    });
-
-    /**
      * @Dropdowns
      */
     // Add click event bind to document

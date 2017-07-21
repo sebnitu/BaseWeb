@@ -184,7 +184,10 @@ gulp.task('docs:css', function() {
 // Output expanded and minified JS files from documentation
 gulp.task('docs:js', function() {
   var
-    src = folder.srcDocs + 'js/**/*',
+    src = [
+      folder.src + 'js/**/*',
+      folder.srcDocs + 'js/**/*'
+    ],
     dest = folder.destDocs + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
@@ -227,7 +230,7 @@ gulp.task('watch', function() {
   // src scss changes
   gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
   // src js changes
-  gulp.watch(folder.src + 'js/**/*', ['js']);
+  gulp.watch(folder.src + 'js/**/*', ['js', 'docs:js']);
 
   // docs scss changes
   gulp.watch(folder.srcDocs + 'scss/**/*', ['docs:css']);

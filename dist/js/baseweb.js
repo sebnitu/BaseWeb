@@ -1,3 +1,32 @@
+var transitions = (function () {
+
+  'use strict';
+
+  //
+  // Variables
+  //
+
+  var publicMethods = {}; // Placeholder for public methods
+  var transitions = [
+    'fadeOut',
+    'fadeIn'
+  ];
+
+  //
+  // Public Methods
+  //
+
+
+  //
+  // Return Public APIs
+  //
+
+  return publicMethods;
+
+})();
+
+// require transitions.js
+
 var utility = (function () {
 
   'use strict';
@@ -11,6 +40,55 @@ var utility = (function () {
   //
   // Public Methods
   //
+
+  /**
+   * Checks if an element has a class or not
+   * @param {Element} Element to check class on
+   * @param {String} Class string to check for
+   * @returns {Boolean} Returns true if class exists on element, otherwise false
+   */
+  publicMethods.hasClass = function(el, c) {
+    return el.classList.contains(c);
+  }; // End hasClass
+
+  /**
+   * Adds a class to an element
+   * @param {Element} Element to add class on
+   * @param {String} Class string to add
+   */
+  publicMethods.addClass = function(el, c) {
+    el.classList.add( c );
+  }; // End addClass
+
+  /**
+   * Remove a class from an element
+   * @param {Element} Element to remove class from
+   * @param {String} Class string to remove
+   */
+  publicMethods.removeClass = function(el, c) {
+    el.classList.remove( c );
+  }; // End removeClass
+
+  /**
+   * Toggle a class on an element
+   * @param {Element} Element to toggle class on
+   * @param {String} Class string to toggle
+   */
+  publicMethods.toggleClass = function(el, c) {
+    var fn = publicMethods.hasClass( el, c ) ? publicMethods.removeClass : publicMethods.addClass;
+    fn( elem, c );
+  }; // End toggleClass
+
+  /**
+   * Find the closest parent element based on class
+   * @param {Element} Element to start search on
+   * @param {String} Class string to toggle
+   * @return {Element} Closest parent element
+   */
+  publicMethods.closest = function(el, c) {
+    while ((el = el.parentElement) && !publicMethods.hasClass(el, c));
+    return el;
+  }; // End closest
 
   /**
    * Merge two or more objects. Returns a new object.
@@ -55,6 +133,80 @@ var utility = (function () {
 
     return extended;
 
+  }; // End extend
+
+  //
+  // Return Public APIs
+  //
+
+  return publicMethods;
+
+})();
+
+// require utility.js
+
+var dismissible = (function () {
+
+  'use strict';
+
+  //
+  // Variables
+  //
+
+  var publicMethods = {}; // Placeholder for public methods
+
+  var u = utility;
+  var t = transitions;
+
+  var publicMethods = {}; // Our public APIs
+  var settings;
+  var defaults = {
+    selectorTrigger : '.close',
+  };
+
+  var timer = 500;
+
+  //
+  // Private Methods
+  //
+
+  var runDismissible = function() {
+
+    // Only run if the clicked link was a dismissible item
+    if ( !event.target.matches(settings.selectorTrigger)) return;
+
+    // Prevent default link behavior
+    event.preventDefault();
+
+    // Get the dismissible parent element
+    var dismissible = u.closest(event.target, 'dismissible');
+
+    // Add classes
+    u.addClass(dismissible, 'fadeOut');
+    u.addClass(dismissible, 'start');
+
+    setInterval(function() {
+      u.removeClass(dismissible, 'start');
+      u.addClass(dismissible, 'end');
+    }, timer);
+
+  }
+
+  //
+  // Public Methods
+  //
+
+  publicMethods.init = function (options) {
+
+    // Destroy any previous initializations
+    // publicMethods.destroy();
+
+    // Merge user options with the defaults
+    settings = u.extend( defaults, options || {} );
+
+    // Add event listener
+    document.addEventListener('click', runDismissible, false);
+
   };
 
   //
@@ -64,6 +216,14 @@ var utility = (function () {
   return publicMethods;
 
 })();
+
+;(function (window, document, undefined) {
+
+  'use strict';
+
+  dismissible.init();
+
+})(window, document);
 
 // require utility.js
 
@@ -112,14 +272,8 @@ $('.dropdown-trigger.on-click .dropdown').click(function(e) {
 
 // require utility.js
 
-$('.dismissible > .close').on('click', function() {
-  $(this).closest('.dismissible').fadeOut();
-});
-
-// require utility.js
-
 $('.oc-trigger').each(function () {
-  
+
   var
     $this = $(this),
     $wrap = $this.closest('.oc-wrap'),

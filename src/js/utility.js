@@ -1,3 +1,5 @@
+// require transitions.js
+
 var utility = (function () {
 
   'use strict';
@@ -11,6 +13,55 @@ var utility = (function () {
   //
   // Public Methods
   //
+
+  /**
+   * Checks if an element has a class or not
+   * @param {Element} Element to check class on
+   * @param {String} Class string to check for
+   * @returns {Boolean} Returns true if class exists on element, otherwise false
+   */
+  publicMethods.hasClass = function(el, c) {
+    return el.classList.contains(c);
+  }; // End hasClass
+
+  /**
+   * Adds a class to an element
+   * @param {Element} Element to add class on
+   * @param {String} Class string to add
+   */
+  publicMethods.addClass = function(el, c) {
+    el.classList.add( c );
+  }; // End addClass
+
+  /**
+   * Remove a class from an element
+   * @param {Element} Element to remove class from
+   * @param {String} Class string to remove
+   */
+  publicMethods.removeClass = function(el, c) {
+    el.classList.remove( c );
+  }; // End removeClass
+
+  /**
+   * Toggle a class on an element
+   * @param {Element} Element to toggle class on
+   * @param {String} Class string to toggle
+   */
+  publicMethods.toggleClass = function(el, c) {
+    var fn = publicMethods.hasClass( el, c ) ? publicMethods.removeClass : publicMethods.addClass;
+    fn( elem, c );
+  }; // End toggleClass
+
+  /**
+   * Find the closest parent element based on class
+   * @param {Element} Element to start search on
+   * @param {String} Class string to toggle
+   * @return {Element} Closest parent element
+   */
+  publicMethods.closest = function(el, c) {
+    while ((el = el.parentElement) && !publicMethods.hasClass(el, c));
+    return el;
+  }; // End closest
 
   /**
    * Merge two or more objects. Returns a new object.
@@ -55,7 +106,7 @@ var utility = (function () {
 
     return extended;
 
-  };
+  }; // End extend
 
   //
   // Return Public APIs
