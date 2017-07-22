@@ -31,7 +31,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
 
   <div class="dropdown-trigger">
     <button class="button">On Hover</button>
-    <div class="dropdown arrow">
+    <div class="dropdown">
       <div class="dropdown-content text-center">
         <a class="block">
           <p>
@@ -58,7 +58,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
       <div class="dropdown-content">
         <div class="dropdown-trigger on-click anchor-right-top">
           <button class="button block blue">Create Account</button>
-          <div class="dropdown arrow">
+          <div class="dropdown">
             <ul class="dropdown-menu">
               <li><a href="#">Help</a></li>
               <li>
@@ -93,7 +93,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
 
   <div class="dropdown-trigger on-click">
     <button class="button">On Click</button>
-    <div class="dropdown arrow">
+    <div class="dropdown">
       <div class="dropdown-content text-center">
         <a class="block">
           <p>
@@ -120,7 +120,69 @@ Dropdowns represent content that is initially hidden to the user and revealed by
       <div class="dropdown-content">
         <div class="dropdown-trigger on-click anchor-right-top">
           <button class="button block blue">Create Account</button>
-          <div class="dropdown arrow">
+          <div class="dropdown">
+            <ul class="dropdown-menu">
+              <li><a href="#">Help</a></li>
+              <li>
+                <a href="#">Settings</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Help</a></li>
+                  <li>
+                    <a href="#">Settings</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Help</a></li>
+                      <li><a href="#">Settings</a></li>
+                      <li><a href="#">Analytics</a></li>
+                      <li><a href="#">Log Out</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Analytics</a></li>
+                  <li><a href="#">Log Out</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Analytics</a></li>
+              <li><a href="#">Log Out</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="button-group block has-2">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dropdown-trigger on-click">
+    <button class="button">On Click</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div>
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+      <div class="dropdown-content">
+        <div class="dropdown-trigger on-click anchor-right-top">
+          <button class="button block blue">Create Account</button>
+          <div class="dropdown">
             <ul class="dropdown-menu">
               <li><a href="#">Help</a></li>
               <li>

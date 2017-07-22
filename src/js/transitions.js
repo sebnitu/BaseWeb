@@ -9,12 +9,16 @@ var transitions = (function() {
   var api = {};
   var settings;
   var defaults = {
+    transitions: [
+      'fadeOut',
+      'fadeIn'
+    ],
     timer: 500
   };
-  var transitions = [
-    'fadeOut',
-    'fadeIn'
-  ];
+
+  //
+  // Private Methods
+  //
 
   //
   // Public Methods

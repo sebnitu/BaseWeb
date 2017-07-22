@@ -23,7 +23,7 @@ var dismissible = (function () {
   //
 
   var runDismissible = function () {
-
+    
     // Only run if the clicked link was a dismissible item
     if ( !event.target.matches(settings.selectorTrigger)) return;
 
@@ -41,7 +41,7 @@ var dismissible = (function () {
       u.toggleClass(dismissible, ['start', 'end']);
     }, settings.timer);
 
-  }
+  };
 
   //
   // Public Methods

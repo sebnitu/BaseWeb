@@ -20,6 +20,7 @@
     /**
      * @Dropdowns
      */
+    /*
     // Add click event bind to document
     $(document).click(function(){
       // Hide all dropdowns that are click activated
@@ -62,7 +63,8 @@
       // Stop the click event from bubbling down to the document
       e.stopPropagation();
     });
-
+    */
+    
     /**
      * @Tabs
      */
