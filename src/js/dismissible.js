@@ -11,7 +11,7 @@ var dismissible = (function () {
   var t = transitions;
   var u = utility;
 
-  var publicMethods = {};
+  var api = {};
   var settings;
   var defaults = {
     selectorTrigger : '.close',
@@ -33,13 +33,12 @@ var dismissible = (function () {
     // Get the dismissible parent element
     var dismissible = u.closest(event.target, 'dismissible');
 
-    // Add classes
-    u.addClass(dismissible, 'fadeOut');
-    u.addClass(dismissible, 'start');
+    // Add initial classes
+    u.addClass(dismissible, ['fadeOut', 'start']);
 
-    setInterval(function() {
-      u.removeClass(dismissible, 'start');
-      u.addClass(dismissible, 'end');
+    // Set delay before final classes
+    setTimeout(function() {
+      u.toggleClass(dismissible, ['start', 'end']);
     }, settings.timer);
 
   }
@@ -48,10 +47,10 @@ var dismissible = (function () {
   // Public Methods
   //
 
-  publicMethods.init = function ( options ) {
+  api.init = function ( options ) {
 
     // Destroy any previous initializations
-    publicMethods.destroy();
+    api.destroy();
 
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
@@ -61,7 +60,7 @@ var dismissible = (function () {
 
   };
 
-  publicMethods.destroy = function () {
+  api.destroy = function () {
 
     // Remove listener
     document.removeEventListener('click', runDismissible, false);
@@ -75,6 +74,6 @@ var dismissible = (function () {
   // Return Public APIs
   //
 
-  return publicMethods;
+  return api;
 
 })();

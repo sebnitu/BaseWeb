@@ -6,7 +6,7 @@ var transitions = (function() {
   // Variables
   //
 
-  var publicMethods = {};
+  var api = {};
   var settings;
   var defaults = {
     timer: 500
@@ -25,7 +25,7 @@ var transitions = (function() {
   // Return Public APIs
   //
 
-  return publicMethods;
+  return api;
 
 })();
 
@@ -41,7 +41,7 @@ var utility = (function () {
 
   var t = transitions;
 
-  var publicMethods = {};
+  var api = {};
   var settings;
   var defaults = {};
 
@@ -55,36 +55,75 @@ var utility = (function () {
    * @param {String} Class string to check for
    * @returns {Boolean} Returns true if class exists on element, otherwise false
    */
-  publicMethods.hasClass = function ( el, c ) {
+  api.hasClass = function ( el, c ) {
     return el.classList.contains(c);
   }; // End hasClass
 
   /**
-   * Adds a class to an element
-   * @param {Element} Element to add class on
-   * @param {String} Class string to add
+   * Converts a string to an array
+   * @param {String} || {Array} A string to convert to an array
+   * @return {Array} Return the converted array
    */
-  publicMethods.addClass = function ( el, c ) {
-    el.classList.add( c );
+  api.toArray = function( c ) {
+
+    var array = [];
+
+    if (typeof c === 'string') {
+      array.push(c);
+    } else if (Array.isArray(c)) {
+      array = c;
+    } else {
+      return false;
+    }
+
+    return array;
+
+  }; // End toArray
+
+  /**
+   * Adds a class to an element
+   * @param {Element} Element to add class(es) on
+   * @param {String} || {Array} Class(es) to add
+   */
+  api.addClass = function ( el, c ) {
+
+    c = api.toArray(c);
+
+    c.forEach( function ( c ) {
+      el.classList.add( c );
+    });
+
   }; // End addClass
 
   /**
    * Remove a class from an element
-   * @param {Element} Element to remove class from
-   * @param {String} Class string to remove
+   * @param {Element} Element to remove class(es) from
+   * @param {String} || {Array} Class(es) to remove
    */
-  publicMethods.removeClass = function ( el, c ) {
-    el.classList.remove( c );
+  api.removeClass = function ( el, c ) {
+
+    c = api.toArray(c);
+
+    c.forEach( function ( c ) {
+      el.classList.remove( c );
+    });
+
   }; // End removeClass
 
   /**
    * Toggle a class on an element
-   * @param {Element} Element to toggle class on
-   * @param {String} Class string to toggle
+   * @param {Element} Element to toggle class(es) on
+   * @param {String} || {Array} Class(es) to toggle
    */
-  publicMethods.toggleClass = function ( el, c ) {
-    var fn = publicMethods.hasClass( el, c ) ? publicMethods.removeClass : publicMethods.addClass;
-    fn( elem, c );
+  api.toggleClass = function ( el, c ) {
+
+    c = api.toArray(c);
+
+    c.forEach( function ( c ) {
+      var fn = api.hasClass( el, c ) ? api.removeClass : api.addClass;
+      fn( el, c );
+    });
+
   }; // End toggleClass
 
   /**
@@ -93,8 +132,8 @@ var utility = (function () {
    * @param {String} Class string to toggle
    * @return {Element} Closest parent element
    */
-  publicMethods.closest = function ( el, c ) {
-    while ((el = el.parentElement) && !publicMethods.hasClass(el, c));
+  api.closest = function ( el, c ) {
+    while ((el = el.parentElement) && !api.hasClass(el, c));
     return el;
   }; // End closest
 
@@ -105,7 +144,7 @@ var utility = (function () {
    * @param {Object} objects The objects to merge together
    * @returns {Object} Merged values of defaults and options
    */
-  publicMethods.extend = function () {
+  api.extend = function () {
 
     // Variables
     var extended = {};
@@ -147,7 +186,7 @@ var utility = (function () {
   // Return Public APIs
   //
 
-  return publicMethods;
+  return api;
 
 })();
 
@@ -164,7 +203,7 @@ var dismissible = (function () {
   var t = transitions;
   var u = utility;
 
-  var publicMethods = {};
+  var api = {};
   var settings;
   var defaults = {
     selectorTrigger : '.close',
@@ -186,13 +225,12 @@ var dismissible = (function () {
     // Get the dismissible parent element
     var dismissible = u.closest(event.target, 'dismissible');
 
-    // Add classes
-    u.addClass(dismissible, 'fadeOut');
-    u.addClass(dismissible, 'start');
+    // Add initial classes
+    u.addClass(dismissible, ['fadeOut', 'start']);
 
-    setInterval(function() {
-      u.removeClass(dismissible, 'start');
-      u.addClass(dismissible, 'end');
+    // Set delay before final classes
+    setTimeout(function() {
+      u.toggleClass(dismissible, ['start', 'end']);
     }, settings.timer);
 
   }
@@ -201,10 +239,10 @@ var dismissible = (function () {
   // Public Methods
   //
 
-  publicMethods.init = function ( options ) {
+  api.init = function ( options ) {
 
     // Destroy any previous initializations
-    publicMethods.destroy();
+    api.destroy();
 
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
@@ -214,7 +252,7 @@ var dismissible = (function () {
 
   };
 
-  publicMethods.destroy = function () {
+  api.destroy = function () {
 
     // Remove listener
     document.removeEventListener('click', runDismissible, false);
@@ -228,7 +266,7 @@ var dismissible = (function () {
   // Return Public APIs
   //
 
-  return publicMethods;
+  return api;
 
 })();
 

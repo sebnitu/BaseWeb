@@ -6,7 +6,7 @@ var transitions = (function() {
   // Variables
   //
 
-  var publicMethods = {};
+  var api = {};
   var settings;
   var defaults = {
     timer: 500
@@ -25,6 +25,6 @@ var transitions = (function() {
   // Return Public APIs
   //
 
-  return publicMethods;
+  return api;
 
 })();
