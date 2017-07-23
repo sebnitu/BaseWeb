@@ -217,31 +217,31 @@ Off-canvas variables are encompassed within the `$off-canvas()` map and are used
   </tr>
   <tr>
     <td><code>$off-canvas('class-wrap')</code></td>
-    <td><code>oc-wrap</code></td>
+    <td><code>'oc-wrap'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-content')</code></td>
-    <td><code>oc-content</code></td>
+    <td><code>'oc-content'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-inner')</code></td>
-    <td><code>oc-inner</code></td>
+    <td><code>'oc-inner'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-aside')</code></td>
-    <td><code>oc-aside</code></td>
+    <td><code>'oc-aside'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-aside-id')</code></td>
-    <td><code>oc-aside-left</code></td>
+    <td><code>'oc-aside-left'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-active')</code></td>
-    <td><code>oc-active</code></td>
+    <td><code>'oc-active'</code></td>
   </tr>
   <tr>
     <td><code>$off-canvas('class-delay')</code></td>
-    <td><code>oc-delay</code></td>
+    <td><code>'oc-delay'</code></td>
   </tr>
 
   <tr>

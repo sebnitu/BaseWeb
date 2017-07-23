@@ -68,11 +68,11 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
   <tr>
     <td><code>$notices('class-inverted')</code></td>
-    <td><code>inverted</code> <a href="#var-note-2">**</a></td>
+    <td><code>'inverted'</code> <a href="#var-note-2">**</a></td>
   </tr>
   <tr>
     <td><code>$notices('class-close')</code></td>
-    <td><code>close</code></td>
+    <td><code>'close'</code></td>
   </tr>
 
   <tr>
