@@ -13,11 +13,11 @@ Some general styles and global resets are defined here. This is where we store a
   <li>Prevents automatic text resizing on mobile devices.</li>
   <li>Make HTML5 elements act like blocks.</li>
   <li>Set default box sizing model to our global variable <code>$global-box-sizing.</code></li>
+  <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
   <li>Outputs our clear fix class if one is set in <code>$class-clearfix</code>.</li>
   <li>Outputs our remove clear fix class if one is set in <code>$class-remove-clearfix</code>.</li>
   <li>Outputs our float left class if one is set in <code>$class-float-left</code>.</li>
   <li>Outputs our float right class if one is set in <code>$class-float-right</code>.</li>
-  <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
   <li>Outputs our show class if one is set in <code>$class-show</code>.</li>
   <li>Outputs our hide class if one is set in <code>$class-hide</code>.</li>
   <li>Outputs our show-hide min classes if one is set in <code>$class-show-hide-min</code>.</li>
@@ -97,11 +97,17 @@ A quick way for floating an element to the right. If global variable `$class-flo
 
 ## Utility Classes
 
-...
+Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the golbal settings:
+
+* `$class-show`
+* `$class-hide`
+* `$class-show-hide-min`
+* `$class-show-hide-max`.
 
 ```html
 <div class="show"></div>
 <div class="hide"></div>
+...
 ```
 
 <div class="demo">
@@ -125,6 +131,10 @@ A quick way for floating an element to the right. If global variable `$class-flo
   <div class="hide-large-up"><code>hide-large-up</code></div>
   <div class="show-huge-up"><code>show-huge-up</code></div>
   <div class="hide-huge-up"><code>hide-huge-up</code></div>
+</div>
+
+<div class="notice info">
+  <p>Resize your browser window to see how the above HTML example toggles between the utility classes.</p>
 </div>
 
 </li>
