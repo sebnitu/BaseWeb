@@ -435,17 +435,61 @@ var dropdowns = (function () {
 
 })();
 
-// require utility.js dismissible.js dropdowns.js
+// require utility.js
 
-// Default initializations
-;(function (window, document, undefined) {
+$('.tabs-nav').each(function() {
 
-  'use strict';
+  // Save this
+  var $this = $(this);
 
-  dismissible.init();
-  dropdowns.init();
+  // Save our tabs content
+  var tabs_content = $this.parents('.tabs').find('.tabs-content');
+  var has_content = tabs_content.length;
 
-})(window, document);
+  // Check our other tabs content method if one wasn't found yet
+  if (!has_content) {
+    // Check if we have a linked content data attribute
+    tabs_content = $this.attr('data-content');
+    if (tabs_content) {
+      // Save our tabs content
+      tabs_content = $('#' + tabs_content);
+      // Set has_content to true
+      if (tabs_content.length) {
+        has_content = 1;
+      }
+    } else {
+      console.log('Tabs content does not exist!');
+    }
+  }
+
+  // Add click event to tab links
+  $this.find('a').click(function() {
+    // Check if item is already active or not
+    var is_active = $(this).parents('li').hasClass('active');
+
+    if (!is_active) {
+      // Remove active class from all children nav items
+      $this.find('li').removeClass('active');
+      // Add active class to currently selected item
+      $(this).parents('li').addClass('active');
+
+      // Check if tabs-nav has an associated content block
+      if (has_content) {
+        // Hide current active content
+        tabs_content.find('.tabs-panel').removeClass('active');
+        // Show new active content
+        var target = $(this).attr('href');
+        $(target).addClass('active');
+      } else {
+        console.log('Tabs content does not exist!');
+      }
+    }
+
+    // Stop the default behavior
+    return false;
+  });
+
+});
 
 // require utility.js
 
@@ -507,58 +551,14 @@ $('.oc-trigger').each(function () {
 
 });
 
-// require utility.js
+// require utility.js dismissible.js dropdowns.js tabs.js off-canvas.js
 
-$('.tabs-nav').each(function() {
+// Default initializations
+;(function (window, document, undefined) {
 
-  // Save this
-  var $this = $(this);
+  'use strict';
 
-  // Save our tabs content
-  var tabs_content = $this.parents('.tabs').find('.tabs-content');
-  var has_content = tabs_content.length;
+  dismissible.init();
+  dropdowns.init();
 
-  // Check our other tabs content method if one wasn't found yet
-  if (!has_content) {
-    // Check if we have a linked content data attribute
-    tabs_content = $this.attr('data-content');
-    if (tabs_content) {
-      // Save our tabs content
-      tabs_content = $('#' + tabs_content);
-      // Set has_content to true
-      if (tabs_content.length) {
-        has_content = 1;
-      }
-    } else {
-      console.log('Tabs content does not exist!');
-    }
-  }
-
-  // Add click event to tab links
-  $this.find('a').click(function() {
-    // Check if item is already active or not
-    var is_active = $(this).parents('li').hasClass('active');
-
-    if (!is_active) {
-      // Remove active class from all children nav items
-      $this.find('li').removeClass('active');
-      // Add active class to currently selected item
-      $(this).parents('li').addClass('active');
-
-      // Check if tabs-nav has an associated content block
-      if (has_content) {
-        // Hide current active content
-        tabs_content.find('.tabs-panel').removeClass('active');
-        // Show new active content
-        var target = $(this).attr('href');
-        $(target).addClass('active');
-      } else {
-        console.log('Tabs content does not exist!');
-      }
-    }
-
-    // Stop the default behavior
-    return false;
-  });
-
-});
+})(window, document);

@@ -1,4 +1,4 @@
-// require utility.js dismissible.js dropdowns.js
+// require utility.js dismissible.js dropdowns.js tabs.js off-canvas.js
 
 // Default initializations
 ;(function (window, document, undefined) {
