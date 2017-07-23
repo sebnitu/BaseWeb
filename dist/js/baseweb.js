@@ -291,20 +291,46 @@ var dropdowns = (function () {
   var settings;
   var defaults = {
     selectorTrigger: '.dropdown-trigger.on-click',
-    selectorDropdown: '.dropdown-trigger.on-click .dropdown'
+    selectorDropdown: '.dropdown-trigger.on-click .dropdown',
+    classTrigger: 'dropdown-trigger',
+    classDropdown: 'dropdown',
+    classActive: 'active'
   };
+  var triggers = [];
+  var dropdowns = [];
 
   //
   // Private Methods
   //
 
-  var runDropdowns = function() {
+  var runDropdowns = function () {
 
     // Only run if the clicked link was a on-click dropdown
-    if ( !event.target.matches('.dropdown-trigger.on-click')) return;
+    if ( !event.target.matches(settings.selectorTrigger)) return;
 
     // Prevent default link behavior
     event.preventDefault();
+
+  };
+
+  // Hide all dropdowns that are click activated
+  var hideAll = function () {
+
+    triggers.forEach( function (el) {
+      u.removeClass(el, settings.classActive);
+    });
+
+  };
+
+  // Keep the parent dropdowns active
+  var showParents = function (el) {
+
+    var parent = u.closest(el, settings.classTrigger);
+
+    while (parent) {
+      u.addClass(parent, settings.classActive);
+      parent = u.closest(parent, settings.classTrigger);
+    }
 
   };
 
@@ -320,18 +346,12 @@ var dropdowns = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    var triggers = document.querySelectorAll(settings.selectorTrigger);
-    var dropdowns = document.querySelectorAll(settings.selectorDropdown);
+    // Find triggers and dropdowns
+    triggers = document.querySelectorAll(settings.selectorTrigger);
+    dropdowns = document.querySelectorAll(settings.selectorDropdown);
 
     // Add event listener to document
-    document.addEventListener('click', function() {
-
-      // Hide all dropdowns that are click activated
-      triggers.forEach( function (el) {
-        u.removeClass(el, 'active');
-      } );
-
-    }, false);
+    document.addEventListener('click', hideAll, false);
 
     // Add event listener to dropdown trigger
     triggers.forEach(function (el) {
@@ -340,17 +360,9 @@ var dropdowns = (function () {
         // Is the dropdown already active?
         var is_active = u.hasClass(this, 'active');
 
-        // Hide all dropdowns that are click activated
-        triggers.forEach( function (el) {
-          u.removeClass(el, 'active');
-        } );
+        hideAll();
 
-        // Keep the parent dropdowns active
-        var parent = u.closest(this, 'dropdown-trigger');
-        while (parent) {
-          u.addClass(parent, 'active');
-          parent = u.closest(parent, 'dropdown-trigger');
-        }
+        showParents(this);
 
         // If the dropdown is not active, add the active class
         if (!is_active) {
@@ -367,17 +379,9 @@ var dropdowns = (function () {
     dropdowns.forEach(function (el) {
       el.addEventListener('click', function (event) {
 
-        // Hide all dropdowns that are click activated
-        triggers.forEach( function (el) {
-          u.removeClass(el, 'active');
-        } );
+        hideAll();
 
-        // Keep the parent dropdowns active
-        var parent = u.closest(this, 'dropdown-trigger');
-        while (parent) {
-          u.addClass(parent, 'active');
-          parent = u.closest(parent, 'dropdown-trigger');
-        }
+        showParents(this);
 
         // Stop the click event from bubbling down to the document
         event.stopPropagation();
@@ -389,8 +393,8 @@ var dropdowns = (function () {
 
   api.destroy = function () {
 
-    // Remove listener
-    document.removeEventListener('click', runDropdowns, false);
+    // Remove listeners
+    // document.removeEventListener('click', runDropdowns, false);
 
     // Reset settings
     settings = null;
