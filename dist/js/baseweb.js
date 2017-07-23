@@ -64,27 +64,6 @@ var utility = (function () {
   }; // End hasClass
 
   /**
-   * Converts a string to an array
-   * @param {String} || {Array} A string to convert to an array
-   * @return {Array} Return the converted array
-   */
-  api.toArray = function( c ) {
-
-    var array = [];
-
-    if (typeof c === 'string') {
-      array.push(c);
-    } else if (Array.isArray(c)) {
-      array = c;
-    } else {
-      return false;
-    }
-
-    return array;
-
-  }; // End toArray
-
-  /**
    * Adds a class to an element
    * @param {Element} Element to add class(es) on
    * @param {String} || {Array} Class(es) to add
@@ -140,6 +119,36 @@ var utility = (function () {
     while ((el = el.parentElement) && !api.hasClass(el, c));
     return el;
   }; // End closest
+
+  /**
+   * Converts a string to an array
+   * @param {String} || {Array} A string to convert to an array
+   * @return {Array} Return the converted array
+   */
+  api.toArray = function( c ) {
+
+    var array = [];
+
+    if (typeof c === 'string') {
+      array.push(c);
+    } else if (Array.isArray(c)) {
+      array = c;
+    } else {
+      return false;
+    }
+
+    return array;
+
+  }; // End toArray
+
+  /**
+   * Creates a forEach loop for Node lists
+   */
+  api.forEach = function (array, callback, scope) {
+    for (var i = 0; i < array.length; ++i) {
+      callback.call(scope, i, array[i]); // passes back stuff we need
+    }
+  };
 
   /**
    * Merge two or more objects. Returns a new object.
@@ -291,10 +300,11 @@ var dropdowns = (function () {
   var settings;
   var defaults = {
     selectorTrigger: '.dropdown-trigger.on-click',
-    selectorDropdown: '.dropdown-trigger.on-click .dropdown',
+    selectorDropdown: '.dropdown',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
-    classActive: 'active'
+    classActive: 'active',
+    timer: 500
   };
   var triggers = [];
   var dropdowns = [];
@@ -303,18 +313,54 @@ var dropdowns = (function () {
   // Private Methods
   //
 
-  var runDropdowns = function () {
+  var runDropdownTriggers = function () {
 
-    // Only run if the clicked link was a on-click dropdown
-    if ( !event.target.matches(settings.selectorTrigger)) return;
+    var trigger = u.closest(event.target, settings.classTrigger);
+
+    // Is the dropdown already active?
+    var is_active = u.hasClass(trigger, 'active');
+
+    // Hide all dropdowns that are click activated
+    api.hideAll();
+
+    // Keep the parent dropdowns active
+    api.showParents(trigger);
+
+    // If the dropdown is not active, add the active class
+    if (!is_active) {
+      u.addClass(trigger, 'active');
+    }
 
     // Prevent default link behavior
     event.preventDefault();
 
+    // Stop the click event from bubbling down to the document
+    event.stopPropagation();
+
   };
 
+  var runDropdowns = function () {
+
+    // Hide all dropdowns that are click activated
+    api.hideAll();
+
+    // Keep the parent dropdowns active
+    api.showParents(event.target);
+
+    // Prevent default link behavior
+    event.preventDefault();
+
+    // Stop the click event from bubbling down to the document
+    event.stopPropagation();
+
+  };
+
+  //
+  // Public Methods
+  //
+
   // Hide all dropdowns that are click activated
-  var hideAll = function () {
+  api.hideAll = function () {
 
     triggers.forEach( function (el) {
       u.removeClass(el, settings.classActive);
@@ -323,7 +369,7 @@ var dropdowns = (function () {
   };
 
   // Keep the parent dropdowns active
-  var showParents = function (el) {
+  api.showParents = function (el) {
 
     var parent = u.closest(el, settings.classTrigger);
 
@@ -333,10 +379,6 @@ var dropdowns = (function () {
     }
 
   };
-
-  //
-  // Public Methods
-  //
 
   api.init = function ( options ) {
 
@@ -348,45 +390,19 @@ var dropdowns = (function () {
 
     // Find triggers and dropdowns
     triggers = document.querySelectorAll(settings.selectorTrigger);
-    dropdowns = document.querySelectorAll(settings.selectorDropdown);
+    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' ' + settings.selectorDropdown);
 
     // Add event listener to document
-    document.addEventListener('click', hideAll, false);
+    document.addEventListener('click', api.hideAll, false);
 
     // Add event listener to dropdown trigger
     triggers.forEach(function (el) {
-      el.addEventListener('click', function (event) {
-
-        // Is the dropdown already active?
-        var is_active = u.hasClass(this, 'active');
-
-        hideAll();
-
-        showParents(this);
-
-        // If the dropdown is not active, add the active class
-        if (!is_active) {
-          u.addClass(this, 'active');
-        }
-
-        // Stop the click event from bubbling down to the document
-        event.stopPropagation();
-
-      }, false);
+      el.addEventListener('click', runDropdownTriggers, false);
     });
 
     // Add event listener to dropdown
     dropdowns.forEach(function (el) {
-      el.addEventListener('click', function (event) {
-
-        hideAll();
-
-        showParents(this);
-
-        // Stop the click event from bubbling down to the document
-        event.stopPropagation();
-
-      }, false);
+      el.addEventListener('click', runDropdowns, false);
     });
 
   };
@@ -394,10 +410,20 @@ var dropdowns = (function () {
   api.destroy = function () {
 
     // Remove listeners
-    // document.removeEventListener('click', runDropdowns, false);
+    document.removeEventListener('click', api.hideAll, false);
+
+    triggers.forEach(function (el) {
+      el.removeEventListener('click', runDropdownTriggers, false);
+    });
+
+    dropdowns.forEach(function (el) {
+      el.removeEventListener('click', runDropdowns, false);
+    });
 
     // Reset settings
     settings = null;
+    triggers = null;
+    dropdowns = null;
 
   };
 

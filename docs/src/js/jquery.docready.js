@@ -16,54 +16,6 @@
    * When the document is ready
    */
   $(document).ready(function () {
-
-    /**
-     * @Dropdowns
-     */
-    /*
-    // Add click event bind to document
-    $(document).click(function(){
-      // Hide all dropdowns that are click activated
-      $('.dropdown-trigger.on-click').removeClass('active');
-    });
-
-    // Bind the click event to .dropdown-trigger
-    $('.dropdown-trigger.on-click').click(function(e) {
-
-      // Is the dropdown already active?
-      var is_active = $(this).hasClass('active');
-
-      // Hide all dropdowns that are click activated
-      $('.dropdown-trigger.on-click').removeClass('active');
-
-      // Keep the parent dropdowns active
-      $(this).parents('.dropdown-trigger').addClass('active');
-
-      // If the dropdown is not active, add the active class
-      if (!is_active) {
-        $(this).addClass('active');
-      }
-
-      // Stop the click event from bubbling down to the document
-      e.stopPropagation();
-    });
-
-    // Bind the click event to .dropdown
-    $('.dropdown-trigger.on-click .dropdown').click(function(e) {
-
-      // Hide all dropdowns that are click activated
-      $('.dropdown-trigger.on-click').removeClass('active');
-
-      // Keep the parent dropdowns active
-      $(this).parents('.dropdown-trigger').addClass('active');
-
-      // Keep the current dropdown active
-      $(this).addClass('active');
-
-      // Stop the click event from bubbling down to the document
-      e.stopPropagation();
-    });
-    */
     
     /**
      * @Tabs

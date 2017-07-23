@@ -29,27 +29,6 @@ var utility = (function () {
   }; // End hasClass
 
   /**
-   * Converts a string to an array
-   * @param {String} || {Array} A string to convert to an array
-   * @return {Array} Return the converted array
-   */
-  api.toArray = function( c ) {
-
-    var array = [];
-
-    if (typeof c === 'string') {
-      array.push(c);
-    } else if (Array.isArray(c)) {
-      array = c;
-    } else {
-      return false;
-    }
-
-    return array;
-
-  }; // End toArray
-
-  /**
    * Adds a class to an element
    * @param {Element} Element to add class(es) on
    * @param {String} || {Array} Class(es) to add
@@ -105,6 +84,36 @@ var utility = (function () {
     while ((el = el.parentElement) && !api.hasClass(el, c));
     return el;
   }; // End closest
+
+  /**
+   * Converts a string to an array
+   * @param {String} || {Array} A string to convert to an array
+   * @return {Array} Return the converted array
+   */
+  api.toArray = function( c ) {
+
+    var array = [];
+
+    if (typeof c === 'string') {
+      array.push(c);
+    } else if (Array.isArray(c)) {
+      array = c;
+    } else {
+      return false;
+    }
+
+    return array;
+
+  }; // End toArray
+
+  /**
+   * Creates a forEach loop for Node lists
+   */
+  api.forEach = function (array, callback, scope) {
+    for (var i = 0; i < array.length; ++i) {
+      callback.call(scope, i, array[i]); // passes back stuff we need
+    }
+  };
 
   /**
    * Merge two or more objects. Returns a new object.
