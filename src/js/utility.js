@@ -1,5 +1,3 @@
-// require transitions.js
-
 var utility = (function () {
 
   'use strict';
@@ -7,8 +5,6 @@ var utility = (function () {
   //
   // Variables
   //
-
-  var t = transitions;
 
   var api = {};
   var settings;

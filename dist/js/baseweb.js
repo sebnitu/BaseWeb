@@ -1,40 +1,3 @@
-var transitions = (function() {
-
-  'use strict';
-
-  //
-  // Variables
-  //
-
-  var api = {};
-  var settings;
-  var defaults = {
-    transitions: [
-      'fadeOut',
-      'fadeIn'
-    ],
-    timer: 500
-  };
-
-  //
-  // Private Methods
-  //
-
-  //
-  // Public Methods
-  //
-
-
-  //
-  // Return Public APIs
-  //
-
-  return api;
-
-})();
-
-// require transitions.js
-
 var utility = (function () {
 
   'use strict';
@@ -42,8 +5,6 @@ var utility = (function () {
   //
   // Variables
   //
-
-  var t = transitions;
 
   var api = {};
   var settings;
@@ -203,8 +164,6 @@ var utility = (function () {
 
 })();
 
-// require utility.js
-
 var dismissible = (function () {
 
   'use strict';
@@ -213,7 +172,6 @@ var dismissible = (function () {
   // Variables
   //
 
-  var t = transitions;
   var u = utility;
 
   var api = {};
@@ -228,7 +186,7 @@ var dismissible = (function () {
   //
 
   var runDismissible = function () {
-    
+
     // Only run if the clicked link was a dismissible item
     if ( !event.target.matches(settings.selectorTrigger)) return;
 
@@ -239,12 +197,7 @@ var dismissible = (function () {
     var dismissible = u.closest(event.target, 'dismissible');
 
     // Add initial classes
-    u.addClass(dismissible, ['fadeOut', 'start']);
-
-    // Set delay before final classes
-    setTimeout(function() {
-      u.toggleClass(dismissible, ['start', 'end']);
-    }, settings.timer);
+    u.addClass(dismissible, 'hide');
 
   };
 
@@ -283,8 +236,6 @@ var dismissible = (function () {
 
 })();
 
-// require utility.js
-
 var dropdowns = (function () {
 
   'use strict';
@@ -293,7 +244,6 @@ var dropdowns = (function () {
   // Variables
   //
 
-  var t = transitions;
   var u = utility;
 
   var api = {};
@@ -318,7 +268,7 @@ var dropdowns = (function () {
     var trigger = u.closest(event.target, settings.classTrigger);
 
     // Is the dropdown already active?
-    var is_active = u.hasClass(trigger, 'active');
+    var is_active = u.hasClass(trigger, settings.classActive);
 
     // Hide all dropdowns that are click activated
     api.hideAll();
@@ -328,7 +278,7 @@ var dropdowns = (function () {
 
     // If the dropdown is not active, add the active class
     if (!is_active) {
-      u.addClass(trigger, 'active');
+      u.addClass(trigger, settings.classActive);
     }
 
     // Prevent default link behavior
@@ -435,8 +385,6 @@ var dropdowns = (function () {
 
 })();
 
-// require utility.js
-
 $('.tabs-nav').each(function() {
 
   // Save this
@@ -490,8 +438,6 @@ $('.tabs-nav').each(function() {
   });
 
 });
-
-// require utility.js
 
 $('.oc-trigger').each(function () {
 
@@ -551,7 +497,14 @@ $('.oc-trigger').each(function () {
 
 });
 
-// require utility.js dismissible.js dropdowns.js tabs.js off-canvas.js
+/*
+require
+  utility.js
+  dismissible.js
+  dropdowns.js
+  tabs.js
+  off-canvas.js
+*/
 
 // Default initializations
 ;(function (window, document, undefined) {

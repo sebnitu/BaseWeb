@@ -18,6 +18,10 @@ Some general styles and global resets are defined here. This is where we store a
   <li>Outputs our float left class if one is set in <code>$class-float-left</code>.</li>
   <li>Outputs our float right class if one is set in <code>$class-float-right</code>.</li>
   <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
+  <li>Outputs our show class if one is set in <code>$class-show</code>.</li>
+  <li>Outputs our hide class if one is set in <code>$class-hide</code>.</li>
+  <li>Outputs our show-hide min classes if one is set in <code>$class-show-hide-min</code>.</li>
+  <li>Outputs our show-hide max classes if one is set in <code>$class-show-hide-max</code>.</li>
 </ul>
 
 <section class="subsection subsection-classes" markdown="1">
@@ -86,6 +90,42 @@ A quick way for floating an element to the right. If global variable `$class-flo
 ```html
 <div class="float-right"></div>
 ```
+
+</li>
+
+<li markdown="1">
+
+## Utility Classes
+
+...
+
+```html
+<div class="show"></div>
+<div class="hide"></div>
+```
+
+<div class="demo">
+  <div class="show"><code>show</code></div>
+  <div class="hide"><code>hide</code></div>
+  <hr>
+  <div class="show-small-down"><code>show-small-down</code></div>
+  <div class="hide-small-down"><code>hide-small-down</code></div>
+  <div class="show-medium-down"><code>show-medium-down</code></div>
+  <div class="hide-medium-down"><code>hide-medium-down</code></div>
+  <div class="show-large-down"><code>show-large-down</code></div>
+  <div class="hide-large-down"><code>hide-large-down</code></div>
+  <div class="show-huge-down"><code>show-huge-down</code></div>
+  <div class="hide-huge-down"><code>hide-huge-down</code></div>
+  <hr>
+  <div class="show-small-up"><code>show-small-up</code></div>
+  <div class="hide-small-up"><code>hide-small-up</code></div>
+  <div class="show-medium-up"><code>show-medium-up</code></div>
+  <div class="hide-medium-up"><code>hide-medium-up</code></div>
+  <div class="show-large-up"><code>show-large-up</code></div>
+  <div class="hide-large-up"><code>hide-large-up</code></div>
+  <div class="show-huge-up"><code>show-huge-up</code></div>
+  <div class="hide-huge-up"><code>hide-huge-up</code></div>
+</div>
 
 </li>
 

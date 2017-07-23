@@ -1,5 +1,3 @@
-// require utility.js
-
 var dropdowns = (function () {
 
   'use strict';
@@ -8,7 +6,6 @@ var dropdowns = (function () {
   // Variables
   //
 
-  var t = transitions;
   var u = utility;
 
   var api = {};
@@ -33,7 +30,7 @@ var dropdowns = (function () {
     var trigger = u.closest(event.target, settings.classTrigger);
 
     // Is the dropdown already active?
-    var is_active = u.hasClass(trigger, 'active');
+    var is_active = u.hasClass(trigger, settings.classActive);
 
     // Hide all dropdowns that are click activated
     api.hideAll();
@@ -43,7 +40,7 @@ var dropdowns = (function () {
 
     // If the dropdown is not active, add the active class
     if (!is_active) {
-      u.addClass(trigger, 'active');
+      u.addClass(trigger, settings.classActive);
     }
 
     // Prevent default link behavior

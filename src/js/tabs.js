@@ -1,5 +1,3 @@
-// require utility.js
-
 $('.tabs-nav').each(function() {
 
   // Save this

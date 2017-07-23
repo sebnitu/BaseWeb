@@ -1,5 +1,3 @@
-// require utility.js
-
 $('.oc-trigger').each(function () {
 
   var

@@ -1,5 +1,3 @@
-// require utility.js
-
 var dismissible = (function () {
 
   'use strict';
@@ -8,7 +6,6 @@ var dismissible = (function () {
   // Variables
   //
 
-  var t = transitions;
   var u = utility;
 
   var api = {};
@@ -23,7 +20,7 @@ var dismissible = (function () {
   //
 
   var runDismissible = function () {
-    
+
     // Only run if the clicked link was a dismissible item
     if ( !event.target.matches(settings.selectorTrigger)) return;
 
@@ -34,12 +31,7 @@ var dismissible = (function () {
     var dismissible = u.closest(event.target, 'dismissible');
 
     // Add initial classes
-    u.addClass(dismissible, ['fadeOut', 'start']);
-
-    // Set delay before final classes
-    setTimeout(function() {
-      u.toggleClass(dismissible, ['start', 'end']);
-    }, settings.timer);
+    u.addClass(dismissible, 'hide');
 
   };
 
