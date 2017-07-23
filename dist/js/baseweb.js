@@ -300,15 +300,11 @@ var dropdowns = (function () {
 
   var runDropdowns = function() {
 
-    console.log(u.closest(event.target, 'on-click'));
-
-    // Only run if the clicked link was a dismissible item
+    // Only run if the clicked link was a on-click dropdown
     if ( !event.target.matches('.dropdown-trigger.on-click')) return;
 
     // Prevent default link behavior
     event.preventDefault();
-
-    console.log('On click dropdown was clicked');
 
   };
 
@@ -330,8 +326,7 @@ var dropdowns = (function () {
     // Add event listener to document
     document.addEventListener('click', function() {
 
-      console.log('Document Root');
-
+      // Hide all dropdowns that are click activated
       triggers.forEach( function (el) {
         u.removeClass(el, 'active');
       } );
@@ -341,8 +336,6 @@ var dropdowns = (function () {
     // Add event listener to dropdown trigger
     triggers.forEach(function (el) {
       el.addEventListener('click', function (event) {
-
-        console.log(this);
 
         // Is the dropdown already active?
         var is_active = u.hasClass(this, 'active');
@@ -374,9 +367,17 @@ var dropdowns = (function () {
     dropdowns.forEach(function (el) {
       el.addEventListener('click', function (event) {
 
-        console.log(this);
+        // Hide all dropdowns that are click activated
+        triggers.forEach( function (el) {
+          u.removeClass(el, 'active');
+        } );
 
-
+        // Keep the parent dropdowns active
+        var parent = u.closest(this, 'dropdown-trigger');
+        while (parent) {
+          u.addClass(parent, 'active');
+          parent = u.closest(parent, 'dropdown-trigger');
+        }
 
         // Stop the click event from bubbling down to the document
         event.stopPropagation();
@@ -395,53 +396,6 @@ var dropdowns = (function () {
     settings = null;
 
   };
-
-  /*
-
-  // Bind document click event
-  $(document).click(function(){
-    // Hide all dropdowns that are click activated
-    $('.dropdown-trigger.on-click').removeClass('active');
-  });
-
-  // Bind the click event to .dropdown-trigger
-  $('.dropdown-trigger.on-click').click(function(e) {
-
-    // Is the dropdown already active?
-    var is_active = $(this).hasClass('active');
-
-    // Hide all dropdowns that are click activated
-    $('.dropdown-trigger.on-click').removeClass('active');
-
-    // Keep the parent dropdowns active
-    $(this).parents('.dropdown-trigger').addClass('active');
-
-    // If the dropdown is not active, add the active class
-    if (!is_active) {
-      $(this).addClass('active');
-    }
-
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-
-  // Bind the click event to .dropdown
-  $('.dropdown-trigger.on-click .dropdown').click(function(e) {
-
-    // Hide all dropdowns that are click activated
-    $('.dropdown-trigger.on-click').removeClass('active');
-
-    // Keep the parent dropdowns active
-    $(this).parents('.dropdown-trigger').addClass('active');
-
-    // Keep the current dropdown active
-    $(this).addClass('active');
-
-    // Stop the click event from bubbling down to the document
-    e.stopPropagation();
-  });
-
-  */
 
   //
   // Return Public APIs
