@@ -48,13 +48,13 @@ If you're looking to add a close trigger for off-canvas content, simply create a
 
 ## Off-Canvas Transitions
 
-There are eight unique effects with left and right position variations and the option to create custom transitions. Try out the transitions below. The **transition value** is what you'd set in the `$off-canvas('transition')` variable or pass to the `add-offcanvas-transition()` mixin.
+There are eight unique effects with left and right position variations and the option to create custom transitions. Try out the transitions below. The **transition value** is what you'd set in the `$offcanvas('transition')` variable or pass to the `add-offcanvas-transition()` mixin.
 
 <div class="demo demo-offcanvas" id="demo-offcanvas-transitions">
   <div class="oc-wrap">
     <section class="oc-content">
       <div class="oc-inner">
-        <form class="form-off-canvas-transitions">
+        <form class="form-offcanvas-transitions">
           <div class="form-group">
             <div class="row">
 
@@ -87,7 +87,7 @@ There are eight unique effects with left and right position variations and the o
             <input class="input" id="oc-transition-value" name="oc-transition-value" value="slide-in-left" readonly>
           </div><!-- .form-group -->
           <div class="form-action">
-            <button id="oc-trigger-sample" class="button primary oc-trigger" data-target="slide-in-left">Sample off-canvas transition</button>
+            <button id="oc-trigger-sample" class="button primary oc-trigger" data-target="slide-in-left">Sample offcanvas transition</button>
           </div><!-- .form-action -->
         </form>
       </div>
@@ -103,13 +103,13 @@ There are eight unique effects with left and right position variations and the o
   <p><strong>Credit:</strong> Transition effects were inspired from an article by <a class="onclick-newtab" href="https://tympanus.net/Development/SidebarTransitions/">Mary Lou</a> over at Codrops.</p>
 </div>
 
-If instead you prefer to create a custom transition effect, you can disable the default transition output by passing the value `null` to the `$off-canvas('transition')` variable. Alternatively, you can also disable all class based output by passing the value `false` to the `$off-canvas('classes')` variable. Either of these methods will disable the default class output and allow you to create your own custom transition effects. Just make sure you're outputting the base off-canvas styles if you opt to disable class based output.
+If instead you prefer to create a custom transition effect, you can disable the default transition output by passing the value `null` to the `$offcanvas('transition')` variable. Alternatively, you can also disable all class based output by passing the value `false` to the `$offcanvas('classes')` variable. Either of these methods will disable the default class output and allow you to create your own custom transition effects. Just make sure you're outputting the base off-canvas styles if you opt to disable class based output.
 
 ```scss
-// If disabling all class output, you can still build base off-canvas using:
+// If disabling all class output, you can still build base offcanvas using:
 @include make-offcanvas();
 
-// For custom transition effects, simply use the unique off-canvas aside
+// For custom transition effects, simply use the unique offcanvas aside
 // identifier and active class (`.oc-active` by default)
 .custom-aside.oc-aside {
   left: 0;
@@ -197,14 +197,14 @@ $('.oc-trigger').each(function () {
 ```
 
 <div class="notice warning">
-  <p>Keep in mind if you modify the default classes or transition duration in your <code>$off-canvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
+  <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
 </div>
 
 <section class="subsection subsection-variables" markdown="1">
 
 # Off-Canvas Variables
 
-Off-canvas variables are encompassed within the `$off-canvas()` map and are used throughout all off-canvas mixins to set default values.
+Off-canvas variables are encompassed within the `$offcanvas()` map and are used throughout all off-canvas mixins to set default values.
 
 <table class="table table-docs">
   <tr>
@@ -212,78 +212,78 @@ Off-canvas variables are encompassed within the `$off-canvas()` map and are used
     <th>Default</th>
   </tr>
   <tr>
-    <td><code>$off-canvas('classes')</code></td>
+    <td><code>$offcanvas('classes')</code></td>
     <td><code>true</code> <a href="#var-note-1">*</a></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-wrap')</code></td>
+    <td><code>$offcanvas('class-wrap')</code></td>
     <td><code>'oc-wrap'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-content')</code></td>
+    <td><code>$offcanvas('class-content')</code></td>
     <td><code>'oc-content'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-inner')</code></td>
+    <td><code>$offcanvas('class-inner')</code></td>
     <td><code>'oc-inner'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-aside')</code></td>
+    <td><code>$offcanvas('class-aside')</code></td>
     <td><code>'oc-aside'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-aside-id')</code></td>
+    <td><code>$offcanvas('class-aside-id')</code></td>
     <td><code>'oc-aside-left'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-active')</code></td>
+    <td><code>$offcanvas('class-active')</code></td>
     <td><code>'oc-active'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('class-delay')</code></td>
+    <td><code>$offcanvas('class-delay')</code></td>
     <td><code>'oc-delay'</code></td>
   </tr>
 
   <tr>
-    <td><code>$off-canvas('screen-content')</code></td>
+    <td><code>$offcanvas('screen-content')</code></td>
     <td><code>rgba($black, 0.2)</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('screen-aside')</code></td>
+    <td><code>$offcanvas('screen-aside')</code></td>
     <td><code>rgba($black, 0.2)</code></td>
   </tr>
 
   <tr>
-    <td><code>$off-canvas('transition')</code></td>
+    <td><code>$offcanvas('transition')</code></td>
     <td><code>'slide-in-left'</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('transition-duration')</code></td>
+    <td><code>$offcanvas('transition-duration')</code></td>
     <td><code>0.5s</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('width')</code></td>
+    <td><code>$offcanvas('width')</code></td>
     <td><code>280px</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('wrap-height')</code></td>
+    <td><code>$offcanvas('wrap-height')</code></td>
     <td><code>null</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('aside-position')</code></td>
+    <td><code>$offcanvas('aside-position')</code></td>
     <td><code>fixed</code></td>
   </tr>
 
   <tr>
-    <td><code>$off-canvas('background-wrap')</code></td>
+    <td><code>$offcanvas('background-wrap')</code></td>
     <td><code>$bg-color</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('background-aside')</code></td>
+    <td><code>$offcanvas('background-aside')</code></td>
     <td><code>$white</code></td>
   </tr>
   <tr>
-    <td><code>$off-canvas('background-content')</code></td>
+    <td><code>$offcanvas('background-content')</code></td>
     <td><code>$white</code></td>
   </tr>
 </table>
@@ -321,7 +321,7 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$off-canvas()</code></td>
+    <td><code>$offcanvas()</code></td>
   </tr>
 </table>
 
@@ -330,10 +330,10 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
 Use this mixin to output the default class styles for off-canvas. You can also pass in a variable map to override specific settings.
 
 ```scss
-// Use all default settings from $off-canvas variable map
+// Use all default settings from $offcanvas variable map
 @include make-offcanvas();
 
-// Change the background styles, but keep the rest of the $off-canvas defaults
+// Change the background styles, but keep the rest of the $offcanvas defaults
 @include make-offcanvas((
   'background-aside' : $blue-gray,
   'background-content' : $blue-50
@@ -418,17 +418,17 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$off-canvas()</code></td>
+    <td><code>$offcanvas()</code></td>
   </tr>
   <tr>
     <td><code>$target</code></td>
     <td>String</td>
-    <td><code>$off-canvas('class-aside-left')</code></td>
+    <td><code>$offcanvas('class-aside-left')</code></td>
   </tr>
   <tr>
     <td><code>$style</code></td>
     <td>String</td>
-    <td><code>$off-canvas('transition')</code></td>
+    <td><code>$offcanvas('transition')</code></td>
   </tr>
 </table>
 
@@ -501,7 +501,7 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$off-canvas()</code></td>
+    <td><code>$offcanvas()</code></td>
   </tr>
 </table>
 
