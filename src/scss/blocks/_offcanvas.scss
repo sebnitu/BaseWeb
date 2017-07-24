@@ -1,11 +1,11 @@
 // Set file variable
-$filename: 'scss/custom/off-canvas.scss';
+$filename: 'scss/custom/offcanvas.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
 // @Off-Canvas Map
 ////////////////////////////////////////////////////////////////////////////////
 
-$off-canvas: (
+$offcanvas: (
   'classes' : true,
 
   'class-wrap'     : 'oc-wrap',
@@ -33,8 +33,8 @@ $off-canvas: (
 
 // Extend default off-canvas map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'off-canvas') == true) {
-    $off-canvas: map-extend($off-canvas, map-get($override, 'off-canvas'), true);
+  @if (map-has-key($override, 'offcanvas') == true) {
+    $offcanvas: map-extend($offcanvas, map-get($override, 'offcanvas'), true);
   }
 }
 
@@ -46,9 +46,9 @@ $off-canvas: (
 // Creates the base styles for off-canvas content
 // @param $options
 //   @type map
-//   @default $off-canvas map
-@mixin make-off-canvas($options: ()) {
-  $o: map-merge($off-canvas, $options);
+//   @default $offcanvas map
+@mixin make-offcanvas($options: ()) {
+  $o: map-merge($offcanvas, $options);
 
   // Base structure styles
   .#{map-get($o, 'class-wrap')} {
@@ -135,15 +135,15 @@ $off-canvas: (
 // Creates transition styles for off-canvas elements
 // @param $options
 //   @type map
-//   @default $off-canvas map
+//   @default $offcanvas map
 // @param $target
 //   @type string
-//   @default $off-canvas('class-aside-left')
+//   @default $offcanvas('class-aside-left')
 // @param $style
 //   @type string
-//   @default $off-canvas('transition')
-@mixin add-off-canvas-transition($options: (), $target: map-get($off-canvas, 'class-aside-id'), $style: map-get($off-canvas, 'transition')) {
-  $o: map-merge($off-canvas, $options);
+//   @default $offcanvas('transition')
+@mixin add-offcanvas-transition($options: (), $target: map-get($offcanvas, 'class-aside-id'), $style: map-get($offcanvas, 'transition')) {
+  $o: map-merge($offcanvas, $options);
 
   // slide in left
   @if ($style == 'slide-in-left') {
@@ -313,7 +313,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // scale down right
   } @else if ($style == 'scale-down-right') {
@@ -341,7 +341,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // scale up left
   } @else if ($style == 'scale-up-left') {
@@ -365,7 +365,7 @@ $off-canvas: (
     	transform: translate3d(0, 0, 0);
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // scale up right
   } @else if ($style == 'scale-up-right') {
@@ -389,7 +389,7 @@ $off-canvas: (
     	transform: translate3d(0, 0, 0);
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // scale rotate left
   } @else if ($style == 'scale-rotate-left') {
@@ -417,7 +417,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // scale rotate right
   } @else if ($style == 'scale-rotate-right') {
@@ -445,7 +445,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // open door left
   } @else if ($style == 'open-door-left') {
@@ -474,7 +474,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // open door right
   } @else if ($style == 'open-door-right') {
@@ -503,7 +503,7 @@ $off-canvas: (
     	display: none;
     }
 
-    @include add-off-canvas-wrap-height($target, $o);
+    @include add-offcanvas-wrap-height($target, $o);
 
   // transition doesn't exist
   } @else {
@@ -518,9 +518,9 @@ $off-canvas: (
 //   @type string
 // @param $options
 //   @type map
-//   @default $off-canvas map
-@mixin add-off-canvas-wrap-height($target, $options: ()) {
-  $o: map-merge($off-canvas, $options);
+//   @default $offcanvas map
+@mixin add-offcanvas-wrap-height($target, $options: ()) {
+  $o: map-merge($offcanvas, $options);
 
   .#{$target}.#{map-get($o, 'class-wrap')} {
     transition: height 0.1s map-get($o, 'transition-duration');
@@ -536,12 +536,12 @@ $off-canvas: (
 }
 
 // Check if we should output modifier classes
-@if (map-get($off-canvas, 'classes') == true) {
+@if (map-get($offcanvas, 'classes') == true) {
 /*==============================================================================
   @Off-Canvas - #{$filename}
 ==============================================================================*/
 
-@include make-off-canvas();
+@include make-offcanvas();
 
 // Available transitions
 // ---
@@ -555,9 +555,9 @@ $off-canvas: (
 // open-door-left, open-door-right
 // ---
 // Example usage:
-// @include add-off-canvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
-@if (map-get($off-canvas, 'transition')) {
-  @include add-off-canvas-transition();
+// @include add-offcanvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
+@if (map-get($offcanvas, 'transition')) {
+  @include add-offcanvas-transition();
 }
 
 } // endif classes

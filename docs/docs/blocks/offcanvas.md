@@ -25,7 +25,7 @@ The off-canvas aside is triggered using a button or link with the class of `oc-t
 <button class="oc-trigger" data-target="oc-aside-id">Menu</button>
 ```
 
-<div class="demo demo-off-canvas">
+<div class="demo demo-offcanvas">
   <div class="oc-wrap">
     <section class="oc-content">
       <div class="oc-inner">
@@ -48,9 +48,9 @@ If you're looking to add a close trigger for off-canvas content, simply create a
 
 ## Off-Canvas Transitions
 
-There are eight unique effects with left and right position variations and the option to create custom transitions. Try out the transitions below. The **transition value** is what you'd set in the `$off-canvas('transition')` variable or pass to the `add-off-canvas-transition()` mixin.
+There are eight unique effects with left and right position variations and the option to create custom transitions. Try out the transitions below. The **transition value** is what you'd set in the `$off-canvas('transition')` variable or pass to the `add-offcanvas-transition()` mixin.
 
-<div class="demo demo-off-canvas" id="demo-off-canvas-transitions">
+<div class="demo demo-offcanvas" id="demo-offcanvas-transitions">
   <div class="oc-wrap">
     <section class="oc-content">
       <div class="oc-inner">
@@ -107,7 +107,7 @@ If instead you prefer to create a custom transition effect, you can disable the 
 
 ```scss
 // If disabling all class output, you can still build base off-canvas using:
-@include make-off-canvas();
+@include make-offcanvas();
 
 // For custom transition effects, simply use the unique off-canvas aside
 // identifier and active class (`.oc-active` by default)
@@ -304,12 +304,12 @@ Off-canvas mixins are used to create the base styles for an off-canvas component
 
 <li markdown="1">
 
-## make-off-canvas
+## make-offcanvas
 
 Creates the base styles for the off-canvas block including wrapper, content, inner content and aside content whos default classes are output as `.oc-wrap`, `.oc-content`, `.oc-inner` and `.oc-aside` respectivly. If content and aside screen backgrounds are provided, styles will also be output for these pseudo elements.
 
 ```scss
-@include make-off-canvas( $options: () );
+@include make-offcanvas( $options: () );
 ```
 
 <table class="table table-docs">
@@ -331,16 +331,16 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 
 ```scss
 // Use all default settings from $off-canvas variable map
-@include make-off-canvas();
+@include make-offcanvas();
 
 // Change the background styles, but keep the rest of the $off-canvas defaults
-@include make-off-canvas((
+@include make-offcanvas((
   'background-aside' : $blue-gray,
   'background-content' : $blue-50
 ));
 ```
 
-<div class="demo demo-off-canvas oc-custom">
+<div class="demo demo-offcanvas oc-custom">
   <div class="oc-wrap">
     <section class="oc-content">
       <div class="oc-inner">
@@ -359,7 +359,7 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 
 <li markdown="1">
 
-## add-off-canvas-transition
+## add-offcanvas-transition
 
 Creates transition styles for off-canvas elements. This mixin makes available 8 unique transition effects with left and right variations. These can be output using their respective style strings:
 
@@ -406,7 +406,7 @@ Creates transition styles for off-canvas elements. This mixin makes available 8 
 </table>
 
 <div class="notice info" markdown="1">
-You can [sample all of these transition effects](#demo-off-canvas-transitions) in the demonstration above.
+You can [sample all of these transition effects](#demo-offcanvas-transitions) in the demonstration above.
 </div>
 
 <table class="table table-docs">
@@ -438,8 +438,8 @@ It's important to specify the target you'd like the transition effect to be appl
 
 ```scss
 // Adding custom transition effects for two seperate off-canvas aside content
-@include add-off-canvas-transition($target: 'oc-aside-left', $style: 'slide-out-left');
-@include add-off-canvas-transition($target: 'oc-aside-right', $style: 'scale-rotate-right');
+@include add-offcanvas-transition($target: 'oc-aside-left', $style: 'slide-out-left');
+@include add-offcanvas-transition($target: 'oc-aside-right', $style: 'scale-rotate-right');
 ```
 
 ```html
@@ -458,7 +458,7 @@ It's important to specify the target you'd like the transition effect to be appl
 </div>
 ```
 
-<div class="demo demo-off-canvas">
+<div class="demo demo-offcanvas">
   <div class="oc-wrap">
     <section class="oc-content">
       <div class="oc-inner">
@@ -483,7 +483,7 @@ It's important to specify the target you'd like the transition effect to be appl
 
 <li markdown="1">
 
-## add-off-canvas-wrap-height
+## add-offcanvas-wrap-height
 
 Sets the off-canvas wrapper element height to `100%` using the delay class to only remove the height after the transition is finished. This is used for specific transitions which use 3D transforms.
 
@@ -507,12 +507,12 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
 
 ### Example Usage
 
-Primarily used internally in the `add-off-canvas-transition()` mixin, this can also be used for custom transitions that require an off-canvas wrapper height of `100%`.
+Primarily used internally in the `add-offcanvas-transition()` mixin, this can also be used for custom transitions that require an off-canvas wrapper height of `100%`.
 
 ```scss
 // SCSS input
 // If your transition effect requires a wrap with 100% height
-@include add-off-canvas-wrap-height('target-id');
+@include add-offcanvas-wrap-height('target-id');
 
 // CSS Output
 .target-id.oc-wrap {

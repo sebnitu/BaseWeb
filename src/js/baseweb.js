@@ -4,7 +4,7 @@ require
   dismissible.js
   dropdowns.js
   tabs.js
-  off-canvas.js
+  offcanvas.js
 */
 
 // Default initializations
