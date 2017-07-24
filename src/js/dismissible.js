@@ -11,7 +11,9 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close'
+    selectorTrigger : '.close',
+    classDismissible : 'dismissible',
+    classHide : 'hide'
   };
 
   //
@@ -27,10 +29,10 @@ var dismissible = (function () {
     event.preventDefault();
 
     // Get the dismissible parent element
-    var dismissible = u.closest(event.target, 'dismissible');
+    var dismissible = u.closest(event.target, settings.classDismissible);
 
     // Add initial classes
-    u.addClass(dismissible, 'hide');
+    u.addClass(dismissible, settings.classHide);
 
   };
 

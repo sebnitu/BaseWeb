@@ -103,7 +103,11 @@ var utility = (function () {
   }; // End toArray
 
   /**
-   * Creates a forEach loop for Node lists
+   * Creates a forEach loop for NodeList
+   * @param {NodeList} Node list to loop through
+   * @param {Function} The function to run within the loop
+   * @param {Scope} I'm not quite sure what this does
+   * @return {Integer} {Value} Passed to the callback function
    */
   api.forEach = function (array, callback, scope) {
     for (var i = 0; i < array.length; ++i) {
@@ -177,7 +181,9 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close'
+    selectorTrigger : '.close',
+    classDismissible : 'dismissible',
+    classHide : 'hide'
   };
 
   //
@@ -193,10 +199,10 @@ var dismissible = (function () {
     event.preventDefault();
 
     // Get the dismissible parent element
-    var dismissible = u.closest(event.target, 'dismissible');
+    var dismissible = u.closest(event.target, settings.classDismissible);
 
     // Add initial classes
-    u.addClass(dismissible, 'hide');
+    u.addClass(dismissible, settings.classHide);
 
   };
 
@@ -397,7 +403,10 @@ var tabs = (function () {
   var api = {};
   var settings;
   var defaults = {
-    classActive: 'active'
+    classWrap : 'tabs',
+    classNav : 'tabs-nav',
+    classContent : 'tabs-content',
+    classActive : 'active'
   };
 
   var triggers = [];
@@ -405,6 +414,41 @@ var tabs = (function () {
   //
   // Private Methods
   //
+
+  var getTabsContent = function(wrap, nav) {
+
+    var content;
+
+    if (wrap) {
+      u.forEach(wrap.children, function(i, el) {
+        if (u.hasClass(el, settings.classContent)) {
+          content = el;
+        }
+      });
+    } else {
+      var id = nav.dataset.content;
+      if (id) {
+        content = document.querySelector('#' + id);
+      } else {
+        console.log('Tabs content does not exist!');
+      }
+    }
+
+    return content;
+
+  };
+
+  var removeActive = function (nav, content) {
+
+    var activeNav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
+    var activeContent = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
+    var activeAll = activeNav.concat(activeContent);
+
+    activeAll.forEach(function (el) {
+      u.removeClass(el, settings.classActive);
+    });
+
+  };
 
   var runTabs = function () {
 
@@ -415,46 +459,23 @@ var tabs = (function () {
     if (!is_active) {
 
       // Tabs wrapper
-      var tabs = u.closest(event.target, 'tabs');
+      var tabs = u.closest(event.target, settings.classWrap);
 
       // Tabs nav wrapper
-      var tabsNav = u.closest(event.target, 'tabs-nav');
+      var tabsNav = u.closest(event.target, settings.classNav);
 
       // Tabs content
-      var tabsContent;
-      if (tabs) {
-        u.forEach(tabs.children, function(i, el) {
-          if (u.hasClass(el, 'tabs-content')) {
-            tabsContent = el;
-            return;
-          }
-        });
-      } else {
-        var contentID = tabsNav.dataset.content;
-        if (contentID) {
-          tabsContent = document.querySelector('#' + contentID);
-        } else {
-          console.log('Tabs content does not exist!');
-        }
-      }
+      var tabsContent = getTabsContent(tabs, tabsNav);
 
       // Get target
       var target = event.target.getAttribute('href');
 
       // Remove all active classes
-      var activeNav = Array.prototype.slice.call(tabsNav.querySelectorAll('.' + settings.classActive));
-      var activeContent = Array.prototype.slice.call(tabsContent.querySelectorAll('.' + settings.classActive));
-      var activeAll = activeNav.concat(activeContent);
+      removeActive(tabsNav, tabsContent);
 
-      activeAll.forEach(function (el) {
-        u.removeClass(el, settings.classActive);
-      });
-
-      // Set tab nav item to active
+      // Set tab nav and content item to active
       u.addClass(event.target.parentElement, settings.classActive);
-
-      // Set tab content to active
-      u.addClass(document.querySelector(target), settings.classActive);
+      u.addClass(tabsContent.querySelector(target), settings.classActive);
 
     } // End if is_active
 
@@ -476,7 +497,7 @@ var tabs = (function () {
     settings = u.extend( defaults, options || {} );
 
     // Find triggers
-    triggers = document.querySelectorAll('.tabs-nav a');
+    triggers = document.querySelectorAll('.' + settings.classNav + ' a');
 
     // Add event listener
     triggers.forEach(function (el) {
