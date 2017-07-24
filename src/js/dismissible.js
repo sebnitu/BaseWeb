@@ -11,8 +11,7 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close',
-    timer: 500
+    selectorTrigger : '.close'
   };
 
   //

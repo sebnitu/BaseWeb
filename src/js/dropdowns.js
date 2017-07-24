@@ -15,9 +15,9 @@ var dropdowns = (function () {
     selectorDropdown: '.dropdown',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
-    classActive: 'active',
-    timer: 500
+    classActive: 'active'
   };
+
   var triggers = [];
   var dropdowns = [];
 

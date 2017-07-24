@@ -177,8 +177,7 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close',
-    timer: 500
+    selectorTrigger : '.close'
   };
 
   //
@@ -253,9 +252,9 @@ var dropdowns = (function () {
     selectorDropdown: '.dropdown',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
-    classActive: 'active',
-    timer: 500
+    classActive: 'active'
   };
+
   var triggers = [];
   var dropdowns = [];
 
@@ -385,59 +384,127 @@ var dropdowns = (function () {
 
 })();
 
-$('.tabs-nav').each(function() {
+var tabs = (function () {
 
-  // Save this
-  var $this = $(this);
+  'use strict';
 
-  // Save our tabs content
-  var tabs_content = $this.parents('.tabs').find('.tabs-content');
-  var has_content = tabs_content.length;
+  //
+  // Variables
+  //
 
-  // Check our other tabs content method if one wasn't found yet
-  if (!has_content) {
-    // Check if we have a linked content data attribute
-    tabs_content = $this.attr('data-content');
-    if (tabs_content) {
-      // Save our tabs content
-      tabs_content = $('#' + tabs_content);
-      // Set has_content to true
-      if (tabs_content.length) {
-        has_content = 1;
-      }
-    } else {
-      console.log('Tabs content does not exist!');
-    }
-  }
+  var u = utility;
 
-  // Add click event to tab links
-  $this.find('a').click(function() {
-    // Check if item is already active or not
-    var is_active = $(this).parents('li').hasClass('active');
+  var api = {};
+  var settings;
+  var defaults = {
+    classActive: 'active'
+  };
 
+  var triggers = [];
+
+  //
+  // Private Methods
+  //
+
+  var runTabs = function () {
+
+    // Is the clicked item already active?
+    var is_active = u.hasClass(event.target.parentElement, settings.classActive);
+
+    // If it's not active
     if (!is_active) {
-      // Remove active class from all children nav items
-      $this.find('li').removeClass('active');
-      // Add active class to currently selected item
-      $(this).parents('li').addClass('active');
 
-      // Check if tabs-nav has an associated content block
-      if (has_content) {
-        // Hide current active content
-        tabs_content.find('.tabs-panel').removeClass('active');
-        // Show new active content
-        var target = $(this).attr('href');
-        $(target).addClass('active');
+      // Tabs wrapper
+      var tabs = u.closest(event.target, 'tabs');
+
+      // Tabs nav wrapper
+      var tabsNav = u.closest(event.target, 'tabs-nav');
+
+      // Tabs content
+      var tabsContent;
+      if (tabs) {
+        u.forEach(tabs.children, function(i, el) {
+          if (u.hasClass(el, 'tabs-content')) {
+            tabsContent = el;
+            return;
+          }
+        });
       } else {
-        console.log('Tabs content does not exist!');
+        var contentID = tabsNav.dataset.content;
+        if (contentID) {
+          tabsContent = document.querySelector('#' + contentID);
+        } else {
+          console.log('Tabs content does not exist!');
+        }
       }
-    }
 
-    // Stop the default behavior
-    return false;
-  });
+      // Get target
+      var target = event.target.getAttribute('href');
 
-});
+      // Remove all active classes
+      var activeNav = Array.prototype.slice.call(tabsNav.querySelectorAll('.' + settings.classActive));
+      var activeContent = Array.prototype.slice.call(tabsContent.querySelectorAll('.' + settings.classActive));
+      var activeAll = activeNav.concat(activeContent);
+
+      activeAll.forEach(function (el) {
+        u.removeClass(el, settings.classActive);
+      });
+
+      // Set tab nav item to active
+      u.addClass(event.target.parentElement, settings.classActive);
+
+      // Set tab content to active
+      u.addClass(document.querySelector(target), settings.classActive);
+
+    } // End if is_active
+
+    // Prevent default link behavior
+    event.preventDefault();
+
+  };
+
+  //
+  // Public Methods
+  //
+
+  api.init = function ( options ) {
+
+    // Destroy any previous initializations
+    api.destroy();
+
+    // Merge user options with the defaults
+    settings = u.extend( defaults, options || {} );
+
+    // Find triggers
+    triggers = document.querySelectorAll('.tabs-nav a');
+
+    // Add event listener
+    triggers.forEach(function (el) {
+      el.addEventListener('click', runTabs, false);
+    });
+
+  };
+
+  api.destroy = function () {
+
+    // Remove listener
+    triggers.forEach(function (el) {
+      el.removeEventListener('click', runTabs, false);
+    });
+
+    // Reset settings
+    settings = null;
+    triggers = null;
+
+  };
+
+  //
+  // Return Public APIs
+  //
+
+  return api;
+
+})();
 
 $('.oc-trigger').each(function () {
 
@@ -513,5 +580,6 @@ require
 
   dismissible.init();
   dropdowns.init();
+  tabs.init();
 
 })(window, document);

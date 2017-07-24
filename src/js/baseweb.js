@@ -14,5 +14,6 @@ require
 
   dismissible.init();
   dropdowns.init();
+  tabs.init();
 
 })(window, document);
