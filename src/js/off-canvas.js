@@ -1,3 +1,69 @@
+var offcanvas = (function () {
+
+  'use strict';
+
+  //
+  // Variables
+  //
+
+  var u = utility;
+
+  var api = {};
+  var settings;
+  var defaults = {
+    classTrigger : 'oc-trigger',
+  };
+
+  //
+  // Private Methods
+  //
+
+  var runOffcanvas = function () {
+
+    // Only run if the clicked link was a dismissible item
+    if ( !event.target.matches(settings.selectorTrigger)) return;
+
+    // Prevent default link behavior
+    event.preventDefault();
+
+  };
+
+  //
+  // Public Methods
+  //
+
+  api.init = function ( options ) {
+
+    // Destroy any previous initializations
+    api.destroy();
+
+    // Merge user options with the defaults
+    settings = u.extend( defaults, options || {} );
+
+    // Add event listener
+    document.addEventListener('click', runOffcanvas, false);
+
+  };
+
+  api.destroy = function () {
+
+    // Remove listener
+    document.removeEventListener('click', runOffcanvas, false);
+
+    // Reset settings
+    settings = null;
+
+  };
+
+  //
+  // Return Public APIs
+  //
+
+  return api;
+
+})();
+
+/*
 $('.oc-trigger').each(function () {
 
   var
@@ -55,3 +121,4 @@ $('.oc-trigger').each(function () {
   });
 
 });
+*/

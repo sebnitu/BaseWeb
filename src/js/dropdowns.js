@@ -12,10 +12,9 @@ var dropdowns = (function () {
   var settings;
   var defaults = {
     selectorTrigger: '.dropdown-trigger.on-click',
-    selectorDropdown: '.dropdown',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
-    classActive: 'active'
+    classActive: 'active',
   };
 
   var triggers = [];
@@ -102,7 +101,7 @@ var dropdowns = (function () {
 
     // Find triggers and dropdowns
     triggers = document.querySelectorAll(settings.selectorTrigger);
-    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' ' + settings.selectorDropdown);
+    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' .' + settings.classDropdown);
 
     // Add event listener to document
     document.addEventListener('click', api.hideAll, false);

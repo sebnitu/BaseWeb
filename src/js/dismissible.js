@@ -11,9 +11,9 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close',
+    classTrigger : 'close',
     classDismissible : 'dismissible',
-    classHide : 'hide'
+    classHide : 'hide',
   };
 
   //
@@ -23,7 +23,7 @@ var dismissible = (function () {
   var runDismissible = function () {
 
     // Only run if the clicked link was a dismissible item
-    if ( !event.target.matches(settings.selectorTrigger)) return;
+    if ( !event.target.matches('.' + settings.classTrigger)) return;
 
     // Prevent default link behavior
     event.preventDefault();
@@ -32,7 +32,11 @@ var dismissible = (function () {
     var dismissible = u.closest(event.target, settings.classDismissible);
 
     // Add initial classes
-    u.addClass(dismissible, settings.classHide);
+    if (dismissible) {
+      u.addClass(dismissible, settings.classHide);
+    } else {
+      console.log('Dismissible element was not found!');
+    }
 
   };
 

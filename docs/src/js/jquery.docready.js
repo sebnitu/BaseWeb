@@ -20,6 +20,7 @@
     /**
      * @Off Canvas
      */
+    /*
     function off_canvas() {
       $('.oc-trigger').each(function () {
         var
@@ -80,6 +81,7 @@
     }
 
     off_canvas();
+    */
 
     /**
      * @Docs Interface
@@ -127,7 +129,7 @@
       $oc_trigger.attr('data-target', oc_class);
       $oc_aside.attr('class', 'oc-aside ' + oc_class);
 
-      off_canvas();
+      // off_canvas();
     });
 
     // Select on focus

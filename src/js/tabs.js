@@ -14,7 +14,7 @@ var tabs = (function () {
     classWrap : 'tabs',
     classNav : 'tabs-nav',
     classContent : 'tabs-content',
-    classActive : 'active'
+    classActive : 'active',
   };
 
   var triggers = [];
@@ -38,7 +38,7 @@ var tabs = (function () {
       if (id) {
         content = document.querySelector('#' + id);
       } else {
-        console.log('Tabs content does not exist!');
+        console.log('Tabs content was not found!');
       }
     }
 

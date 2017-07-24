@@ -15,5 +15,6 @@ require
   dismissible.init();
   dropdowns.init();
   tabs.init();
+  offcanvas.init();
 
 })(window, document);

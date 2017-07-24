@@ -181,9 +181,9 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger : '.close',
+    classTrigger : 'close',
     classDismissible : 'dismissible',
-    classHide : 'hide'
+    classHide : 'hide',
   };
 
   //
@@ -193,7 +193,7 @@ var dismissible = (function () {
   var runDismissible = function () {
 
     // Only run if the clicked link was a dismissible item
-    if ( !event.target.matches(settings.selectorTrigger)) return;
+    if ( !event.target.matches('.' + settings.classTrigger)) return;
 
     // Prevent default link behavior
     event.preventDefault();
@@ -202,7 +202,11 @@ var dismissible = (function () {
     var dismissible = u.closest(event.target, settings.classDismissible);
 
     // Add initial classes
-    u.addClass(dismissible, settings.classHide);
+    if (dismissible) {
+      u.addClass(dismissible, settings.classHide);
+    } else {
+      console.log('Dismissible element was not found!');
+    }
 
   };
 
@@ -255,10 +259,9 @@ var dropdowns = (function () {
   var settings;
   var defaults = {
     selectorTrigger: '.dropdown-trigger.on-click',
-    selectorDropdown: '.dropdown',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
-    classActive: 'active'
+    classActive: 'active',
   };
 
   var triggers = [];
@@ -345,7 +348,7 @@ var dropdowns = (function () {
 
     // Find triggers and dropdowns
     triggers = document.querySelectorAll(settings.selectorTrigger);
-    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' ' + settings.selectorDropdown);
+    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' .' + settings.classDropdown);
 
     // Add event listener to document
     document.addEventListener('click', api.hideAll, false);
@@ -406,7 +409,7 @@ var tabs = (function () {
     classWrap : 'tabs',
     classNav : 'tabs-nav',
     classContent : 'tabs-content',
-    classActive : 'active'
+    classActive : 'active',
   };
 
   var triggers = [];
@@ -430,7 +433,7 @@ var tabs = (function () {
       if (id) {
         content = document.querySelector('#' + id);
       } else {
-        console.log('Tabs content does not exist!');
+        console.log('Tabs content was not found!');
       }
     }
 
@@ -527,6 +530,72 @@ var tabs = (function () {
 
 })();
 
+var offcanvas = (function () {
+
+  'use strict';
+
+  //
+  // Variables
+  //
+
+  var u = utility;
+
+  var api = {};
+  var settings;
+  var defaults = {
+    classTrigger : 'oc-trigger',
+  };
+
+  //
+  // Private Methods
+  //
+
+  var runOffcanvas = function () {
+
+    // Only run if the clicked link was a dismissible item
+    if ( !event.target.matches(settings.selectorTrigger)) return;
+
+    // Prevent default link behavior
+    event.preventDefault();
+
+  };
+
+  //
+  // Public Methods
+  //
+
+  api.init = function ( options ) {
+
+    // Destroy any previous initializations
+    api.destroy();
+
+    // Merge user options with the defaults
+    settings = u.extend( defaults, options || {} );
+
+    // Add event listener
+    document.addEventListener('click', runOffcanvas, false);
+
+  };
+
+  api.destroy = function () {
+
+    // Remove listener
+    document.removeEventListener('click', runOffcanvas, false);
+
+    // Reset settings
+    settings = null;
+
+  };
+
+  //
+  // Return Public APIs
+  //
+
+  return api;
+
+})();
+
+/*
 $('.oc-trigger').each(function () {
 
   var
@@ -584,6 +653,7 @@ $('.oc-trigger').each(function () {
   });
 
 });
+*/
 
 /*
 require
@@ -602,5 +672,6 @@ require
   dismissible.init();
   dropdowns.init();
   tabs.init();
+  offcanvas.init();
 
 })(window, document);
