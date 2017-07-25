@@ -12,19 +12,89 @@ var offcanvas = (function () {
   var settings;
   var defaults = {
     classTrigger : 'oc-trigger',
+    classWrap : 'oc-wrap',
+    classAside : 'oc-aside',
+    classActive : 'oc-active',
+    classDelay : 'oc-delay',
+    timer : 500,
   };
+
+  var triggers = [];
 
   //
   // Private Methods
   //
 
+  var closeOffcanvas = function () {
+
+    var wrap = u.closest(event.target, settings.classWrap);
+
+    // Remove active class
+    u.removeClass(wrap, settings.classActive);
+
+    // Remove delay class after the set transition duration
+    setTimeout( function () {
+      u.removeClass(wrap, settings.classDelay);
+    }, settings.timer );
+
+  };
+
+  var getAside = function (wrap) {
+
+    var aside;
+
+    u.forEach(wrap.children, function(i, el) {
+      if (u.hasClass(el, settings.classAside)) {
+        aside = el;
+      }
+    });
+
+    return aside;
+
+  };
+
+  var stopProp = function () {
+    event.stopPropagation();
+  };
+
   var runOffcanvas = function () {
 
-    // Only run if the clicked link was a dismissible item
-    if ( !event.target.matches(settings.selectorTrigger)) return;
+    var el = event.target;
+
+    var local = {
+      target : el.dataset.target,
+      wrap : u.closest(el, settings.classWrap),
+      aside : getAside(u.closest(el, settings.classWrap)),
+      reset : settings.classWrap,
+      is_active : false,
+    };
+
+    // Check if is active
+    local.is_active = u.hasClass(local.wrap, settings.classActive);
+
+    // Check if it's a close button or if off-canvas is already active
+    if(!local.target || local.is_active) {
+      // Close off-canvas content
+      closeOffcanvas(local.wrap);
+    } else {
+      // Reset container class
+      local.wrap.setAttribute('class', local.reset);
+    }
+
+    // Add target class
+    if(local.target && !local.is_active) {
+      u.addClass(local.wrap, local.target);
+      // Add active and delay classes after a slight delay
+      setTimeout( function() {
+        u.addClass(local.wrap, [settings.classActive, settings.classDelay])
+      }, 25 );
+    }
 
     // Prevent default link behavior
     event.preventDefault();
+
+    // Stop the click event from bubbling down to the document
+    event.stopPropagation();
 
   };
 
@@ -32,7 +102,7 @@ var offcanvas = (function () {
   // Public Methods
   //
 
-  api.init = function ( options ) {
+  api.init = function (options) {
 
     // Destroy any previous initializations
     api.destroy();
@@ -40,18 +110,53 @@ var offcanvas = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Add event listener
-    document.addEventListener('click', runOffcanvas, false);
+    // Get trigger
+    triggers = document.querySelectorAll('.' + settings.classTrigger);
+
+    // Loop through triggers
+    triggers.forEach(function (el) {
+
+      // Local variable
+      var wrap = u.closest(el, settings.classWrap);
+      var aside = getAside(u.closest(el, settings.classWrap));
+
+      // Add event listener to trigger
+      el.addEventListener('click', runOffcanvas, false);
+
+      // Add event listener to wrap
+      wrap.addEventListener('click', closeOffcanvas, false);
+
+      // Add event listener to aside
+      aside.addEventListener('click', stopProp, false);
+
+    }); // End forEach triggers
 
   };
 
   api.destroy = function () {
 
     // Remove listener
-    document.removeEventListener('click', runOffcanvas, false);
+    // Loop through triggers
+    triggers.forEach(function (el) {
 
-    // Reset settings
+      // Local variable
+      var wrap = u.closest(el, settings.classWrap);
+      var aside = getAside(u.closest(el, settings.classWrap));
+
+      // Add event listener to trigger
+      el.removeEventListener('click', runOffcanvas, false);
+
+      // Add event listener to wrap
+      wrap.removeEventListener('click', closeOffcanvas, false);
+
+      // Add event listener to aside
+      aside.removeEventListener('click', stopProp, false);
+
+    }); // End forEach triggers
+
+    // Reset settings and triggers
     settings = null;
+    triggers = [];
 
   };
 
@@ -62,63 +167,3 @@ var offcanvas = (function () {
   return api;
 
 })();
-
-/*
-$('.oc-trigger').each(function () {
-
-  var
-    $this = $(this),
-    $wrap = $this.closest('.oc-wrap'),
-    $aside = $wrap.find('.oc-aside'),
-    target = $this.attr('data-target'),
-    reset = 'oc-wrap',
-    is_active = false,
-    close = function() {
-      // Remove active class
-      $wrap.removeClass('oc-active');
-      // Remove delay class after the set transition duration
-      setTimeout( function() {
-        $wrap.removeClass('oc-delay');
-      }, 500 );
-    }
-  ;
-
-  // Button click event
-  $this.click(function(e) {
-    is_active = $wrap.hasClass('oc-active');
-
-    // Check if it's a close button or if off-canvas is already active
-    if(!target || is_active) {
-      // Close off-canvas content
-      close();
-    } else {
-      // Reset container class
-      $wrap.attr('class', reset);
-    }
-    // Add target class
-    if(target && !is_active) {
-      $wrap.addClass(target);
-      // Add active and delay classes after a slight delay
-      setTimeout( function() {
-        $wrap.addClass('oc-active oc-delay');
-      }, 25 );
-    }
-
-    // Stop the default behavior
-    return false;
-  });
-
-  // Aside click event
-  $aside.click(function(e) {
-    // Stop the click propogation from bubbling down to the container
-    e.stopPropagation();
-  });
-
-  // Container click event
-  $wrap.click(function(e) {
-    // Close off-canvas content
-    close();
-  });
-
-});
-*/

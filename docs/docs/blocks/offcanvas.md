@@ -87,7 +87,7 @@ There are eight unique effects with left and right position variations and the o
             <input class="input" id="oc-transition-value" name="oc-transition-value" value="slide-in-left" readonly>
           </div><!-- .form-group -->
           <div class="form-action">
-            <button id="oc-trigger-sample" class="button primary oc-trigger" data-target="slide-in-left">Sample offcanvas transition</button>
+            <button id="oc-trigger-sample" class="button primary oc-trigger" data-target="slide-in-left">Sample off-canvas transition</button>
           </div><!-- .form-action -->
         </form>
       </div>

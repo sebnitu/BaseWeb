@@ -91,7 +91,7 @@ var dropdowns = (function () {
 
   };
 
-  api.init = function ( options ) {
+  api.init = function (options) {
 
     // Destroy any previous initializations
     api.destroy();
@@ -99,7 +99,7 @@ var dropdowns = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Find triggers and dropdowns
+    // Get triggers and dropdowns
     triggers = document.querySelectorAll(settings.selectorTrigger);
     dropdowns = document.querySelectorAll(settings.selectorTrigger + ' .' + settings.classDropdown);
 
@@ -133,8 +133,8 @@ var dropdowns = (function () {
 
     // Reset settings
     settings = null;
-    triggers = null;
-    dropdowns = null;
+    triggers = [];
+    dropdowns = [];
 
   };
 

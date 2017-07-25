@@ -23,7 +23,7 @@ var tabs = (function () {
   // Private Methods
   //
 
-  var getTabsContent = function(wrap, nav) {
+  var getTabsContent = function (wrap, nav) {
 
     var content;
 
@@ -96,7 +96,7 @@ var tabs = (function () {
   // Public Methods
   //
 
-  api.init = function ( options ) {
+  api.init = function (options) {
 
     // Destroy any previous initializations
     api.destroy();
@@ -104,7 +104,7 @@ var tabs = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Find triggers
+    // Get triggers
     triggers = document.querySelectorAll('.' + settings.classNav + ' a');
 
     // Add event listener
@@ -123,7 +123,7 @@ var tabs = (function () {
 
     // Reset settings
     settings = null;
-    triggers = null;
+    triggers = [];
 
   };
 
