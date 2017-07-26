@@ -71,7 +71,8 @@ var utility = (function () {
   }; // End toggleClass
 
   /**
-   * Find the closest parent element based on class
+   * Find the closest parent element based on class. This is different from the
+   * native .closest() method in that it doesn't check the current element.
    * @param {Element} Element to start search on
    * @param {String} Class string to toggle
    * @return {Element} Closest parent element
@@ -195,7 +196,7 @@ var dismissible = (function () {
   var runDismissible = function () {
 
     // Get the dismissible parent element
-    var dismissible = u.closest(event.target, settings.classDismissible);
+    var dismissible = event.target.closest('.' + settings.classDismissible);
 
     // Add initial classes
     if (dismissible) {
@@ -280,7 +281,7 @@ var dropdowns = (function () {
 
   var runDropdownTriggers = function () {
 
-    var trigger = u.closest(event.target, settings.classTrigger);
+    var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Is the dropdown already active?
     var is_active = u.hasClass(trigger, settings.classActive);
@@ -469,10 +470,10 @@ var tabs = (function () {
     if (!is_active) {
 
       // Tabs wrapper
-      var tabs = u.closest(event.target, settings.classWrap);
+      var tabs = event.target.closest('.' + settings.classWrap);
 
       // Tabs nav wrapper
-      var tabsNav = u.closest(event.target, settings.classNav);
+      var tabsNav = event.target.closest('.' + settings.classNav);
 
       // Tabs content
       var tabsContent = getTabsContent(tabs, tabsNav);
@@ -566,7 +567,7 @@ var offcanvas = (function () {
 
   var closeOffcanvas = function () {
 
-    var wrap = u.closest(event.target, settings.classWrap);
+    var wrap = event.target.closest('.' + settings.classWrap);
 
     // Remove active class
     u.removeClass(wrap, settings.classActive);
@@ -602,8 +603,8 @@ var offcanvas = (function () {
 
     var local = {
       target : el.dataset.target,
-      wrap : u.closest(el, settings.classWrap),
-      aside : getAside(u.closest(el, settings.classWrap)),
+      wrap : el.closest('.' + settings.classWrap),
+      aside : getAside(el.closest('.' + settings.classWrap)),
       reset : settings.classWrap,
       is_active : false,
     };
@@ -656,8 +657,8 @@ var offcanvas = (function () {
     triggers.forEach(function (el) {
 
       // Local variable
-      var wrap = u.closest(el, settings.classWrap);
-      var aside = getAside(u.closest(el, settings.classWrap));
+      var wrap = el.closest('.' + settings.classWrap);
+      var aside = getAside(el.closest('.' + settings.classWrap));
 
       // Add event listener to trigger
       el.addEventListener('click', runOffcanvas, false);
@@ -679,8 +680,8 @@ var offcanvas = (function () {
     triggers.forEach(function (el) {
 
       // Local variable
-      var wrap = u.closest(el, settings.classWrap);
-      var aside = getAside(u.closest(el, settings.classWrap));
+      var wrap = el.closest('.' + settings.classWrap);
+      var aside = getAside(el.closest('.' + settings.classWrap));
 
       // Add event listener to trigger
       el.removeEventListener('click', runOffcanvas, false);

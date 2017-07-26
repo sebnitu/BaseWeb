@@ -25,7 +25,7 @@ var dismissible = (function () {
   var runDismissible = function () {
 
     // Get the dismissible parent element
-    var dismissible = u.closest(event.target, settings.classDismissible);
+    var dismissible = event.target.closest('.' + settings.classDismissible);
 
     // Add initial classes
     if (dismissible) {

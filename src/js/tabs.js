@@ -67,10 +67,10 @@ var tabs = (function () {
     if (!is_active) {
 
       // Tabs wrapper
-      var tabs = u.closest(event.target, settings.classWrap);
+      var tabs = event.target.closest('.' + settings.classWrap);
 
       // Tabs nav wrapper
-      var tabsNav = u.closest(event.target, settings.classNav);
+      var tabsNav = event.target.closest('.' + settings.classNav);
 
       // Tabs content
       var tabsContent = getTabsContent(tabs, tabsNav);

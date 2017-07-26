@@ -27,7 +27,7 @@ var offcanvas = (function () {
 
   var closeOffcanvas = function () {
 
-    var wrap = u.closest(event.target, settings.classWrap);
+    var wrap = event.target.closest('.' + settings.classWrap);
 
     // Remove active class
     u.removeClass(wrap, settings.classActive);
@@ -63,8 +63,8 @@ var offcanvas = (function () {
 
     var local = {
       target : el.dataset.target,
-      wrap : u.closest(el, settings.classWrap),
-      aside : getAside(u.closest(el, settings.classWrap)),
+      wrap : el.closest('.' + settings.classWrap),
+      aside : getAside(el.closest('.' + settings.classWrap)),
       reset : settings.classWrap,
       is_active : false,
     };
@@ -117,8 +117,8 @@ var offcanvas = (function () {
     triggers.forEach(function (el) {
 
       // Local variable
-      var wrap = u.closest(el, settings.classWrap);
-      var aside = getAside(u.closest(el, settings.classWrap));
+      var wrap = el.closest('.' + settings.classWrap);
+      var aside = getAside(el.closest('.' + settings.classWrap));
 
       // Add event listener to trigger
       el.addEventListener('click', runOffcanvas, false);
@@ -140,8 +140,8 @@ var offcanvas = (function () {
     triggers.forEach(function (el) {
 
       // Local variable
-      var wrap = u.closest(el, settings.classWrap);
-      var aside = getAside(u.closest(el, settings.classWrap));
+      var wrap = el.closest('.' + settings.classWrap);
+      var aside = getAside(el.closest('.' + settings.classWrap));
 
       // Add event listener to trigger
       el.removeEventListener('click', runOffcanvas, false);

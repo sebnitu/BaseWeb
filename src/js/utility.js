@@ -71,7 +71,8 @@ var utility = (function () {
   }; // End toggleClass
 
   /**
-   * Find the closest parent element based on class
+   * Find the closest parent element based on class. This is different from the
+   * native .closest() method in that it doesn't check the current element.
    * @param {Element} Element to start search on
    * @param {String} Class string to toggle
    * @return {Element} Closest parent element

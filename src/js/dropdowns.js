@@ -26,7 +26,7 @@ var dropdowns = (function () {
 
   var runDropdownTriggers = function () {
 
-    var trigger = u.closest(event.target, settings.classTrigger);
+    var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Is the dropdown already active?
     var is_active = u.hasClass(trigger, settings.classActive);
