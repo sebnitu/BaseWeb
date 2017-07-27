@@ -762,13 +762,20 @@ Example of how class specific positioning are added using the dropdown position 
 }
 ```
 
-<div class="demo demo-dropdown">
+<div class="demo demo-dropdown demo-dropdown-positions">
 
   <div class="dropdown-trigger anchor-bottom-left">
     <button class="button">bottom-left</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -777,7 +784,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">bottom-right</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -786,7 +800,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">bottom-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -795,7 +816,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">top-left</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -804,7 +832,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">top-right</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -813,7 +848,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">top-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -822,10 +864,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">left-top</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -834,10 +880,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">left-bottom</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -846,10 +896,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">left-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -858,10 +912,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">right-top</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -870,10 +928,14 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">right-bottom</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
@@ -882,15 +944,19 @@ Example of how class specific positioning are added using the dropdown position 
     <button class="button">right-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
-        <p>Dropdown content</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
+        <a class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
 
-</div>
+</div><!-- .demo -->
 
 </li>
 
