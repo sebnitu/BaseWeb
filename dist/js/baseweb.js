@@ -269,6 +269,8 @@ var dropdowns = (function () {
     selectorTrigger: '.dropdown-trigger.on-click',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
+    classOnClick: 'on-click',
+    classOnHover: 'on-hover',
     classActive: 'active',
   };
 

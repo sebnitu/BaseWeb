@@ -762,6 +762,136 @@ Example of how class specific positioning are added using the dropdown position 
 }
 ```
 
+<div class="demo demo-dropdown">
+
+  <div class="dropdown-trigger anchor-bottom-left">
+    <button class="button">bottom-left</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-bottom-right">
+    <button class="button">bottom-right</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-bottom-center">
+    <button class="button">bottom-center</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-top-left">
+    <button class="button">top-left</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-top-right">
+    <button class="button">top-right</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-top-center">
+    <button class="button">top-center</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-left-top">
+    <button class="button">left-top</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-left-bottom">
+    <button class="button">left-bottom</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-left-center">
+    <button class="button">left-center</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-right-top">
+    <button class="button">right-top</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-right-bottom">
+    <button class="button">right-bottom</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+  <div class="dropdown-trigger anchor-right-center">
+    <button class="button">right-center</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <p>Dropdown content</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger -->
+
+</div>
+
 </li>
 
 </ul>
