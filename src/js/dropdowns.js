@@ -64,12 +64,15 @@ var dropdowns = (function () {
   var runDropdownHover = function () {
 
     var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
+    var is_active = false;
+
+    // Save the state of the current trigger
+    if ( trigger ) {
+      is_active = u.hasClass(trigger, settings.classActive);
+    }
 
     // Check if trigger exists
     if ( !trigger ) return;
-
-    // Is the dropdown already active?
-    var is_active = u.hasClass(trigger, settings.classActive);
 
     console.log(is_active);
 
@@ -91,7 +94,7 @@ var dropdowns = (function () {
   // Keep the parent dropdowns active
   api.showParents = function (el) {
 
-    var parent = u.closest(el, settings.classTrigger);
+    var parent = u.closest(el, [settings.classTrigger, settings.classOnHover]);
 
     while (parent) {
       u.addClass(parent, settings.classActive);
