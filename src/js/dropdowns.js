@@ -16,9 +16,12 @@ var dropdowns = (function () {
     classOnClick: 'on-click',
     classOnHover: 'on-hover',
     classActive: 'active',
+    delay: 500,
   };
 
   var triggers = [];
+  var triggersHover = [];
+  var timeoutID;
 
   //
   // Private Methods
@@ -26,9 +29,14 @@ var dropdowns = (function () {
 
   var runDropdownClick = function () {
 
+    // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnClick);
+
+    // Check if parent element is a trigger
     var is_trigger_child = u.hasClass(event.target.parentElement, [settings.classTrigger, settings.classOnClick]);
-    var is_active = false;
+
+    // Initiate is active
+    var is_active;
 
     // Save the state of the current trigger
     if ( trigger ) {
@@ -61,44 +69,6 @@ var dropdowns = (function () {
 
   };
 
-  var runDropdownOn = function () {
-
-    var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
-    var is_active = false;
-
-    // Save the state of the current trigger
-    if ( trigger ) {
-      is_active = u.hasClass(trigger, settings.classActive);
-    }
-
-    // Check if trigger exists
-    if ( !trigger ) return;
-
-    console.log('On');
-
-    trigger.addEventListener('mouseleave', runDropdownOff, false);
-
-  };
-
-  var runDropdownOff = function () {
-
-    var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
-    var is_active = false;
-
-    // Save the state of the current trigger
-    if ( trigger ) {
-      is_active = u.hasClass(trigger, settings.classActive);
-    }
-
-    // Check if trigger exists
-    if ( !trigger ) return;
-
-    console.log('Off');
-
-    trigger.removeEventListener('mouseleave', runDropdownOff, false);
-
-  };
-
   //
   // Public Methods
   //
@@ -115,7 +85,7 @@ var dropdowns = (function () {
   // Keep the parent dropdowns active
   api.showParents = function (el) {
 
-    var parent = u.closest(el, [settings.classTrigger, settings.classOnHover]);
+    var parent = u.closest(el, [settings.classTrigger, settings.classOnClick]);
 
     while (parent) {
       u.addClass(parent, settings.classActive);
@@ -134,10 +104,37 @@ var dropdowns = (function () {
 
     // Get triggers and dropdowns
     triggers = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnClick);
+    triggersHover = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnHover);
 
     // Add event listener to document
     document.addEventListener('click', runDropdownClick, false);
-    document.addEventListener('mouseover', runDropdownOn, false);
+    
+    // Loop through our hover triggers
+    triggersHover.forEach(function (el) {
+      // Init timer var
+      var timer;
+
+      // Add on mouse over event listener to trigger
+      el.addEventListener('mouseover', function () {
+        // Get the trigger
+        var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
+        // Clear our set timeout if set
+        clearTimeout(timer);
+        // Add the active class
+        u.addClass(trigger, settings.classActive);
+      }, false);
+
+      // Add on mouse leave event listener to trigger
+      el.addEventListener('mouseleave', function () {
+        var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
+        // Set a delay before we remove active class
+        timer = setTimeout(function () {
+          // Remove the active class
+          u.removeClass(trigger, settings.classActive);
+        }, settings.delay);
+      }, false);
+
+    }); // End of hover triggers loop
 
   };
 
@@ -145,11 +142,11 @@ var dropdowns = (function () {
 
     // Remove listeners
     document.removeEventListener('click', runDropdownClick, false);
-    document.removeEventListener('mouseover', runDropdownOn, false);
 
     // Reset settings
     settings = null;
     triggers = [];
+    triggersHover = [];
 
   };
 

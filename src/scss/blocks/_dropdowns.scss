@@ -127,9 +127,14 @@ $dropdowns: (
 
   // Base target hover & active styles
   #{$target-action} {
-    z-index: map-get($o, 'target-action-zindex');
     display: block;
   }
+
+  // Add stack order to hovered dropdowns
+  &:hover > .#{map-get($o, 'class-dropdown')} {
+    z-index: map-get($o, 'target-action-zindex');
+  }
+
 }
 
 // Add Dropdown Style
