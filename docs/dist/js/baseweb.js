@@ -70,8 +70,7 @@ var utility = (function () {
     c = api.toArray(c);
 
     c.forEach( function ( c ) {
-      var fn = api.hasClass( el, c ) ? api.removeClass : api.addClass;
-      fn( el, c );
+      el.classList.toggle(c);
     });
 
   }; // End toggleClass
@@ -322,7 +321,7 @@ var dropdowns = (function () {
 
   };
 
-  var runDropdownHover = function () {
+  var runDropdownOn = function () {
 
     var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
     var is_active = false;
@@ -335,7 +334,28 @@ var dropdowns = (function () {
     // Check if trigger exists
     if ( !trigger ) return;
 
-    console.log(is_active);
+    console.log('On');
+
+    trigger.addEventListener('mouseleave', runDropdownOff, false);
+
+  };
+
+  var runDropdownOff = function () {
+
+    var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
+    var is_active = false;
+
+    // Save the state of the current trigger
+    if ( trigger ) {
+      is_active = u.hasClass(trigger, settings.classActive);
+    }
+
+    // Check if trigger exists
+    if ( !trigger ) return;
+
+    console.log('Off');
+
+    trigger.removeEventListener('mouseleave', runDropdownOff, false);
 
   };
 
@@ -377,7 +397,7 @@ var dropdowns = (function () {
 
     // Add event listener to document
     document.addEventListener('click', runDropdownClick, false);
-    document.addEventListener('mouseover', runDropdownHover, false);
+    document.addEventListener('mouseover', runDropdownOn, false);
 
   };
 
@@ -385,7 +405,7 @@ var dropdowns = (function () {
 
     // Remove listeners
     document.removeEventListener('click', runDropdownClick, false);
-    document.removeEventListener('mouseover', runDropdownHover, false);
+    document.removeEventListener('mouseover', runDropdownOn, false);
 
     // Reset settings
     settings = null;

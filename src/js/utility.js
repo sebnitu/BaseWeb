@@ -70,8 +70,7 @@ var utility = (function () {
     c = api.toArray(c);
 
     c.forEach( function ( c ) {
-      var fn = api.hasClass( el, c ) ? api.removeClass : api.addClass;
-      fn( el, c );
+      el.classList.toggle(c);
     });
 
   }; // End toggleClass
