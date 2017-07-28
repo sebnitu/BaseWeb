@@ -22,7 +22,7 @@ var dismissible = (function () {
 
   var runDismissible = function () {
 
-    // Get the trigger parent element
+    // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Exit if a trigger doesn't exist
@@ -41,7 +41,7 @@ var dismissible = (function () {
       console.log('Dismissible element was not found!');
     }
 
-    // Prevent default link behavior
+    // Prevent default behavior
     event.preventDefault();
 
   };

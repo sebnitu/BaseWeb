@@ -109,19 +109,6 @@ var utility = (function () {
   }; // End toArray
 
   /**
-   * Creates a forEach loop for NodeList
-   * @param {NodeList} Node list to loop through
-   * @param {Function} The function to run within the loop
-   * @param {Scope} I'm not quite sure what this does
-   * @return {Integer} {Value} Passed to the callback function
-   */
-  api.forEach = function (array, callback, scope) {
-    for (var i = 0; i < array.length; ++i) {
-      callback.call(scope, i, array[i]); // passes back stuff we need
-    }
-  };
-
-  /**
    * Merge two or more objects. Returns a new object.
    * Set the first argument to `true` for a deep or recursive merge
    * @param {Boolean} deep If true, do a deep (or recursive) merge [optional]

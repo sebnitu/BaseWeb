@@ -62,7 +62,7 @@ var dropdowns = (function () {
       }
     }
 
-    // Prevent default link behavior if trigger is clicked
+    // Prevent default behavior if trigger is clicked
     if (is_trigger_child) {
       event.preventDefault();
     }

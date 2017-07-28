@@ -109,19 +109,6 @@ var utility = (function () {
   }; // End toArray
 
   /**
-   * Creates a forEach loop for NodeList
-   * @param {NodeList} Node list to loop through
-   * @param {Function} The function to run within the loop
-   * @param {Scope} I'm not quite sure what this does
-   * @return {Integer} {Value} Passed to the callback function
-   */
-  api.forEach = function (array, callback, scope) {
-    for (var i = 0; i < array.length; ++i) {
-      callback.call(scope, i, array[i]); // passes back stuff we need
-    }
-  };
-
-  /**
    * Merge two or more objects. Returns a new object.
    * Set the first argument to `true` for a deep or recursive merge
    * @param {Boolean} deep If true, do a deep (or recursive) merge [optional]
@@ -198,7 +185,7 @@ var dismissible = (function () {
 
   var runDismissible = function () {
 
-    // Get the trigger parent element
+    // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Exit if a trigger doesn't exist
@@ -217,7 +204,7 @@ var dismissible = (function () {
       console.log('Dismissible element was not found!');
     }
 
-    // Prevent default link behavior
+    // Prevent default behavior
     event.preventDefault();
 
   };
@@ -374,7 +361,7 @@ var dropdowns = (function () {
       }
     }
 
-    // Prevent default link behavior if trigger is clicked
+    // Prevent default behavior if trigger is clicked
     if (is_trigger_child) {
       event.preventDefault();
     }
@@ -497,34 +484,38 @@ var tabs = (function () {
 
   var getTabsContent = function (wrap, nav) {
 
+    // Init content variable
     var content;
 
+    // Check if a wrap exists
     if (wrap) {
-      u.forEach(wrap.children, function(i, el) {
-        if (u.hasClass(el, settings.classContent)) {
-          content = el;
-        }
-      });
+      // Query the wrap for the content
+      content = wrap.querySelector('.' + settings.classContent);
     } else {
+      // Set the content ID
       var id = nav.dataset.content;
+      // Check if a content ID exists
       if (id) {
+        // Query the document for the content
         content = document.querySelector('#' + id);
       } else {
-        console.log('Tabs content was not found!');
+        // Set to null if no content is found
+        content = null;
       }
     }
 
+    // Return the content variable
     return content;
 
   };
 
   var removeActive = function (nav, content) {
 
-    var activeNav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
-    var activeContent = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
-    var activeAll = activeNav.concat(activeContent);
+    var nav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
+    var content = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
+    var active = nav.concat(content);
 
-    activeAll.forEach(function (el) {
+    active.forEach(function (el) {
       u.removeClass(el, settings.classActive);
     });
 
@@ -532,19 +523,21 @@ var tabs = (function () {
 
   var runTabs = function () {
 
+    // Get the trigger
+    var trigger = event.target.closest('.' + settings.classNav);
+
+    // Exit if a trigger doesn't exist
+    if ( !trigger ) return;
+
     // Is the clicked item already active?
     var is_active = u.hasClass(event.target.parentElement, settings.classActive);
 
     // If it's not active
     if (!is_active) {
 
-      // Tabs wrapper
+      // Tabs wrap nav and content
       var tabs = event.target.closest('.' + settings.classWrap);
-
-      // Tabs nav wrapper
       var tabsNav = event.target.closest('.' + settings.classNav);
-
-      // Tabs content
       var tabsContent = getTabsContent(tabs, tabsNav);
 
       // Get target
@@ -559,7 +552,7 @@ var tabs = (function () {
 
     } // End if is_active
 
-    // Prevent default link behavior
+    // Prevent default behavior
     event.preventDefault();
 
   };
@@ -576,26 +569,18 @@ var tabs = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Get triggers
-    triggers = document.querySelectorAll('.' + settings.classNav + ' a');
-
     // Add event listener
-    triggers.forEach(function (el) {
-      el.addEventListener('click', runTabs, false);
-    });
+    document.addEventListener('click', runTabs, false);
 
   };
 
   api.destroy = function () {
 
-    // Remove listener
-    triggers.forEach(function (el) {
-      el.removeEventListener('click', runTabs, false);
-    });
+    // Remove event listener
+    document.removeEventListener('click', runTabs, false);
 
     // Reset settings
     settings = null;
-    triggers = [];
 
   };
 
@@ -634,76 +619,70 @@ var offcanvas = (function () {
   // Private Methods
   //
 
-  var closeOffcanvas = function () {
+  var openOffCanvas = function() {
 
-    var wrap = event.target.closest('.' + settings.classWrap);
-
-    // Remove active class
-    u.removeClass(wrap, settings.classActive);
-
-    // Remove delay class after the set transition duration
-    setTimeout( function () {
-      u.removeClass(wrap, settings.classDelay);
-    }, settings.timer );
-
-  };
-
-  var getAside = function (wrap) {
-
-    var aside;
-
-    u.forEach(wrap.children, function(i, el) {
-      if (u.hasClass(el, settings.classAside)) {
-        aside = el;
+    // Get the target data
+    var target = event.target.dataset.target;
+    // Check if a target exists
+    if (target) {
+      // Get the wrap
+      var wrap = event.target.closest('.' + settings.classWrap);
+      // Check if a wrap exists
+      if (wrap) {
+        // Reset the wrap class
+        wrap.setAttribute('class', settings.classWrap);
+        // Add the target class
+        u.addClass(wrap, target);
+        // Add active and delay classes after a slight delay
+        setTimeout( function() {
+          u.addClass(wrap, [settings.classActive, settings.classDelay])
+        }, 25 );
       }
-    });
-
-    return aside;
+    } else {
+      // If there's not target data, it's a close button
+      closeOffCanvas();
+    }
 
   };
 
-  var stopProp = function () {
-    event.stopPropagation();
+  var closeOffCanvas = function () {
+
+    // Get the wrap
+    var wrap = event.target.closest('.' + settings.classWrap);
+    // Check if a wrap exists
+    if (wrap) {
+      // Remove active class
+      u.removeClass(wrap, settings.classActive);
+      // Remove delay class after the set transition duration
+      setTimeout( function () {
+        u.removeClass(wrap, settings.classDelay);
+      }, settings.timer );
+    }
+
   };
 
   var runOffcanvas = function () {
 
-    var el = event.target;
+    // Get the trigger
+    var wrap = event.target.closest('.' + settings.classWrap);
 
-    var local = {
-      target : el.dataset.target,
-      wrap : el.closest('.' + settings.classWrap),
-      aside : getAside(el.closest('.' + settings.classWrap)),
-      reset : settings.classWrap,
-      is_active : false,
-    };
+    // Exit if a wrap doesn't exist
+    if ( !wrap ) return;
 
-    // Check if is active
-    local.is_active = u.hasClass(local.wrap, settings.classActive);
+    // Get the aside and trigger
+    var trigger = event.target.closest('.' + settings.classTrigger);
+    var aside = event.target.closest('.' + settings.classAside);
 
-    // Check if it's a close button or if off-canvas is already active
-    if(!local.target || local.is_active) {
-      // Close off-canvas content
-      closeOffcanvas(local.wrap);
-    } else {
-      // Reset container class
-      local.wrap.setAttribute('class', local.reset);
+    // If a trigger or aside doesn't exists, close our off-canvas
+    if ( !trigger && !aside ) closeOffCanvas();
+
+    // If a trigger was clicked
+    if ( trigger ) {
+      // Get the target
+      openOffCanvas();
+      // Prevent default behavior
+      event.preventDefault();
     }
-
-    // Add target class
-    if(local.target && !local.is_active) {
-      u.addClass(local.wrap, local.target);
-      // Add active and delay classes after a slight delay
-      setTimeout( function() {
-        u.addClass(local.wrap, [settings.classActive, settings.classDelay])
-      }, 25 );
-    }
-
-    // Prevent default link behavior
-    event.preventDefault();
-
-    // Stop the click event from bubbling down to the document
-    event.stopPropagation();
 
   };
 
@@ -722,46 +701,15 @@ var offcanvas = (function () {
     // Get trigger
     triggers = document.querySelectorAll('.' + settings.classTrigger);
 
-    // Loop through triggers
-    triggers.forEach(function (el) {
-
-      // Local variable
-      var wrap = el.closest('.' + settings.classWrap);
-      var aside = getAside(el.closest('.' + settings.classWrap));
-
-      // Add event listener to trigger
-      el.addEventListener('click', runOffcanvas, false);
-
-      // Add event listener to wrap
-      wrap.addEventListener('click', closeOffcanvas, false);
-
-      // Add event listener to aside
-      aside.addEventListener('click', stopProp, false);
-
-    }); // End forEach triggers
+    // Add event listener to trigger
+    document.addEventListener('click', runOffcanvas, false);
 
   };
 
   api.destroy = function () {
 
     // Remove listener
-    // Loop through triggers
-    triggers.forEach(function (el) {
-
-      // Local variable
-      var wrap = el.closest('.' + settings.classWrap);
-      var aside = getAside(el.closest('.' + settings.classWrap));
-
-      // Add event listener to trigger
-      el.removeEventListener('click', runOffcanvas, false);
-
-      // Add event listener to wrap
-      wrap.removeEventListener('click', closeOffcanvas, false);
-
-      // Add event listener to aside
-      aside.removeEventListener('click', stopProp, false);
-
-    }); // End forEach triggers
+    document.removeEventListener('click', runOffcanvas, false);
 
     // Reset settings and triggers
     settings = null;

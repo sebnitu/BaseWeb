@@ -25,34 +25,38 @@ var tabs = (function () {
 
   var getTabsContent = function (wrap, nav) {
 
+    // Init content variable
     var content;
 
+    // Check if a wrap exists
     if (wrap) {
-      u.forEach(wrap.children, function(i, el) {
-        if (u.hasClass(el, settings.classContent)) {
-          content = el;
-        }
-      });
+      // Query the wrap for the content
+      content = wrap.querySelector('.' + settings.classContent);
     } else {
+      // Set the content ID
       var id = nav.dataset.content;
+      // Check if a content ID exists
       if (id) {
+        // Query the document for the content
         content = document.querySelector('#' + id);
       } else {
-        console.log('Tabs content was not found!');
+        // Set to null if no content is found
+        content = null;
       }
     }
 
+    // Return the content variable
     return content;
 
   };
 
   var removeActive = function (nav, content) {
 
-    var activeNav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
-    var activeContent = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
-    var activeAll = activeNav.concat(activeContent);
+    var nav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
+    var content = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
+    var active = nav.concat(content);
 
-    activeAll.forEach(function (el) {
+    active.forEach(function (el) {
       u.removeClass(el, settings.classActive);
     });
 
@@ -60,19 +64,21 @@ var tabs = (function () {
 
   var runTabs = function () {
 
+    // Get the trigger
+    var trigger = event.target.closest('.' + settings.classNav);
+
+    // Exit if a trigger doesn't exist
+    if ( !trigger ) return;
+
     // Is the clicked item already active?
     var is_active = u.hasClass(event.target.parentElement, settings.classActive);
 
     // If it's not active
     if (!is_active) {
 
-      // Tabs wrapper
+      // Tabs wrap nav and content
       var tabs = event.target.closest('.' + settings.classWrap);
-
-      // Tabs nav wrapper
       var tabsNav = event.target.closest('.' + settings.classNav);
-
-      // Tabs content
       var tabsContent = getTabsContent(tabs, tabsNav);
 
       // Get target
@@ -87,7 +93,7 @@ var tabs = (function () {
 
     } // End if is_active
 
-    // Prevent default link behavior
+    // Prevent default behavior
     event.preventDefault();
 
   };
@@ -104,26 +110,18 @@ var tabs = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Get triggers
-    triggers = document.querySelectorAll('.' + settings.classNav + ' a');
-
     // Add event listener
-    triggers.forEach(function (el) {
-      el.addEventListener('click', runTabs, false);
-    });
+    document.addEventListener('click', runTabs, false);
 
   };
 
   api.destroy = function () {
 
-    // Remove listener
-    triggers.forEach(function (el) {
-      el.removeEventListener('click', runTabs, false);
-    });
+    // Remove event listener
+    document.removeEventListener('click', runTabs, false);
 
     // Reset settings
     settings = null;
-    triggers = [];
 
   };
 
