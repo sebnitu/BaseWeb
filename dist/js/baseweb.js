@@ -285,32 +285,6 @@ var dropdowns = (function () {
   // Private Methods
   //
 
-  var runDropdownTriggers = function () {
-
-    var trigger = event.target.closest('.' + settings.classTrigger);
-
-    // Is the dropdown already active?
-    var is_active = u.hasClass(trigger, settings.classActive);
-
-    // Hide all dropdowns that are click activated
-    api.hideAll();
-
-    // Keep the parent dropdowns active
-    api.showParents(trigger);
-
-    // If the dropdown is not active, add the active class
-    if (!is_active) {
-      u.addClass(trigger, settings.classActive);
-    }
-
-    // Prevent default link behavior
-    event.preventDefault();
-
-    // Stop the click event from bubbling down to the document
-    event.stopPropagation();
-
-  };
-
   var runDropdownClick = function () {
 
     var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnClick);
