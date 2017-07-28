@@ -129,7 +129,7 @@ var dropdowns = (function () {
   api.init = function (options) {
 
     // Destroy any previous initializations
-    // api.destroy();
+    api.destroy();
 
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
