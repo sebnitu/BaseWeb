@@ -9,16 +9,17 @@ $dropdowns: (
   'classes' : true,
   'classes-position' : true,
 
+  'class-dropdown-trigger' : 'dropdown-trigger',
   'class-dropdown'         : 'dropdown',
   'class-dropdown-content' : 'dropdown-content',
   'class-dropdown-menu'    : 'dropdown-menu',
-  'class-dropdown-trigger' : 'dropdown-trigger',
 
-  'class-action-click' : 'on-click',
+  'class-active' : 'active',
   'class-action-hover' : 'on-hover',
+  'class-action-click' : 'on-click',
 
-  'target'        : '.dropdown',
-  'target-action' : '&:not(.on-click):hover > .dropdown, &.active > .dropdown',
+  'target' : null,
+  'target-action' : null,
 
   'target-zindex'        : 100,
   'target-action-zindex' : 105,
@@ -97,18 +98,35 @@ $dropdowns: (
 @mixin make-dropdown-trigger($options: ()) {
   $o: map-merge($dropdowns, $options);
 
+  // Set our target action
+  $target : '.' + map-get($o, 'class-dropdown') !default;
+
+  @if (map-get($o, 'target')) {
+    $target : map-get($o, 'target');
+  }
+
+  // Set our target action variable
+  $target-action :
+    '&:not(.#{map-get($o, 'class-action-click')}):not(.#{map-get($o, 'class-action-hover')}):hover > .#{map-get($o, 'class-dropdown')}',
+    '&.#{map-get($o, 'class-active')} > .#{map-get($o, 'class-dropdown')}'
+  !default;
+
+  @if (map-get($o, 'target-action')) {
+    $target-action : map-get($o, 'target-action');
+  }
+
   // Base trigger styles
   position: relative;
 
   // Base target styles
-  #{map-get($o, 'target')} {
+  #{$target} {
     position: absolute;
     z-index: map-get($o, 'target-zindex');
     display: none;
   }
 
   // Base target hover & active styles
-  #{map-get($o, 'target-action')} {
+  #{$target-action} {
     z-index: map-get($o, 'target-action-zindex');
     display: block;
   }
@@ -262,9 +280,26 @@ $dropdowns: (
 @mixin add-dropdown-position($options: (), $anchor : 'bottom-left') {
   $o: map-merge($dropdowns, $options);
 
+  // Set our target action
+  $target : '.' + map-get($o, 'class-dropdown') !default;
+
+  @if (map-get($o, 'target')) {
+    $target : map-get($o, 'target');
+  }
+
+  // Set our target action variable
+  $target-action :
+    '&:not(.#{map-get($o, 'class-action-click')}):not(.#{map-get($o, 'class-action-hover')}):hover > .#{map-get($o, 'class-dropdown')}',
+    '&.#{map-get($o, 'class-active')} > .#{map-get($o, 'class-dropdown')}'
+  !default;
+
+  @if (map-get($o, 'target-action')) {
+    $target-action : map-get($o, 'target-action');
+  }
+
   // Bottom Left
   @if ($anchor == 'bottom-left') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: map-get($o, 'offset-margin-one') 0 0 map-get($o, 'offset-margin-two');
       top: 100%;
       left: map-get($o, 'offset-position');
@@ -274,7 +309,7 @@ $dropdowns: (
 
   // Bottom Right
   } @else if ($anchor == 'bottom-right') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: map-get($o, 'offset-margin-one') map-get($o, 'offset-margin-two') 0 0;
       top: 100%;
       left: auto;
@@ -284,7 +319,7 @@ $dropdowns: (
 
   // Bottom Center
   } @else if ($anchor == 'bottom-center') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: map-get($o, 'offset-margin-one') 0 0 0;
       top: 100%;
       left: 50%;
@@ -296,7 +331,7 @@ $dropdowns: (
 
   // Top left
   @if ($anchor == 'top-left') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 0 map-get($o, 'offset-margin-one') map-get($o, 'offset-margin-two');
       top: auto;
       left: map-get($o, 'offset-position');
@@ -306,7 +341,7 @@ $dropdowns: (
 
   // Top Right
   } @else if ($anchor == 'top-right') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 map-get($o, 'offset-margin-two') map-get($o, 'offset-margin-one') 0;
       top: auto;
       left: auto;
@@ -316,7 +351,7 @@ $dropdowns: (
 
   // Top Center
   } @else if ($anchor == 'top-center') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 0 map-get($o, 'offset-margin-one') 0;
       top: auto;
       left: 50%;
@@ -328,7 +363,7 @@ $dropdowns: (
 
   // Left Top
   @if ($anchor == 'left-top') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: map-get($o, 'offset-margin-two') map-get($o, 'offset-margin-one') 0 0;
       top: map-get($o, 'offset-position');
       left: auto;
@@ -338,7 +373,7 @@ $dropdowns: (
 
   // Left Bottom
   } @else if ($anchor == 'left-bottom') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 map-get($o, 'offset-margin-one') map-get($o, 'offset-margin-two') 0;
       top: auto;
       left: auto;
@@ -348,7 +383,7 @@ $dropdowns: (
 
   // Left Center
   } @else if ($anchor == 'left-center') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 map-get($o, 'offset-margin-one') 0 0;
       top: 50%;
       left: auto;
@@ -360,7 +395,7 @@ $dropdowns: (
 
   // Right Top
   @if ($anchor == 'right-top') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: map-get($o, 'offset-margin-two') 0 0 map-get($o, 'offset-margin-one');
       top: map-get($o, 'offset-position');
       left: 100%;
@@ -370,7 +405,7 @@ $dropdowns: (
 
   // Right Bottom
   } @else if ($anchor == 'right-bottom') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 0 map-get($o, 'offset-margin-two') map-get($o, 'offset-margin-one');
       top: auto;
       left: 100%;
@@ -380,7 +415,7 @@ $dropdowns: (
 
   // Right Center
   } @else if ($anchor == 'right-center') {
-    #{map-get($o, 'target')} {
+    #{$target} {
       margin: 0 0 0 map-get($o, 'offset-margin-one');
       top: 50%;
       left: 100%;

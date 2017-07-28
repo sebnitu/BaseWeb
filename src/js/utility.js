@@ -21,7 +21,13 @@ var utility = (function () {
    * @returns {Boolean} Returns true if class exists on element, otherwise false
    */
   api.hasClass = function ( el, c ) {
-    return el.classList.contains(c);
+
+    c = api.toArray(c);
+
+    return c.every( function ( c ) {
+      return el.classList.contains(c);
+    });
+
   }; // End hasClass
 
   /**

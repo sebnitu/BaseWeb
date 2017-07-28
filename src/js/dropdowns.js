@@ -11,7 +11,6 @@ var dropdowns = (function () {
   var api = {};
   var settings;
   var defaults = {
-    selectorTrigger: '.dropdown-trigger.on-click',
     classTrigger: 'dropdown-trigger',
     classDropdown: 'dropdown',
     classOnClick: 'on-click',
@@ -20,7 +19,6 @@ var dropdowns = (function () {
   };
 
   var triggers = [];
-  var dropdowns = [];
 
   //
   // Private Methods
@@ -52,19 +50,54 @@ var dropdowns = (function () {
 
   };
 
-  var runDropdowns = function () {
+  var runDropdownClick = function () {
+
+    var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnClick);
+    var is_trigger_child = u.hasClass(event.target.parentElement, [settings.classTrigger, settings.classOnClick]);
+    var is_active = false;
+
+    // Save the state of the current trigger
+    if ( trigger ) {
+      is_active = u.hasClass(trigger, settings.classActive);
+    }
 
     // Hide all dropdowns that are click activated
     api.hideAll();
 
+    // Exit if a trigger doesn't exist
+    if ( !trigger ) return;
+
     // Keep the parent dropdowns active
     api.showParents(event.target);
 
-    // Prevent default link behavior
-    event.preventDefault();
+    // Add active class if item is not active
+    if (!is_active) {
+      u.addClass(trigger, settings.classActive);
+    } else {
+      // Remove active class if child of a trigger
+      if (is_trigger_child) {
+        u.removeClass(trigger, settings.classActive);
+      }
+    }
 
-    // Stop the click event from bubbling down to the document
-    event.stopPropagation();
+    // Prevent default link behavior if trigger is clicked
+    if (is_trigger_child) {
+      event.preventDefault();
+    }
+
+  };
+
+  var runDropdownHover = function () {
+
+    var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnHover);
+
+    // Check if trigger exists
+    if ( !trigger ) return;
+
+    // Is the dropdown already active?
+    var is_active = u.hasClass(trigger, settings.classActive);
+
+    console.log(is_active);
 
   };
 
@@ -96,47 +129,29 @@ var dropdowns = (function () {
   api.init = function (options) {
 
     // Destroy any previous initializations
-    api.destroy();
+    // api.destroy();
 
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
     // Get triggers and dropdowns
-    triggers = document.querySelectorAll(settings.selectorTrigger);
-    dropdowns = document.querySelectorAll(settings.selectorTrigger + ' .' + settings.classDropdown);
+    triggers = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnClick);
 
     // Add event listener to document
-    document.addEventListener('click', api.hideAll, false);
-
-    // Add event listener to dropdown trigger
-    triggers.forEach(function (el) {
-      el.addEventListener('click', runDropdownTriggers, false);
-    });
-
-    // Add event listener to dropdown
-    dropdowns.forEach(function (el) {
-      el.addEventListener('click', runDropdowns, false);
-    });
+    document.addEventListener('click', runDropdownClick, false);
+    document.addEventListener('mouseover', runDropdownHover, false);
 
   };
 
   api.destroy = function () {
 
     // Remove listeners
-    document.removeEventListener('click', api.hideAll, false);
-
-    triggers.forEach(function (el) {
-      el.removeEventListener('click', runDropdownTriggers, false);
-    });
-
-    dropdowns.forEach(function (el) {
-      el.removeEventListener('click', runDropdowns, false);
-    });
+    document.removeEventListener('click', runDropdownClick, false);
+    document.removeEventListener('mouseover', runDropdownHover, false);
 
     // Reset settings
     settings = null;
     triggers = [];
-    dropdowns = [];
 
   };
 
