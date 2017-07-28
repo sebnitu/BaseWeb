@@ -103,12 +103,12 @@ var dropdowns = (function () {
     settings = u.extend( defaults, options || {} );
 
     // Get triggers and dropdowns
-    triggers = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnClick);
+    triggers = document.querySelectorAll('.' + settings.classTrigger);
     triggersHover = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnHover);
 
     // Add event listener to document
     document.addEventListener('click', runDropdownClick, false);
-    
+
     // Loop through our hover triggers
     triggersHover.forEach(function (el) {
       // Init timer var

@@ -192,16 +192,23 @@ var dismissible = (function () {
     classHide : 'hide',
   };
 
-  var triggers = [];
-
   //
   // Private Methods
   //
 
   var runDismissible = function () {
 
+    // Get the trigger parent element
+    var trigger = event.target.closest('.' + settings.classTrigger);
+
+    // Exit if a trigger doesn't exist
+    if ( !trigger ) return;
+
     // Get the dismissible parent element
     var dismissible = event.target.closest('.' + settings.classDismissible);
+
+    // Exit if a dismissible doesn't exist
+    if ( !dismissible ) return;
 
     // Add initial classes
     if (dismissible) {
@@ -219,6 +226,59 @@ var dismissible = (function () {
   // Public Methods
   //
 
+  api.getDismissible = function (selector) {
+
+    // Initialize dismissible array
+    var dismissible = [];
+
+    // Check if a selector was passed
+    if (selector) {
+      // Get selector items
+      var items = document.querySelectorAll(selector);
+      // Loop through selector items
+      items.forEach(function (el) {
+        // Get dismissible items
+        var items = el.querySelectorAll('.' + settings.classDismissible);
+        // Loop through dismissible items
+        items.forEach(function (el) {
+          // Save item to our array
+          dismissible.push(el);
+        });
+      });
+    } else {
+      // Search dismissible items on documents
+      dismissible = document.querySelectorAll('.' + settings.classDismissible);
+    }
+
+    // Return dismissible
+    return dismissible;
+
+  };
+
+  api.hideAll = function (selector) {
+
+    // Get dismissible items
+    var dismissible = api.getDismissible(selector);
+
+    // Loop through and remove active class from dismissible items
+    dismissible.forEach(function (el) {
+      u.addClass(el, settings.classHide);
+    });
+
+  };
+
+  api.showAll = function (selector) {
+
+    // Get dismissible items
+    var dismissible = api.getDismissible(selector);
+
+    // Loop through and remove active class from dismissible items
+    dismissible.forEach(function (el) {
+      u.removeClass(el, settings.classHide);
+    });
+
+  };
+
   api.init = function (options) {
 
     // Destroy any previous initializations
@@ -227,26 +287,18 @@ var dismissible = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Find triggers
-    triggers = document.querySelectorAll('.' + settings.classDismissible + ' .' + settings.classTrigger);
-
-    // Add event listener to triggers
-    triggers.forEach(function (el) {
-      el.addEventListener('click', runDismissible, false);
-    });
+    // Add event listener
+    document.addEventListener('click', runDismissible, false);
 
   };
 
   api.destroy = function () {
 
-    // Remove listener
-    triggers.forEach(function (el) {
-      el.removeEventListener('click', runDismissible, false);
-    });
+    // Remove event listener
+    document.removeEventListener('click', runDismissible, false);
 
     // Reset settings
     settings = null;
-    triggers = [];
 
   };
 
@@ -363,12 +415,12 @@ var dropdowns = (function () {
     settings = u.extend( defaults, options || {} );
 
     // Get triggers and dropdowns
-    triggers = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnClick);
+    triggers = document.querySelectorAll('.' + settings.classTrigger);
     triggersHover = document.querySelectorAll('.' + settings.classTrigger + '.' + settings.classOnHover);
 
     // Add event listener to document
     document.addEventListener('click', runDropdownClick, false);
-    
+
     // Loop through our hover triggers
     triggersHover.forEach(function (el) {
       // Init timer var

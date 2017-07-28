@@ -104,30 +104,6 @@
   @return $result;
 }
 
-// To String
-// Converts a list into a string with an optional delimiter
-// @param $list
-// @param $glue
-// @param $is-nested
-// @return string
-@function to-string($list, $glue: '', $is-nested: false) {
-  $result: null;
-
-  @for $i from 1 through length($list) {
-    $e: nth($list, $i);
-
-    @if type-of($e) == list {
-      $result: $result#{to-string($e, $glue, true)};
-    }
-
-    @else {
-      $result: if($i != length($list) or $is-nested, $result#{$e}#{$glue}, $result#{$e});
-    }
-  }
-
-  @return $result;
-}
-
 // Strip Units
 // Srtips the unit from a value. e.g. 12px -> 12.
 // @param $val
