@@ -20,11 +20,15 @@
       {% endif %}
     {% endfor %}
     <li>
-      <a href="{{ site.github.repository_url }}" class="button{% if page.url != '/' %} primary{% endif %}">Download BaseWeb</a>
+      {% if page.url != '/' %}
+        <a href="{{ site.github.repository_url }}" class="button primary">Download</a>
+      {% else %}
+        <a href="{{ site.github.repository_url }}" class="button">Download</a>
+      {% endif %}
     </li>
   </ul>
 
-  <button class="button small oc-trigger mobile" data-target="oc-aside-nav-mobile">
+  <button class="button oc-trigger mobile" data-target="oc-aside-nav-mobile">
     Menu
     <span class="icon icon-more">
       <span class="dot"></span>

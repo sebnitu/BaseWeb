@@ -1,10 +1,12 @@
 ---
 layout: page
-title: Getting Started
+title: Get Started
 order: 1
 ---
 
 BaseWeb can be used a few different ways depending on what you need. The quickest way to get started is to download BaseWeb! *BaseWeb is currently on version {{ site.version }}. For more details, checkout [our releases page]({{ site.github.releases_url }}).*
+
+<pre class="highlight"><code><span class="editor-prefixed">npm install baseweb</span></code></pre>
 
 <div class="widget-wrap widget-wrap-downloads">
   <div class="widget card widget-download">
@@ -14,7 +16,7 @@ BaseWeb can be used a few different ways depending on what you need. The quickes
   </div>
   <div class="widget card widget-download">
     <h2>Download Source</h2>
-    <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="{{ site.url }}{{ site.baseurl }}/getting-started/build-scripts">our build scripts</a> to compile, or roll one of your own.</p>
+    <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="{{ site.url }}{{ site.baseurl }}/get-started/build-scripts">our build scripts</a> to compile, or roll one of your own.</p>
     <p><a href="{{ site.github.repository_url }}/tree/master/src" class="button primary">Download</a></p>
   </div>
 </div>
@@ -23,17 +25,31 @@ BaseWeb can be used a few different ways depending on what you need. The quickes
 
 Compiled BaseWeb comes with all the expanded, minified and source map files you need to get started right away. You'll have available all class based systems each component provides.
 
-```shell
-dist/
-├── css/
-│   ├── baseweb.css
-│   ├── baseweb.css.map
-│   ├── baseweb.min.css
-│   └── baseweb.min.css.map
-└── js/
-    ├── baseweb.js
-    └── baseweb.min.js
-```
+<div class="widget fill">
+  <ul class="list-ascii">
+    <li>
+      <strong>dist/</strong>
+      <ul>
+        <li>
+          <strong>css/</strong>
+          <ul>
+            <li>baseweb.css</li>
+            <li>baseweb.css.map</li>
+            <li>baseweb.min.css</li>
+            <li>baseweb.min.css.map</li>
+          </ul>
+        </li>
+        <li>
+          <strong>js/</strong>
+          <ul>
+            <li>baseweb.js</li>
+            <li>baseweb.min.js</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
 ```html
 <!-- BaseWeb styles -->
@@ -55,20 +71,82 @@ The included JavaScript is currently only placeholder but can be used as starter
 
 When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript directory with a couple starter jQuery files.
 
-```shell
-src/
-├── scss/
-│   ├── settings/...
-│   ├── core/...
-│   ├── elements/...
-│   ├── blocks/...
-│   ├── custom/...
-│   ├── _colophon.scss
-│   └── baseweb.scss
-└── js/
-    ├── jquery.docready.js
-    └── jquery.function.js
-```
+<div class="widget fill">
+  <ul class="list-ascii">
+    <li>
+      <strong>scss/</strong>
+      <ul>
+        <li>
+          <strong>settings/</strong>
+          <ul>
+            <li>_global.scss</li>
+            <li>_grid.scss</li>
+            <li>_media.scss</li>
+            <li>_palette.scss</li>
+            <li>_typography.scss</li>
+          </ul>
+        </li>
+        <li>
+          <strong>core/</strong>
+          <ul>
+            <li>_colophon.scss</li>
+            <li>_functions.scss</li>
+            <li>_grid.scss</li>
+            <li>_media.scss</li>
+            <li>_mixins.scss</li>
+          </ul>
+        </li>
+        <li>
+          <strong>elements/</strong>
+          <ul>
+            <li>_base.scss</li>
+            <li>_blockquotes.scss</li>
+            <li>_buttons.scss</li>
+            <li>_code.scss</li>
+            <li>_forms.scss</li>
+            <li>_icons.scss</li>
+            <li>_images.scss</li>
+            <li>_lists.scss</li>
+            <li>_rules.scss</li>
+            <li>_tables.scss</li>
+            <li>_typography.scss</li>
+            <li>_videos.scss</li>
+          </ul>
+        </li>
+        <li>
+          <strong>blocks/</strong>
+          <ul>
+            <li>_breadcrumbs.scss</li>
+            <li>_buttongroups.scss</li>
+            <li>_dropdowns.scss</li>
+            <li>_notices.scss</li>
+            <li>_tabs.scss</li>
+            <li>_offcanvas.scss</li>
+          </ul>
+        </li>
+        <li>
+          <strong>custom/</strong>
+          <ul>
+            <li>_custom.scss</li>
+            <li>_overrides.scss</li>
+          </ul>
+        </li>
+        <li>baseweb.scss</li>
+      </ul>
+    </li>
+    <li>
+      <strong>js/</strong>
+      <ul>
+        <li>_utility.js</li>
+        <li>_dismissible.js</li>
+        <li>_dropdowns.js</li>
+        <li>_tabs.js</li>
+        <li>_offcanvas.js</li>
+        <li>baseweb.js</li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
 To get started, you'll need to setup a build environment or process that compiles SCSS into your production CSS. You could use BaseWeb's build scripts (powered by [Gulp](http://gulpjs.com/)) and adapt them to your own needs, or you can role your own using [CodeKit](https://incident57.com/codekit/), [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) or [Jake](http://jakejs.com/) to name a few. All BaseWeb partials are routed through the `baseweb.scss` file.
 
@@ -115,7 +193,7 @@ gulp.task('js', function() {
 });
 ```
 
-For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`]({{ site.github.repository_url }}/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page]({{ site.url }}{{ site.baseurl }}/getting-started/build-scripts).
+For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`]({{ site.github.repository_url }}/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page]({{ site.url }}{{ site.baseurl }}/get-started/build-scripts).
 
 <!--
 ## Basic JavaScript

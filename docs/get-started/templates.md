@@ -19,18 +19,14 @@ Here is a starter HTML document with the bear essentials to get you started. A f
 
     <title>BaseWeb</title>
 
-    <!-- BaseWeb -->
-    <link rel="stylesheet" href="css/baseweb.min.css">
+    <!-- BaseWeb Styles -->
+    <link rel="stylesheet" href="baseweb.min.css">
 
   </head>
   <body>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
-
-    <!-- BaseWeb scripts -->
-    <script src="js/baseweb.min.js"></script>
+    <!-- BaseWeb Scripts -->
+    <script src="baseweb.min.js"></script>
   </body>
 </html>
 ```

@@ -1,3 +1,5 @@
+// require _utility.js
+
 var offcanvas = (function () {
 
   'use strict';

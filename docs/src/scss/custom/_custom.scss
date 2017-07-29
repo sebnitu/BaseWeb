@@ -118,7 +118,7 @@ body {
 
     a:not(.button) {
       color: $color;
-      font-size: px-to-em(15px);
+      font-size: px-to-em(16px);
 
       &:hover {
         color: $color-link;
@@ -135,7 +135,6 @@ body {
 .home .header .nav {
   ul.menu-hori li a:not(.button) {
     color: $white;
-    font-size: px-to-em(15px);
 
     &:hover {
       color: rgba($white, 0.5);
@@ -169,10 +168,15 @@ body {
     }
     li a {
       display: block;
-      padding: 0.5em 1em;
+      padding: 1em;
+      color: $color;
     }
     li a:hover {
       text-decoration: none;
+      color: $color-link;
+    }
+    li.active a {
+      color: $color-light;
     }
   }
   .button {
@@ -180,8 +184,6 @@ body {
     margin: 1em 1.5em;
   }
 }
-
-// @include add-off-canvas-wrap-height('oc-aside-nav-mobile');
 
 /**
  * More Icon
@@ -296,10 +298,46 @@ body {
     padding-bottom: 2em;
   }
   h1 {
+    margin: 1em 0 2em;
     font-size: px-to-em(18px);
     line-height: 1.5em;
     font-weight: font-weight('light');
     color: $white;
+  }
+  .action {
+    margin: 2em 0;
+  }
+  .button {
+    background: rgba($white, 0);
+    border: 2px solid rgba($white, 1);
+    color: $white;
+    transition: none;
+
+    &:hover,
+    &:focus {
+      background: $white;
+      color: $color;
+    }
+  }
+  // code {
+  //   display: block;
+  //   margin: 1.5em 0;
+  //   color: rgba($white, 0.5);
+  //   font-size: 1.25em;
+  // }
+}
+
+.hero-content .highlight {
+  padding: 0;
+  margin-left: -0.75em;
+  background: none;
+  font-size: 1.25em;
+
+  .editor-prefixed {
+    color: rgba($white, 0.6);
+    &:before {
+      color: rgba($white, 0.3);
+    }
   }
 }
 
@@ -311,7 +349,7 @@ body {
       padding: 5em 5em 6em;
     }
     h1 {
-      font-size: px-to-em(20px);
+      font-size: px-to-em(26px);
     }
   }
 }
@@ -325,7 +363,7 @@ body {
       padding: 10em 10em 12em;
     }
     h1 {
-      font-size: px-to-em(24px);
+      font-size: px-to-em(32px);
     }
   }
 
@@ -358,14 +396,12 @@ body {
   hr {
     margin: 8em 0;
   }
-}
-.home .main {
   img,
   svg {
     display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 1em auto 3em;
+    // max-width: 100%;
+    // height: auto;
+    margin: 1rem auto;
   }
 }
 @include media-min('medium') {
@@ -429,6 +465,38 @@ body {
 
 }
 
+/**
+ * File Structure
+ */
+.block-file-structure {
+  display: block;
+
+  .item {
+    display: flex;
+    align-items: center;
+  }
+  .item-files {
+    padding: 2em;
+    background: $bg-color;
+    border-radius: $border-radius;
+  }
+  // .item-details {}
+}
+
+@include media-min('medium') {
+  .block-file-structure {
+    display: flex;
+    margin-bottom: 2em;
+
+    .item {
+      flex: 0 1 50%;
+    }
+    .item + .item {
+      margin-left: 4em;
+    }
+  }
+}
+
 /*==============================================================================
   @Widget Wrap - #{$filename}
 ==============================================================================*/
@@ -487,7 +555,10 @@ body {
   &.card {
     padding: 1em 2em;
     border: 1px solid $border-color;
-    border-radius: $border-radius;
+  }
+  &.fill {
+    padding: 1.5em;
+    background: $bg-color;
   }
 }
 .widget h2 {
@@ -501,6 +572,13 @@ body {
   a:hover {
     color: $color-link;
   }
+}
+
+/**
+ * Inline content widgets
+ */
+.col-9 .widget {
+  margin: 1.5em 0;
 }
 
 /**
@@ -929,23 +1007,36 @@ body {
   h3 {
     color: $white;
   }
-  .button-group-wrapper {
+  .action {
+    margin: 1em 0;
     display: block;
+
     .button {
       width: 100%;
       display: block;
-      background-clip: padding-box;
+      margin: 1em 0;
+      background: rgba($white, 0);
+      border: 2px solid rgba($white, 1);
+      color: $white;
+      transition: none;
+
+      &:hover,
+      &:focus {
+        background: $white;
+        color: $color;
+      }
     }
   }
 }
 
 @include media-min('medium') {
   .block-action {
-    .button-group-wrapper {
+    .action {
       display: inline-block;
       .button {
         width: auto;
         display: inline-block;
+        margin: 0 0.5em;
       }
     }
   }

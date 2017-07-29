@@ -4,24 +4,16 @@ title: Build Scripts
 order: 3
 ---
 
-When using BaseWeb source, you'll need to utilize a method for compiling and minifying SCSS and JavaScript files. BaseWeb leverages [Gulp](http://gulpjs.com/) for its build process. To use our Gulp tasks, you'll first need to install `gulp-cli` globally:
+When using BaseWeb source, you'll need to utilize a method for compiling and minifying SCSS and JavaScript files. BaseWeb leverages [Gulp](http://gulpjs.com/) for its build process. To use our Gulp tasks, clone the repo and run the npm install command:
 
-```shell
-npm install gulp-cli -g
-```
+<pre class="highlight"><code><span class="editor-comment"># Clone BaseWeb</span>
+<span class="editor-prefixed">git clone https://github.com/sebnitu/BaseWeb.git</span>
 
-Next, you'll want to clone the repo and run the npm install command:
+<span class="editor-comment"># Navigate into the repository</span>
+<span class="editor-prefixed">cd baseweb</span>
 
-```shell
-# Clone BaseWeb
-git clone https://github.com/sebnitu/BaseWeb.git
-
-# Navigate into the repository
-cd baseweb
-
-# Install node packages
-npm install
-```
+<span class="editor-comment"># Install node packages</span>
+<span class="editor-prefixed">npm install</span></code></pre>
 
 Here are all the tasks you'll have available.
 

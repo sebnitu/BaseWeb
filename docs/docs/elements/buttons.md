@@ -38,34 +38,37 @@ Button variables are encompassed within the `$buttons` map and are used througho
     <td><code>$buttons('classes')</code></td>
     <td><code>true</code></td>
   </tr>
+
+  <tr>
+    <td><code>$buttons('padding-small')</code></td>
+    <td><code>0.75em 1.25em</code></td>
+  </tr>
   <tr>
     <td><code>$buttons('padding')</code></td>
     <td><code>0.75em 1.5em</code></td>
   </tr>
   <tr>
-    <td><code>$buttons('padding-small')</code></td>
-    <td><code>0.5em 1.25em</code></td>
-  </tr>
-  <tr>
     <td><code>$buttons('padding-large')</code></td>
-    <td><code>null</code></td>
+    <td><code>0.75em 2em</code></td>
   </tr>
   <tr>
     <td><code>$buttons('font-family')</code></td>
     <td><code>inherit</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$buttons('font-size-small')</code></td>
+    <td><code>0.85em</code></td>
   </tr>
   <tr>
     <td><code>$buttons('font-size')</code></td>
     <td><code>1em</code></td>
   </tr>
   <tr>
-    <td><code>$buttons('font-size-small')</code></td>
-    <td><code>0.85em</code></td>
-  </tr>
-  <tr>
     <td><code>$buttons('font-size-large')</code></td>
-    <td><code>1.4em</code></td>
+    <td><code>1.15em</code></td>
   </tr>
+
   <tr>
     <td><code>$buttons('line-height')</code></td>
     <td><code>1.5em</code></td>

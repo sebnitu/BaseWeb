@@ -63,7 +63,6 @@
       $oc_trigger.attr('data-target', oc_class);
       $oc_aside.attr('class', 'oc-aside ' + oc_class);
 
-      offcanvas.init();
     });
 
     // Select on focus
@@ -72,10 +71,5 @@
     });
 
   });
-
-  /**
-   * When the images are loaded
-   */
-  $(window).on('load', function() { });
 
 }(jQuery));

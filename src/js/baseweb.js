@@ -1,10 +1,10 @@
 /*
 require
-  utility.js
-  dismissible.js
-  dropdowns.js
-  tabs.js
-  offcanvas.js
+  _utility.js
+  _dismissible.js
+  _dropdowns.js
+  _tabs.js
+  _offcanvas.js
 */
 
 // Default initializations
