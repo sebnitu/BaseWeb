@@ -21,7 +21,6 @@ var dropdowns = (function () {
 
   var triggers = [];
   var triggersHover = [];
-  var timeoutID;
 
   //
   // Private Methods

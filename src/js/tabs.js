@@ -11,19 +11,17 @@ var tabs = (function () {
   var api = {};
   var settings;
   var defaults = {
+    classTrigger : 'tabs-nav',
     classWrap : 'tabs',
-    classNav : 'tabs-nav',
     classContent : 'tabs-content',
     classActive : 'active',
   };
-
-  var triggers = [];
 
   //
   // Private Methods
   //
 
-  var getTabsContent = function (wrap, nav) {
+  var getContent = function (wrap, nav) {
 
     // Init content variable
     var content;
@@ -50,22 +48,10 @@ var tabs = (function () {
 
   };
 
-  var removeActive = function (nav, content) {
-
-    var nav = Array.prototype.slice.call(nav.querySelectorAll('.' + settings.classActive));
-    var content = Array.prototype.slice.call(content.querySelectorAll('.' + settings.classActive));
-    var active = nav.concat(content);
-
-    active.forEach(function (el) {
-      u.removeClass(el, settings.classActive);
-    });
-
-  };
-
   var runTabs = function () {
 
     // Get the trigger
-    var trigger = event.target.closest('.' + settings.classNav);
+    var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Exit if a trigger doesn't exist
     if ( !trigger ) return;
@@ -77,19 +63,19 @@ var tabs = (function () {
     if (!is_active) {
 
       // Tabs wrap nav and content
-      var tabs = event.target.closest('.' + settings.classWrap);
-      var tabsNav = event.target.closest('.' + settings.classNav);
-      var tabsContent = getTabsContent(tabs, tabsNav);
+      var wrap = event.target.closest('.' + settings.classWrap);
+      var content = getContent(wrap, trigger);
 
       // Get target
       var target = event.target.getAttribute('href');
 
-      // Remove all active classes
-      removeActive(tabsNav, tabsContent);
+      // Remove active classes from nav and content
+      u.removeClass(trigger.querySelector('.' + settings.classActive), settings.classActive);
+      u.removeClass(content.querySelector('.' + settings.classActive), settings.classActive);
 
       // Set tab nav and content item to active
       u.addClass(event.target.parentElement, settings.classActive);
-      u.addClass(tabsContent.querySelector(target), settings.classActive);
+      u.addClass(content.querySelector(target), settings.classActive);
 
     } // End if is_active
 

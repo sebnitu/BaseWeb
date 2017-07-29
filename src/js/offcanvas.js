@@ -19,8 +19,6 @@ var offcanvas = (function () {
     timer : 500,
   };
 
-  var triggers = [];
-
   //
   // Private Methods
   //
@@ -104,9 +102,6 @@ var offcanvas = (function () {
     // Merge user options with the defaults
     settings = u.extend( defaults, options || {} );
 
-    // Get trigger
-    triggers = document.querySelectorAll('.' + settings.classTrigger);
-
     // Add event listener to trigger
     document.addEventListener('click', runOffcanvas, false);
 
@@ -117,9 +112,8 @@ var offcanvas = (function () {
     // Remove listener
     document.removeEventListener('click', runOffcanvas, false);
 
-    // Reset settings and triggers
+    // Reset settings
     settings = null;
-    triggers = [];
 
   };
 
