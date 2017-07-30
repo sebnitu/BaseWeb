@@ -220,6 +220,7 @@ body {
   h1 {
     margin: 1em 0 2em;
     color: $white;
+    font-size: 2em;
   }
   .action {
     margin: 2em 0;
@@ -235,6 +236,12 @@ body {
       background: $white;
       color: $color;
     }
+  }
+}
+
+@include media-min('large') {
+  .hero-content h1 {
+    font-size: 2.5em;
   }
 }
 
@@ -549,6 +556,14 @@ body {
 .widget-back {
   text-align: center;
 
+  .button {
+    padding: 0.75em;
+  }
+  .icon {
+    font-size: px-to-em(28px);
+    vertical-align: middle;
+  }
+
   &:first-child,
   &:last-child {
     padding: 0;
@@ -675,7 +690,6 @@ body {
   ol {
     display: flex;
     flex-wrap: wrap;
-    max-width: px-to-em(800px);
     list-style: none;
     margin: 0 auto;
   }
@@ -688,19 +702,10 @@ body {
   .article {
     flex: 1 1 auto;
     margin: 0;
-    padding: 0;
+    padding: 0.5em 1.5em;
+    border: 1px solid rgba($black, 0.1);
     border-radius: $border-radius;
     text-decoration: none;
-  }
-
-  h2 a {
-    display: inline;
-    border-bottom: 4px solid $yellow;
-
-    &:hover {
-      border-color: $pink-a200;
-      color: $color-heading;
-    }
   }
 }
 
@@ -709,8 +714,14 @@ body {
     flex: 0 1 50%;
 
     .article {
-      margin: 0 3em;
+      margin: 0 1em;
     }
+  }
+}
+
+@include media-min('large') {
+  .article-listing ol li {
+    flex: 0 1 33.333%;
   }
 }
 
@@ -750,10 +761,10 @@ body {
   }
   .version {
     display: inline-block;
-    color: $color-light;
+    color: $color;
     font-size: 0.9em;
     padding: 0 0.5em;
-    background: $gray-200;
+    background: $yellow;
     border-radius: $border-radius;
   }
 }
