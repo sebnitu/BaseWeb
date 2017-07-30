@@ -25,28 +25,28 @@ $buttons: (
   'background-gradient' : false,
   'background-deg' : 5%,
   'background-clip' : border-box,
-  'box-shadow' : inset 0 0 0 rgba($black, 0),
+  'box-shadow' : null,
 
-  'border' : 1px solid rgba($black, 0.15),
+  'border' : none,
   'border-radius' : $border-radius,
 
-  'transition-property' : (color, background-color, box-shadow, border-color),
+  'transition-property' : all,
   'transition-duration' : 0.75s,
   'transition-timing-function' : linear,
 
   'hover' : (
     'color'        : default,
     'background'   : darken,
-    'box-shadow'   : inset 0 1px 3px rgba($black, 0.1),
-    'border-color' : rgba($black, 0.25),
+    'box-shadow'   : null,
+    'border-color' : null,
     'transition-duration' : 0.1s,
   ),
 
   'active' : (
     'color'        : default,
     'background'   : darken,
-    'box-shadow'   : inset 0 1px 3px rgba($black, 0.2),
-    'border-color' : rgba($black, 0.25),
+    'box-shadow'   : null,
+    'border-color' : null,
     'transition-duration' : 0,
   ),
 
@@ -256,35 +256,7 @@ $buttons: (
  */
 .button {
   @include make-button();
-  @include add-button-color((
-    'background-deg' : 2%,
-  ));
-
-  &.inverted {
-    @include add-button-color((
-      'color' : $white,
-      'text-shadow' : 0 1px 1px rgba($black, 0.25),
-      'background' : $color,
-      'border' : 1px solid rgba($white, 0.15),
-      'background-deg' : 2%,
-      'background-clip' : border-box,
-      'hover' : (
-        'background': lighten,
-        'border-color' : rgba($white, 0.25),
-      ),
-      'active' : (
-        'background': lighten,
-        'border-color' : rgba($white, 0.25),
-      )
-    ));
-  }
-
-  &.clip-border {
-    background-clip: border-box;
-  }
-  &.clip-padding {
-    background-clip: padding-box;
-  }
+  @include add-button-color();
 }
 
 /**
@@ -292,8 +264,7 @@ $buttons: (
  */
 .button.default {
   @include add-button-color((
-    'background' : #efefef,
-    'background-deg' : 2%,
+    'background' : #efefef
   ));
 }
 .button.blue {
@@ -365,13 +336,9 @@ $buttons: (
   @include add-button-block();
 }
 
-.button.clip-padding {
-  background-clip: padding-box;
-}
-.button.clip-border {
-  background-clip: border-box;
-}
-
+/**
+ * Custom Buttons
+ */
 .button.close {
   @include size(1.5em);
   padding: 0;

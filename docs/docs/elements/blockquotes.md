@@ -15,9 +15,11 @@ The blockquote element represents content that is quoted from another source, op
 </blockquote>
 ```
 
-<blockquote>
-  <p>"The internet could be a very positive step towards education, organization and participation in a meaningful society."</p>
-  <footer>
-    <cite>&mdash; Noam Chomsky</cite>
-  </footer>
-</blockquote>
+<div class="demo">
+  <blockquote>
+    <p>"The internet could be a very positive step towards education, organization and participation in a meaningful society."</p>
+    <footer>
+      <cite>&mdash; Noam Chomsky</cite>
+    </footer>
+  </blockquote>
+</div>

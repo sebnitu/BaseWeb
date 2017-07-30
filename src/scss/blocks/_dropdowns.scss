@@ -32,7 +32,7 @@ $dropdowns: (
   'block-margin'      : -0.5em,
   'block-padding'     : 1em,
 
-  'font-size'   : px-to-rem(12px),
+  'font-size'   : px-to-rem(14px),
   'line-height' : 1.35em,
 
   'background'       : $white,
@@ -196,13 +196,12 @@ $dropdowns: (
       margin: map-get($o, 'block-margin');
       padding: map-get($o, 'block-padding');
       color: map-get($o, 'color');
-      border: 0 none;
+      text-decoration: none;
       border-radius: map-get($o, 'border-radius');
 
       &:hover {
         background: map-get($o, 'background-hover');
         color: map-get($o, 'color-hover');
-        text-decoration: none;
       }
 
       > * {
@@ -238,10 +237,6 @@ $dropdowns: (
 
       > a {
         color: map-get($o, 'color-hover');
-
-        &:hover {
-          text-decoration: none;
-        }
       }
     }
     li.active {
@@ -260,11 +255,11 @@ $dropdowns: (
       @include border-bottom-radius(map-get($o, 'border-radius'));
     }
 
-    li a {
+    a {
       display: block;
       padding: map-get($o, 'padding-menu-item');
       color: map-get($o, 'color');
-      border: 0 none;
+      text-decoration: none;
     }
 
   } @else {

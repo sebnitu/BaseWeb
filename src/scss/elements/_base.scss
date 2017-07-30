@@ -83,57 +83,58 @@ table {
 /**
  * Utility Classes
  */
-
 @if ($class-show) {
   .#{$class-show} {
-    display: inherit;
+    display: block !important;
+  }
+  .#{$class-show}-inline-block {
+    display: inline-block !important;
+  }
+  .#{$class-show}-flex {
+    display: flex !important;
+  }
+  .#{$class-show}-inline-flex {
+    display: inline-flex !important;
+  }
+  .#{$class-show}-inherit {
+    display: inherit !important;
   }
 }
 
 @if ($class-hide) {
   .#{$class-hide} {
-    display: none;
+    display: none !important;
   }
 }
 
-@if ($class-show-hide-min) {
-  @each $name, $value in $breakpoints {
-
-    .#{$class-show}-#{$name}-#{$class-show-hide-min} {
-      display: inherit;
-    }
-    .#{$class-hide}-#{$name}-#{$class-show-hide-min} {
-      display: none;
-    }
+/**
+ * Responsive Show Hide Classes
+ */
+@each $name, $value in $breakpoints {
+  @if ($class-show-hide-min or $class-show-hide-max) {
 
     @include media-min($name) {
-      .#{$class-show}-#{$name}-#{$class-show-hide-min} {
-        display: none;
+      @if ($class-show-hide-min) {
+        .#{$class-show}-#{$name}-#{$class-show-hide-min} {
+          display: none !important;
+        }
       }
-      .#{$class-hide}-#{$name}-#{$class-show-hide-min} {
-        display: inherit;
+      @if ($class-show-hide-max) {
+        .#{$class-hide}-#{$name}-#{$class-show-hide-max} {
+          display: none !important;
+        }
       }
     }
-
-  }
-}
-
-@if ($class-show-hide-max) {
-  @each $name, $value in $breakpoints {
-
-    .#{$class-show}-#{$name}-#{$class-show-hide-max} {
-      display: inherit;
-    }
-    .#{$class-hide}-#{$name}-#{$class-show-hide-max} {
-      display: none;
-    }
-
     @include media-max($name) {
-      .#{$class-show}-#{$name}-#{$class-show-hide-max} {
-        display: none;
+      @if ($class-show-hide-min) {
+        .#{$class-hide}-#{$name}-#{$class-show-hide-min} {
+          display: none !important;
+        }
       }
-      .#{$class-hide}-#{$name}-#{$class-show-hide-max} {
-        display: inherit;
+      @if ($class-show-hide-max) {
+        .#{$class-show}-#{$name}-#{$class-show-hide-max} {
+          display: none !important;
+        }
       }
     }
 

@@ -52,11 +52,11 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('container-margin')</code></td>
-    <td colspan="2"><code>auto</code></td>
+    <td colspan="2"><code>0 auto</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-padding')</code></td>
-    <td colspan="2"><code>20px</code></td>
+    <td colspan="2"><code>0 1.5rem</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-min-width')</code></td>
@@ -64,7 +64,7 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('container-max-width')</code></td>
-    <td colspan="2"><code>1000px</code></td>
+    <td colspan="2"><code>75rem</code></td>
   </tr>
 
   <tr>

@@ -37,7 +37,7 @@ If you'd like to make a custom component use the same override feature, simply u
 }
 ```
 
-*Replace `SOME_COMPONENT` with the name of your component map.* To learn more about writing your own components, read our section on [expanding BaseWeb]({{ site.url }}{{ site.baseurl }}/getting-started/expanding).
+*Replace `SOME_COMPONENT` with the name of your component map.* To learn more about writing your own components, read our section on [expanding BaseWeb]({{ site.url }}{{ site.baseurl }}/get-started/expanding).
 
 ## Custom Styles
 

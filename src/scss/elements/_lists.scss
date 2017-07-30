@@ -105,7 +105,7 @@ $lists: (
     display: block;
     padding: map-get($o, 'padding');
     background-clip: padding-box;
-    border: 0 none;
+    text-decoration: none;
     @include clearfix();
   }
 
@@ -196,26 +196,26 @@ ul, ol {
 /**
  * Unordered Lists
  */
-ul, ul ul ul ul {
+ul, ul > ul > ul > ul {
   list-style: disc;
 }
-ul ul {
+ul > ul {
   list-style: circle;
 }
-ul ul ul {
+ul > ul > ul {
   list-style: disc;
 }
 
 /**
  * Ordered Lists
  */
-ol, ol ol ol ol {
+ol, ol > ol > ol > ol {
   list-style: decimal;
 }
-ol ol {
+ol > ol {
   list-style: lower-alpha;
 }
-ol ol ol {
+ol > ol > ol {
   list-style: lower-roman;
 }
 

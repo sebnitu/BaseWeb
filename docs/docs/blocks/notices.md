@@ -144,7 +144,7 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
   <tr>
     <td><code>$notices('text-shadow')</code></td>
-    <td><code>0 1px 0</code> <code>rgba($white, 0.25)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$notices('background')</code></td>
@@ -173,7 +173,7 @@ Notice variables are encompassed within the '$notices' map and are used througho
   </tr>
   <tr>
     <td><code>$notices('inverted', 'text-shadow')</code></td>
-    <td><code>0 1px 0</code> <code>rgba($black, 0.25)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$notices('inverted', 'background')</code></td>

@@ -22,10 +22,7 @@
      */
 
     // Sticky Element
-    $('.sticky').theiaStickySidebar({
-      containerSelector : '.row',
-      additionalMarginTop : 0
-    });
+    $('.sticky').theiaStickySidebar();
 
     // Navigation Toggle
     $('.widget-menu .toggle').click(function() {

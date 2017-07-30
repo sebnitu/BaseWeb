@@ -150,7 +150,7 @@ gulp.task('js', function() {
 // Output expanded and minified CSS files from documentation
 gulp.task('docs:css', function() {
   var
-    src = folder.srcDocs + 'scss/baseweb.scss',
+    src = folder.srcDocs + 'scss/docs.scss',
     dest = folder.destDocs + 'css/',
     sassOpts = {
       outputStyle: 'expanded',

@@ -26,6 +26,7 @@ Code blocks are larger sections of code that utilize the combination of a `<pre>
 <pre><code>...</code></pre>
 ```
 
+<div class="demo" markdown="1">
 ```js
 var new = BaseWeb;
 
@@ -33,3 +34,4 @@ class BaseWeb() {
   desc: a fresh front-end development framework
 }
 ```
+</div>

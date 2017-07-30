@@ -1,7 +1,7 @@
 {% assign pages = site.pages | sort: 'order' %}
 
 <nav class="nav">
-  <ul class="menu-hori desktop">
+  <ul class="menu-hori show-medium-up">
     {% for node in pages %}
       {% assign node_parts = node.url | split: '/' %}
       {% assign node_depth = node_parts | size %}
@@ -20,21 +20,10 @@
       {% endif %}
     {% endfor %}
     <li>
-      {% if page.url != '/' %}
-        <a href="{{ site.github.repository_url }}" class="button primary">Download</a>
-      {% else %}
-        <a href="{{ site.github.repository_url }}" class="button">Download</a>
-      {% endif %}
+      <a href="{{ site.github.repository_url }}" class="button">Download</a>
     </li>
   </ul>
 
-  <button class="button oc-trigger mobile" data-target="oc-aside-nav-mobile">
-    Menu
-    <span class="icon icon-more">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </span>
-  </button>
+  <button class="button oc-trigger show-medium-down" data-target="oc-aside-nav-mobile">Menu</button>
 
-</nav>
+</nav><!-- .nav -->

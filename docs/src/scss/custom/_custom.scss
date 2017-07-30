@@ -42,11 +42,14 @@ body {
 }
 
 @include media-min('medium') {
+  .main {
+    padding: 2em 0;
+  }
   .home .header {
     padding-bottom: 2em;
   }
-  .main {
-    padding: 2em 0;
+  .home .main {
+    padding: 4em 0;
   }
 }
 
@@ -54,11 +57,11 @@ body {
   @Header - #{$filename}
 ==============================================================================*/
 
-.header .flex {
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
+  @include remove-clearfix();
 }
 
 /**
@@ -67,7 +70,7 @@ body {
 .header .logo {
   display: flex;
   align-items: center;
-  border: 0 none;
+  text-decoration: none;
 
   img {
     margin: 0;
@@ -99,14 +102,13 @@ body {
 /**
  * Navigation
  */
-.header .nav {
-  ul.menu-hori {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    list-style: none;
-  }
-  ul.menu-hori li {
+.menu-hori {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  list-style: none;
+
+  li {
     margin: 0 15px;
 
     &:first-child {
@@ -115,37 +117,57 @@ body {
     &:last-child {
       margin-right: 0;
     }
+  }
 
-    a:not(.button) {
-      color: $color;
-      font-size: px-to-em(16px);
+  a {
+    color: $color;
+    font-weight: font-weight('medium');
+    text-decoration: none;
 
-      &:hover {
-        color: $color-link;
-        text-decoration: none;
-      }
+    &:hover {
+      color: $color-link;
     }
   }
-  ul.menu-hori li.active a:not(.button) {
+
+  .active a {
     color: $color-light;
-    border: 0 none;
   }
 }
 
-.home .header .nav {
-  ul.menu-hori li a:not(.button) {
+.home .menu-hori {
+  li a {
     color: $white;
 
     &:hover {
       color: rgba($white, 0.5);
     }
   }
-  ul.menu-hori li.active a:not(.button) {
+  li.active a:not(.button) {
     color: rgba($white, 0.5);
   }
-  li > .button,
-  .dropdown-trigger > .button {
-    background-clip: padding-box;
+}
+
+/**
+ * Button
+ */
+.header .button {
+  background: rgba($black, 0.05);
+  border: none;
+  color: $color;
+
+  &:hover {
+    background: rgba($black, 0.10);
+    box-shadow: none;
+    color: $color;
+  }
+}
+.home .header .button {
+  background: rgba($white, 0.1);
+  color: $white;
+
+  &:hover {
+    background: rgba($white, 0.2);
+    color: $white;
   }
 }
 
@@ -155,135 +177,43 @@ body {
 .oc-aside .button.close {
   margin: 0.5em;
 }
-.oc-aside .nav {
-  ul.menu-vert {
-    margin: 0;
-    list-style: none;
+.menu-vert {
+  margin: 0;
+  list-style: none;
 
-    li {
-      margin: 0 1em;
-    }
-    li + li {
-      border-top: 1px solid rgba($black, 0.1);
-    }
-    li a {
-      display: block;
-      padding: 1em;
-      color: $color;
-    }
-    li a:hover {
-      text-decoration: none;
+  li {
+    margin: 0 1em;
+  }
+  li + li {
+    border-top: 1px solid rgba($black, 0.1);
+  }
+
+  a {
+    display: block;
+    padding: 1em;
+    color: $color;
+    text-decoration: none;
+
+    &:hover {
       color: $color-link;
     }
-    li.active a {
-      color: $color-light;
-    }
   }
-  .button {
-    display: block;
-    margin: 1em 1.5em;
-  }
-}
-
-/**
- * More Icon
- */
-.icon.icon-more {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 8px;
-  height: 1.5em;
-  margin: 0 0 0 10px;
-  float: right;
-
-  .dot {
-    display: inline-block;
-    width: 3px;
-    height: 3px;
-    margin: 0 0 2px 0;
-    background: $color;
-    border-radius: 50%;
-
-    &:last-child {
-      margin-bottom: 1px;
-    }
-  }
-}
-
-/**
- * Response
- */
-.header .logo .mobile,
-.header .nav .mobile {
-  display: inline-block;
-}
-.header .logo .desktop,
-.header .nav .menu-hori.desktop {
-  display: none;
-}
-@include media-min(930px) {
-  .header .nav .mobile {
-    display: none;
-  }
-  .header .nav .menu-hori.desktop {
-    display: flex;
-  }
-}
-@include media-min('small') {
-  .header .logo .mobile {
-    display: none;
-  }
-  .header .logo .desktop {
-    display: flex;
+  .active > a {
+    color: $color-light;
   }
 }
 
 /*==============================================================================
-  @Home - #{$filename}
+  @Hero - #{$filename}
 ==============================================================================*/
 
-/**
- * Home
- */
 .hero {
   position: relative;
   background: $blue;
-  background-image: linear-gradient(to right, $pink-900, $deep-purple-900);
-}
-
-.hero {
-  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  // clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  background-image: linear-gradient(to bottom right, $pink-900, $deep-purple-900);
 }
 .hero {
   position: relative;
-
-  &:after {
-    background: inherit;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 50%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    transform: skewY(-4deg);
-    transform-origin: 100%;
-    z-index: -1;
-  }
-  &:before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 15em;
-    background: $white;
-    z-index: -2;
-  }
 }
 
 /**
@@ -291,7 +221,6 @@ body {
  */
 .hero-content {
   text-align: center;
-  margin-bottom: 2em;
 
   .container {
     padding-top: 2em;
@@ -299,9 +228,6 @@ body {
   }
   h1 {
     margin: 1em 0 2em;
-    font-size: px-to-em(18px);
-    line-height: 1.5em;
-    font-weight: font-weight('light');
     color: $white;
   }
   .action {
@@ -319,12 +245,6 @@ body {
       color: $color;
     }
   }
-  // code {
-  //   display: block;
-  //   margin: 1.5em 0;
-  //   color: rgba($white, 0.5);
-  //   font-size: 1.25em;
-  // }
 }
 
 .hero-content .highlight {
@@ -334,22 +254,17 @@ body {
   font-size: 1.25em;
 
   .editor-prefixed {
-    color: rgba($white, 0.6);
+    color: rgba($white, 1);
     &:before {
-      color: rgba($white, 0.3);
+      color: rgba($white, 0.5);
     }
   }
 }
 
 @include media-min('small') {
   .hero-content {
-    margin-bottom: 5em;
-
     .container {
       padding: 5em 5em 6em;
-    }
-    h1 {
-      font-size: px-to-em(26px);
     }
   }
 }
@@ -357,25 +272,16 @@ body {
 @include media-min('medium') {
 
   .hero-content {
-    margin-bottom: 10em;
-
     .container {
       padding: 10em 10em 12em;
     }
-    h1 {
-      font-size: px-to-em(32px);
-    }
   }
 
 }
 
-@include media-min(1400px) {
-
-  .hero-content {
-    margin-bottom: 15em;
-  }
-
-}
+/*==============================================================================
+  @Main - #{$filename}
+==============================================================================*/
 
 /**
  * Main
@@ -394,7 +300,7 @@ body {
     margin-bottom: 4em;
   }
   hr {
-    margin: 8em 0;
+    margin: 4em 0;
   }
   img,
   svg {
@@ -562,9 +468,9 @@ body {
   }
 }
 .widget h2 {
-  margin: 1rem 0;
-  font-size: px-to-em(16px);
-  font-weight: font-weight('semi-bold');
+  margin: 1em 0;
+  font-size: 1em;
+  font-weight: font-weight('medium');
 
   a {
     color: $color;
@@ -585,7 +491,15 @@ body {
  * Widget Menu
  */
 .widget-menu {
-  margin-right: 2em;
+
+  h2 a {
+    display: inline-block;
+    padding: 0;
+
+    &:hover {
+      background: none;
+    }
+  }
 
   ul {
     list-style: none;
@@ -597,17 +511,17 @@ body {
   ul li {
     margin: 1px 0;
   }
-  ul li a {
+
+  a {
     display: block;
     padding: 0.5em 1em;
     color: $color-light;
-    border: 0 none;
+    text-decoration: none;
     border-radius: $border-radius;
 
     &:hover {
       background: $bg-color;
       color: $color;
-      text-decoration: none;
     }
   }
 
@@ -626,6 +540,12 @@ body {
   }
   .active > ul {
     display: block;
+  }
+}
+
+@include media-min('medium') {
+  .widget-menu {
+    margin-right: 2em;
   }
 }
 
@@ -800,19 +720,6 @@ body {
 .article {
   position: relative;
 
-  header {
-    text-align: center;
-
-    &:after {
-      content: '';
-      display: inline-block;
-      margin: 1em auto;
-      height: 1px;
-      width: 3em;
-      background: rgba($black, 0.1);
-    }
-  }
-
   .meta {
     vertical-align: middle;
     color: $color-light;
@@ -843,31 +750,57 @@ body {
     background: $gray-200;
     border-radius: $border-radius;
   }
+}
 
-  .content {
-    font-size: px-to-em(16em);
-    line-height: 1.6em;
+/**
+ * Article Header
+ */
+.article-header {
+  text-align: center;
 
-    .notice {
-      font-size: 0.9em;
-    }
-    code {
-      font-size: 0.9em;
-    }
-    pre code {
-      font-size: 0.8em;
-      line-height: 1.5em;
-    }
+  &:after {
+    content: '';
+    display: inline-block;
+    margin: 1em auto;
+    height: 1px;
+    width: 3em;
+    background: rgba($black, 0.1);
   }
-
-} // end .article
+}
 
 @include media-min('medium') {
-  .article {
-    .content {
-      font-size: px-to-em(18em);
-      line-height: 1.6em;
+  .article-header {
+    text-align: left;
+
+    &:after {
+      margin: 1em 0;
     }
+  }
+}
+
+/**
+ * Article Content
+ */
+.article-content {
+  font-size: px-to-em(16em);
+  line-height: 1.6em;
+
+  .notice {
+    font-size: 0.9em;
+  }
+  code {
+    font-size: 0.9em;
+  }
+  pre code {
+    font-size: 0.8em;
+    line-height: 1.5em;
+  }
+}
+
+@include media-min('medium') {
+  .article .content {
+    font-size: px-to-em(18em);
+    line-height: 1.8em;
   }
 }
 
@@ -886,19 +819,19 @@ body {
     font-size: 0.9em;
     line-height: 1.5em;
     color: $white;
+    text-decoration: none;
 
     &.social-facebook {
-      background: #4862a3;
+      background: map-get($social, 'facebook');
     }
     &.social-twitter {
-      background: #55acee;
+      background: map-get($social, 'twitter');
     }
     &.social-google {
-      background: #dc473a;
+      background: map-get($social, 'google');
     }
 
     &:hover {
-      text-decoration: none;
       opacity: 0.7;
     }
   }
@@ -1047,12 +980,14 @@ body {
 ==============================================================================*/
 
 .footer {
+  font-size: px-to-em(14px);
   color: $color-light;
   text-align: center;
 
   .logo {
     border: 0 none;
   }
+
   img {
     display: inline-block;
     opacity: 0.4;
@@ -1060,6 +995,7 @@ body {
 
   a {
     color: $color-light;
+    text-decoration: none;
 
     &:hover {
       color: $color-link-hover;
