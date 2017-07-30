@@ -5,7 +5,7 @@ date: 2017-01-20
 version: "2.1.0"
 ---
 
-<img src="/dist/img/devlog/illustration-tabs-small.png" alt="Tabs" class="featured rounded">
+<img src="/dist/img/devlog/illustration-tabs-small.png" alt="Tabs" class="img-featured">
 
 <p class="text-lead">Tabs have arrived! BaseWeb now makes available the tabs block component which includes two robust mixins for creating and styling semantic tabs.</p>
 

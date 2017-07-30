@@ -18,45 +18,17 @@ $filename: 'scss/custom/_custom.scss';
 body {
   background: $bg-color;
 }
-
-.header {
-  padding: 2em 0;
-}
-.home .header {
-  padding-bottom: 0;
-  border-bottom: 0 none;
-}
-
 .main {
   background: $white;
-}
-.home .header {
-  background: none;
-}
-
-.main {
-  padding: 1em 0 2em;
-}
-.footer {
-  padding: 2em 0;
-}
-
-@include media-min('medium') {
-  .main {
-    padding: 2em 0;
-  }
-  .home .header {
-    padding-bottom: 2em;
-  }
-  .home .main {
-    padding: 4em 0;
-  }
 }
 
 /*==============================================================================
   @Header - #{$filename}
 ==============================================================================*/
 
+.header {
+  padding: 2em 0;
+}
 .header .container {
   display: flex;
   justify-content: space-between;
@@ -100,7 +72,31 @@ body {
 }
 
 /**
- * Navigation
+ * Button
+ */
+.header .button {
+  background: rgba($black, 0.05);
+  border: none;
+  color: $color;
+
+  &:hover {
+    background: rgba($black, 0.10);
+    box-shadow: none;
+    color: $color;
+  }
+}
+.home .header .button {
+  background: rgba($white, 0.1);
+  color: $white;
+
+  &:hover {
+    background: rgba($white, 0.2);
+    color: $white;
+  }
+}
+
+/**
+ * Menu Horizontal
  */
 .menu-hori {
   display: flex;
@@ -148,26 +144,35 @@ body {
 }
 
 /**
- * Button
+ * Menu Vertical
  */
-.header .button {
-  background: rgba($black, 0.05);
-  border: none;
-  color: $color;
+.menu-vert {
+  margin: 0 1.5em;
+  list-style: none;
 
-  &:hover {
-    background: rgba($black, 0.10);
-    box-shadow: none;
-    color: $color;
+  li {
+    margin: 1px 0;
   }
-}
-.home .header .button {
-  background: rgba($white, 0.1);
-  color: $white;
 
-  &:hover {
-    background: rgba($white, 0.2);
-    color: $white;
+  a {
+    display: block;
+    padding: 0.5em 1em;
+    color: $color-light;
+    text-decoration: none;
+    border-radius: $border-radius;
+
+    &:hover {
+      background: $bg-color;
+      color: $color;
+    }
+  }
+
+  .active > a {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link;
+    }
   }
 }
 
@@ -176,31 +181,6 @@ body {
  */
 .oc-aside .button.close {
   margin: 0.5em;
-}
-.menu-vert {
-  margin: 0;
-  list-style: none;
-
-  li {
-    margin: 0 1em;
-  }
-  li + li {
-    border-top: 1px solid rgba($black, 0.1);
-  }
-
-  a {
-    display: block;
-    padding: 1em;
-    color: $color;
-    text-decoration: none;
-
-    &:hover {
-      color: $color-link;
-    }
-  }
-  .active > a {
-    color: $color-light;
-  }
 }
 
 /*==============================================================================
@@ -211,9 +191,6 @@ body {
   position: relative;
   background: $blue;
   background-image: linear-gradient(to bottom right, $pink-900, $deep-purple-900);
-}
-.hero {
-  position: relative;
 }
 
 /**
@@ -283,85 +260,77 @@ body {
  * Main
  */
 .main {
-  .flex,
-  .feature {
-    margin-bottom: 4em;
-    &:last-child {
-      margin-bottom: 0;
-    }
+  padding: 1.5em 0;
+}
+.main + .main {
+  margin-top: 3px;
+}
+@include media-min('medium') {
+  .main {
+    padding: 3em 0;
   }
 }
-.home {
-  .row {
-    margin-bottom: 4em;
+
+/**
+ * Main Header
+ */
+.main-header {
+  max-width: px-to-em(800px);
+  margin: 1.5em auto;
+  text-align: center;
+}
+@include media-min('medium') {
+  .main-header {
+    margin: 3em auto;
   }
-  hr {
-    margin: 4em 0;
-  }
-  img,
+}
+
+/**
+ * Feature
+ */
+.feature {
+  margin: 4em 0;
+}
+.feature + .feature {
+  margin-top: 4em;
+}
+.feature-ill {
   svg {
     display: block;
-    // max-width: 100%;
-    // height: auto;
     margin: 1rem auto;
   }
 }
+
 @include media-min('medium') {
 
-  .main {
-    .flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
+  .feature {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-
-      > * {
-        width: 50%;
-        margin-right: 6em;
-      }
-      > *:last-child {
-        margin-right: 0;
-      }
+    .feature-content {
+      flex: 0 1 50%;
     }
-
-    .feature {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      > * {
-        width: 50%;
-      }
-      .feature-content {
-        width: 50%;
-        margin-left: 3em;
-        margin-right: 6em;
-      }
-      .feature-ill {
-        width: 50%;
-        margin-left: 6em;
-        margin-right: 0;
-      }
-
-      &.reverse {
-        flex-direction: row-reverse;
-
-        .feature-content {
-          margin-left: 6em;
-          margin-right: 3em;
-        }
-        .feature-ill {
-          margin-left: 0;
-          margin-right: 6em;
-        }
-      }
+    .feature-content {
+      margin-left: 3em;
+      margin-right: 6em;
+    }
+    .feature-ill {
+      margin-left: 6em;
+      margin-right: 0;
     }
   }
 
-  .home .main {
-    img {
-      width: auto;
-      margin: 0 auto;
+  .feature.reverse {
+    flex-direction: row-reverse;
+
+    .feature-content {
+      margin-left: 6em;
+      margin-right: 3em;
+    }
+    .feature-ill {
+      margin-left: 0;
+      margin-right: 6em;
     }
   }
 
@@ -372,6 +341,7 @@ body {
  */
 .block-file-structure {
   display: block;
+  margin: 1.5em 0;
 
   .item {
     display: flex;
@@ -387,7 +357,7 @@ body {
 @include media-min('medium') {
   .block-file-structure {
     display: flex;
-    margin-bottom: 2em;
+    margin: 3em 0;
 
     .item {
       flex: 0 1 50%;
@@ -528,7 +498,6 @@ body {
     }
   }
 
-  // Active Item
   .active > a {
     color: $color-link;
 
@@ -537,7 +506,7 @@ body {
     }
   }
 
-  // Display Styles
+  // Display Toggle
   ul ul {
     display: none;
   }
@@ -654,12 +623,6 @@ body {
   @extend .list.rowed;
   @extend .list.flush;
   margin: 1.5rem 0;
-
-  h3 {
-    // font-size: px-to-em(18px);
-    // color: $color-light;
-    // font-weight: font-weight('light');
-  }
 }
 .list-docs.numbered {
   counter-reset: list-counter;
@@ -705,15 +668,49 @@ body {
   list-style: none;
   margin: 0;
 
-  li {
-    margin: 2rem 0;
+  .main-header {
+    margin-top: 0;
+  }
 
-    &:first-child {
-      margin-top: 0;
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: px-to-em(800px);
+    list-style: none;
+    margin: 0 auto;
+  }
+  ol li {
+    display: flex;
+    flex: 0 1 100%;
+    margin: 1em 0;
+  }
+
+  .article {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    border-radius: $border-radius;
+    text-decoration: none;
+  }
+
+  h2 a {
+    display: inline;
+    border-bottom: 4px solid $yellow;
+
+    &:hover {
+      border-color: $pink-a200;
+      color: $color-heading;
     }
   }
-  h1 {
-    font-size: 2em;
+}
+
+@include media-min('medium') {
+  .article-listing ol li {
+    flex: 0 1 50%;
+
+    .article {
+      margin: 0 3em;
+    }
   }
 }
 
@@ -722,28 +719,34 @@ body {
  */
 .article {
   position: relative;
+}
 
-  .meta {
+/**
+ * Meta
+ */
+.meta {
+  vertical-align: middle;
+  color: $color-light;
+
+  > span {
+    display: inline-block;
     vertical-align: middle;
+  }
+  > span + span {
+    margin-left: 0.5em;
+  }
+
+  a {
     color: $color-light;
 
-    > * {
-      display: inline-block;
-      margin-right: 0.5em;
-      vertical-align: middle;
-    }
-
-    a {
-      color: $color-light;
-
-      &:hover {
-        color: $color-link-hover;
-      }
+    &:hover {
+      color: $color-link-hover;
     }
   }
 
   .date {
     color: $color-light;
+    text-transform: uppercase;
   }
   .version {
     display: inline-block;
@@ -760,24 +763,11 @@ body {
  */
 .article-header {
   text-align: center;
-
-  &:after {
-    content: '';
-    display: inline-block;
-    margin: 1em auto;
-    height: 1px;
-    width: 3em;
-    background: rgba($black, 0.1);
-  }
+  margin-bottom: 3em;
 }
-
 @include media-min('medium') {
   .article-header {
     text-align: left;
-
-    &:after {
-      margin: 1em 0;
-    }
   }
 }
 
@@ -788,7 +778,6 @@ body {
   font-size: px-to-em(16em);
   line-height: 1.6em;
 }
-
 @include media-min('medium') {
   .article .content {
     font-size: px-to-em(18em);
@@ -813,22 +802,22 @@ body {
     color: $white;
     text-decoration: none;
 
-    &.social-facebook {
-      background: map-get($social, 'facebook');
-    }
-    &.social-twitter {
-      background: map-get($social, 'twitter');
-    }
-    &.social-google {
-      background: map-get($social, 'google');
-    }
-
     &:hover {
       opacity: 0.7;
     }
   }
   a + a {
     margin-left: 0.25rem;
+  }
+
+  .social-facebook {
+    background: map-get($social, 'facebook');
+  }
+  .social-twitter {
+    background: map-get($social, 'twitter');
+  }
+  .social-google {
+    background: map-get($social, 'google');
   }
   .icon {
     font-size: px-to-em(22px);
@@ -895,7 +884,7 @@ body {
 /**
  * Featured Images
  */
-.main .featured {
+.img-featured {
   margin: 0 0 2em 0;
   width: 100%;
   height: auto;
@@ -918,13 +907,12 @@ body {
 ==============================================================================*/
 
 /**
- * Blocks
+ * Action Block
  */
 .block-action {
-  margin: 2em 0;
+  max-width: px-to-em(800px);
+  margin: 1.5em auto;
   padding: 1.5em 3em;
-  // border: 1px solid rgba($black, 0.1);
-  // background: $deep-purple-700;
   background-image: linear-gradient(45deg, $pink-900, $deep-purple-900);
   border-radius: $border-radius;
   color: $white;
@@ -934,37 +922,39 @@ body {
     @extend .h4;
     color: $white;
   }
-  .action {
-    margin: 1em 0;
+}
+
+.block-action .action {
+  margin: 1em 0;
+  display: block;
+
+  .button {
+    width: 100%;
     display: block;
+    margin: 1em 0;
+    background: rgba($white, 0);
+    border: 2px solid rgba($white, 1);
+    color: $white;
+    transition: none;
 
-    .button {
-      width: 100%;
-      display: block;
-      margin: 1em 0;
-      background: rgba($white, 0);
-      border: 2px solid rgba($white, 1);
-      color: $white;
-      transition: none;
-
-      &:hover,
-      &:focus {
-        background: $white;
-        color: $color;
-      }
+    &:hover,
+    &:focus {
+      background: $white;
+      color: $color;
     }
   }
 }
 
 @include media-min('medium') {
   .block-action {
-    .action {
+    margin: 3em auto;
+  }
+  .block-action .action {
+    display: inline-block;
+    .button {
+      width: auto;
       display: inline-block;
-      .button {
-        width: auto;
-        display: inline-block;
-        margin: 0 0.5em;
-      }
+      margin: 0 0.5em;
     }
   }
 }
@@ -974,6 +964,7 @@ body {
 ==============================================================================*/
 
 .footer {
+  padding: 2em 0;
   font-size: px-to-em(14px);
   color: $color-light;
   text-align: center;
