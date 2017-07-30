@@ -217,15 +217,29 @@ body {
 }
 
 /**
+ * Hero Content Container
+ */
+.hero-content .container {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+@include media-min('small') {
+  .hero-content .container {
+    padding: 4em 5em 6em;
+  }
+}
+@include media-min('medium') {
+  .hero-content .container {
+    padding: 8em 10em 10em;
+  }
+}
+
+/**
  * Hero Content
  */
 .hero-content {
   text-align: center;
 
-  .container {
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
   h1 {
     margin: 1em 0 2em;
     color: $white;
@@ -259,24 +273,6 @@ body {
       color: rgba($white, 0.5);
     }
   }
-}
-
-@include media-min('small') {
-  .hero-content {
-    .container {
-      padding: 5em 5em 6em;
-    }
-  }
-}
-
-@include media-min('medium') {
-
-  .hero-content {
-    .container {
-      padding: 10em 10em 12em;
-    }
-  }
-
 }
 
 /*==============================================================================
