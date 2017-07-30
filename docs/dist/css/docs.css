@@ -205,7 +205,7 @@ body {
  * Headings
  */
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1, .h2, .h3, .h4, .block-action h2, .h5, .widget h2, .h6 {
   margin: 1rem 0;
   font-family: inherit;
   font-weight: 600;
@@ -214,19 +214,14 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-.h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
-  color: #2196F3;
+.h1 a, .h2 a, .h3 a, .h4 a, .block-action h2 a, .h5 a, .widget h2 a, .h6 a {
+  color: #212121;
   text-decoration: none;
 }
 
-h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited,
-.h1 a:visited, .h2 a:visited, .h3 a:visited, .h4 a:visited, .h5 a:visited, .h6 a:visited {
-  color: #2196F3;
-}
-
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
-.h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover {
-  color: #E64A19;
+.h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .block-action h2 a:hover, .h5 a:hover, .widget h2 a:hover, .h6 a:hover {
+  color: #2196F3;
 }
 
 h1, .h1 {
@@ -241,11 +236,11 @@ h3, .h3 {
   font-size: 1.75em;
 }
 
-h4, .h4 {
+h4, .h4, .block-action h2 {
   font-size: 1.5em;
 }
 
-h5, .h5 {
+h5, .h5, .widget h2 {
   font-size: 1.25em;
 }
 
@@ -266,10 +261,6 @@ p {
 a {
   color: #2196F3;
   text-decoration: underline;
-}
-
-a:visited {
-  color: #7B1FA2;
 }
 
 a:hover {
@@ -4913,8 +4904,8 @@ figure {
  */
 .swatch {
   display: inline-block;
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 }
@@ -4943,16 +4934,12 @@ figure {
   background: #1976D2;
 }
 
-.bg-color-link-visited {
-  background: #7B1FA2;
-}
-
 .bg-color-link-heading {
-  background: #2196F3;
+  background: #212121;
 }
 
 .bg-color-link-heading-hover {
-  background: #E64A19;
+  background: #2196F3;
 }
 
 .bg-bg-color {
@@ -4987,7 +4974,7 @@ figure {
 }
 
 .swatch-wrap .swatch-value {
-  margin-left: 49px;
+  margin-left: 60px;
   display: inline-block;
   width: auto;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -5736,12 +5723,6 @@ body {
   background: #F5F5F5;
 }
 
-.widget h2 {
-  margin: 1em 0;
-  font-size: 1em;
-  font-weight: 500;
-}
-
 .widget h2 a {
   color: #212121;
 }
@@ -5760,6 +5741,11 @@ body {
 /**
  * Widget Menu
  */
+.widget-menu h2 {
+  font-size: 1em;
+  font-weight: 500;
+}
+
 .widget-menu h2 a {
   display: inline-block;
   padding: 0;
@@ -5896,12 +5882,6 @@ body {
  */
 .list-docs {
   margin: 1.5rem 0;
-}
-
-.list-docs h3 {
-  font-size: 1.125em;
-  color: #9E9E9E;
-  font-weight: 300;
 }
 
 .list-docs.numbered {
@@ -6130,6 +6110,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   color: #212121;
+  text-decoration: none;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
@@ -6137,7 +6118,6 @@ body {
 .page-nav a:hover {
   color: #212121;
   border-color: #2196F3;
-  text-decoration: none;
 }
 
 .page-nav .icon {
@@ -6195,7 +6175,7 @@ body {
   text-align: center;
 }
 
-.block-action h3 {
+.block-action h2 {
   color: #fff;
 }
 

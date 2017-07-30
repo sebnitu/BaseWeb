@@ -469,9 +469,7 @@ body {
   }
 }
 .widget h2 {
-  margin: 1em 0;
-  font-size: 1em;
-  font-weight: font-weight('medium');
+  @extend .h5;
 
   a {
     color: $color;
@@ -493,6 +491,10 @@ body {
  */
 .widget-menu {
 
+  h2 {
+    font-size: 1em;
+    font-weight: font-weight('medium');
+  }
   h2 a {
     display: inline-block;
     padding: 0;
@@ -654,9 +656,9 @@ body {
   margin: 1.5rem 0;
 
   h3 {
-    font-size: px-to-em(18px);
-    color: $color-light;
-    font-weight: font-weight('light');
+    // font-size: px-to-em(18px);
+    // color: $color-light;
+    // font-weight: font-weight('light');
   }
 }
 .list-docs.numbered {
@@ -874,12 +876,12 @@ body {
     border: 1px solid rgba($black, 0.1);
     border-radius: $border-radius;
     color: $color;
+    text-decoration: none;
     transition: $transition;
 
     &:hover {
       color: $color;
       border-color: $color-link;
-      text-decoration: none;
     }
   }
   .icon {
@@ -938,7 +940,8 @@ body {
   color: $white;
   text-align: center;
 
-  h3 {
+  h2 {
+    @extend .h4;
     color: $white;
   }
   .action {
