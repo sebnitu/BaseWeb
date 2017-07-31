@@ -189,8 +189,13 @@ body {
 /**
  * Off-Canvas Menu
  */
-.oc-aside .button.close {
-  margin: 0.5em;
+.oc-aside .button {
+  background: none;
+
+  &:hover {
+    background: none;
+    color: $color-link;
+  }
 }
 
 /*==============================================================================
@@ -448,28 +453,34 @@ body {
  */
 .widget {
   margin: 0;
-  padding: 2rem 0;
+  padding: 0;
   border-radius: $border-radius;
 
-  &:first-child {
-    padding-top: 1rem;
-  }
-  &:last-child {
-    padding-bottom: 1rem;
-  }
   .widget + .widget {
     border-top: 1px solid rgba($black, 0.1);
   }
 
+  &.card,
+  &.fill {
+    padding: 1em 1.5em;
+  }
   &.card {
-    padding: 1em 2em;
     border: 1px solid $border-color;
   }
   &.fill {
-    padding: 1.5em;
     background: $bg-color;
   }
 }
+
+@include media-min('medium') {
+  .widget {
+    padding: 1em 0;
+  }
+}
+
+/**
+ * Widget Title
+ */
 .widget h2 {
   @extend .h5;
 
@@ -479,13 +490,6 @@ body {
   a:hover {
     color: $color-link;
   }
-}
-
-/**
- * Inline content widgets
- */
-.col-9 .widget {
-  margin: 1.5em 0;
 }
 
 /**
@@ -579,6 +583,7 @@ body {
  * Widget Back
  */
 .widget-back {
+  display: none;
   text-align: center;
 
   &:first-child,
@@ -588,6 +593,7 @@ body {
 }
 @include media-min('medium') {
   .widget-back {
+    display: block;
     margin: 0;
     text-align: left;
 
@@ -990,12 +996,21 @@ body {
     opacity: 0.4;
   }
 
-  a {
+  a:not(.button) {
     color: $color-light;
     text-decoration: none;
 
     &:hover {
       color: $color-link-hover;
+    }
+  }
+
+  .button {
+    margin: 1em auto 0;
+    background: $white;
+
+    &:hover {
+      color: $color-link;
     }
   }
 }
@@ -1011,6 +1026,10 @@ body {
     }
     img {
       margin: 0;
+    }
+
+    .button-totop {
+      display: none;
     }
   }
 }

@@ -27,8 +27,10 @@ var offcanvas = (function () {
 
   var openOffCanvas = function() {
 
+    // Get the trigger
+    var trigger = event.target.closest('.' + settings.classTrigger);
     // Get the target data
-    var target = event.target.dataset.target;
+    var target = trigger.dataset.target;
     // Check if a target exists
     if (target) {
       // Get the wrap

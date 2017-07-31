@@ -7,7 +7,7 @@ layout: default
   <aside class="sidebar sticky col col-2">
     <div class="widget widget-back">
       <a href="/blog/" class="button button-icon tooltip" data-tooltip="Close Article">
-        <svg class="icon icon-x"><use xlink:href="#icon-x"></use></svg>
+        {% include content-icon.html icon="x" %}
       </a>
       {% include content-button-totop.html %}
     </div><!-- .widget -->
@@ -27,20 +27,20 @@ layout: default
       {{ content }}
     </div><!-- .article-content -->
 
-    {% include social.html %}
+    {% include content-social.html %}
 
     {% if page.previous or page.next %}
     <div class="page-nav">
       {% if page.previous %}
       <a href="{{ page.previous.url }}" class="prev">
-        <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
+        {% include content-icon.html icon="arrow-left" %}
         <span>{{ page.previous.title }}</span>
       </a>
       {% endif %}
 
       {% if page.next %}
       <a href="{{ page.next.url }}" class="next">
-        <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
+        {% include content-icon.html icon="arrow-right" %}
         <span>{{ page.next.title }}</span>
       </a>
       {% endif %}

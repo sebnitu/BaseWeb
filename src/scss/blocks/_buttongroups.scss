@@ -10,7 +10,7 @@ $button-groups: (
   'class-group' : 'button-group',
   'display' : 'inline',
   'orientation' : 'horizontal',
-  'border-width': 1px
+  'spacing' : 3px,
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -108,7 +108,7 @@ $button-groups: (
 
       + .button {
         margin-top: 0;
-        margin-left: -(map-get($o, 'border-width'));
+        margin-left: (map-get($o, 'spacing'));
       }
 
       &:first-child {
@@ -128,7 +128,7 @@ $button-groups: (
       border-width: map-get($o, 'border-width');
 
       + .button {
-        margin-top: -(map-get($o, 'border-width')); // Border width of buttons
+        margin-top: (map-get($o, 'spacing'));
         margin-left: 0;
       }
 
