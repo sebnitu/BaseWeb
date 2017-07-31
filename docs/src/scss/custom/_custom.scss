@@ -22,6 +22,16 @@ body {
   background: $white;
 }
 
+/**
+ * Hide SVG Library
+ */
+.svg-symbols {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 /*==============================================================================
   @Header - #{$filename}
 ==============================================================================*/
@@ -382,6 +392,21 @@ body {
 }
 
 /*==============================================================================
+  @Buttons - #{$filename}
+==============================================================================*/
+
+.button-icon {
+  @extend .button.default;
+  display: inline-block;
+  padding: px-to-em(12px);
+
+  .icon {
+    font-size: px-to-em(24px);
+    vertical-align: middle;
+  }
+}
+
+/*==============================================================================
   @Widget Wrap - #{$filename}
 ==============================================================================*/
 
@@ -556,14 +581,6 @@ body {
 .widget-back {
   text-align: center;
 
-  .button {
-    padding: 0.75em;
-  }
-  .icon {
-    font-size: px-to-em(28px);
-    vertical-align: middle;
-  }
-
   &:first-child,
   &:last-child {
     padding: 0;
@@ -656,23 +673,6 @@ body {
       line-height: 1.5em;
       color: $color-light;
     }
-  }
-}
-
-.subsection:last-child .list-docs:last-child > li:last-child {
-  border-bottom: 0 none;
-}
-
-/**
- * Sections
- */
-.subsection {
-  margin: 2rem 0;
-}
-
-@include media-min('medium') {
-  .subsection {
-    margin: 3rem 0;
   }
 }
 
@@ -876,7 +876,8 @@ body {
   }
   .icon {
     float: left;
-    font-size: px-to-em(32px);
+    margin: px-to-em(2px);
+    font-size: px-to-em(24px);
     vertical-align: top;
   }
   span {

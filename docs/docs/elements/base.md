@@ -24,9 +24,7 @@ Some general styles and global resets are defined here. This is where we store a
   <li>Outputs our show-hide max classes if one is set in <code>$class-show-hide-max</code>.</li>
 </ul>
 
-<section class="subsection subsection-classes" markdown="1">
-
-# Base Classes
+## Base Classes
 
 Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clearfix).
 
@@ -34,7 +32,7 @@ Base classes are primarily element and block neutral classes that can apply to a
 
 <li markdown="1">
 
-## .clearfix
+### .clearfix
 
 Use this class to clear an element that contains floats. Whether or not this class is output depends on the <code>$class-clearfix</code> and if set to `null` will not output the class styles.
 
@@ -42,7 +40,7 @@ Use this class to clear an element that contains floats. Whether or not this cla
 <div class="clearfix"></div>
 ```
 
-### Example Usage
+#### Example Usage
 
 ```html
 <div class="wrapper clearfix">
@@ -59,7 +57,7 @@ Use this class to clear an element that contains floats. Whether or not this cla
 
 <li markdown="1">
 
-## .remove-clearfix
+### .remove-clearfix
 
 Use this class to remove the styles that would clear an element. Whether or not this class is output depends on the `$class-remove-clearfix` and if set to `null` will not output the class styles. This class is typically used when a clearfix is inherited on an element and you'd like it removed.
 
@@ -71,7 +69,7 @@ Use this class to remove the styles that would clear an element. Whether or not 
 
 <li markdown="1">
 
-## .float-left
+### .float-left
 
 A quick way for floating an element to the left. If global variable `$class-float-left` is set to `null`, no class styles will be output.
 
@@ -83,7 +81,7 @@ A quick way for floating an element to the left. If global variable `$class-floa
 
 <li markdown="1">
 
-## .float-right
+### .float-right
 
 A quick way for floating an element to the right. If global variable `$class-float-right` is set to `null`, no class styles will be output.
 
@@ -95,7 +93,7 @@ A quick way for floating an element to the right. If global variable `$class-flo
 
 <li markdown="1">
 
-## Utility Classes
+### Utility Classes
 
 Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the golbal settings:
 
@@ -140,4 +138,3 @@ Utility show and hide classes along with media based toggles. These are created 
 </li>
 
 </ul>
-</section>

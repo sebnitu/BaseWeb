@@ -1632,7 +1632,7 @@ fieldset[disabled] .input {
 /**
  * Button Color
  */
-.button.default {
+.button.default, .button-icon {
   color: #212121;
   text-shadow: none;
   background-color: #efefef;
@@ -1640,16 +1640,16 @@ fieldset[disabled] .input {
   border: none;
 }
 
-.button.default:visited {
+.button.default:visited, .button-icon:visited {
   color: #212121;
 }
 
-.button.default:hover, .button.default:focus {
+.button.default:hover, .button-icon:hover, .button.default:focus, .button-icon:focus {
   color: #212121;
   background-color: #e2e2e2;
 }
 
-.button.default:active {
+.button.default:active, .button-icon:active {
   color: #212121;
   background-color: #d6d6d6;
 }
@@ -5233,6 +5233,16 @@ body {
   background: #fff;
 }
 
+/**
+ * Hide SVG Library
+ */
+.svg-symbols {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 /*==============================================================================
   @Header - scss/custom/_custom.scss
 ==============================================================================*/
@@ -5632,6 +5642,19 @@ body {
 }
 
 /*==============================================================================
+  @Buttons - scss/custom/_custom.scss
+==============================================================================*/
+.button-icon {
+  display: inline-block;
+  padding: 0.75em;
+}
+
+.button-icon .icon {
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+/*==============================================================================
   @Widget Wrap - scss/custom/_custom.scss
 ==============================================================================*/
 .widget-wrap {
@@ -5813,15 +5836,6 @@ body {
   text-align: center;
 }
 
-.widget-back .button {
-  padding: 0.75em;
-}
-
-.widget-back .icon {
-  font-size: 1.75em;
-  vertical-align: middle;
-}
-
 .widget-back:first-child, .widget-back:last-child {
   padding: 0;
 }
@@ -5893,23 +5907,6 @@ body {
   font-size: 2em;
   line-height: 1.5em;
   color: #9E9E9E;
-}
-
-.subsection:last-child .list-docs:last-child > li:last-child {
-  border-bottom: 0 none;
-}
-
-/**
- * Sections
- */
-.subsection {
-  margin: 2rem 0;
-}
-
-@media (min-width: 760px) {
-  .subsection {
-    margin: 3rem 0;
-  }
 }
 
 /**
@@ -6139,7 +6136,8 @@ body {
 
 .page-nav .icon {
   float: left;
-  font-size: 2em;
+  margin: 0.125em;
+  font-size: 1.5em;
   vertical-align: top;
 }
 

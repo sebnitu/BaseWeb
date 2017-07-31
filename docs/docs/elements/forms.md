@@ -93,9 +93,7 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
   </form>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Form Variables
+## Form Variables
 
 Form variables are encompassed within the `$forms` map and are used throughout all form mixins to set default values.
 
@@ -215,11 +213,7 @@ Form variables are encompassed within the `$forms` map and are used throughout a
   <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
 </div>
 
-</section>
-
-<section class="subsection subsection-classes" markdown="1">
-
-# Form Structure Classes
+## Form Structure Classes
 
 These are that classes that BaseWeb provides for structuring a form. They are supplementary to a form's base structure elements and can be omitted or expanded upon (using form mixins) depending on your needs.
 
@@ -227,7 +221,7 @@ These are that classes that BaseWeb provides for structuring a form. They are su
 
 <li markdown="1">
 
-## .form-group
+### .form-group
 
 Form groups are the first structure element used in a BaseWeb forms. It applies our vertical spacing and a hook for adding modifier classes and custom styles.
 
@@ -264,7 +258,7 @@ Form groups are the first structure element used in a BaseWeb forms. It applies 
 
 <li markdown="1">
 
-## .form-header
+### .form-header
 
 Used to define a form header. It gets the vertical spacing and custom typographic styles for headings and paragraph elements that it contains.
 
@@ -290,7 +284,7 @@ Used to define a form header. It gets the vertical spacing and custom typographi
 
 <li markdown="1">
 
-## .form-action
+### .form-action
 
 Action groups are used to wrap form submission, resets and other form actions. It's also a way to apply custom styles and modifiers as a form footer. Within the `.form-action` element, you also have the `.input-align` class to align none-input elements vertically.
 
@@ -316,7 +310,7 @@ Action groups are used to wrap form submission, resets and other form actions. I
 
 <li markdown="1">
 
-## .input-group
+### .input-group
 
 Input groups are used to wrap groups of related input elements. It, like form groups, applies vertical spacing and another hook for adding modifier classes.
 
@@ -352,7 +346,7 @@ Input groups are used to wrap groups of related input elements. It, like form gr
 
 <li markdown="1">
 
-## .inline
+### .inline
 
 You can create inline forms by adding the class `.inline` to form structure elements. If applied to a `.form-group` element, it also makes children `.form-group` and `.input-group` elements inline as well.
 
@@ -378,7 +372,7 @@ You can create inline forms by adding the class `.inline` to form structure elem
 
 <li markdown="1">
 
-## Form Grids
+### Form Grids
 
 For more complex form layouts, you have BaseWeb's default grid system to create rows and columns. This is done using the `.row` `.col` and `.col-#` classes where `#` represents the number of columns to span.
 
@@ -428,7 +422,7 @@ For more complex form layouts, you have BaseWeb's default grid system to create 
 
 <li markdown="1">
 
-## Form Validation States
+### Form Validation States
 
 There are three validation states represented through the classes `.success`, `.warning` and `.error`. There's also a fourth state class `.active`, that is used to simulate the focus styles for form inputs. It's also possible to add these states to form elements directly.
 
@@ -521,11 +515,7 @@ There are three validation states represented through the classes `.success`, `.
 
 </ul>
 
-</section>
-
-<section class="subsection subsection-elements" markdown="1">
-
-# Form Elements
+## Form Elements
 
 BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in `$forms`.
 
@@ -535,7 +525,7 @@ The `.inline` class is available for all form elements to manually set them inli
 
 <li markdown="1">
 
-## Input
+### Input
 
 The `.input` class is used to style the most common input types: `text`, `password`, `date`, `month`, `week`, `time`, `email`, `number`, `search`, `tel`, `url` and `color`.
 
@@ -557,7 +547,7 @@ The `.input` class is used to style the most common input types: `text`, `passwo
 
 <li markdown="1">
 
-## Textarea
+### Textarea
 
 The `.input` class is used to style textareas. The height is then reset to auto so that it can be manually set with the `rows` attribute. They also have their max-width set to 100% so that they can't be resized passed the width of their container.
 
@@ -575,7 +565,7 @@ The `.input` class is used to style textareas. The height is then reset to auto 
 
 <li markdown="1">
 
-## Select
+### Select
 
 Select elements are styled with the `.input` class and also receive custom styles with dropdown arrow. There are also custom styles applied to select elements that use the `size` and `multiple` attributes.
 
@@ -610,7 +600,7 @@ Select elements are styled with the `.input` class and also receive custom style
 
 <li markdown="1">
 
-## Checkbox and Radio
+### Checkbox and Radio
 
 BaseWeb styles checkbox and radio inputs by wrapping them with labels and applying `.checkbox` and `.radio` classes to them.
 
@@ -654,7 +644,7 @@ BaseWeb styles checkbox and radio inputs by wrapping them with labels and applyi
 
 <li markdown="1">
 
-## Choice
+### Choice
 
 Choice elements are custom styled checkbox and radio input elements. They are represented by adding the `.choice` class to the wrapping label element of checkboxes and radios.
 
@@ -694,7 +684,7 @@ They receive extra padding so that they match the height of `.input` elements wh
 
 <li markdown="1">
 
-## Label
+### Label
 
 You'll rarely have a form without labels and are styled differently depending on their context. There are a number of classes that are available to modify the appearance and behavior of labels.
 
@@ -740,7 +730,7 @@ You'll rarely have a form without labels and are styled differently depending on
 
 <li markdown="1">
 
-## Notes
+### Notes
 
 Notes are custom form elements in BaseWeb and are represented using the `.note` class. Notes can work as descriptive text, help text or any sort of informative text to help a user navigate a form. They are contextual and receive unique spacing based on their siblings.
 
@@ -779,11 +769,7 @@ Notes are custom form elements in BaseWeb and are represented using the `.note` 
 
 </ul>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Form Mixins
+## Form Mixins
 
 Because of the complexity of HTML forms, BaseWeb mainly favors using classes and context to style forms. But there are a small set of mixins that can be used to expand form customization.
 
@@ -791,7 +777,7 @@ Because of the complexity of HTML forms, BaseWeb mainly favors using classes and
 
 <li markdown="1">
 
-## placeholder
+### placeholder
 
 Sets the placeholder text color for input fields that use the placeholder attribute.
 
@@ -821,7 +807,7 @@ Sets the placeholder text color for input fields that use the placeholder attrib
 
 <li markdown="1">
 
-## make-form-group-base
+### make-form-group-base
 
 Creates the styles for a base form group by applying vertical spacing.
 
@@ -846,7 +832,7 @@ Creates the styles for a base form group by applying vertical spacing.
 
 <li markdown="1">
 
-## make-form-group-inline
+### make-form-group-inline
 
 Creates the styles for making an inline form group element.
 
@@ -871,7 +857,7 @@ Creates the styles for making an inline form group element.
 
 <li markdown="1">
 
-## make-input-inline
+### make-input-inline
 
 Creates the styles for making an inline form element.
 
@@ -895,66 +881,3 @@ Creates the styles for making an inline form element.
 </li>
 
 </ul>
-
-</section>
-
-<!--
-<label>Text Input</label>
-<input class="input" type="text" placeholder="Text">
-
-<label>Password Input</label>
-<input class="input" type="password" placeholder="Password">
-
-<label>Date Input</label>
-<input class="input" type="date">
-
-<label>Month Input</label>
-<input class="input" type="month">
-
-<label>Week Input</label>
-<input class="input" type="week">
-
-<label>Time Input</label>
-<input class="input" type="time">
-
-<label>Email Input</label>
-<input class="input" type="email" placeholder="example@email.com">
-
-<label>Number Input</label>
-<input class="input" type="number">
-
-<label>Search Input</label>
-<input class="input" type="search">
-
-<label>Telephone Input</label>
-<input class="input" type="tel">
-
-<label>Web Address Input</label>
-<input class="input" type="url" placeholder="http://">
-
-<label>Color Input</label>
-<input class="input" type="color">
-
-<label>Textarea</label>
-<textarea class="input"></textarea>
-
-<label>Select</label>
-<select class="input">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-</select>
-
-<label>Multiple Select</label>
-<select class="input" multiple>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-</select>
-
-<label>File Input</label>
-<input type="file">
-
-<label>Range Input</label>
-<input type="range">
--->

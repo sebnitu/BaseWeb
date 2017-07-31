@@ -22,9 +22,7 @@ There are four ways you can markup a button. An anchor, button or input element 
   </p>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Button Variables
+## Button Variables
 
 Button variables are encompassed within the `$buttons` map and are used throughout all button mixins to set default values.
 
@@ -183,11 +181,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
 ** `$buttons('hover', 'background')` and `$buttons('active', 'background')` is the background color to use on `:hover` and `:active` respectively. If set to `lighten` or `darken` it will take the `$buttons('background')` color and lighten or darken it using `$buttons('background-deg')` as the modifier. You can also pass a specific color to use.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Button Mixins
+## Button Mixins
 
 Button are common place on the web these days, especially in web applications. Whether you need one, or a dozen button types and styles, BaseWeb provides mixins and classes for creating beautiful buttons to add to your UI toolkit.
 
@@ -195,7 +189,7 @@ Button are common place on the web these days, especially in web applications. W
 
 <li markdown="1">
 
-## make-button
+### make-button
 
 Creates the base styles for a button modifier mixin or class. Usually applied directly through a base button class, mixin or an extend placeholder. If button modifier classes are enabled, you are provided `.button` for your base button class.
 
@@ -216,7 +210,7 @@ Creates the base styles for a button modifier mixin or class. Usually applied di
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 This example shows us using a `%base-button` placeholder for the extend method. Other methods include adding `make-button()` to a general class which is applied to button elements directly (which is the method BaseWeb uses for its classes).
 
@@ -238,7 +232,7 @@ This example shows us using a `%base-button` placeholder for the extend method. 
 
 <li markdown="1">
 
-## add-button-color
+### add-button-color
 
 Handles all the color variations of a button such as color, text-shadow, background and border color.
 
@@ -259,7 +253,7 @@ Handles all the color variations of a button such as color, text-shadow, backgro
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Use this mixin along with `make-button()` to create custom semantic button styles. You can pass in a map to replace any of the defaults from the `$buttons` map.
 
@@ -279,7 +273,7 @@ Use this mixin along with `make-button()` to create custom semantic button style
   </p>
 </div>
 
-### Available Classes
+#### Available Classes
 
 If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.
 
@@ -324,7 +318,7 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 
 <li markdown="1">
 
-## add-button-size
+### add-button-size
 
 Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.
 
@@ -350,7 +344,7 @@ Handles size variations for buttons. This is done by changing the padding, font-
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 The first parameter is a quick way to make a button use the default small or large size set in our `$buttons` map. Or you can pass in a `$options:()` map for custom padding, font-size and line-height.
 
@@ -376,7 +370,7 @@ The first parameter is a quick way to make a button use the default small or lar
 }
 ```
 
-### Available Classes
+#### Available Classes
 
 ```html
 <button class="button primary large">Large Button</button>
@@ -396,7 +390,7 @@ The first parameter is a quick way to make a button use the default small or lar
 
 <li markdown="1">
 
-## add-button-block
+### add-button-block
 
 Makes the button block with 100% width. This is typically used for mobile friendly buttons.
 
@@ -417,7 +411,7 @@ Makes the button block with 100% width. This is typically used for mobile friend
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .button-custom-mobile {
@@ -441,5 +435,3 @@ Makes the button block with 100% width. This is typically used for mobile friend
 </li>
 
 </ul>
-
-</section>

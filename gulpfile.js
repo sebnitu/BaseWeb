@@ -1,7 +1,4 @@
-// BaseWeb's Gulpfile
-// Gulp.js configuration
 var
-  // Require Modules
   // Global
   gulp = require('gulp'),
   gutil = require('gulp-util'),
@@ -10,19 +7,23 @@ var
   replace = require('gulp-replace'),
   merge = require('merge-stream'),
   minimist = require('minimist'),
+
   // CSS
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
+
   // JS
   concat = require('gulp-concat'),
   deporder = require('gulp-deporder'),
   stripdebug = require('gulp-strip-debug'),
   uglify = require('gulp-uglify'),
+
   // Img
   imagemin = require('gulp-imagemin'),
+  svgSymbols = require('gulp-svg-symbols'),
 
   // folders
   folder = {
@@ -55,10 +56,10 @@ var
   options = minimist(process.argv.slice(2))
 ;
 
-// ---
-
-// Utility Tasks
-// Search and replace
+/**
+ * Utility Tasks
+ * Search and replace
+ */
 gulp.task('replace', function() {
 
   var src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : [];
@@ -88,11 +89,10 @@ gulp.task('replace', function() {
 
 });
 
-// ---
-
-// BaseWeb Source Builds
-// CSS processing
-// Output expanded and minified CSS files from source
+/**
+ * BaseWeb Source Builds
+ * Output expanded and minified CSS files from source
+ */
 gulp.task('css', function() {
   var
     src = folder.src + 'scss/baseweb.scss',
@@ -124,8 +124,10 @@ gulp.task('css', function() {
   return merge(css, cssmin);
 });
 
-// JavaScript processing
-// Output expanded and minified JS files from source
+/**
+ * JavaScript processing
+ * Output expanded and minified JS files from source
+ */
 gulp.task('js', function() {
   var
     src = folder.src + 'js/**/*',
@@ -144,10 +146,10 @@ gulp.task('js', function() {
   return merge(js, jsmin);
 });
 
-// ---
-
-// Documentation Builds
-// Output expanded and minified CSS files from documentation
+/**
+ * Documentation Builds
+ * Output expanded and minified CSS files from documentation
+ */
 gulp.task('docs:css', function() {
   var
     src = folder.srcDocs + 'scss/docs.scss',
@@ -180,8 +182,10 @@ gulp.task('docs:css', function() {
   return merge(css, cssmin);
 });
 
-// JS Processing
-// Output expanded and minified JS files from documentation
+/**
+ * JS Processing
+ * Output expanded and minified JS files from documentation
+ */
 gulp.task('docs:js', function() {
   var
     src = [
@@ -203,8 +207,10 @@ gulp.task('docs:js', function() {
   return merge(js, jsmin);
 });
 
-// Image processing
-// Compress all image files from documentation
+/**
+ * Image processing
+ * Compress all image files from documentation
+ */
 gulp.task('docs:img', function() {
   var dest = folder.destDocs + 'img/';
   return gulp.src(folder.srcDocs + 'img/**/*')
@@ -213,18 +219,32 @@ gulp.task('docs:img', function() {
     .pipe(gulp.dest(dest));
 });
 
-// ---
+/**
+ * Feather Icons Builder
+ * Grabs all individual icons from [src] and builds an svg-symbols.svg file
+ */
+gulp.task('docs:svg', function() {
+  return gulp.src( folder.srcDocs + 'svg/*.svg' )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( 'docs/_includes/' ));
+});
 
 // Watch & Bulk Tasks
 // Builds all source assets
 gulp.task('src', ['css', 'js']);
 // Builds all documentation assets
-gulp.task('docs', ['docs:css', 'docs:js', 'docs:img']);
+gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'docs:svg']);
 // Build everything
 gulp.task('go', ['src', 'docs']);
 
-// watch for changes
-// Watches all asset files and runs the appropriate build task based on changed
+/**
+ * Watch Changes
+ * Watches all asset files and runs the appropriate build task based on changed
+ */
 gulp.task('watch', function() {
 
   // src scss changes
@@ -238,6 +258,8 @@ gulp.task('watch', function() {
   gulp.watch(folder.srcDocs + 'js/**/*', ['docs:js']);
   // docs img changes
   gulp.watch(folder.srcDocs + 'img/**/*', ['docs:img']);
+  // docs svg changes
+  gulp.watch(folder.srcDocs + 'svg/*.svg', ['docs:svg']);
 
 });
 

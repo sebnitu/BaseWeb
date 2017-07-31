@@ -77,7 +77,7 @@ $filename: 'scss/custom/_custom.scss';
 ==============================================================================*/
 ```
 
-## Layout & Component Driven Architecture
+## Layout and Component Driven Architecture
 
 BaseWeb is a component driven framework. But you can break from this methodology if your project needs. For projects that require a large amount of layouts or templates, it's common to create layout specific SCSS files. An example of this might look like this:
 
