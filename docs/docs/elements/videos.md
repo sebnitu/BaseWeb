@@ -44,7 +44,7 @@ The default video ratio can be set using the `$videos('ratio')` variable (56.25%
   <p>For more information on the technique BaseWeb uses to create fluid videos, checkout <a href="https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php">this tutorial over at CSS-Tricks</a>.</p>
 </div>
 
-## Video Variables
+## Variables
 
 Video variables are encompassed within the `$videos` map and are used in video mixins to set default values.
 
@@ -68,7 +68,7 @@ Video variables are encompassed within the `$videos` map and are used in video m
   </tr>
 </table>
 
-## Video Function
+## Functions
 
 <ul class="list list-docs">
 
@@ -111,7 +111,7 @@ aspect-ratio( $width, $height )
 
 </ul>
 
-## Video Mixins
+## Mixins
 
 <ul class="list list-docs">
 

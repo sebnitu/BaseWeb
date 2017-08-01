@@ -14,13 +14,13 @@ In HTML, the horizontal rule element (`<hr>`) represents a paragraph-level thema
   <hr>
 </div>
 
-## Horizontal Rule Classes
+## Classes
 
 <ul class="list list-docs">
 
 <li markdown="1">
 
-### hr.dotted
+### .dotted
 
 Uses the dotted border style property to created a dotted rule.
 
@@ -36,7 +36,7 @@ Uses the dotted border style property to created a dotted rule.
 
 <li markdown="1">
 
-### hr.dashed
+### .dashed
 
 Uses the dashed border style property to created a dashed rule.
 
@@ -52,7 +52,7 @@ Uses the dashed border style property to created a dashed rule.
 
 <li markdown="1">
 
-### hr.double
+### .double
 
 Uses the double border style property to created a double bordered rule.
 

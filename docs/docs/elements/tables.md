@@ -52,7 +52,7 @@ The HTML `<table>` element is used to display tabular data. Tables have rows, ce
 
 You'll notice that the base styles for a table are almost untouched. That's because tables are used in a wide array of data on the web, so any sort of custom styles that BaseWeb has available are best applied using modifier classes and mixins for semantic applications.
 
-## Table Variables
+## Variables
 
 Table variables are encompassed within the `$tables` map and are used throughout all table mixins to set default values.
 
@@ -119,7 +119,7 @@ Table variables are encompassed within the `$tables` map and are used throughout
   </tr>
 </table>
 
-## Table Mixins
+## Mixins
 
 Tabular data can be frustrating to parse if they are not styled properly. BaseWeb provides the mixins and classes you need to make tables and their content a breeze to analyze.
 

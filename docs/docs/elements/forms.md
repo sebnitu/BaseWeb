@@ -6,7 +6,7 @@ order: 9
 
 HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.
 
-## Form Structure
+## Structure
 
 Along with all standard form elements, BaseWeb provides you with `.form-group`, `.form-header`, `.form-action` and `.input-group` classes to use for structuring a form layout. You also have the BaseWeb Grid System available for creating more complex form layouts.
 
@@ -93,7 +93,7 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
   </form>
 </div>
 
-## Form Variables
+## Variables
 
 Form variables are encompassed within the `$forms` map and are used throughout all form mixins to set default values.
 
@@ -213,7 +213,7 @@ Form variables are encompassed within the `$forms` map and are used throughout a
   <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
 </div>
 
-## Form Structure Classes
+## Classes
 
 These are that classes that BaseWeb provides for structuring a form. They are supplementary to a form's base structure elements and can be omitted or expanded upon (using form mixins) depending on your needs.
 
@@ -370,152 +370,9 @@ You can create inline forms by adding the class `.inline` to form structure elem
 
 </li>
 
-<li markdown="1">
-
-### Form Grids
-
-For more complex form layouts, you have BaseWeb's default grid system to create rows and columns. This is done using the `.row` `.col` and `.col-#` classes where `#` represents the number of columns to span.
-
-```html
-<form>
-  <div class="form-group">
-    <label>Grid Example</label>
-    <div class="row">
-      <div class="col col-4">
-        ...
-      </div>
-      <div class="col col-4">
-        ...
-      </div>
-      <div class="col col-4">
-        ...
-      </div>
-    </div>
-  </div>
-</form>
-```
-
-<div class="demo">
-  <form>
-    <div class="form-group">
-      <label>Grid Example</label>
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox" checked> Choice</label>
-        </div>
-      </div>
-    </div>
-  </form>
-</div><!-- .demo -->
-
-</li>
-
-<li markdown="1">
-
-### Form Validation States
-
-There are three validation states represented through the classes `.success`, `.warning` and `.error`. There's also a fourth state class `.active`, that is used to simulate the focus styles for form inputs. It's also possible to add these states to form elements directly.
-
-```html
-<div class="form-group success">...</div>
-<div class="form-group warning">...</div>
-<div class="form-group error">...</div>
-<div class="form-group active">...</div>
-```
-
-<div class="demo">
-  <form>
-
-    <div class="form-group success">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-    </div><!-- .form-group .success -->
-
-    <div class="form-group warning">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-    </div><!-- .form-group .warning -->
-
-    <div class="form-group error">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-    </div><!-- .form-group .error -->
-
-    <div class="form-group active">
-      <div class="row">
-        <div class="col col-4">
-          <input class="input" type="text" placeholder="Example">
-        </div>
-        <div class="col col-4">
-          <select class="input">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-        </div>
-        <div class="col col-4">
-          <label class="choice"><input type="checkbox"> Choice</label>
-        </div>
-      </div>
-    </div><!-- .form-group .active -->
-
-  </form>
-</div>
-
-</li>
-
 </ul>
 
-## Form Elements
+## Elements
 
 BaseWeb supports a wide range of input types and form elements. By default, form inputs are set to display block at 100% width. They also receive half of the vertical spacing set in `$forms`.
 
@@ -767,9 +624,102 @@ Notes are custom form elements in BaseWeb and are represented using the `.note` 
 
 </li>
 
+<li markdown="1">
+
+### State Classes
+
+There are three validation states represented through the classes `.success`, `.warning` and `.error`. There's also a fourth state class `.active`, that is used to simulate the focus styles for form inputs. It's also possible to add these states to form elements directly.
+
+```html
+<div class="form-group success">...</div>
+<div class="form-group warning">...</div>
+<div class="form-group error">...</div>
+<div class="form-group active">...</div>
+```
+
+<div class="demo">
+  <form>
+
+    <div class="form-group success">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+    </div><!-- .form-group .success -->
+
+    <div class="form-group warning">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+    </div><!-- .form-group .warning -->
+
+    <div class="form-group error">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+    </div><!-- .form-group .error -->
+
+    <div class="form-group active">
+      <div class="row">
+        <div class="col col-4">
+          <input class="input" type="text" placeholder="Example">
+        </div>
+        <div class="col col-4">
+          <select class="input">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <div class="col col-4">
+          <label class="choice"><input type="checkbox"> Choice</label>
+        </div>
+      </div>
+    </div><!-- .form-group .active -->
+
+  </form>
+</div>
+
+</li>
+
 </ul>
 
-## Form Mixins
+## Mixins
 
 Because of the complexity of HTML forms, BaseWeb mainly favors using classes and context to style forms. But there are a small set of mixins that can be used to expand form customization.
 

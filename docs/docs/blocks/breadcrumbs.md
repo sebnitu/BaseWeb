@@ -36,9 +36,7 @@ Sometimes, you want to omit the current page link all together, but still repres
 
 You also have the `.wrapped` class to add simple wrapper styles to your breadcrumbs.
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Breadcrumb Variables
+## Variables
 
 Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used throughout all breadcrumb mixins to set default values.
 
@@ -108,11 +106,7 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
 ** Delimiter element content used to separate breadcrumb items (e.g: `/`, `—`, `→`, `»`).
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Breadcrumb Mixins
+## Mixins
 
 Breadcrumb mixins are used to create the class output for breadcrumbs. This includes basic breadcrumb styles and wrapper modifier as well as the fancy breadcrumb class.
 
@@ -120,7 +114,7 @@ Breadcrumb mixins are used to create the class output for breadcrumbs. This incl
 
 <li markdown="1">
 
-## make-breadcrumb
+### make-breadcrumb
 
 Creates the basic breadcrumb styles.
 
@@ -141,7 +135,7 @@ Creates the basic breadcrumb styles.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 In this example, we'll use the `make-breadcrumb()` mixin to create a custom breadcrumb style.
 
@@ -173,5 +167,3 @@ In this example, we'll use the `make-breadcrumb()` mixin to create a custom brea
 </li>
 
 </ul>
-
-</section>

@@ -6,6 +6,10 @@ order: 6
 
 The off-canvas component block is a design pattern that hides aside content outside of the default viewport which can be revealed using a button trigger. This is most commonly used for navigation components on mobile viewports. The structure of an off-canvas block is encompassed within four elements: `oc-wrap`, `oc-content`, `oc-inner` and `oc-aside`.
 
+```js
+tabs.init();
+```
+
 ```html
 <div class="oc-wrap">
   <section class="oc-content">
@@ -46,7 +50,7 @@ If you're looking to add a close trigger for off-canvas content, simply create a
 <button class="oc-trigger close">&times;</button>
 ```
 
-## Off-Canvas Transitions
+## Transitions
 
 There are eight unique effects with left and right position variations and the option to create custom transitions. Try out the transitions below. The **transition value** is what you'd set in the `$offcanvas('transition')` variable or pass to the `add-offcanvas-transition()` mixin.
 
@@ -122,87 +126,11 @@ If instead you prefer to create a custom transition effect, you can disable the 
 }
 ```
 
-## Off-Canvas JavaScript
-
-Like all BaseWeb components that require JavaScript behavior, you can use the script shown below along with jQuery to get started. Alternatively, you can also write your own scripts for off-canvas content. The general pattern for an off-canvas component should follow these requirments:
-
-1. A trigger should toggle the off-canvas aside, usually a button.
-2. Off-canvas trigger events should close active asides within their scope.
-3. Clicking on any area of the document or component scope that is not the aside should close and hide the active aside.
-4. It should be possible to have multiple off-canvas asides and/or components.
-5. These components should be self enclosed and properly scoped to not conflict with other instances.
-
-```js
-// requires jQuery (~3.1.1)
-
-/**
- * @Off Canvas
- */
-$('.oc-trigger').each(function () {
-  var
-    $this = $(this),
-    $wrap = $this.closest('.oc-wrap'),
-    $aside = $wrap.find('.oc-aside'),
-    target = $this.attr('data-target'),
-    reset = 'oc-wrap',
-    is_active = false,
-    close = function() {
-      // Remove active class
-      $wrap.removeClass('oc-active');
-      // Remove delay class after the set transition duration
-      setTimeout( function() {
-        $wrap.removeClass('oc-delay');
-      }, 500 );
-    }
-  ;
-
-  // Button click event
-  $this.click(function(e) {
-    is_active = $wrap.hasClass('oc-active');
-
-    // Check if it's a close button or if off-canvas is already active
-    if(!target || is_active) {
-      // Close off-canvas content
-      close();
-    } else {
-      // Reset container class
-      $wrap.attr('class', reset);
-    }
-    // Add target class
-    if(target && !is_active) {
-      $wrap.addClass(target);
-      // Add active and delay classes after a slight delay
-      setTimeout( function() {
-        $wrap.addClass('oc-active oc-delay');
-      }, 25 );
-    }
-
-    // Stop the default behavior
-    return false;
-  });
-
-  // Aside click event
-  $aside.click(function(e) {
-    // Stop the click propogation from bubbling down to the container
-    e.stopPropagation();
-  });
-
-  // Container click event
-  $wrap.click(function(e) {
-    // Close off-canvas content
-    close();
-  });
-
-});
-```
-
 <div class="notice warning">
   <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Off-Canvas Variables
+## Variables
 
 Off-canvas variables are encompassed within the `$offcanvas()` map and are used throughout all off-canvas mixins to set default values.
 
@@ -292,11 +220,7 @@ Off-canvas variables are encompassed within the `$offcanvas()` map and are used 
 \* Whether or not we should output off-canvas classes. Set to `false` if you want to use the off-canvas mixins semantically and/or reduce CSS output.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Off-Canvas Mixins
+## Mixins
 
 Off-canvas mixins are used to create the base styles for an off-canvas component block.
 
@@ -304,7 +228,7 @@ Off-canvas mixins are used to create the base styles for an off-canvas component
 
 <li markdown="1">
 
-## make-offcanvas
+### make-offcanvas
 
 Creates the base styles for the off-canvas block including wrapper, content, inner content and aside content whos default classes are output as `.oc-wrap`, `.oc-content`, `.oc-inner` and `.oc-aside` respectivly. If content and aside screen backgrounds are provided, styles will also be output for these pseudo elements.
 
@@ -325,7 +249,7 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Use this mixin to output the default class styles for off-canvas. You can also pass in a variable map to override specific settings.
 
@@ -359,7 +283,7 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 
 <li markdown="1">
 
-## add-offcanvas-transition
+### add-offcanvas-transition
 
 Creates transition styles for off-canvas elements. This mixin makes available 8 unique transition effects with left and right variations. These can be output using their respective style strings:
 
@@ -432,7 +356,7 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 It's important to specify the target you'd like the transition effect to be applied to. This identifier is the unique class that is applied to the `.oc-aside` element and also the value set in off-canvas triggers using the `data-target` attribute.
 
@@ -483,7 +407,7 @@ It's important to specify the target you'd like the transition effect to be appl
 
 <li markdown="1">
 
-## add-offcanvas-wrap-height
+### add-offcanvas-wrap-height
 
 Sets the off-canvas wrapper element height to `100%` using the delay class to only remove the height after the transition is finished. This is used for specific transitions which use 3D transforms.
 
@@ -505,7 +429,7 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Primarily used internally in the `add-offcanvas-transition()` mixin, this can also be used for custom transitions that require an off-canvas wrapper height of `100%`.
 
@@ -534,5 +458,3 @@ Changing the height of an element that is being animated will cause the scroll t
 </li>
 
 </ul>
-
-</section>

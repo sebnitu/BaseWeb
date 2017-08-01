@@ -24,7 +24,7 @@ Some general styles and global resets are defined here. This is where we store a
   <li>Outputs our show-hide max classes if one is set in <code>$class-show-hide-max</code>.</li>
 </ul>
 
-## Base Classes
+## Classes
 
 Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clearfix).
 
@@ -93,7 +93,7 @@ A quick way for floating an element to the right. If global variable `$class-flo
 
 <li markdown="1">
 
-### Utility Classes
+### .show and .hide
 
 Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the golbal settings:
 

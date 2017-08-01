@@ -70,7 +70,7 @@ Also, if you'd like your button group to span the full width of their container,
   </div>
 </div>
 
-## Button Group Variables
+## Variables
 
 Button group variables are encompassed within the `$button-groups` map and are used throughout all button group mixins to set default values and toggle classes output.
 
@@ -105,7 +105,7 @@ Button group variables are encompassed within the `$button-groups` map and are u
 \* Whether or not we should output button group classes. Set to `false` if you want to use the button group mixins semantically and/or reduce CSS output.
 </div>
 
-## Button Group Mixins
+## Mixins
 
 Button group mixins are used to define and modify button group styles. They provide a way to toggle button groups being horizontal or vertical and inline or block.
 

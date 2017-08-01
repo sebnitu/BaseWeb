@@ -22,7 +22,7 @@ There are four ways you can markup a button. An anchor, button or input element 
   </p>
 </div>
 
-## Button Variables
+## Variables
 
 Button variables are encompassed within the `$buttons` map and are used throughout all button mixins to set default values.
 
@@ -181,7 +181,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
 ** `$buttons('hover', 'background')` and `$buttons('active', 'background')` is the background color to use on `:hover` and `:active` respectively. If set to `lighten` or `darken` it will take the `$buttons('background')` color and lighten or darken it using `$buttons('background-deg')` as the modifier. You can also pass a specific color to use.
 </div>
 
-## Button Mixins
+## Mixins
 
 Button are common place on the web these days, especially in web applications. Whether you need one, or a dozen button types and styles, BaseWeb provides mixins and classes for creating beautiful buttons to add to your UI toolkit.
 

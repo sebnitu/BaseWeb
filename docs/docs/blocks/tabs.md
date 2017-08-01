@@ -6,6 +6,10 @@ order: 5
 
 Tabs are a high level navigational component that enable switching between views of related groups of content. They appear above the content they describe and consist of two primary parts: navigation items and the content they represent. Optionally, you can use the tabs wrapping `div` with the class of `.tabs` (default) for more easily grouping content together. Tabs are linked to their content part using the `href` attribute whos hash value contains the ID of the content it describes.
 
+```js
+tabs.init();
+```
+
 ```html
 <div class="tabs style-fold">
   <nav class="tabs-nav">
@@ -17,9 +21,9 @@ Tabs are a high level navigational component that enable switching between views
     </ul>
   </nav>
   <div class="tabs-content">
-    <section id="tabs-panel-1" class="tabs-panel active">...</section>
-    <section id="tabs-panel-2" class="tabs-panel">...</section>
-    <section id="tabs-panel-3" class="tabs-panel">...</section>
+    <div id="tabs-panel-1" class="tabs-panel active">...</div>
+    <div id="tabs-panel-2" class="tabs-panel">...</div>
+    <div id="tabs-panel-3" class="tabs-panel">...</div>
     ...
   </div>
 </div>
@@ -38,11 +42,11 @@ Tabs are a high level navigational component that enable switching between views
       </ul>
     </nav>
     <div class="tabs-content">
-      <section id="tabs-panel-1" class="tabs-panel active"><p>Tab Content 1</p></section>
-      <section id="tabs-panel-2" class="tabs-panel"><p>Tab Content 2</p></section>
-      <section id="tabs-panel-3" class="tabs-panel"><p>Tab Content 3</p></section>
-      <section id="tabs-panel-4" class="tabs-panel"><p>Tab Content 4</p></section>
-      <section id="tabs-panel-5" class="tabs-panel"><p>Tab Content 5</p></section>
+      <div id="tabs-panel-1" class="tabs-panel active"><p>Tab Content 1</p></div>
+      <div id="tabs-panel-2" class="tabs-panel"><p>Tab Content 2</p></div>
+      <div id="tabs-panel-3" class="tabs-panel"><p>Tab Content 3</p></div>
+      <div id="tabs-panel-4" class="tabs-panel"><p>Tab Content 4</p></div>
+      <div id="tabs-panel-5" class="tabs-panel"><p>Tab Content 5</p></div>
     </div>
   </div>
 
@@ -60,9 +64,9 @@ Tabs can also be displayed without the wrapping `.tabs` element.
   </ul>
 </nav>
 <div class="tabs-content" id="tabs-content-1">
-  <section id="#" class="tabs-panel active">...</section>
-  <section id="#" class="tabs-panel">...</section>
-  <section id="#" class="tabs-panel">...</section>
+  <div id="#" class="tabs-panel active">...</div>
+  <div id="#" class="tabs-panel">...</div>
+  <div id="#" class="tabs-panel">...</div>
   ...
 </div>
 ```
@@ -79,11 +83,11 @@ Tabs can also be displayed without the wrapping `.tabs` element.
     </ul>
   </nav>
   <div class="tabs-content" id="tabs-content-1">
-    <section id="tabs-panel-6" class="tabs-panel active"><p>Tab Content 1</p></section>
-    <section id="tabs-panel-7" class="tabs-panel"><p>Tab Content 2</p></section>
-    <section id="tabs-panel-8" class="tabs-panel"><p>Tab Content 3</p></section>
-    <section id="tabs-panel-9" class="tabs-panel"><p>Tab Content 4</p></section>
-    <section id="tabs-panel-10" class="tabs-panel"><p>Tab Content 5</p></section>
+    <div id="tabs-panel-6" class="tabs-panel active"><p>Tab Content 1</p></div>
+    <div id="tabs-panel-7" class="tabs-panel"><p>Tab Content 2</p></div>
+    <div id="tabs-panel-8" class="tabs-panel"><p>Tab Content 3</p></div>
+    <div id="tabs-panel-9" class="tabs-panel"><p>Tab Content 4</p></div>
+    <div id="tabs-panel-10" class="tabs-panel"><p>Tab Content 5</p></div>
   </div>
 
 </div><!-- .demo -->
@@ -113,79 +117,17 @@ BaseWeb also has two available tab style sets that can be used using the `.style
       </ul>
     </nav>
     <div class="tabs-content">
-      <section id="tabs-panel-11" class="tabs-panel"><p>Tab Content 1</p></section>
-      <section id="tabs-panel-12" class="tabs-panel active"><p>Tab Content 2</p></section>
-      <section id="tabs-panel-13" class="tabs-panel"><p>Tab Content 3</p></section>
-      <section id="tabs-panel-14" class="tabs-panel"><p>Tab Content 4</p></section>
-      <section id="tabs-panel-15" class="tabs-panel"><p>Tab Content 5</p></section>
+      <div id="tabs-panel-11" class="tabs-panel"><p>Tab Content 1</p></div>
+      <div id="tabs-panel-12" class="tabs-panel active"><p>Tab Content 2</p></div>
+      <div id="tabs-panel-13" class="tabs-panel"><p>Tab Content 3</p></div>
+      <div id="tabs-panel-14" class="tabs-panel"><p>Tab Content 4</p></div>
+      <div id="tabs-panel-15" class="tabs-panel"><p>Tab Content 5</p></div>
     </div>
   </div>
 
 </div><!-- .demo -->
 
-## Tabs JavaScript
-
-There are many ways you can create the tabs behavior, all with varying features and complexity. For simplicities sake, below is a jQuery example for creating tabs using BaseWeb tabs markup. The key feature here is that it enables you to omit the tabs wrapper and allows for an unlimited number of tab blocks in a single document.
-
-```js
-$('.tabs-nav').each(function(e) {
-
-  // Save this
-  var $this = $(this);
-
-  // Save our tabs content
-  var tabs_content = $this.parents('.tabs').find('.tabs-content');
-  var has_content = tabs_content.length;
-
-  // Check our other tabs content method if one wasn't found yet
-  if (!has_content) {
-    // Check if we have a linked content data attribute
-    tabs_content = $this.attr('data-content');
-    if (tabs_content) {
-      // Save our tabs content
-      tabs_content = $('#' + tabs_content);
-      // Set has_content to true
-      if (tabs_content.length) {
-        has_content = 1;
-      }
-    } else {
-      console.log('Tabs content does not exist!');
-    }
-  }
-
-  // Add click event to tab links
-  $this.find('a').click(function() {
-    // Check if item is already active or not
-    var is_active = $(this).parents('li').hasClass('active');
-
-    if (!is_active) {
-      // Remove active class from all children nav items
-      $this.find('li').removeClass('active');
-      // Add active class to currently selected item
-      $(this).parents('li').addClass('active');
-
-      // Check if tabs-nav has an associated content block
-      if (has_content) {
-        // Hide current active content
-        tabs_content.find('.tabs-panel').removeClass('active');
-        // Show new active content
-        var target = $(this).attr('href');
-        $(target).addClass('active');
-      } else {
-        console.log('Tabs content does not exist!');
-      }
-    }
-
-    // Stop the default behavior
-    return false;
-  });
-
-});
-```
-
-<section class="subsection subsection-variables" markdown="1">
-
-# Tabs Variables
+## Variables
 
 Tabs variables are encompassed within the '$tabs' map and are used throughout all tab mixins to set default values.
 
@@ -277,11 +219,7 @@ Tabs variables are encompassed within the '$tabs' map and are used throughout al
 \* Whether or not we should output tabs classes. Set to `false` if you want to use the tabs modifier mixins semantically and/or reduce CSS output.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Tab Mixins
+## Mixins
 
 Tab mixins are used to create the base styles for a tabs.
 
@@ -289,7 +227,7 @@ Tab mixins are used to create the base styles for a tabs.
 
 <li markdown="1">
 
-## make-tabs
+### make-tabs
 
 Creates the base styles for a the tabs block including tab wrapper, navigation and content whos default classes are output as `.tabs`, `.tabs-nav` and `.tabs-content` respectivly.
 
@@ -310,7 +248,7 @@ Creates the base styles for a the tabs block including tab wrapper, navigation a
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order, margins and content display styles.
 
@@ -330,7 +268,7 @@ To create a custom set of tab styles, you can use the make-tabs mixin to apply t
 
 <li markdown="1">
 
-## add-tab-style
+### add-tab-style
 
 Creates a predefined stylistic feel for your tabs. There are currently two presets, fold and line style tabs.
 
@@ -361,7 +299,7 @@ Creates a predefined stylistic feel for your tabs. There are currently two prese
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 By default, both tab styles are output using their default classes `.style-fold` and `.style-line`.
 
@@ -391,5 +329,3 @@ By default, both tab styles are output using their default classes `.style-fold`
 </li>
 
 </ul>
-
-</section>

@@ -30,9 +30,7 @@ You can also add position classes such as `.tooltip-top`, `.tooltip-left`, `.too
   <a href="#" class="button tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
 </div><!-- .demo -->
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Tooltip Variables
+## Variables
 
 Tooltip variables are encompassed within the `$tooltips` map and are used throughout all tooltip mixins to set default values.
 
@@ -104,11 +102,7 @@ Tooltip variables are encompassed within the `$tooltips` map and are used throug
 \* Whether or not we should output tooltip classes. Set to `false` if you want to use the tooltip modifier mixins semantically and/or reduce CSS output.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Tooltip Mixins
+## Mixins
 
 Tooltip mixins are used to create the base styles for tooltips.
 
@@ -116,7 +110,7 @@ Tooltip mixins are used to create the base styles for tooltips.
 
 <li markdown="1">
 
-## make-tooltip
+### make-tooltip
 
 Creates the base styles for tooltips element.
 
@@ -137,7 +131,7 @@ Creates the base styles for tooltips element.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 The default use of this mixin simply outputs the default styles for tooltips using the class set in `$tooltips('class')` which is `.tooltip`.
 
@@ -149,7 +143,7 @@ The default use of this mixin simply outputs the default styles for tooltips usi
 
 <li markdown="1">
 
-## add-tooltip-position
+### add-tooltip-position
 
 Adds the position styles for a tooltip.
 
@@ -180,7 +174,7 @@ Adds the position styles for a tooltip.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 We can set the default tooltip position by passing the value of `default` to the class variable which will use the base class set in `$tooltips('class')`. Alternatively, we can set custom modifier classes by omitting the class variable and it will build a class using the base class and the anchor modifier (e.g. `tooltip-left`).
 
@@ -198,5 +192,3 @@ We can set the default tooltip position by passing the value of `default` to the
 </li>
 
 </ul>
-
-</section>

@@ -6,9 +6,9 @@ order: 3
 
 Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.
 
-## Unordered Lists
+## &lt;ul&gt;
 
-The `<ul>` element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.
+The unordered list element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.
 
 ```html
 <ul>
@@ -32,9 +32,9 @@ The `<ul>` element represents a list of items, where the order of the items is n
   </ul>
 </div>
 
-## Ordered Lists
+## &lt;ol&gt;
 
-The `<ol>` element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.
+The ordered list element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.
 
 ```html
 <ol>
@@ -58,9 +58,9 @@ The `<ol>` element represents a list of items, where the items have been intenti
   </ol>
 </div>
 
-## Description Lists
+## &lt;dl&gt;
 
-The `<dl>` element represents an association list consisting of zero or more name-value groups (a description list).
+The description list element represents an association list consisting of zero or more name-value groups (a description list).
 
 ```html
 <dl>
@@ -78,7 +78,7 @@ The `<dl>` element represents an association list consisting of zero or more nam
   </dl>
 </div>
 
-## List Variables
+## Variables
 
 List variables are encompassed within the `$lists` map and are used throughout all list mixins to set default values.
 
@@ -128,7 +128,7 @@ List variables are encompassed within the `$lists` map and are used throughout a
   </tr>
 </table>
 
-## List Mixins
+## Mixins
 
 Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.
 

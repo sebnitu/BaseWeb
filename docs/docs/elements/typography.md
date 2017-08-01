@@ -41,7 +41,7 @@ The body copy is set by applying our default typographic settings to the `<body>
   <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 </div>
 
-## Typographic Elements
+## Elements
 
 HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.
 
@@ -199,7 +199,7 @@ The HTML `<abbr>` represents an abbreviation or acronym. The optional title attr
 
 </ul>
 
-## Typographic Classes
+## Classes
 
 In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.
 

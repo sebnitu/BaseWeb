@@ -409,51 +409,10 @@ Dropdowns represent content that is initially hidden to the user and revealed by
   </div>
 </div><!-- .demo -->
 
-The `on-click` class disables the hover styles from the dropdown trigger. This allows you to write whatever JavaScript you'd like to handle the dropdown action events. Here's an example of some jQuery you could use for displaying dropdowns on click with comments to explain the process:
+The `on-click` and `on-hover` classes disable the hover styles from the dropdown trigger and enables the use of click or a hover with delay on dropdowns.
 
 ```js
-// Bind document click event
-$(document).click(function(){
-  // Hide all dropdowns that are click activated
-  $('.dropdown-trigger.on-click').removeClass('active');
-});
-
-// Bind the click event to .dropdown-trigger
-$('.dropdown-trigger.on-click').click(function(e) {
-
-  // Is the dropdown already active?
-  var is_active = $(this).hasClass('active');
-
-  // Hide all dropdowns that are click activated
-  $('.dropdown-trigger.on-click').removeClass('active');
-
-  // Keep the parent dropdowns active
-  $(this).parents('.dropdown-trigger').addClass('active');
-
-  // If the dropdown is not active, add the active class
-  if (!is_active) {
-    $(this).addClass('active');
-  }
-
-  // Stop the click event from bubbling down to the document
-  e.stopPropagation();
-});
-
-// Bind the click event to .dropdown
-$('.dropdown-trigger.on-click .dropdown').click(function(e) {
-
-  // Hide all dropdowns that are click activated
-  $('.dropdown-trigger.on-click').removeClass('active');
-
-  // Keep the parent dropdowns active
-  $(this).parents('.dropdown-trigger').addClass('active');
-
-  // Keep the current dropdown active
-  $(this).addClass('active');
-
-  // Stop the click event from bubbling down to the document
-  e.stopPropagation();
-});
+dropdowns.init();
 ```
 
 The two primary content types of dropdowns are dropdown menus and then more general dropdown content. Each content type can be  used to define different dropdowns or combined for more complex dropdown content.
@@ -578,11 +537,9 @@ The two primary content types of dropdowns are dropdown menus and then more gene
     <li><a href="#">List Item</a></li>
   </ul>
 
-</div>
+</div><!-- .demo -->
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Dropdown Variables
+## Variables
 
 Dropdown variables are encompassed within the `$dropdowns` map and are used throughout all dropdown mixins to set default values.
 
@@ -780,11 +737,7 @@ Dropdown variables are encompassed within the `$dropdowns` map and are used thro
 \* Whether or not we should output dropdown classes. Set to `false` if you want to use the dropdown modifier mixins semantically and/or reduce CSS output.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Dropdown Mixins
+## Mixins
 
 Dropdown mixins are used to create the base styles for a dropdown as well as their position and behavior variations.
 
@@ -792,7 +745,7 @@ Dropdown mixins are used to create the base styles for a dropdown as well as the
 
 <li markdown="1">
 
-## make-dropdown
+### make-dropdown
 
 Creates the base styles for dropdowns.
 
@@ -813,7 +766,7 @@ Creates the base styles for dropdowns.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Below is an example of how BaseWeb initiates the class specific styles for dropdowns.
 
@@ -829,7 +782,7 @@ Below is an example of how BaseWeb initiates the class specific styles for dropd
 
 <li markdown="1">
 
-## make-dropdown-trigger
+### make-dropdown-trigger
 
 Creates the base styles for a dropdown trigger.
 
@@ -850,7 +803,7 @@ Creates the base styles for a dropdown trigger.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 This example shows how BaseWeb initiates the styles for a dropdown trigger using the dropdown trigger class variable.
 
@@ -865,7 +818,7 @@ This example shows how BaseWeb initiates the styles for a dropdown trigger using
 
 <li markdown="1">
 
-## add-dropdown-style
+### add-dropdown-style
 
 Creates specific dropdown styles for a content type
 
@@ -891,7 +844,7 @@ Creates specific dropdown styles for a content type
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Shows how dropdown styles are added using the style type variable for preset styles.
 
@@ -913,7 +866,7 @@ Shows how dropdown styles are added using the style type variable for preset sty
 
 <li markdown="1">
 
-## add-dropdown-position
+### add-dropdown-position
 
 Adds the position styles for a dropdown.
 
@@ -939,7 +892,7 @@ Adds the position styles for a dropdown.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Example of how class specific positioning are added using the dropdown position mixin. This is added to the same element that is used to trigger the dropdown.
 
@@ -1154,5 +1107,3 @@ Example of how class specific positioning are added using the dropdown position 
 </li>
 
 </ul>
-
-</section>
