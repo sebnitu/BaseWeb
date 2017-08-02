@@ -2823,8 +2823,7 @@ fieldset[disabled] .input {
           transform: translate(-50%, 0);
 }
 
-.tooltip:hover:after,
-.tooltip:focus:after {
+.tooltip:hover:after, .tooltip:focus:after {
   opacity: 1;
   -webkit-transform: translate(-50%, -0.5em);
           transform: translate(-50%, -0.5em);
@@ -2849,6 +2848,38 @@ fieldset[disabled] .input {
           transform: translate(-50%, -0.5em);
 }
 
+.tooltip-top-left:after {
+  top: auto;
+  left: 0;
+  right: auto;
+  bottom: 100%;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-top-left:hover:after,
+.tooltip-top-left:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(0, -0.5em);
+          transform: translate(0, -0.5em);
+}
+
+.tooltip-top-right:after {
+  top: auto;
+  left: auto;
+  right: 0;
+  bottom: 100%;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-top-right:hover:after,
+.tooltip-top-right:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(0, -0.5em);
+          transform: translate(0, -0.5em);
+}
+
 .tooltip-left:after {
   top: 50%;
   left: auto;
@@ -2862,6 +2893,36 @@ fieldset[disabled] .input {
 .tooltip-left:focus:after {
   -webkit-transform: translate(-0.5em, -50%);
           transform: translate(-0.5em, -50%);
+}
+
+.tooltip-left-top:after {
+  top: 0;
+  left: auto;
+  right: 100%;
+  bottom: auto;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-left-top:hover:after,
+.tooltip-left-top:focus:after {
+  -webkit-transform: translate(-0.5em, 0);
+          transform: translate(-0.5em, 0);
+}
+
+.tooltip-left-bottom:after {
+  top: auto;
+  left: auto;
+  right: 100%;
+  bottom: 0;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-left-bottom:hover:after,
+.tooltip-left-bottom:focus:after {
+  -webkit-transform: translate(-0.5em, 0);
+          transform: translate(-0.5em, 0);
 }
 
 .tooltip-right:after {
@@ -2879,6 +2940,36 @@ fieldset[disabled] .input {
           transform: translate(0.5em, 50%);
 }
 
+.tooltip-right-top:after {
+  top: 0;
+  left: 100%;
+  right: auto;
+  bottom: auto;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-right-top:hover:after,
+.tooltip-right-top:focus:after {
+  -webkit-transform: translate(0.5em, 0);
+          transform: translate(0.5em, 0);
+}
+
+.tooltip-right-bottom:after {
+  top: auto;
+  left: 100%;
+  right: auto;
+  bottom: 0;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-right-bottom:hover:after,
+.tooltip-right-bottom:focus:after {
+  -webkit-transform: translate(0.5em, 0);
+          transform: translate(0.5em, 0);
+}
+
 .tooltip-bottom:after {
   top: 100%;
   left: auto;
@@ -2893,6 +2984,38 @@ fieldset[disabled] .input {
   opacity: 1;
   -webkit-transform: translate(50%, 0.5em);
           transform: translate(50%, 0.5em);
+}
+
+.tooltip-bottom-left:after {
+  top: 100%;
+  left: 0;
+  right: auto;
+  bottom: auto;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-bottom-left:hover:after,
+.tooltip-bottom-left:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(0, 0.5em);
+          transform: translate(0, 0.5em);
+}
+
+.tooltip-bottom-right:after {
+  top: 100%;
+  left: auto;
+  right: 0;
+  bottom: auto;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.tooltip-bottom-right:hover:after,
+.tooltip-bottom-right:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(0, 0.5em);
+          transform: translate(0, 0.5em);
 }
 
 /*==============================================================================
@@ -5791,6 +5914,22 @@ body {
 
 .widget-back:first-child, .widget-back:last-child {
   padding: 0;
+}
+
+.widget-back tooltip:after {
+  top: 100%;
+  left: 0;
+  right: auto;
+  bottom: auto;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.widget-back tooltip:hover:after,
+.widget-back tooltip:focus:after {
+  opacity: 1;
+  -webkit-transform: translate(0, 0.5em);
+          transform: translate(0, 0.5em);
 }
 
 @media (min-width: 760px) {

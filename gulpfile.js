@@ -1,5 +1,6 @@
 var
   // Global
+  fs = require('fs'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   newer = require('gulp-newer'),
@@ -86,6 +87,26 @@ gulp.task('replace', function() {
       .pipe(replace(String(options.s), String(options.r)))
       .pipe(gulp.dest('./'));
   }
+
+});
+
+/**
+ * Get Icons
+ * Gets and writes all the icon svg files as a data object in Jekyll
+ */
+gulp.task('get:icons', function() {
+
+  var src = folder.src + 'svg/';
+  var dest = 'docs/_data/';
+  var files = [];
+
+  fs.readdirSync(src).forEach(file => {
+    files.push(file.replace(/\.[^/.]+$/, ""));
+  });
+
+  fs.writeFile(dest + 'icons.json', JSON.stringify(files), function (err) {
+    if (err) { console.error(err); }
+  });
 
 });
 

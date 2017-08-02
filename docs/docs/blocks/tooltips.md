@@ -20,14 +20,14 @@ You can also add position classes such as `.tooltip-top`, `.tooltip-left`, `.too
 ```
 
 <div class="demo demo-tooltips">
-  <a href="#" class="button tooltip" data-tooltip="Tooltip text here...">Tooltip Default</a>
+  <a href="#" class="button default tooltip" data-tooltip="Tooltip text here...">Tooltip Default</a>
 
   <hr>
 
-  <a href="#" class="button tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
-  <a href="#" class="button tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
-  <a href="#" class="button tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
-  <a href="#" class="button tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
+  <a href="#" class="button default tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
+  <a href="#" class="button default tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
+  <a href="#" class="button default tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
+  <a href="#" class="button default tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
 </div><!-- .demo -->
 
 ## Variables
@@ -148,7 +148,7 @@ The default use of this mixin simply outputs the default styles for tooltips usi
 Adds the position styles for a tooltip.
 
 ```scss
-@include add-tooltip-position( $options: () );
+@include add-tooltip-position( $anchor : 'top', $class : null, $options: () );
 ```
 
 <table class="table table-docs">
@@ -156,11 +156,6 @@ Adds the position styles for a tooltip.
     <th>Variable</th>
     <th>Type</th>
     <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$tooltips()</code></td>
   </tr>
   <tr>
     <td><code>$anchor</code></td>
@@ -172,22 +167,49 @@ Adds the position styles for a tooltip.
     <td>String | null | default</td>
     <td><code>null</code></td>
   </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$tooltips()</code></td>
+  </tr>
 </table>
 
 #### Example Usage
 
-We can set the default tooltip position by passing the value of `default` to the class variable which will use the base class set in `$tooltips('class')`. Alternatively, we can set custom modifier classes by omitting the class variable and it will build a class using the base class and the anchor modifier (e.g. `tooltip-left`).
+We can set the default tooltip position by wrapping the mixin with the base tooltip class from our `$tooltips` map. Alternatively, we can set custom modifier classes by passing `default` to the class parameter and it will build a class using the base class and the anchor modifier (e.g. `tooltip-left`, `tooltip-bottom-left`, etc).
 
 ```scss
 // This sets the default position of tooltips
-@include add-tooltip-position($anchor: 'top', $class: default); // Adds top position styles to .tooltip
+.#{map-get($tooltips, 'class')} {
+  @include add-tooltip-position();
+}
 
 // This sets the modifier classes for positioning tooltips
-@include add-tooltip-position($anchor: 'top');    // Sets class .tooltip-top
-@include add-tooltip-position($anchor: 'left');   // Sets class .tooltip-left
-@include add-tooltip-position($anchor: 'right');  // Sets class .tooltip-right
-@include add-tooltip-position($anchor: 'bottom'); // Sets class .tooltip-bottom
+@include add-tooltip-position('top', default);
+@include add-tooltip-position('left', default);
+@include add-tooltip-position('right', default);
+@include add-tooltip-position('bottom', default);
+
+// etc...
 ```
+
+<div class="demo demo-tooltips">
+  <a href="#" class="button default tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
+  <a href="#" class="button default tooltip tooltip-top-left" data-tooltip="Tooltip text here...">Tooltip Top Left</a>
+  <a href="#" class="button default tooltip tooltip-top-right" data-tooltip="Tooltip text here...">Tooltip Top Right</a>
+  <hr>
+  <a href="#" class="button default tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
+  <a href="#" class="button default tooltip tooltip-left-top" data-tooltip="Tooltip text here...">Tooltip Left Top</a>
+  <a href="#" class="button default tooltip tooltip-left-bottom" data-tooltip="Tooltip text here...">Tooltip Left Bottom</a>
+  <hr>
+  <a href="#" class="button default tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
+  <a href="#" class="button default tooltip tooltip-right-top" data-tooltip="Tooltip text here...">Tooltip Right Top</a>
+  <a href="#" class="button default tooltip tooltip-right-bottom" data-tooltip="Tooltip text here...">Tooltip Right Bottom</a>
+  <hr>
+  <a href="#" class="button default tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
+  <a href="#" class="button default tooltip tooltip-bottom-left" data-tooltip="Tooltip text here...">Tooltip Bottom Left</a>
+  <a href="#" class="button default tooltip tooltip-bottom-right" data-tooltip="Tooltip text here...">Tooltip Bottom Right</a>
+</div><!-- .demo -->
 
 </li>
 
