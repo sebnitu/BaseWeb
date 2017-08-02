@@ -6,6 +6,10 @@ order: 2
 
 Notices in BaseWeb represent content blocks that give additional contextual information. This could be helpful tips, success, warning or error messages and additional information to a document. The most basic implementation involves a `<div>` with the `.notice` class.
 
+```js
+dismissible.init();
+```
+
 ```html
 <div class="notice">
   <p>...</p>
@@ -25,10 +29,6 @@ You can also create dismissible notices but adding the `.dismissible` class and 
   <button class="button close">&times;</button>
   <p>...</p>
 </div>
-```
-
-```js
-dismissible.init();
 ```
 
 <div class="demo">

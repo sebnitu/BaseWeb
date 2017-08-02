@@ -7,18 +7,18 @@ order: 10
 There are four ways you can markup a button. An anchor, button or input element that has a type set to `button` or `submit`. BaseWeb styles buttons the same, regardless of the method you use to mark them up.
 
 ```html
-<a class="button" href="#" role="button">Anchor Button</a>
-<button class="button" type="submit">Button</button>
-<input class="button" type="button" value="Input Button">
-<input class="button" type="submit" value="Input Submit">
+<a class="button default" href="#" role="button">Anchor Button</a>
+<button class="button default" type="submit">Button</button>
+<input class="button default" type="button" value="Input Button">
+<input class="button default" type="submit" value="Input Submit">
 ```
 
 <div class="demo demo-buttons">
   <p>
-    <a class="button" href="#" role="button">Anchor Button</a>
-    <button class="button" type="submit">Button</button>
-    <input class="button" type="button" value="Input Button">
-    <input class="button" type="submit" value="Input Submit">
+    <a class="button default" href="#" role="button">Anchor Button</a>
+    <button class="button default" type="submit">Button</button>
+    <input class="button default" type="button" value="Input Button">
+    <input class="button default" type="submit" value="Input Submit">
   </p>
 </div>
 
@@ -416,12 +416,15 @@ Makes the button block with 100% width. This is typically used for mobile friend
 ```scss
 .button-custom-mobile {
   @include make-button();
-  @include add-button-color();
+  @include add-button-color((
+    'background' : $bg-color
+  ));
   @include add-button-block();
 }
 ```
 
 ```html
+<button class="button-custom-mobile">Block Button</button>
 <button class="button green block">Block Button</button>
 ```
 

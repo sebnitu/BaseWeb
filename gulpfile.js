@@ -147,6 +147,20 @@ gulp.task('js', function() {
 });
 
 /**
+ * Feather Icons Builder
+ * Grabs all individual icons from [src] and builds an svg-symbols.svg file
+ */
+gulp.task('svg', function() {
+  return gulp.src( folder.src + 'svg/*.svg' )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( folder.dest + 'svg/' ));
+});
+
+/**
  * Documentation Builds
  * Output expanded and minified CSS files from documentation
  */
@@ -235,7 +249,7 @@ gulp.task('docs:svg', function() {
 
 // Watch & Bulk Tasks
 // Builds all source assets
-gulp.task('src', ['css', 'js']);
+gulp.task('src', ['css', 'js', 'svg']);
 // Builds all documentation assets
 gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'docs:svg']);
 // Build everything
@@ -251,6 +265,8 @@ gulp.task('watch', function() {
   gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
   // src js changes
   gulp.watch(folder.src + 'js/**/*', ['js', 'docs:js']);
+  // src svg changes
+  gulp.watch(folder.src + 'js/**/*', ['svg', 'docs:svg']);
 
   // docs scss changes
   gulp.watch(folder.srcDocs + 'scss/**/*', ['docs:css']);

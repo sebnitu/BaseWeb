@@ -261,7 +261,9 @@ $filename: 'scss/custom/_demos.scss';
 }
 .button-custom-mobile {
   @include make-button();
-  @include add-button-color();
+  @include add-button-color((
+    'background' : $bg-color
+  ));
   @include add-button-block();
 }
 
@@ -297,27 +299,14 @@ $filename: 'scss/custom/_demos.scss';
  */
 .demo-dropdown {
   @include clearfix();
-  padding: 2em 3em 2em;
+  padding: 2em 3em 3em;
   overflow: visible;
 
-  > .dropdown-trigger {
-    float: left;
-    margin: 1em 1em 1em 0;
-  }
-}
-.demo-dropdown-styles {
-  padding: 2em 3em 3em;
-
+  > .dropdown-trigger,
   > .dropdown,
   > .dropdown-content,
   > .dropdown-menu {
     float: left;
-    margin: 1em 1em 0 0;
-  }
-}
-.demo-dropdown-positions {
-  padding: 2em 3em 3em;
-  > .dropdown-trigger {
     margin: 1em 1em 0 0;
   }
 }

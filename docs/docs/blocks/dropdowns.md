@@ -11,23 +11,27 @@ Dropdowns represent content that is initially hidden to the user and revealed by
   <li><strong>The Target (Dropdown):</strong> this is the hidden element that is revealed by the trigger. It can be any content, but it usually takes the form as a set of links. It's position is relative to the trigger that activates it.</li>
 </ul>
 
+```js
+dropdowns.init();
+```
+
 ```html
 <div class="dropdown-trigger">
-  <button class="button">Default</button>
+  <button class="button default">Default</button>
   <div class="dropdown">
     ...
   </div>
 </div>
 
 <div class="dropdown-trigger on-hover">
-  <button class="button">On Hover</button>
+  <button class="button default">On Hover</button>
   <div class="dropdown">
     ...
   </div>
 </div>
 
 <div class="dropdown-trigger on-click">
-  <button class="button">On Click</button>
+  <button class="button default">On Click</button>
   <div class="dropdown">
     ...
   </div>
@@ -37,7 +41,7 @@ Dropdowns represent content that is initially hidden to the user and revealed by
 <div class="demo demo-dropdown">
 
   <div class="dropdown-trigger">
-    <button class="button">Default</button>
+    <button class="button default">Default</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -91,15 +95,15 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-trigger">
-    <button class="button">Default</button>
+    <button class="button default">Default</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -153,15 +157,15 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-trigger on-hover">
-    <button class="button">On Hover</button>
+    <button class="button default">On Hover</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -215,15 +219,15 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-trigger on-hover">
-    <button class="button">On Hover</button>
+    <button class="button default">On Hover</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -277,15 +281,15 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-trigger on-click">
-    <a href="#" class="button">On Click</a>
+    <button class="button default">On Click</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -339,15 +343,15 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-trigger on-click">
-    <button class="button">On Click</button>
+    <button class="button default">On Click</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -401,19 +405,17 @@ Dropdowns represent content that is initially hidden to the user and revealed by
           </div>
         </div>
         <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
+          <button class="button default">&larr; Prev</button>
+          <button class="button default">Next &rarr;</button>
         </div>
       </div>
     </div>
   </div>
 </div><!-- .demo -->
 
-The `on-click` and `on-hover` classes disable the hover styles from the dropdown trigger and enables the use of click or a hover with delay on dropdowns.
-
-```js
-dropdowns.init();
-```
+<div class="notice info">
+  <p>The <code>on-click</code> and <code>on-hover</code> classes disable the hover styles from the dropdown trigger and enables the use of click or a hover with delay on dropdowns.</p>
+</div>
 
 The two primary content types of dropdowns are dropdown menus and then more general dropdown content. Each content type can be  used to define different dropdowns or combined for more complex dropdown content.
 
@@ -498,8 +500,8 @@ The two primary content types of dropdowns are dropdown menus and then more gene
     <div class="dropdown-content">
       <button class="button block blue">Create Account</button>
       <div class="button-group block has-2">
-        <button class="button">&larr; Prev</button>
-        <button class="button">Next &rarr;</button>
+        <button class="button default">&larr; Prev</button>
+        <button class="button default">Next &rarr;</button>
       </div>
     </div>
   </div>
@@ -518,8 +520,8 @@ The two primary content types of dropdowns are dropdown menus and then more gene
 
     <button class="button block blue">Create Account</button>
     <div class="button-group block has-2">
-      <button class="button">&larr; Prev</button>
-      <button class="button">Next &rarr;</button>
+      <button class="button default">&larr; Prev</button>
+      <button class="button default">Next &rarr;</button>
     </div>
   </div>
 
@@ -911,7 +913,7 @@ Example of how class specific positioning are added using the dropdown position 
 <div class="demo demo-dropdown demo-dropdown-positions">
 
   <div class="dropdown-trigger anchor-bottom-left">
-    <button class="button">bottom-left</button>
+    <button class="button default">bottom-left</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -927,7 +929,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-bottom-right">
-    <button class="button">bottom-right</button>
+    <button class="button default">bottom-right</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -943,7 +945,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-bottom-center">
-    <button class="button">bottom-center</button>
+    <button class="button default">bottom-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -959,7 +961,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-top-left">
-    <button class="button">top-left</button>
+    <button class="button default">top-left</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -975,7 +977,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-top-right">
-    <button class="button">top-right</button>
+    <button class="button default">top-right</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -991,7 +993,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-top-center">
-    <button class="button">top-center</button>
+    <button class="button default">top-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1007,7 +1009,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-left-top">
-    <button class="button">left-top</button>
+    <button class="button default">left-top</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1023,7 +1025,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-left-bottom">
-    <button class="button">left-bottom</button>
+    <button class="button default">left-bottom</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1039,7 +1041,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-left-center">
-    <button class="button">left-center</button>
+    <button class="button default">left-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1055,7 +1057,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-right-top">
-    <button class="button">right-top</button>
+    <button class="button default">right-top</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1071,7 +1073,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-right-bottom">
-    <button class="button">right-bottom</button>
+    <button class="button default">right-bottom</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -1087,7 +1089,7 @@ Example of how class specific positioning are added using the dropdown position 
   </div><!-- .dropdown-trigger -->
 
   <div class="dropdown-trigger anchor-right-center">
-    <button class="button">right-center</button>
+    <button class="button default">right-center</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
