@@ -238,7 +238,12 @@ gulp.task('docs:img', function() {
  * Grabs all individual icons from [src] and builds an svg-symbols.svg file
  */
 gulp.task('docs:svg', function() {
-  return gulp.src( folder.srcDocs + 'svg/*.svg' )
+  return gulp.src( [
+      folder.src + 'svg/*.svg',
+      folder.srcDocs + 'svg/*.svg',
+      !folder.src + 'svg/facebook.svg',
+      !folder.src + 'svg/twitter.svg',
+    ] )
     .pipe(svgSymbols({
       id: 'icon-%f',
       svgClassname: 'svg-symbols',
