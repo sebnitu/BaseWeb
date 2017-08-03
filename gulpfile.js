@@ -1,6 +1,7 @@
 var
   // Global
   fs = require('fs'),
+  path = require('path'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   newer = require('gulp-newer'),
@@ -101,7 +102,9 @@ gulp.task('get:icons', function() {
   var files = [];
 
   fs.readdirSync(src).forEach(file => {
-    files.push(file.replace(/\.[^/.]+$/, ""));
+    if (path.extname(file) == '.svg') {
+      files.push(file.replace(/\.[^/.]+$/, ""));
+    }
   });
 
   fs.writeFile(dest + 'icons.json', JSON.stringify(files), function (err) {
@@ -259,12 +262,10 @@ gulp.task('docs:img', function() {
  * Grabs all individual icons from [src] and builds an svg-symbols.svg file
  */
 gulp.task('docs:svg', function() {
-  return gulp.src( [
+  return gulp.src([
       folder.src + 'svg/*.svg',
-      folder.srcDocs + 'svg/*.svg',
-      !folder.src + 'svg/facebook.svg',
-      !folder.src + 'svg/twitter.svg',
-    ] )
+      folder.srcDocs + 'svg/*.svg'
+    ])
     .pipe(svgSymbols({
       id: 'icon-%f',
       svgClassname: 'svg-symbols',
