@@ -87,7 +87,7 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
 
     <footer class="form-action">
       <button class="button primary">Button</button>
-      <button class="button default">Button</button>
+      <button class="button">Button</button>
     </footer>
 
   </form>
@@ -301,7 +301,7 @@ Action groups are used to wrap form submission, resets and other form actions. I
     <footer class="form-action">
       <button class="button green">Save Account</button>
       <button class="button danger">Delete</button>
-      <button class="button default float-right">Cancel</button>
+      <button class="button float-right">Cancel</button>
     </footer>
   </form>
 </div>

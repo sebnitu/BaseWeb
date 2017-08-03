@@ -20,14 +20,14 @@ You can also add position classes such as `.tooltip-top`, `.tooltip-left`, `.too
 ```
 
 <div class="demo demo-tooltips">
-  <a href="#" class="button default tooltip" data-tooltip="Tooltip text here...">Tooltip Default</a>
+  <a href="#" class="button tooltip" data-tooltip="Tooltip text here...">Tooltip Default</a>
 
   <hr>
 
-  <a href="#" class="button default tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
-  <a href="#" class="button default tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
-  <a href="#" class="button default tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
-  <a href="#" class="button default tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
+  <a href="#" class="button tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
+  <a href="#" class="button tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
+  <a href="#" class="button tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
+  <a href="#" class="button tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
 </div><!-- .demo -->
 
 ## Variables
@@ -194,21 +194,21 @@ We can set the default tooltip position by wrapping the mixin with the base tool
 ```
 
 <div class="demo demo-tooltips">
-  <a href="#" class="button default tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
-  <a href="#" class="button default tooltip tooltip-top-left" data-tooltip="Tooltip text here...">Tooltip Top Left</a>
-  <a href="#" class="button default tooltip tooltip-top-right" data-tooltip="Tooltip text here...">Tooltip Top Right</a>
+  <a href="#" class="button tooltip tooltip-top" data-tooltip="Tooltip text here...">Tooltip Top</a>
+  <a href="#" class="button tooltip tooltip-top-left" data-tooltip="Tooltip text here...">Tooltip Top Left</a>
+  <a href="#" class="button tooltip tooltip-top-right" data-tooltip="Tooltip text here...">Tooltip Top Right</a>
   <hr>
-  <a href="#" class="button default tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
-  <a href="#" class="button default tooltip tooltip-left-top" data-tooltip="Tooltip text here...">Tooltip Left Top</a>
-  <a href="#" class="button default tooltip tooltip-left-bottom" data-tooltip="Tooltip text here...">Tooltip Left Bottom</a>
+  <a href="#" class="button tooltip tooltip-left" data-tooltip="Tooltip text here...">Tooltip Left</a>
+  <a href="#" class="button tooltip tooltip-left-top" data-tooltip="Tooltip text here...">Tooltip Left Top</a>
+  <a href="#" class="button tooltip tooltip-left-bottom" data-tooltip="Tooltip text here...">Tooltip Left Bottom</a>
   <hr>
-  <a href="#" class="button default tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
-  <a href="#" class="button default tooltip tooltip-right-top" data-tooltip="Tooltip text here...">Tooltip Right Top</a>
-  <a href="#" class="button default tooltip tooltip-right-bottom" data-tooltip="Tooltip text here...">Tooltip Right Bottom</a>
+  <a href="#" class="button tooltip tooltip-right" data-tooltip="Tooltip text here...">Tooltip Right</a>
+  <a href="#" class="button tooltip tooltip-right-top" data-tooltip="Tooltip text here...">Tooltip Right Top</a>
+  <a href="#" class="button tooltip tooltip-right-bottom" data-tooltip="Tooltip text here...">Tooltip Right Bottom</a>
   <hr>
-  <a href="#" class="button default tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
-  <a href="#" class="button default tooltip tooltip-bottom-left" data-tooltip="Tooltip text here...">Tooltip Bottom Left</a>
-  <a href="#" class="button default tooltip tooltip-bottom-right" data-tooltip="Tooltip text here...">Tooltip Bottom Right</a>
+  <a href="#" class="button tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
+  <a href="#" class="button tooltip tooltip-bottom-left" data-tooltip="Tooltip text here...">Tooltip Bottom Left</a>
+  <a href="#" class="button tooltip tooltip-bottom-right" data-tooltip="Tooltip text here...">Tooltip Bottom Right</a>
 </div><!-- .demo -->
 
 </li>

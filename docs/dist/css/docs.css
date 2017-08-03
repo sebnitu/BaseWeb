@@ -1036,18 +1036,18 @@ form .col:last-child {
   clear: both;
 }
 
-.form-action .button,
+.form-action .button, .form-action .button-icon,
 .form-action .input-align {
   float: left;
   margin: 0 0.75em 0 0;
 }
 
-.form-action .button:last-child,
+.form-action .button:last-child, .form-action .button-icon:last-child,
 .form-action .input-align:last-child {
   margin-right: 0;
 }
 
-.form-action .button.float-right,
+.form-action .button.float-right, .form-action .float-right.button-icon,
 .form-action .input-align.float-right {
   float: right;
 }
@@ -1062,7 +1062,7 @@ form .col:last-child {
   text-align: center;
 }
 
-.form-action.form-action-center .button,
+.form-action.form-action-center .button, .form-action.form-action-center .button-icon,
 .form-action.form-action-center .input-align {
   display: inline-block;
   float: none;
@@ -1366,12 +1366,14 @@ label + .note {
  */
 label.inline,
 .button.inline,
+.inline.button-icon,
 .input.inline,
 .checkbox.inline,
 .radio.inline,
 .choice.inline,
 .inline label,
 .inline .button,
+.inline .button-icon,
 .inline .input,
 .inline .checkbox,
 .inline .radio,
@@ -1384,12 +1386,14 @@ label.inline,
 
 label.inline.float-right,
 .button.inline.float-right,
+.inline.float-right.button-icon,
 .input.inline.float-right,
 .checkbox.inline.float-right,
 .radio.inline.float-right,
 .choice.inline.float-right,
 .inline label.float-right,
 .inline .button.float-right,
+.inline .float-right.button-icon,
 .inline .input.float-right,
 .inline .checkbox.float-right,
 .inline .radio.float-right,
@@ -1557,7 +1561,7 @@ fieldset[disabled] .input {
 /**
  * Base Button
  */
-.button {
+.button, .button-icon {
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -1583,16 +1587,16 @@ fieldset[disabled] .input {
           transition-timing-function: linear;
   color: #212121;
   text-shadow: none;
-  background-color: #fff;
+  background-color: #F5F5F5;
   background-clip: border-box;
   border: none;
 }
 
-.button:visited {
+.button:visited, .button-icon:visited {
   color: #212121;
 }
 
-.button:hover, .button:focus {
+.button:hover, .button-icon:hover, .button:focus, .button-icon:focus {
   color: #212121;
   text-decoration: none;
   background: none;
@@ -1604,7 +1608,7 @@ fieldset[disabled] .input {
           transition-timing-function: linear;
 }
 
-.button:active {
+.button:active, .button-icon:active {
   color: #212121;
   background: none;
   -webkit-transition-property: all;
@@ -1615,47 +1619,25 @@ fieldset[disabled] .input {
           transition-timing-function: linear;
 }
 
-.button:visited {
+.button:visited, .button-icon:visited {
   color: #212121;
 }
 
-.button:hover, .button:focus {
+.button:hover, .button-icon:hover, .button:focus, .button-icon:focus {
   color: #212121;
-  background-color: #f2f2f2;
+  background-color: #e8e8e8;
 }
 
-.button:active {
+.button:active, .button-icon:active {
   color: #212121;
-  background-color: #e6e6e6;
+  background-color: gainsboro;
 }
 
 /**
  * Button Color
  */
-.button.default, .button-icon {
-  color: #212121;
-  text-shadow: none;
-  background-color: #F5F5F5;
-  background-clip: border-box;
-  border: none;
-}
-
-.button.default:visited, .button-icon:visited {
-  color: #212121;
-}
-
-.button.default:hover, .button-icon:hover, .button.default:focus, .button-icon:focus {
-  color: #212121;
-  background-color: #e8e8e8;
-}
-
-.button.default:active, .button-icon:active {
-  color: #212121;
-  background-color: gainsboro;
-}
-
-.button.blue, .button.primary,
-.button.active {
+.button.blue, .button.primary, .primary.button-icon,
+.button.active, .active.button-icon, .blue.button-icon {
   color: #fff;
   text-shadow: none;
   background-color: #2196F3;
@@ -1663,25 +1645,25 @@ fieldset[disabled] .input {
   border: none;
 }
 
-.button.blue:visited, .button.primary:visited,
-.button.active:visited {
+.button.blue:visited, .button.primary:visited, .primary.button-icon:visited,
+.button.active:visited, .active.button-icon:visited, .blue.button-icon:visited {
   color: #fff;
 }
 
-.button.blue:hover, .button.primary:hover,
-.button.active:hover, .button.blue:focus, .button.primary:focus,
-.button.active:focus {
+.button.blue:hover, .button.primary:hover, .primary.button-icon:hover,
+.button.active:hover, .active.button-icon:hover, .blue.button-icon:hover, .button.blue:focus, .button.primary:focus, .primary.button-icon:focus,
+.button.active:focus, .active.button-icon:focus, .blue.button-icon:focus {
   color: #fff;
   background-color: #0d8aee;
 }
 
-.button.blue:active, .button.primary:active,
-.button.active:active {
+.button.blue:active, .button.primary:active, .primary.button-icon:active,
+.button.active:active, .active.button-icon:active, .blue.button-icon:active {
   color: #fff;
   background-color: #0c7cd5;
 }
 
-.button.green, .button.success {
+.button.green, .button.success, .success.button-icon, .green.button-icon {
   color: #fff;
   text-shadow: none;
   background-color: #4CAF50;
@@ -1689,65 +1671,65 @@ fieldset[disabled] .input {
   border: none;
 }
 
-.button.green:visited, .button.success:visited {
+.button.green:visited, .button.success:visited, .success.button-icon:visited, .green.button-icon:visited {
   color: #fff;
 }
 
-.button.green:hover, .button.success:hover, .button.green:focus, .button.success:focus {
+.button.green:hover, .button.success:hover, .success.button-icon:hover, .green.button-icon:hover, .button.green:focus, .button.success:focus, .success.button-icon:focus, .green.button-icon:focus {
   color: #fff;
   background-color: #449d48;
 }
 
-.button.green:active, .button.success:active {
+.button.green:active, .button.success:active, .success.button-icon:active, .green.button-icon:active {
   color: #fff;
   background-color: #3d8b40;
 }
 
-.button.orange, .button.warning {
+.button.orange, .button.warning, .warning.button-icon, .orange.button-icon {
   color: #fff;
   text-shadow: none;
-  background-color: #FF9800;
+  background-color: #FB8C00;
   background-clip: border-box;
   border: none;
 }
 
-.button.orange:visited, .button.warning:visited {
+.button.orange:visited, .button.warning:visited, .warning.button-icon:visited, .orange.button-icon:visited {
   color: #fff;
 }
 
-.button.orange:hover, .button.warning:hover, .button.orange:focus, .button.warning:focus {
+.button.orange:hover, .button.warning:hover, .warning.button-icon:hover, .orange.button-icon:hover, .button.orange:focus, .button.warning:focus, .warning.button-icon:focus, .orange.button-icon:focus {
   color: #fff;
-  background-color: #e68900;
+  background-color: #e27e00;
 }
 
-.button.orange:active, .button.warning:active {
+.button.orange:active, .button.warning:active, .warning.button-icon:active, .orange.button-icon:active {
   color: #fff;
-  background-color: #cc7a00;
+  background-color: #c87000;
 }
 
-.button.red, .button.danger {
+.button.red, .button.danger, .danger.button-icon, .red.button-icon {
   color: #fff;
   text-shadow: none;
-  background-color: #F44336;
+  background-color: #E53935;
   background-clip: border-box;
   border: none;
 }
 
-.button.red:visited, .button.danger:visited {
+.button.red:visited, .button.danger:visited, .danger.button-icon:visited, .red.button-icon:visited {
   color: #fff;
 }
 
-.button.red:hover, .button.danger:hover, .button.red:focus, .button.danger:focus {
+.button.red:hover, .button.danger:hover, .danger.button-icon:hover, .red.button-icon:hover, .button.red:focus, .button.danger:focus, .danger.button-icon:focus, .red.button-icon:focus {
   color: #fff;
-  background-color: #f32c1e;
+  background-color: #cd1e1a;
 }
 
-.button.red:active, .button.danger:active {
+.button.red:active, .button.danger:active, .danger.button-icon:active, .red.button-icon:active {
   color: #fff;
-  background-color: #ea1c0d;
+  background-color: #9f1815;
 }
 
-.button.black, .button.secondary {
+.button.gray, .button.secondary, .secondary.button-icon, .gray.button-icon {
   color: #fff;
   text-shadow: none;
   background-color: #9E9E9E;
@@ -1755,53 +1737,58 @@ fieldset[disabled] .input {
   border: none;
 }
 
-.button.black:visited, .button.secondary:visited {
+.button.gray:visited, .button.secondary:visited, .secondary.button-icon:visited, .gray.button-icon:visited {
   color: #fff;
 }
 
-.button.black:hover, .button.secondary:hover, .button.black:focus, .button.secondary:focus {
+.button.gray:hover, .button.secondary:hover, .secondary.button-icon:hover, .gray.button-icon:hover, .button.gray:focus, .button.secondary:focus, .secondary.button-icon:focus, .gray.button-icon:focus {
   color: #fff;
-  background-color: #ababab;
+  background-color: #919191;
 }
 
-.button.black:active, .button.secondary:active {
+.button.gray:active, .button.secondary:active, .secondary.button-icon:active, .gray.button-icon:active {
   color: #fff;
-  background-color: #b8b8b8;
+  background-color: #858585;
+}
+
+.button.black, .black.button-icon {
+  color: #fff;
+  text-shadow: none;
+  background-color: #212121;
+  background-clip: border-box;
+  border: none;
+}
+
+.button.black:visited, .black.button-icon:visited {
+  color: #fff;
+}
+
+.button.black:hover, .black.button-icon:hover, .button.black:focus, .black.button-icon:focus {
+  color: #fff;
+  background-color: #474747;
+}
+
+.button.black:active, .black.button-icon:active {
+  color: #fff;
+  background-color: #6e6e6e;
 }
 
 /**
  * Button Utility Classes
  */
-.button.small {
+.button.small, .small.button-icon {
   padding: 0.75em 1.25em;
   font-size: 0.85em;
 }
 
-.button.large {
+.button.large, .large.button-icon {
   padding: 0.75em 2em;
   font-size: 1.15em;
 }
 
-.button.block {
+.button.block, .block.button-icon {
   display: block;
   width: 100%;
-}
-
-/**
- * Custom Buttons
- */
-.button.close {
-  width: 1.5em;
-  height: 1.5em;
-  padding: 0;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  vertical-align: middle;
-  background: none;
-  border: 0 none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border-radius: 50%;
 }
 
 /*==============================================================================
@@ -1811,6 +1798,7 @@ fieldset[disabled] .input {
   display: inline-block;
   width: 1em;
   height: 1em;
+  vertical-align: middle;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
@@ -1869,24 +1857,24 @@ fieldset[disabled] .input {
           flex-flow: row;
 }
 
-.button-group > .button {
+.button-group > .button, .button-group > .button-icon {
   border-radius: 0;
 }
 
-.button-group > .button + .button {
+.button-group > .button + .button, .button-group > .button-icon + .button, .button-group > .button + .button-icon, .button-group > .button-icon + .button-icon {
   margin-top: 0;
   margin-left: 3px;
 }
 
-.button-group > .button:first-child {
+.button-group > .button:first-child, .button-group > .button-icon:first-child {
   border-radius: 3px 0 0 3px;
 }
 
-.button-group > .button:last-child {
+.button-group > .button:last-child, .button-group > .button-icon:last-child {
   border-radius: 0 3px 3px 0;
 }
 
-.button-group > .button {
+.button-group > .button, .button-group > .button-icon {
   position: relative;
   z-index: 1;
   -webkit-box-flex: 1;
@@ -1895,23 +1883,23 @@ fieldset[disabled] .input {
   margin: 0;
 }
 
-.button-group > .button:hover {
+.button-group > .button:hover, .button-group > .button-icon:hover {
   z-index: 2;
 }
 
-.button-group > .button:focus {
+.button-group > .button:focus, .button-group > .button-icon:focus {
   z-index: 3;
 }
 
-.button-group > .button:active {
+.button-group > .button:active, .button-group > .button-icon:active {
   z-index: 4;
 }
 
-.button-group > .button.active {
+.button-group > .button.active, .button-group > .active.button-icon {
   z-index: 5;
 }
 
-.button-group > .button.static {
+.button-group > .button.static, .button-group > .static.button-icon {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
@@ -1940,24 +1928,30 @@ fieldset[disabled] .input {
           flex-flow: row;
 }
 
-.button-group.hori > .button,
-.button-group.horizontal > .button {
+.button-group.hori > .button, .button-group.hori > .button-icon,
+.button-group.horizontal > .button,
+.button-group.horizontal > .button-icon {
   border-radius: 0;
 }
 
-.button-group.hori > .button + .button,
-.button-group.horizontal > .button + .button {
+.button-group.hori > .button + .button, .button-group.hori > .button-icon + .button, .button-group.hori > .button + .button-icon, .button-group.hori > .button-icon + .button-icon,
+.button-group.horizontal > .button + .button,
+.button-group.horizontal > .button-icon + .button,
+.button-group.horizontal > .button + .button-icon,
+.button-group.horizontal > .button-icon + .button-icon {
   margin-top: 0;
   margin-left: 3px;
 }
 
-.button-group.hori > .button:first-child,
-.button-group.horizontal > .button:first-child {
+.button-group.hori > .button:first-child, .button-group.hori > .button-icon:first-child,
+.button-group.horizontal > .button:first-child,
+.button-group.horizontal > .button-icon:first-child {
   border-radius: 3px 0 0 3px;
 }
 
-.button-group.hori > .button:last-child,
-.button-group.horizontal > .button:last-child {
+.button-group.hori > .button:last-child, .button-group.hori > .button-icon:last-child,
+.button-group.horizontal > .button:last-child,
+.button-group.horizontal > .button-icon:last-child {
   border-radius: 0 3px 3px 0;
 }
 
@@ -1969,24 +1963,30 @@ fieldset[disabled] .input {
           flex-flow: column;
 }
 
-.button-group.vert > .button,
-.button-group.vertical > .button {
+.button-group.vert > .button, .button-group.vert > .button-icon,
+.button-group.vertical > .button,
+.button-group.vertical > .button-icon {
   border-radius: 0;
 }
 
-.button-group.vert > .button + .button,
-.button-group.vertical > .button + .button {
+.button-group.vert > .button + .button, .button-group.vert > .button-icon + .button, .button-group.vert > .button + .button-icon, .button-group.vert > .button-icon + .button-icon,
+.button-group.vertical > .button + .button,
+.button-group.vertical > .button-icon + .button,
+.button-group.vertical > .button + .button-icon,
+.button-group.vertical > .button-icon + .button-icon {
   margin-top: 3px;
   margin-left: 0;
 }
 
-.button-group.vert > .button:first-child,
-.button-group.vertical > .button:first-child {
+.button-group.vert > .button:first-child, .button-group.vert > .button-icon:first-child,
+.button-group.vertical > .button:first-child,
+.button-group.vertical > .button-icon:first-child {
   border-radius: 3px 3px 0 0;
 }
 
-.button-group.vert > .button:last-child,
-.button-group.vertical > .button:last-child {
+.button-group.vert > .button:last-child, .button-group.vert > .button-icon:last-child,
+.button-group.vertical > .button:last-child,
+.button-group.vertical > .button-icon:last-child {
   border-radius: 0 0 3px 3px;
 }
 
@@ -2051,7 +2051,7 @@ fieldset[disabled] .input {
 }
 
 .notice.orange.inverted {
-  background: #FF9800;
+  background: #FB8C00;
 }
 
 .notice.red, .notice.danger {
@@ -2059,7 +2059,7 @@ fieldset[disabled] .input {
 }
 
 .notice.red.inverted, .inverted.notice.danger {
-  background: #F44336;
+  background: #E53935;
 }
 
 .notice.purple {
@@ -2241,7 +2241,7 @@ fieldset[disabled] .input {
   margin-bottom: 0;
 }
 
-.dropdown-content > .button {
+.dropdown-content > .button, .dropdown-content > .button-icon {
   display: block;
 }
 
@@ -3586,7 +3586,7 @@ figure {
 }
 
 /*==============================================================================
-  @Demo - scss/custom/_demos.scss
+  @Docs Demos - scss/custom/_docs-demos.scss
 ==============================================================================*/
 .demo {
   margin: 1.5em -1.5em;
@@ -3890,7 +3890,7 @@ figure {
  * Buttons
  */
 .demo-buttons > p {
-  margin-left: -0.5rem;
+  margin: 0 0 0.5rem -0.5rem;
 }
 
 .demo-buttons > p:after {
@@ -3899,7 +3899,7 @@ figure {
   clear: both;
 }
 
-.demo-buttons .button,
+.demo-buttons .button, .demo-buttons .button-icon,
 .demo-buttons .button-custom,
 .demo-buttons .button-custom-mobile {
   float: left;
@@ -3910,7 +3910,7 @@ figure {
   margin-left: 0;
 }
 
-.demo-buttons-mobile .button,
+.demo-buttons-mobile .button, .demo-buttons-mobile .button-icon,
 .demo-buttons-mobile .button-custom-mobile {
   margin-left: 0;
 }
@@ -4176,7 +4176,7 @@ figure {
   padding: 1em 2em;
 }
 
-.demo-offcanvas .oc-aside .button.close {
+.demo-offcanvas .oc-aside .button.close, .demo-offcanvas .oc-aside .close.button-icon {
   margin: 0 -1rem;
 }
 
@@ -4966,15 +4966,13 @@ figure {
   margin: 0;
 }
 
-.demo-tooltips .button {
+.demo-tooltips .button, .demo-tooltips .button-icon {
   float: left;
   margin: 1em 1em 1em 0;
 }
 
 /*==============================================================================
-  @Swatches - scss/docs/_swatches.scss
-  ---
-  Where we style our color presentation. Swatches refer to color samples.
+  @Docs Swatches - scss/docs/_docs-swatches.scss
 ==============================================================================*/
 /**
  * Swatch
@@ -5127,6 +5125,63 @@ figure {
 
 .swatch-card .swatch .hex {
   float: right;
+}
+
+/*==============================================================================
+  @Docs Icons - scss/docs/_docs-icons.scss
+==============================================================================*/
+.icons-listing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-gap: 1rem;
+  margin: 1em 0;
+}
+
+.icons-listing .icon-item {
+  margin: 0;
+  padding: 1em 1.5em;
+  background: #F5F5F5;
+  border-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.icons-listing .icon {
+  font-size: 1.5em;
+  margin-right: 0.5em;
+}
+
+.icons-listing code {
+  font-size: 0.875em;
+  color: #9E9E9E;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.icons-listing .icon-item:hover {
+  background-color: #e8e8e8;
+}
+
+.icons-listing .icon-item:hover code {
+  color: #212121;
+}
+
+@media (min-width: 480px) {
+  .icons-listing {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .icons-listing .icon-item {
+    padding: 1.5em 2em;
+  }
+}
+
+@media (min-width: 760px) {
+  .icons-listing {
+    margin: 2em 0;
+  }
 }
 
 /*==============================================================================
@@ -5384,25 +5439,25 @@ body {
 /**
  * Button
  */
-.header .button {
+.header .button, .header .button-icon {
   background: rgba(0, 0, 0, 0.05);
   border: none;
   color: #212121;
 }
 
-.header .button:hover {
+.header .button:hover, .header .button-icon:hover {
   background: rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #212121;
 }
 
-.home .header .button {
+.home .header .button, .home .header .button-icon {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
-.home .header .button:hover {
+.home .header .button:hover, .home .header .button-icon:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
@@ -5455,7 +5510,7 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.home .menu-hori li.active a:not(.button) {
+.home .menu-hori li.active a:not(.button):not(.button-icon) {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -5495,11 +5550,11 @@ body {
 /**
  * Off-Canvas Menu
  */
-.oc-aside .button {
+.oc-aside .button, .oc-aside .button-icon {
   background: none;
 }
 
-.oc-aside .button:hover {
+.oc-aside .button:hover, .oc-aside .button-icon:hover {
   background: none;
   color: #2196F3;
 }
@@ -5551,7 +5606,7 @@ body {
   margin: 2em 0;
 }
 
-.hero-content .button {
+.hero-content .button, .hero-content .button-icon {
   background: rgba(255, 255, 255, 0);
   border: 2px solid white;
   color: #fff;
@@ -5559,7 +5614,7 @@ body {
   transition: none;
 }
 
-.hero-content .button:hover, .hero-content .button:focus {
+.hero-content .button:hover, .hero-content .button-icon:hover, .hero-content .button:focus, .hero-content .button-icon:focus {
   background: #fff;
   color: #212121;
 }
@@ -5744,7 +5799,7 @@ body {
   margin: 1em 0;
 }
 
-.widget-wrap .widget .button {
+.widget-wrap .widget .button, .widget-wrap .widget .button-icon {
   display: block;
 }
 
@@ -5768,7 +5823,7 @@ body {
   .widget-wrap .widget + .widget {
     margin-left: 2em;
   }
-  .widget-wrap .widget .button {
+  .widget-wrap .widget .button, .widget-wrap .widget .button-icon {
     display: inline-block;
   }
 }
@@ -6293,7 +6348,7 @@ body {
   display: block;
 }
 
-.block-action .action .button {
+.block-action .action .button, .block-action .action .button-icon {
   width: 100%;
   display: block;
   margin: 1em 0;
@@ -6304,7 +6359,7 @@ body {
   transition: none;
 }
 
-.block-action .action .button:hover, .block-action .action .button:focus {
+.block-action .action .button:hover, .block-action .action .button-icon:hover, .block-action .action .button:focus, .block-action .action .button-icon:focus {
   background: #fff;
   color: #212121;
 }
@@ -6316,7 +6371,7 @@ body {
   .block-action .action {
     display: inline-block;
   }
-  .block-action .action .button {
+  .block-action .action .button, .block-action .action .button-icon {
     width: auto;
     display: inline-block;
     margin: 0 0.5em;
@@ -6342,21 +6397,21 @@ body {
   opacity: 0.4;
 }
 
-.footer a:not(.button) {
+.footer a:not(.button):not(.button-icon) {
   color: #9E9E9E;
   text-decoration: none;
 }
 
-.footer a:not(.button):hover {
+.footer a:not(.button):not(.button-icon):hover {
   color: #1976D2;
 }
 
-.footer .button {
+.footer .button, .footer .button-icon {
   margin: 1em auto 0;
   background: #fff;
 }
 
-.footer .button:hover {
+.footer .button:hover, .footer .button-icon:hover {
   color: #2196F3;
 }
 

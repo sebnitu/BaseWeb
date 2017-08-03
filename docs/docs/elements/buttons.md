@@ -7,18 +7,18 @@ order: 10
 There are four ways you can markup a button. An anchor, button or input element that has a type set to `button` or `submit`. BaseWeb styles buttons the same, regardless of the method you use to mark them up.
 
 ```html
-<a class="button default" href="#" role="button">Anchor Button</a>
-<button class="button default" type="submit">Button</button>
-<input class="button default" type="button" value="Input Button">
-<input class="button default" type="submit" value="Input Submit">
+<a class="button" href="#" role="button">Anchor Button</a>
+<button class="button" type="submit">Button</button>
+<input class="button" type="button" value="Input Button">
+<input class="button" type="submit" value="Input Submit">
 ```
 
 <div class="demo demo-buttons">
   <p>
-    <a class="button default" href="#" role="button">Anchor Button</a>
-    <button class="button default" type="submit">Button</button>
-    <input class="button default" type="button" value="Input Button">
-    <input class="button default" type="submit" value="Input Submit">
+    <a class="button" href="#" role="button">Anchor Button</a>
+    <button class="button" type="submit">Button</button>
+    <input class="button" type="button" value="Input Button">
+    <input class="button" type="submit" value="Input Submit">
   </p>
 </div>
 
@@ -35,6 +35,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   <tr>
     <td><code>$buttons('classes')</code></td>
     <td><code>true</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$buttons('class')</code></td>
+    <td><code>'button'</code></td>
   </tr>
 
   <tr>
@@ -85,7 +90,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('background')</code></td>
-    <td><code>$white</code></td>
+    <td><code>$bg-color</code></td>
   </tr>
   <tr>
     <td><code>$buttons('background-gradient')</code></td>
@@ -101,11 +106,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('box-shadow')</code></td>
-    <td><code>inset 0 0 0</code> <code>rgba($black, 0)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border')</code></td>
-    <td><code>1px solid rgba($black, 0.15)</code></td>
+    <td><code>none</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border-radius')</code></td>
@@ -113,11 +118,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('transition-property')</code></td>
-    <td><code>(color,</code> <code>background-color,</code> <code>box-shadow,</code> <code>border-color)</code></td>
+    <td><code>all</code></td>
   </tr>
   <tr>
     <td><code>$buttons('transition-duration')</code></td>
-    <td><code>1s</code></td>
+    <td><code>0.75s</code></td>
   </tr>
   <tr>
     <td><code>$buttons('transition-timing-function')</code></td>
@@ -137,11 +142,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('hover', 'box-shadow')</code></td>
-    <td><code>inset 0 1px 2px</code> <code>rgba($black, 0.1)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('hover', 'border-color')</code></td>
-    <td><code>rgba($black, 0.25)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('hover', 'transition-duration')</code></td>
@@ -161,11 +166,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('active', 'box-shadow')</code></td>
-    <td><code>inset 0 1px 2px</code> <code>rgba($black, 0.2)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('active', 'border-color')</code></td>
-    <td><code>rgba($black, 0.25)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('active', 'transition-duration')</code></td>
@@ -279,7 +284,7 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 
 ```html
 <!-- .button-default default button class -->
-<button class="button default">Default</button>
+<button class="button">Default</button>
 
 <!-- .button.blue class with .primary & .active semantic aliases -->
 <button class="button blue">Blue</button>
@@ -299,18 +304,19 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 <button class="button danger">Danger</button>
 
 <!-- .button.black class with .secondary semantic alias -->
-<button class="button black">Black</button>
+<button class="button gray">Gray</button>
 <button class="button secondary">Secondary</button>
 ````
 
 <div class="demo demo-buttons">
   <p>
-    <button class="button default">Default</button>
+    <button class="button">Default</button>
     <button class="button primary">Primary Blue</button>
     <button class="button success">Success Green</button>
     <button class="button warning">Warning Orange</button>
     <button class="button danger">Danger Red</button>
-    <button class="button secondary">Secondary Black</button>
+    <button class="button secondary">Secondary Gray</button>
+    <button class="button black">Black</button>
   </p>
 </div>
 
@@ -425,13 +431,13 @@ Makes the button block with 100% width. This is typically used for mobile friend
 
 ```html
 <button class="button-custom-mobile">Block Button</button>
-<button class="button green block">Block Button</button>
+<button class="button blue block">Block Button</button>
 ```
 
 <div class="demo demo-buttons demo-buttons-mobile">
   <p>
     <button class="button-custom-mobile">Block Button</button>
-    <button class="button green block">Block Button</button>
+    <button class="button blue block">Block Button</button>
   </p>
 </div>
 

@@ -1,0 +1,52 @@
+// Set file variable
+$filename: 'scss/docs/_docs-icons.scss';
+
+/*==============================================================================
+  @Docs Icons - #{$filename}
+==============================================================================*/
+
+.icons-listing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  grid-gap: 1rem;
+  margin: 1em 0;
+
+  .icon-item {
+    margin: 0;
+    padding: 1em 1.5em;
+    background: $bg-color;
+    border-radius: $border-radius;
+    transition: $transition;
+  }
+  .icon {
+    font-size: 1.5em;
+    margin-right: 0.5em;
+  }
+  code {
+    font-size: px-to-em(14px);
+    color: $color-light;
+    transition: $transition;
+  }
+
+  .icon-item:hover {
+    background-color: darken($bg-color, 5%);
+    code {
+      color: $color;
+    }
+  }
+}
+
+@include media-min('small') {
+  .icons-listing {
+    flex-direction: row;
+    .icon-item {
+      padding: 1.5em 2em;
+    }
+  }
+}
+
+@include media-min('medium') {
+  .icons-listing {
+    margin: 2em 0;
+  }
+}

@@ -8,6 +8,8 @@ $filename: 'scss/elements/_buttons.scss';
 $buttons: (
   'classes' : true,
 
+  'class' : 'button',
+
   'padding-small' : 0.75em 1.25em,
   'padding' : 0.75em 1.5em,
   'padding-large' : 0.75em 2em,
@@ -21,7 +23,7 @@ $buttons: (
   'font-weight' : inherit,
   'text-shadow' : none,
 
-  'background' : $white,
+  'background' : $bg-color,
   'background-gradient' : false,
   'background-deg' : 5%,
   'background-clip' : border-box,
@@ -254,7 +256,7 @@ $buttons: (
 /**
  * Base Button
  */
-.button {
+.#{map-get($buttons, 'class')} {
   @include make-button();
   @include add-button-color();
 }
@@ -262,39 +264,42 @@ $buttons: (
 /**
  * Button Color
  */
-.button.default {
-  @include add-button-color((
-    'background' : $bg-color,
-  ));
-}
-.button.blue {
+.#{map-get($buttons, 'class')}.blue {
   @include add-button-color((
     'color' : $white,
     'background' : $blue,
   ));
 }
-.button.green {
+.#{map-get($buttons, 'class')}.green {
   @include add-button-color((
     'color' : $white,
     'background' : $green,
   ));
 }
-.button.orange {
+.#{map-get($buttons, 'class')}.orange {
   @include add-button-color((
     'color' : $white,
-    'background' : $orange,
+    'background' : $orange-600,
   ));
 }
-.button.red {
+.#{map-get($buttons, 'class')}.red {
   @include add-button-color((
     'color' : $white,
-    'background' : $red,
+    'background' : $red-600,
+    'background-deg' : 10%,
   ));
 }
-.button.black {
+.#{map-get($buttons, 'class')}.gray {
   @include add-button-color((
     'color' : $white,
     'background' : $gray,
+  ));
+}
+.#{map-get($buttons, 'class')}.black {
+  @include add-button-color((
+    'color' : $white,
+    'background' : $gray-900,
+    'background-deg' : 15%,
     'hover' : (
       'background': lighten
     ),
@@ -305,50 +310,34 @@ $buttons: (
 }
 
 // Semantic button classes
-.button.primary,
-.button.active {
+.#{map-get($buttons, 'class')}.primary,
+.#{map-get($buttons, 'class')}.active {
   @extend .button.blue;
 }
-.button.secondary {
-  @extend .button.black;
+.#{map-get($buttons, 'class')}.secondary {
+  @extend .button.gray;
 }
-.button.success {
+.#{map-get($buttons, 'class')}.success {
   @extend .button.green;
 }
-.button.warning {
+.#{map-get($buttons, 'class')}.warning {
   @extend .button.orange;
 }
-.button.danger {
+.#{map-get($buttons, 'class')}.danger {
   @extend .button.red;
 }
 
 /**
  * Button Utility Classes
  */
-.button.small {
+.#{map-get($buttons, 'class')}.small {
   @include add-button-size(small);
 }
-.button.large {
+.#{map-get($buttons, 'class')}.large {
   @include add-button-size(large);
 }
-
-.button.block {
+.#{map-get($buttons, 'class')}.block {
   @include add-button-block();
-}
-
-/**
- * Custom Buttons
- */
-.button.close {
-  @include size(1.5em);
-  padding: 0;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  vertical-align: middle;
-  background: none;
-  border: 0 none;
-  box-shadow: none;
-  border-radius: 50%;
 }
 
 } // endif classes

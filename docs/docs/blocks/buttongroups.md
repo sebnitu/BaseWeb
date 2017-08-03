@@ -15,9 +15,9 @@ Button groups are a way to create a set of buttons and make them visually groupe
 
 <div class="demo demo-alt">
   <div class="button-group">
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
@@ -25,16 +25,16 @@ This can be changed either by setting a different default in the `$button-groups
 
 ```html
 <div class="button-group vertical">
-  <button class="button default">Button</button>
+  <button class="button">Button</button>
   ...
 </div>
 ```
 
 <div class="demo demo-alt">
   <div class="button-group vertical">
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
@@ -42,31 +42,31 @@ Also, if you'd like your button group to span the full width of their container,
 
 ```html
 <div class="button-group block">
-  <button class="button default">Button</button>
+  <button class="button">Button</button>
   ...
 </div>
 ```
 
 <div class="demo demo-alt">
   <div class="button-group block">
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
 ```html
 <div class="button-group block vertical">
-  <button class="button default">Button</button>
+  <button class="button">Button</button>
   ...
 </div>
 ```
 
 <div class="demo demo-alt">
   <div class="button-group block vertical">
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
-    <button class="button default">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
+    <button class="button">Button</button>
   </div>
 </div>
 
