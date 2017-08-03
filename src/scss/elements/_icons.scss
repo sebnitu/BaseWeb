@@ -1,16 +1,113 @@
 // Set file variable
 $filename: 'scss/elements/_icons.scss';
 
+// Required components warning
+@if (variable-exists(buttons) == false) {
+  @warn 'The icons element component requires the buttons element component!';
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Buttons Map
+////////////////////////////////////////////////////////////////////////////////
+
+$icons: (
+  'classes' : true,
+  'class' : 'icon',
+  'size' : 1em,
+  'vertical-align' : middle,
+  'stroke-width' : 0,
+  'stroke' : currentColor,
+  'fill' : currentColor,
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'icons') == true) {
+    $icons: map-extend($icons, map-get($override, 'icons'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Button Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Icon
+// Creates the base styles foricons.
+// @param $options
+//   @type map
+//   @default $icons map
+@mixin make-icon($options: ()) {
+  $o: map-merge($icons, $options);
+
+  display: inline-block;
+  width: map-get($o, 'size');
+  height: map-get($o, 'size');
+  vertical-align: map-get($o, 'vertical-align');
+  stroke-width: map-get($o, 'stroke-width');
+  stroke: map-get($o, 'stroke');
+  fill: map-get($o, 'fill');
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($icons, 'classes') == true) {
+
 /*==============================================================================
   @Icons - #{$filename}
 ==============================================================================*/
 
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+.#{map-get($icons, 'class')} {
+  @include make-icon();
 }
+
+/**
+ * Button Icons
+ */
+.#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+  padding: 0.25em 0.5em;
+  font-size: 1.5em;
+
+  &.small {
+    font-size: 1.25em;
+  }
+  &.large {
+    font-size: 1.75em;
+  }
+}
+
+/**
+ * Icons in Buttons
+ */
+.#{map-get($buttons, 'class')} {
+  .#{map-get($icons, 'class')} {
+    margin-top: -0.25em;
+  }
+
+  .icon-left {
+    margin-right: 0.5em;
+  }
+  .icon-right {
+    margin-left: 0.5em;
+  }
+
+  &.small .icon-left {
+    margin-left: -0.15em;
+  }
+  &.small .icon-right {
+    margin-right: -0.15em;
+  }
+  .icon-left {
+    margin-left: -0.3em;
+  }
+  .icon-right {
+    margin-right: -0.3em;
+  }
+  &.large .icon-left {
+    margin-left: -0.45em;
+  }
+  &.large .icon-right {
+    margin-right: -0.45em;
+  }
+}
+
+} // endif classes

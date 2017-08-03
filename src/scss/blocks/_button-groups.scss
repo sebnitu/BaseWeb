@@ -1,6 +1,11 @@
 // Set file variable
 $filename: 'scss/blocks/_button-groups.scss';
 
+// Required components warning
+@if (variable-exists(buttons) == false) {
+  @warn 'The button-groups block component requires the buttons element component!';
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Button Groups Map
 ////////////////////////////////////////////////////////////////////////////////
@@ -102,11 +107,11 @@ $button-groups: (
 
     flex-flow: row;
 
-    > .button {
+    > .#{map-get($buttons, 'class')} {
       border-radius: 0;
       border-width: map-get($o, 'border-width');
 
-      + .button {
+      + .#{map-get($buttons, 'class')} {
         margin-top: 0;
         margin-left: (map-get($o, 'spacing'));
       }
@@ -123,11 +128,11 @@ $button-groups: (
 
     flex-flow: column;
 
-    > .button {
+    > .#{map-get($buttons, 'class')} {
       border-radius: 0;
       border-width: map-get($o, 'border-width');
 
-      + .button {
+      + .#{map-get($buttons, 'class')} {
         margin-top: (map-get($o, 'spacing'));
         margin-left: 0;
       }

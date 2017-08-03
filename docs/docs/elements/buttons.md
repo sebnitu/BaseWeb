@@ -110,7 +110,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('border')</code></td>
-    <td><code>none</code></td>
+    <td><code>1px solid transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border-radius')</code></td>
@@ -146,7 +146,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('hover', 'border-color')</code></td>
-    <td><code>null</code></td>
+    <td><code>transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('hover', 'transition-duration')</code></td>
@@ -170,7 +170,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('active', 'border-color')</code></td>
-    <td><code>null</code></td>
+    <td><code>transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('active', 'transition-duration')</code></td>

@@ -1,3 +1,6 @@
+/**
+ * Include Packages
+ */
 var
   // Global
   fs = require('fs'),
@@ -25,8 +28,13 @@ var
 
   // Img
   imagemin = require('gulp-imagemin'),
-  svgSymbols = require('gulp-svg-symbols'),
+  svgSymbols = require('gulp-svg-symbols')
+;
 
+/**
+ * Settings
+ */
+var
   // folders
   folder = {
     src: 'src/',
@@ -205,6 +213,7 @@ gulp.task('docs:css', function() {
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
+      .pipe(rename('baseweb.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest)),
     cssmin = gulp.src(src)

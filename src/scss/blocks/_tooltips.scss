@@ -94,6 +94,8 @@ $tooltips: (
     $class: '&';
   } @else if ($class == default) {
     $class: '.#{map-get($o, 'class')}-#{$anchor}';
+  } @else {
+    $class: '.#{$class}';
   }
 
   @if ($anchor == 'top') {

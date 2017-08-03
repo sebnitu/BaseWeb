@@ -105,11 +105,11 @@ Form variables are encompassed within the `$forms` map and are used throughout a
 
   <tr>
     <td><code>$forms('vertical-spacing')</code></td>
-    <td><code>1.5em</code></td>
+    <td><code>1.5rem</code></td>
   </tr>
   <tr>
     <td><code>$forms('vertical-align')</code></td>
-    <td><code>0.75em</code></td>
+    <td><code>0.75rem</code></td>
   </tr>
   <tr>
     <td><code>$forms('font-family')</code></td>

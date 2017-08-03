@@ -403,21 +403,6 @@ body {
 }
 
 /*==============================================================================
-  @Buttons - #{$filename}
-==============================================================================*/
-
-.button-icon {
-  @extend .button;
-  display: inline-block;
-  padding: px-to-em(12px);
-
-  .icon {
-    font-size: px-to-em(24px);
-    vertical-align: middle;
-  }
-}
-
-/*==============================================================================
   @Widget Wrap - #{$filename}
 ==============================================================================*/
 
@@ -596,8 +581,6 @@ body {
   &:last-child {
     padding: 0;
   }
-
-  @include add-tooltip-position('bottom-left', 'tooltip');
 }
 @include media-min('medium') {
   .widget-back {
@@ -702,15 +685,14 @@ body {
   }
 
   ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 1rem;
+    margin: 1em auto;
   }
   ol li {
     display: flex;
-    flex: 0 1 100%;
-    margin: 1em 0;
+    margin: 0;
   }
 
   .article {
@@ -724,18 +706,9 @@ body {
 }
 
 @include media-min('medium') {
-  .article-listing ol li {
-    flex: 0 1 50%;
-
-    .article {
-      margin: 0 1em;
-    }
-  }
-}
-
-@include media-min('large') {
-  .article-listing ol li {
-    flex: 0 1 33.333%;
+  .article-listing ol {
+    grid-gap: 1.5rem;
+    margin: 2em auto;
   }
 }
 
