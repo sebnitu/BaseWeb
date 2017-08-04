@@ -35,13 +35,31 @@ You can also create dismissible notices but adding the `.dismissible` class and 
   <div class="row">
     <div class="col col-6">
       <div class="notice dismissible">
-        <button class="button close">&times;</button>
+        <button class="button button-icon small close">
+          {% include content-icon.html icon="x" %}
+        </button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted">
-        <button class="button close">&times;</button>
+        <button class="button button-icon small close">
+          {% include content-icon.html icon="x" %}
+        </button>
+        <p>Dismissible</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-6">
+      <div class="notice dismissible">
+        <button class="button close">Close</button>
+        <p>Dismissible</p>
+      </div>
+    </div>
+    <div class="col col-6">
+      <div class="notice dismissible inverted">
+        <button class="button close">Close</button>
         <p>Dismissible</p>
       </div>
     </div>

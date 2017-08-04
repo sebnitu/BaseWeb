@@ -61,12 +61,20 @@ $notices: (
 
   .#{map-get($o, 'class-close')} {
     float: right;
-    margin: 0.45em -0.25em 0 1em;
+    margin: 0.45rem -0.6rem 0 1rem;
+    background: rgba($black, 0);
     color: inherit;
 
-    + * {
-      padding-right: 2.5em;
+    &:hover {
+      background: rgba($black, 0.05);
     }
+  }
+  .button:not(.button-icon).#{map-get($o, 'class-close')} {
+    padding: 0.5em 1em;
+  }
+
+  &.#{map-get($o, 'class-inverted')} .#{map-get($o, 'class-close')}:hover {
+    background: rgba($white, 0.15);
   }
 }
 
