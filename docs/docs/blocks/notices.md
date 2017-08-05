@@ -1,4 +1,4 @@
----
+u---
 layout: page
 title: "Notices"
 order: 2
@@ -26,8 +26,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
 
 ```html
 <div class="notice dismissible">
-  <button class="button button-icon small close">
-    {% include content-icon.html icon="x" %}  </button>
+  <button class="button button-icon small close">&times;</button>
   <p>...</p>
 </div>
 ```
@@ -37,7 +36,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
     <div class="col col-6">
       <div class="notice dismissible">
         <button class="button button-icon small close">
-          {% include content-icon.html icon="x" %}
+          <button class="button button-icon small close">&times;</button>
         </button>
         <p>Dismissible</p>
       </div>
@@ -45,7 +44,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
     <div class="col col-6">
       <div class="notice dismissible inverted">
         <button class="button button-icon small close">
-          {% include content-icon.html icon="x" %}
+          <button class="button button-icon small close">&times;</button>
         </button>
         <p>Dismissible</p>
       </div>
