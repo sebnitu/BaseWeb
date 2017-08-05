@@ -18,9 +18,17 @@ markdown: kramdown
 kramdown:
   auto_ids: true
 permalink: pretty
-gems: ['jekyll-github-metadata']
+gems:
+- jekyll-github-metadata
 
 # Server
 host: localhost
 port: 8080
-exclude: ['src']
+
+# Removes files and folders from jekyll build
+exclude:
+- src
+
+# Adds other folders besides _includes, _layouts, _posts
+includes:
+- dist

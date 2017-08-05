@@ -4,6 +4,8 @@ title: "Icons"
 order: 11
 ---
 
+There's more than one way to include icons into a project. The preferred way in BaseWeb is using an SVG icon system as described in [CSS-Tricks](https://css-tricks.com/pretty-good-svg-icon-system/). The icon set included is the amazing opensource project [Feather Icons](https://feathericons.com/) by [Cole Bemis](http://colebemis.com/).
+
 {% assign text_icon = "download-cloud" %}
 
 <form>
