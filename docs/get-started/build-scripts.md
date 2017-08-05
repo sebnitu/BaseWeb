@@ -34,6 +34,10 @@ Here are all the tasks you'll have available.
     <td>Output expanded and minified JS files from source</td>
   </tr>
   <tr>
+    <td><code>gulp icons</code></td>
+    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes</td>
+  </tr>
+  <tr>
     <td><code>gulp src</code></td>
     <td>Builds all source assets</td>
   </tr>
@@ -54,12 +58,20 @@ Here are all the tasks you'll have available.
     <td>Compress all image files from documentation</td>
   </tr>
   <tr>
+    <td><code>gulp docs:icons</code></td>
+    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes</td>
+  </tr>
+  <tr>
     <td><code>gulp docs</code></td>
     <td>Builds all documentation assets</td>
   </tr>
 
   <tr>
     <th colspan="2">Global Tasks</th>
+  </tr>
+  <tr>
+    <td><code>gulp svg</code></td>
+    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes for both source and docs</td>
   </tr>
   <tr>
     <td><code>gulp go</code></td>
@@ -73,14 +85,19 @@ Here are all the tasks you'll have available.
     <td><code>gulp</code></td>
     <td>Builds everything and then initiates the watch task</td>
   </tr>
+
+  <tr>
+    <th colspan="2">Utility Tasks</th>
+  </tr>
+  <tr>
+    <td><code>gulp replace</code></td>
+    <td>Used to manage current versions and other static data that changes accross multiple files. The following parameters must be passed: -s SEARCH -r REPLACE -f FILES</td>
+  </tr>
+  <tr>
+    <td><code>gulp data:icons</code></td>
+    <td>Creates the icons data that is used in the docs</td>
+  </tr>
 </tbody></table>
-
-
-There is also available the utility task `gulp replace`. It's used to manage current versions and other static data that changes accross multiple files.
-
-```
-Usage: gulp replace -s SEARCH -r REPLACE -f FILES
-```
 
 <div class="notice info">
   <p markdown="1">All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.</p>

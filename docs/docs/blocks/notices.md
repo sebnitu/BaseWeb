@@ -1,4 +1,4 @@
-u---
+---
 layout: page
 title: "Notices"
 order: 2

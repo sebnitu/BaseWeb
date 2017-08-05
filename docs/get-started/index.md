@@ -46,6 +46,9 @@ Compiled BaseWeb comes with all the expanded, minified and source map files you 
             <li>baseweb.min.js</li>
           </ul>
         </li>
+        <li>
+          <strong>icons/...</strong>
+        </li>
       </ul>
     </li>
   </ul>
@@ -67,9 +70,9 @@ The included JavaScript is currently only placeholder but can be used as starter
 <script src="js/baseweb.min.js"></script>
 ```
 
-## Working With Source
+## BaseWeb Source
 
-When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript directory with a couple starter jQuery files.
+When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript directory with utility and component scripts.
 
 <div class="widget fill">
   {% include content-list-files.html %}
@@ -84,7 +87,8 @@ var
   gulp = require('gulp'),
   sass = require('gulp-sass'),
   postcss = require('gulp-postcss'),
-  autoprefixer = require('autoprefixer');
+  autoprefixer = require('autoprefixer')
+;
 
 gulp.task('css', function() {
   return gulp.src('src/scss/baseweb.scss')
@@ -108,12 +112,13 @@ var
   concat = require('gulp-concat'),
   deporder = require('gulp-deporder'),
   stripdebug = require('gulp-strip-debug'),
-  uglify = require('gulp-uglify');
+  uglify = require('gulp-uglify')
+;
 
 gulp.task('js', function() {
   return gulp.src('src/js/**/*')
     .pipe(deporder())
-    .pipe(concat('scripts.min.js'))
+    .pipe(concat('baseweb.min.js'))
     .pipe(stripdebug())
     .pipe(uglify())
     .pipe(gulp.dest('js/'));
@@ -121,69 +126,3 @@ gulp.task('js', function() {
 ```
 
 For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`]({{ site.github.repository_url }}/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page]({{ site.url }}{{ site.baseurl }}/get-started/build-scripts).
-
-<!--
-## Basic JavaScript
-
-Although BaseWeb isn't currently very opinionated about your JavaScript, it's pretty common to be using something like jQuery. So for best practice, we point to the latest version from a CDN and we have a local backup just in case.
-
-```html
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
-```
-
-Also common as a starter is to have two JavaScript files that are then combined and minified for production. These files are empty but initiate a `$(document).ready` and `$(window).load` as well as a self executing function wrap. The final compiled and minified file is then included in the footer after jQuery.
-
-
-```html
-<script src="/assets/js/scripts.min.js"></script>
-```
-
-### jquery.function.js
-
-A place to store all your project specific JavaScript functions. This allows us to safely use the jQuery `$` alias without any conflicts.
-
-```js
-/**
- * Self executing jQuery function wrap.
- */
-;(function ($) {
-  'use strict';
-
-  // Your code here...
-
-}(jQuery));
-```
-
-### jquery.docready.js
-
-A place to store all your JavaScript you want to run after either the document is ready or images are finished loading. These are both also wrapped in the self executing jQuery function so we can safely use the jQuery `$` alias.
-
-```js
-/**
- * Self executing jQuery function wrap.
- */
-;(function ($) {
-  'use strict';
-
-  /**
-   * When the document is ready
-   */
-  $(document).ready(function () {
-
-    // Your code here...
-
-  });
-
-  /**
-   * When the images are loaded
-   */
-  $(window).on('load', function() {
-
-    // Your code here...
-
-  });
-
-}(jQuery));
-```
--->
