@@ -191,7 +191,9 @@ gulp.task('icons', function() {
   var dest = folder.dest + 'icons/';
 
   for (var icon in feather.icons) {
-    var svg = feather.toSvg(icon, { class: 'icon icon-' + icon });
+    var svg = feather.toSvg(icon, {
+      class: 'icon icon-' + icon
+    });
     fs.writeFile(dest + icon + '.svg', svg, function (err) {
       if (err) { console.error(err); }
     });

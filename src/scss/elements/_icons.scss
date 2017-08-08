@@ -12,9 +12,20 @@ $filename: 'scss/elements/_icons.scss';
 
 $icons: (
   'classes' : true,
+  'classes-button-icon' : true,
+
   'class' : 'icon',
+
   'size' : 1em,
-  'vertical-align' : middle,
+
+  'margin-top' : -0.3em,
+  'margin-bottom' : -0.1em,
+
+  'font-size-small' : px-to-em(18px),
+  'font-size' : px-to-em(24px),
+  'font-size-large' : px-to-em(30px),
+
+  'vertical-align' : null,
   'stroke-width' : null,
   'stroke' : null,
   'fill' : null,
@@ -42,6 +53,8 @@ $icons: (
   display: inline-block;
   width: map-get($o, 'size');
   height: map-get($o, 'size');
+  margin-top: map-get($o, 'margin-top');
+  margin-bottom: map-get($o, 'margin-bottom');
   vertical-align: map-get($o, 'vertical-align');
   stroke-width: map-get($o, 'stroke-width');
   stroke: map-get($o, 'stroke');
@@ -60,57 +73,70 @@ $icons: (
   @include make-icon();
 }
 
-/**
- * Button Icons
- */
-.#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
-  padding: 0.25em 0.5em;
-  font-size: 1.5em;
-
-  &.small {
-    font-size: 1.25em;
-  }
-  &.large {
-    font-size: 1.75em;
-  }
-}
+// Check if we should output button icon classes
+@if (map-get($icons, 'classes-button-icon') == true) {
 
 /**
- * Icons in Buttons
+ * .button .icon
  */
 .#{map-get($buttons, 'class')} {
   .#{map-get($icons, 'class')} {
-    margin-top: -0.25em;
+    font-size: map-get($icons, 'font-size');
+    line-height: 1em;
+    vertical-align: middle;
   }
   &.small .#{map-get($icons, 'class')} {
-    margin-top: -0.15em;
+    font-size: map-get($icons, 'font-size-small');
   }
-
-  .icon-left {
-    margin-right: 0.5em;
-  }
-  .icon-right {
-    margin-left: 0.5em;
-  }
-
-  &.small .icon-left {
-    margin-left: -0.15em;
-  }
-  &.small .icon-right {
-    margin-right: -0.15em;
-  }
-  .icon-left {
-    margin-left: -0.3em;
-  }
-  .icon-right {
-    margin-right: -0.3em;
-  }
-  &.large .icon-left {
-    margin-left: -0.45em;
-  }
-  &.large .icon-right {
-    margin-right: -0.45em;
+  &.large .#{map-get($icons, 'class')} {
+    font-size: map-get($icons, 'font-size-large');
+    margin-top: -0.2em;
   }
 }
+
+/**
+ * .button.button-icon
+ */
+.#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+  padding: px-to-rem(12px);
+  &.small {
+    padding: px-to-rem(6px);
+  }
+  &.large {
+    padding: px-to-rem(16px);
+  }
+}
+
+/**
+ * .button-icon-left
+ * .button-icon-right
+ */
+.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-left {
+  .#{map-get($icons, 'class')} {
+    margin-right: 0.25em;
+    margin-left: -0.125em;
+  }
+  &.small .#{map-get($icons, 'class')} {
+    margin-left: -0.125em;
+  }
+  &.large .#{map-get($icons, 'class')} {
+    margin-left: -0.25em;
+  }
+}
+
+.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-right {
+  .#{map-get($icons, 'class')} {
+    margin-left: 0.25em;
+    margin-right: -0.125em;
+  }
+  &.small .#{map-get($icons, 'class')} {
+    margin-right: -0.125em;
+  }
+  &.large .#{map-get($icons, 'class')} {
+    margin-right: -0.25em;
+  }
+}
+
+} // endif classes-button-icon
 
 } // endif classes
