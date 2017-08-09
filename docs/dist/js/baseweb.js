@@ -1144,6 +1144,32 @@ function getContrastYIQ(hexcolor) {
     /**
      * @Docs Interface
      */
+    // Expandable
+    $('.expandable-trigger').click(function(e) {
+      var $trigger = $(this);
+      var $expandable = $trigger.parents('.expandable');
+      var $expandableContent = $expandable.find('.expandable-content');
+
+      var $text_a = $trigger.text();
+      var $text_b = $trigger.data('text-swap');
+
+      $trigger.text($text_b).data('text-swap', $text_a);
+      $expandable.toggleClass('active');
+
+      if($expandable.hasClass('active')) {
+        $expandableContent.animate({
+          height: $expandableContent.get(0).scrollHeight
+        }, 500, function() {
+          $expandableContent.height('auto');
+        });
+      } else {
+        $expandableContent.animate({
+          height: '260px'
+        }, 500);
+      }
+
+      e.preventDefault();
+    });
 
     // Sticky Element
     $('.sticky').theiaStickySidebar();

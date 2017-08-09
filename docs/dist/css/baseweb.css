@@ -447,7 +447,7 @@ dl dd {
   clear: both;
 }
 
-.list.flush > li, .list-docs > li {
+.list.flush > li {
   padding-left: 0;
   padding-right: 0;
 }
@@ -455,11 +455,11 @@ dl dd {
 /**
  * Border Modifiers
  */
-.list.rowed > li, .list-docs > li {
+.list.rowed > li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.list.rowed > li:first-child, .list-docs > li:first-child {
+.list.rowed > li:first-child {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -1820,17 +1820,17 @@ fieldset[disabled] .input {
  * .button .icon
  */
 .button .icon {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   line-height: 1em;
   vertical-align: middle;
 }
 
 .button.small .icon {
-  font-size: 1.125em;
+  font-size: 1.125rem;
 }
 
 .button.large .icon {
-  font-size: 1.875em;
+  font-size: 1.875rem;
   margin-top: -0.2em;
 }
 
@@ -1855,7 +1855,7 @@ fieldset[disabled] .input {
  */
 .button-icon-left .icon {
   margin-right: 0.25em;
-  margin-left: -0.125em;
+  margin-left: -0.25em;
 }
 
 .button-icon-left.small .icon {
@@ -1863,12 +1863,12 @@ fieldset[disabled] .input {
 }
 
 .button-icon-left.large .icon {
-  margin-left: -0.25em;
+  margin-left: -0.35em;
 }
 
 .button-icon-right .icon {
   margin-left: 0.25em;
-  margin-right: -0.125em;
+  margin-right: -0.25em;
 }
 
 .button-icon-right.small .icon {
@@ -1876,7 +1876,7 @@ fieldset[disabled] .input {
 }
 
 .button-icon-right.large .icon {
-  margin-right: -0.25em;
+  margin-right: -0.35em;
 }
 
 /*==============================================================================
@@ -5220,10 +5220,13 @@ figure {
 .icons-listing .icon-item {
   margin: 0;
   padding: 1em 1.5em;
-  background: #F5F5F5;
   border-radius: 3px;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
+}
+
+.icons-listing .icon-item:not(.button) {
+  background: #F5F5F5;
 }
 
 .icons-listing .icon {
@@ -5239,11 +5242,11 @@ figure {
   transition: all 0.25s linear;
 }
 
-.icons-listing .icon-item:hover {
+.icons-listing .icon-item:not(.button):hover {
   background-color: #e8e8e8;
 }
 
-.icons-listing .icon-item:hover code {
+.icons-listing .icon-item:not(.button):hover code {
   color: #212121;
 }
 
@@ -5862,6 +5865,28 @@ body {
   }
 }
 
+/**
+ * Expandable
+ */
+.expandable {
+  position: relative;
+  margin: 2em 0;
+}
+
+.expandable .expandable-header {
+  padding-bottom: 1em;
+}
+
+.expandable .expandable-footer {
+  padding-top: 1em;
+}
+
+.expandable .expandable-content {
+  margin: 0;
+  height: 260px;
+  overflow-y: scroll;
+}
+
 /*==============================================================================
   @Sidebar - scss/custom/_custom.scss
 ==============================================================================*/
@@ -6101,6 +6126,13 @@ body {
  */
 .list-docs {
   margin: 1.5rem 0;
+  list-style: none;
+}
+
+.list-docs li {
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .list-docs.numbered {

@@ -1,11 +1,6 @@
 // Set file variable
 $filename: 'scss/elements/_icons.scss';
 
-// Required components warning
-@if (variable-exists(buttons) == false) {
-  @warn 'The icons element component requires the buttons element component!';
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // @Buttons Map
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,14 +16,21 @@ $icons: (
   'margin-top' : -0.3em,
   'margin-bottom' : -0.1em,
 
-  'font-size-small' : px-to-em(18px),
-  'font-size' : px-to-em(24px),
-  'font-size-large' : px-to-em(30px),
+  'font-size-small' : px-to-rem(18px),
+  'font-size' : px-to-rem(24px),
+  'font-size-large' : px-to-rem(30px),
 
   'vertical-align' : null,
   'stroke-width' : null,
   'stroke' : null,
   'fill' : null,
+
+  'buttons' : (
+    'gap' : 0.25em,
+    'indent-small' : -0.125em,
+    'indent' : -0.25em,
+    'indent-large' : -0.35em
+  )
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -76,6 +78,11 @@ $icons: (
 // Check if we should output button icon classes
 @if (map-get($icons, 'classes-button-icon') == true) {
 
+// Required components warning
+@if (variable-exists(buttons) == false) {
+  @warn 'The icons element component requires the buttons element component!';
+} @else {
+
 /**
  * .button .icon
  */
@@ -98,12 +105,12 @@ $icons: (
  * .button.button-icon
  */
 .#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
-  padding: px-to-rem(12px);
+  padding: nth(map-get($buttons, 'padding'), 1);
   &.small {
-    padding: px-to-rem(6px);
+    padding: nth(map-get($buttons, 'padding-small'), 1);
   }
   &.large {
-    padding: px-to-rem(16px);
+    padding: nth(map-get($buttons, 'padding-large'), 1);
   }
 }
 
@@ -113,29 +120,31 @@ $icons: (
  */
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-left {
   .#{map-get($icons, 'class')} {
-    margin-right: 0.25em;
-    margin-left: -0.125em;
+    margin-right: map-fetch($icons, 'buttons', 'gap');
+    margin-left: map-fetch($icons, 'buttons', 'indent');
   }
   &.small .#{map-get($icons, 'class')} {
-    margin-left: -0.125em;
+    margin-left: map-fetch($icons, 'buttons', 'indent-small');
   }
   &.large .#{map-get($icons, 'class')} {
-    margin-left: -0.25em;
+    margin-left: map-fetch($icons, 'buttons', 'indent-large');
   }
 }
 
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-right {
   .#{map-get($icons, 'class')} {
-    margin-left: 0.25em;
-    margin-right: -0.125em;
+    margin-left: map-fetch($icons, 'buttons', 'gap');
+    margin-right: map-fetch($icons, 'buttons', 'indent');
   }
   &.small .#{map-get($icons, 'class')} {
-    margin-right: -0.125em;
+    margin-right: map-fetch($icons, 'buttons', 'indent-small');
   }
   &.large .#{map-get($icons, 'class')} {
-    margin-right: -0.25em;
+    margin-right: map-fetch($icons, 'buttons', 'indent-large');
   }
 }
+
+} // If $buttons exists
 
 } // endif classes-button-icon
 

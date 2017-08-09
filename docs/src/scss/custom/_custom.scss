@@ -402,6 +402,26 @@ body {
   }
 }
 
+/**
+ * Expandable
+ */
+.expandable {
+  position: relative;
+  margin: 2em 0;
+
+  .expandable-header {
+    padding-bottom: 1em;
+  }
+  .expandable-footer {
+    padding-top: 1em;
+  }
+  .expandable-content {
+    margin: 0;
+    height: 260px;
+    overflow-y: scroll;
+  }
+}
+
 /*==============================================================================
   @Sidebar - #{$filename}
 ==============================================================================*/
@@ -660,9 +680,14 @@ body {
  * Lists
  */
 .list-docs {
-  @extend .list.rowed;
-  @extend .list.flush;
   margin: 1.5rem 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 1rem 0;
+    border-top: 1px solid rgba($black, 0.1);
+  }
 }
 .list-docs.numbered {
   counter-reset: list-counter;
