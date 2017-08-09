@@ -1156,17 +1156,17 @@ function getContrastYIQ(hexcolor) {
       $trigger.text($text_b).data('text-swap', $text_a);
       $expandable.toggleClass('active');
 
-      if($expandable.hasClass('active')) {
-        $expandableContent.animate({
-          height: $expandableContent.get(0).scrollHeight
-        }, 500, function() {
-          $expandableContent.height('auto');
-        });
-      } else {
-        $expandableContent.animate({
-          height: '260px'
-        }, 500);
-      }
+      // if($expandable.hasClass('active')) {
+      //   $expandableContent.animate({
+      //     height: $expandableContent.get(0).scrollHeight
+      //   }, 500, function() {
+      //     $expandableContent.height('auto');
+      //   });
+      // } else {
+      //   $expandableContent.animate({
+      //     height: '300px'
+      //   }, 500);
+      // }
 
       e.preventDefault();
     });

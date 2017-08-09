@@ -26,7 +26,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
 
 ```html
 <div class="notice dismissible">
-  <button class="button button-icon small close">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
+  <button class="button close">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
   <p>...</p>
 </div>
 ```
@@ -35,13 +35,13 @@ You can also create dismissible notices but adding the `.dismissible` class and 
   <div class="row">
     <div class="col col-6">
       <div class="notice dismissible">
-        <button class="button button-icon small close">{% include icons/x.svg %}</button>
+        <button class="button close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted">
-        <button class="button button-icon small close">{% include icons/x.svg %}</button>
+        <button class="button close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
       </div>
     </div>
