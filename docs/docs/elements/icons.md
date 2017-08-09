@@ -25,8 +25,8 @@ Since this method requires you to inject the SVG of an icon directly into your d
 Below are all the icons available in [Feather Icons](https://feathericons.com/) which are also included in `dist/icons` of BaseWeb.
 
 <div class="expandable">
-  <div class="expandable-header">
-    <a class="button primary expandable-trigger" href="#" data-text-swap="Collapse">Expand</a>
+  <div class="expandable-overlay">
+    <a class="button primary expandable-trigger" href="#" data-text-swap="Hide Icons">View Available Icons</a>
   </div>
   <div class="expandable-content icons-listing">
     {% for icon in site.data.icons %}

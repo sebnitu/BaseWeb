@@ -415,10 +415,38 @@ body {
   .expandable-footer {
     padding-top: 1em;
   }
+  .expandable-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba($black, 0.25);
+    border-radius: $border-radius;
+  }
   .expandable-content {
     margin: 0;
-    height: 260px;
-    overflow-y: scroll;
+    height: 300px;
+    overflow-y: hidden;
+  }
+}
+.expandable.active {
+  .expandable-overlay {
+    display: block;
+    padding-bottom: 1em;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    background: none;
+  }
+  .expandable-content {
+    height: auto;
+    overflow-y: auto;
   }
 }
 

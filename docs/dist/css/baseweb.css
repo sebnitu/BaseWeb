@@ -5881,10 +5881,45 @@ body {
   padding-top: 1em;
 }
 
+.expandable .expandable-overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+}
+
 .expandable .expandable-content {
   margin: 0;
-  height: 260px;
-  overflow-y: scroll;
+  height: 300px;
+  overflow-y: hidden;
+}
+
+.expandable.active .expandable-overlay {
+  display: block;
+  padding-bottom: 1em;
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  background: none;
+}
+
+.expandable.active .expandable-content {
+  height: auto;
+  overflow-y: auto;
 }
 
 /*==============================================================================
