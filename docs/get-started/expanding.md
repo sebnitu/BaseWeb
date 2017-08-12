@@ -1,8 +1,6 @@
 ---
 layout: page
-title: Expanding BaseWeb
-link:
-  text: Expanding
+title: Expanding
 order: 2
 ---
 
