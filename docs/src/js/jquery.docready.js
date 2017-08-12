@@ -22,6 +22,9 @@
      */
     // Expandable
     $('.expandable-trigger').click(function(e) {
+
+      console.log('test');
+
       var $trigger = $(this);
       var $expandable = $trigger.parents('.expandable');
       var $expandableContent = $expandable.find('.expandable-content');

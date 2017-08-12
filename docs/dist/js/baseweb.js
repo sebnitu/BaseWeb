@@ -7,8 +7,8 @@ var utility = (function () {
   //
 
   var api = {};
-  var settings;
-  var defaults = {};
+  // var settings;
+  // var defaults = {};
 
   //
   // Public Methods
@@ -16,8 +16,8 @@ var utility = (function () {
 
   /**
    * Checks if an element has a class or not
-   * @param {Element} Element to check class on
-   * @param {String} Class string to check for
+   * @param {Element} Element to check class(es) on
+   * @param {String} || {Array} Class(es) to check
    * @returns {Boolean} Returns true if class exists on element, otherwise false
    */
   api.hasClass = function ( el, c ) {
@@ -1146,6 +1146,9 @@ function getContrastYIQ(hexcolor) {
      */
     // Expandable
     $('.expandable-trigger').click(function(e) {
+
+      console.log('test');
+
       var $trigger = $(this);
       var $expandable = $trigger.parents('.expandable');
       var $expandableContent = $expandable.find('.expandable-content');
