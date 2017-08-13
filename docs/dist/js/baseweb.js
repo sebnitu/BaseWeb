@@ -31,7 +31,7 @@ var utility = (function () {
   }; // End hasClass
 
   /**
-   * Adds a class to an element
+   * Adds a class or classes to an element
    * @param {Element} Element to add class(es) on
    * @param {String} || {Array} Class(es) to add
    */
@@ -46,7 +46,7 @@ var utility = (function () {
   }; // End addClass
 
   /**
-   * Remove a class from an element
+   * Remove a class or classes from an element
    * @param {Element} Element to remove class(es) from
    * @param {String} || {Array} Class(es) to remove
    */
@@ -61,7 +61,7 @@ var utility = (function () {
   }; // End removeClass
 
   /**
-   * Toggle a class on an element
+   * Toggle a class or classes on an element
    * @param {Element} Element to toggle class(es) on
    * @param {String} || {Array} Class(es) to toggle
    */
@@ -79,7 +79,7 @@ var utility = (function () {
    * Find the closest parent element based on class. This is different from the
    * native .closest() method in that it doesn't check the current element.
    * @param {Element} Element to start search on
-   * @param {String} Class string to toggle
+   * @param {String} || {Array} Class(es) to check for
    * @return {Element} Closest parent element
    */
   api.closest = function ( el, c ) {
@@ -88,18 +88,19 @@ var utility = (function () {
   }; // End closest
 
   /**
-   * Converts a string to an array
-   * @param {String} || {Array} A string to convert to an array
+   * Converts a string to an array. If an array is passed, it's returned as is.
+   * Anything else is returned as false.
+   * @param {String} || {Array} String to convert to an array
    * @return {Array} Return the converted array
    */
-  api.toArray = function( c ) {
+  api.toArray = function( s ) {
 
     var array = [];
 
-    if (typeof c === 'string') {
-      array.push(c);
-    } else if (Array.isArray(c)) {
-      array = c;
+    if (typeof s === 'string') {
+      array.push(s);
+    } else if (Array.isArray(s)) {
+      array = s;
     } else {
       return false;
     }
@@ -109,10 +110,10 @@ var utility = (function () {
   }; // End toArray
 
   /**
-   * Merge two or more objects. Returns a new object.
-   * Set the first argument to `true` for a deep or recursive merge
-   * @param {Boolean} deep If true, do a deep (or recursive) merge [optional]
-   * @param {Object} objects The objects to merge together
+   * Merge two or more objects. Returns a new object. Set the first argument
+   * to `true` for a deep or recursive merge.
+   * @param {Boolean} [Optional] If true, do a deep (or recursive) merge
+   * @param {Object} The objects to merge together; each overriding the next
    * @returns {Object} Merged values of defaults and options
    */
   api.extend = function () {
