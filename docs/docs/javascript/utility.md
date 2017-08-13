@@ -3,7 +3,7 @@ layout: page
 title: Utility
 order: 1
 section:
-  id: js-utility-method
+  id: js-utility
   class: js-method
 ---
 
@@ -16,7 +16,9 @@ u.toArray('something'); // Converts a string into array object
 u.extend( object_a, object_b ); // jQuery type extend of objects
 ```
 
-<section id="{{ page.section.id }}_hasClass" class="docs-item {{ page.section.class }}" markdown="1">
+<div id="toc" class="toc"></div>
+
+<section id="{{ page.section.id }}-hasClass" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .hasClass()
 
@@ -63,7 +65,7 @@ utility.hasClass(div, 'quux'); // Returns false
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_addClass" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-addClass" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .addClass()
 
@@ -109,7 +111,7 @@ utility.addClass(div, ['bar', 'quux']);
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_removeClass" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-removeClass" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .removeClass()
 
@@ -155,7 +157,7 @@ utility.removeClass(div, ['bar', 'quux']);
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_toggleClass" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-toggleClass" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .toggleClass()
 
@@ -201,7 +203,7 @@ utility.toggleClass(div, ['bar', 'quux']);
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_closest" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-closest" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .closest()
 
@@ -252,7 +254,7 @@ utility.closest(div, 'foo');
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_toArray" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-toArray" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .toArray()
 
@@ -288,7 +290,7 @@ utility.toArray("foo");
 
 </section><!-- .docs-item -->
 
-<section id="{{ page.section.id }}_extend" class="docs-item {{ page.section.class }}" markdown="1">
+<section id="{{ page.section.id }}-extend" class="docs-item {{ page.section.class }}" markdown="1">
 
 ### .extend()
 

@@ -18,6 +18,32 @@
   $(document).ready(function () {
 
     /**
+     * Table of Contents (toc)
+     */
+    $('#toc').each(function () {
+
+      var toc = $(this);
+      var items = $('.docs-item');
+      var i = 0;
+
+      // toc.hide();
+      toc.append('<h3>Contents</h3>');
+      toc.append('<ul></ul>');
+
+      items.each(function() {
+        i += 1;
+        var hash = $(this).attr('id');
+        var text = $(this).find('h3').text();
+        toc.find('ul').append('<li><a href="#' + hash + '">' + text + '</a></li>');
+
+        if (i == items.length) {
+          // toc.slideDown();
+        }
+      });
+
+    });
+
+    /**
      * @Docs Interface
      */
     // Expandable
