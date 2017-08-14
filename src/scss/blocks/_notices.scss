@@ -69,8 +69,16 @@ $notices: (
       background: rgba($black, 0.05);
     }
   }
-  .button:not(.button-icon).#{map-get($o, 'class-close')} {
-    padding: 0.5em 1em;
+
+  @if (variable-exists(buttons)) {
+    .#{map-get($buttons, 'class')}:not(.button-icon).#{map-get($o, 'class-close')} {
+      padding: 0.5em 1em;
+    }
+    @if (variable-exists(icons)) {
+      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}.#{map-get($o, 'class-close')} {
+        padding: 0.5em;
+      }
+    }
   }
 
   &.#{map-get($o, 'class-inverted')} .#{map-get($o, 'class-close')}:hover {
