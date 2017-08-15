@@ -48,7 +48,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
   </div>
   <div class="row">
     <div class="col col-12">
-      <div class="button-group float-right">
+      <div class="button-group">
         <button class="button small" onclick="dismissible.hideAll('.demo');">Dismiss All</button>
         <button class="button small" onclick="dismissible.showAll('.demo');">Show All</button>
       </div>

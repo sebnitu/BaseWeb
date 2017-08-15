@@ -34,3 +34,12 @@ require
 <div class="notice yellow" markdown="1">
 Currently being developed is a way to create a custom download of BaseWeb scripts in an "a la carte" style for component selection. Currently that's best accomplished manually in your own build scripts.
 </div>
+
+## Browser Support
+
+BaseWeb scripts make heavy use of ECMAScript 5 (more commonly known as ES5) methods and APIs.
+That generally means browser support begins with IE9 and above. For further browser support, consider using [polyfill.io](https://polyfill.io/v2/docs/).
+
+```html
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+```

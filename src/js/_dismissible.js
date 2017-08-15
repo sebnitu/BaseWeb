@@ -52,6 +52,53 @@ var dismissible = (function () {
   // Public Methods
   //
 
+  api.init = function (options) {
+
+    // Destroy any previous initializations
+    api.destroy();
+
+    // Merge user options with the defaults
+    settings = u.extend( defaults, options || {} );
+
+    // Add event listener
+    document.addEventListener('click', runDismissible, false);
+
+  };
+
+  api.destroy = function () {
+
+    // Remove event listener
+    document.removeEventListener('click', runDismissible, false);
+
+    // Reset settings
+    settings = null;
+
+  };
+
+  api.showAll = function (selector) {
+
+    // Get dismissible items
+    var dismissible = api.getDismissible(selector);
+
+    // Loop through and remove active class from dismissible items
+    dismissible.forEach(function (el) {
+      u.removeClass(el, settings.classHide);
+    });
+
+  };
+
+  api.hideAll = function (selector) {
+
+    // Get dismissible items
+    var dismissible = api.getDismissible(selector);
+
+    // Loop through and remove active class from dismissible items
+    dismissible.forEach(function (el) {
+      u.addClass(el, settings.classHide);
+    });
+
+  };
+
   api.getDismissible = function (selector) {
 
     // Initialize dismissible array
@@ -78,53 +125,6 @@ var dismissible = (function () {
 
     // Return dismissible
     return dismissible;
-
-  };
-
-  api.hideAll = function (selector) {
-
-    // Get dismissible items
-    var dismissible = api.getDismissible(selector);
-
-    // Loop through and remove active class from dismissible items
-    dismissible.forEach(function (el) {
-      u.addClass(el, settings.classHide);
-    });
-
-  };
-
-  api.showAll = function (selector) {
-
-    // Get dismissible items
-    var dismissible = api.getDismissible(selector);
-
-    // Loop through and remove active class from dismissible items
-    dismissible.forEach(function (el) {
-      u.removeClass(el, settings.classHide);
-    });
-
-  };
-
-  api.init = function (options) {
-
-    // Destroy any previous initializations
-    api.destroy();
-
-    // Merge user options with the defaults
-    settings = u.extend( defaults, options || {} );
-
-    // Add event listener
-    document.addEventListener('click', runDismissible, false);
-
-  };
-
-  api.destroy = function () {
-
-    // Remove event listener
-    document.removeEventListener('click', runDismissible, false);
-
-    // Reset settings
-    settings = null;
 
   };
 

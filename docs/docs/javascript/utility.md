@@ -50,7 +50,7 @@ utility.hasClass( element, className )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div id="mydiv" class="foo bar"></div>
@@ -59,8 +59,8 @@ utility.hasClass( element, className )
 ```js
 var div = document.querySelector('#mydiv');
 
-utility.hasClass(div, 'foo');  // Returns true
-utility.hasClass(div, 'quux'); // Returns false
+utility.hasClass(div, 'foo');  // Returns: true
+utility.hasClass(div, 'quux'); // Returns: false
 ```
 
 </section><!-- .docs-item -->
@@ -93,7 +93,7 @@ utility.addClass( element, className )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div id="mydiv"></div>
@@ -139,7 +139,7 @@ utility.removeClass( element, className )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div id="mydiv" class="foo bar quux"></div>
@@ -185,7 +185,7 @@ utility.toggleClass( element, className )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div id="mydiv" class="foo bar"></div>
@@ -235,7 +235,7 @@ utility.closest( element, className )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div class="foo">
@@ -249,7 +249,7 @@ utility.closest( element, className )
 var div = document.querySelector('.quux');
 
 utility.closest(div, 'foo');
-// Returns <div class="foo"></div>
+// Returns: <div class="foo"></div>
 ```
 
 </section><!-- .docs-item -->
@@ -281,11 +281,11 @@ utility.toArray( string )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```js
 utility.toArray("foo");
-// Returns ["foo"]
+// Returns: ["foo"]
 ```
 
 </section><!-- .docs-item -->
@@ -322,7 +322,7 @@ utility.extend( deep[optional], objects... )
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```js
 // Our initial object
@@ -340,7 +340,7 @@ var options = {
 };
 
 var settings = utility.extend(defaults, options);
-// Returns merged objects into the `options` variable
+// Returns: merged objects into the `options` variable
 // { class: "example", color: "red", other: false, new: "100px" }
 ```
 
