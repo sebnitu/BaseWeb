@@ -28,8 +28,6 @@
 
     var headerHeight = $('.header').outerHeight();
 
-    console.log(headerHeight);
-
     if (headerHeight < $(document).scrollTop()) {
       $('.button-totop').addClass('fadeIn');
     } else {
