@@ -26,32 +26,7 @@ BaseWeb can be used a few different ways depending on what you need. The quickes
 Compiled BaseWeb comes with all the expanded, minified and source map files you need to get started right away. You'll have available all class based systems each component provides.
 
 <div class="widget fill">
-  <ul class="list-ascii">
-    <li>
-      <strong>dist/</strong>
-      <ul>
-        <li>
-          <strong>css/</strong>
-          <ul>
-            <li>baseweb.css</li>
-            <li>baseweb.css.map</li>
-            <li>baseweb.min.css</li>
-            <li>baseweb.min.css.map</li>
-          </ul>
-        </li>
-        <li>
-          <strong>js/</strong>
-          <ul>
-            <li>baseweb.js</li>
-            <li>baseweb.min.js</li>
-          </ul>
-        </li>
-        <li>
-          <strong>icons/...</strong>
-        </li>
-      </ul>
-    </li>
-  </ul>
+  {% include content-ascii-dist.html %}
 </div>
 
 ```html
@@ -72,57 +47,39 @@ The included JavaScript is currently only placeholder but can be used as starter
 
 ## BaseWeb Source
 
-When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript files with utility and component scripts.
+When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and JavaScript files with utility and component scripts.
+
+To get started, you'll need to setup a build environment or process that compiles SCSS into your production CSS. You could use BaseWeb's build scripts (powered by [Gulp](http://gulpjs.com/)) and adapt them to your own needs, or you can role your own using [CodeKit](https://incident57.com/codekit/), [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) or [Jake](http://jakejs.com/) to name a few.
 
 <div class="widget fill">
-  {% include content-list-files.html %}
+  {% include content-ascii-src.html children="hide" %}
 </div>
 
-To get started, you'll need to setup a build environment or process that compiles SCSS into your production CSS. You could use BaseWeb's build scripts (powered by [Gulp](http://gulpjs.com/)) and adapt them to your own needs, or you can role your own using [CodeKit](https://incident57.com/codekit/), [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) or [Jake](http://jakejs.com/) to name a few. All BaseWeb partials are routed through the `baseweb.scss` file.
+## Import Partials
 
-Here is an example task for creating a production ready BaseWeb build using Gulp (as would appear in your `gulpfile.js`):
+All BaseWeb partials are routed through the `baseweb.scss` file. Alternatively, you can also use `@import` partials through. It's recommended that you include `_baseweb-core.scss` at a minimum and piece meal elements and blocks as needed.
 
-```js
-var
-  gulp = require('gulp'),
-  sass = require('gulp-sass'),
-  postcss = require('gulp-postcss'),
-  autoprefixer = require('autoprefixer')
-;
+1. `_baseweb-core.scss`
+2. `_baseweb-elements.scss`
+3. `_baseweb-blocks.scss`
 
-gulp.task('css', function() {
-  return gulp.src('src/scss/baseweb.scss')
-    .pipe(sass({
-      outputStyle: 'compressed',
-      precision: 3
-    })
-    .on('error', sass.logError))
-    .pipe(postcss(autoprefixer({
-      browsers: ['last 2 versions', '> 2%']
-    })))
-    .pipe(gulp.dest('css/'));
-});
+```scss
+// Core [Required]
+@import "baseweb-core";
+
+// Overrides
+@import "custom/overrides";
+
+// Elements
+@import "baseweb-elements";
+
+// Blocks
+@import "baseweb-blocks";
+
+// Custom
+@import "custom/custom";
 ```
 
-And here is an example of a simple task for concatenation and minification of JavaScript files using Gulp (as would appear in your `gulpfile.js`):
-
-```js
-var
-  gulp = require('gulp'),
-  concat = require('gulp-concat'),
-  deporder = require('gulp-deporder'),
-  stripdebug = require('gulp-strip-debug'),
-  uglify = require('gulp-uglify')
-;
-
-gulp.task('js', function() {
-  return gulp.src('src/js/**/*')
-    .pipe(deporder())
-    .pipe(concat('baseweb.min.js'))
-    .pipe(stripdebug())
-    .pipe(uglify())
-    .pipe(gulp.dest('js/'));
-});
-```
-
-For more information on how to build scripts with [Gulp](http://gulpjs.com/), consult their project documentation. All of BaseWeb's build scripts can be found in our [`gulpfile.js`]({{ site.github.repository_url }}/blob/master/gulpfile.js). Read more about available scripts and how they work on [our build scripts page]({{ site.url }}{{ site.baseurl }}/get-started/build-scripts).
+<div class="notice yellow" markdown="1">
+It's important to not that `custom/overrides` should be imported after core but before elements and block files. This ensures that you keep your custom framework overrides.
+</div>

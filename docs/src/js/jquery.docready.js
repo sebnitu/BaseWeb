@@ -18,6 +18,17 @@
   $(document).ready(function () {
 
     /**
+     * ACSII Folder Toggle
+     */
+    $('.list-ascii').each(function () {
+      var dir = $(this).find('strong');
+
+      dir.click(function () {
+        $(this).parent('li').toggleClass('hide-children');
+      });
+    });
+
+    /**
      * Table of Contents (toc)
      */
     $('#toc').each(function () {
@@ -44,12 +55,9 @@
     });
 
     /**
-     * @Docs Interface
+     * Expandable
      */
-    // Expandable
     $('.expandable-trigger').click(function(e) {
-
-      console.log('test');
 
       var $trigger = $(this);
       var $expandable = $trigger.parents('.expandable');
@@ -61,45 +69,43 @@
       $trigger.text($text_b).data('text-swap', $text_a);
       $expandable.toggleClass('active');
 
-      // if($expandable.hasClass('active')) {
-      //   $expandableContent.animate({
-      //     height: $expandableContent.get(0).scrollHeight
-      //   }, 500, function() {
-      //     $expandableContent.height('auto');
-      //   });
-      // } else {
-      //   $expandableContent.animate({
-      //     height: '300px'
-      //   }, 500);
-      // }
-
       e.preventDefault();
     });
 
-    // Sticky Element
+    /**
+     * Sticky Element
+     */
     $('.sticky').theiaStickySidebar();
 
-    // Navigation Toggle
+    /**
+     * Navigation Toggle
+     */
     $('.widget-menu .toggle').click(function() {
       $(this).parent().toggleClass('active');
       return false;
     });
 
-    // New Tab Links
+    /**
+     * New Tab Links
+     */
     $('.onclick-newtab').click(function() {
       $(this).attr('target', '_blank');
       window.open($(this).attr('href'));
       return false;
     });
 
-    // Swatches Background
+    /**
+     * Swatches Background
+     */
     $('.swatch').each(function() {
       var bg = $(this).css('backgroundColor');
       var text = getContrastYIQ(rgb2hex(bg));
       $(this).addClass(text);
     });
 
-    // Switch off-canvas class
+    /**
+     * Switch off-canvas class
+     */
     $('.form-offcanvas-transitions select').change(function () {
       var
         $this = $(this),
@@ -117,7 +123,9 @@
 
     });
 
-    // Select on focus
+    /**
+     * Select on focus
+     */
     $('.form-off-canvas-transitions input[readonly]').focus(function() {
       $(this).select();
     });

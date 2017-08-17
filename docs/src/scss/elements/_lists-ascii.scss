@@ -24,6 +24,47 @@ ul.list-ascii, ul.list-ascii ul {
 }
 
 /**
+ * Behavior
+ */
+ul.list-ascii {
+
+  strong {
+    color: $color-link;
+    cursor: pointer;
+
+    &:before {
+      content: "↓";
+      font-family: $base-font-family;
+      margin-right: 10px;
+    }
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  ul {
+    overflow: hidden;
+    max-height: 1000px;
+    transition: max-height 0.25s ease-in;
+  }
+
+  .hide-children {
+    > strong {
+      &:after {
+        content: "...";
+      }
+      &:before {
+        content: "→";
+      }
+    }
+    > ul {
+      max-height: 0;
+      transition: max-height 0.15s ease-out;
+    }
+  }
+}
+
+/**
  * Level 1
  */
 ul.list-ascii > li::before { content: ""; }

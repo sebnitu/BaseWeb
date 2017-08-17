@@ -3117,6 +3117,45 @@ ul.list-ascii li, ul.list-ascii ul li {
 }
 
 /**
+ * Behavior
+ */
+ul.list-ascii strong {
+  color: #2196F3;
+  cursor: pointer;
+}
+
+ul.list-ascii strong:before {
+  content: "↓";
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  margin-right: 10px;
+}
+
+ul.list-ascii strong:hover {
+  color: #1976D2;
+}
+
+ul.list-ascii ul {
+  overflow: hidden;
+  max-height: 1000px;
+  -webkit-transition: max-height 0.25s ease-in;
+  transition: max-height 0.25s ease-in;
+}
+
+ul.list-ascii .hide-children > strong:after {
+  content: "...";
+}
+
+ul.list-ascii .hide-children > strong:before {
+  content: "→";
+}
+
+ul.list-ascii .hide-children > ul {
+  max-height: 0;
+  -webkit-transition: max-height 0.15s ease-out;
+  transition: max-height 0.15s ease-out;
+}
+
+/**
  * Level 1
  */
 ul.list-ascii > li::before {
