@@ -25,7 +25,6 @@ Here is a starter HTML document with the bear essentials to get you started. A f
 
     <!-- BaseWeb Styles -->
     <link rel="stylesheet" href="baseweb.min.css">
-
   </head>
   <body>
 
