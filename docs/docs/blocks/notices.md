@@ -6,10 +6,6 @@ order: 2
 
 Notices in BaseWeb represent content blocks that give additional contextual information. This could be helpful tips, success, warning or error messages and additional information to a document. The most basic implementation involves a `<div>` with the `.notice` class.
 
-```js
-dismissible.init();
-```
-
 ```html
 <div class="notice">
   <p>...</p>
@@ -22,7 +18,7 @@ dismissible.init();
   </div>
 </div>
 
-You can also create dismissible notices but adding the `.dismissible` class and a `.close` trigger. This utilises the global [dismissible JavaScript component](/docs/javascript/dismissible/).
+You can also create dismissible notices but adding the `.dismissible` class and a `.close` trigger. This utilizes the global [dismissible JavaScript component](/docs/javascript/dismissible/).
 
 ```html
 <div class="notice dismissible">
