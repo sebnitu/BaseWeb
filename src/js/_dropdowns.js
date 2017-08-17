@@ -45,13 +45,13 @@ var dropdowns = (function () {
     }
 
     // Hide all dropdowns that are click activated
-    api.hideAll();
+    hideAll();
 
     // Exit if a trigger doesn't exist
     if ( !trigger ) return;
 
     // Keep the parent dropdowns active
-    api.showParents(event.target);
+    showParents(event.target);
 
     // Add active class if item is not active
     if (!is_active) {
@@ -70,12 +70,8 @@ var dropdowns = (function () {
 
   };
 
-  //
-  // Public Methods
-  //
-
   // Hide all dropdowns that are click activated
-  api.hideAll = function () {
+  var hideAll = function () {
 
     triggers.forEach( function (el) {
       u.removeClass(el, settings.classActive);
@@ -84,7 +80,7 @@ var dropdowns = (function () {
   };
 
   // Keep the parent dropdowns active
-  api.showParents = function (el) {
+  var showParents = function (el) {
 
     var parent = u.closest(el, [settings.classTrigger, settings.classOnClick]);
 
@@ -94,6 +90,10 @@ var dropdowns = (function () {
     }
 
   };
+
+  //
+  // Public Methods
+  //
 
   api.init = function (options) {
 

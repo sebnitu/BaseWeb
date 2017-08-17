@@ -6,32 +6,16 @@ order: 4
 
 Dropdowns represent content that is initially hidden to the user and revealed by an action---usually a hover or click---on a target area. The most common use of a dropdown is sub-navigation in a navigation menu. The dropdown event consists of two components:
 
-<ul class="list list-docs">
-  <li><strong>The Trigger:</strong> this is the element that when acted upon reveals the hidden content relative to the placement of itself. The trigger is usually represented by a button or menu item.</li>
-  <li><strong>The Target (Dropdown):</strong> this is the hidden element that is revealed by the trigger. It can be any content, but it usually takes the form as a set of links. It's position is relative to the trigger that activates it.</li>
-</ul>
-
-```js
-dropdowns.init();
-```
+<dl>
+  <dt>The Trigger</dt>
+  <dd><code>.dropdown-trigger</code> The element that when acted upon reveals the hidden content relative to the placement of itself. The trigger is usually represented by a button or menu item but the is actually the wrapper surounding the button or menu item and the dropdown itself.</dd>
+  <dt>The Target</dt>
+  <dd><code>.dropdown</code>The hidden element that is revealed by the trigger. It can be any content, but it usually takes the form as a set of links. It's position is relative to the trigger that activates it.</dd>
+</dl>
 
 ```html
 <div class="dropdown-trigger">
-  <button class="button">Default</button>
-  <div class="dropdown">
-    ...
-  </div>
-</div>
-
-<div class="dropdown-trigger on-hover">
-  <button class="button">On Hover</button>
-  <div class="dropdown">
-    ...
-  </div>
-</div>
-
-<div class="dropdown-trigger on-click">
-  <button class="button">On Click</button>
+  <button class="button">Dropdown</button>
   <div class="dropdown">
     ...
   </div>
@@ -41,7 +25,7 @@ dropdowns.init();
 <div class="demo demo-dropdown">
 
   <div class="dropdown-trigger">
-    <button class="button">Default</button>
+    <button class="button">Dropdown</button>
     <div class="dropdown">
       <div class="dropdown-content text-center">
         <a href="#" class="block">
@@ -52,7 +36,7 @@ dropdowns.init();
           </p>
           <p>Welcome to this example of a dropdown-content block.</p>
         </a>
-      </div>
+      </div><!-- .dropdown-content -->
       <ul class="dropdown-menu">
         <li><a href="#">Help</a></li>
         <li><a href="#">Settings</a>
@@ -65,357 +49,18 @@ dropdowns.init();
         </li>
         <li><a href="#">Analytics</a></li>
         <li><a href="#">Log Out</a></li>
-      </ul>
+      </ul><!-- .dropdown-menu -->
       <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
+        <button class="button block blue">Create Account</button>
+        <div class="button-group block">
           <button class="button">&larr; Prev</button>
           <button class="button">Next &rarr;</button>
         </div>
-      </div>
-    </div>
-  </div>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger default -->
 
-  <div class="dropdown-trigger">
-    <button class="button">Default</button>
-    <div class="dropdown">
-      <div class="dropdown-content text-center">
-        <a href="#" class="block">
-          <p>
-            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-            <strong>Sebastian Nitu</strong><br>
-            <small class="text-soften">View Profile</small>
-          </p>
-          <p>Welcome to this example of a dropdown-content block.</p>
-        </a>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Log Out</a></li>
-      </ul>
-      <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dropdown-trigger on-hover">
-    <button class="button">On Hover</button>
-    <div class="dropdown">
-      <div class="dropdown-content text-center">
-        <a href="#" class="block">
-          <p>
-            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-            <strong>Sebastian Nitu</strong><br>
-            <small class="text-soften">View Profile</small>
-          </p>
-          <p>Welcome to this example of a dropdown-content block.</p>
-        </a>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Log Out</a></li>
-      </ul>
-      <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dropdown-trigger on-hover">
-    <button class="button">On Hover</button>
-    <div class="dropdown">
-      <div class="dropdown-content text-center">
-        <a href="#" class="block">
-          <p>
-            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-            <strong>Sebastian Nitu</strong><br>
-            <small class="text-soften">View Profile</small>
-          </p>
-          <p>Welcome to this example of a dropdown-content block.</p>
-        </a>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Log Out</a></li>
-      </ul>
-      <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dropdown-trigger on-click">
-    <button class="button">On Click</button>
-    <div class="dropdown">
-      <div class="dropdown-content text-center">
-        <a href="#" class="block">
-          <p>
-            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-            <strong>Sebastian Nitu</strong><br>
-            <small class="text-soften">View Profile</small>
-          </p>
-          <p>Welcome to this example of a dropdown-content block.</p>
-        </a>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Log Out</a></li>
-      </ul>
-      <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="dropdown-trigger on-click">
-    <button class="button">On Click</button>
-    <div class="dropdown">
-      <div class="dropdown-content text-center">
-        <a href="#" class="block">
-          <p>
-            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
-            <strong>Sebastian Nitu</strong><br>
-            <small class="text-soften">View Profile</small>
-          </p>
-          <p>Welcome to this example of a dropdown-content block.</p>
-        </a>
-      </div>
-      <ul class="dropdown-menu">
-        <li><a href="#">Help</a></li>
-        <li><a href="#">Settings</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Help</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Log Out</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Log Out</a></li>
-      </ul>
-      <div class="dropdown-content">
-        <div class="dropdown-trigger on-click anchor-right-top">
-          <button class="button block blue">Create Account</button>
-          <div class="dropdown">
-            <ul class="dropdown-menu">
-              <li><a href="#">Help</a></li>
-              <li>
-                <a href="#">Settings</a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Help</a></li>
-                  <li>
-                    <a href="#">Settings</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Help</a></li>
-                      <li><a href="#">Settings</a></li>
-                      <li><a href="#">Analytics</a></li>
-                      <li><a href="#">Log Out</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Analytics</a></li>
-                  <li><a href="#">Log Out</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Analytics</a></li>
-              <li><a href="#">Log Out</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="button-group block has-2">
-          <button class="button">&larr; Prev</button>
-          <button class="button">Next &rarr;</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div><!-- .demo -->
-
-<div class="notice info">
-  <p>The <code>on-click</code> and <code>on-hover</code> classes disable the hover styles from the dropdown trigger and enables the use of click or a hover with delay on dropdowns.</p>
-</div>
 
 The two primary content types of dropdowns are dropdown menus and then more general dropdown content. Each content type can be  used to define different dropdowns or combined for more complex dropdown content.
 
@@ -470,10 +115,6 @@ The two primary content types of dropdowns are dropdown menus and then more gene
 <div class="demo demo-dropdown demo-dropdown-styles">
 
   <div class="dropdown">
-    <div class="dropdown-content">
-      <h4>Some Heading</h4>
-      <p>This is an example of a simple text block inside of a dropdown content wrapper.</p>
-    </div>
     <div class="dropdown-content text-center">
       <a href="#" class="block">
         <p>
@@ -483,7 +124,7 @@ The two primary content types of dropdowns are dropdown menus and then more gene
         </p>
         <p>Welcome to this example of a linked dropdown-content block.</p>
       </a>
-    </div>
+    </div><!-- .dropdown-content -->
     <ul class="dropdown-menu">
     <li><a href="#">List Item</a></li>
       <li><a href="#">Has Submenu</a>
@@ -496,15 +137,15 @@ The two primary content types of dropdowns are dropdown menus and then more gene
       </li>
       <li><a href="#">List Item</a></li>
       <li><a href="#">List Item</a></li>
-    </ul>
+    </ul><!-- .dropdown-menu -->
     <div class="dropdown-content">
       <button class="button block blue">Create Account</button>
-      <div class="button-group block has-2">
+      <div class="button-group block">
         <button class="button">&larr; Prev</button>
         <button class="button">Next &rarr;</button>
       </div>
-    </div>
-  </div>
+    </div><!-- .dropdown-content -->
+  </div><!-- .dropdown -->
 
   <div class="dropdown-content text-center">
     <a href="#" class="block">
@@ -519,11 +160,12 @@ The two primary content types of dropdowns are dropdown menus and then more gene
     <hr>
 
     <button class="button block blue">Create Account</button>
-    <div class="button-group block has-2">
+
+    <div class="button-group block">
       <button class="button">&larr; Prev</button>
       <button class="button">Next &rarr;</button>
     </div>
-  </div>
+  </div><!-- .dropdown-content -->
 
   <ul class="dropdown-menu">
     <li><a href="#">List Item</a></li>
@@ -537,9 +179,113 @@ The two primary content types of dropdowns are dropdown menus and then more gene
     </li>
     <li><a href="#">List Item</a></li>
     <li><a href="#">List Item</a></li>
-  </ul>
+  </ul><!-- .dropdown-menu -->
 
 </div><!-- .demo -->
+
+## JavaScript
+
+The default behavior of dropdowns is reveal on `:hover` in pure CSS. The `.on-click` and `.on-hover` classes disable the hover styles and enables the use of click or a hover with a forgiving delay. These modifiers can be used by initiating the dropdowns JavaScript using the `init()` method.
+
+```js
+dropdowns.init();
+```
+
+```html
+<div class="dropdown-trigger on-click">
+  <button class="button">On Click</button>
+  <div class="dropdown">
+    ...
+  </div>
+</div>
+
+<div class="dropdown-trigger on-hover">
+  <button class="button">On Hover</button>
+  <div class="dropdown">
+    ...
+  </div>
+</div>
+```
+
+<div class="demo demo-dropdown">
+
+  <div class="dropdown-trigger on-click">
+    <button class="button">On Click</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <a href="#" class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div><!-- .dropdown-content -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul><!-- .dropdown-menu -->
+      <div class="dropdown-content">
+        <button class="button block blue">Create Account</button>
+        <div class="button-group block">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
+        </div>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger .on-click -->
+
+  <div class="dropdown-trigger on-hover">
+    <button class="button">On Hover</button>
+    <div class="dropdown">
+      <div class="dropdown-content text-center">
+        <a href="#" class="block">
+          <p>
+            <img src="/dist/img/example-03.jpg" width="40" height="40" alt="" class="circle align-center"><br>
+            <strong>Sebastian Nitu</strong><br>
+            <small class="text-soften">View Profile</small>
+          </p>
+          <p>Welcome to this example of a dropdown-content block.</p>
+        </a>
+      </div><!-- .dropdown-content -->
+      <ul class="dropdown-menu">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Settings</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul><!-- .dropdown-menu -->
+      <div class="dropdown-content">
+        <button class="button block blue">Create Account</button>
+        <div class="button-group block">
+          <button class="button">&larr; Prev</button>
+          <button class="button">Next &rarr;</button>
+        </div>
+      </div><!-- .dropdown-content -->
+    </div><!-- .dropdown -->
+  </div><!-- .dropdown-trigger .on-hover -->
+
+</div><!-- .demo -->
+
+<div class="notice info" markdown="1">
+For more details on how to customize and use the public methods, take a look at the [dropdowns JavaScript](/docs/javascript/dropdowns) documentation.
+</div>
 
 ## Variables
 

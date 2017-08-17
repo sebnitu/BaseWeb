@@ -22,7 +22,7 @@ dismissible.init();
   </div>
 </div>
 
-You can also create dismissible notices but adding the `.dismissible` class and a close button. The class used for close buttons is set using the `$notices('class-close')` variable.
+You can also create dismissible notices but adding the `.dismissible` class and a `.close` trigger. This utilises the global [dismissible JavaScript component](/docs/javascript/dismissible/).
 
 ```html
 <div class="notice dismissible">

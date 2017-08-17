@@ -6,10 +6,6 @@ order: 6
 
 The off-canvas component block is a design pattern that hides aside content outside of the default viewport which can be revealed using a button trigger. This is most commonly used for navigation components on mobile viewports. The structure of an off-canvas block is encompassed within four elements: `oc-wrap`, `oc-content`, `oc-inner` and `oc-aside`.
 
-```js
-offcanvas.init();
-```
-
 ```html
 <div class="oc-wrap">
   <section class="oc-content">
@@ -126,6 +122,18 @@ If instead you prefer to create a custom transition effect, you can disable the 
 
 <div class="notice warning">
   <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
+</div>
+
+## JavaScript
+
+Off-canvas make use of the off-canvas JavaScript component for it's behavior. To initiate the off-canvas JavaScript use the `init()` method.
+
+```js
+offcanvas.init();
+```
+
+<div class="notice info" markdown="1">
+For more details on how to customize and use the public methods, take a look at the [off-canvas JavaScript](/docs/javascript/offcanvas) documentation.
 </div>
 
 ## Variables

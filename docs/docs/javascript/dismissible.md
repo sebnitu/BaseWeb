@@ -7,7 +7,11 @@ section:
   class: js-method
 ---
 
-The dismissible component allows for elements to be hidden using a trigger. This is a global component and is used by default on the notices to make them dismissible.
+The dismissible component allows for elements to be hidden using a trigger. This is a global component and is used by default on the [notices block](/docs/blocks/notices/) to make them dismissible. This component can be used by initiating the dismissible JavaScript using the `init()` method.
+
+```js
+dismissible.init();
+```
 
 ```html
 <!-- Paragraph -->
@@ -58,19 +62,19 @@ When initiating the dismissible component, you can pass in the following options
     <td><code>classTrigger</code></td>
     <td>String</td>
     <td><code>'close'</code></td>
-    <td>Class used for the dismissible trigger</td>
+    <td>Class name for the trigger element</td>
   </tr>
   <tr>
     <td><code>classDismissible</code></td>
     <td>String</td>
     <td><code>'dismissible'</code></td>
-    <td>Class used for the dismissible element</td>
+    <td>Class name for item to dismiss</td>
   </tr>
   <tr>
     <td><code>classHide</code></td>
     <td>String</td>
     <td><code>'hide'</code></td>
-    <td>Class added to hide dismissible element</td>
+    <td>Class name for hidden state</td>
   </tr>
 </table>
 

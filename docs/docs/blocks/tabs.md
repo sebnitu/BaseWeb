@@ -6,10 +6,6 @@ order: 5
 
 Tabs are a high level navigational component that enable switching between views of related groups of content. They appear above the content they describe and consist of two primary parts: navigation items and the content they represent. Optionally, you can use the tabs wrapping `div` with the class of `.tabs` (default) for more easily grouping content together. Tabs are linked to their content part using the `href` attribute whos hash value contains the ID of the content it describes.
 
-```js
-tabs.init();
-```
-
 ```html
 <div class="tabs style-fold">
   <nav class="tabs-nav">
@@ -126,6 +122,18 @@ BaseWeb also has two available tab style sets that can be used using the `.style
   </div>
 
 </div><!-- .demo -->
+
+## JavaScript
+
+Tabs make use of the tabs JavaScript component for their behavior. To initiate the tabs JavaScript use the `init()` method.
+
+```js
+tabs.init();
+```
+
+<div class="notice info" markdown="1">
+For more details on how to customize and use the public methods, take a look at the [tabs JavaScript](/docs/javascript/tabs) documentation.
+</div>
 
 ## Variables
 
