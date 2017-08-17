@@ -7,7 +7,7 @@ section:
   class: js-method
 ---
 
-The off-canvas component allows for the use of `.off-canvas` and modifier classes for off-canvas behavior. This component can be used by initiating the off-canvas JavaScript using the `init()` method.
+The off-canvas component allows for the use of the `.off-canvas` and modifier classes for off-canvas behavior. This component can be used by initiating the off-canvas JavaScript by running the `init()` method.
 
 ```js
 offcanvas.init();

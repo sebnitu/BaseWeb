@@ -185,7 +185,7 @@ The two primary content types of dropdowns are dropdown menus and then more gene
 
 ## JavaScript
 
-The default behavior of dropdowns is reveal on `:hover` in pure CSS. The `.on-click` and `.on-hover` classes disable the hover styles and enables the use of click or a hover with a forgiving delay. These modifiers can be used by initiating the dropdowns JavaScript using the `init()` method.
+The default behavior of dropdowns is to reveal on `:hover`. The `.on-click` and `.on-hover` classes disable the hover styles and enables the use of click or a hover with a forgiving delay. These modifiers can be used by initiating the dropdowns JavaScript using the `init()` method.
 
 ```js
 dropdowns.init();

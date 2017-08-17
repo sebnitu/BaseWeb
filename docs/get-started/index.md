@@ -72,7 +72,7 @@ The included JavaScript is currently only placeholder but can be used as starter
 
 ## BaseWeb Source
 
-When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript directory with utility and component scripts.
+When downloading BaseWeb's source directory, you'll get all precompiled SCSS files and a JavaScript files with utility and component scripts.
 
 <div class="widget fill">
   {% include content-list-files.html %}
