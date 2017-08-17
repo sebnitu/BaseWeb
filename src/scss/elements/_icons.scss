@@ -2,7 +2,7 @@
 $filename: 'scss/elements/_icons.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Buttons Map
+// @Icons Map
 ////////////////////////////////////////////////////////////////////////////////
 
 $icons: (
@@ -10,6 +10,7 @@ $icons: (
   'classes-button-icon' : true,
 
   'class' : 'icon',
+  'class-symbols' : 'svg-symbols',
 
   'size' : 1em,
 
@@ -21,9 +22,11 @@ $icons: (
   'font-size-large' : px-to-rem(30px),
 
   'vertical-align' : null,
-  'stroke-width' : null,
-  'stroke' : null,
-  'fill' : null,
+  'stroke' : currentColor,
+  'stroke-width' : 2px,
+  'stroke-linecap' : round,
+  'stroke-linejoin' : round,
+  'fill' : none,
 
   'buttons' : (
     'gap' : 0.25em,
@@ -41,7 +44,7 @@ $icons: (
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Button Mixins
+// @Icons Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Icon
@@ -58,8 +61,10 @@ $icons: (
   margin-top: map-get($o, 'margin-top');
   margin-bottom: map-get($o, 'margin-bottom');
   vertical-align: map-get($o, 'vertical-align');
-  stroke-width: map-get($o, 'stroke-width');
   stroke: map-get($o, 'stroke');
+  stroke-width: map-get($o, 'stroke-width');
+  stroke-linecap: map-get($o, 'stroke-linecap');
+  stroke-linejoin: map-get($o, 'stroke-linejoin');
   fill: map-get($o, 'fill');
 
 }
@@ -70,6 +75,19 @@ $icons: (
 /*==============================================================================
   @Icons - #{$filename}
 ==============================================================================*/
+
+@if (map-get($icons, 'class-symbols')) {
+  .#{map-get($icons, 'class-symbols')} {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+  }
+}
 
 .#{map-get($icons, 'class')} {
   @include make-icon();

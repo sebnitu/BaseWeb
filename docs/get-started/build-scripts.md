@@ -4,7 +4,7 @@ title: Build Scripts
 order: 3
 ---
 
-When using BaseWeb source, you'll need to utilize a method for compiling and minifying SCSS and JavaScript files. BaseWeb leverages [Gulp](http://gulpjs.com/) for its build process. To use our Gulp tasks, clone the repo and run the npm install command:
+When using BaseWeb source, you'll need to utilize a method for compiling and minifying SCSS and JavaScript files. BaseWeb leverages <a href="http://gulpjs.com/" class="onclick-newtab">Gulp</a> for its build process. To use our Gulp tasks, clone the repo and run the npm install command:
 
 <pre class="highlight"><code><span class="editor-comment"># Clone BaseWeb</span>
 <span class="editor-prefixed">git clone https://github.com/sebnitu/BaseWeb.git</span>
@@ -15,7 +15,7 @@ When using BaseWeb source, you'll need to utilize a method for compiling and min
 <span class="editor-comment"># Install node packages</span>
 <span class="editor-prefixed">npm install</span></code></pre>
 
-Here are all the tasks you'll have available.
+## Available Tasks
 
 <table class="table table-docs">
   <tbody><tr>
@@ -27,19 +27,19 @@ Here are all the tasks you'll have available.
   </tr>
   <tr>
     <td><code>gulp css</code></td>
-    <td>Output expanded and minified CSS files from source</td>
+    <td>Output expanded and min CSS files with source maps from <code>src</code> into <code>dist</code></td>
   </tr>
   <tr>
     <td><code>gulp js</code></td>
-    <td>Output expanded and minified JS files from source</td>
+    <td>Output expanded and minified JS files from <code>src</code> into <code>dist</code></td>
   </tr>
   <tr>
     <td><code>gulp icons</code></td>
-    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes</td>
+    <td>Copies icons from Feather Icons with custom classes and SVG sprite into <code>dist/icons</code></td>
   </tr>
   <tr>
     <td><code>gulp src</code></td>
-    <td>Builds all source assets</td>
+    <td><code>['css', 'js', 'icons']</code></td>
   </tr>
 
   <tr>
@@ -47,23 +47,23 @@ Here are all the tasks you'll have available.
   </tr>
   <tr>
     <td><code>gulp docs:css</code></td>
-    <td>Output expanded and minified CSS files from documentation</td>
+    <td>Output expanded and min CSS files with source maps from <code>docs/src</code> into <code>docs/dist</code></td>
   </tr>
   <tr>
     <td><code>gulp docs:js</code></td>
-    <td>Output expanded and minified JS files from documentation</td>
+    <td>Output expanded and minified JS files from <code>docs/src</code> into <code>docs/dist</code></td>
   </tr>
   <tr>
     <td><code>gulp docs:img</code></td>
-    <td>Compress all image files from documentation</td>
+    <td>Compress all image files from <code>docs/src</code> into <code>docs/dist</code></td>
   </tr>
   <tr>
     <td><code>gulp docs:icons</code></td>
-    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes</td>
+    <td>Copies icons from Feather Icons with custom classes and SVG sprite into <code>docs/_includes/icons</code></td>
   </tr>
   <tr>
     <td><code>gulp docs</code></td>
-    <td>Builds all documentation assets</td>
+    <td><code>['docs:css', 'docs:js', 'docs:img', 'docs:icons']</code></td>
   </tr>
 
   <tr>
@@ -71,19 +71,19 @@ Here are all the tasks you'll have available.
   </tr>
   <tr>
     <td><code>gulp svg</code></td>
-    <td>Copies the icons from the Feather Icons project with BaseWeb specific classes for both source and docs</td>
+    <td><code>['icons', 'docs:icons']</code></td>
   </tr>
   <tr>
     <td><code>gulp go</code></td>
-    <td>Builds everything: source and doc tasks</td>
+    <td><code>['src', 'docs', 'svg']</code></td>
   </tr>
   <tr>
     <td><code>gulp watch</code></td>
-    <td>Watches all asset files and runs the appropriate build task based on changed</td>
+    <td>Watch all asset files and runs the appropriate build task based on changes</td>
   </tr>
   <tr>
     <td><code>gulp</code></td>
-    <td>Builds everything and then initiates the watch task</td>
+    <td><code>['go', 'watch']</code></td>
   </tr>
 
   <tr>
@@ -91,14 +91,14 @@ Here are all the tasks you'll have available.
   </tr>
   <tr>
     <td><code>gulp replace</code></td>
-    <td>Used to manage current versions and other static data that changes accross multiple files. The following parameters must be passed: -s SEARCH -r REPLACE -f FILES</td>
+    <td>Search and replace for managing current version and other static data that changes accross multiple files: <code>-s SEARCH</code> <code>-r REPLACE</code> <code>-f FILES</code></td>
   </tr>
   <tr>
     <td><code>gulp data:icons</code></td>
-    <td>Creates the icons data that is used in the docs</td>
+    <td>Writes all the icon svg files as a data object in <code>icons.json</code> for Jekyll</td>
   </tr>
 </tbody></table>
 
 <div class="notice info">
-  <p markdown="1">All of BaseWeb's build tasks are located in `gulpfile.js`. Check out [Gulp's documentation](http://gulpjs.com/) for how to create your own builds.</p>
+  <p>All of BaseWeb's build tasks are located in <code>gulpfile.js</code>. Check out <a href="http://gulpjs.com/" class="onclick-newtab">Gulp's documentation</a> for how to create your own builds.</p>
 </div>

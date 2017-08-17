@@ -1808,12 +1808,28 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Icons - scss/elements/_icons.scss
 ==============================================================================*/
+.svg-symbols {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
 .icon {
   display: inline-block;
   width: 1em;
   height: 1em;
   margin-top: -0.3em;
   margin-bottom: -0.1em;
+  stroke: currentColor;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 /**
@@ -5489,16 +5505,6 @@ body {
   background: #fff;
 }
 
-/**
- * Hide SVG Library
- */
-.svg-symbols {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 /*==============================================================================
   @Header - scss/custom/_custom.scss
 ==============================================================================*/
@@ -6419,6 +6425,9 @@ body {
   font-size: 1.375em;
   margin-top: 0;
   margin-bottom: -0.2em;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
 }
 
 @media (min-width: 760px) {

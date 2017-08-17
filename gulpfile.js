@@ -1,8 +1,7 @@
 /**
- * Include Packages
+ * Require Packages
  */
 var
-  // Global
   fs = require('fs'),
   path = require('path'),
   gulp = require('gulp'),
@@ -13,29 +12,26 @@ var
   merge = require('merge-stream'),
   minimist = require('minimist'),
 
-  // CSS
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
 
-  // JS
   concat = require('gulp-concat'),
   deporder = require('gulp-deporder'),
   stripdebug = require('gulp-strip-debug'),
   uglify = require('gulp-uglify'),
 
-  // Images & Icons
   imagemin = require('gulp-imagemin'),
-  feather = require('feather-icons')
+  feather = require('feather-icons'),
+  svgSymbols = require('gulp-svg-symbols')
 ;
 
 /**
  * Settings
  */
 var
-  // folders
   folder = {
     src: 'src/',
     dest: 'dist/',
@@ -46,7 +42,6 @@ var
     icons: 'node_modules/feather-icons/dist/icons/',
   },
 
-  // File sets to use for search and replace
   searchFiles = {
     version: [
       'README.md',
@@ -70,8 +65,8 @@ var
 ;
 
 /**
- * Utility Tasks
- * Search and replace
+ * Search and replace for managing current version and other static data that
+ * changes accross multiple files: -s SEARCH -r REPLACE -f FILES
  */
 gulp.task('replace', function() {
 
@@ -103,8 +98,7 @@ gulp.task('replace', function() {
 });
 
 /**
- * Data Icons
- * Gets and writes all the icon svg files as a data object in Jekyll
+ * Writes all the icon svg files as a data object in `icons.json` for Jekyll
  */
 gulp.task('data:icons', function() {
 
@@ -125,8 +119,7 @@ gulp.task('data:icons', function() {
 });
 
 /**
- * BaseWeb Source Builds
- * Output expanded and minified CSS files from source
+ * Output expanded and min CSS files with source maps from `src` into `dist`
  */
 gulp.task('css', function() {
   var
@@ -160,8 +153,7 @@ gulp.task('css', function() {
 });
 
 /**
- * JavaScript processing
- * Output expanded and minified JS files from source
+ * Output expanded and minified JS files from `src` into `dist`
  */
 gulp.task('js', function() {
   var
@@ -182,28 +174,35 @@ gulp.task('js', function() {
 });
 
 /**
- * Icon processing
- * Copy icons from feather icons
+ * Copies icons from Feather Icons with custom classes and SVG sprite
  */
 gulp.task('icons', function() {
 
-  var src  = folder.icons;
+  var src  = folder.icons + '*.svg';
   var dest = folder.dest + 'icons/';
 
-  for (var icon in feather.icons) {
+  fs.readdirSync(folder.icons).forEach(icon => {
+    icon = path.basename(icon, '.svg');
     var svg = feather.toSvg(icon, {
       class: 'icon icon-' + icon
     });
     fs.writeFile(dest + icon + '.svg', svg, function (err) {
       if (err) { console.error(err); }
     });
-  }
+  });
+
+  return gulp.src( src )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( dest ));
 
 });
 
 /**
- * Documentation Builds
- * Output expanded and minified CSS files from documentation
+ * Output expanded and min CSS files with source maps from `docs/src` into `docs/dist`
  */
 gulp.task('docs:css', function() {
   var
@@ -239,8 +238,7 @@ gulp.task('docs:css', function() {
 });
 
 /**
- * JS Processing
- * Output expanded and minified JS files from documentation
+ * Output expanded and minified JS files from `docs/src` into `docs/dist`
  */
 gulp.task('docs:js', function() {
   var
@@ -264,8 +262,7 @@ gulp.task('docs:js', function() {
 });
 
 /**
- * Image processing
- * Compress all image files from documentation
+ * Compress all image files from `docs/src` into `docs/dist`
  */
 gulp.task('docs:img', function() {
   var dest = folder.docs.dest + 'img/';
@@ -276,53 +273,54 @@ gulp.task('docs:img', function() {
 });
 
 /**
- * Docs Icon processing
- * Compress all icon files from Feather Icons
+ * Copies icons from Feather Icons with custom classes and SVG sprite
  */
 gulp.task('docs:icons', function() {
 
-  var src  = folder.icons;
+  var src  = folder.icons + '*.svg';
   var dest = 'docs/_includes/icons/';
 
-  for (var icon in feather.icons) {
-    var svg = feather.toSvg(icon, { class: 'icon icon-' + icon });
+  fs.readdirSync(folder.icons).forEach(icon => {
+    icon = path.basename(icon, '.svg');
+    var svg = feather.toSvg(icon, {
+      class: 'icon icon-' + icon
+    });
     fs.writeFile(dest + icon + '.svg', svg, function (err) {
       if (err) { console.error(err); }
     });
-  }
+  });
+
+  return gulp.src( src )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( dest ));
 
 });
 
-// Watch & Bulk Tasks
-// Builds all source assets
-gulp.task('src', ['css', 'js']);
-// Builds all documentation assets
-gulp.task('docs', ['docs:css', 'docs:js', 'docs:img']);
-// Build icons
+/**
+ * Bulk Tasks
+ */
+gulp.task('src', ['css', 'js', 'icons']);
+gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'docs:icons']);
 gulp.task('svg', ['icons', 'docs:icons']);
-// Build everything
 gulp.task('go', ['src', 'docs', 'svg']);
 
 /**
- * Watch Changes
- * Watches all asset files and runs the appropriate build task based on changed
+ * Watch all asset files and runs the appropriate build task based on changes
  */
 gulp.task('watch', function() {
-
-  // src scss changes
   gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
-  // src js changes
   gulp.watch(folder.src + 'js/**/*', ['js', 'docs:js']);
-
-  // docs scss changes
   gulp.watch(folder.docs.src + 'scss/**/*', ['docs:css']);
-  // docs js changes
   gulp.watch(folder.docs.src + 'js/**/*', ['docs:js']);
-  // docs img changes
   gulp.watch(folder.docs.src + 'img/**/*', ['docs:img']);
-
 });
 
-// default task
-// Builds everything and then initiates the watch task
+/**
+ * Default task
+ * Builds everything and then initiates the watch task
+ */
 gulp.task('default', ['go', 'watch']);

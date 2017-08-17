@@ -14,7 +14,7 @@ Here is a starter HTML document with the bear essentials to get you started. A f
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Required Meta Data -->
     <meta charset="utf-8">
