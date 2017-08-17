@@ -5979,43 +5979,38 @@ body {
 }
 
 /*==============================================================================
-  @Widget Wrap - scss/custom/_custom.scss
+  @Widget Group - scss/custom/_custom.scss
 ==============================================================================*/
-.widget-wrap {
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-gap: 1rem;
   margin: 2em 0;
 }
 
-.widget-wrap .widget {
-  margin: 1em 0;
+.widget-grid .widget {
+  margin: 0;
 }
 
-.widget-wrap .widget .button {
+.widget-grid .button {
   display: block;
 }
 
 @media (min-width: 480px) {
-  .widget-wrap {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: stretch;
-        -ms-flex-align: stretch;
-            align-items: stretch;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  .widget-wrap .widget {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 25%;
-            flex: 1 1 25%;
-  }
-  .widget-wrap .widget + .widget {
-    margin-left: 2em;
-  }
-  .widget-wrap .widget .button {
+  .widget-grid .button {
     display: inline-block;
   }
+}
+
+/*==============================================================================
+  @Widget List - scss/custom/_custom.scss
+==============================================================================*/
+.widget-list {
+  margin: 2em 0;
+}
+
+.widget-list .widget {
+  margin: 1em 0;
 }
 
 /*==============================================================================
@@ -6035,7 +6030,7 @@ body {
 }
 
 .widget.card, .widget.fill {
-  padding: 1em 1.5em;
+  padding: 0.5em 1.5em;
 }
 
 .widget.card {
@@ -6054,6 +6049,34 @@ body {
 }
 
 /**
+ * Widget Featured
+ */
+@media (min-width: 480px) {
+  .widget-featured .widget-icon {
+    float: left;
+    margin: 1.5rem 2rem 1.5rem 0;
+  }
+  .widget-featured .widget-content {
+    padding-left: 5.75rem;
+  }
+}
+
+/**
+ * Widget Icon
+ */
+.widget-icon {
+  margin: 1.5rem 0;
+  font-size: 3.125em;
+  line-height: 1em;
+  text-align: center;
+  color: #2196F3;
+}
+
+.widget-icon .icon {
+  stroke-width: 1.5px;
+}
+
+/**
  * Widget Title
  */
 .widget h2 a {
@@ -6068,13 +6091,14 @@ body {
  * Widget Menu
  */
 .widget-menu h2 {
+  margin: 0.5em 0 -0.5em;
   font-size: 1em;
   font-weight: 500;
 }
 
 .widget-menu h2 a {
-  display: inline-block;
-  padding: 0;
+  margin-left: -1em;
+  margin-right: -1em;
 }
 
 .widget-menu h2 a:hover {
@@ -6126,6 +6150,9 @@ body {
 @media (min-width: 760px) {
   .widget-menu {
     margin-right: 2em;
+  }
+  .widget-menu h2 a {
+    margin-right: 0;
   }
 }
 
@@ -6564,6 +6591,19 @@ body {
     display: inline-block;
     margin: 0 0.5em;
   }
+}
+
+/*==============================================================================
+  @Button-totop - scss/custom/_custom.scss
+==============================================================================*/
+.button-totop {
+  opacity: 0;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.button-totop.fadeIn {
+  opacity: 1;
 }
 
 /*==============================================================================

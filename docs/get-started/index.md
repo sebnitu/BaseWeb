@@ -8,13 +8,13 @@ BaseWeb can be used a few different ways depending on what you need. The quickes
 
 <pre class="highlight"><code><span class="editor-prefixed">npm install baseweb</span></code></pre>
 
-<div class="widget-wrap widget-wrap-downloads">
-  <div class="widget card widget-download">
+<div class="widget-grid">
+  <div class="widget card">
     <h2>Download Compiled</h2>
     <p>Compiled contains all the expanded, minified and source map files for BaseWeb. These can be used simply by including them in your header.</p>
     <p><a href="{{ site.github.repository_url }}/tree/master/dist" class="button primary">Download</a></p>
   </div>
-  <div class="widget card widget-download">
+  <div class="widget card">
     <h2>Download Source</h2>
     <p>Source contains all of the precompiled SCSS files of BaseWeb. You can use <a href="{{ site.url }}{{ site.baseurl }}/get-started/build-scripts">our build scripts</a> to compile, or roll one of your own.</p>
     <p><a href="{{ site.github.repository_url }}/tree/master/src" class="button primary">Download</a></p>

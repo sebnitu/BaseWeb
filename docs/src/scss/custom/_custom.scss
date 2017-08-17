@@ -451,35 +451,38 @@ body {
 }
 
 /*==============================================================================
-  @Widget Wrap - #{$filename}
+  @Widget Group - #{$filename}
 ==============================================================================*/
 
-.widget-wrap {
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  grid-gap: 1rem;
   margin: 2em 0;
 
   .widget {
-    margin: 1em 0;
+    margin: 0;
   }
-  .widget .button {
+  .button {
     display: block;
   }
 }
 
 @include media-min('small') {
-  .widget-wrap {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-between;
+  .widget-grid .button {
+    display: inline-block;
+  }
+}
 
-    .widget {
-      flex: 1 1 25%;
-    }
-    .widget + .widget {
-      margin-left: 2em;
-    }
-    .widget .button {
-      display: inline-block;
-    }
+/*==============================================================================
+  @Widget List - #{$filename}
+==============================================================================*/
+
+.widget-list {
+  margin: 2em 0;
+
+  .widget {
+    margin: 1em 0;
   }
 }
 
@@ -501,7 +504,7 @@ body {
 
   &.card,
   &.fill {
-    padding: 1em 1.5em;
+    padding: 0.5em 1.5em;
   }
   &.card {
     border: 1px solid $border-color;
@@ -515,6 +518,44 @@ body {
   .widget {
     margin: 2em 0;
     padding: 1em 0;
+  }
+}
+
+/**
+ * Widget Featured
+ */
+.widget-featured {
+  .widget-icon {
+
+  }
+  .widget-content {
+
+  }
+}
+@include media-min('small') {
+  .widget-featured {
+    .widget-icon {
+      float: left;
+      margin: 1.5rem 2rem 1.5rem 0;
+    }
+    .widget-content {
+      padding-left: 5.75rem;
+    }
+  }
+}
+
+/**
+ * Widget Icon
+ */
+.widget-icon {
+  margin: 1.5rem 0;
+  font-size: px-to-em(50px);
+  line-height: 1em;
+  text-align: center;
+  color: $blue;
+
+  .icon {
+    stroke-width: 1.5px;
   }
 }
 
@@ -538,16 +579,17 @@ body {
 .widget-menu {
 
   h2 {
+    margin: 0.5em 0 -0.5em;
     font-size: 1em;
     font-weight: font-weight('medium');
-  }
-  h2 a {
-    display: inline-block;
-    padding: 0;
 
-    &:hover {
-      background: none;
+    a {
+      margin-left: -1em;
+      margin-right: -1em;
     }
+  }
+  h2 a:hover {
+    background: none;
   }
 
   ul {
@@ -594,6 +636,10 @@ body {
 @include media-min('medium') {
   .widget-menu {
     margin-right: 2em;
+
+    h2 a {
+      margin-right: 0;
+    }
   }
 }
 
@@ -1038,6 +1084,19 @@ body {
     }
   }
 }
+
+/*==============================================================================
+  @Button-totop - #{$filename}
+==============================================================================*/
+
+.button-totop {
+  opacity: 0;
+  transition: $transition;
+}
+.button-totop.fadeIn {
+  opacity: 1;
+}
+
 
 /*==============================================================================
   @Footer - #{$filename}

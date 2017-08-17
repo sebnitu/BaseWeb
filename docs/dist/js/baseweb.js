@@ -1143,6 +1143,33 @@ function getContrastYIQ(hexcolor) {
   $(document).ready(function () {
 
     /**
+     * Back to top
+     */
+    $('.button-totop').click(function (e) {
+      $('html, body').animate({ scrollTop: 0 }, 250);
+      $(this).blur();
+      e.preventDefault();
+    });
+
+    var headerHeight = $('.header').outerHeight();
+
+    console.log(headerHeight);
+
+    if (headerHeight < $(document).scrollTop()) {
+      $('.button-totop').addClass('fadeIn');
+    } else {
+      $('.button-totop').removeClass('fadeIn');
+    }
+
+    $(document).scroll(function () {
+      if (headerHeight < $(this).scrollTop()) {
+        $('.button-totop').addClass('fadeIn');
+      } else {
+        $('.button-totop').removeClass('fadeIn');
+      }
+    });
+
+    /**
      * ACSII Folder Toggle
      */
     $('.list-ascii').each(function () {

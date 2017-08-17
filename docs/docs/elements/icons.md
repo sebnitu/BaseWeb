@@ -67,7 +67,7 @@ The <a href="https://css-tricks.com/svg-sprites-use-better-icon-fonts/" class="o
   </div>
   <div class="expandable-content icons-listing">
     {% for icon in site.data.icons %}
-    <div class="icon-item">{% include icons/{{ icon }}.svg %} <code>{{ icon }}</code></div>
+    <div class="icon-item">{% include content-icon.html icon=icon %} <code>{{ icon }}</code></div>
     {% endfor %}
   </div>
 </div><!-- .expandable -->
@@ -87,9 +87,9 @@ Used to display a button that has only an icon and no text.
 ```
 
 <div class="demo">
-  <button class="button button-icon primary large">{% include icons/circle.svg %}</button>
-  <button class="button button-icon primary">{% include icons/circle.svg %}</button>
-  <button class="button button-icon primary small">{% include icons/circle.svg %}</button>
+  <button class="button button-icon primary large">{% include content-icon.html icon="circle" %}</button>
+  <button class="button button-icon primary">{% include content-icon.html icon="circle" %}</button>
+  <button class="button button-icon primary small">{% include content-icon.html icon="circle" %}</button>
 </div>
 
 ### .button-icon-left
@@ -103,9 +103,9 @@ Used to display buttons with icons on the left of a buttons text.
 ```
 
 <div class="demo">
-  <button class="button button-icon-left primary large">{% include icons/circle.svg %} Button</button>
-  <button class="button button-icon-left primary">{% include icons/circle.svg %} Button</button>
-  <button class="button button-icon-left primary small">{% include icons/circle.svg %} Button</button>
+  <button class="button button-icon-left primary large">{% include content-icon.html icon="circle" %} Button</button>
+  <button class="button button-icon-left primary">{% include content-icon.html icon="circle" %} Button</button>
+  <button class="button button-icon-left primary small">{% include content-icon.html icon="circle" %} Button</button>
 </div>
 
 ### .button-icon-right
@@ -119,9 +119,9 @@ Used to display buttons with icons on the right of a buttons text.
 ```
 
 <div class="demo">
-  <button class="button button-icon-right primary large">Button {% include icons/circle.svg %}</button>
-  <button class="button button-icon-right primary">Button {% include icons/circle.svg %}</button>
-  <button class="button button-icon-right primary small">Button {% include icons/circle.svg %}</button>
+  <button class="button button-icon-right primary large">Button {% include content-icon.html icon="circle" %}</button>
+  <button class="button button-icon-right primary">Button {% include content-icon.html icon="circle" %}</button>
+  <button class="button button-icon-right primary small">Button {% include content-icon.html icon="circle" %}</button>
 </div>
 
 <div class="notice yellow" markdown="1">
