@@ -57,11 +57,13 @@ To get started, you'll need to setup a build environment or process that compile
 
 ## Import Partials
 
-All BaseWeb partials are routed through the `baseweb.scss` file. Alternatively, you can also use `@import` partials through. It's recommended that you include `_baseweb-core.scss` at a minimum and piece meal elements and blocks as needed.
+All BaseWeb partials are routed through the `baseweb.scss` file. Alternatively, you can also use import partials. It's recommended that you include `_baseweb-core.scss` at minimum and piecemeal elements and blocks as needed or use all three import partials to include everything BaseWeb has to offer. Import partials are as follows:
 
 1. `_baseweb-core.scss`
 2. `_baseweb-elements.scss`
 3. `_baseweb-blocks.scss`
+
+The default `baseweb.scss` file looks like this:
 
 ```scss
 // Core [Required]
@@ -82,4 +84,8 @@ All BaseWeb partials are routed through the `baseweb.scss` file. Alternatively, 
 
 <div class="notice yellow" markdown="1">
 It's important to not that `custom/overrides` should be imported after core but before elements and block files. This ensures that you keep your custom framework overrides.
+</div>
+
+<div class="notice blue" markdown="1">
+For information on how to leverage BaseWeb and still be able to customize everything you need, check out "<a href="https://dev.to/sebnitu/reusing-design-systems-with-yarn-and-gulp" class="onclick-newtab">Reusing Design Systems with Yarn and Gulp</a>".
 </div>

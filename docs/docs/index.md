@@ -10,7 +10,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="sliders" %}
+      {% include content-icon.html icon="sliders" class="icon-color-1" %}
     </div>
     <div class="widget-content">
       <h2>Settings</h2>
@@ -21,7 +21,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="cpu" %}
+      {% include content-icon.html icon="cpu" class="icon-color-2" %}
     </div>
     <div class="widget-content">
       <h2>Core</h2>
@@ -32,7 +32,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="layers" %}
+      {% include content-icon.html icon="layers" class="icon-color-3" %}
     </div>
     <div class="widget-content">
       <h2>Elements</h2>
@@ -43,7 +43,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="package" %}
+      {% include content-icon.html icon="package" class="icon-color-4" %}
     </div>
     <div class="widget-content">
       <h2>Blocks</h2>
@@ -54,7 +54,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="edit-2" %}
+      {% include content-icon.html icon="edit-2" class="icon-color-5" %}
     </div>
     <div class="widget-content">
       <h2>Custom</h2>
@@ -62,10 +62,10 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
       <p><a href="{{ site.url }}{{ site.baseurl }}/docs/custom/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
   </div>
-
+  
   <div class="widget widget-featured card">
     <div class="widget-icon">
-      {% include content-icon.html icon="hash" %}
+      {% include content-icon.html icon="hash" class="icon-color-6" %}
     </div>
     <div class="widget-content">
       <h2>JavaScript</h2>
