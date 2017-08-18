@@ -8,70 +8,64 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
 <div class="widget-list">
 
-  <div class="widget widget-featured card">
+  <a class="widget widget-featured card color-1" href="{{ site.url }}{{ site.baseurl }}/docs/settings/palette/">
     <div class="widget-icon">
       {% include content-icon.html icon="sliders" class="icon-color-1" %}
     </div>
     <div class="widget-content">
       <h2>Settings</h2>
       <p>This is where we store all of our global project variables and maps. Variables and maps that are used in core modules, multiple element and/or block modules go here.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/settings/palette/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
+  </a>
 
-  <div class="widget widget-featured card">
+  <a class="widget widget-featured card color-2" href="{{ site.url }}{{ site.baseurl }}/docs/core/functions/">
     <div class="widget-icon">
       {% include content-icon.html icon="cpu" class="icon-color-2" %}
     </div>
     <div class="widget-content">
       <h2>Core</h2>
       <p>This is the heart and soul of BaseWeb. At a bear minimum, the Settings and Core files are required for BaseWeb to function. Core files do not output styles directly but are a collection of global functions and mixins.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/core/functions/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
+  </a>
 
-  <div class="widget widget-featured card">
+  <a class="widget widget-featured card color-3" href="{{ site.url }}{{ site.baseurl }}/docs/elements/base/">
     <div class="widget-icon">
       {% include content-icon.html icon="layers" class="icon-color-3" %}
     </div>
     <div class="widget-content">
       <h2>Elements</h2>
       <p>Elements refer to individual components of an HTML document. They're the backbone of any HTML documents and have inherit semantic meaning. BaseWeb styles these elements here and makes them easy to customize and enhance.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/elements/base/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
+  </a>
 
-  <div class="widget widget-featured card">
+  <a class="widget widget-featured card color-4" href="{{ site.url }}{{ site.baseurl }}/docs/blocks/button-groups/">
     <div class="widget-icon">
       {% include content-icon.html icon="package" class="icon-color-4" %}
     </div>
     <div class="widget-content">
       <h2>Blocks</h2>
       <p>Blocks are a group of Elements that become an independent component. A block can be simple or compound (meaning it contains other blocks). A Block is contextually independent, but can be modified either through an internal modifier or parent block.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/blocks/button-groups/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
+  </a>
 
-  <div class="widget widget-featured card">
+  <a class="widget widget-featured card color-5" href="{{ site.url }}{{ site.baseurl }}/docs/custom/">
     <div class="widget-icon">
       {% include content-icon.html icon="edit-2" class="icon-color-5" %}
     </div>
     <div class="widget-content">
       <h2>Custom</h2>
       <p>The Custom directory is a place to store all of your project specific code. By default, BaseWeb comes with an <code>_override.scs</code> file for setting overrides and <code>_custom.scss</code> file that will output a generic mobile first grid system.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/custom/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
-  
-  <div class="widget widget-featured card">
+  </a>
+
+  <a class="widget widget-featured card color-6" href="{{ site.url }}{{ site.baseurl }}/docs/javascript/">
     <div class="widget-icon">
       {% include content-icon.html icon="hash" class="icon-color-6" %}
     </div>
     <div class="widget-content">
       <h2>JavaScript</h2>
       <p>This is where all the component JavaScript lives. Any block that requires some kind of JavaScript behavior will appear here and initiated from <code>baseweb.js</code> where you can change default settings.</p>
-      <p><a href="{{ site.url }}{{ site.baseurl }}/docs/javascript/" class="button button-icon-right primary small">Dive In {% include content-icon.html icon="arrow-right" %}</a></p>
     </div>
-  </div>
+  </a>
 
 </div>
