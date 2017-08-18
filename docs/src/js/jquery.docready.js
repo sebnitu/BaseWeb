@@ -18,22 +18,6 @@
   $(document).ready(function () {
 
     /**
-     * Typed (homepage banner text)
-     */
-    var typed = new Typed('.hero-content .typed', {
-      strings: [
-        "the cat's pajamas.",
-        "fantastic as fu.^500.^500.",
-        "the bee's knees."
-      ],
-      startDelay: 50,
-      typeSpeed: 50,
-      backSpeed: 50,
-      backDelay: 1000,
-      contentType: 'null'
-    });
-
-    /**
      * Back to top
      */
     $('.button-totop').click(function (e) {
