@@ -557,12 +557,23 @@ body {
   .icon-color-5 { color: $deep-purple; }
   .icon-color-6 { color: $indigo; }
 }
+
+/**
+ * Widget Icons
+ */
 .widget-icons {
-  margin: 2em 0;
+  margin: 2em -1em;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   .widget-icon {
     margin: 0.5em;
+  }
+}
+@include media-min('small') {
+  .widget-icons {
+    justify-content: flex-start;
   }
 }
 
