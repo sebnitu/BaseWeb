@@ -1,67 +1,73 @@
 ---
 layout: default
 ---
+
 <div class="row">
 
   <aside class="sidebar sticky col col-2">
     <div class="widget widget-back">
-      <a href="/devlog/" class="index button">Index</a>
+      <a href="/blog/" class="button button-icon tooltip tooltip-bottom-left" data-tooltip="Close Article">
+        {% include content-icon.html icon="x" %}
+      </a>
+      <a href="#top" class="button button-icon button-totop tooltip tooltip-bottom-left" data-tooltip="Back to top">
+        {% include content-icon.html icon="arrow-up" %}
+      </a>
     </div><!-- .widget -->
   </aside>
 
   <article class="article col col-8 suffix-2">
 
-    <header>
-      <h1>{{ page.title }}</h1>
+    <header class="article-header">
+      <h1><a href="{{ post.url | prepend: site.baseurl }}">{{ page.title }}</a></h1>
       <p class="meta">
         <span class="version">v{{ page.version }}</span>
         <span class="date">{{ page.date | date: "%B %-d, %Y" }}</span>
       </p>
-    </header>
+    </header><!-- .article-header -->
 
-    <div class="content">
+    <div class="article-content">
       {{ content }}
-    </div>
+    </div><!-- .article-content -->
 
-    {% include social.html %}
+    {% include content-social.html %}
 
     {% if page.previous or page.next %}
-      <div class="page-nav">
-        {% if page.previous %}
-          <a href="{{ page.previous.url }}" class="prev">
-            <svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-left"></use></svg>
-            <span>{{ page.previous.title }}</span>
-          </a>
-        {% endif %}
+    <div class="page-nav">
+      {% if page.previous %}
+      <a href="{{ page.previous.url }}" class="prev">
+        {% include content-icon.html icon="arrow-left" %}
+        <span>{{ page.previous.title }}</span>
+      </a>
+      {% endif %}
 
-        {% if page.next %}
-          <a href="{{ page.next.url }}" class="next">
-            <svg class="icon icon-arrow-right"><use xlink:href="#icon-arrow-right"></use></svg>
-            <span>{{ page.next.title }}</span>
-          </a>
-        {% endif %}
-      </div>
+      {% if page.next %}
+      <a href="{{ page.next.url }}" class="next">
+        {% include content-icon.html icon="arrow-right" %}
+        <span>{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+    </div>
     {% endif %}
 
     {% if page.comments %}
-      <div class="comments">
-        <h2>Comments</h2>
-        <div id="disqus_thread"></div>
-      </div>
-      <script>
-      var disqus_config = function () {
-        this.page.url = '{{ site.url }}{{ page.url }}';
-        this.page.identifier = '{{ page.id }}';
-        this.page.title = '{{ page.title }}';
-      };
-      (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://baseweb-1.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-      })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <div class="comments">
+      <h2>Comments</h2>
+      <div id="disqus_thread"></div>
+    </div>
+    <script>
+    var disqus_config = function () {
+      this.page.url = '{{ site.url }}{{ page.url }}';
+      this.page.identifier = '{{ page.id }}';
+      this.page.title = '{{ page.title }}';
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://baseweb-1.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     {% endif %}
 
   </article><!-- .article -->

@@ -14,9 +14,7 @@ Images in BaseWeb are handles responsively be default. You're also provided a fe
   <img alt="Placeholder image" src="/dist/img/example-01.jpg">
 </div>
 
-<section class="subsection subsection-classes" markdown="1">
-
-# Image Classes
+## Classes
 
 Alignment modifiers are classes for images that help position them within the context of a document. There are also a few stylistic modifiers for commonly used image effects.
 
@@ -24,7 +22,7 @@ Alignment modifiers are classes for images that help position them within the co
 
 <li markdown="1">
 
-## img.align-left
+### .align-left
 
 Floats an image to the left and adds top, right and bottom margins so that text wraps around the image properly.
 
@@ -40,7 +38,7 @@ Floats an image to the left and adds top, right and bottom margins so that text 
 
 <li markdown="1">
 
-## img.align-center
+### .align-center
 
 Centers an image by making it block and giving it left and right margins of `auto`.
 
@@ -56,7 +54,7 @@ Centers an image by making it block and giving it left and right margins of `aut
 
 <li markdown="1">
 
-## img.align-right
+### .align-right
 
 Floats an image to the right and adds top, left and bottom margins so that text wraps around the image properly.
 
@@ -72,7 +70,7 @@ Floats an image to the right and adds top, left and bottom margins so that text 
 
 <li markdown="1">
 
-## img.rounded
+### .rounded
 
 Adds rounded border radius based on the default border-radius setting `$border-radius`.
 
@@ -88,7 +86,7 @@ Adds rounded border radius based on the default border-radius setting `$border-r
 
 <li markdown="1">
 
-## img.circle
+### .circle
 
 Makes a circle effect on an image by adding `50%` border radius.
 
@@ -104,7 +102,7 @@ Makes a circle effect on an image by adding `50%` border radius.
 
 <li markdown="1">
 
-## img.polaroid
+### .polaroid
 
 Adds a polaroid effect to an image.
 
@@ -119,5 +117,3 @@ Adds a polaroid effect to an image.
 </li>
 
 </ul>
-
-</section>

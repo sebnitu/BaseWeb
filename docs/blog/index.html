@@ -1,0 +1,31 @@
+---
+layout: default
+title: Blog
+link:
+ text: Blog
+order: 3
+notitle: true
+---
+
+<div class="article-listing">
+
+  <header class="main-header">
+    <h1>{{ page.title }}</h1>
+    <p class="text-lead">News, announcements and all things related to BaseWeb and front-end development. Grab the <a href="{{ site.url }}{{ site.baseurl }}/feed.xml">RSS feed</a> and don't miss a thing!</p>
+  </header>
+
+  <ol>
+    {% for post in site.posts %}
+    <li>
+      <article class="article">
+        <h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a></h2>
+        <p class="meta">
+          <span class="version">v{{ post.version }}</span>
+          <span class="date">{{ post.date | date: "%B %-d, %Y" }}</span>
+        </p>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+
+</div>

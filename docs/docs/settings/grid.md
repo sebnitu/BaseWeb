@@ -6,7 +6,7 @@ link:
 order: 4
 ---
 
-All grid variables are defined within the <code>$grid</code> and <code>$mini-grid</code> maps and are used as the default settings for all grid system mixins and functions. You can modify these settings directly to effect all grid systems, or pass in a custom map to specific mixins.
+All grid variables are defined within the <code>$grid</code> map and is used as the default settings for all grid system mixins and functions. You can modify these settings directly to effect all grid systems, or pass in a custom map to specific mixins.
 
 <table class="table table-docs">
   <tr>
@@ -52,11 +52,11 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('container-margin')</code></td>
-    <td colspan="2"><code>auto</code></td>
+    <td colspan="2"><code>0 auto</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-padding')</code></td>
-    <td colspan="2"><code>20px</code></td>
+    <td colspan="2"><code>0 1.5rem</code></td>
   </tr>
   <tr>
     <td><code>$grid('container-min-width')</code></td>
@@ -64,7 +64,7 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
   </tr>
   <tr>
     <td><code>$grid('container-max-width')</code></td>
-    <td colspan="2"><code>1000px</code></td>
+    <td colspan="2"><code>75rem</code></td>
   </tr>
 
   <tr>
@@ -99,24 +99,5 @@ All grid variables are defined within the <code>$grid</code> and <code>$mini-gri
     <td><code>$grid('class-suffix')</code></td>
     <td><code>suffix</code></td>
     <td>Set to <code>none</code> to disable output.</td>
-  </tr>
-
-  <tr>
-    <th colspan="3">Mini Grid System</th>
-  </tr>
-  <tr>
-    <td><code>$mini-grid('fractions')</code></td>
-    <td><code>12</code></td>
-    <td>Used to determine the number of fraction classes to output.</td>
-  </tr>
-  <tr>
-    <td><code>$mini-grid('class-has')</code></td>
-    <td><code>has</code></td>
-    <td>Class name for mini-grid parent classes.</td>
-  </tr>
-  <tr>
-    <td><code>$mini-grid('class-is')</code></td>
-    <td><code>is</code></td>
-    <td>Class name for mini-grid children classes.</td>
   </tr>
 </table>

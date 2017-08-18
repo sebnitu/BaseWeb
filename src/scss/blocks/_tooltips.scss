@@ -7,6 +7,7 @@ $filename: 'scss/blocks/_tooltips.scss';
 
 $tooltips: (
   'classes' : true,
+  'classes-position' : true,
 
   'class' : 'tooltip',
 
@@ -47,10 +48,9 @@ $tooltips: (
 @mixin make-tooltip($options: ()) {
   $o: map-merge($tooltips, $options);
 
-  .#{map-get($o, 'class')} {
-    position: relative;
-  }
-  .#{map-get($o, 'class')}:after {
+  position: relative;
+
+  &:after {
     content: attr(data-tooltip); // Get the content of the data-tooltip attribute
     pointer-events: none; // Turns off hover effect on the pseudo element
     position: absolute;
@@ -78,80 +78,182 @@ $tooltips: (
 
 // Add Tooltip Position
 // Adds the position styles for a tooltip.
-// @param $options
-//   @type map
-//   @default $tooltips map
 // @param $anchor
 //   @type string ('top', 'left', 'right', 'bottom')
 //   @default 'top'
 // @param $class
 //   @type string | null | default
 //   @default null
-@mixin add-tooltip-position($options: (), $anchor : 'top', $class : null) {
+// @param $options
+//   @type map
+//   @default $tooltips map
+@mixin add-tooltip-position($anchor : 'top', $class : null, $options: ()) {
   $o: map-merge($tooltips, $options);
 
   @if ($class == null) {
-    $class: '#{map-get($o, 'class')}-#{$anchor}';
+    $class: '&';
   } @else if ($class == default) {
-    $class: map-get($o, 'class');
+    $class: '.#{map-get($o, 'class')}-#{$anchor}';
+  } @else {
+    $class: '.#{$class}';
   }
 
   @if ($anchor == 'top') {
-    .#{$class}:after {
+    #{$class}:after {
       top: auto;
       left: 50%;
       right: auto;
       bottom: 100%;
       transform: translate(-50%, -(map-get($o, 'position-start')));
     }
-    .#{$class}:hover:after,
-    .#{$class}:focus:after {
+    #{$class}:hover:after,
+    #{$class}:focus:after {
       opacity: 1;
       transform: translate(-50%, -(map-get($o, 'position-end')));
     }
+  } @else if ($anchor == 'top-left') {
+    #{$class}:after {
+      top: auto;
+      left: 0;
+      right: auto;
+      bottom: 100%;
+      transform: translate(0, -(map-get($o, 'position-start')));
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      opacity: 1;
+      transform: translate(0, -(map-get($o, 'position-end')));
+    }
+  } @else if ($anchor == 'top-right') {
+    #{$class}:after {
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 100%;
+      transform: translate(0, -(map-get($o, 'position-start')));
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      opacity: 1;
+      transform: translate(0, -(map-get($o, 'position-end')));
+    }
   } @else if ($anchor == 'left') {
-    .#{$class}:after {
+    #{$class}:after {
       top: 50%;
       left: auto;
       right: 100%;
       bottom: auto;
       transform: translate(-(map-get($o, 'position-start')), -50%);
     }
-    .#{$class}:hover:after,
-    .#{$class}:focus:after {
+    #{$class}:hover:after,
+    #{$class}:focus:after {
       transform: translate(-(map-get($o, 'position-end')), -50%);
     }
+  } @else if ($anchor == 'left-top') {
+    #{$class}:after {
+      top: 0;
+      left: auto;
+      right: 100%;
+      bottom: auto;
+      transform: translate(-(map-get($o, 'position-start')), 0);
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      transform: translate(-(map-get($o, 'position-end')), 0);
+    }
+  } @else if ($anchor == 'left-bottom') {
+    #{$class}:after {
+      top: auto;
+      left: auto;
+      right: 100%;
+      bottom: 0;
+      transform: translate(-(map-get($o, 'position-start')), 0);
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      transform: translate(-(map-get($o, 'position-end')), 0);
+    }
   } @else if ($anchor == 'right') {
-    .#{$class}:after {
+    #{$class}:after {
       top: auto;
       left: 100%;
       right: auto;
       bottom: 50%;
       transform: translate(map-get($o, 'position-start'), 50%);
     }
-    .#{$class}:hover:after,
-    .#{$class}:focus:after {
+    #{$class}:hover:after,
+    #{$class}:focus:after {
       transform: translate(map-get($o, 'position-end'), 50%);
     }
+  } @else if ($anchor == 'right-top') {
+    #{$class}:after {
+      top: 0;
+      left: 100%;
+      right: auto;
+      bottom: auto;
+      transform: translate(map-get($o, 'position-start'), 0);
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      transform: translate(map-get($o, 'position-end'), 0);
+    }
+  } @else if ($anchor == 'right-bottom') {
+    #{$class}:after {
+      top: auto;
+      left: 100%;
+      right: auto;
+      bottom: 0;
+      transform: translate(map-get($o, 'position-start'), 0);
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      transform: translate(map-get($o, 'position-end'), 0);
+    }
   } @else if ($anchor == 'bottom') {
-    .#{$class}:after {
+    #{$class}:after {
       top: 100%;
       left: auto;
       right: 50%;
       bottom: auto;
       transform: translate(50%, map-get($o, 'position-start'));
     }
-    .#{$class}:hover:after,
-    .#{$class}:focus:after {
+    #{$class}:hover:after,
+    #{$class}:focus:after {
       opacity: 1;
       transform: translate(50%, map-get($o, 'position-end'));
+    }
+  } @else if ($anchor == 'bottom-left') {
+    #{$class}:after {
+      top: 100%;
+      left: 0;
+      right: auto;
+      bottom: auto;
+      transform: translate(0, map-get($o, 'position-start'));
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      opacity: 1;
+      transform: translate(0, map-get($o, 'position-end'));
+    }
+  } @else if ($anchor == 'bottom-right') {
+    #{$class}:after {
+      top: 100%;
+      left: auto;
+      right: 0;
+      bottom: auto;
+      transform: translate(0, map-get($o, 'position-start'));
+    }
+    #{$class}:hover:after,
+    #{$class}:focus:after {
+      opacity: 1;
+      transform: translate(0, map-get($o, 'position-end'));
     }
   } @else {
     @warn 'The tooltip position of `#{$anchor}` does not exist';
   }
 }
 
-// Check if we should output modifier classes
+// Check if we should output classes
 @if (map-get($tooltips, 'classes') == true) {
 
 /*==============================================================================
@@ -161,19 +263,39 @@ $tooltips: (
 /**
  * Base styles for tooltips
  */
-@include make-tooltip();
+.#{map-get($tooltips, 'class')} {
+  @include make-tooltip();
+}
 
 /**
  * Default Tooltip Position
  */
-@include add-tooltip-position($anchor: 'top', $class: default);
+.#{map-get($tooltips, 'class')} {
+  @include add-tooltip-position();
+}
+
+// Check if we should output position classes
+@if (map-get($tooltips, 'classes-position') == true) {
 
 /**
  * Tooltip Positions
  */
-@include add-tooltip-position($anchor: 'top');
-@include add-tooltip-position($anchor: 'left');
-@include add-tooltip-position($anchor: 'right');
-@include add-tooltip-position($anchor: 'bottom');
+@include add-tooltip-position('top', default);
+@include add-tooltip-position('top-left', default);
+@include add-tooltip-position('top-right', default);
+
+@include add-tooltip-position('left', default);
+@include add-tooltip-position('left-top', default);
+@include add-tooltip-position('left-bottom', default);
+
+@include add-tooltip-position('right', default);
+@include add-tooltip-position('right-top', default);
+@include add-tooltip-position('right-bottom', default);
+
+@include add-tooltip-position('bottom', default);
+@include add-tooltip-position('bottom-left', default);
+@include add-tooltip-position('bottom-right', default);
+
+} // endif position classes
 
 } // endif classes

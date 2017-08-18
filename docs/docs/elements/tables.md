@@ -52,9 +52,7 @@ The HTML `<table>` element is used to display tabular data. Tables have rows, ce
 
 You'll notice that the base styles for a table are almost untouched. That's because tables are used in a wide array of data on the web, so any sort of custom styles that BaseWeb has available are best applied using modifier classes and mixins for semantic applications.
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Table Variables
+## Variables
 
 Table variables are encompassed within the `$tables` map and are used throughout all table mixins to set default values.
 
@@ -121,11 +119,7 @@ Table variables are encompassed within the `$tables` map and are used throughout
   </tr>
 </table>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Table Mixins
+## Mixins
 
 Tabular data can be frustrating to parse if they are not styled properly. BaseWeb provides the mixins and classes you need to make tables and their content a breeze to analyze.
 
@@ -133,7 +127,7 @@ Tabular data can be frustrating to parse if they are not styled properly. BaseWe
 
 <li markdown="1">
 
-## make-table
+### make-table
 
 Creates the base styles for a table modifier mixin or class. Usually applied directly through a base table class, mixin or an extend placeholder. If table modifier classes are enabled, you are provided `.table` for your base table class.
 
@@ -154,7 +148,7 @@ Creates the base styles for a table modifier mixin or class. Usually applied dir
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Using the base table mixin for custom tables. This example shows us using a `%base-table` placeholder for the extend method.
 
@@ -176,7 +170,7 @@ Using the base table mixin for custom tables. This example shows us using a `%ba
 
 <li markdown="1">
 
-## add-table-rowed
+### add-table-rowed
 
 Adds borders to a table that divide table rows. Requires the use of base table styles through base table class, mixin or extend.
 
@@ -197,7 +191,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -245,7 +239,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
 
 <li markdown="1">
 
-## add-table-columned
+### add-table-columned
 
 Adds borders to a table that divide table columns. Requires the use of base table styles through base table class, mixin or extend.
 
@@ -266,7 +260,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -314,7 +308,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
 
 <li markdown="1">
 
-## add-table-bordered
+### add-table-bordered
 
 Adds borders to a table that divide table cells. Requires the use of base table styles through base table class, mixin or extend.
 
@@ -335,7 +329,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -383,7 +377,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
 
 <li markdown="1">
 
-## add-table-size
+### add-table-size
 
 Toggles a tables padding size between condensed, expanded or a custom padding value.
 
@@ -409,7 +403,7 @@ Toggles a tables padding size between condensed, expanded or a custom padding va
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 As a mixin, this is used when overriding the inherited table size of more general table styles.
 
@@ -504,7 +498,7 @@ When class modifiers are enabled, you have the two sizing utility classes: `.con
 
 <li markdown="1">
 
-## add-table-rounded
+### add-table-rounded
 
 Gives a table rounded borders depending on parameters passed.
 
@@ -530,7 +524,7 @@ Gives a table rounded borders depending on parameters passed.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -579,7 +573,7 @@ Gives a table rounded borders depending on parameters passed.
 
 <li markdown="1">
 
-## add-table-stripes
+### add-table-stripes
 
 Gives a table stripes either vertical or horizontal depending on parameters passed.
 
@@ -610,7 +604,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -723,7 +717,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
 
 <li markdown="1">
 
-## add-table-hover
+### add-table-hover
 
 Gives table hover styles for rows.
 
@@ -749,7 +743,7 @@ Gives table hover styles for rows.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-table {
@@ -798,7 +792,7 @@ Gives table hover styles for rows.
 
 <li markdown="1">
 
-## add-table-alignment
+### add-table-alignment
 
 Sets the vertical and text alignment of a table if a parameter is passed.
 
@@ -819,7 +813,7 @@ Sets the vertical and text alignment of a table if a parameter is passed.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 If you don't have class modifiers enabled, or just want to set table alignment in your SCSS, just pass in the alignment settings you'd like set.
 
@@ -843,7 +837,7 @@ If you don't have class modifiers enabled, or just want to set table alignment i
 }
 ```
 
-### Available Classes
+#### Available Classes
 
 <table class="table table-docs">
   <tr>
@@ -886,7 +880,7 @@ If you don't have class modifiers enabled, or just want to set table alignment i
 
 <li markdown="1">
 
-## make-table-responsive
+### make-table-responsive
 
 When added to a wrapping element of a table, will make the table responsive for tablets and below.
 
@@ -907,7 +901,7 @@ When added to a wrapping element of a table, will make the table responsive for 
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Simply wrap a div with the `.table-responsive` class or apply the `make-table-responsive()` mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using `media-max('tablet')`.
 
@@ -953,5 +947,3 @@ Simply wrap a div with the `.table-responsive` class or apply the `make-table-re
 </li>
 
 </ul>
-
-</section>

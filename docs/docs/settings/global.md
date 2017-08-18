@@ -45,6 +45,27 @@ The rest of the global variables used in BaseWeb. These mainly deal with things 
   </tr>
 
   <tr>
+    <td><code>$class-show</code></td>
+    <td><code>'show'</code></td>
+    <td>Set to <code>null</code> to not output the show class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
+  </tr>
+  <tr>
+    <td><code>$class-hide</code></td>
+    <td><code>'hide'</code></td>
+    <td>Set to <code>null</code> to not output the hide class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-min</code></td>
+    <td><code>'down'</code></td>
+    <td>Set to <code>null</code> to not output the down class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-max</code></td>
+    <td><code>'up'</code></td>
+    <td>Set to <code>null</code> to not output the up class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
+  </tr>
+
+  <tr>
     <th colspan="3">Mixin Defaults</th>
   </tr>
   <tr>

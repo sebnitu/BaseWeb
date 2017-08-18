@@ -28,7 +28,8 @@ body {
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
   margin: 1rem 0;
   font-family: $font-family-heading;
   font-weight: $font-weight-heading;
@@ -37,48 +38,31 @@ h1, h2, h3, h4, h5, h6 {
 
   a {
     color: $color-link-heading;
-    border: 0 none;
+    text-decoration: none;
+
     &:hover {
       color: $color-link-heading-hover;
-      text-decoration: none;
     }
   }
 }
 
-h1 {
-  font-size: 2em;
+h1, .h1 {
+  font-size: 2.5em; // 40px
 }
-h2 {
-  font-size: 1.75em;
+h2, .h2 {
+  font-size: 2em; // 32px
 }
-h3 {
-  font-size: 1.25em;
+h3, .h3 {
+  font-size: 1.75em; // 28px
 }
-h4 {
-  font-size: 1.1em;
+h4, .h4 {
+  font-size: 1.5em; // 24px
 }
-h5 {
-  font-size: 1.1em;
-  color: rgba($color-heading, 0.6);
+h5, .h5 {
+  font-size: 1.25em; // 20px
 }
-h6 {
-  font-size: 1.1em;
-  color: rgba($color-heading, 0.3);
-}
-
-@include media-min('medium') {
-  h1 {
-    font-size: 3em;
-  }
-  h2 {
-    font-size: 2em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  h4, h5, h6 {
-    font-size: 1.25em;
-  }
+h6, .h6 {
+  font-size: 1em; // 16px
 }
 
 /**
@@ -93,15 +77,10 @@ p {
  */
 a {
   color: $color-link;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover {
-    cursor: pointer;
     color: $color-link-hover;
-    text-decoration: underline;
-  }
-  &:visited {
-    color: $color-link-visited;
   }
 }
 
@@ -133,10 +112,14 @@ abbr[data-original-title] {
  * Stylistic Classes
  */
 .text-lead {
-  font-size: px-to-em(22px);
+  font-size: px-to-em(24px);
   line-height: 1.4em;
   color: $color-dark;
   font-weight: font-weight('light');
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .text-small {

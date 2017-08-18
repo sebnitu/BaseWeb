@@ -1,13 +1,11 @@
-<div class="flex">
-  <a href="/" class="logo">
-    {% if page.url == '/' %}
-      <img src="/dist/img/baseweb-hori-white.svg" width="170" height="37" alt="BaseWeb" class="desktop">
-      <img src="/dist/img/baseweb-box-white.svg" width="53" height="37" alt="BaseWeb" class="mobile">
-    {% else %}
-      <img src="/dist/img/baseweb-hori-black.svg" width="170" height="37" alt="BaseWeb" class="desktop">
-      <img src="/dist/img/baseweb-box-black.svg" width="53" height="37" alt="BaseWeb" class="mobile">
-    {% endif %}
-    <span class="version">v{{ site.version }}</span>
-  </a>
-  {% include nav.html %}
-</div>
+<a href="/" class="logo">
+  {% if page.url == '/' %}
+    <img src="/dist/img/baseweb-hori-white.svg" width="170" height="37" alt="BaseWeb" class="show-small-up">
+    <img src="/dist/img/baseweb-box-white.svg" width="53" height="37" alt="BaseWeb" class="hide-small-up">
+  {% else %}
+    <img src="/dist/img/baseweb-hori-black.svg" width="170" height="37" alt="BaseWeb" class="show-small-up">
+    <img src="/dist/img/baseweb-box-black.svg" width="53" height="37" alt="BaseWeb" class="hide-small-up">
+  {% endif %}
+  <span class="version">v{{ site.version }}</span>
+</a>
+{% include nav.html %}

@@ -1,15 +1,169 @@
 // Set file variable
 $filename: 'scss/elements/_icons.scss';
 
+////////////////////////////////////////////////////////////////////////////////
+// @Icons Map
+////////////////////////////////////////////////////////////////////////////////
+
+$icons: (
+  'classes' : true,
+  'classes-button-icon' : true,
+
+  'class' : 'icon',
+  'class-symbols' : 'svg-symbols',
+
+  'size' : 1em,
+
+  'margin-top' : -0.3em,
+  'margin-bottom' : -0.1em,
+
+  'font-size-small' : px-to-rem(18px),
+  'font-size' : px-to-rem(24px),
+  'font-size-large' : px-to-rem(30px),
+
+  'vertical-align' : null,
+  'stroke' : currentColor,
+  'stroke-width' : 2px,
+  'stroke-linecap' : round,
+  'stroke-linejoin' : round,
+  'fill' : none,
+
+  'buttons' : (
+    'gap' : 0.25em,
+    'indent-small' : -0.125em,
+    'indent' : -0.25em,
+    'indent-large' : -0.35em
+  )
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'icons') == true) {
+    $icons: map-extend($icons, map-get($override, 'icons'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Icons Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Icon
+// Creates the base styles foricons.
+// @param $options
+//   @type map
+//   @default $icons map
+@mixin make-icon($options: ()) {
+  $o: map-merge($icons, $options);
+
+  display: inline-block;
+  width: map-get($o, 'size');
+  height: map-get($o, 'size');
+  margin-top: map-get($o, 'margin-top');
+  margin-bottom: map-get($o, 'margin-bottom');
+  vertical-align: map-get($o, 'vertical-align');
+  stroke: map-get($o, 'stroke');
+  stroke-width: map-get($o, 'stroke-width');
+  stroke-linecap: map-get($o, 'stroke-linecap');
+  stroke-linejoin: map-get($o, 'stroke-linejoin');
+  fill: map-get($o, 'fill');
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($icons, 'classes') == true) {
+
 /*==============================================================================
   @Icons - #{$filename}
 ==============================================================================*/
 
-.icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+@if (map-get($icons, 'class-symbols')) {
+  .#{map-get($icons, 'class-symbols')} {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+  }
 }
+
+.#{map-get($icons, 'class')} {
+  @include make-icon();
+}
+
+// Check if we should output button icon classes
+@if (map-get($icons, 'classes-button-icon') == true) {
+
+// Required components warning
+@if (variable-exists(buttons) == false) {
+  @warn 'The icons element component requires the buttons element component!';
+} @else {
+
+/**
+ * .button .icon
+ */
+.#{map-get($buttons, 'class')} {
+  .#{map-get($icons, 'class')} {
+    font-size: map-get($icons, 'font-size');
+    line-height: 1em;
+    vertical-align: middle;
+  }
+  &.small .#{map-get($icons, 'class')} {
+    font-size: map-get($icons, 'font-size-small');
+  }
+  &.large .#{map-get($icons, 'class')} {
+    font-size: map-get($icons, 'font-size-large');
+    margin-top: -0.2em;
+  }
+}
+
+/**
+ * .button.button-icon
+ */
+.#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+  padding: nth(map-get($buttons, 'padding'), 1);
+  &.small {
+    padding: nth(map-get($buttons, 'padding-small'), 1);
+  }
+  &.large {
+    padding: nth(map-get($buttons, 'padding-large'), 1);
+  }
+}
+
+/**
+ * .button-icon-left
+ * .button-icon-right
+ */
+.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-left {
+  .#{map-get($icons, 'class')} {
+    margin-right: map-fetch($icons, 'buttons', 'gap');
+    margin-left: map-fetch($icons, 'buttons', 'indent');
+  }
+  &.small .#{map-get($icons, 'class')} {
+    margin-left: map-fetch($icons, 'buttons', 'indent-small');
+  }
+  &.large .#{map-get($icons, 'class')} {
+    margin-left: map-fetch($icons, 'buttons', 'indent-large');
+  }
+}
+
+.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-right {
+  .#{map-get($icons, 'class')} {
+    margin-left: map-fetch($icons, 'buttons', 'gap');
+    margin-right: map-fetch($icons, 'buttons', 'indent');
+  }
+  &.small .#{map-get($icons, 'class')} {
+    margin-right: map-fetch($icons, 'buttons', 'indent-small');
+  }
+  &.large .#{map-get($icons, 'class')} {
+    margin-right: map-fetch($icons, 'buttons', 'indent-large');
+  }
+}
+
+} // If $buttons exists
+
+} // endif classes-button-icon
+
+} // endif classes

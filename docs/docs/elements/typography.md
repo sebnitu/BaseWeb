@@ -41,9 +41,7 @@ The body copy is set by applying our default typographic settings to the `<body>
   <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 </div>
 
-<section class="subsection subsection-elements" markdown="1">
-
-# Typographic Elements
+## Elements
 
 HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.
 
@@ -51,7 +49,7 @@ HTML has a beautiful assortment of tools for adding rich semantics to a document
 
 <li markdown="1">
 
-## &lt;a&gt;
+### &lt;a&gt;
 
 The HTML `<a>` Element (or the HTML Anchor Element) defines a hyperlink.
 
@@ -67,7 +65,7 @@ The HTML `<a>` Element (or the HTML Anchor Element) defines a hyperlink.
 
 <li markdown="1">
 
-## &lt;strong&gt;
+### &lt;strong&gt;
 
 The HTML `<strong>` represents strong importance for its contents.
 
@@ -83,7 +81,7 @@ The HTML `<strong>` represents strong importance for its contents.
 
 <li markdown="1">
 
-## &lt;em&gt;
+### &lt;em&gt;
 
 The HTML `<em>` element represents stress emphasis of its contents.
 
@@ -99,7 +97,7 @@ The HTML `<em>` element represents stress emphasis of its contents.
 
 <li markdown="1">
 
-## &lt;small&gt;
+### &lt;small&gt;
 
 The HTML `<small>` element represents side comments such as small print.
 
@@ -115,7 +113,7 @@ The HTML `<small>` element represents side comments such as small print.
 
 <li markdown="1">
 
-## &lt;mark&gt;
+### &lt;mark&gt;
 
 The HTML `<mark>` element represents a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.
 
@@ -131,7 +129,7 @@ The HTML `<mark>` element represents a run of text in one document marked or hig
 
 <li markdown="1">
 
-## &lt;ins&gt;
+### &lt;ins&gt;
 
 The HTML `<ins>` element represents an addition to the document.
 
@@ -147,7 +145,7 @@ The HTML `<ins>` element represents an addition to the document.
 
 <li markdown="1">
 
-## &lt;del&gt;
+### &lt;del&gt;
 
 The HTML `<del>` element represents a removal from the document.
 
@@ -163,7 +161,7 @@ The HTML `<del>` element represents a removal from the document.
 
 <li markdown="1">
 
-## &lt;cite&gt;
+### &lt;cite&gt;
 
 The HTML `<cite>` element represents a reference to a creative work.
 
@@ -185,7 +183,7 @@ The HTML `<cite>` element represents a reference to a creative work.
 
 <li markdown="1">
 
-## &lt;abbr&gt;
+### &lt;abbr&gt;
 
 The HTML `<abbr>` represents an abbreviation or acronym. The optional title attribute may be used to provide an expansion of the abbreviation.
 
@@ -201,11 +199,7 @@ The HTML `<abbr>` represents an abbreviation or acronym. The optional title attr
 
 </ul>
 
-</section>
-
-<section class="subsection subsection-classes" markdown="1">
-
-# Typographic Classes
+## Classes
 
 In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.
 
@@ -213,7 +207,7 @@ In addition to our inline elements, BaseWeb provides these stylistic typographic
 
 <li markdown="1">
 
-## .text-lead
+### .text-lead
 
 Lead text can be used as an introduction paragraph or even as subtitle text.
 
@@ -229,7 +223,7 @@ Lead text can be used as an introduction paragraph or even as subtitle text.
 
 <li markdown="1">
 
-## .text-small
+### .text-small
 
 Used to make text look less important. Can be used to reduce the size of legal text, for example.
 
@@ -245,7 +239,7 @@ Used to make text look less important. Can be used to reduce the size of legal t
 
 <li markdown="1">
 
-## .text-soften
+### .text-soften
 
 Softens the appearance of text for non-vital content such as meta data, dates or descriptions.
 
@@ -261,7 +255,7 @@ Softens the appearance of text for non-vital content such as meta data, dates or
 
 <li markdown="1">
 
-## .text-harden
+### .text-harden
 
 Makes text stand out or look more important. Could be used to attract attention to important information.
 
@@ -277,7 +271,7 @@ Makes text stand out or look more important. Could be used to attract attention 
 
 <li markdown="1">
 
-## .text-left
+### .text-left
 
 Aligns text to the left.
 
@@ -293,7 +287,7 @@ Aligns text to the left.
 
 <li markdown="1">
 
-## .text-center
+### .text-center
 
 Aligns text to the center.
 
@@ -309,7 +303,7 @@ Aligns text to the center.
 
 <li markdown="1">
 
-## .text-right
+### .text-right
 
 Aligns text to the right.
 
@@ -325,7 +319,7 @@ Aligns text to the right.
 
 <li markdown="1">
 
-## .text-justify
+### .text-justify
 
 Makes text justified.
 
@@ -341,7 +335,7 @@ Makes text justified.
 
 <li markdown="1">
 
-## .text-nowrap
+### .text-nowrap
 
 Prevents text from wrapping.
 
@@ -357,7 +351,7 @@ Prevents text from wrapping.
 
 <li markdown="1">
 
-## .text-lowercase
+### .text-lowercase
 
 Makes text lowercase.
 
@@ -373,7 +367,7 @@ Makes text lowercase.
 
 <li markdown="1">
 
-## .text-uppercase
+### .text-uppercase
 
 Makes text uppercase.
 
@@ -389,7 +383,7 @@ Makes text uppercase.
 
 <li markdown="1">
 
-## .text-capitalize
+### .text-capitalize
 
 Makes text capitalized.
 
@@ -404,5 +398,3 @@ Makes text capitalized.
 </li>
 
 </ul>
-
-</section>

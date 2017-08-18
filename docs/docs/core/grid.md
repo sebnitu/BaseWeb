@@ -211,106 +211,7 @@ When using a fluid grid (percent based) the sum of columns in a row must equal t
 By default, our grid system uses inner-gutter-width (padding) instead of gutter-width (margins). So we're able to keep absolute gutters with a fluid grid for nested elements. But if you used margin gutters with a fluid grid, gutters would need to be percentage based.
 </div>
 
-## Mini Grid System
-
-The Mini Grid System works independently of the core Grid System. It's output using the `build-mini-grid-system()` mixin and takes the `$mini-grid()` map as a parameter to customize the classes it outputs.
-
-### .has-#
-
-The `.has-#` class is applied to the parent element where `#` represents the number of children it wraps. The parent receives a clearfix and all children are given equal widths to span their container.
-
-```html
-<div class="has-3">
-  ...
-</div>
-<div class="has-6">
-  ...
-</div>
-<div class="has-9">
-  ...
-</div>
-```
-
-<div class="demo demo-mini-grid">
-  <div class="mini-grid has-3">
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-  </div>
-  <div class="mini-grid has-6">
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span>6</span>
-  </div>
-  <div class="mini-grid has-9">
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-    <span>5</span>
-    <span>6</span>
-    <span>7</span>
-    <span>8</span>
-    <span>9</span>
-  </div>
-</div>
-
-### .is-1-of-#
-
-The `.is-1-of-#` class is applied as a child element to represent a fraction of its parent container. Just keep in mind that `.is-1-of-#` elements get floated so its parent should receive a clearfix.
-
-```html
-<div>
-  <span class="is-1-of-3">1/3</span>
-  <span class="is-1-of-3">1/3</span>
-  <span class="is-1-of-3">1/3</span>
-</div>
-
-<div>
-  <span class="is-1-of-3">1/3</span>
-  <span class="is-1-of-9">1/9</span>
-  <span class="is-1-of-9">1/9</span>
-  <span class="is-1-of-9">1/9</span>
-  <span class="is-1-of-3">1/3</span>
-</div>
-
-<div>
-  <span class="is-1-of-5">1/5</span>
-  <span class="is-1-of-5">1/5</span>
-  <span class="is-1-of-5">1/5</span>
-  <span class="is-1-of-5">1/5</span>
-  <span class="is-1-of-5">1/5</span>
-</div>
-```
-
-<div class="demo demo-mini-grid">
-  <div class="mini-grid">
-    <span class="is-1-of-3">1/3</span>
-    <span class="is-1-of-3">1/3</span>
-    <span class="is-1-of-3">1/3</span>
-  </div>
-  <div class="mini-grid">
-    <span class="is-1-of-3">1/3</span>
-    <span class="is-1-of-9">1/9</span>
-    <span class="is-1-of-9">1/9</span>
-    <span class="is-1-of-9">1/9</span>
-    <span class="is-1-of-3">1/3</span>
-  </div>
-  <div class="mini-grid">
-    <span class="is-1-of-5">1/5</span>
-    <span class="is-1-of-5">1/5</span>
-    <span class="is-1-of-5">1/5</span>
-    <span class="is-1-of-5">1/5</span>
-    <span class="is-1-of-5">1/5</span>
-  </div>
-</div>
-
-<section class="subsection subsection-functions" markdown="1">
-
-# Grid Functions
+## Grid Functions
 
 These functions are used to calculate specific grid maths such as the width a set number of columns should span. These are used within grid mixins and are often used when defining semantic grid systems.
 
@@ -318,7 +219,7 @@ These functions are used to calculate specific grid maths such as the width a se
 
 <li markdown="1">
 
-## column-width
+### column-width
 
 A function that returns the width of a column span.
 
@@ -355,7 +256,7 @@ $return: column-width( $index, $options: () );
 
 <li markdown="1">
 
-## spacing-width
+### spacing-width
 
 A function that returns the spacing of a column span.
 
@@ -395,7 +296,7 @@ $return: spacing-width( $index, $options: () );
 
 <section class="subsection subsection-mixins" markdown="1">
 
-# Grid Mixins
+## Grid Mixins
 
 These mixins are used to output styles that define a grid system's components. Such as grid containers, rows and columns as well as modifier classes like prefix and suffix spacing. They are also used for outputting the class based grid system.
 
@@ -403,7 +304,7 @@ These mixins are used to output styles that define a grid system's components. S
 
 <li markdown="1">
 
-## make-container
+### make-container
 
 Outputs all the styles needed to make an element a grid container.
 
@@ -428,7 +329,7 @@ Outputs all the styles needed to make an element a grid container.
 
 <li markdown="1">
 
-## make-row
+### make-row
 
 Outputs all the styles needed to make an element a grid row.
 
@@ -453,9 +354,9 @@ Outputs all the styles needed to make an element a grid row.
 
 <li markdown="1">
 
-## make-column-base
+### make-column-base
 
-Creates the base styles for a column but excludes setting the width. Also creates modifier classes for floating columns left or right giving you more flexibility with markup order. Default classes are `col-left` and `col-right`, respectively. 
+Creates the base styles for a column but excludes setting the width. Also creates modifier classes for floating columns left or right giving you more flexibility with markup order. Default classes are `col-left` and `col-right`, respectively.
 
 ```scss
 @include make-column-base( $options: () );
@@ -478,7 +379,7 @@ Creates the base styles for a column but excludes setting the width. Also create
 
 <li markdown="1">
 
-## make-column
+### make-column
 
 Creates all the styles for a column and sets its width.
 
@@ -511,7 +412,7 @@ Creates all the styles for a column and sets its width.
 
 <li markdown="1">
 
-## add-prefix
+### add-prefix
 
 Creates the base styles for a column and sets its width.
 
@@ -544,7 +445,7 @@ Creates the base styles for a column and sets its width.
 
 <li markdown="1">
 
-## add-suffix
+### add-suffix
 
 Creates the base styles for a spacing suffix.
 
@@ -577,7 +478,7 @@ Creates the base styles for a spacing suffix.
 
 <li markdown="1">
 
-## build-grid-system
+### build-grid-system
 
 Outputs all the classes and styles for the class based grid system. You can either pass in a map that overrides the grid map defaults, or a single grid type parameter to trigger normal or mobile grid systems.
 
@@ -600,7 +501,7 @@ Outputs all the classes and styles for the class based grid system. You can eith
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 The most basic use of `build-grid-system()` is to output mobile styles and within a media query output our standard grid system. This is present in your `custom/_custom.scss` file by default.
 
@@ -615,7 +516,7 @@ The most basic use of `build-grid-system()` is to output mobile styles and withi
 }
 ```
 
-### Classes Output
+#### Classes Output
 
 These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid()` map.
 
@@ -645,76 +546,6 @@ These are all the default classes that become available when generating your gri
 
 <div class="notice info" markdown="1">
 You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid()` map or passing it directly to the mixin manually.
-</div>
-
-</li>
-
-<li markdown="1">
-
-## build-mini-grid-system
-
-Outputs all the classes for a mini-grid system using the `$mini-grid()` map to set default parameters. You can also pass a custom map to customize the output or create multiple mini grid systems.
-
-```scss
-@include build-grid-system( $options: () );
-```
-
-<table class="table table-docs">
-  <tr>
-    <th>Parameter</th>
-    <th>Type</th>
-    <th>Default</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$mini-grid()</code></td>
-    <td>Uses global mini-grid settings if nothing is passed.</td>
-  </tr>
-</table>
-
-### Example Usage
-
-The mini grid system is called in your `custom/_custom.scss` file by default.
-
-```scss
-@include build-mini-grid-system();
-```
-
-```html
-<!-- .has-# Classes -->
-<div class="has-4">
-  <span>1</span>
-  <span>2</span>
-  <span>3</span>
-  <span>4</span>
-</div>
-
-<!-- .is-1-of-# Classes -->
-<div>
-  <span class="is-1-of-3">1/3</span>
-  <span class="is-1-of-3">1/3</span>
-  <span class="is-1-of-3">1/3</span>
-</div>
-```
-
-<div class="demo demo-mini-grid">
-  <div class="mini-grid has-4">
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
-  </div>
-  <div class="mini-grid">
-    <span class="is-1-of-3">1/3</span>
-    <span class="is-1-of-3">1/3</span>
-    <span class="is-1-of-3">1/3</span>
-  </div>
-</div>
-
-<div class="notice warning" markdown="1">
-There may be modules who's features are dependent on a mini-grid system being output (such as the button groups module). Make sure that you're outputting one if the modules you use have a mini-grid as a dependency.
 </div>
 
 </li>

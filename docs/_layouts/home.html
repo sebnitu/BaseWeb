@@ -2,14 +2,13 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<html{% if page.class %} class="{{ page.class }}"{% endif %}>
+<html lang="en"{% if page.class %} class="{{ page.class }}"{% endif %}>
   <head>
     {% include head.html %}
   </head>
   <body>
-    {% include symbol-defs.svg %}
-    
-    <div class="oc-wrap">
+    {% include icons/svg-symbols.svg %}
+    <div class="oc-wrap" id="top">
 
       <div class="oc-content">
         <div class="oc-inner">
@@ -25,12 +24,7 @@ layout: compress
         </div><!-- .oc-inner -->
       </div><!-- .oc-content -->
 
-      <aside class="oc-aside oc-aside-nav-mobile">
-        <div class="oc-aside-inner">
-          <a href="#" class="button close oc-trigger">&times;</a>
-          {% include nav-mobile.html %}
-        </div>
-      </aside><!-- .oc-aside -->
+      {% include off-canvas.html %}
 
     </div><!-- .oc-wrap -->
 

@@ -170,18 +170,18 @@
 // Font Weight
 // Output the font weight value using the a weight keyword.
 // @param $weight
-//   @type font-weight keyword (hairline, thin, light, regular, medium,
-//     semi-bold, bold, extra-bold, black)
+//   @type font-weight keyword (hairline, thin, extra-light, light, regular,
+//     normal, medium, semi-bold, bold, extra-bold, black)
 @function font-weight($keyword) {
   $value: null !default;
 
-  @if ($keyword == 'hairline') {
+  @if ($keyword == 'hairline' or $keyword == 'thin') {
     $value: 100;
-  } @else if ($keyword == 'thin') {
+  } @else if ($keyword == 'extra-light') {
     $value: 200;
   } @else if ($keyword == 'light') {
     $value: 300;
-  } @else if ($keyword == 'regular') {
+  } @else if ($keyword == 'regular' or $keyword == 'normal') {
     $value: 400;
   } @else if ($keyword == 'medium') {
     $value: 500;

@@ -13,33 +13,23 @@ $notices: (
 
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
-  'padding-small' : null,
-  'padding-large' : null,
   'padding-inline' : 0 0.25em,
 
-  'font-size' : 1em,
-  'font-size-small' : 0.9em,
-  'font-size-large' : 1.1em,
-  'line-height' : 1.5em,
-
-  'pull-breakpoint' : 'medium',
-  'pull-width' : 45%,
-  'pull-margin-left' : 0.5em 5% 1em 0,
-  'pull-margin-right' : 0.5em 0 1em 5%,
-
   'background' : $gray-100,
-  'box-shadow' : 0 1px 3px rgba($black, 0.05),
-  'border' : 1px solid rgba($black, 0.15),
+  'box-shadow' : null,
+  'border' : null,
   'border-radius' : $border-radius,
   'color' : $color,
-  'text-shadow' : 0 1px 0 rgba($white, 0.25),
+  'font-size' : 1em,
+  'line-height' : 1.5em,
+  'text-shadow' : null,
 
   'inverted' : (
     'background' : $color,
-    'border' : 1px solid rgba($black, 0.15),
-    'box-shadow' : 0 1px 3px rgba($black, 0.05),
+    'box-shadow' : null,
+    'border' : null,
     'color' : $white,
-    'text-shadow' : 0 1px 0 rgba($black, 0.25),
+    'text-shadow' : null,
   )
 
 ) !default;
@@ -71,12 +61,28 @@ $notices: (
 
   .#{map-get($o, 'class-close')} {
     float: right;
-    margin: 0.45em -0.25em 0 1em;
+    margin: 0.45rem -0.6rem 0 1rem;
+    background: rgba($black, 0);
     color: inherit;
 
-    + * {
-      padding-right: 2.5em;
+    &:hover {
+      background: rgba($black, 0.05);
     }
+  }
+
+  @if (variable-exists(buttons)) {
+    .#{map-get($buttons, 'class')}:not(.button-icon).#{map-get($o, 'class-close')} {
+      padding: 0.5em 1em;
+    }
+    @if (variable-exists(icons)) {
+      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}.#{map-get($o, 'class-close')} {
+        padding: 0.5em;
+      }
+    }
+  }
+
+  &.#{map-get($o, 'class-inverted')} .#{map-get($o, 'class-close')}:hover {
+    background: rgba($white, 0.15);
   }
 }
 
@@ -138,40 +144,6 @@ $notices: (
   }
 }
 
-// Add Notice Size
-// Adds styles for notice size based on keyword or options map difference.
-// @param $size
-//   @type string (small, default, large)
-// @param $options
-//   @type map
-//   @default $notices map
-@mixin add-notice-size($size, $options: ()) {
-  $o: map-merge($notices, $options);
-
-  @if ($size == 'small') {
-    padding: map-get($o, 'padding-small');
-    font-size: map-get($o, 'font-size-small');
-  } @else if ($size == 'default') {
-    padding: map-get($o, 'padding');
-    font-size: map-get($o, 'font-size');
-  } @else if ($size == 'large') {
-    padding: map-get($o, 'padding-large');
-    font-size: map-get($o, 'font-size-large');
-  } @else {
-    @if (map-get($o, 'padding') != map-get($notices, 'padding')) {
-      padding: map-get($o, 'padding');
-    }
-    @if (map-get($o, 'font-size') != map-get($notices, 'font-size')) {
-      font-size: map-get($o, 'font-size');
-    }
-  }
-
-  @if (map-get($o, 'line-height') != map-get($notices, 'line-height')) {
-    line-height: map-get($o, 'line-height');
-  }
-
-}
-
 // Add Notice Inline
 // Adds styles for an inline or inline-block notice.
 // @param $display
@@ -191,40 +163,6 @@ $notices: (
   @if (map-get($o, 'class-inverted')) {
     &.#{map-get($o, 'class-inverted')} {
       border: 0 none;
-    }
-  }
-}
-
-// Add Notice Pull
-// Adds styles for floating a notice to the left or right.
-// @param $direction
-//   @type string (left, right)
-// @param $options
-//   @type map
-//   @default $notices map
-@mixin add-notice-pull($direction, $options: ()) {
-  $o: map-merge($notices, $options);
-
-  // Wrap our pull styles in a breakpoint if one is provided.
-  @if (map-get($o, 'pull-breakpoint')) {
-    @include media-min(map-get($o, 'pull-breakpoint')) {
-      width: map-get($o, 'pull-width');
-      @if ($direction == 'left') {
-        float: left;
-        margin: map-get($o, 'pull-margin-left');
-      } @else if ($direction == 'right') {
-        float: right;
-        margin: map-get($o, 'pull-margin-right');
-      }
-    }
-  } @else {
-    width: map-get($o, 'pull-width');
-    @if ($direction == 'left') {
-      float: left;
-      margin: map-get($o, 'pull-margin-left');
-    } @else if ($direction == 'right') {
-      float: right;
-      margin: map-get($o, 'pull-margin-right');
     }
   }
 }
@@ -273,7 +211,7 @@ $notices: (
   @include add-notice-color((
     'background' : $orange-50,
     'inverted' : (
-      'background' : $orange
+      'background' : $orange-600
     )
   ));
 }
@@ -281,7 +219,7 @@ $notices: (
   @include add-notice-color((
     'background' : $red-50,
     'inverted' : (
-      'background' : $red
+      'background' : $red-600
     )
   ));
 }
@@ -309,24 +247,10 @@ $notices: (
 }
 
 /**
- * Notice Size, Display and Pulls
+ * Inline styles
  */
-.notice.small {
-  @include add-notice-size('small');
-}
-.notice.large {
-  @include add-notice-size('large');
-}
-
 .notice.inline {
   @include add-notice-inline();
-}
-
-.notice.pull-left {
-  @include add-notice-pull('left');
-}
-.notice.pull-right {
-  @include add-notice-pull('right');
 }
 
 } // endif classes

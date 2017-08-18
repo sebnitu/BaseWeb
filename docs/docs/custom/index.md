@@ -37,7 +37,7 @@ If you'd like to make a custom component use the same override feature, simply u
 }
 ```
 
-*Replace `SOME_COMPONENT` with the name of your component map.* To learn more about writing your own components, read our section on [expanding BaseWeb]({{ site.url }}{{ site.baseurl }}/getting-started/expanding).
+*Replace `SOME_COMPONENT` with the name of your component map.* To learn more about writing your own components, read our section on [expanding BaseWeb]({{ site.url }}{{ site.baseurl }}/get-started/expanding).
 
 ## Custom Styles
 
@@ -77,50 +77,75 @@ $filename: 'scss/custom/_custom.scss';
 ==============================================================================*/
 ```
 
-## Layout & Component Driven Architecture
+## Layout and Component Driven Architecture
 
 BaseWeb is a component driven framework. But you can break from this methodology if your project needs. For projects that require a large amount of layouts or templates, it's common to create layout specific SCSS files. An example of this might look like this:
 
-```shell
-# SCSS file structure
-custom/
-├── _tpl-home.scss
-├── _tpl-blog.scss
-├── _tpl-projects.scss
-├── _tpl-dashboard.scss
-└── _global.scss
-```
+<div class="widget fill">
+  <ul class="list-ascii">
+    <li>
+      <strong>custom/</strong>
+      <ul>
+        <li>_tpl-home.scss</li>
+        <li>_tpl-blog.scss</li>
+        <li>_tpl-projects.scss</li>
+        <li>_tpl-dash.scss</li>
+        <li>_global.scss</li>
+        <li>_overrides.scss</li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
 Alternatively, you can use a component based architecture. This is typically done by creating specific SCSS files for each component of your project:
 
-```shell
-# SCSS file structure
-custom/
-├── _header.scss
-├── _sidebar.scss
-├── _listings.scss
-├── _widgets.scss
-├── _actions.scss
-└── _global.scss
-```
+<div class="widget fill">
+  <ul class="list-ascii">
+    <li>
+      <strong>custom/</strong>
+      <ul>
+        <li>_header.scss</li>
+        <li>_sidebar.scss</li>
+        <li>_widgets.scss</li>
+        <li>_actions.scss</li>
+        <li>_global.scss</li>
+        <li>_overrides.scss</li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
 A combination of these two styles can also be applied:
 
-```shell
-# SCSS file structure
-custom/
-├── components/
-│   ├── _header.scss
-│   ├── _sidebar.scss
-│   ├── _listings.scss
-│   ├── _widgets.scss
-│   └── _actions.scss
-├── temlates/
-│   ├── _home.scss
-│   ├── _blog.scss
-│   ├── _projects.scss
-│   └── _dashbaord.scss
-└── _global.scss
-```
+<div class="widget fill">
+  <ul class="list-ascii">
+    <li>
+      <strong>custom/</strong>
+      <ul>
+        <li>
+          <strong>blocks/</strong>
+          <ul>
+            <li>_header.scss</li>
+            <li>_sidebar.scss</li>
+            <li>_listings.scss</li>
+            <li>_widgets.scss</li>
+            <li>_actions.scss</li>
+          </ul>
+        </li>
+        <li>
+          <strong>temlates/</strong>
+          <ul>
+            <li>_home.scss</li>
+            <li>_blog.scss</li>
+            <li>_projects.scss</li>
+            <li>_dash.scss</li>
+          </ul>
+        </li>
+        <li>_global.scss</li>
+        <li>_overrides.scss</li>
+      </ul>
+    </li>
+  </ul>
+</div>
 
 As long as these files are included in BaseWeb's core partials router file `baseweb.scss` you will have all functions, mixins, variables and maps available to your custom components and styles.

@@ -6,9 +6,9 @@ order: 3
 
 Lists in HTML come in three flavors: unordered, ordered and description lists. BaseWeb has some pretty basic default styles for all three type and a variety of list mixins and classes for stylistic variation.
 
-## Unordered Lists
+## &lt;ul&gt;
 
-The `<ul>` element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.
+The unordered list element represents a list of items, where the order of the items is not important. So if you changed the order, the meaning of the list would stay the same.
 
 ```html
 <ul>
@@ -32,9 +32,9 @@ The `<ul>` element represents a list of items, where the order of the items is n
   </ul>
 </div>
 
-## Ordered Lists
+## &lt;ol&gt;
 
-The `<ol>` element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.
+The ordered list element represents a list of items, where the items have been intentionally ordered, such that changing the order would change the meaning of the list.
 
 ```html
 <ol>
@@ -58,9 +58,9 @@ The `<ol>` element represents a list of items, where the items have been intenti
   </ol>
 </div>
 
-## Description Lists
+## &lt;dl&gt;
 
-The `<dl>` element represents an association list consisting of zero or more name-value groups (a description list).
+The description list element represents an association list consisting of zero or more name-value groups (a description list).
 
 ```html
 <dl>
@@ -78,9 +78,7 @@ The `<dl>` element represents an association list consisting of zero or more nam
   </dl>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# List Variables
+## Variables
 
 List variables are encompassed within the `$lists` map and are used throughout all list mixins to set default values.
 
@@ -130,11 +128,7 @@ List variables are encompassed within the `$lists` map and are used throughout a
   </tr>
 </table>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# List Mixins
+## Mixins
 
 Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.
 
@@ -142,7 +136,7 @@ Lists are used to describe a wide range of content on the web, especially in UI 
 
 <li markdown="1">
 
-## make-list
+### make-list
 
 Creates the base styles for a list modifier mixin or class. Usually applied directly through a base list class, mixin or an extend placeholder. If list modifier classes are enabled, you are provided `.list` for your base button class.
 
@@ -163,7 +157,7 @@ Creates the base styles for a list modifier mixin or class. Usually applied dire
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Using the base list mixin for custom tables. This example shows us using a `%base-list` placeholder for the extend method.
 
@@ -185,7 +179,7 @@ Using the base list mixin for custom tables. This example shows us using a `%bas
 
 <li markdown="1">
 
-## add-list-rowed
+### add-list-rowed
 
 Adds borders to a list that divide list items. Requires the use of base list styles through base list class, mixin or extend.
 
@@ -206,7 +200,7 @@ Adds borders to a list that divide list items. Requires the use of base list sty
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -268,7 +262,7 @@ In the case where you don't want to create left and right padding on a list, you
 
 <li markdown="1">
 
-## add-list-bordered
+### add-list-bordered
 
 Adds borders to a list that wraps the list and divides list items. Requires the use of base list styles through base list class, mixin or extend.
 
@@ -289,7 +283,7 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -322,7 +316,7 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
 
 <li markdown="1">
 
-## add-list-linked
+### add-list-linked
 
 Adds styles for a linked list where the padding is added to the anchor element instead of the list item.
 
@@ -343,7 +337,7 @@ Adds styles for a linked list where the padding is added to the anchor element i
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -371,7 +365,7 @@ Adds styles for a linked list where the padding is added to the anchor element i
 
 <li markdown="1">
 
-## add-list-rounded
+### add-list-rounded
 
 Gives a list rounded borders depending on parameters passed.
 
@@ -397,7 +391,7 @@ Gives a list rounded borders depending on parameters passed.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -431,7 +425,7 @@ Gives a list rounded borders depending on parameters passed.
 
 <li markdown="1">
 
-## add-list-striped
+### add-list-striped
 
 Gives a list items alternating background colors.
 
@@ -457,7 +451,7 @@ Gives a list items alternating background colors.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -491,7 +485,7 @@ Gives a list items alternating background colors.
 
 <li markdown="1">
 
-## add-list-hover
+### add-list-hover
 
 Gives list hover styles for list items.
 
@@ -517,7 +511,7 @@ Gives list hover styles for list items.
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .custom-list {
@@ -550,5 +544,3 @@ Gives list hover styles for list items.
 </li>
 
 </ul>
-
-</section>

@@ -43,8 +43,7 @@ Also, if you'd like your button group to span the full width of their container,
 ```html
 <div class="button-group block">
   <button class="button">Button</button>
-  <button class="button">Button</button>
-  <button class="button">Button</button>
+  ...
 </div>
 ```
 
@@ -59,8 +58,7 @@ Also, if you'd like your button group to span the full width of their container,
 ```html
 <div class="button-group block vertical">
   <button class="button">Button</button>
-  <button class="button">Button</button>
-  <button class="button">Button</button>
+  ...
 </div>
 ```
 
@@ -72,9 +70,7 @@ Also, if you'd like your button group to span the full width of their container,
   </div>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Button Group Variables
+## Variables
 
 Button group variables are encompassed within the `$button-groups` map and are used throughout all button group mixins to set default values and toggle classes output.
 
@@ -100,8 +96,8 @@ Button group variables are encompassed within the `$button-groups` map and are u
     <td><code>'horizontal'</code></td>
   </tr>
   <tr>
-    <td><code>$button-groups('border-width')</code></td>
-    <td><code>1px</code></td>
+    <td><code>$button-groups('spacing')</code></td>
+    <td><code>3px</code></td>
   </tr>
 </table>
 
@@ -109,11 +105,7 @@ Button group variables are encompassed within the `$button-groups` map and are u
 \* Whether or not we should output button group classes. Set to `false` if you want to use the button group mixins semantically and/or reduce CSS output.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins has-inner-subsection" markdown="1">
-
-# Button Group Mixins
+## Mixins
 
 Button group mixins are used to define and modify button group styles. They provide a way to toggle button groups being horizontal or vertical and inline or block.
 
@@ -121,7 +113,7 @@ Button group mixins are used to define and modify button group styles. They prov
 
 <li markdown="1">
 
-## make-button-group
+### make-button-group
 
 Creates the base styles for button groups and sets the default display and orientation based on what's passed in the `$button-groups` map.
 
@@ -151,7 +143,7 @@ Creates the base styles for button groups and sets the default display and orien
 
 <li markdown="1">
 
-## add-button-group-display
+### add-button-group-display
 
 Adds display styles for button groups. This can either be `inline` so it behaves like an inline element or `block` so that it spans the full width of it's container.
 
@@ -181,7 +173,7 @@ Adds display styles for button groups. This can either be `inline` so it behaves
 
 <li markdown="1">
 
-## add-button-group-orientation
+### add-button-group-orientation
 
 Set the orientation styles for button groups. This can either be `horizontal` or `vertical` (`hori` or `vert` shorthand respectively).
 
@@ -210,5 +202,3 @@ Set the orientation styles for button groups. This can either be `horizontal` or
 </li>
 
 </ul>
-
-</section>

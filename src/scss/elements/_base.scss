@@ -79,3 +79,64 @@ table {
     float: right;
   }
 }
+
+/**
+ * Utility Classes
+ */
+@if ($class-show) {
+  .#{$class-show} {
+    display: block !important;
+  }
+  .#{$class-show}-inline-block {
+    display: inline-block !important;
+  }
+  .#{$class-show}-flex {
+    display: flex !important;
+  }
+  .#{$class-show}-inline-flex {
+    display: inline-flex !important;
+  }
+  .#{$class-show}-inherit {
+    display: inherit !important;
+  }
+}
+
+@if ($class-hide) {
+  .#{$class-hide} {
+    display: none !important;
+  }
+}
+
+/**
+ * Responsive Show Hide Classes
+ */
+@each $name, $value in $breakpoints {
+  @if ($class-show-hide-min or $class-show-hide-max) {
+
+    @include media-min($name) {
+      @if ($class-show-hide-min) {
+        .#{$class-show}-#{$name}-#{$class-show-hide-min} {
+          display: none !important;
+        }
+      }
+      @if ($class-show-hide-max) {
+        .#{$class-hide}-#{$name}-#{$class-show-hide-max} {
+          display: none !important;
+        }
+      }
+    }
+    @include media-max($name) {
+      @if ($class-show-hide-min) {
+        .#{$class-hide}-#{$name}-#{$class-show-hide-min} {
+          display: none !important;
+        }
+      }
+      @if ($class-show-hide-max) {
+        .#{$class-show}-#{$name}-#{$class-show-hide-max} {
+          display: none !important;
+        }
+      }
+    }
+
+  }
+}

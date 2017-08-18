@@ -22,9 +22,7 @@ There are four ways you can markup a button. An anchor, button or input element 
   </p>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Button Variables
+## Variables
 
 Button variables are encompassed within the `$buttons` map and are used throughout all button mixins to set default values.
 
@@ -38,34 +36,42 @@ Button variables are encompassed within the `$buttons` map and are used througho
     <td><code>$buttons('classes')</code></td>
     <td><code>true</code></td>
   </tr>
+
+  <tr>
+    <td><code>$buttons('class')</code></td>
+    <td><code>'button'</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$buttons('padding-small')</code></td>
+    <td><code>0.75em 1.25em</code></td>
+  </tr>
   <tr>
     <td><code>$buttons('padding')</code></td>
     <td><code>0.75em 1.5em</code></td>
   </tr>
   <tr>
-    <td><code>$buttons('padding-small')</code></td>
-    <td><code>0.5em 1.25em</code></td>
-  </tr>
-  <tr>
     <td><code>$buttons('padding-large')</code></td>
-    <td><code>null</code></td>
+    <td><code>0.75em 2em</code></td>
   </tr>
   <tr>
     <td><code>$buttons('font-family')</code></td>
     <td><code>inherit</code></td>
+  </tr>
+
+  <tr>
+    <td><code>$buttons('font-size-small')</code></td>
+    <td><code>0.85em</code></td>
   </tr>
   <tr>
     <td><code>$buttons('font-size')</code></td>
     <td><code>1em</code></td>
   </tr>
   <tr>
-    <td><code>$buttons('font-size-small')</code></td>
-    <td><code>0.85em</code></td>
-  </tr>
-  <tr>
     <td><code>$buttons('font-size-large')</code></td>
-    <td><code>1.4em</code></td>
+    <td><code>1.15em</code></td>
   </tr>
+
   <tr>
     <td><code>$buttons('line-height')</code></td>
     <td><code>1.5em</code></td>
@@ -84,7 +90,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('background')</code></td>
-    <td><code>$white</code></td>
+    <td><code>$bg-color</code></td>
   </tr>
   <tr>
     <td><code>$buttons('background-gradient')</code></td>
@@ -100,11 +106,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('box-shadow')</code></td>
-    <td><code>inset 0 0 0</code> <code>rgba($black, 0)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border')</code></td>
-    <td><code>1px solid rgba($black, 0.15)</code></td>
+    <td><code>1px solid transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('border-radius')</code></td>
@@ -112,11 +118,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('transition-property')</code></td>
-    <td><code>(color,</code> <code>background-color,</code> <code>box-shadow,</code> <code>border-color)</code></td>
+    <td><code>all</code></td>
   </tr>
   <tr>
     <td><code>$buttons('transition-duration')</code></td>
-    <td><code>1s</code></td>
+    <td><code>0.75s</code></td>
   </tr>
   <tr>
     <td><code>$buttons('transition-timing-function')</code></td>
@@ -136,11 +142,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('hover', 'box-shadow')</code></td>
-    <td><code>inset 0 1px 2px</code> <code>rgba($black, 0.1)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('hover', 'border-color')</code></td>
-    <td><code>rgba($black, 0.25)</code></td>
+    <td><code>transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('hover', 'transition-duration')</code></td>
@@ -160,11 +166,11 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
   <tr>
     <td><code>$buttons('active', 'box-shadow')</code></td>
-    <td><code>inset 0 1px 2px</code> <code>rgba($black, 0.2)</code></td>
+    <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$buttons('active', 'border-color')</code></td>
-    <td><code>rgba($black, 0.25)</code></td>
+    <td><code>transparent</code></td>
   </tr>
   <tr>
     <td><code>$buttons('active', 'transition-duration')</code></td>
@@ -180,11 +186,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
 ** `$buttons('hover', 'background')` and `$buttons('active', 'background')` is the background color to use on `:hover` and `:active` respectively. If set to `lighten` or `darken` it will take the `$buttons('background')` color and lighten or darken it using `$buttons('background-deg')` as the modifier. You can also pass a specific color to use.
 </div>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Button Mixins
+## Mixins
 
 Button are common place on the web these days, especially in web applications. Whether you need one, or a dozen button types and styles, BaseWeb provides mixins and classes for creating beautiful buttons to add to your UI toolkit.
 
@@ -192,7 +194,7 @@ Button are common place on the web these days, especially in web applications. W
 
 <li markdown="1">
 
-## make-button
+### make-button
 
 Creates the base styles for a button modifier mixin or class. Usually applied directly through a base button class, mixin or an extend placeholder. If button modifier classes are enabled, you are provided `.button` for your base button class.
 
@@ -213,7 +215,7 @@ Creates the base styles for a button modifier mixin or class. Usually applied di
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 This example shows us using a `%base-button` placeholder for the extend method. Other methods include adding `make-button()` to a general class which is applied to button elements directly (which is the method BaseWeb uses for its classes).
 
@@ -235,7 +237,7 @@ This example shows us using a `%base-button` placeholder for the extend method. 
 
 <li markdown="1">
 
-## add-button-color
+### add-button-color
 
 Handles all the color variations of a button such as color, text-shadow, background and border color.
 
@@ -256,7 +258,7 @@ Handles all the color variations of a button such as color, text-shadow, backgro
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 Use this mixin along with `make-button()` to create custom semantic button styles. You can pass in a map to replace any of the defaults from the `$buttons` map.
 
@@ -276,13 +278,13 @@ Use this mixin along with `make-button()` to create custom semantic button style
   </p>
 </div>
 
-### Available Classes
+#### Available Classes
 
 If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.
 
 ```html
 <!-- .button-default default button class -->
-<button class="button default">Default</button>
+<button class="button">Default</button>
 
 <!-- .button.blue class with .primary & .active semantic aliases -->
 <button class="button blue">Blue</button>
@@ -302,18 +304,19 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 <button class="button danger">Danger</button>
 
 <!-- .button.black class with .secondary semantic alias -->
-<button class="button black">Black</button>
+<button class="button gray">Gray</button>
 <button class="button secondary">Secondary</button>
 ````
 
 <div class="demo demo-buttons">
   <p>
-    <button class="button default">Default</button>
+    <button class="button">Default</button>
     <button class="button primary">Primary Blue</button>
     <button class="button success">Success Green</button>
     <button class="button warning">Warning Orange</button>
     <button class="button danger">Danger Red</button>
-    <button class="button secondary">Secondary Black</button>
+    <button class="button secondary">Secondary Gray</button>
+    <button class="button black">Black</button>
   </p>
 </div>
 
@@ -321,7 +324,7 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 
 <li markdown="1">
 
-## add-button-size
+### add-button-size
 
 Handles size variations for buttons. This is done by changing the padding, font-size and line-height based on the parameters passed.
 
@@ -347,7 +350,7 @@ Handles size variations for buttons. This is done by changing the padding, font-
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 The first parameter is a quick way to make a button use the default small or large size set in our `$buttons` map. Or you can pass in a `$options:()` map for custom padding, font-size and line-height.
 
@@ -373,7 +376,7 @@ The first parameter is a quick way to make a button use the default small or lar
 }
 ```
 
-### Available Classes
+#### Available Classes
 
 ```html
 <button class="button primary large">Large Button</button>
@@ -393,7 +396,7 @@ The first parameter is a quick way to make a button use the default small or lar
 
 <li markdown="1">
 
-## add-button-block
+### add-button-block
 
 Makes the button block with 100% width. This is typically used for mobile friendly buttons.
 
@@ -414,29 +417,30 @@ Makes the button block with 100% width. This is typically used for mobile friend
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 .button-custom-mobile {
   @include make-button();
-  @include add-button-color();
+  @include add-button-color((
+    'background' : $bg-color
+  ));
   @include add-button-block();
 }
 ```
 
 ```html
-<button class="button green block">Block Button</button>
+<button class="button-custom-mobile">Block Button</button>
+<button class="button blue block">Block Button</button>
 ```
 
 <div class="demo demo-buttons demo-buttons-mobile">
   <p>
     <button class="button-custom-mobile">Block Button</button>
-    <button class="button green block">Block Button</button>
+    <button class="button blue block">Block Button</button>
   </p>
 </div>
 
 </li>
 
 </ul>
-
-</section>

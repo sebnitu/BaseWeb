@@ -44,9 +44,7 @@ The default video ratio can be set using the `$videos('ratio')` variable (56.25%
   <p>For more information on the technique BaseWeb uses to create fluid videos, checkout <a href="https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php">this tutorial over at CSS-Tricks</a>.</p>
 </div>
 
-<section class="subsection subsection-variables" markdown="1">
-
-# Video Variables
+## Variables
 
 Video variables are encompassed within the `$videos` map and are used in video mixins to set default values.
 
@@ -70,17 +68,13 @@ Video variables are encompassed within the `$videos` map and are used in video m
   </tr>
 </table>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Video Function
+## Functions
 
 <ul class="list list-docs">
 
 <li markdown="1">
 
-## aspect-ratio
+### aspect-ratio
 
 Returns the aspect ratio in the form of a percentage.
 
@@ -117,17 +111,13 @@ aspect-ratio( $width, $height )
 
 </ul>
 
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
-
-# Video Mixins
+## Mixins
 
 <ul class="list list-docs">
 
 <li markdown="1">
 
-## make-video-fluid
+### make-video-fluid
 
 Adds styles for creating fluid videos. Should be applied to a wrapping element of a video.
 
@@ -152,7 +142,7 @@ Adds styles for creating fluid videos. Should be applied to a wrapping element o
 
 <li markdown="1">
 
-## build-video-ratio
+### build-video-ratio
 
 Creates a ratio class using an aspect width and height. The class that's created uses the passed in ratio `.ratio-AxB` where `A` is the passed in width and `B` is the passed in height.
 
@@ -178,7 +168,7 @@ Creates a ratio class using an aspect width and height. The class that's created
   </tr>
 </table>
 
-### Example Usage
+#### Example Usage
 
 ```scss
 // SCSS
@@ -199,5 +189,3 @@ Creates a ratio class using an aspect width and height. The class that's created
 </li>
 
 </ul>
-
-</section>

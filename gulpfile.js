@@ -1,8 +1,9 @@
-// BaseWeb's Gulpfile
-// Gulp.js configuration
+/**
+ * Require Packages
+ */
 var
-  // Require Modules
-  // Global
+  fs = require('fs'),
+  path = require('path'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   newer = require('gulp-newer'),
@@ -10,30 +11,37 @@ var
   replace = require('gulp-replace'),
   merge = require('merge-stream'),
   minimist = require('minimist'),
-  // CSS
+
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  // critical = require('critical'),
   postcss = require('gulp-postcss'),
   autoprefixer = require('autoprefixer'),
   cssnano = require('cssnano'),
-  // JS
+
   concat = require('gulp-concat'),
   deporder = require('gulp-deporder'),
   stripdebug = require('gulp-strip-debug'),
   uglify = require('gulp-uglify'),
-  // Img
-  imagemin = require('gulp-imagemin'),
 
-  // folders
+  imagemin = require('gulp-imagemin'),
+  feather = require('feather-icons'),
+  svgSymbols = require('gulp-svg-symbols')
+;
+
+/**
+ * Settings
+ */
+var
   folder = {
     src: 'src/',
     dest: 'dist/',
-    srcDocs: 'docs/src/',
-    destDocs: 'docs/dist/'
+    docs: {
+      src: 'docs/src/',
+      dest: 'docs/dist/'
+    },
+    icons: 'node_modules/feather-icons/dist/icons/',
   },
 
-  // File sets to use for search and replace
   searchFiles = {
     version: [
       'README.md',
@@ -56,10 +64,10 @@ var
   options = minimist(process.argv.slice(2))
 ;
 
-// ---
-
-// Utility Tasks
-// Search and replace
+/**
+ * Search and replace for managing current version and other static data that
+ * changes accross multiple files: -s SEARCH -r REPLACE -f FILES
+ */
 gulp.task('replace', function() {
 
   var src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : [];
@@ -89,11 +97,30 @@ gulp.task('replace', function() {
 
 });
 
-// ---
+/**
+ * Writes all the icon svg files as a data object in `icons.json` for Jekyll
+ */
+gulp.task('data:icons', function() {
 
-// BaseWeb Source Builds
-// CSS processing
-// Output expanded and minified CSS files from source
+  var src  = folder.icons;
+  var dest = 'docs/_data/';
+  var files = [];
+
+  fs.readdirSync(src).forEach(file => {
+    if (path.extname(file) == '.svg') {
+      files.push(file.replace(/\.[^/.]+$/, ""));
+    }
+  });
+
+  fs.writeFile(dest + 'icons.json', JSON.stringify(files), function (err) {
+    if (err) { console.error(err); }
+  });
+
+});
+
+/**
+ * Output expanded and min CSS files with source maps from `src` into `dist`
+ */
 gulp.task('css', function() {
   var
     src = folder.src + 'scss/baseweb.scss',
@@ -117,7 +144,7 @@ gulp.task('css', function() {
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
-      // .pipe(postcss([cssnano]))
+      .pipe(postcss([cssnano]))
       .pipe(rename('baseweb.min.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
@@ -125,8 +152,9 @@ gulp.task('css', function() {
   return merge(css, cssmin);
 });
 
-// JavaScript processing
-// Output expanded and minified JS files from source
+/**
+ * Output expanded and minified JS files from `src` into `dist`
+ */
 gulp.task('js', function() {
   var
     src = folder.src + 'js/**/*',
@@ -145,14 +173,41 @@ gulp.task('js', function() {
   return merge(js, jsmin);
 });
 
-// ---
+/**
+ * Copies icons from Feather Icons with custom classes and SVG sprite
+ */
+gulp.task('icons', function() {
 
-// Documentation Builds
-// Output expanded and minified CSS files from documentation
+  var src  = folder.icons + '*.svg';
+  var dest = folder.dest + 'icons/';
+
+  fs.readdirSync(folder.icons).forEach(icon => {
+    icon = path.basename(icon, '.svg');
+    var svg = feather.toSvg(icon, {
+      class: 'icon icon-' + icon
+    });
+    fs.writeFile(dest + icon + '.svg', svg, function (err) {
+      if (err) { console.error(err); }
+    });
+  });
+
+  return gulp.src( src )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( dest ));
+
+});
+
+/**
+ * Output expanded and min CSS files with source maps from `docs/src` into `docs/dist`
+ */
 gulp.task('docs:css', function() {
   var
-    src = folder.srcDocs + 'scss/styles.scss',
-    dest = folder.destDocs + 'css/',
+    src = folder.docs.src + 'scss/docs.scss',
+    dest = folder.docs.dest + 'css/',
     sassOpts = {
       outputStyle: 'expanded',
       includePaths: ['docs/src/scss/', 'src/scss/'],
@@ -166,6 +221,7 @@ gulp.task('docs:css', function() {
       .pipe(sass(sassOpts)
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
+      .pipe(rename('baseweb.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest)),
     cssmin = gulp.src(src)
@@ -174,26 +230,30 @@ gulp.task('docs:css', function() {
       .on('error', sass.logError))
       .pipe(postcss(postcssOpts))
       .pipe(postcss([cssnano]))
-      .pipe(rename('styles.min.css'))
+      .pipe(rename('baseweb.min.css'))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest));
 
   return merge(css, cssmin);
 });
 
-// JS Processing
-// Output expanded and minified JS files from documentation
+/**
+ * Output expanded and minified JS files from `docs/src` into `docs/dist`
+ */
 gulp.task('docs:js', function() {
   var
-    src = folder.srcDocs + 'js/**/*',
-    dest = folder.destDocs + 'js/',
+    src = [
+      folder.src + 'js/**/*',
+      folder.docs.src + 'js/**/*'
+    ],
+    dest = folder.docs.dest + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('scripts.js'))
+      .pipe(concat('baseweb.js'))
       .pipe(gulp.dest(dest)),
     jsmin = gulp.src(src)
       .pipe(deporder())
-      .pipe(concat('scripts.min.js'))
+      .pipe(concat('baseweb.min.js'))
       .pipe(stripdebug())
       .pipe(uglify())
       .pipe(gulp.dest(dest));
@@ -201,44 +261,66 @@ gulp.task('docs:js', function() {
   return merge(js, jsmin);
 });
 
-// Image processing
-// Compress all image files from documentation
+/**
+ * Compress all image files from `docs/src` into `docs/dist`
+ */
 gulp.task('docs:img', function() {
-  var dest = folder.destDocs + 'img/';
-  return gulp.src(folder.srcDocs + 'img/**/*')
+  var dest = folder.docs.dest + 'img/';
+  return gulp.src(folder.docs.src + 'img/**/*')
     .pipe(newer(dest))
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(gulp.dest(dest));
 });
 
-// ---
+/**
+ * Copies icons from Feather Icons with custom classes and SVG sprite
+ */
+gulp.task('docs:icons', function() {
 
-// Watch & Bulk Tasks
-// Builds all source assets
-gulp.task('src', ['css', 'js']);
-// Builds all documentation assets
-gulp.task('docs', ['docs:css', 'docs:js', 'docs:img']);
-// Build everything
-gulp.task('go', ['src', 'docs']);
+  var src  = folder.icons + '*.svg';
+  var dest = 'docs/_includes/icons/';
 
-// watch for changes
-// Watches all asset files and runs the appropriate build task based on changed
-gulp.task('watch', function() {
+  fs.readdirSync(folder.icons).forEach(icon => {
+    icon = path.basename(icon, '.svg');
+    var svg = feather.toSvg(icon, {
+      class: 'icon icon-' + icon
+    });
+    fs.writeFile(dest + icon + '.svg', svg, function (err) {
+      if (err) { console.error(err); }
+    });
+  });
 
-  // src scss changes
-  gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
-  // src js changes
-  gulp.watch(folder.src + 'js/**/*', ['js']);
-
-  // docs scss changes
-  gulp.watch(folder.srcDocs + 'scss/**/*', ['docs:css']);
-  // docs js changes
-  gulp.watch(folder.srcDocs + 'js/**/*', ['docs:js']);
-  // docs img changes
-  gulp.watch(folder.srcDocs + 'img/**/*', ['docs:img']);
+  return gulp.src( src )
+    .pipe(svgSymbols({
+      id: 'icon-%f',
+      svgClassname: 'svg-symbols',
+      templates: ['default-svg']
+    }))
+    .pipe(gulp.dest( dest ));
 
 });
 
-// default task
-// Builds everything and then initiates the watch task
+/**
+ * Bulk Tasks
+ */
+gulp.task('src', ['css', 'js', 'icons']);
+gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'docs:icons']);
+gulp.task('svg', ['icons', 'docs:icons']);
+gulp.task('go', ['src', 'docs', 'svg']);
+
+/**
+ * Watch all asset files and runs the appropriate build task based on changes
+ */
+gulp.task('watch', function() {
+  gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
+  gulp.watch(folder.src + 'js/**/*', ['js', 'docs:js']);
+  gulp.watch(folder.docs.src + 'scss/**/*', ['docs:css']);
+  gulp.watch(folder.docs.src + 'js/**/*', ['docs:js']);
+  gulp.watch(folder.docs.src + 'img/**/*', ['docs:img']);
+});
+
+/**
+ * Default task
+ * Builds everything and then initiates the watch task
+ */
 gulp.task('default', ['go', 'watch']);

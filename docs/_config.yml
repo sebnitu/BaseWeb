@@ -4,10 +4,7 @@
 
 # Site
 title: BaseWeb
-version: 2.5.1
-description: >
-  BaseWeb is a fresh SCSS front-end development framework and library built to
-  help keep your projects simple, organized and responsive.
+version: 2.6.0
 baseurl: "" # subpath of your site, e.g. /blog
 url: "http://getbaseweb.com" # base hostname & protocol for your site
 repository: sebnitu/BaseWeb
@@ -18,12 +15,14 @@ author_twitter: sebnitu
 
 # Build
 markdown: kramdown
-kramdown:
-  auto_ids: true
 permalink: pretty
-gems: ['jekyll-github-metadata']
+plugins:
+- jekyll-github-metadata
 
 # Server
 host: localhost
 port: 8080
-exclude: ['src']
+
+# Removes files and folders from jekyll build
+exclude:
+- src
