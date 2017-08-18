@@ -96,11 +96,22 @@ body {
 }
 
 /**
+ * Off-canvas Trigger
+ */
+.header .oc-trigger {
+  display: inline-block;
+}
+@include media-min(800px) {
+  .header .oc-trigger {
+    display: none;
+  }
+}
+
+/**
  * Menu Horizontal
  */
 .menu-hori {
-  display: flex;
-  align-items: center;
+  display: none;
   margin: 0;
   list-style: none;
 
@@ -127,6 +138,13 @@ body {
 
   .active a {
     color: $color-light;
+  }
+}
+
+@include media-min(800px) {
+  .menu-hori {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -217,15 +235,32 @@ body {
 }
 
 /**
+ * Cursor Blink
+ */
+@keyframes blinker {
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
+/**
  * Hero Content
  */
+
 .hero-content {
   text-align: center;
 
   h1 {
     margin: 0 0 2em;
     color: $white;
-    font-size: 2em;
+    font-size: 1.5em;
+  }
+  .typed-cursor {
+    color: $blue;
+    animation-name: blinker;
+  	animation-duration: 0.6s;
+  	animation-iteration-count: infinite;
+  	animation-timing-function: ease-in-out;
+  	animation-direction: alternate;
   }
   .action {
     margin: 2em 0;
@@ -244,15 +279,22 @@ body {
   }
 }
 
+@include media-min('small') {
+  .hero-content h1 {
+    font-size: 2em;
+  }
+}
+
 @include media-min('medium') {
   .hero-content h1 {
     margin: 1em 0 2em;
+    font-size: 2.5em;
   }
 }
 
 @include media-min('large') {
   .hero-content h1 {
-    font-size: 2.5em;
+    font-size: 3em;
   }
 }
 

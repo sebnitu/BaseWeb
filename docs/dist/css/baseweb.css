@@ -5556,15 +5556,23 @@ body {
 }
 
 /**
+ * Off-canvas Trigger
+ */
+.header .oc-trigger {
+  display: inline-block;
+}
+
+@media (min-width: 800px) {
+  .header .oc-trigger {
+    display: none;
+  }
+}
+
+/**
  * Menu Horizontal
  */
 .menu-hori {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: none;
   margin: 0;
   list-style: none;
 }
@@ -5593,6 +5601,17 @@ body {
 
 .menu-hori .active a {
   color: #9E9E9E;
+}
+
+@media (min-width: 800px) {
+  .menu-hori {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .home .menu-hori li a {
@@ -5683,6 +5702,26 @@ body {
 }
 
 /**
+ * Cursor Blink
+ */
+@-webkit-keyframes blinker {
+  from {
+    opacity: 1.0;
+  }
+  to {
+    opacity: 0.0;
+  }
+}
+@keyframes blinker {
+  from {
+    opacity: 1.0;
+  }
+  to {
+    opacity: 0.0;
+  }
+}
+
+/**
  * Hero Content
  */
 .hero-content {
@@ -5692,7 +5731,21 @@ body {
 .hero-content h1 {
   margin: 0 0 2em;
   color: #fff;
-  font-size: 2em;
+  font-size: 1.5em;
+}
+
+.hero-content .typed-cursor {
+  color: #2196F3;
+  -webkit-animation-name: blinker;
+          animation-name: blinker;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
 }
 
 .hero-content .action {
@@ -5712,15 +5765,22 @@ body {
   color: #212121;
 }
 
+@media (min-width: 480px) {
+  .hero-content h1 {
+    font-size: 2em;
+  }
+}
+
 @media (min-width: 760px) {
   .hero-content h1 {
     margin: 1em 0 2em;
+    font-size: 2.5em;
   }
 }
 
 @media (min-width: 990px) {
   .hero-content h1 {
-    font-size: 2.5em;
+    font-size: 3em;
   }
 }
 

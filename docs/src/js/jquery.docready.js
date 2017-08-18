@@ -1,4 +1,4 @@
-// require jquery.sticky.js jquery.function.js
+// require typed.js jquery.sticky.js jquery.function.js
 /**
  * jquery.docready.js
  * A place to store all your JavaScript you want to run after
@@ -16,6 +16,22 @@
    * When the document is ready
    */
   $(document).ready(function () {
+
+    /**
+     * Typed (homepage banner text)
+     */
+    var typed = new Typed('.hero-content .typed', {
+      strings: [
+        "the cat's pajamas.",
+        "fantastic as fu.^500.^500.",
+        "the bee's knees."
+      ],
+      startDelay: 50,
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 1000,
+      contentType: 'null'
+    });
 
     /**
      * Back to top

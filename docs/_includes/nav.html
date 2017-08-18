@@ -1,7 +1,7 @@
 {% assign pages = site.pages | sort: 'order' %}
 
 <nav class="nav">
-  <ul class="menu-hori show-medium-up">
+  <ul class="menu-hori">
     {% for node in pages %}
       {% assign node_parts = node.url | split: '/' %}
       {% assign node_depth = node_parts | size %}
@@ -24,7 +24,7 @@
     </li>
   </ul>
 
-  <button class="button button-icon oc-trigger show-medium-down tooltip tooltip-bottom-right" data-tooltip="Menu" data-target="oc-aside-nav-mobile">
+  <button class="button button-icon oc-trigger tooltip tooltip-bottom-right" data-tooltip="Menu" data-target="oc-aside-nav-mobile">
     {% include content-icon.html icon="menu" %}
   </button>
 
