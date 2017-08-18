@@ -406,14 +406,15 @@ body {
     padding-top: 1em;
   }
   .expandable-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
+    z-index: 5;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba($black, 0.25);
     border-radius: $border-radius;
   }
@@ -425,9 +426,9 @@ body {
 }
 .expandable.active {
   .expandable-overlay {
+    position: relative;
     display: block;
     padding-bottom: 1em;
-    position: relative;
     top: auto;
     left: auto;
     right: auto;
