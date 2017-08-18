@@ -897,14 +897,12 @@ a.widget-featured {
   }
 
   ol {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    grid-gap: 1rem;
     margin: 1em auto;
+    max-width: 56rem;
   }
   ol li {
     display: flex;
-    margin: 0;
+    margin: 1em 0;
   }
 
   .article {
@@ -919,8 +917,14 @@ a.widget-featured {
 
 @include media-min('medium') {
   .article-listing ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     grid-gap: 1.5rem;
     margin: 2em auto;
+
+    li {
+      margin: 0;
+    }
   }
 }
 
