@@ -46,7 +46,7 @@ var
     version: [
       'README.md',
       'package.json',
-      'src/scss/_colophon.scss',
+      'src/scss/core/_colophon.scss',
       'docs/_config.yml'
     ],
     year: [
