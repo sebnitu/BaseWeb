@@ -14,7 +14,9 @@ $icons: (
 
   'size' : 1em,
 
+  'margin-top-small' : null,
   'margin-top' : -0.3em,
+  'margin-top-large' : -0.2em,
   'margin-bottom' : -0.1em,
 
   'font-size-small' : px-to-rem(18px),
@@ -82,6 +84,64 @@ $icons: (
   width: 1px !important;
 }
 
+@mixin add-button-icon($type: 'base', $options: ()) {
+  $o: map-merge($icons, $options);
+
+  @if ($type == 'base') {
+
+    .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size');
+      line-height: 1em;
+      vertical-align: middle;
+    }
+    &.small .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size-small');
+      margin-top: map-get($o, 'margin-top-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size-large');
+      margin-top: map-get($o, 'margin-top-large');
+    }
+
+  } @else if ($type == 'solo') {
+
+    padding: nth(map-get($buttons, 'padding'), 1);
+    &.small {
+      padding: nth(map-get($buttons, 'padding-small'), 1);
+    }
+    &.large {
+      padding: nth(map-get($buttons, 'padding-large'), 1);
+    }
+
+  } @else if ($type == 'left') {
+
+    .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'gap');
+      margin-left: map-fetch($icons, 'buttons', 'indent');
+    }
+    &.small .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'indent-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'indent-large');
+    }
+
+  } @else if ($type == 'right') {
+
+    .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'gap');
+      margin-right: map-fetch($icons, 'buttons', 'indent');
+    }
+    &.small .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'indent-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'indent-large');
+    }
+
+  }
+}
+
 // Check if we should output modifier classes
 @if (map-get($icons, 'classes') == true) {
 
@@ -108,64 +168,28 @@ $icons: (
 } @else {
 
 /**
- * .button .icon
+ * Button Icon
  */
 .#{map-get($buttons, 'class')} {
-  .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size');
-    line-height: 1em;
-    vertical-align: middle;
-  }
-  &.small .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size-large');
-    margin-top: -0.2em;
-  }
+  @include add-button-icon();
 }
 
 /**
- * .button.button-icon
+ * Solo Button Icon
  */
 .#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
-  padding: nth(map-get($buttons, 'padding'), 1);
-  &.small {
-    padding: nth(map-get($buttons, 'padding-small'), 1);
-  }
-  &.large {
-    padding: nth(map-get($buttons, 'padding-large'), 1);
-  }
+  @include add-button-icon('solo');
 }
 
 /**
- * .button-icon-left
- * .button-icon-right
+ * Button Icon Left & Right
  */
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-left {
-  .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'gap');
-    margin-left: map-fetch($icons, 'buttons', 'indent');
-  }
-  &.small .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'indent-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'indent-large');
-  }
+  @include add-button-icon('left');
 }
 
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-right {
-  .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'gap');
-    margin-right: map-fetch($icons, 'buttons', 'indent');
-  }
-  &.small .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'indent-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'indent-large');
-  }
+  @include add-button-icon('right');
 }
 
 } // If $buttons exists
