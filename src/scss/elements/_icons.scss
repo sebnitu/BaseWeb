@@ -69,6 +69,19 @@ $icons: (
 
 }
 
+// Hide SVG Symbols
+// Adds styles for hiding your SVG symbols file
+@mixin hide-svg-symbols() {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
 // Check if we should output modifier classes
 @if (map-get($icons, 'classes') == true) {
 
@@ -78,14 +91,7 @@ $icons: (
 
 @if (map-get($icons, 'class-symbols')) {
   .#{map-get($icons, 'class-symbols')} {
-    border: 0 !important;
-    clip: rect(0 0 0 0) !important;
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
+    @include hide-svg-symbols();
   }
 }
 
