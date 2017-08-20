@@ -135,7 +135,7 @@ Creates the basic breadcrumb styles.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 In this example, we'll use the `make-breadcrumb()` mixin to create a custom breadcrumb style.
 

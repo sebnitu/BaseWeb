@@ -255,7 +255,7 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Use this mixin to output the default class styles for off-canvas. You can also pass in a variable map to override specific settings.
 
@@ -362,7 +362,7 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 It's important to specify the target you'd like the transition effect to be applied to. This identifier is the unique class that is applied to the `.oc-aside` element and also the value set in off-canvas triggers using the `data-target` attribute.
 
@@ -435,7 +435,7 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Primarily used internally in the `add-offcanvas-transition()` mixin, this can also be used for custom transitions that require an off-canvas wrapper height of `100%`.
 

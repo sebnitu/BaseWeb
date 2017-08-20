@@ -168,7 +168,7 @@ Creates a ratio class using an aspect width and height. The class that's created
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 // SCSS

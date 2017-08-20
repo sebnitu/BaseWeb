@@ -187,7 +187,7 @@ Creates the base styles for a notice block.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 This example shows us using a `%base-notice` placeholder for the extend method. Other methods include adding `make-notice()` to a general class which is applied to notice elements directly (which is the method BaseWeb uses for its classes).
 
@@ -239,7 +239,7 @@ Adds styles for a notice color with optional output type. You can either output 
 \* Whether to output all styles, or just the ones that are different from the `$notices` map.
 </div>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 We can create custom notice color classes using this mixin while also using the `.notice` class to inherit the base notice styles.
 
@@ -265,7 +265,7 @@ We can create custom notice color classes using this mixin while also using the 
   </div>
 </div>
 
-#### Available Classes
+<p class="subheading">Available Classes</p>
 
 If you have notice class output enabled, BaseWeb will provide you with a set of notice classes and semantic aliases ready to use right away.
 
@@ -363,7 +363,7 @@ Adds styles for an inline or inline-block notice. Inline notice elements retain 
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .notice.inline {

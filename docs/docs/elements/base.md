@@ -40,7 +40,7 @@ Use this class to clear an element that contains floats. Whether or not this cla
 <div class="clearfix"></div>
 ```
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```html
 <div class="wrapper clearfix">
