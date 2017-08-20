@@ -514,7 +514,7 @@ Creates the base styles for dropdowns.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Below is an example of how BaseWeb initiates the class specific styles for dropdowns.
 
@@ -551,7 +551,7 @@ Creates the base styles for a dropdown trigger.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 This example shows how BaseWeb initiates the styles for a dropdown trigger using the dropdown trigger class variable.
 
@@ -592,7 +592,7 @@ Creates specific dropdown styles for a content type
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Shows how dropdown styles are added using the style type variable for preset styles.
 
@@ -640,7 +640,7 @@ Adds the position styles for a dropdown.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Example of how class specific positioning are added using the dropdown position mixin. This is added to the same element that is used to trigger the dropdown.
 

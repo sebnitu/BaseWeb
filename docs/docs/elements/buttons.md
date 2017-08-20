@@ -215,7 +215,7 @@ Creates the base styles for a button modifier mixin or class. Usually applied di
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 This example shows us using a `%base-button` placeholder for the extend method. Other methods include adding `make-button()` to a general class which is applied to button elements directly (which is the method BaseWeb uses for its classes).
 
@@ -258,7 +258,7 @@ Handles all the color variations of a button such as color, text-shadow, backgro
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Use this mixin along with `make-button()` to create custom semantic button styles. You can pass in a map to replace any of the defaults from the `$buttons` map.
 
@@ -278,7 +278,7 @@ Use this mixin along with `make-button()` to create custom semantic button style
   </p>
 </div>
 
-#### Available Classes
+<p class="subheading">Available Classes</p>
 
 If you have button class modifiers enabled, BaseWeb will provide you with a set of button classes and semantic aliases ready to use right away.
 
@@ -350,7 +350,7 @@ Handles size variations for buttons. This is done by changing the padding, font-
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 The first parameter is a quick way to make a button use the default small or large size set in our `$buttons` map. Or you can pass in a `$options:()` map for custom padding, font-size and line-height.
 
@@ -376,7 +376,7 @@ The first parameter is a quick way to make a button use the default small or lar
 }
 ```
 
-#### Available Classes
+<p class="subheading">Available Classes</p>
 
 ```html
 <button class="button primary large">Large Button</button>
@@ -417,7 +417,7 @@ Makes the button block with 100% width. This is typically used for mobile friend
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .button-custom-mobile {

@@ -14,7 +14,9 @@ $icons: (
 
   'size' : 1em,
 
+  'margin-top-small' : null,
   'margin-top' : -0.3em,
+  'margin-top-large' : -0.2em,
   'margin-bottom' : -0.1em,
 
   'font-size-small' : px-to-rem(18px),
@@ -47,6 +49,19 @@ $icons: (
 // @Icons Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
+// Hide SVG Symbols
+// Adds styles for hiding your SVG symbols file
+@mixin hide-svg-symbols() {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
 // Make Icon
 // Creates the base styles foricons.
 // @param $options
@@ -69,6 +84,72 @@ $icons: (
 
 }
 
+// Add Icon Button
+// Adds icon styles based on the context of a button.
+// @param $context
+//   @type string ('base', 'solo', 'left', 'right')
+//   @default 'base'
+// @param $options
+//   @type map
+//   @default $icons map
+@mixin add-icon-button($context: 'base', $options: ()) {
+  $o: map-merge($icons, $options);
+
+  @if ($context == 'base') {
+
+    .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size');
+      line-height: 1em;
+      vertical-align: middle;
+    }
+    &.small .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size-small');
+      margin-top: map-get($o, 'margin-top-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      font-size: map-get($icons, 'font-size-large');
+      margin-top: map-get($o, 'margin-top-large');
+    }
+
+  } @else if ($context == 'solo') {
+
+    padding: nth(map-get($buttons, 'padding'), 1);
+    &.small {
+      padding: nth(map-get($buttons, 'padding-small'), 1);
+    }
+    &.large {
+      padding: nth(map-get($buttons, 'padding-large'), 1);
+    }
+
+  } @else if ($context == 'left') {
+
+    .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'gap');
+      margin-left: map-fetch($icons, 'buttons', 'indent');
+    }
+    &.small .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'indent-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'indent-large');
+    }
+
+  } @else if ($context == 'right') {
+
+    .#{map-get($icons, 'class')} {
+      margin-left: map-fetch($icons, 'buttons', 'gap');
+      margin-right: map-fetch($icons, 'buttons', 'indent');
+    }
+    &.small .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'indent-small');
+    }
+    &.large .#{map-get($icons, 'class')} {
+      margin-right: map-fetch($icons, 'buttons', 'indent-large');
+    }
+
+  }
+}
+
 // Check if we should output modifier classes
 @if (map-get($icons, 'classes') == true) {
 
@@ -78,14 +159,7 @@ $icons: (
 
 @if (map-get($icons, 'class-symbols')) {
   .#{map-get($icons, 'class-symbols')} {
-    border: 0 !important;
-    clip: rect(0 0 0 0) !important;
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
+    @include hide-svg-symbols();
   }
 }
 
@@ -102,64 +176,28 @@ $icons: (
 } @else {
 
 /**
- * .button .icon
+ * Button Icon
  */
 .#{map-get($buttons, 'class')} {
-  .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size');
-    line-height: 1em;
-    vertical-align: middle;
-  }
-  &.small .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    font-size: map-get($icons, 'font-size-large');
-    margin-top: -0.2em;
-  }
+  @include add-icon-button();
 }
 
 /**
- * .button.button-icon
+ * Button Icon Solo
  */
-.#{map-get($buttons, 'class')}.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
-  padding: nth(map-get($buttons, 'padding'), 1);
-  &.small {
-    padding: nth(map-get($buttons, 'padding-small'), 1);
-  }
-  &.large {
-    padding: nth(map-get($buttons, 'padding-large'), 1);
-  }
+.#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+  @include add-icon-button('solo');
 }
 
 /**
- * .button-icon-left
- * .button-icon-right
+ * Button Icon Left & Right
  */
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-left {
-  .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'gap');
-    margin-left: map-fetch($icons, 'buttons', 'indent');
-  }
-  &.small .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'indent-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'indent-large');
-  }
+  @include add-icon-button('left');
 }
 
 .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}-right {
-  .#{map-get($icons, 'class')} {
-    margin-left: map-fetch($icons, 'buttons', 'gap');
-    margin-right: map-fetch($icons, 'buttons', 'indent');
-  }
-  &.small .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'indent-small');
-  }
-  &.large .#{map-get($icons, 'class')} {
-    margin-right: map-fetch($icons, 'buttons', 'indent-large');
-  }
+  @include add-icon-button('right');
 }
 
 } // If $buttons exists

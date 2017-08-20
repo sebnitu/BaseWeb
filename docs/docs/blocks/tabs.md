@@ -256,7 +256,7 @@ Creates the base styles for a the tabs block including tab wrapper, navigation a
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 To create a custom set of tab styles, you can use the make-tabs mixin to apply the base stack order, margins and content display styles.
 
@@ -307,7 +307,7 @@ Creates a predefined stylistic feel for your tabs. There are currently two prese
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 By default, both tab styles are output using their default classes `.style-fold` and `.style-line`.
 

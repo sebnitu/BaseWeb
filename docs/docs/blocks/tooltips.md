@@ -131,7 +131,7 @@ Creates the base styles for tooltips element.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 The default use of this mixin simply outputs the default styles for tooltips using the class set in `$tooltips('class')` which is `.tooltip`.
 
@@ -174,7 +174,7 @@ Adds the position styles for a tooltip.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 We can set the default tooltip position by wrapping the mixin with the base tooltip class from our `$tooltips` map. Alternatively, we can set custom modifier classes by passing `default` to the class parameter and it will build a class using the base class and the anchor modifier (e.g. `tooltip-left`, `tooltip-bottom-left`, etc).
 

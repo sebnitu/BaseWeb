@@ -148,7 +148,7 @@ Creates the base styles for a table modifier mixin or class. Usually applied dir
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Using the base table mixin for custom tables. This example shows us using a `%base-table` placeholder for the extend method.
 
@@ -191,7 +191,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -260,7 +260,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -329,7 +329,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -403,7 +403,7 @@ Toggles a tables padding size between condensed, expanded or a custom padding va
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 As a mixin, this is used when overriding the inherited table size of more general table styles.
 
@@ -524,7 +524,7 @@ Gives a table rounded borders depending on parameters passed.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -604,7 +604,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -743,7 +743,7 @@ Gives table hover styles for rows.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-table {
@@ -813,7 +813,7 @@ Sets the vertical and text alignment of a table if a parameter is passed.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 If you don't have class modifiers enabled, or just want to set table alignment in your SCSS, just pass in the alignment settings you'd like set.
 
@@ -837,7 +837,7 @@ If you don't have class modifiers enabled, or just want to set table alignment i
 }
 ```
 
-#### Available Classes
+<p class="subheading">Available Classes</p>
 
 <table class="table table-docs">
   <tr>
@@ -901,7 +901,7 @@ When added to a wrapping element of a table, will make the table responsive for 
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Simply wrap a div with the `.table-responsive` class or apply the `make-table-responsive()` mixin to a div wrapping a table to create this effect. Keep in mind that it's triggered using `media-max('tablet')`.
 

@@ -157,7 +157,7 @@ Creates the base styles for a list modifier mixin or class. Usually applied dire
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 Using the base list mixin for custom tables. This example shows us using a `%base-list` placeholder for the extend method.
 
@@ -200,7 +200,7 @@ Adds borders to a list that divide list items. Requires the use of base list sty
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
@@ -283,7 +283,7 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
@@ -337,7 +337,7 @@ Adds styles for a linked list where the padding is added to the anchor element i
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
@@ -391,7 +391,7 @@ Gives a list rounded borders depending on parameters passed.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
@@ -451,7 +451,7 @@ Gives a list items alternating background colors.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
@@ -511,7 +511,7 @@ Gives list hover styles for list items.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 .custom-list {
