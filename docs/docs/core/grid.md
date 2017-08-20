@@ -501,7 +501,7 @@ Outputs all the classes and styles for the class based grid system. You can eith
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 The most basic use of `build-grid-system()` is to output mobile styles and within a media query output our standard grid system. This is present in your `custom/_custom.scss` file by default.
 

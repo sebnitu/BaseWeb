@@ -162,8 +162,16 @@ Icon variables are encompassed within the `$icons` map and are used throughout a
   </tr>
 
   <tr>
+    <td><code>$icons('margin-top-small')</code></td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
     <td><code>$icons('margin-top')</code></td>
     <td><code>-0.3em</code></td>
+  </tr>
+  <tr>
+    <td><code>$icons('margin-top-large')</code></td>
+    <td><code>-0.2em</code></td>
   </tr>
   <tr>
     <td><code>$icons('margin-bottom')</code></td>
@@ -244,6 +252,26 @@ Icon mixins are used to create the base styles for an icon as well as their colo
 
 <li markdown="1">
 
+### hide-svg-symbols
+
+Adds styles for hiding your SVG symbols file.
+
+```scss
+@include hide-svg-symbols();
+```
+
+<p class="subheading">Example Usage</p>
+
+```scss
+.#{map-get($icons, 'class-symbols')} {
+  @include hide-svg-symbols();
+}
+```
+
+</li>
+
+<li markdown="1">
+
 ### make-icon
 
 Creates the base styles for an icon element.
@@ -265,7 +293,7 @@ Creates the base styles for an icon element.
   </tr>
 </table>
 
-#### Example Usage
+<p class="subheading">Example Usage</p>
 
 You'll want to wrap the mixin with whatever icon class you'd like to use. The default class output uses the class variable in the icons map.
 
@@ -274,6 +302,61 @@ You'll want to wrap the mixin with whatever icon class you'd like to use. The de
   @include make-icon();
 }
 ```
+
+</li>
+
+<li markdown="1">
+
+### add-icon-button
+
+Adds icon styles based on the context of a button. Possible context options are: `'base'`, `'solo'`, `'left'` and `'right'`
+
+```scss
+@include add-icon-button( $context: 'base', $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$context</code></td>
+    <td>String</td>
+    <td><code>'base'</code></td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$icons()</code></td>
+  </tr>
+</table>
+
+<p class="subheading">Example Usage</p>
+
+You'll want to wrap the mixin with whatever icon class you'd like to use. The default class output uses the class variable in the icons map.
+
+```html
+<button class="button button-demo-1">{% raw %}{% include icons/feather.svg %}{% endraw %} Custom Button</button>
+<button class="button button-demo-2">{% raw %}{% include icons/feather.svg %}{% endraw %}</button>
+```
+
+```scss
+.button-demo-1 {
+  @include add-icon-button('left');
+}
+.button-demo-2 {
+  @include add-icon-button('solo');
+}
+```
+
+<div class="demo demo-icon-button">
+  <p>
+    <button class="button button-demo-1">{% include icons/feather.svg %} Custom Button</button>
+    <button class="button button-demo-2">{% include icons/feather.svg %}</button>
+  </p>
+</div>
 
 </li>
 
