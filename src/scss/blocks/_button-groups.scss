@@ -15,7 +15,9 @@ $button-groups: (
   'class-group' : 'button-group',
   'display' : 'inline',
   'orientation' : 'horizontal',
-  'spacing' : 3px,
+  'spacing' : 0.25em,
+  'border-radius' : map-get($buttons, 'border-radius'),
+  'inner-border-radius' : null
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -108,19 +110,20 @@ $button-groups: (
     flex-flow: row;
 
     > .#{map-get($buttons, 'class')} {
-      border-radius: 0;
-      border-width: map-get($o, 'border-width');
+      border-radius: map-get($o, 'inner-border-radius');
 
       + .#{map-get($buttons, 'class')} {
         margin-top: 0;
         margin-left: (map-get($o, 'spacing'));
       }
 
-      &:first-child {
-        border-radius: map-get($buttons, 'border-radius') 0 0 map-get($buttons, 'border-radius');
-      }
-      &:last-child {
-        border-radius: 0 map-get($buttons, 'border-radius') map-get($buttons, 'border-radius') 0;
+      @if (map-get($o, 'inner-border-radius') != null) {
+        &:first-child {
+          border-radius: map-get($o, 'border-radius') map-get($o, 'inner-border-radius') map-get($o, 'inner-border-radius') map-get($o, 'border-radius');
+        }
+        &:last-child {
+          border-radius: map-get($o, 'inner-border-radius') map-get($o, 'border-radius') map-get($o, 'border-radius') map-get($o, 'inner-border-radius');
+        }
       }
     }
 
@@ -129,19 +132,20 @@ $button-groups: (
     flex-flow: column;
 
     > .#{map-get($buttons, 'class')} {
-      border-radius: 0;
-      border-width: map-get($o, 'border-width');
+      border-radius: map-get($o, 'inner-border-radius');
 
       + .#{map-get($buttons, 'class')} {
         margin-top: (map-get($o, 'spacing'));
         margin-left: 0;
       }
 
-      &:first-child {
-        border-radius: map-get($buttons, 'border-radius') map-get($buttons, 'border-radius') 0 0;
-      }
-      &:last-child {
-        border-radius: 0 0 map-get($buttons, 'border-radius') map-get($buttons, 'border-radius');
+      @if (map-get($o, 'inner-border-radius') != null) {
+        &:first-child {
+          border-radius: map-get($o, 'border-radius') map-get($o, 'border-radius') map-get($o, 'inner-border-radius') map-get($o, 'inner-border-radius');
+        }
+        &:last-child {
+          border-radius: map-get($o, 'inner-border-radius') map-get($o, 'inner-border-radius') map-get($o, 'border-radius') map-get($o, 'border-radius');
+        }
       }
     }
   }
@@ -156,7 +160,6 @@ $button-groups: (
 
 .#{map-get($button-groups, 'class-group')} {
   @include make-button-group();
-  // @include add-button-group-orientation('hori');
 }
 
 /**
