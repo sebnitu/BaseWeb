@@ -17,7 +17,7 @@ $button-groups: (
   'orientation' : 'horizontal',
   'spacing' : 0.25em,
   'border-radius' : map-get($buttons, 'border-radius'),
-  'inner-border-radius' : null
+  'inner-border-radius' : 0
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -110,14 +110,16 @@ $button-groups: (
     flex-flow: row;
 
     > .#{map-get($buttons, 'class')} {
-      border-radius: map-get($o, 'inner-border-radius');
+      @if (map-get($o, 'border-radius') != null) {
+        border-radius: map-get($o, 'inner-border-radius');
+      }
 
       + .#{map-get($buttons, 'class')} {
         margin-top: 0;
         margin-left: (map-get($o, 'spacing'));
       }
 
-      @if (map-get($o, 'inner-border-radius') != null) {
+      @if (map-get($o, 'border-radius') != null and map-get($o, 'inner-border-radius') != null) {
         &:first-child {
           border-radius: map-get($o, 'border-radius') map-get($o, 'inner-border-radius') map-get($o, 'inner-border-radius') map-get($o, 'border-radius');
         }
@@ -132,14 +134,16 @@ $button-groups: (
     flex-flow: column;
 
     > .#{map-get($buttons, 'class')} {
-      border-radius: map-get($o, 'inner-border-radius');
+      @if (map-get($o, 'border-radius') != null) {
+        border-radius: map-get($o, 'inner-border-radius');
+      }
 
       + .#{map-get($buttons, 'class')} {
         margin-top: (map-get($o, 'spacing'));
         margin-left: 0;
       }
 
-      @if (map-get($o, 'inner-border-radius') != null) {
+      @if (map-get($o, 'border-radius') != null and map-get($o, 'inner-border-radius') != null) {
         &:first-child {
           border-radius: map-get($o, 'border-radius') map-get($o, 'border-radius') map-get($o, 'inner-border-radius') map-get($o, 'inner-border-radius');
         }

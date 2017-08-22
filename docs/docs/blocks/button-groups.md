@@ -97,12 +97,24 @@ Button group variables are encompassed within the `$button-groups` map and are u
   </tr>
   <tr>
     <td><code>$button-groups('spacing')</code></td>
-    <td><code>3px</code></td>
+    <td><code>0.25em</code></td>
+  </tr>
+  <tr>
+    <td><code>$button-groups('border-radius')</code></td>
+    <td><code>map-get($buttons, 'border-radius')</code> <a href="#var-note-2">**</a></td>
+  </tr>
+  <tr>
+    <td><code>$button-groups('inner-border-radius')</code></td>
+    <td><code>0</code> <a href="#var-note-2">**</a></td>
   </tr>
 </table>
 
 <div class="notice info" id="var-note-1" markdown="1">
 \* Whether or not we should output button group classes. Set to `false` if you want to use the button group mixins semantically and/or reduce CSS output.
+</div>
+
+<div class="notice info" id="var-note-2" markdown="1">
+\** If either `border-radius` or `inner-border-radius` are set to `null`, the border radius of buttons will default to whatever they inherit from button styles.
 </div>
 
 ## Mixins
