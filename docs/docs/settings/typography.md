@@ -19,15 +19,33 @@ The default typographic settings. These dictate the base typographic styles for 
   </tr>
   <tr>
     <td><code>$font-family-sans</code></td>
-    <td><code>"Helvetica Neue",</code> <code>"HelveticaNeue",</code> <code>helvetica,</code> <code>arial,</code> <code>sans-serif</code></td>
+    <td>
+      <code>-apple-system,</code>
+      <code>system-ui,</code>
+      <code>BlinkMacSystemFont</code>
+      <code>"Segoe UI",</code>
+      <code>"Roboto",</code>
+      <code>"Helvetica Neue",</code>
+      <code>Arial,</code>
+      <code>sans-serif</code>
+    </td>
   </tr>
   <tr>
     <td><code>$font-family-serif</code></td>
-    <td><code>georgia,</code> <code>"Times New Roman",</code> <code>times,</code> <code>serif</code></td>
+    <td>
+      <code>georgia,</code>
+      <code>"Times New Roman",</code>
+      <code>times,</code> <code>serif</code>
+    </td>
   </tr>
   <tr>
     <td><code>$font-family-mono</code></td>
-    <td><code>Menlo,</code> <code>Monaco,</code> <code>Consolas,</code> <code>"Courier New",</code> <code>monospace</code></td>
+    <td><code>Menlo,</code>
+      <code>Monaco,</code>
+      <code>Consolas,</code>
+      <code>"Courier New",</code>
+      <code>monospace</code>
+    </td>
   </tr>
 
   <tr>
@@ -101,7 +119,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch bg-color-heading"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$color-dark" readonly="">
       </div>
     </td>
   </tr>
@@ -136,7 +154,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch bg-color-link-heading"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$color-heading" readonly="">
       </div>
     </td>
   </tr>
@@ -145,7 +163,7 @@ The default typographic settings. These dictate the base typographic styles for 
     <td>
       <div class="swatch-wrap">
         <span class="swatch bg-color-link-heading-hover"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$deep-orange-700" readonly="">
+        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
       </div>
     </td>
   </tr>
