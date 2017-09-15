@@ -1,0 +1,17 @@
+{%- capture path -%}
+  {%- if page.layout == "post" -%}
+    posts
+  {%- else -%}
+    pages
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture dir -%}
+  {%- if page.layout == "post" -%}
+    {{ page.path | split:"/" | last | split:"." | first }}
+  {%- else -%}
+    {{ page.title || slugify }}
+  {%- endif -%}
+{%- endcapture -%}
+
+{{ site.url }}{{ site.baseurl }}/assets/{{ path }}/{{ dir }}/{{ include.file }}

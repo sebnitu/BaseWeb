@@ -1,28 +1,52 @@
-# Jekyll Config
-# Variables defined here will be accessible in the templates via
-# {{ site.myvariable }}.
-
-# Site
-title: BaseWeb
-version: 2.6.4
-baseurl: "" # subpath of your site, e.g. /blog
-url: "http://getbaseweb.com" # base hostname & protocol for your site
-repository: sebnitu/BaseWeb
-author: Sebastian Nitu
-author_url: http://sebnitu.com
-author_email: me@sebnitu.com
-author_twitter: sebnitu
-
-# Build
-markdown: kramdown
-permalink: pretty
-plugins:
-- jekyll-github-metadata
-
 # Server
 host: localhost
 port: 8080
+baseurl: "" # subpath of your site, e.g. /blog
+url: "http://getbaseweb.com" # base hostname & protocol for your site
+permalink: pretty
 
-# Removes files and folders from jekyll build
+# Site
+markdown: kramdown
+title: BaseWeb
+description: "A front-end development framework built to help make your next project the cat's pajamas."
+version: 2.6.4
+repository: sebnitu/BaseWeb
+
+include:
+  - _pages
+
 exclude:
-- src
+  - src
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-github-metadata
+
+# Author
+author:
+  name: Sebastian Nitu
+  url: http://sebnitu.com
+  email: me@sebnitu.com
+  twitter: sebnitu
+
+# Defaults
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: page
+
+  - scope:
+      path: '_posts'
+      type: 'posts'
+    values:
+      layout: post
+      category: blog
+
+  - scope:
+      path: '_pages'
+      type: 'pages'
+    values:
+      layout: page
+      permalink: /:basename/

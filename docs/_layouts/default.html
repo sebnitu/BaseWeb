@@ -2,7 +2,7 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<html lang="en"{% if page.class %} class="{{ page.class }}"{% endif %}>
+<html lang="en" {% if page.class %}class="{{ page.class }}"{% endif %}>
   <head>
     {% include head.html %}
   </head>
@@ -34,7 +34,16 @@ layout: compress
         </div><!-- .oc-inner -->
       </div><!-- .oc-content -->
 
-      {% include off-canvas.html %}
+      <aside class="oc-aside oc-aside-nav-mobile">
+        <div class="oc-aside-inner">
+          <a href="#" class="button button-icon oc-trigger">
+            {% include content-icon.html icon="x" %}
+          </a>
+          <nav class="nav nav-vert">
+            {% include nav.html %}
+          </nav><!-- .nav -->
+        </div>
+      </aside><!-- .oc-aside -->
 
     </div><!-- .oc-wrap -->
 

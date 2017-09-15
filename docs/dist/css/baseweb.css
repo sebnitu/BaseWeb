@@ -5599,40 +5599,40 @@ body {
 /**
  * Menu Horizontal
  */
-.menu-hori {
+.nav-hori ul {
   display: none;
   margin: 0;
   list-style: none;
 }
 
-.menu-hori li {
+.nav-hori ul li {
   margin: 0 15px;
 }
 
-.menu-hori li:first-child {
+.nav-hori ul li:first-child {
   margin-left: 0;
 }
 
-.menu-hori li:last-child {
+.nav-hori ul li:last-child {
   margin-right: 0;
 }
 
-.menu-hori a {
+.nav-hori ul a {
   color: #212121;
   font-weight: 500;
   text-decoration: none;
 }
 
-.menu-hori a:hover {
+.nav-hori ul a:hover {
   color: #2196F3;
 }
 
-.menu-hori .active a {
+.nav-hori ul .active a {
   color: #9E9E9E;
 }
 
 @media (min-width: 800px) {
-  .menu-hori {
+  .nav-hori ul {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -5642,31 +5642,31 @@ body {
   }
 }
 
-.home .menu-hori li a {
+.home .nav-hori ul li a {
   color: #fff;
 }
 
-.home .menu-hori li a:hover {
+.home .nav-hori ul li a:hover {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.home .menu-hori li.active a:not(.button) {
+.home .nav-hori ul li.active a:not(.button) {
   color: rgba(255, 255, 255, 0.5);
 }
 
 /**
  * Menu Vertical
  */
-.menu-vert {
+.nav-vert ul {
   margin: 0 1.5em;
   list-style: none;
 }
 
-.menu-vert li {
+.nav-vert ul li {
   margin: 1px 0;
 }
 
-.menu-vert a {
+.nav-vert ul a {
   display: block;
   padding: 0.5em 1em;
   color: #9E9E9E;
@@ -5674,16 +5674,30 @@ body {
   border-radius: 3px;
 }
 
-.menu-vert a:hover {
+.nav-vert ul a:hover {
   background: #F5F5F5;
   color: #212121;
 }
 
-.menu-vert .active > a {
+.nav-vert ul .button {
+  margin: 1em 0 0 0;
+  text-align: left;
+}
+
+.nav-vert ul .button .icon {
+  margin-left: 0;
+}
+
+.nav-vert ul .button:hover {
+  background: #F5F5F5;
+  color: #212121;
+}
+
+.nav-vert ul .active > a {
   color: #2196F3;
 }
 
-.menu-vert .active > a:hover {
+.nav-vert ul .active > a:hover {
   color: #2196F3;
 }
 
@@ -6481,9 +6495,8 @@ a.widget-featured.color-6:hover h2 {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   margin: 0;
-  padding: 0.5em 1.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  padding: 0.5em 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   text-decoration: none;
 }
 
@@ -6491,7 +6504,7 @@ a.widget-featured.color-6:hover h2 {
   .article-listing ol {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    grid-gap: 1.5rem;
+    grid-gap: 4rem;
     margin: 2em auto;
   }
   .article-listing ol li {

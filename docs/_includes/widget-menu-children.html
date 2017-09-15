@@ -19,7 +19,7 @@
       {% assign node_depth = node_parts | size %}
       {% if node_depth == depth %}
         <li>
-          <a href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
+          <a{% if node.link.class %} class="{{ node.link.class }}"{% endif %} href="{% if node.link.url %}{{ node.link.url }}{% else %}{{ node.url }}{% endif %}">
             {% if node.link.text %}
               {{ node.link.text }}
             {% else %}

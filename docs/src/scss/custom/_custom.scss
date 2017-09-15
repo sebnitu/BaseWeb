@@ -110,7 +110,7 @@ body {
 /**
  * Menu Horizontal
  */
-.menu-hori {
+.nav-hori ul {
   display: none;
   margin: 0;
   list-style: none;
@@ -142,13 +142,13 @@ body {
 }
 
 @include media-min(800px) {
-  .menu-hori {
+  .nav-hori ul {
     display: flex;
     align-items: center;
   }
 }
 
-.home .menu-hori {
+.home .nav-hori ul {
   li a {
     color: $white;
 
@@ -164,7 +164,7 @@ body {
 /**
  * Menu Vertical
  */
-.menu-vert {
+.nav-vert ul {
   margin: 0 1.5em;
   list-style: none;
 
@@ -178,6 +178,20 @@ body {
     color: $color-light;
     text-decoration: none;
     border-radius: $border-radius;
+
+    &:hover {
+      background: $bg-color;
+      color: $color;
+    }
+  }
+
+  .button {
+    margin: 1em 0 0 0;
+    text-align: left;
+
+    .icon {
+      margin-left: 0;
+    }
 
     &:hover {
       background: $bg-color;
@@ -908,9 +922,8 @@ a.widget-featured {
   .article {
     flex: 1 1 auto;
     margin: 0;
-    padding: 0.5em 1.5em;
-    border: 1px solid rgba($black, 0.1);
-    border-radius: $border-radius;
+    padding: 0.5em 0;
+    border-top: 1px solid rgba($black, 0.1);
     text-decoration: none;
   }
 }
@@ -919,7 +932,7 @@ a.widget-featured {
   .article-listing ol {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    grid-gap: 1.5rem;
+    grid-gap: 4rem;
     margin: 2em auto;
 
     li {

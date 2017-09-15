@@ -1,0 +1,26 @@
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+
+{% if page.og.title %}
+  <meta property="og:title" content="{{ page.og.title }}">
+{% else %}
+  <meta property="og:title" content="{{ title }}">
+{% endif %}
+
+{% if page.og.description %}
+  <meta property="og:description" content="{{ page.og.description }}">
+{% elsif page.description %}
+  <meta property="og:description" content="{{ page.description }}">
+{% else %}
+  <meta property="og:description" content="{{ site.description }}">
+{% endif %}
+
+{% if page.og.image %}
+  <meta property="og:image" content="{% include asset.html file=page.og.image %}">
+{% else %}
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/dist/img/baseweb-og-image.jpg">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+{% if site.data.social.twitter.username %}
+<meta name="twitter:site" content="@{{ site.data.social.twitter.username }}">
+{% endif %}

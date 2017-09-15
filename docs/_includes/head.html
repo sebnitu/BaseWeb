@@ -2,13 +2,33 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{% if page.title %}{{ site.title  }} - {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+{%- capture title -%}
+  {%- if page.title == 'Home' -%}
+    {{ site.title  }}
+  {%- else -%}
+    {{ page.title }} - {{ site.title  }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<title>{{ title }}</title>
+
+<meta name="description" content="{{ site.description }}">
+
+{% include head-og.html %}
 
 <!-- RSS -->
-<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ site.baseurl }}/feed.xml">
+{% feed_meta %}
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.url }}{{ site.baseurl }}/dist/img/favicon.png">
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/baseweb.min.css?v={{ site.version }}">
+<link rel="stylesheet" href="{{ site.url }}{{ site.baseurl }}/dist/css/baseweb.min.css">
+
+{% if page.include.css %}
+  {% for file in page.include.css %}
+  <link rel="stylesheet" href="{% include asset.html file=file %}">
+  {% endfor %}
+{% endif %}
+
+{% include head-styles.html %}
