@@ -1,6 +1,4 @@
-/**
- * Require Packages
- */
+// Require Packages
 var
   fs = require('fs'),
   path = require('path'),
@@ -28,46 +26,45 @@ var
   svgSymbols = require('gulp-svg-symbols')
 ;
 
-/**
- * Settings
- */
-var
-  folder = {
-    src: 'src/',
-    dest: 'dist/',
-    docs: {
-      src: 'docs/src/',
-      dest: 'docs/dist/'
-    },
-    icons: 'node_modules/feather-icons/dist/icons/',
+// Paths variable
+var paths = {
+  src: 'src/',
+  dest: 'dist/',
+  docs: {
+    src: 'docs/src/',
+    dest: 'docs/dist/'
   },
-
-  searchFiles = {
-    version: [
-      'README.md',
-      'package.json',
-      'src/scss/core/_colophon.scss',
-      'docs/_config.yml'
-    ],
-    year: [
-      'README.md',
-      'LICENSE',
-      'src/scss/_colophon.scss'
-    ],
-    exclude: [
-      '!./node_modules/**',
-      '!./bower_components/**'
-    ]
-  },
-
-  // Save passed parameters to use in gulp tasks
-  options = minimist(process.argv.slice(2))
-;
+  icons: 'node_modules/feather-icons/dist/icons/',
+};
 
 /**
  * Search and replace for managing current version and other static data that
  * changes accross multiple files: -s SEARCH -r REPLACE -f FILES
  */
+
+// Search Files
+var searchFiles = {
+  version: [
+    'README.md',
+    'package.json',
+    'src/scss/core/_colophon.scss',
+    'docs/_config.yml'
+  ],
+  year: [
+    'README.md',
+    'LICENSE',
+    'src/scss/_colophon.scss'
+  ],
+  exclude: [
+    '!./node_modules/**',
+    '!./bower_components/**'
+  ]
+};
+
+// Save passed parameters to use in gulp tasks
+var options = minimist(process.argv.slice(2));
+
+// Replace task
 gulp.task('replace', function() {
 
   var src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : [];
@@ -102,7 +99,7 @@ gulp.task('replace', function() {
  */
 gulp.task('data:icons', function() {
 
-  var src  = folder.icons;
+  var src  = paths.icons;
   var dest = 'docs/_data/';
   var files = [];
 
@@ -123,8 +120,8 @@ gulp.task('data:icons', function() {
  */
 gulp.task('css', function() {
   var
-    src = folder.src + 'scss/baseweb.scss',
-    dest = folder.dest + 'css/',
+    src = paths.src + 'scss/baseweb.scss',
+    dest = paths.dest + 'css/',
     sassOpts = {
       outputStyle: 'expanded',
       precision: 3
@@ -157,8 +154,8 @@ gulp.task('css', function() {
  */
 gulp.task('js', function() {
   var
-    src = folder.src + 'js/**/*',
-    dest = folder.dest + 'js/',
+    src = paths.src + 'js/**/*',
+    dest = paths.dest + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
       .pipe(concat('baseweb.js'))
@@ -178,10 +175,10 @@ gulp.task('js', function() {
  */
 gulp.task('icons', function() {
 
-  var src  = folder.icons + '*.svg';
-  var dest = folder.dest + 'icons/';
+  var src  = paths.icons + '*.svg';
+  var dest = paths.dest + 'icons/';
 
-  fs.readdirSync(folder.icons).forEach(icon => {
+  fs.readdirSync(paths.icons).forEach(icon => {
     icon = path.basename(icon, '.svg');
     var svg = feather.toSvg(icon, {
       class: 'icon icon-' + icon
@@ -206,8 +203,8 @@ gulp.task('icons', function() {
  */
 gulp.task('docs:css', function() {
   var
-    src = folder.docs.src + 'scss/docs.scss',
-    dest = folder.docs.dest + 'css/',
+    src = paths.docs.src + 'scss/docs.scss',
+    dest = paths.docs.dest + 'css/',
     sassOpts = {
       outputStyle: 'expanded',
       includePaths: ['docs/src/scss/', 'src/scss/'],
@@ -243,10 +240,10 @@ gulp.task('docs:css', function() {
 gulp.task('docs:js', function() {
   var
     src = [
-      folder.src + 'js/**/*',
-      folder.docs.src + 'js/**/*'
+      paths.src + 'js/**/*',
+      paths.docs.src + 'js/**/*'
     ],
-    dest = folder.docs.dest + 'js/',
+    dest = paths.docs.dest + 'js/',
     js = gulp.src(src)
       .pipe(deporder())
       .pipe(concat('baseweb.js'))
@@ -265,8 +262,8 @@ gulp.task('docs:js', function() {
  * Compress all image files from `docs/src` into `docs/dist`
  */
 gulp.task('docs:img', function() {
-  var dest = folder.docs.dest + 'img/';
-  return gulp.src(folder.docs.src + 'img/**/*')
+  var dest = paths.docs.dest + 'img/';
+  return gulp.src(paths.docs.src + 'img/**/*')
     .pipe(newer(dest))
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(gulp.dest(dest));
@@ -277,10 +274,10 @@ gulp.task('docs:img', function() {
  */
 gulp.task('docs:icons', function() {
 
-  var src  = folder.icons + '*.svg';
+  var src  = paths.icons + '*.svg';
   var dest = 'docs/_includes/icons/';
 
-  fs.readdirSync(folder.icons).forEach(icon => {
+  fs.readdirSync(paths.icons).forEach(icon => {
     icon = path.basename(icon, '.svg');
     var svg = feather.toSvg(icon, {
       class: 'icon icon-' + icon
@@ -312,11 +309,11 @@ gulp.task('go', ['src', 'docs', 'svg']);
  * Watch all asset files and runs the appropriate build task based on changes
  */
 gulp.task('watch', function() {
-  gulp.watch(folder.src + 'scss/**/*', ['css', 'docs:css']);
-  gulp.watch(folder.src + 'js/**/*', ['js', 'docs:js']);
-  gulp.watch(folder.docs.src + 'scss/**/*', ['docs:css']);
-  gulp.watch(folder.docs.src + 'js/**/*', ['docs:js']);
-  gulp.watch(folder.docs.src + 'img/**/*', ['docs:img']);
+  gulp.watch(paths.src + 'scss/**/*', ['css', 'docs:css']);
+  gulp.watch(paths.src + 'js/**/*', ['js', 'docs:js']);
+  gulp.watch(paths.docs.src + 'scss/**/*', ['docs:css']);
+  gulp.watch(paths.docs.src + 'js/**/*', ['docs:js']);
+  gulp.watch(paths.docs.src + 'img/**/*', ['docs:img']);
 });
 
 /**
