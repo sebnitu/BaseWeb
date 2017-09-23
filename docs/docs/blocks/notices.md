@@ -99,7 +99,7 @@ Notice variables are encompassed within the `$notices` map and are used througho
   </tr>
   <tr>
     <td><code>$notices('border')</code></td>
-    <td><code>null</code></td>
+    <td><code>1px solid rgba($black, 0.05)</code></td>
   </tr>
   <tr>
     <td><code>$notices('border-radius')</code></td>

@@ -14,7 +14,7 @@ class: home
 
   <div class="hero-content">
     <div class="container">
-      <h1>A front-end development framework built to help make your next project:<br><span class="typed">...</span></h1>
+      <h1>{{ site.description }}</h1>
       <div class="action">
         <a href="{{ site.github.repository_url }}" class="button large">Download</a>
         <pre class="highlight"><code><span class="editor-prefixed">npm install baseweb</span></code></pre>

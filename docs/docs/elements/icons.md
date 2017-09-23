@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Icons"
-order: 11
+order: 12
 ---
 
 There's more than one way to include icons into a project. BaseWeb supports the use of SVG icons systems in two ways: SVG Sprites and inline SVGs.

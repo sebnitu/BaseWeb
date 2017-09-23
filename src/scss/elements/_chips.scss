@@ -1,0 +1,68 @@
+// Set file variable
+$filename: 'scss/blocks/_chips.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Chips Map
+////////////////////////////////////////////////////////////////////////////////
+
+$chips: (
+  'classes' : true,
+
+  'class' : 'chip',
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'chips') == true) {
+    $chips: map-extend($chips, map-get($override, 'chips'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Chips Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Chip
+// Creates the base styles for a the chip element.
+// @param $options
+//   @type map
+//   @default $chips map
+@mixin make-chip($options: ()) {
+  $o: map-merge($chips, $options);
+
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 0.9em;
+  color: $white;
+  background: $gray;
+  border-radius: 1em;
+
+}
+
+// Add Chip Color
+// Handles color variations to chips.
+// @param $options
+//   @type map
+//   @default $chips map
+@mixin add-chip-color($options: ()) {
+  $o: map-merge($chips, $options);
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($chips, 'classes') == true) {
+
+/*==============================================================================
+  @Chips - #{$filename}
+==============================================================================*/
+
+/**
+ * Base Chip
+ */
+.#{map-get($chips, 'class')} {
+  @include make-chip();
+  @include add-chip-color();
+}
+
+} // endif classes
