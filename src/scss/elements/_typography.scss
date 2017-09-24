@@ -38,7 +38,6 @@ h1, h2, h3, h4, h5, h6,
 
   a {
     color: $color-link-heading;
-    text-decoration: none;
 
     &:hover {
       color: $color-link-heading-hover;
@@ -75,12 +74,39 @@ p {
 /**
  * Anchors
  */
-a {
-  color: $color-link;
-  text-decoration: underline;
+$anchors: (
+  'output' : true,
+
+  'color' : $color-link,
+  'border' : 1px solid rgba($black, 0.1),
+  'text-decoration' : none,
+
+  'hover' : (
+    'color' : $color-link-hover,
+    'border' : 1px solid inherit,
+    'text-decoration' : null,
+  )
+
+) !default;
+
+@mixin make-anchor($options: ()) {
+  $o: map-merge($anchors, $options);
+
+  color: map-get($o, 'color');
+  border-bottom: map-get($o, 'border');
+  text-decoration: map-get($o, 'text-decoration');
 
   &:hover {
-    color: $color-link-hover;
+    color: map-fetch($o, 'hover', 'color');
+    border-bottom: map-fetch($o, 'hover', 'border');
+    text-decoration: map-fetch($o, 'hover', 'text-decoration');
+  }
+}
+
+// Check if we should output anchor styles
+@if (map-get($anchors, 'output') == true) {
+  a {
+    @include make-anchor();
   }
 }
 

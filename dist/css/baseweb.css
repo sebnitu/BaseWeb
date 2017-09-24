@@ -215,7 +215,6 @@ h1, h2, h3, h4, h5, h6,
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
 .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
   color: #212121;
-  text-decoration: none;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
@@ -259,11 +258,13 @@ p {
  */
 a {
   color: #2196F3;
-  text-decoration: underline;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 a:hover {
   color: #1976D2;
+  border-bottom: 1px solid inherit;
 }
 
 /**
@@ -1779,11 +1780,18 @@ fieldset[disabled] .input {
  */
 .chip {
   display: inline-block;
-  padding: 0.25em 0.5em;
+  padding: 0.25rem 0.75rem;
   font-size: 0.9em;
-  color: #fff;
-  background: #9E9E9E;
-  border-radius: 1em;
+  color: #212121;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  border: none;
+}
+
+.chip:hover {
+  color: #212121;
+  background: rgba(0, 0, 0, 0.15);
 }
 
 /*==============================================================================
