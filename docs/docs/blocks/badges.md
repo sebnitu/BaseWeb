@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Badges"
-order: 12
+order: 8
 ---
 
 Badges are a compact way to represent descriptive content such as tags, counters or labels. They primarily would contain text and can also have associated photos, icons or a dismissible trigger. Badges can be represented using a `<span>` element but also as an `<a>` link.
@@ -12,7 +12,13 @@ Badges are a compact way to represent descriptive content such as tags, counters
 
 <div class="demo demo-badges">
   <p><span class="badge">Badge</span></p>
-  <p><a class="badge" href="#">Linked Badge</a></p>
+  <p>
+    <a class="badge" href="#">Linked Badge</a>
+    <a class="badge" href="#">Linked Badge</a>
+    <a class="badge active" href="#">Active Badge</a>
+    <a class="badge" href="#">Linked Badge</a>
+  </p>
+
   <p><span class="badge dismissible">Linked Badge <a href="#" class="close">{% include content-icon.html icon="x" %}</a></span></p>
 
   <p>

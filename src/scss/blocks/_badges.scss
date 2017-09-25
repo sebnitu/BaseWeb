@@ -35,10 +35,14 @@ $badges: (
   padding: 0.25rem 0.75rem;
   font-size: 0.9em;
   text-decoration: none;
-  // border-radius: $border-radius;
   border-radius: 1rem;
   border: none;
   transition: $transition;
+
+  &.active {
+    color: $white;
+    background: rgba($blue, 1);
+  }
 
   .close {
     display: inline-flex;
@@ -48,8 +52,8 @@ $badges: (
     margin-left: 0.5em;
     margin-right: -0.25em;
     padding: 0;
-    color: $white;
-    background: rgba($black, 0.2);
+    color: $color;
+    background: rgba($white, 0.75);
     border-radius: 1rem;
     border: none;
     transition: $transition;
@@ -59,7 +63,8 @@ $badges: (
     }
 
     &:hover {
-      background: rgba($red, 1);
+      color: $red;
+      background: rgba($white, 1);
     }
   }
 
@@ -73,8 +78,8 @@ $badges: (
 @mixin add-badge-color($options: ()) {
   $o: map-merge($badges, $options);
 
-  color: $color;
-  background: rgba($black, 0.1);
+  color: $white;
+  background: rgba($black, 0.3);
 
   &.inverted {
     color: $white;
@@ -92,8 +97,8 @@ $badges: (
   $o: map-merge($badges, $options);
 
   &:hover {
-    color: $color;
-    background: rgba($black, 0.15);
+    color: $white;
+    background: rgba($blue, 1);
   }
 
 }
