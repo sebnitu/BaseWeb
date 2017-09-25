@@ -56,6 +56,13 @@ $anchors: (
 
 ) !default;
 
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'anchors') == true) {
+    $anchors: map-extend($anchors, map-get($override, 'anchors'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Headings Maps
 ////////////////////////////////////////////////////////////////////////////////
@@ -91,3 +98,23 @@ $headings: (
   ),
 
 ) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'headings') == true) {
+    $headings: map-extend($headings, map-get($override, 'headings'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Shorthands
+////////////////////////////////////////////////////////////////////////////////
+
+// Anchors color Shorthands
+$anchor-color: map-get($anchors, 'color') !default;
+$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
+
+// Headings color Shorthands
+$heading-color: map-get($headings, 'color') !default;
+$heading-anchor-color: map-fetch($headings, 'anchors', 'color') !default;
+$heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !default;
