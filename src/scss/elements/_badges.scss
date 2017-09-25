@@ -1,0 +1,203 @@
+// Set file variable
+$filename: 'scss/blocks/_badge.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Badges Map
+////////////////////////////////////////////////////////////////////////////////
+
+$badges: (
+  'classes' : true,
+  'class' : 'badge',
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'badges') == true) {
+    $badges: map-extend($badges, map-get($override, 'badges'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Badges Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Badge
+// Creates the base styles for a the badge element.
+// @param $options
+//   @type map
+//   @default $badges map
+@mixin make-badge($options: ()) {
+  $o: map-merge($badges, $options);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9em;
+  text-decoration: none;
+  // border-radius: $border-radius;
+  border-radius: 1rem;
+  border: none;
+  transition: $transition;
+
+  .close {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    @include size(20px);
+    margin-left: 0.5em;
+    margin-right: -0.25em;
+    padding: 0;
+    color: $white;
+    background: rgba($black, 0.2);
+    border-radius: 1rem;
+    border: none;
+    transition: $transition;
+
+    .#{map-get($icons, 'class')} {
+      margin: 0;
+    }
+
+    &:hover {
+      background: rgba($red, 1);
+    }
+  }
+
+}
+
+// Add Badge Color
+// Handles color variations to badges.
+// @param $options
+//   @type map
+//   @default $badges map
+@mixin add-badge-color($options: ()) {
+  $o: map-merge($badges, $options);
+
+  color: $color;
+  background: rgba($black, 0.1);
+
+  &.inverted {
+    color: $white;
+    background: $color;
+  }
+
+}
+
+// Add Badge Link
+// Adds styles specific to badge links.
+// @param $options
+//   @type map
+//   @default $badges map
+@mixin add-badge-link($options: ()) {
+  $o: map-merge($badges, $options);
+
+  &:hover {
+    color: $color;
+    background: rgba($black, 0.15);
+  }
+
+}
+
+// Check if we should output modifier classes
+@if (map-get($badges, 'classes') == true) {
+
+/*==============================================================================
+  @Badges - #{$filename}
+==============================================================================*/
+
+/**
+ * Base Badge
+ */
+.#{map-get($badges, 'class')} {
+  @include make-badge();
+  @include add-badge-color();
+}
+
+/**
+ * Badge Links
+ */
+a.#{map-get($badges, 'class')} {
+  @include add-badge-link();
+}
+
+/**
+ * Badge Colors
+ */
+.#{map-get($badges, 'class')}.white {
+  color: $color;
+  background: rgba($white, 0.75);
+  &.inverted {
+    color: $white;
+    background: rgba($black, 0.5);
+  }
+}
+.#{map-get($badges, 'class')}.blue {
+  color: $blue;
+  background: $blue-50;
+  &.inverted {
+    color: $white;
+    background: $blue;
+  }
+}
+.#{map-get($badges, 'class')}.green {
+  color: $green;
+  background: $green-50;
+  &.inverted {
+    color: $white;
+    background: $green;
+  }
+}
+.#{map-get($badges, 'class')}.yellow {
+  color: $color;
+  background: $yellow-200;
+  &.inverted {
+    color: $color;
+    background: $yellow;
+  }
+}
+.#{map-get($badges, 'class')}.orange {
+  color: $orange;
+  background: $orange-50;
+  &.inverted {
+    color: $white;
+    background: $orange-600;
+  }
+}
+.#{map-get($badges, 'class')}.red {
+  color: $red;
+  background: $red-50;
+  &.inverted {
+    color: $white;
+    background: $red-600;
+  }
+}
+.#{map-get($badges, 'class')}.purple {
+  color: $purple;
+  background: $purple-50;
+  &.inverted {
+    color: $white;
+    background: $purple;
+  }
+}
+
+/**
+ * Button Badges
+ */
+.#{map-get($buttons, 'class')} .#{map-get($badges, 'class')} {
+  display: inline;
+  padding: 0.25em 0.5rem;
+}
+.#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
+  .#{map-get($badges, 'class')} {
+    margin-left: -0.5em;
+    margin-right: 0.5em;
+  }
+}
+.#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
+  .#{map-get($badges, 'class')} {
+    margin-left: 0.5em;
+    margin-right: -0.5em;
+  }
+}
+
+} // endif classes
