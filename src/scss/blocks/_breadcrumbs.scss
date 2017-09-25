@@ -12,15 +12,20 @@ $breadcrumbs: (
 
   'margin' : 1em 0,
   'font-size' : 1em,
-  'color' : $color-link,
-  'color-hover' : $color-link-hover,
   'color-current' : $color-light,
 
+  'anchors' : (
+    'output' : true,
+    'text-decoration' : null,
+  ),
+
   // Delimiter Styles
-  'delimiter' : '/', // Delimiter element content (e.g: '/', '—', '→', '»').
-  'delimiter-padding' : 0 0.75em,
-  'delimiter-color' : $gray-400,
-  'delimiter-end' : false, // Whether or not to show delimiter on last item.
+  'delimiter' : (
+    'element' : '/', // Delimiter element content (e.g: '/', '—', '→', '»')
+    'padding' : 0 0.75em,
+    'color' : $gray-400,
+    'last-child' : false,
+  ),
 
 ) !default;
 
@@ -64,12 +69,9 @@ $breadcrumbs: (
   }
 
   // Link color styles
-  a {
-    color: map-get($o, 'color');
-    text-decoration: none;
-
-    &:hover {
-      color: map-get($o, 'color-hover');
+  @if (map-fetch($o, 'anchors', 'output') == true) {
+    a {
+      @include make-anchor(map-get($o, 'anchors'));
     }
   }
 
@@ -80,13 +82,13 @@ $breadcrumbs: (
 
   // Delimiter styles
   li:after {
-    content: map-get($o, 'delimiter');
-    padding: map-get($o, 'delimiter-padding');
-    color: map-get($o, 'delimiter-color');
+    content: map-fetch($o, 'delimiter', 'element');
+    padding: map-fetch($o, 'delimiter', 'padding');
+    color: map-fetch($o, 'delimiter', 'color');
   }
 
   // Remove last delimiter if `delimiter-end` is set to false
-  @if (map-get($o, 'delimiter-end') == false) {
+  @if (map-fetch($o, 'delimiter', 'last-child') == false) {
     li:last-child:after {
       content: none;
     }

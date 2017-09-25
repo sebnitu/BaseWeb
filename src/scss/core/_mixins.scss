@@ -23,6 +23,57 @@
   }
 }
 
+// Make Anchor
+// Creates the base ancho styles using the $anchors map for defaults.
+// @param $options
+//   @type map
+//   @default $anchors map
+@mixin make-anchor($options: ()) {
+  $o: map-merge($anchors, $options);
+
+  color: map-get($o, 'color');
+  border-bottom: map-get($o, 'border');
+  border-color: map-get($o, 'border-color');
+  text-decoration: map-get($o, 'text-decoration');
+
+  &:hover {
+    color: map-fetch($o, 'hover', 'color');
+    border: map-fetch($o, 'hover', 'border');
+    border-color: map-fetch($o, 'hover', 'border-color');
+    text-decoration: map-fetch($o, 'hover', 'text-decoration');
+  }
+}
+
+// Make Headings
+// Creates the base styles for headings using the $headings map for defaults.
+// @param $options
+//   @type map
+//   @default $headings map
+@mixin make-headings($options: ()) {
+  $o: map-merge($headings, $options);
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin: map-get($o, 'margin');
+    font-family: map-get($o, 'font-family');
+    font-weight: map-get($o, 'font-weight');
+    line-height: map-get($o, 'line-height');
+    color: map-get($o, 'color');
+
+    @if (map-fetch($o, 'anchors', 'output') == true) {
+      a {
+        @include make-anchor(map-get($o, 'anchors'));
+      }
+    }
+  }
+
+  @each $heading, $size in map-get($o, 'scale') {
+    #{$heading}, .#{$heading} {
+      font-size: $size;
+    }
+  }
+}
+
 // Float Modifiers
 // Adds the float modifier classes to an element.
 // @param $left

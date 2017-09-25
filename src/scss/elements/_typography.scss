@@ -25,89 +25,35 @@ body {
   -webkit-font-smoothing: subpixel-antialiased; /* [2] */
 }
 
+// Check if we should output anchor styles
+@if (map-get($anchors, 'output') == true) {
+
+/**
+ * Anchors
+ */
+a {
+  @include make-anchor();
+}
+
+} // End if $anchors output is true
+
+// Check if we should output heading styles
+@if (map-get($headings, 'output') == true) {
+
 /**
  * Headings
  */
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: 1rem 0;
-  font-family: $font-family-heading;
-  font-weight: $font-weight-heading;
-  line-height: $line-height-heading;
-  color: $color-heading;
+@include make-headings();
 
-  a {
-    color: $color-link-heading;
+} // End if $headings output is true
 
-    &:hover {
-      color: $color-link-heading-hover;
-    }
-  }
-}
-
-h1, .h1 {
-  font-size: 2.5em; // 40px
-}
-h2, .h2 {
-  font-size: 2em; // 32px
-}
-h3, .h3 {
-  font-size: 1.75em; // 28px
-}
-h4, .h4 {
-  font-size: 1.5em; // 24px
-}
-h5, .h5 {
-  font-size: 1.25em; // 20px
-}
-h6, .h6 {
-  font-size: 1em; // 16px
-}
+@if ($text-elements == true) {
 
 /**
  * Paragraphs
  */
 p {
   margin: 1em 0;
-}
-
-/**
- * Anchors
- */
-$anchors: (
-  'output' : true,
-
-  'color' : $color-link,
-  'border' : 1px solid rgba($black, 0.1),
-  'text-decoration' : none,
-
-  'hover' : (
-    'color' : $color-link-hover,
-    'border' : 1px solid inherit,
-    'text-decoration' : null,
-  )
-
-) !default;
-
-@mixin make-anchor($options: ()) {
-  $o: map-merge($anchors, $options);
-
-  color: map-get($o, 'color');
-  border-bottom: map-get($o, 'border');
-  text-decoration: map-get($o, 'text-decoration');
-
-  &:hover {
-    color: map-fetch($o, 'hover', 'color');
-    border-bottom: map-fetch($o, 'hover', 'border');
-    text-decoration: map-fetch($o, 'hover', 'text-decoration');
-  }
-}
-
-// Check if we should output anchor styles
-@if (map-get($anchors, 'output') == true) {
-  a {
-    @include make-anchor();
-  }
 }
 
 /**
@@ -133,6 +79,10 @@ abbr[data-original-title] {
   cursor: help;
   text-decoration: underline dotted;
 }
+
+} // End if $text-elements is true
+
+@if ($text-modifiers == true) {
 
 /**
  * Stylistic Classes
@@ -192,3 +142,5 @@ abbr[data-original-title] {
 .text-capitalize {
   text-transform: capitalize;
 }
+
+} // End if $text-modifiers is true

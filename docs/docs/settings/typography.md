@@ -150,19 +150,19 @@ The default typographic settings. These dictate the base typographic styles for 
     <th colspan="3">Heading Links</th>
   </tr>
   <tr>
-    <td><code>$color-link-heading</code></td>
+    <td><code>$color-heading-link</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch bg-color-link-heading"></span>
+        <span class="swatch bg-color-heading-link"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="$color-heading" readonly="">
       </div>
     </td>
   </tr>
   <tr>
-    <td><code>$color-link-heading-hover</code></td>
+    <td><code>$color-heading-link-hover</code></td>
     <td>
       <div class="swatch-wrap">
-        <span class="swatch bg-color-link-heading-hover"></span>
+        <span class="swatch bg-color-heading-link-hover"></span>
         <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
       </div>
     </td>
