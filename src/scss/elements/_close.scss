@@ -89,7 +89,7 @@ $close: (
 //   @type string
 //   @default null
 @mixin add-close-color($options: (), $style: null) {
-  $o: map-merge($close, $options);
+  $o: map-extend($close, $options, true);
 
   // Swap for inverted styles 'inverted' is passed
   @if ($style == 'inverted') {

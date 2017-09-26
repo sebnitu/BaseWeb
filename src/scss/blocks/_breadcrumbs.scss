@@ -46,7 +46,7 @@ $breadcrumbs: (
 //   @type map
 //   @default $breadcrumbs map
 @mixin make-breadcrumb($options: ()) {
-  $o: map-merge($breadcrumbs, $options);
+  $o: map-extend($breadcrumbs, $options, true);
 
   display: block;
   margin: map-get($o, 'margin');

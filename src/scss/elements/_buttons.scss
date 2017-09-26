@@ -77,7 +77,7 @@ $buttons: (
 //   @type map
 //   @default $buttons map
 @mixin make-button($options: ()) {
-  $o: map-merge($buttons, $options);
+  $o: map-extend($buttons, $options, true);
 
   cursor: pointer;
   display: inline-block;
@@ -240,10 +240,8 @@ $buttons: (
 //   @default $buttons map
 @mixin add-button-block($options: ()) {
   $o: map-merge($buttons, $options);
-
   display: block;
   width: 100%;
-
 }
 
 // Check if we should output modifier classes

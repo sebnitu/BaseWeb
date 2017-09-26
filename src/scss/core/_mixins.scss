@@ -29,7 +29,7 @@
 //   @type map
 //   @default $anchors map
 @mixin make-anchor($options: ()) {
-  $o: map-merge($anchors, $options);
+  $o: map-extend($anchors, $options, true);
 
   color: map-get($o, 'color');
   border-bottom: map-get($o, 'border');
@@ -50,7 +50,7 @@
 //   @type map
 //   @default $headings map
 @mixin make-headings($options: ()) {
-  $o: map-merge($headings, $options);
+  $o: map-extend($headings, $options, true);
 
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {

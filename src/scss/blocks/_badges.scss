@@ -11,8 +11,8 @@ $badges: (
   'classes-button' : true,
 
   'class' : 'badge',
-  'class-active' : 'active',
   'class-inverted' : 'inverted',
+  'class-active' : 'active',
   'class-close' : 'close',
 ) !default;
 
@@ -47,7 +47,7 @@ $badges: (
     transition: $transition;
 
     &.pill {
-      border-radius: 1rem;
+      border-radius: 3rem;
     }
     &.square {
       border-radius: 0;
@@ -76,7 +76,9 @@ $badges: (
 //   @type map
 //   @default $badges map
 @mixin add-badge-color($options: ()) {
-  $o: map-merge($badges, $options);
+  $o: map-extend($badges, $options, true);
+
+  $set: color, text-shadow, background, border, box-shadow;
 
   .#{map-get($badges, 'class')} {
     color: $color;

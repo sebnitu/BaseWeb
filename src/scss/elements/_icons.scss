@@ -93,7 +93,7 @@ $icons: (
 //   @type map
 //   @default $icons map
 @mixin add-icon-button($context: 'base', $options: ()) {
-  $o: map-merge($icons, $options);
+  $o: map-extend($icons, $options, true);
 
   @if ($context == 'base') {
 
