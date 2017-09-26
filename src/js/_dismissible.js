@@ -13,7 +13,7 @@ var dismissible = (function () {
   var api = {};
   var settings;
   var defaults = {
-    classTrigger : 'close',
+    classTrigger : 'dismiss',
     classDismissible : 'dismissible',
     classHide : 'hide',
   };

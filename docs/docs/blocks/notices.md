@@ -18,11 +18,11 @@ Notices in BaseWeb represent content blocks that give additional contextual info
   </div>
 </div>
 
-You can also create dismissible notices but adding the `.dismissible` class and a `.close` trigger. This utilizes the global [dismissible JavaScript component](/docs/javascript/dismissible/).
+You can also create dismissible notices but adding the `.dismissible` class and a `.dismiss` trigger. This utilizes the global [dismissible JavaScript component](/docs/javascript/dismissible/).
 
 ```html
 <div class="notice dismissible">
-  <button class="button button-icon close">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
+  <button class="dismiss close">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
   <p>...</p>
 </div>
 ```
@@ -31,23 +31,20 @@ You can also create dismissible notices but adding the `.dismissible` class and 
   <div class="row">
     <div class="col col-6">
       <div class="notice dismissible">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include content-icon.html icon="x" %}</button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include content-icon.html icon="x" %}</button>
         <p>Dismissible</p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col col-12">
-      <div class="button-group">
-        <button class="button small" onclick="dismissible.hideAll('.demo');">Dismiss All</button>
-        <button class="button small" onclick="dismissible.showAll('.demo');">Show All</button>
-      </div>
+      <button class="button small" onclick="dismissible.showAll('.demo');">Reset</button>
     </div>
   </div>
 </div>

@@ -59,31 +59,38 @@ $notices: (
   line-height: map-get($o, 'line-height');
   border-radius: map-get($o, 'border-radius');
 
-  .#{map-get($o, 'class-close')} {
-    float: right;
-    margin: 0.45rem -0.6rem 0 1rem;
-    background: rgba($black, 0);
-    color: inherit;
-
-    &:hover {
-      background: rgba($black, 0.05);
-    }
-  }
-
-  @if (variable-exists(buttons)) {
-    .#{map-get($buttons, 'class')}:not(.button-icon).#{map-get($o, 'class-close')} {
-      padding: 0.5em 1em;
-    }
-    @if (variable-exists(icons)) {
-      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}.#{map-get($o, 'class-close')} {
-        padding: 0.5em;
+  // Close button
+  // Check if the close variable exists
+  @if (variable-exists(close)) {
+    // Check if we're outputting close classes
+    @if (map-get($close, 'classes') == true) {
+      // Add our custom styles using the close class
+      .#{map-get($close, 'class')} {
+        float: right;
+        margin: 0.75rem -0.25rem 0 1rem;
+        padding: 0.25em;
+        font-size: 1.25em;
       }
+    } @else {
+      // Output the close styles with notice customizations
+      @include make-close((
+        'font-size': 1.25em,
+        'margin': 0.75rem -0.25rem 0 1rem,
+        'padding': 0.25em,
+      )) {
+        float: right;
+      }
+      // Output the default close colors
+      @include add-close-color();
+    }
+
+    // Output inverted close colors when the notice is inverted
+    &.#{map-get($o, 'class-inverted')} {
+      @include add-close-color($style: 'inverted');
     }
   }
 
-  &.#{map-get($o, 'class-inverted')} .#{map-get($o, 'class-close')}:hover {
-    background: rgba($white, 0.15);
-  }
+
 }
 
 // Add Notice Color
@@ -101,6 +108,7 @@ $notices: (
 
   $set: color, text-shadow, background, border, box-shadow;
 
+  // Output all notice color styles
   @if ($output == 'all') {
 
     color: map-get($o, 'color');
@@ -119,6 +127,7 @@ $notices: (
       }
     }
 
+  // Output only the notice color differences
   } @else if ($output == 'difference') {
 
     // Cycle through properties and only output when different from default
@@ -180,7 +189,7 @@ $notices: (
 }
 
 /**
- * Notice Color
+ * Notice Colors
  */
 .notice.blue {
   @include add-notice-color((

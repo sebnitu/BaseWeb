@@ -15,29 +15,29 @@ dismissible.init();
 
 ```html
 <!-- Paragraph -->
-<p class="dismissible">... <a href="#" class="close">Close</a></p>
+<p class="dismissible">... <a href="#" class="dismiss">Close</a></p>
 
 <!-- Div -->
 <div class="dismissible">
-  <p>... <a href="#" class="close">Close</a></p>
+  <p>... <a href="#" class="dismiss">Close</a></p>
 </div>
 
 <!-- Notice -->
 <div class="notice dismissible">
-  <button class="button button-icon close">...</button>
+  <button class="dismiss close">...</button>
   ...
 </div>
 ```
 
 <div class="demo demo-1">
-  <p class="dismissible">Simple paragraph&mdash;<a href="#" class="close">Close</a></p>
+  <p class="dismissible">Simple paragraph&mdash;<a href="#" class="dismiss">Close</a></p>
 
   <div class="dismissible">
-    <p>Random div&mdash;<a href="#" class="close">Close</a></p>
+    <p>Random div&mdash;<a href="#" class="dismiss">Close</a></p>
   </div>
 
   <div class="notice dismissible">
-    <button class="button button-icon close">{% include icons/x.svg %}</button>
+    <button class="dismiss close">{% include icons/x.svg %}</button>
     <p>Dismissible notice.</p>
   </div>
   <button class="button small" onclick="dismissible.showAll('.demo-1');">Reset</button>
@@ -61,7 +61,7 @@ When initiating the dismissible component, you can pass in the following options
   <tr>
     <td><code>classTrigger</code></td>
     <td>String</td>
-    <td><code>'close'</code></td>
+    <td><code>'dismiss'</code></td>
     <td>Class name for the trigger element</td>
   </tr>
   <tr>
@@ -144,29 +144,32 @@ dismissible.showAll( selector[optional] )
 
 ```html
 <div class="demo demo-2">
-  ...
   <button onclick="dismissible.showAll('.demo-2');">Show All</button>
+  ...
 </div>
 ```
 
 <div class="demo demo-2">
   <div class="row">
+    <div class="col col-12">
+      <div class="button-group">
+        <button class="button primary small" onclick="dismissible.showAll('.demo-2');">Show All</button>
+        <button class="button small" onclick="dismissible.hideAll('.demo-2');">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col col-6">
       <div class="notice dismissible hide">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted hide">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-12">
-      <button class="button small" onclick="dismissible.showAll('.demo-2');">Show All</button>
     </div>
   </div>
 </div>
@@ -200,31 +203,31 @@ dismissible.hideAll( selector[optional] )
 
 ```html
 <div class="demo demo-3">
-  ...
   <button onclick="dismissible.hideAll('.demo-3');">Hide All</button>
+  ...
 </div>
 ```
 
 <div class="demo demo-3">
   <div class="row">
+    <div class="col col-12">
+      <div class="button-group">
+        <button class="button primary small" onclick="dismissible.hideAll('.demo-3');">Hide All</button>
+        <button class="button small" onclick="dismissible.showAll('.demo-3');">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col col-6">
       <div class="notice dismissible">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted">
-        <button class="button button-icon close">{% include icons/x.svg %}</button>
+        <button class="dismiss close">{% include icons/x.svg %}</button>
         <p>Dismissible</p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col col-12">
-      <div class="button-group">
-        <button class="button small" onclick="dismissible.hideAll('.demo-3');">Hide All</button>
-        <button class="button small" onclick="dismissible.showAll('.demo-3');">Reset</button>
       </div>
     </div>
   </div>

@@ -13,11 +13,13 @@ layout: compress
       <div class="oc-content">
         <div class="oc-inner">
 
+          {% if site.data.settings.render.fast != true %}
           <header class="header">
             <div class="container">
               {% include header.html %}
             </div>
           </header>
+          {% endif %}
 
           <section class="main">
             <div class="container">
@@ -25,15 +27,18 @@ layout: compress
             </div>
           </section>
 
+          {% if site.data.settings.render.fast != true %}
           <footer class="footer">
             <div class="container">
               {% include footer.html %}
             </div>
           </footer>
+          {% endif %}
 
         </div><!-- .oc-inner -->
       </div><!-- .oc-content -->
 
+      {% if site.data.settings.render.fast != true %}
       <aside class="oc-aside oc-aside-nav-mobile">
         <div class="oc-aside-inner">
           <a href="#" class="button button-icon oc-trigger">
@@ -44,6 +49,7 @@ layout: compress
           </nav><!-- .nav -->
         </div>
       </aside><!-- .oc-aside -->
+      {% endif %}
 
     </div><!-- .oc-wrap -->
 

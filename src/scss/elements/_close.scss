@@ -1,0 +1,132 @@
+// Set file variable
+$filename: 'scss/elements/_close.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Close Map
+////////////////////////////////////////////////////////////////////////////////
+
+$close: (
+  'classes' : true,
+  'classes-inverted' : true,
+
+  'class' : 'close',
+  'margin' : 0,
+  'padding' : 0.125em,
+  'border-radius' : 5em,
+  'transition' : $transition,
+  'font-size' : 1rem,
+
+  // Default styles
+  'color' : $white,
+  'background' : rgba($black, 0.25),
+  'border' : none,
+  'hover' : (
+    'color' : $white,
+    'background' : rgba($black, 0.5),
+    'border-color' : null,
+  ),
+
+  // Inverted styles
+  'inverted' : (
+    'color' : $color,
+    'background' : rgba($white, 0.5),
+    'border' : none,
+    'hover' : (
+      'color' : $color,
+      'background' : rgba($white, 1),
+      'border-color' : null,
+    ),
+  ),
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'close') == true) {
+    $close: map-extend($close, map-get($override, 'close'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Close Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make close
+// Creates the base styles for the close element
+// @param $options
+//   @type map
+//   @default $close map
+@mixin make-close($options: ()) {
+  $o: map-merge($close, $options);
+
+  .#{map-get($o, 'class')} {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: map-get($o, 'margin');
+    padding: map-get($o, 'padding');
+    font-size: map-get($o, 'font-size');
+    border-radius: map-get($o, 'border-radius');
+    transition: map-get($o, 'transition');
+
+    @content;
+
+    // Remove margins from icon
+    @if (variable-exists(icons)) {
+      .#{map-get($icons, 'class')} {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Add Close Color
+// Creates the color styles for close element
+// @param $options
+//   @type map
+//   @default $close map
+// @param $style
+//   @type string
+//   @default null
+@mixin add-close-color($options: (), $style: null) {
+  $o: map-merge($close, $options);
+
+  // Swap for inverted styles 'inverted' is passed
+  @if ($style == 'inverted') {
+    $o: map-merge($o, map-fetch($o, 'inverted'));
+  }
+
+  .#{map-get($o, 'class')} {
+    color: map-get($o, 'color');
+    background: map-get($o, 'background');
+    border: map-get($o, 'border');
+
+    @content;
+
+    &:hover {
+      color: map-fetch($o, 'hover', 'color');
+      background: map-fetch($o, 'hover', 'background');
+      border-color: map-fetch($o, 'hover', 'border-color');
+    }
+  }
+}
+
+// Check if we should output modifier classes
+@if (map-get($close, 'classes') == true) {
+
+/*==============================================================================
+  @Close - #{$filename}
+==============================================================================*/
+
+@include make-close(('class' : 'close'));
+
+/**
+ * Close Colors
+ */
+@include add-close-color(('class' : 'close'));
+
+@if (map-get($close, 'classes-inverted') == true) {
+  @include add-close-color(('class' : 'close.inverted'), 'inverted');
+}
+
+} // endif classes

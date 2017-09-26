@@ -1890,16 +1890,67 @@ fieldset[disabled] .input {
 /**
  * Video Ratios
  */
-.video-wrapper .ratio-16x9 {
+.video-wrapper.ratio-16x9 {
   padding-bottom: 56.25%;
 }
 
-.video-wrapper .ratio-4x3 {
+.video-wrapper.ratio-4x3 {
   padding-bottom: 75%;
 }
 
-.video-wrapper .ratio-3x2 {
+.video-wrapper.ratio-3x2 {
   padding-bottom: 66.667%;
+}
+
+/*==============================================================================
+  @Close - scss/elements/_close.scss
+==============================================================================*/
+.close {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0.125em;
+  font-size: 1rem;
+  border-radius: 5em;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.close .icon {
+  margin: 0;
+}
+
+/**
+ * Close Colors
+ */
+.close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+}
+
+.close:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.close.inverted {
+  color: #212121;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+.close.inverted:hover {
+  color: #212121;
+  background: white;
 }
 
 /*==============================================================================
@@ -2052,25 +2103,20 @@ fieldset[disabled] .input {
 
 .notice .close {
   float: right;
-  margin: 0.45rem -0.6rem 0 1rem;
-  background: transparent;
-  color: inherit;
+  margin: 0.75rem -0.25rem 0 1rem;
+  padding: 0.25em;
+  font-size: 1.25em;
 }
 
-.notice .close:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.notice .button:not(.button-icon).close {
-  padding: 0.5em 1em;
-}
-
-.notice .button-icon.close {
-  padding: 0.5em;
+.notice.inverted .close {
+  color: #212121;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
 }
 
 .notice.inverted .close:hover {
-  background: rgba(255, 255, 255, 0.15);
+  color: #212121;
+  background: white;
 }
 
 .notice.inverted {
@@ -2079,7 +2125,7 @@ fieldset[disabled] .input {
 }
 
 /**
- * Notice Color
+ * Notice Colors
  */
 .notice.blue, .notice.info {
   background: #E3F2FD;
@@ -3096,20 +3142,36 @@ fieldset[disabled] .input {
   padding: 0.25rem 0.75rem;
   font-size: 0.9em;
   text-decoration: none;
-  border-radius: 1rem;
+  border-radius: 3px;
   border: none;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.3);
 }
 
-.badge.active {
-  color: #fff;
-  background: #2196f3;
+.badge.pill {
+  border-radius: 1rem;
+}
+
+.badge.square {
+  border-radius: 0;
+}
+
+.badge.dot {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  vertical-align: top;
+  border-radius: 1rem;
 }
 
 .badge .close {
+  cursor: pointer;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -3119,15 +3181,10 @@ fieldset[disabled] .input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 20px;
-  height: 20px;
-  margin-left: 0.5em;
-  margin-right: -0.25em;
-  padding: 0;
-  color: #212121;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: 1rem;
-  border: none;
+  margin: 0 -0.25em 0 0.5em;
+  padding: 0.125em;
+  font-size: 1rem;
+  border-radius: 5em;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
@@ -3136,21 +3193,59 @@ fieldset[disabled] .input {
   margin: 0;
 }
 
+.badge {
+  color: #212121;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.badge .close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+}
+
 .badge .close:hover {
-  color: #F44336;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.badge.active, .badge.inverted {
+  color: #fff;
+}
+
+.badge.active .close, .badge.inverted .close {
+  color: #212121;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+.badge.active .close:hover, .badge.inverted .close:hover {
+  color: #212121;
   background: white;
 }
 
-.badge.inverted {
-  color: #fff;
-  background: #212121;
+.badge.active {
+  background: #2196f3;
 }
 
-/**
- * Badge Links
- */
+.badge.inverted {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 a.badge:hover {
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.1);
+}
+
+a.badge.active:hover, a.badge.inverted:hover {
   color: #fff;
+}
+
+a.badge.active:hover {
+  background: #2196f3;
+}
+
+a.badge.inverted:hover {
   background: #2196f3;
 }
 
@@ -3167,6 +3262,16 @@ a.badge:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
+a.badge.white:hover {
+  color: #212121;
+  background: white;
+}
+
+a.badge.white.inverted:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+}
+
 .badge.blue {
   color: #2196F3;
   background: #E3F2FD;
@@ -3175,6 +3280,16 @@ a.badge:hover {
 .badge.blue.inverted {
   color: #fff;
   background: #2196F3;
+}
+
+a.badge.blue:hover {
+  color: #2196F3;
+  background: #BBDEFB;
+}
+
+a.badge.blue.inverted:hover {
+  color: #fff;
+  background: #1E88E5;
 }
 
 .badge.green {
@@ -3230,7 +3345,7 @@ a.badge:hover {
 /**
  * Button Badges
  */
-.button .badge {
+.button .badge:not(.dot) {
   display: inline;
   padding: 0.25em 0.5rem;
 }

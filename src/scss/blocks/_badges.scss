@@ -7,7 +7,13 @@ $filename: 'scss/blocks/_badge.scss';
 
 $badges: (
   'classes' : true,
+  'classes-close' : true,
+  'classes-button' : true,
+
   'class' : 'badge',
+  'class-active' : 'active',
+  'class-inverted' : 'inverted',
+  'class-close' : 'close',
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -21,53 +27,47 @@ $badges: (
 // @Badges Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Badge
+// Make Badges
 // Creates the base styles for a the badge element.
 // @param $options
 //   @type map
 //   @default $badges map
-@mixin make-badge($options: ()) {
+@mixin make-badges($options: ()) {
   $o: map-merge($badges, $options);
 
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.9em;
-  text-decoration: none;
-  border-radius: 1rem;
-  border: none;
-  transition: $transition;
-
-  &.active {
-    color: $white;
-    background: rgba($blue, 1);
-  }
-
-  .close {
+  .#{map-get($badges, 'class')} {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    @include size(20px);
-    margin-left: 0.5em;
-    margin-right: -0.25em;
-    padding: 0;
-    color: $color;
-    background: rgba($white, 0.75);
-    border-radius: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.9em;
+    text-decoration: none;
+    border-radius: $border-radius;
     border: none;
     transition: $transition;
 
-    .#{map-get($icons, 'class')} {
-      margin: 0;
+    &.pill {
+      border-radius: 1rem;
+    }
+    &.square {
+      border-radius: 0;
+    }
+    &.dot {
+      display: inline-block;
+      @include text-hide();
+      @include size($base-font-size / 2);
+      padding: 0;
+      vertical-align: top;
+      border-radius: 1rem;
     }
 
-    &:hover {
-      color: $red;
-      background: rgba($white, 1);
+    // Check if we should output close classes
+    @if (map-get($badges, 'classes-close') == true) {
+      @include make-close((
+        'margin' : 0 -0.25em 0 0.5em,
+      ));
     }
   }
-
 }
 
 // Add Badge Color
@@ -78,27 +78,47 @@ $badges: (
 @mixin add-badge-color($options: ()) {
   $o: map-merge($badges, $options);
 
-  color: $white;
-  background: rgba($black, 0.3);
+  .#{map-get($badges, 'class')} {
+    color: $color;
+    background: rgba($black, 0.05);
 
-  &.inverted {
-    color: $white;
-    background: $color;
+    @if (map-get($badges, 'classes-close') == true) {
+      @include add-close-color();
+    }
+
+    // Active & inverted styles
+    &.active,
+    &.inverted {
+      color: $white;
+      @if (map-get($badges, 'classes-close') == true) {
+        @include add-close-color($style: 'inverted');
+      }
+    }
+
+    &.active {
+      background: rgba($blue, 1);
+    }
+    &.inverted {
+      background: rgba($black, 0.5);
+    }
   }
 
-}
-
-// Add Badge Link
-// Adds styles specific to badge links.
-// @param $options
-//   @type map
-//   @default $badges map
-@mixin add-badge-link($options: ()) {
-  $o: map-merge($badges, $options);
-
-  &:hover {
-    color: $white;
-    background: rgba($blue, 1);
+  // Hover styles for links
+  a.#{map-get($badges, 'class')} {
+    &:hover {
+      color: $blue;
+      background: rgba($blue, 0.1);
+    }
+    &.active:hover,
+    &.inverted:hover {
+      color: $white;
+    }
+    &.active:hover {
+      background: rgba($blue, 1);
+    }
+    &.inverted:hover {
+      background: rgba($blue, 1);
+    }
   }
 
 }
@@ -113,17 +133,8 @@ $badges: (
 /**
  * Base Badge
  */
-.#{map-get($badges, 'class')} {
-  @include make-badge();
-  @include add-badge-color();
-}
-
-/**
- * Badge Links
- */
-a.#{map-get($badges, 'class')} {
-  @include add-badge-link();
-}
+@include make-badges();
+@include add-badge-color();
 
 /**
  * Badge Colors
@@ -136,6 +147,17 @@ a.#{map-get($badges, 'class')} {
     background: rgba($black, 0.5);
   }
 }
+a.#{map-get($badges, 'class')}.white {
+  &:hover {
+    color: $color;
+    background: rgba($white, 1);
+  }
+  &.inverted:hover {
+    color: $white;
+    background: rgba($black, 0.75);
+  }
+}
+
 .#{map-get($badges, 'class')}.blue {
   color: $blue;
   background: $blue-50;
@@ -144,6 +166,17 @@ a.#{map-get($badges, 'class')} {
     background: $blue;
   }
 }
+a.#{map-get($badges, 'class')}.blue {
+  &:hover {
+    color: $blue;
+    background: $blue-100;
+  }
+  &.inverted:hover {
+    color: $white;
+    background: $blue-600;
+  }
+}
+
 .#{map-get($badges, 'class')}.green {
   color: $green;
   background: $green-50;
@@ -185,10 +218,18 @@ a.#{map-get($badges, 'class')} {
   }
 }
 
+// Check if we should output button classes
+@if (map-get($badges, 'classes-button') == true) {
+
+// Required components warning
+@if (variable-exists(buttons) == false) {
+  @warn 'The icons element component requires the buttons element component!';
+} @else {
+
 /**
  * Button Badges
  */
-.#{map-get($buttons, 'class')} .#{map-get($badges, 'class')} {
+.#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
   display: inline;
   padding: 0.25em 0.5rem;
 }
@@ -204,5 +245,9 @@ a.#{map-get($badges, 'class')} {
     margin-right: -0.5em;
   }
 }
+
+} // If $buttons exists
+
+} // endif classes-button-icon
 
 } // endif classes

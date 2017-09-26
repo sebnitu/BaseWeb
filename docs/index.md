@@ -6,11 +6,13 @@ class: home
 
 <section class="hero">
 
+  {% if site.data.settings.render.fast != true %}
   <header class="header">
     <div class="container">
       {% include header.html %}
     </div>
   </header>
+  {% endif %}
 
   <div class="hero-content">
     <div class="container">
