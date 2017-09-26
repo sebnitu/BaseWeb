@@ -9,7 +9,6 @@ $notices: (
   'classes' : true,
 
   'class-inverted' : 'inverted',
-  'class-close' : 'close',
 
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
@@ -24,13 +23,21 @@ $notices: (
   'line-height' : 1.5em,
   'text-shadow' : null,
 
+  'close' : (
+    'style' : null,
+  ),
+
   'inverted' : (
     'background' : $color,
     'box-shadow' : null,
     'border' : null,
     'color' : $white,
     'text-shadow' : null,
-  )
+
+    'close' : (
+      'style' : 'inverted',
+    ),
+  ),
 
 ) !default;
 
@@ -81,15 +88,18 @@ $notices: (
         float: right;
       }
       // Output the default close colors
-      @include add-close-color();
+      @if (map-has-key($o, 'close') == true) {
+        @include add-close-color(map-get($o, 'close'));
+      }
     }
 
     // Output inverted close colors when the notice is inverted
-    &.#{map-get($o, 'class-inverted')} {
-      @include add-close-color($style: 'inverted');
+    @if (map-has-key(map-get($o, 'inverted'), 'close') == true) {
+      &.#{map-get($o, 'class-inverted')} {
+        @include add-close-color(map-fetch($o, 'inverted', 'close'));
+      }
     }
   }
-
 
 }
 
@@ -149,7 +159,7 @@ $notices: (
     }
 
   } @else {
-    @warn 'The output type "#{$output}" is not supported in `add-notice-color()`';
+    @warn 'The output type "#{$output}" is not supported in the add-notice-color() mixin.';
   }
 }
 

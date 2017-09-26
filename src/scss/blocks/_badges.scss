@@ -7,13 +7,53 @@ $filename: 'scss/blocks/_badge.scss';
 
 $badges: (
   'classes' : true,
-  'classes-close' : true,
   'classes-button' : true,
 
   'class' : 'badge',
   'class-inverted' : 'inverted',
   'class-active' : 'active',
-  'class-close' : 'close',
+
+  'padding' : 0.25rem 0.75rem,
+  'font-size' : 0.9em,
+  'border' : none,
+  'border-radius' : $border-radius,
+  'border-radius-pill' : 3rem,
+  'transition' : $transition,
+
+  'close' : (
+    'margin' : 0 -0.25em 0 0.5em,
+    'style' : null,
+  ),
+
+  'dot' : (
+    'size' : ($base-font-size / 2),
+  ),
+
+  // Colors & Color Modifiers
+  'color' : $color,
+  'background' : rgba($black, 0.05),
+
+  'hover' : (
+    'color' : $blue,
+    'background' : rgba($blue, 0.15),
+  ),
+
+  'active' : (
+    'color' : $white,
+    'background' : $blue,
+    'close' : (
+      'style' : 'inverted',
+    ),
+  ),
+
+  'inverted' : (
+    'color' : $white,
+    'background' : $color,
+    'close' : (
+      'style' : 'inverted',
+    ),
+  ),
+
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -33,21 +73,21 @@ $badges: (
 //   @type map
 //   @default $badges map
 @mixin make-badges($options: ()) {
-  $o: map-merge($badges, $options);
+  $o: map-extend($badges, $options, true);
 
   .#{map-get($badges, 'class')} {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.9em;
+    padding: map-get($o, 'padding');
+    font-size: map-get($o, 'font-size');
     text-decoration: none;
-    border-radius: $border-radius;
-    border: none;
-    transition: $transition;
+    border: map-get($o, 'border');
+    border-radius: map-get($o, 'border-radius');
+    transition: map-get($o, 'transition');
 
     &.pill {
-      border-radius: 3rem;
+      border-radius: map-get($o, 'border-radius-pill');
     }
     &.square {
       border-radius: 0;
@@ -55,17 +95,15 @@ $badges: (
     &.dot {
       display: inline-block;
       @include text-hide();
-      @include size($base-font-size / 2);
+      @include size(map-fetch($o, 'dot', 'size'));
       padding: 0;
       vertical-align: top;
-      border-radius: 1rem;
+      border-radius: map-get($o, 'border-radius-pill');
     }
 
     // Check if we should output close classes
-    @if (map-get($badges, 'classes-close') == true) {
-      @include make-close((
-        'margin' : 0 -0.25em 0 0.5em,
-      ));
+    @if (map-has-key($o, 'close') == true) {
+      @include make-close(map-get($o, 'close'));
     }
   }
 }
@@ -78,30 +116,27 @@ $badges: (
 @mixin add-badge-color($options: ()) {
   $o: map-extend($badges, $options, true);
 
-  $set: color, text-shadow, background, border, box-shadow;
-
   .#{map-get($badges, 'class')} {
     color: $color;
     background: rgba($black, 0.05);
-
     @if (map-get($badges, 'classes-close') == true) {
-      @include add-close-color();
-    }
-
-    // Active & inverted styles
-    &.active,
-    &.inverted {
-      color: $white;
-      @if (map-get($badges, 'classes-close') == true) {
-        @include add-close-color($style: 'inverted');
-      }
+      @include add-close-color(map-get($o, 'close'));
     }
 
     &.active {
+      color: $white;
       background: rgba($blue, 1);
+      @if (map-has-key(map-get($o, 'active'), 'close') == true) {
+        @include add-close-color(map-fetch($o, 'active', 'close'));
+      }
     }
+
     &.inverted {
+      color: $white;
       background: rgba($black, 0.5);
+      @if (map-has-key(map-get($o, 'inverted'), 'close') == true) {
+        @include add-close-color(map-fetch($o, 'inverted', 'close'));
+      }
     }
   }
 
@@ -225,7 +260,7 @@ a.#{map-get($badges, 'class')}.blue {
 
 // Required components warning
 @if (variable-exists(buttons) == false) {
-  @warn 'The icons element component requires the buttons element component!';
+  @warn 'The badge block component requires the buttons element component!';
 } @else {
 
 /**

@@ -16,7 +16,10 @@ $close: (
   'transition' : $transition,
   'font-size' : 1rem,
 
-  // Default styles
+  // Default style
+  'style' : null,
+
+  // Base styles
   'color' : $white,
   'background' : rgba($black, 0.25),
   'border' : none,
@@ -88,12 +91,17 @@ $close: (
 // @param $style
 //   @type string
 //   @default null
-@mixin add-close-color($options: (), $style: null) {
+@mixin add-close-color($options: ()) {
   $o: map-extend($close, $options, true);
 
-  // Swap for inverted styles 'inverted' is passed
-  @if ($style == 'inverted') {
-    $o: map-merge($o, map-fetch($o, 'inverted'));
+  $style : map-get($o, 'style');
+
+  @if ($style) {
+    @if (map-has-key($o, $style) == true) {
+      $o: map-merge($o, map-fetch($o, $style));
+    } @else {
+      @warn 'The $close map does not contain the style option of "#{$style}"!';
+    }
   }
 
   .#{map-get($o, 'class')} {
@@ -126,7 +134,10 @@ $close: (
 @include add-close-color(('class' : 'close'));
 
 @if (map-get($close, 'classes-inverted') == true) {
-  @include add-close-color(('class' : 'close.inverted'), 'inverted');
+  @include add-close-color((
+    'class' : 'close.inverted',
+    'style' : 'inverted'
+  ));
 }
 
 } // endif classes
