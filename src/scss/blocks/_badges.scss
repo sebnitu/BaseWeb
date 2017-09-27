@@ -6,12 +6,11 @@ $filename: 'scss/blocks/_badge.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $badges: (
-  'classes' : true,
-  'classes-button' : true,
+  'output' : true,
+  'output-colors' : true,
+  'output-buttons' : true,
 
   'class' : 'badge',
-  'class-inverted' : 'inverted',
-  'class-active' : 'active',
 
   'padding' : 0.25rem 0.75rem,
   'font-size' : 0.9em,
@@ -21,36 +20,43 @@ $badges: (
   'transition' : $transition,
 
   'close' : (
+    'output' : true,
     'margin' : 0 -0.25em 0 0.5em,
-    'style' : null,
+    'style' : default,
   ),
 
   'dot' : (
     'size' : ($base-font-size / 2),
   ),
 
-  // Colors & Color Modifiers
+  'button' : (
+    'margin' : 0.5em,
+    'padding' : 0.25em 0.5em,
+  ),
+
   'color' : $color,
   'background' : rgba($black, 0.05),
-
   'hover' : (
     'color' : $blue,
-    'background' : rgba($blue, 0.15),
+    'background' : rgba($blue, 0.2),
   ),
 
-  'active' : (
-    'color' : $white,
-    'background' : $blue,
-    'close' : (
-      'style' : 'inverted',
+  'modifiers' : (
+    'inverted' : (
+      'color' : $white,
+      'background' : $gray,
+      'hover' : (
+        'color' : $white,
+        'background' : $gray-700,
+      ),
     ),
-  ),
-
-  'inverted' : (
-    'color' : $white,
-    'background' : $color,
-    'close' : (
-      'style' : 'inverted',
+    'active': (
+      'color': $white,
+      'background': $blue,
+      'hover': (
+        'color': $white,
+        'background': $blue,
+      ),
     ),
   ),
 
@@ -67,101 +73,97 @@ $badges: (
 // @Badges Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make Badges
+// Make Badge
 // Creates the base styles for a the badge element.
 // @param $options
 //   @type map
 //   @default $badges map
-@mixin make-badges($options: ()) {
+@mixin make-badge($options: ()) {
   $o: map-extend($badges, $options, true);
 
-  .#{map-get($badges, 'class')} {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: map-get($o, 'padding');
-    font-size: map-get($o, 'font-size');
-    text-decoration: none;
-    border: map-get($o, 'border');
-    border-radius: map-get($o, 'border-radius');
-    transition: map-get($o, 'transition');
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: map-get($o, 'padding');
+  font-size: map-get($o, 'font-size');
+  text-decoration: none;
+  border: map-get($o, 'border');
+  border-radius: map-get($o, 'border-radius');
+  transition: map-get($o, 'transition');
 
-    &.pill {
-      border-radius: map-get($o, 'border-radius-pill');
-    }
-    &.square {
-      border-radius: 0;
-    }
-    &.dot {
-      display: inline-block;
-      @include text-hide();
-      @include size(map-fetch($o, 'dot', 'size'));
-      padding: 0;
-      vertical-align: top;
-      border-radius: map-get($o, 'border-radius-pill');
-    }
-
-    // Check if we should output close classes
-    @if (map-has-key($o, 'close') == true) {
-      @include make-close(map-get($o, 'close'));
-    }
+  &.pill {
+    border-radius: map-get($o, 'border-radius-pill');
   }
+  &.square {
+    border-radius: 0;
+  }
+  &.dot {
+    display: inline-block;
+    @include text-hide();
+    @include size(map-fetch($o, 'dot', 'size'));
+    padding: 0;
+    vertical-align: top;
+    border-radius: map-get($o, 'border-radius-pill');
+  }
+
+  // Check if we should output close classes
+  @if (map-fetch($o, 'close', 'output') == true) {
+    @if (map-get($close, 'output') != true) {
+      .#{map-get($close, 'class')} {
+        @include make-close(map-get($o, 'close'));
+      }
+    }
+    .#{map-get($close, 'class')} {
+      margin: map-fetch($o, 'close', 'margin');
+      @include add-close-color(map-get($o, 'close'));
+    }
+  } // Close output
+
 }
 
 // Add Badge Color
-// Handles color variations to badges.
-// @param $options
-//   @type map
-//   @default $badges map
-@mixin add-badge-color($options: ()) {
+@mixin add-badge-color(
+  $options: (),
+  $output-base: true,
+  $output-mods: true,
+  $output-modsbase: true,
+  $properties: default,
+  $pseudos: default
+) {
   $o: map-extend($badges, $options, true);
 
-  .#{map-get($badges, 'class')} {
-    color: $color;
-    background: rgba($black, 0.05);
-    @if (map-get($badges, 'classes-close') == true) {
-      @include add-close-color(map-get($o, 'close'));
-    }
+  @include add-color(
+    $o,
+    $output-base: $output-base,
+    $output-mods: $output-mods,
+    $output-modsbase: $output-modsbase,
+    $properties: $properties,
+    $pseudos: $pseudos
+  );
 
-    &.active {
-      color: $white;
-      background: rgba($blue, 1);
-      @if (map-has-key(map-get($o, 'active'), 'close') == true) {
-        @include add-close-color(map-fetch($o, 'active', 'close'));
+  // Check if we should output close classes
+  @if (map-fetch($o, 'close', 'output') == true) {
+    // Check that we have modifiers
+    @if (map-has-key($o, 'modifiers')) {
+      // Loop through modifiers
+      @each $mod-name, $mod-map in map-get($o, 'modifiers') {
+        // Check if the close options exist
+        @if (map-has-key($mod-map, 'close')) {
+          // Output the modifier name
+          &.#{$mod-name} {
+            // Output the close color styles
+            .#{map-get($close, 'class')} {
+              @include add-close-color(map-get($mod-map, 'close'));
+            }
+          }
+        }
       }
     }
-
-    &.inverted {
-      color: $white;
-      background: rgba($black, 0.5);
-      @if (map-has-key(map-get($o, 'inverted'), 'close') == true) {
-        @include add-close-color(map-fetch($o, 'inverted', 'close'));
-      }
-    }
-  }
-
-  // Hover styles for links
-  a.#{map-get($badges, 'class')} {
-    &:hover {
-      color: $blue;
-      background: rgba($blue, 0.1);
-    }
-    &.active:hover,
-    &.inverted:hover {
-      color: $white;
-    }
-    &.active:hover {
-      background: rgba($blue, 1);
-    }
-    &.inverted:hover {
-      background: rgba($blue, 1);
-    }
-  }
-
+  } // Close output
 }
 
 // Check if we should output modifier classes
-@if (map-get($badges, 'classes') == true) {
+@if (map-get($badges, 'output') == true) {
 
 /*==============================================================================
   @Badges - #{$filename}
@@ -170,95 +172,183 @@ $badges: (
 /**
  * Base Badge
  */
-@include make-badges();
-@include add-badge-color();
+.#{map-get($badges, 'class')} {
+  @include make-badge();
+  @include add-badge-color(
+    $pseudos: null // Disable :hover styles for none anchor elements
+  );
+}
+a.#{map-get($badges, 'class')} {
+  @include add-badge-color(
+    ('close': ('output' : false)), // Disable output of close element
+    $output-base: false, // Disable base output
+    $output-modsbase: false // Disable modifier base output
+  );
+}
+
+// Check if we should output badge colors
+@if (map-get($badges, 'output-colors') == true) {
 
 /**
- * Badge Colors
+ * Additional Colors
  */
-.#{map-get($badges, 'class')}.white {
-  color: $color;
-  background: rgba($white, 0.75);
-  &.inverted {
-    color: $white;
-    background: rgba($black, 0.5);
-  }
+$badge-colors: (
+  'light': (
+    'color': $color-light,
+    'background': $white,
+    'border': 1px solid rgba($black, 0.1),
+    'hover': (
+      'color' : $color,
+      'background': $white,
+      'border-color': rgba($blue, 0.75),
+    ),
+  ),
+  'dark': (
+    'color': $white,
+    'background': $gray-800,
+    'close': (
+      'style': 'inverted',
+    ),
+    'hover': (
+      'color' : $white,
+      'background': $gray-700,
+    ),
+  ),
+  'blue': (
+    'color': $blue,
+    'background': $blue-50,
+    'hover': (
+      'background': $blue-100,
+    ),
+  ),
+  'blue.inverted': (
+    'color': $white,
+    'background': $blue,
+    'hover': (
+      'background': $blue-700,
+    ),
+  ),
+  'teal': (
+    'color': $teal,
+    'background': $teal-50,
+    'hover': (
+      'color': $teal,
+      'background': $teal-100,
+    ),
+  ),
+  'teal.inverted': (
+    'color': $white,
+    'background': $teal,
+    'hover': (
+      'color': $white,
+      'background': $teal-700,
+    ),
+  ),
+  'green': (
+    'color': $green,
+    'background': $green-50,
+    'hover': (
+      'color': $green,
+      'background': $green-100,
+    ),
+  ),
+  'green.inverted': (
+    'color': $white,
+    'background': $green,
+    'hover': (
+      'color': $white,
+      'background': $green-700,
+    ),
+  ),
+  'yellow': (
+    'color': $color,
+    'background': $yellow-100,
+    'hover': (
+      'color': $color,
+      'background': $yellow-300,
+    ),
+  ),
+  'yellow.inverted': (
+    'color': $color,
+    'background': $yellow,
+    'hover': (
+      'color': $color,
+      'background': $yellow-600,
+    ),
+  ),
+  'orange': (
+    'color': $orange,
+    'background': $orange-50,
+    'hover': (
+      'color': $orange,
+      'background': $orange-100,
+    ),
+  ),
+  'orange.inverted': (
+    'color': $white,
+    'background': $orange,
+    'hover': (
+      'color': $white,
+      'background': $orange-700,
+    ),
+  ),
+  'red': (
+    'color': $red,
+    'background': $red-50,
+    'hover': (
+      'color': $red,
+      'background': $red-100,
+    ),
+  ),
+  'red.inverted': (
+    'color': $white,
+    'background': $red,
+    'hover': (
+      'color': $white,
+      'background': $red-700,
+    ),
+  ),
+  'purple': (
+    'color': $purple,
+    'background': $purple-50,
+    'hover': (
+      'color': $purple,
+      'background': $purple-100,
+    ),
+  ),
+  'purple.inverted': (
+    'color': $white,
+    'background': $purple,
+    'hover': (
+      'color': $white,
+      'background': $purple-700,
+    ),
+  ),
+) !default;
+
+.#{map-get($badges, 'class')} {
+  @include add-badge-color(
+    ('modifiers': $badge-colors),
+    $output-base: false, // Disable base styles
+    $pseudos: null // Only output base styles
+  );
 }
-a.#{map-get($badges, 'class')}.white {
-  &:hover {
-    color: $color;
-    background: rgba($white, 1);
-  }
-  &.inverted:hover {
-    color: $white;
-    background: rgba($black, 0.75);
-  }
+a.#{map-get($badges, 'class')} {
+  @include add-badge-color(
+    (
+      'close': ('output': false), // Link badges can't have close buttons
+      'modifiers': $badge-colors
+    ),
+    $output-base: false // Disable base styles
+  );
 }
 
-.#{map-get($badges, 'class')}.blue {
-  color: $blue;
-  background: $blue-50;
-  &.inverted {
-    color: $white;
-    background: $blue;
-  }
-}
-a.#{map-get($badges, 'class')}.blue {
-  &:hover {
-    color: $blue;
-    background: $blue-100;
-  }
-  &.inverted:hover {
-    color: $white;
-    background: $blue-600;
-  }
-}
-
-.#{map-get($badges, 'class')}.green {
-  color: $green;
-  background: $green-50;
-  &.inverted {
-    color: $white;
-    background: $green;
-  }
-}
-.#{map-get($badges, 'class')}.yellow {
-  color: $color;
-  background: $yellow-200;
-  &.inverted {
-    color: $color;
-    background: $yellow;
-  }
-}
-.#{map-get($badges, 'class')}.orange {
-  color: $orange;
-  background: $orange-50;
-  &.inverted {
-    color: $white;
-    background: $orange-600;
-  }
-}
-.#{map-get($badges, 'class')}.red {
-  color: $red;
-  background: $red-50;
-  &.inverted {
-    color: $white;
-    background: $red-600;
-  }
-}
-.#{map-get($badges, 'class')}.purple {
-  color: $purple;
-  background: $purple-50;
-  &.inverted {
-    color: $white;
-    background: $purple;
-  }
-}
+} // End @if output-colors
 
 // Check if we should output button classes
-@if (map-get($badges, 'classes-button') == true) {
+@if (map-get($badges, 'output-buttons') == true) {
 
-// Required components warning
+// Check if $buttons exists
 @if (variable-exists(buttons) == false) {
   @warn 'The badge block component requires the buttons element component!';
 } @else {
@@ -268,23 +358,23 @@ a.#{map-get($badges, 'class')}.blue {
  */
 .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
   display: inline;
-  padding: 0.25em 0.5rem;
+  padding: map-fetch($badges, 'button', 'padding');
 }
 .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
   .#{map-get($badges, 'class')} {
-    margin-left: -0.5em;
-    margin-right: 0.5em;
+    margin-left: -(map-fetch($badges, 'button', 'margin'));
+    margin-right: map-fetch($badges, 'button', 'margin');
   }
 }
 .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
   .#{map-get($badges, 'class')} {
-    margin-left: 0.5em;
-    margin-right: -0.5em;
+    margin-left: map-fetch($badges, 'button', 'margin');
+    margin-right: -(map-fetch($badges, 'button', 'margin'));
   }
 }
 
-} // If $buttons exists
+} // End @if $buttons exists
 
-} // endif classes-button-icon
+} // End output-buttons
 
-} // endif classes
+} // End output

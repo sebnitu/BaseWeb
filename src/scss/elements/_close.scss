@@ -6,7 +6,7 @@ $filename: 'scss/elements/_close.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $close: (
-  'classes' : true,
+  'output' : true,
   'classes-inverted' : true,
 
   'class' : 'close',
@@ -19,7 +19,7 @@ $close: (
   // Default style
   'style' : null,
 
-  // Base styles
+  // Base colors
   'color' : $white,
   'background' : rgba($black, 0.25),
   'border' : none,
@@ -29,17 +29,24 @@ $close: (
     'border-color' : null,
   ),
 
-  // Inverted styles
-  'inverted' : (
-    'color' : $color,
-    'background' : rgba($white, 0.5),
-    'border' : none,
-    'hover' : (
+  // Modifier colors
+  'modifiers' : (
+    'inverted' : (
       'color' : $color,
-      'background' : rgba($white, 1),
-      'border-color' : null,
+      'background' : rgba($white, 0.5),
+      'hover' : (
+        'color' : $color,
+        'background' : rgba($white, 1),
+      ),
+    ),
+    'danger' : (
+      'background' : $red,
+      'hover' : (
+        'background' : $red-700,
+      ),
     ),
   ),
+
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -61,24 +68,23 @@ $close: (
 @mixin make-close($options: ()) {
   $o: map-merge($close, $options);
 
-  .#{map-get($o, 'class')} {
-    cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: map-get($o, 'margin');
-    padding: map-get($o, 'padding');
-    font-size: map-get($o, 'font-size');
-    border-radius: map-get($o, 'border-radius');
-    transition: map-get($o, 'transition');
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: map-get($o, 'margin');
+  padding: map-get($o, 'padding');
+  font-size: map-get($o, 'font-size');
+  border: map-get($o, 'border');
+  border-radius: map-get($o, 'border-radius');
+  transition: map-get($o, 'transition');
 
-    @content;
+  @content;
 
-    // Remove margins from icon
-    @if (variable-exists(icons)) {
-      .#{map-get($icons, 'class')} {
-        margin: 0;
-      }
+  // Remove margins from icon
+  @if (variable-exists(icons)) {
+    .#{map-get($icons, 'class')} {
+      margin: 0;
     }
   }
 }
@@ -97,47 +103,32 @@ $close: (
   $style : map-get($o, 'style');
 
   @if ($style) {
-    @if (map-has-key($o, $style) == true) {
-      $o: map-merge($o, map-fetch($o, $style));
-    } @else {
-      @warn 'The $close map does not contain the style option of "#{$style}"!';
+    @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
+      $o: map-fetch($o, 'modifiers', $style);
+    } @else if ($style != 'default') {
+      @warn 'The $close map does not contain the modifier of "#{$style}"!';
     }
   }
 
-  .#{map-get($o, 'class')} {
-    color: map-get($o, 'color');
-    background: map-get($o, 'background');
-    border: map-get($o, 'border');
-
-    @content;
-
-    &:hover {
-      color: map-fetch($o, 'hover', 'color');
-      background: map-fetch($o, 'hover', 'background');
-      border-color: map-fetch($o, 'hover', 'border-color');
-    }
-  }
+  @include add-color($o, $output-mods: false);
 }
 
 // Check if we should output modifier classes
-@if (map-get($close, 'classes') == true) {
+@if (map-get($close, 'output') == true) {
 
 /*==============================================================================
   @Close - #{$filename}
 ==============================================================================*/
 
-@include make-close(('class' : 'close'));
+.#{map-get($close, 'class')} {
+  @include make-close();
+}
 
 /**
  * Close Colors
  */
-@include add-close-color(('class' : 'close'));
-
-@if (map-get($close, 'classes-inverted') == true) {
-  @include add-close-color((
-    'class' : 'close.inverted',
-    'style' : 'inverted'
-  ));
+.#{map-get($close, 'class')} {
+  @include add-color($close);
 }
 
 } // endif classes

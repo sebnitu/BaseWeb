@@ -71,15 +71,15 @@ Badges are a compact way to represent descriptive content such as tags, counters
   </p>
   <p>
     <span class="badge light dismissible">Light Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge light inverted dismissible">Light Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
     <span class="badge dark dismissible">Dark Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge dark inverted dismissible">Dark Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
   <p>
     <span class="badge blue dismissible">Blue Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
     <span class="badge blue inverted dismissible">Blue Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
+  </p>
+  <p>
+    <span class="badge teal dismissible">Teal Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
+    <span class="badge teal inverted dismissible">Teal Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
   <p>
     <span class="badge green dismissible">Green Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
@@ -110,15 +110,15 @@ Badges are a compact way to represent descriptive content such as tags, counters
   </p>
   <p>
     <a class="badge light" href="#">Light Badge</a>
-    <a class="badge light inverted" href="#">Light Badge</a>
-  </p>
-  <p>
     <a class="badge dark" href="#">Dark Badge</a>
-    <a class="badge dark inverted" href="#">Dark Badge</a>
   </p>
   <p>
     <a class="badge blue" href="#">Blue Badge</a>
     <a class="badge blue inverted" href="#">Blue Badge</a>
+  </p>
+  <p>
+    <a class="badge teal" href="#">Teal Badge</a>
+    <a class="badge teal inverted" href="#">Teal Badge</a>
   </p>
   <p>
     <a class="badge green" href="#">Green Badge</a>

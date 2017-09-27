@@ -23,6 +23,122 @@
   }
 }
 
+// Add Color
+// A general add color mixin for creating multi-color component.
+@mixin add-color(
+  $options: (),
+  $defaults: (),
+  $output-base: true,
+  $output-mods: true,
+  $output-modsbase: true,
+  $properties: default,
+  $pseudos: default
+) {
+  $o: map-extend($defaults, $options, true);
+
+  // Set the properties variable
+  @if $properties == default {
+    $properties: (
+      'color',
+      'text-shadow',
+
+      'background',
+      'background-image',
+      'background-repeat',
+      'background-position',
+      'background-color',
+      'background-clip',
+      'box-shadow',
+
+      'border',
+      'border-color',
+      'border-width',
+      'border-style',
+      'border-radius',
+
+      'transition',
+      'transition-property',
+      'transition-duration',
+      'transition-timing-function',
+    );
+  }
+  // Set the pseudo classes variable
+  @if $pseudos == default {
+    $pseudos: (
+      'hover',
+      'focus',
+      'active',
+      'visited',
+    );
+  }
+
+  // Check if we should output base styles
+  @if $output-base {
+    // Set base color styles
+    @each $prop in $properties {
+      @if (map-has-key($o, $prop)) {
+        #{$prop}: map-get($o, $prop);
+      }
+    }
+  } // End @if $base
+
+  // Set pseudo-class styles
+  @each $pseudo in $pseudos {
+    @if (map-has-key($o, $pseudo)) {
+      // Set pseudo-class
+      &:#{$pseudo} {
+        // Output selected properties
+        @each $prop in $properties {
+          @if (map-has-key(map-get($o, $pseudo), $prop)) {
+            #{$prop}: map-fetch($o, $pseudo, $prop);
+          }
+        }
+      }
+    }
+  } // End @each $pseudos
+
+  // Check if we should output modifier styles
+  @if $output-mods {
+    // Run through modifiers
+    @if (map-has-key($o, 'modifiers')) {
+      @each $mod-name, $mod-map in map-get($o, 'modifiers') {
+
+        // Set modifier name
+        &.#{$mod-name} {
+
+          @if $output-modsbase {
+            // Set base modifier color styles
+            @each $prop in $properties {
+              @if (map-has-key($mod-map, $prop)) {
+                #{$prop}: map-get($mod-map, $prop);
+              }
+            }
+          } // End @if $base
+
+          // Set modifier pseudo-class styles
+          @each $pseudo in $pseudos {
+            @if (map-has-key($mod-map, $pseudo)) {
+              // Set pseudo-class
+              &:#{$pseudo} {
+                // Output selected properties
+                @each $prop in $properties {
+                  @if (map-has-key(map-get($mod-map, $pseudo), $prop)) {
+                    #{$prop}: map-fetch($mod-map, $pseudo, $prop);
+                  }
+                }
+              }
+            }
+          } // End @each $pseudos
+
+        } // Close &.modifier
+
+      } // End @each modifiers
+    } // End @if modifiers
+
+  } // End @if $mods
+
+}
+
 // Make Anchor
 // Creates the base ancho styles using the $anchors map for defaults.
 // @param $options
