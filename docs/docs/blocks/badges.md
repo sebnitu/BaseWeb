@@ -4,6 +4,12 @@ title: "Badges"
 order: 8
 ---
 
+<div style="background: #ccc; padding: 2em; border-radius: 4px;">
+  <p>Close Default: <a href="#" class="close">{% include content-icon.html icon="x" %}</a></p>
+  <p>Close Inverted: <a href="#" class="close inverted">{% include content-icon.html icon="x" %}</a></p>
+  <p>Close Danger: <a href="#" class="close danger">{% include content-icon.html icon="x" %}</a></p>
+</div>
+
 Badges are a compact way to represent descriptive content such as tags, counters or labels. They primarily would contain text and can also have associated photos, icons or a dismissible trigger. Badges can be represented using a `<span>` element but also as an `<a>` link.
 
 ```html

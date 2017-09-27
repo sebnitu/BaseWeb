@@ -25,23 +25,21 @@
 
 // Add Color
 // A general add color mixin for creating multi-color component.
-@mixin add-color(
-  $options: (),
-  $defaults: (),
-  $output-base: true,
-  $output-mods: true,
-  $output-modsbase: true,
-  $properties: default,
-  $pseudos: default
-) {
-  $o: map-extend($defaults, $options, true);
-
-  // Set the properties variable
-  @if $properties == default {
-    $properties: (
+// @param $input
+// @param $defaults
+// @param $settings
+@mixin add-color($input: (), $defaults: (), $settings: ()) {
+  // Extend our input variable
+  $i: map-extend($defaults, $input, true);
+  // Extend our settings variable
+  $s: map-merge((
+    'output-base': true,
+    'output-mods': true,
+    'output-mods-base': true,
+    'modifiers' : 'modifiers',
+    'properties': (
       'color',
       'text-shadow',
-
       'background',
       'background-image',
       'background-repeat',
@@ -49,94 +47,88 @@
       'background-color',
       'background-clip',
       'box-shadow',
-
       'border',
       'border-color',
       'border-width',
       'border-style',
       'border-radius',
-
       'transition',
       'transition-property',
       'transition-duration',
       'transition-timing-function',
-    );
-  }
-  // Set the pseudo classes variable
-  @if $pseudos == default {
-    $pseudos: (
+    ),
+    'pseudo-classes': (
       'hover',
       'focus',
       'active',
       'visited',
-    );
-  }
+    )
+  ), $settings);
 
   // Check if we should output base styles
-  @if $output-base {
-    // Set base color styles
-    @each $prop in $properties {
-      @if (map-has-key($o, $prop)) {
-        #{$prop}: map-get($o, $prop);
-      }
-    }
-  } // End @if $base
+  @if map-get($s, 'output-base') {
+    // Loop through selected properties
+    @each $prop in map-get($s, 'properties') {
+      // Set property if it exists
+      @if (map-has-key($i, $prop)) {
+        #{$prop}: map-get($i, $prop);
+      } // End @if property exists
+    } // End @each properties
+  } // End @if output-base
 
-  // Set pseudo-class styles
-  @each $pseudo in $pseudos {
-    @if (map-has-key($o, $pseudo)) {
-      // Set pseudo-class
+  // Loop through pseudo-classes
+  @each $pseudo in map-get($s, 'pseudo-classes') {
+    // Set pseudo-class if it exists
+    @if (map-has-key($i, $pseudo)) {
       &:#{$pseudo} {
-        // Output selected properties
-        @each $prop in $properties {
-          @if (map-has-key(map-get($o, $pseudo), $prop)) {
-            #{$prop}: map-fetch($o, $pseudo, $prop);
-          }
-        }
-      }
-    }
-  } // End @each $pseudos
+        // Loop through selected properties
+        @each $prop in map-get($s, 'properties') {
+          // Set property if it exists
+          @if (map-has-key(map-get($i, $pseudo), $prop)) {
+            #{$prop}: map-fetch($i, $pseudo, $prop);
+          } // End @if property exists
+        } // End @each properties
+      } // Close &:#{$pseudo}
+    } // End @if pseudo-classes exists
+  } // End @each pseudo-classes
 
   // Check if we should output modifier styles
-  @if $output-mods {
-    // Run through modifiers
-    @if (map-has-key($o, 'modifiers')) {
-      @each $mod-name, $mod-map in map-get($o, 'modifiers') {
-
-        // Set modifier name
+  @if map-get($s, 'output-mods') {
+    // Check if modifiers exist
+    @if (map-has-key($i, map-get($s, 'modifiers'))) {
+      // Loop through and output modifiers
+      @each $mod-name, $mod-map in map-get($i, map-get($s, 'modifiers')) {
         &.#{$mod-name} {
-
-          @if $output-modsbase {
-            // Set base modifier color styles
-            @each $prop in $properties {
+          // Check if we should output base modifier styles
+          @if map-get($s, 'output-mods-base') {
+            // Loop through selected properties
+            @each $prop in map-get($s, 'properties') {
+              // Set property if it exists
               @if (map-has-key($mod-map, $prop)) {
                 #{$prop}: map-get($mod-map, $prop);
-              }
-            }
-          } // End @if $base
+              } // End @if property exists
+            } // End @each properties
+          } // End @if output-mods-base
 
-          // Set modifier pseudo-class styles
-          @each $pseudo in $pseudos {
+          // Loop through pseudo-classes
+          @each $pseudo in map-get($s, 'pseudo-classes') {
+            // Set pseudo-class if it exists
             @if (map-has-key($mod-map, $pseudo)) {
-              // Set pseudo-class
               &:#{$pseudo} {
-                // Output selected properties
-                @each $prop in $properties {
+                // Loop through selected properties
+                @each $prop in map-get($s, 'properties') {
+                  // Set property if it exists
                   @if (map-has-key(map-get($mod-map, $pseudo), $prop)) {
                     #{$prop}: map-fetch($mod-map, $pseudo, $prop);
-                  }
-                }
-              }
-            }
-          } // End @each $pseudos
-
-        } // Close &.modifier
-
+                  } // End @if property exists
+                } // End @each properties
+              } // Close &:#{$pseudo}
+            } // End @if pseudo-classes exists
+          } // End @each pseudo-classes
+        } // Close &.#{$mod-name}
       } // End @each modifiers
     } // End @if modifiers
-
-  } // End @if $mods
-
+  } // End @if output-mods
 }
 
 // Make Anchor

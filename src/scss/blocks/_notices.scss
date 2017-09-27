@@ -6,7 +6,7 @@ $filename: 'scss/blocks/_notice.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $notices: (
-  'classes' : true,
+  'output' : true,
 
   'class-inverted' : 'inverted',
 
@@ -24,7 +24,11 @@ $notices: (
   'text-shadow' : null,
 
   'close' : (
+    'output' : true,
     'style' : null,
+    'margin': 0.75rem -0.25rem 0 1rem,
+    'padding': 0.25em,
+    'font-size': 1.25em,
   ),
 
   'inverted' : (
@@ -49,7 +53,7 @@ $notices: (
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notice Mixins
+// @Notices Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Notice
@@ -67,39 +71,38 @@ $notices: (
   border-radius: map-get($o, 'border-radius');
 
   // Close button
-  // Check if the close variable exists
+  // Check if $close exists and close output is enabled
   @if (variable-exists(close)) {
-    // Check if we're outputting close classes
-    @if (map-get($close, 'classes') == true) {
-      // Add our custom styles using the close class
-      .#{map-get($close, 'class')} {
-        float: right;
-        margin: 0.75rem -0.25rem 0 1rem;
-        padding: 0.25em;
-        font-size: 1.25em;
-      }
-    } @else {
-      // Output the close styles with notice customizations
-      @include make-close((
-        'font-size': 1.25em,
-        'margin': 0.75rem -0.25rem 0 1rem,
-        'padding': 0.25em,
-      )) {
-        float: right;
-      }
-      // Output the default close colors
-      @if (map-has-key($o, 'close') == true) {
-        @include add-close-color(map-get($o, 'close'));
-      }
-    }
+    @if (map-fetch($o, 'close', 'output') == true) {
 
-    // Output inverted close colors when the notice is inverted
-    @if (map-has-key(map-get($o, 'inverted'), 'close') == true) {
-      &.#{map-get($o, 'class-inverted')} {
-        @include add-close-color(map-fetch($o, 'inverted', 'close'));
+      // Check if close is already output
+      @if (map-get($close, 'output') != true) {
+        // Output it explicitly
+        .#{map-get($close, 'class')} {
+          @include make-close(map-get($o, 'close')) {
+            float: right;
+          }
+          @include add-close-color(map-get($o, 'close'));
+        }
+      } @else {
+        // Only output the custom styles
+        .#{map-get($close, 'class')} {
+          float: right;
+          margin: map-fetch($o, 'close', 'margin');
+          padding: map-fetch($o, 'close', 'padding');
+          font-size: map-fetch($o, 'close', 'font-size');
+        }
       }
-    }
-  }
+
+      // Output inverted styles
+      &.inverted {
+        .#{map-get($close, 'class')} {
+          @include add-close-color(map-get($o, 'close'), $style: 'inverted');
+        }
+      }
+
+    } // End @if this.close.output is true
+  } // End @if $close
 
 }
 
@@ -187,10 +190,10 @@ $notices: (
 }
 
 // Check if we should output modifier classes
-@if (map-get($notices, 'classes') == true) {
+@if (map-get($notices, 'output') == true) {
 
 /*==============================================================================
-  @Notice - #{$filename}
+  @Notices - #{$filename}
 ==============================================================================*/
 
 .notice {

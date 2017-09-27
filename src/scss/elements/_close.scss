@@ -7,26 +7,24 @@ $filename: 'scss/elements/_close.scss';
 
 $close: (
   'output' : true,
-  'classes-inverted' : true,
-
   'class' : 'close',
+
   'margin' : 0,
   'padding' : 0.125em,
+  'border' : none,
   'border-radius' : 5em,
   'transition' : $transition,
   'font-size' : 1rem,
 
-  // Default style
+  // Default style (null or default for base styles)
   'style' : null,
 
   // Base colors
   'color' : $white,
   'background' : rgba($black, 0.25),
-  'border' : none,
   'hover' : (
     'color' : $white,
     'background' : rgba($black, 0.5),
-    'border-color' : null,
   ),
 
   // Modifier colors
@@ -90,27 +88,38 @@ $close: (
 }
 
 // Add Close Color
-// Creates the color styles for close element
+// Creates the color styles for close element. Modifiers are only output when
+// explicitly called for: e.g. add-close-color(('style': 'inverted'));
 // @param $options
 //   @type map
 //   @default $close map
+// @param $properties
+//   @type map list
+//   @default ('color', 'background', 'border-color')
 // @param $style
 //   @type string
 //   @default null
-@mixin add-close-color($options: ()) {
+@mixin add-close-color($options: (), $properties: ('color', 'background', 'border-color'), $style: null) {
   $o: map-extend($close, $options, true);
+  $s: ('properties': $properties);
 
-  $style : map-get($o, 'style');
+  @if ($style == null) {
+    $s: map-merge($s, ('output-mods': false));
+    $style : map-get($o, 'style');
+  }
 
-  @if ($style) {
-    @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
-      $o: map-fetch($o, 'modifiers', $style);
-    } @else if ($style != 'default') {
-      @warn 'The $close map does not contain the modifier of "#{$style}"!';
+  @if ($style != null) {
+    @if ($style != 'all') {
+      $s: map-merge($s, ('output-mods': false));
+      @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
+        $o: map-extend($o, map-fetch($o, 'modifiers', $style), true);
+      } @else if ($style != 'default') {
+        @warn 'The $close map does not contain the modifier of "#{$style}"!';
+      }
     }
   }
 
-  @include add-color($o, $output-mods: false);
+  @include add-color($o, $settings: $s);
 }
 
 // Check if we should output modifier classes
@@ -122,13 +131,7 @@ $close: (
 
 .#{map-get($close, 'class')} {
   @include make-close();
-}
-
-/**
- * Close Colors
- */
-.#{map-get($close, 'class')} {
-  @include add-color($close);
+  @include add-close-color($style: 'all');
 }
 
 } // endif classes
