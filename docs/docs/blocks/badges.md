@@ -24,7 +24,6 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <span class="badge square">Badge Square</span>
     <span class="badge active">Badge Active</span>
     <span class="badge inverted">Badge Inverted</span>
-    <span class="badge inverted active">Badge Inverted Active</span>
   </p>
 
   <p><strong>Active Badges</strong></p>
@@ -84,10 +83,6 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <span class="badge blue inverted dismissible">Blue Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
   <p>
-    <span class="badge teal dismissible">Teal Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge teal inverted dismissible">Teal Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
     <span class="badge green dismissible">Green Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
     <span class="badge green inverted dismissible">Green Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
@@ -96,16 +91,8 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <span class="badge yellow inverted dismissible">Yellow Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
   <p>
-    <span class="badge orange dismissible">Orange Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge orange inverted dismissible">Orange Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
     <span class="badge red dismissible">Red Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
     <span class="badge red inverted dismissible">Red Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge purple dismissible">Purple Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge purple inverted dismissible">Purple Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
   </p>
 
   <p><strong>Linked Badges</strong></p>
@@ -123,10 +110,6 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <a class="badge blue inverted" href="#">Blue Badge</a>
   </p>
   <p>
-    <a class="badge teal" href="#">Teal Badge</a>
-    <a class="badge teal inverted" href="#">Teal Badge</a>
-  </p>
-  <p>
     <a class="badge green" href="#">Green Badge</a>
     <a class="badge green inverted" href="#">Green Badge</a>
   </p>
@@ -135,16 +118,8 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <a class="badge yellow inverted" href="#">Yellow Badge</a>
   </p>
   <p>
-    <a class="badge orange" href="#">Orange Badge</a>
-    <a class="badge orange inverted" href="#">Orange Badge</a>
-  </p>
-  <p>
     <a class="badge red" href="#">Red Badge</a>
     <a class="badge red inverted" href="#">Red Badge</a>
-  </p>
-  <p>
-    <a class="badge purple" href="#">Purple Badge</a>
-    <a class="badge purple inverted" href="#">Purple Badge</a>
   </p>
 </div>
 

@@ -7,6 +7,7 @@ $filename: 'scss/elements/_close.scss';
 
 $close: (
   'output' : true,
+  'output-colors' : true,
   'class' : 'close',
 
   'margin' : 0,
@@ -16,10 +17,7 @@ $close: (
   'transition' : $transition,
   'font-size' : 1rem,
 
-  // Default style (null or default for base styles)
-  'style' : null,
-
-  // Base colors
+  // Add color styles
   'color' : $white,
   'background' : rgba($black, 0.25),
   'hover' : (
@@ -27,7 +25,10 @@ $close: (
     'background' : rgba($black, 0.5),
   ),
 
-  // Modifier colors
+  // Default add-color output
+  'style' : null,
+
+  // Modifiers
   'modifiers' : (
     'inverted' : (
       'color' : $color,
@@ -88,27 +89,36 @@ $close: (
 }
 
 // Add Close Color
-// Creates the color styles for close element. Modifiers are only output when
-// explicitly called for: e.g. add-close-color(('style': 'inverted'));
+// Creates the color styles for close element.
 // @param $options
 //   @type map
 //   @default $close map
+// @param $settings
+//   @type map
+//   @default ()
 // @param $properties
 //   @type map list
 //   @default ('color', 'background', 'border-color')
 // @param $style
 //   @type string
 //   @default null
-@mixin add-close-color($options: (), $properties: ('color', 'background', 'border-color'), $style: null) {
+@mixin add-close-color(
+  $options: (),
+  $settings: (),
+  $properties: ('color', 'background', 'border-color'),
+  $style: null
+) {
   $o: map-extend($close, $options, true);
-  $s: ('properties': $properties);
+  $s: map-merge($settings, ('properties': $properties));
 
   @if ($style == null) {
-    $s: map-merge($s, ('output-mods': false));
-    $style : map-get($o, 'style');
+    @if (map-has-key($o, 'style')) {
+      $style: map-get($o, 'style');
+    }
   }
 
   @if ($style != null) {
+
     @if ($style != 'all') {
       $s: map-merge($s, ('output-mods': false));
       @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
@@ -117,6 +127,9 @@ $close: (
         @warn 'The $close map does not contain the modifier of "#{$style}"!';
       }
     }
+
+  } @else {
+    $s: map-merge($s, ('output-mods': false));
   }
 
   @include add-color($o, $settings: $s);
@@ -131,7 +144,22 @@ $close: (
 
 .#{map-get($close, 'class')} {
   @include make-close();
-  @include add-close-color($style: 'all');
+  @include add-close-color();
 }
 
-} // endif classes
+// Check if we should output badge colors
+@if (map-get($close, 'output-colors') == true) {
+
+/**
+ * Colors
+ */
+.#{map-get($close, 'class')} {
+  @include add-close-color($settings: (
+    'output-base': false,
+    'output-pseudo': false
+  ), $style: 'all');
+}
+
+} // End @if output-colors
+
+} // End @if output

@@ -289,22 +289,6 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 
 /**
- * Notices
- */
-.demo .notice {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.notice.custom {
-  @include add-notice-color((
-    'background' : $teal-50,
-    'inverted' : (
-      'background' : $teal
-    )
-  ));
-}
-
-/**
  * Breadcrumb
  */
 .custom-breadcrumb {
@@ -315,6 +299,21 @@ $filename: 'scss/custom/_docs-demos.scss';
       'element' : '»'
     ),
   ));
+}
+
+/**
+ * Notices
+ */
+.demo-notice {
+  .notice {
+    margin: 1em 0;
+  }
+}
+.notice.custom {
+  @include add-notice-color($style: 'info');
+  &.inverted {
+    @include add-notice-color($style: 'info.inverted');
+  }
 }
 
 /**

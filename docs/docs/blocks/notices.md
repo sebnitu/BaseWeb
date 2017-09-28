@@ -60,16 +60,12 @@ Notice variables are encompassed within the `$notices` map and are used througho
   </tr>
 
   <tr>
-    <td><code>$notices('classes')</code></td>
+    <td><code>$notices('output')</code></td>
     <td><code>true</code> <a href="#var-note-1">*</a></td>
   </tr>
   <tr>
-    <td><code>$notices('class-inverted')</code></td>
-    <td><code>'inverted'</code> <a href="#var-note-2">**</a></td>
-  </tr>
-  <tr>
-    <td><code>$notices('class-close')</code></td>
-    <td><code>'close'</code></td>
+    <td><code>$notices('class')</code></td>
+    <td><code>'notice'</code></td>
   </tr>
 
   <tr>
@@ -241,15 +237,11 @@ Adds styles for a notice color with optional output type. You can either output 
 We can create custom notice color classes using this mixin while also using the `.notice` class to inherit the base notice styles.
 
 ```scss
-// We override only the color styles that change by
-// using the default $output: 'difference' parameter.
 .notice.custom {
-  @include add-notice-color((
-    'background' : $teal-50,
-    'inverted' : (
-      'background' : $teal
-    )
-  ));
+  @include add-notice-color($style: 'info');
+  &.inverted {
+    @include add-notice-color($style: 'info.inverted');
+  }
 }
 ```
 
@@ -270,65 +262,67 @@ If you have notice class output enabled, BaseWeb will provide you with a set of 
 <div class="notice">...</div>
 <div class="notice inverted">...</div>
 
-<div class="notice blue">...</div>
-<div class="notice blue inverted">...</div>
+<div class="notice info">...</div>
+<div class="notice info inverted">...</div>
 
-<div class="notice green">...</div>
-<div class="notice green inverted">...</div>
+<div class="notice success">...</div>
+<div class="notice success inverted">...</div>
 
-<div class="notice yellow">...</div>
-<div class="notice yellow inverted">...</div>
+<div class="notice warning">...</div>
+<div class="notice warning inverted">...</div>
 
-<div class="notice orange">...</div>
-<div class="notice orange inverted">...</div>
-
-<div class="notice red">...</div>
-<div class="notice red inverted">...</div>
-
-<div class="notice purple">...</div>
-<div class="notice purple inverted">...</div>
+<div class="notice danger">...</div>
+<div class="notice danger inverted">...</div>
 ```
 
-<div class="demo">
+<div class="demo demo-notice">
+
   <div class="row">
-    <div class="col col-6"><div class="notice"><p>.notice</p></div></div>
-    <div class="col col-6"><div class="notice inverted"><p>.notice .inverted</p></div></div>
+    <div class="col col-6">
+      <div class="notice dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice</p></div>
+    </div>
+    <div class="col col-6">
+      <div class="notice inverted dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .inverted</p></div>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col col-6"><div class="notice blue"><p>.notice .blue</p></div></div>
-    <div class="col col-6"><div class="notice blue inverted"><p>.notice .blue .inverted</p></div></div>
+    <div class="col col-6">
+      <div class="notice info dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .info</p></div>
+    </div>
+    <div class="col col-6">
+      <div class="notice info inverted dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .info .inverted</p></div>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col col-6"><div class="notice green"><p>.notice .green</p></div></div>
-    <div class="col col-6"><div class="notice green inverted"><p>.notice .green .inverted</p></div></div>
+    <div class="col col-6">
+      <div class="notice success dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .success</p></div>
+    </div>
+    <div class="col col-6">
+      <div class="notice success inverted dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .success .inverted</p></div>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col col-6"><div class="notice yellow"><p>.notice .yellow</p></div></div>
-    <div class="col col-6"><div class="notice yellow inverted"><p>.notice .yellow .inverted</p></div></div>
+    <div class="col col-6">
+      <div class="notice warning dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .warning</p></div>
+    </div>
+    <div class="col col-6">
+      <div class="notice warning inverted dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .warning .inverted</p></div>
+    </div>
   </div>
+
   <div class="row">
-    <div class="col col-6"><div class="notice orange"><p>.notice .orange</p></div></div>
-    <div class="col col-6"><div class="notice orange inverted"><p>.notice .orange .inverted</p></div></div>
+    <div class="col col-6">
+      <div class="notice danger dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .danger</p></div>
+    </div>
+    <div class="col col-6">
+      <div class="notice danger inverted dismissible"><button class="dismiss close">{% include content-icon.html icon="x" %}</button><p>.notice .danger .inverted</p></div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col col-6"><div class="notice red"><p>.notice .red</p></div></div>
-    <div class="col col-6"><div class="notice red inverted"><p>.notice .red .inverted</p></div></div>
-  </div>
-  <div class="row">
-    <div class="col col-6"><div class="notice purple"><p>.notice .purple</p></div></div>
-    <div class="col col-6"><div class="notice purple inverted"><p>.notice .purple .inverted</p></div></div>
-  </div>
+
 </div>
-
-There are also available semantic class aliases for the above styles.
-
-```scss
-// Semantic Aliases
-.notice.success { @extend .notice.green  }
-.notice.info    { @extend .notice.blue   }
-.notice.warning { @extend .notice.yellow }
-.notice.danger  { @extend .notice.red    }
-```
 
 </li>
 

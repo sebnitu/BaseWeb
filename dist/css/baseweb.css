@@ -1933,6 +1933,9 @@ fieldset[disabled] .input {
   background: rgba(0, 0, 0, 0.5);
 }
 
+/**
+ * Colors
+ */
 .close.inverted {
   color: #212121;
   background: rgba(255, 255, 255, 0.5);
@@ -2101,9 +2104,71 @@ fieldset[disabled] .input {
 
 .notice .close {
   float: right;
-  margin: 0.75rem -0.25rem 0 1rem;
+  margin: 1em 0 1em 1em;
   padding: 0.25em;
-  font-size: 1.25em;
+  font-size: 1em;
+}
+
+.notice .close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.notice .close:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.notice.inline {
+  display: inline;
+  margin: 0;
+  padding: 0 0.25em;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/**
+ * Colors
+ */
+.notice.inverted {
+  color: #fff;
+  background: #212121;
+}
+
+.notice.info {
+  background: #E3F2FD;
+}
+
+.notice.info.inverted {
+  color: #fff;
+  background: rgba(33, 150, 243, 0.9);
+}
+
+.notice.success {
+  background: #E8F5E9;
+}
+
+.notice.success.inverted {
+  color: #fff;
+  background: rgba(76, 175, 80, 0.9);
+}
+
+.notice.warning {
+  background: #FFF9C4;
+}
+
+.notice.warning.inverted {
+  color: #212121;
+  background: rgba(255, 235, 59, 0.9);
+}
+
+.notice.danger {
+  background: #FFEBEE;
+}
+
+.notice.danger.inverted {
+  color: #fff;
+  background: rgba(244, 67, 54, 0.9);
 }
 
 .notice.inverted .close {
@@ -2116,76 +2181,14 @@ fieldset[disabled] .input {
   background: white;
 }
 
-.notice.inverted {
+.notice.warning.inverted .close {
   color: #fff;
-  background: #212121;
+  background: rgba(0, 0, 0, 0.25);
 }
 
-/**
- * Notice Colors
- */
-.notice.blue, .notice.info {
-  background: #E3F2FD;
-}
-
-.notice.blue.inverted, .inverted.notice.info {
-  background: rgba(33, 150, 243, 0.9);
-}
-
-.notice.green, .notice.success {
-  background: #E8F5E9;
-}
-
-.notice.green.inverted, .inverted.notice.success {
-  background: rgba(76, 175, 80, 0.9);
-}
-
-.notice.yellow, .notice.warning {
-  background: #FFF9C4;
-}
-
-.notice.yellow.inverted, .inverted.notice.warning {
-  color: #212121;
-  background: #FFEB3B;
-}
-
-.notice.orange {
-  background: #FFF3E0;
-}
-
-.notice.orange.inverted {
-  background: #FB8C00;
-}
-
-.notice.red, .notice.danger {
-  background: #FFEBEE;
-}
-
-.notice.red.inverted, .inverted.notice.danger {
-  background: #E53935;
-}
-
-.notice.purple {
-  background: #F3E5F5;
-}
-
-.notice.purple.inverted {
-  background: #9C27B0;
-}
-
-/**
- * Inline styles
- */
-.notice.inline {
-  display: inline;
-  margin: 0;
-  padding: 0 0.25em;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.notice.inline.inverted {
-  border: 0 none;
+.notice.warning.inverted .close:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /*==============================================================================
@@ -3123,12 +3126,189 @@ fieldset[disabled] .input {
 /*==============================================================================
   @Badges - scss/blocks/_badge.scss
 ==============================================================================*/
+.badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9em;
+  text-decoration: none;
+  border: none;
+  border-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  color: #212121;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.badge.pill {
+  border-radius: 3rem;
+}
+
+.badge.square {
+  border-radius: 0;
+}
+
+.badge.dot {
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  vertical-align: top;
+  border-radius: 3rem;
+}
+
+.badge .close {
+  margin: 0 -0.25em 0 0.5em;
+}
+
+.badge .close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.badge .close:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+a.badge:hover {
+  color: #2196F3;
+  background: rgba(33, 150, 243, 0.2);
+}
+
 /**
- * Base Badge
+ * Colors
  */
-/**
- * Additional Colors
- */
+.badge.inverted {
+  color: #fff;
+  background: #9E9E9E;
+}
+
+.badge.active {
+  color: #fff;
+  background: #2196F3;
+}
+
+.badge.light {
+  color: #212121;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.badge.dark {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.badge.blue {
+  color: #2196F3;
+  background: #E3F2FD;
+}
+
+.badge.blue.inverted {
+  color: #fff;
+  background: #2196F3;
+}
+
+.badge.green {
+  color: #4CAF50;
+  background: #E8F5E9;
+}
+
+.badge.green.inverted {
+  color: #fff;
+  background: #4CAF50;
+}
+
+.badge.yellow {
+  color: #212121;
+  background: #FFF9C4;
+}
+
+.badge.yellow.inverted {
+  color: #212121;
+  background: #FFEB3B;
+}
+
+.badge.red {
+  color: #F44336;
+  background: #FFEBEE;
+}
+
+.badge.red.inverted {
+  color: #fff;
+  background: #F44336;
+}
+
+a.badge.inverted:hover {
+  color: #fff;
+  background: #616161;
+}
+
+a.badge.active:hover {
+  color: #fff;
+  background: #2196F3;
+}
+
+a.badge.light:hover {
+  color: #212121;
+  background: white;
+}
+
+a.badge.dark:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+a.badge.blue:hover {
+  background: #BBDEFB;
+}
+
+a.badge.blue.inverted:hover {
+  background: #1976D2;
+}
+
+a.badge.green:hover {
+  color: #4CAF50;
+  background: #C8E6C9;
+}
+
+a.badge.green.inverted:hover {
+  color: #fff;
+  background: #388E3C;
+}
+
+a.badge.yellow:hover {
+  color: #212121;
+  background: #FFF176;
+}
+
+a.badge.yellow.inverted:hover {
+  color: #212121;
+  background: #FDD835;
+}
+
+a.badge.red:hover {
+  color: #F44336;
+  background: #FFCDD2;
+}
+
+a.badge.red.inverted:hover {
+  color: #fff;
+  background: #D32F2F;
+}
+
 /**
  * Button Badges
  */

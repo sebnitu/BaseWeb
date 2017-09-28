@@ -34,8 +34,10 @@
   // Extend our settings variable
   $s: map-merge((
     'output-base': true,
+    'output-pseudo': true,
     'output-mods': true,
     'output-mods-base': true,
+    'output-mods-pseudo': true,
     'modifiers' : 'modifiers',
     'properties': (
       'color',
@@ -76,21 +78,24 @@
     } // End @each properties
   } // End @if output-base
 
-  // Loop through pseudo-classes
-  @each $pseudo in map-get($s, 'pseudo-classes') {
-    // Set pseudo-class if it exists
-    @if (map-has-key($i, $pseudo)) {
-      &:#{$pseudo} {
-        // Loop through selected properties
-        @each $prop in map-get($s, 'properties') {
-          // Set property if it exists
-          @if (map-has-key(map-get($i, $pseudo), $prop)) {
-            #{$prop}: map-fetch($i, $pseudo, $prop);
-          } // End @if property exists
-        } // End @each properties
-      } // Close &:#{$pseudo}
-    } // End @if pseudo-classes exists
-  } // End @each pseudo-classes
+  // Check if we should output base pseudo styles
+  @if map-get($s, 'output-pseudo') {
+    // Loop through pseudo-classes
+    @each $pseudo in map-get($s, 'pseudo-classes') {
+      // Set pseudo-class if it exists
+      @if (map-has-key($i, $pseudo)) {
+        &:#{$pseudo} {
+          // Loop through selected properties
+          @each $prop in map-get($s, 'properties') {
+            // Set property if it exists
+            @if (map-has-key(map-get($i, $pseudo), $prop)) {
+              #{$prop}: map-fetch($i, $pseudo, $prop);
+            } // End @if property exists
+          } // End @each properties
+        } // Close &:#{$pseudo}
+      } // End @if pseudo-classes exists
+    } // End @each pseudo-classes
+  } // End @if output-base
 
   // Check if we should output modifier styles
   @if map-get($s, 'output-mods') {
@@ -110,21 +115,23 @@
             } // End @each properties
           } // End @if output-mods-base
 
-          // Loop through pseudo-classes
-          @each $pseudo in map-get($s, 'pseudo-classes') {
-            // Set pseudo-class if it exists
-            @if (map-has-key($mod-map, $pseudo)) {
-              &:#{$pseudo} {
-                // Loop through selected properties
-                @each $prop in map-get($s, 'properties') {
-                  // Set property if it exists
-                  @if (map-has-key(map-get($mod-map, $pseudo), $prop)) {
-                    #{$prop}: map-fetch($mod-map, $pseudo, $prop);
-                  } // End @if property exists
-                } // End @each properties
-              } // Close &:#{$pseudo}
-            } // End @if pseudo-classes exists
-          } // End @each pseudo-classes
+          @if map-get($s, 'output-mods-pseudo') {
+            // Loop through pseudo-classes
+            @each $pseudo in map-get($s, 'pseudo-classes') {
+              // Set pseudo-class if it exists
+              @if (map-has-key($mod-map, $pseudo)) {
+                &:#{$pseudo} {
+                  // Loop through selected properties
+                  @each $prop in map-get($s, 'properties') {
+                    // Set property if it exists
+                    @if (map-has-key(map-get($mod-map, $pseudo), $prop)) {
+                      #{$prop}: map-fetch($mod-map, $pseudo, $prop);
+                    } // End @if property exists
+                  } // End @each properties
+                } // Close &:#{$pseudo}
+              } // End @if pseudo-classes exists
+            } // End @each pseudo-classes
+          } // End @if output-mods-pseudo
         } // Close &.#{$mod-name}
       } // End @each modifiers
     } // End @if modifiers
