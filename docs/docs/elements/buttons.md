@@ -33,7 +33,7 @@ Button variables are encompassed within the `$buttons` map and are used througho
   </tr>
 
   <tr>
-    <td><code>$buttons('classes')</code></td>
+    <td><code>$buttons('output')</code></td>
     <td><code>true</code></td>
   </tr>
 
@@ -311,12 +311,13 @@ If you have button class modifiers enabled, BaseWeb will provide you with a set 
 <div class="demo demo-buttons">
   <p>
     <button class="button">Default</button>
-    <button class="button primary">Primary Blue</button>
-    <button class="button success">Success Green</button>
-    <button class="button warning">Warning Orange</button>
-    <button class="button danger">Danger Red</button>
-    <button class="button secondary">Secondary Gray</button>
-    <button class="button black">Black</button>
+    <button class="button primary">Primary</button>
+    <button class="button secondary">Secondary</button>
+    <button class="button success">Success</button>
+    <button class="button warning">Warning</button>
+    <button class="button danger">Danger</button>
+    <button class="button light">Light</button>
+    <button class="button dark">Dark</button>
   </p>
 </div>
 

@@ -98,6 +98,8 @@ $notices: (
   @include add-styles($o);
   @include add-modifiers($o, 'default', false);
 
+  @content;
+
   // Close button
   // Check if $close exists and close output is enabled
   @if (variable-exists(close)) {
@@ -109,60 +111,6 @@ $notices: (
         }
       }
     }
-  }
-
-}
-
-// Add Notice Color
-// Creates the color styles for notices.
-// @param $options
-//   @type map
-//   @default $notices map
-// @param $settings
-//   @type map
-//   @default ()
-// @param $properties
-//   @type map list
-//   @default ('color', 'background', 'border', 'border-color')
-// @param $style
-//   @type string
-//   @default null
-@mixin add-notice-color(
-  $options: (),
-  $settings: (),
-  $properties: ('color', 'background', 'border', 'border-color'),
-  $style: null
-) {
-  $o: map-extend($notices, $options, true);
-  $s: map-merge($settings, ('properties': $properties));
-
-  @if ($style == null) {
-    @if (map-has-key($o, 'style')) {
-      $style: map-get($o, 'style');
-    }
-  }
-
-  @if ($style != null) {
-
-    @if ($style != 'all') {
-      $s: map-merge($s, ('output-mods': false));
-      @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
-        $o: map-extend($o, map-fetch($o, 'modifiers', $style), true);
-      } @else if ($style != 'default') {
-        @warn 'The $notices map does not contain the modifier of "#{$style}"!';
-      }
-    }
-
-  } @else {
-    $s: map-merge($s, ('output-mods': false));
-  }
-
-  @include add-color($o, $settings: $s);
-
-  // Close button
-  // Check if $close exists and close output is enabled
-  @if ($style != null) {
-
   }
 
 }

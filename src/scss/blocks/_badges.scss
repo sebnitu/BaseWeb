@@ -51,22 +51,7 @@ $badges: (
         'background': $blue,
       ),
     ),
-    'light': (
-      'color': $color,
-      'background': rgba($white, 0.75),
-      'hover': (
-        'color': $color,
-        'background': rgba($white, 1),
-      ),
-    ),
-    'dark': (
-      'color': $white,
-      'background': rgba($black, 0.5),
-      'hover': (
-        'color': $white,
-        'background': rgba($black, 0.75),
-      ),
-    ),
+
     'blue': (
       'color': $blue,
       'background': $blue-50,
@@ -129,6 +114,22 @@ $badges: (
         'background': $red-700,
       ),
     ),
+    'light': (
+      'color': $color,
+      'background': rgba($white, 0.75),
+      'hover': (
+        'color': $color,
+        'background': rgba($white, 1),
+      ),
+    ),
+    'dark': (
+      'color': $white,
+      'background': rgba($black, 0.5),
+      'hover': (
+        'color': $white,
+        'background': rgba($black, 0.75),
+      ),
+    ),
     'square': (
       'border-radius': 0,
     ),
@@ -172,6 +173,8 @@ $badges: (
 
   @include add-styles($o);
   @include add-modifiers($o, 'default', false, ('output-pseudo': false));
+
+  @content;
 
   &.dot {
     @include text-hide();
