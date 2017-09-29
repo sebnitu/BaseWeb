@@ -23,119 +23,86 @@
   }
 }
 
-// Add Color
-// A general add color mixin for creating multi-color component.
+// Add Styles
+// Output styles from a component map
 // @param $input
-// @param $defaults
 // @param $settings
-@mixin add-color($input: (), $defaults: (), $settings: ()) {
-  // Extend our input variable
-  $i: map-extend($defaults, $input, true);
-  // Extend our settings variable
-  $s: map-merge((
-    'output-base': true,
-    'output-pseudo': true,
-    'output-mods': true,
-    'output-mods-base': true,
-    'output-mods-pseudo': true,
-    'modifiers' : 'modifiers',
-    'properties': (
-      'color',
-      'text-shadow',
-      'background',
-      'background-image',
-      'background-repeat',
-      'background-position',
-      'background-color',
-      'background-clip',
-      'box-shadow',
-      'border',
-      'border-color',
-      'border-width',
-      'border-style',
-      'border-radius',
-      'transition',
-      'transition-property',
-      'transition-duration',
-      'transition-timing-function',
-    ),
-    'pseudo-classes': (
-      'hover',
-      'focus',
-      'active',
-      'visited',
-    )
-  ), $settings);
+@mixin add-styles($input: (), $settings: ()) {
+  $s: map-merge($add-styles, $settings);
 
-  // Check if we should output base styles
+  // Check if we should output base modifier styles
   @if map-get($s, 'output-base') {
-    // Loop through selected properties
+    // Loop through properties and set them if they exist
     @each $prop in map-get($s, 'properties') {
-      // Set property if it exists
-      @if (map-has-key($i, $prop)) {
-        #{$prop}: map-get($i, $prop);
-      } // End @if property exists
-    } // End @each properties
-  } // End @if output-base
+      @if (map-has-key($input, $prop)) {
+        #{$prop}: map-get($input, $prop);
+      }
+    }
+  }
 
-  // Check if we should output base pseudo styles
+  // Check if we should output pseudo-class styles
   @if map-get($s, 'output-pseudo') {
-    // Loop through pseudo-classes
+    // Loop through pseudo-classes and see if they exist in $input
     @each $pseudo in map-get($s, 'pseudo-classes') {
-      // Set pseudo-class if it exists
-      @if (map-has-key($i, $pseudo)) {
+      @if (map-has-key($input, $pseudo)) {
         &:#{$pseudo} {
-          // Loop through selected properties
+          // Loop through properties and set them if they exist
           @each $prop in map-get($s, 'properties') {
-            // Set property if it exists
-            @if (map-has-key(map-get($i, $pseudo), $prop)) {
-              #{$prop}: map-fetch($i, $pseudo, $prop);
-            } // End @if property exists
-          } // End @each properties
-        } // Close &:#{$pseudo}
-      } // End @if pseudo-classes exists
-    } // End @each pseudo-classes
-  } // End @if output-base
+            @if (map-has-key(map-get($input, $pseudo), $prop)) {
+              #{$prop}: map-fetch($input, $pseudo, $prop);
+            }
+          }
+        }
+      }
+    }
+  }
 
-  // Check if we should output modifier styles
-  @if map-get($s, 'output-mods') {
-    // Check if modifiers exist
-    @if (map-has-key($i, map-get($s, 'modifiers'))) {
-      // Loop through and output modifiers
-      @each $mod-name, $mod-map in map-get($i, map-get($s, 'modifiers')) {
-        &.#{$mod-name} {
-          // Check if we should output base modifier styles
-          @if map-get($s, 'output-mods-base') {
-            // Loop through selected properties
-            @each $prop in map-get($s, 'properties') {
-              // Set property if it exists
-              @if (map-has-key($mod-map, $prop)) {
-                #{$prop}: map-get($mod-map, $prop);
-              } // End @if property exists
-            } // End @each properties
-          } // End @if output-mods-base
+}
 
-          @if map-get($s, 'output-mods-pseudo') {
-            // Loop through pseudo-classes
-            @each $pseudo in map-get($s, 'pseudo-classes') {
-              // Set pseudo-class if it exists
-              @if (map-has-key($mod-map, $pseudo)) {
-                &:#{$pseudo} {
-                  // Loop through selected properties
-                  @each $prop in map-get($s, 'properties') {
-                    // Set property if it exists
-                    @if (map-has-key(map-get($mod-map, $pseudo), $prop)) {
-                      #{$prop}: map-fetch($mod-map, $pseudo, $prop);
-                    } // End @if property exists
-                  } // End @each properties
-                } // Close &:#{$pseudo}
-              } // End @if pseudo-classes exists
-            } // End @each pseudo-classes
-          } // End @if output-mods-pseudo
-        } // Close &.#{$mod-name}
-      } // End @each modifiers
-    } // End @if modifiers
-  } // End @if output-mods
+// Add Modifiers
+// Output an array of modifiers for flat components.
+// @param $input
+// @param $key
+// @param $selector
+// @param $settings
+@mixin add-modifiers($input: (), $key: null, $selector: true, $settings: ()) {
+  $s: map-merge($add-styles, $settings);
+
+  // Grab the modifier map if it exists
+  @if (map-has-key($input, 'modifiers')) {
+    $input: map-get($input, 'modifiers');
+  }
+
+  // If an output is passed, re-map the input to the selected key.
+  // Also, we don't want to output the default modifier class.
+  @if ($key) {
+    @each $name, $map in $input {
+      @if ($key == $name) {
+        $input: ($name: $map);
+      }
+    }
+  } @else {
+    $input: map-remove($input, 'default');
+  }
+
+  // Loop through our input modifiers
+  @each $name, $map in $input {
+
+    @if ($selector) {
+      @if (map-has-key($map, 'selector')) {
+        $selector: map-get($map, 'selector');
+      } @else {
+        $selector: '&.' + $name;
+      }
+      #{$selector} {
+        @include add-styles($map, $settings);
+      }
+    } @else {
+      @include add-styles($map, $settings);
+    }
+
+  }
+
 }
 
 // Make Anchor
@@ -159,12 +126,12 @@
   }
 }
 
-// Make Headings
+// Build Headings
 // Creates the base styles for headings using the $headings map for defaults.
 // @param $options
 //   @type map
 //   @default $headings map
-@mixin make-headings($options: ()) {
+@mixin build-headings($options: ()) {
   $o: map-extend($headings, $options, true);
 
   h1, h2, h3, h4, h5, h6,

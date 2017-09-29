@@ -7,7 +7,7 @@ $filename: 'scss/blocks/_badge.scss';
 
 $badges: (
   'output' : true,
-  'output-colors' : true,
+  'output-modifiers' : true,
   'output-buttons' : true,
   'class' : 'badge',
 
@@ -15,11 +15,10 @@ $badges: (
   'font-size' : 0.9em,
   'border' : none,
   'border-radius' : $border-radius,
-  'border-radius-pill' : 3rem,
   'transition' : $transition,
 
-  'dot' : (
-    'size' : ($base-font-size / 2),
+  'close' : (
+    'margin' : 0 -0.25em 0 0.5em,
   ),
 
   'button' : (
@@ -27,26 +26,15 @@ $badges: (
     'padding' : 0.25em 0.5em,
   ),
 
-  // Add color styles
-  'color' : $color,
-  'background' : rgba($black, 0.05),
-  'hover' : (
-    'color' : $blue,
-    'background' : rgba($blue, 0.2),
-  ),
-
-  // add-color output
-  'style' : null,
-
-  // Close element
-  'close' : (
-    'output' : true,
-    'style' : null,
-    'margin' : 0 -0.25em 0 0.5em,
-  ),
-
-  // Modifiers
   'modifiers' : (
+    'default' : (
+      'color' : $color,
+      'background' : rgba($black, 0.05),
+      'hover' : (
+        'color' : $blue,
+        'background' : rgba($blue, 0.2),
+      ),
+    ),
     'inverted': (
       'color': $white,
       'background': $gray,
@@ -141,6 +129,20 @@ $badges: (
         'background': $red-700,
       ),
     ),
+    'square': (
+      'border-radius': 0,
+    ),
+    'pill': (
+      'border-radius': 3rem,
+    ),
+    'dot': (
+      'display': inline-block,
+      'width': ($base-font-size / 2),
+      'height': ($base-font-size / 2),
+      'padding': 0,
+      'vertical-align': top,
+      'border-radius': 3rem,
+    ),
   ),
 
 ) !default;
@@ -167,124 +169,25 @@ $badges: (
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: map-get($o, 'padding');
-  font-size: map-get($o, 'font-size');
-  text-decoration: none;
-  border: map-get($o, 'border');
-  border-radius: map-get($o, 'border-radius');
-  transition: map-get($o, 'transition');
 
-  &.pill {
-    border-radius: map-get($o, 'border-radius-pill');
-  }
-  &.square {
-    border-radius: 0;
-  }
+  @include add-styles($o);
+  @include add-modifiers($o, 'default', false, ('output-pseudo': false));
+
   &.dot {
-    display: inline-block;
     @include text-hide();
-    @include size(map-fetch($o, 'dot', 'size'));
-    padding: 0;
-    vertical-align: top;
-    border-radius: map-get($o, 'border-radius-pill');
   }
 
   // Close button
   // Check if $close exists and close output is enabled
   @if (variable-exists(close)) {
-    @if (map-fetch($o, 'close', 'output') == true) {
-
-      // Check if close is already output
-      @if (map-get($close, 'output') != true) {
-        // Output it explicitly
-        .#{map-get($close, 'class')} {
-          @include make-close(map-get($o, 'close'));
-        }
-      } @else {
-        // Only output the custom styles
-        .#{map-get($close, 'class')} {
-          margin: map-fetch($o, 'close', 'margin');
-        }
-      }
-
+    @if (map-get($close, 'output') == true) {
       .#{map-get($close, 'class')} {
-        @include add-close-color(map-get($o, 'close'));
-      }
-
-    } // End @if this.close.output is true
-  } // End @if $close
-
-}
-
-// Add Badge Color
-// Creates the color styles for badges.
-// @param $options
-//   @type map
-//   @default $badges map
-// @param $settings
-//   @type map
-//   @default ()
-// @param $properties
-//   @type map list
-//   @default ('color', 'background', 'border-color')
-// @param $style
-//   @type string
-//   @default null
-@mixin add-badge-color(
-  $options: (),
-  $settings: (),
-  $properties: ('color', 'background', 'border-color'),
-  $style: null
-) {
-  $o: map-extend($badges, $options, true);
-  $s: map-merge($settings, ('properties': $properties));
-
-  @if ($style == null) {
-    @if (map-has-key($o, 'style')) {
-      $style: map-get($o, 'style');
-    }
-  }
-
-  @if ($style != null) {
-
-    @if ($style != 'all') {
-      $s: map-merge($s, ('output-mods': false));
-      @if (map-has-key(map-get($o, 'modifiers'), $style) == true) {
-        $o: map-extend($o, map-fetch($o, 'modifiers', $style), true);
-      } @else if ($style != 'default') {
-        @warn 'The $badges map does not contain the modifier of "#{$style}"!';
+        @include add-styles(map-get($o, 'close'));
+        @if (map-fetch($o, 'close', 'key')) {
+          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
+        }
       }
     }
-
-  } @else {
-    $s: map-merge($s, ('output-mods': false));
-  }
-
-  @include add-color($o, $settings: $s);
-
-  // Close button
-  // Check if $close exists and close output is enabled
-  @if ($style != null) {
-    @if (variable-exists(close)) {
-      @if (map-fetch($o, 'close', 'output') == true) {
-
-        // Check if modifiers exist
-        @if (map-has-key($o, 'modifiers')) {
-          // Loop through and output modifiers
-          @each $mod-name, $mod-map in map-get($o, 'modifiers') {
-            @if (map-has-key($mod-map, 'close')) {
-
-              &.#{$mod-name} {
-                .#{map-get($close, 'class')} {
-                  @include add-close-color($style: map-fetch($mod-map, 'close', 'style'));
-                }
-              } // Close &.#{$mod-name}
-            }
-          } // End @each modifiers
-        } // End @if modifiers
-
-      } // End @if this.close.output is true
-    } // End @if $close
   }
 
 }
@@ -298,73 +201,42 @@ $badges: (
 
 .#{map-get($badges, 'class')} {
   @include make-badge();
-  @include add-badge-color(
-    $settings: ('output-pseudo': false)
-  );
 }
 a.#{map-get($badges, 'class')} {
-  @include add-badge-color(
-    $settings: ('output-base': false)
-  );
+  @include add-modifiers($badges, 'default', false, ('output-base': false));
 }
 
-// Check if we should output badge colors
-@if (map-get($badges, 'output-colors') == true) {
-
-/**
- * Colors
- */
-.#{map-get($badges, 'class')} {
-  @include add-badge-color(
-    $settings: (
-      'output-base': false,
-      'output-pseudo': false,
-      'output-mods-pseudo': false,
-    ),
-    $style: 'all'
-  );
-}
-a.#{map-get($badges, 'class')} {
-  @include add-badge-color(
-    $settings: (
-      'output-base': false,
-      'output-pseudo': false,
-      'output-mods-base': false
-    ),
-    $style: 'all'
-  );
+// Check if we should output badge modifiers
+@if (map-get($badges, 'output-modifiers') == true) {
+  .#{map-get($badges, 'class')} {
+    @include add-modifiers($badges, $settings: ('output-pseudo': false));
+  }
+  a.#{map-get($badges, 'class')} {
+    @include add-modifiers($badges, $settings: ('output-base': false));
+  }
 }
 
-} // End @if output-colors
-
-// Check if we should output button classes
+// Check if we should output button modifiers
 @if (map-get($badges, 'output-buttons') == true) {
-
-// Check if $buttons exists
-@if (variable-exists(buttons) == true) {
-
-/**
- * Button Badges
- */
-.#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
-  display: inline;
-  padding: map-fetch($badges, 'button', 'padding');
-}
-.#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
-  .#{map-get($badges, 'class')} {
-    margin-left: -(map-fetch($badges, 'button', 'margin'));
-    margin-right: map-fetch($badges, 'button', 'margin');
+  // Check if $buttons exists
+  @if (variable-exists(buttons) == true) {
+    .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
+      display: inline;
+      padding: map-fetch($badges, 'button', 'padding');
+    }
+    .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
+      .#{map-get($badges, 'class')} {
+        margin-left: -(map-fetch($badges, 'button', 'margin'));
+        margin-right: map-fetch($badges, 'button', 'margin');
+      }
+    }
+    .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
+      .#{map-get($badges, 'class')} {
+        margin-left: map-fetch($badges, 'button', 'margin');
+        margin-right: -(map-fetch($badges, 'button', 'margin'));
+      }
+    }
   }
 }
-.#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
-  .#{map-get($badges, 'class')} {
-    margin-left: map-fetch($badges, 'button', 'margin');
-    margin-right: -(map-fetch($badges, 'button', 'margin'));
-  }
-}
-
-} // End @if $buttons exists
-
-} // End @if output-buttons
 
 } // End @if output

@@ -7,64 +7,57 @@ $filename: 'scss/blocks/_notice.scss';
 
 $notices: (
   'output' : true,
-  'output-colors' : true,
+  'output-modifiers' : true,
   'class' : 'notice',
 
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
-  'padding-inline' : 0 0.25em,
   'font-size' : 1em,
   'line-height' : 1.5em,
-
-  // Add color styles
-  'color' : $color,
-  'background' : $gray-100,
   'border' : 1px solid rgba($black, 0.05),
   'border-radius' : $border-radius,
 
-  // Close element
   'close' : (
-    'output' : true,
-    'style' : null,
+    'float': right,
     'margin': 1em 0 1em 1em,
     'padding': 0.25em,
     'font-size': 1em,
   ),
 
-  // add-color output
-  'style' : null,
-
-  // Modifiers
   'modifiers' : (
+    'default' : (
+      'color' : $color,
+      'background' : $gray-100,
+    ),
     'inverted' : (
       'color' : $white,
       'background' : $color,
       'close' : (
-        'style' : 'inverted'
-      )
+        'key' : 'inverted',
+      ),
     ),
     'info' : (
       'background' : $blue-50,
     ),
     'info.inverted' : (
       'color' : $white,
-      'background' : rgba($blue, 0.9)
+      'background' : $blue,
     ),
     'success' : (
       'background' : $green-50,
     ),
     'success.inverted' : (
       'color' : $white,
-      'background' : rgba($green, 0.9)
+      'background' : $green,
     ),
     'warning' : (
       'background' : $yellow-100,
     ),
     'warning.inverted' : (
       'color' : $color,
-      'background' : rgba($yellow, 0.9),
+      'background' : $yellow,
       'close' : (
-        'style' : 'default'
+        'key' : 'default'
       ),
     ),
     'danger' : (
@@ -72,9 +65,14 @@ $notices: (
     ),
     'danger.inverted' : (
       'color' : $white,
-      'background' : rgba($red, 0.9)
+      'background' : $red,
     ),
-  ) // Close of modifiers
+    'inline' : (
+      'display' : inline,
+      'margin' : 0,
+      'padding' : 0 0.25em,
+    )
+  ),
 
 ) !default;
 
@@ -95,43 +93,23 @@ $notices: (
 //   @type map
 //   @default $notices map
 @mixin make-notice($options: ()) {
-  $o: map-merge($notices, $options);
+  $o: map-extend($notices, $options, true);
 
-  margin: map-get($o, 'margin');
-  padding: map-get($o, 'padding');
-  font-size: map-get($o, 'font-size');
-  line-height: map-get($o, 'line-height');
-  border-radius: map-get($o, 'border-radius');
+  @include add-styles($o);
+  @include add-modifiers($o, 'default', false);
 
   // Close button
   // Check if $close exists and close output is enabled
   @if (variable-exists(close)) {
-    @if (map-fetch($o, 'close', 'output') == true) {
-
-      // Check if close is already output
-      @if (map-get($close, 'output') != true) {
-        // Output it explicitly
-        .#{map-get($close, 'class')} {
-          @include make-close(map-get($o, 'close')) {
-            float: right;
-          }
-        }
-      } @else {
-        // Only output the custom styles
-        .#{map-get($close, 'class')} {
-          float: right;
-          margin: map-fetch($o, 'close', 'margin');
-          padding: map-fetch($o, 'close', 'padding');
-          font-size: map-fetch($o, 'close', 'font-size');
-        }
-      }
-
+    @if (map-get($close, 'output') == true) {
       .#{map-get($close, 'class')} {
-        @include add-close-color(map-get($o, 'close'));
+        @include add-styles(map-get($o, 'close'));
+        @if (map-fetch($o, 'close', 'key')) {
+          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
+        }
       }
-
-    } // End @if this.close.output is true
-  } // End @if $close
+    }
+  }
 
 }
 
@@ -184,48 +162,33 @@ $notices: (
   // Close button
   // Check if $close exists and close output is enabled
   @if ($style != null) {
-    @if (variable-exists(close)) {
-      @if (map-fetch($o, 'close', 'output') == true) {
 
-        // Check if modifiers exist
-        @if (map-has-key($o, 'modifiers')) {
-          // Loop through and output modifiers
-          @each $mod-name, $mod-map in map-get($o, 'modifiers') {
-            @if (map-has-key($mod-map, 'close')) {
-
-              &.#{$mod-name} {
-                .#{map-get($close, 'class')} {
-                  @include add-close-color($style: map-fetch($mod-map, 'close', 'style'));
-                }
-              } // Close &.#{$mod-name}
-            }
-          } // End @each modifiers
-        } // End @if modifiers
-
-      } // End @if this.close.output is true
-    } // End @if $close
   }
 
 }
 
-// Add Notice Inline
-// Adds styles for an inline or inline-block notice.
-// @param $display
-//   @type display property (inline, inline-block)
-//   @default inline
-// @param $options
-//   @type map
-//   @default $notices map
-@mixin add-notice-inline($display: inline, $options: ()) {
-  $o: map-merge($notices, $options);
+@mixin add-notice-close($options: ()) {
+  $o: map-extend($notices, $options, true);
 
-  &.#{$display} {
-    display: $display;
-    margin: 0;
-    padding: map-get($o, 'padding-inline');
-    box-shadow: none;
+  @if (variable-exists(close)) {
+
+    // Check if modifiers exist
+    @if (map-has-key($o, 'modifiers')) {
+      @each $name, $map in map-get($o, 'modifiers') {
+        @if (map-has-key($map, 'close')) {
+          &.#{$name} {
+            .#{map-get($close, 'class')} {
+              @include add-styles(map-get($map, 'close'));
+              @if (map-fetch($map, 'close', 'key')) {
+                @include add-modifiers($close, map-fetch($map, 'close', 'key'), false);
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
-
 }
 
 // Check if we should output modifier classes
@@ -237,20 +200,14 @@ $notices: (
 
 .#{map-get($notices, 'class')} {
   @include make-notice();
-  @include add-notice-inline();
-  @include add-notice-color();
 }
 
-// Check if we should output badge colors
-@if (map-get($notices, 'output-colors') == true) {
-
-/**
- * Colors
- */
-.#{map-get($notices, 'class')} {
-  @include add-notice-color($settings: ('output-base': false), $style: 'all');
+// Check if we should output notice modifiers
+@if (map-get($notices, 'output-modifiers') == true) {
+  .#{map-get($notices, 'class')} {
+    @include add-modifiers($notices);
+    @include add-notice-close();
+  }
 }
-
-} // End @if output-colors
 
 } // End @if output
