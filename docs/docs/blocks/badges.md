@@ -53,10 +53,10 @@ Badges are a compact way to represent descriptive content such as tags, counters
   </p>
   <p>
     <button class="button secondary button-badge-left">
-      <span class="badge blue">7</span> Button with Badge
+      <span class="badge light">7</span> Button with Badge
     </button>
     <button class="button secondary button-badge-right">
-      Button with Badge <span class="badge blue">16</span>
+      Button with Badge <span class="badge light">16</span>
     </button>
   </p>
   <p>

@@ -100,43 +100,6 @@ $notices: (
 
   @content;
 
-  // Close button
-  // Check if $close exists and close output is enabled
-  @if (variable-exists(close)) {
-    @if (map-get($close, 'output') == true) {
-      .#{map-get($close, 'class')} {
-        @include add-styles(map-get($o, 'close'));
-        @if (map-fetch($o, 'close', 'key')) {
-          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
-        }
-      }
-    }
-  }
-
-}
-
-@mixin add-notice-close($options: ()) {
-  $o: map-extend($notices, $options, true);
-
-  @if (variable-exists(close)) {
-
-    // Check if modifiers exist
-    @if (map-has-key($o, 'modifiers')) {
-      @each $name, $map in map-get($o, 'modifiers') {
-        @if (map-has-key($map, 'close')) {
-          &.#{$name} {
-            .#{map-get($close, 'class')} {
-              @include add-styles(map-get($map, 'close'));
-              @if (map-fetch($map, 'close', 'key')) {
-                @include add-modifiers($close, map-fetch($map, 'close', 'key'), false);
-              }
-            }
-          }
-        }
-      }
-    }
-
-  }
 }
 
 // Check if we should output modifier classes
@@ -154,7 +117,7 @@ $notices: (
 @if (map-get($notices, 'output-modifiers') == true) {
   .#{map-get($notices, 'class')} {
     @include add-modifiers($notices);
-    @include add-notice-close();
+    @include add-modifiers-close($notices);
   }
 }
 

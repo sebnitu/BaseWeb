@@ -80,6 +80,43 @@ $close: (
   }
 }
 
+// Add Modifiers Close
+// Creates styles for the close elements along with modifiers.
+@mixin add-modifiers-close($options: ()) {
+  $o: $options;
+
+  // Check if $close exists and if output is set to true
+  @if (map-get($close, 'output') == true) {
+
+    // If close key exists, output close styles
+    @if (map-has-key($o, 'close') == true) {
+      .#{map-get($close, 'class')} {
+        @include add-styles(map-get($o, 'close'));
+        @if (map-fetch($o, 'close', 'key')) {
+          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
+        }
+      }
+    }
+
+    // Check if modifiers exist
+    @if (map-has-key($o, 'modifiers')) {
+      @each $name, $map in map-get($o, 'modifiers') {
+        @if (map-has-key($map, 'close')) {
+          &.#{$name} {
+            .#{map-get($close, 'class')} {
+              @include add-styles(map-get($map, 'close'));
+              @if (map-fetch($map, 'close', 'key')) {
+                @include add-modifiers($close, map-fetch($map, 'close', 'key'), false);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
 // Check if we should output modifier classes
 @if (map-get($close, 'output') == true) {
 

@@ -35,113 +35,118 @@ $badges: (
         'background' : rgba($blue, 0.2),
       ),
     ),
-    'inverted': (
-      'color': $white,
-      'background': $gray,
-      'hover': (
-        'color': $white,
-        'background': $gray-700,
+    'inverted' : (
+      'color' : $white,
+      'background' : $gray,
+      'hover' : (
+        'color' : $white,
+        'background' : $gray-700,
       ),
     ),
-    'active': (
-      'color': $white,
-      'background': $blue,
-      'hover': (
-        'color': $white,
-        'background': $blue,
+    'active' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'color' : $white,
+        'background' : $blue,
       ),
     ),
 
-    'blue': (
-      'color': $blue,
-      'background': $blue-50,
-      'hover': (
-        'background': $blue-100,
+    'blue' : (
+      'color' : $blue,
+      'background' : $blue-50,
+      'hover' : (
+        'background' : $blue-100,
       ),
     ),
-    'blue.inverted': (
-      'color': $white,
-      'background': $blue,
-      'hover': (
-        'background': $blue-700,
+    'blue.inverted' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'background' : $blue-700,
       ),
     ),
-    'green': (
-      'color': $green,
-      'background': $green-50,
-      'hover': (
-        'color': $green,
-        'background': $green-100,
+    'green' : (
+      'color' : $green,
+      'background' : $green-50,
+      'hover' : (
+        'color' : $green,
+        'background' : $green-100,
       ),
     ),
-    'green.inverted': (
-      'color': $white,
-      'background': $green,
-      'hover': (
-        'color': $white,
-        'background': $green-700,
+    'green.inverted' : (
+      'color' : $white,
+      'background' : $green,
+      'hover' : (
+        'color' : $white,
+        'background' : $green-700,
       ),
     ),
-    'yellow': (
-      'color': $color,
-      'background': $yellow-100,
-      'hover': (
-        'color': $color,
-        'background': $yellow-300,
+    'yellow' : (
+      'color' : $color,
+      'background' : $yellow-100,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-300,
       ),
     ),
-    'yellow.inverted': (
-      'color': $color,
-      'background': $yellow,
-      'hover': (
-        'color': $color,
-        'background': $yellow-600,
+    'yellow.inverted' : (
+      'color' : $color,
+      'background' : $yellow,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-600,
       ),
     ),
-    'red': (
-      'color': $red,
-      'background': $red-50,
-      'hover': (
-        'color': $red,
-        'background': $red-100,
+    'red' : (
+      'color' : $red,
+      'background' : $red-50,
+      'hover' : (
+        'color' : $red,
+        'background' : $red-100,
       ),
     ),
-    'red.inverted': (
-      'color': $white,
-      'background': $red,
-      'hover': (
-        'color': $white,
-        'background': $red-700,
+    'red.inverted' : (
+      'color' : $white,
+      'background' : $red,
+      'hover' : (
+        'color' : $white,
+        'background' : $red-700,
       ),
     ),
-    'light': (
-      'color': $color,
-      'background': rgba($white, 0.75),
-      'hover': (
-        'color': $color,
-        'background': rgba($white, 1),
+    'light' : (
+      'color' : $color,
+      'background' : rgba($white, 0.75),
+      'hover' : (
+        'color' : $color,
+        'background' : rgba($white, 1),
       ),
     ),
-    'dark': (
-      'color': $white,
-      'background': rgba($black, 0.5),
-      'hover': (
-        'color': $white,
-        'background': rgba($black, 0.75),
+    'dark' : (
+      'color' : $white,
+      'background' : rgba($black, 0.5),
+      'hover' : (
+        'color' : $white,
+        'background' : rgba($black, 0.75),
       ),
     ),
-    'square': (
-      'border-radius': 0,
+    'square' : (
+      'border-radius' : 0,
     ),
-    'pill': (
-      'border-radius': 3rem,
+    'pill' : (
+      'border-radius' : 3rem,
     ),
-    'dot': (
-      'display': inline-block,
-      'width': ($base-font-size / 2),
-      'height': ($base-font-size / 2),
-      'padding': 0,
-      'vertical-align': top,
+    'dot' : (
+      'display' : inline-block,
+      'width' : ($base-font-size / 2),
+      'height' : ($base-font-size / 2),
+      'padding' : 0,
+      'vertical-align' : top,
+      'font-size' : 0,
+      'line-height' : 0,
+      'text-indent' : 100%,
+      'white-space' : nowrap,
+      'overflow' : hidden,
       'border-radius': 3rem,
     ),
   ),
@@ -179,20 +184,6 @@ $badges: (
   &.dot {
     @include text-hide();
   }
-
-  // Close button
-  // Check if $close exists and close output is enabled
-  @if (variable-exists(close)) {
-    @if (map-get($close, 'output') == true) {
-      .#{map-get($close, 'class')} {
-        @include add-styles(map-get($o, 'close'));
-        @if (map-fetch($o, 'close', 'key')) {
-          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
-        }
-      }
-    }
-  }
-
 }
 
 // Check if we should output modifier classes
@@ -213,6 +204,7 @@ a.#{map-get($badges, 'class')} {
 @if (map-get($badges, 'output-modifiers') == true) {
   .#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-pseudo': false));
+    @include add-modifiers-close($badges);
   }
   a.#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-base': false));
