@@ -11,13 +11,16 @@ $filename: 'scss/blocks/_button-groups.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $button-groups: (
-  'classes' : true,
-  'class-group' : 'button-group',
+  'output' : true,
+  'class' : 'button-group',
+
   'display' : 'inline',
   'orientation' : 'horizontal',
+
   'spacing' : 0.25em,
   'border-radius' : map-get($buttons, 'border-radius'),
-  'inner-border-radius' : 0
+  'inner-border-radius' : 0,
+
 ) !default;
 
 // Extend default component map with overrides if they exist
@@ -155,34 +158,34 @@ $button-groups: (
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($button-groups, 'classes') == true) {
+// Check if we should output button-groups
+@if (map-get($button-groups, 'output') == true) {
 
 /*==============================================================================
   @Button Groups - #{$filename}
 ==============================================================================*/
 
-.#{map-get($button-groups, 'class-group')} {
+.#{map-get($button-groups, 'class')} {
   @include make-button-group();
 }
 
 /**
  * Button Group Modifiers
  */
-.#{map-get($button-groups, 'class-group')}.inline {
+.#{map-get($button-groups, 'class')}.inline {
   @include add-button-group-display('inline');
 }
-.#{map-get($button-groups, 'class-group')}.block {
+.#{map-get($button-groups, 'class')}.block {
   @include add-button-group-display('block');
 }
-.#{map-get($button-groups, 'class-group')}.hori,
-.#{map-get($button-groups, 'class-group')}.horizontal {
+.#{map-get($button-groups, 'class')}.hori,
+.#{map-get($button-groups, 'class')}.horizontal {
   @include add-button-group-orientation('hori');
 }
-.#{map-get($button-groups, 'class-group')}.vert,
-.#{map-get($button-groups, 'class-group')}.vertical {
+.#{map-get($button-groups, 'class')}.vert,
+.#{map-get($button-groups, 'class')}.vertical {
   @include add-button-group-orientation('vert');
 }
 
 
-} // endif classes
+} // End @if output

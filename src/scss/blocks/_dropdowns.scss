@@ -6,8 +6,8 @@ $filename: 'scss/blocks/_dropdowns.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $dropdowns: (
-  'classes' : true,
-  'classes-position' : true,
+  'output' : true,
+  'output-position' : true,
 
   'class-dropdown-trigger' : 'dropdown-trigger',
   'class-dropdown'         : 'dropdown',
@@ -426,8 +426,8 @@ $dropdowns: (
   }
 }
 
-// Check if we should output dropdown classes
-@if (map-get($dropdowns, 'classes') == true) {
+// Check if we should output dropdowns
+@if (map-get($dropdowns, 'output') == true) {
 
 /*==============================================================================
   @Dropdowns - #{$filename}
@@ -485,8 +485,8 @@ $dropdowns: (
   ), $anchor: 'right-top');
 }
 
-// Check if we should output modifier classes
-@if (map-get($dropdowns, 'classes-position') == true) {
+// Check if we should output position classes
+@if (map-get($dropdowns, 'output-position') == true) {
 
 /*==============================================================================
   @Dropdown Anchor Positions - #{$filename}
@@ -532,6 +532,6 @@ $dropdowns: (
   @include add-dropdown-position($anchor: 'right-center');
 }
 
-} // endif classes-position
+} // End @if output position classes
 
-} // endif classes
+} // End @if output

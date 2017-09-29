@@ -6,9 +6,8 @@ $filename: 'scss/blocks/_tooltips.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $tooltips: (
-  'classes' : true,
-  'classes-position' : true,
-
+  'output' : true,
+  'output-position' : true,
   'class' : 'tooltip',
 
   'z-index' : 100,
@@ -253,8 +252,8 @@ $tooltips: (
   }
 }
 
-// Check if we should output classes
-@if (map-get($tooltips, 'classes') == true) {
+// Check if we should output tooltips
+@if (map-get($tooltips, 'output') == true) {
 
 /*==============================================================================
   @Tooltips - #{$filename}
@@ -275,7 +274,7 @@ $tooltips: (
 }
 
 // Check if we should output position classes
-@if (map-get($tooltips, 'classes-position') == true) {
+@if (map-get($tooltips, 'output-position') == true) {
 
 /**
  * Tooltip Positions
@@ -296,6 +295,6 @@ $tooltips: (
 @include add-tooltip-position('bottom-left', default);
 @include add-tooltip-position('bottom-right', default);
 
-} // endif position classes
+} // End @if output position classes
 
-} // endif classes
+} // End @if output

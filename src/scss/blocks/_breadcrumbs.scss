@@ -6,25 +6,25 @@ $filename: 'scss/blocks/_breadcrumb.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $breadcrumbs: (
-  'classes' : true,
-  'class-item' : 'item',
-  'class-current' : 'current',
+  'output' : true,
+  'class' : 'breadcrumb',
 
+  'display' : block,
   'margin' : 1em 0,
   'font-size' : 1em,
-  'color-current' : $color-light,
 
-  'anchors' : (
-    'output' : true,
-    'text-decoration' : null,
-  ),
-
-  // Delimiter Styles
   'delimiter' : (
-    'element' : '/', // Delimiter element content (e.g: '/', '—', '→', '»')
+    'content' : '/', // Delimiter element content (e.g: '/', '—', '→', '»')
     'padding' : 0 0.75em,
     'color' : $gray-400,
     'last-child' : false,
+  ),
+
+  'modifiers' : (
+    'current' : (
+      'selector' : '.current',
+      'color' : $color-light,
+    ),
   ),
 
 ) !default;
@@ -48,9 +48,8 @@ $breadcrumbs: (
 @mixin make-breadcrumb($options: ()) {
   $o: map-extend($breadcrumbs, $options, true);
 
-  display: block;
-  margin: map-get($o, 'margin');
-  font-size: map-get($o, 'font-size');
+  @include add-styles($o);
+  @include add-modifiers($o);
 
   // Remove default list styles
   ul,
@@ -68,26 +67,11 @@ $breadcrumbs: (
     margin: 0;
   }
 
-  // Link color styles
-  @if (map-fetch($o, 'anchors', 'output') == true) {
-    a {
-      @include make-anchor(map-get($o, 'anchors'));
-    }
-  }
-
-  // Current item styles
-  .#{map-get($o, 'class-current')} {
-    color: map-get($o, 'color-current');
-  }
-
   // Delimiter styles
   li:after {
-    content: map-fetch($o, 'delimiter', 'element');
-    padding: map-fetch($o, 'delimiter', 'padding');
-    color: map-fetch($o, 'delimiter', 'color');
+    @include add-styles(map-get($breadcrumbs, 'delimiter'));
   }
-
-  // Remove last delimiter if `delimiter-end` is set to false
+  // Remove last delimiter if ('delimiter', 'last-child') is set to false
   @if (map-fetch($o, 'delimiter', 'last-child') == false) {
     li:last-child:after {
       content: none;
@@ -95,15 +79,15 @@ $breadcrumbs: (
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($breadcrumbs, 'classes') == true) {
+// Check if we should output breadcrumbs
+@if (map-get($breadcrumbs, 'output') == true) {
 
 /*==============================================================================
   @Breadcrumb - #{$filename}
 ==============================================================================*/
 
-.breadcrumb {
+.#{map-get($breadcrumbs, 'class')} {
   @include make-breadcrumb();
 }
 
-} // endif classes
+} // End @if output

@@ -6,7 +6,8 @@ $filename: 'scss/blocks/_tabs.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $tabs: (
-  'classes' : true,
+  'output' : true,
+  'class' : 'tabs',
 
   'class-wrapper'       : 'tabs',
   'class-nav'           : 'tabs-nav',
@@ -258,8 +259,8 @@ $tabs: (
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($tabs, 'classes') == true) {
+// Check if we should output tabs
+@if (map-get($tabs, 'output') == true) {
 
 /*==============================================================================
   @Tabs - #{$filename}
@@ -280,4 +281,4 @@ $tabs: (
  */
 @include add-tab-style($style: 'line');
 
-} // endif classes
+} // End @if output

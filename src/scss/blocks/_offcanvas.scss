@@ -6,7 +6,8 @@ $filename: 'scss/custom/offcanvas.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $offcanvas: (
-  'classes' : true,
+  'output' : true,
+  'class' : 'oc',
 
   'class-wrap'     : 'oc-wrap',
   'class-content'  : 'oc-content',
@@ -535,8 +536,8 @@ $offcanvas: (
 
 }
 
-// Check if we should output modifier classes
-@if (map-get($offcanvas, 'classes') == true) {
+// Check if we should output off-canvas
+@if (map-get($offcanvas, 'output') == true) {
 /*==============================================================================
   @Off-Canvas - #{$filename}
 ==============================================================================*/
@@ -560,4 +561,4 @@ $offcanvas: (
   @include add-offcanvas-transition();
 }
 
-} // endif classes
+} // End @if output

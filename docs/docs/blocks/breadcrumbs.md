@@ -11,9 +11,9 @@ The most basic implementation of a breadcrumb looks like this:
 ```html
 <nav class="breadcrumb">
   <ol>
-    <li><a>Home</a></li>
-    <li><a>Some Page</a></li>
-    <li><a>Some Category</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Some Page</a></li>
+    <li><a href="#">Some Category</a></li>
     <li><span class="current">Current Page</span></li>
   </ol>
 </nav>
@@ -22,9 +22,9 @@ The most basic implementation of a breadcrumb looks like this:
 <div class="demo">
   <nav class="breadcrumb">
     <ol>
-      <li><a>Home</a></li>
-      <li><a>Some Page</a></li>
-      <li><a>Some Category</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Some Page</a></li>
+      <li><a href="#">Some Category</a></li>
       <li><span class="current">Current Page</span></li>
     </ol>
   </nav>
@@ -46,7 +46,7 @@ Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used 
     <th>Default</th>
   </tr>
   <tr>
-    <td><code>$breadcrumbs('classes')</code></td>
+    <td><code>$breadcrumbs('output')</code></td>
     <td><code>true</code> <a href="#var-note-1">*</a></td>
   </tr>
   <tr>
@@ -156,9 +156,9 @@ In this example, we'll use the `make-breadcrumb()` mixin to create a custom brea
 <div class="demo">
   <nav class="custom-breadcrumb">
     <ol>
-      <li><a><span>Home</span></a></li>
-      <li><a><span>Some Page</span></a></li>
-      <li><a><span>Some Category</span></a></li>
+      <li><a href="#"><span>Home</span></a></li>
+      <li><a href="#"><span>Some Page</span></a></li>
+      <li><a href="#"><span>Some Category</span></a></li>
       <li><span class="current">Current Page</span></li>
     </ol>
   </nav>
