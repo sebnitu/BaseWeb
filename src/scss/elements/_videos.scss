@@ -6,7 +6,7 @@ $filename: 'scss/elements/_videos.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $videos: (
-  'classes' : true,
+  'output' : true,
   'margin' : 2em 0,
   'ratio' : 56.25%
 ) !default; // The default video ratio (56.25% = 16 by 9)
@@ -80,8 +80,8 @@ $videos: (
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($videos, 'classes') == true) {
+// Check if we should output videos
+@if (map-get($videos, 'output') == true) {
 
 /*==============================================================================
   @Video - #{$filename}
@@ -100,4 +100,4 @@ $videos: (
   @include build-video-ratio(3, 2);
 }
 
-} // endif
+} // End @if output

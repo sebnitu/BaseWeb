@@ -6,7 +6,7 @@ $filename: 'scss/elements/_tables.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $tables: (
-  'classes' : true,
+  'output' : true,
 
   'valign' : top,
   'nth' : odd,
@@ -291,8 +291,8 @@ table {
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($tables, 'classes') == true) {
+// Check if we should output tables
+@if (map-get($tables, 'output') == true) {
 
 /*==============================================================================
   @Table Modifiers - #{$filename}
@@ -379,4 +379,4 @@ table {
   @include make-table-responsive();
 }
 
-} // endif classes
+} // End @if output

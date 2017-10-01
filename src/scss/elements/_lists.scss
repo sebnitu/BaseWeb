@@ -6,7 +6,7 @@ $filename: 'scss/elements/_lists.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $lists: (
-  'classes' : true,
+  'output' : true,
 
   'nth' : odd,
   'margin' : 1rem 0,
@@ -234,8 +234,8 @@ dl {
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($lists, 'classes') == true) {
+// Check if we should output lists
+@if (map-get($lists, 'output') == true) {
 
 /*==============================================================================
   @List Modifiers - #{$filename}
@@ -279,4 +279,4 @@ dl {
   @include add-list-hover();
 }
 
-} // endif classes
+} // End @if output
