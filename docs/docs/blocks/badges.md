@@ -28,6 +28,59 @@ Badges are a compact way to represent descriptive content such as tags, counters
     <a class="badge" href="#">Linked Badge</a>
   </p>
 
+  <p><strong>Icon Badge</strong></p>
+  <p class="flex">
+    <a class="badge" href="#">Text Badge</a>
+    <a class="badge" href="#">{% include content-icon.html icon="clock" %} Clock</a>
+    <a class="badge badge-icon" href="#">{% include content-icon.html icon="clock" %}</a>
+    <a class="badge inverted blue" href="#">{% include content-icon.html icon="phone" %} Phone</a>
+    <a class="badge badge-icon inverted blue" href="#">{% include content-icon.html icon="phone" %}</a>
+    <a class="badge inverted red" href="#">{% include content-icon.html icon="save" %} Save</a>
+    <a class="badge badge-icon inverted red" href="#">{% include content-icon.html icon="save" %}</a>
+    <a class="badge inverted green" href="#">{% include content-icon.html icon="share" %} Share</a>
+    <a class="badge badge-icon inverted green" href="#">{% include content-icon.html icon="share" %}</a>
+  </p>
+  <p class="flex">
+    <a class="badge pill" href="#">Text Badge</a>
+    <a class="badge pill" href="#">{% include content-icon.html icon="clock" %} Clock</a>
+    <a class="badge badge-icon pill" href="#">{% include content-icon.html icon="clock" %}</a>
+    <a class="badge inverted blue pill" href="#">{% include content-icon.html icon="phone" %} Phone</a>
+    <a class="badge badge-icon inverted blue pill" href="#">{% include content-icon.html icon="phone" %}</a>
+    <a class="badge inverted red pill" href="#">{% include content-icon.html icon="save" %} Save</a>
+    <a class="badge badge-icon inverted red pill" href="#">{% include content-icon.html icon="save" %}</a>
+    <a class="badge inverted green pill" href="#">{% include content-icon.html icon="share" %} Share</a>
+    <a class="badge badge-icon inverted green pill" href="#">{% include content-icon.html icon="share" %}</a>
+  </p>
+
+  <p><strong>Image Badge</strong></p>
+
+  <p class="flex">
+    <a class="badge" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
+    <a class="badge" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
+    <a class="badge pill" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
+    <a class="badge pill" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
+    <span class="badge dismissible">
+      <img src="/dist/img/avatar.png" width="32" height="32" alt="">
+      Text Badge
+      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
+    </span>
+    <span class="badge dismissible">
+      <img src="/dist/img/avatar-s.png" width="32" height="32" alt="">
+      Text Badge
+      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
+    </span>
+    <span class="badge pill dismissible">
+      <img src="/dist/img/avatar.png" width="32" height="32" alt="">
+      Text Badge
+      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
+    </span>
+    <span class="badge pill dismissible">
+      <img src="/dist/img/avatar-s.png" width="32" height="32" alt="">
+      Text Badge
+      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
+    </span>
+  </p>
+
   <p><strong>Dot Badges</strong></p>
 
   <p>This is some text with a dot badge <span class="badge blue dot inverted">*</span></p>
@@ -152,8 +205,8 @@ $badges: (
       'color' : $color,
       'background' : rgba($black, 0.05),
       'hover' : (
-        'color' : $blue,
-        'background' : rgba($blue, 0.2),
+        'color' : $color,
+        'background' : rgba($black, 0.15),
       ),
     ),
     'inverted' : (
@@ -169,7 +222,7 @@ $badges: (
       'background' : $blue,
       'hover' : (
         'color' : $white,
-        'background' : $blue,
+        'background' : $blue-700,
       ),
     ),
 
@@ -191,7 +244,7 @@ $badges: (
       'color' : $green,
       'background' : $green-50,
       'hover' : (
-        'color' : $green,
+        'color' : $green-700,
         'background' : $green-100,
       ),
     ),
@@ -223,7 +276,7 @@ $badges: (
       'color' : $red,
       'background' : $red-50,
       'hover' : (
-        'color' : $red,
+        'color' : $red-700,
         'background' : $red-100,
       ),
     ),
@@ -302,8 +355,24 @@ Creates the base styles for badges block as well as the default modifier styles.
 
 <p class="subheading">Example Usage</p>
 
-```scss
+For default badge styles, wrap the mixin include with your badge class. In this case, we'll use the default:
 
+```scss
+.#{map-get($badges, 'class')} {
+  @include make-badge();
+}
 ```
+
+For style on anchor badges, we'll use the `add-modifiers` mixin passing in the $badges map, default key and we'll set the selector output to false so that styles are injected directly. We'll also disable the base output since we've already output those styles in the previous example.
+
+```scss
+a.#{map-get($badges, 'class')} {
+  @include add-modifiers($badges, 'default', false, ('output-base': false));
+}
+```
+
+<div class="demo demo-badges">
+  <p>This is a <span class="badge">Default badge</span> and a <a class="badge" href="#">Linked Badge</a></p>
+</div>
 
 </section><!-- .docs-item -->

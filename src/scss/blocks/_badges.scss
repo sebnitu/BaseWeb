@@ -31,8 +31,8 @@ $badges: (
       'color' : $color,
       'background' : rgba($black, 0.05),
       'hover' : (
-        'color' : $blue,
-        'background' : rgba($blue, 0.2),
+        'color' : $color,
+        'background' : rgba($black, 0.15),
       ),
     ),
     'inverted' : (
@@ -48,7 +48,7 @@ $badges: (
       'background' : $blue,
       'hover' : (
         'color' : $white,
-        'background' : $blue,
+        'background' : $blue-700,
       ),
     ),
 
@@ -70,7 +70,7 @@ $badges: (
       'color' : $green,
       'background' : $green-50,
       'hover' : (
-        'color' : $green,
+        'color' : $green-700,
         'background' : $green-100,
       ),
     ),
@@ -102,7 +102,7 @@ $badges: (
       'color' : $red,
       'background' : $red-50,
       'hover' : (
-        'color' : $red,
+        'color' : $red-700,
         'background' : $red-100,
       ),
     ),
@@ -195,6 +195,32 @@ $badges: (
 
 .#{map-get($badges, 'class')} {
   @include make-badge();
+
+  > .icon {
+    margin: 0 0.25rem 0 0;
+    font-size: 1rem;
+  }
+
+  &.badge-icon {
+    padding: 0.5rem;
+
+    > .icon {
+      margin: 0;
+    }
+  }
+
+  > img {
+    margin: -0.25rem 0.75rem -0.25rem -0.75rem;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &.pill {
+    > img {
+      border-radius: 3rem;
+      margin-right: 0.5rem;
+    }
+  }
 }
 a.#{map-get($badges, 'class')} {
   @include add-modifiers($badges, 'default', false, ('output-base': false));
