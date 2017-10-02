@@ -155,11 +155,13 @@ $tabs: (
         }
 
         &:first-child {
-          @include border-left-radius(map-get($o, 'border-radius'));
+          border-top-left-radius: map-get($o, 'border-radius');
+          border-bottom-left-radius: map-get($o, 'border-radius');
         }
         &:last-child {
           border-right: none;
-          @include border-right-radius(map-get($o, 'border-radius'));
+          border-top-right-radius: map-get($o, 'border-radius');
+          border-bottom-right-radius: map-get($o, 'border-radius');
         }
       }
       a {
@@ -192,7 +194,8 @@ $tabs: (
     }
     .#{$class} .#{map-get($o, 'class-nav')} {
       ul {
-        @include border-bottom-radius(0);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
       }
       ul li {
         border-bottom: 1px solid transparent;
@@ -212,7 +215,8 @@ $tabs: (
       padding: map-get($o, 'padding-content');
       border: map-get($o, 'border');
       border-top: none;
-      @include border-bottom-radius(map-get($o, 'border-radius'));
+      border-bottom-left-radius: map-get($o, 'border-radius');
+      border-bottom-right-radius: map-get($o, 'border-radius');
     }
 
   } @else if ($style == 'line') {

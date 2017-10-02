@@ -13,7 +13,7 @@ $filename: 'scss/custom/_docs-demos.scss';
   border-bottom: 3px solid $bg-color;
 
   .box {
-    @include size(50px);
+    @include add-size(50px);
     margin: 0 auto;
     color: $white;
     background: $blue;
@@ -57,39 +57,18 @@ $filename: 'scss/custom/_docs-demos.scss';
   height: 200px;
 
   .box {
-    @include vertical-center();
+    @include add-vertical-center();
   }
-}
-
-/**
- * Border Radius
- */
-.demo-border-radius {
-  display: inline-block;
-  background: $blue;
-  @include size(30px);
-}
-.mixin-border-top-radius {
-  @include border-top-radius(50%);
-}
-.mixin-border-left-radius {
-  @include border-left-radius(50%);
-}
-.mixin-border-right-radius {
-  @include border-right-radius(50%);
-}
-.mixin-border-bottom-radius {
-  @include border-bottom-radius(50%);
 }
 
 /**
  * Text Truncate
  */
-.demo.demo-text-truncate {
+.demo.demo-add-text-truncate {
   .box {
-    @include size(150px, auto);
+    @include add-size(150px, auto);
     padding: 1em 1.5em;
-    @include text-truncate();
+    @include add-text-truncate();
   }
 }
 
@@ -104,8 +83,8 @@ $filename: 'scss/custom/_docs-demos.scss';
     border: 0 none;
     background: url("../img/baseweb-hori-black.svg") no-repeat left center;
     background-size: 187px 40px;
-    @include size(187px, 40px);
-    @include text-hide();
+    @include add-size(187px, 40px);
+    @include add-text-hide();
   }
 }
 
@@ -114,22 +93,22 @@ $filename: 'scss/custom/_docs-demos.scss';
  */
 .demo.demo-triangle {
   text-align: center;
-  @include clearfix();
+  @include add-clearfix();
 }
 %triangle {
-  @include make-triangle-base();
+  @include add-triangle-base();
 }
 .example-triangle-1 {
   @extend %triangle;
-  @include make-triangle( 14px, $blue, 'left' );
+  @include add-triangle( 14px, $blue, 'left' );
 }
 .example-triangle-2 {
   @extend %triangle;
-  @include make-triangle( 14px, $purple, 'down' );
+  @include add-triangle( 14px, $purple, 'down' );
 }
 .example-triangle-3 {
   @extend %triangle;
-  @include make-triangle( 14px, $red, 'right' );
+  @include add-triangle( 14px, $red, 'right' );
 }
 
 /**
@@ -225,7 +204,7 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 .demo-grid-nested .col p {
   margin: 0.75rem 0;
-  @include text-truncate();
+  @include add-text-truncate();
 }
 @include media-min('medium') {
   .demo-grid-nested {
@@ -239,7 +218,7 @@ $filename: 'scss/custom/_docs-demos.scss';
  */
 .demo-buttons {
   > p {
-    @include clearfix();
+    @include add-clearfix();
     margin: 0 0 0.5rem -0.5rem;
   }
 
@@ -302,7 +281,7 @@ $filename: 'scss/custom/_docs-demos.scss';
  * Dropdown
  */
 .demo-dropdown {
-  @include clearfix();
+  @include add-clearfix();
   padding: 2em 3em;
   overflow: visible;
 
@@ -418,7 +397,7 @@ $filename: 'scss/custom/_docs-demos.scss';
  * Tooltips
  */
 .demo-tooltips {
-  @include clearfix();
+  @include add-clearfix();
   overflow: visible;
 
   hr {

@@ -111,7 +111,7 @@ $forms: (
 @mixin make-form-group-inline($options: ()) {
   $o: map-merge($forms, $options);
 
-  @include clearfix();
+  @include add-clearfix();
   margin-right: -(map-get( $forms, 'vertical-align' ));
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
 
@@ -248,7 +248,7 @@ form {
  */
 .form-action {
   @include make-form-group-base();
-  @include clearfix();
+  @include add-clearfix();
 
   .button,
   .input-align {
