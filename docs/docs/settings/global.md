@@ -8,137 +8,125 @@ order: 6
 
 The rest of the global variables used in BaseWeb. These mainly deal with things like general framework settings, mixin defaults and structure or scaffolding colors.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-    <th>Description</th>
-  </tr>
+```scss
+////////////////////////////////////////////////////////////////////////////////
+// @Framework Settings
+////////////////////////////////////////////////////////////////////////////////
 
-  <tr>
-    <th colspan="3">Framework Settings</th>
-  </tr>
-  <tr>
-    <td><code>$global-box-sizing</code></td>
-    <td><code>border-box</code></td>
-    <td>Set to <code>null</code> to not output global box sizing styles in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-clearfix</code></td>
-    <td><code>clearfix</code></td>
-    <td>Set to <code>null</code> to not output the clearfix class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-remove-clearfix</code></td>
-    <td><code>remove-clearfix</code></td>
-    <td>Set to <code>null</code> to not output the remove-clearfix class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-float-left</code></td>
-    <td><code>float-left</code></td>
-    <td>Set to <code>null</code> to not output the float-left class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-float-right</code></td>
-    <td><code>float-right</code></td>
-    <td>Set to <code>null</code> to not output the float-right class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
+// Sets global box sizing property
+// @type border-box, null
+$global-box-sizing: border-box !default;
 
-  <tr>
-    <td><code>$class-show</code></td>
-    <td><code>'show'</code></td>
-    <td>Set to <code>null</code> to not output the show class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-hide</code></td>
-    <td><code>'hide'</code></td>
-    <td>Set to <code>null</code> to not output the hide class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-show-hide-min</code></td>
-    <td><code>'down'</code></td>
-    <td>Set to <code>null</code> to not output the down class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
-  <tr>
-    <td><code>$class-show-hide-max</code></td>
-    <td><code>'up'</code></td>
-    <td>Set to <code>null</code> to not output the up class in <code>scss</code > &rarr; <code>elements</code> &rarr; <code>_base.scss</code>.</td>
-  </tr>
+// Class name used in clearfix and remove-clearfix classes
+// @type class-name, null
+$class-clearfix: 'clearfix' !default;
+$class-remove-clearfix: 'remove-clearfix' !default;
 
-  <tr>
-    <th colspan="3">Mixin Defaults</th>
-  </tr>
-  <tr>
-    <td><code>$box-sizing</code></td>
-    <td colspan="2"><code>border-box</code></td>
-  </tr>
-  <tr>
-    <td><code>$box-shadow</code></td>
-    <td colspan="2"><code>0</code> <code>1px</code> <code>3px</code> <code>rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$border-radius</code></td>
-    <td colspan="2"><code>3px</code></td>
-  </tr>
+// Class name used in float left and right classes
+// @type class-name, null
+$class-float-left: 'float-left' !default;
+$class-float-right: 'float-right' !default;
 
-  <tr>
-    <td><code>$transition</code></td>
-    <td colspan="2"><code>all</code> <code>0.25s</code> <code>linear</code></td>
-  </tr>
-  <tr>
-    <td><code>$transition-property</code></td>
-    <td colspan="2"><code>all</code></td>
-  </tr>
-  <tr>
-    <td><code>$transition-duration</code></td>
-    <td colspan="2"><code>0.25s</code></td>
-  </tr>
-  <tr>
-    <td><code>$transition-timing-function</code></td>
-    <td colspan="2"><code>linear</code></td>
-  </tr>
-  <tr>
-    <td><code>$transition-delay</code></td>
-    <td colspan="2"><code>0.25s</code></td>
-  </tr>
+$class-show: 'show' !default;
+$class-hide: 'hide' !default;
 
-  <tr>
-    <th colspan="3">Scaffolding</th>
-  </tr>
-  <tr>
-    <td><code>$bg-color</code></td>
-    <td colspan="2">
-      <div class="swatch-wrap">
-        <span class="swatch bg-bg-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-100" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$bg-selection</code></td>
-    <td colspan="2">
-      <div class="swatch-wrap">
-        <span class="swatch bg-bg-selection"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($green, 0.25)" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$border-color</code></td>
-    <td colspan="2">
-      <div class="swatch-wrap">
-        <span class="swatch bg-border-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.10)" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$border-color-hover</code></td>
-    <td colspan="2">
-      <div class="swatch-wrap">
-        <span class="swatch bg-border-color-hover"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="rgba($black, 0.25)" readonly="">
-      </div>
-    </td>
-  </tr>
-</table>
+// Whether or not to output media based show-hide classes
+$class-show-hide-min: 'down' !default;
+$class-show-hide-max: 'up' !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Mixin Defaults
+////////////////////////////////////////////////////////////////////////////////
+
+// @type box-sizing value (border-box, none)
+$box-sizing: border-box !default;
+
+// @type box-shadow value ([horizontal offset] [vertical offset] [blur radius]
+//   [spread radius] [color])
+$box-shadow: 0 1px 3px rgba($black, 0.1) !default;
+
+// @type unit (pixel, percent)
+$border-radius: 3px !default;
+
+// Transition
+// @type transition value ([transition-property] [transition-duration]
+//   [transition-timing-function] [transition-delay])
+$transition-property: all !default;
+$transition-duration: 0.25s !default;
+$transition-timing-function: linear !default;
+$transition-delay: 0.25s !default;
+$transition: $transition-property $transition-duration $transition-timing-function !default;
+
+// Add Styles
+// Used as default settings in add-styles and add-modifiers mixins
+// @type map
+$add-styles: (
+  'output-base' : true,
+  'output-pseudo' : true,
+  'properties' : (
+    // Structure
+    'display',
+    'float',
+    'width',
+    'height',
+    'margin',
+    'margin-top',
+    'margin-left',
+    'margin-right',
+    'margin-bottom',
+    'padding',
+    'padding-top',
+    'padding-left',
+    'padding-right',
+    'padding-bottom',
+    'vertical-align',
+    'content',
+
+    // Typography
+    'font-family',
+    'font-size',
+    'line-height',
+    'font-weight',
+    'text-align',
+    'text-indent',
+    'white-space',
+    'letter-spacing',
+    'overflow',
+    'color',
+    'text-shadow',
+
+    // Aesthetic
+    'background',
+    'background-color',
+    'background-clip',
+    'box-shadow',
+    'border',
+    'border-color',
+    'border-radius',
+
+    // Transitions
+    'transition',
+    'transition-property',
+    'transition-duration',
+    'transition-timing-function',
+    'transition-duration',
+  ),
+  'pseudo-classes' : (
+    'hover',
+    'focus',
+    'active',
+    'visited',
+  ),
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Scaffolding
+////////////////////////////////////////////////////////////////////////////////
+
+// Colors
+// @type color
+$bg-color:           $gray-100 !default;
+$bg-selection:       rgba($green, 0.25) !default;
+$border-color:       rgba($black, 0.10) !default;
+$border-color-hover: rgba($black, 0.25) !default;
+```

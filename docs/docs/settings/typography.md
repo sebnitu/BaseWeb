@@ -8,171 +8,125 @@ order: 5
 
 The default typographic settings. These dictate the base typographic styles for headings, body text, inline text elements and links as well as modifier classes.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+////////////////////////////////////////////////////////////////////////////////
+// @Typography
+////////////////////////////////////////////////////////////////////////////////
 
-  <tr>
-    <th colspan="2">Font Families</th>
-  </tr>
-  <tr>
-    <td><code>$font-family-sans</code></td>
-    <td>
-      <code>-apple-system,</code>
-      <code>system-ui,</code>
-      <code>BlinkMacSystemFont</code>
-      <code>"Segoe UI",</code>
-      <code>"Roboto",</code>
-      <code>"Helvetica Neue",</code>
-      <code>Arial,</code>
-      <code>sans-serif</code>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$font-family-serif</code></td>
-    <td>
-      <code>georgia,</code>
-      <code>"Times New Roman",</code>
-      <code>times,</code> <code>serif</code>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$font-family-mono</code></td>
-    <td><code>Menlo,</code>
-      <code>Monaco,</code>
-      <code>Consolas,</code>
-      <code>"Courier New",</code>
-      <code>monospace</code>
-    </td>
-  </tr>
+// Font Families
+// @type font-stack
+$font-family-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: georgia, "Times New Roman", times, serif !default;
+$font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace !default;
 
-  <tr>
-    <th colspan="3">Base Font Styles</th>
-  </tr>
-  <tr>
-    <td><code>$base-font-family</code></td>
-    <td><code>$font-family-sans</code></td>
-  </tr>
-  <tr>
-    <td><code>$base-font-size</code></td>
-    <td><code>16px</code></td>
-  </tr>
-  <tr>
-    <td><code>$base-line-height</code></td>
-    <td><code>1.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$base-font-weight</code></td>
-    <td><code>normal</code></td>
-  </tr>
+// Base Font Styles
+// @type font-stack
+$base-font-family: $font-family-sans !default;
 
-  <tr>
-    <th colspan="3">Header Styles</th>
-  </tr>
-  <tr>
-    <td><code>$font-family-heading</code></td>
-    <td><code>inherit</code></td>
-  </tr>
-  <tr>
-    <td><code>$line-height-heading</code></td>
-    <td><code>1.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$font-weight-heading</code></td>
-    <td><code>bold</code></td>
-  </tr>
+// @type unit (pixel)
+$base-font-size: 16px !default;
 
-  <tr>
-    <th colspan="3">Text Color Assignment</th>
-  </tr>
-  <tr>
-    <td><code>$color</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$color-light</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-light"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$color-dark</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-dark"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$gray-900" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$color-heading</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-heading"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$color-dark" readonly="">
-      </div>
-    </td>
-  </tr>
+// @type unit (pixel, em, percentage)
+$base-line-height: 1.5em !default;
 
-  <tr>
-    <th colspan="3">Links</th>
-  </tr>
-  <tr>
-    <td><code>$color-link</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-link"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$color-link-hover</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-link-hover"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue-700" readonly="">
-      </div>
-    </td>
-  </tr>
+// @type value (keyword, numeric)
+$base-font-weight: font-weight('normal') !default;
 
-  <tr>
-    <th colspan="3">Heading Links</th>
-  </tr>
-  <tr>
-    <td><code>$color-heading-link</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-heading-link"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$color-heading" readonly="">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <td><code>$color-heading-link-hover</code></td>
-    <td>
-      <div class="swatch-wrap">
-        <span class="swatch bg-color-heading-link-hover"></span>
-        <input type="text" class="input swatch-value" onclick="this.select()" value="$blue" readonly="">
-      </div>
-    </td>
-  </tr>
+// Text Color Assignment
+// @type color
+$color:         $gray-900 !default;
+$color-light:   $gray !default;
+$color-dark:    $gray-900 !default;
 
-  <tr>
-    <th colspan="3">Miscellaneous</th>
-  </tr>
-  <tr>
-    <td><code>$letter-spacing</code></td>
-    <td><code>1px</code></td>
-  </tr>
-</table>
+// Miscellaneous
+// @type unit (pixel)
+$letter-spacing: 1px !default;
+
+// @type boolean
+$text-elements: true;
+$text-modifiers: true;
+
+////////////////////////////////////////////////////////////////////////////////
+// @Anchors Maps
+////////////////////////////////////////////////////////////////////////////////
+
+$anchors: (
+  'output' : true,
+
+  'color' : $blue,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-color' : null,
+  'text-decoration' : none,
+
+  'hover' : (
+    'color' : $blue-700,
+    'border' : null,
+    'border-color' : inherit,
+    'text-decoration' : null,
+  ),
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'anchors') == true) {
+    $anchors: map-extend($anchors, map-get($override, 'anchors'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Headings Maps
+////////////////////////////////////////////////////////////////////////////////
+
+$headings: (
+  'output' : true,
+
+  'margin' : 1rem 0,
+  'font-family' : inherit,
+  'line-height' : 1.25em,
+  'font-weight' : font-weight('semi-bold'),
+  'color' : $color-dark,
+
+  'anchors' : (
+    'output' : true,
+
+    'color' : $color-dark,
+    'border' : none,
+    'text-decoration' : null,
+
+    'hover' : (
+      'color' : $blue,
+    ),
+  ),
+
+  'scale' : (
+    'h1' : 2.5em,
+    'h2' : 2em,
+    'h3' : 1.75em,
+    'h4' : 1.5em,
+    'h5' : 1.25em,
+    'h6' : 1em,
+  ),
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'headings') == true) {
+    $headings: map-extend($headings, map-get($override, 'headings'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Shorthands
+////////////////////////////////////////////////////////////////////////////////
+
+// Anchors color Shorthands
+$anchor-color: map-get($anchors, 'color') !default;
+$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
+
+// Headings color Shorthands
+$heading-color: map-get($headings, 'color') !default;
+$heading-anchor-color: map-fetch($headings, 'anchors', 'color') !default;
+$heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !default;
+```
