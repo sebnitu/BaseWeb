@@ -13,6 +13,7 @@ $dropdowns: (
   'class-dropdown'         : 'dropdown',
   'class-dropdown-content' : 'dropdown-content',
   'class-dropdown-menu'    : 'dropdown-menu',
+  'class-anchor'           : 'anchor',
 
   'class-active' : 'active',
   'class-action-hover' : 'on-hover',
@@ -139,13 +140,14 @@ $dropdowns: (
 
 // Add Dropdown Style
 // Creates specific dropdown styles for a content type.
+// @param $type
+//   @type string
+//   @options 'dropdown', 'dropdown-content', 'dropdown-menu'
+//   @default 'dropdown'
 // @param $options
 //   @type map
 //   @default $dropdowns map
-// @param $type
-//   @type string (dropdown, dropdown-content, dropdown-menu)
-//   @default dropdown
-@mixin add-dropdown-style($options: (), $type : 'dropdown') {
+@mixin add-dropdown-style($type : 'dropdown', $options: ()) {
   $o: map-merge($dropdowns, $options);
 
   @if ($type == 'dropdown') {
@@ -197,6 +199,7 @@ $dropdowns: (
       padding: map-get($o, 'block-padding');
       color: map-get($o, 'color');
       text-decoration: none;
+      border: none;
       border-radius: map-get($o, 'border-radius');
 
       &:hover {
@@ -259,6 +262,7 @@ $dropdowns: (
       display: block;
       padding: map-get($o, 'padding-menu-item');
       color: map-get($o, 'color');
+      border: none;
       text-decoration: none;
     }
 
@@ -270,14 +274,17 @@ $dropdowns: (
 
 // Add Dropdown Position
 // Adds the position styles for a dropdown.
+// @param $anchor
+//   @type string
+//     'bottom-left', 'bottom-right', 'bottom-center',
+//     'top-left', 'top-right', 'top-center',
+//     'left-top', 'left-bottom', 'left-center',
+//     'right-top', 'right-bottom', 'right-center'
+//   @default 'bottom-left'
 // @param $options
 //   @type map
 //   @default $dropdowns map
-// @param $anchor
-//   @type string (bottom-left, bottom-right, bottom-center, top-left, top-right, top-center,
-//     left-top, left-bottom, left-center, right-top, right-bottom, right-center)
-//   @default bottom-left
-@mixin add-dropdown-position($options: (), $anchor : 'bottom-left') {
+@mixin add-dropdown-position($anchor : 'bottom-left', $options: ()) {
   $o: map-merge($dropdowns, $options);
 
   // Set our target action
@@ -446,21 +453,21 @@ $dropdowns: (
  * Dropdown
  */
 .#{map-get($dropdowns, 'class-dropdown')} {
-  @include add-dropdown-style($type: 'dropdown');
+  @include add-dropdown-style('dropdown');
 }
 
 /**
  * Dropdown Content
  */
 .#{map-get($dropdowns, 'class-dropdown-content')} {
-  @include add-dropdown-style($type: 'dropdown-content');
+  @include add-dropdown-style('dropdown-content');
 }
 
 /**
  * Dropdown Menu
  */
 .#{map-get($dropdowns, 'class-dropdown-menu')} {
-  @include add-dropdown-style($type: 'dropdown-menu');
+  @include add-dropdown-style('dropdown-menu');
 }
 
 /*==============================================================================
@@ -469,7 +476,7 @@ $dropdowns: (
 
 .#{map-get($dropdowns, 'class-dropdown-trigger')} {
   @include make-dropdown-trigger();
-  @include add-dropdown-position($anchor: 'bottom-left');
+  @include add-dropdown-position('bottom-left');
 }
 
 .#{map-get($dropdowns, 'class-dropdown-menu')} {
@@ -477,12 +484,12 @@ $dropdowns: (
     'target' : '.dropdown-menu',
     'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu'
   ));
-  @include add-dropdown-position((
+  @include add-dropdown-position('right-top', (
     'target' : '.dropdown-menu',
     'target-action' : '> li:hover > .dropdown-menu, &.active > li > .dropdown-menu',
     'offset-margin-two' : -1px,
     'offset-position' : -0.5em
-  ), $anchor: 'right-top');
+  ));
 }
 
 // Check if we should output position classes
@@ -492,43 +499,43 @@ $dropdowns: (
   @Dropdown Anchor Positions - #{$filename}
 ==============================================================================*/
 
-.anchor-bottom-left {
+.#{map-get($dropdowns, 'class-anchor')}-bottom-left {
   @include add-dropdown-position($anchor: 'bottom-left');
 }
-.anchor-bottom-right {
+.#{map-get($dropdowns, 'class-anchor')}-bottom-right {
   @include add-dropdown-position($anchor: 'bottom-right');
 }
-.anchor-bottom-center {
+.#{map-get($dropdowns, 'class-anchor')}-bottom-center {
   @include add-dropdown-position($anchor: 'bottom-center');
 }
 
-.anchor-top-left {
+.#{map-get($dropdowns, 'class-anchor')}-top-left {
   @include add-dropdown-position($anchor: 'top-left');
 }
-.anchor-top-right {
+.#{map-get($dropdowns, 'class-anchor')}-top-right {
   @include add-dropdown-position($anchor: 'top-right');
 }
-.anchor-top-center {
+.#{map-get($dropdowns, 'class-anchor')}-top-center {
   @include add-dropdown-position($anchor: 'top-center');
 }
 
-.anchor-left-top {
+.#{map-get($dropdowns, 'class-anchor')}-left-top {
   @include add-dropdown-position($anchor: 'left-top');
 }
-.anchor-left-bottom {
+.#{map-get($dropdowns, 'class-anchor')}-left-bottom {
   @include add-dropdown-position($anchor: 'left-bottom');
 }
-.anchor-left-center {
+.#{map-get($dropdowns, 'class-anchor')}-left-center {
   @include add-dropdown-position($anchor: 'left-center');
 }
 
-.anchor-right-top {
+.#{map-get($dropdowns, 'class-anchor')}-right-top {
   @include add-dropdown-position($anchor: 'right-top');
 }
-.anchor-right-bottom {
+.#{map-get($dropdowns, 'class-anchor')}-right-bottom {
   @include add-dropdown-position($anchor: 'right-bottom');
 }
-.anchor-right-center {
+.#{map-get($dropdowns, 'class-anchor')}-right-center {
   @include add-dropdown-position($anchor: 'right-center');
 }
 

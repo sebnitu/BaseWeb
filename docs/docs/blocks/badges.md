@@ -4,16 +4,10 @@ title: "Badges"
 order: 8
 ---
 
-<div style="background: #ccc; padding: 2em; border-radius: 4px;">
-  <p>Close Default: <a href="#" class="close">{% include content-icon.html icon="x" %}</a></p>
-  <p>Close Inverted: <a href="#" class="close inverted">{% include content-icon.html icon="x" %}</a></p>
-  <p>Close Danger: <a href="#" class="close danger">{% include content-icon.html icon="x" %}</a></p>
-</div>
-
 Badges are a compact way to represent descriptive content such as tags, counters or labels. They primarily would contain text and can also have associated photos, icons or a dismissible trigger. Badges can be represented using a `<span>` element but also as an `<a>` link.
 
 ```html
-
+<span class="badge">Badge</span>
 ```
 
 <div class="demo demo-badges">
@@ -123,36 +117,171 @@ Badges are a compact way to represent descriptive content such as tags, counters
   </p>
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="block-notices-map" class="docs-item" markdown="1">
+
+### Variable Map
 
 Button variables are encompassed within the `$badges` map and are used throughout all button mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$badges('classes')</code></td>
-    <td><code>true</code></td>
-  </tr>
-  <tr>
-    <td><code>$badges('class')</code></td>
-    <td><code>'badge'</code></td>
-  </tr>
-</table>
+```scss
+$badges: (
+  'output' : true,
+  'output-modifiers' : true,
+  'output-buttons' : true,
+  'class' : 'badge',
 
-## Mixins
+  'padding' : 0.25rem 0.75rem,
+  'font-size' : 0.9em,
+  'border' : none,
+  'border-radius' : $border-radius,
+  'transition' : $transition,
 
-...
+  'close' : (
+    'margin' : 0 -0.25em 0 0.5em,
+  ),
 
-<ul class="list list-docs">
+  'button' : (
+    'margin' : 0.5em,
+    'padding' : 0.25em 0.5em,
+  ),
 
-<li markdown="1">
+  'modifiers' : (
+    'default' : (
+      'color' : $color,
+      'background' : rgba($black, 0.05),
+      'hover' : (
+        'color' : $blue,
+        'background' : rgba($blue, 0.2),
+      ),
+    ),
+    'inverted' : (
+      'color' : $white,
+      'background' : $gray,
+      'hover' : (
+        'color' : $white,
+        'background' : $gray-700,
+      ),
+    ),
+    'active' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'color' : $white,
+        'background' : $blue,
+      ),
+    ),
+
+    'blue' : (
+      'color' : $blue,
+      'background' : $blue-50,
+      'hover' : (
+        'background' : $blue-100,
+      ),
+    ),
+    'blue.inverted' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'background' : $blue-700,
+      ),
+    ),
+    'green' : (
+      'color' : $green,
+      'background' : $green-50,
+      'hover' : (
+        'color' : $green,
+        'background' : $green-100,
+      ),
+    ),
+    'green.inverted' : (
+      'color' : $white,
+      'background' : $green,
+      'hover' : (
+        'color' : $white,
+        'background' : $green-700,
+      ),
+    ),
+    'yellow' : (
+      'color' : $color,
+      'background' : $yellow-100,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-300,
+      ),
+    ),
+    'yellow.inverted' : (
+      'color' : $color,
+      'background' : $yellow,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-600,
+      ),
+    ),
+    'red' : (
+      'color' : $red,
+      'background' : $red-50,
+      'hover' : (
+        'color' : $red,
+        'background' : $red-100,
+      ),
+    ),
+    'red.inverted' : (
+      'color' : $white,
+      'background' : $red,
+      'hover' : (
+        'color' : $white,
+        'background' : $red-700,
+      ),
+    ),
+    'light' : (
+      'color' : $color,
+      'background' : rgba($white, 0.75),
+      'hover' : (
+        'color' : $color,
+        'background' : rgba($white, 1),
+      ),
+    ),
+    'dark' : (
+      'color' : $white,
+      'background' : rgba($black, 0.5),
+      'hover' : (
+        'color' : $white,
+        'background' : rgba($black, 0.75),
+      ),
+    ),
+    'square' : (
+      'border-radius' : 0,
+    ),
+    'pill' : (
+      'border-radius' : 3rem,
+    ),
+    'dot' : (
+      'display' : inline-block,
+      'width' : ($base-font-size / 2),
+      'height' : ($base-font-size / 2),
+      'padding' : 0,
+      'vertical-align' : top,
+      'font-size' : 0,
+      'line-height' : 0,
+      'text-indent' : 100%,
+      'white-space' : nowrap,
+      'overflow' : hidden,
+      'border-radius': 3rem,
+    ),
+  ),
+
+) !default;
+```
+
+</section><!-- .docs-item -->
+
+<section id="mixin-make-badge" class="docs-item" markdown="1">
 
 ### make-button
 
-...
+Creates the base styles for badges block as well as the default modifier styles.
 
 ```scss
 @include make-badge( $options: () );
@@ -177,6 +306,4 @@ Button variables are encompassed within the `$badges` map and are used throughou
 
 ```
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

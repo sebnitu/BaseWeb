@@ -287,211 +287,73 @@ dropdowns.init();
 For more details on how to customize and use the public methods, take a look at the [dropdowns JavaScript](/docs/javascript/dropdowns) documentation.
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="block-notices-map" class="docs-item" markdown="1">
+
+### Variable Map
 
 Dropdown variables are encompassed within the `$dropdowns` map and are used throughout all dropdown mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('classes-position')</code></td>
-    <td><code>false</code></td>
-  </tr>
+```scss
+$dropdowns: (
+  'output' : true,
+  'output-position' : true,
 
-  <tr>
-    <td><code>$dropdowns('class-dropdown')</code></td>
-    <td><code>'dropdown'</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('class-dropdown-content')</code></td>
-    <td><code>'dropdown-content'</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('class-dropdown-menu')</code></td>
-    <td><code>'dropdown-menu'</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('class-dropdown-trigger')</code></td>
-    <td><code>'dropdown-trigger'</code></td>
-  </tr>
+  'class-dropdown-trigger' : 'dropdown-trigger',
+  'class-dropdown'         : 'dropdown',
+  'class-dropdown-content' : 'dropdown-content',
+  'class-dropdown-menu'    : 'dropdown-menu',
+  'class-anchor'           : 'anchor',
 
-  <tr>
-    <td><code>$dropdowns('target')</code></td>
-    <td><code>'.dropdown'</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('target-action')</code></td>
-    <td><code>'&:not(.on-click):hover</code> <code>> .dropdown,</code> <code>&.active > .dropdown'</code></td>
-  </tr>
+  'class-active' : 'active',
+  'class-action-hover' : 'on-hover',
+  'class-action-click' : 'on-click',
 
-  <tr>
-    <td><code>$dropdowns('target-zindex')</code></td>
-    <td><code>100</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('target-action-zindex')</code></td>
-    <td><code>105</code></td>
-  </tr>
+  'target' : null,
+  'target-action' : null,
 
-  <tr>
-    <td><code>$dropdowns('width')</code></td>
-    <td><code>15rem</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('padding')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('padding-menu')</code></td>
-    <td><code>0.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('padding-menu-item')</code></td>
-    <td><code>0.75em 1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('block-margin')</code></td>
-    <td><code>-0.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('block-padding')</code></td>
-    <td><code>1em</code></td>
-  </tr>
+  'target-zindex'        : 100,
+  'target-action-zindex' : 105,
 
-  <tr>
-    <td><code>$dropdowns('font-size')</code></td>
-    <td><code>px-to-rem(14px)</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('line-height')</code></td>
-    <td><code>1.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('background')</code></td>
-    <td><code>$white</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('background-hover')</code></td>
-    <td><code>rgba($black, 0.05)</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('background-clip')</code></td>
-    <td><code>padding-box</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('border')</code></td>
-    <td><code>1px solid</code> <code>rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('border-inner')</code></td>
-    <td><code>1px solid</code> <code>rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('box-shadow')</code></td>
-    <td><code>0 2px 6px</code> <code>rgba($black, 0.15)</code></td>
-  </tr>
+  'width'             : 16rem,
+  'padding'           : 1em,
+  'padding-menu'      : 0.5em,
+  'padding-menu-item' : 0.75em 1em,
 
-  <tr>
-    <td><code>$dropdowns('color')</code></td>
-    <td><code>$color</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('color-hover')</code></td>
-    <td><code>$color</code></td>
-  </tr>
+  'block-margin'      : -0.5em,
+  'block-padding'     : 1em,
 
-  <tr>
-    <td><code>$dropdowns('content-sep')</code></td>
-    <td><code>0.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('content-sep-hr')</code></td>
-    <td><code>1em</code></td>
-  </tr>
+  'font-size'   : px-to-rem(14px),
+  'line-height' : 1.35em,
 
-  <tr>
-    <th colspan="2">Transition</th>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-property')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-in-duration')</code></td>
-    <td><code>0.25s</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-in-timing-function')</code></td>
-    <td><code>linear</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-in-delay')</code></td>
-    <td><code>0s</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-out-duration')</code></td>
-    <td><code>0.25s</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-out-timing-function')</code></td>
-    <td><code>linear</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('transition-out-delay')</code></td>
-    <td><code>0.25s</code></td>
-  </tr>
+  'background'       : $white,
+  'background-hover' : rgba($black, 0.05),
+  'background-clip'  : padding-box,
+  'border'           : 1px solid rgba($black, 0.1),
+  'border-inner'     : 1px solid rgba($black, 0.1),
+  'border-radius'    : $border-radius,
+  'box-shadow'       : 0 2px 6px rgba($black, 0.15),
+  'color'            : $color,
+  'color-hover'      : $color,
+  'color-active'     : $color-light,
 
-  <tr>
-    <th colspan="2">Position</th>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('offset-transition')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('offset-margin')</code></td>
-    <td><code>-1px</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('offset-margin-alt')</code></td>
-    <td><code>0</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('offset-position')</code></td>
-    <td><code>0</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('dropdown-position')</code></td>
-    <td><code>bottom-left</code></td>
-  </tr>
-  <tr>
-    <td><code>$dropdowns('dropdown-menu-position')</code></td>
-    <td><code>right-top</code></td>
-  </tr>
-</table>
+  'content-sep'    : 0.5em,
+  'content-sep-hr' : 1em,
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output dropdown classes. Set to `false` if you want to use the dropdown modifier mixins semantically and/or reduce CSS output.
-</div>
+  'offset-margin-one' : -1px, // The first position margin offset
+  'offset-margin-two' : 0,    // The second position margin offset (does not apply to centered dropdowns)
+  'offset-position'   : 0,    // The second position offset (does not apply to centered dropdowns)
 
-## Mixins
+  'dropdown-position'      : 'bottom-left',
+  'dropdown-position-menu' : 'right-top',
 
-Dropdown mixins are used to create the base styles for a dropdown as well as their position and behavior variations.
+) !default;
+```
 
-<ul class="list list-docs">
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-dropdown" class="docs-item" markdown="1">
 
 ### make-dropdown
 
@@ -526,9 +388,9 @@ Below is an example of how BaseWeb initiates the class specific styles for dropd
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-breadcrumb" class="docs-item" markdown="1">
 
 ### make-dropdown-trigger
 
@@ -562,9 +424,9 @@ This example shows how BaseWeb initiates the styles for a dropdown trigger using
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-breadcrumb" class="docs-item" markdown="1">
 
 ### add-dropdown-style
 
@@ -610,9 +472,9 @@ Shows how dropdown styles are added using the style type variable for preset sty
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-breadcrumb" class="docs-item" markdown="1">
 
 ### add-dropdown-position
 
@@ -626,16 +488,23 @@ Adds the position styles for a dropdown.
   <tr>
     <th>Variable</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$options</code></td>
-    <td>Map</td>
+    <td colspan="2">Map</td>
     <td><code>$dropdowns()</code></td>
   </tr>
   <tr>
     <td><code>$anchor</code></td>
-    <td>String (bottom-left, bottom-right, bottom-center, top-left, top-right, top-center, left-top, left-bottom, left-center, right-top, right-bottom, right-center)</td>
+    <td>String</td>
+    <td>
+      <code>'bottom-left'</code>, <code>'bottom-right'</code>, <code>'bottom-center'</code>,
+      <code>'top-left'</code>, <code>'top-right'</code>, <code>'top-center'</code>,
+      <code>'left-top'</code>, <code>'left-bottom'</code>, <code>'left-center'</code>,
+      <code>'right-top'</code>, <code>'right-bottom'</code>, <code>'right-center'</code>
+    </td>
     <td><code>'bottom-left'</code></td>
   </tr>
 </table>
@@ -646,13 +515,13 @@ Example of how class specific positioning are added using the dropdown position 
 
 ```scss
 .anchor-bottom-left {
-  @include add-dropdown-position($anchor: 'bottom-left');
+  @include add-dropdown-position('bottom-left');
 }
 .anchor-bottom-right {
-  @include add-dropdown-position($anchor: 'bottom-right');
+  @include add-dropdown-position('bottom-right');
 }
 .anchor-bottom-center {
-  @include add-dropdown-position($anchor: 'bottom-center');
+  @include add-dropdown-position('bottom-center');
 }
 ```
 
@@ -706,6 +575,8 @@ Example of how class specific positioning are added using the dropdown position 
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
 
+  <hr>
+
   <div class="dropdown-trigger anchor-top-left">
     <button class="button">top-left</button>
     <div class="dropdown">
@@ -754,6 +625,8 @@ Example of how class specific positioning are added using the dropdown position 
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
 
+  <hr>
+
   <div class="dropdown-trigger anchor-left-top">
     <button class="button">left-top</button>
     <div class="dropdown">
@@ -801,6 +674,8 @@ Example of how class specific positioning are added using the dropdown position 
       </div><!-- .dropdown-content -->
     </div><!-- .dropdown -->
   </div><!-- .dropdown-trigger -->
+
+  <hr>
 
   <div class="dropdown-trigger anchor-right-top">
     <button class="button">right-top</button>
@@ -852,6 +727,4 @@ Example of how class specific positioning are added using the dropdown position 
 
 </div><!-- .demo -->
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

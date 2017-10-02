@@ -30,89 +30,46 @@ You can also add position classes such as `.tooltip-top`, `.tooltip-left`, `.too
   <a href="#" class="button tooltip tooltip-bottom" data-tooltip="Tooltip text here...">Tooltip Bottom</a>
 </div><!-- .demo -->
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="block-notices-map" class="docs-item" markdown="1">
+
+### Variable Map
 
 Tooltip variables are encompassed within the `$tooltips` map and are used throughout all tooltip mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$tooltips('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('class')</code></td>
-    <td><code>'tooltip'</code></td>
-  </tr>
+```scss
+$tooltips: (
+  'output' : true,
+  'output-position' : true,
+  'class' : 'tooltip',
 
-  <tr>
-    <td><code>$tooltips('z-index')</code></td>
-    <td><code>100</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('max-width')</code></td>
-    <td><code>30em</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('padding')</code></td>
-    <td><code>0.5em 1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('transition-duration')</code></td>
-    <td><code>0.2s</code></td>
-  </tr>
+  'z-index' : 100,
+  'max-width' : 30em,
+  'padding' : 0.5em 1em,
 
-  <tr>
-    <td><code>$tooltips('background')</code></td>
-    <td><code>rgba($color, 0.9)</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
+  'transition-duration' : 0.2s,
 
-  <tr>
-    <td><code>$tooltips('font-size')</code></td>
-    <td><code>px-to-rem(12px)</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('line-height')</code></td>
-    <td><code>1.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('color')</code></td>
-    <td><code>$white</code></td>
-  </tr>
+  'background' : rgba($color, 0.9),
+  'border-radius' : $border-radius,
 
-  <tr>
-    <td><code>$tooltips('position-start')</code></td>
-    <td><code>0</code></td>
-  </tr>
-  <tr>
-    <td><code>$tooltips('position-end')</code></td>
-    <td><code>0.5em</code></td>
-  </tr>
+  'font-size' : px-to-rem(12px),
+  'line-height' : 1.5em,
+  'color' : $white,
 
-</table>
+  'position-start' : 0,
+  'position-end'   : 0.5em,
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output tooltip classes. Set to `false` if you want to use the tooltip modifier mixins semantically and/or reduce CSS output.
-</div>
+) !default;
+```
 
-## Mixins
+</section><!-- .docs-item -->
 
-Tooltip mixins are used to create the base styles for tooltips.
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-make-tooltip" class="docs-item" markdown="1">
 
 ### make-tooltip
 
-Creates the base styles for tooltips element.
+Creates the base styles for tooltips block.
 
 ```scss
 @include make-tooltip( $options: () );
@@ -136,12 +93,14 @@ Creates the base styles for tooltips element.
 The default use of this mixin simply outputs the default styles for tooltips using the class set in `$tooltips('class')` which is `.tooltip`.
 
 ```scss
-@include make-tooltip();
+.#{map-get($tooltips, 'class')} {
+  @include make-tooltip();
+}
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-tooltip-position" class="docs-item" markdown="1">
 
 ### add-tooltip-position
 
@@ -155,21 +114,23 @@ Adds the position styles for a tooltip.
   <tr>
     <th>Variable</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$anchor</code></td>
-    <td>String</td>
+    <td colspan="2">String</td>
     <td><code>'top'</code></td>
   </tr>
   <tr>
     <td><code>$class</code></td>
-    <td>String | null | default</td>
+    <td>String</td>
+    <td><code>null</code>, <code>default</code>, <code>'string...'</code></td>
     <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$options</code></td>
-    <td>Map</td>
+    <td colspan="2">Map</td>
     <td><code>$tooltips()</code></td>
   </tr>
 </table>
@@ -211,6 +172,4 @@ We can set the default tooltip position by wrapping the mixin with the base tool
   <a href="#" class="button tooltip tooltip-bottom-right" data-tooltip="Tooltip text here...">Tooltip Bottom Right</a>
 </div><!-- .demo -->
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

@@ -88,6 +88,7 @@ $tabs: (
     a {
       display: block;
       padding: map-get($o, 'padding-nav');
+      border: none;
       text-decoration: none;
     }
 
@@ -121,16 +122,17 @@ $tabs: (
 
 // Add Tab Style
 // Creates the styles for tabs.
-// @param $options
-//   @type map
-//   @default $tabs map
 // @param $style
-//   @type string ('fold', 'line')
+//   @type string
+//   @options 'fold', 'line'
 //   @default 'fold'
 // @param $class
 //   @type string
 //   @default 'style-#{$style}'
-@mixin add-tab-style($options: (), $style: 'fold', $class: null) {
+// @param $options
+//   @type map
+//   @default $tabs map
+@mixin add-tab-style($style: 'fold', $class: null, $options: ()) {
   $o: map-merge($tabs, $options);
 
   @if ($class == null) {

@@ -36,83 +36,43 @@ Sometimes, you want to omit the current page link all together, but still repres
 
 You also have the `.wrapped` class to add simple wrapper styles to your breadcrumbs.
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="block-notices-map" class="docs-item" markdown="1">
+
+### Variable Map
 
 Breadcrumb variables are encompassed within the `$breadcrumbs` map and are used throughout all breadcrumb mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('output')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('class-item')</code></td>
-    <td><code>'item'</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('class-current')</code></td>
-    <td><code>'current'</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('margin')</code></td>
-    <td><code>1em 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('font-size')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('color')</code></td>
-    <td><code>$color-link</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('color-hover')</code></td>
-    <td><code>$color-link-hover</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('color-current')</code></td>
-    <td><code>$color-light</code></td>
-  </tr>
-  <tr>
-    <th colspan="2">Delimiter</th>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('delimiter')</code></td>
-    <td><code>'/'</code> <a href="#var-note-2">**</a></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('delimiter-padding')</code></td>
-    <td><code>0 0.75em</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('delimiter-color')</code></td>
-    <td><code>$gray-400</code></td>
-  </tr>
-  <tr>
-    <td><code>$breadcrumbs('delimiter-end')</code></td>
-    <td><code>false</code></td>
-  </tr>
-</table>
+```scss
+$breadcrumbs: (
+  'output' : true,
+  'class' : 'breadcrumb',
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output breadcrumb classes. Set to `false` if you want to use breadcrumb mixins semantically and/or reduce CSS output.
-</div>
+  'display' : block,
+  'margin' : 1em 0,
+  'font-size' : 1em,
 
-<div class="notice info" id="var-note-2" markdown="1">
-** Delimiter element content used to separate breadcrumb items (e.g: `/`, `—`, `→`, `»`).
-</div>
+  'delimiter' : (
+    'content' : '/', // Delimiter element content (e.g: '/', '—', '→', '»')
+    'padding' : 0 0.75em,
+    'color' : $gray-400,
+    'last-child' : false,
+  ),
 
-## Mixins
+  'modifiers' : (
+    'current' : (
+      'selector' : '.current',
+      'color' : $color-light,
+    ),
+  ),
 
-Breadcrumb mixins are used to create the class output for breadcrumbs. This includes basic breadcrumb styles and wrapper modifier as well as the fancy breadcrumb class.
+) !default;
+```
 
-<ul class="list list-docs">
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-breadcrumb" class="docs-item" markdown="1">
 
 ### make-breadcrumb
 
@@ -140,30 +100,9 @@ Creates the basic breadcrumb styles.
 In this example, we'll use the `make-breadcrumb()` mixin to create a custom breadcrumb style.
 
 ```scss
-.custom-breadcrumb {
-  @include make-breadcrumb((
-    'color' : $green,
-    'color-hover' : $red,
-    'delimiter' : '»'
-  ));
+.#{map-get($breadcrumbs, 'class')} {
+  @include make-breadcrumb();
 }
 ```
 
-```html
-<nav class="custom-breadcrumb">...</nav>
-```
-
-<div class="demo">
-  <nav class="custom-breadcrumb">
-    <ol>
-      <li><a href="#"><span>Home</span></a></li>
-      <li><a href="#"><span>Some Page</span></a></li>
-      <li><a href="#"><span>Some Category</span></a></li>
-      <li><span class="current">Current Page</span></li>
-    </ol>
-  </nav>
-</div>
-
-</li>
-
-</ul>
+</section><!-- .docs-item -->

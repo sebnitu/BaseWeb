@@ -134,16 +134,25 @@ $offcanvas: (
 
 // Add Off-Canvas Transition
 // Creates transition styles for off-canvas elements
-// @param $options
-//   @type map
-//   @default $offcanvas map
 // @param $target
 //   @type string
+//   @options
+//     'slide-in-left', 'slide-in-right'
+//     'reveal-left', 'reveal-right'
+//     'slide-along-left', 'slide-along-right'
+//     'slide-out-left', 'slide-out-right'
+//     'scale-down-left', 'scale-down-right'
+//     'scale-up-left', 'scale-up-right'
+//     'scale-rotate-left', 'scale-rotate-right'
+//     'open-door-left', 'open-door-right'
 //   @default $offcanvas('class-aside-left')
 // @param $style
 //   @type string
 //   @default $offcanvas('transition')
-@mixin add-offcanvas-transition($options: (), $target: map-get($offcanvas, 'class-aside-id'), $style: map-get($offcanvas, 'transition')) {
+// @param $options
+//   @type map
+//   @default $offcanvas map
+@mixin add-offcanvas-transition($target: map-get($offcanvas, 'class-aside-id'), $style: map-get($offcanvas, 'transition'), $options: ()) {
   $o: map-merge($offcanvas, $options);
 
   // slide in left
@@ -556,7 +565,7 @@ $offcanvas: (
 // open-door-left, open-door-right
 // ---
 // Example usage:
-// @include add-offcanvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
+// @include add-offcanvas-transition('oc-aside-id', 'scale-rotate-left');
 @if (map-get($offcanvas, 'transition')) {
   @include add-offcanvas-transition();
 }

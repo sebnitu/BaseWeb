@@ -70,60 +70,32 @@ Also, if you'd like your button group to span the full width of their container,
   </div>
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
 
-Button group variables are encompassed within the `$button-groups` map and are used throughout all button group mixins to set default values and toggle classes output.
+<section id="block-button-groups-map" class="docs-item" markdown="1">
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$button-groups('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('class-group')</code></td>
-    <td><code>'button-group'</code></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('display')</code></td>
-    <td><code>'inline'</code></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('orientation')</code></td>
-    <td><code>'horizontal'</code></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('spacing')</code></td>
-    <td><code>0.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('border-radius')</code></td>
-    <td><code>map-get($buttons, 'border-radius')</code> <a href="#var-note-2">**</a></td>
-  </tr>
-  <tr>
-    <td><code>$button-groups('inner-border-radius')</code></td>
-    <td><code>0</code> <a href="#var-note-2">**</a></td>
-  </tr>
-</table>
+### Variable Map
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output button group classes. Set to `false` if you want to use the button group mixins semantically and/or reduce CSS output.
-</div>
+Button group variables are encompassed within the `$button-groups` map and are used throughout all button group mixins to set default values and toggle output.
 
-<div class="notice info" id="var-note-2" markdown="1">
-\** If either `border-radius` or `inner-border-radius` are set to `null`, the border radius of buttons will default to whatever they inherit from button styles.
-</div>
+```scss
+$button-groups: (
+  'output' : true,
+  'class' : 'button-group',
 
-## Mixins
+  'display' : 'inline',
+  'orientation' : 'horizontal',
 
-Button group mixins are used to define and modify button group styles. They provide a way to toggle button groups being horizontal or vertical and inline or block.
+  'spacing' : 0.25em,
+  'border-radius' : map-get($buttons, 'border-radius'),
+  'inner-border-radius' : 0,
 
-<ul class="list list-docs">
+) !default;
+```
 
-<li markdown="1">
+</section><!-- .docs-item -->
+
+<section id="mixin-make-button-group" class="docs-item" markdown="1">
 
 ### make-button-group
 
@@ -151,9 +123,9 @@ Creates the base styles for button groups and sets the default display and orien
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-button-group-display" class="docs-item" markdown="1">
 
 ### add-button-group-display
 
@@ -167,23 +139,25 @@ Adds display styles for button groups. This can either be `inline` so it behaves
   <tr>
     <th>Variable</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$display</code></td>
-    <td>String: 'inline' | 'block'</td>
+    <td>String</td>
+    <td><code>'inline'</code>, <code>'block'</code></td>
     <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$options</code></td>
-    <td>Map</td>
+    <td colspan="2">Map</td>
     <td><code>$button-groups()</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-button-group-orientation" class="docs-item" markdown="1">
 
 ### add-button-group-orientation
 
@@ -197,20 +171,25 @@ Set the orientation styles for button groups. This can either be `horizontal` or
   <tr>
     <th>Variable</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$orientation</code></td>
-    <td>String: 'horizontal' | 'vertical' | 'hori' | 'vert'</td>
+    <td>String</td>
+    <td>
+      <code>'horizontal'</code>,
+      <code>'vertical'</code>,
+      <code>'hori'</code>,
+      <code>'vert'</code>
+    </td>
     <td><code>null</code></td>
   </tr>
   <tr>
     <td><code>$options</code></td>
-    <td>Map</td>
+    <td colspan="2">Map</td>
     <td><code>$button-groups()</code></td>
   </tr>
 </table>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->
