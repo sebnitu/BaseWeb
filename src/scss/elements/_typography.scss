@@ -5,10 +5,6 @@ $filename: 'scss/elements/_typography.scss';
 // @Typography Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
-// @Typography
-////////////////////////////////////////////////////////////////////////////////
-
 // Font Families
 // @type font-stack
 $font-family-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
@@ -50,15 +46,12 @@ $anchors: (
   'output' : true,
 
   'color' : $blue,
-  'border' : 1px solid rgba($black, 0.1),
-  'border-color' : null,
+  'border-bottom' : 1px solid rgba($black, 0.1),
   'text-decoration' : none,
 
   'hover' : (
     'color' : $blue-700,
-    'border' : null,
     'border-color' : inherit,
-    'text-decoration' : null,
   ),
 
 ) !default;
@@ -88,7 +81,6 @@ $headings: (
 
     'color' : $color-dark,
     'border' : none,
-    'text-decoration' : null,
 
     'hover' : (
       'color' : $blue,
@@ -137,18 +129,7 @@ $heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !
 //   @default $anchors map
 @mixin make-anchor($options: ()) {
   $o: map-extend($anchors, $options, true);
-
-  color: map-get($o, 'color');
-  border-bottom: map-get($o, 'border');
-  border-color: map-get($o, 'border-color');
-  text-decoration: map-get($o, 'text-decoration');
-
-  &:hover {
-    color: map-fetch($o, 'hover', 'color');
-    border: map-fetch($o, 'hover', 'border');
-    border-color: map-fetch($o, 'hover', 'border-color');
-    text-decoration: map-fetch($o, 'hover', 'text-decoration');
-  }
+  @include add-styles($o);
 }
 
 // Build Headings
@@ -161,11 +142,7 @@ $heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !
 
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin: map-get($o, 'margin');
-    font-family: map-get($o, 'font-family');
-    font-weight: map-get($o, 'font-weight');
-    line-height: map-get($o, 'line-height');
-    color: map-get($o, 'color');
+    @include add-styles($o);
 
     @if (map-fetch($o, 'anchors', 'output') == true) {
       a {

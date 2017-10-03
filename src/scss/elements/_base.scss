@@ -7,7 +7,7 @@ $filename: 'scss/elements/_base.scss';
 
 // Sets global box sizing property
 // @type border-box, null
-$global-box-sizing: border-box !default;
+$box-sizing: border-box !default;
 
 // Class name used in clearfix and remove-clearfix classes
 // @type class-name, null
@@ -53,11 +53,11 @@ table {
   font-size: 1em;
 }
 
-// Set default box sizing model to our global variable $global-box-sizing.
+// Set default box sizing model to our global variable $box-sizing.
 // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if ($global-box-sizing) {
+@if ($box-sizing) {
   *, *:before, *:after {
-    box-sizing: $global-box-sizing;
+    box-sizing: $box-sizing;
   }
 }
 
@@ -74,7 +74,7 @@ table {
 }
 
 /*==============================================================================
-  @Base Classes - #{$filename}
+  @Utility Classes - #{$filename}
 ==============================================================================*/
 
 // Outputs our cleafix class if one is set in $class-clearfix.
@@ -106,7 +106,7 @@ table {
 }
 
 /**
- * Utility Classes
+ * Show & Hide Classes
  */
 @if ($class-show) {
   .#{$class-show} {
@@ -133,7 +133,7 @@ table {
 }
 
 /**
- * Responsive Show Hide Classes
+ * Responsive Show and Hide Classes
  */
 @each $name, $value in $breakpoints {
   @if ($class-show-hide-min or $class-show-hide-max) {

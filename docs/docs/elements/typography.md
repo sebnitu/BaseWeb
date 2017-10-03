@@ -153,7 +153,7 @@ In addition to our inline elements, BaseWeb provides these stylistic typographic
 
 <section id="var-typography" class="docs-item" markdown="1">
 
-### Typography Variables
+### Variables
 
 ```scss
 // Font Families

@@ -8,6 +8,74 @@ Global mixins for our framework. These mixins are global and don't apply specifi
 
 <div id="toc" class="toc"></div>
 
+<section id="map-add-styles" class="docs-item" markdown="1">
+
+### Variable Map
+
+```scss
+$add-styles: (
+  'output-base' : true,
+  'output-pseudo' : true,
+  'properties' : (
+    // Structure
+    'display',
+    'float',
+    'width',
+    'height',
+    'margin',
+    'margin-top',
+    'margin-left',
+    'margin-right',
+    'margin-bottom',
+    'padding',
+    'padding-top',
+    'padding-left',
+    'padding-right',
+    'padding-bottom',
+    'vertical-align',
+    'content',
+
+    // Typography
+    'font-family',
+    'font-size',
+    'line-height',
+    'font-weight',
+    'text-align',
+    'text-indent',
+    'white-space',
+    'letter-spacing',
+    'overflow',
+    'color',
+    'text-shadow',
+    'text-decoration',
+
+    // Aesthetic
+    'background',
+    'background-color',
+    'background-clip',
+    'box-shadow',
+    'border',
+    'border-color',
+    'border-radius',
+
+    // Transitions
+    'transition',
+    'transition-property',
+    'transition-duration',
+    'transition-timing-function',
+    'transition-duration',
+  ),
+  'pseudo-classes' : (
+    'hover',
+    'focus',
+    'active',
+    'visited',
+  ),
+) !default;
+```
+
+</section><!-- .docs-item -->
+
 <section id="mixin-add-clearfix" class="docs-item" markdown="1">
 
 ### add-clearfix
