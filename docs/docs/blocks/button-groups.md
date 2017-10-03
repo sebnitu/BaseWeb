@@ -72,7 +72,7 @@ Also, if you'd like your button group to span the full width of their container,
 
 <div id="toc" class="toc"></div>
 
-<section id="block-button-groups-map" class="docs-item" markdown="1">
+<section id="map-button-groups" class="docs-item" markdown="1">
 
 ### Variable Map
 

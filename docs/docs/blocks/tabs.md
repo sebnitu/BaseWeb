@@ -137,7 +137,7 @@ For more details on how to customize and use the public methods, take a look at 
 
 <div id="toc" class="toc"></div>
 
-<section id="block-notices-map" class="docs-item" markdown="1">
+<section id="map-tabs" class="docs-item" markdown="1">
 
 ### Variable Map
 

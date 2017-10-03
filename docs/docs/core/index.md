@@ -4,5 +4,5 @@ title: Core
 order: 2
 link:
   class: 'toggle'
-  url: '/docs/core/functions/'
+  url: '/docs/core/palette/'
 ---

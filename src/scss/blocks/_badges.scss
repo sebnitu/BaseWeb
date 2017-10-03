@@ -240,7 +240,7 @@ a.#{map-get($badges, 'class')} {
 // Check if we should output button modifiers
 @if (map-get($badges, 'output-buttons') == true) {
   // Check if $buttons exists
-  @if (variable-exists(buttons) == true) {
+  @if (variable-exists(buttons)) {
     .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
       display: inline;
       padding: map-fetch($badges, 'button', 'padding');

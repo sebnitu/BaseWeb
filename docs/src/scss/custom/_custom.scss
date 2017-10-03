@@ -2,16 +2,6 @@
 $filename: 'scss/custom/_custom.scss';
 
 /*==============================================================================
-  @Grid System - #{$filename}
-==============================================================================*/
-
-@include build-grid-system('mobile');
-
-@include media-min('medium') {
-  @include build-grid-system();
-}
-
-/*==============================================================================
   @Structure - #{$filename}
 ==============================================================================*/
 
@@ -595,18 +585,16 @@ a.widget-featured {
   }
 
   &.color-1:hover { border-color: $orange; }
-  &.color-2:hover { border-color: $red; }
-  &.color-3:hover { border-color: $pink; }
-  &.color-4:hover { border-color: $purple; }
-  &.color-5:hover { border-color: $deep-purple; }
-  &.color-6:hover { border-color: $indigo; }
+  &.color-2:hover { border-color: $pink; }
+  &.color-3:hover { border-color: $purple; }
+  &.color-4:hover { border-color: $blue; }
+  &.color-5:hover { border-color: $teal; }
 
   &.color-1:hover h2 { color: $orange; }
-  &.color-2:hover h2 { color: $red; }
-  &.color-3:hover h2 { color: $pink; }
-  &.color-4:hover h2 { color: $purple; }
-  &.color-5:hover h2 { color: $deep-purple; }
-  &.color-6:hover h2 { color: $indigo; }
+  &.color-2:hover h2 { color: $pink; }
+  &.color-3:hover h2 { color: $purple; }
+  &.color-4:hover h2 { color: $blue; }
+  &.color-5:hover h2 { color: $teal; }
 }
 @include media-min('small') {
   .widget-featured {
@@ -634,11 +622,10 @@ a.widget-featured {
     stroke-width: 1.5px;
   }
   .icon-color-1 { color: $orange; }
-  .icon-color-2 { color: $red; }
-  .icon-color-3 { color: $pink; }
-  .icon-color-4 { color: $purple; }
-  .icon-color-5 { color: $deep-purple; }
-  .icon-color-6 { color: $indigo; }
+  .icon-color-2 { color: $pink; }
+  .icon-color-3 { color: $purple; }
+  .icon-color-4 { color: $blue; }
+  .icon-color-5 { color: $teal; }
 }
 
 /**
@@ -797,16 +784,11 @@ a.widget-featured {
 
 /**
  * Table of Contents
- */
-.toc {
-  margin: 1em 0;
-  padding: 1em 0;
-  border-top: 1px solid rgba($black, 0.1);
-}
-
-/**
+ * Docs Header
  * Docs Item
  */
+.toc,
+.docs-header,
 .docs-item {
   margin: 1em 0;
   padding: 1em 0;
@@ -834,6 +816,10 @@ a.widget-featured {
   @extend .table.rowed;
   @extend .table.expanded;
   @extend .table.valign-middle;
+
+  p {
+    margin: 0;
+  }
 }
 @media screen and (max-width: 759px) {
   .table-docs {

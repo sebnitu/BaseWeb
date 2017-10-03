@@ -172,7 +172,7 @@ Badges are a compact way to represent descriptive content such as tags, counters
 
 <div id="toc" class="toc"></div>
 
-<section id="block-notices-map" class="docs-item" markdown="1">
+<section id="map-badges" class="docs-item" markdown="1">
 
 ### Variable Map
 

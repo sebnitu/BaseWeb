@@ -1,3 +1,65 @@
+// Set file variable
+$filename: 'scss/core/_grid.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Grid Map
+////////////////////////////////////////////////////////////////////////////////
+
+// Grid Map
+// Define all the settings for the grid system.
+$grid: (
+  'output' : true,
+
+  // Grid class names
+  'class-container' : 'container',
+  'class-row' : 'row',
+  'class-column' : 'col',
+
+  // Custom float class names
+  'class-column-left' : 'col-left',
+  'class-column-right' : 'col-right',
+
+  // Set to `null` to disable output
+  'class-prefix' : 'prefix',
+
+  // Set to `null` to disable output
+  'class-suffix' : 'suffix',
+
+  // Global grid settings
+  // Sets the grid type ('normal', 'mobile')
+  'type' : 'normal',
+
+  // Use same unit type as `$grid('gutter-width')`.
+  'total-width' : 100%,
+
+  // Use same unit type as `$grid('total-width')`.
+  // Used to set left and right margin of columns.
+  'gutter-width' : 0,
+
+  // Used to set using left and right padding of columns.
+  'inner-gutter-width' : 1.5rem,
+
+  // Sets the number of columns in Grid System.
+  'columns' : 12,
+
+  // Default float for columns
+  'column-float' : left,
+
+  // Container settings
+  'container-margin' : 0 auto,
+  'container-padding' : 0 1.5rem,
+  'container-min-width' : none,
+  'container-max-width' : 75rem,
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if (map-has-key($override, 'grid') == true) {
+    $grid: map-extend($grid, map-get($override, 'grid'), true);
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Grid Functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -43,9 +105,7 @@
 //   @default $grid map
 @mixin make-container($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'container-min-width')) {
@@ -77,9 +137,7 @@
 //   @default $grid map
 @mixin make-row($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'inner-gutter-width') != 0) {
@@ -103,9 +161,7 @@
 //   @default $grid map
 @mixin make-column-base($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     float: none;
@@ -262,3 +318,18 @@
     }
   } // End if not mobile
 }
+
+// Check if we should output badges
+@if (map-get($grid, 'output') == true) {
+
+/*==============================================================================
+  @Grid System - #{$filename}
+==============================================================================*/
+
+@include build-grid-system('mobile');
+
+@include media-min('medium') {
+  @include build-grid-system();
+}
+
+} // End @if output

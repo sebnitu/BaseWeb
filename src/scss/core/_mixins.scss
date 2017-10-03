@@ -1,4 +1,70 @@
 ////////////////////////////////////////////////////////////////////////////////
+// @Mixin Variables
+////////////////////////////////////////////////////////////////////////////////
+
+// Add Styles Map
+// Used as default settings in add-styles and add-modifiers mixins
+// @type map
+$add-styles: (
+  'output-base' : true,
+  'output-pseudo' : true,
+  'properties' : (
+    // Structure
+    'display',
+    'float',
+    'width',
+    'height',
+    'margin',
+    'margin-top',
+    'margin-left',
+    'margin-right',
+    'margin-bottom',
+    'padding',
+    'padding-top',
+    'padding-left',
+    'padding-right',
+    'padding-bottom',
+    'vertical-align',
+    'content',
+
+    // Typography
+    'font-family',
+    'font-size',
+    'line-height',
+    'font-weight',
+    'text-align',
+    'text-indent',
+    'white-space',
+    'letter-spacing',
+    'overflow',
+    'color',
+    'text-shadow',
+
+    // Aesthetic
+    'background',
+    'background-color',
+    'background-clip',
+    'box-shadow',
+    'border',
+    'border-color',
+    'border-radius',
+
+    // Transitions
+    'transition',
+    'transition-property',
+    'transition-duration',
+    'transition-timing-function',
+    'transition-duration',
+  ),
+  'pseudo-classes' : (
+    'hover',
+    'focus',
+    'active',
+    'visited',
+  ),
+) !default;
+
+////////////////////////////////////////////////////////////////////////////////
 // @General Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -182,33 +248,6 @@
   transition: top linear 0.2s, bottom linear 0.2s;
 }
 
-// Add Truncate Text
-// Truncates text with an ellipsis. Element this is applied to must be block
-// or inline-block.
-// @param $display
-//   @type display property (block, inline-block)
-//   @default block
-@mixin add-text-truncate( $display : block ) {
-  @if ($display == inline-block or $display == block) {
-    display: $display;
-  }
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-// Add Hide text
-// Hides text from an element. This is most commonly used as an image
-// replacement technique for hiding text in an element to reveal a
-// background image.
-@mixin add-text-hide() {
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 // Add Triangle Base
 // The base styles for creating CSS triangles
 @mixin add-triangle-base() {
@@ -263,56 +302,5 @@
     border-left-color: $color;
   } @else {
     @warn "#{$direction} is not a valid direction for @mixin triangle";
-  }
-}
-
-// Make Anchor
-// Creates the base ancho styles using the $anchors map for defaults.
-// @param $options
-//   @type map
-//   @default $anchors map
-@mixin make-anchor($options: ()) {
-  $o: map-extend($anchors, $options, true);
-
-  color: map-get($o, 'color');
-  border-bottom: map-get($o, 'border');
-  border-color: map-get($o, 'border-color');
-  text-decoration: map-get($o, 'text-decoration');
-
-  &:hover {
-    color: map-fetch($o, 'hover', 'color');
-    border: map-fetch($o, 'hover', 'border');
-    border-color: map-fetch($o, 'hover', 'border-color');
-    text-decoration: map-fetch($o, 'hover', 'text-decoration');
-  }
-}
-
-// Build Headings
-// Creates the base styles for headings using the $headings map for defaults.
-// @param $options
-//   @type map
-//   @default $headings map
-@mixin build-headings($options: ()) {
-  $o: map-extend($headings, $options, true);
-
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin: map-get($o, 'margin');
-    font-family: map-get($o, 'font-family');
-    font-weight: map-get($o, 'font-weight');
-    line-height: map-get($o, 'line-height');
-    color: map-get($o, 'color');
-
-    @if (map-fetch($o, 'anchors', 'output') == true) {
-      a {
-        @include make-anchor(map-get($o, 'anchors'));
-      }
-    }
-  }
-
-  @each $heading, $size in map-get($o, 'scale') {
-    #{$heading}, .#{$heading} {
-      font-size: $size;
-    }
   }
 }

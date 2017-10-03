@@ -41,360 +41,351 @@ The body copy is set by applying our default typographic settings to the `<body>
   <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 </div>
 
+The default typographic settings. These dictate the base typographic styles for headings, body text, inline text elements and links as well as modifier classes.
+
 ## Elements
 
 HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.
 
-<ul class="list list-docs">
-
-<li markdown="1">
-
-### &lt;a&gt;
-
-The HTML `<a>` Element (or the HTML Anchor Element) defines a hyperlink.
-
-```html
-<p>If you don't know something, try a <a href="http://google.com">Google search</a>!</p>
-```
-
-<div class="demo">
-  <p>If you don't know something, try a <a href="http://google.com">Google search</a>!</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;strong&gt;
-
-The HTML `<strong>` represents strong importance for its contents.
-
-```html
-<p>I learned a lot reading <strong>Pale Blue Dot</strong>.</p>
-```
-
-<div class="demo">
-  <p>I learned a lot reading <strong>Pale Blue Dot</strong>.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;em&gt;
-
-The HTML `<em>` element represents stress emphasis of its contents.
-
-```html
-<p>Cats are <em>cute</em> animals.</p>
-```
-
-<div class="demo">
-  <p>Cats are <em>cute</em> animals.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;small&gt;
-
-The HTML `<small>` element represents side comments such as small print.
-
-```html
-<small>Copyright 2015</small>
-```
-
-<div class="demo">
-  <p><small>Copyright 2015</small></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;mark&gt;
-
-The HTML `<mark>` element represents a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.
-
-```html
-<p>Don't forget to pick up the <mark>hamburgers</mark> at the store.</p>
-```
-
-<div class="demo">
-  <p>Don't forget to pick up the <mark>hamburgers</mark> at the store.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;ins&gt;
-
-The HTML `<ins>` element represents an addition to the document.
-
-```html
-<ins>This content was added to our document.</ins>
-```
-
-<div class="demo">
-  <p><ins>This content was added to our document.</ins></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;del&gt;
-
-The HTML `<del>` element represents a removal from the document.
-
-```html
-<del>This content was removed from our document.</del>
-```
-
-<div class="demo">
-  <p><del>This content was removed from our document.</del></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;cite&gt;
-
-The HTML `<cite>` element represents a reference to a creative work.
-
-```html
-<blockquote>
-  <p>...</p>
-  <footer><cite>...</cite></footer>
-</blockquote>
-```
-
-<div class="demo">
-  <blockquote>
-    <p>Take the risk of thinking for yourself&mdash;much more happiness, truth, beauty and wisdom will come to you that way.</p>
-    <footer><cite>&ndash; Christopher Hitchens</cite></footer>
-  </blockquote>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;abbr&gt;
-
-The HTML `<abbr>` represents an abbreviation or acronym. The optional title attribute may be used to provide an expansion of the abbreviation.
-
-```html
-<abbr title="Hypertext Markup Language">HTML</abbr>
-```
-
-<div class="demo">
-  <p>The quintessential of front-end development includes <abbr title="Hypertext Markup Language">HTML</abbr>, <abbr title="Cascading Stylessheets">CSS</abbr> and <abbr title="JavaScript">JS</abbr>.</p>
-</div>
-
-</li>
-
-</ul>
+<table class="table table-docs">
+  <tr>
+    <th>Element</th>
+    <th>Demo</th>
+  </tr>
+  <tr>
+    <td><code>&lt;a&gt;</code></td>
+    <td><a href="#">Anchor styles</a></td>
+  </tr>
+  <tr>
+    <td><code>&lt;strong&gt;</code></td>
+    <td><strong>Strong emphasis styles</strong></td>
+  </tr>
+  <tr>
+    <td><code>&lt;em&gt;</code></td>
+    <td><em>Stress emphasis styles</em></td>
+  </tr>
+  <tr>
+    <td><code>&lt;small&gt;</code></td>
+    <td><small>Small styles</small></td>
+  </tr>
+  <tr>
+    <td><code>&lt;mark&gt;</code></td>
+    <td><mark>Marked styles</mark></td>
+  </tr>
+  <tr>
+    <td><code>&lt;ins&gt;</code></td>
+    <td><ins>Insert styles</ins></td>
+  </tr>
+  <tr>
+    <td><code>&lt;del&gt;</code></td>
+    <td><del>Delete styles</del></td>
+  </tr>
+  <tr>
+    <td><code>&lt;cite&gt;</code></td>
+    <td><cite>Citation styles</cite></td>
+  </tr>
+  <tr>
+    <td><code>&lt;abbr&gt;</code></td>
+    <td><abbr title="Abbreviation styles">Abbr styles</abbr></td>
+  </tr>
+</table>
 
 ## Classes
 
 In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.
 
-<ul class="list list-docs">
+<table class="table table-docs">
+  <tr>
+    <th>Element</th>
+    <th>Demo</th>
+  </tr>
+  <tr>
+    <td><code>.text-lead</code></td>
+    <td><p class="text-lead">This is some example lead in text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-small</code></td>
+    <td><p class="text-small">This is some example small text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-soften</code></td>
+    <td><p class="text-soften">This is some example soften text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-harden</code></td>
+    <td><p class="text-harden">This is some example harden text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-left</code></td>
+    <td><p class="text-left">This is some example text with left alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-center</code></td>
+    <td><p class="text-center">This is some example text with centered alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-right</code></td>
+    <td><p class="text-right">This is some example text with right alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-justify</code></td>
+    <td><p class="text-justify">This is some example text with justified alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-nowrap</code></td>
+    <td><p class="text-nowrap">This text doesn't wrap.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-lowercase</code></td>
+    <td><p class="text-lowercase">This is some example text with lowercase styles.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-uppercase</code></td>
+    <td><p class="text-uppercase">This is some example text with uppercase styles.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-capitalize</code></td>
+    <td><p class="text-capitalize">This is some example text with capitalize styles.</p></td>
+  </tr>
+</table>
 
-<li markdown="1">
+<div id="toc" class="toc"></div>
 
-### .text-lead
+<section id="var-typography" class="docs-item" markdown="1">
 
-Lead text can be used as an introduction paragraph or even as subtitle text.
+### Typography Variables
 
-```html
-<p class="text-lead">...</p>
+```scss
+// Font Families
+// @type font-stack
+$font-family-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: georgia, "Times New Roman", times, serif !default;
+$font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+// Base Font Styles
+// @type font-stack
+$base-font-family: $font-family-sans !default;
+
+// @type unit (pixel)
+$base-font-size: 16px !default;
+
+// @type unit (pixel, em, percentage)
+$base-line-height: 1.5em !default;
+
+// @type value (keyword, numeric)
+$base-font-weight: font-weight('normal') !default;
+
+// Text Color Assignment
+// @type color
+$color:         $gray-900 !default;
+$color-light:   $gray !default;
+$color-dark:    $gray-900 !default;
+
+// Miscellaneous
+// @type unit (pixel)
+$letter-spacing: 1px !default;
+
+// @type boolean
+$text-elements: true;
+$text-modifiers: true;
 ```
 
-<div class="demo">
-  <p class="text-lead">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+</section><!-- .docs-item -->
 
-</li>
+<section id="map-anchors" class="docs-item" markdown="1">
 
-<li markdown="1">
+### Anchors Map
 
-### .text-small
+```scss
+$anchors: (
+  'output' : true,
 
-Used to make text look less important. Can be used to reduce the size of legal text, for example.
+  'color' : $blue,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-color' : null,
+  'text-decoration' : none,
 
-```html
-<p class="text-small">...</p>
+  'hover' : (
+    'color' : $blue-700,
+    'border' : null,
+    'border-color' : inherit,
+    'text-decoration' : null,
+  ),
+
+) !default;
 ```
 
-<div class="demo">
-  <p class="text-small">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+<p class="subheading">Shorthands</p>
 
-</li>
-
-<li markdown="1">
-
-### .text-soften
-
-Softens the appearance of text for non-vital content such as meta data, dates or descriptions.
-
-```html
-<p class="text-soften">...</p>
+```scss
+$anchor-color: map-get($anchors, 'color') !default;
+$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
 ```
 
-<div class="demo">
-  <p class="text-soften">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+</section><!-- .docs-item -->
 
-</li>
+<section id="map-headings" class="docs-item" markdown="1">
 
-<li markdown="1">
+### Headings Map
 
-### .text-harden
+```scss
+$headings: (
+  'output' : true,
 
-Makes text stand out or look more important. Could be used to attract attention to important information.
+  'margin' : 1rem 0,
+  'font-family' : inherit,
+  'line-height' : 1.25em,
+  'font-weight' : font-weight('semi-bold'),
+  'color' : $color-dark,
 
-```html
-<p class="text-harden">...</p>
+  'anchors' : (
+    'output' : true,
+
+    'color' : $color-dark,
+    'border' : none,
+    'text-decoration' : null,
+
+    'hover' : (
+      'color' : $blue,
+    ),
+  ),
+
+  'scale' : (
+    'h1' : 2.5em,
+    'h2' : 2em,
+    'h3' : 1.75em,
+    'h4' : 1.5em,
+    'h5' : 1.25em,
+    'h6' : 1em,
+  ),
+
+) !default;
 ```
 
-<div class="demo">
-  <p class="text-harden">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+<p class="subheading">Shorthands</p>
 
-</li>
-
-<li markdown="1">
-
-### .text-left
-
-Aligns text to the left.
-
-```html
-<p class="text-left">...</p>
+```scss
+$heading-color: map-get($headings, 'color') !default;
+$heading-anchor-color: map-fetch($headings, 'anchors', 'color') !default;
+$heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !default;
 ```
 
-<div class="demo">
-  <p class="text-left">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+</section><!-- .docs-item -->
 
-</li>
+<header class="docs-header" markdown="1">
 
-<li markdown="1">
+## Mixins
 
-### .text-center
+...
 
-Aligns text to the center.
+</header>
 
-```html
-<p class="text-center">...</p>
+<section id="mixin-make-anchor" class="docs-item" markdown="1">
+
+### make-anchor
+
+...
+
+```scss
+@include make-anchor();
 ```
 
-<div class="demo">
-  <p class="text-center">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+</section><!-- .docs-item -->
 
-</li>
+<section id="mixin-build-headings" class="docs-item" markdown="1">
 
-<li markdown="1">
+### build-headings
 
-### .text-right
+...
 
-Aligns text to the right.
-
-```html
-<p class="text-right">...</p>
+```scss
+@include build-headings();
 ```
 
-<div class="demo">
-  <p class="text-right">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+</section><!-- .docs-item -->
 
-</li>
+<section id="mixin-add-text-truncate" class="docs-item" markdown="1">
 
-<li markdown="1">
+### add-text-truncate
 
-### .text-justify
+Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
 
-Makes text justified.
-
-```html
-<p class="text-justify">...</p>
+```scss
+@include add-text-truncate();
 ```
 
-<div class="demo">
-  <p class="text-justify">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$display</code></td>
+    <td>Display property (block, inline-block)</td>
+    <td><code>block</code></td>
+  </tr>
+</table>
 
-</li>
+<p class="subheading">Example Usage</p>
 
-<li markdown="1">
+```scss
+// SCSS
+.demo-text-truncate {
+  @include add-text-truncate();
+}
 
-### .text-nowrap
-
-Prevents text from wrapping.
-
-```html
-<p class="text-nowrap">...</p>
+// CSS Output
+.demo-text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 ```
 
-<div class="demo">
-  <p class="text-nowrap">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
+<div class="demo demo-add-text-truncate">
+  <div class="box">This is some text that will get truncated</div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-text-hide" class="docs-item" markdown="1">
 
-### .text-lowercase
+### add-text-hide
 
-Makes text lowercase.
+Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
 
-```html
-<p class="text-lowercase">Lowercase text goes here.</p>
+```scss
+@include add-text-hide();
 ```
 
-<div class="demo">
-  <p class="text-lowercase">Lowercase text goes here.</p>
-</div>
+<p class="subheading">Example Usage</p>
 
-</li>
+```scss
+// SCSS
+.logo {
+  ...
+  @include add-text-hide();
+}
 
-<li markdown="1">
-
-### .text-uppercase
-
-Makes text uppercase.
-
-```html
-<p class="text-uppercase">Uppercase text goes here.</p>
+// CSS Output
+.logo {
+  ...
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 ```
 
-<div class="demo">
-  <p class="text-uppercase">Uppercase text goes here.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-capitalize
-
-Makes text capitalized.
-
 ```html
-<p class="text-capitalize">Capitalize text goes here.</p>
+<div class="logo">Demo Logo Image Replace</div>
 ```
 
-<div class="demo">
-  <p class="text-capitalize">Capitalize text goes here.</p>
+<div class="demo demo-logo-image">
+  <div class="logo">Demo Logo Image Replace</div>
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

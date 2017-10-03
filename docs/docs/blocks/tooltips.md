@@ -32,7 +32,7 @@ You can also add position classes such as `.tooltip-top`, `.tooltip-left`, `.too
 
 <div id="toc" class="toc"></div>
 
-<section id="block-notices-map" class="docs-item" markdown="1">
+<section id="map-tooltips" class="docs-item" markdown="1">
 
 ### Variable Map
 

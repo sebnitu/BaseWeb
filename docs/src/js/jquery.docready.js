@@ -64,13 +64,13 @@
 
       // toc.hide();
       toc.append('<h3>Contents</h3>');
-      toc.append('<ul></ul>');
+      toc.append('<ol class="list-toc"></ol>');
 
       items.each(function() {
         i += 1;
         var hash = $(this).attr('id');
         var text = $(this).find('h3').text();
-        toc.find('ul').append('<li><a href="#' + hash + '">' + text + '</a></li>');
+        toc.find('.list-toc').append('<li><a href="#' + hash + '">' + text + '</a></li>');
 
         if (i == items.length) {
           // toc.slideDown();

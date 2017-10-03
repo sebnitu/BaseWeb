@@ -1,14 +1,14 @@
 ---
 layout: page
 title: "Mixins"
-order: 2
+order: 4
 ---
 
 Global mixins for our framework. These mixins are global and don't apply specifically to a single element/block component.
 
 <div id="toc" class="toc"></div>
 
-<section id="core-mixin-add-clearfix" class="docs-item" markdown="1">
+<section id="mixin-add-clearfix" class="docs-item" markdown="1">
 
 ### add-clearfix
 
@@ -36,7 +36,7 @@ Allows you to clear an element that contains floats.
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-remove-clearfix" class="docs-item" markdown="1">
+<section id="mixin-remove-clearfix" class="docs-item" markdown="1">
 
 ### remove-clearfix
 
@@ -48,7 +48,7 @@ Removes the clearfix styles from an element. This is typically used when a clear
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-styles" class="docs-item" markdown="1">
+<section id="mixin-add-styles" class="docs-item" markdown="1">
 
 ### add-styles
 
@@ -60,7 +60,7 @@ Removes the clearfix styles from an element. This is typically used when a clear
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-modifiers" class="docs-item" markdown="1">
+<section id="mixin-add-modifiers" class="docs-item" markdown="1">
 
 ### add-modifiers
 
@@ -72,7 +72,7 @@ Removes the clearfix styles from an element. This is typically used when a clear
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-float-modifiers" class="docs-item" markdown="1">
+<section id="mixin-add-float-modifiers" class="docs-item" markdown="1">
 
 ### add-float-modifiers
 
@@ -125,7 +125,7 @@ Adds the float modifier classes to an element.
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-size" class="docs-item" markdown="1">
+<section id="mixin-add-size" class="docs-item" markdown="1">
 
 ### add-size
 
@@ -175,7 +175,7 @@ Shorthand for adding width and height dimensions to an element. If you only pass
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-vertical-center" class="docs-item" markdown="1">
+<section id="mixin-add-vertical-center" class="docs-item" markdown="1">
 
 ### add-vertical-center
 
@@ -224,7 +224,7 @@ Centers an element vertically within it's parent. Parent element may need to hav
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-scrollable" class="docs-item" markdown="1">
+<section id="mixin-add-scrollable" class="docs-item" markdown="1">
 
 ### add-scrollable
 
@@ -236,93 +236,7 @@ Makes touch devices use momentum-based scrolling for the given element.
 
 </section><!-- .docs-item -->
 
-<section id="core-mixin-add-text-truncate" class="docs-item" markdown="1">
-
-### add-text-truncate
-
-Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
-
-```scss
-@include add-text-truncate();
-```
-
-<table class="table table-docs">
-  <tr>
-    <th>Parameter</th>
-    <th>Type</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$display</code></td>
-    <td>Display property (block, inline-block)</td>
-    <td><code>block</code></td>
-  </tr>
-</table>
-
-<p class="subheading">Example Usage</p>
-
-```scss
-// SCSS
-.demo-text-truncate {
-  @include add-text-truncate();
-}
-
-// CSS Output
-.demo-text-truncate {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-```
-
-<div class="demo demo-add-text-truncate">
-  <div class="box">This is some text that will get truncated</div>
-</div>
-
-</section><!-- .docs-item -->
-
-<section id="core-mixin-text-hide" class="docs-item" markdown="1">
-
-### add-text-hide
-
-Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
-
-```scss
-@include add-text-hide();
-```
-
-<p class="subheading">Example Usage</p>
-
-```scss
-// SCSS
-.logo {
-  ...
-  @include add-text-hide();
-}
-
-// CSS Output
-.logo {
-  ...
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-```
-
-```html
-<div class="logo">Demo Logo Image Replace</div>
-```
-
-<div class="demo demo-logo-image">
-  <div class="logo">Demo Logo Image Replace</div>
-</div>
-
-</section><!-- .docs-item -->
-
-<section id="core-mixin-add-triangle" class="docs-item" markdown="1">
+<section id="mixin-add-triangle" class="docs-item" markdown="1">
 
 ### add-triangle
 
@@ -420,29 +334,5 @@ Uses the `0*0` element with borders trick to draw arrows. The base styles for cr
   <div class="col col-4"><span class="example-triangle-2"></span></div>
   <div class="col col-4"><span class="example-triangle-3"></span></div>
 </div>
-
-</section><!-- .docs-item -->
-
-<section id="core-mixin-make-anchor" class="docs-item" markdown="1">
-
-### make-anchor
-
-...
-
-```scss
-@include make-anchor();
-```
-
-</section><!-- .docs-item -->
-
-<section id="core-mixin-build-headings" class="docs-item" markdown="1">
-
-### build-headings
-
-...
-
-```scss
-@include build-headings();
-```
 
 </section><!-- .docs-item -->

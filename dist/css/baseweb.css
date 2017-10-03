@@ -10,6 +10,185 @@
  * Copyright (c) 2017 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
+  @Grid System - scss/core/_grid.scss
+==============================================================================*/
+.container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  min-width: none;
+  max-width: none;
+  margin: 0;
+  padding: 0 1.5rem;
+}
+
+.row {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 760px) {
+  .container {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    min-width: none;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .container:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .row {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: auto;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+  .row:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  .col {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    min-height: 1px;
+    float: left;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .col.col-left {
+    float: left;
+  }
+  .col.col-right {
+    float: right;
+  }
+  .col-no-inner-gutter {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .col-1 {
+    width: 8.333%;
+  }
+  .col-2 {
+    width: 16.667%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.333%;
+  }
+  .col-5 {
+    width: 41.667%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.333%;
+  }
+  .col-8 {
+    width: 66.667%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.333%;
+  }
+  .col-11 {
+    width: 91.667%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+  .prefix-1 {
+    margin-left: 8.333%;
+  }
+  .prefix-2 {
+    margin-left: 16.667%;
+  }
+  .prefix-3 {
+    margin-left: 25%;
+  }
+  .prefix-4 {
+    margin-left: 33.333%;
+  }
+  .prefix-5 {
+    margin-left: 41.667%;
+  }
+  .prefix-6 {
+    margin-left: 50%;
+  }
+  .prefix-7 {
+    margin-left: 58.333%;
+  }
+  .prefix-8 {
+    margin-left: 66.667%;
+  }
+  .prefix-9 {
+    margin-left: 75%;
+  }
+  .prefix-10 {
+    margin-left: 83.333%;
+  }
+  .prefix-11 {
+    margin-left: 91.667%;
+  }
+  .suffix-1 {
+    margin-right: 8.333%;
+  }
+  .suffix-2 {
+    margin-right: 16.667%;
+  }
+  .suffix-3 {
+    margin-right: 25%;
+  }
+  .suffix-4 {
+    margin-right: 33.333%;
+  }
+  .suffix-5 {
+    margin-right: 41.667%;
+  }
+  .suffix-6 {
+    margin-right: 50%;
+  }
+  .suffix-7 {
+    margin-right: 58.333%;
+  }
+  .suffix-8 {
+    margin-right: 66.667%;
+  }
+  .suffix-9 {
+    margin-right: 75%;
+  }
+  .suffix-10 {
+    margin-right: 83.333%;
+  }
+  .suffix-11 {
+    margin-right: 91.667%;
+  }
+}
+
+/*==============================================================================
   @Base Styles - scss/elements/_base.scss
 ==============================================================================*/
 html, body {
@@ -3226,173 +3405,6 @@ a.badge.dark:hover {
 .button-badge-right .badge {
   margin-left: 0.5em;
   margin-right: -0.5em;
-}
-
-/*==============================================================================
-  @Grid System - scss/custom/_custom.scss
-==============================================================================*/
-.container {
-  width: 100%;
-  min-width: none;
-  max-width: none;
-  margin: 0;
-  padding: 0 1.5rem;
-}
-
-.row {
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.col {
-  width: 100%;
-  float: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-@media (min-width: 760px) {
-  .container {
-    width: 100%;
-    min-width: none;
-    max-width: 75rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  .container:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-  .row {
-    width: auto;
-    margin-left: -0.75rem;
-    margin-right: -0.75rem;
-  }
-  .row:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-  .col {
-    min-height: 1px;
-    float: left;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  .col.col-left {
-    float: left;
-  }
-  .col.col-right {
-    float: right;
-  }
-  .col-no-inner-gutter {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .col-1 {
-    width: 8.333%;
-  }
-  .col-2 {
-    width: 16.667%;
-  }
-  .col-3 {
-    width: 25%;
-  }
-  .col-4 {
-    width: 33.333%;
-  }
-  .col-5 {
-    width: 41.667%;
-  }
-  .col-6 {
-    width: 50%;
-  }
-  .col-7 {
-    width: 58.333%;
-  }
-  .col-8 {
-    width: 66.667%;
-  }
-  .col-9 {
-    width: 75%;
-  }
-  .col-10 {
-    width: 83.333%;
-  }
-  .col-11 {
-    width: 91.667%;
-  }
-  .col-12 {
-    width: 100%;
-  }
-  .prefix-1 {
-    margin-left: 8.333%;
-  }
-  .prefix-2 {
-    margin-left: 16.667%;
-  }
-  .prefix-3 {
-    margin-left: 25%;
-  }
-  .prefix-4 {
-    margin-left: 33.333%;
-  }
-  .prefix-5 {
-    margin-left: 41.667%;
-  }
-  .prefix-6 {
-    margin-left: 50%;
-  }
-  .prefix-7 {
-    margin-left: 58.333%;
-  }
-  .prefix-8 {
-    margin-left: 66.667%;
-  }
-  .prefix-9 {
-    margin-left: 75%;
-  }
-  .prefix-10 {
-    margin-left: 83.333%;
-  }
-  .prefix-11 {
-    margin-left: 91.667%;
-  }
-  .suffix-1 {
-    margin-right: 8.333%;
-  }
-  .suffix-2 {
-    margin-right: 16.667%;
-  }
-  .suffix-3 {
-    margin-right: 25%;
-  }
-  .suffix-4 {
-    margin-right: 33.333%;
-  }
-  .suffix-5 {
-    margin-right: 41.667%;
-  }
-  .suffix-6 {
-    margin-right: 50%;
-  }
-  .suffix-7 {
-    margin-right: 58.333%;
-  }
-  .suffix-8 {
-    margin-right: 66.667%;
-  }
-  .suffix-9 {
-    margin-right: 75%;
-  }
-  .suffix-10 {
-    margin-right: 83.333%;
-  }
-  .suffix-11 {
-    margin-right: 91.667%;
-  }
 }
 
 /*==============================================================================

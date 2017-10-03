@@ -1,14 +1,14 @@
 ---
 layout: page
 title: "Functions"
-order: 1
+order: 3
 ---
 
 This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.
 
 <div id="toc" class="toc"></div>
 
-<section id="core-function-map-extend" class="docs-item" markdown="1">
+<section id="function-map-extend" class="docs-item" markdown="1">
 
 ### map-extend
 
@@ -87,7 +87,7 @@ $map: map-extend($grid-a, $grid-b, $grid-c, true);
 
 </section><!-- .docs-item -->
 
-<section id="core-function-map-fetch" class="docs-item" markdown="1">
+<section id="function-map-fetch" class="docs-item" markdown="1">
 
 ### map-fetch
 
@@ -145,7 +145,7 @@ $map: map-fetch($grid-a, 'layouts', 'medium');
 
 </section><!-- .docs-item -->
 
-<section id="core-function-map-set" class="docs-item" markdown="1">
+<section id="function-map-set" class="docs-item" markdown="1">
 
 ### map-set
 
@@ -203,7 +203,7 @@ $map: map-set($grid-a, 1300px, 'layouts' 'medium');
 
 </section><!-- .docs-item -->
 
-<section id="core-function-strip-units" class="docs-item" markdown="1">
+<section id="function-strip-units" class="docs-item" markdown="1">
 
 ### strip-units
 
@@ -234,7 +234,7 @@ strip-units( $val )
 
 </section><!-- .docs-item -->
 
-<section id="core-function-px-to-em" class="docs-item" markdown="1">
+<section id="function-px-to-em" class="docs-item" markdown="1">
 
 ### px-to-em
 
@@ -271,7 +271,7 @@ px-to-em( $px, $base )
 
 </section><!-- .docs-item -->
 
-<section id="core-function-px-to-rem" class="docs-item" markdown="1">
+<section id="function-px-to-rem" class="docs-item" markdown="1">
 
 ### px-to-rem
 
@@ -302,7 +302,7 @@ px-to-rem( $px )
 
 </section><!-- .docs-item -->
 
-<section id="core-function-em-to-px" class="docs-item" markdown="1">
+<section id="function-em-to-px" class="docs-item" markdown="1">
 
 ### em-to-px
 
@@ -339,7 +339,7 @@ em-to-px( $em, $base )
 
 </section><!-- .docs-item -->
 
-<section id="core-function-font-weight" class="docs-item" markdown="1">
+<section id="function-font-weight" class="docs-item" markdown="1">
 
 ### font-weight
 

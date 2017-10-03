@@ -51,7 +51,7 @@ You can also create dismissible notices but adding the `.dismissible` class and 
 
 <div id="toc" class="toc"></div>
 
-<section id="block-notices-map" class="docs-item" markdown="1">
+<section id="map-notices" class="docs-item" markdown="1">
 
 ### Variable Map
 

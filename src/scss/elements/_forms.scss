@@ -1,10 +1,6 @@
 // Set file variable
 $filename: 'scss/elements/_forms.scss';
 
-// Dependencies
-// ---
-// @mixin build-grid-system() - scss/core/_grid.scss
-
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Variables
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,9 +129,11 @@ $forms: (
   margin-right: map-get( $o, 'vertical-align' );
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
 
-  @if ($class-float-right != none) {
-    &.#{$class-float-right} {
-      float: right;
+  @if (variable-exists(class-float-right)) {
+    @if ($class-float-right) {
+      &.#{$class-float-right} {
+        float: right;
+      }
     }
   }
 }
@@ -259,9 +257,11 @@ form {
       margin-right: 0;
     }
 
-    @if ($class-float-right != none) {
-      &.#{$class-float-right} {
-        float: right;
+    @if (variable-exists(class-float-right)) {
+      @if ($class-float-right) {
+        &.#{$class-float-right} {
+          float: right;
+        }
       }
     }
   }

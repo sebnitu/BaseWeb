@@ -8,19 +8,9 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
 <div class="widget-list">
 
-  <a class="widget widget-featured card color-1" href="{{ site.url }}{{ site.baseurl }}/docs/settings/palette/">
+  <a class="widget widget-featured card color-1" href="{{ site.url }}{{ site.baseurl }}/docs/core/palette/">
     <div class="widget-icon">
-      {% include content-icon.html icon="sliders" class="icon-color-1" %}
-    </div>
-    <div class="widget-content">
-      <h2>Settings</h2>
-      <p>This is where we store all of our global project variables and maps. Variables and maps that are used in core modules, multiple element and/or block modules go here.</p>
-    </div>
-  </a>
-
-  <a class="widget widget-featured card color-2" href="{{ site.url }}{{ site.baseurl }}/docs/core/functions/">
-    <div class="widget-icon">
-      {% include content-icon.html icon="cpu" class="icon-color-2" %}
+      {% include content-icon.html icon="cpu" class="icon-color-1" %}
     </div>
     <div class="widget-content">
       <h2>Core</h2>
@@ -28,9 +18,9 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
     </div>
   </a>
 
-  <a class="widget widget-featured card color-3" href="{{ site.url }}{{ site.baseurl }}/docs/elements/base/">
+  <a class="widget widget-featured card color-2" href="{{ site.url }}{{ site.baseurl }}/docs/elements/base/">
     <div class="widget-icon">
-      {% include content-icon.html icon="layers" class="icon-color-3" %}
+      {% include content-icon.html icon="layers" class="icon-color-2" %}
     </div>
     <div class="widget-content">
       <h2>Elements</h2>
@@ -38,9 +28,9 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
     </div>
   </a>
 
-  <a class="widget widget-featured card color-4" href="{{ site.url }}{{ site.baseurl }}/docs/blocks/button-groups/">
+  <a class="widget widget-featured card color-3" href="{{ site.url }}{{ site.baseurl }}/docs/blocks/button-groups/">
     <div class="widget-icon">
-      {% include content-icon.html icon="package" class="icon-color-4" %}
+      {% include content-icon.html icon="package" class="icon-color-3" %}
     </div>
     <div class="widget-content">
       <h2>Blocks</h2>
@@ -48,9 +38,9 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
     </div>
   </a>
 
-  <a class="widget widget-featured card color-5" href="{{ site.url }}{{ site.baseurl }}/docs/custom/">
+  <a class="widget widget-featured card color-4" href="{{ site.url }}{{ site.baseurl }}/docs/custom/">
     <div class="widget-icon">
-      {% include content-icon.html icon="edit-2" class="icon-color-5" %}
+      {% include content-icon.html icon="edit-2" class="icon-color-4" %}
     </div>
     <div class="widget-content">
       <h2>Custom</h2>
@@ -58,9 +48,9 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
     </div>
   </a>
 
-  <a class="widget widget-featured card color-6" href="{{ site.url }}{{ site.baseurl }}/docs/javascript/">
+  <a class="widget widget-featured card color-5" href="{{ site.url }}{{ site.baseurl }}/docs/javascript/">
     <div class="widget-icon">
-      {% include content-icon.html icon="hash" class="icon-color-6" %}
+      {% include content-icon.html icon="hash" class="icon-color-5" %}
     </div>
     <div class="widget-content">
       <h2>JavaScript</h2>

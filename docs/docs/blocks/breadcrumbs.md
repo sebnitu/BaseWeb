@@ -38,7 +38,7 @@ You also have the `.wrapped` class to add simple wrapper styles to your breadcru
 
 <div id="toc" class="toc"></div>
 
-<section id="block-notices-map" class="docs-item" markdown="1">
+<section id="map-breadcrumbs" class="docs-item" markdown="1">
 
 ### Variable Map
 
