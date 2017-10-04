@@ -34,7 +34,7 @@ $offcanvas: (
 
 // Extend default off-canvas map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'offcanvas') == true) {
+  @if map-has-key($override, 'offcanvas') {
     $offcanvas: map-extend($offcanvas, map-get($override, 'offcanvas'), true);
   }
 }
@@ -546,7 +546,7 @@ $offcanvas: (
 }
 
 // Check if we should output off-canvas
-@if (map-get($offcanvas, 'output') == true) {
+@if map-get($offcanvas, 'output') {
 /*==============================================================================
   @Off-Canvas - #{$filename}
 ==============================================================================*/

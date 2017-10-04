@@ -39,7 +39,7 @@ $icons: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'icons') == true) {
+  @if map-has-key($override, 'icons') {
     $icons: map-extend($icons, map-get($override, 'icons'), true);
   }
 }
@@ -146,7 +146,7 @@ $icons: (
 }
 
 // Check if we should output icons
-@if (map-get($icons, 'output') == true) {
+@if map-get($icons, 'output') {
 
 /*==============================================================================
   @Icons - #{$filename}
@@ -163,9 +163,9 @@ $icons: (
 }
 
 // Check if we should output button modifiers
-@if (map-get($icons, 'output-buttons') == true) {
+@if map-get($icons, 'output-buttons') {
   // Check if $buttons exists
-  @if (variable-exists(buttons) == true) {
+  @if variable-exists(buttons) {
     .#{map-get($buttons, 'class')} {
       @include add-icon-button();
     }

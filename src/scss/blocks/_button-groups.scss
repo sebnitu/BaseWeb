@@ -25,7 +25,7 @@ $button-groups: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'button-groups') == true) {
+  @if map-has-key($override, 'button-groups') {
     $button-groups: map-extend($button-groups, map-get($override, 'button-groups'), true);
   }
 }
@@ -45,7 +45,7 @@ $button-groups: (
 @mixin make-button-group($defaults: true, $options: ()) {
   $o: map-merge($button-groups, $options);
 
-  @if ($defaults == true) {
+  @if $defaults {
     @include add-button-group-display(map-get($o, 'display'));
     @include add-button-group-orientation(map-get($o, 'orientation'));
   }
@@ -162,7 +162,7 @@ $button-groups: (
 }
 
 // Check if we should output button-groups
-@if (map-get($button-groups, 'output') == true) {
+@if map-get($button-groups, 'output') {
 
 /*==============================================================================
   @Button Groups - #{$filename}

@@ -42,7 +42,7 @@ $forms: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'forms') == true) {
+  @if map-has-key($override, 'forms') {
     $forms: map-extend($forms, map-get($override, 'forms'), true);
   }
 }

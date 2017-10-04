@@ -36,7 +36,7 @@ $tabs: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'tabs') == true) {
+  @if map-has-key($override, 'tabs') {
     $tabs: map-extend($tabs, map-get($override, 'tabs'), true);
   }
 }
@@ -266,7 +266,7 @@ $tabs: (
 }
 
 // Check if we should output tabs
-@if (map-get($tabs, 'output') == true) {
+@if map-get($tabs, 'output') {
 
 /*==============================================================================
   @Tabs - #{$filename}

@@ -22,7 +22,7 @@ $lists: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'lists') == true) {
+  @if map-has-key($override, 'lists') {
     $lists: map-extend($lists, map-get($override, 'lists'), true);
   }
 }
@@ -237,7 +237,7 @@ dl {
 }
 
 // Check if we should output lists
-@if (map-get($lists, 'output') == true) {
+@if map-get($lists, 'output') {
 
 /*==============================================================================
   @List Modifiers - #{$filename}

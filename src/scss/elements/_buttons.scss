@@ -127,7 +127,7 @@ $buttons: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'buttons') == true) {
+  @if map-has-key($override, 'buttons') {
     $buttons: map-extend($buttons, map-get($override, 'buttons'), true);
   }
 }
@@ -155,7 +155,7 @@ $buttons: (
 }
 
 // Check if we should output buttons
-@if (map-get($buttons, 'output') == true) {
+@if map-get($buttons, 'output') {
 
 /*==============================================================================
   @Buttons - #{$filename}
@@ -166,7 +166,7 @@ $buttons: (
 }
 
 // Check if we should output notice modifiers
-@if (map-get($buttons, 'output-modifiers') == true) {
+@if map-get($buttons, 'output-modifiers') {
   .#{map-get($buttons, 'class')} {
     @include add-modifiers($buttons);
   }

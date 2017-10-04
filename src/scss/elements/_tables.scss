@@ -27,7 +27,7 @@ $tables: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'tables') == true) {
+  @if map-has-key($override, 'tables') {
     $tables: map-extend($tables, map-get($override, 'tables'), true);
   }
 }
@@ -292,7 +292,7 @@ table {
 }
 
 // Check if we should output tables
-@if (map-get($tables, 'output') == true) {
+@if map-get($tables, 'output') {
 
 /*==============================================================================
   @Table Modifiers - #{$filename}

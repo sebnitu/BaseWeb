@@ -30,7 +30,7 @@ $tooltips: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'tooltips') == true) {
+  @if map-has-key($override, 'tooltips') {
     $tooltips: map-extend($tooltips, map-get($override, 'tooltips'), true);
   }
 }
@@ -255,7 +255,7 @@ $tooltips: (
 }
 
 // Check if we should output tooltips
-@if (map-get($tooltips, 'output') == true) {
+@if map-get($tooltips, 'output') {
 
 /*==============================================================================
   @Tooltips - #{$filename}
@@ -276,7 +276,7 @@ $tooltips: (
 }
 
 // Check if we should output position classes
-@if (map-get($tooltips, 'output-position') == true) {
+@if map-get($tooltips, 'output-position') {
 
 /**
  * Tooltip Positions

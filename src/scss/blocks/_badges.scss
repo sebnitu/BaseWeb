@@ -21,9 +21,19 @@ $badges: (
     'margin' : 0 -0.25em 0 0.5em,
   ),
 
-  'button' : (
+  'buttons' : (
     'margin' : 0.5em,
     'padding' : 0.25em 0.5em,
+  ),
+
+  'icons' : (
+    'margin' : 0 0.25rem 0 0,
+    'padding' : 0.5rem,
+    'font-size' : 1rem,
+  ),
+
+  'images' : (
+    'margin' : -0.25rem 0.75rem -0.25rem -0.75rem,
   ),
 
   'modifiers' : (
@@ -155,7 +165,7 @@ $badges: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'badges') == true) {
+  @if map-has-key($override, 'badges') {
     $badges: map-extend($badges, map-get($override, 'badges'), true);
   }
 }
@@ -186,8 +196,53 @@ $badges: (
   }
 }
 
+// Add Badge Content
+// Creates the styles for specified badge content.
+// @param $type
+//   @type string
+//   @options 'icons', 'images', null
+//   @default null
+// @param $options
+//   @type map
+//   @default $badges map
+@mixin add-badge-content($type: null, $options: ()) {
+  $o: map-extend($badges, $options, true);
+
+  // Icons content
+  @if $type == 'icons' or $type == 'all' {
+    > .#{map-get($icons, 'class')} {
+      margin: map-fetch($o, 'icons', 'margin');
+      font-size: map-fetch($o, 'icons', 'font-size');
+    }
+    &.#{map-get($o, 'class')}-#{map-get($icons, 'class')} {
+      padding: map-fetch($o, 'icons', 'padding');
+      > .#{map-get($icons, 'class')} {
+        margin: 0;
+      }
+    }
+  }
+
+  // Images content
+  @if $type == 'images' or $type == 'all' {
+    > img {
+      margin: map-fetch($o, 'images', 'margin');
+      border-top-left-radius: map-get($o, 'border-radius');
+      border-bottom-left-radius: map-get($o, 'border-radius');
+    }
+    @if map-fetch($o, 'modifiers', 'pill') {
+      &.pill {
+        > img {
+          border-radius: map-fetch($o, 'modifiers', 'pill', 'border-radius');
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+
+}
+
 // Check if we should output badges
-@if (map-get($badges, 'output') == true) {
+@if map-get($badges, 'output') {
 
 /*==============================================================================
   @Badges - #{$filename}
@@ -195,39 +250,14 @@ $badges: (
 
 .#{map-get($badges, 'class')} {
   @include make-badge();
-
-  > .icon {
-    margin: 0 0.25rem 0 0;
-    font-size: 1rem;
-  }
-
-  &.badge-icon {
-    padding: 0.5rem;
-
-    > .icon {
-      margin: 0;
-    }
-  }
-
-  > img {
-    margin: -0.25rem 0.75rem -0.25rem -0.75rem;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-  }
-
-  &.pill {
-    > img {
-      border-radius: 3rem;
-      margin-right: 0.5rem;
-    }
-  }
+  @include add-badge-content('all');
 }
 a.#{map-get($badges, 'class')} {
   @include add-modifiers($badges, 'default', false, ('output-base': false));
 }
 
 // Check if we should output badge modifiers
-@if (map-get($badges, 'output-modifiers') == true) {
+@if map-get($badges, 'output-modifiers') {
   .#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-pseudo': false));
     @include add-modifiers-close($badges);
@@ -238,23 +268,23 @@ a.#{map-get($badges, 'class')} {
 }
 
 // Check if we should output button modifiers
-@if (map-get($badges, 'output-buttons') == true) {
+@if map-get($badges, 'output-buttons') {
   // Check if $buttons exists
   @if (variable-exists(buttons)) {
     .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
       display: inline;
-      padding: map-fetch($badges, 'button', 'padding');
+      padding: map-fetch($badges, 'buttons', 'padding');
     }
     .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
       .#{map-get($badges, 'class')} {
-        margin-left: -(map-fetch($badges, 'button', 'margin'));
-        margin-right: map-fetch($badges, 'button', 'margin');
+        margin-left: -(map-fetch($badges, 'buttons', 'margin'));
+        margin-right: map-fetch($badges, 'buttons', 'margin');
       }
     }
     .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
       .#{map-get($badges, 'class')} {
-        margin-left: map-fetch($badges, 'button', 'margin');
-        margin-right: -(map-fetch($badges, 'button', 'margin'));
+        margin-left: map-fetch($badges, 'buttons', 'margin');
+        margin-right: -(map-fetch($badges, 'buttons', 'margin'));
       }
     }
   }

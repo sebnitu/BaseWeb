@@ -13,7 +13,7 @@ $videos: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'videos') == true) {
+  @if map-has-key($override, 'videos') {
     $videos: map-extend($videos, map-get($override, 'videos'), true);
   }
 }
@@ -81,7 +81,7 @@ $videos: (
 }
 
 // Check if we should output videos
-@if (map-get($videos, 'output') == true) {
+@if map-get($videos, 'output') {
 
 /*==============================================================================
   @Video - #{$filename}

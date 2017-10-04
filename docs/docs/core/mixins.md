@@ -8,74 +8,6 @@ Global mixins for our framework. These mixins are global and don't apply specifi
 
 <div id="toc" class="toc"></div>
 
-<section id="map-add-styles" class="docs-item" markdown="1">
-
-### Variable Map
-
-```scss
-$add-styles: (
-  'output-base' : true,
-  'output-pseudo' : true,
-  'properties' : (
-    // Structure
-    'display',
-    'float',
-    'width',
-    'height',
-    'margin',
-    'margin-top',
-    'margin-left',
-    'margin-right',
-    'margin-bottom',
-    'padding',
-    'padding-top',
-    'padding-left',
-    'padding-right',
-    'padding-bottom',
-    'vertical-align',
-    'content',
-
-    // Typography
-    'font-family',
-    'font-size',
-    'line-height',
-    'font-weight',
-    'text-align',
-    'text-indent',
-    'white-space',
-    'letter-spacing',
-    'overflow',
-    'color',
-    'text-shadow',
-    'text-decoration',
-
-    // Aesthetic
-    'background',
-    'background-color',
-    'background-clip',
-    'box-shadow',
-    'border',
-    'border-color',
-    'border-radius',
-
-    // Transitions
-    'transition',
-    'transition-property',
-    'transition-duration',
-    'transition-timing-function',
-    'transition-duration',
-  ),
-  'pseudo-classes' : (
-    'hover',
-    'focus',
-    'active',
-    'visited',
-  ),
-) !default;
-```
-
-</section><!-- .docs-item -->
-
 <section id="mixin-add-clearfix" class="docs-item" markdown="1">
 
 ### add-clearfix
@@ -120,11 +52,52 @@ Removes the clearfix styles from an element. This is typically used when a clear
 
 ### add-styles
 
-...
+Output styles from a component map based on the approved properties and pseudo-classes.
 
 ```scss
 @include add-styles();
 ```
+
+<p class="subheading">Example Usage</p>
+
+For basic usage, take a look at how we can output text styles through a default map. Notice how the properties that don't match in our settings map of approved properties get ignored:
+
+```scss
+// SCSS Input
+$example: (
+  'other' : 'Option to ignore',
+  'cursor' : pointer,
+  'color' : $blue,
+  'padding' : 0.5em 0,
+  'border-top' : 1px solid $blue,
+  'transition' : $transition,
+  'hover' : (
+    'color' : $purple,
+    'border-color' : $purple
+  )
+);
+.text-example {
+  @include add-styles($example);
+}
+
+// CSS Output
+.text-example {
+  cursor: pointer;
+  padding: 0.5em 0;
+  color: #2196F3;
+  border-top: 1px solid #2196F3;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.text-example:hover {
+  color: #9C27B0;
+  border-color: #9C27B0;
+}
+```
+
+<div class="demo">
+  <p class="text-example">Example Text</p>
+</div>
 
 </section><!-- .docs-item -->
 
@@ -401,6 +374,116 @@ Uses the `0*0` element with borders trick to draw arrows. The base styles for cr
   <div class="col col-4"><span class="example-triangle-1"></span></div>
   <div class="col col-4"><span class="example-triangle-2"></span></div>
   <div class="col col-4"><span class="example-triangle-3"></span></div>
+</div>
+
+</section><!-- .docs-item -->
+
+<section id="mixin-make-anchor" class="docs-item" markdown="1">
+
+### make-anchor
+
+...
+
+```scss
+@include make-anchor();
+```
+
+</section><!-- .docs-item -->
+
+<section id="mixin-build-headings" class="docs-item" markdown="1">
+
+### build-headings
+
+...
+
+```scss
+@include build-headings();
+```
+
+</section><!-- .docs-item -->
+
+<section id="mixin-add-text-truncate" class="docs-item" markdown="1">
+
+### add-text-truncate
+
+Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
+
+```scss
+@include add-text-truncate();
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$display</code></td>
+    <td>Display property (block, inline-block)</td>
+    <td><code>block</code></td>
+  </tr>
+</table>
+
+<p class="subheading">Example Usage</p>
+
+```scss
+// SCSS
+.demo-text-truncate {
+  @include add-text-truncate();
+}
+
+// CSS Output
+.demo-text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+<div class="demo demo-add-text-truncate">
+  <div class="box">This is some text that will get truncated</div>
+</div>
+
+</section><!-- .docs-item -->
+
+<section id="mixin-text-hide" class="docs-item" markdown="1">
+
+### add-text-hide
+
+Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
+
+```scss
+@include add-text-hide();
+```
+
+<p class="subheading">Example Usage</p>
+
+```scss
+// SCSS
+.logo {
+  ...
+  @include add-text-hide();
+}
+
+// CSS Output
+.logo {
+  ...
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+```
+
+```html
+<div class="logo">Demo Logo Image Replace</div>
+```
+
+<div class="demo demo-logo-image">
+  <div class="logo">Demo Logo Image Replace</div>
 </div>
 
 </section><!-- .docs-item -->

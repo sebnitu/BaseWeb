@@ -17,7 +17,7 @@ $breakpoints: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'breakpoints') == true) {
+  @if map-has-key($override, 'breakpoints') {
     $breakpoints: map-extend($breakpoints, map-get($override, 'breakpoints'), true);
   }
 }

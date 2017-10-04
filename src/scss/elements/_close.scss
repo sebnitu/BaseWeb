@@ -46,7 +46,7 @@ $close: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'close') == true) {
+  @if map-has-key($override, 'close') {
     $close: map-extend($close, map-get($override, 'close'), true);
   }
 }
@@ -83,14 +83,17 @@ $close: (
 
 // Add Modifiers Close
 // Creates styles for the close elements along with modifiers.
+// @param $options
+//   @type map
+//   @default ()
 @mixin add-modifiers-close($options: ()) {
   $o: $options;
 
   // Check if $close exists and if output is set to true
-  @if (map-get($close, 'output') == true) {
+  @if map-get($close, 'output') {
 
     // If close key exists, output close styles
-    @if (map-has-key($o, 'close') == true) {
+    @if map-has-key($o, 'close') {
       .#{map-get($close, 'class')} {
         @include add-styles(map-get($o, 'close'));
         @if (map-fetch($o, 'close', 'key')) {
@@ -119,7 +122,7 @@ $close: (
 }
 
 // Check if we should output close
-@if (map-get($close, 'output') == true) {
+@if map-get($close, 'output') {
 
 /*==============================================================================
   @Close - #{$filename}
@@ -130,7 +133,7 @@ $close: (
 }
 
 // Check if we should output close modifiers
-@if (map-get($close, 'output-modifiers') == true) {
+@if map-get($close, 'output-modifiers') {
   .#{map-get($close, 'class')} {
     @include add-modifiers($close);
   }

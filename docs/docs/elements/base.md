@@ -35,37 +35,6 @@ table {
 
 <div id="toc" class="toc"></div>
 
-<section id="var-base" class="docs-item" markdown="1">
-
-### Variables
-
-Base variables are used in setting utility classes. These are component agnostic and can be used throughout your projects or components.
-
-```scss
-// Sets global box sizing property
-// @type border-box, null
-$box-sizing: border-box !default;
-
-// Class name used in clearfix and remove-clearfix classes
-// @type class-name, null
-$class-clearfix: 'clearfix' !default;
-$class-remove-clearfix: 'remove-clearfix' !default;
-
-// Class name used in float left and right classes
-// @type class-name, null
-$class-float-left: 'float-left' !default;
-$class-float-right: 'float-right' !default;
-
-$class-show: 'show' !default;
-$class-hide: 'hide' !default;
-
-// Whether or not to output media based show-hide classes
-$class-show-hide-min: 'down' !default;
-$class-show-hide-max: 'up' !default;
-```
-
-</section><!-- .docs-item -->
-
 <header class="docs-header" markdown="1">
 
 ## Classes

@@ -78,7 +78,7 @@ $notices: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'notices') == true) {
+  @if map-has-key($override, 'notices') {
     $notices: map-extend($notices, map-get($override, 'notices'), true);
   }
 }
@@ -103,7 +103,7 @@ $notices: (
 }
 
 // Check if we should output notices
-@if (map-get($notices, 'output') == true) {
+@if map-get($notices, 'output') {
 
 /*==============================================================================
   @Notices - #{$filename}
@@ -114,7 +114,7 @@ $notices: (
 }
 
 // Check if we should output notice modifiers
-@if (map-get($notices, 'output-modifiers') == true) {
+@if map-get($notices, 'output-modifiers') {
   .#{map-get($notices, 'class')} {
     @include add-modifiers($notices);
     @include add-modifiers-close($notices);

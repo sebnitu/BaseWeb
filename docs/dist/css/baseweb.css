@@ -374,18 +374,16 @@ body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5em;
-  font-weight: 400;
+  font-weight: font-weight("normal");
   color: #212121;
   -webkit-font-smoothing: subpixel-antialiased;
   /* [2] */
 }
 
-/**
- * Anchors
- */
 a {
   color: #2196F3;
   text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 a:hover {
@@ -393,15 +391,12 @@ a:hover {
   border-color: inherit;
 }
 
-/**
- * Headings
- */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .block-action h2, .h5, .widget h2, .subheading, .h6 {
   margin: 1rem 0;
   font-family: inherit;
   line-height: 1.25em;
-  font-weight: 600;
+  font-weight: font-weight("semi-bold");
   color: #212121;
 }
 
@@ -410,6 +405,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
   color: #212121;
   text-decoration: none;
   border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
@@ -442,16 +438,10 @@ h6, .h6 {
   font-size: 1em;
 }
 
-/**
- * Paragraphs
- */
 p {
   margin: 1em 0;
 }
 
-/**
- * Inline Text Elements
- */
 strong {
   font-weight: bold;
 }
@@ -479,9 +469,6 @@ abbr[data-original-title] {
           text-decoration: underline dotted;
 }
 
-/**
- * Stylistic Classes
- */
 .text-lead {
   font-size: 1.5em;
   line-height: 1.4em;
@@ -499,7 +486,7 @@ abbr[data-original-title] {
 }
 
 .text-soften {
-  font-weight: 400;
+  font-weight: font-weight("normal");
   color: #9E9E9E;
 }
 
@@ -508,9 +495,6 @@ abbr[data-original-title] {
   color: #212121;
 }
 
-/**
- * Alignment Classes
- */
 .text-left {
   text-align: left;
 }
@@ -531,9 +515,6 @@ abbr[data-original-title] {
   white-space: nowrap;
 }
 
-/**
- * Transformation Classes
- */
 .text-lowercase {
   text-transform: lowercase;
 }
@@ -4068,6 +4049,23 @@ figure {
 }
 
 /**
+ * Add Styles Demo
+ */
+.text-example {
+  cursor: pointer;
+  padding: 0.5em 0;
+  color: #2196F3;
+  border-top: 1px solid #2196F3;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.text-example:hover {
+  color: #9C27B0;
+  border-color: #9C27B0;
+}
+
+/**
  * Vertical Center
  */
 .demo.demo-vertical-center {
@@ -5306,7 +5304,7 @@ figure {
 }
 
 .bg-color-link-hover {
-  background: #1976D2;
+  background: map-fetch(("output": true, "color": #2196F3, "border-bottom": 1px solid rgba(0, 0, 0, 0.1), "text-decoration": none, "hover": ("color": #1976D2, "border-color": inherit)), "hover", "color");
 }
 
 .bg-color-heading {
@@ -5314,11 +5312,11 @@ figure {
 }
 
 .bg-color-heading-link {
-  background: #212121;
+  background: map-fetch(("output": true, "margin": 1rem 0, "font-family": inherit, "line-height": 1.25em, "font-weight": font-weight("semi-bold"), "color": #212121, "anchors": ("output": true, "color": #212121, "border": none, "hover": ("color": #2196F3)), "scale": ("h1": 2.5em, "h2": 2em, "h3": 1.75em, "h4": 1.5em, "h5": 1.25em, "h6": 1em)), "anchors", "color");
 }
 
 .bg-color-heading-link-hover {
-  background: #2196F3;
+  background: map-fetch(("output": true, "margin": 1rem 0, "font-family": inherit, "line-height": 1.25em, "font-weight": font-weight("semi-bold"), "color": #212121, "anchors": ("output": true, "color": #212121, "border": none, "hover": ("color": #2196F3)), "scale": ("h1": 2.5em, "h2": 2em, "h3": 1.75em, "h4": 1.5em, "h5": 1.25em, "h6": 1em)), "anchors", "hover", "color");
 }
 
 .bg-bg-color {
@@ -6268,6 +6266,7 @@ a.widget-featured.color-5:hover h2 {
 .widget-menu h2 a {
   margin-left: -1em;
   margin-right: -1em;
+  border: none;
 }
 
 .widget-menu h2 a:hover {
@@ -6541,7 +6540,7 @@ a.widget-featured.color-5:hover h2 {
 }
 
 .meta a:hover {
-  color: #1976D2;
+  color: map-fetch(("output": true, "color": #2196F3, "border-bottom": 1px solid rgba(0, 0, 0, 0.1), "text-decoration": none, "hover": ("color": #1976D2, "border-color": inherit)), "hover", "color");
 }
 
 .meta .date {
@@ -6811,7 +6810,7 @@ a.widget-featured.color-5:hover h2 {
 }
 
 .footer a:not(.button):hover {
-  color: #1976D2;
+  color: map-fetch(("output": true, "color": #2196F3, "border-bottom": 1px solid rgba(0, 0, 0, 0.1), "text-decoration": none, "hover": ("color": #1976D2, "border-color": inherit)), "hover", "color");
 }
 
 .footer .button {

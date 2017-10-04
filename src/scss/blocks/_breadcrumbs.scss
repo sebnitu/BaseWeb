@@ -31,7 +31,7 @@ $breadcrumbs: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'breadcrumbs') == true) {
+  @if map-has-key($override, 'breadcrumbs') {
     $breadcrumbs: map-extend($breadcrumbs, map-get($override, 'breadcrumbs'), true);
   }
 }
@@ -80,7 +80,7 @@ $breadcrumbs: (
 }
 
 // Check if we should output breadcrumbs
-@if (map-get($breadcrumbs, 'output') == true) {
+@if map-get($breadcrumbs, 'output') {
 
 /*==============================================================================
   @Breadcrumb - #{$filename}
