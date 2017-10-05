@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Palette"
-order: 1
+order: 2
 ---
 
 BaseWeb comes with variables of all the base colors, shades and accents found in [Material Design](https://material.io/guidelines/style/color.html)'s color styles and guidelines. They are stored in `/settings/_palette.scss` where they can be overridden, expanded upon, or changed in a separate file and loaded before all other element and block components. It's recommended to not delete colors from this file as they may be used in components throughout BaseWeb.

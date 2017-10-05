@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Settings"
-order: 2
+order: 3
 ---
 
 These are general variables that are used throughout BaseWeb. They aren't specific to a component but are primarily used as global defaults.
@@ -92,7 +92,7 @@ $text-modifiers: true !default;
 
 <section id="map-anchors" class="docs-item" markdown="1">
 
-### Anchors Map
+### Anchors map
 
 Default styles for anchor elements.
 
@@ -120,7 +120,7 @@ $anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
 
 <section id="map-headings" class="docs-item" markdown="1">
 
-### Headings Map
+### Headings map
 
 Default styles for heading elements.
 
@@ -163,7 +163,7 @@ $heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !
 
 <section id="map-add-styles" class="docs-item" markdown="1">
 
-### Add Styles Settings
+### Add-Styles settings
 
 Default settings used in the add-styles mixin.
 

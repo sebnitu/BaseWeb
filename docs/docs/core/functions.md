@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Functions"
-order: 3
+order: 1
 ---
 
 This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.
@@ -353,24 +353,40 @@ font-weight( $weight );
   <tr>
     <th>Parameter</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$weight</code></td>
-    <td>Font-weight keyword (hairline, thin, light, regular, medium, semi-bold, bold, extra-bold, black)</td>
+    <td>String</td>
+    <td>
+      <code>'hairline'</code>,
+      <code>'thin'</code>,
+      <code>'light'</code>,
+      <code>'regular'</code>,
+      <code>'medium'</code>,
+      <code>'semi-bold'</code>,
+      <code>'bold'</code>,
+      <code>'extra-bold'</code>,
+      <code>'black'</code>
+    </td>
     <td><span class="text-soften">None</span></td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="4">Font-weight value</td>
   </tr>
 </table>
 
 <p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 h1 {
   font-weight: font-weight('light');
 }
 
-//CSS
+// CSS output
 h1 {
   font-weight: 300;
 }

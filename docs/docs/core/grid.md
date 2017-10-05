@@ -221,47 +221,30 @@ All grid variables are defined within the `$grid` map and is used as the default
 
 ```scss
 $grid: (
+  'output' : true,
+  'output-mobile' : true,
 
-  // Global grid settings
-  // Sets the grid type ('normal', 'mobile')
+  'class-container' : 'container',
+  'class-row' : 'row',
+  'class-column' : 'col',
+  'class-column-left' : 'col-left',
+  'class-column-right' : 'col-right',
+  'class-prefix' : 'prefix',
+  'class-suffix' : 'suffix',
+
   'type' : 'normal',
 
-  // Use same unit type as `$grid('gutter-width')`.
   'total-width' : 100%,
-
-  // Use same unit type as `$grid('total-width')`.
-  // Used to set left and right margin of columns.
   'gutter-width' : 0,
-
-  // Used to set using left and right padding of columns.
   'inner-gutter-width' : 1.5rem,
 
-  // Sets the number of columns in Grid System.
   'columns' : 12,
-
-  // Default float for columns
   'column-float' : left,
 
-  // Container settings
   'container-margin' : 0 auto,
   'container-padding' : 0 1.5rem,
   'container-min-width' : none,
   'container-max-width' : 75rem,
-
-  // Grid class names
-  'class-container' : 'container',
-  'class-row' : 'row',
-  'class-column' : 'col',
-
-  // Custom float class names
-  'class-column-left' : 'col-left',
-  'class-column-right' : 'col-right',
-
-  // Set to `null` to disable output
-  'class-prefix' : 'prefix',
-
-  // Set to `null` to disable output
-  'class-suffix' : 'suffix',
 
 ) !default;
 ```
@@ -302,7 +285,7 @@ $return: column-width( $index, $options: () );
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
   <tr>
@@ -339,7 +322,7 @@ $return: spacing-width( $index, $options: () );
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
   <tr>
@@ -377,7 +360,7 @@ Outputs all the styles needed to make an element a grid container.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
@@ -402,7 +385,7 @@ Outputs all the styles needed to make an element a grid row.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
@@ -427,7 +410,7 @@ Creates the base styles for a column but excludes setting the width. Also create
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
@@ -459,7 +442,7 @@ Creates all the styles for a column and sets its width.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
@@ -492,7 +475,7 @@ Creates the base styles for a column and sets its width.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
@@ -525,7 +508,7 @@ Creates the base styles for a spacing suffix.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
@@ -552,7 +535,7 @@ Outputs all the classes and styles for the class based grid system. You can eith
   <tr>
     <td><code>$grid-type | $options</code></td>
     <td>String or Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td>Pass either a grid type string or a map with grid settings.</td>
   </tr>
 </table>
@@ -574,7 +557,7 @@ The most basic use of `build-grid-system()` is to output mobile styles and withi
 
 <p class="subheading">Classes Output</p>
 
-These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid()` map.
+These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid` map.
 
 ```html
 <div class="container">
@@ -601,7 +584,7 @@ These are all the default classes that become available when generating your gri
 </div>
 
 <div class="notice info" markdown="1">
-You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid()` map or passing it directly to the mixin manually.
+You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid` map or passing it directly to the mixin manually.
 </div>
 
 </section><!-- .docs-item -->

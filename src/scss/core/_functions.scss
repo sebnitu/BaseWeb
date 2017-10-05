@@ -10,9 +10,9 @@
 // @param $maps
 //   @type list of maps
 // @param $deep
+//   @desc Whether or not to enable recursive mode.
 //   @type boolean
 //   @default false
-//   @desc Whether or not to enable recursive mode.
 // @return merged map
 @function map-extend($map, $maps.../*, $deep */) {
   $last: nth($maps, -1);
@@ -170,8 +170,9 @@
 // Font Weight
 // Output the font weight value using the a weight keyword.
 // @param $weight
-//   @type font-weight keyword (hairline, thin, extra-light, light, regular,
-//     normal, medium, semi-bold, bold, extra-bold, black)
+//   @type string
+//   @options 'hairline', 'thin', 'extra-light', 'light', 'regular', 'normal',
+//     'medium', 'semi-bold', 'bold', 'extra-bold', 'black'
 @function font-weight($keyword) {
   $value: null !default;
 

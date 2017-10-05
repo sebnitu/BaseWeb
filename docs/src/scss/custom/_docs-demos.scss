@@ -53,7 +53,7 @@ $filename: 'scss/custom/_docs-demos.scss';
 /**
  * Add Styles Demo
  */
-$example: (
+$add-styles-example: (
   'other' : 'Option to ignore',
   'cursor' : pointer,
   'color' : $blue,
@@ -66,8 +66,8 @@ $example: (
   )
 );
 
-.text-example {
-  @include add-styles($example);
+.add-styles-example {
+  @include add-styles($add-styles-example);
 }
 
 /**
@@ -116,19 +116,19 @@ $example: (
   @include add-clearfix();
 }
 %triangle {
-  @include add-triangle-base();
+  @include make-triangle();
 }
 .example-triangle-1 {
   @extend %triangle;
-  @include add-triangle( 14px, $blue, 'left' );
+  @include add-triangle-styles( 14px, $blue, 'left' );
 }
 .example-triangle-2 {
   @extend %triangle;
-  @include add-triangle( 14px, $purple, 'down' );
+  @include add-triangle-styles( 14px, $purple, 'down' );
 }
 .example-triangle-3 {
   @extend %triangle;
-  @include add-triangle( 14px, $red, 'right' );
+  @include add-triangle-styles( 14px, $red, 'right' );
 }
 
 /**

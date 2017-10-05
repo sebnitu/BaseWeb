@@ -23,106 +23,6 @@
   }
 }
 
-// Add Styles
-// Output styles from a component map based on the approved properties and pseudo-classes.
-// @param $input
-//   @type map
-//   @desc The styles object to inject properties from
-//   @default ()
-// @param $settings
-//   @type map
-//   @desc Output options and approved pseudo classes and properties
-//   @default $add-styles
-@mixin add-styles($input: (), $settings: ()) {
-  $s: map-merge($add-styles, $settings);
-
-  // Check if we should output base modifier styles
-  @if map-get($s, 'output-base') {
-    // Loop through properties and set them if they exist
-    @each $prop in map-get($s, 'properties') {
-      @if (map-has-key($input, $prop)) {
-        #{$prop}: map-get($input, $prop);
-      }
-    }
-  }
-
-  // Check if we should output pseudo-class styles
-  @if map-get($s, 'output-pseudo') {
-    // Loop through pseudo-classes and see if they exist in $input
-    @each $pseudo in map-get($s, 'pseudo-classes') {
-      @if (map-has-key($input, $pseudo)) {
-        &:#{$pseudo} {
-          // Loop through properties and set them if they exist
-          @each $prop in map-get($s, 'properties') {
-            @if (map-has-key(map-get($input, $pseudo), $prop)) {
-              #{$prop}: map-fetch($input, $pseudo, $prop);
-            }
-          }
-        }
-      }
-    }
-  }
-
-}
-
-// Add Modifiers
-// Output an array of modifiers for flat components.
-// @param $input
-//   @type map
-//   @desc The styles object with optional modifiers to inject properties from
-//   @default ()
-// @param $key
-//   @type String, null
-//   @desc Specific key to putput from modifiers or null for all
-//   @default null
-// @param $selector
-//   @type boolean
-//   @desc Whether or not to putput a selector
-//   @default true
-// @param $settings
-//   @type map
-//   @desc Simply passed on to add-styles()
-//   @default $add-styles
-@mixin add-modifiers($input: (), $key: null, $selector: true, $settings: ()) {
-  $s: map-merge($add-styles, $settings);
-
-  // Grab the modifier map if it exists
-  @if (map-has-key($input, 'modifiers')) {
-    $input: map-get($input, 'modifiers');
-  }
-
-  // If an output is passed, re-map the input to the selected key.
-  // Also, we don't want to output the default modifier class.
-  @if ($key) {
-    @each $name, $map in $input {
-      @if ($key == $name) {
-        $input: ($name: $map);
-      }
-    }
-  } @else {
-    $input: map-remove($input, 'default');
-  }
-
-  // Loop through our input modifiers
-  @each $name, $map in $input {
-
-    @if ($selector) {
-      @if (map-has-key($map, 'selector')) {
-        $selector: map-get($map, 'selector');
-      } @else {
-        $selector: '&.' + $name;
-      }
-      #{$selector} {
-        @include add-styles($map, $settings);
-      }
-    } @else {
-      @include add-styles($map, $settings);
-    }
-
-  }
-
-}
-
 // Add Float Modifiers
 // Adds the float modifier classes to an element.
 // @param $left
@@ -132,12 +32,12 @@
 //   @type class name
 //   @default $class-float-right
 @mixin add-float-modifiers($left: $class-float-left, $right: $class-float-right) {
-  @if ($left) {
+  @if $left {
     &.#{$left} {
       float: left;
     }
   }
-  @if ($right) {
+  @if $right {
     &.#{$right} {
       float: right;
     }
@@ -200,29 +100,29 @@
   transition: top linear 0.2s, bottom linear 0.2s;
 }
 
-// Add Triangle Base
-// The base styles for creating CSS triangles
-@mixin add-triangle-base() {
+// Make Triangle
+// Creates the base styles for creating CSS triangles.
+@mixin make-triangle() {
   content: '';
   display: inline-block;
   width: 0;
   height: 0;
-  border: 0 none;
+  border: none;
   border-style: solid;
   border-color: transparent;
 }
 
-// Add Triangle
-// Uses the "0x0" element with borders trick to draw arrows.
+// Add Triangle Styles
+// Uses the "0x0" element with borders trick to draw arrow size, color and direction.
 // @param $size
 //   @type unit (pixel, em, rem)
 // @param $color
 //   @type color
 // @param $direction
-//   @type string ('up', 'right', 'down', 'left', 'up-right', 'up-left',
-//     'down-right', 'down-left')
 //   @desc The direction that the triangle will point.
-@mixin add-triangle( $size, $color, $direction ) {
+//   @type string
+//   @options 'up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left'
+@mixin add-triangle-styles( $size, $color, $direction ) {
   border-color: transparent;
   @if ($direction == 'up') {
     border-width: 0 $size $size $size;
@@ -257,12 +157,35 @@
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// @Typography Mixins
-////////////////////////////////////////////////////////////////////////////////
+// Add Truncate Text
+// Truncates text with an ellipsis. Element this is applied to must be block
+// or inline-block.
+// @param $display
+//   @type display property (block, inline-block)
+//   @default block
+@mixin add-text-truncate( $display : block ) {
+  @if ($display == inline-block or $display == block) {
+    display: $display;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Add Hide text
+// Hides text from an element. This is most commonly used as an image
+// replacement technique for hiding text in an element to reveal a
+// background image.
+@mixin add-text-hide() {
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 // Make Anchor
-// Creates the base ancho styles using the $anchors map for defaults.
+// Creates the base anchor styles using the $anchors map for defaults.
 // @param $options
 //   @type map
 //   @default $anchors map
@@ -299,29 +222,102 @@
   }
 }
 
-// Add Truncate Text
-// Truncates text with an ellipsis. Element this is applied to must be block
-// or inline-block.
-// @param $display
-//   @type display property (block, inline-block)
-//   @default block
-@mixin add-text-truncate( $display : block ) {
-  @if ($display == inline-block or $display == block) {
-    display: $display;
+// Add Styles
+// Output styles from a component map based on the approved properties and pseudo-classes.
+// @param $input
+//   @desc The styles object to inject properties from
+//   @type map
+//   @default ()
+// @param $settings
+//   @desc Output options and approved pseudo classes and properties
+//   @type map
+//   @default $add-styles
+@mixin add-styles($input: (), $settings: ()) {
+  $s: map-merge($add-styles, $settings);
+
+  // Check if we should output base modifier styles
+  @if map-get($s, 'output-base') {
+    // Loop through properties and set them if they exist
+    @each $prop in map-get($s, 'properties') {
+      @if (map-has-key($input, $prop)) {
+        #{$prop}: map-get($input, $prop);
+      }
+    }
   }
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+  // Check if we should output pseudo-class styles
+  @if map-get($s, 'output-pseudo') {
+    // Loop through pseudo-classes and see if they exist in $input
+    @each $pseudo in map-get($s, 'pseudo-classes') {
+      @if (map-has-key($input, $pseudo)) {
+        &:#{$pseudo} {
+          // Loop through properties and set them if they exist
+          @each $prop in map-get($s, 'properties') {
+            @if (map-has-key(map-get($input, $pseudo), $prop)) {
+              #{$prop}: map-fetch($input, $pseudo, $prop);
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
-// Add Hide text
-// Hides text from an element. This is most commonly used as an image
-// replacement technique for hiding text in an element to reveal a
-// background image.
-@mixin add-text-hide() {
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+// Add Modifiers
+// Output an array of modifiers for flat components.
+// @param $input
+//   @desc The styles object with optional modifiers to inject properties from
+//   @type map
+//   @default ()
+// @param $key
+//   @desc Specific key to putput from modifiers or null for all
+//   @type String, null
+//   @default null
+// @param $selector
+//   @desc Whether or not to putput a selector
+//   @type boolean
+//   @default true
+// @param $settings
+//   @desc Simply passed on to add-styles()
+//   @type map
+//   @default $add-styles
+@mixin add-modifiers($input: (), $key: null, $selector: true, $settings: ()) {
+  $s: map-merge($add-styles, $settings);
+
+  // Grab the modifier map if it exists
+  @if (map-has-key($input, 'modifiers')) {
+    $input: map-get($input, 'modifiers');
+  }
+
+  // If an output is passed, re-map the input to the selected key.
+  // Also, we don't want to output the default modifier class.
+  @if ($key) {
+    @each $name, $map in $input {
+      @if ($key == $name) {
+        $input: ($name: $map);
+      }
+    }
+  } @else {
+    $input: map-remove($input, 'default');
+  }
+
+  // Loop through our input modifiers
+  @each $name, $map in $input {
+
+    @if ($selector) {
+      @if (map-has-key($map, 'selector')) {
+        $selector: map-get($map, 'selector');
+      } @else {
+        $selector: '&.' + $name;
+      }
+      #{$selector} {
+        @include add-styles($map, $settings);
+      }
+    } @else {
+      @include add-styles($map, $settings);
+    }
+
+  }
+
 }

@@ -55,7 +55,10 @@ table {
   @Grid System - #{$filename}
 ==============================================================================*/
 
-@include build-grid-system('mobile');
+// Check if we should output mobile styles
+@if map-get($grid, 'output-mobile') {
+  @include build-grid-system('mobile');
+}
 
 @include media-min('medium') {
   @include build-grid-system();
