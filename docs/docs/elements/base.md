@@ -33,6 +33,52 @@ table {
 }
 ```
 
+## Box Sizing
+
+```scss
+// Set default box sizing model to our global variable $box-sizing.
+// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+@if $box-sizing {
+  *, *:before, *:after {
+    box-sizing: $box-sizing;
+  }
+}
+```
+
+## Selection Background
+
+```scss
+// Add custom text highlight color if a color is set in $bg-selection.
+@if $bg-selection {
+  ::-moz-selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+  ::selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+}
+```
+
+## Grid System
+
+```scss
+// Check if we should output grid system
+@if map-get($grid, 'output') {
+
+  // Check if we should output mobile grid system
+  @if map-get($grid, 'output-mobile') {
+    @include build-grid-system('mobile');
+  }
+
+  @include media-min('medium') {
+    @include build-grid-system();
+  }
+
+}
+```
+
 <div id="toc" class="toc"></div>
 
 <header class="docs-header" markdown="1">

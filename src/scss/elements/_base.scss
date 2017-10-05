@@ -48,14 +48,14 @@ table {
   }
 }
 
-// Check if we should output badges
+// Check if we should output grid system
 @if map-get($grid, 'output') {
 
 /*==============================================================================
   @Grid System - #{$filename}
 ==============================================================================*/
 
-// Check if we should output mobile styles
+// Check if we should output mobile grid system
 @if map-get($grid, 'output-mobile') {
   @include build-grid-system('mobile');
 }
@@ -98,9 +98,7 @@ table {
   }
 }
 
-/**
- * Show & Hide Classes
- */
+// Show and Hide classes
 @if ($class-show) {
   .#{$class-show} {
     display: block !important;
@@ -125,9 +123,7 @@ table {
   }
 }
 
-/**
- * Responsive Show and Hide Classes
- */
+// Responsive Show and Hide Classes
 @each $name, $value in $breakpoints {
   @if $class-show-hide-min or $class-show-hide-max {
 
