@@ -11,7 +11,44 @@
  * Copyright (c) 2017 Sebastian Nitu (MIT Licensed)
  */
 /*==============================================================================
-  @Grid System - scss/core/_grid.scss
+  @Base Styles - scss/elements/_base.scss
+==============================================================================*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+table {
+  font-size: 1em;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-moz-selection {
+  background: rgba(76, 175, 80, 0.25);
+  text-shadow: none;
+}
+
+::selection {
+  background: rgba(76, 175, 80, 0.25);
+  text-shadow: none;
+}
+
+/*==============================================================================
+  @Grid System - scss/elements/_base.scss
 ==============================================================================*/
 .container {
   -webkit-box-sizing: border-box;
@@ -190,43 +227,6 @@
 }
 
 /*==============================================================================
-  @Base Styles - scss/elements/_base.scss
-==============================================================================*/
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-table {
-  font-size: 1em;
-}
-
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-::-moz-selection {
-  background: rgba(76, 175, 80, 0.25);
-  text-shadow: none;
-}
-
-::selection {
-  background: rgba(76, 175, 80, 0.25);
-  text-shadow: none;
-}
-
-/*==============================================================================
   @Utility Classes - scss/elements/_base.scss
 ==============================================================================*/
 .clearfix:after {
@@ -375,7 +375,7 @@ body {
   font-size: 16px;
   line-height: 1.5em;
   font-weight: font-weight("normal");
-  color: #212121;
+  color: #424242;
   -webkit-font-smoothing: subpixel-antialiased;
   /* [2] */
 }
@@ -1351,7 +1351,7 @@ label.inline {
   font-family: inherit;
   font-size: 1em;
   line-height: 1.5em;
-  color: #212121;
+  color: #424242;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px transparent, inset 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -1397,7 +1397,7 @@ label.inline {
 .radio,
 .choice {
   cursor: pointer;
-  color: #212121;
+  color: #424242;
   font-weight: normal;
 }
 
@@ -1735,14 +1735,14 @@ fieldset[disabled] .input {
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
   transition-duration: 0.75s;
-  color: #212121;
+  color: #424242;
   background: #F5F5F5;
   transition-duration: 0.75s;
   transition-duration: 0.75s;
 }
 
 .button:hover {
-  color: #212121;
+  color: #424242;
   background: #e8e8e8;
   border-color: transparent;
   -webkit-transition-duration: 0.1s;
@@ -1794,12 +1794,12 @@ fieldset[disabled] .input {
 }
 
 .button.warning, .button.yellow {
-  color: #212121;
+  color: #424242;
   background: #FFEB3B;
 }
 
 .button.warning:hover, .button.yellow:hover {
-  color: #212121;
+  color: #424242;
   background: #FDD835;
 }
 
@@ -1814,12 +1814,12 @@ fieldset[disabled] .input {
 }
 
 .button.light {
-  color: #212121;
+  color: #424242;
   background: rgba(255, 255, 255, 0.75);
 }
 
 .button.light:hover {
-  color: #212121;
+  color: #424242;
   background: white;
 }
 
@@ -2007,12 +2007,12 @@ fieldset[disabled] .input {
 }
 
 .close.inverted {
-  color: #212121;
+  color: #424242;
   background: rgba(255, 255, 255, 0.5);
 }
 
 .close.inverted:hover {
-  color: #212121;
+  color: #424242;
   background: white;
 }
 
@@ -2168,13 +2168,13 @@ fieldset[disabled] .input {
   line-height: 1.5em;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  color: #212121;
+  color: #424242;
   background: #F5F5F5;
 }
 
 .notice.inverted {
   color: #fff;
-  background: #212121;
+  background: #424242;
 }
 
 .notice.info {
@@ -2200,7 +2200,7 @@ fieldset[disabled] .input {
 }
 
 .notice.warning.inverted {
-  color: #212121;
+  color: #424242;
   background: #FFEB3B;
 }
 
@@ -2227,12 +2227,12 @@ fieldset[disabled] .input {
 }
 
 .notice.inverted .close {
-  color: #212121;
+  color: #424242;
   background: rgba(255, 255, 255, 0.5);
 }
 
 .notice.inverted .close:hover {
-  color: #212121;
+  color: #424242;
   background: white;
 }
 
@@ -2370,7 +2370,7 @@ fieldset[disabled] .input {
   display: block;
   margin: -0.5em;
   padding: 1em;
-  color: #212121;
+  color: #424242;
   text-decoration: none;
   border: none;
   border-radius: 3px;
@@ -2378,7 +2378,7 @@ fieldset[disabled] .input {
 
 .dropdown-content > a.block:hover {
   background: rgba(0, 0, 0, 0.05);
-  color: #212121;
+  color: #424242;
 }
 
 .dropdown-content > a.block > * {
@@ -2418,7 +2418,7 @@ fieldset[disabled] .input {
 }
 
 .dropdown-menu li:hover > a {
-  color: #212121;
+  color: #424242;
 }
 
 .dropdown-menu li.active > a {
@@ -2443,7 +2443,7 @@ fieldset[disabled] .input {
 .dropdown-menu a {
   display: block;
   padding: 0.75em 1em;
-  color: #212121;
+  color: #424242;
   border: none;
   text-decoration: none;
 }
@@ -2718,13 +2718,13 @@ fieldset[disabled] .input {
 
 .style-fold .tabs-nav a,
 .tabs-nav.style-fold a {
-  color: #212121;
+  color: #424242;
 }
 
 .style-fold .tabs-nav a:hover,
 .tabs-nav.style-fold a:hover {
   background: #EEEEEE;
-  color: #212121;
+  color: #424242;
 }
 
 .style-fold .tabs-nav ul li.active,
@@ -2734,7 +2734,7 @@ fieldset[disabled] .input {
 
 .style-fold .tabs-nav .active a,
 .tabs-nav.style-fold .active a {
-  color: #212121;
+  color: #424242;
 }
 
 .style-fold .tabs-nav .active a:hover,
@@ -2809,7 +2809,7 @@ fieldset[disabled] .input {
 
 .style-line .tabs-nav .active a,
 .tabs-nav.style-line .active a {
-  color: #212121;
+  color: #424242;
 }
 
 .style-line .tabs-nav .active a:hover,
@@ -2949,7 +2949,7 @@ fieldset[disabled] .input {
   display: block;
   max-width: 30em;
   padding: 0.5em 1em;
-  background: rgba(33, 33, 33, 0.9);
+  background: rgba(66, 66, 66, 0.9);
   border-radius: 3px;
   font-size: 0.75rem;
   line-height: 1.5em;
@@ -3190,7 +3190,7 @@ fieldset[disabled] .input {
   border-radius: 3px;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
-  color: #212121;
+  color: #424242;
   background: rgba(0, 0, 0, 0.05);
 }
 
@@ -3227,7 +3227,7 @@ fieldset[disabled] .input {
 }
 
 a.badge:hover {
-  color: #212121;
+  color: #424242;
   background: rgba(0, 0, 0, 0.15);
 }
 
@@ -3262,12 +3262,12 @@ a.badge:hover {
 }
 
 .badge.yellow {
-  color: #212121;
+  color: #424242;
   background: #FFF9C4;
 }
 
 .badge.yellow.inverted {
-  color: #212121;
+  color: #424242;
   background: #FFEB3B;
 }
 
@@ -3282,7 +3282,7 @@ a.badge:hover {
 }
 
 .badge.light {
-  color: #212121;
+  color: #424242;
   background: rgba(255, 255, 255, 0.75);
 }
 
@@ -3346,12 +3346,12 @@ a.badge.green.inverted:hover {
 }
 
 a.badge.yellow:hover {
-  color: #212121;
+  color: #424242;
   background: #FFF176;
 }
 
 a.badge.yellow.inverted:hover {
-  color: #212121;
+  color: #424242;
   background: #FDD835;
 }
 
@@ -3366,7 +3366,7 @@ a.badge.red.inverted:hover {
 }
 
 a.badge.light:hover {
-  color: #212121;
+  color: #424242;
   background: white;
 }
 
@@ -4436,7 +4436,7 @@ figure {
  * Tabs
  */
 .demo-tabs.inverted {
-  background: #212121;
+  background: #424242;
 }
 
 /**
@@ -5288,7 +5288,7 @@ figure {
 }
 
 .bg-color {
-  background: #212121;
+  background: #424242;
 }
 
 .bg-color-light {
@@ -5465,7 +5465,7 @@ figure {
 }
 
 .icons-listing .icon-item:not(.button):hover code {
-  color: #212121;
+  color: #424242;
 }
 
 @media (min-width: 480px) {
@@ -5563,14 +5563,14 @@ body {
 .header .button {
   background: rgba(0, 0, 0, 0.05);
   border: none;
-  color: #212121;
+  color: #424242;
 }
 
 .header .button:hover {
   background: rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #212121;
+  color: #424242;
 }
 
 .home .header .button {
@@ -5618,7 +5618,7 @@ body {
 }
 
 .nav-hori ul a {
-  color: #212121;
+  color: #424242;
   font-weight: 500;
   border-bottom: none;
 }
@@ -5676,7 +5676,7 @@ body {
 
 .nav-vert ul a:hover {
   background: #F5F5F5;
-  color: #212121;
+  color: #424242;
 }
 
 .nav-vert ul .button {
@@ -5690,7 +5690,7 @@ body {
 
 .nav-vert ul .button:hover {
   background: #F5F5F5;
-  color: #212121;
+  color: #424242;
 }
 
 .nav-vert ul .active > a {
@@ -5806,7 +5806,7 @@ body {
 
 .hero-content .button:hover, .hero-content .button:focus {
   background: #fff;
-  color: #212121;
+  color: #424242;
 }
 
 @media (min-width: 480px) {
@@ -6121,7 +6121,7 @@ body {
 a.widget-featured {
   display: block;
   border-bottom: none;
-  color: #212121;
+  color: #424242;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
@@ -6247,7 +6247,7 @@ a.widget-featured.color-5:hover h2 {
  * Widget Title
  */
 .widget h2 a {
-  color: #212121;
+  color: #424242;
 }
 
 .widget h2 a:hover {
@@ -6296,7 +6296,7 @@ a.widget-featured.color-5:hover h2 {
 
 .widget-menu a:hover {
   background: #F5F5F5;
-  color: #212121;
+  color: #424242;
 }
 
 .widget-menu .active > a {
@@ -6550,7 +6550,7 @@ a.widget-featured.color-5:hover h2 {
 
 .meta .version {
   display: inline-block;
-  color: #212121;
+  color: #424242;
   font-size: 0.9em;
   padding: 0 0.5em;
   background: #FFEB3B;
@@ -6601,7 +6601,7 @@ a.widget-featured.color-5:hover h2 {
 
 .social-links a {
   padding: 0.25em 0.75em;
-  background: #212121;
+  background: #424242;
   border-radius: 3px;
   font-size: 0.9em;
   line-height: 1.5em;
@@ -6756,7 +6756,7 @@ a.widget-featured.color-5:hover h2 {
 
 .block-action .action .button:hover, .block-action .action .button:focus {
   background: #fff;
-  color: #212121;
+  color: #424242;
 }
 
 @media (min-width: 760px) {

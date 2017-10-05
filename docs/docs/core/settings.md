@@ -8,24 +8,22 @@ These are general variables that are used throughout BaseWeb. They aren't specif
 
 <div id="toc" class="toc"></div>
 
-<section id="var-global" class="docs-item" markdown="1">
+<section id="var-property-defaults" class="docs-item" markdown="1">
 
-### Global
+### Property defaults
+
+The default values used for various CSS properties.
 
 ```scss
-// Background Colors
 $bg-color: $gray-100 !default;
 $bg-selection: rgba($green, 0.25) !default;
 
-// Borders
 $border-color: rgba($black, 0.10) !default;
 $border-radius: 3px !default;
 
-// Box
 $box-sizing: border-box !default;
 $box-shadow: 0 1px 3px rgba($black, 0.1) !default;
 
-// Transition
 $transition-property: all !default;
 $transition-duration: 0.25s !default;
 $transition-timing-function: linear !default;
@@ -35,67 +33,57 @@ $transition: $transition-property $transition-duration $transition-timing-functi
 
 </section><!-- .docs-item -->
 
-<section id="var-base" class="docs-item" markdown="1">
+<section id="var-utility-classes" class="docs-item" markdown="1">
 
-### Base
+### Utility classes
+
+Used to output various global utility classes.
 
 ```scss
-// Sets global box sizing property
-// @type border-box, null
-$box-sizing: border-box !default;
-
-// Class name used in clearfix and remove-clearfix classes
-// @type class-name, null
 $class-clearfix: 'clearfix' !default;
 $class-remove-clearfix: 'remove-clearfix' !default;
 
-// Class name used in float left and right classes
-// @type class-name, null
 $class-float-left: 'float-left' !default;
 $class-float-right: 'float-right' !default;
 
-// Show and Hide
 $class-show: 'show' !default;
 $class-hide: 'hide' !default;
-
-// Whether or not to output media based show-hide classes
 $class-show-hide-min: 'down' !default;
 $class-show-hide-max: 'up' !default;
 ```
 
 </section><!-- .docs-item -->
 
-<section id="var-typography" class="docs-item" markdown="1">
+<section id="var-typography-settings" class="docs-item" markdown="1">
 
-### Typography
+### Typography settings
+
+Default values for typography properties.
 
 ```scss
-// Font Families
-// @type font-stack
 $font-family-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif: georgia, "Times New Roman", times, serif !default;
 $font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace !default;
 
-// Base Font Styles
-// @type font-stack
 $base-font-family: $font-family-sans !default;
-
-// @type unit (pixel)
 $base-font-size: 16px !default;
-
-// @type unit (pixel, em, percentage)
 $base-line-height: 1.5em !default;
-
-// @type value (keyword, numeric)
 $base-font-weight: font-weight('normal') !default;
 
-// Text Color Assignment
-// @type color
-$color:         $gray-900 !default;
-$color-light:   $gray !default;
-$color-dark:    $gray-900 !default;
+$color: $gray-800 !default;
+$color-light: $gray !default;
+$color-dark: $gray-900 !default;
+```
 
-// @type boolean
+</section><!-- .docs-item -->
+
+<section id="var-typography-settings" class="docs-item" markdown="1">
+
+### Text output options
+
+Whether or not to output default text element styles and/or modifiers.
+
+```scss
 $text-elements: true !default;
 $text-modifiers: true !default;
 ```
@@ -104,21 +92,20 @@ $text-modifiers: true !default;
 
 <section id="map-anchors" class="docs-item" markdown="1">
 
-### Anchors
+### Anchors Map
+
+Default styles for anchor elements.
 
 ```scss
 $anchors: (
   'output' : true,
-
   'color' : $blue,
   'border-bottom' : 1px solid rgba($black, 0.1),
   'text-decoration' : none,
-
   'hover' : (
     'color' : $blue-700,
     'border-color' : inherit,
   ),
-
 ) !default;
 ```
 
@@ -133,29 +120,26 @@ $anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
 
 <section id="map-headings" class="docs-item" markdown="1">
 
-### Headings
+### Headings Map
+
+Default styles for heading elements.
 
 ```scss
 $headings: (
   'output' : true,
-
   'margin' : 1rem 0,
   'font-family' : inherit,
   'line-height' : 1.25em,
   'font-weight' : font-weight('semi-bold'),
   'color' : $color-dark,
-
   'anchors' : (
     'output' : true,
-
     'color' : $color-dark,
     'border' : none,
-
     'hover' : (
       'color' : $blue,
     ),
   ),
-
   'scale' : (
     'h1' : 2.5em,
     'h2' : 2em,
@@ -164,7 +148,6 @@ $headings: (
     'h5' : 1.25em,
     'h6' : 1em,
   ),
-
 ) !default;
 ```
 
@@ -180,7 +163,9 @@ $heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !
 
 <section id="map-add-styles" class="docs-item" markdown="1">
 
-### Add Styles
+### Add Styles Settings
+
+Default settings used in the add-styles mixin.
 
 ```scss
 $add-styles: (

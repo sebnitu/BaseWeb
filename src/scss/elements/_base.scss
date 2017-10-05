@@ -30,14 +30,14 @@ table {
 
 // Set default box sizing model to our global variable $box-sizing.
 // Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if ($box-sizing) {
+@if $box-sizing {
   *, *:before, *:after {
     box-sizing: $box-sizing;
   }
 }
 
 // Add custom text highlight color if a color is set in $bg-selection.
-@if ($bg-selection) {
+@if $bg-selection {
   ::-moz-selection {
     background: $bg-selection;
     text-shadow: none;
@@ -48,33 +48,48 @@ table {
   }
 }
 
+// Check if we should output badges
+@if map-get($grid, 'output') {
+
+/*==============================================================================
+  @Grid System - #{$filename}
+==============================================================================*/
+
+@include build-grid-system('mobile');
+
+@include media-min('medium') {
+  @include build-grid-system();
+}
+
+} // End @if output
+
 /*==============================================================================
   @Utility Classes - #{$filename}
 ==============================================================================*/
 
 // Outputs our cleafix class if one is set in $class-clearfix.
-@if ($class-clearfix) {
+@if $class-clearfix {
   .#{$class-clearfix} {
     @include add-clearfix();
   }
 }
 
 // Outputs our remove cleafix class if one is set in $class-remove-clearfix.
-@if ($class-remove-clearfix) {
+@if $class-remove-clearfix {
   .#{$class-remove-clearfix} {
     @include remove-clearfix();
   }
 }
 
 // Outputs our float-left class if one is set in $class-float-left.
-@if ($class-float-left) {
+@if $class-float-left {
   .#{$class-float-left} {
     float: left;
   }
 }
 
 // Outputs our float-right class if one is set in $class-float-right.
-@if ($class-float-right) {
+@if $class-float-right {
   .#{$class-float-right} {
     float: right;
   }
@@ -111,7 +126,7 @@ table {
  * Responsive Show and Hide Classes
  */
 @each $name, $value in $breakpoints {
-  @if ($class-show-hide-min or $class-show-hide-max) {
+  @if $class-show-hide-min or $class-show-hide-max {
 
     @include media-min($name) {
       @if ($class-show-hide-min) {
