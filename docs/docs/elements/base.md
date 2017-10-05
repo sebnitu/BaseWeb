@@ -6,7 +6,7 @@ link:
 order: 1
 ---
 
-Some general styles and global resets are defined here. This is where we store any styles that effect the `<body>` or `<html>` elements, set HTML5 elements to display as block and output our global modifier classes.
+Global base styles are applied here. This is where we store any styles that effect the `<body>` or `<html>` elements, set the default box layout model, make HTML5 elements to display as block, output the grid system and global modifier classes.
 
 ```scss
 // Remove margins and padding from HTML and Body elements
@@ -15,33 +15,27 @@ html, body {
   padding: 0;
 }
 
-// Prevents automatic text resizing on mobile devices.
 html {
+  // Set default box layout model to $box-sizing (border-box is default)
+  // Source:
+  //  - http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+  //  - https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+  box-sizing: $box-sizing;
+
+  // Prevents automatic text resizing on mobile devices.
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+}
+
+// Apply a natural box layout model to all elements, but allowing components to change
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 // Make HTML5 elements act like blocks
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
-}
-
-// Reset table font-size
-table {
-  font-size: 1em;
-}
-```
-
-## Box Sizing
-
-```scss
-// Set default box sizing model to our global variable $box-sizing.
-// Source: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-@if $box-sizing {
-  *, *:before, *:after {
-    box-sizing: $box-sizing;
-  }
 }
 ```
 
