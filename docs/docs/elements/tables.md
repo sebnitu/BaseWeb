@@ -144,7 +144,7 @@ Creates the base styles for a table modifier mixin or class. Usually applied dir
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -187,7 +187,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -256,7 +256,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -325,7 +325,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -399,7 +399,7 @@ Toggles a tables padding size between condensed, expanded or a custom padding va
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -520,7 +520,7 @@ Gives a table rounded borders depending on parameters passed.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -600,7 +600,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -739,7 +739,7 @@ Gives table hover styles for rows.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -897,7 +897,7 @@ When added to a wrapping element of a table, will make the table responsive for 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 

@@ -349,7 +349,7 @@ Creates the base styles for badges block as well as the default modifier styles.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$badges()</code></td>
+    <td><code>$badges</code></td>
   </tr>
 </table>
 

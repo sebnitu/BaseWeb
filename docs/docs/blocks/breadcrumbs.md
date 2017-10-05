@@ -91,7 +91,7 @@ Creates the basic breadcrumb styles.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$breadcrumbs()</code></td>
+    <td><code>$breadcrumbs</code></td>
   </tr>
 </table>
 

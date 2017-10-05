@@ -84,7 +84,7 @@ Creates the base styles for tooltips block.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tooltips()</code></td>
+    <td><code>$tooltips</code></td>
   </tr>
 </table>
 
@@ -131,7 +131,7 @@ Adds the position styles for a tooltip.
   <tr>
     <td><code>$options</code></td>
     <td colspan="2">Map</td>
-    <td><code>$tooltips()</code></td>
+    <td><code>$tooltips</code></td>
   </tr>
 </table>
 

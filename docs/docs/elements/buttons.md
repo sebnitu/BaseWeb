@@ -211,7 +211,7 @@ Creates the base styles for a button modifier mixin or class. Usually applied di
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$buttons()</code></td>
+    <td><code>$buttons</code></td>
   </tr>
 </table>
 
@@ -254,7 +254,7 @@ Handles all the color variations of a button such as color, text-shadow, backgro
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$buttons()</code></td>
+    <td><code>$buttons</code></td>
   </tr>
 </table>
 
@@ -347,7 +347,7 @@ Handles size variations for buttons. This is done by changing the padding, font-
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$buttons()</code></td>
+    <td><code>$buttons</code></td>
   </tr>
 </table>
 
@@ -414,7 +414,7 @@ Makes the button block with 100% width. This is typically used for mobile friend
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$buttons()</code></td>
+    <td><code>$buttons</code></td>
   </tr>
 </table>
 

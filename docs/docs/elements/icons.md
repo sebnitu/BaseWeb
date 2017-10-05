@@ -289,7 +289,7 @@ Creates the base styles for an icon element.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$icons()</code></td>
+    <td><code>$icons</code></td>
   </tr>
 </table>
 
@@ -329,7 +329,7 @@ Adds icon styles based on the context of a button. Possible context options are:
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$icons()</code></td>
+    <td><code>$icons</code></td>
   </tr>
 </table>
 

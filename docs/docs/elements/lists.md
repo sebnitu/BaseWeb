@@ -153,7 +153,7 @@ Creates the base styles for a list modifier mixin or class. Usually applied dire
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -196,7 +196,7 @@ Adds borders to a list that divide list items. Requires the use of base list sty
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -279,7 +279,7 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -333,7 +333,7 @@ Adds styles for a linked list where the padding is added to the anchor element i
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -387,7 +387,7 @@ Gives a list rounded borders depending on parameters passed.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -447,7 +447,7 @@ Gives a list items alternating background colors.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -507,7 +507,7 @@ Gives list hover styles for list items.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 

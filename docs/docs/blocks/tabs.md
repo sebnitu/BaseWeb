@@ -195,7 +195,7 @@ Creates the base styles for a the tabs block including tab wrapper, navigation a
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tabs()</code></td>
+    <td><code>$tabs</code></td>
   </tr>
 </table>
 
@@ -237,7 +237,7 @@ Creates a predefined stylistic feel for your tabs. There are currently two prese
   <tr>
     <td><code>$options</code></td>
     <td colspan="2">Map</td>
-    <td><code>$tabs()</code></td>
+    <td><code>$tabs</code></td>
   </tr>
   <tr>
     <td><code>$style</code></td>

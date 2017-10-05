@@ -121,7 +121,7 @@ If instead you prefer to create a custom transition effect, you can disable the 
 ```
 
 <div class="notice warning">
-  <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
+  <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
 </div>
 
 ## JavaScript
@@ -142,7 +142,7 @@ For more details on how to customize and use the public methods, take a look at 
 
 ### Variable Map
 
-Off-canvas variables are encompassed within the `$offcanvas()` map and are used throughout all off-canvas mixins to set default values.
+Off-canvas variables are encompassed within the `$offcanvas` map and are used throughout all off-canvas mixins to set default values.
 
 ```scss
 $offcanvas: (
@@ -194,7 +194,7 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$offcanvas()</code></td>
+    <td><code>$offcanvas</code></td>
   </tr>
 </table>
 
@@ -301,7 +301,7 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$offcanvas()</code></td>
+    <td><code>$offcanvas</code></td>
   </tr>
 </table>
 
@@ -374,7 +374,7 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$offcanvas()</code></td>
+    <td><code>$offcanvas</code></td>
   </tr>
 </table>
 

@@ -372,7 +372,7 @@ Creates the base styles for dropdowns.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$dropdowns()</code></td>
+    <td><code>$dropdowns</code></td>
   </tr>
 </table>
 
@@ -409,7 +409,7 @@ Creates the base styles for a dropdown trigger.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$dropdowns()</code></td>
+    <td><code>$dropdowns</code></td>
   </tr>
 </table>
 
@@ -445,7 +445,7 @@ Creates specific dropdown styles for a content type
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$dropdowns()</code></td>
+    <td><code>$dropdowns</code></td>
   </tr>
   <tr>
     <td><code>$type</code></td>
@@ -494,7 +494,7 @@ Adds the position styles for a dropdown.
   <tr>
     <td><code>$options</code></td>
     <td colspan="2">Map</td>
-    <td><code>$dropdowns()</code></td>
+    <td><code>$dropdowns</code></td>
   </tr>
   <tr>
     <td><code>$anchor</code></td>

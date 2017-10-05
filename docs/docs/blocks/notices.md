@@ -151,7 +151,7 @@ Creates the base styles for a notice block.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$notices()</code></td>
+    <td><code>$notices</code></td>
   </tr>
 </table>
 

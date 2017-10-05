@@ -119,7 +119,7 @@ Creates the base styles for button groups and sets the default display and orien
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$button-groups()</code></td>
+    <td><code>$button-groups</code></td>
   </tr>
 </table>
 
@@ -151,7 +151,7 @@ Adds display styles for button groups. This can either be `inline` so it behaves
   <tr>
     <td><code>$options</code></td>
     <td colspan="2">Map</td>
-    <td><code>$button-groups()</code></td>
+    <td><code>$button-groups</code></td>
   </tr>
 </table>
 
@@ -188,7 +188,7 @@ Set the orientation styles for button groups. This can either be `horizontal` or
   <tr>
     <td><code>$options</code></td>
     <td colspan="2">Map</td>
-    <td><code>$button-groups()</code></td>
+    <td><code>$button-groups</code></td>
   </tr>
 </table>
 

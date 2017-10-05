@@ -749,7 +749,7 @@ Sets the placeholder text color for input fields that use the placeholder attrib
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
@@ -774,7 +774,7 @@ Creates the styles for a base form group by applying vertical spacing.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
@@ -799,7 +799,7 @@ Creates the styles for making an inline form group element.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
@@ -824,7 +824,7 @@ Creates the styles for making an inline form element.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
