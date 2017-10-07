@@ -6,7 +6,7 @@ link:
 order: 1
 ---
 
-Global base styles are applied here. This is where we store any styles that effect the `<body>` or `<html>` elements, set the default box layout model, make HTML5 elements to display as block, output the grid system and global modifier classes.
+Global base styles are applied here. A few of the first things this component does is remove margin and padding from `<html>` and `<body>`, prevent automatic text resizing on mobile devices and set HTML5 elements to display block.
 
 ```scss
 // Remove margins and padding from HTML and Body elements
@@ -15,21 +15,10 @@ html, body {
   padding: 0;
 }
 
+// Prevents automatic text resizing on mobile devices.
 html {
-  // Set default box layout model to $box-sizing (border-box is default)
-  // Source:
-  //  - http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-  //  - https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-  box-sizing: $box-sizing;
-
-  // Prevents automatic text resizing on mobile devices.
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-}
-
-// Apply a natural box layout model to all elements, but allowing components to change
-*, *:before, *:after {
-  box-sizing: inherit;
 }
 
 // Make HTML5 elements act like blocks
@@ -39,15 +28,21 @@ footer, header, hgroup, menu, nav, section {
 }
 ```
 
-## Selection Background
+We also set the default box layout model on `<html>` to `$box-sizing` where `border-box` is the default. Then we apply a natural box layout model to all elements, while still allowing components to change. This method was originally conceived by [Paul Irish](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) and improved on by [Chris Coyier](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/).
 
 ```scss
-// Add custom text highlight color if a color is set in $bg-selection.
+html {
+  box-sizing: $box-sizing;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
+
+Custom text highlight color is added if a color is set in `$bg-selection`.
+
+```scss
 @if $bg-selection {
-  ::-moz-selection {
-    background: $bg-selection;
-    text-shadow: none;
-  }
   ::selection {
     background: $bg-selection;
     text-shadow: none;
@@ -55,7 +50,7 @@ footer, header, hgroup, menu, nav, section {
 }
 ```
 
-## Grid System
+Lastly, the grid system is also applied based on the output values set in `$grid`.
 
 ```scss
 // Check if we should output grid system
@@ -153,7 +148,7 @@ Utility show and hide classes along with media based toggles. These are created 
 * `$class-show`
 * `$class-hide`
 * `$class-show-hide-min`
-* `$class-show-hide-max`.
+* `$class-show-hide-max`
 
 ```html
 <div class="show"></div>

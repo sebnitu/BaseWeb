@@ -5,41 +5,39 @@ $filename: 'scss/elements/_base.scss';
   @Base Styles - #{$filename}
 ==============================================================================*/
 
-// Remove margins and padding from HTML and Body elements
+// Remove margins and padding from HTML and Body elements.
 html, body {
   margin: 0;
   padding: 0;
 }
 
+// Prevents automatic text resizing on mobile devices.
 html {
-  // Set default box layout model to $box-sizing (border-box is default)
-  // Source:
-  //  - http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-  //  - https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-  box-sizing: $box-sizing;
-
-  // Prevents automatic text resizing on mobile devices.
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
 
-// Apply a natural box layout model to all elements, but allowing components to change
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-// Make HTML5 elements act like blocks
+// Make HTML5 elements act like blocks.
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
+html {
+  // Set default box layout model to $box-sizing (border-box is default).
+  // Source:
+  //  - http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+  //  - https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+  box-sizing: $box-sizing;
+}
+
+// Apply a natural box layout model to all elements, while still allowing components to change.
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 // Add custom text highlight color if a color is set in $bg-selection.
 @if $bg-selection {
-  ::-moz-selection {
-    background: $bg-selection;
-    text-shadow: none;
-  }
   ::selection {
     background: $bg-selection;
     text-shadow: none;

@@ -8,7 +8,7 @@ BaseWeb documentation is split into six parts, each representing a distinct sect
 
 <div class="widget-list">
 
-  <a class="widget widget-featured card color-1" href="{{ site.url }}{{ site.baseurl }}/docs/core/palette/">
+  <a class="widget widget-featured card color-1" href="{{ site.url }}{{ site.baseurl }}/docs/core/functions/">
     <div class="widget-icon">
       {% include content-icon.html icon="cpu" class="icon-color-1" %}
     </div>

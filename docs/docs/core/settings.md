@@ -77,7 +77,7 @@ $color-dark: $gray-900 !default;
 
 </section><!-- .docs-item -->
 
-<section id="var-typography-settings" class="docs-item" markdown="1">
+<section id="var-text-output-options" class="docs-item" markdown="1">
 
 ### Text output options
 
