@@ -145,10 +145,28 @@ A quick way for floating an element to the right. If global variable `$class-flo
 
 Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the global settings:
 
-* `$class-show`
-* `$class-hide`
-* `$class-show-hide-min`
-* `$class-show-hide-max`
+<table class="tabls table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$class-show</code></td>
+    <td><code>'show'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-hide</code></td>
+    <td><code>'hide'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-min</code></td>
+    <td><code>'down'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-max</code></td>
+    <td><code>'up'</code></td>
+  </tr>
+</table>
 
 <p class="subheading">Available Classes</p>
 
