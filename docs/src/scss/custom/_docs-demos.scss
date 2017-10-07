@@ -51,6 +51,49 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 
 /**
+ * Demo show-hide
+ */
+.demo-show-hide {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em -0.5em 0;
+
+  .item {
+    position: relative;
+    width: 50%;
+  }
+  .inner,
+  .inner > div {
+    padding: 1em 1.5em;
+    border-radius: $border-radius;
+  }
+  .inner {
+    position: relative;
+    margin: 0 0.5em 1em;
+    background: $gray-100;
+    overflow: auto;
+  }
+  .inner > div {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: $green-50;
+  }
+  .inner > code {
+    position: relative;
+    z-index: 1;
+    color: $color-light;
+  }
+  .inner > div > code {
+    color: $green;
+  }
+}
+
+/**
  * Add Styles Demo
  */
 $add-styles-example: (

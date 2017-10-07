@@ -143,40 +143,78 @@ A quick way for floating an element to the right. If global variable `$class-flo
 
 ### .show and .hide
 
-Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the golbal settings:
+Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the global settings:
 
 * `$class-show`
 * `$class-hide`
 * `$class-show-hide-min`
 * `$class-show-hide-max`
 
-```html
-<div class="show"></div>
-<div class="hide"></div>
-...
-```
+<p class="subheading">Available Classes</p>
 
-<div class="demo">
-  <div class="show"><code>show</code></div>
-  <div class="hide"><code>hide</code></div>
-  <hr>
-  <div class="show-small-down"><code>show-small-down</code></div>
-  <div class="hide-small-down"><code>hide-small-down</code></div>
-  <div class="show-medium-down"><code>show-medium-down</code></div>
-  <div class="hide-medium-down"><code>hide-medium-down</code></div>
-  <div class="show-large-down"><code>show-large-down</code></div>
-  <div class="hide-large-down"><code>hide-large-down</code></div>
-  <div class="show-huge-down"><code>show-huge-down</code></div>
-  <div class="hide-huge-down"><code>hide-huge-down</code></div>
-  <hr>
-  <div class="show-small-up"><code>show-small-up</code></div>
-  <div class="hide-small-up"><code>hide-small-up</code></div>
-  <div class="show-medium-up"><code>show-medium-up</code></div>
-  <div class="hide-medium-up"><code>hide-medium-up</code></div>
-  <div class="show-large-up"><code>show-large-up</code></div>
-  <div class="hide-large-up"><code>hide-large-up</code></div>
-  <div class="show-huge-up"><code>show-huge-up</code></div>
-  <div class="hide-huge-up"><code>hide-huge-up</code></div>
+<div class="demo demo-naked demo-show-hide">
+  <div class="item">
+    <div class="inner"><div class="show"><code>show</code></div><code>show</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide"><code>hide</code></div><code>hide</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-small-down"><code>show-small-down</code></div><code>show-small-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-small-down"><code>hide-small-down</code></div><code>hide-small-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-medium-down"><code>show-medium-down</code></div><code>show-medium-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-medium-down"><code>hide-medium-down</code></div><code>hide-medium-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-large-down"><code>show-large-down</code></div><code>show-large-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-large-down"><code>hide-large-down</code></div><code>hide-large-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-huge-down"><code>show-huge-down</code></div><code>show-huge-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-huge-down"><code>hide-huge-down</code></div><code>hide-huge-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-small-up"><code>show-small-up</code></div><code>show-small-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-small-up"><code>hide-small-up</code></div><code>hide-small-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-medium-up"><code>show-medium-up</code></div><code>show-medium-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-medium-up"><code>hide-medium-up</code></div><code>hide-medium-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-large-up"><code>show-large-up</code></div><code>show-large-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-large-up"><code>hide-large-up</code></div><code>hide-large-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-huge-up"><code>show-huge-up</code></div><code>show-huge-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-huge-up"><code>hide-huge-up</code></div><code>hide-huge-up</code></div>
+  </div>
 </div>
 
 <div class="notice info">
