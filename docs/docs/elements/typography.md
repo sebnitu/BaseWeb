@@ -6,7 +6,11 @@ order: 2
 
 This is where BaseWeb defines our most basic typographic elements. This includes things like base font styles, headings, links and emphasis elements.
 
-## Headings
+<div id="toc" class="toc"></div>
+
+<section id="el-headings" class="docs-item" markdown="1">
+
+### Headings
 
 Heading elements are used to describe the topic of the section it introduces. BaseWeb defines styles for headings `<h1>` to `<h6>`.
 
@@ -28,7 +32,11 @@ Heading elements are used to describe the topic of the section it introduces. Ba
   <h6>h6. BaseWeb Heading</h6>
 </div>
 
-## Body Copy
+</section><!-- .docs-item -->
+
+<section id="el-paragraphs" class="docs-item" markdown="1">
+
+### Paragraphs
 
 The body copy is set by applying our default typographic settings to the `<body>` element and applying margins to our paragraph element.
 
@@ -43,7 +51,11 @@ The body copy is set by applying our default typographic settings to the `<body>
 
 The default typographic settings. These dictate the base typographic styles for headings, body text, inline text elements and links as well as modifier classes.
 
-## Elements
+</section><!-- .docs-item -->
+
+<section id="el-tags" class="docs-item" markdown="1">
+
+### Elements
 
 HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.
 
@@ -90,7 +102,11 @@ HTML has a beautiful assortment of tools for adding rich semantics to a document
   </tr>
 </table>
 
-## Classes
+</section><!-- .docs-item -->
+
+<section id="el-classes" class="docs-item" markdown="1">
+
+### Classes
 
 In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.
 
@@ -148,3 +164,5 @@ In addition to our inline elements, BaseWeb provides these stylistic typographic
     <td><p class="text-capitalize">This is some example text with capitalize styles.</p></td>
   </tr>
 </table>
+
+</section><!-- .docs-item -->

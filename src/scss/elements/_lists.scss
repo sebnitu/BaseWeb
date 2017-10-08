@@ -7,6 +7,7 @@ $filename: 'scss/elements/_lists.scss';
 
 $lists: (
   'output' : true,
+  'class' : 'list',
 
   'nth' : odd,
   'margin' : 1rem 0,
@@ -246,7 +247,7 @@ dl {
 /**
  * Base Table Styles
  */
-.list {
+.#{map-get($lists, 'class')} {
   @include make-list();
 
   &.flush > li {
@@ -258,26 +259,26 @@ dl {
 /**
  * Border Modifiers
  */
-.list.rowed {
+.#{map-get($lists, 'class')}.rowed {
   @include add-list-rowed();
 }
-.list.bordered {
+.#{map-get($lists, 'class')}.bordered {
   @include add-list-bordered();
 }
-.list.linked {
+.#{map-get($lists, 'class')}.linked {
   @include add-list-linked();
 }
 
 /**
  * Miscellaneous Modifiers
  */
-.list.rounded {
+.#{map-get($lists, 'class')}.rounded {
   @include add-list-rounded();
 }
-.list.striped {
+.#{map-get($lists, 'class')}.striped {
   @include add-list-striped();
 }
-.list.hover {
+.#{map-get($lists, 'class')}.hover {
   @include add-list-hover();
 }
 

@@ -69,7 +69,7 @@
       items.each(function() {
         i += 1;
         var hash = $(this).attr('id');
-        var text = $(this).find('h3').text();
+        var text = $(this).find('h3').first().text();
         toc.find('.list-toc').append('<li><a href="#' + hash + '">' + text + '</a></li>');
 
         if (i == items.length) {
