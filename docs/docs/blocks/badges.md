@@ -332,7 +332,7 @@ $badges: (
 
 <section id="mixin-make-badge" class="docs-item" markdown="1">
 
-### make-button
+### make-badge
 
 Creates the base styles for badges block as well as the default modifier styles.
 
@@ -374,5 +374,42 @@ a.#{map-get($badges, 'class')} {
 <div class="demo demo-badges">
   <p>This is a <span class="badge">Default badge</span> and a <a class="badge" href="#">Linked Badge</a></p>
 </div>
+
+</section><!-- .docs-item -->
+
+<section id="mixin-add-badge-content" class="docs-item" markdown="1">
+
+### add-badge-content
+
+Creates the styles for specified badge content.
+
+```scss
+@include add-badge-content( $type: null, $options: () );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Type</th>
+    <th>Options</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$type</code></td>
+    <td>String</td>
+    <td>
+      <code>'all'</code>,
+      <code>'icons'</code>,
+      <code>'images'</code>,
+      <code>null</code>
+    </td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td colspan="2">Map</td>
+    <td><code>$badges</code></td>
+  </tr>
+</table>
 
 </section><!-- .docs-item -->
