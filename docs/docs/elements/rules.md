@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Rules"
-order: 8
+order: 9
 ---
 
 In HTML, the horizontal rule element (`<hr>`) represents a paragraph-level thematic break. BaseWeb provides some very basic and subtle styles for this element along with a few stylistic class modifiers.

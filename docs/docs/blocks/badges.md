@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Badges"
-order: 8
+order: 1
 ---
 
 Badges are a compact way to represent descriptive content such as tags, counters or labels. They primarily would contain text and can also have associated photos, icons or a dismissible trigger. Badges can be represented using a `<span>` element but also as an `<a>` link.

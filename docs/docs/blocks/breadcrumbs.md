@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Breadcrumbs"
-order: 3
+order: 2
 ---
 
 Breadcrumbs are a type of navigation that let a user both understand the hierarchal depth they are currently in as well as the ability to "move up" in page hierarchy from their current location. With this in mind, BaseWeb's markup and styles for breadcrumbs reflect its use application by semantically and visually giving them hierarchal meaning.

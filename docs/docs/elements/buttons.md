@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Buttons"
-order: 10
+order: 11
 ---
 
 There are four ways you can markup a button. An anchor, button or input element that has a type set to `button` or `submit`. BaseWeb styles buttons the same, regardless of the method you use to mark them up.

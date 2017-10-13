@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tooltips"
-order: 7
+order: 8
 ---
 
 Tooltips are text labels that appear when a hover or focus event are triggered on a tooltip enabled element. To enable tooltips on an element, simply add the `.tooltip` class along with the `data-tooltip` data attribute with the label text you'd like displayed.

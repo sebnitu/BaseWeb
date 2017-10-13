@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Button Groups"
-order: 1
+order: 3
 ---
 
 Button groups are a way to create a set of buttons and make them visually grouped together. Button groups can either be lined up horizontally, or stacked vertically. They can also either be presented inline, or block (meaning they span the full width of their container). By default, a button group will be displayed inline and with a horizontal orientation.

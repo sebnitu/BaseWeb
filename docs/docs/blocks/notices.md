@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Notices"
-order: 2
+order: 5
 ---
 
 Notices in BaseWeb represent content blocks that give additional contextual information. This could be helpful tips, success, warning or error messages and additional information to a document. The most basic implementation involves a `<div>` with the `.notice` class.

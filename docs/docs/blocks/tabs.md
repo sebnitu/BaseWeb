@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tabs"
-order: 5
+order: 7
 ---
 
 Tabs are a high level navigational component that enable switching between views of related groups of content. They appear above the content they describe and consist of two primary parts: navigation items and the content they represent. Optionally, you can use the tabs wrapping `div` with the class of `.tabs` (default) for more easily grouping content together. Tabs are linked to their content part using the `href` attribute whos hash value contains the ID of the content it describes.

@@ -1006,6 +1006,46 @@ img.polaroid {
 }
 
 /*==============================================================================
+  @Video - scss/elements/_videos.scss
+==============================================================================*/
+.video-wrapper {
+  position: relative;
+  display: block;
+  height: 0;
+  margin: 2em 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.video-wrapper .video-item,
+.video-wrapper embed,
+.video-wrapper iframe,
+.video-wrapper object,
+.video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0 none;
+}
+
+/**
+ * Video Ratios
+ */
+.video-wrapper.ratio-16x9 {
+  padding-bottom: 56.25%;
+}
+
+.video-wrapper.ratio-4x3 {
+  padding-bottom: 75%;
+}
+
+.video-wrapper.ratio-3x2 {
+  padding-bottom: 66.667%;
+}
+
+/*==============================================================================
   @Rules - scss/elements/_rules.scss
 ==============================================================================*/
 hr {
@@ -1917,46 +1957,6 @@ fieldset[disabled] .input {
 }
 
 /*==============================================================================
-  @Video - scss/elements/_videos.scss
-==============================================================================*/
-.video-wrapper {
-  position: relative;
-  display: block;
-  height: 0;
-  margin: 2em 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-}
-
-.video-wrapper .video-item,
-.video-wrapper embed,
-.video-wrapper iframe,
-.video-wrapper object,
-.video-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0 none;
-}
-
-/**
- * Video Ratios
- */
-.video-wrapper.ratio-16x9 {
-  padding-bottom: 56.25%;
-}
-
-.video-wrapper.ratio-4x3 {
-  padding-bottom: 75%;
-}
-
-.video-wrapper.ratio-3x2 {
-  padding-bottom: 66.667%;
-}
-
-/*==============================================================================
   @Close - scss/elements/_close.scss
 ==============================================================================*/
 .close {
@@ -2007,6 +2007,266 @@ fieldset[disabled] .input {
 
 .close.danger:hover {
   background: #D32F2F;
+}
+
+/*==============================================================================
+  @Badges - scss/blocks/_badge.scss
+==============================================================================*/
+.badge {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 3px;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+  color: #424242;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.badge.dot {
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.badge > .icon {
+  margin: 0 0.25rem 0 0;
+  font-size: 1rem;
+}
+
+.badge.badge-icon {
+  padding: 0.5rem;
+}
+
+.badge.badge-icon > .icon {
+  margin: 0;
+}
+
+.badge > img {
+  margin: -0.25rem 0.75rem -0.25rem -0.75rem;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.badge.pill > img {
+  border-radius: 3rem;
+  margin-right: 0.5rem;
+}
+
+a.badge:hover {
+  color: #424242;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.badge.inverted {
+  color: #fff;
+  background: #9E9E9E;
+}
+
+.badge.active {
+  color: #fff;
+  background: #2196F3;
+}
+
+.badge.blue {
+  color: #2196F3;
+  background: #E3F2FD;
+}
+
+.badge.blue.inverted {
+  color: #fff;
+  background: #2196F3;
+}
+
+.badge.green {
+  color: #4CAF50;
+  background: #E8F5E9;
+}
+
+.badge.green.inverted {
+  color: #fff;
+  background: #4CAF50;
+}
+
+.badge.yellow {
+  color: #424242;
+  background: #FFF9C4;
+}
+
+.badge.yellow.inverted {
+  color: #424242;
+  background: #FFEB3B;
+}
+
+.badge.red {
+  color: #F44336;
+  background: #FFEBEE;
+}
+
+.badge.red.inverted {
+  color: #fff;
+  background: #F44336;
+}
+
+.badge.light {
+  color: #424242;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.badge.dark {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.badge.square {
+  border-radius: 0;
+}
+
+.badge.pill {
+  border-radius: 3rem;
+}
+
+.badge.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  vertical-align: top;
+  font-size: 0;
+  line-height: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 3rem;
+}
+
+.badge .close {
+  margin: 0 -0.25em 0 0.5em;
+}
+
+a.badge.inverted:hover {
+  color: #fff;
+  background: #616161;
+}
+
+a.badge.active:hover {
+  color: #fff;
+  background: #1976D2;
+}
+
+a.badge.blue:hover {
+  background: #BBDEFB;
+}
+
+a.badge.blue.inverted:hover {
+  background: #1976D2;
+}
+
+a.badge.green:hover {
+  color: #388E3C;
+  background: #C8E6C9;
+}
+
+a.badge.green.inverted:hover {
+  color: #fff;
+  background: #388E3C;
+}
+
+a.badge.yellow:hover {
+  color: #424242;
+  background: #FFF176;
+}
+
+a.badge.yellow.inverted:hover {
+  color: #424242;
+  background: #FDD835;
+}
+
+a.badge.red:hover {
+  color: #D32F2F;
+  background: #FFCDD2;
+}
+
+a.badge.red.inverted:hover {
+  color: #fff;
+  background: #D32F2F;
+}
+
+a.badge.light:hover {
+  color: #424242;
+  background: white;
+}
+
+a.badge.dark:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.button .badge:not(.dot) {
+  display: inline;
+  padding: 0.25em 0.5em;
+}
+
+.button-badge-left .badge {
+  margin-left: -0.5em;
+  margin-right: 0.5em;
+}
+
+.button-badge-right .badge {
+  margin-left: 0.5em;
+  margin-right: -0.5em;
+}
+
+/*==============================================================================
+  @Breadcrumb - scss/blocks/_breadcrumb.scss
+==============================================================================*/
+.breadcrumb {
+  display: block;
+  margin: 1em 0;
+  font-size: 1em;
+}
+
+.breadcrumb .current {
+  color: #9E9E9E;
+}
+
+.breadcrumb ul,
+.breadcrumb ol {
+  margin: 0;
+  list-style: none;
+}
+
+.breadcrumb ul:after,
+.breadcrumb ol:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.breadcrumb li {
+  float: left;
+  margin: 0;
+}
+
+.breadcrumb li:after {
+  padding: 0 0.75em;
+  content: "/";
+  color: #BDBDBD;
+}
+
+.breadcrumb li:last-child:after {
+  content: none;
 }
 
 /*==============================================================================
@@ -2141,135 +2401,6 @@ fieldset[disabled] .input {
 .button-group.vert > .button:last-child,
 .button-group.vertical > .button:last-child {
   border-radius: 0 0 3px 3px;
-}
-
-/*==============================================================================
-  @Notices - scss/blocks/_notice.scss
-==============================================================================*/
-.notice {
-  margin: 2em 0;
-  padding: 0.25em 1.25em;
-  font-size: 1em;
-  line-height: 1.5em;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 3px;
-  color: #424242;
-  background: #F5F5F5;
-}
-
-.notice.inverted {
-  color: #fff;
-  background: #424242;
-}
-
-.notice.info {
-  background: #E3F2FD;
-}
-
-.notice.info.inverted {
-  color: #fff;
-  background: #2196F3;
-}
-
-.notice.success {
-  background: #E8F5E9;
-}
-
-.notice.success.inverted {
-  color: #fff;
-  background: #4CAF50;
-}
-
-.notice.warning {
-  background: #FFF9C4;
-}
-
-.notice.warning.inverted {
-  color: #424242;
-  background: #FFEB3B;
-}
-
-.notice.danger {
-  background: #FFEBEE;
-}
-
-.notice.danger.inverted {
-  color: #fff;
-  background: #F44336;
-}
-
-.notice.inline {
-  display: inline;
-  margin: 0;
-  padding: 0 0.25em;
-}
-
-.notice .close {
-  float: right;
-  margin: 1em 0 1em 1em;
-  padding: 0.25em;
-  font-size: 1em;
-}
-
-.notice.inverted .close {
-  color: #424242;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.notice.inverted .close:hover {
-  color: #424242;
-  background: white;
-}
-
-.notice.warning.inverted .close {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.notice.warning.inverted .close:hover {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/*==============================================================================
-  @Breadcrumb - scss/blocks/_breadcrumb.scss
-==============================================================================*/
-.breadcrumb {
-  display: block;
-  margin: 1em 0;
-  font-size: 1em;
-}
-
-.breadcrumb .current {
-  color: #9E9E9E;
-}
-
-.breadcrumb ul,
-.breadcrumb ol {
-  margin: 0;
-  list-style: none;
-}
-
-.breadcrumb ul:after,
-.breadcrumb ol:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-
-.breadcrumb li {
-  float: left;
-  margin: 0;
-}
-
-.breadcrumb li:after {
-  padding: 0 0.75em;
-  content: "/";
-  color: #BDBDBD;
-}
-
-.breadcrumb li:last-child:after {
-  content: none;
 }
 
 /*==============================================================================
@@ -2596,6 +2727,202 @@ fieldset[disabled] .input {
 }
 
 /*==============================================================================
+  @Notices - scss/blocks/_notice.scss
+==============================================================================*/
+.notice {
+  margin: 2em 0;
+  padding: 0.25em 1.25em;
+  font-size: 1em;
+  line-height: 1.5em;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  color: #424242;
+  background: #F5F5F5;
+}
+
+.notice.inverted {
+  color: #fff;
+  background: #424242;
+}
+
+.notice.info {
+  background: #E3F2FD;
+}
+
+.notice.info.inverted {
+  color: #fff;
+  background: #2196F3;
+}
+
+.notice.success {
+  background: #E8F5E9;
+}
+
+.notice.success.inverted {
+  color: #fff;
+  background: #4CAF50;
+}
+
+.notice.warning {
+  background: #FFF9C4;
+}
+
+.notice.warning.inverted {
+  color: #424242;
+  background: #FFEB3B;
+}
+
+.notice.danger {
+  background: #FFEBEE;
+}
+
+.notice.danger.inverted {
+  color: #fff;
+  background: #F44336;
+}
+
+.notice.inline {
+  display: inline;
+  margin: 0;
+  padding: 0 0.25em;
+}
+
+.notice .close {
+  float: right;
+  margin: 1em 0 1em 1em;
+  padding: 0.25em;
+  font-size: 1em;
+}
+
+.notice.inverted .close {
+  color: #424242;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.notice.inverted .close:hover {
+  color: #424242;
+  background: white;
+}
+
+.notice.warning.inverted .close {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.notice.warning.inverted .close:hover {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/*==============================================================================
+  @Off-Canvas - scss/custom/offcanvas.scss
+==============================================================================*/
+.oc-wrap {
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: top linear 0.2s, bottom linear 0.2s;
+  transition: top linear 0.2s, bottom linear 0.2s;
+}
+
+.oc-content,
+.oc-inner,
+.oc-aside {
+  height: 100%;
+}
+
+.oc-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.oc-content {
+  position: relative;
+  left: 0;
+  z-index: 5;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.oc-inner {
+  position: relative;
+  overflow-y: auto;
+}
+
+.oc-aside {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  visibility: hidden;
+  width: 280px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background: #fff;
+}
+
+.oc-content:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-active > .oc-content:after {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-aside:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  content: '';
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.oc-active > .oc-aside:after {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+}
+
+.oc-aside-left.oc-aside {
+  left: 0;
+  visibility: visible;
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+
+.oc-aside-left.oc-active .oc-aside-left.oc-aside {
+  visibility: visible;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+.oc-aside-left.oc-aside:after {
+  display: none;
+}
+
+/*==============================================================================
   @Tabs - scss/blocks/_tabs.scss
 ==============================================================================*/
 /**
@@ -2806,114 +3133,6 @@ fieldset[disabled] .input {
   padding: 1em 2em;
   border: 1px solid #E0E0E0;
   border-top: none;
-}
-
-/*==============================================================================
-  @Off-Canvas - scss/custom/offcanvas.scss
-==============================================================================*/
-.oc-wrap {
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  -webkit-transition: top linear 0.2s, bottom linear 0.2s;
-  transition: top linear 0.2s, bottom linear 0.2s;
-}
-
-.oc-content,
-.oc-inner,
-.oc-aside {
-  height: 100%;
-}
-
-.oc-wrap {
-  position: relative;
-  overflow: hidden;
-}
-
-.oc-content {
-  position: relative;
-  left: 0;
-  z-index: 5;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-
-.oc-inner {
-  position: relative;
-  overflow-y: auto;
-}
-
-.oc-aside {
-  position: fixed;
-  top: 0;
-  z-index: 10;
-  visibility: hidden;
-  width: 280px;
-  overflow-y: auto;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  background: #fff;
-}
-
-.oc-content:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  background: rgba(0, 0, 0, 0.2);
-  content: '';
-  opacity: 0;
-  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-}
-
-.oc-active > .oc-content:after {
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-}
-
-.oc-aside:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  content: '';
-  opacity: 1;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-}
-
-.oc-active > .oc-aside:after {
-  width: 0;
-  height: 0;
-  opacity: 0;
-  -webkit-transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-  transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
-}
-
-.oc-aside-left.oc-aside {
-  left: 0;
-  visibility: visible;
-  -webkit-transform: translate3d(-100%, 0, 0);
-          transform: translate3d(-100%, 0, 0);
-}
-
-.oc-aside-left.oc-active .oc-aside-left.oc-aside {
-  visibility: visible;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.oc-aside-left.oc-aside:after {
-  display: none;
 }
 
 /*==============================================================================
@@ -3154,225 +3373,6 @@ fieldset[disabled] .input {
   opacity: 1;
   -webkit-transform: translate(0, 0.5em);
           transform: translate(0, 0.5em);
-}
-
-/*==============================================================================
-  @Badges - scss/blocks/_badge.scss
-==============================================================================*/
-.badge {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.9em;
-  border: none;
-  border-radius: 3px;
-  -webkit-transition: all 0.25s linear;
-  transition: all 0.25s linear;
-  color: #424242;
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.badge.dot {
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.badge > .icon {
-  margin: 0 0.25rem 0 0;
-  font-size: 1rem;
-}
-
-.badge.badge-icon {
-  padding: 0.5rem;
-}
-
-.badge.badge-icon > .icon {
-  margin: 0;
-}
-
-.badge > img {
-  margin: -0.25rem 0.75rem -0.25rem -0.75rem;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.badge.pill > img {
-  border-radius: 3rem;
-  margin-right: 0.5rem;
-}
-
-a.badge:hover {
-  color: #424242;
-  background: rgba(0, 0, 0, 0.15);
-}
-
-.badge.inverted {
-  color: #fff;
-  background: #9E9E9E;
-}
-
-.badge.active {
-  color: #fff;
-  background: #2196F3;
-}
-
-.badge.blue {
-  color: #2196F3;
-  background: #E3F2FD;
-}
-
-.badge.blue.inverted {
-  color: #fff;
-  background: #2196F3;
-}
-
-.badge.green {
-  color: #4CAF50;
-  background: #E8F5E9;
-}
-
-.badge.green.inverted {
-  color: #fff;
-  background: #4CAF50;
-}
-
-.badge.yellow {
-  color: #424242;
-  background: #FFF9C4;
-}
-
-.badge.yellow.inverted {
-  color: #424242;
-  background: #FFEB3B;
-}
-
-.badge.red {
-  color: #F44336;
-  background: #FFEBEE;
-}
-
-.badge.red.inverted {
-  color: #fff;
-  background: #F44336;
-}
-
-.badge.light {
-  color: #424242;
-  background: rgba(255, 255, 255, 0.75);
-}
-
-.badge.dark {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.badge.square {
-  border-radius: 0;
-}
-
-.badge.pill {
-  border-radius: 3rem;
-}
-
-.badge.dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  vertical-align: top;
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  border-radius: 3rem;
-}
-
-.badge .close {
-  margin: 0 -0.25em 0 0.5em;
-}
-
-a.badge.inverted:hover {
-  color: #fff;
-  background: #616161;
-}
-
-a.badge.active:hover {
-  color: #fff;
-  background: #1976D2;
-}
-
-a.badge.blue:hover {
-  background: #BBDEFB;
-}
-
-a.badge.blue.inverted:hover {
-  background: #1976D2;
-}
-
-a.badge.green:hover {
-  color: #388E3C;
-  background: #C8E6C9;
-}
-
-a.badge.green.inverted:hover {
-  color: #fff;
-  background: #388E3C;
-}
-
-a.badge.yellow:hover {
-  color: #424242;
-  background: #FFF176;
-}
-
-a.badge.yellow.inverted:hover {
-  color: #424242;
-  background: #FDD835;
-}
-
-a.badge.red:hover {
-  color: #D32F2F;
-  background: #FFCDD2;
-}
-
-a.badge.red.inverted:hover {
-  color: #fff;
-  background: #D32F2F;
-}
-
-a.badge.light:hover {
-  color: #424242;
-  background: white;
-}
-
-a.badge.dark:hover {
-  color: #fff;
-  background: rgba(0, 0, 0, 0.75);
-}
-
-.button .badge:not(.dot) {
-  display: inline;
-  padding: 0.25em 0.5em;
-}
-
-.button-badge-left .badge {
-  margin-left: -0.5em;
-  margin-right: 0.5em;
-}
-
-.button-badge-right .badge {
-  margin-left: 0.5em;
-  margin-right: -0.5em;
 }
 
 /*==============================================================================
