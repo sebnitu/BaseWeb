@@ -12,7 +12,7 @@ Notices in BaseWeb represent content blocks that give additional contextual info
 </div>
 ```
 
-<div class="demo">
+<div class="demo demo-notice">
   <div class="notice">
     <p>This is an example notice.</p>
   </div>
@@ -22,30 +22,92 @@ You can also create dismissible notices but adding the `.dismissible` class and 
 
 ```html
 <div class="notice dismissible">
-  <button class="dismiss close">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
+  <button class="dismiss chip">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
   <p>...</p>
 </div>
 ```
 
-<div class="demo">
+<div class="demo demo-notice">
   <div class="row">
     <div class="col col-6">
       <div class="notice dismissible">
-        <button class="dismiss close">{% include content-icon.html icon="x" %}</button>
+        <button class="dismiss chip">{% include content-icon.html icon="x" %}</button>
         <p>Dismissible</p>
       </div>
     </div>
     <div class="col col-6">
       <div class="notice dismissible inverted">
-        <button class="dismiss close">{% include content-icon.html icon="x" %}</button>
+        <button class="dismiss chip">{% include content-icon.html icon="x" %}</button>
         <p>Dismissible</p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col col-12">
-      <button class="button small" onclick="dismissible.showAll('.demo');">Reset</button>
+      <button class="button secondary small" onclick="dismissible.showAll('.demo');">Reset</button>
     </div>
+  </div>
+</div>
+
+## Modifiers
+
+Notices include semantic color modifiers that change the urgency of notices to highlight specific contexts as shown below.
+
+<div class="demo demo-naked demo-notice">
+  <div class="flex">
+
+    <div class="item">
+      <code>.info</code>
+      <div class="notice info">
+        <p>Example notice.</p>
+      </div>
+    </div>
+    <div class="item">
+      <code>.info</code> <code>.inverted</code>
+      <div class="notice info inverted">
+        <p>Example notice.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <code>.success</code>
+      <div class="notice success">
+        <p>Example notice.</p>
+      </div>
+    </div>
+    <div class="item">
+      <code>.success</code> <code>.inverted</code>
+      <div class="notice success inverted">
+        <p>Example notice.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <code>.warning</code>
+      <div class="notice warning">
+        <p>Example notice.</p>
+      </div>
+    </div>
+    <div class="item">
+      <code>.warning</code> <code>.inverted</code>
+      <div class="notice warning inverted">
+        <p>Example notice.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <code>.danger</code>
+      <div class="notice danger">
+        <p>Example notice.</p>
+      </div>
+    </div>
+    <div class="item">
+      <code>.danger</code> <code>.inverted</code>
+      <div class="notice danger inverted">
+        <p>Example notice.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -67,12 +129,13 @@ $notices: (
   'padding' : 0.25em 1.25em,
   'font-size' : 1em,
   'line-height' : 1.5em,
-  'border' : 1px solid rgba($black, 0.05),
+  'border' : 1px solid rgba($black, 0.15),
   'border-radius' : $border-radius,
+  'box-shadow' : 0 1px 3px rgba($black, 0.1),
 
-  'close' : (
+  'chips' : (
     'float': right,
-    'margin': 0.75em 0 0.75em 1em,
+    'margin': 1em 0 1em 1em,
     'padding': 0.25em,
     'font-size': 1em,
   ),
@@ -85,8 +148,8 @@ $notices: (
     'inverted' : (
       'color' : $white,
       'background' : $color,
-      'close' : (
-        'key' : 'inverted',
+      'chips' : (
+        'key' : 'light',
       ),
     ),
     'info' : (
@@ -109,8 +172,8 @@ $notices: (
     'warning.inverted' : (
       'color' : $color,
       'background' : $yellow,
-      'close' : (
-        'key' : 'default'
+      'chips' : (
+        'key' : 'default',
       ),
     ),
     'danger' : (
@@ -119,11 +182,6 @@ $notices: (
     'danger.inverted' : (
       'color' : $white,
       'background' : $red,
-    ),
-    'inline' : (
-      'display' : inline,
-      'margin' : 0,
-      'padding' : 0 0.25em,
     ),
   ),
 

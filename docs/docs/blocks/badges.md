@@ -4,170 +4,173 @@ title: "Badges"
 order: 1
 ---
 
-Badges are a compact way to represent descriptive content such as tags, counters or labels. They primarily would contain text and can also have associated photos, icons or a dismissible trigger. Badges can be represented using a `<span>` element but also as an `<a>` link.
+Badges are a compact way to represent content such as tags, counters or labels. They primarily contain text and can also contain dismissible triggers. Badges can be represented using a `<span>` element can also be `<a>` links or `<button>` elements.
 
 ```html
-<span class="badge">Badge</span>
+<span class="badge">Default badge</span>
+<a class="badge" href="#">Linked Badge</a>
+<button class="badge">Button Badge</button>
 ```
 
 <div class="demo demo-badges">
-  <p><strong>Default Badges</strong></p>
-  <p>
-    <span class="badge">Badge</span>
-    <span class="badge pill">Badge Pill</span>
-    <span class="badge square">Badge Square</span>
-    <span class="badge active">Badge Active</span>
-    <span class="badge inverted">Badge Inverted</span>
-  </p>
+  <span class="badge">Default badge</span>
+  <a class="badge" href="#">Linked Badge</a>
+  <button class="badge">Button Badge</button>
+</div>
 
-  <p><strong>Active Badges</strong></p>
-  <p>
-    <a class="badge" href="#">Linked Badge</a>
-    <a class="badge" href="#">Linked Badge</a>
-    <a class="badge active" href="#">Active Badge</a>
-    <a class="badge" href="#">Linked Badge</a>
-  </p>
+## Modifiers
 
-  <p><strong>Icon Badge</strong></p>
-  <p class="flex">
-    <a class="badge" href="#">Text Badge</a>
-    <a class="badge" href="#">{% include content-icon.html icon="clock" %} Clock</a>
-    <a class="badge badge-icon" href="#">{% include content-icon.html icon="clock" %}</a>
-    <a class="badge inverted blue" href="#">{% include content-icon.html icon="phone" %} Phone</a>
-    <a class="badge badge-icon inverted blue" href="#">{% include content-icon.html icon="phone" %}</a>
-    <a class="badge inverted red" href="#">{% include content-icon.html icon="save" %} Save</a>
-    <a class="badge badge-icon inverted red" href="#">{% include content-icon.html icon="save" %}</a>
-    <a class="badge inverted green" href="#">{% include content-icon.html icon="share" %} Share</a>
-    <a class="badge badge-icon inverted green" href="#">{% include content-icon.html icon="share" %}</a>
-  </p>
-  <p class="flex">
-    <a class="badge pill" href="#">Text Badge</a>
-    <a class="badge pill" href="#">{% include content-icon.html icon="clock" %} Clock</a>
-    <a class="badge badge-icon pill" href="#">{% include content-icon.html icon="clock" %}</a>
-    <a class="badge inverted blue pill" href="#">{% include content-icon.html icon="phone" %} Phone</a>
-    <a class="badge badge-icon inverted blue pill" href="#">{% include content-icon.html icon="phone" %}</a>
-    <a class="badge inverted red pill" href="#">{% include content-icon.html icon="save" %} Save</a>
-    <a class="badge badge-icon inverted red pill" href="#">{% include content-icon.html icon="save" %}</a>
-    <a class="badge inverted green pill" href="#">{% include content-icon.html icon="share" %} Share</a>
-    <a class="badge badge-icon inverted green pill" href="#">{% include content-icon.html icon="share" %}</a>
-  </p>
+Badges also include a number of modifier classes. The `.pill` and `.square` modifiers change the border radius:
 
-  <p><strong>Image Badge</strong></p>
+```html
+<button class="badge inverted">Badge</button>
+<button class="badge inverted pill">Badge</button>
+<button class="badge inverted square">Badge</button>
+```
 
-  <p class="flex">
-    <a class="badge inverted blue" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
-    <a class="badge" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
-    <a class="badge pill" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
-    <a class="badge pill" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
-    <span class="badge dismissible">
-      <img src="/dist/img/avatar.png" width="32" height="32" alt="">
-      Text Badge
-      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
-    </span>
-    <span class="badge dismissible">
-      <img src="/dist/img/avatar-s.png" width="32" height="32" alt="">
-      Text Badge
-      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
-    </span>
-    <span class="badge pill dismissible">
-      <img src="/dist/img/avatar.png" width="32" height="32" alt="">
-      Text Badge
-      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
-    </span>
-    <span class="badge pill dismissible">
-      <img src="/dist/img/avatar-s.png" width="32" height="32" alt="">
-      Text Badge
-      <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a>
-    </span>
-  </p>
+<div class="demo demo-badges">
+  <button class="badge inverted">Badge</button>
+  <button class="badge inverted pill">Badge</button>
+  <button class="badge inverted square">Badge</button>
+</div>
 
-  <p><strong>Dot Badges</strong></p>
+Included are color modifiers that can help badges fit a full range of roles and context. Some of these color modifiers also have `.inverted` optional classes that swap the contrast of the badge.
 
-  <p>This is some text with a dot badge <span class="badge blue dot inverted">*</span></p>
+<table class="table table-docs">
+  <tr>
+    <th>Class</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><span class="text-soften">default</span></td>
+    <td><button class="badge">Badge</button></td>
+  </tr>
+  <tr>
+    <td><code>.inverted</code></td>
+    <td><button class="badge inverted">Badge</button></td>
+  </tr>
+  <tr>
+    <td><code>.active</code></td>
+    <td><button class="badge active">Badge</button></td>
+  </tr>
 
-  <p>
-    <button class="button button-badge-right">
-      Button with Dot Notice <span class="badge red dot inverted">*</span>
-    </button>
-  </p>
+  <tr>
+    <td><code>.blue</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge blue">Badge</button>
+      <button class="badge blue inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p><strong>Button Badges</strong></p>
+  <tr>
+    <td><code>.green</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge green">Badge</button>
+      <button class="badge green inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p>
-    <button class="button button-badge-right">
-      Button with Badge <span class="badge blue inverted">24</span>
-    </button>
-  </p>
-  <p>
-    <button class="button secondary button-badge-left">
-      <span class="badge light">7</span> Button with Badge
-    </button>
-    <button class="button secondary button-badge-right">
-      Button with Badge <span class="badge light">16</span>
-    </button>
-  </p>
-  <p>
-    <button class="button button-badge-left">
-      <span class="badge green inverted">4</span> Button with Badge
-    </button>
-    <button class="button button-badge-right">
-      Button with Badge <span class="badge green inverted">2</span>
-    </button>
-  </p>
+  <tr>
+    <td><code>.yellow</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge yellow">Badge</button>
+      <button class="badge yellow inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p><strong>Dismissible Badges</strong></p>
+  <tr>
+    <td><code>.orange</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge orange">Badge</button>
+      <button class="badge orange inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p>
-    <span class="badge dismissible">Default Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge inverted dismissible">Default Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge light dismissible">Light Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge dark dismissible">Dark Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge blue dismissible">Blue Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge blue inverted dismissible">Blue Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge green dismissible">Green Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge green inverted dismissible">Green Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge yellow dismissible">Yellow Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge yellow inverted dismissible">Yellow Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
-  <p>
-    <span class="badge red dismissible">Red Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-    <span class="badge red inverted dismissible">Red Badge <a href="#" class="dismiss close">{% include content-icon.html icon="x" %}</a></span>
-  </p>
+  <tr>
+    <td><code>.red</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge red">Badge</button>
+      <button class="badge red inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p><strong>Linked Badges</strong></p>
+  <tr>
+    <td><code>.purple</code> <code>.inverted</code></td>
+    <td>
+      <button class="badge purple">Badge</button>
+      <button class="badge purple inverted">Badge</button>
+    </td>
+  </tr>
 
-  <p>
-    <a class="badge" href="#">Default Badge</a>
-    <a class="badge inverted" href="#">Default Badge</a>
-  </p>
-  <p>
-    <a class="badge light" href="#">Light Badge</a>
-    <a class="badge dark" href="#">Dark Badge</a>
-  </p>
-  <p>
-    <a class="badge blue" href="#">Blue Badge</a>
-    <a class="badge blue inverted" href="#">Blue Badge</a>
-  </p>
-  <p>
-    <a class="badge green" href="#">Green Badge</a>
-    <a class="badge green inverted" href="#">Green Badge</a>
-  </p>
-  <p>
-    <a class="badge yellow" href="#">Yellow Badge</a>
-    <a class="badge yellow inverted" href="#">Yellow Badge</a>
-  </p>
-  <p>
-    <a class="badge red" href="#">Red Badge</a>
-    <a class="badge red inverted" href="#">Red Badge</a>
-  </p>
+  <tr>
+    <td><code>.light</code></td>
+    <td><button class="badge light">Badge</button></td>
+  </tr>
+
+  <tr>
+    <td><code>.dark</code></td>
+    <td><button class="badge dark">Badge</button></td>
+  </tr>
+</table>
+
+Another unique modifier is `.dot` which converts badges into a dot notification element.
+
+```html
+<span class="badge dot">*</span>
+```
+
+<div class="demo demo-badges">
+
+  <button class="button">
+    Notifications <span class="badge dot blue inverted">*</span>
+  </button>
+
+  <button class="button button-icon">
+    {% include content-icon.html icon="bell" %}
+    <span class="badge dot red inverted">*</span>
+  </button>
+
+</div>
+
+## Dismissible
+
+Badges can also be made [dismissible](/docs/javascript/dismissible/) by adding the appropriate classes and a dismiss trigger using [chips](/docs/elements/chips/).
+
+```html
+  <span class="badge dismissible">
+    Dismissible Badge <a href="#" class="dismiss chip">{% raw %}{% include icons/x.svg %}{% endraw %}</a>
+  </span>
+```
+
+<div class="demo demo-badges">
+  <span class="badge dismissible blue inverted">
+    Dismissible Badge <a href="#" class="dismiss chip">{% include content-icon.html icon="x" %}</a>
+  </span>
+  <span class="badge dismissible pill blue inverted">
+    Dismissible Badge <a href="#" class="dismiss chip">{% include content-icon.html icon="x" %}</a>
+  </span>
+</div>
+
+## Button badge
+
+Buttons can also contain the badge component and it will get some custom styles and a set of button modifier classes. The two are `.button-badge-right` and `.button-badge-left` depending on if the badge appears before or after button text.
+
+```html
+<button class="button primary button-badge-right">
+  Button with Badge <span class="badge blue">24</span>
+</button>
+<button class="button secondary button-badge-left">
+  <span class="badge red">7</span> Button with Badge
+</button>
+```
+
+<div class="demo demo-badges">
+  <button class="button primary button-badge-right">
+    Button with Badge <span class="badge blue">24</span>
+  </button>
+  <button class="button secondary button-badge-left">
+    <span class="badge red">7</span> Button with Badge
+  </button>
 </div>
 
 <div id="toc" class="toc"></div>
@@ -185,29 +188,21 @@ $badges: (
   'output-buttons' : true,
   'class' : 'badge',
 
-  'padding' : 0.25rem 0.75rem,
+  'padding' : 0.25rem 0.5rem,
   'font-size' : 0.9em,
+  'line-height' : 1.4em,
   'border' : none,
   'border-radius' : $border-radius,
   'transition' : $transition,
 
-  'close' : (
+  'chips' : (
     'margin' : 0 -0.25em 0 0.5em,
+    'padding' : 0.125em,
   ),
 
   'buttons' : (
     'margin' : 0.5em,
-    'padding' : 0.25em 0.5em,
-  ),
-
-  'icons' : (
-    'margin' : 0 0.25rem 0 0,
-    'padding' : 0.5rem,
-    'font-size' : 1rem,
-  ),
-
-  'images' : (
-    'margin' : -0.25rem 0.75rem -0.25rem -0.75rem,
+    'padding' : .25em .5em,
   ),
 
   'modifiers' : (
@@ -215,6 +210,7 @@ $badges: (
       'color' : $color,
       'background' : rgba($black, 0.05),
       'hover' : (
+        'cursor': pointer,
         'color' : $color,
         'background' : rgba($black, 0.15),
       ),
@@ -318,20 +314,19 @@ $badges: (
       'border-radius' : 0,
     ),
     'pill' : (
+      'padding' : 0.25rem 0.75rem,
       'border-radius' : 3rem,
+      'chips' : (
+        'margin' : 0 -0.5rem 0 0.5rem,
+      ),
     ),
     'dot' : (
       'display' : inline-block,
-      'width' : ($base-font-size / 2),
-      'height' : ($base-font-size / 2),
+      'width' : 8px,
+      'height' : 8px,
       'padding' : 0,
       'vertical-align' : top,
-      'font-size' : 0,
-      'line-height' : 0,
-      'text-indent' : 100%,
-      'white-space' : nowrap,
-      'overflow' : hidden,
-      'border-radius': 3rem,
+      'border-radius': 50%,
     ),
   ),
 
@@ -380,46 +375,5 @@ a.#{map-get($badges, 'class')} {
   @include add-modifiers($badges, 'default', false, ('output-base': false));
 }
 ```
-
-<div class="demo demo-badges">
-  <p>This is a <span class="badge">Default badge</span> and a <a class="badge" href="#">Linked Badge</a></p>
-</div>
-
-</section><!-- .docs-item -->
-
-<section id="mixin-add-badge-content" class="docs-item" markdown="1">
-
-### add-badge-content
-
-Creates the styles for specified badge content. These are elements that require custom styles within the context of a badge such as icons or images.
-
-```scss
-@include add-badge-content( $type: null, $options: () );
-```
-
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Type</th>
-    <th>Options</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$type</code></td>
-    <td>String</td>
-    <td>
-      <code>'all'</code>,
-      <code>'icons'</code>,
-      <code>'images'</code>,
-      <code>null</code>
-    </td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$options</code></td>
-    <td colspan="2">Map</td>
-    <td><code>$badges</code></td>
-  </tr>
-</table>
 
 </section><!-- .docs-item -->

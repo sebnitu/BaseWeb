@@ -38,10 +38,10 @@ The off-canvas component block is a design pattern that hides aside content outs
   </div>
 </div>
 
-If you're looking to add a close trigger for off-canvas content, simply create a button with the `.oc-trigger` class and omit the `data-target` attribute. You can optionally use the `.button` class and `.close` modifier for a stylized <code>&times;</code> trigger.
+If you're looking to add a close trigger for off-canvas content, simply create a button with the `.oc-trigger` class and omit the `data-target` attribute. You can optionally use the `.chip` class and an icon SVG for the trigger.
 
 ```html
-<button class="oc-trigger close">&times;</button>
+<button class="oc-trigger chip">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
 ```
 
 ## Transitions
@@ -91,7 +91,7 @@ There are eight unique effects with left and right position variations and the o
       </div>
     </section>
     <aside class="oc-aside slide-in-left">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>Off-canvas content goes here...</p>
     </aside>
   </div>
@@ -208,8 +208,8 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 
 // Change the background styles, but keep the rest of the $offcanvas defaults
 @include make-offcanvas((
-  'background-aside' : $blue-gray,
-  'background-content' : $blue-50
+  'background-aside' : $gray-800,
+  'background-content' : $gray-100
 ));
 ```
 
@@ -312,7 +312,7 @@ It's important to specify the target you'd like the transition effect to be appl
 ```scss
 // Adding custom transition effects for two seperate off-canvas aside content
 @include add-offcanvas-transition('oc-aside-left', 'slide-out-left');
-@include add-offcanvas-transition('oc-aside-right', 'scale-rotate-right');
+@include add-offcanvas-transition('oc-aside-right', 'slide-out-right');
 ```
 
 ```html
@@ -342,11 +342,11 @@ It's important to specify the target you'd like the transition effect to be appl
       </div>
     </section>
     <aside class="oc-aside oc-aside-left">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>...</p>
     </aside>
     <aside class="oc-aside oc-aside-right">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>...</p>
     </aside>
   </div>

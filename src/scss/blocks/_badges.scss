@@ -8,33 +8,24 @@ $filename: 'scss/blocks/_badge.scss';
 $badges: (
   'output' : true,
   'output-modifiers' : true,
-  'output-content' : true,
   'output-buttons' : true,
   'class' : 'badge',
 
-  'padding' : 0.25rem 0.75rem,
+  'padding' : 0.25rem 0.5rem,
   'font-size' : 0.9em,
+  'line-height' : 1.4em,
   'border' : none,
   'border-radius' : $border-radius,
   'transition' : $transition,
 
-  'close' : (
+  'chips' : (
     'margin' : 0 -0.25em 0 0.5em,
+    'padding' : 0.125em,
   ),
 
   'buttons' : (
     'margin' : 0.5em,
-    'padding' : 0.25em 0.5em,
-  ),
-
-  'icons' : (
-    'margin' : 0 0.25rem 0 0,
-    'padding' : 0.5rem,
-    'font-size' : 1rem,
-  ),
-
-  'images' : (
-    'margin' : -0.25rem 0.75rem -0.25rem -0.75rem,
+    'padding' : .25em .5em,
   ),
 
   'modifiers' : (
@@ -42,6 +33,7 @@ $badges: (
       'color' : $color,
       'background' : rgba($black, 0.05),
       'hover' : (
+        'cursor': pointer,
         'color' : $color,
         'background' : rgba($black, 0.15),
       ),
@@ -109,6 +101,22 @@ $badges: (
         'background' : $yellow-600,
       ),
     ),
+    'orange' : (
+      'color' : $orange,
+      'background' : $orange-50,
+      'hover' : (
+        'color' : $orange,
+        'background' : $orange-100,
+      ),
+    ),
+    'orange.inverted' : (
+      'color' : $white,
+      'background' : $orange,
+      'hover' : (
+        'color' : $white,
+        'background' : $orange-700,
+      ),
+    ),
     'red' : (
       'color' : $red,
       'background' : $red-50,
@@ -123,6 +131,22 @@ $badges: (
       'hover' : (
         'color' : $white,
         'background' : $red-700,
+      ),
+    ),
+    'purple' : (
+      'color' : $purple,
+      'background' : $purple-50,
+      'hover' : (
+        'color' : $purple-700,
+        'background' : $purple-100,
+      ),
+    ),
+    'purple.inverted' : (
+      'color' : $white,
+      'background' : $purple,
+      'hover' : (
+        'color' : $white,
+        'background' : $purple-700,
       ),
     ),
     'light' : (
@@ -145,15 +169,19 @@ $badges: (
       'border-radius' : 0,
     ),
     'pill' : (
+      'padding' : 0.25rem 0.75rem,
       'border-radius' : 3rem,
+      'chips' : (
+        'margin' : 0 -0.5rem 0 0.5rem,
+      ),
     ),
     'dot' : (
       'display' : inline-block,
-      'width' : ($base-font-size / 2),
-      'height' : ($base-font-size / 2),
+      'width' : 8px,
+      'height' : 8px,
       'padding' : 0,
       'vertical-align' : top,
-      'border-radius': 3rem,
+      'border-radius': 50%,
     ),
   ),
 
@@ -185,58 +213,13 @@ $badges: (
   @include add-styles($o);
   @include add-modifiers($o, 'default', false, ('output-pseudo': false));
 
-  @content;
-
   @if map-fetch($o, 'modifiers', 'dot') {
     &.dot {
       @include add-text-hide();
     }
   }
-}
 
-// Add Badge Content
-// Creates the styles for specified badge content.
-// @param $type
-//   @type string
-//   @options 'all', 'icons', 'images', null
-//   @default null
-// @param $options
-//   @type map
-//   @default $badges map
-@mixin add-badge-content($type: null, $options: ()) {
-  $o: map-extend($badges, $options, true);
-
-  // Icons content
-  @if $type == 'icons' or $type == 'all' {
-    > .#{map-get($icons, 'class')} {
-      margin: map-fetch($o, 'icons', 'margin');
-      font-size: map-fetch($o, 'icons', 'font-size');
-    }
-    &.#{map-get($o, 'class')}-#{map-get($icons, 'class')} {
-      padding: map-fetch($o, 'icons', 'padding');
-      > .#{map-get($icons, 'class')} {
-        margin: 0;
-      }
-    }
-  }
-
-  // Images content
-  @if $type == 'images' or $type == 'all' {
-    > img {
-      margin: map-fetch($o, 'images', 'margin');
-      border-top-left-radius: map-get($o, 'border-radius');
-      border-bottom-left-radius: map-get($o, 'border-radius');
-    }
-    @if map-fetch($o, 'modifiers', 'pill') {
-      &.pill {
-        > img {
-          border-radius: map-fetch($o, 'modifiers', 'pill', 'border-radius');
-          margin-right: 0.5rem;
-        }
-      }
-    }
-  }
-
+  @content;
 }
 
 // Check if we should output badges
@@ -249,18 +232,9 @@ $badges: (
 .#{map-get($badges, 'class')} {
   @include make-badge();
 }
-a.#{map-get($badges, 'class')} {
+a.#{map-get($badges, 'class')},
+button.#{map-get($badges, 'class')} {
   @include add-modifiers($badges, 'default', false, ('output-base': false));
-}
-
-// Check if we should output badge content
-@if map-get($badges, 'output-content') {
-/**
- * Content
- */
-  .#{map-get($badges, 'class')} {
-    @include add-badge-content('all');
-  }
 }
 
 // Check if we should output badge modifiers
@@ -270,9 +244,10 @@ a.#{map-get($badges, 'class')} {
  */
   .#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-pseudo': false));
-    @include add-modifiers-close($badges);
+    @include add-chip-modifiers($badges);
   }
-  a.#{map-get($badges, 'class')} {
+  a.#{map-get($badges, 'class')},
+  button.#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-base': false));
   }
 }

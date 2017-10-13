@@ -33,13 +33,6 @@ $grid: (
 
 ) !default;
 
-// Extend default component map with overrides if they exist
-@if variable-exists(override) {
-  @if map-has-key($override, 'grid') {
-    $grid: map-extend($grid, map-get($override, 'grid'), true);
-  }
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // @Grid Functions
 ////////////////////////////////////////////////////////////////////////////////

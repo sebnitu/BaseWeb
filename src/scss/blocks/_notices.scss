@@ -14,10 +14,11 @@ $notices: (
   'padding' : 0.25em 1.25em,
   'font-size' : 1em,
   'line-height' : 1.5em,
-  'border' : 1px solid rgba($black, 0.05),
+  'border' : 1px solid rgba($black, 0.15),
   'border-radius' : $border-radius,
+  'box-shadow' : 0 1px 3px rgba($black, 0.1),
 
-  'close' : (
+  'chips' : (
     'float': right,
     'margin': 1em 0 1em 1em,
     'padding': 0.25em,
@@ -32,8 +33,8 @@ $notices: (
     'inverted' : (
       'color' : $white,
       'background' : $color,
-      'close' : (
-        'key' : 'inverted',
+      'chips' : (
+        'key' : 'light',
       ),
     ),
     'info' : (
@@ -56,7 +57,7 @@ $notices: (
     'warning.inverted' : (
       'color' : $color,
       'background' : $yellow,
-      'close' : (
+      'chips' : (
         'key' : 'default',
       ),
     ),
@@ -66,11 +67,6 @@ $notices: (
     'danger.inverted' : (
       'color' : $white,
       'background' : $red,
-    ),
-    'inline' : (
-      'display' : inline,
-      'margin' : 0,
-      'padding' : 0 0.25em,
     ),
   ),
 
@@ -117,7 +113,7 @@ $notices: (
 @if map-get($notices, 'output-modifiers') {
   .#{map-get($notices, 'class')} {
     @include add-modifiers($notices);
-    @include add-modifiers-close($notices);
+    @include add-chip-modifiers($notices);
   }
 }
 

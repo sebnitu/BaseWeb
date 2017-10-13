@@ -1,20 +1,20 @@
 // Set file variable
-$filename: 'scss/elements/_close.scss';
+$filename: 'scss/elements/_chips.scss';
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Close Map
+// @Chips Map
 ////////////////////////////////////////////////////////////////////////////////
 
-$close: (
+$chips: (
   'output' : true,
   'output-modifiers' : true,
-  'class' : 'close',
+  'class' : 'chip',
 
   'margin' : 0,
-  'padding' : 0.125em,
+  'padding' : 0.25em,
   'font-size' : 1rem,
   'border' : none,
-  'border-radius' : 5em,
+  'border-radius' : 50%,
   'transition' : $transition,
 
   'modifiers' : (
@@ -26,7 +26,7 @@ $close: (
         'background' : rgba($black, 0.5),
       ),
     ),
-    'inverted' : (
+    'light' : (
       'color' : $color,
       'background' : rgba($white, 0.5),
       'hover' : (
@@ -35,9 +35,24 @@ $close: (
       ),
     ),
     'danger' : (
+      'selector' : '&.red, &.danger',
       'background' : $red,
       'hover' : (
         'background' : $red-700,
+      ),
+    ),
+    'warning' : (
+      'selector' : '&.yellow, &.warning',
+      'background' : $orange,
+      'hover' : (
+        'background' : $orange-700,
+      ),
+    ),
+    'success' : (
+      'selector' : '&.green, &.success',
+      'background' : $green,
+      'hover' : (
+        'background' : $green-700,
       ),
     ),
   ),
@@ -46,22 +61,22 @@ $close: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if map-has-key($override, 'close') {
-    $close: map-extend($close, map-get($override, 'close'), true);
+  @if map-has-key($override, 'chips') {
+    $chips: map-extend($chips, map-get($override, 'chips'), true);
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Close Mixins
+// @Chip Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
-// Make close
-// Creates the base styles for the close element.
+// Make chip
+// Creates the base styles for the chip element.
 // @param $options
 //   @type map
-//   @default $close map
-@mixin make-close($options: ()) {
-  $o: map-merge($close, $options);
+//   @default $chips map
+@mixin make-chip($options: ()) {
+  $o: map-merge($chips, $options);
 
   cursor: pointer;
   display: inline-flex;
@@ -81,23 +96,23 @@ $close: (
   }
 }
 
-// Add Modifiers Close
-// Creates styles for the close elements along with modifiers.
+// Add Chip Modifiers
+// Creates styles for the chip block along with modifiers.
 // @param $options
 //   @type map
 //   @default ()
-@mixin add-modifiers-close($options: ()) {
+@mixin add-chip-modifiers($options: ()) {
   $o: $options;
 
-  // Check if $close exists and if output is set to true
-  @if map-get($close, 'output') {
+  // Check if $chips exists and if output is set to true
+  @if map-get($chips, 'output') {
 
-    // If close key exists, output close styles
-    @if map-has-key($o, 'close') {
-      .#{map-get($close, 'class')} {
-        @include add-styles(map-get($o, 'close'));
-        @if (map-fetch($o, 'close', 'key')) {
-          @include add-modifiers($close, map-fetch($o, 'close', 'key'), false);
+    // If chips key exists, output chip styles
+    @if map-has-key($o, 'chips') {
+      .#{map-get($chips, 'class')} {
+        @include add-styles(map-get($o, 'chips'));
+        @if (map-fetch($o, 'chips', 'key')) {
+          @include add-modifiers($chips, map-fetch($o, 'chips', 'key'), false);
         }
       }
     }
@@ -105,13 +120,13 @@ $close: (
     // Check if modifiers exist
     @if (map-has-key($o, 'modifiers')) {
       @each $name, $map in map-get($o, 'modifiers') {
-        // If close key exists, output close styles
-        @if (map-has-key($map, 'close')) {
+        // If chips key exists, output chip styles
+        @if (map-has-key($map, 'chips')) {
           &.#{$name} {
-            .#{map-get($close, 'class')} {
-              @include add-styles(map-get($map, 'close'));
-              @if (map-fetch($map, 'close', 'key')) {
-                @include add-modifiers($close, map-fetch($map, 'close', 'key'), false);
+            .#{map-get($chips, 'class')} {
+              @include add-styles(map-get($map, 'chips'));
+              @if (map-fetch($map, 'chips', 'key')) {
+                @include add-modifiers($chips, map-fetch($map, 'chips', 'key'), false);
               }
             }
           }
@@ -123,24 +138,24 @@ $close: (
 
 }
 
-// Check if we should output close
-@if map-get($close, 'output') {
+// Check if we should output chip
+@if map-get($chips, 'output') {
 
 /*==============================================================================
-  @Close - #{$filename}
+  @Chips - #{$filename}
 ==============================================================================*/
 
-.#{map-get($close, 'class')} {
-  @include make-close();
+.#{map-get($chips, 'class')} {
+  @include make-chip();
 }
 
-// Check if we should output close modifiers
-@if map-get($close, 'output-modifiers') {
+// Check if we should output chip modifiers
+@if map-get($chips, 'output-modifiers') {
 /**
  * Modifiers
  */
-  .#{map-get($close, 'class')} {
-    @include add-modifiers($close);
+  .#{map-get($chips, 'class')} {
+    @include add-modifiers($chips);
   }
 } // End @if output-modifiers
 

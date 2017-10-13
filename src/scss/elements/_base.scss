@@ -1,6 +1,26 @@
 // Set file variable
 $filename: 'scss/elements/_base.scss';
 
+////////////////////////////////////////////////////////////////////////////////
+// @Core Map Overrides
+////////////////////////////////////////////////////////////////////////////////
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if map-has-key($override, 'anchors') {
+    $anchors: map-extend($anchors, map-get($override, 'anchors'), true);
+  }
+  @if map-has-key($override, 'headings') {
+    $headings: map-extend($headings, map-get($override, 'headings'), true);
+  }
+  @if map-has-key($override, 'breakpoints') {
+    $breakpoints: map-extend($breakpoints, map-get($override, 'breakpoints'), true);
+  }
+  @if map-has-key($override, 'grid') {
+    $grid: map-extend($grid, map-get($override, 'grid'), true);
+  }
+}
+
 /*==============================================================================
   @Base Styles - #{$filename}
 ==============================================================================*/

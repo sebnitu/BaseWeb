@@ -22,6 +22,51 @@ There are four ways you can markup a button. An anchor, button or input element 
   </p>
 </div>
 
+## Modifiers
+
+Buttons includes semantic color modifiers that change the urgency of buttons to highlight specific contexts as shown below.
+
+```html
+<button class="button">Default</button>
+<button class="button primary">Primary</button>
+<button class="button secondary">Secondary</button>
+<button class="button success">Success</button>
+<button class="button warning">Warning</button>
+<button class="button danger">Danger</button>
+<button class="button light">Light</button>
+<button class="button dark">Dark</button>
+```
+
+<div class="demo demo-buttons">
+  <p>
+    <button class="button">Default</button>
+    <button class="button primary">Primary</button>
+    <button class="button secondary">Secondary</button>
+    <button class="button success">Success</button>
+    <button class="button warning">Warning</button>
+    <button class="button danger">Danger</button>
+    <button class="button light">Light</button>
+    <button class="button dark">Dark</button>
+  </p>
+</div>
+
+Also included are size modifiers `.small` and `.large`.
+
+<div class="demo demo-buttons">
+  <p>
+    <button class="button primary large">Large</button>
+    <button class="button primary">Default</button>
+    <button class="button primary small">Small</button>
+  </p>
+</div>
+
+The `.block` modifier makes a button fill the full width of it's container, typically used for smaller touch screens.
+
+<div class="demo demo-buttons">
+  <button class="button secondary block">Block</button>
+  <button class="button secondary block">Block</button>
+</div>
+
 <div id="toc" class="toc"></div>
 
 <section id="map-buttons" class="docs-item" markdown="1">

@@ -75,17 +75,6 @@ $anchors: (
   ),
 ) !default;
 
-// Extend default component map with overrides if they exist
-@if variable-exists(override) {
-  @if map-has-key($override, 'anchors') {
-    $anchors: map-extend($anchors, map-get($override, 'anchors'), true);
-  }
-}
-
-// Anchors Shorthands
-$anchor-color: map-get($anchors, 'color') !default;
-$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
-
 // Headings Map
 // @desc Default styles for heading elements.
 // @type map
@@ -115,12 +104,9 @@ $headings: (
   ),
 ) !default;
 
-// Extend default component map with overrides if they exist
-@if variable-exists(override) {
-  @if map-has-key($override, 'headings') {
-    $headings: map-extend($headings, map-get($override, 'headings'), true);
-  }
-}
+// Anchors Shorthands
+$anchor-color: map-get($anchors, 'color') !default;
+$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
 
 // Headings Shorthands
 $heading-color: map-get($headings, 'color') !default;

@@ -54,7 +54,7 @@ $filename: 'scss/custom/_docs-demos.scss';
  * Demo Inverted
  */
 .demo-inverted {
-  background: $gray;
+  background: $gray-800;
   border-color: rgba($black, 0.1);
 }
 
@@ -314,21 +314,12 @@ $add-styles-example: (
     margin: 0 0 0.5rem -0.5rem;
   }
 
-  .button,
-  .button-custom,
-  .button-custom-mobile {
+  .button {
     float: left;
     margin: 0.5rem 0 0 0.5rem;
   }
-}
-.demo-buttons-mobile {
-  > p {
-    margin-left: 0;
-  }
-
-  .button,
-  .button-custom-mobile {
-    margin-left: 0;
+  .block {
+    margin: 0.5em 0;
   }
 }
 
@@ -354,10 +345,18 @@ $add-styles-example: (
 }
 
 /**
- *
+ * Chips
  */
-.demo-close {
+.demo-chips {
   text-align: center;
+}
+
+/**
+ * Badges
+ */
+.demo-badges {
+  text-align: center;
+  @extend .demo-alt;
 }
 
 /**
@@ -380,9 +379,29 @@ $add-styles-example: (
   .notice {
     margin: 1em 0;
   }
+  .item {
+    padding-top: 1em;
+    border-top: 1px solid rgba($black, 0.1);
+  }
 }
-.notice.custom {
 
+@include media-min('medium') {
+  .demo-notice {
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        width: 48%;
+      }
+      .item:nth-child(odd) {
+        margin-right: 2%;
+      }
+      .item:nth-child(even) {
+        margin-left: 2%;
+      }
+    }
+  }
 }
 
 /**
@@ -429,8 +448,8 @@ $add-styles-example: (
     position: absolute;
     padding: 1em 2em;
 
-    .button.close {
-      margin: 0 -1rem;
+    .oc-trigger {
+      margin: 1em 0 0 0;
     }
   }
 
@@ -447,14 +466,11 @@ $add-styles-example: (
       background: $white;
     }
   }
-  .oc-trigger {
-    white-space: normal;
-  }
 }
 
 @include media-min('medium') {
   .demo-offcanvas {
-    padding: 1.5em;
+    padding: 0;
 
     .oc-inner {
       padding: 3em;
@@ -465,8 +481,8 @@ $add-styles-example: (
 .oc-custom {
   @include make-offcanvas((
     'aside-position' : absolute,
-    'background-aside' : $blue-gray,
-    'background-content' : $blue-50
+    'background-aside' : $gray-800,
+    'background-content' : $gray-100
   ));
   .oc-aside {
     color: $white;
@@ -474,7 +490,7 @@ $add-styles-example: (
 }
 
 @include add-offcanvas-transition('oc-aside-left', 'slide-out-left');
-@include add-offcanvas-transition('oc-aside-right', 'scale-rotate-right');
+@include add-offcanvas-transition('oc-aside-right', 'slide-out-right');
 
 // All transition effects
 @include add-offcanvas-transition('slide-in-left', 'slide-in-left');
@@ -515,23 +531,4 @@ $add-styles-example: (
 .demo-tooltips .button {
   float: left;
   margin: 1em 1em 1em 0;
-}
-
-/**
- * Badges
- */
-.demo-badges {
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1em 0 0.5em;
-
-    > * {
-      margin: 0 0.5em 0.5em 0;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
 }
