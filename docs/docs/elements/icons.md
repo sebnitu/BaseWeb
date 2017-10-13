@@ -74,7 +74,7 @@ The <a href="https://css-tricks.com/svg-sprites-use-better-icon-fonts/" class="o
 
 ## Using Button Icons
 
-If the `classes-button-icon` is set to true, then you'll have available a three button modifier classes for using icons within buttons as well as custom icon styles for the `.small` and `.large` buttom modifiers. Below are a few examples and how they can be used.
+If the `classes-button-icon` is set to true, then you'll have available three button modifier classes for using icons within buttons as well as custom icon styles for the `.small` and `.large` buttom modifiers. Below are a few examples and how they can be used.
 
 ### .button-icon
 
@@ -128,129 +128,51 @@ Used to display buttons with icons on the right of a buttons text.
 It's important to note that the button icon modifiers require that the buttons element component be included and loaded before the icons component. This is because the `$buttons` map is used directly to set values specific to buttons.
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-buttons" class="docs-item" markdown="1">
+
+### Variable Map
 
 Icon variables are encompassed within the `$icons` map and are used throughout all icon mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+$icons: (
+  'output' : true,
+  'output-buttons' : true,
+  'class' : 'icon',
+  'class-symbols' : 'svg-symbols',
 
-  <tr>
-    <td><code>$icons('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$icons('classes-button-icon')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
+  'display' : inline-block,
+  'width' : 1em,
+  'height' : 1em,
+  'margin-top' : -0.3em,
+  'margin-bottom' : -0.1em,
+  'font-size' : px-to-rem(24px),
+  'vertical-align' : null,
 
-  <tr>
-    <td><code>$icons('class')</code></td>
-    <td><code>'icon'</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('class-symbols')</code></td>
-    <td><code>'svg-symbols'</code></td>
-  </tr>
+  'stroke' : currentColor,
+  'stroke-width' : 2px,
+  'stroke-linecap' : round,
+  'stroke-linejoin' : round,
+  'fill' : none,
 
-  <tr>
-    <td><code>$icons('size')</code></td>
-    <td><code>1em</code></td>
-  </tr>
+  'buttons' : (
+    'gap' : 0.25em,
+    'margin-top-small' : null,
+    'margin-top-large' : -0.2em,
+    'font-size-small' : px-to-rem(18px),
+    'font-size-large' : px-to-rem(30px),
+    'indent-small' : -0.125em,
+    'indent' : -0.25em,
+    'indent-large' : -0.35em
+  )
+) !default;
+```
 
-  <tr>
-    <td><code>$icons('margin-top-small')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('margin-top')</code></td>
-    <td><code>-0.3em</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('margin-top-large')</code></td>
-    <td><code>-0.2em</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('margin-bottom')</code></td>
-    <td><code>-0.1em</code></td>
-  </tr>
+</section><!-- .docs-item -->
 
-  <tr>
-    <td><code>$icons('font-size-small')</code></td>
-    <td><code>px-to-rem(18px)</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('font-size')</code></td>
-    <td><code>px-to-rem(24px)</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('font-size-large')</code></td>
-    <td><code>px-to-rem(30px)</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$icons('vertical-align')</code></td>
-    <td><code>null</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$icons('stroke')</code></td>
-    <td><code>currentColor</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('stroke-width')</code></td>
-    <td><code>2px</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('stroke-linecap')</code></td>
-    <td><code>round</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('stroke-linejoin')</code></td>
-    <td><code>round</code></td>
-  </tr>
-
-  <tr>
-    <td><code>$icons('fill')</code></td>
-    <td><code>none</code></td>
-  </tr>
-
-  <tr>
-    <th colspan="2">Button Settings</th>
-  </tr>
-
-  <tr>
-    <td><code>$icons('buttons', 'gap')</code></td>
-    <td><code>0.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('buttons', 'indent-small')</code></td>
-    <td><code>-0.125em</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('buttons', 'indent')</code></td>
-    <td><code>-0.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$icons('buttons', 'indent-large')</code></td>
-    <td><code>-0.35em</code></td>
-  </tr>
-</table>
-
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output icon classes. Set to `false` if you want to use the notice modifier mixins semantically and/or reduce CSS output.
-</div>
-
-## Mixins
-
-Icon mixins are used to create the base styles for an icon as well as their color size and display variations.
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-hide-svg-symbols" class="docs-item" markdown="1">
 
 ### hide-svg-symbols
 
@@ -268,9 +190,9 @@ Adds styles for hiding your SVG symbols file.
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-icon" class="docs-item" markdown="1">
 
 ### make-icon
 
@@ -303,9 +225,9 @@ You'll want to wrap the mixin with whatever icon class you'd like to use. The de
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-icon-button" class="docs-item" markdown="1">
 
 ### add-icon-button
 
@@ -358,6 +280,4 @@ You'll want to wrap the mixin with whatever icon class you'd like to use. The de
   </p>
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->
