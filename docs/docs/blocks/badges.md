@@ -55,7 +55,7 @@ Badges are a compact way to represent descriptive content such as tags, counters
   <p><strong>Image Badge</strong></p>
 
   <p class="flex">
-    <a class="badge" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
+    <a class="badge inverted blue" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
     <a class="badge" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
     <a class="badge pill" href="#"><img src="/dist/img/avatar.png" width="32" height="32" alt=""> Text Badge</a>
     <a class="badge pill" href="#"><img src="/dist/img/avatar-s.png" width="32" height="32" alt=""> Text Badge</a>
@@ -195,9 +195,19 @@ $badges: (
     'margin' : 0 -0.25em 0 0.5em,
   ),
 
-  'button' : (
+  'buttons' : (
     'margin' : 0.5em,
     'padding' : 0.25em 0.5em,
+  ),
+
+  'icons' : (
+    'margin' : 0 0.25rem 0 0,
+    'padding' : 0.5rem,
+    'font-size' : 1rem,
+  ),
+
+  'images' : (
+    'margin' : -0.25rem 0.75rem -0.25rem -0.75rem,
   ),
 
   'modifiers' : (
@@ -381,7 +391,7 @@ a.#{map-get($badges, 'class')} {
 
 ### add-badge-content
 
-Creates the styles for specified badge content.
+Creates the styles for specified badge content. These are elements that require custom styles within the context of a badge such as icons or images.
 
 ```scss
 @include add-badge-content( $type: null, $options: () );

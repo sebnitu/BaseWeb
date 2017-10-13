@@ -672,74 +672,6 @@ dl dd {
 }
 
 /*==============================================================================
-  @Blockquotes - scss/elements/_blockquotes.scss
-==============================================================================*/
-blockquote {
-  margin: 1rem 0;
-  padding: 0.5em 1.5em;
-  background: #F5F5F5;
-  border-radius: 3px;
-}
-
-blockquote footer,
-blockquote .blockquote-footer {
-  display: block;
-  position: relative;
-  margin: 1rem 0;
-  font-size: 100%;
-}
-
-@media (min-width: 760px) {
-  blockquote {
-    padding: 1em 2em;
-  }
-}
-
-/*==============================================================================
-  @Code - scss/elements/_code.scss
-==============================================================================*/
-code, pre {
-  background: #F5F5F5;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 1em;
-  line-height: 1.5em;
-  border-radius: 3px;
-}
-
-code {
-  display: inline;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  line-height: inherit;
-  color: #F44336;
-  background: none;
-}
-
-pre {
-  margin: 1.5rem 0;
-  padding: 0.75rem;
-  overflow: auto;
-  color: #212121;
-}
-
-pre code {
-  display: block;
-  margin: 0;
-  padding: 0.75rem;
-  overflow: auto;
-  white-space: pre;
-  font-size: 100%;
-  color: inherit;
-  background: none;
-  border: 0 none;
-}
-
-pre.max-height {
-  max-height: 400px;
-}
-
-/*==============================================================================
   @Tables - scss/elements/_tables.scss
 ==============================================================================*/
 table {
@@ -942,6 +874,74 @@ table th {
   .table-responsive > table th {
     white-space: nowrap;
   }
+}
+
+/*==============================================================================
+  @Blockquotes - scss/elements/_blockquotes.scss
+==============================================================================*/
+blockquote {
+  margin: 1rem 0;
+  padding: 0.5em 1.5em;
+  background: #F5F5F5;
+  border-radius: 3px;
+}
+
+blockquote footer,
+blockquote .blockquote-footer {
+  display: block;
+  position: relative;
+  margin: 1rem 0;
+  font-size: 100%;
+}
+
+@media (min-width: 760px) {
+  blockquote {
+    padding: 1em 2em;
+  }
+}
+
+/*==============================================================================
+  @Code - scss/elements/_code.scss
+==============================================================================*/
+code, pre {
+  background: #F5F5F5;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 1em;
+  line-height: 1.5em;
+  border-radius: 3px;
+}
+
+code {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  line-height: inherit;
+  color: #F44336;
+  background: none;
+}
+
+pre {
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+  overflow: auto;
+  color: #212121;
+}
+
+pre code {
+  display: block;
+  margin: 0;
+  padding: 0.75rem;
+  overflow: auto;
+  white-space: pre;
+  font-size: 100%;
+  color: inherit;
+  background: none;
+  border: 0 none;
+}
+
+pre.max-height {
+  max-height: 400px;
 }
 
 /*==============================================================================
@@ -1992,6 +1992,9 @@ fieldset[disabled] .input {
   font-size: 1em;
 }
 
+/**
+ * Modifiers
+ */
 .close.inverted {
   color: #424242;
   background: rgba(255, 255, 255, 0.5);
@@ -2041,6 +2044,14 @@ fieldset[disabled] .input {
   overflow: hidden;
 }
 
+a.badge:hover {
+  color: #424242;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/**
+ * Content
+ */
 .badge > .icon {
   margin: 0 0.25rem 0 0;
   font-size: 1rem;
@@ -2065,11 +2076,9 @@ fieldset[disabled] .input {
   margin-right: 0.5rem;
 }
 
-a.badge:hover {
-  color: #424242;
-  background: rgba(0, 0, 0, 0.15);
-}
-
+/**
+ * Modifiers
+ */
 .badge.inverted {
   color: #fff;
   background: #9E9E9E;
@@ -2144,11 +2153,6 @@ a.badge:hover {
   height: 8px;
   padding: 0;
   vertical-align: top;
-  font-size: 0;
-  line-height: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
   border-radius: 3rem;
 }
 
@@ -2214,6 +2218,9 @@ a.badge.dark:hover {
   background: rgba(0, 0, 0, 0.75);
 }
 
+/**
+ * Button Styles
+ */
 .button .badge:not(.dot) {
   display: inline;
   padding: 0.25em 0.5em;
@@ -2407,9 +2414,6 @@ a.badge.dark:hover {
 /*==============================================================================
   @Dropdowns - scss/blocks/_dropdowns.scss
 ==============================================================================*/
-/**
- * General Dropdown Styles
- */
 .dropdown,
 .dropdown-content,
 .dropdown-menu {
@@ -2428,7 +2432,7 @@ a.badge.dark:hover {
 }
 
 /**
- * Dropdown
+ * Content
  */
 .dropdown {
   padding: 0;
@@ -2459,9 +2463,6 @@ a.badge.dark:hover {
   border-bottom-right-radius: 3px;
 }
 
-/**
- * Dropdown Content
- */
 .dropdown-content {
   padding: 1em;
 }
@@ -2515,9 +2516,6 @@ a.badge.dark:hover {
   display: block;
 }
 
-/**
- * Dropdown Menu
- */
 .dropdown-menu {
   list-style: none;
   padding: 0.5em;

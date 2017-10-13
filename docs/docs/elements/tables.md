@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tables"
-order: 6
+order: 4
 ---
 
 The HTML `<table>` element is used to display tabular data. Tables have rows, cells , header cells  and also can include `<thead>`, `<tbody>` or `<tfooter>` which wrap their respective table data. Here's an example of a table markup and the default styles:

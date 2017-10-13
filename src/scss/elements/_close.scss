@@ -105,6 +105,7 @@ $close: (
     // Check if modifiers exist
     @if (map-has-key($o, 'modifiers')) {
       @each $name, $map in map-get($o, 'modifiers') {
+        // If close key exists, output close styles
         @if (map-has-key($map, 'close')) {
           &.#{$name} {
             .#{map-get($close, 'class')} {
@@ -117,6 +118,7 @@ $close: (
         }
       }
     }
+
   }
 
 }
@@ -134,6 +136,9 @@ $close: (
 
 // Check if we should output close modifiers
 @if map-get($close, 'output-modifiers') {
+/**
+ * Modifiers
+ */
   .#{map-get($close, 'class')} {
     @include add-modifiers($close);
   }

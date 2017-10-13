@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Code"
-order: 5
+order: 6
 ---
 
 The `<code>` and `<pre>` HTML elements are primarily used for displaying computer recognized programs or code. BaseWeb comes with some predefined styles for both inline code markup and blocks of code.

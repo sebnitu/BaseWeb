@@ -8,6 +8,7 @@ $filename: 'scss/blocks/_badge.scss';
 $badges: (
   'output' : true,
   'output-modifiers' : true,
+  'output-content' : true,
   'output-buttons' : true,
   'class' : 'badge',
 
@@ -152,11 +153,6 @@ $badges: (
       'height' : ($base-font-size / 2),
       'padding' : 0,
       'vertical-align' : top,
-      'font-size' : 0,
-      'line-height' : 0,
-      'text-indent' : 100%,
-      'white-space' : nowrap,
-      'overflow' : hidden,
       'border-radius': 3rem,
     ),
   ),
@@ -191,8 +187,10 @@ $badges: (
 
   @content;
 
-  &.dot {
-    @include add-text-hide();
+  @if map-fetch($o, 'modifiers', 'dot') {
+    &.dot {
+      @include add-text-hide();
+    }
   }
 }
 
@@ -250,14 +248,26 @@ $badges: (
 
 .#{map-get($badges, 'class')} {
   @include make-badge();
-  @include add-badge-content('all');
 }
 a.#{map-get($badges, 'class')} {
   @include add-modifiers($badges, 'default', false, ('output-base': false));
 }
 
+// Check if we should output badge content
+@if map-get($badges, 'output-content') {
+/**
+ * Content
+ */
+  .#{map-get($badges, 'class')} {
+    @include add-badge-content('all');
+  }
+}
+
 // Check if we should output badge modifiers
 @if map-get($badges, 'output-modifiers') {
+/**
+ * Modifiers
+ */
   .#{map-get($badges, 'class')} {
     @include add-modifiers($badges, $settings: ('output-pseudo': false));
     @include add-modifiers-close($badges);
@@ -269,11 +279,16 @@ a.#{map-get($badges, 'class')} {
 
 // Check if we should output button modifiers
 @if map-get($badges, 'output-buttons') {
+/**
+ * Button Styles
+ */
   // Check if $buttons exists
   @if (variable-exists(buttons)) {
-    .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
-      display: inline;
-      padding: map-fetch($badges, 'buttons', 'padding');
+    @if map-fetch($badges, 'modifiers', 'dot') {
+      .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
+        display: inline;
+        padding: map-fetch($badges, 'buttons', 'padding');
+      }
     }
     .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
       .#{map-get($badges, 'class')} {
