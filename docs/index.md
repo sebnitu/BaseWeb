@@ -16,7 +16,7 @@ class: home
 
   <div class="hero-content">
     <div class="container">
-      <h1>A light UI component library built to make web projects faster, flexible and easier to maintainable.</h1>
+      <h1>{{ site.description }}</h1>
       <div class="action">
         <a href="{{ site.github.repository_url }}" class="button large">Download</a>
         <pre class="highlight"><code><span class="editor-prefixed">npm install baseweb</span></code></pre>
