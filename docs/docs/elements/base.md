@@ -6,7 +6,7 @@ link:
 order: 1
 ---
 
-Global base styles are applied here. A few of the first things this component does is remove margin and padding from `<html>` and `<body>`, prevent automatic text resizing on mobile devices and set HTML5 elements to display block.
+Global base styles are applied here. Aside from outputting some base styles for your projects, this component applies overrides to core BaseWeb mixins. Next, it removes margin and padding from `<html>` and `<body>`, prevent automatic text resizing on mobile devices and set HTML5 elements to display block.
 
 ```scss
 // Remove margins and padding from HTML and Body elements

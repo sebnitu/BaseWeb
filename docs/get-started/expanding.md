@@ -4,8 +4,8 @@ title: Expanding
 order: 2
 ---
 
-<div class="notice yellow" markdown="1">
-The expanding BaseWeb documentation is still being written and may not currently be up to date or contain all relevant information. Please check back again soon.
+<div class="notice warning">
+  <p>The expanding BaseWeb documentation is still being written and may not currently be up to date or contain all relevant information. Please check back again soon.</p>
 </div>
 
 Expanding BaseWeb is simple. To make a new element or block component, simply create a SCSS file with in the appropriate directory. You can structure your custom SCSS files in any way you like, but here is an example to help get you started. This will allow you to take full advantage of BaseWeb's features and keep it consistent with the other component:
