@@ -264,6 +264,27 @@ button.#{map-get($badges, 'class')} {
         display: inline;
         padding: map-fetch($badges, 'buttons', 'padding');
       }
+      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+        position: relative;
+
+        .#{map-get($badges, 'class')}.dot {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+        }
+        &.small .#{map-get($badges, 'class')}.dot {
+          width: map-fetch($badges, 'modifiers', 'dot', 'width') - 2px;
+          height: map-fetch($badges, 'modifiers', 'dot', 'width') - 2px;
+          top: 4px;
+          right: 4px;
+        }
+        &.large .#{map-get($badges, 'class')}.dot {
+          width: map-fetch($badges, 'modifiers', 'dot', 'width') + 2px;
+          height: map-fetch($badges, 'modifiers', 'dot', 'width') + 2px;
+          top: 10px;
+          right: 10px;
+        }
+      }
     }
     .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
       .#{map-get($badges, 'class')} {

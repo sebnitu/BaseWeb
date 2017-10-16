@@ -75,15 +75,15 @@ Also included are `_baseweb-elements.scss` and `_baseweb-blocks.scss` in case yo
 @import "custom/custom";
 ```
 
-<div class="notice yellow" markdown="1">
-It's important to not that `custom/overrides` should be imported after core but before elements and block files. This ensures that you keep your custom framework overrides.
+<div class="notice warning" markdown="1">
+It's important to note that `custom/overrides` should be imported after core but before elements and block files. This ensures that you keep your custom framework overrides.
 </div>
 
 For more information, checkout the [get started]({{ site.url }}{{ site.baseurl }}/get-started/) guide under the heading "BaseWeb Source". For information on how to leverage BaseWeb and still be able to customize everything you need, check out "<a href="https://dev.to/sebnitu/reusing-design-systems-with-yarn-and-gulp" class="onclick-newtab">Reusing Design Systems with Yarn and Gulp</a>".
 
 ## Show and Hide Utility Classes
 
-Another cool little feature that's been added this update is the show and hide utility classes. How these work is that they allow you to show or hide an element using a class that's generated from whatever values are set in the [`$breakpoints` map](/docs/settings/media/). So, for example, if you added a breakpoint of `'average'` with a value of `500px`, BaseWeb will automatically generate the following classes:
+Another cool little feature that's been added this update is the show and hide utility classes. How these work is that they allow you to show or hide an element using a class that's generated from whatever values are set in the [`$breakpoints` map](/docs/core/media/). So, for example, if you added a breakpoint of `'average'` with a value of `500px`, BaseWeb will automatically generate the following classes:
 
 * `.hide-average-up`: Hides item when window is > 500px
 * `.hide-average-down`: Hides item when window is < 500px
