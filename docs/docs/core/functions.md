@@ -6,11 +6,11 @@ order: 1
 
 This is where we define custom functions for our framework. These functions are global and don't apply specifically to a single element/block component.
 
-<ul class="list list-docs">
+<div id="toc" class="toc"></div>
 
-<li markdown="1">
+<section id="function-map-extend" class="docs-item" markdown="1">
 
-## map-extend
+### map-extend
 
 jQuery-style extend function for when `map-merge()` isn't enough. Use when you need to merge more than two maps and/or need a merge to be recursive.
 
@@ -48,7 +48,7 @@ map-extend( $map, $maps..., $deep )
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 $grid-a: (
@@ -85,11 +85,11 @@ $map: map-extend($grid-a, $grid-b, $grid-c, true);
 // -> ("columns": 16, "layouts": ("small": 800px, "medium": 1000px, "large": 1300px, "huge": 1500px), "direction": "ltr")
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-map-fetch" class="docs-item" markdown="1">
 
-## map-fetch
+### map-fetch
 
 An easy way to fetch a value in a multi-level map. Works much like `map-get()` except that you pass multiple keys as the second variable argument to go down multiple levels in the nested map.
 
@@ -122,7 +122,7 @@ map-fetch( $map, $keys... )
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 $grid-a: (
@@ -143,11 +143,11 @@ $map: map-fetch($grid-a, 'layouts', 'medium');
 // -> 1000px
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-map-set" class="docs-item" markdown="1">
 
-## map-set
+### map-set
 
 An easy way to set a deep value in a multi-level map. By passing in a map, value and keys to the original map value you want changed.
 
@@ -186,7 +186,7 @@ map-set( $map, $value, $keys... )
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
 $grid-a: (
@@ -201,11 +201,11 @@ $map: map-set($grid-a, 1300px, 'layouts' 'medium');
 // -> ("columns": 12, "layouts": ("small": 800px, "medium": 1300px))
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-strip-units" class="docs-item" markdown="1">
 
-## strip-units
+### strip-units
 
 Strips the unit from a value. For example, if you pass it 12px, it will strip off the px unit and return the number 12.
 
@@ -232,11 +232,11 @@ strip-units( $val )
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-px-to-em" class="docs-item" markdown="1">
 
-## px-to-em
+### px-to-em
 
 Converts a pixel value to ems. By default it'll use the base font size, but can be passed a custom base font size instead.
 
@@ -269,11 +269,11 @@ px-to-em( $px, $base )
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-px-to-rem" class="docs-item" markdown="1">
 
-## px-to-rem
+### px-to-rem
 
 Converts a pixel value to rems. Rem units use the base font size set on the `<html>` element which BaseWeb uses `$base-font-size` to set.
 
@@ -300,11 +300,11 @@ px-to-rem( $px )
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-em-to-px" class="docs-item" markdown="1">
 
-## em-to-px
+### em-to-px
 
 Converts an em value to pixels. By default it'll use the base font size, but can be passed a custom base font size instead.
 
@@ -337,11 +337,11 @@ em-to-px( $em, $base )
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-font-weight" class="docs-item" markdown="1">
 
-## font-weight
+### font-weight
 
 Output the font weight using the weight key to output the number weight.
 
@@ -353,24 +353,40 @@ font-weight( $weight );
   <tr>
     <th>Parameter</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$weight</code></td>
-    <td>Font-weight keyword (hairline, thin, light, regular, medium, semi-bold, bold, extra-bold, black)</td>
+    <td>String</td>
+    <td>
+      <code>'hairline'</code>,
+      <code>'thin'</code>,
+      <code>'light'</code>,
+      <code>'regular'</code>,
+      <code>'medium'</code>,
+      <code>'semi-bold'</code>,
+      <code>'bold'</code>,
+      <code>'extra-bold'</code>,
+      <code>'black'</code>
+    </td>
     <td><span class="text-soften">None</span></td>
+  </tr>
+  <tr>
+    <th>Return</th>
+    <td colspan="4">Font-weight value</td>
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 h1 {
   font-weight: font-weight('light');
 }
 
-//CSS
+// CSS output
 h1 {
   font-weight: 300;
 }
@@ -419,6 +435,4 @@ h1 {
   </tr>
 </table>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

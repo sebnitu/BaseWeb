@@ -78,63 +78,35 @@ The description list element represents an association list consisting of zero o
   </dl>
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-lists" class="docs-item" markdown="1">
+
+### Variable Map
 
 List variables are encompassed within the `$lists` map and are used throughout all list mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+$lists: (
+  'output' : true,
+  'class' : 'list',
 
-  <tr>
-    <td><code>$lists('classes')</code></td>
-    <td><code>true</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('nth')</code></td>
-    <td><code>odd</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('margin')</code></td>
-    <td><code>1rem 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('padding')</code></td>
-    <td><code>1rem</code></td>
-  </tr>
+  'nth' : odd,
+  'margin' : 1rem 0,
+  'padding' : 1rem,
 
-  <tr>
-    <td><code>$lists('background')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('background-stripe')</code></td>
-    <td><code>rgba($black, 0.025)</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('background-hover')</code></td>
-    <td><code>$yellow-pale</code></td>
-  </tr>
+  'background' : null,
+  'background-stripe' : rgba($black, 0.025),
+  'background-hover' : $yellow-50,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-radius' : $border-radius,
 
-  <tr>
-    <td><code>$lists('border')</code></td>
-    <td><code>1px solid rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$lists('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
-</table>
+) !default;
+```
 
-## Mixins
+</section><!-- .docs-item -->
 
-Lists are used to describe a wide range of content on the web, especially in UI design. A lot of the time, you don't want a list to look like a standard list with bullets. BaseWeb provides mixins and classes for creating commonly used list styles.
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-make-list" class="docs-item" markdown="1">
 
 ### make-list
 
@@ -153,7 +125,7 @@ Creates the base styles for a list modifier mixin or class. Usually applied dire
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -175,9 +147,9 @@ Using the base list mixin for custom tables. This example shows us using a `%bas
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-rowed" class="docs-item" markdown="1">
 
 ### add-list-rowed
 
@@ -196,7 +168,7 @@ Adds borders to a list that divide list items. Requires the use of base list sty
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -258,9 +230,9 @@ In the case where you don't want to create left and right padding on a list, you
   </ul>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-bordered" class="docs-item" markdown="1">
 
 ### add-list-bordered
 
@@ -279,7 +251,7 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -312,9 +284,9 @@ Adds borders to a list that wraps the list and divides list items. Requires the 
   </ul>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-linked" class="docs-item" markdown="1">
 
 ### add-list-linked
 
@@ -333,7 +305,7 @@ Adds styles for a linked list where the padding is added to the anchor element i
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -361,9 +333,9 @@ Adds styles for a linked list where the padding is added to the anchor element i
   </ul>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-rounded" class="docs-item" markdown="1">
 
 ### add-list-rounded
 
@@ -387,7 +359,7 @@ Gives a list rounded borders depending on parameters passed.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -421,9 +393,9 @@ Gives a list rounded borders depending on parameters passed.
   </ul>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-striped" class="docs-item" markdown="1">
 
 ### add-list-striped
 
@@ -447,7 +419,7 @@ Gives a list items alternating background colors.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -481,9 +453,9 @@ Gives a list items alternating background colors.
   </ul>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-list-hover" class="docs-item" markdown="1">
 
 ### add-list-hover
 
@@ -507,7 +479,7 @@ Gives list hover styles for list items.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$lists()</code></td>
+    <td><code>$lists</code></td>
   </tr>
 </table>
 
@@ -541,6 +513,4 @@ Gives list hover styles for list items.
   </ul>
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

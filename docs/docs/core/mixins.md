@@ -1,32 +1,32 @@
 ---
 layout: page
 title: "Mixins"
-order: 2
+order: 4
 ---
 
 Global mixins for our framework. These mixins are global and don't apply specifically to a single element/block component.
 
-<ul class="list list-docs">
+<div id="toc" class="toc"></div>
 
-<li markdown="1">
+<section id="mixin-add-clearfix" class="docs-item" markdown="1">
 
-## clearfix
+### add-clearfix
 
 Allows you to clear an element that contains floats.
 
 ```scss
-@include clearfix();
+@include add-clearfix();
 ```
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 .wrapper {
-  @include clearfix();
+  @include add-clearfix();
 }
 
-// CSS Output
+// CSS output
 .wrapper:after {
   content: '';
   display: table;
@@ -34,11 +34,11 @@ Allows you to clear an element that contains floats.
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-remove-clearfix" class="docs-item" markdown="1">
 
-## remove-clearfix
+### remove-clearfix
 
 Removes the clearfix styles from an element. This is typically used when a clearfix is inherited on an element and you'd like it removed.
 
@@ -46,16 +46,16 @@ Removes the clearfix styles from an element. This is typically used when a clear
 @include remove-clearfix();
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-float-modifiers" class="docs-item" markdown="1">
 
-## float-modifiers
+### add-float-modifiers
 
 Adds the float modifier classes to an element.
 
 ```scss
-@include float-modifiers( $left, $right );
+@include add-float-modifiers( $left, $right );
 ```
 
 <table class="table table-docs">
@@ -63,13 +63,11 @@ Adds the float modifier classes to an element.
     <th>Parameter</th>
     <th>Type</th>
     <th>Default</th>
-    <th>Description</th>
   </tr>
   <tr>
     <td><code>$left</code></td>
     <td class="text-nowrap">Class name</td>
     <td><code>$class-float-left</code></td>
-    <td rowspan="2">Float left and right modifier class names. Set to <code>none</code> to not output.</td>
   </tr>
   <tr>
     <td><code>$right</code></td>
@@ -78,37 +76,37 @@ Adds the float modifier classes to an element.
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
-.button-group-wrapper .button-group {
+// SCSS input
+.wrapper .block {
   display: block;
-  @include float-modifiers();
+  @include add-float-modifiers();
 }
 
-// CSS Output
-.button-group-wrapper .button-group {
+// CSS output
+.wrapper .block {
   display: block;
 }
-.button-group-wrapper .button-group.float-left {
+.wrapper .block.float-left {
   float: left;
 }
-.button-group-wrapper .button-group.float-right {
+.wrapper .block.float-right {
   float: right;
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-size" class="docs-item" markdown="1">
 
-## size
+### add-size
 
 Shorthand for adding width and height dimensions to an element. If you only pass in a width, the height will be set to equal the width and create a square. If either the width or height are unit-less, it defaults to pixels.
 
 ```scss
-@include size( $height, $width );
+@include add-size( $height, $width );
 ```
 
 <table class="table table-docs">
@@ -116,32 +114,29 @@ Shorthand for adding width and height dimensions to an element. If you only pass
     <th>Parameter</th>
     <th>Type</th>
     <th>Default</th>
-    <th>Description</th>
   </tr>
   <tr>
     <td><code>$width</code></td>
     <td>Unit (number, pixel, percentage)</td>
     <td><span class="text-soften">None</span></td>
-    <td>The width to set on element.</td>
   </tr>
   <tr>
     <td><code>$height</code></td>
     <td>Unit (number, pixel, percentage)</td>
     <td><code>false</code></td>
-    <td>The height to set on element. Uses the set width if set to false.</td>
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 .my-special-box {
-  @include size(100px, 50px);
+  @include add-size(100px, 50px);
   ...
 }
 
-// CSS Output
+// CSS output
 .my-special-box {
   width: 100px;
   height: 50px;
@@ -149,16 +144,16 @@ Shorthand for adding width and height dimensions to an element. If you only pass
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-vertical-center" class="docs-item" markdown="1">
 
-## vertical-center
+### add-vertical-center
 
 Centers an element vertically within it's parent. Parent element may need to have `transform-style:` `preserve-3d;` to prevent half pixel bluring.
 
 ```scss
-@include vertical-center( $percent );
+@include add-vertical-center( $percent );
 ```
 
 <table class="table table-docs">
@@ -166,25 +161,23 @@ Centers an element vertically within it's parent. Parent element may need to hav
     <th>Parameter</th>
     <th>Type</th>
     <th>Default</th>
-    <th>Description</th>
   </tr>
   <tr>
     <td><code>$percent</code></td>
     <td>Unit (percentage)</td>
     <td><code>50%</code></td>
-    <td>Percent from the top to be set.</td>
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 .box {
-  @include vertical-center();
+  @include add-vertical-center();
 }
 
-// CSS Output
+// CSS output
 .box {
   position: relative;
   top: 50%;
@@ -198,107 +191,82 @@ Centers an element vertically within it's parent. Parent element may need to hav
   <div class="box"></div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-scrollable" class="docs-item" markdown="1">
 
-## scrollable
+### add-scrollable
 
 Makes touch devices use momentum-based scrolling for the given element.
 
 ```scss
-@include scrollable();
+@include add-scrollable();
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-triangle" class="docs-item" markdown="1">
 
-## border-radius
+### make-triangle
 
-Define border radius using mixin shorthand and global defaults.
+Creates the base styles for creating CSS triangles.
 
 ```scss
-@include border-top-radius( $radius );
-@include border-left-radius( $radius );
-@include border-right-radius( $radius );
-@include border-bottom-radius( $radius );
+@include make-triangle();
+```
+
+</section><!-- .docs-item -->
+
+<section id="mixin-add-triangle-styles" class="docs-item" markdown="1">
+
+### add-triangle-styles
+
+Uses the `0x0` element with borders trick to draw arrow size, color and direction.
+
+```scss
+@include add-triangle-styles( $size, $color, $direction );
 ```
 
 <table class="table table-docs">
   <tr>
     <th>Parameter</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
-    <td><code>$radius</code></td>
-    <td>Unit (pixel, percent)</td>
-    <td><code>$border-radius</code></td>
+    <td><code>$size</code></td>
+    <td colspan="2">Unit (pixel, em, rem)</td>
+    <td><span class="text-soften">None</span></td>
+  </tr>
+  <tr>
+    <td><code>$color</code></td>
+    <td colspan="2">Color</td>
+    <td><span class="text-soften">None</span></td>
+  </tr>
+  <tr>
+    <td><code>$direction</code></td>
+    <td>String</td>
+    <td>
+      <code>'up'</code>, <code>'right'</code>,
+      <code>'down'</code>, <code>'left'</code>,
+      <code>'up-right'</code>, <code>'up-left'</code>,
+      <code>'down-right'</code>, <code>'down-left'</code>
+    </td>
+    <td><span class="text-soften">None</span></td>
   </tr>
 </table>
 
-### Example Usage
+</section><!-- .docs-item -->
 
-```scss
-// SCSS
-.box-1 {
-  @include border-left-radius(20px);
-}
-.box-2 {
-  @include border-top-radius(50%);
-}
+<section id="mixin-add-text-truncate" class="docs-item" markdown="1">
 
-// CSS Output
-.box-1 {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-}
-.box-2 {
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-}
-```
-
-### Available Mixins
-
-<table class="table table-docs">
-  <tr>
-    <th>Mixin</th>
-    <th>Example</th>
-  </tr>
-  <tr>
-    <td><code>@include border-top-radius()</code></td>
-    <td><span class="demo-border-radius mixin-border-top-radius"></span></td>
-  </tr>
-  <tr>
-    <td><code>@include border-bottom-radius()</code></td>
-    <td><span class="demo-border-radius mixin-border-bottom-radius"></span></td>
-  </tr>
-  <tr>
-    <td><code>@include border-left-radius()</code></td>
-    <td><span class="demo-border-radius mixin-border-left-radius"></span></td>
-  </tr>
-  <tr>
-    <td><code>@include border-right-radius()</code></td>
-    <td><span class="demo-border-radius mixin-border-right-radius"></span></td>
-  </tr>
-</table>
-
-<div class="notice warning">
-  <p>For the list above of available mixins, I'm passing in a border-radius of <code>50%</code> so the effect is more obvious.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-## text-truncate
+### add-text-truncate
 
 Truncates text with an ellipsis. Element this is applied to must be block or inline-block.
 
 ```scss
-@include text-truncate();
+@include add-text-truncate( $display );
 ```
 
 <table class="table table-docs">
@@ -314,15 +282,15 @@ Truncates text with an ellipsis. Element this is applied to must be block or inl
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 .demo-text-truncate {
-  @include text-truncate();
+  @include add-text-truncate();
 }
 
-// CSS Output
+// CSS output
 .demo-text-truncate {
   display: block;
   overflow: hidden;
@@ -331,32 +299,32 @@ Truncates text with an ellipsis. Element this is applied to must be block or inl
 }
 ```
 
-<div class="demo demo-text-truncate">
+<div class="demo demo-add-text-truncate">
   <div class="box">This is some text that will get truncated</div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-text-hide" class="docs-item" markdown="1">
 
-## text-hide
+### add-text-hide
 
 Hides text from an element. This is most commonly used as an image replacement technique for hiding text in an element to reveal a background image.
 
 ```scss
-@include text-hide();
+@include add-text-hide();
 ```
 
-### Example Usage
+<p class="subheading">Example Usage</p>
 
 ```scss
-// SCSS
+// SCSS input
 .logo {
   ...
-  @include text-hide();
+  @include add-text-hide();
 }
 
-// CSS Output
+// CSS output
 .logo {
   ...
   font-size: 0;
@@ -375,20 +343,16 @@ Hides text from an element. This is most commonly used as an image replacement t
   <div class="logo">Demo Logo Image Replace</div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-anchor" class="docs-item" markdown="1">
 
-<h2>make-triangle</h2>
+### make-anchor
 
-<p>Uses the <code>0*0</code> element with borders trick to draw arrows. The base styles for creating CSS triangles must be applied either through mixin, class or extend.</p>
-
-```scss
-@include make-triangle-base();
-```
+Creates the base anchor styles using the `$anchors` map for defaults.
 
 ```scss
-@include make-triangle( $size, $color, $direction );
+@include make-anchor( $options );
 ```
 
 <table class="table table-docs">
@@ -396,83 +360,256 @@ Hides text from an element. This is most commonly used as an image replacement t
     <th>Parameter</th>
     <th>Type</th>
     <th>Default</th>
-    <th>Description</th>
   </tr>
   <tr>
-    <td><code>$size</code></td>
-    <td>Unit (pixel, em, rem)</td>
-    <td><span class="text-soften">None</span></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>$color</code></td>
-    <td>Color</td>
-    <td><span class="text-soften">None</span></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>$direction</code></td>
-    <td>String ('up', 'right', 'down', 'left', 'up-right', 'up-left', 'down-right', 'down-left')</td>
-    <td><span class="text-soften">None</span></td>
-    <td>The direction that the triangle will point.</td>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$anchors</code></td>
   </tr>
 </table>
 
-### Example Usage
+<p class="subheading">Example Usage</p>
+
+This example is how BaseWeb outputs base anchor styles. This can also be used to style context specific anchors such as in footers or sidebars.
 
 ```scss
-// SCSS
-%triangle {
-  @include make-triangle-base();
-}
-.example-triangle-1 {
-  @extend %triangle;
-  @include make-triangle( 14px, $blue, 'left' );
-}
-.example-triangle-2 {
-  @extend %triangle;
-  @include make-triangle( 14px, $purple, 'down' );
-}
-.example-triangle-3 {
-  @extend %triangle;
-  @include make-triangle( 14px, $red, 'right' );
+// SCSS input
+a {
+  @include make-anchor();
 }
 
-// CSS Output
-.example-triangle-1,
-.example-triangle-2,
-.example-triangle-3 {
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 0 none;
-  border-style: solid;
-  border-color: transparent;
+// CSS output
+a {
+  color: #2196F3;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.example-triangle-1 {
-  border-color: transparent;
-  border-width: 14px 14px 14px 0;
-  border-right-color: #2196F3;
-}
-.example-triangle-2 {
-  border-color: transparent;
-  border-width: 14px 14px 0 14px;
-  border-top-color: #9C27B0;
-}
-.example-triangle-3 {
-  border-color: transparent;
-  border-width: 14px 0 14px 14px;
-  border-left-color: #F44336;
+a:hover {
+  color: #1976D2;
+  border-color: inherit;
 }
 ```
 
-<div class="demo demo-triangle">
-  <div class="col col-4"><span class="example-triangle-1"></span></div>
-  <div class="col col-4"><span class="example-triangle-2"></span></div>
-  <div class="col col-4"><span class="example-triangle-3"></span></div>
+</section><!-- .docs-item -->
+
+<section id="mixin-build-headings" class="docs-item" markdown="1">
+
+### build-headings
+
+Creates the base styles for headings using the `$headings` map for defaults.
+
+```scss
+@include build-headings( $options );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$headings</code></td>
+  </tr>
+</table>
+
+<p class="subheading">Example Usage</p>
+
+```scss
+// SCSS input
+@include build-headings();
+
+// CSS output
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 1rem 0;
+  font-family: inherit;
+  line-height: 1.25em;
+  font-weight: 600;
+  color: #212121;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+.h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
+  color: #212121;
+  text-decoration: none;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
+.h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover {
+  color: #2196F3;
+  border-color: inherit;
+}
+
+h1, .h1 {
+  font-size: 2.5em;
+}
+h2, .h2 {
+  font-size: 2em;
+}
+h3, .h3 {
+  font-size: 1.75em;
+}
+h4, .h4 {
+  font-size: 1.5em;
+}
+h5, .h5 {
+  font-size: 1.25em;
+}
+h6, .h6 {
+  font-size: 1em;
+}
+```
+
+</section><!-- .docs-item -->
+
+<section id="mixin-add-styles" class="docs-item" markdown="1">
+
+### add-styles
+
+Output styles from a component map based on the approved properties and pseudo-classes.
+
+```scss
+@include add-styles( $input, $settings );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$input</code></td>
+    <td>Map</td>
+    <td><span class="text-soften">none</span></td>
+  </tr>
+  <tr>
+    <td><code>$settings</code></td>
+    <td>Map</td>
+    <td><code>$add-styles</code></td>
+  </tr>
+</table>
+
+<p class="subheading">Example Usage</p>
+
+For basic usage, take a look at how we can output text styles through a default map. Notice how the properties that don't match in our settings map of approved properties get ignored:
+
+```scss
+// SCSS input
+$example: (
+  'other' : 'Option to ignore',
+  'cursor' : pointer,
+  'color' : $blue,
+  'padding' : 0.5em 0,
+  'border-top' : 1px solid $blue,
+  'transition' : $transition,
+  'hover' : (
+    'color' : $purple,
+    'border-color' : $purple
+  )
+);
+.text-example {
+  @include add-styles($example);
+}
+
+// CSS output
+.text-example {
+  cursor: pointer;
+  padding: 0.5em 0;
+  color: #2196F3;
+  border-top: 1px solid #2196F3;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+.text-example:hover {
+  color: #9C27B0;
+  border-color: #9C27B0;
+}
+```
+
+<div class="demo">
+  <p class="add-styles-example">Example Text</p>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-</ul>
+<section id="mixin-add-modifiers" class="docs-item" markdown="1">
+
+### add-modifiers
+
+Output an array of modifiers for flat components. Flat components are ones who's modifiers typically only alter the appearance of the parent element itself. For example: `buttons`, `badges`, `notices`, etc.
+
+```scss
+@include add-modifiers( $input, $key, $selector, $settings );
+```
+
+<table class="table table-docs">
+  <tr>
+    <th>Parameter</th>
+    <th>Type</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$input</code></td>
+    <td>Map</td>
+    <td><span class="text-soften">none</span></td>
+  </tr>
+  <tr>
+    <td><code>$key</code></td>
+    <td>String or null</td>
+    <td><code>null</code></td>
+  </tr>
+  <tr>
+    <td><code>$selector</code></td>
+    <td>Boolean</td>
+    <td><code>true</code></td>
+  </tr>
+  <tr>
+    <td><code>$settings</code></td>
+    <td>Map</td>
+    <td><code>$add-styles</code></td>
+  </tr>
+</table>
+
+<p class="subheading">Example Usage</p>
+
+For the initial example, we'll make up a random component map with a few modifier options.
+
+```scss
+$example: (
+  'color' : $white,
+  'background' : $blue,
+  'modifiers' : (
+    'red' : (
+      'background' : $red
+    ),
+    'green' : (
+      'background' : $green
+    )
+  )
+);
+```
+
+Now, we'll pass this item to the add-modifiers mixin wrapped by our selector class.
+
+```scss
+// SCSS input
+.example {
+  @include add-modifiers( $example );
+}
+
+// CSS output
+.example.red {
+  background: #F44336;
+}
+.example.green {
+  background: #4CAF50;
+}
+```
+
+</section><!-- .docs-item -->

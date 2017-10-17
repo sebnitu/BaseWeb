@@ -10,7 +10,7 @@ $filename: 'scss/custom/_docs-swatches.scss';
  */
 .swatch {
   display: inline-block;
-  @include size(50px);
+  @include add-size(50px);
   border: 1px solid rgba($black, 0.1);
   border-radius: $border-radius;
 }
@@ -19,17 +19,16 @@ $filename: 'scss/custom/_docs-swatches.scss';
 .bg-color { background: $color; }
 .bg-color-light { background: $color-light; }
 .bg-color-dark { background: $color-dark; }
-.bg-color-heading { background: $color-heading; }
-.bg-color-link { background: $color-link; }
-.bg-color-link-hover { background: $color-link-hover; }
-.bg-color-link-heading { background: $color-link-heading; }
-.bg-color-link-heading-hover { background: $color-link-heading-hover; }
+.bg-color-link { background: $anchor-color; }
+.bg-color-link-hover { background: $anchor-hover-color; }
+.bg-color-heading { background: $heading-color; }
+.bg-color-heading-link { background: $heading-anchor-color; }
+.bg-color-heading-link-hover { background: $heading-anchor-hover-color; }
 
 // Global
 .bg-bg-color { background: $bg-color; }
 .bg-bg-selection { background: $bg-selection; }
 .bg-border-color { background: $border-color; }
-.bg-border-color-hover { background: $border-color-hover; }
 
 /**
  * Swatch and Value combo
@@ -91,7 +90,7 @@ $filename: 'scss/custom/_docs-swatches.scss';
   color: $white;
 
   &.text-dark {
-    color: $color;
+    color: $color-dark;
   }
 
   .name {

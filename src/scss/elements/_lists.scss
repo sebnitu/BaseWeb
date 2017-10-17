@@ -6,7 +6,8 @@ $filename: 'scss/elements/_lists.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $lists: (
-  'classes' : true,
+  'output' : true,
+  'class' : 'list',
 
   'nth' : odd,
   'margin' : 1rem 0,
@@ -22,7 +23,7 @@ $lists: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'lists') == true) {
+  @if map-has-key($override, 'lists') {
     $lists: map-extend($lists, map-get($override, 'lists'), true);
   }
 }
@@ -48,7 +49,7 @@ $lists: (
     margin: 0;
     padding: map-get($o, 'padding');
     background-clip: padding-box;
-    @include clearfix();
+    @include add-clearfix();
   }
 
 }
@@ -106,7 +107,7 @@ $lists: (
     padding: map-get($o, 'padding');
     background-clip: padding-box;
     text-decoration: none;
-    @include clearfix();
+    @include add-clearfix();
   }
 
 }
@@ -128,10 +129,12 @@ $lists: (
 
   border-radius: map-get($o, 'border-radius');
   > li:first-child {
-    @include border-top-radius(map-get($o, 'border-radius'));
+    border-top-left-radius: map-get($o, 'border-radius');
+    border-top-right-radius: map-get($o, 'border-radius');
   }
   > li:last-child {
-    @include border-bottom-radius(map-get($o, 'border-radius'));
+    border-bottom-left-radius: map-get($o, 'border-radius');
+    border-bottom-right-radius: map-get($o, 'border-radius');
   }
 }
 
@@ -234,8 +237,8 @@ dl {
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($lists, 'classes') == true) {
+// Check if we should output lists
+@if map-get($lists, 'output') {
 
 /*==============================================================================
   @List Modifiers - #{$filename}
@@ -244,7 +247,7 @@ dl {
 /**
  * Base Table Styles
  */
-.list {
+.#{map-get($lists, 'class')} {
   @include make-list();
 
   &.flush > li {
@@ -256,27 +259,27 @@ dl {
 /**
  * Border Modifiers
  */
-.list.rowed {
+.#{map-get($lists, 'class')}.rowed {
   @include add-list-rowed();
 }
-.list.bordered {
+.#{map-get($lists, 'class')}.bordered {
   @include add-list-bordered();
 }
-.list.linked {
+.#{map-get($lists, 'class')}.linked {
   @include add-list-linked();
 }
 
 /**
  * Miscellaneous Modifiers
  */
-.list.rounded {
+.#{map-get($lists, 'class')}.rounded {
   @include add-list-rounded();
 }
-.list.striped {
+.#{map-get($lists, 'class')}.striped {
   @include add-list-striped();
 }
-.list.hover {
+.#{map-get($lists, 'class')}.hover {
   @include add-list-hover();
 }
 
-} // endif classes
+} // End @if output

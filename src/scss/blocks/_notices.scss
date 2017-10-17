@@ -6,43 +6,81 @@ $filename: 'scss/blocks/_notice.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $notices: (
-  'classes' : true,
-
-  'class-inverted' : 'inverted',
-  'class-close' : 'close',
+  'output' : true,
+  'output-modifiers' : true,
+  'class' : 'notice',
 
   'margin' : 2em 0,
   'padding' : 0.25em 1.25em,
-  'padding-inline' : 0 0.25em,
-
-  'background' : $gray-100,
-  'box-shadow' : null,
-  'border' : null,
-  'border-radius' : $border-radius,
-  'color' : $color,
   'font-size' : 1em,
   'line-height' : 1.5em,
-  'text-shadow' : null,
+  'border' : 1px solid rgba($black, 0.15),
+  'border-radius' : $border-radius,
+  'box-shadow' : 0 1px 3px rgba($black, 0.1),
 
-  'inverted' : (
-    'background' : $color,
-    'box-shadow' : null,
-    'border' : null,
-    'color' : $white,
-    'text-shadow' : null,
-  )
+  'chips' : (
+    'float': right,
+    'margin': 1em 0 1em 1em,
+    'padding': 0.25em,
+    'font-size': 1em,
+  ),
+
+  'modifiers' : (
+    'default' : (
+      'color' : $color,
+      'background' : $gray-100,
+    ),
+    'inverted' : (
+      'color' : $white,
+      'background' : $color,
+      'chips' : (
+        'key' : 'light',
+      ),
+    ),
+    'info' : (
+      'background' : $blue-50,
+    ),
+    'info.inverted' : (
+      'color' : $white,
+      'background' : $blue,
+    ),
+    'success' : (
+      'background' : $green-50,
+    ),
+    'success.inverted' : (
+      'color' : $white,
+      'background' : $green,
+    ),
+    'warning' : (
+      'background' : $yellow-100,
+    ),
+    'warning.inverted' : (
+      'color' : $color,
+      'background' : $yellow,
+      'chips' : (
+        'key' : 'default',
+      ),
+    ),
+    'danger' : (
+      'background' : $red-50,
+    ),
+    'danger.inverted' : (
+      'color' : $white,
+      'background' : $red,
+    ),
+  ),
 
 ) !default;
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'notices') == true) {
+  @if map-has-key($override, 'notices') {
     $notices: map-extend($notices, map-get($override, 'notices'), true);
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// @Notice Mixins
+// @Notices Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 // Make Notice
@@ -51,206 +89,32 @@ $notices: (
 //   @type map
 //   @default $notices map
 @mixin make-notice($options: ()) {
-  $o: map-merge($notices, $options);
-
-  margin: map-get($o, 'margin');
-  padding: map-get($o, 'padding');
-  font-size: map-get($o, 'font-size');
-  line-height: map-get($o, 'line-height');
-  border-radius: map-get($o, 'border-radius');
-
-  .#{map-get($o, 'class-close')} {
-    float: right;
-    margin: 0.45rem -0.6rem 0 1rem;
-    background: rgba($black, 0);
-    color: inherit;
-
-    &:hover {
-      background: rgba($black, 0.05);
-    }
-  }
-
-  @if (variable-exists(buttons)) {
-    .#{map-get($buttons, 'class')}:not(.button-icon).#{map-get($o, 'class-close')} {
-      padding: 0.5em 1em;
-    }
-    @if (variable-exists(icons)) {
-      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')}.#{map-get($o, 'class-close')} {
-        padding: 0.5em;
-      }
-    }
-  }
-
-  &.#{map-get($o, 'class-inverted')} .#{map-get($o, 'class-close')}:hover {
-    background: rgba($white, 0.15);
-  }
-}
-
-// Add Notice Color
-// Adds styles for a notice color with optional output type.
-// @param $options
-//   @type map
-//   @default $notices map
-// @param $output
-//   @type string (all, difference)
-//   @default difference
-//   @desc Whether to output all styles, or just the ones that are different
-//     from the `$notices` map.
-@mixin add-notice-color($options: (), $output: 'difference') {
   $o: map-extend($notices, $options, true);
 
-  $set: color, text-shadow, background, border, box-shadow;
+  @include add-styles($o);
+  @include add-modifiers($o, 'default', false);
 
-  @if ($output == 'all') {
+  @content;
 
-    color: map-get($o, 'color');
-    text-shadow: map-get($o, 'text-shadow');
-    background: map-get($o, 'background');
-    border: map-get($o, 'border');
-    box-shadow: map-get($o, 'box-shadow');
-
-    @if (map-get($o, 'class-inverted')) {
-      &.#{map-get($o, 'class-inverted')} {
-        color: map-fetch($o, 'inverted', 'color');
-        text-shadow: map-fetch($o, 'inverted', 'text-shadow');
-        background: map-fetch($o, 'inverted', 'background');
-        border: map-fetch($o, 'inverted', 'border');
-        box-shadow: map-fetch($o, 'inverted', 'box-shadow');
-      }
-    }
-
-  } @else if ($output == 'difference') {
-
-    // Cycle through properties and only output when different from default
-    @each $property in $set {
-      @if (map-get($o, $property) != map-get($notices, $property)) {
-        #{$property}: map-get($o, $property);
-      }
-    }
-
-    @if (map-get($o, 'class-inverted')) {
-      &.#{map-get($o, 'class-inverted')} {
-        // Cycle through properties and only output when different from default
-        @each $property in $set {
-          @if (map-fetch($o, 'inverted', $property) != map-fetch($notices, 'inverted', $property)) {
-            #{$property}: map-fetch($o, 'inverted', $property);
-          }
-        }
-      }
-    }
-
-  } @else {
-    @warn 'The output type "#{$output}" is not supported in `add-notice-color()`';
-  }
 }
 
-// Add Notice Inline
-// Adds styles for an inline or inline-block notice.
-// @param $display
-//   @type display property (inline, inline-block)
-//   @default inline
-// @param $options
-//   @type map
-//   @default $notices map
-@mixin add-notice-inline($display: inline, $options: ()) {
-  $o: map-merge($notices, $options);
-
-  display: $display;
-  margin: 0;
-  padding: map-get($o, 'padding-inline');
-  box-shadow: none;
-
-  @if (map-get($o, 'class-inverted')) {
-    &.#{map-get($o, 'class-inverted')} {
-      border: 0 none;
-    }
-  }
-}
-
-// Check if we should output modifier classes
-@if (map-get($notices, 'classes') == true) {
+// Check if we should output notices
+@if map-get($notices, 'output') {
 
 /*==============================================================================
-  @Notice - #{$filename}
+  @Notices - #{$filename}
 ==============================================================================*/
 
-.notice {
+.#{map-get($notices, 'class')} {
   @include make-notice();
-  @include add-notice-color($output: 'all');
 }
 
-/**
- * Notice Color
- */
-.notice.blue {
-  @include add-notice-color((
-    'background' : $blue-50,
-    'inverted' : (
-      'background' : rgba($blue, 0.9)
-    )
-  ));
-}
-.notice.green {
-  @include add-notice-color((
-    'background' : $green-50,
-    'inverted' : (
-      'background' : rgba($green, 0.9)
-    )
-  ));
-}
-.notice.yellow {
-  @include add-notice-color((
-    'background' : $yellow-100,
-    'inverted' : (
-      'background' : $yellow,
-      'color': $color
-    )
-  ));
-}
-.notice.orange {
-  @include add-notice-color((
-    'background' : $orange-50,
-    'inverted' : (
-      'background' : $orange-600
-    )
-  ));
-}
-.notice.red {
-  @include add-notice-color((
-    'background' : $red-50,
-    'inverted' : (
-      'background' : $red-600
-    )
-  ));
-}
-.notice.purple {
-  @include add-notice-color((
-    'background' : $purple-50,
-    'inverted' : (
-      'background' : $purple
-    )
-  ));
+// Check if we should output notice modifiers
+@if map-get($notices, 'output-modifiers') {
+  .#{map-get($notices, 'class')} {
+    @include add-modifiers($notices);
+    @include add-chip-modifiers($notices);
+  }
 }
 
-// Semantic button classes
-.notice.success {
-  @extend .notice.green;
-}
-.notice.info {
-  @extend .notice.blue;
-}
-.notice.warning {
-  @extend .notice.yellow;
-}
-.notice.danger {
-  @extend .notice.red;
-}
-
-/**
- * Inline styles
- */
-.notice.inline {
-  @include add-notice-inline();
-}
-
-} // endif classes
+} // End @if output

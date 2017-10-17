@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tabs"
-order: 5
+order: 7
 ---
 
 Tabs are a high level navigational component that enable switching between views of related groups of content. They appear above the content they describe and consist of two primary parts: navigation items and the content they represent. Optionally, you can use the tabs wrapping `div` with the class of `.tabs` (default) for more easily grouping content together. Tabs are linked to their content part using the `href` attribute whos hash value contains the ID of the content it describes.
@@ -135,105 +135,48 @@ tabs.init();
 For more details on how to customize and use the public methods, take a look at the [tabs JavaScript](/docs/javascript/tabs) documentation.
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-tabs" class="docs-item" markdown="1">
+
+### Variable Map
 
 Tabs variables are encompassed within the '$tabs' map and are used throughout all tab mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$tabs('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('class-wrapper')</code></td>
-    <td><code>'tabs'</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('class-nav')</code></td>
-    <td><code>'tabs-nav'</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('class-content')</code></td>
-    <td><code>'tabs-content'</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('class-content-panel')</code></td>
-    <td><code>'tabs-panel'</code></td>
-  </tr>
+```scss
+$tabs: (
+  'output' : true,
+  'class' : 'tabs',
 
-  <tr>
-    <td><code>$tabs('margin')</code></td>
-    <td><code>2em 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('padding-nav')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('padding-nav-inline')</code></td>
-    <td><code>1em 2em</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('padding-content')</code></td>
-    <td><code>1em 2em</code></td>
-  </tr>
+  'class-wrapper'       : 'tabs',
+  'class-nav'           : 'tabs-nav',
+  'class-content'       : 'tabs-content',
+  'class-content-panel' : 'tabs-panel',
 
-  <tr>
-    <td><code>$tabs('background')</code></td>
-    <td><code>$gray-100</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('background-fade')</code></td>
-    <td><code>$gray-200</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('background-accent')</code></td>
-    <td><code>$white</code></td>
-  </tr>
+  'margin'             : 2em 0,
+  'padding-nav'        : 1em,
+  'padding-nav-inline' : 1em 2em,
+  'padding-content'    : 1em 2em,
 
-  <tr>
-    <td><code>$tabs('border')</code></td>
-    <td><code>1px solid $gray-300</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
+  'background'        : $gray-100,
+  'background-fade'   : $gray-200,
+  'background-accent' : $white,
 
-  <tr>
-    <td><code>$tabs('color')</code></td>
-    <td><code>$color</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('color-fade')</code></td>
-    <td><code>$color-light</code></td>
-  </tr>
-  <tr>
-    <td><code>$tabs('color-accent')</code></td>
-    <td><code>$blue</code></td>
-  </tr>
+  'border'            : 1px solid $gray-300,
+  'border-radius'     : $border-radius,
 
-  <tr>
-    <td><code>$tabs('transition')</code></td>
-    <td><code>null</code></td>
-  </tr>
-</table>
+  'color'        : $color,
+  'color-fade'   : $color-light,
+  'color-accent' : $blue,
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output tabs classes. Set to `false` if you want to use the tabs modifier mixins semantically and/or reduce CSS output.
-</div>
+  'transition' : null,
 
-## Mixins
+) !default;
+```
 
-Tab mixins are used to create the base styles for a tabs.
+</section><!-- .docs-item -->
 
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-make-tabs" class="docs-item" markdown="1">
 
 ### make-tabs
 
@@ -252,7 +195,7 @@ Creates the base styles for a the tabs block including tab wrapper, navigation a
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tabs()</code></td>
+    <td><code>$tabs</code></td>
   </tr>
 </table>
 
@@ -272,9 +215,9 @@ To create a custom set of tab styles, you can use the make-tabs mixin to apply t
 ));
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-tab-styles" class="docs-item" markdown="1">
 
 ### add-tab-style
 
@@ -288,21 +231,26 @@ Creates a predefined stylistic feel for your tabs. There are currently two prese
   <tr>
     <th>Variable</th>
     <th>Type</th>
+    <th>Options</th>
     <th>Default</th>
   </tr>
   <tr>
     <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$tabs()</code></td>
+    <td colspan="2">Map</td>
+    <td><code>$tabs</code></td>
   </tr>
   <tr>
     <td><code>$style</code></td>
-    <td>String (fold, line)</td>
+    <td>String</td>
+    <td>
+      <code>'fold'</code>,
+      <code>'line'</code>
+    </td>
     <td><code>'fold'</code></td>
   </tr>
   <tr>
     <td><code>$class</code></td>
-    <td>String</td>
+    <td colspan="2">String</td>
     <td><code>'style-#{$style}'</code></td>
   </tr>
 </table>
@@ -313,10 +261,10 @@ By default, both tab styles are output using their default classes `.style-fold`
 
 ```scss
 // Tabs Style: Default
-@include add-tab-style($style: 'fold');
+@include add-tab-style('fold');
 
 // Tabs Style: Line
-@include add-tab-style($style: 'line');
+@include add-tab-style('line');
 ```
 
 ```html
@@ -334,6 +282,4 @@ By default, both tab styles are output using their default classes `.style-fold`
 </div>
 ```
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

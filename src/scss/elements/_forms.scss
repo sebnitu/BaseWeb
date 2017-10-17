@@ -1,10 +1,6 @@
 // Set file variable
 $filename: 'scss/elements/_forms.scss';
 
-// Dependencies
-// ---
-// @mixin build-grid-system() - scss/core/_grid.scss
-
 ////////////////////////////////////////////////////////////////////////////////
 // @Form Variables
 ////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +42,7 @@ $forms: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'forms') == true) {
+  @if map-has-key($override, 'forms') {
     $forms: map-extend($forms, map-get($override, 'forms'), true);
   }
 }
@@ -72,16 +68,19 @@ $forms: (
   }
 
   &::-webkit-input-placeholder {
-     color: map-get($o, 'color-placeholder');
-  }
-  &:-moz-placeholder {
-     color: map-get($o, 'color-placeholder');
+    color: map-get($o, 'color-placeholder');
   }
   &::-moz-placeholder {
-     color: map-get($o, 'color-placeholder');
+    color: map-get($o, 'color-placeholder');
+  }
+  &:-moz-placeholder {
+    color: map-get($o, 'color-placeholder');
   }
   &:-ms-input-placeholder {
-     color: map-get($o, 'color-placeholder');
+    color: map-get($o, 'color-placeholder');
+  }
+  &::placeholder {
+    color: map-get($o, 'color-placeholder');
   }
 }
 
@@ -108,7 +107,7 @@ $forms: (
 @mixin make-form-group-inline($options: ()) {
   $o: map-merge($forms, $options);
 
-  @include clearfix();
+  @include add-clearfix();
   margin-right: -(map-get( $forms, 'vertical-align' ));
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
 
@@ -130,9 +129,11 @@ $forms: (
   margin-right: map-get( $o, 'vertical-align' );
   margin-bottom: map-get( $o, 'vertical-spacing' ) / 2;
 
-  @if ($class-float-right != none) {
-    &.#{$class-float-right} {
-      float: right;
+  @if (variable-exists(class-float-right)) {
+    @if ($class-float-right) {
+      &.#{$class-float-right} {
+        float: right;
+      }
     }
   }
 }
@@ -245,7 +246,7 @@ form {
  */
 .form-action {
   @include make-form-group-base();
-  @include clearfix();
+  @include add-clearfix();
 
   .button,
   .input-align {
@@ -256,9 +257,11 @@ form {
       margin-right: 0;
     }
 
-    @if ($class-float-right != none) {
-      &.#{$class-float-right} {
-        float: right;
+    @if (variable-exists(class-float-right)) {
+      @if ($class-float-right) {
+        &.#{$class-float-right} {
+          float: right;
+        }
       }
     }
   }

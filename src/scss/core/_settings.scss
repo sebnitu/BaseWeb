@@ -1,0 +1,176 @@
+////////////////////////////////////////////////////////////////////////////////
+// @Settings
+////////////////////////////////////////////////////////////////////////////////
+
+// Property defaults
+// @desc The default values used for various CSS properties.
+// @type property values
+
+$bg-color: $gray-100 !default;
+$bg-selection: rgba($green, 0.25) !default;
+
+$border-color: rgba($black, 0.10) !default;
+$border-radius: 3px !default;
+
+$box-sizing: border-box !default;
+$box-shadow: 0 1px 3px rgba($black, 0.1) !default;
+
+$transition-property: all !default;
+$transition-duration: 0.25s !default;
+$transition-timing-function: linear !default;
+$transition-delay: 0.25s !default;
+$transition: $transition-property $transition-duration $transition-timing-function !default;
+
+// Utility classes
+// @desc Used to output various global utility classes.
+// @type string or null
+
+$class-clearfix: 'clearfix' !default;
+$class-remove-clearfix: 'remove-clearfix' !default;
+
+$class-float-left: 'float-left' !default;
+$class-float-right: 'float-right' !default;
+
+$class-show: 'show' !default;
+$class-hide: 'hide' !default;
+$class-show-hide-min: 'down' !default;
+$class-show-hide-max: 'up' !default;
+
+// Typography settings
+// @desc Default values for typography properties.
+// @type property values
+
+$font-family-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif: georgia, "Times New Roman", times, serif !default;
+$font-family-mono: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+$base-font-family: $font-family-sans !default;
+$base-font-size: 16px !default;
+$base-line-height: 1.5em !default;
+$base-font-weight: font-weight('normal') !default;
+
+$color: $gray-800 !default;
+$color-light: $gray !default;
+$color-dark: $gray-900 !default;
+
+// Text output options
+// @desc Whether or not to output default text element styles and/or modifiers.
+// @type boolean
+
+$text-elements: true !default;
+$text-modifiers: true !default;
+
+// Anchors Map
+// @desc Default styles for anchor elements.
+// @type map
+
+$anchors: (
+  'output' : true,
+  'color' : $blue,
+  'border-bottom' : 1px solid rgba($black, 0.1),
+  'text-decoration' : none,
+  'hover' : (
+    'color' : $blue-700,
+    'border-color' : $blue-700,
+  ),
+) !default;
+
+// Headings Map
+// @desc Default styles for heading elements.
+// @type map
+
+$headings: (
+  'output' : true,
+  'margin' : 1rem 0,
+  'font-family' : inherit,
+  'line-height' : 1.25em,
+  'font-weight' : font-weight('semi-bold'),
+  'color' : $color-dark,
+  'anchors' : (
+    'output' : true,
+    'color' : $color-dark,
+    'border' : none,
+    'hover' : (
+      'color' : $blue,
+    ),
+  ),
+  'scale' : (
+    'h1' : 2.5em,
+    'h2' : 2em,
+    'h3' : 1.75em,
+    'h4' : 1.5em,
+    'h5' : 1.25em,
+    'h6' : 1em,
+  ),
+) !default;
+
+// Anchors Shorthands
+$anchor-color: map-get($anchors, 'color') !default;
+$anchor-hover-color: map-fetch($anchors, 'hover', 'color') !default;
+
+// Headings Shorthands
+$heading-color: map-get($headings, 'color') !default;
+$heading-anchor-color: map-fetch($headings, 'anchors', 'color') !default;
+$heading-anchor-hover-color: map-fetch($headings, 'anchors', 'hover', 'color') !default;
+
+// Add Styles Map
+// @desc Default settings used in the add-styles mixin.
+// @type map
+
+$add-styles: (
+  'output-base' : true,
+  'output-pseudo' : true,
+  'properties' : (
+    'cursor',
+    'display',
+    'float',
+    'width',
+    'height',
+    'margin',
+    'margin-top',
+    'margin-left',
+    'margin-right',
+    'margin-bottom',
+    'padding',
+    'padding-top',
+    'padding-left',
+    'padding-right',
+    'padding-bottom',
+    'vertical-align',
+    'content',
+    'font-family',
+    'font-size',
+    'line-height',
+    'font-weight',
+    'text-align',
+    'text-indent',
+    'white-space',
+    'letter-spacing',
+    'overflow',
+    'color',
+    'text-shadow',
+    'text-decoration',
+    'background',
+    'background-color',
+    'background-clip',
+    'box-shadow',
+    'border',
+    'border-top',
+    'border-left',
+    'border-right',
+    'border-bottom',
+    'border-color',
+    'border-radius',
+    'transition',
+    'transition-property',
+    'transition-duration',
+    'transition-timing-function',
+    'transition-duration',
+  ),
+  'pseudo-classes' : (
+    'hover',
+    'focus',
+    'active',
+    'visited',
+  ),
+) !default;

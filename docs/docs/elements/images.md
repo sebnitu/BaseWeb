@@ -14,13 +14,11 @@ Images in BaseWeb are handles responsively be default. You're also provided a fe
   <img alt="Placeholder image" src="/dist/img/example-01.jpg">
 </div>
 
-## Classes
+Also available are alignment modifiers that help position images within the context of a document. There are also a few stylistic modifiers for commonly used image effects.
 
-Alignment modifiers are classes for images that help position them within the context of a document. There are also a few stylistic modifiers for commonly used image effects.
+<div id="toc" class="toc"></div>
 
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="class-align-left" class="docs-item" markdown="1">
 
 ### .align-left
 
@@ -34,9 +32,9 @@ Floats an image to the left and adds top, right and bottom margins so that text 
   <img class="align-left" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-align-center" class="docs-item" markdown="1">
 
 ### .align-center
 
@@ -50,9 +48,9 @@ Centers an image by making it block and giving it left and right margins of `aut
   <img class="align-center" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-align-right" class="docs-item" markdown="1">
 
 ### .align-right
 
@@ -66,9 +64,9 @@ Floats an image to the right and adds top, left and bottom margins so that text 
   <img class="align-right" alt="Placeholder image" src="/dist/img/example-02.jpg">
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-rounded" class="docs-item" markdown="1">
 
 ### .rounded
 
@@ -82,9 +80,9 @@ Adds rounded border radius based on the default border-radius setting `$border-r
   <img class="align-center rounded" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-circle" class="docs-item" markdown="1">
 
 ### .circle
 
@@ -98,9 +96,9 @@ Makes a circle effect on an image by adding `50%` border radius.
   <img class="align-center circle" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-polaroid" class="docs-item" markdown="1">
 
 ### .polaroid
 
@@ -114,6 +112,4 @@ Adds a polaroid effect to an image.
   <img class="align-center polaroid" alt="Placeholder image" src="/dist/img/example-03.jpg">
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

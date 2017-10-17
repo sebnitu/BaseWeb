@@ -6,15 +6,17 @@ class: home
 
 <section class="hero">
 
+  {% if site.data.settings.render.fast != true %}
   <header class="header">
     <div class="container">
       {% include header.html %}
     </div>
   </header>
+  {% endif %}
 
   <div class="hero-content">
     <div class="container">
-      <h1>A front-end development framework built to help make your next project:<br><span class="typed">...</span></h1>
+      <h1>{{ site.description }}</h1>
       <div class="action">
         <a href="{{ site.github.repository_url }}" class="button large">Download</a>
         <pre class="highlight"><code><span class="editor-prefixed">npm install baseweb</span></code></pre>
@@ -84,32 +86,7 @@ class: home
 
       <div class="item item-details">
 
-        <ul class="list list-docs">
-          <li>
-            <h3>Settings</h3>
-            <p>This is where we store all of our global project variables and maps. Variables and maps that are used in core modules, multiple element and/or block modules go here.</p>
-          </li>
-          <li>
-            <h3>Core</h3>
-            <p>This is the heart and soul of BaseWeb. At a bear minimum, the Settings and Core files are required for BaseWeb to function. Core files do not output styles directly but are a collection of global functions and mixins.</p>
-          </li>
-          <li>
-            <h3>Elements</h3>
-            <p>Elements refer to individual components of an HTML document. They're the backbone of any HTML documents and have inherit semantic meaning. BaseWeb styles these elements here and makes them easy to customize and enhance.</p>
-          </li>
-          <li>
-            <h3>Blocks</h3>
-            <p>Blocks are a group of Elements that become an independent component. A block can be simple or compound (meaning it contains other blocks). A Block is contextually independent, but can be modified either through an internal modifier or parent block.</p>
-          </li>
-          <li>
-            <h3>Custom</h3>
-            <p>The Custom directory is a place to store all of your project specific code. By default, BaseWeb comes with an <code>_override.scs</code> file for setting overrides and <code>_custom.scss</code> file that will output a generic mobile first grid system.</p>
-          </li>
-          <li>
-            <h3>JavaScript</h3>
-            <p>This is where all the component JavaScript lives. Any block that requires some kind of JavaScript behavior will appear here and initiated from <code>baseweb.js</code> where you can change default settings.</p>
-          </li>
-        </ul>
+        {% include content-doc-sections.html %}
 
       </div><!-- .item -->
 

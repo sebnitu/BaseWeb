@@ -1,4 +1,4 @@
-// require typed.js jquery.sticky.js jquery.function.js
+// require jquery.sticky.js jquery.function.js
 /**
  * jquery.docready.js
  * A place to store all your JavaScript you want to run after
@@ -64,13 +64,13 @@
 
       // toc.hide();
       toc.append('<h3>Contents</h3>');
-      toc.append('<ul></ul>');
+      toc.append('<ol class="list-toc"></ol>');
 
       items.each(function() {
         i += 1;
         var hash = $(this).attr('id');
-        var text = $(this).find('h3').text();
-        toc.find('ul').append('<li><a href="#' + hash + '">' + text + '</a></li>');
+        var text = $(this).find('h3').first().text();
+        toc.find('.list-toc').append('<li><a href="#' + hash + '">' + text + '</a></li>');
 
         if (i == items.length) {
           // toc.slideDown();

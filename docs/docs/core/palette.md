@@ -1,14 +1,12 @@
 ---
 layout: page
-title: "Palette Variables"
-link:
-  text: "Palette"
+title: "Palette"
 order: 2
 ---
 
 BaseWeb comes with variables of all the base colors, shades and accents found in [Material Design](https://material.io/guidelines/style/color.html)'s color styles and guidelines. They are stored in `/settings/_palette.scss` where they can be overridden, expanded upon, or changed in a separate file and loaded before all other element and block components. It's recommended to not delete colors from this file as they may be used in components throughout BaseWeb.
 
-Also included are the social brand colors map which contains the hex values for many popular social networks. These are primarily used when creating share or social links in your projects. They are located in `_palette-social.scss` (also in the `settings` directory) and you can [see the output here](#social-colors).
+Also included are the [social brand colors map](#map-social) which contains the hex values for many popular social networks. These are primarily used when creating share or social links in your projects.
 
 <div class="swatch-card-wrap">
 
@@ -68,15 +66,11 @@ Also included are the social brand colors map which contains the hex values for 
 
 </div><!-- .swatch-card-wrap -->
 
-## Social Colors
+<section id="map-social" class="docs-item" markdown="1">
 
-Social network colors are made available in the `$social` map. These can be accessed using the `map-get` function:
+### Social Colors
 
-```scss
-.twitter {
-  background: map-get($social, 'twitter');
-}
-```
+Social media colors are made available in the `$social` map. These can be accessed using the `map-get` function.
 
 <table class="table table-docs">
   <tr>
@@ -97,3 +91,13 @@ Social network colors are made available in the `$social` map. These can be acce
   {% endfor %}
 
 </table>
+
+<p class="subheading">Example Usage</p>
+
+```scss
+.twitter {
+  background: map-get($social, 'twitter');
+}
+```
+
+</section><!-- .docs-item -->

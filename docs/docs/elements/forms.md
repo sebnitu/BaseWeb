@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Forms"
-order: 9
+order: 10
 ---
 
 HTML forms are probably the most daunting aspect of front-end development to markup and style. BaseWeb's goal is to give you the tools for making forms easy to build and customize regardless of how simple or complex a form may be.
@@ -43,7 +43,7 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
 
     <header class="form-header">
@@ -93,133 +93,62 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
   </form>
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-tables" class="docs-item" markdown="1">
+
+## Variable Map
 
 Form variables are encompassed within the `$forms` map and are used throughout all form mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+$forms: (
+  'vertical-spacing' : 1.5rem,
+  'vertical-align' : 0.75rem,
+  'font-family' : inherit,
+  'base-font-size' : 1em,
+  'base-line-height' : 1.5em,
+  'font-size' : 1em,
+  'line-height' : 1.5em,
+  'color' : $color,
+  'color-label' : $color-dark,
+  'color-placeholder' : #aaa,
+  'color-select-arrow' : $color-dark,
+  'border-radius' : $border-radius,
 
-  <tr>
-    <td><code>$forms('vertical-spacing')</code></td>
-    <td><code>1.5rem</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('vertical-align')</code></td>
-    <td><code>0.75rem</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('font-family')</code></td>
-    <td><code>inherit</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('base-font-size')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('base-line-height')</code></td>
-    <td><code>1.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('font-size')</code></td>
-    <td><code>1em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('line-height')</code></td>
-    <td><code>1.5em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('color-label')</code></td>
-    <td><code>$color</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('color')</code></td>
-    <td><code>$color-dark</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('color-placeholder')</code></td>
-    <td><code>#aaa</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('color-select-arrow')</code></td>
-    <td><code>$color-dark</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
+  'input' : (
+    'padding' : 0.75em,
+    'background' : rgba($white, 0.5),
+    'border' : 1px solid rgba($black, 0.2),
+    'box-shadow' : (0 1px 3px rgba($black, 0), inset 0 1px 3px rgba($black, 0.05)),
 
-  <tr>
-    <th colspan="2">Form Input</th>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'padding')</code></td>
-    <td><code>0.75em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'background')</code></td>
-    <td><code>rgba($white, 0.5)</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'border')</code></td>
-    <td><code>1px solid rgba($black, 0.15)</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'box-shadow')</code></td>
-    <td><code>0 1px 3px</code> <code>rgba($black, 0),</code> <code>inset 0 1px 3px</code> <code>rgba($black, 0.05)</code></td>
-  </tr>
+    'focus' : (
+      'background': rgba($white, 1),
+      'border': 1px solid rgba($blue, 1),
+      'box-shadow': (0 1px 3px rgba($black, 0.05), inset 0 1px 3px rgba($black, 0)),
+    )
+  ),
 
-  <tr>
-    <th colspan="2">Form Input Focus</th>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'focus':'background')</code></td>
-    <td><code>rgba($white, 1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'focus':'border')</code></td>
-    <td><code>1px solid rgba($blue, 1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('input':'focus':'box-shadow')</code></td>
-    <td><code>0 1px 3px</code> <code>rgba($black, 0.05),</code> <code>inset 0 1px 3px</code> <code>rgba($black, 0)</code></td>
-  </tr>
+  'choice' : (
+    'padding' : 0.75em 0.75em 0.75em 2.25em,
+    'background' : rgba($black, 0.05),
+    'border' : 1px solid transparent,
+    'box-shadow' : none,
+  )
+) !default;
+```
 
-  <tr>
-    <th colspan="2">Form Choice</th>
-  </tr>
-  <tr>
-    <td><code>$forms('choice':'padding')</code></td>
-    <td><code>0.75em 0.75em 0.75em 2.25em</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('choice':'background')</code></td>
-    <td><code>rgba($black, 0.05)</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('choice':'border')</code></td>
-    <td><code>1px solid transparent</code></td>
-  </tr>
-  <tr>
-    <td><code>$forms('choice':'box-shadow')</code></td>
-    <td><span class="text-soften">None</span></td>
-  </tr>
-</table>
+</section><!-- .docs-item -->
 
-<div class="notice warning">
-  <p>To preserve the alignment of form elements, it's recommended that you keep the height of input, choice and button elements equal.</p>
-</div>
+<header class="docs-header" markdown="1">
 
 ## Classes
 
 These are that classes that BaseWeb provides for structuring a form. They are supplementary to a form's base structure elements and can be omitted or expanded upon (using form mixins) depending on your needs.
 
-<ul class="list list-docs">
+</header><!-- .docs-header -->
 
-<li markdown="1">
+<section id="class-form-group" class="docs-item" markdown="1">
 
 ### .form-group
 
@@ -237,7 +166,7 @@ Form groups are the first structure element used in a BaseWeb forms. It applies 
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="form-group">
       <label>Name</label>
@@ -254,9 +183,9 @@ Form groups are the first structure element used in a BaseWeb forms. It applies 
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-form-header" class="docs-item" markdown="1">
 
 ### .form-header
 
@@ -271,7 +200,7 @@ Used to define a form header. It gets the vertical spacing and custom typographi
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <header class="form-header">
       <h2>Form Heading</h2>
@@ -280,9 +209,9 @@ Used to define a form header. It gets the vertical spacing and custom typographi
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-form-action" class="docs-item" markdown="1">
 
 ### .form-action
 
@@ -296,7 +225,7 @@ Action groups are used to wrap form submission, resets and other form actions. I
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <footer class="form-action">
       <button class="button green">Save Account</button>
@@ -306,9 +235,9 @@ Action groups are used to wrap form submission, resets and other form actions. I
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-input-group" class="docs-item" markdown="1">
 
 ### .input-group
 
@@ -327,7 +256,7 @@ Input groups are used to wrap groups of related input elements. It, like form gr
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="form-group">
       <div class="input-group">
@@ -342,9 +271,9 @@ Input groups are used to wrap groups of related input elements. It, like form gr
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-inline" class="docs-item" markdown="1">
 
 ### .inline
 
@@ -358,7 +287,7 @@ You can create inline forms by adding the class `.inline` to form structure elem
 </form>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="form-group inline">
       <input type="text" class="input" placeholder="Username" required>
@@ -368,9 +297,9 @@ You can create inline forms by adding the class `.inline` to form structure elem
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-</ul>
+<header class="docs-header" markdown="1">
 
 ## Elements
 
@@ -378,9 +307,9 @@ BaseWeb supports a wide range of input types and form elements. By default, form
 
 The `.inline` class is available for all form elements to manually set them inline with spacing margins. They can also be set inline by applying `.inline` to a parent element.
 
-<ul class="list list-docs">
+</header><!-- .docs-header -->
 
-<li markdown="1">
+<section id="el-input" class="docs-item" markdown="1">
 
 ### Input
 
@@ -392,7 +321,7 @@ The `.input` class is used to style the most common input types: `text`, `passwo
 <input class="input" type="url" placeholder="http://">
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <input class="input" type="text" placeholder="Name">
     <input class="input" type="email" placeholder="Email">
@@ -400,9 +329,9 @@ The `.input` class is used to style the most common input types: `text`, `passwo
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-textarea" class="docs-item" markdown="1">
 
 ### Textarea
 
@@ -412,15 +341,15 @@ The `.input` class is used to style textareas. The height is then reset to auto 
 <textarea class="input" rows="4"></textarea>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <textarea class="input" rows="4" placeholder="Textarea..."></textarea>
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-select" class="docs-item" markdown="1">
 
 ### Select
 
@@ -438,7 +367,7 @@ Select elements are styled with the `.input` class and also receive custom style
 </select>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <select class="input">
       <option>Select Option 1</option>
@@ -453,9 +382,9 @@ Select elements are styled with the `.input` class and also receive custom style
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-checkbox-radio" class="docs-item" markdown="1">
 
 ### Checkbox and Radio
 
@@ -471,7 +400,7 @@ BaseWeb styles checkbox and radio inputs by wrapping them with labels and applyi
 </label>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="row">
 
@@ -497,9 +426,9 @@ BaseWeb styles checkbox and radio inputs by wrapping them with labels and applyi
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-choice" class="docs-item" markdown="1">
 
 ### Choice
 
@@ -517,7 +446,7 @@ They receive extra padding so that they match the height of `.input` elements wh
 </label>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="row">
       <div class="col col-6">
@@ -537,9 +466,9 @@ They receive extra padding so that they match the height of `.input` elements wh
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-label" class="docs-item" markdown="1">
 
 ### Label
 
@@ -561,7 +490,7 @@ You'll rarely have a form without labels and are styled differently depending on
 <label class="inline">...</label>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="form-group">
       <label>Default Label</label>
@@ -583,9 +512,9 @@ You'll rarely have a form without labels and are styled differently depending on
   </form>
 </div><!-- .demo -->
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-notes" class="docs-item" markdown="1">
 
 ### Notes
 
@@ -600,7 +529,7 @@ Notes are custom form elements in BaseWeb and are represented using the `.note` 
 </div>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
     <div class="form-group">
       <div class="row">
@@ -622,9 +551,9 @@ Notes are custom form elements in BaseWeb and are represented using the `.note` 
   </form>
 </div><!-- .demo -->
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="el-state" class="docs-item" markdown="1">
 
 ### State Classes
 
@@ -637,7 +566,7 @@ There are three validation states represented through the classes `.success`, `.
 <div class="form-group active">...</div>
 ```
 
-<div class="demo">
+<div class="demo demo-forms">
   <form>
 
     <div class="form-group success">
@@ -715,17 +644,17 @@ There are three validation states represented through the classes `.success`, `.
   </form>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-</ul>
+<header class="docs-header" markdown="1">
 
 ## Mixins
 
 Because of the complexity of HTML forms, BaseWeb mainly favors using classes and context to style forms. But there are a small set of mixins that can be used to expand form customization.
 
-<ul class="list list-docs">
+</header><!-- .docs-header -->
 
-<li markdown="1">
+<section id="mixin-placeholder" class="docs-item" markdown="1">
 
 ### placeholder
 
@@ -749,13 +678,13 @@ Sets the placeholder text color for input fields that use the placeholder attrib
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-form-group-base" class="docs-item" markdown="1">
 
 ### make-form-group-base
 
@@ -774,13 +703,13 @@ Creates the styles for a base form group by applying vertical spacing.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-form-group-inline" class="docs-item" markdown="1">
 
 ### make-form-group-inline
 
@@ -799,13 +728,13 @@ Creates the styles for making an inline form group element.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-input-inline" class="docs-item" markdown="1">
 
 ### make-input-inline
 
@@ -824,10 +753,8 @@ Creates the styles for making an inline form element.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$forms()</code></td>
+    <td><code>$forms</code></td>
   </tr>
 </table>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

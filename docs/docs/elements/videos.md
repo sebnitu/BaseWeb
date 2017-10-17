@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Videos"
-order: 12
+order: 8
 ---
 
 Videos in HTML can be embedded into a document in a few different ways. If you're using YouTube or Vimeo, they provide an <code><iframe></code> for embedding videos. Flash based video implementations use the `<object>` and `<embed>` elements. And then there is the native HTML5 `<video>` element.
@@ -44,35 +44,25 @@ The default video ratio can be set using the `$videos('ratio')` variable (56.25%
   <p>For more information on the technique BaseWeb uses to create fluid videos, checkout <a href="https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php">this tutorial over at CSS-Tricks</a>.</p>
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-buttons" class="docs-item" markdown="1">
+
+### Variable Map
 
 Video variables are encompassed within the `$videos` map and are used in video mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+$videos: (
+  'output' : true,
+  'margin' : 2em 0,
+  'ratio' : 56.25% // The default video ratio (56.25% = 16 by 9)
+) !default;
+```
 
-  <tr>
-    <td><code>$videos('classes')</code></td>
-    <td><code>true</code></td>
-  </tr>
-  <tr>
-    <td><code>$videos('margin')</code></td>
-    <td><code>2em 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$videos('ratio')</code></td>
-    <td><code>56.25%</code></td>
-  </tr>
-</table>
+</section><!-- .docs-item -->
 
-## Functions
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="function-aspect-ratio" class="docs-item" markdown="1">
 
 ### aspect-ratio
 
@@ -107,15 +97,9 @@ aspect-ratio( $width, $height )
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-</ul>
-
-## Mixins
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-make-video-fluid" class="docs-item" markdown="1">
 
 ### make-video-fluid
 
@@ -134,13 +118,13 @@ Adds styles for creating fluid videos. Should be applied to a wrapping element o
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$video()</code></td>
+    <td><code>$video</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-build-video-ratio" class="docs-item" markdown="1">
 
 ### build-video-ratio
 
@@ -186,6 +170,4 @@ Creates a ratio class using an aspect width and height. The class that's created
 }
 ```
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

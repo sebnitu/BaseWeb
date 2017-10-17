@@ -5,9 +5,9 @@ date: 2017-01-20
 version: "2.1.0"
 ---
 
-<img src="/dist/img/devlog/illustration-tabs-small.png" alt="Tabs" class="img-featured">
-
 <p class="text-lead">Tabs have arrived! BaseWeb now makes available the tabs block component which includes two robust mixins for creating and styling semantic tabs.</p>
+
+<img src="{% include asset.html file="illustration-tabs.jpg" %}" class="featured-image" alt="">
 
 You can read about how it works in the [documentation]({{ site.url }}{{ site.baseurl }}/docs/blocks/tabs). Here, I'd like to explore the process of researching and developing this component. Tabs are a very common user interface control and have been around for a while. This is important because it means users have an expectation with how tabs function and look. So when developing a tabs system, we want to make sure we are as predictable as possible for users as well as being clear visually. So lets put together a checklist to clearly define how tabs should look and function before we code.
 
@@ -297,7 +297,7 @@ That wraps up our tabs block component solution. We've managed to hit all our re
 
 ### Further Reading
 
-<ul class="list rowed">
+<ul>
   <li><a href="https://material.io/guidelines/components/tabs.html#tabs-specs" class="onclick-newtab">Material IO</a></li>
   <li><a href="https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/UIKitUICatalog/UITabBar.html" class="onclick-newtab">Apple Developer UI Tab Bar</a></li>
   <li><a href="http://getbootstrap.com/javascript/#tabs" class="onclick-newtab">Bootstrap Twitter Tabs</a></li>

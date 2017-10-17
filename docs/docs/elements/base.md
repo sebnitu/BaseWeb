@@ -6,31 +6,79 @@ link:
 order: 1
 ---
 
-Some general styles and global resets are defined here. This is where we store any styles that effect the `<body>` or `<html>` elements, set HTML5 elements to display as block and output our global modifier classes.
+Global base styles are applied here. Aside from outputting some base styles for your projects, this component applies overrides to core BaseWeb mixins. Next, it removes margin and padding from `<html>` and `<body>`, prevent automatic text resizing on mobile devices and set HTML5 elements to display block.
 
-<ul class="list list-docs">
-  <li>Remove margins and padding from <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code></li>
-  <li>Prevents automatic text resizing on mobile devices.</li>
-  <li>Make HTML5 elements act like blocks.</li>
-  <li>Set default box sizing model to our global variable <code>$global-box-sizing.</code></li>
-  <li>Add custom text highlight color if a color is set in <code>$bg-selection</code>.</li>
-  <li>Outputs our clear fix class if one is set in <code>$class-clearfix</code>.</li>
-  <li>Outputs our remove clear fix class if one is set in <code>$class-remove-clearfix</code>.</li>
-  <li>Outputs our float left class if one is set in <code>$class-float-left</code>.</li>
-  <li>Outputs our float right class if one is set in <code>$class-float-right</code>.</li>
-  <li>Outputs our show class if one is set in <code>$class-show</code>.</li>
-  <li>Outputs our hide class if one is set in <code>$class-hide</code>.</li>
-  <li>Outputs our show-hide min classes if one is set in <code>$class-show-hide-min</code>.</li>
-  <li>Outputs our show-hide max classes if one is set in <code>$class-show-hide-max</code>.</li>
-</ul>
+```scss
+// Remove margins and padding from HTML and Body elements
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+// Prevents automatic text resizing on mobile devices.
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+// Make HTML5 elements act like blocks
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+```
+
+We also set the default box layout model on `<html>` to `$box-sizing` where `border-box` is the default. Then we apply a natural box layout model to all elements, while still allowing components to change. This method was originally conceived by [Paul Irish](http://www.paulirish.com/2012/box-sizing-border-box-ftw/) and improved on by [Chris Coyier](https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/).
+
+```scss
+html {
+  box-sizing: $box-sizing;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
+
+Custom text highlight color is added if a color is set in `$bg-selection`.
+
+```scss
+@if $bg-selection {
+  ::selection {
+    background: $bg-selection;
+    text-shadow: none;
+  }
+}
+```
+
+Lastly, the grid system is also applied based on the output values set in `$grid`.
+
+```scss
+// Check if we should output grid system
+@if map-get($grid, 'output') {
+
+  // Check if we should output mobile grid system
+  @if map-get($grid, 'output-mobile') {
+    @include build-grid-system('mobile');
+  }
+
+  @include media-min('medium') {
+    @include build-grid-system();
+  }
+
+}
+```
+
+<div id="toc" class="toc"></div>
+
+<header class="docs-header" markdown="1">
 
 ## Classes
 
-Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clearfix).
+Base classes are primarily element and block neutral classes that can apply to anything. They are typically utility classes for commonly used CSS techniques (such as a clearfix or floats).
 
-<ul class="list list-docs">
+</header><!-- .docs-header -->
 
-<li markdown="1">
+<section id="class-clearfix" class="docs-item" markdown="1">
 
 ### .clearfix
 
@@ -53,9 +101,9 @@ Use this class to clear an element that contains floats. Whether or not this cla
 </div>
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-remove-clearfix" class="docs-item" markdown="1">
 
 ### .remove-clearfix
 
@@ -65,9 +113,9 @@ Use this class to remove the styles that would clear an element. Whether or not 
 <div class="remove-clearfix"></div>
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-float-left" class="docs-item" markdown="1">
 
 ### .float-left
 
@@ -77,9 +125,9 @@ A quick way for floating an element to the left. If global variable `$class-floa
 <div class="float-left"></div>
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-float-right" class="docs-item" markdown="1">
 
 ### .float-right
 
@@ -89,52 +137,106 @@ A quick way for floating an element to the right. If global variable `$class-flo
 <div class="float-right"></div>
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="class-show-hide" class="docs-item" markdown="1">
 
 ### .show and .hide
 
-Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the golbal settings:
+Utility show and hide classes along with media based toggles. These are created using the values set in the `$breakpoints` and named based on the values set in the global settings:
 
-* `$class-show`
-* `$class-hide`
-* `$class-show-hide-min`
-* `$class-show-hide-max`.
+<table class="tabls table-docs">
+  <tr>
+    <th>Variable</th>
+    <th>Default</th>
+  </tr>
+  <tr>
+    <td><code>$class-show</code></td>
+    <td><code>'show'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-hide</code></td>
+    <td><code>'hide'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-min</code></td>
+    <td><code>'down'</code></td>
+  </tr>
+  <tr>
+    <td><code>$class-show-hide-max</code></td>
+    <td><code>'up'</code></td>
+  </tr>
+</table>
 
-```html
-<div class="show"></div>
-<div class="hide"></div>
-...
-```
+<p class="subheading">Available Classes</p>
 
-<div class="demo">
-  <div class="show"><code>show</code></div>
-  <div class="hide"><code>hide</code></div>
-  <hr>
-  <div class="show-small-down"><code>show-small-down</code></div>
-  <div class="hide-small-down"><code>hide-small-down</code></div>
-  <div class="show-medium-down"><code>show-medium-down</code></div>
-  <div class="hide-medium-down"><code>hide-medium-down</code></div>
-  <div class="show-large-down"><code>show-large-down</code></div>
-  <div class="hide-large-down"><code>hide-large-down</code></div>
-  <div class="show-huge-down"><code>show-huge-down</code></div>
-  <div class="hide-huge-down"><code>hide-huge-down</code></div>
-  <hr>
-  <div class="show-small-up"><code>show-small-up</code></div>
-  <div class="hide-small-up"><code>hide-small-up</code></div>
-  <div class="show-medium-up"><code>show-medium-up</code></div>
-  <div class="hide-medium-up"><code>hide-medium-up</code></div>
-  <div class="show-large-up"><code>show-large-up</code></div>
-  <div class="hide-large-up"><code>hide-large-up</code></div>
-  <div class="show-huge-up"><code>show-huge-up</code></div>
-  <div class="hide-huge-up"><code>hide-huge-up</code></div>
+<div class="demo demo-naked demo-show-hide">
+  <div class="item">
+    <div class="inner"><div class="show"><code>show</code></div><code>show</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide"><code>hide</code></div><code>hide</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-small-down"><code>show-small-down</code></div><code>show-small-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-small-down"><code>hide-small-down</code></div><code>hide-small-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-medium-down"><code>show-medium-down</code></div><code>show-medium-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-medium-down"><code>hide-medium-down</code></div><code>hide-medium-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-large-down"><code>show-large-down</code></div><code>show-large-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-large-down"><code>hide-large-down</code></div><code>hide-large-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-huge-down"><code>show-huge-down</code></div><code>show-huge-down</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-huge-down"><code>hide-huge-down</code></div><code>hide-huge-down</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-small-up"><code>show-small-up</code></div><code>show-small-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-small-up"><code>hide-small-up</code></div><code>hide-small-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-medium-up"><code>show-medium-up</code></div><code>show-medium-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-medium-up"><code>hide-medium-up</code></div><code>hide-medium-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-large-up"><code>show-large-up</code></div><code>show-large-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-large-up"><code>hide-large-up</code></div><code>hide-large-up</code></div>
+  </div>
+
+  <div class="item">
+    <div class="inner"><div class="show-huge-up"><code>show-huge-up</code></div><code>show-huge-up</code></div>
+  </div>
+  <div class="item">
+    <div class="inner"><div class="hide-huge-up"><code>hide-huge-up</code></div><code>hide-huge-up</code></div>
+  </div>
 </div>
 
 <div class="notice info">
   <p>Resize your browser window to see how the above HTML example toggles between the utility classes.</p>
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

@@ -13,7 +13,7 @@ $filename: 'scss/custom/_docs-demos.scss';
   border-bottom: 3px solid $bg-color;
 
   .box {
-    @include size(50px);
+    @include add-size(50px);
     margin: 0 auto;
     color: $white;
     background: $blue;
@@ -26,6 +26,21 @@ $filename: 'scss/custom/_docs-demos.scss';
     padding: 2em 3em;
     border: 3px solid $bg-color;
     border-radius: $border-radius;
+  }
+}
+
+/**
+ * Demo Flex Grid
+ */
+.demo {
+  .flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -5px;
+
+    > * {
+      margin: 5px;
+    }
   }
 }
 
@@ -51,45 +66,95 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 
 /**
+ * Demo Inverted
+ */
+.demo-inverted {
+  background: $gray-800;
+  border-color: rgba($black, 0.1);
+}
+
+/**
+ * Show-Hide
+ */
+.demo-show-hide {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em -0.5em 0;
+
+  .item {
+    position: relative;
+    width: 50%;
+  }
+  .inner,
+  .inner > div {
+    padding: 1em 1.5em;
+    border-radius: $border-radius;
+  }
+  .inner {
+    position: relative;
+    margin: 0 0.5em 1em;
+    background: $gray-100;
+    overflow: auto;
+  }
+  .inner > div {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: $green-50;
+  }
+  .inner > code {
+    position: relative;
+    z-index: 1;
+    color: $color-light;
+  }
+  .inner > div > code {
+    color: $green;
+  }
+}
+
+/**
+ * Add Styles Demo
+ */
+$add-styles-example: (
+  'other' : 'Option to ignore',
+  'cursor' : pointer,
+  'color' : $blue,
+  'padding' : 0.5em 0,
+  'border-top' : 1px solid $blue,
+  'transition' : $transition,
+  'hover' : (
+    'color' : $purple,
+    'border-color' : $purple
+  )
+);
+
+.add-styles-example {
+  @include add-styles($add-styles-example);
+}
+
+/**
  * Vertical Center
  */
 .demo.demo-vertical-center {
   height: 200px;
 
   .box {
-    @include vertical-center();
+    @include add-vertical-center();
   }
-}
-
-/**
- * Border Radius
- */
-.demo-border-radius {
-  display: inline-block;
-  background: $blue;
-  @include size(30px);
-}
-.mixin-border-top-radius {
-  @include border-top-radius(50%);
-}
-.mixin-border-left-radius {
-  @include border-left-radius(50%);
-}
-.mixin-border-right-radius {
-  @include border-right-radius(50%);
-}
-.mixin-border-bottom-radius {
-  @include border-bottom-radius(50%);
 }
 
 /**
  * Text Truncate
  */
-.demo.demo-text-truncate {
+.demo.demo-add-text-truncate {
   .box {
-    @include size(150px, auto);
+    @include add-size(150px, auto);
     padding: 1em 1.5em;
-    @include text-truncate();
+    @include add-text-truncate();
   }
 }
 
@@ -104,8 +169,8 @@ $filename: 'scss/custom/_docs-demos.scss';
     border: 0 none;
     background: url("../img/baseweb-hori-black.svg") no-repeat left center;
     background-size: 187px 40px;
-    @include size(187px, 40px);
-    @include text-hide();
+    @include add-size(187px, 40px);
+    @include add-text-hide();
   }
 }
 
@@ -114,22 +179,22 @@ $filename: 'scss/custom/_docs-demos.scss';
  */
 .demo.demo-triangle {
   text-align: center;
-  @include clearfix();
+  @include add-clearfix();
 }
 %triangle {
-  @include make-triangle-base();
+  @include make-triangle();
 }
 .example-triangle-1 {
   @extend %triangle;
-  @include make-triangle( 14px, $blue, 'left' );
+  @include add-triangle-styles( 14px, $blue, 'left' );
 }
 .example-triangle-2 {
   @extend %triangle;
-  @include make-triangle( 14px, $purple, 'down' );
+  @include add-triangle-styles( 14px, $purple, 'down' );
 }
 .example-triangle-3 {
   @extend %triangle;
-  @include make-triangle( 14px, $red, 'right' );
+  @include add-triangle-styles( 14px, $red, 'right' );
 }
 
 /**
@@ -225,7 +290,7 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 .demo-grid-nested .col p {
   margin: 0.75rem 0;
-  @include text-truncate();
+  @include add-text-truncate();
 }
 @include media-min('medium') {
   .demo-grid-nested {
@@ -235,45 +300,42 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 
 /**
+ * Tables
+ */
+.demo-tables {
+  .table {
+    margin: 1em 0;
+  }
+  .table-responsive {
+    margin: 1em 0;
+  }
+}
+
+/**
+ * Forms
+ */
+.demo-forms {
+  form {
+    margin: 1em 0;
+  }
+}
+
+/**
  * Buttons
  */
 .demo-buttons {
   > p {
-    @include clearfix();
+    @include add-clearfix();
     margin: 0 0 0.5rem -0.5rem;
   }
 
-  .button,
-  .button-custom,
-  .button-custom-mobile {
+  .button {
     float: left;
     margin: 0.5rem 0 0 0.5rem;
   }
-}
-.demo-buttons-mobile {
-  > p {
-    margin-left: 0;
+  .block {
+    margin: 0.5em 0;
   }
-
-  .button,
-  .button-custom-mobile {
-    margin-left: 0;
-  }
-}
-
-.button-custom {
-  @include make-button();
-  @include add-button-color((
-    'color' : $white,
-    'background' : $purple
-  ));
-}
-.button-custom-mobile {
-  @include make-button();
-  @include add-button-color((
-    'background' : $bg-color
-  ));
-  @include add-button-block();
 }
 
 /**
@@ -289,19 +351,28 @@ $filename: 'scss/custom/_docs-demos.scss';
 }
 
 /**
- * Notices
+ * Video
  */
-.demo .notice {
-  margin-top: 1em;
-  margin-bottom: 1em;
+.demo {
+  .video-wrapper {
+    margin: 1em 0;
+  }
 }
-.notice.custom {
-  @include add-notice-color((
-    'background' : $teal-50,
-    'inverted' : (
-      'background' : $teal
-    )
-  ));
+
+/**
+ * Chips
+ */
+.demo-chips {
+  text-align: center;
+  @extend .demo-alt;
+}
+
+/**
+ * Badges
+ */
+.demo-badges {
+  text-align: center;
+  @extend .demo-alt;
 }
 
 /**
@@ -311,16 +382,50 @@ $filename: 'scss/custom/_docs-demos.scss';
   @include make-breadcrumb((
     'color' : $green,
     'color-hover' : $red,
-    'delimiter' : '»'
+    'delimiter' : (
+      'element' : '»'
+    ),
   ));
+}
+
+/**
+ * Notices
+ */
+.demo-notice {
+  .notice {
+    margin: 1em 0;
+  }
+  .item {
+    padding-top: 1em;
+    border-top: 1px solid rgba($black, 0.1);
+  }
+}
+
+@include media-min('medium') {
+  .demo-notice {
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        width: 48%;
+      }
+      .item:nth-child(odd) {
+        margin-right: 2%;
+      }
+      .item:nth-child(even) {
+        margin-left: 2%;
+      }
+    }
+  }
 }
 
 /**
  * Dropdown
  */
 .demo-dropdown {
-  @include clearfix();
-  padding: 2em 3em 3em;
+  @include add-clearfix();
+  padding: 2em 3em;
   overflow: visible;
 
   > .dropdown-trigger,
@@ -328,7 +433,10 @@ $filename: 'scss/custom/_docs-demos.scss';
   > .dropdown-content,
   > .dropdown-menu {
     float: left;
-    margin: 1em 1em 0 0;
+    margin: 1em 1em 1em 0;
+  }
+  hr {
+    margin: 0;
   }
 }
 
@@ -356,8 +464,8 @@ $filename: 'scss/custom/_docs-demos.scss';
     position: absolute;
     padding: 1em 2em;
 
-    .button.close {
-      margin: 0 -1rem;
+    .oc-trigger {
+      margin: 1em 0 0 0;
     }
   }
 
@@ -374,14 +482,11 @@ $filename: 'scss/custom/_docs-demos.scss';
       background: $white;
     }
   }
-  .oc-trigger {
-    white-space: normal;
-  }
 }
 
 @include media-min('medium') {
   .demo-offcanvas {
-    padding: 1.5em;
+    padding: 0;
 
     .oc-inner {
       padding: 3em;
@@ -392,47 +497,47 @@ $filename: 'scss/custom/_docs-demos.scss';
 .oc-custom {
   @include make-offcanvas((
     'aside-position' : absolute,
-    'background-aside' : $blue-gray,
-    'background-content' : $blue-50
+    'background-aside' : $gray-800,
+    'background-content' : $gray-100
   ));
   .oc-aside {
     color: $white;
   }
 }
 
-@include add-offcanvas-transition($target: 'oc-aside-left', $style: 'slide-out-left');
-@include add-offcanvas-transition($target: 'oc-aside-right', $style: 'scale-rotate-right');
+@include add-offcanvas-transition('oc-aside-left', 'slide-out-left');
+@include add-offcanvas-transition('oc-aside-right', 'slide-out-right');
 
 // All transition effects
-@include add-offcanvas-transition($target: 'slide-in-left', $style: 'slide-in-left');
-@include add-offcanvas-transition($target: 'slide-in-right', $style: 'slide-in-right');
+@include add-offcanvas-transition('slide-in-left', 'slide-in-left');
+@include add-offcanvas-transition('slide-in-right', 'slide-in-right');
 
-@include add-offcanvas-transition($target: 'reveal-left', $style: 'reveal-left');
-@include add-offcanvas-transition($target: 'reveal-right', $style: 'reveal-right');
+@include add-offcanvas-transition('reveal-left', 'reveal-left');
+@include add-offcanvas-transition('reveal-right', 'reveal-right');
 
-@include add-offcanvas-transition($target: 'slide-along-left', $style: 'slide-along-left');
-@include add-offcanvas-transition($target: 'slide-along-right', $style: 'slide-along-right');
+@include add-offcanvas-transition('slide-along-left', 'slide-along-left');
+@include add-offcanvas-transition('slide-along-right', 'slide-along-right');
 
-@include add-offcanvas-transition($target: 'slide-out-left', $style: 'slide-out-left');
-@include add-offcanvas-transition($target: 'slide-out-right', $style: 'slide-out-right');
+@include add-offcanvas-transition('slide-out-left', 'slide-out-left');
+@include add-offcanvas-transition('slide-out-right', 'slide-out-right');
 
-@include add-offcanvas-transition($target: 'scale-down-left', $style: 'scale-down-left');
-@include add-offcanvas-transition($target: 'scale-down-right', $style: 'scale-down-right');
+@include add-offcanvas-transition('scale-down-left', 'scale-down-left');
+@include add-offcanvas-transition('scale-down-right', 'scale-down-right');
 
-@include add-offcanvas-transition($target: 'scale-up-left', $style: 'scale-up-left');
-@include add-offcanvas-transition($target: 'scale-up-right', $style: 'scale-up-right');
+@include add-offcanvas-transition('scale-up-left', 'scale-up-left');
+@include add-offcanvas-transition('scale-up-right', 'scale-up-right');
 
-@include add-offcanvas-transition($target: 'scale-rotate-left', $style: 'scale-rotate-left');
-@include add-offcanvas-transition($target: 'scale-rotate-right', $style: 'scale-rotate-right');
+@include add-offcanvas-transition('scale-rotate-left', 'scale-rotate-left');
+@include add-offcanvas-transition('scale-rotate-right', 'scale-rotate-right');
 
-@include add-offcanvas-transition($target: 'open-door-left', $style: 'open-door-left');
-@include add-offcanvas-transition($target: 'open-door-right', $style: 'open-door-right');
+@include add-offcanvas-transition('open-door-left', 'open-door-left');
+@include add-offcanvas-transition('open-door-right', 'open-door-right');
 
 /**
  * Tooltips
  */
 .demo-tooltips {
-  @include clearfix();
+  @include add-clearfix();
   overflow: visible;
 
   hr {

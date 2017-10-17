@@ -29,7 +29,7 @@ ul.list-ascii, ul.list-ascii ul {
  */
 ul.list-ascii {
   strong {
-    color: $color-link;
+    color: map-get($anchors, 'color');
     cursor: pointer;
 
     &:before {
@@ -39,7 +39,7 @@ ul.list-ascii {
     }
 
     &:hover {
-      color: $color-link-hover;
+      color: map-fetch($anchors, 'hover', 'color');
     }
   }
   ul {

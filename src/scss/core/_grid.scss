@@ -1,3 +1,38 @@
+// Set file variable
+$filename: 'scss/core/_grid.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Grid Map
+////////////////////////////////////////////////////////////////////////////////
+
+$grid: (
+  'output' : true,
+  'output-mobile' : true,
+
+  'class-container' : 'container',
+  'class-row' : 'row',
+  'class-column' : 'col',
+  'class-column-left' : 'col-left',
+  'class-column-right' : 'col-right',
+  'class-prefix' : 'prefix',
+  'class-suffix' : 'suffix',
+
+  'type' : 'normal',
+
+  'total-width' : 100%,
+  'gutter-width' : 0,
+  'inner-gutter-width' : 1.5rem,
+
+  'columns' : 12,
+  'column-float' : left,
+
+  'container-margin' : 0 auto,
+  'container-padding' : 0 1.5rem,
+  'container-min-width' : none,
+  'container-max-width' : 75rem,
+
+) !default;
+
 ////////////////////////////////////////////////////////////////////////////////
 // @Grid Functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -43,9 +78,7 @@
 //   @default $grid map
 @mixin make-container($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'container-min-width')) {
@@ -66,7 +99,7 @@
     }
     margin: map-get($o, 'container-margin');
     padding: map-get($o, 'container-padding');
-    @include clearfix();
+    @include add-clearfix();
   }
 }
 
@@ -77,9 +110,7 @@
 //   @default $grid map
 @mixin make-row($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     @if (map-get($o, 'inner-gutter-width') != 0) {
@@ -92,7 +123,7 @@
       margin-left: -(map-get($o, 'inner-gutter-width') / 2);
       margin-right: -(map-get($o, 'inner-gutter-width') / 2);
     }
-    @include clearfix();
+    @include add-clearfix();
   }
 }
 
@@ -103,9 +134,7 @@
 //   @default $grid map
 @mixin make-column-base($options: ()) {
   $o: map-merge($grid, $options);
-  @if ($global-box-sizing != border-box) {
-    @include box-sizing( border-box );
-  }
+  box-sizing: border-box;
   @if (map-get($o, 'type') == 'mobile') {
     width: 100%;
     float: none;
@@ -262,9 +291,3 @@
     }
   } // End if not mobile
 }
-
-// Build Mini Grid System
-// Outputs all the classes for a mini-grid system.
-// @param $options
-//   @type map
-//   @default $mini-grid map

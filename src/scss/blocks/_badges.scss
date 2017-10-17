@@ -1,0 +1,306 @@
+// Set file variable
+$filename: 'scss/blocks/_badge.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Badges Map
+////////////////////////////////////////////////////////////////////////////////
+
+$badges: (
+  'output' : true,
+  'output-modifiers' : true,
+  'output-buttons' : true,
+  'class' : 'badge',
+
+  'padding' : 0.25rem 0.5rem,
+  'font-size' : 0.9em,
+  'line-height' : 1.4em,
+  'border' : none,
+  'border-radius' : $border-radius,
+  'transition' : $transition,
+
+  'chips' : (
+    'margin' : 0 -0.25em 0 0.5em,
+    'padding' : 0.125em,
+  ),
+
+  'buttons' : (
+    'margin' : 0.5em,
+    'padding' : .25em .5em,
+  ),
+
+  'modifiers' : (
+    'default' : (
+      'color' : $color,
+      'background' : rgba($black, 0.05),
+      'hover' : (
+        'cursor': pointer,
+        'color' : $color,
+        'background' : rgba($black, 0.15),
+      ),
+    ),
+    'inverted' : (
+      'color' : $white,
+      'background' : $gray,
+      'hover' : (
+        'color' : $white,
+        'background' : $gray-700,
+      ),
+    ),
+    'active' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'color' : $white,
+        'background' : $blue-700,
+      ),
+    ),
+
+    'blue' : (
+      'color' : $blue,
+      'background' : $blue-50,
+      'hover' : (
+        'color' : $blue,
+        'background' : $blue-100,
+      ),
+    ),
+    'blue.inverted' : (
+      'color' : $white,
+      'background' : $blue,
+      'hover' : (
+        'color' : $white,
+        'background' : $blue-700,
+      ),
+    ),
+    'green' : (
+      'color' : $green,
+      'background' : $green-50,
+      'hover' : (
+        'color' : $green-700,
+        'background' : $green-100,
+      ),
+    ),
+    'green.inverted' : (
+      'color' : $white,
+      'background' : $green,
+      'hover' : (
+        'color' : $white,
+        'background' : $green-700,
+      ),
+    ),
+    'yellow' : (
+      'color' : $color,
+      'background' : $yellow-100,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-300,
+      ),
+    ),
+    'yellow.inverted' : (
+      'color' : $color,
+      'background' : $yellow,
+      'hover' : (
+        'color' : $color,
+        'background' : $yellow-600,
+      ),
+    ),
+    'orange' : (
+      'color' : $orange-700,
+      'background' : $orange-50,
+      'hover' : (
+        'color' : $orange-700,
+        'background' : $orange-100,
+      ),
+    ),
+    'orange.inverted' : (
+      'color' : $white,
+      'background' : $orange,
+      'hover' : (
+        'color' : $white,
+        'background' : $orange-700,
+      ),
+    ),
+    'red' : (
+      'color' : $red,
+      'background' : $red-50,
+      'hover' : (
+        'color' : $red-700,
+        'background' : $red-100,
+      ),
+    ),
+    'red.inverted' : (
+      'color' : $white,
+      'background' : $red,
+      'hover' : (
+        'color' : $white,
+        'background' : $red-700,
+      ),
+    ),
+    'purple' : (
+      'color' : $purple,
+      'background' : $purple-50,
+      'hover' : (
+        'color' : $purple-700,
+        'background' : $purple-100,
+      ),
+    ),
+    'purple.inverted' : (
+      'color' : $white,
+      'background' : $purple,
+      'hover' : (
+        'color' : $white,
+        'background' : $purple-700,
+      ),
+    ),
+    'light' : (
+      'color' : $color,
+      'background' : rgba($white, 0.75),
+      'hover' : (
+        'color' : $color,
+        'background' : rgba($white, 1),
+      ),
+    ),
+    'dark' : (
+      'color' : $white,
+      'background' : rgba($black, 0.5),
+      'hover' : (
+        'color' : $white,
+        'background' : rgba($black, 0.75),
+      ),
+    ),
+    'square' : (
+      'border-radius' : 0,
+    ),
+    'pill' : (
+      'padding' : 0.25rem 0.75rem,
+      'border-radius' : 3rem,
+      'chips' : (
+        'margin' : 0 -0.5rem 0 0.5rem,
+      ),
+    ),
+    'dot' : (
+      'display' : inline-block,
+      'width' : 8px,
+      'height' : 8px,
+      'padding' : 0,
+      'vertical-align' : top,
+      'border-radius': 50%,
+    ),
+  ),
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if map-has-key($override, 'badges') {
+    $badges: map-extend($badges, map-get($override, 'badges'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Badges Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make Badge
+// Creates the base styles for a the badge element.
+// @param $options
+//   @type map
+//   @default $badges map
+@mixin make-badge($options: ()) {
+  $o: map-extend($badges, $options, true);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  @include add-styles($o);
+  @include add-modifiers($o, 'default', false, ('output-pseudo': false));
+
+  @if map-fetch($o, 'modifiers', 'dot') {
+    &.dot {
+      @include add-text-hide();
+    }
+  }
+
+  @content;
+}
+
+// Check if we should output badges
+@if map-get($badges, 'output') {
+
+/*==============================================================================
+  @Badges - #{$filename}
+==============================================================================*/
+
+.#{map-get($badges, 'class')} {
+  @include make-badge();
+}
+a.#{map-get($badges, 'class')},
+button.#{map-get($badges, 'class')} {
+  @include add-modifiers($badges, 'default', false, ('output-base': false));
+}
+
+// Check if we should output badge modifiers
+@if map-get($badges, 'output-modifiers') {
+/**
+ * Modifiers
+ */
+  .#{map-get($badges, 'class')} {
+    @include add-modifiers($badges, $settings: ('output-pseudo': false));
+    @include add-chip-modifiers($badges);
+  }
+  a.#{map-get($badges, 'class')},
+  button.#{map-get($badges, 'class')} {
+    @include add-modifiers($badges, $settings: ('output-base': false));
+  }
+}
+
+// Check if we should output button modifiers
+@if map-get($badges, 'output-buttons') {
+/**
+ * Button Styles
+ */
+  // Check if $buttons exists
+  @if (variable-exists(buttons)) {
+    @if map-fetch($badges, 'modifiers', 'dot') {
+      .#{map-get($buttons, 'class')} .#{map-get($badges, 'class')}:not(.dot) {
+        display: inline;
+        padding: map-fetch($badges, 'buttons', 'padding');
+      }
+      .#{map-get($buttons, 'class')}-#{map-get($icons, 'class')} {
+        position: relative;
+
+        .#{map-get($badges, 'class')}.dot {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+        }
+        &.small .#{map-get($badges, 'class')}.dot {
+          width: map-fetch($badges, 'modifiers', 'dot', 'width') - 2px;
+          height: map-fetch($badges, 'modifiers', 'dot', 'width') - 2px;
+          top: 4px;
+          right: 4px;
+        }
+        &.large .#{map-get($badges, 'class')}.dot {
+          width: map-fetch($badges, 'modifiers', 'dot', 'width') + 2px;
+          height: map-fetch($badges, 'modifiers', 'dot', 'width') + 2px;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    }
+    .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-left {
+      .#{map-get($badges, 'class')} {
+        margin-left: -(map-fetch($badges, 'buttons', 'margin'));
+        margin-right: map-fetch($badges, 'buttons', 'margin');
+      }
+    }
+    .#{map-get($buttons, 'class')}-#{map-get($badges, 'class')}-right {
+      .#{map-get($badges, 'class')} {
+        margin-left: map-fetch($badges, 'buttons', 'margin');
+        margin-right: -(map-fetch($badges, 'buttons', 'margin'));
+      }
+    }
+  }
+} // End @if output-buttons
+
+} // End @if output

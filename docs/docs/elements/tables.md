@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Tables"
-order: 6
+order: 4
 ---
 
 The HTML `<table>` element is used to display tabular data. Tables have rows, cells , header cells  and also can include `<thead>`, `<tbody>` or `<tfooter>` which wrap their respective table data. Here's an example of a table markup and the default styles:
@@ -21,7 +21,7 @@ The HTML `<table>` element is used to display tabular data. Tables have rows, ce
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table>
     <tr>
       <th>#</th>
@@ -52,80 +52,40 @@ The HTML `<table>` element is used to display tabular data. Tables have rows, ce
 
 You'll notice that the base styles for a table are almost untouched. That's because tables are used in a wide array of data on the web, so any sort of custom styles that BaseWeb has available are best applied using modifier classes and mixins for semantic applications.
 
-## Variables
+<div id="toc" class="toc"></div>
+
+<section id="map-tables" class="docs-item" markdown="1">
+
+### Variable Map
 
 Table variables are encompassed within the `$tables` map and are used throughout all table mixins to set default values.
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
+```scss
+$tables: (
+  'output' : true,
+  'class' : 'table',
 
-  <tr>
-    <td><code>$tables('classes')</code></td>
-    <td><code>true</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('valign')</code></td>
-    <td><code>top</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('nth')</code></td>
-    <td><code>odd</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('stripe')</code></td>
-    <td><code>horizontal</code></td>
-  </tr>
+  'valign' : top,
+  'nth' : odd,
+  'stripe' : horizontal,
 
-  <tr>
-    <td><code>$tables('margin')</code></td>
-    <td><code>1rem 0</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('padding-condensed')</code></td>
-    <td><code>0.25rem</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('padding')</code></td>
-    <td><code>0.75rem</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('padding-expanded')</code></td>
-    <td><code>1.25rem</code></td>
-  </tr>
+  'margin' : 2em 0,
+  'padding-condensed' : 0.25em 0.5em,
+  'padding' : 0.5em 0.75em,
+  'padding-expanded' : 1em 1.25em,
 
-  <tr>
-    <td><code>$tables('background')</code></td>
-    <td><code>none</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('background-stripe')</code></td>
-    <td><code>rgba($black, 0.05)</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('background-hover')</code></td>
-    <td><code>$yellow-pale</code></td>
-  </tr>
+  'background' : none,
+  'background-stripe' : rgba($black, 0.05),
+  'background-hover' : $yellow-50,
+  'border' : 1px solid rgba($black, 0.1),
+  'border-radius' : $border-radius,
 
-  <tr>
-    <td><code>$tables('border')</code></td>
-    <td><code>1px solid rgba($black, 0.1)</code></td>
-  </tr>
-  <tr>
-    <td><code>$tables('border-radius')</code></td>
-    <td><code>$border-radius</code></td>
-  </tr>
-</table>
+) !default;
+```
 
-## Mixins
+</section><!-- .docs-item -->
 
-Tabular data can be frustrating to parse if they are not styled properly. BaseWeb provides the mixins and classes you need to make tables and their content a breeze to analyze.
-
-<ul class="list list-docs">
-
-<li markdown="1">
+<section id="mixin-make-table" class="docs-item" markdown="1">
 
 ### make-table
 
@@ -144,7 +104,7 @@ Creates the base styles for a table modifier mixin or class. Usually applied dir
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -166,9 +126,9 @@ Using the base table mixin for custom tables. This example shows us using a `%ba
 }
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-rowed" class="docs-item" markdown="1">
 
 ### add-table-rowed
 
@@ -187,7 +147,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -206,7 +166,7 @@ Adds borders to a table that divide table rows. Requires the use of base table s
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table rowed">
     <tr>
       <th>#</th>
@@ -235,9 +195,9 @@ Adds borders to a table that divide table rows. Requires the use of base table s
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-columned" class="docs-item" markdown="1">
 
 ### add-table-columned
 
@@ -256,7 +216,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -275,7 +235,7 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table columned">
     <tr>
       <th>#</th>
@@ -304,9 +264,9 @@ Adds borders to a table that divide table columns. Requires the use of base tabl
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-bordered" class="docs-item" markdown="1">
 
 ### add-table-bordered
 
@@ -325,7 +285,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -344,7 +304,7 @@ Adds borders to a table that divide table cells. Requires the use of base table 
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered">
     <tr>
       <th>#</th>
@@ -373,9 +333,9 @@ Adds borders to a table that divide table cells. Requires the use of base table 
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-size" class="docs-item" markdown="1">
 
 ### add-table-size
 
@@ -399,7 +359,7 @@ Toggles a tables padding size between condensed, expanded or a custom padding va
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -430,7 +390,7 @@ When class modifiers are enabled, you have the two sizing utility classes: `.con
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered condensed">
     <tr>
       <th>#</th>
@@ -465,7 +425,7 @@ When class modifiers are enabled, you have the two sizing utility classes: `.con
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered expanded">
     <tr>
       <th>#</th>
@@ -494,9 +454,9 @@ When class modifiers are enabled, you have the two sizing utility classes: `.con
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-rounded" class="docs-item" markdown="1">
 
 ### add-table-rounded
 
@@ -520,7 +480,7 @@ Gives a table rounded borders depending on parameters passed.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -540,7 +500,7 @@ Gives a table rounded borders depending on parameters passed.
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered rounded">
     <tr>
       <th>#</th>
@@ -569,9 +529,9 @@ Gives a table rounded borders depending on parameters passed.
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-stripes" class="docs-item" markdown="1">
 
 ### add-table-stripes
 
@@ -600,7 +560,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -623,7 +583,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered striped">
     <tr>
       <th>#</th>
@@ -658,7 +618,7 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered striped-vertical align-center">
     <tr>
       <th>#</th>
@@ -713,9 +673,9 @@ Gives a table stripes either vertical or horizontal depending on parameters pass
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-hover" class="docs-item" markdown="1">
 
 ### add-table-hover
 
@@ -739,7 +699,7 @@ Gives table hover styles for rows.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -759,7 +719,7 @@ Gives table hover styles for rows.
 </table>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <table class="table bordered hover">
     <tr>
       <th>#</th>
@@ -788,9 +748,9 @@ Gives table hover styles for rows.
   </table>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-table-alignment" class="docs-item" markdown="1">
 
 ### add-table-alignment
 
@@ -876,9 +836,9 @@ If you don't have class modifiers enabled, or just want to set table alignment i
 </table>
 ```
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-table-responsive" class="docs-item" markdown="1">
 
 ### make-table-responsive
 
@@ -897,7 +857,7 @@ When added to a wrapping element of a table, will make the table responsive for 
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$tables()</code></td>
+    <td><code>$tables</code></td>
   </tr>
 </table>
 
@@ -913,7 +873,7 @@ Simply wrap a div with the `.table-responsive` class or apply the `make-table-re
 </div>
 ```
 
-<div class="demo">
+<div class="demo demo-tables">
   <div class="table-responsive">
     <table class="table bordered">
       <tr>
@@ -944,6 +904,4 @@ Simply wrap a div with the `.table-responsive` class or apply the `make-table-re
   </div>
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

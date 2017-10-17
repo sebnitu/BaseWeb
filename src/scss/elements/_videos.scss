@@ -6,14 +6,14 @@ $filename: 'scss/elements/_videos.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $videos: (
-  'classes' : true,
+  'output' : true,
   'margin' : 2em 0,
-  'ratio' : 56.25%
-) !default; // The default video ratio (56.25% = 16 by 9)
+  'ratio' : 56.25% // The default video ratio (56.25% = 16 by 9)
+) !default;
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'videos') == true) {
+  @if map-has-key($override, 'videos') {
     $videos: map-extend($videos, map-get($override, 'videos'), true);
   }
 }
@@ -75,13 +75,13 @@ $videos: (
 // @param $height
 //   @type height aspect ratio (number)
 @mixin build-video-ratio($width, $height) {
-  .ratio-#{$width}x#{$height} {
+  &.ratio-#{$width}x#{$height} {
     padding-bottom: aspect-ratio($width, $height);
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($videos, 'classes') == true) {
+// Check if we should output videos
+@if map-get($videos, 'output') {
 
 /*==============================================================================
   @Video - #{$filename}
@@ -100,4 +100,4 @@ $videos: (
   @include build-video-ratio(3, 2);
 }
 
-} // endif
+} // End @if output

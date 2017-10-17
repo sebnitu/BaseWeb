@@ -6,7 +6,8 @@ $filename: 'scss/custom/offcanvas.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $offcanvas: (
-  'classes' : true,
+  'output' : true,
+  'class' : 'oc',
 
   'class-wrap'     : 'oc-wrap',
   'class-content'  : 'oc-content',
@@ -25,15 +26,15 @@ $offcanvas: (
   'wrap-height' : 100%,
   'aside-position' : fixed,
 
-  'background-wrap' : $bg-color,
+  'background-wrap' : null,
   'background-aside' : $white,
-  'background-content' : $white,
+  'background-content' : null,
 
 ) !default;
 
 // Extend default off-canvas map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'offcanvas') == true) {
+  @if map-has-key($override, 'offcanvas') {
     $offcanvas: map-extend($offcanvas, map-get($override, 'offcanvas'), true);
   }
 }
@@ -53,7 +54,7 @@ $offcanvas: (
   // Base structure styles
   .#{map-get($o, 'class-wrap')} {
     height: map-get($o, 'wrap-height');
-    @include scrollable();
+    @include add-scrollable();
   }
   .#{map-get($o, 'class-content')},
   .#{map-get($o, 'class-inner')},
@@ -133,16 +134,25 @@ $offcanvas: (
 
 // Add Off-Canvas Transition
 // Creates transition styles for off-canvas elements
-// @param $options
-//   @type map
-//   @default $offcanvas map
 // @param $target
 //   @type string
+//   @options
+//     'slide-in-left', 'slide-in-right'
+//     'reveal-left', 'reveal-right'
+//     'slide-along-left', 'slide-along-right'
+//     'slide-out-left', 'slide-out-right'
+//     'scale-down-left', 'scale-down-right'
+//     'scale-up-left', 'scale-up-right'
+//     'scale-rotate-left', 'scale-rotate-right'
+//     'open-door-left', 'open-door-right'
 //   @default $offcanvas('class-aside-left')
 // @param $style
 //   @type string
 //   @default $offcanvas('transition')
-@mixin add-offcanvas-transition($options: (), $target: map-get($offcanvas, 'class-aside-id'), $style: map-get($offcanvas, 'transition')) {
+// @param $options
+//   @type map
+//   @default $offcanvas map
+@mixin add-offcanvas-transition($target: map-get($offcanvas, 'class-aside-id'), $style: map-get($offcanvas, 'transition'), $options: ()) {
   $o: map-merge($offcanvas, $options);
 
   // slide in left
@@ -535,8 +545,8 @@ $offcanvas: (
 
 }
 
-// Check if we should output modifier classes
-@if (map-get($offcanvas, 'classes') == true) {
+// Check if we should output off-canvas
+@if map-get($offcanvas, 'output') {
 /*==============================================================================
   @Off-Canvas - #{$filename}
 ==============================================================================*/
@@ -555,9 +565,9 @@ $offcanvas: (
 // open-door-left, open-door-right
 // ---
 // Example usage:
-// @include add-offcanvas-transition($target: 'oc-aside-id', $style: 'scale-rotate-left');
+// @include add-offcanvas-transition('oc-aside-id', 'scale-rotate-left');
 @if (map-get($offcanvas, 'transition')) {
   @include add-offcanvas-transition();
 }
 
-} // endif classes
+} // End @if output

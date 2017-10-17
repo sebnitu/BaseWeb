@@ -3,17 +3,10 @@ $filename: 'scss/elements/_typography.scss';
 
 /*==============================================================================
   @Typography - #{$filename}
-================================================================================
- *
- * Sets the base typographic styles for BaseWeb.
- *
- * 1. Set the base font size to the `<html>` element because that's what is
- *    used when sizing things with Rem.
- * 2. Makes safari fonts not look terrible.
- */
+===============================================================================*/
 
 html {
-  font-size: $base-font-size; /* [1] */
+  font-size: $base-font-size;
 }
 
 body {
@@ -22,147 +15,97 @@ body {
   line-height: $base-line-height;
   font-weight: $base-font-weight;
   color: $color;
-  -webkit-font-smoothing: subpixel-antialiased; /* [2] */
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: 1rem 0;
-  font-family: $font-family-heading;
-  font-weight: $font-weight-heading;
-  line-height: $line-height-heading;
-  color: $color-heading;
-
+@if map-get($anchors, 'output') {
   a {
-    color: $color-link-heading;
-    text-decoration: none;
+    @include make-anchor();
+  }
+}
 
-    &:hover {
-      color: $color-link-heading-hover;
+@if map-get($headings, 'output') {
+  @include build-headings();
+}
+
+@if $text-elements {
+
+  p {
+    margin: 1em 0;
+  }
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+  small {
+    font-size: 0.8em;
+  }
+  mark {
+    background: rgba(#ff0, 0.5);
+  }
+  cite {
+    font-style: italic;
+  }
+  abbr[title],
+  abbr[data-original-title] {
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+
+}
+
+@if $text-modifiers {
+
+  .text-lead {
+    font-size: px-to-em(24px);
+    line-height: 1.4em;
+    color: $color-dark;
+    font-weight: font-weight('light');
+
+    a {
+      text-decoration: none;
     }
   }
-}
 
-h1, .h1 {
-  font-size: 2.5em; // 40px
-}
-h2, .h2 {
-  font-size: 2em; // 32px
-}
-h3, .h3 {
-  font-size: 1.75em; // 28px
-}
-h4, .h4 {
-  font-size: 1.5em; // 24px
-}
-h5, .h5 {
-  font-size: 1.25em; // 20px
-}
-h6, .h6 {
-  font-size: 1em; // 16px
-}
-
-/**
- * Paragraphs
- */
-p {
-  margin: 1em 0;
-}
-
-/**
- * Anchors
- */
-a {
-  color: $color-link;
-  text-decoration: underline;
-
-  &:hover {
-    color: $color-link-hover;
+  .text-small {
+    font-size: 0.8em;
+    line-height: 1.5em;
   }
-}
-
-/**
- * Inline Text Elements
- */
-strong {
-  font-weight: bold;
-}
-em {
-  font-style: italic;
-}
-small {
-  font-size: 0.8em;
-}
-mark {
-  background: rgba(#ff0, 0.5);
-}
-cite {
-  font-style: italic;
-}
-abbr[title],
-abbr[data-original-title] {
-  cursor: help;
-  text-decoration: underline dotted;
-}
-
-/**
- * Stylistic Classes
- */
-.text-lead {
-  font-size: px-to-em(24px);
-  line-height: 1.4em;
-  color: $color-dark;
-  font-weight: font-weight('light');
-
-  a {
-    text-decoration: none;
+  .text-soften {
+    font-weight: $base-font-weight;
+    color: $color-light;
   }
-}
+  .text-harden {
+    font-weight: bold;
+    color: $color-dark;
+  }
 
-.text-small {
-  font-size: 0.8em;
-  line-height: 1.5em;
-}
-.text-soften {
-  font-weight: $base-font-weight;
-  color: $color-light;
-}
-.text-harden {
-  font-weight: bold;
-  color: $color-dark;
-}
+  .text-left {
+    text-align: left;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .text-justify {
+    text-align: justify;
+  }
+  .text-nowrap {
+    white-space: nowrap;
+  }
 
-/**
- * Alignment Classes
- */
-.text-left {
-  text-align: left;
-}
-.text-center {
-  text-align: center;
-}
-.text-right {
-  text-align: right;
-}
-.text-justify {
-  text-align: justify;
-}
-.text-nowrap {
-  white-space: nowrap;
-}
+  .text-lowercase {
+    text-transform: lowercase;
+  }
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  .text-capitalize {
+    text-transform: capitalize;
+  }
 
-/**
- * Transformation Classes
- */
-.text-lowercase {
-  text-transform: lowercase;
-}
-.text-uppercase {
-  text-transform: uppercase;
-}
-.text-capitalize {
-  text-transform: capitalize;
 }

@@ -1,0 +1,162 @@
+// Set file variable
+$filename: 'scss/elements/_chips.scss';
+
+////////////////////////////////////////////////////////////////////////////////
+// @Chips Map
+////////////////////////////////////////////////////////////////////////////////
+
+$chips: (
+  'output' : true,
+  'output-modifiers' : true,
+  'class' : 'chip',
+
+  'margin' : 0,
+  'padding' : 0.25em,
+  'font-size' : 1rem,
+  'border' : none,
+  'border-radius' : 50%,
+  'transition' : $transition,
+
+  'modifiers' : (
+    'default' : (
+      'color' : $white,
+      'background' : rgba($black, 0.25),
+      'hover' : (
+        'color' : $white,
+        'background' : rgba($black, 0.5),
+      ),
+    ),
+    'light' : (
+      'color' : $color,
+      'background' : rgba($white, 0.5),
+      'hover' : (
+        'color' : $color,
+        'background' : rgba($white, 1),
+      ),
+    ),
+    'danger' : (
+      'selector' : '&.red, &.danger',
+      'background' : $red,
+      'hover' : (
+        'background' : $red-700,
+      ),
+    ),
+    'warning' : (
+      'selector' : '&.yellow, &.warning',
+      'background' : $orange,
+      'hover' : (
+        'background' : $orange-700,
+      ),
+    ),
+    'success' : (
+      'selector' : '&.green, &.success',
+      'background' : $green,
+      'hover' : (
+        'background' : $green-700,
+      ),
+    ),
+  ),
+
+) !default;
+
+// Extend default component map with overrides if they exist
+@if variable-exists(override) {
+  @if map-has-key($override, 'chips') {
+    $chips: map-extend($chips, map-get($override, 'chips'), true);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// @Chip Mixins
+////////////////////////////////////////////////////////////////////////////////
+
+// Make chip
+// Creates the base styles for the chip element.
+// @param $options
+//   @type map
+//   @default $chips map
+@mixin make-chip($options: ()) {
+  $o: map-merge($chips, $options);
+
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  @include add-styles($o);
+  @include add-modifiers($o, 'default', false);
+
+  @content;
+
+  @if (variable-exists(icons)) {
+    .#{map-get($icons, 'class')} {
+      margin: 0;
+      font-size: 1em;
+    }
+  }
+}
+
+// Add Chip Modifiers
+// Creates styles for the chip block along with modifiers.
+// @param $options
+//   @type map
+//   @default ()
+@mixin add-chip-modifiers($options: ()) {
+  $o: $options;
+
+  // Check if $chips exists and if output is set to true
+  @if map-get($chips, 'output') {
+
+    // If chips key exists, output chip styles
+    @if map-has-key($o, 'chips') {
+      .#{map-get($chips, 'class')} {
+        @include add-styles(map-get($o, 'chips'));
+        @if (map-fetch($o, 'chips', 'key')) {
+          @include add-modifiers($chips, map-fetch($o, 'chips', 'key'), false);
+        }
+      }
+    }
+
+    // Check if modifiers exist
+    @if (map-has-key($o, 'modifiers')) {
+      @each $name, $map in map-get($o, 'modifiers') {
+        // If chips key exists, output chip styles
+        @if (map-has-key($map, 'chips')) {
+          &.#{$name} {
+            .#{map-get($chips, 'class')} {
+              @include add-styles(map-get($map, 'chips'));
+              @if (map-fetch($map, 'chips', 'key')) {
+                @include add-modifiers($chips, map-fetch($map, 'chips', 'key'), false);
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+// Check if we should output chip
+@if map-get($chips, 'output') {
+
+/*==============================================================================
+  @Chips - #{$filename}
+==============================================================================*/
+
+.#{map-get($chips, 'class')} {
+  @include make-chip();
+}
+
+// Check if we should output chip modifiers
+@if map-get($chips, 'output-modifiers') {
+/**
+ * Modifiers
+ */
+  .#{map-get($chips, 'class')} {
+    @include add-modifiers($chips);
+  }
+} // End @if output-modifiers
+
+} // End @if output

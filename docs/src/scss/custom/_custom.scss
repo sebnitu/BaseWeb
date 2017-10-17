@@ -2,16 +2,6 @@
 $filename: 'scss/custom/_custom.scss';
 
 /*==============================================================================
-  @Grid System - #{$filename}
-==============================================================================*/
-
-@include build-grid-system('mobile');
-
-@include media-min('medium') {
-  @include build-grid-system();
-}
-
-/*==============================================================================
   @Structure - #{$filename}
 ==============================================================================*/
 
@@ -42,7 +32,7 @@ body {
 .header .logo {
   display: flex;
   align-items: center;
-  text-decoration: none;
+  border-bottom: none;
 
   img {
     margin: 0;
@@ -53,9 +43,8 @@ body {
     color: $color-light;
   }
   &:hover {
-    text-decoration: none;
     .version {
-      color: $color-link;
+      color: $anchor-color;
     }
   }
 }
@@ -76,12 +65,11 @@ body {
  */
 .header .button {
   background: rgba($black, 0.05);
-  border: none;
   color: $color;
+  border: none;
 
   &:hover {
-    background: rgba($black, 0.10);
-    box-shadow: none;
+    background: rgba($white, 1);
     color: $color;
   }
 }
@@ -129,10 +117,10 @@ body {
   a {
     color: $color;
     font-weight: font-weight('medium');
-    text-decoration: none;
+    border-bottom: none;
 
     &:hover {
-      color: $color-link;
+      color: $anchor-color;
     }
   }
 
@@ -176,7 +164,7 @@ body {
     display: block;
     padding: 0.5em 1em;
     color: $color-light;
-    text-decoration: none;
+    border-bottom: none;
     border-radius: $border-radius;
 
     &:hover {
@@ -200,10 +188,10 @@ body {
   }
 
   .active > a {
-    color: $color-link;
+    color: $anchor-color;
 
     &:hover {
-      color: $color-link;
+      color: $anchor-color;
     }
   }
 }
@@ -211,13 +199,8 @@ body {
 /**
  * Off-Canvas Menu
  */
-.oc-aside .button {
-  background: none;
-
-  &:hover {
-    background: none;
-    color: $color-link;
-  }
+.oc-aside .oc-trigger {
+  margin: 1em;
 }
 
 /*==============================================================================
@@ -244,38 +227,16 @@ body {
 }
 @include media-min('medium') {
   .hero-content .container {
-    padding: 8em 10em 10em;
+    padding: 8em 5em 10em;
   }
-}
-
-/**
- * Cursor Blink
- */
-@keyframes blinker {
-  from { opacity: 1.0; }
-  to { opacity: 0.0; }
 }
 
 /**
  * Hero Content
  */
-
 .hero-content {
   text-align: center;
 
-  h1 {
-    margin: 0 0 2em;
-    color: $white;
-    font-size: 1.5em;
-  }
-  .typed-cursor {
-    color: $blue;
-    animation-name: blinker;
-  	animation-duration: 0.6s;
-  	animation-iteration-count: infinite;
-  	animation-timing-function: ease-in-out;
-  	animation-direction: alternate;
-  }
   .action {
     margin: 2em 0;
   }
@@ -293,25 +254,38 @@ body {
   }
 }
 
+/**
+ * Hero Heading
+ */
+.hero-content h1 {
+  margin: 0 auto 2em;
+  font-size: 1.5em;
+  color: $white;
+  max-width: 500px;
+}
 @include media-min('small') {
   .hero-content h1 {
     font-size: 2em;
+    max-width: 600px;
   }
 }
-
 @include media-min('medium') {
   .hero-content h1 {
-    margin: 1em 0 2em;
+    margin: 1em auto 2em;
     font-size: 2.5em;
+    max-width: 700px;
   }
 }
-
 @include media-min('large') {
   .hero-content h1 {
     font-size: 3em;
+    max-width: 800px;
   }
 }
 
+/**
+ * Hero Code
+ */
 .hero-content .highlight {
   padding: 0;
   margin-left: -0.75em;
@@ -439,11 +413,11 @@ body {
       flex: 0 1 50%;
     }
     .item + .item {
-      margin-left: 4em;
+      margin-left: 2em;
     }
 
     .item-details {
-      ul {
+      .widget-list {
         margin: 0;
       }
     }
@@ -541,7 +515,10 @@ body {
   margin: 2em 0;
 
   .widget {
-    margin: 1em 0;
+    margin: 0;
+  }
+  .widget + .widget {
+    margin-top: 1em;
   }
 }
 
@@ -585,7 +562,7 @@ body {
  */
 a.widget-featured {
   display: block;
-  text-decoration: none;
+  border-bottom: none;
   color: $color;
   transition: $transition;
 
@@ -593,23 +570,17 @@ a.widget-featured {
     transition: $transition;
   }
 
-  &:hover {
-    text-decoration: none;
-  }
-
   &.color-1:hover { border-color: $orange; }
-  &.color-2:hover { border-color: $red; }
-  &.color-3:hover { border-color: $pink; }
-  &.color-4:hover { border-color: $purple; }
-  &.color-5:hover { border-color: $deep-purple; }
-  &.color-6:hover { border-color: $indigo; }
+  &.color-2:hover { border-color: $pink; }
+  &.color-3:hover { border-color: $purple; }
+  &.color-4:hover { border-color: $blue; }
+  &.color-5:hover { border-color: $teal; }
 
   &.color-1:hover h2 { color: $orange; }
-  &.color-2:hover h2 { color: $red; }
-  &.color-3:hover h2 { color: $pink; }
-  &.color-4:hover h2 { color: $purple; }
-  &.color-5:hover h2 { color: $deep-purple; }
-  &.color-6:hover h2 { color: $indigo; }
+  &.color-2:hover h2 { color: $pink; }
+  &.color-3:hover h2 { color: $purple; }
+  &.color-4:hover h2 { color: $blue; }
+  &.color-5:hover h2 { color: $teal; }
 }
 @include media-min('small') {
   .widget-featured {
@@ -633,14 +604,15 @@ a.widget-featured {
   color: $blue;
 
   .icon {
+    font-size: 1em;
     stroke-width: 1.5px;
   }
   .icon-color-1 { color: $orange; }
-  .icon-color-2 { color: $red; }
-  .icon-color-3 { color: $pink; }
-  .icon-color-4 { color: $purple; }
-  .icon-color-5 { color: $deep-purple; }
-  .icon-color-6 { color: $indigo; }
+  .icon-color-2 { color: $pink; }
+  .icon-color-3 { color: $purple; }
+  .icon-color-4 { color: $blue; }
+  .icon-color-5 { color: $teal; }
+  .icon-color-6 { color: $green; }
 }
 
 /**
@@ -672,7 +644,7 @@ a.widget-featured {
     color: $color;
   }
   a:hover {
-    color: $color-link;
+    color: $anchor-color;
   }
 }
 
@@ -689,6 +661,7 @@ a.widget-featured {
     a {
       margin-left: -1em;
       margin-right: -1em;
+      border: none;
     }
   }
   h2 a:hover {
@@ -710,7 +683,7 @@ a.widget-featured {
     display: block;
     padding: 0.5em 1em;
     color: $color-light;
-    text-decoration: none;
+    border-bottom: none;
     border-radius: $border-radius;
 
     &:hover {
@@ -720,10 +693,10 @@ a.widget-featured {
   }
 
   .active > a {
-    color: $color-link;
+    color: $anchor-color;
 
     &:hover {
-      color: $color-link;
+      color: $anchor-color;
     }
   }
 
@@ -798,8 +771,12 @@ a.widget-featured {
 ==============================================================================*/
 
 /**
+ * Table of Contents
+ * Docs Header
  * Docs Item
  */
+.toc,
+.docs-header,
 .docs-item {
   margin: 1em 0;
   padding: 1em 0;
@@ -827,6 +804,10 @@ a.widget-featured {
   @extend .table.rowed;
   @extend .table.expanded;
   @extend .table.valign-middle;
+
+  p {
+    margin: 0;
+  }
 }
 @media screen and (max-width: 759px) {
   .table-docs {
@@ -924,7 +905,10 @@ a.widget-featured {
     margin: 0;
     padding: 0.5em 0;
     border-top: 1px solid rgba($black, 0.1);
-    text-decoration: none;
+
+    a {
+      border-bottom: none;
+    }
   }
 }
 
@@ -949,6 +933,14 @@ a.widget-featured {
 }
 
 /**
+ * Featured Image
+ */
+.featured-image {
+  margin: 2em auto;
+  border-radius: $border-radius;
+}
+
+/**
  * Meta
  */
 .meta {
@@ -967,7 +959,7 @@ a.widget-featured {
     color: $color-light;
 
     &:hover {
-      color: $color-link-hover;
+      color: $anchor-hover-color;
     }
   }
 
@@ -975,14 +967,10 @@ a.widget-featured {
     color: $color-light;
     text-transform: uppercase;
   }
-  .version {
-    display: inline-block;
-    color: $color;
-    font-size: 0.9em;
-    padding: 0 0.5em;
-    background: $yellow;
-    border-radius: $border-radius;
-  }
+}
+
+.meta .version {
+  @extend .yellow.inverted;
 }
 
 /**
@@ -1027,7 +1015,7 @@ a.widget-featured {
     font-size: 0.9em;
     line-height: 1.5em;
     color: $white;
-    text-decoration: none;
+    border-bottom: none;
 
     &:hover {
       opacity: 0.7;
@@ -1085,7 +1073,6 @@ a.widget-featured {
     border: 2px solid $blue;
     border-radius: $border-radius;
     color: $blue;
-    text-decoration: none;
     transition: none;
 
     &:hover {
@@ -1224,10 +1211,9 @@ a.widget-featured {
 
   a:not(.button) {
     color: $color-light;
-    text-decoration: none;
 
     &:hover {
-      color: $color-link-hover;
+      color: $anchor-hover-color;
     }
   }
 
@@ -1236,7 +1222,7 @@ a.widget-featured {
     background: $white;
 
     &:hover {
-      color: $color-link;
+      color: $anchor-color;
     }
   }
 }

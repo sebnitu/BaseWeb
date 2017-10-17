@@ -6,8 +6,8 @@ link:
 order: 1
 ---
 
-<div class="notice yellow" markdown="1">
-The markup templates documentation is still being written and may not currently be up to date or contain all relevant information. Please check back again soon.
+<div class="notice warning">
+  <p>The markup templates documentation is still being written and may not currently be up to date or contain all relevant information. Please check back again soon.</p>
 </div>
 
 Here is a starter HTML document with the bear essentials to get you started. A few things of note include the HTML5 declaration, the three `<meta>` tags (to specify encoding, browser settings and mobile scale settings), a title and the link to BaseWeb's stylesheet.

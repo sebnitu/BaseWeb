@@ -82,10 +82,10 @@ The default `baseweb.scss` file looks like this:
 @import "custom/custom";
 ```
 
-<div class="notice yellow" markdown="1">
+<div class="notice warning" markdown="1">
 It's important to not that `custom/overrides` should be imported after core but before elements and block files. This ensures that you keep your custom framework overrides.
 </div>
 
-<div class="notice blue" markdown="1">
+<div class="notice info" markdown="1">
 For information on how to leverage BaseWeb and still be able to customize everything you need, check out "<a href="https://dev.to/sebnitu/reusing-design-systems-with-yarn-and-gulp" class="onclick-newtab">Reusing Design Systems with Yarn and Gulp</a>".
 </div>

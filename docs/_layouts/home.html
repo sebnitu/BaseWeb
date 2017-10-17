@@ -15,48 +15,31 @@ layout: compress
 
           {{ content }}
 
+          {% if site.data.settings.render.fast != true %}
           <footer class="footer">
             <div class="container">
               {% include footer.html %}
             </div>
           </footer>
+          {% endif %}
 
         </div><!-- .oc-inner -->
       </div><!-- .oc-content -->
 
+      {% if site.data.settings.render.fast != true %}
       <aside class="oc-aside oc-aside-nav-mobile">
         <div class="oc-aside-inner">
-          <a href="#" class="button button-icon oc-trigger">
-            {% include content-icon.html icon="x" %}
-          </a>
+          <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
           <nav class="nav nav-vert">
             {% include nav.html %}
           </nav><!-- .nav -->
         </div>
       </aside><!-- .oc-aside -->
+      {% endif %}
 
     </div><!-- .oc-wrap -->
 
     {% include foot.html %}
-
-    <script>
-    /**
-     * Typed (homepage banner text)
-     */
-    var typed = new Typed('.hero-content .typed', {
-      strings: [
-        "...",
-        "responsive and mobile-first.",
-        "structured and organized.",
-        "the cat's pajamas."
-      ],
-      startDelay: 50,
-      typeSpeed: 50,
-      backSpeed: 50,
-      backDelay: 1000,
-      contentType: 'null'
-    });
-    </script>
 
   </body>
 </html>

@@ -38,10 +38,10 @@ The off-canvas component block is a design pattern that hides aside content outs
   </div>
 </div>
 
-If you're looking to add a close trigger for off-canvas content, simply create a button with the `.oc-trigger` class and omit the `data-target` attribute. You can optionally use the `.button` class and `.close` modifier for a stylized <code>&times;</code> trigger.
+If you're looking to add a close trigger for off-canvas content, simply create a button with the `.oc-trigger` class and omit the `data-target` attribute. You can optionally use the `.chip` class and an icon SVG for the trigger.
 
 ```html
-<button class="oc-trigger close">&times;</button>
+<button class="oc-trigger chip">{% raw %}{% include icons/x.svg %}{% endraw %}</button>
 ```
 
 ## Transitions
@@ -91,7 +91,7 @@ There are eight unique effects with left and right position variations and the o
       </div>
     </section>
     <aside class="oc-aside slide-in-left">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>Off-canvas content goes here...</p>
     </aside>
   </div>
@@ -121,7 +121,7 @@ If instead you prefer to create a custom transition effect, you can disable the 
 ```
 
 <div class="notice warning">
-  <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas()</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
+  <p>Keep in mind if you modify the default classes or transition duration in your <code>$offcanvas</code> variable map, you should also reflect those changes in your JavaScript where these values are referenced.</p>
 </div>
 
 ## JavaScript
@@ -136,103 +136,46 @@ offcanvas.init();
 For more details on how to customize and use the public methods, take a look at the [off-canvas JavaScript](/docs/javascript/offcanvas) documentation.
 </div>
 
-## Variables
+<div id="toc" class="toc"></div>
 
-Off-canvas variables are encompassed within the `$offcanvas()` map and are used throughout all off-canvas mixins to set default values.
+<section id="map-offcanvas" class="docs-item" markdown="1">
 
-<table class="table table-docs">
-  <tr>
-    <th>Variable</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('classes')</code></td>
-    <td><code>true</code> <a href="#var-note-1">*</a></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-wrap')</code></td>
-    <td><code>'oc-wrap'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-content')</code></td>
-    <td><code>'oc-content'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-inner')</code></td>
-    <td><code>'oc-inner'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-aside')</code></td>
-    <td><code>'oc-aside'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-aside-id')</code></td>
-    <td><code>'oc-aside-left'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-active')</code></td>
-    <td><code>'oc-active'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('class-delay')</code></td>
-    <td><code>'oc-delay'</code></td>
-  </tr>
+### Variable Map
 
-  <tr>
-    <td><code>$offcanvas('screen-content')</code></td>
-    <td><code>rgba($black, 0.2)</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('screen-aside')</code></td>
-    <td><code>rgba($black, 0.2)</code></td>
-  </tr>
+Off-canvas variables are encompassed within the `$offcanvas` map and are used throughout all off-canvas mixins to set default values.
 
-  <tr>
-    <td><code>$offcanvas('transition')</code></td>
-    <td><code>'slide-in-left'</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('transition-duration')</code></td>
-    <td><code>0.5s</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('width')</code></td>
-    <td><code>280px</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('wrap-height')</code></td>
-    <td><code>null</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('aside-position')</code></td>
-    <td><code>fixed</code></td>
-  </tr>
+```scss
+$offcanvas: (
+  'output' : true,
+  'class' : 'oc',
 
-  <tr>
-    <td><code>$offcanvas('background-wrap')</code></td>
-    <td><code>$bg-color</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('background-aside')</code></td>
-    <td><code>$white</code></td>
-  </tr>
-  <tr>
-    <td><code>$offcanvas('background-content')</code></td>
-    <td><code>$white</code></td>
-  </tr>
-</table>
+  'class-wrap'     : 'oc-wrap',
+  'class-content'  : 'oc-content',
+  'class-inner'    : 'oc-inner',
+  'class-aside'    : 'oc-aside',
+  'class-aside-id' : 'oc-aside-left',
+  'class-active'   : 'oc-active',
+  'class-delay'    : 'oc-delay',
 
-<div class="notice info" id="var-note-1" markdown="1">
-\* Whether or not we should output off-canvas classes. Set to `false` if you want to use the off-canvas mixins semantically and/or reduce CSS output.
-</div>
+  'screen-content' : rgba($black, 0.2),
+  'screen-aside'   : rgba($black, 0.2),
 
-## Mixins
+  'transition' : 'slide-in-left',
+  'transition-duration' : 0.5s,
+  'width' : 280px,
+  'wrap-height' : 100%,
+  'aside-position' : fixed,
 
-Off-canvas mixins are used to create the base styles for an off-canvas component block.
+  'background-wrap' : null,
+  'background-aside' : $white,
+  'background-content' : null,
 
-<ul class="list list-docs">
+) !default;
+```
 
-<li markdown="1">
+</section><!-- .docs-item -->
+
+<section id="mixin-make-offcanvas" class="docs-item" markdown="1">
 
 ### make-offcanvas
 
@@ -251,7 +194,7 @@ Creates the base styles for the off-canvas block including wrapper, content, inn
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$offcanvas()</code></td>
+    <td><code>$offcanvas</code></td>
   </tr>
 </table>
 
@@ -265,8 +208,8 @@ Use this mixin to output the default class styles for off-canvas. You can also p
 
 // Change the background styles, but keep the rest of the $offcanvas defaults
 @include make-offcanvas((
-  'background-aside' : $blue-gray,
-  'background-content' : $blue-50
+  'background-aside' : $gray-800,
+  'background-content' : $gray-100
 ));
 ```
 
@@ -285,9 +228,9 @@ Use this mixin to output the default class styles for off-canvas. You can also p
   </div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-offcanvas-transition" class="docs-item" markdown="1">
 
 ### add-offcanvas-transition
 
@@ -346,11 +289,6 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
     <th>Default</th>
   </tr>
   <tr>
-    <td><code>$options</code></td>
-    <td>Map</td>
-    <td><code>$offcanvas()</code></td>
-  </tr>
-  <tr>
     <td><code>$target</code></td>
     <td>String</td>
     <td><code>$offcanvas('class-aside-left')</code></td>
@@ -360,6 +298,11 @@ You can [sample all of these transition effects](#demo-offcanvas-transitions) in
     <td>String</td>
     <td><code>$offcanvas('transition')</code></td>
   </tr>
+  <tr>
+    <td><code>$options</code></td>
+    <td>Map</td>
+    <td><code>$offcanvas</code></td>
+  </tr>
 </table>
 
 <p class="subheading">Example Usage</p>
@@ -368,8 +311,8 @@ It's important to specify the target you'd like the transition effect to be appl
 
 ```scss
 // Adding custom transition effects for two seperate off-canvas aside content
-@include add-offcanvas-transition($target: 'oc-aside-left', $style: 'slide-out-left');
-@include add-offcanvas-transition($target: 'oc-aside-right', $style: 'scale-rotate-right');
+@include add-offcanvas-transition('oc-aside-left', 'slide-out-left');
+@include add-offcanvas-transition('oc-aside-right', 'slide-out-right');
 ```
 
 ```html
@@ -399,19 +342,19 @@ It's important to specify the target you'd like the transition effect to be appl
       </div>
     </section>
     <aside class="oc-aside oc-aside-left">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>...</p>
     </aside>
     <aside class="oc-aside oc-aside-right">
-      <button class="button close oc-trigger">&times;</button>
+      <button class="oc-trigger chip">{% include content-icon.html icon="x" %}</button>
       <p>...</p>
     </aside>
   </div>
 </div>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-offcanvas-wrap-height" class="docs-item" markdown="1">
 
 ### add-offcanvas-wrap-height
 
@@ -431,7 +374,7 @@ Sets the off-canvas wrapper element height to `100%` using the delay class to on
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$offcanvas()</code></td>
+    <td><code>$offcanvas</code></td>
   </tr>
 </table>
 
@@ -461,6 +404,4 @@ Primarily used internally in the `add-offcanvas-transition()` mixin, this can al
 Changing the height of an element that is being animated will cause the scroll to jump to the top in that element. It's preferable to try and keep the height of the wrapper the same if possible.
 </div>
 
-</li>
-
-</ul>
+</section><!-- .docs-item -->

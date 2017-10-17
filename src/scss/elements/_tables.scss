@@ -6,7 +6,8 @@ $filename: 'scss/elements/_tables.scss';
 ////////////////////////////////////////////////////////////////////////////////
 
 $tables: (
-  'classes' : true,
+  'output' : true,
+  'class' : 'table',
 
   'valign' : top,
   'nth' : odd,
@@ -27,7 +28,7 @@ $tables: (
 
 // Extend default component map with overrides if they exist
 @if variable-exists(override) {
-  @if (map-has-key($override, 'tables') == true) {
+  @if map-has-key($override, 'tables') {
     $tables: map-extend($tables, map-get($override, 'tables'), true);
   }
 }
@@ -285,14 +286,14 @@ table {
     vertical-align: map-get($tables, 'valign');
   }
   th {
-    color: $color-heading;
+    color: $color-dark;
     font-weight: bold;
     text-align: left;
   }
 }
 
-// Check if we should output modifier classes
-@if (map-get($tables, 'classes') == true) {
+// Check if we should output tables
+@if map-get($tables, 'output') {
 
 /*==============================================================================
   @Table Modifiers - #{$filename}
@@ -301,82 +302,82 @@ table {
 /**
  * Base Modifiers Styles
  */
-.table {
+.#{map-get($tables, 'class')} {
   @include make-table();
 }
 
 /**
  * Border Variations
  */
-.table.rowed {
+.#{map-get($tables, 'class')}.rowed {
   @include add-table-rowed();
 }
-.table.columned {
+.#{map-get($tables, 'class')}.columned {
   @include add-table-columned();
 }
-.table.bordered {
+.#{map-get($tables, 'class')}.bordered {
   @include add-table-bordered();
 }
 
 /**
  * Padding Variations
  */
-.table.condensed {
+.#{map-get($tables, 'class')}.condensed {
   @include add-table-size(condensed);
 }
-.table.expanded {
+.#{map-get($tables, 'class')}.expanded {
   @include add-table-size(expanded);
 }
 
 /**
  * Miscellaneous Modifiers
  */
-.table.rounded {
+.#{map-get($tables, 'class')}.rounded {
   @include add-table-rounded();
 }
-.table.striped {
+.#{map-get($tables, 'class')}.striped {
   @include add-table-stripes();
 }
-.table.striped-horizontal {
+.#{map-get($tables, 'class')}.striped-horizontal {
   @include add-table-stripes(default, horizontal);
 }
-.table.striped-vertical {
+.#{map-get($tables, 'class')}.striped-vertical {
   @include add-table-stripes(default, vertical);
 }
-.table.hover {
+.#{map-get($tables, 'class')}.hover {
   @include add-table-hover();
 }
 
 /**
  * Table Alignment Modifiers
  */
-.table.valign-baseline {
+.#{map-get($tables, 'class')}.valign-baseline {
   @include add-table-alignment(('vertical-align': baseline));
 }
-.table.valign-top {
+.#{map-get($tables, 'class')}.valign-top {
   @include add-table-alignment(('vertical-align': top));
 }
-.table.valign-middle {
+.#{map-get($tables, 'class')}.valign-middle {
   @include add-table-alignment(('vertical-align': middle));
 }
-.table.valign-bottom {
+.#{map-get($tables, 'class')}.valign-bottom {
   @include add-table-alignment(('vertical-align': bottom));
 }
-.table.align-left {
+.#{map-get($tables, 'class')}.align-left {
   @include add-table-alignment(('text-align': left));
 }
-.table.align-center {
+.#{map-get($tables, 'class')}.align-center {
   @include add-table-alignment(('text-align': center));
 }
-.table.align-right {
+.#{map-get($tables, 'class')}.align-right {
   @include add-table-alignment(('text-align': right));
 }
 
 /**
  * Responsive Tables
  */
-.table-responsive {
+.#{map-get($tables, 'class')}-responsive {
   @include make-table-responsive();
 }
 
-} // endif classes
+} // End @if output

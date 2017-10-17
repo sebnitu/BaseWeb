@@ -4,7 +4,9 @@ layout: default
 <div class="row">
 
   <aside class="sidebar sticky col col-3">
+    {% if site.data.settings.render.fast != true %}
     {% include sidebar.html %}
+    {% endif %}
   </aside>
 
   <div class="content col col-9">
@@ -13,5 +15,5 @@ layout: default
     {% endif %}
     {{ content }}
   </div>
-  
+
 </div>

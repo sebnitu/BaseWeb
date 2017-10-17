@@ -6,7 +6,11 @@ order: 2
 
 This is where BaseWeb defines our most basic typographic elements. This includes things like base font styles, headings, links and emphasis elements.
 
-## Headings
+<div id="toc" class="toc"></div>
+
+<section id="el-headings" class="docs-item" markdown="1">
+
+### Headings
 
 Heading elements are used to describe the topic of the section it introduces. BaseWeb defines styles for headings `<h1>` to `<h6>`.
 
@@ -28,7 +32,11 @@ Heading elements are used to describe the topic of the section it introduces. Ba
   <h6>h6. BaseWeb Heading</h6>
 </div>
 
-## Body Copy
+</section><!-- .docs-item -->
+
+<section id="el-paragraphs" class="docs-item" markdown="1">
+
+### Paragraphs
 
 The body copy is set by applying our default typographic settings to the `<body>` element and applying margins to our paragraph element.
 
@@ -41,360 +49,120 @@ The body copy is set by applying our default typographic settings to the `<body>
   <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
 </div>
 
-## Elements
+The default typographic settings. These dictate the base typographic styles for headings, body text, inline text elements and links as well as modifier classes.
+
+</section><!-- .docs-item -->
+
+<section id="el-tags" class="docs-item" markdown="1">
+
+### Elements
 
 HTML has a beautiful assortment of tools for adding rich semantics to a document. This is by no means a comprehensive list of HTML elements, but these are the inline text elements that BaseWeb specifically adds styles for.
 
-<ul class="list list-docs">
+<table class="table table-docs">
+  <tr>
+    <th>Element</th>
+    <th>Demo</th>
+  </tr>
+  <tr>
+    <td><code>&lt;a&gt;</code></td>
+    <td><a href="#">Anchor styles</a></td>
+  </tr>
+  <tr>
+    <td><code>&lt;strong&gt;</code></td>
+    <td><strong>Strong emphasis styles</strong></td>
+  </tr>
+  <tr>
+    <td><code>&lt;em&gt;</code></td>
+    <td><em>Stress emphasis styles</em></td>
+  </tr>
+  <tr>
+    <td><code>&lt;small&gt;</code></td>
+    <td><small>Small styles</small></td>
+  </tr>
+  <tr>
+    <td><code>&lt;mark&gt;</code></td>
+    <td><mark>Marked styles</mark></td>
+  </tr>
+  <tr>
+    <td><code>&lt;ins&gt;</code></td>
+    <td><ins>Insert styles</ins></td>
+  </tr>
+  <tr>
+    <td><code>&lt;del&gt;</code></td>
+    <td><del>Delete styles</del></td>
+  </tr>
+  <tr>
+    <td><code>&lt;cite&gt;</code></td>
+    <td><cite>Citation styles</cite></td>
+  </tr>
+  <tr>
+    <td><code>&lt;abbr&gt;</code></td>
+    <td><abbr title="Abbreviation styles">Abbr styles</abbr></td>
+  </tr>
+</table>
 
-<li markdown="1">
+</section><!-- .docs-item -->
 
-### &lt;a&gt;
+<section id="el-classes" class="docs-item" markdown="1">
 
-The HTML `<a>` Element (or the HTML Anchor Element) defines a hyperlink.
-
-```html
-<p>If you don't know something, try a <a href="http://google.com">Google search</a>!</p>
-```
-
-<div class="demo">
-  <p>If you don't know something, try a <a href="http://google.com">Google search</a>!</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;strong&gt;
-
-The HTML `<strong>` represents strong importance for its contents.
-
-```html
-<p>I learned a lot reading <strong>Pale Blue Dot</strong>.</p>
-```
-
-<div class="demo">
-  <p>I learned a lot reading <strong>Pale Blue Dot</strong>.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;em&gt;
-
-The HTML `<em>` element represents stress emphasis of its contents.
-
-```html
-<p>Cats are <em>cute</em> animals.</p>
-```
-
-<div class="demo">
-  <p>Cats are <em>cute</em> animals.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;small&gt;
-
-The HTML `<small>` element represents side comments such as small print.
-
-```html
-<small>Copyright 2015</small>
-```
-
-<div class="demo">
-  <p><small>Copyright 2015</small></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;mark&gt;
-
-The HTML `<mark>` element represents a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.
-
-```html
-<p>Don't forget to pick up the <mark>hamburgers</mark> at the store.</p>
-```
-
-<div class="demo">
-  <p>Don't forget to pick up the <mark>hamburgers</mark> at the store.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;ins&gt;
-
-The HTML `<ins>` element represents an addition to the document.
-
-```html
-<ins>This content was added to our document.</ins>
-```
-
-<div class="demo">
-  <p><ins>This content was added to our document.</ins></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;del&gt;
-
-The HTML `<del>` element represents a removal from the document.
-
-```html
-<del>This content was removed from our document.</del>
-```
-
-<div class="demo">
-  <p><del>This content was removed from our document.</del></p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;cite&gt;
-
-The HTML `<cite>` element represents a reference to a creative work.
-
-```html
-<blockquote>
-  <p>...</p>
-  <footer><cite>...</cite></footer>
-</blockquote>
-```
-
-<div class="demo">
-  <blockquote>
-    <p>Take the risk of thinking for yourself&mdash;much more happiness, truth, beauty and wisdom will come to you that way.</p>
-    <footer><cite>&ndash; Christopher Hitchens</cite></footer>
-  </blockquote>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### &lt;abbr&gt;
-
-The HTML `<abbr>` represents an abbreviation or acronym. The optional title attribute may be used to provide an expansion of the abbreviation.
-
-```html
-<abbr title="Hypertext Markup Language">HTML</abbr>
-```
-
-<div class="demo">
-  <p>The quintessential of front-end development includes <abbr title="Hypertext Markup Language">HTML</abbr>, <abbr title="Cascading Stylessheets">CSS</abbr> and <abbr title="JavaScript">JS</abbr>.</p>
-</div>
-
-</li>
-
-</ul>
-
-## Classes
+### Classes
 
 In addition to our inline elements, BaseWeb provides these stylistic typographic classes for adding flair and visual depth to your documents without adding any semantic meaning.
 
-<ul class="list list-docs">
-
-<li markdown="1">
-
-### .text-lead
-
-Lead text can be used as an introduction paragraph or even as subtitle text.
-
-```html
-<p class="text-lead">...</p>
-```
-
-<div class="demo">
-  <p class="text-lead">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-small
-
-Used to make text look less important. Can be used to reduce the size of legal text, for example.
-
-```html
-<p class="text-small">...</p>
-```
-
-<div class="demo">
-  <p class="text-small">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-soften
-
-Softens the appearance of text for non-vital content such as meta data, dates or descriptions.
-
-```html
-<p class="text-soften">...</p>
-```
-
-<div class="demo">
-  <p class="text-soften">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-harden
-
-Makes text stand out or look more important. Could be used to attract attention to important information.
-
-```html
-<p class="text-harden">...</p>
-```
-
-<div class="demo">
-  <p class="text-harden">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-left
-
-Aligns text to the left.
-
-```html
-<p class="text-left">...</p>
-```
-
-<div class="demo">
-  <p class="text-left">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-center
-
-Aligns text to the center.
-
-```html
-<p class="text-center">...</p>
-```
-
-<div class="demo">
-  <p class="text-center">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-right
-
-Aligns text to the right.
-
-```html
-<p class="text-right">...</p>
-```
-
-<div class="demo">
-  <p class="text-right">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-justify
-
-Makes text justified.
-
-```html
-<p class="text-justify">...</p>
-```
-
-<div class="demo">
-  <p class="text-justify">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-nowrap
-
-Prevents text from wrapping.
-
-```html
-<p class="text-nowrap">...</p>
-```
-
-<div class="demo">
-  <p class="text-nowrap">Cras ullamcorper, massa sed commodo fermentum, neque tellus pharetra est, eu volutpat nibh ante eu mauris. Quisque auctor consequat dui. Nam non ante at nibh egestas feugiat. Praesent tincidunt rhoncus justo in placerat.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-lowercase
-
-Makes text lowercase.
-
-```html
-<p class="text-lowercase">Lowercase text goes here.</p>
-```
-
-<div class="demo">
-  <p class="text-lowercase">Lowercase text goes here.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-uppercase
-
-Makes text uppercase.
-
-```html
-<p class="text-uppercase">Uppercase text goes here.</p>
-```
-
-<div class="demo">
-  <p class="text-uppercase">Uppercase text goes here.</p>
-</div>
-
-</li>
-
-<li markdown="1">
-
-### .text-capitalize
-
-Makes text capitalized.
-
-```html
-<p class="text-capitalize">Capitalize text goes here.</p>
-```
-
-<div class="demo">
-  <p class="text-capitalize">Capitalize text goes here.</p>
-</div>
-
-</li>
-
-</ul>
+<table class="table table-docs">
+  <tr>
+    <th>Element</th>
+    <th>Demo</th>
+  </tr>
+  <tr>
+    <td><code>.text-lead</code></td>
+    <td><p class="text-lead">This is some example lead in text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-small</code></td>
+    <td><p class="text-small">This is some example small text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-soften</code></td>
+    <td><p class="text-soften">This is some example soften text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-harden</code></td>
+    <td><p class="text-harden">This is some example harden text.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-left</code></td>
+    <td><p class="text-left">This is some example text with left alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-center</code></td>
+    <td><p class="text-center">This is some example text with centered alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-right</code></td>
+    <td><p class="text-right">This is some example text with right alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-justify</code></td>
+    <td><p class="text-justify">This is some example text with justified alignment.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-nowrap</code></td>
+    <td><p class="text-nowrap">This text doesn't wrap.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-lowercase</code></td>
+    <td><p class="text-lowercase">This is some example text with lowercase styles.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-uppercase</code></td>
+    <td><p class="text-uppercase">This is some example text with uppercase styles.</p></td>
+  </tr>
+  <tr>
+    <td><code>.text-capitalize</code></td>
+    <td><p class="text-capitalize">This is some example text with capitalize styles.</p></td>
+  </tr>
+</table>
+
+</section><!-- .docs-item -->

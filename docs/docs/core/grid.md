@@ -3,7 +3,7 @@ layout: page
 title: "Grid System"
 link:
   text: "Grid"
-order: 4
+order: 6
 ---
 
 BaseWeb is built with a very flexible grid system. Out of the box, you can use the default classes and settings to have a basic twelve column flexible grid. The basic things to know when using the base grid system is the markup structure.
@@ -211,13 +211,55 @@ When using a fluid grid (percent based) the sum of columns in a row must equal t
 By default, our grid system uses inner-gutter-width (padding) instead of gutter-width (margins). So we're able to keep absolute gutters with a fluid grid for nested elements. But if you used margin gutters with a fluid grid, gutters would need to be percentage based.
 </div>
 
+<div id="toc" class="toc"></div>
+
+<section id="map-grid" class="docs-item" markdown="1">
+
+### Variable Map
+
+All grid variables are defined within the `$grid` map and is used as the default settings for all grid system mixins and functions. You can modify these settings directly to effect all grid systems, or pass in a custom map to specific mixins.
+
+```scss
+$grid: (
+  'output' : true,
+  'output-mobile' : true,
+
+  'class-container' : 'container',
+  'class-row' : 'row',
+  'class-column' : 'col',
+  'class-column-left' : 'col-left',
+  'class-column-right' : 'col-right',
+  'class-prefix' : 'prefix',
+  'class-suffix' : 'suffix',
+
+  'type' : 'normal',
+
+  'total-width' : 100%,
+  'gutter-width' : 0,
+  'inner-gutter-width' : 1.5rem,
+
+  'columns' : 12,
+  'column-float' : left,
+
+  'container-margin' : 0 auto,
+  'container-padding' : 0 1.5rem,
+  'container-min-width' : none,
+  'container-max-width' : 75rem,
+
+) !default;
+```
+
+</section><!-- .docs-item -->
+
+<header class="docs-header" markdown="1">
+
 ## Grid Functions
 
 These functions are used to calculate specific grid maths such as the width a set number of columns should span. These are used within grid mixins and are often used when defining semantic grid systems.
 
-<ul class="list list-docs">
+</header>
 
-<li markdown="1">
+<section id="function-column-width" class="docs-item" markdown="1">
 
 ### column-width
 
@@ -243,7 +285,7 @@ $return: column-width( $index, $options: () );
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
   <tr>
@@ -252,9 +294,9 @@ $return: column-width( $index, $options: () );
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="function-spacing-width" class="docs-item" markdown="1">
 
 ### spacing-width
 
@@ -280,7 +322,7 @@ $return: spacing-width( $index, $options: () );
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
   <tr>
@@ -289,20 +331,17 @@ $return: spacing-width( $index, $options: () );
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-</ul>
-</section>
-
-<section class="subsection subsection-mixins" markdown="1">
+<header class="docs-header" markdown="1">
 
 ## Grid Mixins
 
 These mixins are used to output styles that define a grid system's components. Such as grid containers, rows and columns as well as modifier classes like prefix and suffix spacing. They are also used for outputting the class based grid system.
 
-<ul class="list list-docs">
+</header>
 
-<li markdown="1">
+<section id="mixin-make-container" class="docs-item" markdown="1">
 
 ### make-container
 
@@ -321,13 +360,13 @@ Outputs all the styles needed to make an element a grid container.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-row" class="docs-item" markdown="1">
 
 ### make-row
 
@@ -346,13 +385,13 @@ Outputs all the styles needed to make an element a grid row.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-column-base" class="docs-item" markdown="1">
 
 ### make-column-base
 
@@ -371,13 +410,13 @@ Creates the base styles for a column but excludes setting the width. Also create
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-make-column" class="docs-item" markdown="1">
 
 ### make-column
 
@@ -403,14 +442,14 @@ Creates all the styles for a column and sets its width.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-prefix" class="docs-item" markdown="1">
 
 ### add-prefix
 
@@ -436,14 +475,14 @@ Creates the base styles for a column and sets its width.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-add-suffix" class="docs-item" markdown="1">
 
 ### add-suffix
 
@@ -469,14 +508,14 @@ Creates the base styles for a spacing suffix.
   <tr>
     <td><code>$options</code></td>
     <td>Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td></td>
   </tr>
 </table>
 
-</li>
+</section><!-- .docs-item -->
 
-<li markdown="1">
+<section id="mixin-build-grid-system" class="docs-item" markdown="1">
 
 ### build-grid-system
 
@@ -496,7 +535,7 @@ Outputs all the classes and styles for the class based grid system. You can eith
   <tr>
     <td><code>$grid-type | $options</code></td>
     <td>String or Map</td>
-    <td><code>$grid()</code></td>
+    <td><code>$grid</code></td>
     <td>Pass either a grid type string or a map with grid settings.</td>
   </tr>
 </table>
@@ -516,9 +555,9 @@ The most basic use of `build-grid-system()` is to output mobile styles and withi
 }
 ```
 
-#### Classes Output
+<p class="subheading">Classes Output</p>
 
-These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid()` map.
+These are all the default classes that become available when generating your grid. Keep in mind that class names can be changed using the class name variables in our `$grid` map.
 
 ```html
 <div class="container">
@@ -545,10 +584,7 @@ These are all the default classes that become available when generating your gri
 </div>
 
 <div class="notice info" markdown="1">
-You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid()` map or passing it directly to the mixin manually.
+You can disabled the output of prefix and suffix classes by setting their class name variables to `none` in `$grid` map or passing it directly to the mixin manually.
 </div>
 
-</li>
-
-</ul>
-</section>
+</section><!-- .docs-item -->
