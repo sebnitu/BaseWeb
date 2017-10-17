@@ -236,6 +236,7 @@ $badges: (
       'color' : $blue,
       'background' : $blue-50,
       'hover' : (
+        'color' : $blue,
         'background' : $blue-100,
       ),
     ),
@@ -243,6 +244,7 @@ $badges: (
       'color' : $white,
       'background' : $blue,
       'hover' : (
+        'color' : $white,
         'background' : $blue-700,
       ),
     ),
@@ -278,6 +280,22 @@ $badges: (
         'background' : $yellow-600,
       ),
     ),
+    'orange' : (
+      'color' : $orange-700,
+      'background' : $orange-50,
+      'hover' : (
+        'color' : $orange-700,
+        'background' : $orange-100,
+      ),
+    ),
+    'orange.inverted' : (
+      'color' : $white,
+      'background' : $orange,
+      'hover' : (
+        'color' : $white,
+        'background' : $orange-700,
+      ),
+    ),
     'red' : (
       'color' : $red,
       'background' : $red-50,
@@ -292,6 +310,22 @@ $badges: (
       'hover' : (
         'color' : $white,
         'background' : $red-700,
+      ),
+    ),
+    'purple' : (
+      'color' : $purple,
+      'background' : $purple-50,
+      'hover' : (
+        'color' : $purple-700,
+        'background' : $purple-100,
+      ),
+    ),
+    'purple.inverted' : (
+      'color' : $white,
+      'background' : $purple,
+      'hover' : (
+        'color' : $white,
+        'background' : $purple-700,
       ),
     ),
     'light' : (

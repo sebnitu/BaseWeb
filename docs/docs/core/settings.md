@@ -104,7 +104,7 @@ $anchors: (
   'text-decoration' : none,
   'hover' : (
     'color' : $blue-700,
-    'border-color' : inherit,
+    'border-color' : $blue-700,
   ),
 ) !default;
 ```

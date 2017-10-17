@@ -11,17 +11,23 @@ The chips component is used for a minimal icon button actions. It's often used i
 ```
 
 <div class="demo demo-chips">
-  <p>
+  <div class="flex-grid">
     <button class="chip">{% include content-icon.html icon="x" %}</button>
     <button class="chip">{% include content-icon.html icon="anchor" %}</button>
     <button class="chip">{% include content-icon.html icon="bell" %}</button>
+    <button class="chip">{% include content-icon.html icon="command" %}</button>
+    <button class="chip">{% include content-icon.html icon="bluetooth" %}</button>
+    <button class="chip">{% include content-icon.html icon="edit-3" %}</button>
+    <button class="chip">{% include content-icon.html icon="heart" %}</button>
+    <button class="chip">{% include content-icon.html icon="arrow-up-left" %}</button>
+    <button class="chip">{% include content-icon.html icon="arrow-up" %}</button>
+    <button class="chip">{% include content-icon.html icon="arrow-up-right" %}</button>
     <button class="chip">{% include content-icon.html icon="arrow-right" %}</button>
     <button class="chip">{% include content-icon.html icon="arrow-down-right" %}</button>
-    <button class="chip">{% include content-icon.html icon="cloud-lightning" %}</button>
-    <button class="chip">{% include content-icon.html icon="cloud-rain" %}</button>
-    <button class="chip">{% include content-icon.html icon="chevron-right" %}</button>
-    <button class="chip">{% include content-icon.html icon="chevrons-right" %}</button>
-  </p>
+    <button class="chip">{% include content-icon.html icon="arrow-down" %}</button>
+    <button class="chip">{% include content-icon.html icon="arrow-down-left" %}</button>
+    <button class="chip">{% include content-icon.html icon="arrow-left" %}</button>
+  </div>
 </div>
 
 Incuded are color modifiers to change the look of the chips element depending on it's context.
@@ -34,12 +40,12 @@ Incuded are color modifiers to change the look of the chips element depending on
 ```
 
 <div class="demo demo-chips demo-inverted">
-  <p>
-    <a href="#" class="chip light">{% include content-icon.html icon="x" %}</a>
-    <a href="#" class="chip red">{% include content-icon.html icon="x" %}</a>
-    <a href="#" class="chip yellow">{% include content-icon.html icon="x" %}</a>
-    <a href="#" class="chip green">{% include content-icon.html icon="x" %}</a>
-  </p>
+  <div class="flex-grid">
+    <button class="chip red">{% include content-icon.html icon="x" %}</button>
+    <button class="chip yellow">{% include content-icon.html icon="minus" %}</button>
+    <button class="chip green">{% include content-icon.html icon="maximize-2" %}</button>
+    <button class="chip light">{% include content-icon.html icon="command" %}</button>
+  </div>
 </div>
 
 <div id="toc" class="toc"></div>
