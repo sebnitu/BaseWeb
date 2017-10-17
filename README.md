@@ -1,6 +1,6 @@
 [![BaseWeb](https://d3vv6lp55qjaqc.cloudfront.net/items/3N173I3s2s211E1q1e1N/baseweb-logo-readme.svg)](http://getbaseweb.com)
 
-Currently v3.0.0
+Currently v3.0.1
 
 [![npm version](https://img.shields.io/npm/v/baseweb.svg)](https://www.npmjs.com/package/baseweb)
 [![devDependency Status](https://img.shields.io/david/dev/sebnitu/baseweb.svg)](https://david-dm.org/sebnitu/baseweb?type=dev)
