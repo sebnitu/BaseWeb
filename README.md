@@ -14,4 +14,3 @@ Documentation can be found at [http://getbaseweb.com/](http://getbaseweb.com/). 
 ## Copyright and License
 
 BaseWeb and BaseWeb documentation copyright (c) 2017 [Sebastian Nitu](http://sebnitu.com). BaseWeb is released under the [MIT license](https://github.com/sebnitu/BaseWeb/blob/master/LICENSE) and BaseWeb documentation is released under [Creative Commons](https://github.com/sebnitu/BaseWeb/blob/master/docs/LICENSE).
-# y-shaped-stick
