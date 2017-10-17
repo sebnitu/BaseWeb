@@ -3,6 +3,8 @@ layout: post
 title: "The Modifiers Update"
 date: 2017-10-16
 version: "3.0.0"
+og:
+  image: "illustration-modifiers.jpg"
 ---
 
 <p class="text-lead" markdown="1">The modifiers update marks the next major version of BaseWeb. There has been a re-write of how components and their modifiers are built.</p>
