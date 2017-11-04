@@ -2,7 +2,7 @@
 /*!
  * BaseWeb
  * A fresh front-end development framework
- * @version 3.0.0
+ * @version 3.0.1
  *
  * @author Sebastian Nitu
  * @url https://github.com/sebnitu/BaseWeb
@@ -4060,6 +4060,64 @@ figure {
 }
 
 /*==============================================================================
+  @Nav Posts - scss/custom/_nav-posts.scss
+==============================================================================*/
+.nav-posts {
+  margin: 2em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.nav-posts a {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  text-align: left;
+  white-space: normal;
+  -webkit-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+
+.nav-posts a:hover {
+  border-color: #1976D2;
+}
+
+.nav-posts a .icon {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin: 0 0.75em 0 0;
+  font-size: 1.5rem;
+  line-height: 1em;
+}
+
+.nav-posts a + a {
+  margin-top: 1em;
+}
+
+/*==============================================================================
   @Docs Demos - scss/custom/_docs-demos.scss
 ==============================================================================*/
 .demo {
@@ -6762,51 +6820,6 @@ a.widget-featured.color-5:hover h2 {
   }
   .social-links a + a {
     margin-left: 0.5em;
-  }
-}
-
-/**
- * Page Navigation
- */
-.page-nav {
-  margin: 2em 0;
-}
-
-.page-nav a {
-  position: relative;
-  display: block;
-  margin: 1em 0;
-  padding: 1em 1.5em;
-  background: #fff;
-  border: 2px solid #2196F3;
-  border-radius: 3px;
-  color: #2196F3;
-  -webkit-transition: none;
-  transition: none;
-}
-
-.page-nav a:hover {
-  background: #2196F3;
-  border-color: #2196F3;
-  color: #fff;
-}
-
-.page-nav .icon {
-  float: left;
-  margin: 0.125em;
-  font-size: 1.5em;
-  vertical-align: top;
-}
-
-.page-nav span {
-  display: block;
-  padding-left: 3em;
-  line-height: 2em;
-}
-
-@media (min-width: 760px) {
-  .page-nav {
-    margin: 4em 0;
   }
 }
 

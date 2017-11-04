@@ -1,17 +1,19 @@
-{%- capture path -%}
+{%- capture type -%}
   {%- if page.layout == "post" -%}
     posts
+  {%- elsif page.collection -%}
+    {{ page.collection }}
   {%- else -%}
     pages
   {%- endif -%}
 {%- endcapture -%}
 
-{%- capture dir -%}
+{%- capture context -%}
   {%- if page.layout == "post" -%}
     {{ page.path | split:"/" | last | split:"." | first }}
   {%- else -%}
-    {{ page.title || slugify }}
+    {{ page.title | slugify }}
   {%- endif -%}
 {%- endcapture -%}
 
-{{ site.url }}{{ site.baseurl }}/assets/{{ path }}/{{ dir }}/{{ include.file }}
+{{ site.url }}{{ site.baseurl }}/assets/{{ type }}/{{ context }}/{{ include.file }}
