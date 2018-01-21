@@ -17,7 +17,6 @@ const merge = require('merge-stream')
 
 // Styles
 const sass = require('gulp-sass')
-const sourcemaps = require('gulp-sourcemaps')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
@@ -113,7 +112,7 @@ gulp.task('data:icons', function() {
 
   const src  = paths.icons
   const dest = paths.docs.data
-  
+
   var files = []
 
   fs.readdirSync(src).forEach(file => {
@@ -263,10 +262,17 @@ gulp.task('docs:img', function() {
  * SVG Tasks
  */
 
-gulp.task('svg:icons', function() {
+ gulp.task('svg:clean', function () {
+   return del([
+     paths.docs.inc + 'icons',
+     paths.docs.inc + 'svg/symbols.svg'
+   ])
+ })
+
+gulp.task('svg:icons', ['svg:clean'], function() {
 
   const src  = paths.icons + '*.svg'
-  const dest = paths.docs.inc + 'tmp/'
+  const dest = paths.docs.inc + 'icons/'
 
   // Setup our promise and set item processed to 0
   var deferred = Q.defer()
@@ -307,7 +313,7 @@ gulp.task('svg:icons', function() {
 
 gulp.task('svg:symbols', ['svg:icons'], function() {
 
-  const src  = paths.docs.inc + 'tmp/*.svg'
+  const src  = paths.docs.inc + 'icons/*.svg'
   const dest = paths.docs.inc + 'svg/'
 
   var symbols = gulp.src( src )
@@ -316,16 +322,13 @@ gulp.task('svg:symbols', ['svg:icons'], function() {
       svgClassname: 'svg-symbols',
       templates: ['default-svg']
     }))
+    .pipe(rename('symbols.svg'))
     .pipe(gulp.dest( dest ))
 
   return symbols
 })
 
-gulp.task('svg:clean', ['svg:symbols'], function () {
-  return del([paths.docs.inc + 'tmp'])
-})
-
-gulp.task('svg', ['svg:icons', 'svg:symbols', 'svg:clean'])
+gulp.task('svg', ['svg:icons', 'svg:symbols'])
 
 /**
  * Bulk Tasks
