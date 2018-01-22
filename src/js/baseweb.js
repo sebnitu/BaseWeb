@@ -1,20 +1,13 @@
-/*
-require
-  _utility.js
-  _dismissible.js
-  _dropdowns.js
-  _tabs.js
-  _offcanvas.js
-*/
+import dismissible from './components/dismissible'
+import dropdowns from './components/dropdowns'
+import tabs from './components/tabs'
+import offcanvas from './components/offcanvas'
 
-// Default initializations
-;(function (window, document, undefined) {
+(function (window, document, undefined) {
 
-  'use strict';
+  dismissible.init()
+  dropdowns.init()
+  tabs.init()
+  offcanvas.init()
 
-  dismissible.init();
-  dropdowns.init();
-  tabs.init();
-  offcanvas.init();
-
-})(window, document);
+})(window, document)

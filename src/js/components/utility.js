@@ -1,14 +1,6 @@
-var utility = (function () {
+export default function() {
 
-  'use strict';
-
-  //
-  // Variables
-  //
-
-  var api = {};
-  // var settings;
-  // var defaults = {};
+  var api = {}
 
   //
   // Public Methods
@@ -22,13 +14,13 @@ var utility = (function () {
    */
   api.hasClass = function ( el, c ) {
 
-    c = api.toArray(c);
+    c = api.toArray(c)
 
     return c.every( function ( c ) {
-      return el.classList.contains(c);
-    });
+      return el.classList.contains(c)
+    })
 
-  }; // End hasClass
+  } // End hasClass
 
   /**
    * Adds a class or classes to an element
@@ -37,13 +29,13 @@ var utility = (function () {
    */
   api.addClass = function ( el, c ) {
 
-    c = api.toArray(c);
+    c = api.toArray(c)
 
     c.forEach( function ( c ) {
-      el.classList.add( c );
-    });
+      el.classList.add( c )
+    })
 
-  }; // End addClass
+  } // End addClass
 
   /**
    * Remove a class or classes from an element
@@ -52,13 +44,13 @@ var utility = (function () {
    */
   api.removeClass = function ( el, c ) {
 
-    c = api.toArray(c);
+    c = api.toArray(c)
 
     c.forEach( function ( c ) {
-      el.classList.remove( c );
-    });
+      el.classList.remove( c )
+    })
 
-  }; // End removeClass
+  } // End removeClass
 
   /**
    * Toggle a class or classes on an element
@@ -67,13 +59,13 @@ var utility = (function () {
    */
   api.toggleClass = function ( el, c ) {
 
-    c = api.toArray(c);
+    c = api.toArray(c)
 
     c.forEach( function ( c ) {
-      el.classList.toggle(c);
-    });
+      el.classList.toggle(c)
+    })
 
-  }; // End toggleClass
+  } // End toggleClass
 
   /**
    * Find the closest parent element based on class. This is different from the
@@ -83,9 +75,9 @@ var utility = (function () {
    * @return {Element} Closest parent element
    */
   api.closest = function ( el, c ) {
-    while ((el = el.parentElement) && !api.hasClass(el, c));
-    return el;
-  }; // End closest
+    while ((el = el.parentElement) && !api.hasClass(el, c))
+    return el
+  } // End closest
 
   /**
    * Converts a string to an array. If an array is passed, it's returned as is.
@@ -95,39 +87,39 @@ var utility = (function () {
    */
   api.toArray = function( s ) {
 
-    var array = [];
+    var array = []
 
     if (typeof s === 'string') {
-      array.push(s);
+      array.push(s)
     } else if (Array.isArray(s)) {
-      array = s;
+      array = s
     } else {
-      return false;
+      return false
     }
 
-    return array;
+    return array
 
-  }; // End toArray
+  } // End toArray
 
   /**
    * Merge two or more objects. Returns a new object. Set the first argument
    * to `true` for a deep or recursive merge.
    * @param {Boolean} [Optional] If true, do a deep (or recursive) merge
-   * @param {Object} The objects to merge together; each overriding the next
+   * @param {Object} The objects to merge together each overriding the next
    * @returns {Object} Merged values of defaults and options
    */
   api.extend = function () {
 
     // Variables
-    var extended = {};
-    var deep = false;
-    var i = 0;
-    var length = arguments.length;
+    var extended = {}
+    var deep = false
+    var i = 0
+    var length = arguments.length
 
     // Check if a deep merge
     if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
-      deep = arguments[0];
-      i++;
+      deep = arguments[0]
+      i++
     }
 
     // Merge the object into the extended object
@@ -136,28 +128,28 @@ var utility = (function () {
         if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
           // If deep merge and property is an object, merge properties
           if ( deep && Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
-            extended[prop] = extend( true, extended[prop], obj[prop] );
+            extended[prop] = extend( true, extended[prop], obj[prop] )
           } else {
-            extended[prop] = obj[prop];
+            extended[prop] = obj[prop]
           }
         }
       }
-    };
-
-    // Loop through each object and conduct a merge
-    for ( ; i < length; i++ ) {
-      var obj = arguments[i];
-      merge(obj);
     }
 
-    return extended;
+    // Loop through each object and conduct a merge
+    for (  i < length i++ ) {
+      var obj = arguments[i]
+      merge(obj)
+    }
 
-  }; // End extend
+    return extended
+
+  } // End extend
 
   //
   // Return Public APIs
   //
 
-  return api;
+  return api
 
-})();
+})()

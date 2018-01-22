@@ -1,36 +1,35 @@
 'use strict'
 
 // Core
-const gulp = require('gulp')
-const gutil = require('gulp-util')
-const fs = require('fs')
-const path = require('path')
-const del = require('del')
-const Q = require('q')
-const newer = require('gulp-newer')
-const rename = require('gulp-rename')
-const replace = require('gulp-replace')
-const sourcemaps = require('gulp-sourcemaps')
-const livereload = require('gulp-livereload')
-const minimist = require('minimist')
-const merge = require('merge-stream')
+import gulp from 'gulp'
+import gutil from 'gulp-util'
+import babel from 'gulp-babel'
+import fs from 'fs'
+import path from 'path'
+import del from 'del'
+import Q from 'q'
+import rename from 'gulp-rename'
+import replace from 'gulp-replace'
+import sourcemaps from 'gulp-sourcemaps'
+import livereload from 'gulp-livereload'
+import merge from 'merge-stream'
+import minimist from 'minimist'
 
 // Styles
-const sass = require('gulp-sass')
-const postcss = require('gulp-postcss')
-const autoprefixer = require('autoprefixer')
-const cssnano = require('cssnano')
+import sass from 'gulp-sass'
+import postcss from 'gulp-postcss'
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
 
 // JavaScript
-const concat = require('gulp-concat')
-const deporder = require('gulp-deporder')
-const stripdebug = require('gulp-strip-debug')
-const uglify = require('gulp-uglify')
+import concat from 'gulp-concat'
+import deporder from 'gulp-deporder'
+import uglify from 'gulp-uglify'
 
 // Graphics
-const imagemin = require('gulp-imagemin')
-const feather = require('feather-icons')
-const svgSymbols = require('gulp-svg-symbols')
+import imagemin from 'gulp-imagemin'
+import feather from 'feather-icons'
+import svgSymbols from 'gulp-svg-symbols'
 
 // Paths
 const paths = {
@@ -69,15 +68,15 @@ const searchFiles = {
 }
 
 // Save passed parameters to use in gulp tasks
-var options = minimist(process.argv.slice(2))
+const options = minimist(process.argv.slice(2))
 
 /**
  * Replace task
  */
 
-gulp.task('replace', function() {
+gulp.task('replace', () => {
 
-  const src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : []
+  var src = typeof searchFiles['exclude'] != "undefined" ? searchFiles['exclude'] : []
 
   if ((options.s == undefined) || (options.r == undefined) || (options.f == undefined)) {
     console.error('USAGE: gulp replace -s <SEARCH> -r <REPLACE> -f <FILES>')
@@ -105,121 +104,154 @@ gulp.task('replace', function() {
 })
 
 /**
- * Icons Data
+ * Data
  */
 
-gulp.task('data:icons', function() {
+gulp.task('data:icons', () => {
 
+  // Set paths
   const src  = paths.icons
   const dest = paths.docs.data
 
+  // Init our files array
   var files = []
 
+  // Loop through our src files
   fs.readdirSync(src).forEach(file => {
+    // If a SVG files exists, save it in our array
     if (path.extname(file) == '.svg') {
       files.push(file.replace(/\.[^/.]+$/, ""))
     }
   })
 
-  fs.writeFile(dest + 'icons.json', JSON.stringify(files), function (err) {
+  // Write the JSON object to a file
+  fs.writeFile(dest + 'icons.json', JSON.stringify(files), (err) => {
     if (err) { console.error(err) }
   })
-
 })
+
+/**
+ * Clean Task
+ */
+
+gulp.task('dist:clean', () => {
+  return del(paths.dest)
+})
+
+gulp.task('docs:clean', () => {
+  return del(paths.docs.dest)
+})
+
+gulp.task('clean', ['dist:clean', 'docs:clean'])
 
 /**
  * Styles
  */
 
-gulp.task('css', function() {
-  var
-    src = paths.src + 'scss/baseweb.scss',
-    dest = paths.dest + 'css/',
-    sassOpts = {
-      outputStyle: 'expanded',
-      precision: 3
-    },
-    postcssOpts = [
-      autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
-    ],
-    css = gulp.src(src)
+gulp.task('dist:css:clean', () => {
+  return del(paths.dest + 'css')
+})
+
+const task_css = (key, style, filename) => {
+  gulp.task('dist:css:' + key, () => {
+    const src = paths.src + 'scss/baseweb.scss'
+    const dest = paths.dest + 'css/'
+    const css = gulp.src(src)
       .pipe(sourcemaps.init())
-      .pipe(sass(sassOpts)
+      .pipe(sass({
+        outputStyle: style
+      })
       .on('error', sass.logError))
-      .pipe(postcss(postcssOpts))
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(dest)),
-    cssmin = gulp.src(src)
-      .pipe(sourcemaps.init())
-      .pipe(sass(sassOpts)
-      .on('error', sass.logError))
-      .pipe(postcss(postcssOpts))
-      .pipe(postcss([cssnano]))
-      .pipe(rename('baseweb.min.css'))
+      .pipe(postcss([
+        autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
+      ]))
+      .pipe(rename(filename))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest))
 
-  return merge(css, cssmin)
-})
+    return css
+  })
+}
+
+task_css('dev', 'expanded', 'baseweb.css')
+task_css('prod', 'compressed', 'baseweb.min.css')
+
+gulp.task('dist:css', ['dist:css:dev', 'dist:css:prod'])
 
 /**
  * JavaScript
  */
 
-gulp.task('js', function() {
-  var
-    src = paths.src + 'js/**/*',
-    dest = paths.dest + 'js/',
-    js = gulp.src(src)
-      .pipe(deporder())
-      .pipe(concat('baseweb.js'))
-      .pipe(gulp.dest(dest)),
-    jsmin = gulp.src(src)
-      .pipe(deporder())
-      .pipe(concat('baseweb.min.js'))
-      .pipe(stripdebug())
-      .pipe(uglify())
-      .pipe(gulp.dest(dest))
-
-  return merge(js, jsmin)
+gulp.task('dist:js:clean', () => {
+  return del(paths.dest + 'js')
 })
+
+gulp.task('dist:js:dev', () => {
+  const src = paths.src + 'js/baseweb.js'
+  const dest = paths.dest + 'js/'
+  const js = gulp.src(src)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(concat('baseweb.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest))
+
+  return js
+})
+
+gulp.task('dist:js:prod', () => {
+  const src = paths.src + 'js/baseweb.js'
+  const dest = paths.dest + 'js/'
+  const js = gulp.src(src)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(concat('baseweb.min.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest))
+
+  return js
+})
+
+gulp.task('dist:js', ['dist:js:dev', 'dist:js:prod'])
 
 /**
  * Styles
  */
 
-gulp.task('docs:css', function() {
-  var
-    src = paths.docs.src + 'scss/docs.scss',
-    dest = paths.docs.dest + 'css/',
-    sassOpts = {
-      outputStyle: 'expanded',
-      includePaths: ['docs/src/scss/', 'src/scss/'],
-      precision: 3
-    },
-    postcssOpts = [
-      autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
-    ],
-    css = gulp.src(src)
+gulp.task('docs:css:clean', () => {
+  return del(paths.dest + 'css')
+})
+
+const task_docs_css = (key, style, filename) => {
+  gulp.task('docs:css:' + key, () => {
+    const src = paths.docs.src + 'scss/baseweb.scss'
+    const dest = paths.docs.dest + 'css/'
+    const css = gulp.src(src)
       .pipe(sourcemaps.init())
-      .pipe(sass(sassOpts)
+      .pipe(sass({
+        outputStyle: style,
+        includePaths: [
+          paths.docs.src + 'scss/',
+          paths.src + 'scss/'
+        ],
+      })
       .on('error', sass.logError))
-      .pipe(postcss(postcssOpts))
-      .pipe(rename('baseweb.css'))
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(dest)),
-    cssmin = gulp.src(src)
-      .pipe(sourcemaps.init())
-      .pipe(sass(sassOpts)
-      .on('error', sass.logError))
-      .pipe(postcss(postcssOpts))
-      .pipe(postcss([cssnano]))
-      .pipe(rename('baseweb.min.css'))
+      .pipe(postcss([
+        autoprefixer({ browsers: ['last 2 versions', '> 2%'] })
+      ]))
+      .pipe(rename(filename))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(dest))
 
-  return merge(css, cssmin)
-})
+    return css
+  })
+}
+
+task_docs_css('dev', 'expanded', 'baseweb.css')
+task_docs_css('prod', 'compressed', 'baseweb.min.css')
+
+gulp.task('docs:css', ['docs:css:dev', 'docs:css:prod'])
 
 /**
  * JavaScript
@@ -251,9 +283,9 @@ gulp.task('docs:js', function() {
  */
 
 gulp.task('docs:img', function() {
-  var dest = paths.docs.dest + 'img/'
-  return gulp.src(paths.docs.src + 'img/**/*')
-    .pipe(newer(dest))
+  const src = paths.docs.src + 'img/**/*'
+  const dest = paths.docs.dest + 'img/'
+  return gulp.src(src)
     .pipe(imagemin({ optimizationLevel: 5 }))
     .pipe(gulp.dest(dest))
 })
@@ -262,16 +294,17 @@ gulp.task('docs:img', function() {
  * SVG Tasks
  */
 
- gulp.task('svg:clean', function () {
-   return del([
-     paths.docs.inc + 'icons',
-     paths.docs.inc + 'svg/symbols.svg'
-   ])
- })
+gulp.task('svg:clean', function () {
+  return del([
+    paths.docs.inc + 'icons',
+    paths.docs.inc + 'svg/symbols.svg'
+  ])
+})
 
 gulp.task('svg:icons', ['svg:clean'], function() {
 
-  const src  = paths.icons + '*.svg'
+  // Set paths
+  const src = paths.icons + '*.svg'
   const dest = paths.docs.inc + 'icons/'
 
   // Setup our promise and set item processed to 0
@@ -312,11 +345,9 @@ gulp.task('svg:icons', ['svg:clean'], function() {
 })
 
 gulp.task('svg:symbols', ['svg:icons'], function() {
-
-  const src  = paths.docs.inc + 'icons/*.svg'
+  const src = paths.docs.inc + 'icons/*.svg'
   const dest = paths.docs.inc + 'svg/'
-
-  var symbols = gulp.src( src )
+  return gulp.src( src )
     .pipe(svgSymbols({
       id: 'icon-%f',
       svgClassname: 'svg-symbols',
@@ -324,8 +355,6 @@ gulp.task('svg:symbols', ['svg:icons'], function() {
     }))
     .pipe(rename('symbols.svg'))
     .pipe(gulp.dest( dest ))
-
-  return symbols
 })
 
 gulp.task('svg', ['svg:icons', 'svg:symbols'])
@@ -333,23 +362,25 @@ gulp.task('svg', ['svg:icons', 'svg:symbols'])
 /**
  * Bulk Tasks
  */
-gulp.task('src', ['css', 'js', 'icons'])
-gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'docs:icons'])
-gulp.task('go', ['src', 'docs', 'svg'])
+
+gulp.task('dist', ['dist:css', 'dist:js'])
+gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'svg'])
+gulp.task('all', ['src', 'docs', 'svg'])
 
 /**
- * Watch all asset files and runs the appropriate build task based on changes
+ * Watch Task
  */
+
 gulp.task('watch', function() {
   gulp.watch(paths.src + 'scss/**/*', ['css', 'docs:css'])
   gulp.watch(paths.src + 'js/**/*', ['js', 'docs:js'])
   gulp.watch(paths.docs.src + 'scss/**/*', ['docs:css'])
   gulp.watch(paths.docs.src + 'js/**/*', ['docs:js'])
-  gulp.watch(paths.docs.src + 'img/**/*', ['docs:img'])
 })
 
 /**
  * Default task
  * Builds everything and then initiates the watch task
  */
-gulp.task('default', ['go', 'watch'])
+
+gulp.task('default', ['all', 'watch'])
