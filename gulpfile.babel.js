@@ -55,11 +55,10 @@ const searchFiles = {
   year: [
     'README.md',
     'LICENSE',
-    'src/scss/_colophon.scss'
+    'src/scss/core/_colophon.scss'
   ],
   exclude: [
-    '!./node_modules/**',
-    '!./bower_components/**'
+    '!./node_modules/**'
   ]
 }
 
