@@ -10,7 +10,6 @@ import Q from 'q'
 import rename from 'gulp-rename'
 import replace from 'gulp-replace'
 import sourcemaps from 'gulp-sourcemaps'
-import livereload from 'gulp-livereload'
 import minimist from 'minimist'
 
 // Styles
@@ -408,8 +407,8 @@ gulp.task('all', ['dist', 'docs', 'svg'])
  */
 
 gulp.task('watch', function() {
-  gulp.watch(paths.src + 'scss/**/*', ['css', 'docs:css'])
-  gulp.watch(paths.src + 'js/**/*', ['js', 'docs:js'])
+  gulp.watch(paths.src + 'scss/**/*', ['css'])
+  gulp.watch(paths.src + 'js/**/*', ['js'])
   gulp.watch(paths.docs.src + 'scss/**/*', ['docs:css'])
   gulp.watch(paths.docs.src + 'js/**/*', ['docs:js'])
 })
