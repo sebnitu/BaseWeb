@@ -1,6 +1,4 @@
-import utility from './utility'
-
-export default function() {
+var dismissible = (function() {
 
   var u = utility
   var api = {}

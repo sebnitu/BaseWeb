@@ -1,4 +1,3 @@
-// require jquery.sticky.js jquery.function.js
 /**
  * jquery.docready.js
  * A place to store all your JavaScript you want to run after
@@ -16,6 +15,12 @@
    * When the document is ready
    */
   $(document).ready(function () {
+
+    // Initialize BaseWeb components
+    dismissible.init()
+    dropdowns.init()
+    tabs.init()
+    offcanvas.init()
 
     /**
      * Back to top

@@ -3,7 +3,6 @@
 // Core
 import gulp from 'gulp'
 import gutil from 'gulp-util'
-import babel from 'gulp-babel'
 import fs from 'fs'
 import path from 'path'
 import del from 'del'
@@ -12,18 +11,16 @@ import rename from 'gulp-rename'
 import replace from 'gulp-replace'
 import sourcemaps from 'gulp-sourcemaps'
 import livereload from 'gulp-livereload'
-import merge from 'merge-stream'
 import minimist from 'minimist'
 
 // Styles
 import sass from 'gulp-sass'
 import postcss from 'gulp-postcss'
 import autoprefixer from 'autoprefixer'
-import cssnano from 'cssnano'
 
 // JavaScript
+import babel from 'gulp-babel'
 import concat from 'gulp-concat'
-import deporder from 'gulp-deporder'
 import uglify from 'gulp-uglify'
 
 // Graphics
@@ -134,6 +131,16 @@ gulp.task('data:icons', () => {
  * Clean Task
  */
 
+gulp.task('js:clean', () => {
+  return del(paths.dest + 'js')
+  return del(paths.docs.dest + 'js')
+})
+
+gulp.task('css:clean', () => {
+  return del(paths.dest + 'css')
+  return del(paths.docs.dest + 'css')
+})
+
 gulp.task('dist:clean', () => {
   return del(paths.dest)
 })
@@ -182,12 +189,17 @@ gulp.task('dist:css', ['dist:css:dev', 'dist:css:prod'])
  * JavaScript
  */
 
+const dist_js_files = [
+  paths.src + 'js/utility.js',
+  paths.src + 'js/**/*.js'
+]
+
 gulp.task('dist:js:clean', () => {
   return del(paths.dest + 'js')
 })
 
 gulp.task('dist:js:dev', () => {
-  const src = paths.src + 'js/baseweb.js'
+  const src = dist_js_files
   const dest = paths.dest + 'js/'
   const js = gulp.src(src)
     .pipe(sourcemaps.init())
@@ -200,13 +212,13 @@ gulp.task('dist:js:dev', () => {
 })
 
 gulp.task('dist:js:prod', () => {
-  const src = paths.src + 'js/baseweb.js'
+  const src = dist_js_files
   const dest = paths.dest + 'js/'
   const js = gulp.src(src)
     .pipe(sourcemaps.init())
     .pipe(babel())
-    .pipe(concat('baseweb.min.js'))
     .pipe(uglify())
+    .pipe(concat('baseweb.min.js'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(dest))
 
@@ -257,30 +269,52 @@ gulp.task('docs:css', ['docs:css:dev', 'docs:css:prod'])
  * JavaScript
  */
 
-gulp.task('docs:js', function() {
-  var
-    src = [
-      paths.src + 'js/**/*',
-      paths.docs.src + 'js/**/*'
-    ],
-    dest = paths.docs.dest + 'js/',
-    js = gulp.src(src)
-      .pipe(deporder())
-      .pipe(concat('baseweb.js'))
-      .pipe(gulp.dest(dest)),
-    jsmin = gulp.src(src)
-      .pipe(deporder())
-      .pipe(concat('baseweb.min.js'))
-      .pipe(stripdebug())
-      .pipe(uglify())
-      .pipe(gulp.dest(dest))
+const docs_js_files = [
+  paths.src + 'js/utility.js',
+  paths.src + 'js/**/*.js',
+  paths.docs.src + 'js/**/*.js'
+]
 
-  return merge(js, jsmin)
+gulp.task('docs:js:clean', () => {
+  return del(paths.docs.dest + 'js')
 })
+
+gulp.task('docs:js:dev', () => {
+  const src = docs_js_files
+  const dest = paths.docs.dest + 'js/'
+  const js = gulp.src(src)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(concat('baseweb.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest))
+
+  return js
+})
+
+gulp.task('docs:js:prod', () => {
+  const src = docs_js_files
+  const dest = paths.docs.dest + 'js/'
+  const js = gulp.src(src)
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(concat('baseweb.min.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(dest))
+
+  return js
+})
+
+gulp.task('docs:js', ['docs:js:dev', 'docs:js:prod'])
 
 /**
  * Images
  */
+
+gulp.task('docs:img:clean', function () {
+  return del(paths.docs.dest + 'img')
+})
 
 gulp.task('docs:img', function() {
   const src = paths.docs.src + 'img/**/*'
@@ -363,9 +397,11 @@ gulp.task('svg', ['svg:icons', 'svg:symbols'])
  * Bulk Tasks
  */
 
+gulp.task('js', ['dist:js', 'docs:js'])
+gulp.task('css', ['dist:css', 'docs:css'])
 gulp.task('dist', ['dist:css', 'dist:js'])
 gulp.task('docs', ['docs:css', 'docs:js', 'docs:img', 'svg'])
-gulp.task('all', ['src', 'docs', 'svg'])
+gulp.task('all', ['dist', 'docs', 'svg'])
 
 /**
  * Watch Task

@@ -1,4 +1,4 @@
-export default function() {
+var utility = (function () {
 
   var api = {}
 
@@ -137,7 +137,7 @@ export default function() {
     }
 
     // Loop through each object and conduct a merge
-    for (  i < length i++ ) {
+    for ( i = 0; i < length; i++ ) {
       var obj = arguments[i]
       merge(obj)
     }
