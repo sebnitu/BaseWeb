@@ -1,14 +1,8 @@
-var utility = (function () {
+'use strict';
 
-  'use strict';
-
-  //
-  // Variables
-  //
+var utility = function () {
 
   var api = {};
-  // var settings;
-  // var defaults = {};
 
   //
   // Public Methods
@@ -20,14 +14,13 @@ var utility = (function () {
    * @param {String} || {Array} Class(es) to check
    * @returns {Boolean} Returns true if class exists on element, otherwise false
    */
-  api.hasClass = function ( el, c ) {
+  api.hasClass = function (el, c) {
 
     c = api.toArray(c);
 
-    return c.every( function ( c ) {
+    return c.every(function (c) {
       return el.classList.contains(c);
     });
-
   }; // End hasClass
 
   /**
@@ -35,14 +28,13 @@ var utility = (function () {
    * @param {Element} Element to add class(es) on
    * @param {String} || {Array} Class(es) to add
    */
-  api.addClass = function ( el, c ) {
+  api.addClass = function (el, c) {
 
     c = api.toArray(c);
 
-    c.forEach( function ( c ) {
-      el.classList.add( c );
+    c.forEach(function (c) {
+      el.classList.add(c);
     });
-
   }; // End addClass
 
   /**
@@ -50,14 +42,13 @@ var utility = (function () {
    * @param {Element} Element to remove class(es) from
    * @param {String} || {Array} Class(es) to remove
    */
-  api.removeClass = function ( el, c ) {
+  api.removeClass = function (el, c) {
 
     c = api.toArray(c);
 
-    c.forEach( function ( c ) {
-      el.classList.remove( c );
+    c.forEach(function (c) {
+      el.classList.remove(c);
     });
-
   }; // End removeClass
 
   /**
@@ -65,14 +56,13 @@ var utility = (function () {
    * @param {Element} Element to toggle class(es) on
    * @param {String} || {Array} Class(es) to toggle
    */
-  api.toggleClass = function ( el, c ) {
+  api.toggleClass = function (el, c) {
 
     c = api.toArray(c);
 
-    c.forEach( function ( c ) {
+    c.forEach(function (c) {
       el.classList.toggle(c);
     });
-
   }; // End toggleClass
 
   /**
@@ -82,9 +72,10 @@ var utility = (function () {
    * @param {String} || {Array} Class(es) to check for
    * @return {Element} Closest parent element
    */
-  api.closest = function ( el, c ) {
-    while ((el = el.parentElement) && !api.hasClass(el, c));
-    return el;
+  api.closest = function (el, c) {
+    while ((el = el.parentElement) && !api.hasClass(el, c)) {
+      return el;
+    }
   }; // End closest
 
   /**
@@ -93,7 +84,7 @@ var utility = (function () {
    * @param {String} || {Array} String to convert to an array
    * @return {Array} Return the converted array
    */
-  api.toArray = function( s ) {
+  api.toArray = function (s) {
 
     var array = [];
 
@@ -106,14 +97,13 @@ var utility = (function () {
     }
 
     return array;
-
   }; // End toArray
 
   /**
    * Merge two or more objects. Returns a new object. Set the first argument
    * to `true` for a deep or recursive merge.
    * @param {Boolean} [Optional] If true, do a deep (or recursive) merge
-   * @param {Object} The objects to merge together; each overriding the next
+   * @param {Object} The objects to merge together each overriding the next
    * @returns {Object} Merged values of defaults and options
    */
   api.extend = function () {
@@ -125,18 +115,18 @@ var utility = (function () {
     var length = arguments.length;
 
     // Check if a deep merge
-    if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
+    if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
       deep = arguments[0];
       i++;
     }
 
     // Merge the object into the extended object
-    var merge = function ( obj ) {
-      for ( var prop in obj ) {
-        if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
+    var merge = function merge(obj) {
+      for (var prop in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
           // If deep merge and property is an object, merge properties
-          if ( deep && Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
-            extended[prop] = extend( true, extended[prop], obj[prop] );
+          if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
+            extended[prop] = extend(true, extended[prop], obj[prop]);
           } else {
             extended[prop] = obj[prop];
           }
@@ -145,13 +135,12 @@ var utility = (function () {
     };
 
     // Loop through each object and conduct a merge
-    for ( ; i < length; i++ ) {
+    for (i = 0; i < length; i++) {
       var obj = arguments[i];
       merge(obj);
     }
 
     return extended;
-
   }; // End extend
 
   //
@@ -159,46 +148,36 @@ var utility = (function () {
   //
 
   return api;
+}();
+'use strict';
 
-})();
-
-// require _utility.js
-
-var dismissible = (function () {
-
-  'use strict';
-
-  //
-  // Variables
-  //
+var dismissible = function () {
 
   var u = utility;
-
   var api = {};
   var settings;
   var defaults = {
-    classTrigger : 'dismiss',
-    classDismissible : 'dismissible',
-    classHide : 'hide',
-  };
+    classTrigger: 'dismiss',
+    classDismissible: 'dismissible',
+    classHide: 'hide'
 
-  //
-  // Private Methods
-  //
+    //
+    // Private Methods
+    //
 
-  var runDismissible = function () {
+  };var runDismissible = function runDismissible() {
 
     // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Exit if a trigger doesn't exist
-    if ( !trigger ) return;
+    if (!trigger) return;
 
     // Get the dismissible parent element
     var dismissible = event.target.closest('.' + settings.classDismissible);
 
     // Exit if a dismissible doesn't exist
-    if ( !dismissible ) return;
+    if (!dismissible) return;
 
     // Add initial classes
     if (dismissible) {
@@ -209,7 +188,6 @@ var dismissible = (function () {
 
     // Prevent default behavior
     event.preventDefault();
-
   };
 
   //
@@ -222,11 +200,10 @@ var dismissible = (function () {
     api.destroy();
 
     // Merge user options with the defaults
-    settings = u.extend( defaults, options || {} );
+    settings = u.extend(defaults, options || {});
 
     // Add event listener
     document.addEventListener('click', runDismissible, false);
-
   };
 
   api.destroy = function () {
@@ -236,7 +213,6 @@ var dismissible = (function () {
 
     // Reset settings
     settings = null;
-
   };
 
   api.showAll = function (selector) {
@@ -248,7 +224,6 @@ var dismissible = (function () {
     dismissible.forEach(function (el) {
       u.removeClass(el, settings.classHide);
     });
-
   };
 
   api.hideAll = function (selector) {
@@ -260,7 +235,6 @@ var dismissible = (function () {
     dismissible.forEach(function (el) {
       u.addClass(el, settings.classHide);
     });
-
   };
 
   api.getDismissible = function (selector) {
@@ -289,7 +263,6 @@ var dismissible = (function () {
 
     // Return dismissible
     return dismissible;
-
   };
 
   //
@@ -297,21 +270,12 @@ var dismissible = (function () {
   //
 
   return api;
+}();
+'use strict';
 
-})();
-
-// require _utility.js
-
-var dropdowns = (function () {
-
-  'use strict';
-
-  //
-  // Variables
-  //
+var dropdowns = function () {
 
   var u = utility;
-
   var api = {};
   var settings;
   var defaults = {
@@ -320,7 +284,7 @@ var dropdowns = (function () {
     classOnClick: 'on-click',
     classOnHover: 'on-hover',
     classActive: 'active',
-    delay: 500,
+    delay: 500
   };
 
   var triggers = [];
@@ -330,7 +294,7 @@ var dropdowns = (function () {
   // Private Methods
   //
 
-  var runDropdownClick = function () {
+  var runDropdownClick = function runDropdownClick() {
 
     // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger + '.' + settings.classOnClick);
@@ -342,7 +306,7 @@ var dropdowns = (function () {
     var is_active;
 
     // Save the state of the current trigger
-    if ( trigger ) {
+    if (trigger) {
       is_active = u.hasClass(trigger, settings.classActive);
     }
 
@@ -350,7 +314,7 @@ var dropdowns = (function () {
     hideAll();
 
     // Exit if a trigger doesn't exist
-    if ( !trigger ) return;
+    if (!trigger) return;
 
     // Keep the parent dropdowns active
     showParents(event.target);
@@ -369,20 +333,18 @@ var dropdowns = (function () {
     if (is_trigger_child) {
       event.preventDefault();
     }
-
   };
 
   // Hide all dropdowns that are click activated
-  var hideAll = function () {
+  var hideAll = function hideAll() {
 
-    triggers.forEach( function (el) {
+    triggers.forEach(function (el) {
       u.removeClass(el, settings.classActive);
     });
-
   };
 
   // Keep the parent dropdowns active
-  var showParents = function (el) {
+  var showParents = function showParents(el) {
 
     var parent = u.closest(el, [settings.classTrigger, settings.classOnClick]);
 
@@ -390,7 +352,6 @@ var dropdowns = (function () {
       u.addClass(parent, settings.classActive);
       parent = u.closest(parent, settings.classTrigger);
     }
-
   };
 
   //
@@ -403,7 +364,7 @@ var dropdowns = (function () {
     api.destroy();
 
     // Merge user options with the defaults
-    settings = u.extend( defaults, options || {} );
+    settings = u.extend(defaults, options || {});
 
     // Get triggers and dropdowns
     triggers = document.querySelectorAll('.' + settings.classTrigger);
@@ -436,9 +397,7 @@ var dropdowns = (function () {
           u.removeClass(trigger, settings.classActive);
         }, settings.delay);
       }, false);
-
     }); // End of hover triggers loop
-
   };
 
   api.destroy = function () {
@@ -450,7 +409,6 @@ var dropdowns = (function () {
     settings = null;
     triggers = [];
     triggersHover = [];
-
   };
 
   //
@@ -458,37 +416,27 @@ var dropdowns = (function () {
   //
 
   return api;
+}();
+'use strict';
 
-})();
-
-// require _utility.js
-
-var offcanvas = (function () {
-
-  'use strict';
-
-  //
-  // Variables
-  //
+var offcanvas = function () {
 
   var u = utility;
-
   var api = {};
   var settings;
   var defaults = {
-    classTrigger : 'oc-trigger',
-    classWrap : 'oc-wrap',
-    classAside : 'oc-aside',
-    classActive : 'oc-active',
-    classDelay : 'oc-delay',
-    timer : 500,
-  };
+    classTrigger: 'oc-trigger',
+    classWrap: 'oc-wrap',
+    classAside: 'oc-aside',
+    classActive: 'oc-active',
+    classDelay: 'oc-delay',
+    timer: 500
 
-  //
-  // Private Methods
-  //
+    //
+    // Private Methods
+    //
 
-  var openOffCanvas = function() {
+  };var openOffCanvas = function openOffCanvas() {
 
     // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
@@ -505,18 +453,17 @@ var offcanvas = (function () {
         // Add the target class
         u.addClass(wrap, target);
         // Add active and delay classes after a slight delay
-        setTimeout( function() {
-          u.addClass(wrap, [settings.classActive, settings.classDelay])
-        }, 25 );
+        setTimeout(function () {
+          u.addClass(wrap, [settings.classActive, settings.classDelay]);
+        }, 25);
       }
     } else {
       // If there's not target data, it's a close button
       closeOffCanvas();
     }
-
   };
 
-  var closeOffCanvas = function () {
+  var closeOffCanvas = function closeOffCanvas() {
 
     // Get the wrap
     var wrap = event.target.closest('.' + settings.classWrap);
@@ -525,36 +472,34 @@ var offcanvas = (function () {
       // Remove active class
       u.removeClass(wrap, settings.classActive);
       // Remove delay class after the set transition duration
-      setTimeout( function () {
+      setTimeout(function () {
         u.removeClass(wrap, settings.classDelay);
-      }, settings.timer );
+      }, settings.timer);
     }
-
   };
 
-  var runOffcanvas = function () {
+  var runOffcanvas = function runOffcanvas() {
 
     // Get the trigger
     var wrap = event.target.closest('.' + settings.classWrap);
 
     // Exit if a wrap doesn't exist
-    if ( !wrap ) return;
+    if (!wrap) return;
 
     // Get the aside and trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
     var aside = event.target.closest('.' + settings.classAside);
 
     // If a trigger or aside doesn't exists, close our off-canvas
-    if ( !trigger && !aside ) closeOffCanvas();
+    if (!trigger && !aside) closeOffCanvas();
 
     // If a trigger was clicked
-    if ( trigger ) {
+    if (trigger) {
       // Get the target
       openOffCanvas();
       // Prevent default behavior
       event.preventDefault();
     }
-
   };
 
   //
@@ -567,11 +512,10 @@ var offcanvas = (function () {
     api.destroy();
 
     // Merge user options with the defaults
-    settings = u.extend( defaults, options || {} );
+    settings = u.extend(defaults, options || {});
 
     // Add event listener to trigger
     document.addEventListener('click', runOffcanvas, false);
-
   };
 
   api.destroy = function () {
@@ -581,7 +525,6 @@ var offcanvas = (function () {
 
     // Reset settings
     settings = null;
-
   };
 
   //
@@ -589,35 +532,25 @@ var offcanvas = (function () {
   //
 
   return api;
+}();
+'use strict';
 
-})();
-
-// require _utility.js
-
-var tabs = (function () {
-
-  'use strict';
-
-  //
-  // Variables
-  //
+var tabs = function () {
 
   var u = utility;
-
   var api = {};
   var settings;
   var defaults = {
-    classTrigger : 'tabs-nav',
-    classWrap : 'tabs',
-    classContent : 'tabs-content',
-    classActive : 'active',
-  };
+    classTrigger: 'tabs-nav',
+    classWrap: 'tabs',
+    classContent: 'tabs-content',
+    classActive: 'active'
 
-  //
-  // Private Methods
-  //
+    //
+    // Private Methods
+    //
 
-  var getContent = function (wrap, nav) {
+  };var getContent = function getContent(wrap, nav) {
 
     // Init content variable
     var content;
@@ -641,16 +574,15 @@ var tabs = (function () {
 
     // Return the content variable
     return content;
-
   };
 
-  var runTabs = function () {
+  var runTabs = function runTabs() {
 
     // Get the trigger
     var trigger = event.target.closest('.' + settings.classTrigger);
 
     // Exit if a trigger doesn't exist
-    if ( !trigger ) return;
+    if (!trigger) return;
 
     // Is the clicked item already active?
     var is_active = u.hasClass(event.target.parentElement, settings.classActive);
@@ -672,12 +604,10 @@ var tabs = (function () {
       // Set tab nav and content item to active
       u.addClass(event.target.parentElement, settings.classActive);
       u.addClass(content.querySelector(target), settings.classActive);
-
     } // End if is_active
 
     // Prevent default behavior
     event.preventDefault();
-
   };
 
   //
@@ -690,11 +620,10 @@ var tabs = (function () {
     api.destroy();
 
     // Merge user options with the defaults
-    settings = u.extend( defaults, options || {} );
+    settings = u.extend(defaults, options || {});
 
     // Add event listener
     document.addEventListener('click', runTabs, false);
-
   };
 
   api.destroy = function () {
@@ -704,7 +633,6 @@ var tabs = (function () {
 
     // Reset settings
     settings = null;
-
   };
 
   //
@@ -712,29 +640,204 @@ var tabs = (function () {
   //
 
   return api;
+}();
+'use strict';
 
-})();
+/**
+ * jquery.docready.js
+ * A place to store all your JavaScript you want to run after
+ * either the document is ready or images are finished loading
+ *
+ * @author Sebastian Nitu
+ * @url https://github.com/sebnitu/BaseWeb
+ * @url http://sebnitu.com
+ */
 
-/*
-require
-  _utility.js
-  _dismissible.js
-  _dropdowns.js
-  _tabs.js
-  _offcanvas.js
-*/
-
-// Default initializations
-;(function (window, document, undefined) {
-
+;(function ($) {
   'use strict';
 
-  dismissible.init();
-  dropdowns.init();
-  tabs.init();
-  offcanvas.init();
+  /**
+   * When the document is ready
+   */
 
-})(window, document);
+  $(document).ready(function () {
+
+    // Initialize BaseWeb components
+    dismissible.init();
+    dropdowns.init();
+    tabs.init();
+    offcanvas.init();
+
+    /**
+     * Back to top
+     */
+    $('.button-totop').click(function (e) {
+      $('html, body').animate({ scrollTop: 0 }, 250);
+      $(this).blur();
+      e.preventDefault();
+    });
+
+    var headerHeight = $('.header').outerHeight();
+
+    if (headerHeight < $(document).scrollTop()) {
+      $('.button-totop').addClass('fadeIn');
+    } else {
+      $('.button-totop').removeClass('fadeIn');
+    }
+
+    $(document).scroll(function () {
+      if (headerHeight < $(this).scrollTop()) {
+        $('.button-totop').addClass('fadeIn');
+      } else {
+        $('.button-totop').removeClass('fadeIn');
+      }
+    });
+
+    /**
+     * ACSII Folder Toggle
+     */
+    $('.list-ascii').each(function () {
+      var dir = $(this).find('strong');
+
+      dir.click(function () {
+        $(this).parent('li').toggleClass('hide-children');
+      });
+    });
+
+    /**
+     * Table of Contents (toc)
+     */
+    $('#toc').each(function () {
+
+      var toc = $(this);
+      var items = $('.docs-item');
+      var i = 0;
+
+      // toc.hide();
+      toc.append('<h3>Contents</h3>');
+      toc.append('<ol class="list-toc"></ol>');
+
+      items.each(function () {
+        i += 1;
+        var hash = $(this).attr('id');
+        var text = $(this).find('h3').first().text();
+        toc.find('.list-toc').append('<li><a href="#' + hash + '">' + text + '</a></li>');
+
+        if (i == items.length) {
+          // toc.slideDown();
+        }
+      });
+    });
+
+    /**
+     * Expandable
+     */
+    $('.expandable-trigger').click(function (e) {
+
+      var $trigger = $(this);
+      var $expandable = $trigger.parents('.expandable');
+      var $expandableContent = $expandable.find('.expandable-content');
+
+      var $text_a = $trigger.text();
+      var $text_b = $trigger.data('text-swap');
+
+      $trigger.text($text_b).data('text-swap', $text_a);
+      $expandable.toggleClass('active');
+
+      e.preventDefault();
+    });
+
+    /**
+     * Sticky Element
+     */
+    $('.sticky').theiaStickySidebar();
+
+    /**
+     * Navigation Toggle
+     */
+    $('.widget-menu .toggle').click(function () {
+      $(this).parent().toggleClass('active');
+      return false;
+    });
+
+    /**
+     * New Tab Links
+     */
+    $('.onclick-newtab').click(function () {
+      $(this).attr('target', '_blank');
+      window.open($(this).attr('href'));
+      return false;
+    });
+
+    /**
+     * Swatches Background
+     */
+    $('.swatch').each(function () {
+      var bg = $(this).css('backgroundColor');
+      var text = getContrastYIQ(rgb2hex(bg));
+      $(this).addClass(text);
+    });
+
+    /**
+     * Switch off-canvas class
+     */
+    $('.form-offcanvas-transitions select').change(function () {
+      var $this = $(this),
+          oc_effect = $('#oc-effect').val(),
+          oc_position = $('#oc-position').val(),
+          oc_class = oc_effect + '-' + oc_position,
+          $oc_transition_value = $('#oc-transition-value'),
+          $oc_trigger = $('#oc-trigger-sample'),
+          $oc_aside = $this.closest('.oc-wrap').find('.oc-aside');
+
+      $oc_transition_value.val(oc_class);
+      $oc_trigger.attr('data-target', oc_class);
+      $oc_aside.attr('class', 'oc-aside ' + oc_class);
+    });
+
+    /**
+     * Select on focus
+     */
+    $('.form-off-canvas-transitions input[readonly]').focus(function () {
+      $(this).select();
+    });
+  });
+})(jQuery);
+"use strict";
+
+/**
+ * jquery.function.js
+ * A place to store all your project specific JavaScript functions
+ *
+ * @author Sebastian Nitu
+ * @url https://github.com/sebnitu/BaseWeb
+ * @url http://sebnitu.com
+ */
+
+// Source: http://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
+var hexDigits = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
+
+function hex(x) {
+  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+}
+
+//Function to convert hex format to a rgb color
+function rgb2hex(rgb) {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  // I removed the `'#' +` from the return
+  return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
+// Source: https://24ways.org/2010/calculating-color-contrast
+function getContrastYIQ(hexcolor) {
+  var r = parseInt(hexcolor.substr(0, 2), 16);
+  var g = parseInt(hexcolor.substr(2, 2), 16);
+  var b = parseInt(hexcolor.substr(4, 2), 16);
+  var yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  // Range is between 0 and 255. 128 is the 50% mark. My pref is 170 (2/3 of 255)
+  return yiq >= 170 ? 'text-dark' : '';
+}
+'use strict';
 
 /*!
  * Theia Sticky Sidebar v1.5.0
@@ -789,7 +892,7 @@ require
                             $(this).unbind(evt);
                         }
                     };
-                }(options, $that))
+                }(options, $that));
             }
         }
 
@@ -845,7 +948,7 @@ require
                 if (o.stickySidebar.length == 0) {
                     // Remove <script> tags, otherwise they will be run again when added to the stickySidebar.
                     var javaScriptMIMETypes = /(?:text|application)\/(?:x-)?(?:javascript|ecmascript)/i;
-                    o.sidebar.find('script').filter(function(index, script) {
+                    o.sidebar.find('script').filter(function (index, script) {
                         return script.type.length === 0 || script.type.match(javaScriptMIMETypes);
                     }).remove();
 
@@ -868,16 +971,14 @@ require
                 if (collapsedTopHeight == 0) {
                     o.stickySidebar.css('padding-top', 0);
                     o.stickySidebarPaddingTop = 0;
-                }
-                else {
+                } else {
                     o.stickySidebarPaddingTop = 1;
                 }
 
                 if (collapsedBottomHeight == 0) {
                     o.stickySidebar.css('padding-bottom', 0);
                     o.stickySidebarPaddingBottom = 0;
-                }
-                else {
+                } else {
                     o.stickySidebarPaddingBottom = 1;
                 }
 
@@ -929,11 +1030,10 @@ require
                         var windowOffsetTop = 0 + options.additionalMarginTop;
                         var windowOffsetBottom;
 
-                        var sidebarSmallerThanWindow = (o.stickySidebar.outerHeight() + offsetTop + offsetBottom) < $(window).height();
+                        var sidebarSmallerThanWindow = o.stickySidebar.outerHeight() + offsetTop + offsetBottom < $(window).height();
                         if (sidebarSmallerThanWindow) {
                             windowOffsetBottom = windowOffsetTop + o.stickySidebar.outerHeight();
-                        }
-                        else {
+                        } else {
                             windowOffsetBottom = $(window).height() - o.marginBottom - o.paddingBottom - options.additionalMarginBottom;
                         }
 
@@ -958,10 +1058,11 @@ require
                             top = windowOffsetBottom - o.stickySidebar.outerHeight();
                         }
 
-                        if (scrollTopDiff > 0) { // If the user is scrolling up.
+                        if (scrollTopDiff > 0) {
+                            // If the user is scrolling up.
                             top = Math.min(top, windowOffsetTop);
-                        }
-                        else { // If the user is scrolling down.
+                        } else {
+                            // If the user is scrolling down.
                             top = Math.max(top, windowOffsetBottom - o.stickySidebar.outerHeight());
                         }
 
@@ -974,15 +1075,12 @@ require
 
                         if (!sidebarSameHeightAsContainer && top == windowOffsetTop) {
                             position = 'fixed';
-                        }
-                        else if (!sidebarSameHeightAsContainer && top == windowOffsetBottom - o.stickySidebar.outerHeight()) {
+                        } else if (!sidebarSameHeightAsContainer && top == windowOffsetBottom - o.stickySidebar.outerHeight()) {
                             position = 'fixed';
-                        }
-                        else if (scrollTop + top - o.sidebar.offset().top - o.paddingTop <= options.additionalMarginTop) {
+                        } else if (scrollTop + top - o.sidebar.offset().top - o.paddingTop <= options.additionalMarginTop) {
                             // Stuck to the top of the page. No special behavior.
                             position = 'static';
-                        }
-                        else {
+                        } else {
                             // Stuck to the bottom of the page.
                             position = 'absolute';
                         }
@@ -997,11 +1095,10 @@ require
                             'position': 'fixed',
                             'width': getWidthForObject(o.stickySidebar) + 'px',
                             'transform': 'translateY(' + top + 'px)',
-                            'left': (o.sidebar.offset().left + parseInt(o.sidebar.css('padding-left'))) + 'px',
+                            'left': o.sidebar.offset().left + parseInt(o.sidebar.css('padding-left')) + 'px',
                             'top': '0px'
                         });
-                    }
-                    else if (position == 'absolute') {
+                    } else if (position == 'absolute') {
                         var css = {};
 
                         if (o.stickySidebar.css('position') != 'absolute') {
@@ -1014,8 +1111,7 @@ require
                         css.left = '';
 
                         o.stickySidebar.css(css);
-                    }
-                    else if (position == 'static') {
+                    } else if (position == 'static') {
                         resetSidebar();
                     }
 
@@ -1041,7 +1137,7 @@ require
                 }(o));
                 $(window).resize(function (o) {
                     return function () {
-                        o.stickySidebar.css({'position': 'static'});
+                        o.stickySidebar.css({ 'position': 'static' });
                         o.onScroll(o);
                     };
                 }(o));
@@ -1077,9 +1173,7 @@ require
 
             try {
                 width = object[0].getBoundingClientRect().width;
-            }
-            catch(err) {
-            }
+            } catch (err) {}
 
             if (typeof width === "undefined") {
                 width = object.width();
@@ -1087,202 +1181,9 @@ require
 
             return width;
         }
-    }
+    };
 })(jQuery);
-
-/**
- * jquery.function.js
- * A place to store all your project specific JavaScript functions
- *
- * @author Sebastian Nitu
- * @url https://github.com/sebnitu/BaseWeb
- * @url http://sebnitu.com
- */
-
-// Source: http://stackoverflow.com/questions/1740700/how-to-get-hex-color-value-rather-than-rgb-value
-var hexDigits = new Array("0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f");
-
-function hex(x) {
-  return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
-}
-
-//Function to convert hex format to a rgb color
-function rgb2hex(rgb) {
-  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-  // I removed the `'#' +` from the return
-  return hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-}
-
-// Source: https://24ways.org/2010/calculating-color-contrast
-function getContrastYIQ(hexcolor) {
-  var r = parseInt(hexcolor.substr(0,2),16);
-  var g = parseInt(hexcolor.substr(2,2),16);
-  var b = parseInt(hexcolor.substr(4,2),16);
-  var yiq = ((r*299)+(g*587)+(b*114))/1000;
-  // Range is between 0 and 255. 128 is the 50% mark. My pref is 170 (2/3 of 255)
-  return (yiq >= 170) ? 'text-dark' : '';
-}
-
-// require jquery.sticky.js jquery.function.js
-/**
- * jquery.docready.js
- * A place to store all your JavaScript you want to run after
- * either the document is ready or images are finished loading
- *
- * @author Sebastian Nitu
- * @url https://github.com/sebnitu/BaseWeb
- * @url http://sebnitu.com
- */
-
-;(function ($) {
-  'use strict';
-
-  /**
-   * When the document is ready
-   */
-  $(document).ready(function () {
-
-    /**
-     * Back to top
-     */
-    $('.button-totop').click(function (e) {
-      $('html, body').animate({ scrollTop: 0 }, 250);
-      $(this).blur();
-      e.preventDefault();
-    });
-
-    var headerHeight = $('.header').outerHeight();
-
-    if (headerHeight < $(document).scrollTop()) {
-      $('.button-totop').addClass('fadeIn');
-    } else {
-      $('.button-totop').removeClass('fadeIn');
-    }
-
-    $(document).scroll(function () {
-      if (headerHeight < $(this).scrollTop()) {
-        $('.button-totop').addClass('fadeIn');
-      } else {
-        $('.button-totop').removeClass('fadeIn');
-      }
-    });
-
-    /**
-     * ACSII Folder Toggle
-     */
-    $('.list-ascii').each(function () {
-      var dir = $(this).find('strong');
-
-      dir.click(function () {
-        $(this).parent('li').toggleClass('hide-children');
-      });
-    });
-
-    /**
-     * Table of Contents (toc)
-     */
-    $('#toc').each(function () {
-
-      var toc = $(this);
-      var items = $('.docs-item');
-      var i = 0;
-
-      // toc.hide();
-      toc.append('<h3>Contents</h3>');
-      toc.append('<ol class="list-toc"></ol>');
-
-      items.each(function() {
-        i += 1;
-        var hash = $(this).attr('id');
-        var text = $(this).find('h3').first().text();
-        toc.find('.list-toc').append('<li><a href="#' + hash + '">' + text + '</a></li>');
-
-        if (i == items.length) {
-          // toc.slideDown();
-        }
-      });
-
-    });
-
-    /**
-     * Expandable
-     */
-    $('.expandable-trigger').click(function(e) {
-
-      var $trigger = $(this);
-      var $expandable = $trigger.parents('.expandable');
-      var $expandableContent = $expandable.find('.expandable-content');
-
-      var $text_a = $trigger.text();
-      var $text_b = $trigger.data('text-swap');
-
-      $trigger.text($text_b).data('text-swap', $text_a);
-      $expandable.toggleClass('active');
-
-      e.preventDefault();
-    });
-
-    /**
-     * Sticky Element
-     */
-    $('.sticky').theiaStickySidebar();
-
-    /**
-     * Navigation Toggle
-     */
-    $('.widget-menu .toggle').click(function() {
-      $(this).parent().toggleClass('active');
-      return false;
-    });
-
-    /**
-     * New Tab Links
-     */
-    $('.onclick-newtab').click(function() {
-      $(this).attr('target', '_blank');
-      window.open($(this).attr('href'));
-      return false;
-    });
-
-    /**
-     * Swatches Background
-     */
-    $('.swatch').each(function() {
-      var bg = $(this).css('backgroundColor');
-      var text = getContrastYIQ(rgb2hex(bg));
-      $(this).addClass(text);
-    });
-
-    /**
-     * Switch off-canvas class
-     */
-    $('.form-offcanvas-transitions select').change(function () {
-      var
-        $this = $(this),
-        oc_effect = $('#oc-effect').val(),
-        oc_position = $('#oc-position').val(),
-        oc_class = oc_effect + '-' + oc_position,
-        $oc_transition_value = $('#oc-transition-value'),
-        $oc_trigger = $('#oc-trigger-sample'),
-        $oc_aside = $this.closest('.oc-wrap').find('.oc-aside')
-      ;
-
-      $oc_transition_value.val(oc_class);
-      $oc_trigger.attr('data-target', oc_class);
-      $oc_aside.attr('class', 'oc-aside ' + oc_class);
-
-    });
-
-    /**
-     * Select on focus
-     */
-    $('.form-off-canvas-transitions input[readonly]').focus(function() {
-      $(this).select();
-    });
-
-  });
-
-}(jQuery));
+"use strict";
 
 /*!
  * @copyright Copyright (c) 2017 IcoMoon.io
@@ -1294,18 +1195,19 @@ function getContrastYIQ(hexcolor) {
 /*global XDomainRequest, MutationObserver, window */
 (function () {
     "use strict";
+
     if (window && window.addEventListener) {
         var cache = Object.create(null); // holds xhr objects to prevent multiple requests
         var checkUseElems;
         var tid; // timeout id
-        var debouncedCheck = function () {
+        var debouncedCheck = function debouncedCheck() {
             clearTimeout(tid);
             tid = setTimeout(checkUseElems, 100);
         };
-        var unobserveChanges = function () {
+        var unobserveChanges = function unobserveChanges() {
             return;
         };
-        var observeChanges = function () {
+        var observeChanges = function observeChanges() {
             var observer;
             window.addEventListener("resize", debouncedCheck, false);
             window.addEventListener("orientationchange", debouncedCheck, false);
@@ -1316,7 +1218,7 @@ function getContrastYIQ(hexcolor) {
                     subtree: true,
                     attributes: true
                 });
-                unobserveChanges = function () {
+                unobserveChanges = function unobserveChanges() {
                     try {
                         observer.disconnect();
                         window.removeEventListener("resize", debouncedCheck, false);
@@ -1325,14 +1227,14 @@ function getContrastYIQ(hexcolor) {
                 };
             } else {
                 document.documentElement.addEventListener("DOMSubtreeModified", debouncedCheck, false);
-                unobserveChanges = function () {
+                unobserveChanges = function unobserveChanges() {
                     document.documentElement.removeEventListener("DOMSubtreeModified", debouncedCheck, false);
                     window.removeEventListener("resize", debouncedCheck, false);
                     window.removeEventListener("orientationchange", debouncedCheck, false);
                 };
             }
         };
-        var createRequest = function (url) {
+        var createRequest = function createRequest(url) {
             // In IE 9, cross origin requests can only be sent using XDomainRequest.
             // XDomainRequest would fail if CORS headers are not set.
             // Therefore, XDomainRequest should only be used with cross origin requests.
@@ -1362,7 +1264,7 @@ function getContrastYIQ(hexcolor) {
             return Request;
         };
         var xlinkNS = "http://www.w3.org/1999/xlink";
-        checkUseElems = function () {
+        checkUseElems = function checkUseElems() {
             var base;
             var bcr;
             var fallback = ""; // optional fallback URL in case no base path to SVG file was given and no symbol definition was found.
@@ -1379,7 +1281,8 @@ function getContrastYIQ(hexcolor) {
             function observeIfDone() {
                 // If done with making changes, start watching for chagnes in DOM again
                 inProgressCount -= 1;
-                if (inProgressCount === 0) { // if all xhrs were resolved
+                if (inProgressCount === 0) {
+                    // if all xhrs were resolved
                     unobserveChanges(); // make sure to remove old handlers
                     observeChanges(); // watch for changes to DOM
                 }
@@ -1510,4 +1413,5 @@ function getContrastYIQ(hexcolor) {
             tid = setTimeout(checkUseElems, 0);
         }, false);
     }
-}());
+})();
+//# sourceMappingURL=baseweb.js.map
