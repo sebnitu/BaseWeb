@@ -383,7 +383,9 @@ gulp.task('svg:symbols', ['svg:icons'], function() {
   return gulp.src( src )
     .pipe(svgSymbols({
       id: 'icon-%f',
-      svgClassname: 'svg-symbols',
+      svgAttrs: {
+        class: 'svg-symbols'
+      },
       templates: ['default-svg']
     }))
     .pipe(rename('symbols.svg'))
