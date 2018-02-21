@@ -97,7 +97,7 @@ Along with all standard form elements, BaseWeb provides you with `.form-group`, 
 
 <section id="map-tables" class="docs-item" markdown="1">
 
-## Variable Map
+### Variable Map
 
 Form variables are encompassed within the `$forms` map and are used throughout all form mixins to set default values.
 
