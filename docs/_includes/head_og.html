@@ -1,0 +1,43 @@
+{%- capture title -%}
+  {%- if page.title == 'Home' -%}
+    {{ site.title  }}
+  {%- else -%}
+    {{ page.title }}
+  {%- endif -%}
+{%- endcapture -%}
+
+<title>{{ title | escape }}</title>
+
+{%- if page.og.title -%}
+  <meta property="og:title" content="{{ page.og.title | escape }}" />
+{%- else -%}
+  <meta property="og:title" content="{{ title | escape }}" />
+{%- endif -%}
+
+{%- if page.description -%}
+<meta name="description" content="{{ page.description | escape }}">
+{%- else -%}
+<meta name="description" content="{{ site.description | escape }}">
+{%- endif -%}
+
+{%- if page.og.description -%}
+  <meta property="og:description" content="{{ page.og.description | escape }}" />
+{%- elsif page.description -%}
+  <meta property="og:description" content="{{ page.description | escape }}" />
+{%- else -%}
+  <meta property="og:description" content="{{ site.description | escape }}" />
+{%- endif -%}
+
+<meta property="og:url" content="{{ page.url | relative_url }}" />
+
+{%- if page.og.image -%}
+  <meta property="og:image" content="{% include asset.html file=page.og.image %}" />
+  <meta name="twitter:card" content="summary_large_image" />
+{%- else -%}
+  <meta property="og:image" content="{{ "/dist/img/og-image.jpg" | relative_url }}" />
+  <meta name="twitter:card" content="summary"/>
+{%- endif -%}
+
+{%- if site.twitter_username -%}
+<meta name="twitter:site" content="@{{ site.twitter_username | escape }}" />
+{%- endif -%}

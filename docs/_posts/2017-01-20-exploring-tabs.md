@@ -7,7 +7,7 @@ version: "2.1.0"
 
 <p class="text-lead">Tabs have arrived! BaseWeb now makes available the tabs block component which includes two robust mixins for creating and styling semantic tabs.</p>
 
-<img src="{% include asset.html file="illustration-tabs.jpg" %}" class="featured-image" alt="">
+<img src="{%- include asset.html file="illustration-tabs.jpg" -%}" class="featured-image" alt="">
 
 You can read about how it works in the [documentation]({{ site.url }}{{ site.baseurl }}/docs/blocks/tabs). Here, I'd like to explore the process of researching and developing this component. Tabs are a very common user interface control and have been around for a while. This is important because it means users have an expectation with how tabs function and look. So when developing a tabs system, we want to make sure we are as predictable as possible for users as well as being clear visually. So lets put together a checklist to clearly define how tabs should look and function before we code.
 

@@ -1,43 +1,46 @@
-# Server
+# Server settings
+###
+
 host: localhost
 port: 8020
 baseurl: '' # subpath of your site, e.g. /blog
 url: 'https://getbaseweb.com' # base hostname & protocol for your site
-permalink: pretty
 
-# Site
-markdown: kramdown
+# Site details
+###
+
 title: BaseWeb
-description: "A light UI component library built to make web projects faster, flexible and easier to maintain."
 version: 3.0.6
+description: "A light UI component library built to make web projects faster, flexible and easier to maintain."
+email: me@sebnitu.com
 repository: sebnitu/BaseWeb
 
+# Build settings
+###
+
+permalink: pretty
+plugins:
+  - jekyll-feed
 exclude:
   - node_modules
   - src
-
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-github-metadata
-
-# Author
-author:
-  name: Sebastian Nitu
-  url: https://sebnitu.com
-  email: me@sebnitu.com
-  twitter: sebnitu
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.babel.js
+  - package-lock.json
+  - package.json
+  - readme.md
 
 # Defaults
 defaults:
   - scope:
       path: ''
-    values:
-      layout: page
-
-  - scope:
-      path: '_posts'
       type: 'posts'
     values:
-      layout: post
       category: blog
+
+# Theme settings
+###
+
+# Third-party
+google_analytics: UA-5911557-6

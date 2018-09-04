@@ -1,10 +1,10 @@
 {%- capture type -%}
   {%- if page.layout == "post" -%}
     posts
-  {%- elsif page.collection -%}
-    {{ page.collection }}
   {%- else -%}
-    pages
+    {%- unless page.collection or include.context.collection -%}
+      pages
+    {%- endunless -%}
   {%- endif -%}
 {%- endcapture -%}
 
@@ -12,8 +12,16 @@
   {%- if page.layout == "post" -%}
     {{ page.path | split:"/" | last | split:"." | first }}
   {%- else -%}
-    {{ page.title | slugify }}
+    {%- if page.collection -%}
+      {{ page.path | split:"." | first | remove_first: "_" }}
+    {%- elsif include.context -%}
+      {{ include.context.path | split:"." | first | remove_first: "_" }}
+    {%- else -%}
+      {{ page.path | split:"." | first }}
+    {%- endif -%}
   {%- endif -%}
 {%- endcapture -%}
 
-{{ site.url }}{{ site.baseurl }}/assets/{{ type }}/{{ context }}/{{ include.file }}
+{%- capture fin -%}/assets/{{ type }}/{{ context }}/{{ include.file }}{%- endcapture -%}
+
+{{ fin | replace: '//', '/' | relative_url }}
