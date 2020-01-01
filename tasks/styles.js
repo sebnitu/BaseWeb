@@ -24,7 +24,7 @@ const styles_dev = () => {
     .on('error', sass.logError))
     .pipe(postcss([
       autoprefixer({
-        browsers: ['last 2 versions', '> 2%']
+        overrideBrowserslist: ['last 2 versions', '> 2%']
       })
     ]))
     .pipe(rename({
@@ -51,7 +51,7 @@ const styles_prod = () => {
     .on('error', sass.logError))
     .pipe(postcss([
       autoprefixer({
-        browsers: ['last 2 versions', '> 2%']
+        overrideBrowserslist: ['last 2 versions', '> 2%']
       })
     ]))
     .pipe(rename({
